@@ -47,10 +47,10 @@ julia> v = [b["Name"] for b in r["Buckets"]["Bucket"]]
  "bucket2"
  "bucket3"
 
-julia> S3.put_object(Bucket="octech.scratch", Key="myfile", Body="mydata")
+julia> S3.put_object(Bucket="bucket1", Key="myfile", Body="mydata")
 Response(200 OK, 10 headers, 0 bytes in body)
 
-julia> S3.get_object(Bucket="octech.scratch", Key="myfile") |> String
+julia> S3.get_object(Bucket="bucket1", Key="myfile") |> String
 "mydata"
 
 ```
