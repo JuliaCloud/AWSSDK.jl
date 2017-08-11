@@ -6,8 +6,6 @@ Based on [JuliaCloud/AWSCore.jl](https://github.com/JuliaCloud/AWSCore.jl).
 
 See [documentation](https://juliacloud.github.io/AWSCore.jl/build/index.html).
 
-# Quick Start
-
 ## Configuration
 
 Option 1: [environment variables](http://docs.aws.amazon.com/cli/latest/userguide/cli-environment.html):
