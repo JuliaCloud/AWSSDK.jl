@@ -1,4 +1,4 @@
-The AWSCore.jl package is licensed under the MIT "Expat" License:
+The AWSSDK.jl package is licensed under the MIT "Expat" License:
 
 > Copyright (c) 2017: OC Technology Pty Ltd.
 >
