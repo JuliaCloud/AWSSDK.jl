@@ -6,6 +6,22 @@ Based on [JuliaCloud/AWSCore.jl](https://github.com/JuliaCloud/AWSCore.jl).
 
 See [documentation](https://juliacloud.github.io/AWSCore.jl/build/index.html).
 
+This package provides automatically generated low-level API wrappers and
+documentation strings for each operation in each Amazon Web Service.
+
+The following high-level packages are also available:
+[AWS S3](http://github.com/samoconnor/AWSS3.jl),
+[AWS SQS](http://github.com/samoconnor/AWSSQS.jl),
+[AWS SNS](http://github.com/samoconnor/AWSSNS.jl),
+[AWS IAM](http://github.com/samoconnor/AWSIAM.jl),
+[AWS EC2](http://github.com/samoconnor/AWSEC2.jl),
+[AWS Lambda](http://github.com/samoconnor/AWSLambda.jl),
+[AWS SES](http://github.com/samoconnor/AWSSES.jl) and
+[AWS SDB](http://github.com/samoconnor/AWSSDB.jl).
+These packages include operation sepcific result structure parsing, error
+handling, type conveniance functions, iterators, etc.
+
+
 ## Configuration
 
 Option 1: [environment variables](http://docs.aws.amazon.com/cli/latest/userguide/cli-environment.html):
