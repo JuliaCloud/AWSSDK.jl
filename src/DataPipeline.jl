@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.activate_pipeline([::AWSConfig], arguments::Dict)
-    DataPipeline.activate_pipeline([::AWSConfig]; pipelineId=, <keyword arguments>)
+    using AWSSDK.DataPipeline.activate_pipeline
+    activate_pipeline([::AWSConfig], arguments::Dict)
+    activate_pipeline([::AWSConfig]; pipelineId=, <keyword arguments>)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "ActivatePipeline", arguments::Dict)
@@ -69,9 +69,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.add_tags([::AWSConfig], arguments::Dict)
-    DataPipeline.add_tags([::AWSConfig]; pipelineId=, tags=)
+    using AWSSDK.DataPipeline.add_tags
+    add_tags([::AWSConfig], arguments::Dict)
+    add_tags([::AWSConfig]; pipelineId=, tags=)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "AddTags", arguments::Dict)
@@ -117,9 +117,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.create_pipeline([::AWSConfig], arguments::Dict)
-    DataPipeline.create_pipeline([::AWSConfig]; name=, uniqueId=, <keyword arguments>)
+    using AWSSDK.DataPipeline.create_pipeline
+    create_pipeline([::AWSConfig], arguments::Dict)
+    create_pipeline([::AWSConfig]; name=, uniqueId=, <keyword arguments>)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "CreatePipeline", arguments::Dict)
@@ -173,9 +173,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.deactivate_pipeline([::AWSConfig], arguments::Dict)
-    DataPipeline.deactivate_pipeline([::AWSConfig]; pipelineId=, <keyword arguments>)
+    using AWSSDK.DataPipeline.deactivate_pipeline
+    deactivate_pipeline([::AWSConfig], arguments::Dict)
+    deactivate_pipeline([::AWSConfig]; pipelineId=, <keyword arguments>)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "DeactivatePipeline", arguments::Dict)
@@ -218,9 +218,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.delete_pipeline([::AWSConfig], arguments::Dict)
-    DataPipeline.delete_pipeline([::AWSConfig]; pipelineId=)
+    using AWSSDK.DataPipeline.delete_pipeline
+    delete_pipeline([::AWSConfig], arguments::Dict)
+    delete_pipeline([::AWSConfig]; pipelineId=)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "DeletePipeline", arguments::Dict)
@@ -255,9 +255,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.describe_objects([::AWSConfig], arguments::Dict)
-    DataPipeline.describe_objects([::AWSConfig]; pipelineId=, objectIds=, <keyword arguments>)
+    using AWSSDK.DataPipeline.describe_objects
+    describe_objects([::AWSConfig], arguments::Dict)
+    describe_objects([::AWSConfig]; pipelineId=, objectIds=, <keyword arguments>)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "DescribeObjects", arguments::Dict)
@@ -306,9 +306,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.describe_pipelines([::AWSConfig], arguments::Dict)
-    DataPipeline.describe_pipelines([::AWSConfig]; pipelineIds=)
+    using AWSSDK.DataPipeline.describe_pipelines
+    describe_pipelines([::AWSConfig], arguments::Dict)
+    describe_pipelines([::AWSConfig]; pipelineIds=)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "DescribePipelines", arguments::Dict)
@@ -347,9 +347,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.evaluate_expression([::AWSConfig], arguments::Dict)
-    DataPipeline.evaluate_expression([::AWSConfig]; pipelineId=, objectId=, expression=)
+    using AWSSDK.DataPipeline.evaluate_expression
+    evaluate_expression([::AWSConfig], arguments::Dict)
+    evaluate_expression([::AWSConfig]; pipelineId=, objectId=, expression=)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "EvaluateExpression", arguments::Dict)
@@ -394,9 +394,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.get_pipeline_definition([::AWSConfig], arguments::Dict)
-    DataPipeline.get_pipeline_definition([::AWSConfig]; pipelineId=, <keyword arguments>)
+    using AWSSDK.DataPipeline.get_pipeline_definition
+    get_pipeline_definition([::AWSConfig], arguments::Dict)
+    get_pipeline_definition([::AWSConfig]; pipelineId=, <keyword arguments>)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "GetPipelineDefinition", arguments::Dict)
@@ -437,9 +437,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.list_pipelines([::AWSConfig], arguments::Dict)
-    DataPipeline.list_pipelines([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DataPipeline.list_pipelines
+    list_pipelines([::AWSConfig], arguments::Dict)
+    list_pipelines([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "ListPipelines", arguments::Dict)
@@ -476,9 +476,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.poll_for_task([::AWSConfig], arguments::Dict)
-    DataPipeline.poll_for_task([::AWSConfig]; workerGroup=, <keyword arguments>)
+    using AWSSDK.DataPipeline.poll_for_task
+    poll_for_task([::AWSConfig], arguments::Dict)
+    poll_for_task([::AWSConfig]; workerGroup=, <keyword arguments>)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "PollForTask", arguments::Dict)
@@ -530,9 +530,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.put_pipeline_definition([::AWSConfig], arguments::Dict)
-    DataPipeline.put_pipeline_definition([::AWSConfig]; pipelineId=, pipelineObjects=, <keyword arguments>)
+    using AWSSDK.DataPipeline.put_pipeline_definition
+    put_pipeline_definition([::AWSConfig], arguments::Dict)
+    put_pipeline_definition([::AWSConfig]; pipelineId=, pipelineObjects=, <keyword arguments>)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "PutPipelineDefinition", arguments::Dict)
@@ -613,9 +613,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.query_objects([::AWSConfig], arguments::Dict)
-    DataPipeline.query_objects([::AWSConfig]; pipelineId=, sphere=, <keyword arguments>)
+    using AWSSDK.DataPipeline.query_objects
+    query_objects([::AWSConfig], arguments::Dict)
+    query_objects([::AWSConfig]; pipelineId=, sphere=, <keyword arguments>)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "QueryObjects", arguments::Dict)
@@ -676,9 +676,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.remove_tags([::AWSConfig], arguments::Dict)
-    DataPipeline.remove_tags([::AWSConfig]; pipelineId=, tagKeys=)
+    using AWSSDK.DataPipeline.remove_tags
+    remove_tags([::AWSConfig], arguments::Dict)
+    remove_tags([::AWSConfig]; pipelineId=, tagKeys=)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "RemoveTags", arguments::Dict)
@@ -719,9 +719,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.report_task_progress([::AWSConfig], arguments::Dict)
-    DataPipeline.report_task_progress([::AWSConfig]; taskId=, <keyword arguments>)
+    using AWSSDK.DataPipeline.report_task_progress
+    report_task_progress([::AWSConfig], arguments::Dict)
+    report_task_progress([::AWSConfig]; taskId=, <keyword arguments>)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "ReportTaskProgress", arguments::Dict)
@@ -770,9 +770,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.report_task_runner_heartbeat([::AWSConfig], arguments::Dict)
-    DataPipeline.report_task_runner_heartbeat([::AWSConfig]; taskrunnerId=, <keyword arguments>)
+    using AWSSDK.DataPipeline.report_task_runner_heartbeat
+    report_task_runner_heartbeat([::AWSConfig], arguments::Dict)
+    report_task_runner_heartbeat([::AWSConfig]; taskrunnerId=, <keyword arguments>)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "ReportTaskRunnerHeartbeat", arguments::Dict)
@@ -817,9 +817,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.set_status([::AWSConfig], arguments::Dict)
-    DataPipeline.set_status([::AWSConfig]; pipelineId=, objectIds=, status=)
+    using AWSSDK.DataPipeline.set_status
+    set_status([::AWSConfig], arguments::Dict)
+    set_status([::AWSConfig]; pipelineId=, objectIds=, status=)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "SetStatus", arguments::Dict)
@@ -860,9 +860,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.set_task_status([::AWSConfig], arguments::Dict)
-    DataPipeline.set_task_status([::AWSConfig]; taskId=, taskStatus=, <keyword arguments>)
+    using AWSSDK.DataPipeline.set_task_status
+    set_task_status([::AWSConfig], arguments::Dict)
+    set_task_status([::AWSConfig]; taskId=, taskStatus=, <keyword arguments>)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "SetTaskStatus", arguments::Dict)
@@ -915,9 +915,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapi
 
 
 """
-    using AWSSDK.DataPipeline
-    DataPipeline.validate_pipeline_definition([::AWSConfig], arguments::Dict)
-    DataPipeline.validate_pipeline_definition([::AWSConfig]; pipelineId=, pipelineObjects=, <keyword arguments>)
+    using AWSSDK.DataPipeline.validate_pipeline_definition
+    validate_pipeline_definition([::AWSConfig], arguments::Dict)
+    validate_pipeline_definition([::AWSConfig]; pipelineId=, pipelineObjects=, <keyword arguments>)
 
     using AWSCore.Services.datapipeline
     datapipeline([::AWSConfig], "ValidatePipelineDefinition", arguments::Dict)

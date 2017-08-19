@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Health
-    Health.describe_affected_entities([::AWSConfig], arguments::Dict)
-    Health.describe_affected_entities([::AWSConfig]; filter=, <keyword arguments>)
+    using AWSSDK.Health.describe_affected_entities
+    describe_affected_entities([::AWSConfig], arguments::Dict)
+    describe_affected_entities([::AWSConfig]; filter=, <keyword arguments>)
 
     using AWSCore.Services.health
     health([::AWSConfig], "DescribeAffectedEntities", arguments::Dict)
@@ -78,9 +78,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/health
 
 
 """
-    using AWSSDK.Health
-    Health.describe_entity_aggregates([::AWSConfig], arguments::Dict)
-    Health.describe_entity_aggregates([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Health.describe_entity_aggregates
+    describe_entity_aggregates([::AWSConfig], arguments::Dict)
+    describe_entity_aggregates([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.health
     health([::AWSConfig], "DescribeEntityAggregates", arguments::Dict)
@@ -113,9 +113,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/health
 
 
 """
-    using AWSSDK.Health
-    Health.describe_event_aggregates([::AWSConfig], arguments::Dict)
-    Health.describe_event_aggregates([::AWSConfig]; aggregateField=, <keyword arguments>)
+    using AWSSDK.Health.describe_event_aggregates
+    describe_event_aggregates([::AWSConfig], arguments::Dict)
+    describe_event_aggregates([::AWSConfig]; aggregateField=, <keyword arguments>)
 
     using AWSCore.Services.health
     health([::AWSConfig], "DescribeEventAggregates", arguments::Dict)
@@ -189,9 +189,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/health
 
 
 """
-    using AWSSDK.Health
-    Health.describe_event_details([::AWSConfig], arguments::Dict)
-    Health.describe_event_details([::AWSConfig]; eventArns=, <keyword arguments>)
+    using AWSSDK.Health.describe_event_details
+    describe_event_details([::AWSConfig], arguments::Dict)
+    describe_event_details([::AWSConfig]; eventArns=, <keyword arguments>)
 
     using AWSCore.Services.health
     health([::AWSConfig], "DescribeEventDetails", arguments::Dict)
@@ -234,9 +234,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/health
 
 
 """
-    using AWSSDK.Health
-    Health.describe_event_types([::AWSConfig], arguments::Dict)
-    Health.describe_event_types([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Health.describe_event_types
+    describe_event_types([::AWSConfig], arguments::Dict)
+    describe_event_types([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.health
     health([::AWSConfig], "DescribeEventTypes", arguments::Dict)
@@ -291,9 +291,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/health
 
 
 """
-    using AWSSDK.Health
-    Health.describe_events([::AWSConfig], arguments::Dict)
-    Health.describe_events([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Health.describe_events
+    describe_events([::AWSConfig], arguments::Dict)
+    describe_events([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.health
     health([::AWSConfig], "DescribeEvents", arguments::Dict)

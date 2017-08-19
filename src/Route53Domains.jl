@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.check_domain_availability([::AWSConfig], arguments::Dict)
-    Route53Domains.check_domain_availability([::AWSConfig]; DomainName=, <keyword arguments>)
+    using AWSSDK.Route53Domains.check_domain_availability
+    check_domain_availability([::AWSConfig], arguments::Dict)
+    check_domain_availability([::AWSConfig]; DomainName=, <keyword arguments>)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "CheckDomainAvailability", arguments::Dict)
@@ -58,9 +58,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.delete_tags_for_domain([::AWSConfig], arguments::Dict)
-    Route53Domains.delete_tags_for_domain([::AWSConfig]; DomainName=, TagsToDelete=)
+    using AWSSDK.Route53Domains.delete_tags_for_domain
+    delete_tags_for_domain([::AWSConfig], arguments::Dict)
+    delete_tags_for_domain([::AWSConfig]; DomainName=, TagsToDelete=)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "DeleteTagsForDomain", arguments::Dict)
@@ -103,9 +103,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.disable_domain_auto_renew([::AWSConfig], arguments::Dict)
-    Route53Domains.disable_domain_auto_renew([::AWSConfig]; DomainName=)
+    using AWSSDK.Route53Domains.disable_domain_auto_renew
+    disable_domain_auto_renew([::AWSConfig], arguments::Dict)
+    disable_domain_auto_renew([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "DisableDomainAutoRenew", arguments::Dict)
@@ -142,9 +142,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.disable_domain_transfer_lock([::AWSConfig], arguments::Dict)
-    Route53Domains.disable_domain_transfer_lock([::AWSConfig]; DomainName=)
+    using AWSSDK.Route53Domains.disable_domain_transfer_lock
+    disable_domain_transfer_lock([::AWSConfig], arguments::Dict)
+    disable_domain_transfer_lock([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "DisableDomainTransferLock", arguments::Dict)
@@ -181,9 +181,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.enable_domain_auto_renew([::AWSConfig], arguments::Dict)
-    Route53Domains.enable_domain_auto_renew([::AWSConfig]; DomainName=)
+    using AWSSDK.Route53Domains.enable_domain_auto_renew
+    enable_domain_auto_renew([::AWSConfig], arguments::Dict)
+    enable_domain_auto_renew([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "EnableDomainAutoRenew", arguments::Dict)
@@ -222,9 +222,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.enable_domain_transfer_lock([::AWSConfig], arguments::Dict)
-    Route53Domains.enable_domain_transfer_lock([::AWSConfig]; DomainName=)
+    using AWSSDK.Route53Domains.enable_domain_transfer_lock
+    enable_domain_transfer_lock([::AWSConfig], arguments::Dict)
+    enable_domain_transfer_lock([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "EnableDomainTransferLock", arguments::Dict)
@@ -261,9 +261,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.get_contact_reachability_status([::AWSConfig], arguments::Dict)
-    Route53Domains.get_contact_reachability_status([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Route53Domains.get_contact_reachability_status
+    get_contact_reachability_status([::AWSConfig], arguments::Dict)
+    get_contact_reachability_status([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "GetContactReachabilityStatus", arguments::Dict)
@@ -302,9 +302,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.get_domain_detail([::AWSConfig], arguments::Dict)
-    Route53Domains.get_domain_detail([::AWSConfig]; DomainName=)
+    using AWSSDK.Route53Domains.get_domain_detail
+    get_domain_detail([::AWSConfig], arguments::Dict)
+    get_domain_detail([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "GetDomainDetail", arguments::Dict)
@@ -341,9 +341,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.get_domain_suggestions([::AWSConfig], arguments::Dict)
-    Route53Domains.get_domain_suggestions([::AWSConfig]; DomainName=, SuggestionCount=, OnlyAvailable=)
+    using AWSSDK.Route53Domains.get_domain_suggestions
+    get_domain_suggestions([::AWSConfig], arguments::Dict)
+    get_domain_suggestions([::AWSConfig]; DomainName=, SuggestionCount=, OnlyAvailable=)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "GetDomainSuggestions", arguments::Dict)
@@ -388,9 +388,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.get_operation_detail([::AWSConfig], arguments::Dict)
-    Route53Domains.get_operation_detail([::AWSConfig]; OperationId=)
+    using AWSSDK.Route53Domains.get_operation_detail
+    get_operation_detail([::AWSConfig], arguments::Dict)
+    get_operation_detail([::AWSConfig]; OperationId=)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "GetOperationDetail", arguments::Dict)
@@ -427,9 +427,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.list_domains([::AWSConfig], arguments::Dict)
-    Route53Domains.list_domains([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Route53Domains.list_domains
+    list_domains([::AWSConfig], arguments::Dict)
+    list_domains([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "ListDomains", arguments::Dict)
@@ -474,9 +474,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.list_operations([::AWSConfig], arguments::Dict)
-    Route53Domains.list_operations([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Route53Domains.list_operations
+    list_operations([::AWSConfig], arguments::Dict)
+    list_operations([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "ListOperations", arguments::Dict)
@@ -519,9 +519,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.list_tags_for_domain([::AWSConfig], arguments::Dict)
-    Route53Domains.list_tags_for_domain([::AWSConfig]; DomainName=)
+    using AWSSDK.Route53Domains.list_tags_for_domain
+    list_tags_for_domain([::AWSConfig], arguments::Dict)
+    list_tags_for_domain([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "ListTagsForDomain", arguments::Dict)
@@ -560,9 +560,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.register_domain([::AWSConfig], arguments::Dict)
-    Route53Domains.register_domain([::AWSConfig]; DomainName=, DurationInYears=, AdminContact=, RegistrantContact=, TechContact=, <keyword arguments>)
+    using AWSSDK.Route53Domains.register_domain
+    register_domain([::AWSConfig], arguments::Dict)
+    register_domain([::AWSConfig]; DomainName=, DurationInYears=, AdminContact=, RegistrantContact=, TechContact=, <keyword arguments>)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "RegisterDomain", arguments::Dict)
@@ -719,9 +719,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.renew_domain([::AWSConfig], arguments::Dict)
-    Route53Domains.renew_domain([::AWSConfig]; DomainName=, CurrentExpiryYear=, <keyword arguments>)
+    using AWSSDK.Route53Domains.renew_domain
+    renew_domain([::AWSConfig], arguments::Dict)
+    renew_domain([::AWSConfig]; DomainName=, CurrentExpiryYear=, <keyword arguments>)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "RenewDomain", arguments::Dict)
@@ -770,9 +770,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.resend_contact_reachability_email([::AWSConfig], arguments::Dict)
-    Route53Domains.resend_contact_reachability_email([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Route53Domains.resend_contact_reachability_email
+    resend_contact_reachability_email([::AWSConfig], arguments::Dict)
+    resend_contact_reachability_email([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "ResendContactReachabilityEmail", arguments::Dict)
@@ -809,9 +809,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.retrieve_domain_auth_code([::AWSConfig], arguments::Dict)
-    Route53Domains.retrieve_domain_auth_code([::AWSConfig]; DomainName=)
+    using AWSSDK.Route53Domains.retrieve_domain_auth_code
+    retrieve_domain_auth_code([::AWSConfig], arguments::Dict)
+    retrieve_domain_auth_code([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "RetrieveDomainAuthCode", arguments::Dict)
@@ -848,9 +848,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.transfer_domain([::AWSConfig], arguments::Dict)
-    Route53Domains.transfer_domain([::AWSConfig]; DomainName=, DurationInYears=, AdminContact=, RegistrantContact=, TechContact=, <keyword arguments>)
+    using AWSSDK.Route53Domains.transfer_domain
+    transfer_domain([::AWSConfig], arguments::Dict)
+    transfer_domain([::AWSConfig]; DomainName=, DurationInYears=, AdminContact=, RegistrantContact=, TechContact=, <keyword arguments>)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "TransferDomain", arguments::Dict)
@@ -1017,9 +1017,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.update_domain_contact([::AWSConfig], arguments::Dict)
-    Route53Domains.update_domain_contact([::AWSConfig]; DomainName=, <keyword arguments>)
+    using AWSSDK.Route53Domains.update_domain_contact
+    update_domain_contact([::AWSConfig], arguments::Dict)
+    update_domain_contact([::AWSConfig]; DomainName=, <keyword arguments>)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "UpdateDomainContact", arguments::Dict)
@@ -1130,9 +1130,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.update_domain_contact_privacy([::AWSConfig], arguments::Dict)
-    Route53Domains.update_domain_contact_privacy([::AWSConfig]; DomainName=, <keyword arguments>)
+    using AWSSDK.Route53Domains.update_domain_contact_privacy
+    update_domain_contact_privacy([::AWSConfig], arguments::Dict)
+    update_domain_contact_privacy([::AWSConfig]; DomainName=, <keyword arguments>)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "UpdateDomainContactPrivacy", arguments::Dict)
@@ -1183,9 +1183,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.update_domain_nameservers([::AWSConfig], arguments::Dict)
-    Route53Domains.update_domain_nameservers([::AWSConfig]; DomainName=, Nameservers=, <keyword arguments>)
+    using AWSSDK.Route53Domains.update_domain_nameservers
+    update_domain_nameservers([::AWSConfig], arguments::Dict)
+    update_domain_nameservers([::AWSConfig]; DomainName=, Nameservers=, <keyword arguments>)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "UpdateDomainNameservers", arguments::Dict)
@@ -1237,9 +1237,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.update_tags_for_domain([::AWSConfig], arguments::Dict)
-    Route53Domains.update_tags_for_domain([::AWSConfig]; DomainName=, <keyword arguments>)
+    using AWSSDK.Route53Domains.update_tags_for_domain
+    update_tags_for_domain([::AWSConfig], arguments::Dict)
+    update_tags_for_domain([::AWSConfig]; DomainName=, <keyword arguments>)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "UpdateTagsForDomain", arguments::Dict)
@@ -1287,9 +1287,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53Domains
-    Route53Domains.view_billing([::AWSConfig], arguments::Dict)
-    Route53Domains.view_billing([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Route53Domains.view_billing
+    view_billing([::AWSConfig], arguments::Dict)
+    view_billing([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.route53domains
     route53domains([::AWSConfig], "ViewBilling", arguments::Dict)

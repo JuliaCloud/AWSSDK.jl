@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.authorize_cluster_security_group_ingress([::AWSConfig], arguments::Dict)
-    Redshift.authorize_cluster_security_group_ingress([::AWSConfig]; ClusterSecurityGroupName=, <keyword arguments>)
+    using AWSSDK.Redshift.authorize_cluster_security_group_ingress
+    authorize_cluster_security_group_ingress([::AWSConfig], arguments::Dict)
+    authorize_cluster_security_group_ingress([::AWSConfig]; ClusterSecurityGroupName=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "AuthorizeClusterSecurityGroupIngress", arguments::Dict)
@@ -72,9 +72,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.authorize_snapshot_access([::AWSConfig], arguments::Dict)
-    Redshift.authorize_snapshot_access([::AWSConfig]; SnapshotIdentifier=, AccountWithRestoreAccess=, <keyword arguments>)
+    using AWSSDK.Redshift.authorize_snapshot_access
+    authorize_snapshot_access([::AWSConfig], arguments::Dict)
+    authorize_snapshot_access([::AWSConfig]; SnapshotIdentifier=, AccountWithRestoreAccess=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "AuthorizeSnapshotAccess", arguments::Dict)
@@ -123,9 +123,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.copy_cluster_snapshot([::AWSConfig], arguments::Dict)
-    Redshift.copy_cluster_snapshot([::AWSConfig]; SourceSnapshotIdentifier=, TargetSnapshotIdentifier=, <keyword arguments>)
+    using AWSSDK.Redshift.copy_cluster_snapshot
+    copy_cluster_snapshot([::AWSConfig], arguments::Dict)
+    copy_cluster_snapshot([::AWSConfig]; SourceSnapshotIdentifier=, TargetSnapshotIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "CopyClusterSnapshot", arguments::Dict)
@@ -194,9 +194,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.create_cluster([::AWSConfig], arguments::Dict)
-    Redshift.create_cluster([::AWSConfig]; ClusterIdentifier=, NodeType=, MasterUsername=, MasterUserPassword=, <keyword arguments>)
+    using AWSSDK.Redshift.create_cluster
+    create_cluster([::AWSConfig], arguments::Dict)
+    create_cluster([::AWSConfig]; ClusterIdentifier=, NodeType=, MasterUsername=, MasterUserPassword=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "CreateCluster", arguments::Dict)
@@ -468,9 +468,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.create_cluster_parameter_group([::AWSConfig], arguments::Dict)
-    Redshift.create_cluster_parameter_group([::AWSConfig]; ParameterGroupName=, ParameterGroupFamily=, Description=, <keyword arguments>)
+    using AWSSDK.Redshift.create_cluster_parameter_group
+    create_cluster_parameter_group([::AWSConfig], arguments::Dict)
+    create_cluster_parameter_group([::AWSConfig]; ParameterGroupName=, ParameterGroupFamily=, Description=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "CreateClusterParameterGroup", arguments::Dict)
@@ -543,9 +543,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.create_cluster_security_group([::AWSConfig], arguments::Dict)
-    Redshift.create_cluster_security_group([::AWSConfig]; ClusterSecurityGroupName=, Description=, <keyword arguments>)
+    using AWSSDK.Redshift.create_cluster_security_group
+    create_cluster_security_group([::AWSConfig], arguments::Dict)
+    create_cluster_security_group([::AWSConfig]; ClusterSecurityGroupName=, Description=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "CreateClusterSecurityGroup", arguments::Dict)
@@ -607,9 +607,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.create_cluster_snapshot([::AWSConfig], arguments::Dict)
-    Redshift.create_cluster_snapshot([::AWSConfig]; SnapshotIdentifier=, ClusterIdentifier=, <keyword arguments>)
+    using AWSSDK.Redshift.create_cluster_snapshot
+    create_cluster_snapshot([::AWSConfig], arguments::Dict)
+    create_cluster_snapshot([::AWSConfig]; SnapshotIdentifier=, ClusterIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "CreateClusterSnapshot", arguments::Dict)
@@ -673,9 +673,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.create_cluster_subnet_group([::AWSConfig], arguments::Dict)
-    Redshift.create_cluster_subnet_group([::AWSConfig]; ClusterSubnetGroupName=, Description=, SubnetIds=, <keyword arguments>)
+    using AWSSDK.Redshift.create_cluster_subnet_group
+    create_cluster_subnet_group([::AWSConfig], arguments::Dict)
+    create_cluster_subnet_group([::AWSConfig]; ClusterSubnetGroupName=, Description=, SubnetIds=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "CreateClusterSubnetGroup", arguments::Dict)
@@ -741,9 +741,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.create_event_subscription([::AWSConfig], arguments::Dict)
-    Redshift.create_event_subscription([::AWSConfig]; SubscriptionName=, SnsTopicArn=, <keyword arguments>)
+    using AWSSDK.Redshift.create_event_subscription
+    create_event_subscription([::AWSConfig], arguments::Dict)
+    create_event_subscription([::AWSConfig]; SubscriptionName=, SnsTopicArn=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "CreateEventSubscription", arguments::Dict)
@@ -837,9 +837,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.create_hsm_client_certificate([::AWSConfig], arguments::Dict)
-    Redshift.create_hsm_client_certificate([::AWSConfig]; HsmClientCertificateIdentifier=, <keyword arguments>)
+    using AWSSDK.Redshift.create_hsm_client_certificate
+    create_hsm_client_certificate([::AWSConfig], arguments::Dict)
+    create_hsm_client_certificate([::AWSConfig]; HsmClientCertificateIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "CreateHsmClientCertificate", arguments::Dict)
@@ -887,9 +887,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.create_hsm_configuration([::AWSConfig], arguments::Dict)
-    Redshift.create_hsm_configuration([::AWSConfig]; HsmConfigurationIdentifier=, Description=, HsmIpAddress=, HsmPartitionName=, HsmPartitionPassword=, HsmServerPublicCertificate=, <keyword arguments>)
+    using AWSSDK.Redshift.create_hsm_configuration
+    create_hsm_configuration([::AWSConfig], arguments::Dict)
+    create_hsm_configuration([::AWSConfig]; HsmConfigurationIdentifier=, Description=, HsmIpAddress=, HsmPartitionName=, HsmPartitionPassword=, HsmServerPublicCertificate=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "CreateHsmConfiguration", arguments::Dict)
@@ -957,9 +957,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.create_snapshot_copy_grant([::AWSConfig], arguments::Dict)
-    Redshift.create_snapshot_copy_grant([::AWSConfig]; SnapshotCopyGrantName=, <keyword arguments>)
+    using AWSSDK.Redshift.create_snapshot_copy_grant
+    create_snapshot_copy_grant([::AWSConfig], arguments::Dict)
+    create_snapshot_copy_grant([::AWSConfig]; SnapshotCopyGrantName=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "CreateSnapshotCopyGrant", arguments::Dict)
@@ -1023,9 +1023,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.create_tags([::AWSConfig], arguments::Dict)
-    Redshift.create_tags([::AWSConfig]; ResourceName=, Tags=)
+    using AWSSDK.Redshift.create_tags
+    create_tags([::AWSConfig], arguments::Dict)
+    create_tags([::AWSConfig]; ResourceName=, Tags=)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "CreateTags", arguments::Dict)
@@ -1071,9 +1071,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.delete_cluster([::AWSConfig], arguments::Dict)
-    Redshift.delete_cluster([::AWSConfig]; ClusterIdentifier=, <keyword arguments>)
+    using AWSSDK.Redshift.delete_cluster
+    delete_cluster([::AWSConfig], arguments::Dict)
+    delete_cluster([::AWSConfig]; ClusterIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DeleteCluster", arguments::Dict)
@@ -1145,9 +1145,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.delete_cluster_parameter_group([::AWSConfig], arguments::Dict)
-    Redshift.delete_cluster_parameter_group([::AWSConfig]; ParameterGroupName=)
+    using AWSSDK.Redshift.delete_cluster_parameter_group
+    delete_cluster_parameter_group([::AWSConfig], arguments::Dict)
+    delete_cluster_parameter_group([::AWSConfig]; ParameterGroupName=)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DeleteClusterParameterGroup", arguments::Dict)
@@ -1189,9 +1189,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.delete_cluster_security_group([::AWSConfig], arguments::Dict)
-    Redshift.delete_cluster_security_group([::AWSConfig]; ClusterSecurityGroupName=)
+    using AWSSDK.Redshift.delete_cluster_security_group
+    delete_cluster_security_group([::AWSConfig], arguments::Dict)
+    delete_cluster_security_group([::AWSConfig]; ClusterSecurityGroupName=)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DeleteClusterSecurityGroup", arguments::Dict)
@@ -1229,9 +1229,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.delete_cluster_snapshot([::AWSConfig], arguments::Dict)
-    Redshift.delete_cluster_snapshot([::AWSConfig]; SnapshotIdentifier=, <keyword arguments>)
+    using AWSSDK.Redshift.delete_cluster_snapshot
+    delete_cluster_snapshot([::AWSConfig], arguments::Dict)
+    delete_cluster_snapshot([::AWSConfig]; SnapshotIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DeleteClusterSnapshot", arguments::Dict)
@@ -1278,9 +1278,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.delete_cluster_subnet_group([::AWSConfig], arguments::Dict)
-    Redshift.delete_cluster_subnet_group([::AWSConfig]; ClusterSubnetGroupName=)
+    using AWSSDK.Redshift.delete_cluster_subnet_group
+    delete_cluster_subnet_group([::AWSConfig], arguments::Dict)
+    delete_cluster_subnet_group([::AWSConfig]; ClusterSubnetGroupName=)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DeleteClusterSubnetGroup", arguments::Dict)
@@ -1313,9 +1313,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.delete_event_subscription([::AWSConfig], arguments::Dict)
-    Redshift.delete_event_subscription([::AWSConfig]; SubscriptionName=)
+    using AWSSDK.Redshift.delete_event_subscription
+    delete_event_subscription([::AWSConfig], arguments::Dict)
+    delete_event_subscription([::AWSConfig]; SubscriptionName=)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DeleteEventSubscription", arguments::Dict)
@@ -1348,9 +1348,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.delete_hsm_client_certificate([::AWSConfig], arguments::Dict)
-    Redshift.delete_hsm_client_certificate([::AWSConfig]; HsmClientCertificateIdentifier=)
+    using AWSSDK.Redshift.delete_hsm_client_certificate
+    delete_hsm_client_certificate([::AWSConfig], arguments::Dict)
+    delete_hsm_client_certificate([::AWSConfig]; HsmClientCertificateIdentifier=)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DeleteHsmClientCertificate", arguments::Dict)
@@ -1383,9 +1383,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.delete_hsm_configuration([::AWSConfig], arguments::Dict)
-    Redshift.delete_hsm_configuration([::AWSConfig]; HsmConfigurationIdentifier=)
+    using AWSSDK.Redshift.delete_hsm_configuration
+    delete_hsm_configuration([::AWSConfig], arguments::Dict)
+    delete_hsm_configuration([::AWSConfig]; HsmConfigurationIdentifier=)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DeleteHsmConfiguration", arguments::Dict)
@@ -1418,9 +1418,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.delete_snapshot_copy_grant([::AWSConfig], arguments::Dict)
-    Redshift.delete_snapshot_copy_grant([::AWSConfig]; SnapshotCopyGrantName=)
+    using AWSSDK.Redshift.delete_snapshot_copy_grant
+    delete_snapshot_copy_grant([::AWSConfig], arguments::Dict)
+    delete_snapshot_copy_grant([::AWSConfig]; SnapshotCopyGrantName=)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DeleteSnapshotCopyGrant", arguments::Dict)
@@ -1453,9 +1453,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.delete_tags([::AWSConfig], arguments::Dict)
-    Redshift.delete_tags([::AWSConfig]; ResourceName=, TagKeys=)
+    using AWSSDK.Redshift.delete_tags
+    delete_tags([::AWSConfig], arguments::Dict)
+    delete_tags([::AWSConfig]; ResourceName=, TagKeys=)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DeleteTags", arguments::Dict)
@@ -1492,9 +1492,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_cluster_parameter_groups([::AWSConfig], arguments::Dict)
-    Redshift.describe_cluster_parameter_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Redshift.describe_cluster_parameter_groups
+    describe_cluster_parameter_groups([::AWSConfig], arguments::Dict)
+    describe_cluster_parameter_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeClusterParameterGroups", arguments::Dict)
@@ -1557,9 +1557,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_cluster_parameters([::AWSConfig], arguments::Dict)
-    Redshift.describe_cluster_parameters([::AWSConfig]; ParameterGroupName=, <keyword arguments>)
+    using AWSSDK.Redshift.describe_cluster_parameters
+    describe_cluster_parameters([::AWSConfig], arguments::Dict)
+    describe_cluster_parameters([::AWSConfig]; ParameterGroupName=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeClusterParameters", arguments::Dict)
@@ -1620,9 +1620,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_cluster_security_groups([::AWSConfig], arguments::Dict)
-    Redshift.describe_cluster_security_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Redshift.describe_cluster_security_groups
+    describe_cluster_security_groups([::AWSConfig], arguments::Dict)
+    describe_cluster_security_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeClusterSecurityGroups", arguments::Dict)
@@ -1689,9 +1689,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_cluster_snapshots([::AWSConfig], arguments::Dict)
-    Redshift.describe_cluster_snapshots([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Redshift.describe_cluster_snapshots
+    describe_cluster_snapshots([::AWSConfig], arguments::Dict)
+    describe_cluster_snapshots([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeClusterSnapshots", arguments::Dict)
@@ -1778,9 +1778,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_cluster_subnet_groups([::AWSConfig], arguments::Dict)
-    Redshift.describe_cluster_subnet_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Redshift.describe_cluster_subnet_groups
+    describe_cluster_subnet_groups([::AWSConfig], arguments::Dict)
+    describe_cluster_subnet_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeClusterSubnetGroups", arguments::Dict)
@@ -1841,9 +1841,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_cluster_versions([::AWSConfig], arguments::Dict)
-    Redshift.describe_cluster_versions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Redshift.describe_cluster_versions
+    describe_cluster_versions([::AWSConfig], arguments::Dict)
+    describe_cluster_versions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeClusterVersions", arguments::Dict)
@@ -1902,9 +1902,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_clusters([::AWSConfig], arguments::Dict)
-    Redshift.describe_clusters([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Redshift.describe_clusters
+    describe_clusters([::AWSConfig], arguments::Dict)
+    describe_clusters([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeClusters", arguments::Dict)
@@ -1969,9 +1969,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_default_cluster_parameters([::AWSConfig], arguments::Dict)
-    Redshift.describe_default_cluster_parameters([::AWSConfig]; ParameterGroupFamily=, <keyword arguments>)
+    using AWSSDK.Redshift.describe_default_cluster_parameters
+    describe_default_cluster_parameters([::AWSConfig], arguments::Dict)
+    describe_default_cluster_parameters([::AWSConfig]; ParameterGroupFamily=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeDefaultClusterParameters", arguments::Dict)
@@ -2018,9 +2018,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_event_categories([::AWSConfig], arguments::Dict)
-    Redshift.describe_event_categories([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Redshift.describe_event_categories
+    describe_event_categories([::AWSConfig], arguments::Dict)
+    describe_event_categories([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeEventCategories", arguments::Dict)
@@ -2055,9 +2055,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_event_subscriptions([::AWSConfig], arguments::Dict)
-    Redshift.describe_event_subscriptions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Redshift.describe_event_subscriptions
+    describe_event_subscriptions([::AWSConfig], arguments::Dict)
+    describe_event_subscriptions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeEventSubscriptions", arguments::Dict)
@@ -2106,9 +2106,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_events([::AWSConfig], arguments::Dict)
-    Redshift.describe_events([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Redshift.describe_events
+    describe_events([::AWSConfig], arguments::Dict)
+    describe_events([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeEvents", arguments::Dict)
@@ -2199,9 +2199,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_hsm_client_certificates([::AWSConfig], arguments::Dict)
-    Redshift.describe_hsm_client_certificates([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Redshift.describe_hsm_client_certificates
+    describe_hsm_client_certificates([::AWSConfig], arguments::Dict)
+    describe_hsm_client_certificates([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeHsmClientCertificates", arguments::Dict)
@@ -2262,9 +2262,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_hsm_configurations([::AWSConfig], arguments::Dict)
-    Redshift.describe_hsm_configurations([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Redshift.describe_hsm_configurations
+    describe_hsm_configurations([::AWSConfig], arguments::Dict)
+    describe_hsm_configurations([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeHsmConfigurations", arguments::Dict)
@@ -2325,9 +2325,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_logging_status([::AWSConfig], arguments::Dict)
-    Redshift.describe_logging_status([::AWSConfig]; ClusterIdentifier=)
+    using AWSSDK.Redshift.describe_logging_status
+    describe_logging_status([::AWSConfig], arguments::Dict)
+    describe_logging_status([::AWSConfig]; ClusterIdentifier=)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeLoggingStatus", arguments::Dict)
@@ -2366,9 +2366,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_orderable_cluster_options([::AWSConfig], arguments::Dict)
-    Redshift.describe_orderable_cluster_options([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Redshift.describe_orderable_cluster_options
+    describe_orderable_cluster_options([::AWSConfig], arguments::Dict)
+    describe_orderable_cluster_options([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeOrderableClusterOptions", arguments::Dict)
@@ -2421,9 +2421,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_reserved_node_offerings([::AWSConfig], arguments::Dict)
-    Redshift.describe_reserved_node_offerings([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Redshift.describe_reserved_node_offerings
+    describe_reserved_node_offerings([::AWSConfig], arguments::Dict)
+    describe_reserved_node_offerings([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeReservedNodeOfferings", arguments::Dict)
@@ -2474,9 +2474,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_reserved_nodes([::AWSConfig], arguments::Dict)
-    Redshift.describe_reserved_nodes([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Redshift.describe_reserved_nodes
+    describe_reserved_nodes([::AWSConfig], arguments::Dict)
+    describe_reserved_nodes([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeReservedNodes", arguments::Dict)
@@ -2525,9 +2525,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_resize([::AWSConfig], arguments::Dict)
-    Redshift.describe_resize([::AWSConfig]; ClusterIdentifier=)
+    using AWSSDK.Redshift.describe_resize
+    describe_resize([::AWSConfig], arguments::Dict)
+    describe_resize([::AWSConfig]; ClusterIdentifier=)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeResize", arguments::Dict)
@@ -2568,9 +2568,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_snapshot_copy_grants([::AWSConfig], arguments::Dict)
-    Redshift.describe_snapshot_copy_grants([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Redshift.describe_snapshot_copy_grants
+    describe_snapshot_copy_grants([::AWSConfig], arguments::Dict)
+    describe_snapshot_copy_grants([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeSnapshotCopyGrants", arguments::Dict)
@@ -2631,9 +2631,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_table_restore_status([::AWSConfig], arguments::Dict)
-    Redshift.describe_table_restore_status([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Redshift.describe_table_restore_status
+    describe_table_restore_status([::AWSConfig], arguments::Dict)
+    describe_table_restore_status([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeTableRestoreStatus", arguments::Dict)
@@ -2682,9 +2682,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.describe_tags([::AWSConfig], arguments::Dict)
-    Redshift.describe_tags([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Redshift.describe_tags
+    describe_tags([::AWSConfig], arguments::Dict)
+    describe_tags([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DescribeTags", arguments::Dict)
@@ -2775,9 +2775,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.disable_logging([::AWSConfig], arguments::Dict)
-    Redshift.disable_logging([::AWSConfig]; ClusterIdentifier=)
+    using AWSSDK.Redshift.disable_logging
+    disable_logging([::AWSConfig], arguments::Dict)
+    disable_logging([::AWSConfig]; ClusterIdentifier=)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DisableLogging", arguments::Dict)
@@ -2816,9 +2816,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.disable_snapshot_copy([::AWSConfig], arguments::Dict)
-    Redshift.disable_snapshot_copy([::AWSConfig]; ClusterIdentifier=)
+    using AWSSDK.Redshift.disable_snapshot_copy
+    disable_snapshot_copy([::AWSConfig], arguments::Dict)
+    disable_snapshot_copy([::AWSConfig]; ClusterIdentifier=)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "DisableSnapshotCopy", arguments::Dict)
@@ -2859,9 +2859,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.enable_logging([::AWSConfig], arguments::Dict)
-    Redshift.enable_logging([::AWSConfig]; ClusterIdentifier=, BucketName=, <keyword arguments>)
+    using AWSSDK.Redshift.enable_logging
+    enable_logging([::AWSConfig], arguments::Dict)
+    enable_logging([::AWSConfig]; ClusterIdentifier=, BucketName=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "EnableLogging", arguments::Dict)
@@ -2930,9 +2930,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.enable_snapshot_copy([::AWSConfig], arguments::Dict)
-    Redshift.enable_snapshot_copy([::AWSConfig]; ClusterIdentifier=, DestinationRegion=, <keyword arguments>)
+    using AWSSDK.Redshift.enable_snapshot_copy
+    enable_snapshot_copy([::AWSConfig], arguments::Dict)
+    enable_snapshot_copy([::AWSConfig]; ClusterIdentifier=, DestinationRegion=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "EnableSnapshotCopy", arguments::Dict)
@@ -2989,9 +2989,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.get_cluster_credentials([::AWSConfig], arguments::Dict)
-    Redshift.get_cluster_credentials([::AWSConfig]; DbUser=, ClusterIdentifier=, <keyword arguments>)
+    using AWSSDK.Redshift.get_cluster_credentials
+    get_cluster_credentials([::AWSConfig], arguments::Dict)
+    get_cluster_credentials([::AWSConfig]; DbUser=, ClusterIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "GetClusterCredentials", arguments::Dict)
@@ -3082,9 +3082,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.modify_cluster([::AWSConfig], arguments::Dict)
-    Redshift.modify_cluster([::AWSConfig]; ClusterIdentifier=, <keyword arguments>)
+    using AWSSDK.Redshift.modify_cluster
+    modify_cluster([::AWSConfig], arguments::Dict)
+    modify_cluster([::AWSConfig]; ClusterIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "ModifyCluster", arguments::Dict)
@@ -3278,9 +3278,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.modify_cluster_iam_roles([::AWSConfig], arguments::Dict)
-    Redshift.modify_cluster_iam_roles([::AWSConfig]; ClusterIdentifier=, <keyword arguments>)
+    using AWSSDK.Redshift.modify_cluster_iam_roles
+    modify_cluster_iam_roles([::AWSConfig], arguments::Dict)
+    modify_cluster_iam_roles([::AWSConfig]; ClusterIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "ModifyClusterIamRoles", arguments::Dict)
@@ -3327,9 +3327,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.modify_cluster_parameter_group([::AWSConfig], arguments::Dict)
-    Redshift.modify_cluster_parameter_group([::AWSConfig]; ParameterGroupName=, Parameters=)
+    using AWSSDK.Redshift.modify_cluster_parameter_group
+    modify_cluster_parameter_group([::AWSConfig], arguments::Dict)
+    modify_cluster_parameter_group([::AWSConfig]; ParameterGroupName=, Parameters=)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "ModifyClusterParameterGroup", arguments::Dict)
@@ -3388,9 +3388,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.modify_cluster_subnet_group([::AWSConfig], arguments::Dict)
-    Redshift.modify_cluster_subnet_group([::AWSConfig]; ClusterSubnetGroupName=, SubnetIds=, <keyword arguments>)
+    using AWSSDK.Redshift.modify_cluster_subnet_group
+    modify_cluster_subnet_group([::AWSConfig], arguments::Dict)
+    modify_cluster_subnet_group([::AWSConfig]; ClusterSubnetGroupName=, SubnetIds=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "ModifyClusterSubnetGroup", arguments::Dict)
@@ -3435,9 +3435,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.modify_event_subscription([::AWSConfig], arguments::Dict)
-    Redshift.modify_event_subscription([::AWSConfig]; SubscriptionName=, <keyword arguments>)
+    using AWSSDK.Redshift.modify_event_subscription
+    modify_event_subscription([::AWSConfig], arguments::Dict)
+    modify_event_subscription([::AWSConfig]; SubscriptionName=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "ModifyEventSubscription", arguments::Dict)
@@ -3508,9 +3508,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.modify_snapshot_copy_retention_period([::AWSConfig], arguments::Dict)
-    Redshift.modify_snapshot_copy_retention_period([::AWSConfig]; ClusterIdentifier=, RetentionPeriod=)
+    using AWSSDK.Redshift.modify_snapshot_copy_retention_period
+    modify_snapshot_copy_retention_period([::AWSConfig], arguments::Dict)
+    modify_snapshot_copy_retention_period([::AWSConfig]; ClusterIdentifier=, RetentionPeriod=)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "ModifySnapshotCopyRetentionPeriod", arguments::Dict)
@@ -3557,9 +3557,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.purchase_reserved_node_offering([::AWSConfig], arguments::Dict)
-    Redshift.purchase_reserved_node_offering([::AWSConfig]; ReservedNodeOfferingId=, <keyword arguments>)
+    using AWSSDK.Redshift.purchase_reserved_node_offering
+    purchase_reserved_node_offering([::AWSConfig], arguments::Dict)
+    purchase_reserved_node_offering([::AWSConfig]; ReservedNodeOfferingId=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "PurchaseReservedNodeOffering", arguments::Dict)
@@ -3604,9 +3604,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.reboot_cluster([::AWSConfig], arguments::Dict)
-    Redshift.reboot_cluster([::AWSConfig]; ClusterIdentifier=)
+    using AWSSDK.Redshift.reboot_cluster
+    reboot_cluster([::AWSConfig], arguments::Dict)
+    reboot_cluster([::AWSConfig]; ClusterIdentifier=)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "RebootCluster", arguments::Dict)
@@ -3643,9 +3643,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.reset_cluster_parameter_group([::AWSConfig], arguments::Dict)
-    Redshift.reset_cluster_parameter_group([::AWSConfig]; ParameterGroupName=, <keyword arguments>)
+    using AWSSDK.Redshift.reset_cluster_parameter_group
+    reset_cluster_parameter_group([::AWSConfig], arguments::Dict)
+    reset_cluster_parameter_group([::AWSConfig]; ParameterGroupName=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "ResetClusterParameterGroup", arguments::Dict)
@@ -3706,9 +3706,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.restore_from_cluster_snapshot([::AWSConfig], arguments::Dict)
-    Redshift.restore_from_cluster_snapshot([::AWSConfig]; ClusterIdentifier=, SnapshotIdentifier=, <keyword arguments>)
+    using AWSSDK.Redshift.restore_from_cluster_snapshot
+    restore_from_cluster_snapshot([::AWSConfig], arguments::Dict)
+    restore_from_cluster_snapshot([::AWSConfig]; ClusterIdentifier=, SnapshotIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "RestoreFromClusterSnapshot", arguments::Dict)
@@ -3897,9 +3897,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.restore_table_from_cluster_snapshot([::AWSConfig], arguments::Dict)
-    Redshift.restore_table_from_cluster_snapshot([::AWSConfig]; ClusterIdentifier=, SnapshotIdentifier=, SourceDatabaseName=, SourceTableName=, NewTableName=, <keyword arguments>)
+    using AWSSDK.Redshift.restore_table_from_cluster_snapshot
+    restore_table_from_cluster_snapshot([::AWSConfig], arguments::Dict)
+    restore_table_from_cluster_snapshot([::AWSConfig]; ClusterIdentifier=, SnapshotIdentifier=, SourceDatabaseName=, SourceTableName=, NewTableName=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "RestoreTableFromClusterSnapshot", arguments::Dict)
@@ -3966,9 +3966,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.revoke_cluster_security_group_ingress([::AWSConfig], arguments::Dict)
-    Redshift.revoke_cluster_security_group_ingress([::AWSConfig]; ClusterSecurityGroupName=, <keyword arguments>)
+    using AWSSDK.Redshift.revoke_cluster_security_group_ingress
+    revoke_cluster_security_group_ingress([::AWSConfig], arguments::Dict)
+    revoke_cluster_security_group_ingress([::AWSConfig]; ClusterSecurityGroupName=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "RevokeClusterSecurityGroupIngress", arguments::Dict)
@@ -4019,9 +4019,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.revoke_snapshot_access([::AWSConfig], arguments::Dict)
-    Redshift.revoke_snapshot_access([::AWSConfig]; SnapshotIdentifier=, AccountWithRestoreAccess=, <keyword arguments>)
+    using AWSSDK.Redshift.revoke_snapshot_access
+    revoke_snapshot_access([::AWSConfig], arguments::Dict)
+    revoke_snapshot_access([::AWSConfig]; SnapshotIdentifier=, AccountWithRestoreAccess=, <keyword arguments>)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "RevokeSnapshotAccess", arguments::Dict)
@@ -4068,9 +4068,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 
 """
-    using AWSSDK.Redshift
-    Redshift.rotate_encryption_key([::AWSConfig], arguments::Dict)
-    Redshift.rotate_encryption_key([::AWSConfig]; ClusterIdentifier=)
+    using AWSSDK.Redshift.rotate_encryption_key
+    rotate_encryption_key([::AWSConfig], arguments::Dict)
+    rotate_encryption_key([::AWSConfig]; ClusterIdentifier=)
 
     using AWSCore.Services.redshift
     redshift([::AWSConfig], "RotateEncryptionKey", arguments::Dict)

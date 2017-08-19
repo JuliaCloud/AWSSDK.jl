@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.SimpleDB
-    SimpleDB.batch_delete_attributes([::AWSConfig], arguments::Dict)
-    SimpleDB.batch_delete_attributes([::AWSConfig]; DomainName=, Items=)
+    using AWSSDK.SimpleDB.batch_delete_attributes
+    batch_delete_attributes([::AWSConfig], arguments::Dict)
+    batch_delete_attributes([::AWSConfig]; DomainName=, Items=)
 
     using AWSCore.Services.sdb
     sdb([::AWSConfig], "BatchDeleteAttributes", arguments::Dict)
@@ -72,9 +72,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-20
 
 
 """
-    using AWSSDK.SimpleDB
-    SimpleDB.batch_put_attributes([::AWSConfig], arguments::Dict)
-    SimpleDB.batch_put_attributes([::AWSConfig]; DomainName=, Items=)
+    using AWSSDK.SimpleDB.batch_put_attributes
+    batch_put_attributes([::AWSConfig], arguments::Dict)
+    batch_put_attributes([::AWSConfig]; DomainName=, Items=)
 
     using AWSCore.Services.sdb
     sdb([::AWSConfig], "BatchPutAttributes", arguments::Dict)
@@ -142,9 +142,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-20
 
 
 """
-    using AWSSDK.SimpleDB
-    SimpleDB.create_domain([::AWSConfig], arguments::Dict)
-    SimpleDB.create_domain([::AWSConfig]; DomainName=)
+    using AWSSDK.SimpleDB.create_domain
+    create_domain([::AWSConfig], arguments::Dict)
+    create_domain([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.sdb
     sdb([::AWSConfig], "CreateDomain", arguments::Dict)
@@ -184,9 +184,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-20
 
 
 """
-    using AWSSDK.SimpleDB
-    SimpleDB.delete_attributes([::AWSConfig], arguments::Dict)
-    SimpleDB.delete_attributes([::AWSConfig]; DomainName=, ItemName=, <keyword arguments>)
+    using AWSSDK.SimpleDB.delete_attributes
+    delete_attributes([::AWSConfig], arguments::Dict)
+    delete_attributes([::AWSConfig]; DomainName=, ItemName=, <keyword arguments>)
 
     using AWSCore.Services.sdb
     sdb([::AWSConfig], "DeleteAttributes", arguments::Dict)
@@ -249,9 +249,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-20
 
 
 """
-    using AWSSDK.SimpleDB
-    SimpleDB.delete_domain([::AWSConfig], arguments::Dict)
-    SimpleDB.delete_domain([::AWSConfig]; DomainName=)
+    using AWSSDK.SimpleDB.delete_domain
+    delete_domain([::AWSConfig], arguments::Dict)
+    delete_domain([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.sdb
     sdb([::AWSConfig], "DeleteDomain", arguments::Dict)
@@ -287,9 +287,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-20
 
 
 """
-    using AWSSDK.SimpleDB
-    SimpleDB.domain_metadata([::AWSConfig], arguments::Dict)
-    SimpleDB.domain_metadata([::AWSConfig]; DomainName=)
+    using AWSSDK.SimpleDB.domain_metadata
+    domain_metadata([::AWSConfig], arguments::Dict)
+    domain_metadata([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.sdb
     sdb([::AWSConfig], "DomainMetadata", arguments::Dict)
@@ -326,9 +326,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-20
 
 
 """
-    using AWSSDK.SimpleDB
-    SimpleDB.get_attributes([::AWSConfig], arguments::Dict)
-    SimpleDB.get_attributes([::AWSConfig]; DomainName=, ItemName=, <keyword arguments>)
+    using AWSSDK.SimpleDB.get_attributes
+    get_attributes([::AWSConfig], arguments::Dict)
+    get_attributes([::AWSConfig]; DomainName=, ItemName=, <keyword arguments>)
 
     using AWSCore.Services.sdb
     sdb([::AWSConfig], "GetAttributes", arguments::Dict)
@@ -382,9 +382,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-20
 
 
 """
-    using AWSSDK.SimpleDB
-    SimpleDB.list_domains([::AWSConfig], arguments::Dict)
-    SimpleDB.list_domains([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SimpleDB.list_domains
+    list_domains([::AWSConfig], arguments::Dict)
+    list_domains([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.sdb
     sdb([::AWSConfig], "ListDomains", arguments::Dict)
@@ -425,9 +425,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-20
 
 
 """
-    using AWSSDK.SimpleDB
-    SimpleDB.put_attributes([::AWSConfig], arguments::Dict)
-    SimpleDB.put_attributes([::AWSConfig]; DomainName=, ItemName=, Attributes=, <keyword arguments>)
+    using AWSSDK.SimpleDB.put_attributes
+    put_attributes([::AWSConfig], arguments::Dict)
+    put_attributes([::AWSConfig]; DomainName=, ItemName=, Attributes=, <keyword arguments>)
 
     using AWSCore.Services.sdb
     sdb([::AWSConfig], "PutAttributes", arguments::Dict)
@@ -501,9 +501,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-20
 
 
 """
-    using AWSSDK.SimpleDB
-    SimpleDB.select([::AWSConfig], arguments::Dict)
-    SimpleDB.select([::AWSConfig]; SelectExpression=, <keyword arguments>)
+    using AWSSDK.SimpleDB.select
+    select([::AWSConfig], arguments::Dict)
+    select([::AWSConfig]; SelectExpression=, <keyword arguments>)
 
     using AWSCore.Services.sdb
     sdb([::AWSConfig], "Select", arguments::Dict)

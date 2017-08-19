@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Support
-    Support.add_attachments_to_set([::AWSConfig], arguments::Dict)
-    Support.add_attachments_to_set([::AWSConfig]; attachments=, <keyword arguments>)
+    using AWSSDK.Support.add_attachments_to_set
+    add_attachments_to_set([::AWSConfig], arguments::Dict)
+    add_attachments_to_set([::AWSConfig]; attachments=, <keyword arguments>)
 
     using AWSCore.Services.support
     support([::AWSConfig], "AddAttachmentsToSet", arguments::Dict)
@@ -63,9 +63,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/suppor
 
 
 """
-    using AWSSDK.Support
-    Support.add_communication_to_case([::AWSConfig], arguments::Dict)
-    Support.add_communication_to_case([::AWSConfig]; communicationBody=, <keyword arguments>)
+    using AWSSDK.Support.add_communication_to_case
+    add_communication_to_case([::AWSConfig], arguments::Dict)
+    add_communication_to_case([::AWSConfig]; communicationBody=, <keyword arguments>)
 
     using AWSCore.Services.support
     support([::AWSConfig], "AddCommunicationToCase", arguments::Dict)
@@ -118,9 +118,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/suppor
 
 
 """
-    using AWSSDK.Support
-    Support.create_case([::AWSConfig], arguments::Dict)
-    Support.create_case([::AWSConfig]; subject=, communicationBody=, <keyword arguments>)
+    using AWSSDK.Support.create_case
+    create_case([::AWSConfig], arguments::Dict)
+    create_case([::AWSConfig]; subject=, communicationBody=, <keyword arguments>)
 
     using AWSCore.Services.support
     support([::AWSConfig], "CreateCase", arguments::Dict)
@@ -215,9 +215,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/suppor
 
 
 """
-    using AWSSDK.Support
-    Support.describe_attachment([::AWSConfig], arguments::Dict)
-    Support.describe_attachment([::AWSConfig]; attachmentId=)
+    using AWSSDK.Support.describe_attachment
+    describe_attachment([::AWSConfig], arguments::Dict)
+    describe_attachment([::AWSConfig]; attachmentId=)
 
     using AWSCore.Services.support
     support([::AWSConfig], "DescribeAttachment", arguments::Dict)
@@ -254,9 +254,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/suppor
 
 
 """
-    using AWSSDK.Support
-    Support.describe_cases([::AWSConfig], arguments::Dict)
-    Support.describe_cases([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Support.describe_cases
+    describe_cases([::AWSConfig], arguments::Dict)
+    describe_cases([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.support
     support([::AWSConfig], "DescribeCases", arguments::Dict)
@@ -333,9 +333,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/suppor
 
 
 """
-    using AWSSDK.Support
-    Support.describe_communications([::AWSConfig], arguments::Dict)
-    Support.describe_communications([::AWSConfig]; caseId=, <keyword arguments>)
+    using AWSSDK.Support.describe_communications
+    describe_communications([::AWSConfig], arguments::Dict)
+    describe_communications([::AWSConfig]; caseId=, <keyword arguments>)
 
     using AWSCore.Services.support
     support([::AWSConfig], "DescribeCommunications", arguments::Dict)
@@ -392,9 +392,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/suppor
 
 
 """
-    using AWSSDK.Support
-    Support.describe_services([::AWSConfig], arguments::Dict)
-    Support.describe_services([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Support.describe_services
+    describe_services([::AWSConfig], arguments::Dict)
+    describe_services([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.support
     support([::AWSConfig], "DescribeServices", arguments::Dict)
@@ -437,9 +437,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/suppor
 
 
 """
-    using AWSSDK.Support
-    Support.describe_severity_levels([::AWSConfig], arguments::Dict)
-    Support.describe_severity_levels([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Support.describe_severity_levels
+    describe_severity_levels([::AWSConfig], arguments::Dict)
+    describe_severity_levels([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.support
     support([::AWSConfig], "DescribeSeverityLevels", arguments::Dict)
@@ -476,9 +476,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/suppor
 
 
 """
-    using AWSSDK.Support
-    Support.describe_trusted_advisor_check_refresh_statuses([::AWSConfig], arguments::Dict)
-    Support.describe_trusted_advisor_check_refresh_statuses([::AWSConfig]; checkIds=)
+    using AWSSDK.Support.describe_trusted_advisor_check_refresh_statuses
+    describe_trusted_advisor_check_refresh_statuses([::AWSConfig], arguments::Dict)
+    describe_trusted_advisor_check_refresh_statuses([::AWSConfig]; checkIds=)
 
     using AWSCore.Services.support
     support([::AWSConfig], "DescribeTrustedAdvisorCheckRefreshStatuses", arguments::Dict)
@@ -518,9 +518,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/suppor
 
 
 """
-    using AWSSDK.Support
-    Support.describe_trusted_advisor_check_result([::AWSConfig], arguments::Dict)
-    Support.describe_trusted_advisor_check_result([::AWSConfig]; checkId=, <keyword arguments>)
+    using AWSSDK.Support.describe_trusted_advisor_check_result
+    describe_trusted_advisor_check_result([::AWSConfig], arguments::Dict)
+    describe_trusted_advisor_check_result([::AWSConfig]; checkId=, <keyword arguments>)
 
     using AWSCore.Services.support
     support([::AWSConfig], "DescribeTrustedAdvisorCheckResult", arguments::Dict)
@@ -577,9 +577,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/suppor
 
 
 """
-    using AWSSDK.Support
-    Support.describe_trusted_advisor_check_summaries([::AWSConfig], arguments::Dict)
-    Support.describe_trusted_advisor_check_summaries([::AWSConfig]; checkIds=)
+    using AWSSDK.Support.describe_trusted_advisor_check_summaries
+    describe_trusted_advisor_check_summaries([::AWSConfig], arguments::Dict)
+    describe_trusted_advisor_check_summaries([::AWSConfig]; checkIds=)
 
     using AWSCore.Services.support
     support([::AWSConfig], "DescribeTrustedAdvisorCheckSummaries", arguments::Dict)
@@ -618,9 +618,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/suppor
 
 
 """
-    using AWSSDK.Support
-    Support.describe_trusted_advisor_checks([::AWSConfig], arguments::Dict)
-    Support.describe_trusted_advisor_checks([::AWSConfig]; language=)
+    using AWSSDK.Support.describe_trusted_advisor_checks
+    describe_trusted_advisor_checks([::AWSConfig], arguments::Dict)
+    describe_trusted_advisor_checks([::AWSConfig]; language=)
 
     using AWSCore.Services.support
     support([::AWSConfig], "DescribeTrustedAdvisorChecks", arguments::Dict)
@@ -657,9 +657,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/suppor
 
 
 """
-    using AWSSDK.Support
-    Support.refresh_trusted_advisor_check([::AWSConfig], arguments::Dict)
-    Support.refresh_trusted_advisor_check([::AWSConfig]; checkId=)
+    using AWSSDK.Support.refresh_trusted_advisor_check
+    refresh_trusted_advisor_check([::AWSConfig], arguments::Dict)
+    refresh_trusted_advisor_check([::AWSConfig]; checkId=)
 
     using AWSCore.Services.support
     support([::AWSConfig], "RefreshTrustedAdvisorCheck", arguments::Dict)
@@ -707,9 +707,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/suppor
 
 
 """
-    using AWSSDK.Support
-    Support.resolve_case([::AWSConfig], arguments::Dict)
-    Support.resolve_case([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Support.resolve_case
+    resolve_case([::AWSConfig], arguments::Dict)
+    resolve_case([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.support
     support([::AWSConfig], "ResolveCase", arguments::Dict)

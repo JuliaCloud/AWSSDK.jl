@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CloudSearchDomain
-    CloudSearchDomain.search([::AWSConfig], arguments::Dict)
-    CloudSearchDomain.search([::AWSConfig]; q=, <keyword arguments>)
+    using AWSSDK.CloudSearchDomain.search
+    search([::AWSConfig], arguments::Dict)
+    search([::AWSConfig]; q=, <keyword arguments>)
 
     using AWSCore.Services.cloudsearchdomain
     cloudsearchdomain([::AWSConfig], "GET", "/2013-01-01/search?format=sdk&pretty=true", arguments::Dict)
@@ -187,9 +187,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearchDomain
-    CloudSearchDomain.suggest([::AWSConfig], arguments::Dict)
-    CloudSearchDomain.suggest([::AWSConfig]; q=, suggester=, <keyword arguments>)
+    using AWSSDK.CloudSearchDomain.suggest
+    suggest([::AWSConfig], arguments::Dict)
+    suggest([::AWSConfig]; q=, suggester=, <keyword arguments>)
 
     using AWSCore.Services.cloudsearchdomain
     cloudsearchdomain([::AWSConfig], "GET", "/2013-01-01/suggest?format=sdk&pretty=true", arguments::Dict)
@@ -238,9 +238,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearchDomain
-    CloudSearchDomain.upload_documents([::AWSConfig], arguments::Dict)
-    CloudSearchDomain.upload_documents([::AWSConfig]; documents=, Content-Type=)
+    using AWSSDK.CloudSearchDomain.upload_documents
+    upload_documents([::AWSConfig], arguments::Dict)
+    upload_documents([::AWSConfig]; documents=, Content-Type=)
 
     using AWSCore.Services.cloudsearchdomain
     cloudsearchdomain([::AWSConfig], "POST", "/2013-01-01/documents/batch?format=sdk", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.allocate_static_ip([::AWSConfig], arguments::Dict)
-    Lightsail.allocate_static_ip([::AWSConfig]; staticIpName=)
+    using AWSSDK.Lightsail.allocate_static_ip
+    allocate_static_ip([::AWSConfig], arguments::Dict)
+    allocate_static_ip([::AWSConfig]; staticIpName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "AllocateStaticIp", arguments::Dict)
@@ -52,9 +52,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.attach_static_ip([::AWSConfig], arguments::Dict)
-    Lightsail.attach_static_ip([::AWSConfig]; staticIpName=, instanceName=)
+    using AWSSDK.Lightsail.attach_static_ip
+    attach_static_ip([::AWSConfig], arguments::Dict)
+    attach_static_ip([::AWSConfig]; staticIpName=, instanceName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "AttachStaticIp", arguments::Dict)
@@ -95,9 +95,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.close_instance_public_ports([::AWSConfig], arguments::Dict)
-    Lightsail.close_instance_public_ports([::AWSConfig]; portInfo=, instanceName=)
+    using AWSSDK.Lightsail.close_instance_public_ports
+    close_instance_public_ports([::AWSConfig], arguments::Dict)
+    close_instance_public_ports([::AWSConfig]; portInfo=, instanceName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "CloseInstancePublicPorts", arguments::Dict)
@@ -144,9 +144,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.create_domain([::AWSConfig], arguments::Dict)
-    Lightsail.create_domain([::AWSConfig]; domainName=)
+    using AWSSDK.Lightsail.create_domain
+    create_domain([::AWSConfig], arguments::Dict)
+    create_domain([::AWSConfig]; domainName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "CreateDomain", arguments::Dict)
@@ -186,9 +186,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.create_domain_entry([::AWSConfig], arguments::Dict)
-    Lightsail.create_domain_entry([::AWSConfig]; domainName=, domainEntry=)
+    using AWSSDK.Lightsail.create_domain_entry
+    create_domain_entry([::AWSConfig], arguments::Dict)
+    create_domain_entry([::AWSConfig]; domainName=, domainEntry=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "CreateDomainEntry", arguments::Dict)
@@ -237,9 +237,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.create_instance_snapshot([::AWSConfig], arguments::Dict)
-    Lightsail.create_instance_snapshot([::AWSConfig]; instanceSnapshotName=, instanceName=)
+    using AWSSDK.Lightsail.create_instance_snapshot
+    create_instance_snapshot([::AWSConfig], arguments::Dict)
+    create_instance_snapshot([::AWSConfig]; instanceSnapshotName=, instanceName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "CreateInstanceSnapshot", arguments::Dict)
@@ -280,9 +280,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.create_instances([::AWSConfig], arguments::Dict)
-    Lightsail.create_instances([::AWSConfig]; instanceNames=, availabilityZone=, blueprintId=, bundleId=, <keyword arguments>)
+    using AWSSDK.Lightsail.create_instances
+    create_instances([::AWSConfig], arguments::Dict)
+    create_instances([::AWSConfig]; instanceNames=, availabilityZone=, blueprintId=, bundleId=, <keyword arguments>)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "CreateInstances", arguments::Dict)
@@ -349,9 +349,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.create_instances_from_snapshot([::AWSConfig], arguments::Dict)
-    Lightsail.create_instances_from_snapshot([::AWSConfig]; instanceNames=, availabilityZone=, instanceSnapshotName=, bundleId=, <keyword arguments>)
+    using AWSSDK.Lightsail.create_instances_from_snapshot
+    create_instances_from_snapshot([::AWSConfig], arguments::Dict)
+    create_instances_from_snapshot([::AWSConfig]; instanceNames=, availabilityZone=, instanceSnapshotName=, bundleId=, <keyword arguments>)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "CreateInstancesFromSnapshot", arguments::Dict)
@@ -411,9 +411,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.create_key_pair([::AWSConfig], arguments::Dict)
-    Lightsail.create_key_pair([::AWSConfig]; keyPairName=)
+    using AWSSDK.Lightsail.create_key_pair
+    create_key_pair([::AWSConfig], arguments::Dict)
+    create_key_pair([::AWSConfig]; keyPairName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "CreateKeyPair", arguments::Dict)
@@ -450,9 +450,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.delete_domain([::AWSConfig], arguments::Dict)
-    Lightsail.delete_domain([::AWSConfig]; domainName=)
+    using AWSSDK.Lightsail.delete_domain
+    delete_domain([::AWSConfig], arguments::Dict)
+    delete_domain([::AWSConfig]; domainName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "DeleteDomain", arguments::Dict)
@@ -489,9 +489,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.delete_domain_entry([::AWSConfig], arguments::Dict)
-    Lightsail.delete_domain_entry([::AWSConfig]; domainName=, domainEntry=)
+    using AWSSDK.Lightsail.delete_domain_entry
+    delete_domain_entry([::AWSConfig], arguments::Dict)
+    delete_domain_entry([::AWSConfig]; domainName=, domainEntry=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "DeleteDomainEntry", arguments::Dict)
@@ -540,9 +540,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.delete_instance([::AWSConfig], arguments::Dict)
-    Lightsail.delete_instance([::AWSConfig]; instanceName=)
+    using AWSSDK.Lightsail.delete_instance
+    delete_instance([::AWSConfig], arguments::Dict)
+    delete_instance([::AWSConfig]; instanceName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "DeleteInstance", arguments::Dict)
@@ -579,9 +579,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.delete_instance_snapshot([::AWSConfig], arguments::Dict)
-    Lightsail.delete_instance_snapshot([::AWSConfig]; instanceSnapshotName=)
+    using AWSSDK.Lightsail.delete_instance_snapshot
+    delete_instance_snapshot([::AWSConfig], arguments::Dict)
+    delete_instance_snapshot([::AWSConfig]; instanceSnapshotName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "DeleteInstanceSnapshot", arguments::Dict)
@@ -618,9 +618,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.delete_key_pair([::AWSConfig], arguments::Dict)
-    Lightsail.delete_key_pair([::AWSConfig]; keyPairName=)
+    using AWSSDK.Lightsail.delete_key_pair
+    delete_key_pair([::AWSConfig], arguments::Dict)
+    delete_key_pair([::AWSConfig]; keyPairName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "DeleteKeyPair", arguments::Dict)
@@ -657,9 +657,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.detach_static_ip([::AWSConfig], arguments::Dict)
-    Lightsail.detach_static_ip([::AWSConfig]; staticIpName=)
+    using AWSSDK.Lightsail.detach_static_ip
+    detach_static_ip([::AWSConfig], arguments::Dict)
+    detach_static_ip([::AWSConfig]; staticIpName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "DetachStaticIp", arguments::Dict)
@@ -696,9 +696,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.download_default_key_pair([::AWSConfig], arguments::Dict)
-    Lightsail.download_default_key_pair([::AWSConfig]; )
+    using AWSSDK.Lightsail.download_default_key_pair
+    download_default_key_pair([::AWSConfig], arguments::Dict)
+    download_default_key_pair([::AWSConfig]; )
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "DownloadDefaultKeyPair", arguments::Dict)
@@ -731,9 +731,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_active_names([::AWSConfig], arguments::Dict)
-    Lightsail.get_active_names([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Lightsail.get_active_names
+    get_active_names([::AWSConfig], arguments::Dict)
+    get_active_names([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetActiveNames", arguments::Dict)
@@ -770,9 +770,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_blueprints([::AWSConfig], arguments::Dict)
-    Lightsail.get_blueprints([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Lightsail.get_blueprints
+    get_blueprints([::AWSConfig], arguments::Dict)
+    get_blueprints([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetBlueprints", arguments::Dict)
@@ -813,9 +813,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_bundles([::AWSConfig], arguments::Dict)
-    Lightsail.get_bundles([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Lightsail.get_bundles
+    get_bundles([::AWSConfig], arguments::Dict)
+    get_bundles([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetBundles", arguments::Dict)
@@ -856,9 +856,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_domain([::AWSConfig], arguments::Dict)
-    Lightsail.get_domain([::AWSConfig]; domainName=)
+    using AWSSDK.Lightsail.get_domain
+    get_domain([::AWSConfig], arguments::Dict)
+    get_domain([::AWSConfig]; domainName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetDomain", arguments::Dict)
@@ -895,9 +895,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_domains([::AWSConfig], arguments::Dict)
-    Lightsail.get_domains([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Lightsail.get_domains
+    get_domains([::AWSConfig], arguments::Dict)
+    get_domains([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetDomains", arguments::Dict)
@@ -934,9 +934,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_instance([::AWSConfig], arguments::Dict)
-    Lightsail.get_instance([::AWSConfig]; instanceName=)
+    using AWSSDK.Lightsail.get_instance
+    get_instance([::AWSConfig], arguments::Dict)
+    get_instance([::AWSConfig]; instanceName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetInstance", arguments::Dict)
@@ -973,9 +973,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_instance_access_details([::AWSConfig], arguments::Dict)
-    Lightsail.get_instance_access_details([::AWSConfig]; instanceName=, <keyword arguments>)
+    using AWSSDK.Lightsail.get_instance_access_details
+    get_instance_access_details([::AWSConfig], arguments::Dict)
+    get_instance_access_details([::AWSConfig]; instanceName=, <keyword arguments>)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetInstanceAccessDetails", arguments::Dict)
@@ -1016,9 +1016,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_instance_metric_data([::AWSConfig], arguments::Dict)
-    Lightsail.get_instance_metric_data([::AWSConfig]; instanceName=, metricName=, period=, startTime=, endTime=, unit=, statistics=)
+    using AWSSDK.Lightsail.get_instance_metric_data
+    get_instance_metric_data([::AWSConfig], arguments::Dict)
+    get_instance_metric_data([::AWSConfig]; instanceName=, metricName=, period=, startTime=, endTime=, unit=, statistics=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetInstanceMetricData", arguments::Dict)
@@ -1079,9 +1079,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_instance_port_states([::AWSConfig], arguments::Dict)
-    Lightsail.get_instance_port_states([::AWSConfig]; instanceName=)
+    using AWSSDK.Lightsail.get_instance_port_states
+    get_instance_port_states([::AWSConfig], arguments::Dict)
+    get_instance_port_states([::AWSConfig]; instanceName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetInstancePortStates", arguments::Dict)
@@ -1118,9 +1118,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_instance_snapshot([::AWSConfig], arguments::Dict)
-    Lightsail.get_instance_snapshot([::AWSConfig]; instanceSnapshotName=)
+    using AWSSDK.Lightsail.get_instance_snapshot
+    get_instance_snapshot([::AWSConfig], arguments::Dict)
+    get_instance_snapshot([::AWSConfig]; instanceSnapshotName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetInstanceSnapshot", arguments::Dict)
@@ -1157,9 +1157,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_instance_snapshots([::AWSConfig], arguments::Dict)
-    Lightsail.get_instance_snapshots([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Lightsail.get_instance_snapshots
+    get_instance_snapshots([::AWSConfig], arguments::Dict)
+    get_instance_snapshots([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetInstanceSnapshots", arguments::Dict)
@@ -1196,9 +1196,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_instance_state([::AWSConfig], arguments::Dict)
-    Lightsail.get_instance_state([::AWSConfig]; instanceName=)
+    using AWSSDK.Lightsail.get_instance_state
+    get_instance_state([::AWSConfig], arguments::Dict)
+    get_instance_state([::AWSConfig]; instanceName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetInstanceState", arguments::Dict)
@@ -1235,9 +1235,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_instances([::AWSConfig], arguments::Dict)
-    Lightsail.get_instances([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Lightsail.get_instances
+    get_instances([::AWSConfig], arguments::Dict)
+    get_instances([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetInstances", arguments::Dict)
@@ -1274,9 +1274,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_key_pair([::AWSConfig], arguments::Dict)
-    Lightsail.get_key_pair([::AWSConfig]; keyPairName=)
+    using AWSSDK.Lightsail.get_key_pair
+    get_key_pair([::AWSConfig], arguments::Dict)
+    get_key_pair([::AWSConfig]; keyPairName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetKeyPair", arguments::Dict)
@@ -1313,9 +1313,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_key_pairs([::AWSConfig], arguments::Dict)
-    Lightsail.get_key_pairs([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Lightsail.get_key_pairs
+    get_key_pairs([::AWSConfig], arguments::Dict)
+    get_key_pairs([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetKeyPairs", arguments::Dict)
@@ -1352,9 +1352,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_operation([::AWSConfig], arguments::Dict)
-    Lightsail.get_operation([::AWSConfig]; operationId=)
+    using AWSSDK.Lightsail.get_operation
+    get_operation([::AWSConfig], arguments::Dict)
+    get_operation([::AWSConfig]; operationId=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetOperation", arguments::Dict)
@@ -1391,9 +1391,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_operations([::AWSConfig], arguments::Dict)
-    Lightsail.get_operations([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Lightsail.get_operations
+    get_operations([::AWSConfig], arguments::Dict)
+    get_operations([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetOperations", arguments::Dict)
@@ -1432,9 +1432,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_operations_for_resource([::AWSConfig], arguments::Dict)
-    Lightsail.get_operations_for_resource([::AWSConfig]; resourceName=, <keyword arguments>)
+    using AWSSDK.Lightsail.get_operations_for_resource
+    get_operations_for_resource([::AWSConfig], arguments::Dict)
+    get_operations_for_resource([::AWSConfig]; resourceName=, <keyword arguments>)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetOperationsForResource", arguments::Dict)
@@ -1475,9 +1475,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_regions([::AWSConfig], arguments::Dict)
-    Lightsail.get_regions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Lightsail.get_regions
+    get_regions([::AWSConfig], arguments::Dict)
+    get_regions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetRegions", arguments::Dict)
@@ -1514,9 +1514,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_static_ip([::AWSConfig], arguments::Dict)
-    Lightsail.get_static_ip([::AWSConfig]; staticIpName=)
+    using AWSSDK.Lightsail.get_static_ip
+    get_static_ip([::AWSConfig], arguments::Dict)
+    get_static_ip([::AWSConfig]; staticIpName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetStaticIp", arguments::Dict)
@@ -1553,9 +1553,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.get_static_ips([::AWSConfig], arguments::Dict)
-    Lightsail.get_static_ips([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Lightsail.get_static_ips
+    get_static_ips([::AWSConfig], arguments::Dict)
+    get_static_ips([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "GetStaticIps", arguments::Dict)
@@ -1592,9 +1592,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.import_key_pair([::AWSConfig], arguments::Dict)
-    Lightsail.import_key_pair([::AWSConfig]; keyPairName=, publicKeyBase64=)
+    using AWSSDK.Lightsail.import_key_pair
+    import_key_pair([::AWSConfig], arguments::Dict)
+    import_key_pair([::AWSConfig]; keyPairName=, publicKeyBase64=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "ImportKeyPair", arguments::Dict)
@@ -1635,9 +1635,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.is_vpc_peered([::AWSConfig], arguments::Dict)
-    Lightsail.is_vpc_peered([::AWSConfig]; )
+    using AWSSDK.Lightsail.is_vpc_peered
+    is_vpc_peered([::AWSConfig], arguments::Dict)
+    is_vpc_peered([::AWSConfig]; )
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "IsVpcPeered", arguments::Dict)
@@ -1670,9 +1670,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.open_instance_public_ports([::AWSConfig], arguments::Dict)
-    Lightsail.open_instance_public_ports([::AWSConfig]; portInfo=, instanceName=)
+    using AWSSDK.Lightsail.open_instance_public_ports
+    open_instance_public_ports([::AWSConfig], arguments::Dict)
+    open_instance_public_ports([::AWSConfig]; portInfo=, instanceName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "OpenInstancePublicPorts", arguments::Dict)
@@ -1719,9 +1719,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.peer_vpc([::AWSConfig], arguments::Dict)
-    Lightsail.peer_vpc([::AWSConfig]; )
+    using AWSSDK.Lightsail.peer_vpc
+    peer_vpc([::AWSConfig], arguments::Dict)
+    peer_vpc([::AWSConfig]; )
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "PeerVpc", arguments::Dict)
@@ -1754,9 +1754,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.put_instance_public_ports([::AWSConfig], arguments::Dict)
-    Lightsail.put_instance_public_ports([::AWSConfig]; portInfos=, instanceName=)
+    using AWSSDK.Lightsail.put_instance_public_ports
+    put_instance_public_ports([::AWSConfig], arguments::Dict)
+    put_instance_public_ports([::AWSConfig]; portInfos=, instanceName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "PutInstancePublicPorts", arguments::Dict)
@@ -1803,9 +1803,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.reboot_instance([::AWSConfig], arguments::Dict)
-    Lightsail.reboot_instance([::AWSConfig]; instanceName=)
+    using AWSSDK.Lightsail.reboot_instance
+    reboot_instance([::AWSConfig], arguments::Dict)
+    reboot_instance([::AWSConfig]; instanceName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "RebootInstance", arguments::Dict)
@@ -1842,9 +1842,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.release_static_ip([::AWSConfig], arguments::Dict)
-    Lightsail.release_static_ip([::AWSConfig]; staticIpName=)
+    using AWSSDK.Lightsail.release_static_ip
+    release_static_ip([::AWSConfig], arguments::Dict)
+    release_static_ip([::AWSConfig]; staticIpName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "ReleaseStaticIp", arguments::Dict)
@@ -1881,9 +1881,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.start_instance([::AWSConfig], arguments::Dict)
-    Lightsail.start_instance([::AWSConfig]; instanceName=)
+    using AWSSDK.Lightsail.start_instance
+    start_instance([::AWSConfig], arguments::Dict)
+    start_instance([::AWSConfig]; instanceName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "StartInstance", arguments::Dict)
@@ -1920,9 +1920,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.stop_instance([::AWSConfig], arguments::Dict)
-    Lightsail.stop_instance([::AWSConfig]; instanceName=)
+    using AWSSDK.Lightsail.stop_instance
+    stop_instance([::AWSConfig], arguments::Dict)
+    stop_instance([::AWSConfig]; instanceName=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "StopInstance", arguments::Dict)
@@ -1959,9 +1959,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.unpeer_vpc([::AWSConfig], arguments::Dict)
-    Lightsail.unpeer_vpc([::AWSConfig]; )
+    using AWSSDK.Lightsail.unpeer_vpc
+    unpeer_vpc([::AWSConfig], arguments::Dict)
+    unpeer_vpc([::AWSConfig]; )
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "UnpeerVpc", arguments::Dict)
@@ -1994,9 +1994,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 
 """
-    using AWSSDK.Lightsail
-    Lightsail.update_domain_entry([::AWSConfig], arguments::Dict)
-    Lightsail.update_domain_entry([::AWSConfig]; domainName=, domainEntry=)
+    using AWSSDK.Lightsail.update_domain_entry
+    update_domain_entry([::AWSConfig], arguments::Dict)
+    update_domain_entry([::AWSConfig]; domainName=, domainEntry=)
 
     using AWSCore.Services.lightsail
     lightsail([::AWSConfig], "UpdateDomainEntry", arguments::Dict)

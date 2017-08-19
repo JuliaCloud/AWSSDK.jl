@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.ES
-    ES.add_tags([::AWSConfig], arguments::Dict)
-    ES.add_tags([::AWSConfig]; ARN=, TagList=)
+    using AWSSDK.ES.add_tags
+    add_tags([::AWSConfig], arguments::Dict)
+    add_tags([::AWSConfig]; ARN=, TagList=)
 
     using AWSCore.Services.es
     es([::AWSConfig], "POST", "/2015-01-01/tags", arguments::Dict)
@@ -57,9 +57,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-201
 
 
 """
-    using AWSSDK.ES
-    ES.create_elasticsearch_domain([::AWSConfig], arguments::Dict)
-    ES.create_elasticsearch_domain([::AWSConfig]; DomainName=, <keyword arguments>)
+    using AWSSDK.ES.create_elasticsearch_domain
+    create_elasticsearch_domain([::AWSConfig], arguments::Dict)
+    create_elasticsearch_domain([::AWSConfig]; DomainName=, <keyword arguments>)
 
     using AWSCore.Services.es
     es([::AWSConfig], "POST", "/2015-01-01/es/domain", arguments::Dict)
@@ -136,9 +136,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-201
 
 
 """
-    using AWSSDK.ES
-    ES.delete_elasticsearch_domain([::AWSConfig], arguments::Dict)
-    ES.delete_elasticsearch_domain([::AWSConfig]; DomainName=)
+    using AWSSDK.ES.delete_elasticsearch_domain
+    delete_elasticsearch_domain([::AWSConfig], arguments::Dict)
+    delete_elasticsearch_domain([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.es
     es([::AWSConfig], "DELETE", "/2015-01-01/es/domain/{DomainName}", arguments::Dict)
@@ -175,9 +175,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-201
 
 
 """
-    using AWSSDK.ES
-    ES.describe_elasticsearch_domain([::AWSConfig], arguments::Dict)
-    ES.describe_elasticsearch_domain([::AWSConfig]; DomainName=)
+    using AWSSDK.ES.describe_elasticsearch_domain
+    describe_elasticsearch_domain([::AWSConfig], arguments::Dict)
+    describe_elasticsearch_domain([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.es
     es([::AWSConfig], "GET", "/2015-01-01/es/domain/{DomainName}", arguments::Dict)
@@ -214,9 +214,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-201
 
 
 """
-    using AWSSDK.ES
-    ES.describe_elasticsearch_domain_config([::AWSConfig], arguments::Dict)
-    ES.describe_elasticsearch_domain_config([::AWSConfig]; DomainName=)
+    using AWSSDK.ES.describe_elasticsearch_domain_config
+    describe_elasticsearch_domain_config([::AWSConfig], arguments::Dict)
+    describe_elasticsearch_domain_config([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.es
     es([::AWSConfig], "GET", "/2015-01-01/es/domain/{DomainName}/config", arguments::Dict)
@@ -253,9 +253,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-201
 
 
 """
-    using AWSSDK.ES
-    ES.describe_elasticsearch_domains([::AWSConfig], arguments::Dict)
-    ES.describe_elasticsearch_domains([::AWSConfig]; DomainNames=)
+    using AWSSDK.ES.describe_elasticsearch_domains
+    describe_elasticsearch_domains([::AWSConfig], arguments::Dict)
+    describe_elasticsearch_domains([::AWSConfig]; DomainNames=)
 
     using AWSCore.Services.es
     es([::AWSConfig], "POST", "/2015-01-01/es/domain-info", arguments::Dict)
@@ -292,9 +292,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-201
 
 
 """
-    using AWSSDK.ES
-    ES.describe_elasticsearch_instance_type_limits([::AWSConfig], arguments::Dict)
-    ES.describe_elasticsearch_instance_type_limits([::AWSConfig]; InstanceType=, ElasticsearchVersion=, <keyword arguments>)
+    using AWSSDK.ES.describe_elasticsearch_instance_type_limits
+    describe_elasticsearch_instance_type_limits([::AWSConfig], arguments::Dict)
+    describe_elasticsearch_instance_type_limits([::AWSConfig]; InstanceType=, ElasticsearchVersion=, <keyword arguments>)
 
     using AWSCore.Services.es
     es([::AWSConfig], "GET", "/2015-01-01/es/instanceTypeLimits/{ElasticsearchVersion}/{InstanceType}", arguments::Dict)
@@ -339,9 +339,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-201
 
 
 """
-    using AWSSDK.ES
-    ES.list_domain_names([::AWSConfig])
-    ES.
+    using AWSSDK.ES.list_domain_names
+    list_domain_names([::AWSConfig])
+    
 
     using AWSCore.Services.es
     es([::AWSConfig], "GET", "/2015-01-01/domain",)
@@ -370,9 +370,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-201
 
 
 """
-    using AWSSDK.ES
-    ES.list_elasticsearch_instance_types([::AWSConfig], arguments::Dict)
-    ES.list_elasticsearch_instance_types([::AWSConfig]; ElasticsearchVersion=, <keyword arguments>)
+    using AWSSDK.ES.list_elasticsearch_instance_types
+    list_elasticsearch_instance_types([::AWSConfig], arguments::Dict)
+    list_elasticsearch_instance_types([::AWSConfig]; ElasticsearchVersion=, <keyword arguments>)
 
     using AWSCore.Services.es
     es([::AWSConfig], "GET", "/2015-01-01/es/instanceTypes/{ElasticsearchVersion}", arguments::Dict)
@@ -421,9 +421,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-201
 
 
 """
-    using AWSSDK.ES
-    ES.list_elasticsearch_versions([::AWSConfig], arguments::Dict)
-    ES.list_elasticsearch_versions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ES.list_elasticsearch_versions
+    list_elasticsearch_versions([::AWSConfig], arguments::Dict)
+    list_elasticsearch_versions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.es
     es([::AWSConfig], "GET", "/2015-01-01/es/versions", arguments::Dict)
@@ -464,9 +464,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-201
 
 
 """
-    using AWSSDK.ES
-    ES.list_tags([::AWSConfig], arguments::Dict)
-    ES.list_tags([::AWSConfig]; arn=)
+    using AWSSDK.ES.list_tags
+    list_tags([::AWSConfig], arguments::Dict)
+    list_tags([::AWSConfig]; arn=)
 
     using AWSCore.Services.es
     es([::AWSConfig], "GET", "/2015-01-01/tags/", arguments::Dict)
@@ -503,9 +503,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-201
 
 
 """
-    using AWSSDK.ES
-    ES.remove_tags([::AWSConfig], arguments::Dict)
-    ES.remove_tags([::AWSConfig]; ARN=, TagKeys=)
+    using AWSSDK.ES.remove_tags
+    remove_tags([::AWSConfig], arguments::Dict)
+    remove_tags([::AWSConfig]; ARN=, TagKeys=)
 
     using AWSCore.Services.es
     es([::AWSConfig], "POST", "/2015-01-01/tags-removal", arguments::Dict)
@@ -542,9 +542,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-201
 
 
 """
-    using AWSSDK.ES
-    ES.update_elasticsearch_domain_config([::AWSConfig], arguments::Dict)
-    ES.update_elasticsearch_domain_config([::AWSConfig]; DomainName=, <keyword arguments>)
+    using AWSSDK.ES.update_elasticsearch_domain_config
+    update_elasticsearch_domain_config([::AWSConfig], arguments::Dict)
+    update_elasticsearch_domain_config([::AWSConfig]; DomainName=, <keyword arguments>)
 
     using AWSCore.Services.es
     es([::AWSConfig], "POST", "/2015-01-01/es/domain/{DomainName}/config", arguments::Dict)

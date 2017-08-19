@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.ImportExport
-    ImportExport.cancel_job([::AWSConfig], arguments::Dict)
-    ImportExport.cancel_job([::AWSConfig]; JobId=, <keyword arguments>)
+    using AWSSDK.ImportExport.cancel_job
+    cancel_job([::AWSConfig], arguments::Dict)
+    cancel_job([::AWSConfig]; JobId=, <keyword arguments>)
 
     using AWSCore.Services.importexport
     importexport([::AWSConfig], "POST", "/?Operation=CancelJob", "CancelJob", arguments::Dict)
@@ -56,9 +56,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/import
 
 
 """
-    using AWSSDK.ImportExport
-    ImportExport.create_job([::AWSConfig], arguments::Dict)
-    ImportExport.create_job([::AWSConfig]; JobType=, Manifest=, ValidateOnly=, <keyword arguments>)
+    using AWSSDK.ImportExport.create_job
+    create_job([::AWSConfig], arguments::Dict)
+    create_job([::AWSConfig]; JobType=, Manifest=, ValidateOnly=, <keyword arguments>)
 
     using AWSCore.Services.importexport
     importexport([::AWSConfig], "POST", "/?Operation=CreateJob", "CreateJob", arguments::Dict)
@@ -111,9 +111,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/import
 
 
 """
-    using AWSSDK.ImportExport
-    ImportExport.get_shipping_label([::AWSConfig], arguments::Dict)
-    ImportExport.get_shipping_label([::AWSConfig]; jobIds=, <keyword arguments>)
+    using AWSSDK.ImportExport.get_shipping_label
+    get_shipping_label([::AWSConfig], arguments::Dict)
+    get_shipping_label([::AWSConfig]; jobIds=, <keyword arguments>)
 
     using AWSCore.Services.importexport
     importexport([::AWSConfig], "POST", "/?Operation=GetShippingLabel", "GetShippingLabel", arguments::Dict)
@@ -194,9 +194,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/import
 
 
 """
-    using AWSSDK.ImportExport
-    ImportExport.get_status([::AWSConfig], arguments::Dict)
-    ImportExport.get_status([::AWSConfig]; JobId=, <keyword arguments>)
+    using AWSSDK.ImportExport.get_status
+    get_status([::AWSConfig], arguments::Dict)
+    get_status([::AWSConfig]; JobId=, <keyword arguments>)
 
     using AWSCore.Services.importexport
     importexport([::AWSConfig], "POST", "/?Operation=GetStatus", "GetStatus", arguments::Dict)
@@ -237,9 +237,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/import
 
 
 """
-    using AWSSDK.ImportExport
-    ImportExport.list_jobs([::AWSConfig], arguments::Dict)
-    ImportExport.list_jobs([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ImportExport.list_jobs
+    list_jobs([::AWSConfig], arguments::Dict)
+    list_jobs([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.importexport
     importexport([::AWSConfig], "POST", "/?Operation=ListJobs", "ListJobs", arguments::Dict)
@@ -284,9 +284,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/import
 
 
 """
-    using AWSSDK.ImportExport
-    ImportExport.update_job([::AWSConfig], arguments::Dict)
-    ImportExport.update_job([::AWSConfig]; JobId=, Manifest=, JobType=, ValidateOnly=, <keyword arguments>)
+    using AWSSDK.ImportExport.update_job
+    update_job([::AWSConfig], arguments::Dict)
+    update_job([::AWSConfig]; JobId=, Manifest=, JobType=, ValidateOnly=, <keyword arguments>)
 
     using AWSCore.Services.importexport
     importexport([::AWSConfig], "POST", "/?Operation=UpdateJob", "UpdateJob", arguments::Dict)

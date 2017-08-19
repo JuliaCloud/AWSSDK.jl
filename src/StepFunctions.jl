@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.StepFunctions
-    StepFunctions.create_activity([::AWSConfig], arguments::Dict)
-    StepFunctions.create_activity([::AWSConfig]; name=)
+    using AWSSDK.StepFunctions.create_activity
+    create_activity([::AWSConfig], arguments::Dict)
+    create_activity([::AWSConfig]; name=)
 
     using AWSCore.Services.states
     states([::AWSConfig], "CreateActivity", arguments::Dict)
@@ -52,9 +52,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 
 """
-    using AWSSDK.StepFunctions
-    StepFunctions.create_state_machine([::AWSConfig], arguments::Dict)
-    StepFunctions.create_state_machine([::AWSConfig]; name=, definition=, roleArn=)
+    using AWSSDK.StepFunctions.create_state_machine
+    create_state_machine([::AWSConfig], arguments::Dict)
+    create_state_machine([::AWSConfig]; name=, definition=, roleArn=)
 
     using AWSCore.Services.states
     states([::AWSConfig], "CreateStateMachine", arguments::Dict)
@@ -99,9 +99,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 
 """
-    using AWSSDK.StepFunctions
-    StepFunctions.delete_activity([::AWSConfig], arguments::Dict)
-    StepFunctions.delete_activity([::AWSConfig]; activityArn=)
+    using AWSSDK.StepFunctions.delete_activity
+    delete_activity([::AWSConfig], arguments::Dict)
+    delete_activity([::AWSConfig]; activityArn=)
 
     using AWSCore.Services.states
     states([::AWSConfig], "DeleteActivity", arguments::Dict)
@@ -138,9 +138,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 
 """
-    using AWSSDK.StepFunctions
-    StepFunctions.delete_state_machine([::AWSConfig], arguments::Dict)
-    StepFunctions.delete_state_machine([::AWSConfig]; stateMachineArn=)
+    using AWSSDK.StepFunctions.delete_state_machine
+    delete_state_machine([::AWSConfig], arguments::Dict)
+    delete_state_machine([::AWSConfig]; stateMachineArn=)
 
     using AWSCore.Services.states
     states([::AWSConfig], "DeleteStateMachine", arguments::Dict)
@@ -177,9 +177,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 
 """
-    using AWSSDK.StepFunctions
-    StepFunctions.describe_activity([::AWSConfig], arguments::Dict)
-    StepFunctions.describe_activity([::AWSConfig]; activityArn=)
+    using AWSSDK.StepFunctions.describe_activity
+    describe_activity([::AWSConfig], arguments::Dict)
+    describe_activity([::AWSConfig]; activityArn=)
 
     using AWSCore.Services.states
     states([::AWSConfig], "DescribeActivity", arguments::Dict)
@@ -216,9 +216,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 
 """
-    using AWSSDK.StepFunctions
-    StepFunctions.describe_execution([::AWSConfig], arguments::Dict)
-    StepFunctions.describe_execution([::AWSConfig]; executionArn=)
+    using AWSSDK.StepFunctions.describe_execution
+    describe_execution([::AWSConfig], arguments::Dict)
+    describe_execution([::AWSConfig]; executionArn=)
 
     using AWSCore.Services.states
     states([::AWSConfig], "DescribeExecution", arguments::Dict)
@@ -255,9 +255,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 
 """
-    using AWSSDK.StepFunctions
-    StepFunctions.describe_state_machine([::AWSConfig], arguments::Dict)
-    StepFunctions.describe_state_machine([::AWSConfig]; stateMachineArn=)
+    using AWSSDK.StepFunctions.describe_state_machine
+    describe_state_machine([::AWSConfig], arguments::Dict)
+    describe_state_machine([::AWSConfig]; stateMachineArn=)
 
     using AWSCore.Services.states
     states([::AWSConfig], "DescribeStateMachine", arguments::Dict)
@@ -294,9 +294,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 
 """
-    using AWSSDK.StepFunctions
-    StepFunctions.get_activity_task([::AWSConfig], arguments::Dict)
-    StepFunctions.get_activity_task([::AWSConfig]; activityArn=, <keyword arguments>)
+    using AWSSDK.StepFunctions.get_activity_task
+    get_activity_task([::AWSConfig], arguments::Dict)
+    get_activity_task([::AWSConfig]; activityArn=, <keyword arguments>)
 
     using AWSCore.Services.states
     states([::AWSConfig], "GetActivityTask", arguments::Dict)
@@ -340,9 +340,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 
 """
-    using AWSSDK.StepFunctions
-    StepFunctions.get_execution_history([::AWSConfig], arguments::Dict)
-    StepFunctions.get_execution_history([::AWSConfig]; executionArn=, <keyword arguments>)
+    using AWSSDK.StepFunctions.get_execution_history
+    get_execution_history([::AWSConfig], arguments::Dict)
+    get_execution_history([::AWSConfig]; executionArn=, <keyword arguments>)
 
     using AWSCore.Services.states
     states([::AWSConfig], "GetExecutionHistory", arguments::Dict)
@@ -395,9 +395,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 
 """
-    using AWSSDK.StepFunctions
-    StepFunctions.list_activities([::AWSConfig], arguments::Dict)
-    StepFunctions.list_activities([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.StepFunctions.list_activities
+    list_activities([::AWSConfig], arguments::Dict)
+    list_activities([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.states
     states([::AWSConfig], "ListActivities", arguments::Dict)
@@ -442,9 +442,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 
 """
-    using AWSSDK.StepFunctions
-    StepFunctions.list_executions([::AWSConfig], arguments::Dict)
-    StepFunctions.list_executions([::AWSConfig]; stateMachineArn=, <keyword arguments>)
+    using AWSSDK.StepFunctions.list_executions
+    list_executions([::AWSConfig], arguments::Dict)
+    list_executions([::AWSConfig]; stateMachineArn=, <keyword arguments>)
 
     using AWSCore.Services.states
     states([::AWSConfig], "ListExecutions", arguments::Dict)
@@ -497,9 +497,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 
 """
-    using AWSSDK.StepFunctions
-    StepFunctions.list_state_machines([::AWSConfig], arguments::Dict)
-    StepFunctions.list_state_machines([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.StepFunctions.list_state_machines
+    list_state_machines([::AWSConfig], arguments::Dict)
+    list_state_machines([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.states
     states([::AWSConfig], "ListStateMachines", arguments::Dict)
@@ -544,9 +544,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 
 """
-    using AWSSDK.StepFunctions
-    StepFunctions.send_task_failure([::AWSConfig], arguments::Dict)
-    StepFunctions.send_task_failure([::AWSConfig]; taskToken=, <keyword arguments>)
+    using AWSSDK.StepFunctions.send_task_failure
+    send_task_failure([::AWSConfig], arguments::Dict)
+    send_task_failure([::AWSConfig]; taskToken=, <keyword arguments>)
 
     using AWSCore.Services.states
     states([::AWSConfig], "SendTaskFailure", arguments::Dict)
@@ -591,9 +591,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 
 """
-    using AWSSDK.StepFunctions
-    StepFunctions.send_task_heartbeat([::AWSConfig], arguments::Dict)
-    StepFunctions.send_task_heartbeat([::AWSConfig]; taskToken=)
+    using AWSSDK.StepFunctions.send_task_heartbeat
+    send_task_heartbeat([::AWSConfig], arguments::Dict)
+    send_task_heartbeat([::AWSConfig]; taskToken=)
 
     using AWSCore.Services.states
     states([::AWSConfig], "SendTaskHeartbeat", arguments::Dict)
@@ -636,9 +636,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 
 """
-    using AWSSDK.StepFunctions
-    StepFunctions.send_task_success([::AWSConfig], arguments::Dict)
-    StepFunctions.send_task_success([::AWSConfig]; taskToken=, output=)
+    using AWSSDK.StepFunctions.send_task_success
+    send_task_success([::AWSConfig], arguments::Dict)
+    send_task_success([::AWSConfig]; taskToken=, output=)
 
     using AWSCore.Services.states
     states([::AWSConfig], "SendTaskSuccess", arguments::Dict)
@@ -679,9 +679,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 
 """
-    using AWSSDK.StepFunctions
-    StepFunctions.start_execution([::AWSConfig], arguments::Dict)
-    StepFunctions.start_execution([::AWSConfig]; stateMachineArn=, <keyword arguments>)
+    using AWSSDK.StepFunctions.start_execution
+    start_execution([::AWSConfig], arguments::Dict)
+    start_execution([::AWSConfig]; stateMachineArn=, <keyword arguments>)
 
     using AWSCore.Services.states
     states([::AWSConfig], "StartExecution", arguments::Dict)
@@ -726,9 +726,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 
 """
-    using AWSSDK.StepFunctions
-    StepFunctions.stop_execution([::AWSConfig], arguments::Dict)
-    StepFunctions.stop_execution([::AWSConfig]; executionArn=, <keyword arguments>)
+    using AWSSDK.StepFunctions.stop_execution
+    stop_execution([::AWSConfig], arguments::Dict)
+    stop_execution([::AWSConfig]; executionArn=, <keyword arguments>)
 
     using AWSCore.Services.states
     states([::AWSConfig], "StopExecution", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.abort_environment_update([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.abort_environment_update([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.abort_environment_update
+    abort_environment_update([::AWSConfig], arguments::Dict)
+    abort_environment_update([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "AbortEnvironmentUpdate", arguments::Dict)
@@ -63,9 +63,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.apply_environment_managed_action([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.apply_environment_managed_action([::AWSConfig]; ActionId=, <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.apply_environment_managed_action
+    apply_environment_managed_action([::AWSConfig], arguments::Dict)
+    apply_environment_managed_action([::AWSConfig]; ActionId=, <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "ApplyEnvironmentManagedAction", arguments::Dict)
@@ -110,9 +110,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.check_dnsavailability([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.check_dnsavailability([::AWSConfig]; CNAMEPrefix=)
+    using AWSSDK.ElasticBeanstalk.check_dnsavailability
+    check_dnsavailability([::AWSConfig], arguments::Dict)
+    check_dnsavailability([::AWSConfig]; CNAMEPrefix=)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "CheckDNSAvailability", arguments::Dict)
@@ -164,9 +164,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.compose_environments([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.compose_environments([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.compose_environments
+    compose_environments([::AWSConfig], arguments::Dict)
+    compose_environments([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "ComposeEnvironments", arguments::Dict)
@@ -211,9 +211,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.create_application([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.create_application([::AWSConfig]; ApplicationName=, <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.create_application
+    create_application([::AWSConfig], arguments::Dict)
+    create_application([::AWSConfig]; ApplicationName=, <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "CreateApplication", arguments::Dict)
@@ -303,9 +303,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.create_application_version([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.create_application_version([::AWSConfig]; ApplicationName=, VersionLabel=, <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.create_application_version
+    create_application_version([::AWSConfig], arguments::Dict)
+    create_application_version([::AWSConfig]; ApplicationName=, VersionLabel=, <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "CreateApplicationVersion", arguments::Dict)
@@ -443,9 +443,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.create_configuration_template([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.create_configuration_template([::AWSConfig]; ApplicationName=, TemplateName=, <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.create_configuration_template
+    create_configuration_template([::AWSConfig], arguments::Dict)
+    create_configuration_template([::AWSConfig]; ApplicationName=, TemplateName=, <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "CreateConfigurationTemplate", arguments::Dict)
@@ -570,9 +570,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.create_environment([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.create_environment([::AWSConfig]; ApplicationName=, <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.create_environment
+    create_environment([::AWSConfig], arguments::Dict)
+    create_environment([::AWSConfig]; ApplicationName=, <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "CreateEnvironment", arguments::Dict)
@@ -727,9 +727,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.create_platform_version([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.create_platform_version([::AWSConfig]; PlatformName=, PlatformVersion=, PlatformDefinitionBundle=, <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.create_platform_version
+    create_platform_version([::AWSConfig], arguments::Dict)
+    create_platform_version([::AWSConfig]; PlatformName=, PlatformVersion=, PlatformDefinitionBundle=, <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "CreatePlatformVersion", arguments::Dict)
@@ -794,9 +794,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.create_storage_location([::AWSConfig])
-    ElasticBeanstalk.
+    using AWSSDK.ElasticBeanstalk.create_storage_location
+    create_storage_location([::AWSConfig])
+    
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "CreateStorageLocation",)
@@ -838,9 +838,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.delete_application([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.delete_application([::AWSConfig]; ApplicationName=, <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.delete_application
+    delete_application([::AWSConfig], arguments::Dict)
+    delete_application([::AWSConfig]; ApplicationName=, <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "DeleteApplication", arguments::Dict)
@@ -891,9 +891,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.delete_application_version([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.delete_application_version([::AWSConfig]; ApplicationName=, VersionLabel=, <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.delete_application_version
+    delete_application_version([::AWSConfig], arguments::Dict)
+    delete_application_version([::AWSConfig]; ApplicationName=, VersionLabel=, <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "DeleteApplicationVersion", arguments::Dict)
@@ -950,9 +950,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.delete_configuration_template([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.delete_configuration_template([::AWSConfig]; ApplicationName=, TemplateName=)
+    using AWSSDK.ElasticBeanstalk.delete_configuration_template
+    delete_configuration_template([::AWSConfig], arguments::Dict)
+    delete_configuration_template([::AWSConfig]; ApplicationName=, TemplateName=)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "DeleteConfigurationTemplate", arguments::Dict)
@@ -1004,9 +1004,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.delete_environment_configuration([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.delete_environment_configuration([::AWSConfig]; ApplicationName=, EnvironmentName=)
+    using AWSSDK.ElasticBeanstalk.delete_environment_configuration
+    delete_environment_configuration([::AWSConfig], arguments::Dict)
+    delete_environment_configuration([::AWSConfig]; ApplicationName=, EnvironmentName=)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "DeleteEnvironmentConfiguration", arguments::Dict)
@@ -1053,9 +1053,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.delete_platform_version([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.delete_platform_version([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.delete_platform_version
+    delete_platform_version([::AWSConfig], arguments::Dict)
+    delete_platform_version([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "DeletePlatformVersion", arguments::Dict)
@@ -1092,9 +1092,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.describe_application_versions([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.describe_application_versions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.describe_application_versions
+    describe_application_versions([::AWSConfig], arguments::Dict)
+    describe_application_versions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "DescribeApplicationVersions", arguments::Dict)
@@ -1183,9 +1183,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.describe_applications([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.describe_applications([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.describe_applications
+    describe_applications([::AWSConfig], arguments::Dict)
+    describe_applications([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "DescribeApplications", arguments::Dict)
@@ -1272,9 +1272,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.describe_configuration_options([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.describe_configuration_options([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.describe_configuration_options
+    describe_configuration_options([::AWSConfig], arguments::Dict)
+    describe_configuration_options([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "DescribeConfigurationOptions", arguments::Dict)
@@ -1376,9 +1376,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.describe_configuration_settings([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.describe_configuration_settings([::AWSConfig]; ApplicationName=, <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.describe_configuration_settings
+    describe_configuration_settings([::AWSConfig], arguments::Dict)
+    describe_configuration_settings([::AWSConfig]; ApplicationName=, <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "DescribeConfigurationSettings", arguments::Dict)
@@ -1488,9 +1488,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.describe_environment_health([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.describe_environment_health([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.describe_environment_health
+    describe_environment_health([::AWSConfig], arguments::Dict)
+    describe_environment_health([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "DescribeEnvironmentHealth", arguments::Dict)
@@ -1596,9 +1596,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.describe_environment_managed_action_history([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.describe_environment_managed_action_history([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.describe_environment_managed_action_history
+    describe_environment_managed_action_history([::AWSConfig], arguments::Dict)
+    describe_environment_managed_action_history([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "DescribeEnvironmentManagedActionHistory", arguments::Dict)
@@ -1647,9 +1647,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.describe_environment_managed_actions([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.describe_environment_managed_actions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.describe_environment_managed_actions
+    describe_environment_managed_actions([::AWSConfig], arguments::Dict)
+    describe_environment_managed_actions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "DescribeEnvironmentManagedActions", arguments::Dict)
@@ -1694,9 +1694,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.describe_environment_resources([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.describe_environment_resources([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.describe_environment_resources
+    describe_environment_resources([::AWSConfig], arguments::Dict)
+    describe_environment_resources([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "DescribeEnvironmentResources", arguments::Dict)
@@ -1787,9 +1787,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.describe_environments([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.describe_environments([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.describe_environments
+    describe_environments([::AWSConfig], arguments::Dict)
+    describe_environments([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "DescribeEnvironments", arguments::Dict)
@@ -1886,9 +1886,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.describe_events([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.describe_events([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.describe_events
+    describe_events([::AWSConfig], arguments::Dict)
+    describe_events([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "DescribeEvents", arguments::Dict)
@@ -2018,9 +2018,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.describe_instances_health([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.describe_instances_health([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.describe_instances_health
+    describe_instances_health([::AWSConfig], arguments::Dict)
+    describe_instances_health([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "DescribeInstancesHealth", arguments::Dict)
@@ -2137,9 +2137,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.describe_platform_version([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.describe_platform_version([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.describe_platform_version
+    describe_platform_version([::AWSConfig], arguments::Dict)
+    describe_platform_version([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "DescribePlatformVersion", arguments::Dict)
@@ -2176,9 +2176,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.list_available_solution_stacks([::AWSConfig])
-    ElasticBeanstalk.
+    using AWSSDK.ElasticBeanstalk.list_available_solution_stacks
+    list_available_solution_stacks([::AWSConfig])
+    
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "ListAvailableSolutionStacks",)
@@ -2251,9 +2251,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.list_platform_versions([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.list_platform_versions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.list_platform_versions
+    list_platform_versions([::AWSConfig], arguments::Dict)
+    list_platform_versions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "ListPlatformVersions", arguments::Dict)
@@ -2304,9 +2304,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.rebuild_environment([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.rebuild_environment([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.rebuild_environment
+    rebuild_environment([::AWSConfig], arguments::Dict)
+    rebuild_environment([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "RebuildEnvironment", arguments::Dict)
@@ -2358,9 +2358,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.request_environment_info([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.request_environment_info([::AWSConfig]; InfoType=, <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.request_environment_info
+    request_environment_info([::AWSConfig], arguments::Dict)
+    request_environment_info([::AWSConfig]; InfoType=, <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "RequestEnvironmentInfo", arguments::Dict)
@@ -2427,9 +2427,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.restart_app_server([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.restart_app_server([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.restart_app_server
+    restart_app_server([::AWSConfig], arguments::Dict)
+    restart_app_server([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "RestartAppServer", arguments::Dict)
@@ -2477,9 +2477,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.retrieve_environment_info([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.retrieve_environment_info([::AWSConfig]; InfoType=, <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.retrieve_environment_info
+    retrieve_environment_info([::AWSConfig], arguments::Dict)
+    retrieve_environment_info([::AWSConfig]; InfoType=, <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "RetrieveEnvironmentInfo", arguments::Dict)
@@ -2558,9 +2558,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.swap_environment_cnames([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.swap_environment_cnames([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.swap_environment_cnames
+    swap_environment_cnames([::AWSConfig], arguments::Dict)
+    swap_environment_cnames([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "SwapEnvironmentCNAMEs", arguments::Dict)
@@ -2621,9 +2621,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.terminate_environment([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.terminate_environment([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.terminate_environment
+    terminate_environment([::AWSConfig], arguments::Dict)
+    terminate_environment([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "TerminateEnvironment", arguments::Dict)
@@ -2719,9 +2719,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.update_application([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.update_application([::AWSConfig]; ApplicationName=, <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.update_application
+    update_application([::AWSConfig], arguments::Dict)
+    update_application([::AWSConfig]; ApplicationName=, <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "UpdateApplication", arguments::Dict)
@@ -2797,9 +2797,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.update_application_resource_lifecycle([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.update_application_resource_lifecycle([::AWSConfig]; ApplicationName=, ResourceLifecycleConfig=)
+    using AWSSDK.ElasticBeanstalk.update_application_resource_lifecycle
+    update_application_resource_lifecycle([::AWSConfig], arguments::Dict)
+    update_application_resource_lifecycle([::AWSConfig]; ApplicationName=, ResourceLifecycleConfig=)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "UpdateApplicationResourceLifecycle", arguments::Dict)
@@ -2856,9 +2856,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.update_application_version([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.update_application_version([::AWSConfig]; ApplicationName=, VersionLabel=, <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.update_application_version
+    update_application_version([::AWSConfig], arguments::Dict)
+    update_application_version([::AWSConfig]; ApplicationName=, VersionLabel=, <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "UpdateApplicationVersion", arguments::Dict)
@@ -2936,9 +2936,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.update_configuration_template([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.update_configuration_template([::AWSConfig]; ApplicationName=, TemplateName=, <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.update_configuration_template
+    update_configuration_template([::AWSConfig], arguments::Dict)
+    update_configuration_template([::AWSConfig]; ApplicationName=, TemplateName=, <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "UpdateConfigurationTemplate", arguments::Dict)
@@ -3046,9 +3046,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.update_environment([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.update_environment([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.update_environment
+    update_environment([::AWSConfig], arguments::Dict)
+    update_environment([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "UpdateEnvironment", arguments::Dict)
@@ -3250,9 +3250,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticBeanstalk
-    ElasticBeanstalk.validate_configuration_settings([::AWSConfig], arguments::Dict)
-    ElasticBeanstalk.validate_configuration_settings([::AWSConfig]; ApplicationName=, OptionSettings=, <keyword arguments>)
+    using AWSSDK.ElasticBeanstalk.validate_configuration_settings
+    validate_configuration_settings([::AWSConfig], arguments::Dict)
+    validate_configuration_settings([::AWSConfig]; ApplicationName=, OptionSettings=, <keyword arguments>)
 
     using AWSCore.Services.elasticbeanstalk
     elasticbeanstalk([::AWSConfig], "ValidateConfigurationSettings", arguments::Dict)

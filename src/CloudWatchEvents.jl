@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CloudWatchEvents
-    CloudWatchEvents.delete_rule([::AWSConfig], arguments::Dict)
-    CloudWatchEvents.delete_rule([::AWSConfig]; Name=)
+    using AWSSDK.CloudWatchEvents.delete_rule
+    delete_rule([::AWSConfig], arguments::Dict)
+    delete_rule([::AWSConfig]; Name=)
 
     using AWSCore.Services.events
     events([::AWSConfig], "DeleteRule", arguments::Dict)
@@ -52,9 +52,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events
 
 
 """
-    using AWSSDK.CloudWatchEvents
-    CloudWatchEvents.describe_event_bus([::AWSConfig], arguments::Dict)
-    CloudWatchEvents.describe_event_bus([::AWSConfig]; )
+    using AWSSDK.CloudWatchEvents.describe_event_bus
+    describe_event_bus([::AWSConfig], arguments::Dict)
+    describe_event_bus([::AWSConfig]; )
 
     using AWSCore.Services.events
     events([::AWSConfig], "DescribeEventBus", arguments::Dict)
@@ -87,9 +87,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events
 
 
 """
-    using AWSSDK.CloudWatchEvents
-    CloudWatchEvents.describe_rule([::AWSConfig], arguments::Dict)
-    CloudWatchEvents.describe_rule([::AWSConfig]; Name=)
+    using AWSSDK.CloudWatchEvents.describe_rule
+    describe_rule([::AWSConfig], arguments::Dict)
+    describe_rule([::AWSConfig]; Name=)
 
     using AWSCore.Services.events
     events([::AWSConfig], "DescribeRule", arguments::Dict)
@@ -126,9 +126,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events
 
 
 """
-    using AWSSDK.CloudWatchEvents
-    CloudWatchEvents.disable_rule([::AWSConfig], arguments::Dict)
-    CloudWatchEvents.disable_rule([::AWSConfig]; Name=)
+    using AWSSDK.CloudWatchEvents.disable_rule
+    disable_rule([::AWSConfig], arguments::Dict)
+    disable_rule([::AWSConfig]; Name=)
 
     using AWSCore.Services.events
     events([::AWSConfig], "DisableRule", arguments::Dict)
@@ -163,9 +163,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events
 
 
 """
-    using AWSSDK.CloudWatchEvents
-    CloudWatchEvents.enable_rule([::AWSConfig], arguments::Dict)
-    CloudWatchEvents.enable_rule([::AWSConfig]; Name=)
+    using AWSSDK.CloudWatchEvents.enable_rule
+    enable_rule([::AWSConfig], arguments::Dict)
+    enable_rule([::AWSConfig]; Name=)
 
     using AWSCore.Services.events
     events([::AWSConfig], "EnableRule", arguments::Dict)
@@ -200,9 +200,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events
 
 
 """
-    using AWSSDK.CloudWatchEvents
-    CloudWatchEvents.list_rule_names_by_target([::AWSConfig], arguments::Dict)
-    CloudWatchEvents.list_rule_names_by_target([::AWSConfig]; TargetArn=, <keyword arguments>)
+    using AWSSDK.CloudWatchEvents.list_rule_names_by_target
+    list_rule_names_by_target([::AWSConfig], arguments::Dict)
+    list_rule_names_by_target([::AWSConfig]; TargetArn=, <keyword arguments>)
 
     using AWSCore.Services.events
     events([::AWSConfig], "ListRuleNamesByTarget", arguments::Dict)
@@ -247,9 +247,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events
 
 
 """
-    using AWSSDK.CloudWatchEvents
-    CloudWatchEvents.list_rules([::AWSConfig], arguments::Dict)
-    CloudWatchEvents.list_rules([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudWatchEvents.list_rules
+    list_rules([::AWSConfig], arguments::Dict)
+    list_rules([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.events
     events([::AWSConfig], "ListRules", arguments::Dict)
@@ -294,9 +294,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events
 
 
 """
-    using AWSSDK.CloudWatchEvents
-    CloudWatchEvents.list_targets_by_rule([::AWSConfig], arguments::Dict)
-    CloudWatchEvents.list_targets_by_rule([::AWSConfig]; Rule=, <keyword arguments>)
+    using AWSSDK.CloudWatchEvents.list_targets_by_rule
+    list_targets_by_rule([::AWSConfig], arguments::Dict)
+    list_targets_by_rule([::AWSConfig]; Rule=, <keyword arguments>)
 
     using AWSCore.Services.events
     events([::AWSConfig], "ListTargetsByRule", arguments::Dict)
@@ -341,9 +341,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events
 
 
 """
-    using AWSSDK.CloudWatchEvents
-    CloudWatchEvents.put_events([::AWSConfig], arguments::Dict)
-    CloudWatchEvents.put_events([::AWSConfig]; Entries=)
+    using AWSSDK.CloudWatchEvents.put_events
+    put_events([::AWSConfig], arguments::Dict)
+    put_events([::AWSConfig]; Entries=)
 
     using AWSCore.Services.events
     events([::AWSConfig], "PutEvents", arguments::Dict)
@@ -388,9 +388,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events
 
 
 """
-    using AWSSDK.CloudWatchEvents
-    CloudWatchEvents.put_permission([::AWSConfig], arguments::Dict)
-    CloudWatchEvents.put_permission([::AWSConfig]; Action=, Principal=, StatementId=)
+    using AWSSDK.CloudWatchEvents.put_permission
+    put_permission([::AWSConfig], arguments::Dict)
+    put_permission([::AWSConfig]; Action=, Principal=, StatementId=)
 
     using AWSCore.Services.events
     events([::AWSConfig], "PutPermission", arguments::Dict)
@@ -437,9 +437,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events
 
 
 """
-    using AWSSDK.CloudWatchEvents
-    CloudWatchEvents.put_rule([::AWSConfig], arguments::Dict)
-    CloudWatchEvents.put_rule([::AWSConfig]; Name=, <keyword arguments>)
+    using AWSSDK.CloudWatchEvents.put_rule
+    put_rule([::AWSConfig], arguments::Dict)
+    put_rule([::AWSConfig]; Name=, <keyword arguments>)
 
     using AWSCore.Services.events
     events([::AWSConfig], "PutRule", arguments::Dict)
@@ -502,9 +502,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events
 
 
 """
-    using AWSSDK.CloudWatchEvents
-    CloudWatchEvents.put_targets([::AWSConfig], arguments::Dict)
-    CloudWatchEvents.put_targets([::AWSConfig]; Rule=, Targets=)
+    using AWSSDK.CloudWatchEvents.put_targets
+    put_targets([::AWSConfig], arguments::Dict)
+    put_targets([::AWSConfig]; Rule=, Targets=)
 
     using AWSCore.Services.events
     events([::AWSConfig], "PutTargets", arguments::Dict)
@@ -610,9 +610,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events
 
 
 """
-    using AWSSDK.CloudWatchEvents
-    CloudWatchEvents.remove_permission([::AWSConfig], arguments::Dict)
-    CloudWatchEvents.remove_permission([::AWSConfig]; StatementId=)
+    using AWSSDK.CloudWatchEvents.remove_permission
+    remove_permission([::AWSConfig], arguments::Dict)
+    remove_permission([::AWSConfig]; StatementId=)
 
     using AWSCore.Services.events
     events([::AWSConfig], "RemovePermission", arguments::Dict)
@@ -645,9 +645,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events
 
 
 """
-    using AWSSDK.CloudWatchEvents
-    CloudWatchEvents.remove_targets([::AWSConfig], arguments::Dict)
-    CloudWatchEvents.remove_targets([::AWSConfig]; Rule=, Ids=)
+    using AWSSDK.CloudWatchEvents.remove_targets
+    remove_targets([::AWSConfig], arguments::Dict)
+    remove_targets([::AWSConfig]; Rule=, Ids=)
 
     using AWSCore.Services.events
     events([::AWSConfig], "RemoveTargets", arguments::Dict)
@@ -692,9 +692,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events
 
 
 """
-    using AWSSDK.CloudWatchEvents
-    CloudWatchEvents.test_event_pattern([::AWSConfig], arguments::Dict)
-    CloudWatchEvents.test_event_pattern([::AWSConfig]; EventPattern=, Event=)
+    using AWSSDK.CloudWatchEvents.test_event_pattern
+    test_event_pattern([::AWSConfig], arguments::Dict)
+    test_event_pattern([::AWSConfig]; EventPattern=, Event=)
 
     using AWSCore.Services.events
     events([::AWSConfig], "TestEventPattern", arguments::Dict)

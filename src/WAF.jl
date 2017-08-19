@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.WAF
-    WAF.create_byte_match_set([::AWSConfig], arguments::Dict)
-    WAF.create_byte_match_set([::AWSConfig]; Name=, ChangeToken=)
+    using AWSSDK.WAF.create_byte_match_set
+    create_byte_match_set([::AWSConfig], arguments::Dict)
+    create_byte_match_set([::AWSConfig]; Name=, ChangeToken=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "CreateByteMatchSet", arguments::Dict)
@@ -68,9 +68,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.create_ipset([::AWSConfig], arguments::Dict)
-    WAF.create_ipset([::AWSConfig]; Name=, ChangeToken=)
+    using AWSSDK.WAF.create_ipset
+    create_ipset([::AWSConfig], arguments::Dict)
+    create_ipset([::AWSConfig]; Name=, ChangeToken=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "CreateIPSet", arguments::Dict)
@@ -152,9 +152,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.create_rate_based_rule([::AWSConfig], arguments::Dict)
-    WAF.create_rate_based_rule([::AWSConfig]; Name=, MetricName=, RateKey=, RateLimit=, ChangeToken=)
+    using AWSSDK.WAF.create_rate_based_rule
+    create_rate_based_rule([::AWSConfig], arguments::Dict)
+    create_rate_based_rule([::AWSConfig]; Name=, MetricName=, RateKey=, RateLimit=, ChangeToken=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "CreateRateBasedRule", arguments::Dict)
@@ -245,9 +245,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.create_rule([::AWSConfig], arguments::Dict)
-    WAF.create_rule([::AWSConfig]; Name=, MetricName=, ChangeToken=)
+    using AWSSDK.WAF.create_rule
+    create_rule([::AWSConfig], arguments::Dict)
+    create_rule([::AWSConfig]; Name=, MetricName=, ChangeToken=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "CreateRule", arguments::Dict)
@@ -346,9 +346,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.create_size_constraint_set([::AWSConfig], arguments::Dict)
-    WAF.create_size_constraint_set([::AWSConfig]; Name=, ChangeToken=)
+    using AWSSDK.WAF.create_size_constraint_set
+    create_size_constraint_set([::AWSConfig], arguments::Dict)
+    create_size_constraint_set([::AWSConfig]; Name=, ChangeToken=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "CreateSizeConstraintSet", arguments::Dict)
@@ -434,9 +434,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.create_sql_injection_match_set([::AWSConfig], arguments::Dict)
-    WAF.create_sql_injection_match_set([::AWSConfig]; Name=, ChangeToken=)
+    using AWSSDK.WAF.create_sql_injection_match_set
+    create_sql_injection_match_set([::AWSConfig], arguments::Dict)
+    create_sql_injection_match_set([::AWSConfig]; Name=, ChangeToken=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "CreateSqlInjectionMatchSet", arguments::Dict)
@@ -520,9 +520,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.create_web_acl([::AWSConfig], arguments::Dict)
-    WAF.create_web_acl([::AWSConfig]; Name=, MetricName=, DefaultAction=, ChangeToken=)
+    using AWSSDK.WAF.create_web_acl
+    create_web_acl([::AWSConfig], arguments::Dict)
+    create_web_acl([::AWSConfig]; Name=, MetricName=, DefaultAction=, ChangeToken=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "CreateWebACL", arguments::Dict)
@@ -629,9 +629,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.create_xss_match_set([::AWSConfig], arguments::Dict)
-    WAF.create_xss_match_set([::AWSConfig]; Name=, ChangeToken=)
+    using AWSSDK.WAF.create_xss_match_set
+    create_xss_match_set([::AWSConfig], arguments::Dict)
+    create_xss_match_set([::AWSConfig]; Name=, ChangeToken=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "CreateXssMatchSet", arguments::Dict)
@@ -715,9 +715,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.delete_byte_match_set([::AWSConfig], arguments::Dict)
-    WAF.delete_byte_match_set([::AWSConfig]; ByteMatchSetId=, ChangeToken=)
+    using AWSSDK.WAF.delete_byte_match_set
+    delete_byte_match_set([::AWSConfig], arguments::Dict)
+    delete_byte_match_set([::AWSConfig]; ByteMatchSetId=, ChangeToken=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "DeleteByteMatchSet", arguments::Dict)
@@ -787,9 +787,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.delete_ipset([::AWSConfig], arguments::Dict)
-    WAF.delete_ipset([::AWSConfig]; IPSetId=, ChangeToken=)
+    using AWSSDK.WAF.delete_ipset
+    delete_ipset([::AWSConfig], arguments::Dict)
+    delete_ipset([::AWSConfig]; IPSetId=, ChangeToken=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "DeleteIPSet", arguments::Dict)
@@ -859,9 +859,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.delete_rate_based_rule([::AWSConfig], arguments::Dict)
-    WAF.delete_rate_based_rule([::AWSConfig]; RuleId=, ChangeToken=)
+    using AWSSDK.WAF.delete_rate_based_rule
+    delete_rate_based_rule([::AWSConfig], arguments::Dict)
+    delete_rate_based_rule([::AWSConfig]; RuleId=, ChangeToken=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "DeleteRateBasedRule", arguments::Dict)
@@ -912,9 +912,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.delete_rule([::AWSConfig], arguments::Dict)
-    WAF.delete_rule([::AWSConfig]; RuleId=, ChangeToken=)
+    using AWSSDK.WAF.delete_rule
+    delete_rule([::AWSConfig], arguments::Dict)
+    delete_rule([::AWSConfig]; RuleId=, ChangeToken=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "DeleteRule", arguments::Dict)
@@ -984,9 +984,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.delete_size_constraint_set([::AWSConfig], arguments::Dict)
-    WAF.delete_size_constraint_set([::AWSConfig]; SizeConstraintSetId=, ChangeToken=)
+    using AWSSDK.WAF.delete_size_constraint_set
+    delete_size_constraint_set([::AWSConfig], arguments::Dict)
+    delete_size_constraint_set([::AWSConfig]; SizeConstraintSetId=, ChangeToken=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "DeleteSizeConstraintSet", arguments::Dict)
@@ -1056,9 +1056,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.delete_sql_injection_match_set([::AWSConfig], arguments::Dict)
-    WAF.delete_sql_injection_match_set([::AWSConfig]; SqlInjectionMatchSetId=, ChangeToken=)
+    using AWSSDK.WAF.delete_sql_injection_match_set
+    delete_sql_injection_match_set([::AWSConfig], arguments::Dict)
+    delete_sql_injection_match_set([::AWSConfig]; SqlInjectionMatchSetId=, ChangeToken=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "DeleteSqlInjectionMatchSet", arguments::Dict)
@@ -1128,9 +1128,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.delete_web_acl([::AWSConfig], arguments::Dict)
-    WAF.delete_web_acl([::AWSConfig]; WebACLId=, ChangeToken=)
+    using AWSSDK.WAF.delete_web_acl
+    delete_web_acl([::AWSConfig], arguments::Dict)
+    delete_web_acl([::AWSConfig]; WebACLId=, ChangeToken=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "DeleteWebACL", arguments::Dict)
@@ -1198,9 +1198,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.delete_xss_match_set([::AWSConfig], arguments::Dict)
-    WAF.delete_xss_match_set([::AWSConfig]; XssMatchSetId=, ChangeToken=)
+    using AWSSDK.WAF.delete_xss_match_set
+    delete_xss_match_set([::AWSConfig], arguments::Dict)
+    delete_xss_match_set([::AWSConfig]; XssMatchSetId=, ChangeToken=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "DeleteXssMatchSet", arguments::Dict)
@@ -1270,9 +1270,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.get_byte_match_set([::AWSConfig], arguments::Dict)
-    WAF.get_byte_match_set([::AWSConfig]; ByteMatchSetId=)
+    using AWSSDK.WAF.get_byte_match_set
+    get_byte_match_set([::AWSConfig], arguments::Dict)
+    get_byte_match_set([::AWSConfig]; ByteMatchSetId=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "GetByteMatchSet", arguments::Dict)
@@ -1341,9 +1341,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.get_change_token([::AWSConfig], arguments::Dict)
-    WAF.get_change_token([::AWSConfig]; )
+    using AWSSDK.WAF.get_change_token
+    get_change_token([::AWSConfig], arguments::Dict)
+    get_change_token([::AWSConfig]; )
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "GetChangeToken", arguments::Dict)
@@ -1398,9 +1398,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.get_change_token_status([::AWSConfig], arguments::Dict)
-    WAF.get_change_token_status([::AWSConfig]; ChangeToken=)
+    using AWSSDK.WAF.get_change_token_status
+    get_change_token_status([::AWSConfig], arguments::Dict)
+    get_change_token_status([::AWSConfig]; ChangeToken=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "GetChangeTokenStatus", arguments::Dict)
@@ -1461,9 +1461,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.get_ipset([::AWSConfig], arguments::Dict)
-    WAF.get_ipset([::AWSConfig]; IPSetId=)
+    using AWSSDK.WAF.get_ipset
+    get_ipset([::AWSConfig], arguments::Dict)
+    get_ipset([::AWSConfig]; IPSetId=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "GetIPSet", arguments::Dict)
@@ -1527,9 +1527,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.get_rate_based_rule([::AWSConfig], arguments::Dict)
-    WAF.get_rate_based_rule([::AWSConfig]; RuleId=)
+    using AWSSDK.WAF.get_rate_based_rule
+    get_rate_based_rule([::AWSConfig], arguments::Dict)
+    get_rate_based_rule([::AWSConfig]; RuleId=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "GetRateBasedRule", arguments::Dict)
@@ -1566,9 +1566,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.get_rate_based_rule_managed_keys([::AWSConfig], arguments::Dict)
-    WAF.get_rate_based_rule_managed_keys([::AWSConfig]; RuleId=, <keyword arguments>)
+    using AWSSDK.WAF.get_rate_based_rule_managed_keys
+    get_rate_based_rule_managed_keys([::AWSConfig], arguments::Dict)
+    get_rate_based_rule_managed_keys([::AWSConfig]; RuleId=, <keyword arguments>)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "GetRateBasedRuleManagedKeys", arguments::Dict)
@@ -1609,9 +1609,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.get_rule([::AWSConfig], arguments::Dict)
-    WAF.get_rule([::AWSConfig]; RuleId=)
+    using AWSSDK.WAF.get_rule
+    get_rule([::AWSConfig], arguments::Dict)
+    get_rule([::AWSConfig]; RuleId=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "GetRule", arguments::Dict)
@@ -1677,9 +1677,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.get_sampled_requests([::AWSConfig], arguments::Dict)
-    WAF.get_sampled_requests([::AWSConfig]; WebAclId=, RuleId=, TimeWindow=, MaxItems=)
+    using AWSSDK.WAF.get_sampled_requests
+    get_sampled_requests([::AWSConfig], arguments::Dict)
+    get_sampled_requests([::AWSConfig]; WebAclId=, RuleId=, TimeWindow=, MaxItems=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "GetSampledRequests", arguments::Dict)
@@ -1786,9 +1786,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.get_size_constraint_set([::AWSConfig], arguments::Dict)
-    WAF.get_size_constraint_set([::AWSConfig]; SizeConstraintSetId=)
+    using AWSSDK.WAF.get_size_constraint_set
+    get_size_constraint_set([::AWSConfig], arguments::Dict)
+    get_size_constraint_set([::AWSConfig]; SizeConstraintSetId=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "GetSizeConstraintSet", arguments::Dict)
@@ -1856,9 +1856,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.get_sql_injection_match_set([::AWSConfig], arguments::Dict)
-    WAF.get_sql_injection_match_set([::AWSConfig]; SqlInjectionMatchSetId=)
+    using AWSSDK.WAF.get_sql_injection_match_set
+    get_sql_injection_match_set([::AWSConfig], arguments::Dict)
+    get_sql_injection_match_set([::AWSConfig]; SqlInjectionMatchSetId=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "GetSqlInjectionMatchSet", arguments::Dict)
@@ -1924,9 +1924,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.get_web_acl([::AWSConfig], arguments::Dict)
-    WAF.get_web_acl([::AWSConfig]; WebACLId=)
+    using AWSSDK.WAF.get_web_acl
+    get_web_acl([::AWSConfig], arguments::Dict)
+    get_web_acl([::AWSConfig]; WebACLId=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "GetWebACL", arguments::Dict)
@@ -1997,9 +1997,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.get_xss_match_set([::AWSConfig], arguments::Dict)
-    WAF.get_xss_match_set([::AWSConfig]; XssMatchSetId=)
+    using AWSSDK.WAF.get_xss_match_set
+    get_xss_match_set([::AWSConfig], arguments::Dict)
+    get_xss_match_set([::AWSConfig]; XssMatchSetId=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "GetXssMatchSet", arguments::Dict)
@@ -2065,9 +2065,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.list_byte_match_sets([::AWSConfig], arguments::Dict)
-    WAF.list_byte_match_sets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WAF.list_byte_match_sets
+    list_byte_match_sets([::AWSConfig], arguments::Dict)
+    list_byte_match_sets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "ListByteMatchSets", arguments::Dict)
@@ -2108,9 +2108,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.list_ipsets([::AWSConfig], arguments::Dict)
-    WAF.list_ipsets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WAF.list_ipsets
+    list_ipsets([::AWSConfig], arguments::Dict)
+    list_ipsets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "ListIPSets", arguments::Dict)
@@ -2174,9 +2174,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.list_rate_based_rules([::AWSConfig], arguments::Dict)
-    WAF.list_rate_based_rules([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WAF.list_rate_based_rules
+    list_rate_based_rules([::AWSConfig], arguments::Dict)
+    list_rate_based_rules([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "ListRateBasedRules", arguments::Dict)
@@ -2217,9 +2217,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.list_rules([::AWSConfig], arguments::Dict)
-    WAF.list_rules([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WAF.list_rules
+    list_rules([::AWSConfig], arguments::Dict)
+    list_rules([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "ListRules", arguments::Dict)
@@ -2283,9 +2283,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.list_size_constraint_sets([::AWSConfig], arguments::Dict)
-    WAF.list_size_constraint_sets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WAF.list_size_constraint_sets
+    list_size_constraint_sets([::AWSConfig], arguments::Dict)
+    list_size_constraint_sets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "ListSizeConstraintSets", arguments::Dict)
@@ -2349,9 +2349,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.list_sql_injection_match_sets([::AWSConfig], arguments::Dict)
-    WAF.list_sql_injection_match_sets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WAF.list_sql_injection_match_sets
+    list_sql_injection_match_sets([::AWSConfig], arguments::Dict)
+    list_sql_injection_match_sets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "ListSqlInjectionMatchSets", arguments::Dict)
@@ -2415,9 +2415,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.list_web_acls([::AWSConfig], arguments::Dict)
-    WAF.list_web_acls([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WAF.list_web_acls
+    list_web_acls([::AWSConfig], arguments::Dict)
+    list_web_acls([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "ListWebACLs", arguments::Dict)
@@ -2481,9 +2481,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.list_xss_match_sets([::AWSConfig], arguments::Dict)
-    WAF.list_xss_match_sets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WAF.list_xss_match_sets
+    list_xss_match_sets([::AWSConfig], arguments::Dict)
+    list_xss_match_sets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "ListXssMatchSets", arguments::Dict)
@@ -2547,9 +2547,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.update_byte_match_set([::AWSConfig], arguments::Dict)
-    WAF.update_byte_match_set([::AWSConfig]; ByteMatchSetId=, ChangeToken=, Updates=)
+    using AWSSDK.WAF.update_byte_match_set
+    update_byte_match_set([::AWSConfig], arguments::Dict)
+    update_byte_match_set([::AWSConfig]; ByteMatchSetId=, ChangeToken=, Updates=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "UpdateByteMatchSet", arguments::Dict)
@@ -2668,9 +2668,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.update_ipset([::AWSConfig], arguments::Dict)
-    WAF.update_ipset([::AWSConfig]; IPSetId=, ChangeToken=, Updates=)
+    using AWSSDK.WAF.update_ipset
+    update_ipset([::AWSConfig], arguments::Dict)
+    update_ipset([::AWSConfig]; IPSetId=, ChangeToken=, Updates=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "UpdateIPSet", arguments::Dict)
@@ -2787,9 +2787,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.update_rate_based_rule([::AWSConfig], arguments::Dict)
-    WAF.update_rate_based_rule([::AWSConfig]; RuleId=, ChangeToken=, Updates=, RateLimit=)
+    using AWSSDK.WAF.update_rate_based_rule
+    update_rate_based_rule([::AWSConfig], arguments::Dict)
+    update_rate_based_rule([::AWSConfig]; RuleId=, ChangeToken=, Updates=, RateLimit=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "UpdateRateBasedRule", arguments::Dict)
@@ -2871,9 +2871,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.update_rule([::AWSConfig], arguments::Dict)
-    WAF.update_rule([::AWSConfig]; RuleId=, ChangeToken=, Updates=)
+    using AWSSDK.WAF.update_rule
+    update_rule([::AWSConfig], arguments::Dict)
+    update_rule([::AWSConfig]; RuleId=, ChangeToken=, Updates=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "UpdateRule", arguments::Dict)
@@ -2984,9 +2984,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.update_size_constraint_set([::AWSConfig], arguments::Dict)
-    WAF.update_size_constraint_set([::AWSConfig]; SizeConstraintSetId=, ChangeToken=, Updates=)
+    using AWSSDK.WAF.update_size_constraint_set
+    update_size_constraint_set([::AWSConfig], arguments::Dict)
+    update_size_constraint_set([::AWSConfig]; SizeConstraintSetId=, ChangeToken=, Updates=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "UpdateSizeConstraintSet", arguments::Dict)
@@ -3104,9 +3104,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.update_sql_injection_match_set([::AWSConfig], arguments::Dict)
-    WAF.update_sql_injection_match_set([::AWSConfig]; SqlInjectionMatchSetId=, ChangeToken=, Updates=)
+    using AWSSDK.WAF.update_sql_injection_match_set
+    update_sql_injection_match_set([::AWSConfig], arguments::Dict)
+    update_sql_injection_match_set([::AWSConfig]; SqlInjectionMatchSetId=, ChangeToken=, Updates=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "UpdateSqlInjectionMatchSet", arguments::Dict)
@@ -3216,9 +3216,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.update_web_acl([::AWSConfig], arguments::Dict)
-    WAF.update_web_acl([::AWSConfig]; WebACLId=, ChangeToken=, <keyword arguments>)
+    using AWSSDK.WAF.update_web_acl
+    update_web_acl([::AWSConfig], arguments::Dict)
+    update_web_acl([::AWSConfig]; WebACLId=, ChangeToken=, <keyword arguments>)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "UpdateWebACL", arguments::Dict)
@@ -3343,9 +3343,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-20
 
 
 """
-    using AWSSDK.WAF
-    WAF.update_xss_match_set([::AWSConfig], arguments::Dict)
-    WAF.update_xss_match_set([::AWSConfig]; XssMatchSetId=, ChangeToken=, Updates=)
+    using AWSSDK.WAF.update_xss_match_set
+    update_xss_match_set([::AWSConfig], arguments::Dict)
+    update_xss_match_set([::AWSConfig]; XssMatchSetId=, ChangeToken=, Updates=)
 
     using AWSCore.Services.waf
     waf([::AWSConfig], "UpdateXssMatchSet", arguments::Dict)

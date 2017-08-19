@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.add_permission([::AWSConfig], arguments::Dict)
-    Lambda.add_permission([::AWSConfig]; FunctionName=, StatementId=, Action=, Principal=, <keyword arguments>)
+    using AWSSDK.Lambda.add_permission
+    add_permission([::AWSConfig], arguments::Dict)
+    add_permission([::AWSConfig]; FunctionName=, StatementId=, Action=, Principal=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "POST", "/2015-03-31/functions/{FunctionName}/policy", arguments::Dict)
@@ -124,9 +124,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.create_alias([::AWSConfig], arguments::Dict)
-    Lambda.create_alias([::AWSConfig]; FunctionName=, Name=, FunctionVersion=, <keyword arguments>)
+    using AWSSDK.Lambda.create_alias
+    create_alias([::AWSConfig], arguments::Dict)
+    create_alias([::AWSConfig]; FunctionName=, Name=, FunctionVersion=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "POST", "/2015-03-31/functions/{FunctionName}/aliases", arguments::Dict)
@@ -177,9 +177,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.create_event_source_mapping([::AWSConfig], arguments::Dict)
-    Lambda.create_event_source_mapping([::AWSConfig]; EventSourceArn=, FunctionName=, StartingPosition=, <keyword arguments>)
+    using AWSSDK.Lambda.create_event_source_mapping
+    create_event_source_mapping([::AWSConfig], arguments::Dict)
+    create_event_source_mapping([::AWSConfig]; EventSourceArn=, FunctionName=, StartingPosition=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "POST", "/2015-03-31/event-source-mappings/", arguments::Dict)
@@ -257,9 +257,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.create_function([::AWSConfig], arguments::Dict)
-    Lambda.create_function([::AWSConfig]; FunctionName=, Runtime=, Role=, Handler=, Code=, <keyword arguments>)
+    using AWSSDK.Lambda.create_function
+    create_function([::AWSConfig], arguments::Dict)
+    create_function([::AWSConfig]; FunctionName=, Runtime=, Role=, Handler=, Code=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "POST", "/2015-03-31/functions", arguments::Dict)
@@ -418,9 +418,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.delete_alias([::AWSConfig], arguments::Dict)
-    Lambda.delete_alias([::AWSConfig]; FunctionName=, Name=)
+    using AWSSDK.Lambda.delete_alias
+    delete_alias([::AWSConfig], arguments::Dict)
+    delete_alias([::AWSConfig]; FunctionName=, Name=)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "DELETE", "/2015-03-31/functions/{FunctionName}/aliases/{Name}", arguments::Dict)
@@ -471,9 +471,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.delete_event_source_mapping([::AWSConfig], arguments::Dict)
-    Lambda.delete_event_source_mapping([::AWSConfig]; UUID=)
+    using AWSSDK.Lambda.delete_event_source_mapping
+    delete_event_source_mapping([::AWSConfig], arguments::Dict)
+    delete_event_source_mapping([::AWSConfig]; UUID=)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "DELETE", "/2015-03-31/event-source-mappings/{UUID}", arguments::Dict)
@@ -537,9 +537,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.delete_function([::AWSConfig], arguments::Dict)
-    Lambda.delete_function([::AWSConfig]; FunctionName=, <keyword arguments>)
+    using AWSSDK.Lambda.delete_function
+    delete_function([::AWSConfig], arguments::Dict)
+    delete_function([::AWSConfig]; FunctionName=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "DELETE", "/2015-03-31/functions/{FunctionName}", arguments::Dict)
@@ -600,9 +600,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.get_account_settings([::AWSConfig], arguments::Dict)
-    Lambda.get_account_settings([::AWSConfig]; )
+    using AWSSDK.Lambda.get_account_settings
+    get_account_settings([::AWSConfig], arguments::Dict)
+    get_account_settings([::AWSConfig]; )
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "GET", "/2016-08-19/account-settings/", arguments::Dict)
@@ -660,9 +660,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.get_alias([::AWSConfig], arguments::Dict)
-    Lambda.get_alias([::AWSConfig]; FunctionName=, Name=)
+    using AWSSDK.Lambda.get_alias
+    get_alias([::AWSConfig], arguments::Dict)
+    get_alias([::AWSConfig]; FunctionName=, Name=)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "GET", "/2015-03-31/functions/{FunctionName}/aliases/{Name}", arguments::Dict)
@@ -727,9 +727,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.get_event_source_mapping([::AWSConfig], arguments::Dict)
-    Lambda.get_event_source_mapping([::AWSConfig]; UUID=)
+    using AWSSDK.Lambda.get_event_source_mapping
+    get_event_source_mapping([::AWSConfig], arguments::Dict)
+    get_event_source_mapping([::AWSConfig]; UUID=)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "GET", "/2015-03-31/event-source-mappings/{UUID}", arguments::Dict)
@@ -793,9 +793,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.get_function([::AWSConfig], arguments::Dict)
-    Lambda.get_function([::AWSConfig]; FunctionName=, <keyword arguments>)
+    using AWSSDK.Lambda.get_function
+    get_function([::AWSConfig], arguments::Dict)
+    get_function([::AWSConfig]; FunctionName=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "GET", "/2015-03-31/functions/{FunctionName}", arguments::Dict)
@@ -891,9 +891,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.get_function_configuration([::AWSConfig], arguments::Dict)
-    Lambda.get_function_configuration([::AWSConfig]; FunctionName=, <keyword arguments>)
+    using AWSSDK.Lambda.get_function_configuration
+    get_function_configuration([::AWSConfig], arguments::Dict)
+    get_function_configuration([::AWSConfig]; FunctionName=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "GET", "/2015-03-31/functions/{FunctionName}/configuration", arguments::Dict)
@@ -982,9 +982,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.get_policy([::AWSConfig], arguments::Dict)
-    Lambda.get_policy([::AWSConfig]; FunctionName=, <keyword arguments>)
+    using AWSSDK.Lambda.get_policy
+    get_policy([::AWSConfig], arguments::Dict)
+    get_policy([::AWSConfig]; FunctionName=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "GET", "/2015-03-31/functions/{FunctionName}/policy", arguments::Dict)
@@ -1050,9 +1050,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.invoke([::AWSConfig], arguments::Dict)
-    Lambda.invoke([::AWSConfig]; FunctionName=, <keyword arguments>)
+    using AWSSDK.Lambda.invoke
+    invoke([::AWSConfig], arguments::Dict)
+    invoke([::AWSConfig]; FunctionName=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "POST", "/2015-03-31/functions/{FunctionName}/invocations", arguments::Dict)
@@ -1145,9 +1145,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.invoke_async([::AWSConfig], arguments::Dict)
-    Lambda.invoke_async([::AWSConfig]; FunctionName=, InvokeArgs=)
+    using AWSSDK.Lambda.invoke_async
+    invoke_async([::AWSConfig], arguments::Dict)
+    invoke_async([::AWSConfig]; FunctionName=, InvokeArgs=)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "POST", "/2014-11-13/functions/{FunctionName}/invoke-async/", arguments::Dict)
@@ -1213,9 +1213,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.list_aliases([::AWSConfig], arguments::Dict)
-    Lambda.list_aliases([::AWSConfig]; FunctionName=, <keyword arguments>)
+    using AWSSDK.Lambda.list_aliases
+    list_aliases([::AWSConfig], arguments::Dict)
+    list_aliases([::AWSConfig]; FunctionName=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "GET", "/2015-03-31/functions/{FunctionName}/aliases", arguments::Dict)
@@ -1290,9 +1290,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.list_event_source_mappings([::AWSConfig], arguments::Dict)
-    Lambda.list_event_source_mappings([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Lambda.list_event_source_mappings
+    list_event_source_mappings([::AWSConfig], arguments::Dict)
+    list_event_source_mappings([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "GET", "/2015-03-31/event-source-mappings/", arguments::Dict)
@@ -1349,9 +1349,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.list_functions([::AWSConfig], arguments::Dict)
-    Lambda.list_functions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Lambda.list_functions
+    list_functions([::AWSConfig], arguments::Dict)
+    list_functions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "GET", "/2015-03-31/functions/", arguments::Dict)
@@ -1436,9 +1436,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.list_tags([::AWSConfig], arguments::Dict)
-    Lambda.list_tags([::AWSConfig]; ARN=)
+    using AWSSDK.Lambda.list_tags
+    list_tags([::AWSConfig], arguments::Dict)
+    list_tags([::AWSConfig]; ARN=)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "GET", "/2017-03-31/tags/{ARN}", arguments::Dict)
@@ -1475,9 +1475,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.list_versions_by_function([::AWSConfig], arguments::Dict)
-    Lambda.list_versions_by_function([::AWSConfig]; FunctionName=, <keyword arguments>)
+    using AWSSDK.Lambda.list_versions_by_function
+    list_versions_by_function([::AWSConfig], arguments::Dict)
+    list_versions_by_function([::AWSConfig]; FunctionName=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "GET", "/2015-03-31/functions/{FunctionName}/versions", arguments::Dict)
@@ -1545,9 +1545,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.publish_version([::AWSConfig], arguments::Dict)
-    Lambda.publish_version([::AWSConfig]; FunctionName=, <keyword arguments>)
+    using AWSSDK.Lambda.publish_version
+    publish_version([::AWSConfig], arguments::Dict)
+    publish_version([::AWSConfig]; FunctionName=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "POST", "/2015-03-31/functions/{FunctionName}/versions", arguments::Dict)
@@ -1626,9 +1626,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.remove_permission([::AWSConfig], arguments::Dict)
-    Lambda.remove_permission([::AWSConfig]; FunctionName=, StatementId=, <keyword arguments>)
+    using AWSSDK.Lambda.remove_permission
+    remove_permission([::AWSConfig], arguments::Dict)
+    remove_permission([::AWSConfig]; FunctionName=, StatementId=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "DELETE", "/2015-03-31/functions/{FunctionName}/policy/{StatementId}", arguments::Dict)
@@ -1690,9 +1690,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.tag_resource([::AWSConfig], arguments::Dict)
-    Lambda.tag_resource([::AWSConfig]; ARN=, Tags=)
+    using AWSSDK.Lambda.tag_resource
+    tag_resource([::AWSConfig], arguments::Dict)
+    tag_resource([::AWSConfig]; ARN=, Tags=)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "POST", "/2017-03-31/tags/{ARN}", arguments::Dict)
@@ -1729,9 +1729,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.untag_resource([::AWSConfig], arguments::Dict)
-    Lambda.untag_resource([::AWSConfig]; ARN=, tagKeys=)
+    using AWSSDK.Lambda.untag_resource
+    untag_resource([::AWSConfig], arguments::Dict)
+    untag_resource([::AWSConfig]; ARN=, tagKeys=)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "DELETE", "/2017-03-31/tags/{ARN}", arguments::Dict)
@@ -1768,9 +1768,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.update_alias([::AWSConfig], arguments::Dict)
-    Lambda.update_alias([::AWSConfig]; FunctionName=, Name=, <keyword arguments>)
+    using AWSSDK.Lambda.update_alias
+    update_alias([::AWSConfig], arguments::Dict)
+    update_alias([::AWSConfig]; FunctionName=, Name=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "PUT", "/2015-03-31/functions/{FunctionName}/aliases/{Name}", arguments::Dict)
@@ -1845,9 +1845,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.update_event_source_mapping([::AWSConfig], arguments::Dict)
-    Lambda.update_event_source_mapping([::AWSConfig]; UUID=, <keyword arguments>)
+    using AWSSDK.Lambda.update_event_source_mapping
+    update_event_source_mapping([::AWSConfig], arguments::Dict)
+    update_event_source_mapping([::AWSConfig]; UUID=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "PUT", "/2015-03-31/event-source-mappings/{UUID}", arguments::Dict)
@@ -1936,9 +1936,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.update_function_code([::AWSConfig], arguments::Dict)
-    Lambda.update_function_code([::AWSConfig]; FunctionName=, <keyword arguments>)
+    using AWSSDK.Lambda.update_function_code
+    update_function_code([::AWSConfig], arguments::Dict)
+    update_function_code([::AWSConfig]; FunctionName=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "PUT", "/2015-03-31/functions/{FunctionName}/code", arguments::Dict)
@@ -2042,9 +2042,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 
 """
-    using AWSSDK.Lambda
-    Lambda.update_function_configuration([::AWSConfig], arguments::Dict)
-    Lambda.update_function_configuration([::AWSConfig]; FunctionName=, <keyword arguments>)
+    using AWSSDK.Lambda.update_function_configuration
+    update_function_configuration([::AWSConfig], arguments::Dict)
+    update_function_configuration([::AWSConfig]; FunctionName=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "PUT", "/2015-03-31/functions/{FunctionName}/configuration", arguments::Dict)

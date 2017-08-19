@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.XRay
-    XRay.batch_get_traces([::AWSConfig], arguments::Dict)
-    XRay.batch_get_traces([::AWSConfig]; TraceIds=, <keyword arguments>)
+    using AWSSDK.XRay.batch_get_traces
+    batch_get_traces([::AWSConfig], arguments::Dict)
+    batch_get_traces([::AWSConfig]; TraceIds=, <keyword arguments>)
 
     using AWSCore.Services.xray
     xray([::AWSConfig], "POST", "/Traces", arguments::Dict)
@@ -56,9 +56,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/xray-2
 
 
 """
-    using AWSSDK.XRay
-    XRay.get_service_graph([::AWSConfig], arguments::Dict)
-    XRay.get_service_graph([::AWSConfig]; StartTime=, EndTime=, <keyword arguments>)
+    using AWSSDK.XRay.get_service_graph
+    get_service_graph([::AWSConfig], arguments::Dict)
+    get_service_graph([::AWSConfig]; StartTime=, EndTime=, <keyword arguments>)
 
     using AWSCore.Services.xray
     xray([::AWSConfig], "POST", "/ServiceGraph", arguments::Dict)
@@ -103,9 +103,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/xray-2
 
 
 """
-    using AWSSDK.XRay
-    XRay.get_trace_graph([::AWSConfig], arguments::Dict)
-    XRay.get_trace_graph([::AWSConfig]; TraceIds=, <keyword arguments>)
+    using AWSSDK.XRay.get_trace_graph
+    get_trace_graph([::AWSConfig], arguments::Dict)
+    get_trace_graph([::AWSConfig]; TraceIds=, <keyword arguments>)
 
     using AWSCore.Services.xray
     xray([::AWSConfig], "POST", "/TraceGraph", arguments::Dict)
@@ -146,9 +146,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/xray-2
 
 
 """
-    using AWSSDK.XRay
-    XRay.get_trace_summaries([::AWSConfig], arguments::Dict)
-    XRay.get_trace_summaries([::AWSConfig]; StartTime=, EndTime=, <keyword arguments>)
+    using AWSSDK.XRay.get_trace_summaries
+    get_trace_summaries([::AWSConfig], arguments::Dict)
+    get_trace_summaries([::AWSConfig]; StartTime=, EndTime=, <keyword arguments>)
 
     using AWSCore.Services.xray
     xray([::AWSConfig], "POST", "/TraceSummaries", arguments::Dict)
@@ -211,9 +211,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/xray-2
 
 
 """
-    using AWSSDK.XRay
-    XRay.put_telemetry_records([::AWSConfig], arguments::Dict)
-    XRay.put_telemetry_records([::AWSConfig]; TelemetryRecords=, <keyword arguments>)
+    using AWSSDK.XRay.put_telemetry_records
+    put_telemetry_records([::AWSConfig], arguments::Dict)
+    put_telemetry_records([::AWSConfig]; TelemetryRecords=, <keyword arguments>)
 
     using AWSCore.Services.xray
     xray([::AWSConfig], "POST", "/TelemetryRecords", arguments::Dict)
@@ -278,9 +278,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/xray-2
 
 
 """
-    using AWSSDK.XRay
-    XRay.put_trace_segments([::AWSConfig], arguments::Dict)
-    XRay.put_trace_segments([::AWSConfig]; TraceSegmentDocuments=)
+    using AWSSDK.XRay.put_trace_segments
+    put_trace_segments([::AWSConfig], arguments::Dict)
+    put_trace_segments([::AWSConfig]; TraceSegmentDocuments=)
 
     using AWSCore.Services.xray
     xray([::AWSConfig], "POST", "/TraceSegments", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.attach_instances([::AWSConfig], arguments::Dict)
-    AutoScaling.attach_instances([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
+    using AWSSDK.AutoScaling.attach_instances
+    attach_instances([::AWSConfig], arguments::Dict)
+    attach_instances([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "AttachInstances", arguments::Dict)
@@ -72,9 +72,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.attach_load_balancer_target_groups([::AWSConfig], arguments::Dict)
-    AutoScaling.attach_load_balancer_target_groups([::AWSConfig]; AutoScalingGroupName=, TargetGroupARNs=)
+    using AWSSDK.AutoScaling.attach_load_balancer_target_groups
+    attach_load_balancer_target_groups([::AWSConfig], arguments::Dict)
+    attach_load_balancer_target_groups([::AWSConfig]; AutoScalingGroupName=, TargetGroupARNs=)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "AttachLoadBalancerTargetGroups", arguments::Dict)
@@ -133,9 +133,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.attach_load_balancers([::AWSConfig], arguments::Dict)
-    AutoScaling.attach_load_balancers([::AWSConfig]; AutoScalingGroupName=, LoadBalancerNames=)
+    using AWSSDK.AutoScaling.attach_load_balancers
+    attach_load_balancers([::AWSConfig], arguments::Dict)
+    attach_load_balancers([::AWSConfig]; AutoScalingGroupName=, LoadBalancerNames=)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "AttachLoadBalancers", arguments::Dict)
@@ -196,9 +196,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.complete_lifecycle_action([::AWSConfig], arguments::Dict)
-    AutoScaling.complete_lifecycle_action([::AWSConfig]; LifecycleHookName=, AutoScalingGroupName=, LifecycleActionResult=, <keyword arguments>)
+    using AWSSDK.AutoScaling.complete_lifecycle_action
+    complete_lifecycle_action([::AWSConfig], arguments::Dict)
+    complete_lifecycle_action([::AWSConfig]; LifecycleHookName=, AutoScalingGroupName=, LifecycleActionResult=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "CompleteLifecycleAction", arguments::Dict)
@@ -279,9 +279,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.create_auto_scaling_group([::AWSConfig], arguments::Dict)
-    AutoScaling.create_auto_scaling_group([::AWSConfig]; AutoScalingGroupName=, MinSize=, MaxSize=, <keyword arguments>)
+    using AWSSDK.AutoScaling.create_auto_scaling_group
+    create_auto_scaling_group([::AWSConfig], arguments::Dict)
+    create_auto_scaling_group([::AWSConfig]; AutoScalingGroupName=, MinSize=, MaxSize=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "CreateAutoScalingGroup", arguments::Dict)
@@ -469,9 +469,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.create_launch_configuration([::AWSConfig], arguments::Dict)
-    AutoScaling.create_launch_configuration([::AWSConfig]; LaunchConfigurationName=, <keyword arguments>)
+    using AWSSDK.AutoScaling.create_launch_configuration
+    create_launch_configuration([::AWSConfig], arguments::Dict)
+    create_launch_configuration([::AWSConfig]; LaunchConfigurationName=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "CreateLaunchConfiguration", arguments::Dict)
@@ -631,9 +631,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.create_or_update_tags([::AWSConfig], arguments::Dict)
-    AutoScaling.create_or_update_tags([::AWSConfig]; Tags=)
+    using AWSSDK.AutoScaling.create_or_update_tags
+    create_or_update_tags([::AWSConfig], arguments::Dict)
+    create_or_update_tags([::AWSConfig]; Tags=)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "CreateOrUpdateTags", arguments::Dict)
@@ -704,9 +704,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.delete_auto_scaling_group([::AWSConfig], arguments::Dict)
-    AutoScaling.delete_auto_scaling_group([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
+    using AWSSDK.AutoScaling.delete_auto_scaling_group
+    delete_auto_scaling_group([::AWSConfig], arguments::Dict)
+    delete_auto_scaling_group([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DeleteAutoScalingGroup", arguments::Dict)
@@ -774,9 +774,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.delete_launch_configuration([::AWSConfig], arguments::Dict)
-    AutoScaling.delete_launch_configuration([::AWSConfig]; LaunchConfigurationName=)
+    using AWSSDK.AutoScaling.delete_launch_configuration
+    delete_launch_configuration([::AWSConfig], arguments::Dict)
+    delete_launch_configuration([::AWSConfig]; LaunchConfigurationName=)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DeleteLaunchConfiguration", arguments::Dict)
@@ -822,9 +822,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.delete_lifecycle_hook([::AWSConfig], arguments::Dict)
-    AutoScaling.delete_lifecycle_hook([::AWSConfig]; LifecycleHookName=, AutoScalingGroupName=)
+    using AWSSDK.AutoScaling.delete_lifecycle_hook
+    delete_lifecycle_hook([::AWSConfig], arguments::Dict)
+    delete_lifecycle_hook([::AWSConfig]; LifecycleHookName=, AutoScalingGroupName=)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DeleteLifecycleHook", arguments::Dict)
@@ -879,9 +879,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.delete_notification_configuration([::AWSConfig], arguments::Dict)
-    AutoScaling.delete_notification_configuration([::AWSConfig]; AutoScalingGroupName=, TopicARN=)
+    using AWSSDK.AutoScaling.delete_notification_configuration
+    delete_notification_configuration([::AWSConfig], arguments::Dict)
+    delete_notification_configuration([::AWSConfig]; AutoScalingGroupName=, TopicARN=)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DeleteNotificationConfiguration", arguments::Dict)
@@ -930,9 +930,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.delete_policy([::AWSConfig], arguments::Dict)
-    AutoScaling.delete_policy([::AWSConfig]; PolicyName=, <keyword arguments>)
+    using AWSSDK.AutoScaling.delete_policy
+    delete_policy([::AWSConfig], arguments::Dict)
+    delete_policy([::AWSConfig]; PolicyName=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DeletePolicy", arguments::Dict)
@@ -983,9 +983,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.delete_scheduled_action([::AWSConfig], arguments::Dict)
-    AutoScaling.delete_scheduled_action([::AWSConfig]; AutoScalingGroupName=, ScheduledActionName=)
+    using AWSSDK.AutoScaling.delete_scheduled_action
+    delete_scheduled_action([::AWSConfig], arguments::Dict)
+    delete_scheduled_action([::AWSConfig]; AutoScalingGroupName=, ScheduledActionName=)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DeleteScheduledAction", arguments::Dict)
@@ -1034,9 +1034,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.delete_tags([::AWSConfig], arguments::Dict)
-    AutoScaling.delete_tags([::AWSConfig]; Tags=)
+    using AWSSDK.AutoScaling.delete_tags
+    delete_tags([::AWSConfig], arguments::Dict)
+    delete_tags([::AWSConfig]; Tags=)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DeleteTags", arguments::Dict)
@@ -1095,9 +1095,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_account_limits([::AWSConfig])
-    AutoScaling.
+    using AWSSDK.AutoScaling.describe_account_limits
+    describe_account_limits([::AWSConfig])
+    
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribeAccountLimits",)
@@ -1142,9 +1142,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_adjustment_types([::AWSConfig])
-    AutoScaling.
+    using AWSSDK.AutoScaling.describe_adjustment_types
+    describe_adjustment_types([::AWSConfig])
+    
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribeAdjustmentTypes",)
@@ -1194,9 +1194,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_auto_scaling_groups([::AWSConfig], arguments::Dict)
-    AutoScaling.describe_auto_scaling_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.AutoScaling.describe_auto_scaling_groups
+    describe_auto_scaling_groups([::AWSConfig], arguments::Dict)
+    describe_auto_scaling_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribeAutoScalingGroups", arguments::Dict)
@@ -1304,9 +1304,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_auto_scaling_instances([::AWSConfig], arguments::Dict)
-    AutoScaling.describe_auto_scaling_instances([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.AutoScaling.describe_auto_scaling_instances
+    describe_auto_scaling_instances([::AWSConfig], arguments::Dict)
+    describe_auto_scaling_instances([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribeAutoScalingInstances", arguments::Dict)
@@ -1381,9 +1381,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_auto_scaling_notification_types([::AWSConfig])
-    AutoScaling.
+    using AWSSDK.AutoScaling.describe_auto_scaling_notification_types
+    describe_auto_scaling_notification_types([::AWSConfig])
+    
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribeAutoScalingNotificationTypes",)
@@ -1429,9 +1429,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_launch_configurations([::AWSConfig], arguments::Dict)
-    AutoScaling.describe_launch_configurations([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.AutoScaling.describe_launch_configurations
+    describe_launch_configurations([::AWSConfig], arguments::Dict)
+    describe_launch_configurations([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribeLaunchConfigurations", arguments::Dict)
@@ -1515,9 +1515,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_lifecycle_hook_types([::AWSConfig])
-    AutoScaling.
+    using AWSSDK.AutoScaling.describe_lifecycle_hook_types
+    describe_lifecycle_hook_types([::AWSConfig])
+    
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribeLifecycleHookTypes",)
@@ -1560,9 +1560,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_lifecycle_hooks([::AWSConfig], arguments::Dict)
-    AutoScaling.describe_lifecycle_hooks([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
+    using AWSSDK.AutoScaling.describe_lifecycle_hooks
+    describe_lifecycle_hooks([::AWSConfig], arguments::Dict)
+    describe_lifecycle_hooks([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribeLifecycleHooks", arguments::Dict)
@@ -1632,9 +1632,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_load_balancer_target_groups([::AWSConfig], arguments::Dict)
-    AutoScaling.describe_load_balancer_target_groups([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
+    using AWSSDK.AutoScaling.describe_load_balancer_target_groups
+    describe_load_balancer_target_groups([::AWSConfig], arguments::Dict)
+    describe_load_balancer_target_groups([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribeLoadBalancerTargetGroups", arguments::Dict)
@@ -1702,9 +1702,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_load_balancers([::AWSConfig], arguments::Dict)
-    AutoScaling.describe_load_balancers([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
+    using AWSSDK.AutoScaling.describe_load_balancers
+    describe_load_balancers([::AWSConfig], arguments::Dict)
+    describe_load_balancers([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribeLoadBalancers", arguments::Dict)
@@ -1774,9 +1774,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_metric_collection_types([::AWSConfig])
-    AutoScaling.
+    using AWSSDK.AutoScaling.describe_metric_collection_types
+    describe_metric_collection_types([::AWSConfig])
+    
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribeMetricCollectionTypes",)
@@ -1848,9 +1848,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_notification_configurations([::AWSConfig], arguments::Dict)
-    AutoScaling.describe_notification_configurations([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.AutoScaling.describe_notification_configurations
+    describe_notification_configurations([::AWSConfig], arguments::Dict)
+    describe_notification_configurations([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribeNotificationConfigurations", arguments::Dict)
@@ -1926,9 +1926,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_policies([::AWSConfig], arguments::Dict)
-    AutoScaling.describe_policies([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.AutoScaling.describe_policies
+    describe_policies([::AWSConfig], arguments::Dict)
+    describe_policies([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribePolicies", arguments::Dict)
@@ -2022,9 +2022,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_scaling_activities([::AWSConfig], arguments::Dict)
-    AutoScaling.describe_scaling_activities([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.AutoScaling.describe_scaling_activities
+    describe_scaling_activities([::AWSConfig], arguments::Dict)
+    describe_scaling_activities([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribeScalingActivities", arguments::Dict)
@@ -2103,9 +2103,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_scaling_process_types([::AWSConfig])
-    AutoScaling.
+    using AWSSDK.AutoScaling.describe_scaling_process_types
+    describe_scaling_process_types([::AWSConfig])
+    
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribeScalingProcessTypes",)
@@ -2170,9 +2170,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_scheduled_actions([::AWSConfig], arguments::Dict)
-    AutoScaling.describe_scheduled_actions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.AutoScaling.describe_scheduled_actions
+    describe_scheduled_actions([::AWSConfig], arguments::Dict)
+    describe_scheduled_actions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribeScheduledActions", arguments::Dict)
@@ -2261,9 +2261,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_tags([::AWSConfig], arguments::Dict)
-    AutoScaling.describe_tags([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.AutoScaling.describe_tags
+    describe_tags([::AWSConfig], arguments::Dict)
+    describe_tags([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribeTags", arguments::Dict)
@@ -2357,9 +2357,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.describe_termination_policy_types([::AWSConfig])
-    AutoScaling.
+    using AWSSDK.AutoScaling.describe_termination_policy_types
+    describe_termination_policy_types([::AWSConfig])
+    
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DescribeTerminationPolicyTypes",)
@@ -2405,9 +2405,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.detach_instances([::AWSConfig], arguments::Dict)
-    AutoScaling.detach_instances([::AWSConfig]; AutoScalingGroupName=, ShouldDecrementDesiredCapacity=, <keyword arguments>)
+    using AWSSDK.AutoScaling.detach_instances
+    detach_instances([::AWSConfig], arguments::Dict)
+    detach_instances([::AWSConfig]; AutoScalingGroupName=, ShouldDecrementDesiredCapacity=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DetachInstances", arguments::Dict)
@@ -2493,9 +2493,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.detach_load_balancer_target_groups([::AWSConfig], arguments::Dict)
-    AutoScaling.detach_load_balancer_target_groups([::AWSConfig]; AutoScalingGroupName=, TargetGroupARNs=)
+    using AWSSDK.AutoScaling.detach_load_balancer_target_groups
+    detach_load_balancer_target_groups([::AWSConfig], arguments::Dict)
+    detach_load_balancer_target_groups([::AWSConfig]; AutoScalingGroupName=, TargetGroupARNs=)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DetachLoadBalancerTargetGroups", arguments::Dict)
@@ -2550,9 +2550,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.detach_load_balancers([::AWSConfig], arguments::Dict)
-    AutoScaling.detach_load_balancers([::AWSConfig]; AutoScalingGroupName=, LoadBalancerNames=)
+    using AWSSDK.AutoScaling.detach_load_balancers
+    detach_load_balancers([::AWSConfig], arguments::Dict)
+    detach_load_balancers([::AWSConfig]; AutoScalingGroupName=, LoadBalancerNames=)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DetachLoadBalancers", arguments::Dict)
@@ -2611,9 +2611,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.disable_metrics_collection([::AWSConfig], arguments::Dict)
-    AutoScaling.disable_metrics_collection([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
+    using AWSSDK.AutoScaling.disable_metrics_collection
+    disable_metrics_collection([::AWSConfig], arguments::Dict)
+    disable_metrics_collection([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "DisableMetricsCollection", arguments::Dict)
@@ -2680,9 +2680,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.enable_metrics_collection([::AWSConfig], arguments::Dict)
-    AutoScaling.enable_metrics_collection([::AWSConfig]; AutoScalingGroupName=, Granularity=, <keyword arguments>)
+    using AWSSDK.AutoScaling.enable_metrics_collection
+    enable_metrics_collection([::AWSConfig], arguments::Dict)
+    enable_metrics_collection([::AWSConfig]; AutoScalingGroupName=, Granularity=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "EnableMetricsCollection", arguments::Dict)
@@ -2751,9 +2751,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.enter_standby([::AWSConfig], arguments::Dict)
-    AutoScaling.enter_standby([::AWSConfig]; AutoScalingGroupName=, ShouldDecrementDesiredCapacity=, <keyword arguments>)
+    using AWSSDK.AutoScaling.enter_standby
+    enter_standby([::AWSConfig], arguments::Dict)
+    enter_standby([::AWSConfig]; AutoScalingGroupName=, ShouldDecrementDesiredCapacity=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "EnterStandby", arguments::Dict)
@@ -2833,9 +2833,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.execute_policy([::AWSConfig], arguments::Dict)
-    AutoScaling.execute_policy([::AWSConfig]; PolicyName=, <keyword arguments>)
+    using AWSSDK.AutoScaling.execute_policy
+    execute_policy([::AWSConfig], arguments::Dict)
+    execute_policy([::AWSConfig]; PolicyName=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "ExecutePolicy", arguments::Dict)
@@ -2907,9 +2907,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.exit_standby([::AWSConfig], arguments::Dict)
-    AutoScaling.exit_standby([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
+    using AWSSDK.AutoScaling.exit_standby
+    exit_standby([::AWSConfig], arguments::Dict)
+    exit_standby([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "ExitStandby", arguments::Dict)
@@ -2984,9 +2984,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.put_lifecycle_hook([::AWSConfig], arguments::Dict)
-    AutoScaling.put_lifecycle_hook([::AWSConfig]; LifecycleHookName=, AutoScalingGroupName=, <keyword arguments>)
+    using AWSSDK.AutoScaling.put_lifecycle_hook
+    put_lifecycle_hook([::AWSConfig], arguments::Dict)
+    put_lifecycle_hook([::AWSConfig]; LifecycleHookName=, AutoScalingGroupName=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "PutLifecycleHook", arguments::Dict)
@@ -3092,9 +3092,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.put_notification_configuration([::AWSConfig], arguments::Dict)
-    AutoScaling.put_notification_configuration([::AWSConfig]; AutoScalingGroupName=, TopicARN=, NotificationTypes=)
+    using AWSSDK.AutoScaling.put_notification_configuration
+    put_notification_configuration([::AWSConfig], arguments::Dict)
+    put_notification_configuration([::AWSConfig]; AutoScalingGroupName=, TopicARN=, NotificationTypes=)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "PutNotificationConfiguration", arguments::Dict)
@@ -3154,9 +3154,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.put_scaling_policy([::AWSConfig], arguments::Dict)
-    AutoScaling.put_scaling_policy([::AWSConfig]; AutoScalingGroupName=, PolicyName=, <keyword arguments>)
+    using AWSSDK.AutoScaling.put_scaling_policy
+    put_scaling_policy([::AWSConfig], arguments::Dict)
+    put_scaling_policy([::AWSConfig]; AutoScalingGroupName=, PolicyName=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "PutScalingPolicy", arguments::Dict)
@@ -3305,9 +3305,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.put_scheduled_update_group_action([::AWSConfig], arguments::Dict)
-    AutoScaling.put_scheduled_update_group_action([::AWSConfig]; AutoScalingGroupName=, ScheduledActionName=, <keyword arguments>)
+    using AWSSDK.AutoScaling.put_scheduled_update_group_action
+    put_scheduled_update_group_action([::AWSConfig], arguments::Dict)
+    put_scheduled_update_group_action([::AWSConfig]; AutoScalingGroupName=, ScheduledActionName=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "PutScheduledUpdateGroupAction", arguments::Dict)
@@ -3395,9 +3395,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.record_lifecycle_action_heartbeat([::AWSConfig], arguments::Dict)
-    AutoScaling.record_lifecycle_action_heartbeat([::AWSConfig]; LifecycleHookName=, AutoScalingGroupName=, <keyword arguments>)
+    using AWSSDK.AutoScaling.record_lifecycle_action_heartbeat
+    record_lifecycle_action_heartbeat([::AWSConfig], arguments::Dict)
+    record_lifecycle_action_heartbeat([::AWSConfig]; LifecycleHookName=, AutoScalingGroupName=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "RecordLifecycleActionHeartbeat", arguments::Dict)
@@ -3473,9 +3473,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.resume_processes([::AWSConfig], arguments::Dict)
-    AutoScaling.resume_processes([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
+    using AWSSDK.AutoScaling.resume_processes
+    resume_processes([::AWSConfig], arguments::Dict)
+    resume_processes([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "ResumeProcesses", arguments::Dict)
@@ -3544,9 +3544,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.set_desired_capacity([::AWSConfig], arguments::Dict)
-    AutoScaling.set_desired_capacity([::AWSConfig]; AutoScalingGroupName=, DesiredCapacity=, <keyword arguments>)
+    using AWSSDK.AutoScaling.set_desired_capacity
+    set_desired_capacity([::AWSConfig], arguments::Dict)
+    set_desired_capacity([::AWSConfig]; AutoScalingGroupName=, DesiredCapacity=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "SetDesiredCapacity", arguments::Dict)
@@ -3602,9 +3602,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.set_instance_health([::AWSConfig], arguments::Dict)
-    AutoScaling.set_instance_health([::AWSConfig]; InstanceId=, HealthStatus=, <keyword arguments>)
+    using AWSSDK.AutoScaling.set_instance_health
+    set_instance_health([::AWSConfig], arguments::Dict)
+    set_instance_health([::AWSConfig]; InstanceId=, HealthStatus=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "SetInstanceHealth", arguments::Dict)
@@ -3661,9 +3661,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.set_instance_protection([::AWSConfig], arguments::Dict)
-    AutoScaling.set_instance_protection([::AWSConfig]; InstanceIds=, AutoScalingGroupName=, ProtectedFromScaleIn=)
+    using AWSSDK.AutoScaling.set_instance_protection
+    set_instance_protection([::AWSConfig], arguments::Dict)
+    set_instance_protection([::AWSConfig]; InstanceIds=, AutoScalingGroupName=, ProtectedFromScaleIn=)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "SetInstanceProtection", arguments::Dict)
@@ -3740,9 +3740,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.suspend_processes([::AWSConfig], arguments::Dict)
-    AutoScaling.suspend_processes([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
+    using AWSSDK.AutoScaling.suspend_processes
+    suspend_processes([::AWSConfig], arguments::Dict)
+    suspend_processes([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "SuspendProcesses", arguments::Dict)
@@ -3815,9 +3815,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.terminate_instance_in_auto_scaling_group([::AWSConfig], arguments::Dict)
-    AutoScaling.terminate_instance_in_auto_scaling_group([::AWSConfig]; InstanceId=, ShouldDecrementDesiredCapacity=)
+    using AWSSDK.AutoScaling.terminate_instance_in_auto_scaling_group
+    terminate_instance_in_auto_scaling_group([::AWSConfig], arguments::Dict)
+    terminate_instance_in_auto_scaling_group([::AWSConfig]; InstanceId=, ShouldDecrementDesiredCapacity=)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "TerminateInstanceInAutoScalingGroup", arguments::Dict)
@@ -3872,9 +3872,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 
 """
-    using AWSSDK.AutoScaling
-    AutoScaling.update_auto_scaling_group([::AWSConfig], arguments::Dict)
-    AutoScaling.update_auto_scaling_group([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
+    using AWSSDK.AutoScaling.update_auto_scaling_group
+    update_auto_scaling_group([::AWSConfig], arguments::Dict)
+    update_auto_scaling_group([::AWSConfig]; AutoScalingGroupName=, <keyword arguments>)
 
     using AWSCore.Services.autoscaling
     autoscaling([::AWSConfig], "UpdateAutoScalingGroup", arguments::Dict)

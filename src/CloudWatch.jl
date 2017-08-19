@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CloudWatch
-    CloudWatch.delete_alarms([::AWSConfig], arguments::Dict)
-    CloudWatch.delete_alarms([::AWSConfig]; AlarmNames=)
+    using AWSSDK.CloudWatch.delete_alarms
+    delete_alarms([::AWSConfig], arguments::Dict)
+    delete_alarms([::AWSConfig]; AlarmNames=)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "DeleteAlarms", arguments::Dict)
@@ -48,9 +48,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monito
 
 
 """
-    using AWSSDK.CloudWatch
-    CloudWatch.delete_dashboards([::AWSConfig], arguments::Dict)
-    CloudWatch.delete_dashboards([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudWatch.delete_dashboards
+    delete_dashboards([::AWSConfig], arguments::Dict)
+    delete_dashboards([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "DeleteDashboards", arguments::Dict)
@@ -87,9 +87,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monito
 
 
 """
-    using AWSSDK.CloudWatch
-    CloudWatch.describe_alarm_history([::AWSConfig], arguments::Dict)
-    CloudWatch.describe_alarm_history([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudWatch.describe_alarm_history
+    describe_alarm_history([::AWSConfig], arguments::Dict)
+    describe_alarm_history([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "DescribeAlarmHistory", arguments::Dict)
@@ -148,9 +148,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monito
 
 
 """
-    using AWSSDK.CloudWatch
-    CloudWatch.describe_alarms([::AWSConfig], arguments::Dict)
-    CloudWatch.describe_alarms([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudWatch.describe_alarms
+    describe_alarms([::AWSConfig], arguments::Dict)
+    describe_alarms([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "DescribeAlarms", arguments::Dict)
@@ -207,9 +207,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monito
 
 
 """
-    using AWSSDK.CloudWatch
-    CloudWatch.describe_alarms_for_metric([::AWSConfig], arguments::Dict)
-    CloudWatch.describe_alarms_for_metric([::AWSConfig]; MetricName=, Namespace=, <keyword arguments>)
+    using AWSSDK.CloudWatch.describe_alarms_for_metric
+    describe_alarms_for_metric([::AWSConfig], arguments::Dict)
+    describe_alarms_for_metric([::AWSConfig]; MetricName=, Namespace=, <keyword arguments>)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "DescribeAlarmsForMetric", arguments::Dict)
@@ -271,9 +271,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monito
 
 
 """
-    using AWSSDK.CloudWatch
-    CloudWatch.disable_alarm_actions([::AWSConfig], arguments::Dict)
-    CloudWatch.disable_alarm_actions([::AWSConfig]; AlarmNames=)
+    using AWSSDK.CloudWatch.disable_alarm_actions
+    disable_alarm_actions([::AWSConfig], arguments::Dict)
+    disable_alarm_actions([::AWSConfig]; AlarmNames=)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "DisableAlarmActions", arguments::Dict)
@@ -302,9 +302,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monito
 
 
 """
-    using AWSSDK.CloudWatch
-    CloudWatch.enable_alarm_actions([::AWSConfig], arguments::Dict)
-    CloudWatch.enable_alarm_actions([::AWSConfig]; AlarmNames=)
+    using AWSSDK.CloudWatch.enable_alarm_actions
+    enable_alarm_actions([::AWSConfig], arguments::Dict)
+    enable_alarm_actions([::AWSConfig]; AlarmNames=)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "EnableAlarmActions", arguments::Dict)
@@ -333,9 +333,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monito
 
 
 """
-    using AWSSDK.CloudWatch
-    CloudWatch.get_dashboard([::AWSConfig], arguments::Dict)
-    CloudWatch.get_dashboard([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudWatch.get_dashboard
+    get_dashboard([::AWSConfig], arguments::Dict)
+    get_dashboard([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "GetDashboard", arguments::Dict)
@@ -374,9 +374,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monito
 
 
 """
-    using AWSSDK.CloudWatch
-    CloudWatch.get_metric_statistics([::AWSConfig], arguments::Dict)
-    CloudWatch.get_metric_statistics([::AWSConfig]; Namespace=, MetricName=, StartTime=, EndTime=, Period=, <keyword arguments>)
+    using AWSSDK.CloudWatch.get_metric_statistics
+    get_metric_statistics([::AWSConfig], arguments::Dict)
+    get_metric_statistics([::AWSConfig]; Namespace=, MetricName=, StartTime=, EndTime=, Period=, <keyword arguments>)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "GetMetricStatistics", arguments::Dict)
@@ -498,9 +498,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monito
 
 
 """
-    using AWSSDK.CloudWatch
-    CloudWatch.list_dashboards([::AWSConfig], arguments::Dict)
-    CloudWatch.list_dashboards([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudWatch.list_dashboards
+    list_dashboards([::AWSConfig], arguments::Dict)
+    list_dashboards([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "ListDashboards", arguments::Dict)
@@ -541,9 +541,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monito
 
 
 """
-    using AWSSDK.CloudWatch
-    CloudWatch.list_metrics([::AWSConfig], arguments::Dict)
-    CloudWatch.list_metrics([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudWatch.list_metrics
+    list_metrics([::AWSConfig], arguments::Dict)
+    list_metrics([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "ListMetrics", arguments::Dict)
@@ -601,9 +601,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monito
 
 
 """
-    using AWSSDK.CloudWatch
-    CloudWatch.put_dashboard([::AWSConfig], arguments::Dict)
-    CloudWatch.put_dashboard([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudWatch.put_dashboard
+    put_dashboard([::AWSConfig], arguments::Dict)
+    put_dashboard([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "PutDashboard", arguments::Dict)
@@ -652,9 +652,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monito
 
 
 """
-    using AWSSDK.CloudWatch
-    CloudWatch.put_metric_alarm([::AWSConfig], arguments::Dict)
-    CloudWatch.put_metric_alarm([::AWSConfig]; AlarmName=, MetricName=, Namespace=, Period=, EvaluationPeriods=, Threshold=, ComparisonOperator=, <keyword arguments>)
+    using AWSSDK.CloudWatch.put_metric_alarm
+    put_metric_alarm([::AWSConfig], arguments::Dict)
+    put_metric_alarm([::AWSConfig]; AlarmName=, MetricName=, Namespace=, Period=, EvaluationPeriods=, Threshold=, ComparisonOperator=, <keyword arguments>)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "PutMetricAlarm", arguments::Dict)
@@ -804,9 +804,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monito
 
 
 """
-    using AWSSDK.CloudWatch
-    CloudWatch.put_metric_data([::AWSConfig], arguments::Dict)
-    CloudWatch.put_metric_data([::AWSConfig]; Namespace=, MetricData=)
+    using AWSSDK.CloudWatch.put_metric_data
+    put_metric_data([::AWSConfig], arguments::Dict)
+    put_metric_data([::AWSConfig]; Namespace=, MetricData=)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "PutMetricData", arguments::Dict)
@@ -877,9 +877,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monito
 
 
 """
-    using AWSSDK.CloudWatch
-    CloudWatch.set_alarm_state([::AWSConfig], arguments::Dict)
-    CloudWatch.set_alarm_state([::AWSConfig]; AlarmName=, StateValue=, StateReason=, <keyword arguments>)
+    using AWSSDK.CloudWatch.set_alarm_state
+    set_alarm_state([::AWSConfig], arguments::Dict)
+    set_alarm_state([::AWSConfig]; AlarmName=, StateValue=, StateReason=, <keyword arguments>)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "SetAlarmState", arguments::Dict)

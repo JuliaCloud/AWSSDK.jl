@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.associate_role_to_group([::AWSConfig], arguments::Dict)
-    Greengrass.associate_role_to_group([::AWSConfig]; GroupId=, <keyword arguments>)
+    using AWSSDK.Greengrass.associate_role_to_group
+    associate_role_to_group([::AWSConfig], arguments::Dict)
+    associate_role_to_group([::AWSConfig]; GroupId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "PUT", "/greengrass/groups/{GroupId}/role", arguments::Dict)
@@ -56,9 +56,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.associate_service_role_to_account([::AWSConfig], arguments::Dict)
-    Greengrass.associate_service_role_to_account([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Greengrass.associate_service_role_to_account
+    associate_service_role_to_account([::AWSConfig], arguments::Dict)
+    associate_service_role_to_account([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "PUT", "/greengrass/servicerole", arguments::Dict)
@@ -95,9 +95,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.create_core_definition([::AWSConfig], arguments::Dict)
-    Greengrass.create_core_definition([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Greengrass.create_core_definition
+    create_core_definition([::AWSConfig], arguments::Dict)
+    create_core_definition([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "POST", "/greengrass/definition/cores", arguments::Dict)
@@ -149,9 +149,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.create_core_definition_version([::AWSConfig], arguments::Dict)
-    Greengrass.create_core_definition_version([::AWSConfig]; CoreDefinitionId=, <keyword arguments>)
+    using AWSSDK.Greengrass.create_core_definition_version
+    create_core_definition_version([::AWSConfig], arguments::Dict)
+    create_core_definition_version([::AWSConfig]; CoreDefinitionId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "POST", "/greengrass/definition/cores/{CoreDefinitionId}/versions", arguments::Dict)
@@ -203,9 +203,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.create_deployment([::AWSConfig], arguments::Dict)
-    Greengrass.create_deployment([::AWSConfig]; GroupId=, <keyword arguments>)
+    using AWSSDK.Greengrass.create_deployment
+    create_deployment([::AWSConfig], arguments::Dict)
+    create_deployment([::AWSConfig]; GroupId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "POST", "/greengrass/groups/{GroupId}/deployments", arguments::Dict)
@@ -258,9 +258,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.create_device_definition([::AWSConfig], arguments::Dict)
-    Greengrass.create_device_definition([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Greengrass.create_device_definition
+    create_device_definition([::AWSConfig], arguments::Dict)
+    create_device_definition([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "POST", "/greengrass/definition/devices", arguments::Dict)
@@ -312,9 +312,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.create_device_definition_version([::AWSConfig], arguments::Dict)
-    Greengrass.create_device_definition_version([::AWSConfig]; DeviceDefinitionId=, <keyword arguments>)
+    using AWSSDK.Greengrass.create_device_definition_version
+    create_device_definition_version([::AWSConfig], arguments::Dict)
+    create_device_definition_version([::AWSConfig]; DeviceDefinitionId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "POST", "/greengrass/definition/devices/{DeviceDefinitionId}/versions", arguments::Dict)
@@ -366,9 +366,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.create_function_definition([::AWSConfig], arguments::Dict)
-    Greengrass.create_function_definition([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Greengrass.create_function_definition
+    create_function_definition([::AWSConfig], arguments::Dict)
+    create_function_definition([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "POST", "/greengrass/definition/functions", arguments::Dict)
@@ -426,9 +426,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.create_function_definition_version([::AWSConfig], arguments::Dict)
-    Greengrass.create_function_definition_version([::AWSConfig]; FunctionDefinitionId=, <keyword arguments>)
+    using AWSSDK.Greengrass.create_function_definition_version
+    create_function_definition_version([::AWSConfig], arguments::Dict)
+    create_function_definition_version([::AWSConfig]; FunctionDefinitionId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "POST", "/greengrass/definition/functions/{FunctionDefinitionId}/versions", arguments::Dict)
@@ -486,9 +486,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.create_group([::AWSConfig], arguments::Dict)
-    Greengrass.create_group([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Greengrass.create_group
+    create_group([::AWSConfig], arguments::Dict)
+    create_group([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "POST", "/greengrass/groups", arguments::Dict)
@@ -541,9 +541,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.create_group_certificate_authority([::AWSConfig], arguments::Dict)
-    Greengrass.create_group_certificate_authority([::AWSConfig]; GroupId=, <keyword arguments>)
+    using AWSSDK.Greengrass.create_group_certificate_authority
+    create_group_certificate_authority([::AWSConfig], arguments::Dict)
+    create_group_certificate_authority([::AWSConfig]; GroupId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "POST", "/greengrass/groups/{GroupId}/certificateauthorities", arguments::Dict)
@@ -584,9 +584,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.create_group_version([::AWSConfig], arguments::Dict)
-    Greengrass.create_group_version([::AWSConfig]; GroupId=, <keyword arguments>)
+    using AWSSDK.Greengrass.create_group_version
+    create_group_version([::AWSConfig], arguments::Dict)
+    create_group_version([::AWSConfig]; GroupId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "POST", "/greengrass/groups/{GroupId}/versions", arguments::Dict)
@@ -647,9 +647,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.create_logger_definition([::AWSConfig], arguments::Dict)
-    Greengrass.create_logger_definition([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Greengrass.create_logger_definition
+    create_logger_definition([::AWSConfig], arguments::Dict)
+    create_logger_definition([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "POST", "/greengrass/definition/loggers", arguments::Dict)
@@ -702,9 +702,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.create_logger_definition_version([::AWSConfig], arguments::Dict)
-    Greengrass.create_logger_definition_version([::AWSConfig]; LoggerDefinitionId=, <keyword arguments>)
+    using AWSSDK.Greengrass.create_logger_definition_version
+    create_logger_definition_version([::AWSConfig], arguments::Dict)
+    create_logger_definition_version([::AWSConfig]; LoggerDefinitionId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "POST", "/greengrass/definition/loggers/{LoggerDefinitionId}/versions", arguments::Dict)
@@ -757,9 +757,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.create_subscription_definition([::AWSConfig], arguments::Dict)
-    Greengrass.create_subscription_definition([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Greengrass.create_subscription_definition
+    create_subscription_definition([::AWSConfig], arguments::Dict)
+    create_subscription_definition([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "POST", "/greengrass/definition/subscriptions", arguments::Dict)
@@ -811,9 +811,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.create_subscription_definition_version([::AWSConfig], arguments::Dict)
-    Greengrass.create_subscription_definition_version([::AWSConfig]; SubscriptionDefinitionId=, <keyword arguments>)
+    using AWSSDK.Greengrass.create_subscription_definition_version
+    create_subscription_definition_version([::AWSConfig], arguments::Dict)
+    create_subscription_definition_version([::AWSConfig]; SubscriptionDefinitionId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "POST", "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions", arguments::Dict)
@@ -865,9 +865,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.delete_core_definition([::AWSConfig], arguments::Dict)
-    Greengrass.delete_core_definition([::AWSConfig]; CoreDefinitionId=)
+    using AWSSDK.Greengrass.delete_core_definition
+    delete_core_definition([::AWSConfig], arguments::Dict)
+    delete_core_definition([::AWSConfig]; CoreDefinitionId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "DELETE", "/greengrass/definition/cores/{CoreDefinitionId}", arguments::Dict)
@@ -904,9 +904,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.delete_device_definition([::AWSConfig], arguments::Dict)
-    Greengrass.delete_device_definition([::AWSConfig]; DeviceDefinitionId=)
+    using AWSSDK.Greengrass.delete_device_definition
+    delete_device_definition([::AWSConfig], arguments::Dict)
+    delete_device_definition([::AWSConfig]; DeviceDefinitionId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "DELETE", "/greengrass/definition/devices/{DeviceDefinitionId}", arguments::Dict)
@@ -943,9 +943,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.delete_function_definition([::AWSConfig], arguments::Dict)
-    Greengrass.delete_function_definition([::AWSConfig]; FunctionDefinitionId=)
+    using AWSSDK.Greengrass.delete_function_definition
+    delete_function_definition([::AWSConfig], arguments::Dict)
+    delete_function_definition([::AWSConfig]; FunctionDefinitionId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "DELETE", "/greengrass/definition/functions/{FunctionDefinitionId}", arguments::Dict)
@@ -982,9 +982,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.delete_group([::AWSConfig], arguments::Dict)
-    Greengrass.delete_group([::AWSConfig]; GroupId=)
+    using AWSSDK.Greengrass.delete_group
+    delete_group([::AWSConfig], arguments::Dict)
+    delete_group([::AWSConfig]; GroupId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "DELETE", "/greengrass/groups/{GroupId}", arguments::Dict)
@@ -1021,9 +1021,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.delete_logger_definition([::AWSConfig], arguments::Dict)
-    Greengrass.delete_logger_definition([::AWSConfig]; LoggerDefinitionId=)
+    using AWSSDK.Greengrass.delete_logger_definition
+    delete_logger_definition([::AWSConfig], arguments::Dict)
+    delete_logger_definition([::AWSConfig]; LoggerDefinitionId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "DELETE", "/greengrass/definition/loggers/{LoggerDefinitionId}", arguments::Dict)
@@ -1060,9 +1060,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.delete_subscription_definition([::AWSConfig], arguments::Dict)
-    Greengrass.delete_subscription_definition([::AWSConfig]; SubscriptionDefinitionId=)
+    using AWSSDK.Greengrass.delete_subscription_definition
+    delete_subscription_definition([::AWSConfig], arguments::Dict)
+    delete_subscription_definition([::AWSConfig]; SubscriptionDefinitionId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "DELETE", "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}", arguments::Dict)
@@ -1099,9 +1099,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.disassociate_role_from_group([::AWSConfig], arguments::Dict)
-    Greengrass.disassociate_role_from_group([::AWSConfig]; GroupId=)
+    using AWSSDK.Greengrass.disassociate_role_from_group
+    disassociate_role_from_group([::AWSConfig], arguments::Dict)
+    disassociate_role_from_group([::AWSConfig]; GroupId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "DELETE", "/greengrass/groups/{GroupId}/role", arguments::Dict)
@@ -1138,9 +1138,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.disassociate_service_role_from_account([::AWSConfig], arguments::Dict)
-    Greengrass.disassociate_service_role_from_account([::AWSConfig]; )
+    using AWSSDK.Greengrass.disassociate_service_role_from_account
+    disassociate_service_role_from_account([::AWSConfig], arguments::Dict)
+    disassociate_service_role_from_account([::AWSConfig]; )
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "DELETE", "/greengrass/servicerole", arguments::Dict)
@@ -1173,9 +1173,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_associated_role([::AWSConfig], arguments::Dict)
-    Greengrass.get_associated_role([::AWSConfig]; GroupId=)
+    using AWSSDK.Greengrass.get_associated_role
+    get_associated_role([::AWSConfig], arguments::Dict)
+    get_associated_role([::AWSConfig]; GroupId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/groups/{GroupId}/role", arguments::Dict)
@@ -1212,9 +1212,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_connectivity_info([::AWSConfig], arguments::Dict)
-    Greengrass.get_connectivity_info([::AWSConfig]; ThingName=)
+    using AWSSDK.Greengrass.get_connectivity_info
+    get_connectivity_info([::AWSConfig], arguments::Dict)
+    get_connectivity_info([::AWSConfig]; ThingName=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/things/{ThingName}/connectivityInfo", arguments::Dict)
@@ -1251,9 +1251,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_core_definition([::AWSConfig], arguments::Dict)
-    Greengrass.get_core_definition([::AWSConfig]; CoreDefinitionId=)
+    using AWSSDK.Greengrass.get_core_definition
+    get_core_definition([::AWSConfig], arguments::Dict)
+    get_core_definition([::AWSConfig]; CoreDefinitionId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/cores/{CoreDefinitionId}", arguments::Dict)
@@ -1290,9 +1290,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_core_definition_version([::AWSConfig], arguments::Dict)
-    Greengrass.get_core_definition_version([::AWSConfig]; CoreDefinitionId=, CoreDefinitionVersionId=)
+    using AWSSDK.Greengrass.get_core_definition_version
+    get_core_definition_version([::AWSConfig], arguments::Dict)
+    get_core_definition_version([::AWSConfig]; CoreDefinitionId=, CoreDefinitionVersionId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/cores/{CoreDefinitionId}/versions/{CoreDefinitionVersionId}", arguments::Dict)
@@ -1333,9 +1333,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_deployment_status([::AWSConfig], arguments::Dict)
-    Greengrass.get_deployment_status([::AWSConfig]; DeploymentId=, GroupId=)
+    using AWSSDK.Greengrass.get_deployment_status
+    get_deployment_status([::AWSConfig], arguments::Dict)
+    get_deployment_status([::AWSConfig]; DeploymentId=, GroupId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/groups/{GroupId}/deployments/{DeploymentId}/status", arguments::Dict)
@@ -1376,9 +1376,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_device_definition([::AWSConfig], arguments::Dict)
-    Greengrass.get_device_definition([::AWSConfig]; DeviceDefinitionId=)
+    using AWSSDK.Greengrass.get_device_definition
+    get_device_definition([::AWSConfig], arguments::Dict)
+    get_device_definition([::AWSConfig]; DeviceDefinitionId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/devices/{DeviceDefinitionId}", arguments::Dict)
@@ -1415,9 +1415,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_device_definition_version([::AWSConfig], arguments::Dict)
-    Greengrass.get_device_definition_version([::AWSConfig]; DeviceDefinitionId=, DeviceDefinitionVersionId=)
+    using AWSSDK.Greengrass.get_device_definition_version
+    get_device_definition_version([::AWSConfig], arguments::Dict)
+    get_device_definition_version([::AWSConfig]; DeviceDefinitionId=, DeviceDefinitionVersionId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/devices/{DeviceDefinitionId}/versions/{DeviceDefinitionVersionId}", arguments::Dict)
@@ -1458,9 +1458,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_function_definition([::AWSConfig], arguments::Dict)
-    Greengrass.get_function_definition([::AWSConfig]; FunctionDefinitionId=)
+    using AWSSDK.Greengrass.get_function_definition
+    get_function_definition([::AWSConfig], arguments::Dict)
+    get_function_definition([::AWSConfig]; FunctionDefinitionId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/functions/{FunctionDefinitionId}", arguments::Dict)
@@ -1497,9 +1497,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_function_definition_version([::AWSConfig], arguments::Dict)
-    Greengrass.get_function_definition_version([::AWSConfig]; FunctionDefinitionId=, FunctionDefinitionVersionId=)
+    using AWSSDK.Greengrass.get_function_definition_version
+    get_function_definition_version([::AWSConfig], arguments::Dict)
+    get_function_definition_version([::AWSConfig]; FunctionDefinitionId=, FunctionDefinitionVersionId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/functions/{FunctionDefinitionId}/versions/{FunctionDefinitionVersionId}", arguments::Dict)
@@ -1540,9 +1540,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_group([::AWSConfig], arguments::Dict)
-    Greengrass.get_group([::AWSConfig]; GroupId=)
+    using AWSSDK.Greengrass.get_group
+    get_group([::AWSConfig], arguments::Dict)
+    get_group([::AWSConfig]; GroupId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/groups/{GroupId}", arguments::Dict)
@@ -1579,9 +1579,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_group_certificate_authority([::AWSConfig], arguments::Dict)
-    Greengrass.get_group_certificate_authority([::AWSConfig]; CertificateAuthorityId=, GroupId=)
+    using AWSSDK.Greengrass.get_group_certificate_authority
+    get_group_certificate_authority([::AWSConfig], arguments::Dict)
+    get_group_certificate_authority([::AWSConfig]; CertificateAuthorityId=, GroupId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/groups/{GroupId}/certificateauthorities/{CertificateAuthorityId}", arguments::Dict)
@@ -1622,9 +1622,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_group_certificate_configuration([::AWSConfig], arguments::Dict)
-    Greengrass.get_group_certificate_configuration([::AWSConfig]; GroupId=)
+    using AWSSDK.Greengrass.get_group_certificate_configuration
+    get_group_certificate_configuration([::AWSConfig], arguments::Dict)
+    get_group_certificate_configuration([::AWSConfig]; GroupId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/groups/{GroupId}/certificateauthorities/configuration/expiry", arguments::Dict)
@@ -1661,9 +1661,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_group_version([::AWSConfig], arguments::Dict)
-    Greengrass.get_group_version([::AWSConfig]; GroupId=, GroupVersionId=)
+    using AWSSDK.Greengrass.get_group_version
+    get_group_version([::AWSConfig], arguments::Dict)
+    get_group_version([::AWSConfig]; GroupId=, GroupVersionId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/groups/{GroupId}/versions/{GroupVersionId}", arguments::Dict)
@@ -1704,9 +1704,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_logger_definition([::AWSConfig], arguments::Dict)
-    Greengrass.get_logger_definition([::AWSConfig]; LoggerDefinitionId=)
+    using AWSSDK.Greengrass.get_logger_definition
+    get_logger_definition([::AWSConfig], arguments::Dict)
+    get_logger_definition([::AWSConfig]; LoggerDefinitionId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/loggers/{LoggerDefinitionId}", arguments::Dict)
@@ -1743,9 +1743,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_logger_definition_version([::AWSConfig], arguments::Dict)
-    Greengrass.get_logger_definition_version([::AWSConfig]; LoggerDefinitionId=, LoggerDefinitionVersionId=)
+    using AWSSDK.Greengrass.get_logger_definition_version
+    get_logger_definition_version([::AWSConfig], arguments::Dict)
+    get_logger_definition_version([::AWSConfig]; LoggerDefinitionId=, LoggerDefinitionVersionId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/loggers/{LoggerDefinitionId}/versions/{LoggerDefinitionVersionId}", arguments::Dict)
@@ -1786,9 +1786,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_service_role_for_account([::AWSConfig], arguments::Dict)
-    Greengrass.get_service_role_for_account([::AWSConfig]; )
+    using AWSSDK.Greengrass.get_service_role_for_account
+    get_service_role_for_account([::AWSConfig], arguments::Dict)
+    get_service_role_for_account([::AWSConfig]; )
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/servicerole", arguments::Dict)
@@ -1821,9 +1821,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_subscription_definition([::AWSConfig], arguments::Dict)
-    Greengrass.get_subscription_definition([::AWSConfig]; SubscriptionDefinitionId=)
+    using AWSSDK.Greengrass.get_subscription_definition
+    get_subscription_definition([::AWSConfig], arguments::Dict)
+    get_subscription_definition([::AWSConfig]; SubscriptionDefinitionId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}", arguments::Dict)
@@ -1860,9 +1860,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.get_subscription_definition_version([::AWSConfig], arguments::Dict)
-    Greengrass.get_subscription_definition_version([::AWSConfig]; SubscriptionDefinitionId=, SubscriptionDefinitionVersionId=)
+    using AWSSDK.Greengrass.get_subscription_definition_version
+    get_subscription_definition_version([::AWSConfig], arguments::Dict)
+    get_subscription_definition_version([::AWSConfig]; SubscriptionDefinitionId=, SubscriptionDefinitionVersionId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions/{SubscriptionDefinitionVersionId}", arguments::Dict)
@@ -1903,9 +1903,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.list_core_definition_versions([::AWSConfig], arguments::Dict)
-    Greengrass.list_core_definition_versions([::AWSConfig]; CoreDefinitionId=, <keyword arguments>)
+    using AWSSDK.Greengrass.list_core_definition_versions
+    list_core_definition_versions([::AWSConfig], arguments::Dict)
+    list_core_definition_versions([::AWSConfig]; CoreDefinitionId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/cores/{CoreDefinitionId}/versions", arguments::Dict)
@@ -1950,9 +1950,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.list_core_definitions([::AWSConfig], arguments::Dict)
-    Greengrass.list_core_definitions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Greengrass.list_core_definitions
+    list_core_definitions([::AWSConfig], arguments::Dict)
+    list_core_definitions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/cores", arguments::Dict)
@@ -1993,9 +1993,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.list_deployments([::AWSConfig], arguments::Dict)
-    Greengrass.list_deployments([::AWSConfig]; GroupId=, <keyword arguments>)
+    using AWSSDK.Greengrass.list_deployments
+    list_deployments([::AWSConfig], arguments::Dict)
+    list_deployments([::AWSConfig]; GroupId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/groups/{GroupId}/deployments", arguments::Dict)
@@ -2040,9 +2040,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.list_device_definition_versions([::AWSConfig], arguments::Dict)
-    Greengrass.list_device_definition_versions([::AWSConfig]; DeviceDefinitionId=, <keyword arguments>)
+    using AWSSDK.Greengrass.list_device_definition_versions
+    list_device_definition_versions([::AWSConfig], arguments::Dict)
+    list_device_definition_versions([::AWSConfig]; DeviceDefinitionId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/devices/{DeviceDefinitionId}/versions", arguments::Dict)
@@ -2087,9 +2087,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.list_device_definitions([::AWSConfig], arguments::Dict)
-    Greengrass.list_device_definitions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Greengrass.list_device_definitions
+    list_device_definitions([::AWSConfig], arguments::Dict)
+    list_device_definitions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/devices", arguments::Dict)
@@ -2130,9 +2130,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.list_function_definition_versions([::AWSConfig], arguments::Dict)
-    Greengrass.list_function_definition_versions([::AWSConfig]; FunctionDefinitionId=, <keyword arguments>)
+    using AWSSDK.Greengrass.list_function_definition_versions
+    list_function_definition_versions([::AWSConfig], arguments::Dict)
+    list_function_definition_versions([::AWSConfig]; FunctionDefinitionId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/functions/{FunctionDefinitionId}/versions", arguments::Dict)
@@ -2177,9 +2177,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.list_function_definitions([::AWSConfig], arguments::Dict)
-    Greengrass.list_function_definitions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Greengrass.list_function_definitions
+    list_function_definitions([::AWSConfig], arguments::Dict)
+    list_function_definitions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/functions", arguments::Dict)
@@ -2220,9 +2220,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.list_group_certificate_authorities([::AWSConfig], arguments::Dict)
-    Greengrass.list_group_certificate_authorities([::AWSConfig]; GroupId=)
+    using AWSSDK.Greengrass.list_group_certificate_authorities
+    list_group_certificate_authorities([::AWSConfig], arguments::Dict)
+    list_group_certificate_authorities([::AWSConfig]; GroupId=)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/groups/{GroupId}/certificateauthorities", arguments::Dict)
@@ -2259,9 +2259,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.list_group_versions([::AWSConfig], arguments::Dict)
-    Greengrass.list_group_versions([::AWSConfig]; GroupId=, <keyword arguments>)
+    using AWSSDK.Greengrass.list_group_versions
+    list_group_versions([::AWSConfig], arguments::Dict)
+    list_group_versions([::AWSConfig]; GroupId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/groups/{GroupId}/versions", arguments::Dict)
@@ -2306,9 +2306,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.list_groups([::AWSConfig], arguments::Dict)
-    Greengrass.list_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Greengrass.list_groups
+    list_groups([::AWSConfig], arguments::Dict)
+    list_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/groups", arguments::Dict)
@@ -2349,9 +2349,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.list_logger_definition_versions([::AWSConfig], arguments::Dict)
-    Greengrass.list_logger_definition_versions([::AWSConfig]; LoggerDefinitionId=, <keyword arguments>)
+    using AWSSDK.Greengrass.list_logger_definition_versions
+    list_logger_definition_versions([::AWSConfig], arguments::Dict)
+    list_logger_definition_versions([::AWSConfig]; LoggerDefinitionId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/loggers/{LoggerDefinitionId}/versions", arguments::Dict)
@@ -2396,9 +2396,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.list_logger_definitions([::AWSConfig], arguments::Dict)
-    Greengrass.list_logger_definitions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Greengrass.list_logger_definitions
+    list_logger_definitions([::AWSConfig], arguments::Dict)
+    list_logger_definitions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/loggers", arguments::Dict)
@@ -2439,9 +2439,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.list_subscription_definition_versions([::AWSConfig], arguments::Dict)
-    Greengrass.list_subscription_definition_versions([::AWSConfig]; SubscriptionDefinitionId=, <keyword arguments>)
+    using AWSSDK.Greengrass.list_subscription_definition_versions
+    list_subscription_definition_versions([::AWSConfig], arguments::Dict)
+    list_subscription_definition_versions([::AWSConfig]; SubscriptionDefinitionId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions", arguments::Dict)
@@ -2486,9 +2486,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.list_subscription_definitions([::AWSConfig], arguments::Dict)
-    Greengrass.list_subscription_definitions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Greengrass.list_subscription_definitions
+    list_subscription_definitions([::AWSConfig], arguments::Dict)
+    list_subscription_definitions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "GET", "/greengrass/definition/subscriptions", arguments::Dict)
@@ -2529,9 +2529,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.update_connectivity_info([::AWSConfig], arguments::Dict)
-    Greengrass.update_connectivity_info([::AWSConfig]; ThingName=, <keyword arguments>)
+    using AWSSDK.Greengrass.update_connectivity_info
+    update_connectivity_info([::AWSConfig], arguments::Dict)
+    update_connectivity_info([::AWSConfig]; ThingName=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "PUT", "/greengrass/things/{ThingName}/connectivityInfo", arguments::Dict)
@@ -2579,9 +2579,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.update_core_definition([::AWSConfig], arguments::Dict)
-    Greengrass.update_core_definition([::AWSConfig]; CoreDefinitionId=, <keyword arguments>)
+    using AWSSDK.Greengrass.update_core_definition
+    update_core_definition([::AWSConfig], arguments::Dict)
+    update_core_definition([::AWSConfig]; CoreDefinitionId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "PUT", "/greengrass/definition/cores/{CoreDefinitionId}", arguments::Dict)
@@ -2622,9 +2622,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.update_device_definition([::AWSConfig], arguments::Dict)
-    Greengrass.update_device_definition([::AWSConfig]; DeviceDefinitionId=, <keyword arguments>)
+    using AWSSDK.Greengrass.update_device_definition
+    update_device_definition([::AWSConfig], arguments::Dict)
+    update_device_definition([::AWSConfig]; DeviceDefinitionId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "PUT", "/greengrass/definition/devices/{DeviceDefinitionId}", arguments::Dict)
@@ -2665,9 +2665,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.update_function_definition([::AWSConfig], arguments::Dict)
-    Greengrass.update_function_definition([::AWSConfig]; FunctionDefinitionId=, <keyword arguments>)
+    using AWSSDK.Greengrass.update_function_definition
+    update_function_definition([::AWSConfig], arguments::Dict)
+    update_function_definition([::AWSConfig]; FunctionDefinitionId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "PUT", "/greengrass/definition/functions/{FunctionDefinitionId}", arguments::Dict)
@@ -2708,9 +2708,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.update_group([::AWSConfig], arguments::Dict)
-    Greengrass.update_group([::AWSConfig]; GroupId=, <keyword arguments>)
+    using AWSSDK.Greengrass.update_group
+    update_group([::AWSConfig], arguments::Dict)
+    update_group([::AWSConfig]; GroupId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "PUT", "/greengrass/groups/{GroupId}", arguments::Dict)
@@ -2751,9 +2751,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.update_group_certificate_configuration([::AWSConfig], arguments::Dict)
-    Greengrass.update_group_certificate_configuration([::AWSConfig]; GroupId=, <keyword arguments>)
+    using AWSSDK.Greengrass.update_group_certificate_configuration
+    update_group_certificate_configuration([::AWSConfig], arguments::Dict)
+    update_group_certificate_configuration([::AWSConfig]; GroupId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "PUT", "/greengrass/groups/{GroupId}/certificateauthorities/configuration/expiry", arguments::Dict)
@@ -2794,9 +2794,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.update_logger_definition([::AWSConfig], arguments::Dict)
-    Greengrass.update_logger_definition([::AWSConfig]; LoggerDefinitionId=, <keyword arguments>)
+    using AWSSDK.Greengrass.update_logger_definition
+    update_logger_definition([::AWSConfig], arguments::Dict)
+    update_logger_definition([::AWSConfig]; LoggerDefinitionId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "PUT", "/greengrass/definition/loggers/{LoggerDefinitionId}", arguments::Dict)
@@ -2837,9 +2837,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
-    using AWSSDK.Greengrass
-    Greengrass.update_subscription_definition([::AWSConfig], arguments::Dict)
-    Greengrass.update_subscription_definition([::AWSConfig]; SubscriptionDefinitionId=, <keyword arguments>)
+    using AWSSDK.Greengrass.update_subscription_definition
+    update_subscription_definition([::AWSConfig], arguments::Dict)
+    update_subscription_definition([::AWSConfig]; SubscriptionDefinitionId=, <keyword arguments>)
 
     using AWSCore.Services.greengrass
     greengrass([::AWSConfig], "PUT", "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.SES
-    SES.clone_receipt_rule_set([::AWSConfig], arguments::Dict)
-    SES.clone_receipt_rule_set([::AWSConfig]; RuleSetName=, OriginalRuleSetName=)
+    using AWSSDK.SES.clone_receipt_rule_set
+    clone_receipt_rule_set([::AWSConfig], arguments::Dict)
+    clone_receipt_rule_set([::AWSConfig]; RuleSetName=, OriginalRuleSetName=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "CloneReceiptRuleSet", arguments::Dict)
@@ -78,9 +78,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.create_configuration_set([::AWSConfig], arguments::Dict)
-    SES.create_configuration_set([::AWSConfig]; ConfigurationSet=)
+    using AWSSDK.SES.create_configuration_set
+    create_configuration_set([::AWSConfig], arguments::Dict)
+    create_configuration_set([::AWSConfig]; ConfigurationSet=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "CreateConfigurationSet", arguments::Dict)
@@ -121,9 +121,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.create_configuration_set_event_destination([::AWSConfig], arguments::Dict)
-    SES.create_configuration_set_event_destination([::AWSConfig]; ConfigurationSetName=, EventDestination=)
+    using AWSSDK.SES.create_configuration_set_event_destination
+    create_configuration_set_event_destination([::AWSConfig], arguments::Dict)
+    create_configuration_set_event_destination([::AWSConfig]; ConfigurationSetName=, EventDestination=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "CreateConfigurationSetEventDestination", arguments::Dict)
@@ -186,9 +186,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.create_receipt_filter([::AWSConfig], arguments::Dict)
-    SES.create_receipt_filter([::AWSConfig]; Filter=)
+    using AWSSDK.SES.create_receipt_filter
+    create_receipt_filter([::AWSConfig], arguments::Dict)
+    create_receipt_filter([::AWSConfig]; Filter=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "CreateReceiptFilter", arguments::Dict)
@@ -254,9 +254,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.create_receipt_rule([::AWSConfig], arguments::Dict)
-    SES.create_receipt_rule([::AWSConfig]; RuleSetName=, Rule=, <keyword arguments>)
+    using AWSSDK.SES.create_receipt_rule
+    create_receipt_rule([::AWSConfig], arguments::Dict)
+    create_receipt_rule([::AWSConfig]; RuleSetName=, Rule=, <keyword arguments>)
 
     using AWSCore.Services.email
     email([::AWSConfig], "CreateReceiptRule", arguments::Dict)
@@ -375,9 +375,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.create_receipt_rule_set([::AWSConfig], arguments::Dict)
-    SES.create_receipt_rule_set([::AWSConfig]; RuleSetName=)
+    using AWSSDK.SES.create_receipt_rule_set
+    create_receipt_rule_set([::AWSConfig], arguments::Dict)
+    create_receipt_rule_set([::AWSConfig]; RuleSetName=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "CreateReceiptRuleSet", arguments::Dict)
@@ -435,9 +435,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.delete_configuration_set([::AWSConfig], arguments::Dict)
-    SES.delete_configuration_set([::AWSConfig]; ConfigurationSetName=)
+    using AWSSDK.SES.delete_configuration_set
+    delete_configuration_set([::AWSConfig], arguments::Dict)
+    delete_configuration_set([::AWSConfig]; ConfigurationSetName=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "DeleteConfigurationSet", arguments::Dict)
@@ -478,9 +478,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.delete_configuration_set_event_destination([::AWSConfig], arguments::Dict)
-    SES.delete_configuration_set_event_destination([::AWSConfig]; ConfigurationSetName=, EventDestinationName=)
+    using AWSSDK.SES.delete_configuration_set_event_destination
+    delete_configuration_set_event_destination([::AWSConfig], arguments::Dict)
+    delete_configuration_set_event_destination([::AWSConfig]; ConfigurationSetName=, EventDestinationName=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "DeleteConfigurationSetEventDestination", arguments::Dict)
@@ -525,9 +525,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.delete_identity([::AWSConfig], arguments::Dict)
-    SES.delete_identity([::AWSConfig]; Identity=)
+    using AWSSDK.SES.delete_identity
+    delete_identity([::AWSConfig], arguments::Dict)
+    delete_identity([::AWSConfig]; Identity=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "DeleteIdentity", arguments::Dict)
@@ -573,9 +573,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.delete_identity_policy([::AWSConfig], arguments::Dict)
-    SES.delete_identity_policy([::AWSConfig]; Identity=, PolicyName=)
+    using AWSSDK.SES.delete_identity_policy
+    delete_identity_policy([::AWSConfig], arguments::Dict)
+    delete_identity_policy([::AWSConfig]; Identity=, PolicyName=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "DeleteIdentityPolicy", arguments::Dict)
@@ -633,9 +633,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.delete_receipt_filter([::AWSConfig], arguments::Dict)
-    SES.delete_receipt_filter([::AWSConfig]; FilterName=)
+    using AWSSDK.SES.delete_receipt_filter
+    delete_receipt_filter([::AWSConfig], arguments::Dict)
+    delete_receipt_filter([::AWSConfig]; FilterName=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "DeleteReceiptFilter", arguments::Dict)
@@ -683,9 +683,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.delete_receipt_rule([::AWSConfig], arguments::Dict)
-    SES.delete_receipt_rule([::AWSConfig]; RuleSetName=, RuleName=)
+    using AWSSDK.SES.delete_receipt_rule
+    delete_receipt_rule([::AWSConfig], arguments::Dict)
+    delete_receipt_rule([::AWSConfig]; RuleSetName=, RuleName=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "DeleteReceiptRule", arguments::Dict)
@@ -742,9 +742,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.delete_receipt_rule_set([::AWSConfig], arguments::Dict)
-    SES.delete_receipt_rule_set([::AWSConfig]; RuleSetName=)
+    using AWSSDK.SES.delete_receipt_rule_set
+    delete_receipt_rule_set([::AWSConfig], arguments::Dict)
+    delete_receipt_rule_set([::AWSConfig]; RuleSetName=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "DeleteReceiptRuleSet", arguments::Dict)
@@ -799,9 +799,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.delete_verified_email_address([::AWSConfig], arguments::Dict)
-    SES.delete_verified_email_address([::AWSConfig]; EmailAddress=)
+    using AWSSDK.SES.delete_verified_email_address
+    delete_verified_email_address([::AWSConfig], arguments::Dict)
+    delete_verified_email_address([::AWSConfig]; EmailAddress=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "DeleteVerifiedEmailAddress", arguments::Dict)
@@ -846,9 +846,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.describe_active_receipt_rule_set([::AWSConfig], arguments::Dict)
-    SES.describe_active_receipt_rule_set([::AWSConfig]; )
+    using AWSSDK.SES.describe_active_receipt_rule_set
+    describe_active_receipt_rule_set([::AWSConfig], arguments::Dict)
+    describe_active_receipt_rule_set([::AWSConfig]; )
 
     using AWSCore.Services.email
     email([::AWSConfig], "DescribeActiveReceiptRuleSet", arguments::Dict)
@@ -918,9 +918,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.describe_configuration_set([::AWSConfig], arguments::Dict)
-    SES.describe_configuration_set([::AWSConfig]; ConfigurationSetName=, <keyword arguments>)
+    using AWSSDK.SES.describe_configuration_set
+    describe_configuration_set([::AWSConfig], arguments::Dict)
+    describe_configuration_set([::AWSConfig]; ConfigurationSetName=, <keyword arguments>)
 
     using AWSCore.Services.email
     email([::AWSConfig], "DescribeConfigurationSet", arguments::Dict)
@@ -965,9 +965,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.describe_receipt_rule([::AWSConfig], arguments::Dict)
-    SES.describe_receipt_rule([::AWSConfig]; RuleSetName=, RuleName=)
+    using AWSSDK.SES.describe_receipt_rule
+    describe_receipt_rule([::AWSConfig], arguments::Dict)
+    describe_receipt_rule([::AWSConfig]; RuleSetName=, RuleName=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "DescribeReceiptRule", arguments::Dict)
@@ -1044,9 +1044,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.describe_receipt_rule_set([::AWSConfig], arguments::Dict)
-    SES.describe_receipt_rule_set([::AWSConfig]; RuleSetName=)
+    using AWSSDK.SES.describe_receipt_rule_set
+    describe_receipt_rule_set([::AWSConfig], arguments::Dict)
+    describe_receipt_rule_set([::AWSConfig]; RuleSetName=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "DescribeReceiptRuleSet", arguments::Dict)
@@ -1124,9 +1124,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.get_identity_dkim_attributes([::AWSConfig], arguments::Dict)
-    SES.get_identity_dkim_attributes([::AWSConfig]; Identities=)
+    using AWSSDK.SES.get_identity_dkim_attributes
+    get_identity_dkim_attributes([::AWSConfig], arguments::Dict)
+    get_identity_dkim_attributes([::AWSConfig]; Identities=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "GetIdentityDkimAttributes", arguments::Dict)
@@ -1206,9 +1206,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.get_identity_mail_from_domain_attributes([::AWSConfig], arguments::Dict)
-    SES.get_identity_mail_from_domain_attributes([::AWSConfig]; Identities=)
+    using AWSSDK.SES.get_identity_mail_from_domain_attributes
+    get_identity_mail_from_domain_attributes([::AWSConfig], arguments::Dict)
+    get_identity_mail_from_domain_attributes([::AWSConfig]; Identities=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "GetIdentityMailFromDomainAttributes", arguments::Dict)
@@ -1269,9 +1269,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.get_identity_notification_attributes([::AWSConfig], arguments::Dict)
-    SES.get_identity_notification_attributes([::AWSConfig]; Identities=)
+    using AWSSDK.SES.get_identity_notification_attributes
+    get_identity_notification_attributes([::AWSConfig], arguments::Dict)
+    get_identity_notification_attributes([::AWSConfig]; Identities=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "GetIdentityNotificationAttributes", arguments::Dict)
@@ -1338,9 +1338,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.get_identity_policies([::AWSConfig], arguments::Dict)
-    SES.get_identity_policies([::AWSConfig]; Identity=, PolicyNames=)
+    using AWSSDK.SES.get_identity_policies
+    get_identity_policies([::AWSConfig], arguments::Dict)
+    get_identity_policies([::AWSConfig]; Identity=, PolicyNames=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "GetIdentityPolicies", arguments::Dict)
@@ -1409,9 +1409,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.get_identity_verification_attributes([::AWSConfig], arguments::Dict)
-    SES.get_identity_verification_attributes([::AWSConfig]; Identities=)
+    using AWSSDK.SES.get_identity_verification_attributes
+    get_identity_verification_attributes([::AWSConfig], arguments::Dict)
+    get_identity_verification_attributes([::AWSConfig]; Identities=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "GetIdentityVerificationAttributes", arguments::Dict)
@@ -1471,9 +1471,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.get_send_quota([::AWSConfig])
-    SES.
+    using AWSSDK.SES.get_send_quota
+    get_send_quota([::AWSConfig])
+    
 
     using AWSCore.Services.email
     email([::AWSConfig], "GetSendQuota",)
@@ -1513,9 +1513,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.get_send_statistics([::AWSConfig])
-    SES.
+    using AWSSDK.SES.get_send_statistics
+    get_send_statistics([::AWSConfig])
+    
 
     using AWSCore.Services.email
     email([::AWSConfig], "GetSendStatistics",)
@@ -1577,9 +1577,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.list_configuration_sets([::AWSConfig], arguments::Dict)
-    SES.list_configuration_sets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SES.list_configuration_sets
+    list_configuration_sets([::AWSConfig], arguments::Dict)
+    list_configuration_sets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.email
     email([::AWSConfig], "ListConfigurationSets", arguments::Dict)
@@ -1620,9 +1620,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.list_identities([::AWSConfig], arguments::Dict)
-    SES.list_identities([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SES.list_identities
+    list_identities([::AWSConfig], arguments::Dict)
+    list_identities([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.email
     email([::AWSConfig], "ListIdentities", arguments::Dict)
@@ -1688,9 +1688,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.list_identity_policies([::AWSConfig], arguments::Dict)
-    SES.list_identity_policies([::AWSConfig]; Identity=)
+    using AWSSDK.SES.list_identity_policies
+    list_identity_policies([::AWSConfig], arguments::Dict)
+    list_identity_policies([::AWSConfig]; Identity=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "ListIdentityPolicies", arguments::Dict)
@@ -1752,9 +1752,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.list_receipt_filters([::AWSConfig], arguments::Dict)
-    SES.list_receipt_filters([::AWSConfig]; )
+    using AWSSDK.SES.list_receipt_filters
+    list_receipt_filters([::AWSConfig], arguments::Dict)
+    list_receipt_filters([::AWSConfig]; )
 
     using AWSCore.Services.email
     email([::AWSConfig], "ListReceiptFilters", arguments::Dict)
@@ -1806,9 +1806,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.list_receipt_rule_sets([::AWSConfig], arguments::Dict)
-    SES.list_receipt_rule_sets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SES.list_receipt_rule_sets
+    list_receipt_rule_sets([::AWSConfig], arguments::Dict)
+    list_receipt_rule_sets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.email
     email([::AWSConfig], "ListReceiptRuleSets", arguments::Dict)
@@ -1869,9 +1869,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.list_verified_email_addresses([::AWSConfig])
-    SES.
+    using AWSSDK.SES.list_verified_email_addresses
+    list_verified_email_addresses([::AWSConfig])
+    
 
     using AWSCore.Services.email
     email([::AWSConfig], "ListVerifiedEmailAddresses",)
@@ -1915,9 +1915,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.put_identity_policy([::AWSConfig], arguments::Dict)
-    SES.put_identity_policy([::AWSConfig]; Identity=, PolicyName=, Policy=)
+    using AWSSDK.SES.put_identity_policy
+    put_identity_policy([::AWSConfig], arguments::Dict)
+    put_identity_policy([::AWSConfig]; Identity=, PolicyName=, Policy=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "PutIdentityPolicy", arguments::Dict)
@@ -1988,9 +1988,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.reorder_receipt_rule_set([::AWSConfig], arguments::Dict)
-    SES.reorder_receipt_rule_set([::AWSConfig]; RuleSetName=, RuleNames=)
+    using AWSSDK.SES.reorder_receipt_rule_set
+    reorder_receipt_rule_set([::AWSConfig], arguments::Dict)
+    reorder_receipt_rule_set([::AWSConfig]; RuleSetName=, RuleNames=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "ReorderReceiptRuleSet", arguments::Dict)
@@ -2053,9 +2053,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.send_bounce([::AWSConfig], arguments::Dict)
-    SES.send_bounce([::AWSConfig]; OriginalMessageId=, BounceSender=, BouncedRecipientInfoList=, <keyword arguments>)
+    using AWSSDK.SES.send_bounce
+    send_bounce([::AWSConfig], arguments::Dict)
+    send_bounce([::AWSConfig]; OriginalMessageId=, BounceSender=, BouncedRecipientInfoList=, <keyword arguments>)
 
     using AWSCore.Services.email
     email([::AWSConfig], "SendBounce", arguments::Dict)
@@ -2146,9 +2146,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.send_email([::AWSConfig], arguments::Dict)
-    SES.send_email([::AWSConfig]; Source=, Destination=, Message=, <keyword arguments>)
+    using AWSSDK.SES.send_email
+    send_email([::AWSConfig], arguments::Dict)
+    send_email([::AWSConfig]; Source=, Destination=, Message=, <keyword arguments>)
 
     using AWSCore.Services.email
     email([::AWSConfig], "SendEmail", arguments::Dict)
@@ -2319,9 +2319,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.send_raw_email([::AWSConfig], arguments::Dict)
-    SES.send_raw_email([::AWSConfig]; RawMessage=, <keyword arguments>)
+    using AWSSDK.SES.send_raw_email
+    send_raw_email([::AWSConfig], arguments::Dict)
+    send_raw_email([::AWSConfig]; RawMessage=, <keyword arguments>)
 
     using AWSCore.Services.email
     email([::AWSConfig], "SendRawEmail", arguments::Dict)
@@ -2479,9 +2479,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.set_active_receipt_rule_set([::AWSConfig], arguments::Dict)
-    SES.set_active_receipt_rule_set([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SES.set_active_receipt_rule_set
+    set_active_receipt_rule_set([::AWSConfig], arguments::Dict)
+    set_active_receipt_rule_set([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.email
     email([::AWSConfig], "SetActiveReceiptRuleSet", arguments::Dict)
@@ -2536,9 +2536,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.set_identity_dkim_enabled([::AWSConfig], arguments::Dict)
-    SES.set_identity_dkim_enabled([::AWSConfig]; Identity=, DkimEnabled=)
+    using AWSSDK.SES.set_identity_dkim_enabled
+    set_identity_dkim_enabled([::AWSConfig], arguments::Dict)
+    set_identity_dkim_enabled([::AWSConfig]; Identity=, DkimEnabled=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "SetIdentityDkimEnabled", arguments::Dict)
@@ -2597,9 +2597,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.set_identity_feedback_forwarding_enabled([::AWSConfig], arguments::Dict)
-    SES.set_identity_feedback_forwarding_enabled([::AWSConfig]; Identity=, ForwardingEnabled=)
+    using AWSSDK.SES.set_identity_feedback_forwarding_enabled
+    set_identity_feedback_forwarding_enabled([::AWSConfig], arguments::Dict)
+    set_identity_feedback_forwarding_enabled([::AWSConfig]; Identity=, ForwardingEnabled=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "SetIdentityFeedbackForwardingEnabled", arguments::Dict)
@@ -2655,9 +2655,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.set_identity_headers_in_notifications_enabled([::AWSConfig], arguments::Dict)
-    SES.set_identity_headers_in_notifications_enabled([::AWSConfig]; Identity=, NotificationType=, Enabled=)
+    using AWSSDK.SES.set_identity_headers_in_notifications_enabled
+    set_identity_headers_in_notifications_enabled([::AWSConfig], arguments::Dict)
+    set_identity_headers_in_notifications_enabled([::AWSConfig]; Identity=, NotificationType=, Enabled=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "SetIdentityHeadersInNotificationsEnabled", arguments::Dict)
@@ -2717,9 +2717,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.set_identity_mail_from_domain([::AWSConfig], arguments::Dict)
-    SES.set_identity_mail_from_domain([::AWSConfig]; Identity=, <keyword arguments>)
+    using AWSSDK.SES.set_identity_mail_from_domain
+    set_identity_mail_from_domain([::AWSConfig], arguments::Dict)
+    set_identity_mail_from_domain([::AWSConfig]; Identity=, <keyword arguments>)
 
     using AWSCore.Services.email
     email([::AWSConfig], "SetIdentityMailFromDomain", arguments::Dict)
@@ -2780,9 +2780,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.set_identity_notification_topic([::AWSConfig], arguments::Dict)
-    SES.set_identity_notification_topic([::AWSConfig]; Identity=, NotificationType=, <keyword arguments>)
+    using AWSSDK.SES.set_identity_notification_topic
+    set_identity_notification_topic([::AWSConfig], arguments::Dict)
+    set_identity_notification_topic([::AWSConfig]; Identity=, NotificationType=, <keyword arguments>)
 
     using AWSCore.Services.email
     email([::AWSConfig], "SetIdentityNotificationTopic", arguments::Dict)
@@ -2843,9 +2843,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.set_receipt_rule_position([::AWSConfig], arguments::Dict)
-    SES.set_receipt_rule_position([::AWSConfig]; RuleSetName=, RuleName=, <keyword arguments>)
+    using AWSSDK.SES.set_receipt_rule_position
+    set_receipt_rule_position([::AWSConfig], arguments::Dict)
+    set_receipt_rule_position([::AWSConfig]; RuleSetName=, RuleName=, <keyword arguments>)
 
     using AWSCore.Services.email
     email([::AWSConfig], "SetReceiptRulePosition", arguments::Dict)
@@ -2907,9 +2907,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.update_configuration_set_event_destination([::AWSConfig], arguments::Dict)
-    SES.update_configuration_set_event_destination([::AWSConfig]; ConfigurationSetName=, EventDestination=)
+    using AWSSDK.SES.update_configuration_set_event_destination
+    update_configuration_set_event_destination([::AWSConfig], arguments::Dict)
+    update_configuration_set_event_destination([::AWSConfig]; ConfigurationSetName=, EventDestination=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "UpdateConfigurationSetEventDestination", arguments::Dict)
@@ -2972,9 +2972,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.update_receipt_rule([::AWSConfig], arguments::Dict)
-    SES.update_receipt_rule([::AWSConfig]; RuleSetName=, Rule=)
+    using AWSSDK.SES.update_receipt_rule
+    update_receipt_rule([::AWSConfig], arguments::Dict)
+    update_receipt_rule([::AWSConfig]; RuleSetName=, Rule=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "UpdateReceiptRule", arguments::Dict)
@@ -3088,9 +3088,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.verify_domain_dkim([::AWSConfig], arguments::Dict)
-    SES.verify_domain_dkim([::AWSConfig]; Domain=)
+    using AWSSDK.SES.verify_domain_dkim
+    verify_domain_dkim([::AWSConfig], arguments::Dict)
+    verify_domain_dkim([::AWSConfig]; Domain=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "VerifyDomainDkim", arguments::Dict)
@@ -3151,9 +3151,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.verify_domain_identity([::AWSConfig], arguments::Dict)
-    SES.verify_domain_identity([::AWSConfig]; Domain=)
+    using AWSSDK.SES.verify_domain_identity
+    verify_domain_identity([::AWSConfig], arguments::Dict)
+    verify_domain_identity([::AWSConfig]; Domain=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "VerifyDomainIdentity", arguments::Dict)
@@ -3206,9 +3206,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.verify_email_address([::AWSConfig], arguments::Dict)
-    SES.verify_email_address([::AWSConfig]; EmailAddress=)
+    using AWSSDK.SES.verify_email_address
+    verify_email_address([::AWSConfig], arguments::Dict)
+    verify_email_address([::AWSConfig]; EmailAddress=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "VerifyEmailAddress", arguments::Dict)
@@ -3253,9 +3253,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
-    using AWSSDK.SES
-    SES.verify_email_identity([::AWSConfig], arguments::Dict)
-    SES.verify_email_identity([::AWSConfig]; EmailAddress=)
+    using AWSSDK.SES.verify_email_identity
+    verify_email_identity([::AWSConfig], arguments::Dict)
+    verify_email_identity([::AWSConfig]; EmailAddress=)
 
     using AWSCore.Services.email
     email([::AWSConfig], "VerifyEmailIdentity", arguments::Dict)

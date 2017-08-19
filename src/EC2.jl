@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.EC2
-    EC2.accept_reserved_instances_exchange_quote([::AWSConfig], arguments::Dict)
-    EC2.accept_reserved_instances_exchange_quote([::AWSConfig]; ReservedInstanceId=, <keyword arguments>)
+    using AWSSDK.EC2.accept_reserved_instances_exchange_quote
+    accept_reserved_instances_exchange_quote([::AWSConfig], arguments::Dict)
+    accept_reserved_instances_exchange_quote([::AWSConfig]; ReservedInstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AcceptReservedInstancesExchangeQuote", arguments::Dict)
@@ -61,9 +61,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.accept_vpc_peering_connection([::AWSConfig], arguments::Dict)
-    EC2.accept_vpc_peering_connection([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.accept_vpc_peering_connection
+    accept_vpc_peering_connection([::AWSConfig], arguments::Dict)
+    accept_vpc_peering_connection([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AcceptVpcPeeringConnection", arguments::Dict)
@@ -100,9 +100,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.allocate_address([::AWSConfig], arguments::Dict)
-    EC2.allocate_address([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.allocate_address
+    allocate_address([::AWSConfig], arguments::Dict)
+    allocate_address([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AllocateAddress", arguments::Dict)
@@ -175,9 +175,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.allocate_hosts([::AWSConfig], arguments::Dict)
-    EC2.allocate_hosts([::AWSConfig]; AvailabilityZone=, InstanceType=, Quantity=, <keyword arguments>)
+    using AWSSDK.EC2.allocate_hosts
+    allocate_hosts([::AWSConfig], arguments::Dict)
+    allocate_hosts([::AWSConfig]; AvailabilityZone=, InstanceType=, Quantity=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AllocateHosts", arguments::Dict)
@@ -228,9 +228,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.assign_ipv6addresses([::AWSConfig], arguments::Dict)
-    EC2.assign_ipv6addresses([::AWSConfig]; NetworkInterfaceId=, <keyword arguments>)
+    using AWSSDK.EC2.assign_ipv6addresses
+    assign_ipv6addresses([::AWSConfig], arguments::Dict)
+    assign_ipv6addresses([::AWSConfig]; NetworkInterfaceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AssignIpv6Addresses", arguments::Dict)
@@ -271,9 +271,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.assign_private_ip_addresses([::AWSConfig], arguments::Dict)
-    EC2.assign_private_ip_addresses([::AWSConfig]; NetworkInterfaceId=, <keyword arguments>)
+    using AWSSDK.EC2.assign_private_ip_addresses
+    assign_private_ip_addresses([::AWSConfig], arguments::Dict)
+    assign_private_ip_addresses([::AWSConfig]; NetworkInterfaceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AssignPrivateIpAddresses", arguments::Dict)
@@ -344,9 +344,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.associate_address([::AWSConfig], arguments::Dict)
-    EC2.associate_address([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.associate_address
+    associate_address([::AWSConfig], arguments::Dict)
+    associate_address([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AssociateAddress", arguments::Dict)
@@ -462,9 +462,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.associate_dhcp_options([::AWSConfig], arguments::Dict)
-    EC2.associate_dhcp_options([::AWSConfig]; DhcpOptionsId=, VpcId=, <keyword arguments>)
+    using AWSSDK.EC2.associate_dhcp_options
+    associate_dhcp_options([::AWSConfig], arguments::Dict)
+    associate_dhcp_options([::AWSConfig]; DhcpOptionsId=, VpcId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AssociateDhcpOptions", arguments::Dict)
@@ -529,9 +529,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.associate_iam_instance_profile([::AWSConfig], arguments::Dict)
-    EC2.associate_iam_instance_profile([::AWSConfig]; IamInstanceProfile=, InstanceId=)
+    using AWSSDK.EC2.associate_iam_instance_profile
+    associate_iam_instance_profile([::AWSConfig], arguments::Dict)
+    associate_iam_instance_profile([::AWSConfig]; IamInstanceProfile=, InstanceId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AssociateIamInstanceProfile", arguments::Dict)
@@ -573,9 +573,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.associate_route_table([::AWSConfig], arguments::Dict)
-    EC2.associate_route_table([::AWSConfig]; RouteTableId=, SubnetId=, <keyword arguments>)
+    using AWSSDK.EC2.associate_route_table
+    associate_route_table([::AWSConfig], arguments::Dict)
+    associate_route_table([::AWSConfig]; RouteTableId=, SubnetId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AssociateRouteTable", arguments::Dict)
@@ -637,9 +637,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.associate_subnet_cidr_block([::AWSConfig], arguments::Dict)
-    EC2.associate_subnet_cidr_block([::AWSConfig]; Ipv6CidrBlock=, SubnetId=)
+    using AWSSDK.EC2.associate_subnet_cidr_block
+    associate_subnet_cidr_block([::AWSConfig], arguments::Dict)
+    associate_subnet_cidr_block([::AWSConfig]; Ipv6CidrBlock=, SubnetId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AssociateSubnetCidrBlock", arguments::Dict)
@@ -676,9 +676,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.associate_vpc_cidr_block([::AWSConfig], arguments::Dict)
-    EC2.associate_vpc_cidr_block([::AWSConfig]; VpcId=, <keyword arguments>)
+    using AWSSDK.EC2.associate_vpc_cidr_block
+    associate_vpc_cidr_block([::AWSConfig], arguments::Dict)
+    associate_vpc_cidr_block([::AWSConfig]; VpcId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AssociateVpcCidrBlock", arguments::Dict)
@@ -715,9 +715,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.attach_classic_link_vpc([::AWSConfig], arguments::Dict)
-    EC2.attach_classic_link_vpc([::AWSConfig]; SecurityGroupId=, InstanceId=, VpcId=, <keyword arguments>)
+    using AWSSDK.EC2.attach_classic_link_vpc
+    attach_classic_link_vpc([::AWSConfig], arguments::Dict)
+    attach_classic_link_vpc([::AWSConfig]; SecurityGroupId=, InstanceId=, VpcId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AttachClassicLinkVpc", arguments::Dict)
@@ -766,9 +766,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.attach_internet_gateway([::AWSConfig], arguments::Dict)
-    EC2.attach_internet_gateway([::AWSConfig]; InternetGatewayId=, VpcId=, <keyword arguments>)
+    using AWSSDK.EC2.attach_internet_gateway
+    attach_internet_gateway([::AWSConfig], arguments::Dict)
+    attach_internet_gateway([::AWSConfig]; InternetGatewayId=, VpcId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AttachInternetGateway", arguments::Dict)
@@ -817,9 +817,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.attach_network_interface([::AWSConfig], arguments::Dict)
-    EC2.attach_network_interface([::AWSConfig]; DeviceIndex=, InstanceId=, NetworkInterfaceId=, <keyword arguments>)
+    using AWSSDK.EC2.attach_network_interface
+    attach_network_interface([::AWSConfig], arguments::Dict)
+    attach_network_interface([::AWSConfig]; DeviceIndex=, InstanceId=, NetworkInterfaceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AttachNetworkInterface", arguments::Dict)
@@ -884,9 +884,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.attach_volume([::AWSConfig], arguments::Dict)
-    EC2.attach_volume([::AWSConfig]; Device=, InstanceId=, VolumeId=, <keyword arguments>)
+    using AWSSDK.EC2.attach_volume
+    attach_volume([::AWSConfig], arguments::Dict)
+    attach_volume([::AWSConfig]; Device=, InstanceId=, VolumeId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AttachVolume", arguments::Dict)
@@ -973,9 +973,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.attach_vpn_gateway([::AWSConfig], arguments::Dict)
-    EC2.attach_vpn_gateway([::AWSConfig]; VpcId=, VpnGatewayId=, <keyword arguments>)
+    using AWSSDK.EC2.attach_vpn_gateway
+    attach_vpn_gateway([::AWSConfig], arguments::Dict)
+    attach_vpn_gateway([::AWSConfig]; VpcId=, VpnGatewayId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AttachVpnGateway", arguments::Dict)
@@ -1018,9 +1018,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.authorize_security_group_egress([::AWSConfig], arguments::Dict)
-    EC2.authorize_security_group_egress([::AWSConfig]; GroupId=, <keyword arguments>)
+    using AWSSDK.EC2.authorize_security_group_egress
+    authorize_security_group_egress([::AWSConfig], arguments::Dict)
+    authorize_security_group_egress([::AWSConfig]; GroupId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AuthorizeSecurityGroupEgress", arguments::Dict)
@@ -1102,9 +1102,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.authorize_security_group_ingress([::AWSConfig], arguments::Dict)
-    EC2.authorize_security_group_ingress([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.authorize_security_group_ingress
+    authorize_security_group_ingress([::AWSConfig], arguments::Dict)
+    authorize_security_group_ingress([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "AuthorizeSecurityGroupIngress", arguments::Dict)
@@ -1192,9 +1192,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.bundle_instance([::AWSConfig], arguments::Dict)
-    EC2.bundle_instance([::AWSConfig]; InstanceId=, Storage=, <keyword arguments>)
+    using AWSSDK.EC2.bundle_instance
+    bundle_instance([::AWSConfig], arguments::Dict)
+    bundle_instance([::AWSConfig]; InstanceId=, Storage=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "BundleInstance", arguments::Dict)
@@ -1256,9 +1256,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.cancel_bundle_task([::AWSConfig], arguments::Dict)
-    EC2.cancel_bundle_task([::AWSConfig]; BundleId=, <keyword arguments>)
+    using AWSSDK.EC2.cancel_bundle_task
+    cancel_bundle_task([::AWSConfig], arguments::Dict)
+    cancel_bundle_task([::AWSConfig]; BundleId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CancelBundleTask", arguments::Dict)
@@ -1295,9 +1295,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.cancel_conversion_task([::AWSConfig], arguments::Dict)
-    EC2.cancel_conversion_task([::AWSConfig]; ConversionTaskId=, <keyword arguments>)
+    using AWSSDK.EC2.cancel_conversion_task
+    cancel_conversion_task([::AWSConfig], arguments::Dict)
+    cancel_conversion_task([::AWSConfig]; ConversionTaskId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CancelConversionTask", arguments::Dict)
@@ -1336,9 +1336,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.cancel_export_task([::AWSConfig], arguments::Dict)
-    EC2.cancel_export_task([::AWSConfig]; ExportTaskId=)
+    using AWSSDK.EC2.cancel_export_task
+    cancel_export_task([::AWSConfig], arguments::Dict)
+    cancel_export_task([::AWSConfig]; ExportTaskId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CancelExportTask", arguments::Dict)
@@ -1367,9 +1367,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.cancel_import_task([::AWSConfig], arguments::Dict)
-    EC2.cancel_import_task([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.cancel_import_task
+    cancel_import_task([::AWSConfig], arguments::Dict)
+    cancel_import_task([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CancelImportTask", arguments::Dict)
@@ -1410,9 +1410,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.cancel_reserved_instances_listing([::AWSConfig], arguments::Dict)
-    EC2.cancel_reserved_instances_listing([::AWSConfig]; ReservedInstancesListingId=)
+    using AWSSDK.EC2.cancel_reserved_instances_listing
+    cancel_reserved_instances_listing([::AWSConfig], arguments::Dict)
+    cancel_reserved_instances_listing([::AWSConfig]; ReservedInstancesListingId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CancelReservedInstancesListing", arguments::Dict)
@@ -1447,9 +1447,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.cancel_spot_fleet_requests([::AWSConfig], arguments::Dict)
-    EC2.cancel_spot_fleet_requests([::AWSConfig]; SpotFleetRequestId=, TerminateInstances=, <keyword arguments>)
+    using AWSSDK.EC2.cancel_spot_fleet_requests
+    cancel_spot_fleet_requests([::AWSConfig], arguments::Dict)
+    cancel_spot_fleet_requests([::AWSConfig]; SpotFleetRequestId=, TerminateInstances=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CancelSpotFleetRequests", arguments::Dict)
@@ -1546,9 +1546,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.cancel_spot_instance_requests([::AWSConfig], arguments::Dict)
-    EC2.cancel_spot_instance_requests([::AWSConfig]; SpotInstanceRequestId=, <keyword arguments>)
+    using AWSSDK.EC2.cancel_spot_instance_requests
+    cancel_spot_instance_requests([::AWSConfig], arguments::Dict)
+    cancel_spot_instance_requests([::AWSConfig]; SpotInstanceRequestId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CancelSpotInstanceRequests", arguments::Dict)
@@ -1613,9 +1613,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.confirm_product_instance([::AWSConfig], arguments::Dict)
-    EC2.confirm_product_instance([::AWSConfig]; InstanceId=, ProductCode=, <keyword arguments>)
+    using AWSSDK.EC2.confirm_product_instance
+    confirm_product_instance([::AWSConfig], arguments::Dict)
+    confirm_product_instance([::AWSConfig]; InstanceId=, ProductCode=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ConfirmProductInstance", arguments::Dict)
@@ -1675,9 +1675,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.copy_image([::AWSConfig], arguments::Dict)
-    EC2.copy_image([::AWSConfig]; Name=, SourceImageId=, SourceRegion=, <keyword arguments>)
+    using AWSSDK.EC2.copy_image
+    copy_image([::AWSConfig], arguments::Dict)
+    copy_image([::AWSConfig]; Name=, SourceImageId=, SourceRegion=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CopyImage", arguments::Dict)
@@ -1740,9 +1740,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.copy_snapshot([::AWSConfig], arguments::Dict)
-    EC2.copy_snapshot([::AWSConfig]; SourceRegion=, SourceSnapshotId=, <keyword arguments>)
+    using AWSSDK.EC2.copy_snapshot
+    copy_snapshot([::AWSConfig], arguments::Dict)
+    copy_snapshot([::AWSConfig]; SourceRegion=, SourceSnapshotId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CopySnapshot", arguments::Dict)
@@ -1837,9 +1837,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_customer_gateway([::AWSConfig], arguments::Dict)
-    EC2.create_customer_gateway([::AWSConfig]; BgpAsn=, IpAddress=, Type=, <keyword arguments>)
+    using AWSSDK.EC2.create_customer_gateway
+    create_customer_gateway([::AWSConfig], arguments::Dict)
+    create_customer_gateway([::AWSConfig]; BgpAsn=, IpAddress=, Type=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateCustomerGateway", arguments::Dict)
@@ -1922,9 +1922,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_default_vpc([::AWSConfig], arguments::Dict)
-    EC2.create_default_vpc([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.create_default_vpc
+    create_default_vpc([::AWSConfig], arguments::Dict)
+    create_default_vpc([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateDefaultVpc", arguments::Dict)
@@ -1961,9 +1961,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_dhcp_options([::AWSConfig], arguments::Dict)
-    EC2.create_dhcp_options([::AWSConfig]; DhcpConfiguration=, <keyword arguments>)
+    using AWSSDK.EC2.create_dhcp_options
+    create_dhcp_options([::AWSConfig], arguments::Dict)
+    create_dhcp_options([::AWSConfig]; DhcpConfiguration=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateDhcpOptions", arguments::Dict)
@@ -2058,9 +2058,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_egress_only_internet_gateway([::AWSConfig], arguments::Dict)
-    EC2.create_egress_only_internet_gateway([::AWSConfig]; VpcId=, <keyword arguments>)
+    using AWSSDK.EC2.create_egress_only_internet_gateway
+    create_egress_only_internet_gateway([::AWSConfig], arguments::Dict)
+    create_egress_only_internet_gateway([::AWSConfig]; VpcId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateEgressOnlyInternetGateway", arguments::Dict)
@@ -2101,9 +2101,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_flow_logs([::AWSConfig], arguments::Dict)
-    EC2.create_flow_logs([::AWSConfig]; DeliverLogsPermissionArn=, LogGroupName=, ResourceId=, ResourceType=, TrafficType=, <keyword arguments>)
+    using AWSSDK.EC2.create_flow_logs
+    create_flow_logs([::AWSConfig], arguments::Dict)
+    create_flow_logs([::AWSConfig]; DeliverLogsPermissionArn=, LogGroupName=, ResourceId=, ResourceType=, TrafficType=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateFlowLogs", arguments::Dict)
@@ -2160,9 +2160,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_fpga_image([::AWSConfig], arguments::Dict)
-    EC2.create_fpga_image([::AWSConfig]; InputStorageLocation=, <keyword arguments>)
+    using AWSSDK.EC2.create_fpga_image
+    create_fpga_image([::AWSConfig], arguments::Dict)
+    create_fpga_image([::AWSConfig]; InputStorageLocation=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateFpgaImage", arguments::Dict)
@@ -2229,9 +2229,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_image([::AWSConfig], arguments::Dict)
-    EC2.create_image([::AWSConfig]; InstanceId=, Name=, <keyword arguments>)
+    using AWSSDK.EC2.create_image
+    create_image([::AWSConfig], arguments::Dict)
+    create_image([::AWSConfig]; InstanceId=, Name=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateImage", arguments::Dict)
@@ -2304,9 +2304,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_instance_export_task([::AWSConfig], arguments::Dict)
-    EC2.create_instance_export_task([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.EC2.create_instance_export_task
+    create_instance_export_task([::AWSConfig], arguments::Dict)
+    create_instance_export_task([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateInstanceExportTask", arguments::Dict)
@@ -2360,9 +2360,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_internet_gateway([::AWSConfig], arguments::Dict)
-    EC2.create_internet_gateway([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.create_internet_gateway
+    create_internet_gateway([::AWSConfig], arguments::Dict)
+    create_internet_gateway([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateInternetGateway", arguments::Dict)
@@ -2416,9 +2416,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_key_pair([::AWSConfig], arguments::Dict)
-    EC2.create_key_pair([::AWSConfig]; KeyName=, <keyword arguments>)
+    using AWSSDK.EC2.create_key_pair
+    create_key_pair([::AWSConfig], arguments::Dict)
+    create_key_pair([::AWSConfig]; KeyName=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateKeyPair", arguments::Dict)
@@ -2474,9 +2474,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_nat_gateway([::AWSConfig], arguments::Dict)
-    EC2.create_nat_gateway([::AWSConfig]; AllocationId=, SubnetId=, <keyword arguments>)
+    using AWSSDK.EC2.create_nat_gateway
+    create_nat_gateway([::AWSConfig], arguments::Dict)
+    create_nat_gateway([::AWSConfig]; AllocationId=, SubnetId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateNatGateway", arguments::Dict)
@@ -2549,9 +2549,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_network_acl([::AWSConfig], arguments::Dict)
-    EC2.create_network_acl([::AWSConfig]; VpcId=, <keyword arguments>)
+    using AWSSDK.EC2.create_network_acl
+    create_network_acl([::AWSConfig], arguments::Dict)
+    create_network_acl([::AWSConfig]; VpcId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateNetworkAcl", arguments::Dict)
@@ -2634,9 +2634,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_network_acl_entry([::AWSConfig], arguments::Dict)
-    EC2.create_network_acl_entry([::AWSConfig]; Egress=, NetworkAclId=, Protocol=, RuleAction=, RuleNumber=, <keyword arguments>)
+    using AWSSDK.EC2.create_network_acl_entry
+    create_network_acl_entry([::AWSConfig], arguments::Dict)
+    create_network_acl_entry([::AWSConfig]; Egress=, NetworkAclId=, Protocol=, RuleAction=, RuleNumber=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateNetworkAclEntry", arguments::Dict)
@@ -2739,9 +2739,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_network_interface([::AWSConfig], arguments::Dict)
-    EC2.create_network_interface([::AWSConfig]; SubnetId=, <keyword arguments>)
+    using AWSSDK.EC2.create_network_interface
+    create_network_interface([::AWSConfig], arguments::Dict)
+    create_network_interface([::AWSConfig]; SubnetId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateNetworkInterface", arguments::Dict)
@@ -2865,9 +2865,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_network_interface_permission([::AWSConfig], arguments::Dict)
-    EC2.create_network_interface_permission([::AWSConfig]; NetworkInterfaceId=, Permission=, <keyword arguments>)
+    using AWSSDK.EC2.create_network_interface_permission
+    create_network_interface_permission([::AWSConfig], arguments::Dict)
+    create_network_interface_permission([::AWSConfig]; NetworkInterfaceId=, Permission=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateNetworkInterfacePermission", arguments::Dict)
@@ -2918,9 +2918,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_placement_group([::AWSConfig], arguments::Dict)
-    EC2.create_placement_group([::AWSConfig]; GroupName=, Strategy=, <keyword arguments>)
+    using AWSSDK.EC2.create_placement_group
+    create_placement_group([::AWSConfig], arguments::Dict)
+    create_placement_group([::AWSConfig]; GroupName=, Strategy=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreatePlacementGroup", arguments::Dict)
@@ -2980,9 +2980,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_reserved_instances_listing([::AWSConfig], arguments::Dict)
-    EC2.create_reserved_instances_listing([::AWSConfig]; ClientToken=, InstanceCount=, PriceSchedules=, ReservedInstancesId=)
+    using AWSSDK.EC2.create_reserved_instances_listing
+    create_reserved_instances_listing([::AWSConfig], arguments::Dict)
+    create_reserved_instances_listing([::AWSConfig]; ClientToken=, InstanceCount=, PriceSchedules=, ReservedInstancesId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateReservedInstancesListing", arguments::Dict)
@@ -3042,9 +3042,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_route([::AWSConfig], arguments::Dict)
-    EC2.create_route([::AWSConfig]; RouteTableId=, <keyword arguments>)
+    using AWSSDK.EC2.create_route
+    create_route([::AWSConfig], arguments::Dict)
+    create_route([::AWSConfig]; RouteTableId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateRoute", arguments::Dict)
@@ -3138,9 +3138,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_route_table([::AWSConfig], arguments::Dict)
-    EC2.create_route_table([::AWSConfig]; VpcId=, <keyword arguments>)
+    using AWSSDK.EC2.create_route_table
+    create_route_table([::AWSConfig], arguments::Dict)
+    create_route_table([::AWSConfig]; VpcId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateRouteTable", arguments::Dict)
@@ -3216,9 +3216,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_security_group([::AWSConfig], arguments::Dict)
-    EC2.create_security_group([::AWSConfig]; GroupDescription=, GroupName=, <keyword arguments>)
+    using AWSSDK.EC2.create_security_group
+    create_security_group([::AWSConfig], arguments::Dict)
+    create_security_group([::AWSConfig]; GroupDescription=, GroupName=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateSecurityGroup", arguments::Dict)
@@ -3288,9 +3288,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_snapshot([::AWSConfig], arguments::Dict)
-    EC2.create_snapshot([::AWSConfig]; VolumeId=, <keyword arguments>)
+    using AWSSDK.EC2.create_snapshot
+    create_snapshot([::AWSConfig], arguments::Dict)
+    create_snapshot([::AWSConfig]; VolumeId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateSnapshot", arguments::Dict)
@@ -3369,9 +3369,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_spot_datafeed_subscription([::AWSConfig], arguments::Dict)
-    EC2.create_spot_datafeed_subscription([::AWSConfig]; Bucket=, <keyword arguments>)
+    using AWSSDK.EC2.create_spot_datafeed_subscription
+    create_spot_datafeed_subscription([::AWSConfig], arguments::Dict)
+    create_spot_datafeed_subscription([::AWSConfig]; Bucket=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateSpotDatafeedSubscription", arguments::Dict)
@@ -3436,9 +3436,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_subnet([::AWSConfig], arguments::Dict)
-    EC2.create_subnet([::AWSConfig]; CidrBlock=, VpcId=, <keyword arguments>)
+    using AWSSDK.EC2.create_subnet
+    create_subnet([::AWSConfig], arguments::Dict)
+    create_subnet([::AWSConfig]; CidrBlock=, VpcId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateSubnet", arguments::Dict)
@@ -3528,9 +3528,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_tags([::AWSConfig], arguments::Dict)
-    EC2.create_tags([::AWSConfig]; ResourceId=, Tag=, <keyword arguments>)
+    using AWSSDK.EC2.create_tags
+    create_tags([::AWSConfig], arguments::Dict)
+    create_tags([::AWSConfig]; ResourceId=, Tag=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateTags", arguments::Dict)
@@ -3593,9 +3593,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_volume([::AWSConfig], arguments::Dict)
-    EC2.create_volume([::AWSConfig]; AvailabilityZone=, <keyword arguments>)
+    using AWSSDK.EC2.create_volume
+    create_volume([::AWSConfig], arguments::Dict)
+    create_volume([::AWSConfig]; AvailabilityZone=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateVolume", arguments::Dict)
@@ -3746,9 +3746,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_vpc([::AWSConfig], arguments::Dict)
-    EC2.create_vpc([::AWSConfig]; CidrBlock=, <keyword arguments>)
+    using AWSSDK.EC2.create_vpc
+    create_vpc([::AWSConfig], arguments::Dict)
+    create_vpc([::AWSConfig]; CidrBlock=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateVpc", arguments::Dict)
@@ -3827,9 +3827,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_vpc_endpoint([::AWSConfig], arguments::Dict)
-    EC2.create_vpc_endpoint([::AWSConfig]; ServiceName=, VpcId=, <keyword arguments>)
+    using AWSSDK.EC2.create_vpc_endpoint
+    create_vpc_endpoint([::AWSConfig], arguments::Dict)
+    create_vpc_endpoint([::AWSConfig]; ServiceName=, VpcId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateVpcEndpoint", arguments::Dict)
@@ -3884,9 +3884,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_vpc_peering_connection([::AWSConfig], arguments::Dict)
-    EC2.create_vpc_peering_connection([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.create_vpc_peering_connection
+    create_vpc_peering_connection([::AWSConfig], arguments::Dict)
+    create_vpc_peering_connection([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateVpcPeeringConnection", arguments::Dict)
@@ -3937,9 +3937,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_vpn_connection([::AWSConfig], arguments::Dict)
-    EC2.create_vpn_connection([::AWSConfig]; CustomerGatewayId=, Type=, VpnGatewayId=, <keyword arguments>)
+    using AWSSDK.EC2.create_vpn_connection
+    create_vpn_connection([::AWSConfig], arguments::Dict)
+    create_vpn_connection([::AWSConfig]; CustomerGatewayId=, Type=, VpnGatewayId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateVpnConnection", arguments::Dict)
@@ -4001,9 +4001,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_vpn_connection_route([::AWSConfig], arguments::Dict)
-    EC2.create_vpn_connection_route([::AWSConfig]; DestinationCidrBlock=, VpnConnectionId=)
+    using AWSSDK.EC2.create_vpn_connection_route
+    create_vpn_connection_route([::AWSConfig], arguments::Dict)
+    create_vpn_connection_route([::AWSConfig]; DestinationCidrBlock=, VpnConnectionId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateVpnConnectionRoute", arguments::Dict)
@@ -4038,9 +4038,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.create_vpn_gateway([::AWSConfig], arguments::Dict)
-    EC2.create_vpn_gateway([::AWSConfig]; Type=, <keyword arguments>)
+    using AWSSDK.EC2.create_vpn_gateway
+    create_vpn_gateway([::AWSConfig], arguments::Dict)
+    create_vpn_gateway([::AWSConfig]; Type=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateVpnGateway", arguments::Dict)
@@ -4083,9 +4083,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_customer_gateway([::AWSConfig], arguments::Dict)
-    EC2.delete_customer_gateway([::AWSConfig]; CustomerGatewayId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_customer_gateway
+    delete_customer_gateway([::AWSConfig], arguments::Dict)
+    delete_customer_gateway([::AWSConfig]; CustomerGatewayId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteCustomerGateway", arguments::Dict)
@@ -4129,9 +4129,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_dhcp_options([::AWSConfig], arguments::Dict)
-    EC2.delete_dhcp_options([::AWSConfig]; DhcpOptionsId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_dhcp_options
+    delete_dhcp_options([::AWSConfig], arguments::Dict)
+    delete_dhcp_options([::AWSConfig]; DhcpOptionsId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteDhcpOptions", arguments::Dict)
@@ -4175,9 +4175,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_egress_only_internet_gateway([::AWSConfig], arguments::Dict)
-    EC2.delete_egress_only_internet_gateway([::AWSConfig]; EgressOnlyInternetGatewayId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_egress_only_internet_gateway
+    delete_egress_only_internet_gateway([::AWSConfig], arguments::Dict)
+    delete_egress_only_internet_gateway([::AWSConfig]; EgressOnlyInternetGatewayId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteEgressOnlyInternetGateway", arguments::Dict)
@@ -4214,9 +4214,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_flow_logs([::AWSConfig], arguments::Dict)
-    EC2.delete_flow_logs([::AWSConfig]; FlowLogId=)
+    using AWSSDK.EC2.delete_flow_logs
+    delete_flow_logs([::AWSConfig], arguments::Dict)
+    delete_flow_logs([::AWSConfig]; FlowLogId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteFlowLogs", arguments::Dict)
@@ -4249,9 +4249,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_internet_gateway([::AWSConfig], arguments::Dict)
-    EC2.delete_internet_gateway([::AWSConfig]; InternetGatewayId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_internet_gateway
+    delete_internet_gateway([::AWSConfig], arguments::Dict)
+    delete_internet_gateway([::AWSConfig]; InternetGatewayId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteInternetGateway", arguments::Dict)
@@ -4295,9 +4295,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_key_pair([::AWSConfig], arguments::Dict)
-    EC2.delete_key_pair([::AWSConfig]; KeyName=, <keyword arguments>)
+    using AWSSDK.EC2.delete_key_pair
+    delete_key_pair([::AWSConfig], arguments::Dict)
+    delete_key_pair([::AWSConfig]; KeyName=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteKeyPair", arguments::Dict)
@@ -4341,9 +4341,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_nat_gateway([::AWSConfig], arguments::Dict)
-    EC2.delete_nat_gateway([::AWSConfig]; NatGatewayId=)
+    using AWSSDK.EC2.delete_nat_gateway
+    delete_nat_gateway([::AWSConfig], arguments::Dict)
+    delete_nat_gateway([::AWSConfig]; NatGatewayId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteNatGateway", arguments::Dict)
@@ -4394,9 +4394,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_network_acl([::AWSConfig], arguments::Dict)
-    EC2.delete_network_acl([::AWSConfig]; NetworkAclId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_network_acl
+    delete_network_acl([::AWSConfig], arguments::Dict)
+    delete_network_acl([::AWSConfig]; NetworkAclId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteNetworkAcl", arguments::Dict)
@@ -4440,9 +4440,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_network_acl_entry([::AWSConfig], arguments::Dict)
-    EC2.delete_network_acl_entry([::AWSConfig]; Egress=, NetworkAclId=, RuleNumber=, <keyword arguments>)
+    using AWSSDK.EC2.delete_network_acl_entry
+    delete_network_acl_entry([::AWSConfig], arguments::Dict)
+    delete_network_acl_entry([::AWSConfig]; Egress=, NetworkAclId=, RuleNumber=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteNetworkAclEntry", arguments::Dict)
@@ -4496,9 +4496,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_network_interface([::AWSConfig], arguments::Dict)
-    EC2.delete_network_interface([::AWSConfig]; NetworkInterfaceId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_network_interface
+    delete_network_interface([::AWSConfig], arguments::Dict)
+    delete_network_interface([::AWSConfig]; NetworkInterfaceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteNetworkInterface", arguments::Dict)
@@ -4542,9 +4542,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_network_interface_permission([::AWSConfig], arguments::Dict)
-    EC2.delete_network_interface_permission([::AWSConfig]; NetworkInterfacePermissionId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_network_interface_permission
+    delete_network_interface_permission([::AWSConfig], arguments::Dict)
+    delete_network_interface_permission([::AWSConfig]; NetworkInterfacePermissionId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteNetworkInterfacePermission", arguments::Dict)
@@ -4585,9 +4585,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_placement_group([::AWSConfig], arguments::Dict)
-    EC2.delete_placement_group([::AWSConfig]; GroupName=, <keyword arguments>)
+    using AWSSDK.EC2.delete_placement_group
+    delete_placement_group([::AWSConfig], arguments::Dict)
+    delete_placement_group([::AWSConfig]; GroupName=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeletePlacementGroup", arguments::Dict)
@@ -4639,9 +4639,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_route([::AWSConfig], arguments::Dict)
-    EC2.delete_route([::AWSConfig]; RouteTableId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_route
+    delete_route([::AWSConfig], arguments::Dict)
+    delete_route([::AWSConfig]; RouteTableId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteRoute", arguments::Dict)
@@ -4694,9 +4694,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_route_table([::AWSConfig], arguments::Dict)
-    EC2.delete_route_table([::AWSConfig]; RouteTableId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_route_table
+    delete_route_table([::AWSConfig], arguments::Dict)
+    delete_route_table([::AWSConfig]; RouteTableId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteRouteTable", arguments::Dict)
@@ -4740,9 +4740,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_security_group([::AWSConfig], arguments::Dict)
-    EC2.delete_security_group([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.delete_security_group
+    delete_security_group([::AWSConfig], arguments::Dict)
+    delete_security_group([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteSecurityGroup", arguments::Dict)
@@ -4781,9 +4781,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_snapshot([::AWSConfig], arguments::Dict)
-    EC2.delete_snapshot([::AWSConfig]; SnapshotId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_snapshot
+    delete_snapshot([::AWSConfig], arguments::Dict)
+    delete_snapshot([::AWSConfig]; SnapshotId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteSnapshot", arguments::Dict)
@@ -4840,9 +4840,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_spot_datafeed_subscription([::AWSConfig], arguments::Dict)
-    EC2.delete_spot_datafeed_subscription([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.delete_spot_datafeed_subscription
+    delete_spot_datafeed_subscription([::AWSConfig], arguments::Dict)
+    delete_spot_datafeed_subscription([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteSpotDatafeedSubscription", arguments::Dict)
@@ -4875,9 +4875,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_subnet([::AWSConfig], arguments::Dict)
-    EC2.delete_subnet([::AWSConfig]; SubnetId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_subnet
+    delete_subnet([::AWSConfig], arguments::Dict)
+    delete_subnet([::AWSConfig]; SubnetId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteSubnet", arguments::Dict)
@@ -4921,9 +4921,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_tags([::AWSConfig], arguments::Dict)
-    EC2.delete_tags([::AWSConfig]; ResourceId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_tags
+    delete_tags([::AWSConfig], arguments::Dict)
+    delete_tags([::AWSConfig]; ResourceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteTags", arguments::Dict)
@@ -4986,9 +4986,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_volume([::AWSConfig], arguments::Dict)
-    EC2.delete_volume([::AWSConfig]; VolumeId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_volume
+    delete_volume([::AWSConfig], arguments::Dict)
+    delete_volume([::AWSConfig]; VolumeId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteVolume", arguments::Dict)
@@ -5044,9 +5044,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_vpc([::AWSConfig], arguments::Dict)
-    EC2.delete_vpc([::AWSConfig]; VpcId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_vpc
+    delete_vpc([::AWSConfig], arguments::Dict)
+    delete_vpc([::AWSConfig]; VpcId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteVpc", arguments::Dict)
@@ -5090,9 +5090,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_vpc_endpoints([::AWSConfig], arguments::Dict)
-    EC2.delete_vpc_endpoints([::AWSConfig]; VpcEndpointId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_vpc_endpoints
+    delete_vpc_endpoints([::AWSConfig], arguments::Dict)
+    delete_vpc_endpoints([::AWSConfig]; VpcEndpointId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteVpcEndpoints", arguments::Dict)
@@ -5129,9 +5129,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_vpc_peering_connection([::AWSConfig], arguments::Dict)
-    EC2.delete_vpc_peering_connection([::AWSConfig]; VpcPeeringConnectionId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_vpc_peering_connection
+    delete_vpc_peering_connection([::AWSConfig], arguments::Dict)
+    delete_vpc_peering_connection([::AWSConfig]; VpcPeeringConnectionId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteVpcPeeringConnection", arguments::Dict)
@@ -5168,9 +5168,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_vpn_connection([::AWSConfig], arguments::Dict)
-    EC2.delete_vpn_connection([::AWSConfig]; VpnConnectionId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_vpn_connection
+    delete_vpn_connection([::AWSConfig], arguments::Dict)
+    delete_vpn_connection([::AWSConfig]; VpnConnectionId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteVpnConnection", arguments::Dict)
@@ -5205,9 +5205,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_vpn_connection_route([::AWSConfig], arguments::Dict)
-    EC2.delete_vpn_connection_route([::AWSConfig]; DestinationCidrBlock=, VpnConnectionId=)
+    using AWSSDK.EC2.delete_vpn_connection_route
+    delete_vpn_connection_route([::AWSConfig], arguments::Dict)
+    delete_vpn_connection_route([::AWSConfig]; DestinationCidrBlock=, VpnConnectionId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteVpnConnectionRoute", arguments::Dict)
@@ -5240,9 +5240,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.delete_vpn_gateway([::AWSConfig], arguments::Dict)
-    EC2.delete_vpn_gateway([::AWSConfig]; VpnGatewayId=, <keyword arguments>)
+    using AWSSDK.EC2.delete_vpn_gateway
+    delete_vpn_gateway([::AWSConfig], arguments::Dict)
+    delete_vpn_gateway([::AWSConfig]; VpnGatewayId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeleteVpnGateway", arguments::Dict)
@@ -5275,9 +5275,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.deregister_image([::AWSConfig], arguments::Dict)
-    EC2.deregister_image([::AWSConfig]; ImageId=, <keyword arguments>)
+    using AWSSDK.EC2.deregister_image
+    deregister_image([::AWSConfig], arguments::Dict)
+    deregister_image([::AWSConfig]; ImageId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DeregisterImage", arguments::Dict)
@@ -5312,9 +5312,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_account_attributes([::AWSConfig], arguments::Dict)
-    EC2.describe_account_attributes([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_account_attributes
+    describe_account_attributes([::AWSConfig], arguments::Dict)
+    describe_account_attributes([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeAccountAttributes", arguments::Dict)
@@ -5458,9 +5458,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_addresses([::AWSConfig], arguments::Dict)
-    EC2.describe_addresses([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_addresses
+    describe_addresses([::AWSConfig], arguments::Dict)
+    describe_addresses([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeAddresses", arguments::Dict)
@@ -5626,9 +5626,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_availability_zones([::AWSConfig], arguments::Dict)
-    EC2.describe_availability_zones([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_availability_zones
+    describe_availability_zones([::AWSConfig], arguments::Dict)
+    describe_availability_zones([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeAvailabilityZones", arguments::Dict)
@@ -5728,9 +5728,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_bundle_tasks([::AWSConfig], arguments::Dict)
-    EC2.describe_bundle_tasks([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_bundle_tasks
+    describe_bundle_tasks([::AWSConfig], arguments::Dict)
+    describe_bundle_tasks([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeBundleTasks", arguments::Dict)
@@ -5801,9 +5801,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_classic_link_instances([::AWSConfig], arguments::Dict)
-    EC2.describe_classic_link_instances([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_classic_link_instances
+    describe_classic_link_instances([::AWSConfig], arguments::Dict)
+    describe_classic_link_instances([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeClassicLinkInstances", arguments::Dict)
@@ -5871,9 +5871,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_conversion_tasks([::AWSConfig], arguments::Dict)
-    EC2.describe_conversion_tasks([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_conversion_tasks
+    describe_conversion_tasks([::AWSConfig], arguments::Dict)
+    describe_conversion_tasks([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeConversionTasks", arguments::Dict)
@@ -5912,9 +5912,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_customer_gateways([::AWSConfig], arguments::Dict)
-    EC2.describe_customer_gateways([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_customer_gateways
+    describe_customer_gateways([::AWSConfig], arguments::Dict)
+    describe_customer_gateways([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeCustomerGateways", arguments::Dict)
@@ -6008,9 +6008,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_dhcp_options([::AWSConfig], arguments::Dict)
-    EC2.describe_dhcp_options([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_dhcp_options
+    describe_dhcp_options([::AWSConfig], arguments::Dict)
+    describe_dhcp_options([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeDhcpOptions", arguments::Dict)
@@ -6109,9 +6109,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_egress_only_internet_gateways([::AWSConfig], arguments::Dict)
-    EC2.describe_egress_only_internet_gateways([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_egress_only_internet_gateways
+    describe_egress_only_internet_gateways([::AWSConfig], arguments::Dict)
+    describe_egress_only_internet_gateways([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeEgressOnlyInternetGateways", arguments::Dict)
@@ -6156,9 +6156,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_elastic_gpus([::AWSConfig], arguments::Dict)
-    EC2.describe_elastic_gpus([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_elastic_gpus
+    describe_elastic_gpus([::AWSConfig], arguments::Dict)
+    describe_elastic_gpus([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeElasticGpus", arguments::Dict)
@@ -6222,9 +6222,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_export_tasks([::AWSConfig], arguments::Dict)
-    EC2.describe_export_tasks([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_export_tasks
+    describe_export_tasks([::AWSConfig], arguments::Dict)
+    describe_export_tasks([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeExportTasks", arguments::Dict)
@@ -6257,9 +6257,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_flow_logs([::AWSConfig], arguments::Dict)
-    EC2.describe_flow_logs([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_flow_logs
+    describe_flow_logs([::AWSConfig], arguments::Dict)
+    describe_flow_logs([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeFlowLogs", arguments::Dict)
@@ -6319,9 +6319,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_fpga_images([::AWSConfig], arguments::Dict)
-    EC2.describe_fpga_images([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_fpga_images
+    describe_fpga_images([::AWSConfig], arguments::Dict)
+    describe_fpga_images([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeFpgaImages", arguments::Dict)
@@ -6403,9 +6403,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_host_reservation_offerings([::AWSConfig], arguments::Dict)
-    EC2.describe_host_reservation_offerings([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_host_reservation_offerings
+    describe_host_reservation_offerings([::AWSConfig], arguments::Dict)
+    describe_host_reservation_offerings([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeHostReservationOfferings", arguments::Dict)
@@ -6469,9 +6469,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_host_reservations([::AWSConfig], arguments::Dict)
-    EC2.describe_host_reservations([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_host_reservations
+    describe_host_reservations([::AWSConfig], arguments::Dict)
+    describe_host_reservations([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeHostReservations", arguments::Dict)
@@ -6527,9 +6527,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_hosts([::AWSConfig], arguments::Dict)
-    EC2.describe_hosts([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_hosts
+    describe_hosts([::AWSConfig], arguments::Dict)
+    describe_hosts([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeHosts", arguments::Dict)
@@ -6593,9 +6593,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_iam_instance_profile_associations([::AWSConfig], arguments::Dict)
-    EC2.describe_iam_instance_profile_associations([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_iam_instance_profile_associations
+    describe_iam_instance_profile_associations([::AWSConfig], arguments::Dict)
+    describe_iam_instance_profile_associations([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeIamInstanceProfileAssociations", arguments::Dict)
@@ -6649,9 +6649,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_id_format([::AWSConfig], arguments::Dict)
-    EC2.describe_id_format([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_id_format
+    describe_id_format([::AWSConfig], arguments::Dict)
+    describe_id_format([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeIdFormat", arguments::Dict)
@@ -6688,9 +6688,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_identity_id_format([::AWSConfig], arguments::Dict)
-    EC2.describe_identity_id_format([::AWSConfig]; PrincipalArn=, <keyword arguments>)
+    using AWSSDK.EC2.describe_identity_id_format
+    describe_identity_id_format([::AWSConfig], arguments::Dict)
+    describe_identity_id_format([::AWSConfig]; PrincipalArn=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeIdentityIdFormat", arguments::Dict)
@@ -6731,9 +6731,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_image_attribute([::AWSConfig], arguments::Dict)
-    EC2.describe_image_attribute([::AWSConfig]; Attribute=, ImageId=, <keyword arguments>)
+    using AWSSDK.EC2.describe_image_attribute
+    describe_image_attribute([::AWSConfig], arguments::Dict)
+    describe_image_attribute([::AWSConfig]; Attribute=, ImageId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeImageAttribute", arguments::Dict)
@@ -6776,9 +6776,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_images([::AWSConfig], arguments::Dict)
-    EC2.describe_images([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_images
+    describe_images([::AWSConfig], arguments::Dict)
+    describe_images([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeImages", arguments::Dict)
@@ -6897,9 +6897,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_import_image_tasks([::AWSConfig], arguments::Dict)
-    EC2.describe_import_image_tasks([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_import_image_tasks
+    describe_import_image_tasks([::AWSConfig], arguments::Dict)
+    describe_import_image_tasks([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeImportImageTasks", arguments::Dict)
@@ -6953,9 +6953,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_import_snapshot_tasks([::AWSConfig], arguments::Dict)
-    EC2.describe_import_snapshot_tasks([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_import_snapshot_tasks
+    describe_import_snapshot_tasks([::AWSConfig], arguments::Dict)
+    describe_import_snapshot_tasks([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeImportSnapshotTasks", arguments::Dict)
@@ -7009,9 +7009,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_instance_attribute([::AWSConfig], arguments::Dict)
-    EC2.describe_instance_attribute([::AWSConfig]; Attribute=, InstanceId=, <keyword arguments>)
+    using AWSSDK.EC2.describe_instance_attribute
+    describe_instance_attribute([::AWSConfig], arguments::Dict)
+    describe_instance_attribute([::AWSConfig]; Attribute=, InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeInstanceAttribute", arguments::Dict)
@@ -7140,9 +7140,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_instance_status([::AWSConfig], arguments::Dict)
-    EC2.describe_instance_status([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_instance_status
+    describe_instance_status([::AWSConfig], arguments::Dict)
+    describe_instance_status([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeInstanceStatus", arguments::Dict)
@@ -7236,9 +7236,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_instances([::AWSConfig], arguments::Dict)
-    EC2.describe_instances([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_instances
+    describe_instances([::AWSConfig], arguments::Dict)
+    describe_instances([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeInstances", arguments::Dict)
@@ -7466,9 +7466,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_internet_gateways([::AWSConfig], arguments::Dict)
-    EC2.describe_internet_gateways([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_internet_gateways
+    describe_internet_gateways([::AWSConfig], arguments::Dict)
+    describe_internet_gateways([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeInternetGateways", arguments::Dict)
@@ -7566,9 +7566,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_key_pairs([::AWSConfig], arguments::Dict)
-    EC2.describe_key_pairs([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_key_pairs
+    describe_key_pairs([::AWSConfig], arguments::Dict)
+    describe_key_pairs([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeKeyPairs", arguments::Dict)
@@ -7647,9 +7647,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_moving_addresses([::AWSConfig], arguments::Dict)
-    EC2.describe_moving_addresses([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_moving_addresses
+    describe_moving_addresses([::AWSConfig], arguments::Dict)
+    describe_moving_addresses([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeMovingAddresses", arguments::Dict)
@@ -7723,9 +7723,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_nat_gateways([::AWSConfig], arguments::Dict)
-    EC2.describe_nat_gateways([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_nat_gateways
+    describe_nat_gateways([::AWSConfig], arguments::Dict)
+    describe_nat_gateways([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeNatGateways", arguments::Dict)
@@ -7826,9 +7826,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_network_acls([::AWSConfig], arguments::Dict)
-    EC2.describe_network_acls([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_network_acls
+    describe_network_acls([::AWSConfig], arguments::Dict)
+    describe_network_acls([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeNetworkAcls", arguments::Dict)
@@ -7968,9 +7968,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_network_interface_attribute([::AWSConfig], arguments::Dict)
-    EC2.describe_network_interface_attribute([::AWSConfig]; NetworkInterfaceId=, <keyword arguments>)
+    using AWSSDK.EC2.describe_network_interface_attribute
+    describe_network_interface_attribute([::AWSConfig], arguments::Dict)
+    describe_network_interface_attribute([::AWSConfig]; NetworkInterfaceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeNetworkInterfaceAttribute", arguments::Dict)
@@ -8108,9 +8108,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_network_interface_permissions([::AWSConfig], arguments::Dict)
-    EC2.describe_network_interface_permissions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_network_interface_permissions
+    describe_network_interface_permissions([::AWSConfig], arguments::Dict)
+    describe_network_interface_permissions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeNetworkInterfacePermissions", arguments::Dict)
@@ -8170,9 +8170,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_network_interfaces([::AWSConfig], arguments::Dict)
-    EC2.describe_network_interfaces([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_network_interfaces
+    describe_network_interfaces([::AWSConfig], arguments::Dict)
+    describe_network_interfaces([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeNetworkInterfaces", arguments::Dict)
@@ -8364,9 +8364,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_placement_groups([::AWSConfig], arguments::Dict)
-    EC2.describe_placement_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_placement_groups
+    describe_placement_groups([::AWSConfig], arguments::Dict)
+    describe_placement_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribePlacementGroups", arguments::Dict)
@@ -8420,9 +8420,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_prefix_lists([::AWSConfig], arguments::Dict)
-    EC2.describe_prefix_lists([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_prefix_lists
+    describe_prefix_lists([::AWSConfig], arguments::Dict)
+    describe_prefix_lists([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribePrefixLists", arguments::Dict)
@@ -8482,9 +8482,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_regions([::AWSConfig], arguments::Dict)
-    EC2.describe_regions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_regions
+    describe_regions([::AWSConfig], arguments::Dict)
+    describe_regions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeRegions", arguments::Dict)
@@ -8592,9 +8592,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_reserved_instances([::AWSConfig], arguments::Dict)
-    EC2.describe_reserved_instances([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_reserved_instances
+    describe_reserved_instances([::AWSConfig], arguments::Dict)
+    describe_reserved_instances([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeReservedInstances", arguments::Dict)
@@ -8680,9 +8680,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_reserved_instances_listings([::AWSConfig], arguments::Dict)
-    EC2.describe_reserved_instances_listings([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_reserved_instances_listings
+    describe_reserved_instances_listings([::AWSConfig], arguments::Dict)
+    describe_reserved_instances_listings([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeReservedInstancesListings", arguments::Dict)
@@ -8744,9 +8744,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_reserved_instances_modifications([::AWSConfig], arguments::Dict)
-    EC2.describe_reserved_instances_modifications([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_reserved_instances_modifications
+    describe_reserved_instances_modifications([::AWSConfig], arguments::Dict)
+    describe_reserved_instances_modifications([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeReservedInstancesModifications", arguments::Dict)
@@ -8820,9 +8820,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_reserved_instances_offerings([::AWSConfig], arguments::Dict)
-    EC2.describe_reserved_instances_offerings([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_reserved_instances_offerings
+    describe_reserved_instances_offerings([::AWSConfig], arguments::Dict)
+    describe_reserved_instances_offerings([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeReservedInstancesOfferings", arguments::Dict)
@@ -8950,9 +8950,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_route_tables([::AWSConfig], arguments::Dict)
-    EC2.describe_route_tables([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_route_tables
+    describe_route_tables([::AWSConfig], arguments::Dict)
+    describe_route_tables([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeRouteTables", arguments::Dict)
@@ -9087,9 +9087,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_scheduled_instance_availability([::AWSConfig], arguments::Dict)
-    EC2.describe_scheduled_instance_availability([::AWSConfig]; FirstSlotStartTimeRange=, Recurrence=, <keyword arguments>)
+    using AWSSDK.EC2.describe_scheduled_instance_availability
+    describe_scheduled_instance_availability([::AWSConfig], arguments::Dict)
+    describe_scheduled_instance_availability([::AWSConfig]; FirstSlotStartTimeRange=, Recurrence=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeScheduledInstanceAvailability", arguments::Dict)
@@ -9231,9 +9231,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_scheduled_instances([::AWSConfig], arguments::Dict)
-    EC2.describe_scheduled_instances([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_scheduled_instances
+    describe_scheduled_instances([::AWSConfig], arguments::Dict)
+    describe_scheduled_instances([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeScheduledInstances", arguments::Dict)
@@ -9349,9 +9349,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_security_group_references([::AWSConfig], arguments::Dict)
-    EC2.describe_security_group_references([::AWSConfig]; GroupId=, <keyword arguments>)
+    using AWSSDK.EC2.describe_security_group_references
+    describe_security_group_references([::AWSConfig], arguments::Dict)
+    describe_security_group_references([::AWSConfig]; GroupId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeSecurityGroupReferences", arguments::Dict)
@@ -9388,9 +9388,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_security_groups([::AWSConfig], arguments::Dict)
-    EC2.describe_security_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_security_groups
+    describe_security_groups([::AWSConfig], arguments::Dict)
+    describe_security_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeSecurityGroups", arguments::Dict)
@@ -9478,9 +9478,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_snapshot_attribute([::AWSConfig], arguments::Dict)
-    EC2.describe_snapshot_attribute([::AWSConfig]; Attribute=, SnapshotId=, <keyword arguments>)
+    using AWSSDK.EC2.describe_snapshot_attribute
+    describe_snapshot_attribute([::AWSConfig], arguments::Dict)
+    describe_snapshot_attribute([::AWSConfig]; Attribute=, SnapshotId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeSnapshotAttribute", arguments::Dict)
@@ -9545,9 +9545,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_snapshots([::AWSConfig], arguments::Dict)
-    EC2.describe_snapshots([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_snapshots
+    describe_snapshots([::AWSConfig], arguments::Dict)
+    describe_snapshots([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeSnapshots", arguments::Dict)
@@ -9727,9 +9727,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_spot_datafeed_subscription([::AWSConfig], arguments::Dict)
-    EC2.describe_spot_datafeed_subscription([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_spot_datafeed_subscription
+    describe_spot_datafeed_subscription([::AWSConfig], arguments::Dict)
+    describe_spot_datafeed_subscription([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeSpotDatafeedSubscription", arguments::Dict)
@@ -9778,9 +9778,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_spot_fleet_instances([::AWSConfig], arguments::Dict)
-    EC2.describe_spot_fleet_instances([::AWSConfig]; SpotFleetRequestId=, <keyword arguments>)
+    using AWSSDK.EC2.describe_spot_fleet_instances
+    describe_spot_fleet_instances([::AWSConfig], arguments::Dict)
+    describe_spot_fleet_instances([::AWSConfig]; SpotFleetRequestId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeSpotFleetInstances", arguments::Dict)
@@ -9850,9 +9850,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_spot_fleet_request_history([::AWSConfig], arguments::Dict)
-    EC2.describe_spot_fleet_request_history([::AWSConfig]; SpotFleetRequestId=, StartTime=, <keyword arguments>)
+    using AWSSDK.EC2.describe_spot_fleet_request_history
+    describe_spot_fleet_request_history([::AWSConfig], arguments::Dict)
+    describe_spot_fleet_request_history([::AWSConfig]; SpotFleetRequestId=, StartTime=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeSpotFleetRequestHistory", arguments::Dict)
@@ -9960,9 +9960,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_spot_fleet_requests([::AWSConfig], arguments::Dict)
-    EC2.describe_spot_fleet_requests([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_spot_fleet_requests
+    describe_spot_fleet_requests([::AWSConfig], arguments::Dict)
+    describe_spot_fleet_requests([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeSpotFleetRequests", arguments::Dict)
@@ -10069,9 +10069,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_spot_instance_requests([::AWSConfig], arguments::Dict)
-    EC2.describe_spot_instance_requests([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_spot_instance_requests
+    describe_spot_instance_requests([::AWSConfig], arguments::Dict)
+    describe_spot_instance_requests([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeSpotInstanceRequests", arguments::Dict)
@@ -10259,9 +10259,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_spot_price_history([::AWSConfig], arguments::Dict)
-    EC2.describe_spot_price_history([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_spot_price_history
+    describe_spot_price_history([::AWSConfig], arguments::Dict)
+    describe_spot_price_history([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeSpotPriceHistory", arguments::Dict)
@@ -10383,9 +10383,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_stale_security_groups([::AWSConfig], arguments::Dict)
-    EC2.describe_stale_security_groups([::AWSConfig]; VpcId=, <keyword arguments>)
+    using AWSSDK.EC2.describe_stale_security_groups
+    describe_stale_security_groups([::AWSConfig], arguments::Dict)
+    describe_stale_security_groups([::AWSConfig]; VpcId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeStaleSecurityGroups", arguments::Dict)
@@ -10430,9 +10430,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_subnets([::AWSConfig], arguments::Dict)
-    EC2.describe_subnets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_subnets
+    describe_subnets([::AWSConfig], arguments::Dict)
+    describe_subnets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeSubnets", arguments::Dict)
@@ -10544,9 +10544,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_tags([::AWSConfig], arguments::Dict)
-    EC2.describe_tags([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_tags
+    describe_tags([::AWSConfig], arguments::Dict)
+    describe_tags([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeTags", arguments::Dict)
@@ -10644,9 +10644,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_volume_attribute([::AWSConfig], arguments::Dict)
-    EC2.describe_volume_attribute([::AWSConfig]; VolumeId=, <keyword arguments>)
+    using AWSSDK.EC2.describe_volume_attribute
+    describe_volume_attribute([::AWSConfig], arguments::Dict)
+    describe_volume_attribute([::AWSConfig]; VolumeId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeVolumeAttribute", arguments::Dict)
@@ -10711,9 +10711,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_volume_status([::AWSConfig], arguments::Dict)
-    EC2.describe_volume_status([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_volume_status
+    describe_volume_status([::AWSConfig], arguments::Dict)
+    describe_volume_status([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeVolumeStatus", arguments::Dict)
@@ -10875,9 +10875,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_volumes([::AWSConfig], arguments::Dict)
-    EC2.describe_volumes([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_volumes
+    describe_volumes([::AWSConfig], arguments::Dict)
+    describe_volumes([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeVolumes", arguments::Dict)
@@ -11057,9 +11057,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_volumes_modifications([::AWSConfig], arguments::Dict)
-    EC2.describe_volumes_modifications([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_volumes_modifications
+    describe_volumes_modifications([::AWSConfig], arguments::Dict)
+    describe_volumes_modifications([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeVolumesModifications", arguments::Dict)
@@ -11117,9 +11117,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_vpc_attribute([::AWSConfig], arguments::Dict)
-    EC2.describe_vpc_attribute([::AWSConfig]; Attribute=, VpcId=, <keyword arguments>)
+    using AWSSDK.EC2.describe_vpc_attribute
+    describe_vpc_attribute([::AWSConfig], arguments::Dict)
+    describe_vpc_attribute([::AWSConfig]; Attribute=, VpcId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeVpcAttribute", arguments::Dict)
@@ -11204,9 +11204,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_vpc_classic_link([::AWSConfig], arguments::Dict)
-    EC2.describe_vpc_classic_link([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_vpc_classic_link
+    describe_vpc_classic_link([::AWSConfig], arguments::Dict)
+    describe_vpc_classic_link([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeVpcClassicLink", arguments::Dict)
@@ -11260,9 +11260,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_vpc_classic_link_dns_support([::AWSConfig], arguments::Dict)
-    EC2.describe_vpc_classic_link_dns_support([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_vpc_classic_link_dns_support
+    describe_vpc_classic_link_dns_support([::AWSConfig], arguments::Dict)
+    describe_vpc_classic_link_dns_support([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeVpcClassicLinkDnsSupport", arguments::Dict)
@@ -11303,9 +11303,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_vpc_endpoint_services([::AWSConfig], arguments::Dict)
-    EC2.describe_vpc_endpoint_services([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_vpc_endpoint_services
+    describe_vpc_endpoint_services([::AWSConfig], arguments::Dict)
+    describe_vpc_endpoint_services([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeVpcEndpointServices", arguments::Dict)
@@ -11348,9 +11348,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_vpc_endpoints([::AWSConfig], arguments::Dict)
-    EC2.describe_vpc_endpoints([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_vpc_endpoints
+    describe_vpc_endpoints([::AWSConfig], arguments::Dict)
+    describe_vpc_endpoints([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeVpcEndpoints", arguments::Dict)
@@ -11414,9 +11414,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_vpc_peering_connections([::AWSConfig], arguments::Dict)
-    EC2.describe_vpc_peering_connections([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_vpc_peering_connections
+    describe_vpc_peering_connections([::AWSConfig], arguments::Dict)
+    describe_vpc_peering_connections([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeVpcPeeringConnections", arguments::Dict)
@@ -11490,9 +11490,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_vpcs([::AWSConfig], arguments::Dict)
-    EC2.describe_vpcs([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_vpcs
+    describe_vpcs([::AWSConfig], arguments::Dict)
+    describe_vpcs([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeVpcs", arguments::Dict)
@@ -11597,9 +11597,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_vpn_connections([::AWSConfig], arguments::Dict)
-    EC2.describe_vpn_connections([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_vpn_connections
+    describe_vpn_connections([::AWSConfig], arguments::Dict)
+    describe_vpn_connections([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeVpnConnections", arguments::Dict)
@@ -11673,9 +11673,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.describe_vpn_gateways([::AWSConfig], arguments::Dict)
-    EC2.describe_vpn_gateways([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.describe_vpn_gateways
+    describe_vpn_gateways([::AWSConfig], arguments::Dict)
+    describe_vpn_gateways([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DescribeVpnGateways", arguments::Dict)
@@ -11743,9 +11743,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.detach_classic_link_vpc([::AWSConfig], arguments::Dict)
-    EC2.detach_classic_link_vpc([::AWSConfig]; InstanceId=, VpcId=, <keyword arguments>)
+    using AWSSDK.EC2.detach_classic_link_vpc
+    detach_classic_link_vpc([::AWSConfig], arguments::Dict)
+    detach_classic_link_vpc([::AWSConfig]; InstanceId=, VpcId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DetachClassicLinkVpc", arguments::Dict)
@@ -11786,9 +11786,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.detach_internet_gateway([::AWSConfig], arguments::Dict)
-    EC2.detach_internet_gateway([::AWSConfig]; InternetGatewayId=, VpcId=, <keyword arguments>)
+    using AWSSDK.EC2.detach_internet_gateway
+    detach_internet_gateway([::AWSConfig], arguments::Dict)
+    detach_internet_gateway([::AWSConfig]; InternetGatewayId=, VpcId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DetachInternetGateway", arguments::Dict)
@@ -11837,9 +11837,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.detach_network_interface([::AWSConfig], arguments::Dict)
-    EC2.detach_network_interface([::AWSConfig]; AttachmentId=, <keyword arguments>)
+    using AWSSDK.EC2.detach_network_interface
+    detach_network_interface([::AWSConfig], arguments::Dict)
+    detach_network_interface([::AWSConfig]; AttachmentId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DetachNetworkInterface", arguments::Dict)
@@ -11887,9 +11887,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.detach_volume([::AWSConfig], arguments::Dict)
-    EC2.detach_volume([::AWSConfig]; VolumeId=, <keyword arguments>)
+    using AWSSDK.EC2.detach_volume
+    detach_volume([::AWSConfig], arguments::Dict)
+    detach_volume([::AWSConfig]; VolumeId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DetachVolume", arguments::Dict)
@@ -11964,9 +11964,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.detach_vpn_gateway([::AWSConfig], arguments::Dict)
-    EC2.detach_vpn_gateway([::AWSConfig]; VpcId=, VpnGatewayId=, <keyword arguments>)
+    using AWSSDK.EC2.detach_vpn_gateway
+    detach_vpn_gateway([::AWSConfig], arguments::Dict)
+    detach_vpn_gateway([::AWSConfig]; VpcId=, VpnGatewayId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DetachVpnGateway", arguments::Dict)
@@ -12005,9 +12005,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.disable_vgw_route_propagation([::AWSConfig], arguments::Dict)
-    EC2.disable_vgw_route_propagation([::AWSConfig]; GatewayId=, RouteTableId=)
+    using AWSSDK.EC2.disable_vgw_route_propagation
+    disable_vgw_route_propagation([::AWSConfig], arguments::Dict)
+    disable_vgw_route_propagation([::AWSConfig]; GatewayId=, RouteTableId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DisableVgwRoutePropagation", arguments::Dict)
@@ -12052,9 +12052,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.disable_vpc_classic_link([::AWSConfig], arguments::Dict)
-    EC2.disable_vpc_classic_link([::AWSConfig]; VpcId=, <keyword arguments>)
+    using AWSSDK.EC2.disable_vpc_classic_link
+    disable_vpc_classic_link([::AWSConfig], arguments::Dict)
+    disable_vpc_classic_link([::AWSConfig]; VpcId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DisableVpcClassicLink", arguments::Dict)
@@ -12091,9 +12091,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.disable_vpc_classic_link_dns_support([::AWSConfig], arguments::Dict)
-    EC2.disable_vpc_classic_link_dns_support([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.disable_vpc_classic_link_dns_support
+    disable_vpc_classic_link_dns_support([::AWSConfig], arguments::Dict)
+    disable_vpc_classic_link_dns_support([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DisableVpcClassicLinkDnsSupport", arguments::Dict)
@@ -12126,9 +12126,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.disassociate_address([::AWSConfig], arguments::Dict)
-    EC2.disassociate_address([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.disassociate_address
+    disassociate_address([::AWSConfig], arguments::Dict)
+    disassociate_address([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DisassociateAddress", arguments::Dict)
@@ -12191,9 +12191,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.disassociate_iam_instance_profile([::AWSConfig], arguments::Dict)
-    EC2.disassociate_iam_instance_profile([::AWSConfig]; AssociationId=)
+    using AWSSDK.EC2.disassociate_iam_instance_profile
+    disassociate_iam_instance_profile([::AWSConfig], arguments::Dict)
+    disassociate_iam_instance_profile([::AWSConfig]; AssociationId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DisassociateIamInstanceProfile", arguments::Dict)
@@ -12228,9 +12228,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.disassociate_route_table([::AWSConfig], arguments::Dict)
-    EC2.disassociate_route_table([::AWSConfig]; AssociationId=, <keyword arguments>)
+    using AWSSDK.EC2.disassociate_route_table
+    disassociate_route_table([::AWSConfig], arguments::Dict)
+    disassociate_route_table([::AWSConfig]; AssociationId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DisassociateRouteTable", arguments::Dict)
@@ -12276,9 +12276,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.disassociate_subnet_cidr_block([::AWSConfig], arguments::Dict)
-    EC2.disassociate_subnet_cidr_block([::AWSConfig]; AssociationId=)
+    using AWSSDK.EC2.disassociate_subnet_cidr_block
+    disassociate_subnet_cidr_block([::AWSConfig], arguments::Dict)
+    disassociate_subnet_cidr_block([::AWSConfig]; AssociationId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DisassociateSubnetCidrBlock", arguments::Dict)
@@ -12311,9 +12311,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.disassociate_vpc_cidr_block([::AWSConfig], arguments::Dict)
-    EC2.disassociate_vpc_cidr_block([::AWSConfig]; AssociationId=)
+    using AWSSDK.EC2.disassociate_vpc_cidr_block
+    disassociate_vpc_cidr_block([::AWSConfig], arguments::Dict)
+    disassociate_vpc_cidr_block([::AWSConfig]; AssociationId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "DisassociateVpcCidrBlock", arguments::Dict)
@@ -12346,9 +12346,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.enable_vgw_route_propagation([::AWSConfig], arguments::Dict)
-    EC2.enable_vgw_route_propagation([::AWSConfig]; GatewayId=, RouteTableId=)
+    using AWSSDK.EC2.enable_vgw_route_propagation
+    enable_vgw_route_propagation([::AWSConfig], arguments::Dict)
+    enable_vgw_route_propagation([::AWSConfig]; GatewayId=, RouteTableId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "EnableVgwRoutePropagation", arguments::Dict)
@@ -12393,9 +12393,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.enable_volume_io([::AWSConfig], arguments::Dict)
-    EC2.enable_volume_io([::AWSConfig]; VolumeId=, <keyword arguments>)
+    using AWSSDK.EC2.enable_volume_io
+    enable_volume_io([::AWSConfig], arguments::Dict)
+    enable_volume_io([::AWSConfig]; VolumeId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "EnableVolumeIO", arguments::Dict)
@@ -12439,9 +12439,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.enable_vpc_classic_link([::AWSConfig], arguments::Dict)
-    EC2.enable_vpc_classic_link([::AWSConfig]; VpcId=, <keyword arguments>)
+    using AWSSDK.EC2.enable_vpc_classic_link
+    enable_vpc_classic_link([::AWSConfig], arguments::Dict)
+    enable_vpc_classic_link([::AWSConfig]; VpcId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "EnableVpcClassicLink", arguments::Dict)
@@ -12478,9 +12478,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.enable_vpc_classic_link_dns_support([::AWSConfig], arguments::Dict)
-    EC2.enable_vpc_classic_link_dns_support([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.enable_vpc_classic_link_dns_support
+    enable_vpc_classic_link_dns_support([::AWSConfig], arguments::Dict)
+    enable_vpc_classic_link_dns_support([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "EnableVpcClassicLinkDnsSupport", arguments::Dict)
@@ -12513,9 +12513,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.get_console_output([::AWSConfig], arguments::Dict)
-    EC2.get_console_output([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.EC2.get_console_output
+    get_console_output([::AWSConfig], arguments::Dict)
+    get_console_output([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "GetConsoleOutput", arguments::Dict)
@@ -12560,9 +12560,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.get_console_screenshot([::AWSConfig], arguments::Dict)
-    EC2.get_console_screenshot([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.EC2.get_console_screenshot
+    get_console_screenshot([::AWSConfig], arguments::Dict)
+    get_console_screenshot([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "GetConsoleScreenshot", arguments::Dict)
@@ -12605,9 +12605,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.get_host_reservation_purchase_preview([::AWSConfig], arguments::Dict)
-    EC2.get_host_reservation_purchase_preview([::AWSConfig]; HostIdSet=, OfferingId=)
+    using AWSSDK.EC2.get_host_reservation_purchase_preview
+    get_host_reservation_purchase_preview([::AWSConfig], arguments::Dict)
+    get_host_reservation_purchase_preview([::AWSConfig]; HostIdSet=, OfferingId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "GetHostReservationPurchasePreview", arguments::Dict)
@@ -12646,9 +12646,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.get_password_data([::AWSConfig], arguments::Dict)
-    EC2.get_password_data([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.EC2.get_password_data
+    get_password_data([::AWSConfig], arguments::Dict)
+    get_password_data([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "GetPasswordData", arguments::Dict)
@@ -12691,9 +12691,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.get_reserved_instances_exchange_quote([::AWSConfig], arguments::Dict)
-    EC2.get_reserved_instances_exchange_quote([::AWSConfig]; ReservedInstanceId=, <keyword arguments>)
+    using AWSSDK.EC2.get_reserved_instances_exchange_quote
+    get_reserved_instances_exchange_quote([::AWSConfig], arguments::Dict)
+    get_reserved_instances_exchange_quote([::AWSConfig]; ReservedInstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "GetReservedInstancesExchangeQuote", arguments::Dict)
@@ -12739,9 +12739,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.import_image([::AWSConfig], arguments::Dict)
-    EC2.import_image([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.import_image
+    import_image([::AWSConfig], arguments::Dict)
+    import_image([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ImportImage", arguments::Dict)
@@ -12839,9 +12839,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.import_instance([::AWSConfig], arguments::Dict)
-    EC2.import_instance([::AWSConfig]; Platform=, <keyword arguments>)
+    using AWSSDK.EC2.import_instance
+    import_instance([::AWSConfig], arguments::Dict)
+    import_instance([::AWSConfig]; Platform=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ImportInstance", arguments::Dict)
@@ -12923,9 +12923,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.import_key_pair([::AWSConfig], arguments::Dict)
-    EC2.import_key_pair([::AWSConfig]; KeyName=, PublicKeyMaterial=, <keyword arguments>)
+    using AWSSDK.EC2.import_key_pair
+    import_key_pair([::AWSConfig], arguments::Dict)
+    import_key_pair([::AWSConfig]; KeyName=, PublicKeyMaterial=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ImportKeyPair", arguments::Dict)
@@ -12968,9 +12968,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.import_snapshot([::AWSConfig], arguments::Dict)
-    EC2.import_snapshot([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.import_snapshot
+    import_snapshot([::AWSConfig], arguments::Dict)
+    import_snapshot([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ImportSnapshot", arguments::Dict)
@@ -13040,9 +13040,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.import_volume([::AWSConfig], arguments::Dict)
-    EC2.import_volume([::AWSConfig]; AvailabilityZone=, Image=, Volume=, <keyword arguments>)
+    using AWSSDK.EC2.import_volume
+    import_volume([::AWSConfig], arguments::Dict)
+    import_volume([::AWSConfig]; AvailabilityZone=, Image=, Volume=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ImportVolume", arguments::Dict)
@@ -13099,9 +13099,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.modify_hosts([::AWSConfig], arguments::Dict)
-    EC2.modify_hosts([::AWSConfig]; AutoPlacement=, HostId=)
+    using AWSSDK.EC2.modify_hosts
+    modify_hosts([::AWSConfig], arguments::Dict)
+    modify_hosts([::AWSConfig]; AutoPlacement=, HostId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ModifyHosts", arguments::Dict)
@@ -13138,9 +13138,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.modify_id_format([::AWSConfig], arguments::Dict)
-    EC2.modify_id_format([::AWSConfig]; Resource=, UseLongIds=)
+    using AWSSDK.EC2.modify_id_format
+    modify_id_format([::AWSConfig], arguments::Dict)
+    modify_id_format([::AWSConfig]; Resource=, UseLongIds=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ModifyIdFormat", arguments::Dict)
@@ -13177,9 +13177,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.modify_identity_id_format([::AWSConfig], arguments::Dict)
-    EC2.modify_identity_id_format([::AWSConfig]; PrincipalArn=, Resource=, UseLongIds=)
+    using AWSSDK.EC2.modify_identity_id_format
+    modify_identity_id_format([::AWSConfig], arguments::Dict)
+    modify_identity_id_format([::AWSConfig]; PrincipalArn=, Resource=, UseLongIds=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ModifyIdentityIdFormat", arguments::Dict)
@@ -13222,9 +13222,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.modify_image_attribute([::AWSConfig], arguments::Dict)
-    EC2.modify_image_attribute([::AWSConfig]; ImageId=, <keyword arguments>)
+    using AWSSDK.EC2.modify_image_attribute
+    modify_image_attribute([::AWSConfig], arguments::Dict)
+    modify_image_attribute([::AWSConfig]; ImageId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ModifyImageAttribute", arguments::Dict)
@@ -13306,9 +13306,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.modify_instance_attribute([::AWSConfig], arguments::Dict)
-    EC2.modify_instance_attribute([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.EC2.modify_instance_attribute
+    modify_instance_attribute([::AWSConfig], arguments::Dict)
+    modify_instance_attribute([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ModifyInstanceAttribute", arguments::Dict)
@@ -13417,9 +13417,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.modify_instance_placement([::AWSConfig], arguments::Dict)
-    EC2.modify_instance_placement([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.EC2.modify_instance_placement
+    modify_instance_placement([::AWSConfig], arguments::Dict)
+    modify_instance_placement([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ModifyInstancePlacement", arguments::Dict)
@@ -13472,9 +13472,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.modify_network_interface_attribute([::AWSConfig], arguments::Dict)
-    EC2.modify_network_interface_attribute([::AWSConfig]; NetworkInterfaceId=, <keyword arguments>)
+    using AWSSDK.EC2.modify_network_interface_attribute
+    modify_network_interface_attribute([::AWSConfig], arguments::Dict)
+    modify_network_interface_attribute([::AWSConfig]; NetworkInterfaceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ModifyNetworkInterfaceAttribute", arguments::Dict)
@@ -13586,9 +13586,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.modify_reserved_instances([::AWSConfig], arguments::Dict)
-    EC2.modify_reserved_instances([::AWSConfig]; ReservedInstancesId=, ReservedInstancesConfigurationSetItemType=, <keyword arguments>)
+    using AWSSDK.EC2.modify_reserved_instances
+    modify_reserved_instances([::AWSConfig], arguments::Dict)
+    modify_reserved_instances([::AWSConfig]; ReservedInstancesId=, ReservedInstancesConfigurationSetItemType=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ModifyReservedInstances", arguments::Dict)
@@ -13639,9 +13639,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.modify_snapshot_attribute([::AWSConfig], arguments::Dict)
-    EC2.modify_snapshot_attribute([::AWSConfig]; SnapshotId=, <keyword arguments>)
+    using AWSSDK.EC2.modify_snapshot_attribute
+    modify_snapshot_attribute([::AWSConfig], arguments::Dict)
+    modify_snapshot_attribute([::AWSConfig]; SnapshotId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ModifySnapshotAttribute", arguments::Dict)
@@ -13759,9 +13759,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.modify_spot_fleet_request([::AWSConfig], arguments::Dict)
-    EC2.modify_spot_fleet_request([::AWSConfig]; SpotFleetRequestId=, <keyword arguments>)
+    using AWSSDK.EC2.modify_spot_fleet_request
+    modify_spot_fleet_request([::AWSConfig], arguments::Dict)
+    modify_spot_fleet_request([::AWSConfig]; SpotFleetRequestId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ModifySpotFleetRequest", arguments::Dict)
@@ -13847,9 +13847,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.modify_subnet_attribute([::AWSConfig], arguments::Dict)
-    EC2.modify_subnet_attribute([::AWSConfig]; SubnetId=, <keyword arguments>)
+    using AWSSDK.EC2.modify_subnet_attribute
+    modify_subnet_attribute([::AWSConfig], arguments::Dict)
+    modify_subnet_attribute([::AWSConfig]; SubnetId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ModifySubnetAttribute", arguments::Dict)
@@ -13902,9 +13902,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.modify_volume([::AWSConfig], arguments::Dict)
-    EC2.modify_volume([::AWSConfig]; VolumeId=, <keyword arguments>)
+    using AWSSDK.EC2.modify_volume
+    modify_volume([::AWSConfig], arguments::Dict)
+    modify_volume([::AWSConfig]; VolumeId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ModifyVolume", arguments::Dict)
@@ -13973,9 +13973,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.modify_volume_attribute([::AWSConfig], arguments::Dict)
-    EC2.modify_volume_attribute([::AWSConfig]; VolumeId=, <keyword arguments>)
+    using AWSSDK.EC2.modify_volume_attribute
+    modify_volume_attribute([::AWSConfig], arguments::Dict)
+    modify_volume_attribute([::AWSConfig]; VolumeId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ModifyVolumeAttribute", arguments::Dict)
@@ -14038,9 +14038,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.modify_vpc_attribute([::AWSConfig], arguments::Dict)
-    EC2.modify_vpc_attribute([::AWSConfig]; VpcId=, <keyword arguments>)
+    using AWSSDK.EC2.modify_vpc_attribute
+    modify_vpc_attribute([::AWSConfig], arguments::Dict)
+    modify_vpc_attribute([::AWSConfig]; VpcId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ModifyVpcAttribute", arguments::Dict)
@@ -14109,9 +14109,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.modify_vpc_endpoint([::AWSConfig], arguments::Dict)
-    EC2.modify_vpc_endpoint([::AWSConfig]; VpcEndpointId=, <keyword arguments>)
+    using AWSSDK.EC2.modify_vpc_endpoint
+    modify_vpc_endpoint([::AWSConfig], arguments::Dict)
+    modify_vpc_endpoint([::AWSConfig]; VpcEndpointId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ModifyVpcEndpoint", arguments::Dict)
@@ -14164,9 +14164,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.modify_vpc_peering_connection_options([::AWSConfig], arguments::Dict)
-    EC2.modify_vpc_peering_connection_options([::AWSConfig]; VpcPeeringConnectionId=, <keyword arguments>)
+    using AWSSDK.EC2.modify_vpc_peering_connection_options
+    modify_vpc_peering_connection_options([::AWSConfig], arguments::Dict)
+    modify_vpc_peering_connection_options([::AWSConfig]; VpcPeeringConnectionId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ModifyVpcPeeringConnectionOptions", arguments::Dict)
@@ -14231,9 +14231,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.monitor_instances([::AWSConfig], arguments::Dict)
-    EC2.monitor_instances([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.EC2.monitor_instances
+    monitor_instances([::AWSConfig], arguments::Dict)
+    monitor_instances([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "MonitorInstances", arguments::Dict)
@@ -14272,9 +14272,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.move_address_to_vpc([::AWSConfig], arguments::Dict)
-    EC2.move_address_to_vpc([::AWSConfig]; PublicIp=, <keyword arguments>)
+    using AWSSDK.EC2.move_address_to_vpc
+    move_address_to_vpc([::AWSConfig], arguments::Dict)
+    move_address_to_vpc([::AWSConfig]; PublicIp=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "MoveAddressToVpc", arguments::Dict)
@@ -14329,9 +14329,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.purchase_host_reservation([::AWSConfig], arguments::Dict)
-    EC2.purchase_host_reservation([::AWSConfig]; HostIdSet=, OfferingId=, <keyword arguments>)
+    using AWSSDK.EC2.purchase_host_reservation
+    purchase_host_reservation([::AWSConfig], arguments::Dict)
+    purchase_host_reservation([::AWSConfig]; HostIdSet=, OfferingId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "PurchaseHostReservation", arguments::Dict)
@@ -14380,9 +14380,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.purchase_reserved_instances_offering([::AWSConfig], arguments::Dict)
-    EC2.purchase_reserved_instances_offering([::AWSConfig]; InstanceCount=, ReservedInstancesOfferingId=, <keyword arguments>)
+    using AWSSDK.EC2.purchase_reserved_instances_offering
+    purchase_reserved_instances_offering([::AWSConfig], arguments::Dict)
+    purchase_reserved_instances_offering([::AWSConfig]; InstanceCount=, ReservedInstancesOfferingId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "PurchaseReservedInstancesOffering", arguments::Dict)
@@ -14436,9 +14436,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.purchase_scheduled_instances([::AWSConfig], arguments::Dict)
-    EC2.purchase_scheduled_instances([::AWSConfig]; PurchaseRequest=, <keyword arguments>)
+    using AWSSDK.EC2.purchase_scheduled_instances
+    purchase_scheduled_instances([::AWSConfig], arguments::Dict)
+    purchase_scheduled_instances([::AWSConfig]; PurchaseRequest=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "PurchaseScheduledInstances", arguments::Dict)
@@ -14536,9 +14536,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.reboot_instances([::AWSConfig], arguments::Dict)
-    EC2.reboot_instances([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.EC2.reboot_instances
+    reboot_instances([::AWSConfig], arguments::Dict)
+    reboot_instances([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "RebootInstances", arguments::Dict)
@@ -14575,9 +14575,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.register_image([::AWSConfig], arguments::Dict)
-    EC2.register_image([::AWSConfig]; Name=, <keyword arguments>)
+    using AWSSDK.EC2.register_image
+    register_image([::AWSConfig], arguments::Dict)
+    register_image([::AWSConfig]; Name=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "RegisterImage", arguments::Dict)
@@ -14695,9 +14695,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.reject_vpc_peering_connection([::AWSConfig], arguments::Dict)
-    EC2.reject_vpc_peering_connection([::AWSConfig]; VpcPeeringConnectionId=, <keyword arguments>)
+    using AWSSDK.EC2.reject_vpc_peering_connection
+    reject_vpc_peering_connection([::AWSConfig], arguments::Dict)
+    reject_vpc_peering_connection([::AWSConfig]; VpcPeeringConnectionId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "RejectVpcPeeringConnection", arguments::Dict)
@@ -14734,9 +14734,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.release_address([::AWSConfig], arguments::Dict)
-    EC2.release_address([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.release_address
+    release_address([::AWSConfig], arguments::Dict)
+    release_address([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ReleaseAddress", arguments::Dict)
@@ -14801,9 +14801,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.release_hosts([::AWSConfig], arguments::Dict)
-    EC2.release_hosts([::AWSConfig]; HostId=)
+    using AWSSDK.EC2.release_hosts
+    release_hosts([::AWSConfig], arguments::Dict)
+    release_hosts([::AWSConfig]; HostId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ReleaseHosts", arguments::Dict)
@@ -14840,9 +14840,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.replace_iam_instance_profile_association([::AWSConfig], arguments::Dict)
-    EC2.replace_iam_instance_profile_association([::AWSConfig]; IamInstanceProfile=, AssociationId=)
+    using AWSSDK.EC2.replace_iam_instance_profile_association
+    replace_iam_instance_profile_association([::AWSConfig], arguments::Dict)
+    replace_iam_instance_profile_association([::AWSConfig]; IamInstanceProfile=, AssociationId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ReplaceIamInstanceProfileAssociation", arguments::Dict)
@@ -14886,9 +14886,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.replace_network_acl_association([::AWSConfig], arguments::Dict)
-    EC2.replace_network_acl_association([::AWSConfig]; AssociationId=, NetworkAclId=, <keyword arguments>)
+    using AWSSDK.EC2.replace_network_acl_association
+    replace_network_acl_association([::AWSConfig], arguments::Dict)
+    replace_network_acl_association([::AWSConfig]; AssociationId=, NetworkAclId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ReplaceNetworkAclAssociation", arguments::Dict)
@@ -14948,9 +14948,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.replace_network_acl_entry([::AWSConfig], arguments::Dict)
-    EC2.replace_network_acl_entry([::AWSConfig]; Egress=, NetworkAclId=, Protocol=, RuleAction=, RuleNumber=, <keyword arguments>)
+    using AWSSDK.EC2.replace_network_acl_entry
+    replace_network_acl_entry([::AWSConfig], arguments::Dict)
+    replace_network_acl_entry([::AWSConfig]; Egress=, NetworkAclId=, Protocol=, RuleAction=, RuleNumber=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ReplaceNetworkAclEntry", arguments::Dict)
@@ -15047,9 +15047,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.replace_route([::AWSConfig], arguments::Dict)
-    EC2.replace_route([::AWSConfig]; RouteTableId=, <keyword arguments>)
+    using AWSSDK.EC2.replace_route
+    replace_route([::AWSConfig], arguments::Dict)
+    replace_route([::AWSConfig]; RouteTableId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ReplaceRoute", arguments::Dict)
@@ -15129,9 +15129,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.replace_route_table_association([::AWSConfig], arguments::Dict)
-    EC2.replace_route_table_association([::AWSConfig]; AssociationId=, RouteTableId=, <keyword arguments>)
+    using AWSSDK.EC2.replace_route_table_association
+    replace_route_table_association([::AWSConfig], arguments::Dict)
+    replace_route_table_association([::AWSConfig]; AssociationId=, RouteTableId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ReplaceRouteTableAssociation", arguments::Dict)
@@ -15193,9 +15193,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.report_instance_status([::AWSConfig], arguments::Dict)
-    EC2.report_instance_status([::AWSConfig]; InstanceId=, ReasonCode=, Status=, <keyword arguments>)
+    using AWSSDK.EC2.report_instance_status
+    report_instance_status([::AWSConfig], arguments::Dict)
+    report_instance_status([::AWSConfig]; InstanceId=, ReasonCode=, Status=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ReportInstanceStatus", arguments::Dict)
@@ -15268,9 +15268,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.request_spot_fleet([::AWSConfig], arguments::Dict)
-    EC2.request_spot_fleet([::AWSConfig]; SpotFleetRequestConfig=, <keyword arguments>)
+    using AWSSDK.EC2.request_spot_fleet
+    request_spot_fleet([::AWSConfig], arguments::Dict)
+    request_spot_fleet([::AWSConfig]; SpotFleetRequestConfig=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "RequestSpotFleet", arguments::Dict)
@@ -15554,9 +15554,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.request_spot_instances([::AWSConfig], arguments::Dict)
-    EC2.request_spot_instances([::AWSConfig]; SpotPrice=, <keyword arguments>)
+    using AWSSDK.EC2.request_spot_instances
+    request_spot_instances([::AWSConfig], arguments::Dict)
+    request_spot_instances([::AWSConfig]; SpotPrice=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "RequestSpotInstances", arguments::Dict)
@@ -15754,9 +15754,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.reset_image_attribute([::AWSConfig], arguments::Dict)
-    EC2.reset_image_attribute([::AWSConfig]; Attribute=, ImageId=, <keyword arguments>)
+    using AWSSDK.EC2.reset_image_attribute
+    reset_image_attribute([::AWSConfig], arguments::Dict)
+    reset_image_attribute([::AWSConfig]; Attribute=, ImageId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ResetImageAttribute", arguments::Dict)
@@ -15796,9 +15796,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.reset_instance_attribute([::AWSConfig], arguments::Dict)
-    EC2.reset_instance_attribute([::AWSConfig]; Attribute=, InstanceId=, <keyword arguments>)
+    using AWSSDK.EC2.reset_instance_attribute
+    reset_instance_attribute([::AWSConfig], arguments::Dict)
+    reset_instance_attribute([::AWSConfig]; Attribute=, InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ResetInstanceAttribute", arguments::Dict)
@@ -15840,9 +15840,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.reset_network_interface_attribute([::AWSConfig], arguments::Dict)
-    EC2.reset_network_interface_attribute([::AWSConfig]; NetworkInterfaceId=, <keyword arguments>)
+    using AWSSDK.EC2.reset_network_interface_attribute
+    reset_network_interface_attribute([::AWSConfig], arguments::Dict)
+    reset_network_interface_attribute([::AWSConfig]; NetworkInterfaceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ResetNetworkInterfaceAttribute", arguments::Dict)
@@ -15879,9 +15879,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.reset_snapshot_attribute([::AWSConfig], arguments::Dict)
-    EC2.reset_snapshot_attribute([::AWSConfig]; Attribute=, SnapshotId=, <keyword arguments>)
+    using AWSSDK.EC2.reset_snapshot_attribute
+    reset_snapshot_attribute([::AWSConfig], arguments::Dict)
+    reset_snapshot_attribute([::AWSConfig]; Attribute=, SnapshotId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "ResetSnapshotAttribute", arguments::Dict)
@@ -15939,9 +15939,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.restore_address_to_classic([::AWSConfig], arguments::Dict)
-    EC2.restore_address_to_classic([::AWSConfig]; PublicIp=, <keyword arguments>)
+    using AWSSDK.EC2.restore_address_to_classic
+    restore_address_to_classic([::AWSConfig], arguments::Dict)
+    restore_address_to_classic([::AWSConfig]; PublicIp=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "RestoreAddressToClassic", arguments::Dict)
@@ -15997,9 +15997,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.revoke_security_group_egress([::AWSConfig], arguments::Dict)
-    EC2.revoke_security_group_egress([::AWSConfig]; GroupId=, <keyword arguments>)
+    using AWSSDK.EC2.revoke_security_group_egress
+    revoke_security_group_egress([::AWSConfig], arguments::Dict)
+    revoke_security_group_egress([::AWSConfig]; GroupId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "RevokeSecurityGroupEgress", arguments::Dict)
@@ -16081,9 +16081,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.revoke_security_group_ingress([::AWSConfig], arguments::Dict)
-    EC2.revoke_security_group_ingress([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EC2.revoke_security_group_ingress
+    revoke_security_group_ingress([::AWSConfig], arguments::Dict)
+    revoke_security_group_ingress([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "RevokeSecurityGroupIngress", arguments::Dict)
@@ -16169,9 +16169,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.run_instances([::AWSConfig], arguments::Dict)
-    EC2.run_instances([::AWSConfig]; ImageId=, MaxCount=, MinCount=, <keyword arguments>)
+    using AWSSDK.EC2.run_instances
+    run_instances([::AWSConfig], arguments::Dict)
+    run_instances([::AWSConfig]; ImageId=, MaxCount=, MinCount=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "RunInstances", arguments::Dict)
@@ -16418,9 +16418,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.run_scheduled_instances([::AWSConfig], arguments::Dict)
-    EC2.run_scheduled_instances([::AWSConfig]; LaunchSpecification=, ScheduledInstanceId=, <keyword arguments>)
+    using AWSSDK.EC2.run_scheduled_instances
+    run_scheduled_instances([::AWSConfig], arguments::Dict)
+    run_scheduled_instances([::AWSConfig]; LaunchSpecification=, ScheduledInstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "RunScheduledInstances", arguments::Dict)
@@ -16600,9 +16600,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.start_instances([::AWSConfig], arguments::Dict)
-    EC2.start_instances([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.EC2.start_instances
+    start_instances([::AWSConfig], arguments::Dict)
+    start_instances([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "StartInstances", arguments::Dict)
@@ -16651,9 +16651,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.stop_instances([::AWSConfig], arguments::Dict)
-    EC2.stop_instances([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.EC2.stop_instances
+    stop_instances([::AWSConfig], arguments::Dict)
+    stop_instances([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "StopInstances", arguments::Dict)
@@ -16706,9 +16706,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.terminate_instances([::AWSConfig], arguments::Dict)
-    EC2.terminate_instances([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.EC2.terminate_instances
+    terminate_instances([::AWSConfig], arguments::Dict)
+    terminate_instances([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "TerminateInstances", arguments::Dict)
@@ -16757,9 +16757,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.unassign_ipv6addresses([::AWSConfig], arguments::Dict)
-    EC2.unassign_ipv6addresses([::AWSConfig]; Ipv6Addresses=, NetworkInterfaceId=)
+    using AWSSDK.EC2.unassign_ipv6addresses
+    unassign_ipv6addresses([::AWSConfig], arguments::Dict)
+    unassign_ipv6addresses([::AWSConfig]; Ipv6Addresses=, NetworkInterfaceId=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "UnassignIpv6Addresses", arguments::Dict)
@@ -16796,9 +16796,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.unassign_private_ip_addresses([::AWSConfig], arguments::Dict)
-    EC2.unassign_private_ip_addresses([::AWSConfig]; NetworkInterfaceId=, PrivateIpAddress=)
+    using AWSSDK.EC2.unassign_private_ip_addresses
+    unassign_private_ip_addresses([::AWSConfig], arguments::Dict)
+    unassign_private_ip_addresses([::AWSConfig]; NetworkInterfaceId=, PrivateIpAddress=)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "UnassignPrivateIpAddresses", arguments::Dict)
@@ -16845,9 +16845,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
-    using AWSSDK.EC2
-    EC2.unmonitor_instances([::AWSConfig], arguments::Dict)
-    EC2.unmonitor_instances([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.EC2.unmonitor_instances
+    unmonitor_instances([::AWSConfig], arguments::Dict)
+    unmonitor_instances([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "UnmonitorInstances", arguments::Dict)

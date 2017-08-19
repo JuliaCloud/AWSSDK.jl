@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.accept_handshake([::AWSConfig], arguments::Dict)
-    Organizations.accept_handshake([::AWSConfig]; HandshakeId=)
+    using AWSSDK.Organizations.accept_handshake
+    accept_handshake([::AWSConfig], arguments::Dict)
+    accept_handshake([::AWSConfig]; HandshakeId=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "AcceptHandshake", arguments::Dict)
@@ -123,9 +123,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.attach_policy([::AWSConfig], arguments::Dict)
-    Organizations.attach_policy([::AWSConfig]; PolicyId=, TargetId=)
+    using AWSSDK.Organizations.attach_policy
+    attach_policy([::AWSConfig], arguments::Dict)
+    attach_policy([::AWSConfig]; PolicyId=, TargetId=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "AttachPolicy", arguments::Dict)
@@ -214,9 +214,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.cancel_handshake([::AWSConfig], arguments::Dict)
-    Organizations.cancel_handshake([::AWSConfig]; HandshakeId=)
+    using AWSSDK.Organizations.cancel_handshake
+    cancel_handshake([::AWSConfig], arguments::Dict)
+    cancel_handshake([::AWSConfig]; HandshakeId=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "CancelHandshake", arguments::Dict)
@@ -323,9 +323,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.create_account([::AWSConfig], arguments::Dict)
-    Organizations.create_account([::AWSConfig]; Email=, AccountName=, <keyword arguments>)
+    using AWSSDK.Organizations.create_account
+    create_account([::AWSConfig], arguments::Dict)
+    create_account([::AWSConfig]; Email=, AccountName=, <keyword arguments>)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "CreateAccount", arguments::Dict)
@@ -420,9 +420,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.create_organization([::AWSConfig], arguments::Dict)
-    Organizations.create_organization([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Organizations.create_organization
+    create_organization([::AWSConfig], arguments::Dict)
+    create_organization([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "CreateOrganization", arguments::Dict)
@@ -530,9 +530,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.create_organizational_unit([::AWSConfig], arguments::Dict)
-    Organizations.create_organizational_unit([::AWSConfig]; ParentId=, Name=)
+    using AWSSDK.Organizations.create_organizational_unit
+    create_organizational_unit([::AWSConfig], arguments::Dict)
+    create_organizational_unit([::AWSConfig]; ParentId=, Name=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "CreateOrganizationalUnit", arguments::Dict)
@@ -608,9 +608,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.create_policy([::AWSConfig], arguments::Dict)
-    Organizations.create_policy([::AWSConfig]; Content=, Description=, Name=, Type=)
+    using AWSSDK.Organizations.create_policy
+    create_policy([::AWSConfig], arguments::Dict)
+    create_policy([::AWSConfig]; Content=, Description=, Name=, Type=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "CreatePolicy", arguments::Dict)
@@ -699,9 +699,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.decline_handshake([::AWSConfig], arguments::Dict)
-    Organizations.decline_handshake([::AWSConfig]; HandshakeId=)
+    using AWSSDK.Organizations.decline_handshake
+    decline_handshake([::AWSConfig], arguments::Dict)
+    decline_handshake([::AWSConfig]; HandshakeId=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "DeclineHandshake", arguments::Dict)
@@ -803,9 +803,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.delete_organization([::AWSConfig])
-    Organizations.
+    using AWSSDK.Organizations.delete_organization
+    delete_organization([::AWSConfig])
+    
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "DeleteOrganization",)
@@ -833,9 +833,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.delete_organizational_unit([::AWSConfig], arguments::Dict)
-    Organizations.delete_organizational_unit([::AWSConfig]; OrganizationalUnitId=)
+    using AWSSDK.Organizations.delete_organizational_unit
+    delete_organizational_unit([::AWSConfig], arguments::Dict)
+    delete_organizational_unit([::AWSConfig]; OrganizationalUnitId=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "DeleteOrganizationalUnit", arguments::Dict)
@@ -885,9 +885,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.delete_policy([::AWSConfig], arguments::Dict)
-    Organizations.delete_policy([::AWSConfig]; PolicyId=)
+    using AWSSDK.Organizations.delete_policy
+    delete_policy([::AWSConfig], arguments::Dict)
+    delete_policy([::AWSConfig]; PolicyId=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "DeletePolicy", arguments::Dict)
@@ -937,9 +937,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.describe_account([::AWSConfig], arguments::Dict)
-    Organizations.describe_account([::AWSConfig]; AccountId=)
+    using AWSSDK.Organizations.describe_account
+    describe_account([::AWSConfig], arguments::Dict)
+    describe_account([::AWSConfig]; AccountId=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "DescribeAccount", arguments::Dict)
@@ -1003,9 +1003,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.describe_create_account_status([::AWSConfig], arguments::Dict)
-    Organizations.describe_create_account_status([::AWSConfig]; CreateAccountRequestId=)
+    using AWSSDK.Organizations.describe_create_account_status
+    describe_create_account_status([::AWSConfig], arguments::Dict)
+    describe_create_account_status([::AWSConfig]; CreateAccountRequestId=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "DescribeCreateAccountStatus", arguments::Dict)
@@ -1068,9 +1068,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.describe_handshake([::AWSConfig], arguments::Dict)
-    Organizations.describe_handshake([::AWSConfig]; HandshakeId=)
+    using AWSSDK.Organizations.describe_handshake
+    describe_handshake([::AWSConfig], arguments::Dict)
+    describe_handshake([::AWSConfig]; HandshakeId=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "DescribeHandshake", arguments::Dict)
@@ -1168,9 +1168,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.describe_organization([::AWSConfig])
-    Organizations.
+    using AWSSDK.Organizations.describe_organization
+    describe_organization([::AWSConfig])
+    
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "DescribeOrganization",)
@@ -1224,9 +1224,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.describe_organizational_unit([::AWSConfig], arguments::Dict)
-    Organizations.describe_organizational_unit([::AWSConfig]; OrganizationalUnitId=)
+    using AWSSDK.Organizations.describe_organizational_unit
+    describe_organizational_unit([::AWSConfig], arguments::Dict)
+    describe_organizational_unit([::AWSConfig]; OrganizationalUnitId=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "DescribeOrganizationalUnit", arguments::Dict)
@@ -1289,9 +1289,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.describe_policy([::AWSConfig], arguments::Dict)
-    Organizations.describe_policy([::AWSConfig]; PolicyId=)
+    using AWSSDK.Organizations.describe_policy
+    describe_policy([::AWSConfig], arguments::Dict)
+    describe_policy([::AWSConfig]; PolicyId=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "DescribePolicy", arguments::Dict)
@@ -1360,9 +1360,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.detach_policy([::AWSConfig], arguments::Dict)
-    Organizations.detach_policy([::AWSConfig]; PolicyId=, TargetId=)
+    using AWSSDK.Organizations.detach_policy
+    detach_policy([::AWSConfig], arguments::Dict)
+    detach_policy([::AWSConfig]; PolicyId=, TargetId=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "DetachPolicy", arguments::Dict)
@@ -1425,9 +1425,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.disable_policy_type([::AWSConfig], arguments::Dict)
-    Organizations.disable_policy_type([::AWSConfig]; RootId=, PolicyType=)
+    using AWSSDK.Organizations.disable_policy_type
+    disable_policy_type([::AWSConfig], arguments::Dict)
+    disable_policy_type([::AWSConfig]; RootId=, PolicyType=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "DisablePolicyType", arguments::Dict)
@@ -1498,9 +1498,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.enable_all_features([::AWSConfig], arguments::Dict)
-    Organizations.enable_all_features([::AWSConfig]; )
+    using AWSSDK.Organizations.enable_all_features
+    enable_all_features([::AWSConfig], arguments::Dict)
+    enable_all_features([::AWSConfig]; )
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "EnableAllFeatures", arguments::Dict)
@@ -1579,9 +1579,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.enable_policy_type([::AWSConfig], arguments::Dict)
-    Organizations.enable_policy_type([::AWSConfig]; RootId=, PolicyType=)
+    using AWSSDK.Organizations.enable_policy_type
+    enable_policy_type([::AWSConfig], arguments::Dict)
+    enable_policy_type([::AWSConfig]; RootId=, PolicyType=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "EnablePolicyType", arguments::Dict)
@@ -1655,9 +1655,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.invite_account_to_organization([::AWSConfig], arguments::Dict)
-    Organizations.invite_account_to_organization([::AWSConfig]; Target=, <keyword arguments>)
+    using AWSSDK.Organizations.invite_account_to_organization
+    invite_account_to_organization([::AWSConfig], arguments::Dict)
+    invite_account_to_organization([::AWSConfig]; Target=, <keyword arguments>)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "InviteAccountToOrganization", arguments::Dict)
@@ -1781,9 +1781,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.leave_organization([::AWSConfig])
-    Organizations.
+    using AWSSDK.Organizations.leave_organization
+    leave_organization([::AWSConfig])
+    
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "LeaveOrganization",)
@@ -1821,9 +1821,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.list_accounts([::AWSConfig], arguments::Dict)
-    Organizations.list_accounts([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Organizations.list_accounts
+    list_accounts([::AWSConfig], arguments::Dict)
+    list_accounts([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "ListAccounts", arguments::Dict)
@@ -1921,9 +1921,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.list_accounts_for_parent([::AWSConfig], arguments::Dict)
-    Organizations.list_accounts_for_parent([::AWSConfig]; ParentId=, <keyword arguments>)
+    using AWSSDK.Organizations.list_accounts_for_parent
+    list_accounts_for_parent([::AWSConfig], arguments::Dict)
+    list_accounts_for_parent([::AWSConfig]; ParentId=, <keyword arguments>)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "ListAccountsForParent", arguments::Dict)
@@ -2005,9 +2005,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.list_children([::AWSConfig], arguments::Dict)
-    Organizations.list_children([::AWSConfig]; ParentId=, ChildType=, <keyword arguments>)
+    using AWSSDK.Organizations.list_children
+    list_children([::AWSConfig], arguments::Dict)
+    list_children([::AWSConfig]; ParentId=, ChildType=, <keyword arguments>)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "ListChildren", arguments::Dict)
@@ -2090,9 +2090,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.list_create_account_status([::AWSConfig], arguments::Dict)
-    Organizations.list_create_account_status([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Organizations.list_create_account_status
+    list_create_account_status([::AWSConfig], arguments::Dict)
+    list_create_account_status([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "ListCreateAccountStatus", arguments::Dict)
@@ -2195,9 +2195,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.list_handshakes_for_account([::AWSConfig], arguments::Dict)
-    Organizations.list_handshakes_for_account([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Organizations.list_handshakes_for_account
+    list_handshakes_for_account([::AWSConfig], arguments::Dict)
+    list_handshakes_for_account([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "ListHandshakesForAccount", arguments::Dict)
@@ -2305,9 +2305,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.list_handshakes_for_organization([::AWSConfig], arguments::Dict)
-    Organizations.list_handshakes_for_organization([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Organizations.list_handshakes_for_organization
+    list_handshakes_for_organization([::AWSConfig], arguments::Dict)
+    list_handshakes_for_organization([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "ListHandshakesForOrganization", arguments::Dict)
@@ -2457,9 +2457,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.list_organizational_units_for_parent([::AWSConfig], arguments::Dict)
-    Organizations.list_organizational_units_for_parent([::AWSConfig]; ParentId=, <keyword arguments>)
+    using AWSSDK.Organizations.list_organizational_units_for_parent
+    list_organizational_units_for_parent([::AWSConfig], arguments::Dict)
+    list_organizational_units_for_parent([::AWSConfig]; ParentId=, <keyword arguments>)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "ListOrganizationalUnitsForParent", arguments::Dict)
@@ -2541,9 +2541,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.list_parents([::AWSConfig], arguments::Dict)
-    Organizations.list_parents([::AWSConfig]; ChildId=, <keyword arguments>)
+    using AWSSDK.Organizations.list_parents
+    list_parents([::AWSConfig], arguments::Dict)
+    list_parents([::AWSConfig]; ChildId=, <keyword arguments>)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "ListParents", arguments::Dict)
@@ -2622,9 +2622,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.list_policies([::AWSConfig], arguments::Dict)
-    Organizations.list_policies([::AWSConfig]; Filter=, <keyword arguments>)
+    using AWSSDK.Organizations.list_policies
+    list_policies([::AWSConfig], arguments::Dict)
+    list_policies([::AWSConfig]; Filter=, <keyword arguments>)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "ListPolicies", arguments::Dict)
@@ -2714,9 +2714,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.list_policies_for_target([::AWSConfig], arguments::Dict)
-    Organizations.list_policies_for_target([::AWSConfig]; TargetId=, Filter=, <keyword arguments>)
+    using AWSSDK.Organizations.list_policies_for_target
+    list_policies_for_target([::AWSConfig], arguments::Dict)
+    list_policies_for_target([::AWSConfig]; TargetId=, Filter=, <keyword arguments>)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "ListPoliciesForTarget", arguments::Dict)
@@ -2803,9 +2803,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.list_roots([::AWSConfig], arguments::Dict)
-    Organizations.list_roots([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Organizations.list_roots
+    list_roots([::AWSConfig], arguments::Dict)
+    list_roots([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "ListRoots", arguments::Dict)
@@ -2878,9 +2878,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.list_targets_for_policy([::AWSConfig], arguments::Dict)
-    Organizations.list_targets_for_policy([::AWSConfig]; PolicyId=, <keyword arguments>)
+    using AWSSDK.Organizations.list_targets_for_policy
+    list_targets_for_policy([::AWSConfig], arguments::Dict)
+    list_targets_for_policy([::AWSConfig]; PolicyId=, <keyword arguments>)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "ListTargetsForPolicy", arguments::Dict)
@@ -2966,9 +2966,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.move_account([::AWSConfig], arguments::Dict)
-    Organizations.move_account([::AWSConfig]; AccountId=, SourceParentId=, DestinationParentId=)
+    using AWSSDK.Organizations.move_account
+    move_account([::AWSConfig], arguments::Dict)
+    move_account([::AWSConfig]; AccountId=, SourceParentId=, DestinationParentId=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "MoveAccount", arguments::Dict)
@@ -3038,9 +3038,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.remove_account_from_organization([::AWSConfig], arguments::Dict)
-    Organizations.remove_account_from_organization([::AWSConfig]; AccountId=)
+    using AWSSDK.Organizations.remove_account_from_organization
+    remove_account_from_organization([::AWSConfig], arguments::Dict)
+    remove_account_from_organization([::AWSConfig]; AccountId=)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "RemoveAccountFromOrganization", arguments::Dict)
@@ -3095,9 +3095,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.update_organizational_unit([::AWSConfig], arguments::Dict)
-    Organizations.update_organizational_unit([::AWSConfig]; OrganizationalUnitId=, <keyword arguments>)
+    using AWSSDK.Organizations.update_organizational_unit
+    update_organizational_unit([::AWSConfig], arguments::Dict)
+    update_organizational_unit([::AWSConfig]; OrganizationalUnitId=, <keyword arguments>)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "UpdateOrganizationalUnit", arguments::Dict)
@@ -3167,9 +3167,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 
 """
-    using AWSSDK.Organizations
-    Organizations.update_policy([::AWSConfig], arguments::Dict)
-    Organizations.update_policy([::AWSConfig]; PolicyId=, <keyword arguments>)
+    using AWSSDK.Organizations.update_policy
+    update_policy([::AWSConfig], arguments::Dict)
+    update_policy([::AWSConfig]; PolicyId=, <keyword arguments>)
 
     using AWSCore.Services.organizations
     organizations([::AWSConfig], "UpdatePolicy", arguments::Dict)

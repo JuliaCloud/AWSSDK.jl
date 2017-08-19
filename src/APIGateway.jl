@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.create_api_key([::AWSConfig], arguments::Dict)
-    APIGateway.create_api_key([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.APIGateway.create_api_key
+    create_api_key([::AWSConfig], arguments::Dict)
+    create_api_key([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/apikeys", arguments::Dict)
@@ -83,9 +83,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.create_authorizer([::AWSConfig], arguments::Dict)
-    APIGateway.create_authorizer([::AWSConfig]; restapi_id=, name=, type=, identitySource=, <keyword arguments>)
+    using AWSSDK.APIGateway.create_authorizer
+    create_authorizer([::AWSConfig], arguments::Dict)
+    create_authorizer([::AWSConfig]; restapi_id=, name=, type=, identitySource=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/restapis/{restapi_id}/authorizers", arguments::Dict)
@@ -160,9 +160,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.create_base_path_mapping([::AWSConfig], arguments::Dict)
-    APIGateway.create_base_path_mapping([::AWSConfig]; domain_name=, restApiId=, <keyword arguments>)
+    using AWSSDK.APIGateway.create_base_path_mapping
+    create_base_path_mapping([::AWSConfig], arguments::Dict)
+    create_base_path_mapping([::AWSConfig]; domain_name=, restApiId=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/domainnames/{domain_name}/basepathmappings", arguments::Dict)
@@ -211,9 +211,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.create_deployment([::AWSConfig], arguments::Dict)
-    APIGateway.create_deployment([::AWSConfig]; restapi_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.create_deployment
+    create_deployment([::AWSConfig], arguments::Dict)
+    create_deployment([::AWSConfig]; restapi_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/restapis/{restapi_id}/deployments", arguments::Dict)
@@ -274,9 +274,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.create_documentation_part([::AWSConfig], arguments::Dict)
-    APIGateway.create_documentation_part([::AWSConfig]; restapi_id=, location=, properties=)
+    using AWSSDK.APIGateway.create_documentation_part
+    create_documentation_part([::AWSConfig], arguments::Dict)
+    create_documentation_part([::AWSConfig]; restapi_id=, location=, properties=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/restapis/{restapi_id}/documentation/parts", arguments::Dict)
@@ -329,9 +329,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.create_documentation_version([::AWSConfig], arguments::Dict)
-    APIGateway.create_documentation_version([::AWSConfig]; restapi_id=, documentationVersion=, <keyword arguments>)
+    using AWSSDK.APIGateway.create_documentation_version
+    create_documentation_version([::AWSConfig], arguments::Dict)
+    create_documentation_version([::AWSConfig]; restapi_id=, documentationVersion=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/restapis/{restapi_id}/documentation/versions", arguments::Dict)
@@ -380,9 +380,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.create_domain_name([::AWSConfig], arguments::Dict)
-    APIGateway.create_domain_name([::AWSConfig]; domainName=, <keyword arguments>)
+    using AWSSDK.APIGateway.create_domain_name
+    create_domain_name([::AWSConfig], arguments::Dict)
+    create_domain_name([::AWSConfig]; domainName=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/domainnames", arguments::Dict)
@@ -439,9 +439,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.create_model([::AWSConfig], arguments::Dict)
-    APIGateway.create_model([::AWSConfig]; restapi_id=, name=, contentType=, <keyword arguments>)
+    using AWSSDK.APIGateway.create_model
+    create_model([::AWSConfig], arguments::Dict)
+    create_model([::AWSConfig]; restapi_id=, name=, contentType=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/restapis/{restapi_id}/models", arguments::Dict)
@@ -494,9 +494,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.create_request_validator([::AWSConfig], arguments::Dict)
-    APIGateway.create_request_validator([::AWSConfig]; restapi_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.create_request_validator
+    create_request_validator([::AWSConfig], arguments::Dict)
+    create_request_validator([::AWSConfig]; restapi_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/restapis/{restapi_id}/requestvalidators", arguments::Dict)
@@ -545,9 +545,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.create_resource([::AWSConfig], arguments::Dict)
-    APIGateway.create_resource([::AWSConfig]; restapi_id=, parent_id=, pathPart=)
+    using AWSSDK.APIGateway.create_resource
+    create_resource([::AWSConfig], arguments::Dict)
+    create_resource([::AWSConfig]; restapi_id=, parent_id=, pathPart=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/restapis/{restapi_id}/resources/{parent_id}", arguments::Dict)
@@ -592,9 +592,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.create_rest_api([::AWSConfig], arguments::Dict)
-    APIGateway.create_rest_api([::AWSConfig]; name=, <keyword arguments>)
+    using AWSSDK.APIGateway.create_rest_api
+    create_rest_api([::AWSConfig], arguments::Dict)
+    create_rest_api([::AWSConfig]; name=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/restapis", arguments::Dict)
@@ -647,9 +647,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.create_stage([::AWSConfig], arguments::Dict)
-    APIGateway.create_stage([::AWSConfig]; restapi_id=, stageName=, deploymentId=, <keyword arguments>)
+    using AWSSDK.APIGateway.create_stage
+    create_stage([::AWSConfig], arguments::Dict)
+    create_stage([::AWSConfig]; restapi_id=, stageName=, deploymentId=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/restapis/{restapi_id}/stages", arguments::Dict)
@@ -714,9 +714,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.create_usage_plan([::AWSConfig], arguments::Dict)
-    APIGateway.create_usage_plan([::AWSConfig]; name=, <keyword arguments>)
+    using AWSSDK.APIGateway.create_usage_plan
+    create_usage_plan([::AWSConfig], arguments::Dict)
+    create_usage_plan([::AWSConfig]; name=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/usageplans", arguments::Dict)
@@ -785,9 +785,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.create_usage_plan_key([::AWSConfig], arguments::Dict)
-    APIGateway.create_usage_plan_key([::AWSConfig]; usageplanId=, keyId=, keyType=)
+    using AWSSDK.APIGateway.create_usage_plan_key
+    create_usage_plan_key([::AWSConfig], arguments::Dict)
+    create_usage_plan_key([::AWSConfig]; usageplanId=, keyId=, keyType=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/usageplans/{usageplanId}/keys", arguments::Dict)
@@ -832,9 +832,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_api_key([::AWSConfig], arguments::Dict)
-    APIGateway.delete_api_key([::AWSConfig]; api_Key=)
+    using AWSSDK.APIGateway.delete_api_key
+    delete_api_key([::AWSConfig], arguments::Dict)
+    delete_api_key([::AWSConfig]; api_Key=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/apikeys/{api_Key}", arguments::Dict)
@@ -867,9 +867,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_authorizer([::AWSConfig], arguments::Dict)
-    APIGateway.delete_authorizer([::AWSConfig]; restapi_id=, authorizer_id=)
+    using AWSSDK.APIGateway.delete_authorizer
+    delete_authorizer([::AWSConfig], arguments::Dict)
+    delete_authorizer([::AWSConfig]; restapi_id=, authorizer_id=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/restapis/{restapi_id}/authorizers/{authorizer_id}", arguments::Dict)
@@ -908,9 +908,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_base_path_mapping([::AWSConfig], arguments::Dict)
-    APIGateway.delete_base_path_mapping([::AWSConfig]; domain_name=, base_path=)
+    using AWSSDK.APIGateway.delete_base_path_mapping
+    delete_base_path_mapping([::AWSConfig], arguments::Dict)
+    delete_base_path_mapping([::AWSConfig]; domain_name=, base_path=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/domainnames/{domain_name}/basepathmappings/{base_path}", arguments::Dict)
@@ -947,9 +947,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_client_certificate([::AWSConfig], arguments::Dict)
-    APIGateway.delete_client_certificate([::AWSConfig]; clientcertificate_id=)
+    using AWSSDK.APIGateway.delete_client_certificate
+    delete_client_certificate([::AWSConfig], arguments::Dict)
+    delete_client_certificate([::AWSConfig]; clientcertificate_id=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/clientcertificates/{clientcertificate_id}", arguments::Dict)
@@ -982,9 +982,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_deployment([::AWSConfig], arguments::Dict)
-    APIGateway.delete_deployment([::AWSConfig]; restapi_id=, deployment_id=)
+    using AWSSDK.APIGateway.delete_deployment
+    delete_deployment([::AWSConfig], arguments::Dict)
+    delete_deployment([::AWSConfig]; restapi_id=, deployment_id=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/restapis/{restapi_id}/deployments/{deployment_id}", arguments::Dict)
@@ -1021,9 +1021,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_documentation_part([::AWSConfig], arguments::Dict)
-    APIGateway.delete_documentation_part([::AWSConfig]; restapi_id=, part_id=)
+    using AWSSDK.APIGateway.delete_documentation_part
+    delete_documentation_part([::AWSConfig], arguments::Dict)
+    delete_documentation_part([::AWSConfig]; restapi_id=, part_id=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/restapis/{restapi_id}/documentation/parts/{part_id}", arguments::Dict)
@@ -1060,9 +1060,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_documentation_version([::AWSConfig], arguments::Dict)
-    APIGateway.delete_documentation_version([::AWSConfig]; restapi_id=, doc_version=)
+    using AWSSDK.APIGateway.delete_documentation_version
+    delete_documentation_version([::AWSConfig], arguments::Dict)
+    delete_documentation_version([::AWSConfig]; restapi_id=, doc_version=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/restapis/{restapi_id}/documentation/versions/{doc_version}", arguments::Dict)
@@ -1099,9 +1099,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_domain_name([::AWSConfig], arguments::Dict)
-    APIGateway.delete_domain_name([::AWSConfig]; domain_name=)
+    using AWSSDK.APIGateway.delete_domain_name
+    delete_domain_name([::AWSConfig], arguments::Dict)
+    delete_domain_name([::AWSConfig]; domain_name=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/domainnames/{domain_name}", arguments::Dict)
@@ -1134,9 +1134,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_gateway_response([::AWSConfig], arguments::Dict)
-    APIGateway.delete_gateway_response([::AWSConfig]; restapi_id=, response_type=)
+    using AWSSDK.APIGateway.delete_gateway_response
+    delete_gateway_response([::AWSConfig], arguments::Dict)
+    delete_gateway_response([::AWSConfig]; restapi_id=, response_type=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/restapis/{restapi_id}/gatewayresponses/{response_type}", arguments::Dict)
@@ -1194,9 +1194,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_integration([::AWSConfig], arguments::Dict)
-    APIGateway.delete_integration([::AWSConfig]; restapi_id=, resource_id=, http_method=)
+    using AWSSDK.APIGateway.delete_integration
+    delete_integration([::AWSConfig], arguments::Dict)
+    delete_integration([::AWSConfig]; restapi_id=, resource_id=, http_method=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", arguments::Dict)
@@ -1237,9 +1237,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_integration_response([::AWSConfig], arguments::Dict)
-    APIGateway.delete_integration_response([::AWSConfig]; restapi_id=, resource_id=, http_method=, status_code=)
+    using AWSSDK.APIGateway.delete_integration_response
+    delete_integration_response([::AWSConfig], arguments::Dict)
+    delete_integration_response([::AWSConfig]; restapi_id=, resource_id=, http_method=, status_code=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", arguments::Dict)
@@ -1284,9 +1284,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_method([::AWSConfig], arguments::Dict)
-    APIGateway.delete_method([::AWSConfig]; restapi_id=, resource_id=, http_method=)
+    using AWSSDK.APIGateway.delete_method
+    delete_method([::AWSConfig], arguments::Dict)
+    delete_method([::AWSConfig]; restapi_id=, resource_id=, http_method=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", arguments::Dict)
@@ -1327,9 +1327,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_method_response([::AWSConfig], arguments::Dict)
-    APIGateway.delete_method_response([::AWSConfig]; restapi_id=, resource_id=, http_method=, status_code=)
+    using AWSSDK.APIGateway.delete_method_response
+    delete_method_response([::AWSConfig], arguments::Dict)
+    delete_method_response([::AWSConfig]; restapi_id=, resource_id=, http_method=, status_code=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", arguments::Dict)
@@ -1374,9 +1374,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_model([::AWSConfig], arguments::Dict)
-    APIGateway.delete_model([::AWSConfig]; restapi_id=, model_name=)
+    using AWSSDK.APIGateway.delete_model
+    delete_model([::AWSConfig], arguments::Dict)
+    delete_model([::AWSConfig]; restapi_id=, model_name=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/restapis/{restapi_id}/models/{model_name}", arguments::Dict)
@@ -1413,9 +1413,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_request_validator([::AWSConfig], arguments::Dict)
-    APIGateway.delete_request_validator([::AWSConfig]; restapi_id=, requestvalidator_id=)
+    using AWSSDK.APIGateway.delete_request_validator
+    delete_request_validator([::AWSConfig], arguments::Dict)
+    delete_request_validator([::AWSConfig]; restapi_id=, requestvalidator_id=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", arguments::Dict)
@@ -1452,9 +1452,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_resource([::AWSConfig], arguments::Dict)
-    APIGateway.delete_resource([::AWSConfig]; restapi_id=, resource_id=)
+    using AWSSDK.APIGateway.delete_resource
+    delete_resource([::AWSConfig], arguments::Dict)
+    delete_resource([::AWSConfig]; restapi_id=, resource_id=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/restapis/{restapi_id}/resources/{resource_id}", arguments::Dict)
@@ -1491,9 +1491,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_rest_api([::AWSConfig], arguments::Dict)
-    APIGateway.delete_rest_api([::AWSConfig]; restapi_id=)
+    using AWSSDK.APIGateway.delete_rest_api
+    delete_rest_api([::AWSConfig], arguments::Dict)
+    delete_rest_api([::AWSConfig]; restapi_id=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/restapis/{restapi_id}", arguments::Dict)
@@ -1526,9 +1526,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_stage([::AWSConfig], arguments::Dict)
-    APIGateway.delete_stage([::AWSConfig]; restapi_id=, stage_name=)
+    using AWSSDK.APIGateway.delete_stage
+    delete_stage([::AWSConfig], arguments::Dict)
+    delete_stage([::AWSConfig]; restapi_id=, stage_name=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/restapis/{restapi_id}/stages/{stage_name}", arguments::Dict)
@@ -1565,9 +1565,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_usage_plan([::AWSConfig], arguments::Dict)
-    APIGateway.delete_usage_plan([::AWSConfig]; usageplanId=)
+    using AWSSDK.APIGateway.delete_usage_plan
+    delete_usage_plan([::AWSConfig], arguments::Dict)
+    delete_usage_plan([::AWSConfig]; usageplanId=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/usageplans/{usageplanId}", arguments::Dict)
@@ -1600,9 +1600,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.delete_usage_plan_key([::AWSConfig], arguments::Dict)
-    APIGateway.delete_usage_plan_key([::AWSConfig]; usageplanId=, keyId=)
+    using AWSSDK.APIGateway.delete_usage_plan_key
+    delete_usage_plan_key([::AWSConfig], arguments::Dict)
+    delete_usage_plan_key([::AWSConfig]; usageplanId=, keyId=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/usageplans/{usageplanId}/keys/{keyId}", arguments::Dict)
@@ -1639,9 +1639,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.flush_stage_authorizers_cache([::AWSConfig], arguments::Dict)
-    APIGateway.flush_stage_authorizers_cache([::AWSConfig]; restapi_id=, stage_name=)
+    using AWSSDK.APIGateway.flush_stage_authorizers_cache
+    flush_stage_authorizers_cache([::AWSConfig], arguments::Dict)
+    flush_stage_authorizers_cache([::AWSConfig]; restapi_id=, stage_name=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/restapis/{restapi_id}/stages/{stage_name}/cache/authorizers", arguments::Dict)
@@ -1678,9 +1678,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.flush_stage_cache([::AWSConfig], arguments::Dict)
-    APIGateway.flush_stage_cache([::AWSConfig]; restapi_id=, stage_name=)
+    using AWSSDK.APIGateway.flush_stage_cache
+    flush_stage_cache([::AWSConfig], arguments::Dict)
+    flush_stage_cache([::AWSConfig]; restapi_id=, stage_name=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "DELETE", "/restapis/{restapi_id}/stages/{stage_name}/cache/data", arguments::Dict)
@@ -1717,9 +1717,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.generate_client_certificate([::AWSConfig], arguments::Dict)
-    APIGateway.generate_client_certificate([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.APIGateway.generate_client_certificate
+    generate_client_certificate([::AWSConfig], arguments::Dict)
+    generate_client_certificate([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/clientcertificates", arguments::Dict)
@@ -1756,9 +1756,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_account([::AWSConfig], arguments::Dict)
-    APIGateway.get_account([::AWSConfig]; )
+    using AWSSDK.APIGateway.get_account
+    get_account([::AWSConfig], arguments::Dict)
+    get_account([::AWSConfig]; )
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/account", arguments::Dict)
@@ -1791,9 +1791,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_api_key([::AWSConfig], arguments::Dict)
-    APIGateway.get_api_key([::AWSConfig]; api_Key=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_api_key
+    get_api_key([::AWSConfig], arguments::Dict)
+    get_api_key([::AWSConfig]; api_Key=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/apikeys/{api_Key}", arguments::Dict)
@@ -1834,9 +1834,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_api_keys([::AWSConfig], arguments::Dict)
-    APIGateway.get_api_keys([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.APIGateway.get_api_keys
+    get_api_keys([::AWSConfig], arguments::Dict)
+    get_api_keys([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/apikeys", arguments::Dict)
@@ -1889,9 +1889,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_authorizer([::AWSConfig], arguments::Dict)
-    APIGateway.get_authorizer([::AWSConfig]; restapi_id=, authorizer_id=)
+    using AWSSDK.APIGateway.get_authorizer
+    get_authorizer([::AWSConfig], arguments::Dict)
+    get_authorizer([::AWSConfig]; restapi_id=, authorizer_id=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/authorizers/{authorizer_id}", arguments::Dict)
@@ -1934,9 +1934,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_authorizers([::AWSConfig], arguments::Dict)
-    APIGateway.get_authorizers([::AWSConfig]; restapi_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_authorizers
+    get_authorizers([::AWSConfig], arguments::Dict)
+    get_authorizers([::AWSConfig]; restapi_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/authorizers", arguments::Dict)
@@ -1983,9 +1983,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_base_path_mapping([::AWSConfig], arguments::Dict)
-    APIGateway.get_base_path_mapping([::AWSConfig]; domain_name=, base_path=)
+    using AWSSDK.APIGateway.get_base_path_mapping
+    get_base_path_mapping([::AWSConfig], arguments::Dict)
+    get_base_path_mapping([::AWSConfig]; domain_name=, base_path=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/domainnames/{domain_name}/basepathmappings/{base_path}", arguments::Dict)
@@ -2026,9 +2026,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_base_path_mappings([::AWSConfig], arguments::Dict)
-    APIGateway.get_base_path_mappings([::AWSConfig]; domain_name=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_base_path_mappings
+    get_base_path_mappings([::AWSConfig], arguments::Dict)
+    get_base_path_mappings([::AWSConfig]; domain_name=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/domainnames/{domain_name}/basepathmappings", arguments::Dict)
@@ -2073,9 +2073,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_client_certificate([::AWSConfig], arguments::Dict)
-    APIGateway.get_client_certificate([::AWSConfig]; clientcertificate_id=)
+    using AWSSDK.APIGateway.get_client_certificate
+    get_client_certificate([::AWSConfig], arguments::Dict)
+    get_client_certificate([::AWSConfig]; clientcertificate_id=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/clientcertificates/{clientcertificate_id}", arguments::Dict)
@@ -2112,9 +2112,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_client_certificates([::AWSConfig], arguments::Dict)
-    APIGateway.get_client_certificates([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.APIGateway.get_client_certificates
+    get_client_certificates([::AWSConfig], arguments::Dict)
+    get_client_certificates([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/clientcertificates", arguments::Dict)
@@ -2155,9 +2155,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_deployment([::AWSConfig], arguments::Dict)
-    APIGateway.get_deployment([::AWSConfig]; restapi_id=, deployment_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_deployment
+    get_deployment([::AWSConfig], arguments::Dict)
+    get_deployment([::AWSConfig]; restapi_id=, deployment_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/deployments/{deployment_id}", arguments::Dict)
@@ -2202,9 +2202,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_deployments([::AWSConfig], arguments::Dict)
-    APIGateway.get_deployments([::AWSConfig]; restapi_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_deployments
+    get_deployments([::AWSConfig], arguments::Dict)
+    get_deployments([::AWSConfig]; restapi_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/deployments", arguments::Dict)
@@ -2249,9 +2249,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_documentation_part([::AWSConfig], arguments::Dict)
-    APIGateway.get_documentation_part([::AWSConfig]; restapi_id=, part_id=)
+    using AWSSDK.APIGateway.get_documentation_part
+    get_documentation_part([::AWSConfig], arguments::Dict)
+    get_documentation_part([::AWSConfig]; restapi_id=, part_id=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/documentation/parts/{part_id}", arguments::Dict)
@@ -2292,9 +2292,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_documentation_parts([::AWSConfig], arguments::Dict)
-    APIGateway.get_documentation_parts([::AWSConfig]; restapi_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_documentation_parts
+    get_documentation_parts([::AWSConfig], arguments::Dict)
+    get_documentation_parts([::AWSConfig]; restapi_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/documentation/parts", arguments::Dict)
@@ -2351,9 +2351,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_documentation_version([::AWSConfig], arguments::Dict)
-    APIGateway.get_documentation_version([::AWSConfig]; restapi_id=, doc_version=)
+    using AWSSDK.APIGateway.get_documentation_version
+    get_documentation_version([::AWSConfig], arguments::Dict)
+    get_documentation_version([::AWSConfig]; restapi_id=, doc_version=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/documentation/versions/{doc_version}", arguments::Dict)
@@ -2394,9 +2394,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_documentation_versions([::AWSConfig], arguments::Dict)
-    APIGateway.get_documentation_versions([::AWSConfig]; restapi_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_documentation_versions
+    get_documentation_versions([::AWSConfig], arguments::Dict)
+    get_documentation_versions([::AWSConfig]; restapi_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/documentation/versions", arguments::Dict)
@@ -2441,9 +2441,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_domain_name([::AWSConfig], arguments::Dict)
-    APIGateway.get_domain_name([::AWSConfig]; domain_name=)
+    using AWSSDK.APIGateway.get_domain_name
+    get_domain_name([::AWSConfig], arguments::Dict)
+    get_domain_name([::AWSConfig]; domain_name=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/domainnames/{domain_name}", arguments::Dict)
@@ -2480,9 +2480,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_domain_names([::AWSConfig], arguments::Dict)
-    APIGateway.get_domain_names([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.APIGateway.get_domain_names
+    get_domain_names([::AWSConfig], arguments::Dict)
+    get_domain_names([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/domainnames", arguments::Dict)
@@ -2523,9 +2523,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_export([::AWSConfig], arguments::Dict)
-    APIGateway.get_export([::AWSConfig]; restapi_id=, stage_name=, export_type=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_export
+    get_export([::AWSConfig], arguments::Dict)
+    get_export([::AWSConfig]; restapi_id=, stage_name=, export_type=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/stages/{stage_name}/exports/{export_type}", arguments::Dict)
@@ -2578,9 +2578,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_gateway_response([::AWSConfig], arguments::Dict)
-    APIGateway.get_gateway_response([::AWSConfig]; restapi_id=, response_type=)
+    using AWSSDK.APIGateway.get_gateway_response
+    get_gateway_response([::AWSConfig], arguments::Dict)
+    get_gateway_response([::AWSConfig]; restapi_id=, response_type=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/gatewayresponses/{response_type}", arguments::Dict)
@@ -2642,9 +2642,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_gateway_responses([::AWSConfig], arguments::Dict)
-    APIGateway.get_gateway_responses([::AWSConfig]; restapi_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_gateway_responses
+    get_gateway_responses([::AWSConfig], arguments::Dict)
+    get_gateway_responses([::AWSConfig]; restapi_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/gatewayresponses", arguments::Dict)
@@ -2689,9 +2689,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_integration([::AWSConfig], arguments::Dict)
-    APIGateway.get_integration([::AWSConfig]; restapi_id=, resource_id=, http_method=)
+    using AWSSDK.APIGateway.get_integration
+    get_integration([::AWSConfig], arguments::Dict)
+    get_integration([::AWSConfig]; restapi_id=, resource_id=, http_method=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", arguments::Dict)
@@ -2736,9 +2736,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_integration_response([::AWSConfig], arguments::Dict)
-    APIGateway.get_integration_response([::AWSConfig]; restapi_id=, resource_id=, http_method=, status_code=)
+    using AWSSDK.APIGateway.get_integration_response
+    get_integration_response([::AWSConfig], arguments::Dict)
+    get_integration_response([::AWSConfig]; restapi_id=, resource_id=, http_method=, status_code=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", arguments::Dict)
@@ -2787,9 +2787,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_method([::AWSConfig], arguments::Dict)
-    APIGateway.get_method([::AWSConfig]; restapi_id=, resource_id=, http_method=)
+    using AWSSDK.APIGateway.get_method
+    get_method([::AWSConfig], arguments::Dict)
+    get_method([::AWSConfig]; restapi_id=, resource_id=, http_method=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", arguments::Dict)
@@ -2834,9 +2834,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_method_response([::AWSConfig], arguments::Dict)
-    APIGateway.get_method_response([::AWSConfig]; restapi_id=, resource_id=, http_method=, status_code=)
+    using AWSSDK.APIGateway.get_method_response
+    get_method_response([::AWSConfig], arguments::Dict)
+    get_method_response([::AWSConfig]; restapi_id=, resource_id=, http_method=, status_code=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", arguments::Dict)
@@ -2885,9 +2885,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_model([::AWSConfig], arguments::Dict)
-    APIGateway.get_model([::AWSConfig]; restapi_id=, model_name=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_model
+    get_model([::AWSConfig], arguments::Dict)
+    get_model([::AWSConfig]; restapi_id=, model_name=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/models/{model_name}", arguments::Dict)
@@ -2932,9 +2932,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_model_template([::AWSConfig], arguments::Dict)
-    APIGateway.get_model_template([::AWSConfig]; restapi_id=, model_name=)
+    using AWSSDK.APIGateway.get_model_template
+    get_model_template([::AWSConfig], arguments::Dict)
+    get_model_template([::AWSConfig]; restapi_id=, model_name=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/models/{model_name}/default_template", arguments::Dict)
@@ -2975,9 +2975,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_models([::AWSConfig], arguments::Dict)
-    APIGateway.get_models([::AWSConfig]; restapi_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_models
+    get_models([::AWSConfig], arguments::Dict)
+    get_models([::AWSConfig]; restapi_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/models", arguments::Dict)
@@ -3022,9 +3022,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_request_validator([::AWSConfig], arguments::Dict)
-    APIGateway.get_request_validator([::AWSConfig]; restapi_id=, requestvalidator_id=)
+    using AWSSDK.APIGateway.get_request_validator
+    get_request_validator([::AWSConfig], arguments::Dict)
+    get_request_validator([::AWSConfig]; restapi_id=, requestvalidator_id=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", arguments::Dict)
@@ -3065,9 +3065,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_request_validators([::AWSConfig], arguments::Dict)
-    APIGateway.get_request_validators([::AWSConfig]; restapi_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_request_validators
+    get_request_validators([::AWSConfig], arguments::Dict)
+    get_request_validators([::AWSConfig]; restapi_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/requestvalidators", arguments::Dict)
@@ -3112,9 +3112,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_resource([::AWSConfig], arguments::Dict)
-    APIGateway.get_resource([::AWSConfig]; restapi_id=, resource_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_resource
+    get_resource([::AWSConfig], arguments::Dict)
+    get_resource([::AWSConfig]; restapi_id=, resource_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/resources/{resource_id}", arguments::Dict)
@@ -3159,9 +3159,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_resources([::AWSConfig], arguments::Dict)
-    APIGateway.get_resources([::AWSConfig]; restapi_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_resources
+    get_resources([::AWSConfig], arguments::Dict)
+    get_resources([::AWSConfig]; restapi_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/resources", arguments::Dict)
@@ -3210,9 +3210,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_rest_api([::AWSConfig], arguments::Dict)
-    APIGateway.get_rest_api([::AWSConfig]; restapi_id=)
+    using AWSSDK.APIGateway.get_rest_api
+    get_rest_api([::AWSConfig], arguments::Dict)
+    get_rest_api([::AWSConfig]; restapi_id=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}", arguments::Dict)
@@ -3249,9 +3249,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_rest_apis([::AWSConfig], arguments::Dict)
-    APIGateway.get_rest_apis([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.APIGateway.get_rest_apis
+    get_rest_apis([::AWSConfig], arguments::Dict)
+    get_rest_apis([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis", arguments::Dict)
@@ -3292,9 +3292,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_sdk([::AWSConfig], arguments::Dict)
-    APIGateway.get_sdk([::AWSConfig]; restapi_id=, stage_name=, sdk_type=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_sdk
+    get_sdk([::AWSConfig], arguments::Dict)
+    get_sdk([::AWSConfig]; restapi_id=, stage_name=, sdk_type=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/stages/{stage_name}/sdks/{sdk_type}", arguments::Dict)
@@ -3343,9 +3343,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_sdk_type([::AWSConfig], arguments::Dict)
-    APIGateway.get_sdk_type([::AWSConfig]; sdktype_id=)
+    using AWSSDK.APIGateway.get_sdk_type
+    get_sdk_type([::AWSConfig], arguments::Dict)
+    get_sdk_type([::AWSConfig]; sdktype_id=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/sdktypes/{sdktype_id}", arguments::Dict)
@@ -3382,9 +3382,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_sdk_types([::AWSConfig], arguments::Dict)
-    APIGateway.get_sdk_types([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.APIGateway.get_sdk_types
+    get_sdk_types([::AWSConfig], arguments::Dict)
+    get_sdk_types([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/sdktypes", arguments::Dict)
@@ -3425,9 +3425,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_stage([::AWSConfig], arguments::Dict)
-    APIGateway.get_stage([::AWSConfig]; restapi_id=, stage_name=)
+    using AWSSDK.APIGateway.get_stage
+    get_stage([::AWSConfig], arguments::Dict)
+    get_stage([::AWSConfig]; restapi_id=, stage_name=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/stages/{stage_name}", arguments::Dict)
@@ -3468,9 +3468,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_stages([::AWSConfig], arguments::Dict)
-    APIGateway.get_stages([::AWSConfig]; restapi_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_stages
+    get_stages([::AWSConfig], arguments::Dict)
+    get_stages([::AWSConfig]; restapi_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/restapis/{restapi_id}/stages", arguments::Dict)
@@ -3511,9 +3511,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_usage([::AWSConfig], arguments::Dict)
-    APIGateway.get_usage([::AWSConfig]; usageplanId=, startDate=, endDate=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_usage
+    get_usage([::AWSConfig], arguments::Dict)
+    get_usage([::AWSConfig]; usageplanId=, startDate=, endDate=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/usageplans/{usageplanId}/usage", arguments::Dict)
@@ -3570,9 +3570,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_usage_plan([::AWSConfig], arguments::Dict)
-    APIGateway.get_usage_plan([::AWSConfig]; usageplanId=)
+    using AWSSDK.APIGateway.get_usage_plan
+    get_usage_plan([::AWSConfig], arguments::Dict)
+    get_usage_plan([::AWSConfig]; usageplanId=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/usageplans/{usageplanId}", arguments::Dict)
@@ -3609,9 +3609,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_usage_plan_key([::AWSConfig], arguments::Dict)
-    APIGateway.get_usage_plan_key([::AWSConfig]; usageplanId=, keyId=)
+    using AWSSDK.APIGateway.get_usage_plan_key
+    get_usage_plan_key([::AWSConfig], arguments::Dict)
+    get_usage_plan_key([::AWSConfig]; usageplanId=, keyId=)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/usageplans/{usageplanId}/keys/{keyId}", arguments::Dict)
@@ -3652,9 +3652,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_usage_plan_keys([::AWSConfig], arguments::Dict)
-    APIGateway.get_usage_plan_keys([::AWSConfig]; usageplanId=, <keyword arguments>)
+    using AWSSDK.APIGateway.get_usage_plan_keys
+    get_usage_plan_keys([::AWSConfig], arguments::Dict)
+    get_usage_plan_keys([::AWSConfig]; usageplanId=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/usageplans/{usageplanId}/keys", arguments::Dict)
@@ -3703,9 +3703,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.get_usage_plans([::AWSConfig], arguments::Dict)
-    APIGateway.get_usage_plans([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.APIGateway.get_usage_plans
+    get_usage_plans([::AWSConfig], arguments::Dict)
+    get_usage_plans([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "GET", "/usageplans", arguments::Dict)
@@ -3750,9 +3750,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.import_api_keys([::AWSConfig], arguments::Dict)
-    APIGateway.import_api_keys([::AWSConfig]; body=, format=, <keyword arguments>)
+    using AWSSDK.APIGateway.import_api_keys
+    import_api_keys([::AWSConfig], arguments::Dict)
+    import_api_keys([::AWSConfig]; body=, format=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/apikeys?mode=import", arguments::Dict)
@@ -3797,9 +3797,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.import_documentation_parts([::AWSConfig], arguments::Dict)
-    APIGateway.import_documentation_parts([::AWSConfig]; restapi_id=, body=, <keyword arguments>)
+    using AWSSDK.APIGateway.import_documentation_parts
+    import_documentation_parts([::AWSConfig], arguments::Dict)
+    import_documentation_parts([::AWSConfig]; restapi_id=, body=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PUT", "/restapis/{restapi_id}/documentation/parts", arguments::Dict)
@@ -3848,9 +3848,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.import_rest_api([::AWSConfig], arguments::Dict)
-    APIGateway.import_rest_api([::AWSConfig]; body=, <keyword arguments>)
+    using AWSSDK.APIGateway.import_rest_api
+    import_rest_api([::AWSConfig], arguments::Dict)
+    import_rest_api([::AWSConfig]; body=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/restapis?mode=import", arguments::Dict)
@@ -3895,9 +3895,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.put_gateway_response([::AWSConfig], arguments::Dict)
-    APIGateway.put_gateway_response([::AWSConfig]; restapi_id=, response_type=, <keyword arguments>)
+    using AWSSDK.APIGateway.put_gateway_response
+    put_gateway_response([::AWSConfig], arguments::Dict)
+    put_gateway_response([::AWSConfig]; restapi_id=, response_type=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PUT", "/restapis/{restapi_id}/gatewayresponses/{response_type}", arguments::Dict)
@@ -3971,9 +3971,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.put_integration([::AWSConfig], arguments::Dict)
-    APIGateway.put_integration([::AWSConfig]; restapi_id=, resource_id=, http_method=, type=, <keyword arguments>)
+    using AWSSDK.APIGateway.put_integration
+    put_integration([::AWSConfig], arguments::Dict)
+    put_integration([::AWSConfig]; restapi_id=, resource_id=, http_method=, type=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PUT", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", arguments::Dict)
@@ -4070,9 +4070,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.put_integration_response([::AWSConfig], arguments::Dict)
-    APIGateway.put_integration_response([::AWSConfig]; restapi_id=, resource_id=, http_method=, status_code=, <keyword arguments>)
+    using AWSSDK.APIGateway.put_integration_response
+    put_integration_response([::AWSConfig], arguments::Dict)
+    put_integration_response([::AWSConfig]; restapi_id=, resource_id=, http_method=, status_code=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PUT", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", arguments::Dict)
@@ -4143,9 +4143,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.put_method([::AWSConfig], arguments::Dict)
-    APIGateway.put_method([::AWSConfig]; restapi_id=, resource_id=, http_method=, authorizationType=, <keyword arguments>)
+    using AWSSDK.APIGateway.put_method
+    put_method([::AWSConfig], arguments::Dict)
+    put_method([::AWSConfig]; restapi_id=, resource_id=, http_method=, authorizationType=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PUT", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", arguments::Dict)
@@ -4218,9 +4218,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.put_method_response([::AWSConfig], arguments::Dict)
-    APIGateway.put_method_response([::AWSConfig]; restapi_id=, resource_id=, http_method=, status_code=, <keyword arguments>)
+    using AWSSDK.APIGateway.put_method_response
+    put_method_response([::AWSConfig], arguments::Dict)
+    put_method_response([::AWSConfig]; restapi_id=, resource_id=, http_method=, status_code=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PUT", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", arguments::Dict)
@@ -4277,9 +4277,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.put_rest_api([::AWSConfig], arguments::Dict)
-    APIGateway.put_rest_api([::AWSConfig]; restapi_id=, body=, <keyword arguments>)
+    using AWSSDK.APIGateway.put_rest_api
+    put_rest_api([::AWSConfig], arguments::Dict)
+    put_rest_api([::AWSConfig]; restapi_id=, body=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PUT", "/restapis/{restapi_id}", arguments::Dict)
@@ -4332,9 +4332,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.test_invoke_authorizer([::AWSConfig], arguments::Dict)
-    APIGateway.test_invoke_authorizer([::AWSConfig]; restapi_id=, authorizer_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.test_invoke_authorizer
+    test_invoke_authorizer([::AWSConfig], arguments::Dict)
+    test_invoke_authorizer([::AWSConfig]; restapi_id=, authorizer_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/restapis/{restapi_id}/authorizers/{authorizer_id}", arguments::Dict)
@@ -4397,9 +4397,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.test_invoke_method([::AWSConfig], arguments::Dict)
-    APIGateway.test_invoke_method([::AWSConfig]; restapi_id=, resource_id=, http_method=, <keyword arguments>)
+    using AWSSDK.APIGateway.test_invoke_method
+    test_invoke_method([::AWSConfig], arguments::Dict)
+    test_invoke_method([::AWSConfig]; restapi_id=, resource_id=, http_method=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "POST", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", arguments::Dict)
@@ -4464,9 +4464,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_account([::AWSConfig], arguments::Dict)
-    APIGateway.update_account([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.APIGateway.update_account
+    update_account([::AWSConfig], arguments::Dict)
+    update_account([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/account", arguments::Dict)
@@ -4510,9 +4510,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_api_key([::AWSConfig], arguments::Dict)
-    APIGateway.update_api_key([::AWSConfig]; api_Key=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_api_key
+    update_api_key([::AWSConfig], arguments::Dict)
+    update_api_key([::AWSConfig]; api_Key=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/apikeys/{api_Key}", arguments::Dict)
@@ -4560,9 +4560,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_authorizer([::AWSConfig], arguments::Dict)
-    APIGateway.update_authorizer([::AWSConfig]; restapi_id=, authorizer_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_authorizer
+    update_authorizer([::AWSConfig], arguments::Dict)
+    update_authorizer([::AWSConfig]; restapi_id=, authorizer_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/restapis/{restapi_id}/authorizers/{authorizer_id}", arguments::Dict)
@@ -4616,9 +4616,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_base_path_mapping([::AWSConfig], arguments::Dict)
-    APIGateway.update_base_path_mapping([::AWSConfig]; domain_name=, base_path=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_base_path_mapping
+    update_base_path_mapping([::AWSConfig], arguments::Dict)
+    update_base_path_mapping([::AWSConfig]; domain_name=, base_path=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/domainnames/{domain_name}/basepathmappings/{base_path}", arguments::Dict)
@@ -4670,9 +4670,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_client_certificate([::AWSConfig], arguments::Dict)
-    APIGateway.update_client_certificate([::AWSConfig]; clientcertificate_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_client_certificate
+    update_client_certificate([::AWSConfig], arguments::Dict)
+    update_client_certificate([::AWSConfig]; clientcertificate_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/clientcertificates/{clientcertificate_id}", arguments::Dict)
@@ -4720,9 +4720,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_deployment([::AWSConfig], arguments::Dict)
-    APIGateway.update_deployment([::AWSConfig]; restapi_id=, deployment_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_deployment
+    update_deployment([::AWSConfig], arguments::Dict)
+    update_deployment([::AWSConfig]; restapi_id=, deployment_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/restapis/{restapi_id}/deployments/{deployment_id}", arguments::Dict)
@@ -4774,9 +4774,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_documentation_part([::AWSConfig], arguments::Dict)
-    APIGateway.update_documentation_part([::AWSConfig]; restapi_id=, part_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_documentation_part
+    update_documentation_part([::AWSConfig], arguments::Dict)
+    update_documentation_part([::AWSConfig]; restapi_id=, part_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/restapis/{restapi_id}/documentation/parts/{part_id}", arguments::Dict)
@@ -4828,9 +4828,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_documentation_version([::AWSConfig], arguments::Dict)
-    APIGateway.update_documentation_version([::AWSConfig]; restapi_id=, doc_version=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_documentation_version
+    update_documentation_version([::AWSConfig], arguments::Dict)
+    update_documentation_version([::AWSConfig]; restapi_id=, doc_version=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/restapis/{restapi_id}/documentation/versions/{doc_version}", arguments::Dict)
@@ -4882,9 +4882,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_domain_name([::AWSConfig], arguments::Dict)
-    APIGateway.update_domain_name([::AWSConfig]; domain_name=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_domain_name
+    update_domain_name([::AWSConfig], arguments::Dict)
+    update_domain_name([::AWSConfig]; domain_name=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/domainnames/{domain_name}", arguments::Dict)
@@ -4932,9 +4932,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_gateway_response([::AWSConfig], arguments::Dict)
-    APIGateway.update_gateway_response([::AWSConfig]; restapi_id=, response_type=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_gateway_response
+    update_gateway_response([::AWSConfig], arguments::Dict)
+    update_gateway_response([::AWSConfig]; restapi_id=, response_type=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/restapis/{restapi_id}/gatewayresponses/{response_type}", arguments::Dict)
@@ -5007,9 +5007,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_integration([::AWSConfig], arguments::Dict)
-    APIGateway.update_integration([::AWSConfig]; restapi_id=, resource_id=, http_method=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_integration
+    update_integration([::AWSConfig], arguments::Dict)
+    update_integration([::AWSConfig]; restapi_id=, resource_id=, http_method=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", arguments::Dict)
@@ -5065,9 +5065,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_integration_response([::AWSConfig], arguments::Dict)
-    APIGateway.update_integration_response([::AWSConfig]; restapi_id=, resource_id=, http_method=, status_code=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_integration_response
+    update_integration_response([::AWSConfig], arguments::Dict)
+    update_integration_response([::AWSConfig]; restapi_id=, resource_id=, http_method=, status_code=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", arguments::Dict)
@@ -5127,9 +5127,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_method([::AWSConfig], arguments::Dict)
-    APIGateway.update_method([::AWSConfig]; restapi_id=, resource_id=, http_method=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_method
+    update_method([::AWSConfig], arguments::Dict)
+    update_method([::AWSConfig]; restapi_id=, resource_id=, http_method=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", arguments::Dict)
@@ -5185,9 +5185,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_method_response([::AWSConfig], arguments::Dict)
-    APIGateway.update_method_response([::AWSConfig]; restapi_id=, resource_id=, http_method=, status_code=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_method_response
+    update_method_response([::AWSConfig], arguments::Dict)
+    update_method_response([::AWSConfig]; restapi_id=, resource_id=, http_method=, status_code=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", arguments::Dict)
@@ -5247,9 +5247,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_model([::AWSConfig], arguments::Dict)
-    APIGateway.update_model([::AWSConfig]; restapi_id=, model_name=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_model
+    update_model([::AWSConfig], arguments::Dict)
+    update_model([::AWSConfig]; restapi_id=, model_name=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/restapis/{restapi_id}/models/{model_name}", arguments::Dict)
@@ -5301,9 +5301,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_request_validator([::AWSConfig], arguments::Dict)
-    APIGateway.update_request_validator([::AWSConfig]; restapi_id=, requestvalidator_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_request_validator
+    update_request_validator([::AWSConfig], arguments::Dict)
+    update_request_validator([::AWSConfig]; restapi_id=, requestvalidator_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", arguments::Dict)
@@ -5355,9 +5355,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_resource([::AWSConfig], arguments::Dict)
-    APIGateway.update_resource([::AWSConfig]; restapi_id=, resource_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_resource
+    update_resource([::AWSConfig], arguments::Dict)
+    update_resource([::AWSConfig]; restapi_id=, resource_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/restapis/{restapi_id}/resources/{resource_id}", arguments::Dict)
@@ -5409,9 +5409,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_rest_api([::AWSConfig], arguments::Dict)
-    APIGateway.update_rest_api([::AWSConfig]; restapi_id=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_rest_api
+    update_rest_api([::AWSConfig], arguments::Dict)
+    update_rest_api([::AWSConfig]; restapi_id=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/restapis/{restapi_id}", arguments::Dict)
@@ -5459,9 +5459,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_stage([::AWSConfig], arguments::Dict)
-    APIGateway.update_stage([::AWSConfig]; restapi_id=, stage_name=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_stage
+    update_stage([::AWSConfig], arguments::Dict)
+    update_stage([::AWSConfig]; restapi_id=, stage_name=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/restapis/{restapi_id}/stages/{stage_name}", arguments::Dict)
@@ -5513,9 +5513,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_usage([::AWSConfig], arguments::Dict)
-    APIGateway.update_usage([::AWSConfig]; usageplanId=, keyId=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_usage
+    update_usage([::AWSConfig], arguments::Dict)
+    update_usage([::AWSConfig]; usageplanId=, keyId=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/usageplans/{usageplanId}/keys/{keyId}/usage", arguments::Dict)
@@ -5567,9 +5567,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 
 """
-    using AWSSDK.APIGateway
-    APIGateway.update_usage_plan([::AWSConfig], arguments::Dict)
-    APIGateway.update_usage_plan([::AWSConfig]; usageplanId=, <keyword arguments>)
+    using AWSSDK.APIGateway.update_usage_plan
+    update_usage_plan([::AWSConfig], arguments::Dict)
+    update_usage_plan([::AWSConfig]; usageplanId=, <keyword arguments>)
 
     using AWSCore.Services.apigateway
     apigateway([::AWSConfig], "PATCH", "/usageplans/{usageplanId}", arguments::Dict)

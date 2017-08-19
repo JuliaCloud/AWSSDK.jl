@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.batch_get_item([::AWSConfig], arguments::Dict)
-    DynamoDB.batch_get_item([::AWSConfig]; RequestItems=, <keyword arguments>)
+    using AWSSDK.DynamoDB.batch_get_item
+    batch_get_item([::AWSConfig], arguments::Dict)
+    batch_get_item([::AWSConfig]; RequestItems=, <keyword arguments>)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "BatchGetItem", arguments::Dict)
@@ -183,9 +183,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.batch_write_item([::AWSConfig], arguments::Dict)
-    DynamoDB.batch_write_item([::AWSConfig]; RequestItems=, <keyword arguments>)
+    using AWSSDK.DynamoDB.batch_write_item
+    batch_write_item([::AWSConfig], arguments::Dict)
+    batch_write_item([::AWSConfig]; RequestItems=, <keyword arguments>)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "BatchWriteItem", arguments::Dict)
@@ -338,9 +338,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.create_table([::AWSConfig], arguments::Dict)
-    DynamoDB.create_table([::AWSConfig]; AttributeDefinitions=, TableName=, KeySchema=, ProvisionedThroughput=, <keyword arguments>)
+    using AWSSDK.DynamoDB.create_table
+    create_table([::AWSConfig], arguments::Dict)
+    create_table([::AWSConfig]; AttributeDefinitions=, TableName=, KeySchema=, ProvisionedThroughput=, <keyword arguments>)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "CreateTable", arguments::Dict)
@@ -598,9 +598,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.delete_item([::AWSConfig], arguments::Dict)
-    DynamoDB.delete_item([::AWSConfig]; TableName=, Key=, <keyword arguments>)
+    using AWSSDK.DynamoDB.delete_item
+    delete_item([::AWSConfig], arguments::Dict)
+    delete_item([::AWSConfig]; TableName=, Key=, <keyword arguments>)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "DeleteItem", arguments::Dict)
@@ -766,9 +766,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.delete_table([::AWSConfig], arguments::Dict)
-    DynamoDB.delete_table([::AWSConfig]; TableName=)
+    using AWSSDK.DynamoDB.delete_table
+    delete_table([::AWSConfig], arguments::Dict)
+    delete_table([::AWSConfig]; TableName=)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "DeleteTable", arguments::Dict)
@@ -842,9 +842,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.describe_limits([::AWSConfig], arguments::Dict)
-    DynamoDB.describe_limits([::AWSConfig]; )
+    using AWSSDK.DynamoDB.describe_limits
+    describe_limits([::AWSConfig], arguments::Dict)
+    describe_limits([::AWSConfig]; )
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "DescribeLimits", arguments::Dict)
@@ -931,9 +931,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.describe_table([::AWSConfig], arguments::Dict)
-    DynamoDB.describe_table([::AWSConfig]; TableName=)
+    using AWSSDK.DynamoDB.describe_table
+    describe_table([::AWSConfig], arguments::Dict)
+    describe_table([::AWSConfig]; TableName=)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "DescribeTable", arguments::Dict)
@@ -1022,9 +1022,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.describe_time_to_live([::AWSConfig], arguments::Dict)
-    DynamoDB.describe_time_to_live([::AWSConfig]; TableName=)
+    using AWSSDK.DynamoDB.describe_time_to_live
+    describe_time_to_live([::AWSConfig], arguments::Dict)
+    describe_time_to_live([::AWSConfig]; TableName=)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "DescribeTimeToLive", arguments::Dict)
@@ -1061,9 +1061,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.get_item([::AWSConfig], arguments::Dict)
-    DynamoDB.get_item([::AWSConfig]; TableName=, Key=, <keyword arguments>)
+    using AWSSDK.DynamoDB.get_item
+    get_item([::AWSConfig], arguments::Dict)
+    get_item([::AWSConfig]; TableName=, Key=, <keyword arguments>)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "GetItem", arguments::Dict)
@@ -1191,9 +1191,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.list_tables([::AWSConfig], arguments::Dict)
-    DynamoDB.list_tables([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DynamoDB.list_tables
+    list_tables([::AWSConfig], arguments::Dict)
+    list_tables([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "ListTables", arguments::Dict)
@@ -1257,9 +1257,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.list_tags_of_resource([::AWSConfig], arguments::Dict)
-    DynamoDB.list_tags_of_resource([::AWSConfig]; ResourceArn=, <keyword arguments>)
+    using AWSSDK.DynamoDB.list_tags_of_resource
+    list_tags_of_resource([::AWSConfig], arguments::Dict)
+    list_tags_of_resource([::AWSConfig]; ResourceArn=, <keyword arguments>)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "ListTagsOfResource", arguments::Dict)
@@ -1302,9 +1302,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.put_item([::AWSConfig], arguments::Dict)
-    DynamoDB.put_item([::AWSConfig]; TableName=, Item=, <keyword arguments>)
+    using AWSSDK.DynamoDB.put_item
+    put_item([::AWSConfig], arguments::Dict)
+    put_item([::AWSConfig]; TableName=, Item=, <keyword arguments>)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "PutItem", arguments::Dict)
@@ -1504,9 +1504,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.query([::AWSConfig], arguments::Dict)
-    DynamoDB.query([::AWSConfig]; TableName=, <keyword arguments>)
+    using AWSSDK.DynamoDB.query
+    query([::AWSConfig], arguments::Dict)
+    query([::AWSConfig]; TableName=, <keyword arguments>)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "Query", arguments::Dict)
@@ -1774,9 +1774,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.scan([::AWSConfig], arguments::Dict)
-    DynamoDB.scan([::AWSConfig]; TableName=, <keyword arguments>)
+    using AWSSDK.DynamoDB.scan
+    scan([::AWSConfig], arguments::Dict)
+    scan([::AWSConfig]; TableName=, <keyword arguments>)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "Scan", arguments::Dict)
@@ -2019,9 +2019,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.tag_resource([::AWSConfig], arguments::Dict)
-    DynamoDB.tag_resource([::AWSConfig]; ResourceArn=, Tags=)
+    using AWSSDK.DynamoDB.tag_resource
+    tag_resource([::AWSConfig], arguments::Dict)
+    tag_resource([::AWSConfig]; ResourceArn=, Tags=)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "TagResource", arguments::Dict)
@@ -2065,9 +2065,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.untag_resource([::AWSConfig], arguments::Dict)
-    DynamoDB.untag_resource([::AWSConfig]; ResourceArn=, TagKeys=)
+    using AWSSDK.DynamoDB.untag_resource
+    untag_resource([::AWSConfig], arguments::Dict)
+    untag_resource([::AWSConfig]; ResourceArn=, TagKeys=)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "UntagResource", arguments::Dict)
@@ -2106,9 +2106,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.update_item([::AWSConfig], arguments::Dict)
-    DynamoDB.update_item([::AWSConfig]; TableName=, Key=, <keyword arguments>)
+    using AWSSDK.DynamoDB.update_item
+    update_item([::AWSConfig], arguments::Dict)
+    update_item([::AWSConfig]; TableName=, Key=, <keyword arguments>)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "UpdateItem", arguments::Dict)
@@ -2350,9 +2350,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.update_table([::AWSConfig], arguments::Dict)
-    DynamoDB.update_table([::AWSConfig]; TableName=, <keyword arguments>)
+    using AWSSDK.DynamoDB.update_table
+    update_table([::AWSConfig], arguments::Dict)
+    update_table([::AWSConfig]; TableName=, <keyword arguments>)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "UpdateTable", arguments::Dict)
@@ -2523,9 +2523,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamo
 
 
 """
-    using AWSSDK.DynamoDB
-    DynamoDB.update_time_to_live([::AWSConfig], arguments::Dict)
-    DynamoDB.update_time_to_live([::AWSConfig]; TableName=, TimeToLiveSpecification=)
+    using AWSSDK.DynamoDB.update_time_to_live
+    update_time_to_live([::AWSConfig], arguments::Dict)
+    update_time_to_live([::AWSConfig]; TableName=, TimeToLiveSpecification=)
 
     using AWSCore.Services.dynamodb
     dynamodb([::AWSConfig], "UpdateTimeToLive", arguments::Dict)

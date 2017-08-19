@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.ResourceGroupsTaggingAPI
-    ResourceGroupsTaggingAPI.get_resources([::AWSConfig], arguments::Dict)
-    ResourceGroupsTaggingAPI.get_resources([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ResourceGroupsTaggingAPI.get_resources
+    get_resources([::AWSConfig], arguments::Dict)
+    get_resources([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.resourcegroupstaggingapi
     resourcegroupstaggingapi([::AWSConfig], "GetResources", arguments::Dict)
@@ -89,9 +89,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/resour
 
 
 """
-    using AWSSDK.ResourceGroupsTaggingAPI
-    ResourceGroupsTaggingAPI.get_tag_keys([::AWSConfig], arguments::Dict)
-    ResourceGroupsTaggingAPI.get_tag_keys([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ResourceGroupsTaggingAPI.get_tag_keys
+    get_tag_keys([::AWSConfig], arguments::Dict)
+    get_tag_keys([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.resourcegroupstaggingapi
     resourcegroupstaggingapi([::AWSConfig], "GetTagKeys", arguments::Dict)
@@ -128,9 +128,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/resour
 
 
 """
-    using AWSSDK.ResourceGroupsTaggingAPI
-    ResourceGroupsTaggingAPI.get_tag_values([::AWSConfig], arguments::Dict)
-    ResourceGroupsTaggingAPI.get_tag_values([::AWSConfig]; Key=, <keyword arguments>)
+    using AWSSDK.ResourceGroupsTaggingAPI.get_tag_values
+    get_tag_values([::AWSConfig], arguments::Dict)
+    get_tag_values([::AWSConfig]; Key=, <keyword arguments>)
 
     using AWSCore.Services.resourcegroupstaggingapi
     resourcegroupstaggingapi([::AWSConfig], "GetTagValues", arguments::Dict)
@@ -171,9 +171,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/resour
 
 
 """
-    using AWSSDK.ResourceGroupsTaggingAPI
-    ResourceGroupsTaggingAPI.tag_resources([::AWSConfig], arguments::Dict)
-    ResourceGroupsTaggingAPI.tag_resources([::AWSConfig]; ResourceARNList=, Tags=)
+    using AWSSDK.ResourceGroupsTaggingAPI.tag_resources
+    tag_resources([::AWSConfig], arguments::Dict)
+    tag_resources([::AWSConfig]; ResourceARNList=, Tags=)
 
     using AWSCore.Services.resourcegroupstaggingapi
     resourcegroupstaggingapi([::AWSConfig], "TagResources", arguments::Dict)
@@ -222,9 +222,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/resour
 
 
 """
-    using AWSSDK.ResourceGroupsTaggingAPI
-    ResourceGroupsTaggingAPI.untag_resources([::AWSConfig], arguments::Dict)
-    ResourceGroupsTaggingAPI.untag_resources([::AWSConfig]; ResourceARNList=, TagKeys=)
+    using AWSSDK.ResourceGroupsTaggingAPI.untag_resources
+    untag_resources([::AWSConfig], arguments::Dict)
+    untag_resources([::AWSConfig]; ResourceARNList=, TagKeys=)
 
     using AWSCore.Services.resourcegroupstaggingapi
     resourcegroupstaggingapi([::AWSConfig], "UntagResources", arguments::Dict)

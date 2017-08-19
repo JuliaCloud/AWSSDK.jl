@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.WorkSpaces
-    WorkSpaces.create_tags([::AWSConfig], arguments::Dict)
-    WorkSpaces.create_tags([::AWSConfig]; ResourceId=, Tags=)
+    using AWSSDK.WorkSpaces.create_tags
+    create_tags([::AWSConfig], arguments::Dict)
+    create_tags([::AWSConfig]; ResourceId=, Tags=)
 
     using AWSCore.Services.workspaces
     workspaces([::AWSConfig], "CreateTags", arguments::Dict)
@@ -61,9 +61,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 
 """
-    using AWSSDK.WorkSpaces
-    WorkSpaces.create_workspaces([::AWSConfig], arguments::Dict)
-    WorkSpaces.create_workspaces([::AWSConfig]; Workspaces=)
+    using AWSSDK.WorkSpaces.create_workspaces
+    create_workspaces([::AWSConfig], arguments::Dict)
+    create_workspaces([::AWSConfig]; Workspaces=)
 
     using AWSCore.Services.workspaces
     workspaces([::AWSConfig], "CreateWorkspaces", arguments::Dict)
@@ -120,9 +120,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 
 """
-    using AWSSDK.WorkSpaces
-    WorkSpaces.delete_tags([::AWSConfig], arguments::Dict)
-    WorkSpaces.delete_tags([::AWSConfig]; ResourceId=, TagKeys=)
+    using AWSSDK.WorkSpaces.delete_tags
+    delete_tags([::AWSConfig], arguments::Dict)
+    delete_tags([::AWSConfig]; ResourceId=, TagKeys=)
 
     using AWSCore.Services.workspaces
     workspaces([::AWSConfig], "DeleteTags", arguments::Dict)
@@ -163,9 +163,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 
 """
-    using AWSSDK.WorkSpaces
-    WorkSpaces.describe_tags([::AWSConfig], arguments::Dict)
-    WorkSpaces.describe_tags([::AWSConfig]; ResourceId=)
+    using AWSSDK.WorkSpaces.describe_tags
+    describe_tags([::AWSConfig], arguments::Dict)
+    describe_tags([::AWSConfig]; ResourceId=)
 
     using AWSCore.Services.workspaces
     workspaces([::AWSConfig], "DescribeTags", arguments::Dict)
@@ -202,9 +202,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 
 """
-    using AWSSDK.WorkSpaces
-    WorkSpaces.describe_workspace_bundles([::AWSConfig], arguments::Dict)
-    WorkSpaces.describe_workspace_bundles([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WorkSpaces.describe_workspace_bundles
+    describe_workspace_bundles([::AWSConfig], arguments::Dict)
+    describe_workspace_bundles([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.workspaces
     workspaces([::AWSConfig], "DescribeWorkspaceBundles", arguments::Dict)
@@ -259,9 +259,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 
 """
-    using AWSSDK.WorkSpaces
-    WorkSpaces.describe_workspace_directories([::AWSConfig], arguments::Dict)
-    WorkSpaces.describe_workspace_directories([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WorkSpaces.describe_workspace_directories
+    describe_workspace_directories([::AWSConfig], arguments::Dict)
+    describe_workspace_directories([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.workspaces
     workspaces([::AWSConfig], "DescribeWorkspaceDirectories", arguments::Dict)
@@ -304,9 +304,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 
 """
-    using AWSSDK.WorkSpaces
-    WorkSpaces.describe_workspaces([::AWSConfig], arguments::Dict)
-    WorkSpaces.describe_workspaces([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WorkSpaces.describe_workspaces
+    describe_workspaces([::AWSConfig], arguments::Dict)
+    describe_workspaces([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.workspaces
     workspaces([::AWSConfig], "DescribeWorkspaces", arguments::Dict)
@@ -369,9 +369,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 
 """
-    using AWSSDK.WorkSpaces
-    WorkSpaces.describe_workspaces_connection_status([::AWSConfig], arguments::Dict)
-    WorkSpaces.describe_workspaces_connection_status([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WorkSpaces.describe_workspaces_connection_status
+    describe_workspaces_connection_status([::AWSConfig], arguments::Dict)
+    describe_workspaces_connection_status([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.workspaces
     workspaces([::AWSConfig], "DescribeWorkspacesConnectionStatus", arguments::Dict)
@@ -412,9 +412,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 
 """
-    using AWSSDK.WorkSpaces
-    WorkSpaces.modify_workspace_properties([::AWSConfig], arguments::Dict)
-    WorkSpaces.modify_workspace_properties([::AWSConfig]; WorkspaceId=, WorkspaceProperties=)
+    using AWSSDK.WorkSpaces.modify_workspace_properties
+    modify_workspace_properties([::AWSConfig], arguments::Dict)
+    modify_workspace_properties([::AWSConfig]; WorkspaceId=, WorkspaceProperties=)
 
     using AWSCore.Services.workspaces
     workspaces([::AWSConfig], "ModifyWorkspaceProperties", arguments::Dict)
@@ -460,9 +460,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 
 """
-    using AWSSDK.WorkSpaces
-    WorkSpaces.reboot_workspaces([::AWSConfig], arguments::Dict)
-    WorkSpaces.reboot_workspaces([::AWSConfig]; RebootWorkspaceRequests=)
+    using AWSSDK.WorkSpaces.reboot_workspaces
+    reboot_workspaces([::AWSConfig], arguments::Dict)
+    reboot_workspaces([::AWSConfig]; RebootWorkspaceRequests=)
 
     using AWSCore.Services.workspaces
     workspaces([::AWSConfig], "RebootWorkspaces", arguments::Dict)
@@ -500,9 +500,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 
 """
-    using AWSSDK.WorkSpaces
-    WorkSpaces.rebuild_workspaces([::AWSConfig], arguments::Dict)
-    WorkSpaces.rebuild_workspaces([::AWSConfig]; RebuildWorkspaceRequests=)
+    using AWSSDK.WorkSpaces.rebuild_workspaces
+    rebuild_workspaces([::AWSConfig], arguments::Dict)
+    rebuild_workspaces([::AWSConfig]; RebuildWorkspaceRequests=)
 
     using AWSCore.Services.workspaces
     workspaces([::AWSConfig], "RebuildWorkspaces", arguments::Dict)
@@ -546,9 +546,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 
 """
-    using AWSSDK.WorkSpaces
-    WorkSpaces.start_workspaces([::AWSConfig], arguments::Dict)
-    WorkSpaces.start_workspaces([::AWSConfig]; StartWorkspaceRequests=)
+    using AWSSDK.WorkSpaces.start_workspaces
+    start_workspaces([::AWSConfig], arguments::Dict)
+    start_workspaces([::AWSConfig]; StartWorkspaceRequests=)
 
     using AWSCore.Services.workspaces
     workspaces([::AWSConfig], "StartWorkspaces", arguments::Dict)
@@ -581,9 +581,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 
 """
-    using AWSSDK.WorkSpaces
-    WorkSpaces.stop_workspaces([::AWSConfig], arguments::Dict)
-    WorkSpaces.stop_workspaces([::AWSConfig]; StopWorkspaceRequests=)
+    using AWSSDK.WorkSpaces.stop_workspaces
+    stop_workspaces([::AWSConfig], arguments::Dict)
+    stop_workspaces([::AWSConfig]; StopWorkspaceRequests=)
 
     using AWSCore.Services.workspaces
     workspaces([::AWSConfig], "StopWorkspaces", arguments::Dict)
@@ -616,9 +616,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 
 """
-    using AWSSDK.WorkSpaces
-    WorkSpaces.terminate_workspaces([::AWSConfig], arguments::Dict)
-    WorkSpaces.terminate_workspaces([::AWSConfig]; TerminateWorkspaceRequests=)
+    using AWSSDK.WorkSpaces.terminate_workspaces
+    terminate_workspaces([::AWSConfig], arguments::Dict)
+    terminate_workspaces([::AWSConfig]; TerminateWorkspaceRequests=)
 
     using AWSCore.Services.workspaces
     workspaces([::AWSConfig], "TerminateWorkspaces", arguments::Dict)

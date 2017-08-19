@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CloudTrail
-    CloudTrail.add_tags([::AWSConfig], arguments::Dict)
-    CloudTrail.add_tags([::AWSConfig]; ResourceId=, <keyword arguments>)
+    using AWSSDK.CloudTrail.add_tags
+    add_tags([::AWSConfig], arguments::Dict)
+    add_tags([::AWSConfig]; ResourceId=, <keyword arguments>)
 
     using AWSCore.Services.cloudtrail
     cloudtrail([::AWSConfig], "AddTags", arguments::Dict)
@@ -63,9 +63,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudt
 
 
 """
-    using AWSSDK.CloudTrail
-    CloudTrail.create_trail([::AWSConfig], arguments::Dict)
-    CloudTrail.create_trail([::AWSConfig]; Name=, S3BucketName=, <keyword arguments>)
+    using AWSSDK.CloudTrail.create_trail
+    create_trail([::AWSConfig], arguments::Dict)
+    create_trail([::AWSConfig]; Name=, S3BucketName=, <keyword arguments>)
 
     using AWSCore.Services.cloudtrail
     cloudtrail([::AWSConfig], "CreateTrail", arguments::Dict)
@@ -161,9 +161,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudt
 
 
 """
-    using AWSSDK.CloudTrail
-    CloudTrail.delete_trail([::AWSConfig], arguments::Dict)
-    CloudTrail.delete_trail([::AWSConfig]; Name=)
+    using AWSSDK.CloudTrail.delete_trail
+    delete_trail([::AWSConfig], arguments::Dict)
+    delete_trail([::AWSConfig]; Name=)
 
     using AWSCore.Services.cloudtrail
     cloudtrail([::AWSConfig], "DeleteTrail", arguments::Dict)
@@ -200,9 +200,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudt
 
 
 """
-    using AWSSDK.CloudTrail
-    CloudTrail.describe_trails([::AWSConfig], arguments::Dict)
-    CloudTrail.describe_trails([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudTrail.describe_trails
+    describe_trails([::AWSConfig], arguments::Dict)
+    describe_trails([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudtrail
     cloudtrail([::AWSConfig], "DescribeTrails", arguments::Dict)
@@ -254,9 +254,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudt
 
 
 """
-    using AWSSDK.CloudTrail
-    CloudTrail.get_event_selectors([::AWSConfig], arguments::Dict)
-    CloudTrail.get_event_selectors([::AWSConfig]; TrailName=)
+    using AWSSDK.CloudTrail.get_event_selectors
+    get_event_selectors([::AWSConfig], arguments::Dict)
+    get_event_selectors([::AWSConfig]; TrailName=)
 
     using AWSCore.Services.cloudtrail
     cloudtrail([::AWSConfig], "GetEventSelectors", arguments::Dict)
@@ -315,9 +315,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudt
 
 
 """
-    using AWSSDK.CloudTrail
-    CloudTrail.get_trail_status([::AWSConfig], arguments::Dict)
-    CloudTrail.get_trail_status([::AWSConfig]; Name=)
+    using AWSSDK.CloudTrail.get_trail_status
+    get_trail_status([::AWSConfig], arguments::Dict)
+    get_trail_status([::AWSConfig]; Name=)
 
     using AWSCore.Services.cloudtrail
     cloudtrail([::AWSConfig], "GetTrailStatus", arguments::Dict)
@@ -356,9 +356,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudt
 
 
 """
-    using AWSSDK.CloudTrail
-    CloudTrail.list_public_keys([::AWSConfig], arguments::Dict)
-    CloudTrail.list_public_keys([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudTrail.list_public_keys
+    list_public_keys([::AWSConfig], arguments::Dict)
+    list_public_keys([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudtrail
     cloudtrail([::AWSConfig], "ListPublicKeys", arguments::Dict)
@@ -406,9 +406,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudt
 
 
 """
-    using AWSSDK.CloudTrail
-    CloudTrail.list_tags([::AWSConfig], arguments::Dict)
-    CloudTrail.list_tags([::AWSConfig]; ResourceIdList=, <keyword arguments>)
+    using AWSSDK.CloudTrail.list_tags
+    list_tags([::AWSConfig], arguments::Dict)
+    list_tags([::AWSConfig]; ResourceIdList=, <keyword arguments>)
 
     using AWSCore.Services.cloudtrail
     cloudtrail([::AWSConfig], "ListTags", arguments::Dict)
@@ -451,9 +451,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudt
 
 
 """
-    using AWSSDK.CloudTrail
-    CloudTrail.lookup_events([::AWSConfig], arguments::Dict)
-    CloudTrail.lookup_events([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudTrail.lookup_events
+    lookup_events([::AWSConfig], arguments::Dict)
+    lookup_events([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudtrail
     cloudtrail([::AWSConfig], "LookupEvents", arguments::Dict)
@@ -531,9 +531,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudt
 
 
 """
-    using AWSSDK.CloudTrail
-    CloudTrail.put_event_selectors([::AWSConfig], arguments::Dict)
-    CloudTrail.put_event_selectors([::AWSConfig]; TrailName=, EventSelectors=)
+    using AWSSDK.CloudTrail.put_event_selectors
+    put_event_selectors([::AWSConfig], arguments::Dict)
+    put_event_selectors([::AWSConfig]; TrailName=, EventSelectors=)
 
     using AWSCore.Services.cloudtrail
     cloudtrail([::AWSConfig], "PutEventSelectors", arguments::Dict)
@@ -613,9 +613,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudt
 
 
 """
-    using AWSSDK.CloudTrail
-    CloudTrail.remove_tags([::AWSConfig], arguments::Dict)
-    CloudTrail.remove_tags([::AWSConfig]; ResourceId=, <keyword arguments>)
+    using AWSSDK.CloudTrail.remove_tags
+    remove_tags([::AWSConfig], arguments::Dict)
+    remove_tags([::AWSConfig]; ResourceId=, <keyword arguments>)
 
     using AWSCore.Services.cloudtrail
     cloudtrail([::AWSConfig], "RemoveTags", arguments::Dict)
@@ -663,9 +663,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudt
 
 
 """
-    using AWSSDK.CloudTrail
-    CloudTrail.start_logging([::AWSConfig], arguments::Dict)
-    CloudTrail.start_logging([::AWSConfig]; Name=)
+    using AWSSDK.CloudTrail.start_logging
+    start_logging([::AWSConfig], arguments::Dict)
+    start_logging([::AWSConfig]; Name=)
 
     using AWSCore.Services.cloudtrail
     cloudtrail([::AWSConfig], "StartLogging", arguments::Dict)
@@ -704,9 +704,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudt
 
 
 """
-    using AWSSDK.CloudTrail
-    CloudTrail.stop_logging([::AWSConfig], arguments::Dict)
-    CloudTrail.stop_logging([::AWSConfig]; Name=)
+    using AWSSDK.CloudTrail.stop_logging
+    stop_logging([::AWSConfig], arguments::Dict)
+    stop_logging([::AWSConfig]; Name=)
 
     using AWSCore.Services.cloudtrail
     cloudtrail([::AWSConfig], "StopLogging", arguments::Dict)
@@ -745,9 +745,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudt
 
 
 """
-    using AWSSDK.CloudTrail
-    CloudTrail.update_trail([::AWSConfig], arguments::Dict)
-    CloudTrail.update_trail([::AWSConfig]; Name=, <keyword arguments>)
+    using AWSSDK.CloudTrail.update_trail
+    update_trail([::AWSConfig], arguments::Dict)
+    update_trail([::AWSConfig]; Name=, <keyword arguments>)
 
     using AWSCore.Services.cloudtrail
     cloudtrail([::AWSConfig], "UpdateTrail", arguments::Dict)

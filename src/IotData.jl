@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.IotData
-    IotData.delete_thing_shadow([::AWSConfig], arguments::Dict)
-    IotData.delete_thing_shadow([::AWSConfig]; thingName=)
+    using AWSSDK.IotData.delete_thing_shadow
+    delete_thing_shadow([::AWSConfig], arguments::Dict)
+    delete_thing_shadow([::AWSConfig]; thingName=)
 
     using AWSCore.Services.iot_data
     iot_data([::AWSConfig], "DELETE", "/things/{thingName}/shadow", arguments::Dict)
@@ -54,9 +54,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-da
 
 
 """
-    using AWSSDK.IotData
-    IotData.get_thing_shadow([::AWSConfig], arguments::Dict)
-    IotData.get_thing_shadow([::AWSConfig]; thingName=)
+    using AWSSDK.IotData.get_thing_shadow
+    get_thing_shadow([::AWSConfig], arguments::Dict)
+    get_thing_shadow([::AWSConfig]; thingName=)
 
     using AWSCore.Services.iot_data
     iot_data([::AWSConfig], "GET", "/things/{thingName}/shadow", arguments::Dict)
@@ -95,9 +95,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-da
 
 
 """
-    using AWSSDK.IotData
-    IotData.publish([::AWSConfig], arguments::Dict)
-    IotData.publish([::AWSConfig]; topic=, <keyword arguments>)
+    using AWSSDK.IotData.publish
+    publish([::AWSConfig], arguments::Dict)
+    publish([::AWSConfig]; topic=, <keyword arguments>)
 
     using AWSCore.Services.iot_data
     iot_data([::AWSConfig], "POST", "/topics/{topic}", arguments::Dict)
@@ -140,9 +140,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-da
 
 
 """
-    using AWSSDK.IotData
-    IotData.update_thing_shadow([::AWSConfig], arguments::Dict)
-    IotData.update_thing_shadow([::AWSConfig]; thingName=, payload=)
+    using AWSSDK.IotData.update_thing_shadow
+    update_thing_shadow([::AWSConfig], arguments::Dict)
+    update_thing_shadow([::AWSConfig]; thingName=, payload=)
 
     using AWSCore.Services.iot_data
     iot_data([::AWSConfig], "POST", "/things/{thingName}/shadow", arguments::Dict)

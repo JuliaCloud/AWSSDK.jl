@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.IAM
-    IAM.add_client_idto_open_idconnect_provider([::AWSConfig], arguments::Dict)
-    IAM.add_client_idto_open_idconnect_provider([::AWSConfig]; OpenIDConnectProviderArn=, ClientID=)
+    using AWSSDK.IAM.add_client_idto_open_idconnect_provider
+    add_client_idto_open_idconnect_provider([::AWSConfig], arguments::Dict)
+    add_client_idto_open_idconnect_provider([::AWSConfig]; OpenIDConnectProviderArn=, ClientID=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "AddClientIDToOpenIDConnectProvider", arguments::Dict)
@@ -66,9 +66,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.add_role_to_instance_profile([::AWSConfig], arguments::Dict)
-    IAM.add_role_to_instance_profile([::AWSConfig]; InstanceProfileName=, RoleName=)
+    using AWSSDK.IAM.add_role_to_instance_profile
+    add_role_to_instance_profile([::AWSConfig], arguments::Dict)
+    add_role_to_instance_profile([::AWSConfig]; InstanceProfileName=, RoleName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "AddRoleToInstanceProfile", arguments::Dict)
@@ -126,9 +126,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.add_user_to_group([::AWSConfig], arguments::Dict)
-    IAM.add_user_to_group([::AWSConfig]; GroupName=, UserName=)
+    using AWSSDK.IAM.add_user_to_group
+    add_user_to_group([::AWSConfig], arguments::Dict)
+    add_user_to_group([::AWSConfig]; GroupName=, UserName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "AddUserToGroup", arguments::Dict)
@@ -181,9 +181,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.attach_group_policy([::AWSConfig], arguments::Dict)
-    IAM.attach_group_policy([::AWSConfig]; GroupName=, PolicyArn=)
+    using AWSSDK.IAM.attach_group_policy
+    attach_group_policy([::AWSConfig], arguments::Dict)
+    attach_group_policy([::AWSConfig]; GroupName=, PolicyArn=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "AttachGroupPolicy", arguments::Dict)
@@ -240,9 +240,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.attach_role_policy([::AWSConfig], arguments::Dict)
-    IAM.attach_role_policy([::AWSConfig]; RoleName=, PolicyArn=)
+    using AWSSDK.IAM.attach_role_policy
+    attach_role_policy([::AWSConfig], arguments::Dict)
+    attach_role_policy([::AWSConfig]; RoleName=, PolicyArn=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "AttachRolePolicy", arguments::Dict)
@@ -300,9 +300,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.attach_user_policy([::AWSConfig], arguments::Dict)
-    IAM.attach_user_policy([::AWSConfig]; UserName=, PolicyArn=)
+    using AWSSDK.IAM.attach_user_policy
+    attach_user_policy([::AWSConfig], arguments::Dict)
+    attach_user_policy([::AWSConfig]; UserName=, PolicyArn=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "AttachUserPolicy", arguments::Dict)
@@ -359,9 +359,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.change_password([::AWSConfig], arguments::Dict)
-    IAM.change_password([::AWSConfig]; OldPassword=, NewPassword=)
+    using AWSSDK.IAM.change_password
+    change_password([::AWSConfig], arguments::Dict)
+    change_password([::AWSConfig]; OldPassword=, NewPassword=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ChangePassword", arguments::Dict)
@@ -414,9 +414,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.create_access_key([::AWSConfig], arguments::Dict)
-    IAM.create_access_key([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.IAM.create_access_key
+    create_access_key([::AWSConfig], arguments::Dict)
+    create_access_key([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "CreateAccessKey", arguments::Dict)
@@ -486,9 +486,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.create_account_alias([::AWSConfig], arguments::Dict)
-    IAM.create_account_alias([::AWSConfig]; AccountAlias=)
+    using AWSSDK.IAM.create_account_alias
+    create_account_alias([::AWSConfig], arguments::Dict)
+    create_account_alias([::AWSConfig]; AccountAlias=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "CreateAccountAlias", arguments::Dict)
@@ -534,9 +534,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.create_group([::AWSConfig], arguments::Dict)
-    IAM.create_group([::AWSConfig]; GroupName=, <keyword arguments>)
+    using AWSSDK.IAM.create_group
+    create_group([::AWSConfig], arguments::Dict)
+    create_group([::AWSConfig]; GroupName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "CreateGroup", arguments::Dict)
@@ -609,9 +609,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.create_instance_profile([::AWSConfig], arguments::Dict)
-    IAM.create_instance_profile([::AWSConfig]; InstanceProfileName=, <keyword arguments>)
+    using AWSSDK.IAM.create_instance_profile
+    create_instance_profile([::AWSConfig], arguments::Dict)
+    create_instance_profile([::AWSConfig]; InstanceProfileName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "CreateInstanceProfile", arguments::Dict)
@@ -687,9 +687,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.create_login_profile([::AWSConfig], arguments::Dict)
-    IAM.create_login_profile([::AWSConfig]; UserName=, Password=, <keyword arguments>)
+    using AWSSDK.IAM.create_login_profile
+    create_login_profile([::AWSConfig], arguments::Dict)
+    create_login_profile([::AWSConfig]; UserName=, Password=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "CreateLoginProfile", arguments::Dict)
@@ -762,9 +762,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.create_open_idconnect_provider([::AWSConfig], arguments::Dict)
-    IAM.create_open_idconnect_provider([::AWSConfig]; Url=, ThumbprintList=, <keyword arguments>)
+    using AWSSDK.IAM.create_open_idconnect_provider
+    create_open_idconnect_provider([::AWSConfig], arguments::Dict)
+    create_open_idconnect_provider([::AWSConfig]; Url=, ThumbprintList=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "CreateOpenIDConnectProvider", arguments::Dict)
@@ -852,9 +852,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.create_policy([::AWSConfig], arguments::Dict)
-    IAM.create_policy([::AWSConfig]; PolicyName=, PolicyDocument=, <keyword arguments>)
+    using AWSSDK.IAM.create_policy
+    create_policy([::AWSConfig], arguments::Dict)
+    create_policy([::AWSConfig]; PolicyName=, PolicyDocument=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "CreatePolicy", arguments::Dict)
@@ -921,9 +921,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.create_policy_version([::AWSConfig], arguments::Dict)
-    IAM.create_policy_version([::AWSConfig]; PolicyArn=, PolicyDocument=, <keyword arguments>)
+    using AWSSDK.IAM.create_policy_version
+    create_policy_version([::AWSConfig], arguments::Dict)
+    create_policy_version([::AWSConfig]; PolicyArn=, PolicyDocument=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "CreatePolicyVersion", arguments::Dict)
@@ -980,9 +980,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.create_role([::AWSConfig], arguments::Dict)
-    IAM.create_role([::AWSConfig]; RoleName=, AssumeRolePolicyDocument=, <keyword arguments>)
+    using AWSSDK.IAM.create_role
+    create_role([::AWSConfig], arguments::Dict)
+    create_role([::AWSConfig]; RoleName=, AssumeRolePolicyDocument=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "CreateRole", arguments::Dict)
@@ -1068,9 +1068,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.create_samlprovider([::AWSConfig], arguments::Dict)
-    IAM.create_samlprovider([::AWSConfig]; SAMLMetadataDocument=, Name=)
+    using AWSSDK.IAM.create_samlprovider
+    create_samlprovider([::AWSConfig], arguments::Dict)
+    create_samlprovider([::AWSConfig]; SAMLMetadataDocument=, Name=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "CreateSAMLProvider", arguments::Dict)
@@ -1124,9 +1124,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.create_service_linked_role([::AWSConfig], arguments::Dict)
-    IAM.create_service_linked_role([::AWSConfig]; AWSServiceName=, <keyword arguments>)
+    using AWSSDK.IAM.create_service_linked_role
+    create_service_linked_role([::AWSConfig], arguments::Dict)
+    create_service_linked_role([::AWSConfig]; AWSServiceName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "CreateServiceLinkedRole", arguments::Dict)
@@ -1175,9 +1175,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.create_service_specific_credential([::AWSConfig], arguments::Dict)
-    IAM.create_service_specific_credential([::AWSConfig]; UserName=, ServiceName=)
+    using AWSSDK.IAM.create_service_specific_credential
+    create_service_specific_credential([::AWSConfig], arguments::Dict)
+    create_service_specific_credential([::AWSConfig]; UserName=, ServiceName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "CreateServiceSpecificCredential", arguments::Dict)
@@ -1228,9 +1228,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.create_user([::AWSConfig], arguments::Dict)
-    IAM.create_user([::AWSConfig]; UserName=, <keyword arguments>)
+    using AWSSDK.IAM.create_user
+    create_user([::AWSConfig], arguments::Dict)
+    create_user([::AWSConfig]; UserName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "CreateUser", arguments::Dict)
@@ -1303,9 +1303,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.create_virtual_mfadevice([::AWSConfig], arguments::Dict)
-    IAM.create_virtual_mfadevice([::AWSConfig]; VirtualMFADeviceName=, <keyword arguments>)
+    using AWSSDK.IAM.create_virtual_mfadevice
+    create_virtual_mfadevice([::AWSConfig], arguments::Dict)
+    create_virtual_mfadevice([::AWSConfig]; VirtualMFADeviceName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "CreateVirtualMFADevice", arguments::Dict)
@@ -1357,9 +1357,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.deactivate_mfadevice([::AWSConfig], arguments::Dict)
-    IAM.deactivate_mfadevice([::AWSConfig]; UserName=, SerialNumber=)
+    using AWSSDK.IAM.deactivate_mfadevice
+    deactivate_mfadevice([::AWSConfig], arguments::Dict)
+    deactivate_mfadevice([::AWSConfig]; UserName=, SerialNumber=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeactivateMFADevice", arguments::Dict)
@@ -1402,9 +1402,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_access_key([::AWSConfig], arguments::Dict)
-    IAM.delete_access_key([::AWSConfig]; AccessKeyId=, <keyword arguments>)
+    using AWSSDK.IAM.delete_access_key
+    delete_access_key([::AWSConfig], arguments::Dict)
+    delete_access_key([::AWSConfig]; AccessKeyId=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteAccessKey", arguments::Dict)
@@ -1459,9 +1459,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_account_alias([::AWSConfig], arguments::Dict)
-    IAM.delete_account_alias([::AWSConfig]; AccountAlias=)
+    using AWSSDK.IAM.delete_account_alias
+    delete_account_alias([::AWSConfig], arguments::Dict)
+    delete_account_alias([::AWSConfig]; AccountAlias=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteAccountAlias", arguments::Dict)
@@ -1507,9 +1507,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_account_password_policy([::AWSConfig])
-    IAM.
+    using AWSSDK.IAM.delete_account_password_policy
+    delete_account_password_policy([::AWSConfig])
+    
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteAccountPasswordPolicy",)
@@ -1538,9 +1538,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_group([::AWSConfig], arguments::Dict)
-    IAM.delete_group([::AWSConfig]; GroupName=)
+    using AWSSDK.IAM.delete_group
+    delete_group([::AWSConfig], arguments::Dict)
+    delete_group([::AWSConfig]; GroupName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteGroup", arguments::Dict)
@@ -1575,9 +1575,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_group_policy([::AWSConfig], arguments::Dict)
-    IAM.delete_group_policy([::AWSConfig]; GroupName=, PolicyName=)
+    using AWSSDK.IAM.delete_group_policy
+    delete_group_policy([::AWSConfig], arguments::Dict)
+    delete_group_policy([::AWSConfig]; GroupName=, PolicyName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteGroupPolicy", arguments::Dict)
@@ -1632,9 +1632,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_instance_profile([::AWSConfig], arguments::Dict)
-    IAM.delete_instance_profile([::AWSConfig]; InstanceProfileName=)
+    using AWSSDK.IAM.delete_instance_profile
+    delete_instance_profile([::AWSConfig], arguments::Dict)
+    delete_instance_profile([::AWSConfig]; InstanceProfileName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteInstanceProfile", arguments::Dict)
@@ -1685,9 +1685,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_login_profile([::AWSConfig], arguments::Dict)
-    IAM.delete_login_profile([::AWSConfig]; UserName=)
+    using AWSSDK.IAM.delete_login_profile
+    delete_login_profile([::AWSConfig], arguments::Dict)
+    delete_login_profile([::AWSConfig]; UserName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteLoginProfile", arguments::Dict)
@@ -1736,9 +1736,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_open_idconnect_provider([::AWSConfig], arguments::Dict)
-    IAM.delete_open_idconnect_provider([::AWSConfig]; OpenIDConnectProviderArn=)
+    using AWSSDK.IAM.delete_open_idconnect_provider
+    delete_open_idconnect_provider([::AWSConfig], arguments::Dict)
+    delete_open_idconnect_provider([::AWSConfig]; OpenIDConnectProviderArn=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteOpenIDConnectProvider", arguments::Dict)
@@ -1775,9 +1775,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_policy([::AWSConfig], arguments::Dict)
-    IAM.delete_policy([::AWSConfig]; PolicyArn=)
+    using AWSSDK.IAM.delete_policy
+    delete_policy([::AWSConfig], arguments::Dict)
+    delete_policy([::AWSConfig]; PolicyArn=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeletePolicy", arguments::Dict)
@@ -1822,9 +1822,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_policy_version([::AWSConfig], arguments::Dict)
-    IAM.delete_policy_version([::AWSConfig]; PolicyArn=, VersionId=)
+    using AWSSDK.IAM.delete_policy_version
+    delete_policy_version([::AWSConfig], arguments::Dict)
+    delete_policy_version([::AWSConfig]; PolicyArn=, VersionId=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeletePolicyVersion", arguments::Dict)
@@ -1871,9 +1871,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_role([::AWSConfig], arguments::Dict)
-    IAM.delete_role([::AWSConfig]; RoleName=)
+    using AWSSDK.IAM.delete_role
+    delete_role([::AWSConfig], arguments::Dict)
+    delete_role([::AWSConfig]; RoleName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteRole", arguments::Dict)
@@ -1922,9 +1922,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_role_policy([::AWSConfig], arguments::Dict)
-    IAM.delete_role_policy([::AWSConfig]; RoleName=, PolicyName=)
+    using AWSSDK.IAM.delete_role_policy
+    delete_role_policy([::AWSConfig], arguments::Dict)
+    delete_role_policy([::AWSConfig]; RoleName=, PolicyName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteRolePolicy", arguments::Dict)
@@ -1979,9 +1979,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_samlprovider([::AWSConfig], arguments::Dict)
-    IAM.delete_samlprovider([::AWSConfig]; SAMLProviderArn=)
+    using AWSSDK.IAM.delete_samlprovider
+    delete_samlprovider([::AWSConfig], arguments::Dict)
+    delete_samlprovider([::AWSConfig]; SAMLProviderArn=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteSAMLProvider", arguments::Dict)
@@ -2019,9 +2019,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_sshpublic_key([::AWSConfig], arguments::Dict)
-    IAM.delete_sshpublic_key([::AWSConfig]; UserName=, SSHPublicKeyId=)
+    using AWSSDK.IAM.delete_sshpublic_key
+    delete_sshpublic_key([::AWSConfig], arguments::Dict)
+    delete_sshpublic_key([::AWSConfig]; UserName=, SSHPublicKeyId=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteSSHPublicKey", arguments::Dict)
@@ -2064,9 +2064,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_server_certificate([::AWSConfig], arguments::Dict)
-    IAM.delete_server_certificate([::AWSConfig]; ServerCertificateName=)
+    using AWSSDK.IAM.delete_server_certificate
+    delete_server_certificate([::AWSConfig], arguments::Dict)
+    delete_server_certificate([::AWSConfig]; ServerCertificateName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteServerCertificate", arguments::Dict)
@@ -2106,9 +2106,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_service_specific_credential([::AWSConfig], arguments::Dict)
-    IAM.delete_service_specific_credential([::AWSConfig]; ServiceSpecificCredentialId=, <keyword arguments>)
+    using AWSSDK.IAM.delete_service_specific_credential
+    delete_service_specific_credential([::AWSConfig], arguments::Dict)
+    delete_service_specific_credential([::AWSConfig]; ServiceSpecificCredentialId=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteServiceSpecificCredential", arguments::Dict)
@@ -2149,9 +2149,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_signing_certificate([::AWSConfig], arguments::Dict)
-    IAM.delete_signing_certificate([::AWSConfig]; CertificateId=, <keyword arguments>)
+    using AWSSDK.IAM.delete_signing_certificate
+    delete_signing_certificate([::AWSConfig], arguments::Dict)
+    delete_signing_certificate([::AWSConfig]; CertificateId=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteSigningCertificate", arguments::Dict)
@@ -2206,9 +2206,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_user([::AWSConfig], arguments::Dict)
-    IAM.delete_user([::AWSConfig]; UserName=)
+    using AWSSDK.IAM.delete_user
+    delete_user([::AWSConfig], arguments::Dict)
+    delete_user([::AWSConfig]; UserName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteUser", arguments::Dict)
@@ -2254,9 +2254,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_user_policy([::AWSConfig], arguments::Dict)
-    IAM.delete_user_policy([::AWSConfig]; UserName=, PolicyName=)
+    using AWSSDK.IAM.delete_user_policy
+    delete_user_policy([::AWSConfig], arguments::Dict)
+    delete_user_policy([::AWSConfig]; UserName=, PolicyName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteUserPolicy", arguments::Dict)
@@ -2311,9 +2311,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.delete_virtual_mfadevice([::AWSConfig], arguments::Dict)
-    IAM.delete_virtual_mfadevice([::AWSConfig]; SerialNumber=)
+    using AWSSDK.IAM.delete_virtual_mfadevice
+    delete_virtual_mfadevice([::AWSConfig], arguments::Dict)
+    delete_virtual_mfadevice([::AWSConfig]; SerialNumber=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DeleteVirtualMFADevice", arguments::Dict)
@@ -2362,9 +2362,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.detach_group_policy([::AWSConfig], arguments::Dict)
-    IAM.detach_group_policy([::AWSConfig]; GroupName=, PolicyArn=)
+    using AWSSDK.IAM.detach_group_policy
+    detach_group_policy([::AWSConfig], arguments::Dict)
+    detach_group_policy([::AWSConfig]; GroupName=, PolicyArn=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DetachGroupPolicy", arguments::Dict)
@@ -2407,9 +2407,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.detach_role_policy([::AWSConfig], arguments::Dict)
-    IAM.detach_role_policy([::AWSConfig]; RoleName=, PolicyArn=)
+    using AWSSDK.IAM.detach_role_policy
+    detach_role_policy([::AWSConfig], arguments::Dict)
+    detach_role_policy([::AWSConfig]; RoleName=, PolicyArn=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DetachRolePolicy", arguments::Dict)
@@ -2452,9 +2452,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.detach_user_policy([::AWSConfig], arguments::Dict)
-    IAM.detach_user_policy([::AWSConfig]; UserName=, PolicyArn=)
+    using AWSSDK.IAM.detach_user_policy
+    detach_user_policy([::AWSConfig], arguments::Dict)
+    detach_user_policy([::AWSConfig]; UserName=, PolicyArn=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "DetachUserPolicy", arguments::Dict)
@@ -2497,9 +2497,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.enable_mfadevice([::AWSConfig], arguments::Dict)
-    IAM.enable_mfadevice([::AWSConfig]; UserName=, SerialNumber=, AuthenticationCode1=, AuthenticationCode2=)
+    using AWSSDK.IAM.enable_mfadevice
+    enable_mfadevice([::AWSConfig], arguments::Dict)
+    enable_mfadevice([::AWSConfig]; UserName=, SerialNumber=, AuthenticationCode1=, AuthenticationCode2=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "EnableMFADevice", arguments::Dict)
@@ -2558,9 +2558,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.generate_credential_report([::AWSConfig])
-    IAM.
+    using AWSSDK.IAM.generate_credential_report
+    generate_credential_report([::AWSConfig])
+    
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GenerateCredentialReport",)
@@ -2589,9 +2589,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_access_key_last_used([::AWSConfig], arguments::Dict)
-    IAM.get_access_key_last_used([::AWSConfig]; AccessKeyId=)
+    using AWSSDK.IAM.get_access_key_last_used
+    get_access_key_last_used([::AWSConfig], arguments::Dict)
+    get_access_key_last_used([::AWSConfig]; AccessKeyId=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetAccessKeyLastUsed", arguments::Dict)
@@ -2630,9 +2630,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_account_authorization_details([::AWSConfig], arguments::Dict)
-    IAM.get_account_authorization_details([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.IAM.get_account_authorization_details
+    get_account_authorization_details([::AWSConfig], arguments::Dict)
+    get_account_authorization_details([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetAccountAuthorizationDetails", arguments::Dict)
@@ -2683,9 +2683,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_account_password_policy([::AWSConfig])
-    IAM.
+    using AWSSDK.IAM.get_account_password_policy
+    get_account_password_policy([::AWSConfig])
+    
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetAccountPasswordPolicy",)
@@ -2736,9 +2736,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_account_summary([::AWSConfig])
-    IAM.
+    using AWSSDK.IAM.get_account_summary
+    get_account_summary([::AWSConfig])
+    
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetAccountSummary",)
@@ -2806,9 +2806,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_context_keys_for_custom_policy([::AWSConfig], arguments::Dict)
-    IAM.get_context_keys_for_custom_policy([::AWSConfig]; PolicyInputList=)
+    using AWSSDK.IAM.get_context_keys_for_custom_policy
+    get_context_keys_for_custom_policy([::AWSConfig], arguments::Dict)
+    get_context_keys_for_custom_policy([::AWSConfig]; PolicyInputList=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetContextKeysForCustomPolicy", arguments::Dict)
@@ -2849,9 +2849,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_context_keys_for_principal_policy([::AWSConfig], arguments::Dict)
-    IAM.get_context_keys_for_principal_policy([::AWSConfig]; PolicySourceArn=, <keyword arguments>)
+    using AWSSDK.IAM.get_context_keys_for_principal_policy
+    get_context_keys_for_principal_policy([::AWSConfig], arguments::Dict)
+    get_context_keys_for_principal_policy([::AWSConfig]; PolicySourceArn=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetContextKeysForPrincipalPolicy", arguments::Dict)
@@ -2902,9 +2902,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_credential_report([::AWSConfig])
-    IAM.
+    using AWSSDK.IAM.get_credential_report
+    get_credential_report([::AWSConfig])
+    
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetCredentialReport",)
@@ -2933,9 +2933,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_group([::AWSConfig], arguments::Dict)
-    IAM.get_group([::AWSConfig]; GroupName=, <keyword arguments>)
+    using AWSSDK.IAM.get_group
+    get_group([::AWSConfig], arguments::Dict)
+    get_group([::AWSConfig]; GroupName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetGroup", arguments::Dict)
@@ -2984,9 +2984,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_group_policy([::AWSConfig], arguments::Dict)
-    IAM.get_group_policy([::AWSConfig]; GroupName=, PolicyName=)
+    using AWSSDK.IAM.get_group_policy
+    get_group_policy([::AWSConfig], arguments::Dict)
+    get_group_policy([::AWSConfig]; GroupName=, PolicyName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetGroupPolicy", arguments::Dict)
@@ -3038,9 +3038,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_instance_profile([::AWSConfig], arguments::Dict)
-    IAM.get_instance_profile([::AWSConfig]; InstanceProfileName=)
+    using AWSSDK.IAM.get_instance_profile
+    get_instance_profile([::AWSConfig], arguments::Dict)
+    get_instance_profile([::AWSConfig]; InstanceProfileName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetInstanceProfile", arguments::Dict)
@@ -3113,9 +3113,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_login_profile([::AWSConfig], arguments::Dict)
-    IAM.get_login_profile([::AWSConfig]; UserName=)
+    using AWSSDK.IAM.get_login_profile
+    get_login_profile([::AWSConfig], arguments::Dict)
+    get_login_profile([::AWSConfig]; UserName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetLoginProfile", arguments::Dict)
@@ -3175,9 +3175,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_open_idconnect_provider([::AWSConfig], arguments::Dict)
-    IAM.get_open_idconnect_provider([::AWSConfig]; OpenIDConnectProviderArn=)
+    using AWSSDK.IAM.get_open_idconnect_provider
+    get_open_idconnect_provider([::AWSConfig], arguments::Dict)
+    get_open_idconnect_provider([::AWSConfig]; OpenIDConnectProviderArn=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetOpenIDConnectProvider", arguments::Dict)
@@ -3216,9 +3216,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_policy([::AWSConfig], arguments::Dict)
-    IAM.get_policy([::AWSConfig]; PolicyArn=)
+    using AWSSDK.IAM.get_policy
+    get_policy([::AWSConfig], arguments::Dict)
+    get_policy([::AWSConfig]; PolicyArn=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetPolicy", arguments::Dict)
@@ -3261,9 +3261,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_policy_version([::AWSConfig], arguments::Dict)
-    IAM.get_policy_version([::AWSConfig]; PolicyArn=, VersionId=)
+    using AWSSDK.IAM.get_policy_version
+    get_policy_version([::AWSConfig], arguments::Dict)
+    get_policy_version([::AWSConfig]; PolicyArn=, VersionId=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetPolicyVersion", arguments::Dict)
@@ -3319,9 +3319,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_role([::AWSConfig], arguments::Dict)
-    IAM.get_role([::AWSConfig]; RoleName=)
+    using AWSSDK.IAM.get_role
+    get_role([::AWSConfig], arguments::Dict)
+    get_role([::AWSConfig]; RoleName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetRole", arguments::Dict)
@@ -3388,9 +3388,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_role_policy([::AWSConfig], arguments::Dict)
-    IAM.get_role_policy([::AWSConfig]; RoleName=, PolicyName=)
+    using AWSSDK.IAM.get_role_policy
+    get_role_policy([::AWSConfig], arguments::Dict)
+    get_role_policy([::AWSConfig]; RoleName=, PolicyName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetRolePolicy", arguments::Dict)
@@ -3444,9 +3444,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_samlprovider([::AWSConfig], arguments::Dict)
-    IAM.get_samlprovider([::AWSConfig]; SAMLProviderArn=)
+    using AWSSDK.IAM.get_samlprovider
+    get_samlprovider([::AWSConfig], arguments::Dict)
+    get_samlprovider([::AWSConfig]; SAMLProviderArn=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetSAMLProvider", arguments::Dict)
@@ -3488,9 +3488,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_sshpublic_key([::AWSConfig], arguments::Dict)
-    IAM.get_sshpublic_key([::AWSConfig]; UserName=, SSHPublicKeyId=, Encoding=)
+    using AWSSDK.IAM.get_sshpublic_key
+    get_sshpublic_key([::AWSConfig], arguments::Dict)
+    get_sshpublic_key([::AWSConfig]; UserName=, SSHPublicKeyId=, Encoding=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetSSHPublicKey", arguments::Dict)
@@ -3541,9 +3541,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_server_certificate([::AWSConfig], arguments::Dict)
-    IAM.get_server_certificate([::AWSConfig]; ServerCertificateName=)
+    using AWSSDK.IAM.get_server_certificate
+    get_server_certificate([::AWSConfig], arguments::Dict)
+    get_server_certificate([::AWSConfig]; ServerCertificateName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetServerCertificate", arguments::Dict)
@@ -3584,9 +3584,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_user([::AWSConfig], arguments::Dict)
-    IAM.get_user([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.IAM.get_user
+    get_user([::AWSConfig], arguments::Dict)
+    get_user([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetUser", arguments::Dict)
@@ -3651,9 +3651,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.get_user_policy([::AWSConfig], arguments::Dict)
-    IAM.get_user_policy([::AWSConfig]; UserName=, PolicyName=)
+    using AWSSDK.IAM.get_user_policy
+    get_user_policy([::AWSConfig], arguments::Dict)
+    get_user_policy([::AWSConfig]; UserName=, PolicyName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "GetUserPolicy", arguments::Dict)
@@ -3705,9 +3705,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_access_keys([::AWSConfig], arguments::Dict)
-    IAM.list_access_keys([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.IAM.list_access_keys
+    list_access_keys([::AWSConfig], arguments::Dict)
+    list_access_keys([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListAccessKeys", arguments::Dict)
@@ -3794,9 +3794,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_account_aliases([::AWSConfig], arguments::Dict)
-    IAM.list_account_aliases([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.IAM.list_account_aliases
+    list_account_aliases([::AWSConfig], arguments::Dict)
+    list_account_aliases([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListAccountAliases", arguments::Dict)
@@ -3859,9 +3859,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_attached_group_policies([::AWSConfig], arguments::Dict)
-    IAM.list_attached_group_policies([::AWSConfig]; GroupName=, <keyword arguments>)
+    using AWSSDK.IAM.list_attached_group_policies
+    list_attached_group_policies([::AWSConfig], arguments::Dict)
+    list_attached_group_policies([::AWSConfig]; GroupName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListAttachedGroupPolicies", arguments::Dict)
@@ -3920,9 +3920,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_attached_role_policies([::AWSConfig], arguments::Dict)
-    IAM.list_attached_role_policies([::AWSConfig]; RoleName=, <keyword arguments>)
+    using AWSSDK.IAM.list_attached_role_policies
+    list_attached_role_policies([::AWSConfig], arguments::Dict)
+    list_attached_role_policies([::AWSConfig]; RoleName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListAttachedRolePolicies", arguments::Dict)
@@ -3981,9 +3981,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_attached_user_policies([::AWSConfig], arguments::Dict)
-    IAM.list_attached_user_policies([::AWSConfig]; UserName=, <keyword arguments>)
+    using AWSSDK.IAM.list_attached_user_policies
+    list_attached_user_policies([::AWSConfig], arguments::Dict)
+    list_attached_user_policies([::AWSConfig]; UserName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListAttachedUserPolicies", arguments::Dict)
@@ -4042,9 +4042,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_entities_for_policy([::AWSConfig], arguments::Dict)
-    IAM.list_entities_for_policy([::AWSConfig]; PolicyArn=, <keyword arguments>)
+    using AWSSDK.IAM.list_entities_for_policy
+    list_entities_for_policy([::AWSConfig], arguments::Dict)
+    list_entities_for_policy([::AWSConfig]; PolicyArn=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListEntitiesForPolicy", arguments::Dict)
@@ -4109,9 +4109,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_group_policies([::AWSConfig], arguments::Dict)
-    IAM.list_group_policies([::AWSConfig]; GroupName=, <keyword arguments>)
+    using AWSSDK.IAM.list_group_policies
+    list_group_policies([::AWSConfig], arguments::Dict)
+    list_group_policies([::AWSConfig]; GroupName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListGroupPolicies", arguments::Dict)
@@ -4185,9 +4185,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_groups([::AWSConfig], arguments::Dict)
-    IAM.list_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.IAM.list_groups
+    list_groups([::AWSConfig], arguments::Dict)
+    list_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListGroups", arguments::Dict)
@@ -4278,9 +4278,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_groups_for_user([::AWSConfig], arguments::Dict)
-    IAM.list_groups_for_user([::AWSConfig]; UserName=, <keyword arguments>)
+    using AWSSDK.IAM.list_groups_for_user
+    list_groups_for_user([::AWSConfig], arguments::Dict)
+    list_groups_for_user([::AWSConfig]; UserName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListGroupsForUser", arguments::Dict)
@@ -4364,9 +4364,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_instance_profiles([::AWSConfig], arguments::Dict)
-    IAM.list_instance_profiles([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.IAM.list_instance_profiles
+    list_instance_profiles([::AWSConfig], arguments::Dict)
+    list_instance_profiles([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListInstanceProfiles", arguments::Dict)
@@ -4417,9 +4417,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_instance_profiles_for_role([::AWSConfig], arguments::Dict)
-    IAM.list_instance_profiles_for_role([::AWSConfig]; RoleName=, <keyword arguments>)
+    using AWSSDK.IAM.list_instance_profiles_for_role
+    list_instance_profiles_for_role([::AWSConfig], arguments::Dict)
+    list_instance_profiles_for_role([::AWSConfig]; RoleName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListInstanceProfilesForRole", arguments::Dict)
@@ -4470,9 +4470,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_mfadevices([::AWSConfig], arguments::Dict)
-    IAM.list_mfadevices([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.IAM.list_mfadevices
+    list_mfadevices([::AWSConfig], arguments::Dict)
+    list_mfadevices([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListMFADevices", arguments::Dict)
@@ -4523,9 +4523,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_open_idconnect_providers([::AWSConfig], arguments::Dict)
-    IAM.list_open_idconnect_providers([::AWSConfig]; )
+    using AWSSDK.IAM.list_open_idconnect_providers
+    list_open_idconnect_providers([::AWSConfig], arguments::Dict)
+    list_open_idconnect_providers([::AWSConfig]; )
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListOpenIDConnectProviders", arguments::Dict)
@@ -4558,9 +4558,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_policies([::AWSConfig], arguments::Dict)
-    IAM.list_policies([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.IAM.list_policies
+    list_policies([::AWSConfig], arguments::Dict)
+    list_policies([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListPolicies", arguments::Dict)
@@ -4627,9 +4627,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_policy_versions([::AWSConfig], arguments::Dict)
-    IAM.list_policy_versions([::AWSConfig]; PolicyArn=, <keyword arguments>)
+    using AWSSDK.IAM.list_policy_versions
+    list_policy_versions([::AWSConfig], arguments::Dict)
+    list_policy_versions([::AWSConfig]; PolicyArn=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListPolicyVersions", arguments::Dict)
@@ -4680,9 +4680,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_role_policies([::AWSConfig], arguments::Dict)
-    IAM.list_role_policies([::AWSConfig]; RoleName=, <keyword arguments>)
+    using AWSSDK.IAM.list_role_policies
+    list_role_policies([::AWSConfig], arguments::Dict)
+    list_role_policies([::AWSConfig]; RoleName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListRolePolicies", arguments::Dict)
@@ -4735,9 +4735,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_roles([::AWSConfig], arguments::Dict)
-    IAM.list_roles([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.IAM.list_roles
+    list_roles([::AWSConfig], arguments::Dict)
+    list_roles([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListRoles", arguments::Dict)
@@ -4788,9 +4788,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_samlproviders([::AWSConfig], arguments::Dict)
-    IAM.list_samlproviders([::AWSConfig]; )
+    using AWSSDK.IAM.list_samlproviders
+    list_samlproviders([::AWSConfig], arguments::Dict)
+    list_samlproviders([::AWSConfig]; )
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListSAMLProviders", arguments::Dict)
@@ -4826,9 +4826,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_sshpublic_keys([::AWSConfig], arguments::Dict)
-    IAM.list_sshpublic_keys([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.IAM.list_sshpublic_keys
+    list_sshpublic_keys([::AWSConfig], arguments::Dict)
+    list_sshpublic_keys([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListSSHPublicKeys", arguments::Dict)
@@ -4881,9 +4881,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_server_certificates([::AWSConfig], arguments::Dict)
-    IAM.list_server_certificates([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.IAM.list_server_certificates
+    list_server_certificates([::AWSConfig], arguments::Dict)
+    list_server_certificates([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListServerCertificates", arguments::Dict)
@@ -4936,9 +4936,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_service_specific_credentials([::AWSConfig], arguments::Dict)
-    IAM.list_service_specific_credentials([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.IAM.list_service_specific_credentials
+    list_service_specific_credentials([::AWSConfig], arguments::Dict)
+    list_service_specific_credentials([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListServiceSpecificCredentials", arguments::Dict)
@@ -4981,9 +4981,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_signing_certificates([::AWSConfig], arguments::Dict)
-    IAM.list_signing_certificates([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.IAM.list_signing_certificates
+    list_signing_certificates([::AWSConfig], arguments::Dict)
+    list_signing_certificates([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListSigningCertificates", arguments::Dict)
@@ -5062,9 +5062,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_user_policies([::AWSConfig], arguments::Dict)
-    IAM.list_user_policies([::AWSConfig]; UserName=, <keyword arguments>)
+    using AWSSDK.IAM.list_user_policies
+    list_user_policies([::AWSConfig], arguments::Dict)
+    list_user_policies([::AWSConfig]; UserName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListUserPolicies", arguments::Dict)
@@ -5117,9 +5117,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_users([::AWSConfig], arguments::Dict)
-    IAM.list_users([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.IAM.list_users
+    list_users([::AWSConfig], arguments::Dict)
+    list_users([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListUsers", arguments::Dict)
@@ -5205,9 +5205,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.list_virtual_mfadevices([::AWSConfig], arguments::Dict)
-    IAM.list_virtual_mfadevices([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.IAM.list_virtual_mfadevices
+    list_virtual_mfadevices([::AWSConfig], arguments::Dict)
+    list_virtual_mfadevices([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ListVirtualMFADevices", arguments::Dict)
@@ -5277,9 +5277,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.put_group_policy([::AWSConfig], arguments::Dict)
-    IAM.put_group_policy([::AWSConfig]; GroupName=, PolicyName=, PolicyDocument=)
+    using AWSSDK.IAM.put_group_policy
+    put_group_policy([::AWSConfig], arguments::Dict)
+    put_group_policy([::AWSConfig]; GroupName=, PolicyName=, PolicyDocument=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "PutGroupPolicy", arguments::Dict)
@@ -5346,9 +5346,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.put_role_policy([::AWSConfig], arguments::Dict)
-    IAM.put_role_policy([::AWSConfig]; RoleName=, PolicyName=, PolicyDocument=)
+    using AWSSDK.IAM.put_role_policy
+    put_role_policy([::AWSConfig], arguments::Dict)
+    put_role_policy([::AWSConfig]; RoleName=, PolicyName=, PolicyDocument=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "PutRolePolicy", arguments::Dict)
@@ -5417,9 +5417,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.put_user_policy([::AWSConfig], arguments::Dict)
-    IAM.put_user_policy([::AWSConfig]; UserName=, PolicyName=, PolicyDocument=)
+    using AWSSDK.IAM.put_user_policy
+    put_user_policy([::AWSConfig], arguments::Dict)
+    put_user_policy([::AWSConfig]; UserName=, PolicyName=, PolicyDocument=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "PutUserPolicy", arguments::Dict)
@@ -5486,9 +5486,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.remove_client_idfrom_open_idconnect_provider([::AWSConfig], arguments::Dict)
-    IAM.remove_client_idfrom_open_idconnect_provider([::AWSConfig]; OpenIDConnectProviderArn=, ClientID=)
+    using AWSSDK.IAM.remove_client_idfrom_open_idconnect_provider
+    remove_client_idfrom_open_idconnect_provider([::AWSConfig], arguments::Dict)
+    remove_client_idfrom_open_idconnect_provider([::AWSConfig]; OpenIDConnectProviderArn=, ClientID=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "RemoveClientIDFromOpenIDConnectProvider", arguments::Dict)
@@ -5529,9 +5529,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.remove_role_from_instance_profile([::AWSConfig], arguments::Dict)
-    IAM.remove_role_from_instance_profile([::AWSConfig]; InstanceProfileName=, RoleName=)
+    using AWSSDK.IAM.remove_role_from_instance_profile
+    remove_role_from_instance_profile([::AWSConfig], arguments::Dict)
+    remove_role_from_instance_profile([::AWSConfig]; InstanceProfileName=, RoleName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "RemoveRoleFromInstanceProfile", arguments::Dict)
@@ -5589,9 +5589,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.remove_user_from_group([::AWSConfig], arguments::Dict)
-    IAM.remove_user_from_group([::AWSConfig]; GroupName=, UserName=)
+    using AWSSDK.IAM.remove_user_from_group
+    remove_user_from_group([::AWSConfig], arguments::Dict)
+    remove_user_from_group([::AWSConfig]; GroupName=, UserName=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "RemoveUserFromGroup", arguments::Dict)
@@ -5644,9 +5644,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.reset_service_specific_credential([::AWSConfig], arguments::Dict)
-    IAM.reset_service_specific_credential([::AWSConfig]; ServiceSpecificCredentialId=, <keyword arguments>)
+    using AWSSDK.IAM.reset_service_specific_credential
+    reset_service_specific_credential([::AWSConfig], arguments::Dict)
+    reset_service_specific_credential([::AWSConfig]; ServiceSpecificCredentialId=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ResetServiceSpecificCredential", arguments::Dict)
@@ -5691,9 +5691,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.resync_mfadevice([::AWSConfig], arguments::Dict)
-    IAM.resync_mfadevice([::AWSConfig]; UserName=, SerialNumber=, AuthenticationCode1=, AuthenticationCode2=)
+    using AWSSDK.IAM.resync_mfadevice
+    resync_mfadevice([::AWSConfig], arguments::Dict)
+    resync_mfadevice([::AWSConfig]; UserName=, SerialNumber=, AuthenticationCode1=, AuthenticationCode2=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "ResyncMFADevice", arguments::Dict)
@@ -5748,9 +5748,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.set_default_policy_version([::AWSConfig], arguments::Dict)
-    IAM.set_default_policy_version([::AWSConfig]; PolicyArn=, VersionId=)
+    using AWSSDK.IAM.set_default_policy_version
+    set_default_policy_version([::AWSConfig], arguments::Dict)
+    set_default_policy_version([::AWSConfig]; PolicyArn=, VersionId=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "SetDefaultPolicyVersion", arguments::Dict)
@@ -5795,9 +5795,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.simulate_custom_policy([::AWSConfig], arguments::Dict)
-    IAM.simulate_custom_policy([::AWSConfig]; PolicyInputList=, ActionNames=, <keyword arguments>)
+    using AWSSDK.IAM.simulate_custom_policy
+    simulate_custom_policy([::AWSConfig], arguments::Dict)
+    simulate_custom_policy([::AWSConfig]; PolicyInputList=, ActionNames=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "SimulateCustomPolicy", arguments::Dict)
@@ -5924,9 +5924,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.simulate_principal_policy([::AWSConfig], arguments::Dict)
-    IAM.simulate_principal_policy([::AWSConfig]; PolicySourceArn=, ActionNames=, <keyword arguments>)
+    using AWSSDK.IAM.simulate_principal_policy
+    simulate_principal_policy([::AWSConfig], arguments::Dict)
+    simulate_principal_policy([::AWSConfig]; PolicySourceArn=, ActionNames=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "SimulatePrincipalPolicy", arguments::Dict)
@@ -6065,9 +6065,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.update_access_key([::AWSConfig], arguments::Dict)
-    IAM.update_access_key([::AWSConfig]; AccessKeyId=, Status=, <keyword arguments>)
+    using AWSSDK.IAM.update_access_key
+    update_access_key([::AWSConfig], arguments::Dict)
+    update_access_key([::AWSConfig]; AccessKeyId=, Status=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "UpdateAccessKey", arguments::Dict)
@@ -6129,9 +6129,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.update_account_password_policy([::AWSConfig], arguments::Dict)
-    IAM.update_account_password_policy([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.IAM.update_account_password_policy
+    update_account_password_policy([::AWSConfig], arguments::Dict)
+    update_account_password_policy([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "UpdateAccountPasswordPolicy", arguments::Dict)
@@ -6233,9 +6233,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.update_assume_role_policy([::AWSConfig], arguments::Dict)
-    IAM.update_assume_role_policy([::AWSConfig]; RoleName=, PolicyDocument=)
+    using AWSSDK.IAM.update_assume_role_policy
+    update_assume_role_policy([::AWSConfig], arguments::Dict)
+    update_assume_role_policy([::AWSConfig]; RoleName=, PolicyDocument=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "UpdateAssumeRolePolicy", arguments::Dict)
@@ -6288,9 +6288,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.update_group([::AWSConfig], arguments::Dict)
-    IAM.update_group([::AWSConfig]; GroupName=, <keyword arguments>)
+    using AWSSDK.IAM.update_group
+    update_group([::AWSConfig], arguments::Dict)
+    update_group([::AWSConfig]; GroupName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "UpdateGroup", arguments::Dict)
@@ -6355,9 +6355,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.update_login_profile([::AWSConfig], arguments::Dict)
-    IAM.update_login_profile([::AWSConfig]; UserName=, <keyword arguments>)
+    using AWSSDK.IAM.update_login_profile
+    update_login_profile([::AWSConfig], arguments::Dict)
+    update_login_profile([::AWSConfig]; UserName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "UpdateLoginProfile", arguments::Dict)
@@ -6416,9 +6416,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.update_open_idconnect_provider_thumbprint([::AWSConfig], arguments::Dict)
-    IAM.update_open_idconnect_provider_thumbprint([::AWSConfig]; OpenIDConnectProviderArn=, ThumbprintList=)
+    using AWSSDK.IAM.update_open_idconnect_provider_thumbprint
+    update_open_idconnect_provider_thumbprint([::AWSConfig], arguments::Dict)
+    update_open_idconnect_provider_thumbprint([::AWSConfig]; OpenIDConnectProviderArn=, ThumbprintList=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "UpdateOpenIDConnectProviderThumbprint", arguments::Dict)
@@ -6464,9 +6464,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.update_role_description([::AWSConfig], arguments::Dict)
-    IAM.update_role_description([::AWSConfig]; RoleName=, Description=)
+    using AWSSDK.IAM.update_role_description
+    update_role_description([::AWSConfig], arguments::Dict)
+    update_role_description([::AWSConfig]; RoleName=, Description=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "UpdateRoleDescription", arguments::Dict)
@@ -6507,9 +6507,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.update_samlprovider([::AWSConfig], arguments::Dict)
-    IAM.update_samlprovider([::AWSConfig]; SAMLMetadataDocument=, SAMLProviderArn=)
+    using AWSSDK.IAM.update_samlprovider
+    update_samlprovider([::AWSConfig], arguments::Dict)
+    update_samlprovider([::AWSConfig]; SAMLMetadataDocument=, SAMLProviderArn=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "UpdateSAMLProvider", arguments::Dict)
@@ -6555,9 +6555,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.update_sshpublic_key([::AWSConfig], arguments::Dict)
-    IAM.update_sshpublic_key([::AWSConfig]; UserName=, SSHPublicKeyId=, Status=)
+    using AWSSDK.IAM.update_sshpublic_key
+    update_sshpublic_key([::AWSConfig], arguments::Dict)
+    update_sshpublic_key([::AWSConfig]; UserName=, SSHPublicKeyId=, Status=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "UpdateSSHPublicKey", arguments::Dict)
@@ -6604,9 +6604,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.update_server_certificate([::AWSConfig], arguments::Dict)
-    IAM.update_server_certificate([::AWSConfig]; ServerCertificateName=, <keyword arguments>)
+    using AWSSDK.IAM.update_server_certificate
+    update_server_certificate([::AWSConfig], arguments::Dict)
+    update_server_certificate([::AWSConfig]; ServerCertificateName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "UpdateServerCertificate", arguments::Dict)
@@ -6661,9 +6661,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.update_service_specific_credential([::AWSConfig], arguments::Dict)
-    IAM.update_service_specific_credential([::AWSConfig]; ServiceSpecificCredentialId=, Status=, <keyword arguments>)
+    using AWSSDK.IAM.update_service_specific_credential
+    update_service_specific_credential([::AWSConfig], arguments::Dict)
+    update_service_specific_credential([::AWSConfig]; ServiceSpecificCredentialId=, Status=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "UpdateServiceSpecificCredential", arguments::Dict)
@@ -6708,9 +6708,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.update_signing_certificate([::AWSConfig], arguments::Dict)
-    IAM.update_signing_certificate([::AWSConfig]; CertificateId=, Status=, <keyword arguments>)
+    using AWSSDK.IAM.update_signing_certificate
+    update_signing_certificate([::AWSConfig], arguments::Dict)
+    update_signing_certificate([::AWSConfig]; CertificateId=, Status=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "UpdateSigningCertificate", arguments::Dict)
@@ -6770,9 +6770,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.update_user([::AWSConfig], arguments::Dict)
-    IAM.update_user([::AWSConfig]; UserName=, <keyword arguments>)
+    using AWSSDK.IAM.update_user
+    update_user([::AWSConfig], arguments::Dict)
+    update_user([::AWSConfig]; UserName=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "UpdateUser", arguments::Dict)
@@ -6837,9 +6837,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.upload_sshpublic_key([::AWSConfig], arguments::Dict)
-    IAM.upload_sshpublic_key([::AWSConfig]; UserName=, SSHPublicKeyBody=)
+    using AWSSDK.IAM.upload_sshpublic_key
+    upload_sshpublic_key([::AWSConfig], arguments::Dict)
+    upload_sshpublic_key([::AWSConfig]; UserName=, SSHPublicKeyBody=)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "UploadSSHPublicKey", arguments::Dict)
@@ -6886,9 +6886,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.upload_server_certificate([::AWSConfig], arguments::Dict)
-    IAM.upload_server_certificate([::AWSConfig]; ServerCertificateName=, CertificateBody=, PrivateKey=, <keyword arguments>)
+    using AWSSDK.IAM.upload_server_certificate
+    upload_server_certificate([::AWSConfig], arguments::Dict)
+    upload_server_certificate([::AWSConfig]; ServerCertificateName=, CertificateBody=, PrivateKey=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "UploadServerCertificate", arguments::Dict)
@@ -6991,9 +6991,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
-    using AWSSDK.IAM
-    IAM.upload_signing_certificate([::AWSConfig], arguments::Dict)
-    IAM.upload_signing_certificate([::AWSConfig]; CertificateBody=, <keyword arguments>)
+    using AWSSDK.IAM.upload_signing_certificate
+    upload_signing_certificate([::AWSConfig], arguments::Dict)
+    upload_signing_certificate([::AWSConfig]; CertificateBody=, <keyword arguments>)
 
     using AWSCore.Services.iam
     iam([::AWSConfig], "UploadSigningCertificate", arguments::Dict)

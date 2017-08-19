@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.SMS
-    SMS.create_replication_job([::AWSConfig], arguments::Dict)
-    SMS.create_replication_job([::AWSConfig]; serverId=, seedReplicationTime=, frequency=, <keyword arguments>)
+    using AWSSDK.SMS.create_replication_job
+    create_replication_job([::AWSConfig], arguments::Dict)
+    create_replication_job([::AWSConfig]; serverId=, seedReplicationTime=, frequency=, <keyword arguments>)
 
     using AWSCore.Services.sms
     sms([::AWSConfig], "CreateReplicationJob", arguments::Dict)
@@ -72,9 +72,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-20
 
 
 """
-    using AWSSDK.SMS
-    SMS.delete_replication_job([::AWSConfig], arguments::Dict)
-    SMS.delete_replication_job([::AWSConfig]; replicationJobId=)
+    using AWSSDK.SMS.delete_replication_job
+    delete_replication_job([::AWSConfig], arguments::Dict)
+    delete_replication_job([::AWSConfig]; replicationJobId=)
 
     using AWSCore.Services.sms
     sms([::AWSConfig], "DeleteReplicationJob", arguments::Dict)
@@ -111,9 +111,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-20
 
 
 """
-    using AWSSDK.SMS
-    SMS.delete_server_catalog([::AWSConfig], arguments::Dict)
-    SMS.delete_server_catalog([::AWSConfig]; )
+    using AWSSDK.SMS.delete_server_catalog
+    delete_server_catalog([::AWSConfig], arguments::Dict)
+    delete_server_catalog([::AWSConfig]; )
 
     using AWSCore.Services.sms
     sms([::AWSConfig], "DeleteServerCatalog", arguments::Dict)
@@ -146,9 +146,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-20
 
 
 """
-    using AWSSDK.SMS
-    SMS.disassociate_connector([::AWSConfig], arguments::Dict)
-    SMS.disassociate_connector([::AWSConfig]; connectorId=)
+    using AWSSDK.SMS.disassociate_connector
+    disassociate_connector([::AWSConfig], arguments::Dict)
+    disassociate_connector([::AWSConfig]; connectorId=)
 
     using AWSCore.Services.sms
     sms([::AWSConfig], "DisassociateConnector", arguments::Dict)
@@ -185,9 +185,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-20
 
 
 """
-    using AWSSDK.SMS
-    SMS.get_connectors([::AWSConfig], arguments::Dict)
-    SMS.get_connectors([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SMS.get_connectors
+    get_connectors([::AWSConfig], arguments::Dict)
+    get_connectors([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.sms
     sms([::AWSConfig], "GetConnectors", arguments::Dict)
@@ -228,9 +228,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-20
 
 
 """
-    using AWSSDK.SMS
-    SMS.get_replication_jobs([::AWSConfig], arguments::Dict)
-    SMS.get_replication_jobs([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SMS.get_replication_jobs
+    get_replication_jobs([::AWSConfig], arguments::Dict)
+    get_replication_jobs([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.sms
     sms([::AWSConfig], "GetReplicationJobs", arguments::Dict)
@@ -275,9 +275,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-20
 
 
 """
-    using AWSSDK.SMS
-    SMS.get_replication_runs([::AWSConfig], arguments::Dict)
-    SMS.get_replication_runs([::AWSConfig]; replicationJobId=, <keyword arguments>)
+    using AWSSDK.SMS.get_replication_runs
+    get_replication_runs([::AWSConfig], arguments::Dict)
+    get_replication_runs([::AWSConfig]; replicationJobId=, <keyword arguments>)
 
     using AWSCore.Services.sms
     sms([::AWSConfig], "GetReplicationRuns", arguments::Dict)
@@ -322,9 +322,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-20
 
 
 """
-    using AWSSDK.SMS
-    SMS.get_servers([::AWSConfig], arguments::Dict)
-    SMS.get_servers([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SMS.get_servers
+    get_servers([::AWSConfig], arguments::Dict)
+    get_servers([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.sms
     sms([::AWSConfig], "GetServers", arguments::Dict)
@@ -365,9 +365,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-20
 
 
 """
-    using AWSSDK.SMS
-    SMS.import_server_catalog([::AWSConfig], arguments::Dict)
-    SMS.import_server_catalog([::AWSConfig]; )
+    using AWSSDK.SMS.import_server_catalog
+    import_server_catalog([::AWSConfig], arguments::Dict)
+    import_server_catalog([::AWSConfig]; )
 
     using AWSCore.Services.sms
     sms([::AWSConfig], "ImportServerCatalog", arguments::Dict)
@@ -400,9 +400,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-20
 
 
 """
-    using AWSSDK.SMS
-    SMS.start_on_demand_replication_run([::AWSConfig], arguments::Dict)
-    SMS.start_on_demand_replication_run([::AWSConfig]; replicationJobId=, <keyword arguments>)
+    using AWSSDK.SMS.start_on_demand_replication_run
+    start_on_demand_replication_run([::AWSConfig], arguments::Dict)
+    start_on_demand_replication_run([::AWSConfig]; replicationJobId=, <keyword arguments>)
 
     using AWSCore.Services.sms
     sms([::AWSConfig], "StartOnDemandReplicationRun", arguments::Dict)
@@ -443,9 +443,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-20
 
 
 """
-    using AWSSDK.SMS
-    SMS.update_replication_job([::AWSConfig], arguments::Dict)
-    SMS.update_replication_job([::AWSConfig]; replicationJobId=, <keyword arguments>)
+    using AWSSDK.SMS.update_replication_job
+    update_replication_job([::AWSConfig], arguments::Dict)
+    update_replication_job([::AWSConfig]; replicationJobId=, <keyword arguments>)
 
     using AWSCore.Services.sms
     sms([::AWSConfig], "UpdateReplicationJob", arguments::Dict)

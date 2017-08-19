@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.add_attributes_to_findings([::AWSConfig], arguments::Dict)
-    Inspector.add_attributes_to_findings([::AWSConfig]; findingArns=, attributes=)
+    using AWSSDK.Inspector.add_attributes_to_findings
+    add_attributes_to_findings([::AWSConfig], arguments::Dict)
+    add_attributes_to_findings([::AWSConfig]; findingArns=, attributes=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "AddAttributesToFindings", arguments::Dict)
@@ -89,9 +89,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.create_assessment_target([::AWSConfig], arguments::Dict)
-    Inspector.create_assessment_target([::AWSConfig]; assessmentTargetName=, resourceGroupArn=)
+    using AWSSDK.Inspector.create_assessment_target
+    create_assessment_target([::AWSConfig], arguments::Dict)
+    create_assessment_target([::AWSConfig]; assessmentTargetName=, resourceGroupArn=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "CreateAssessmentTarget", arguments::Dict)
@@ -151,9 +151,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.create_assessment_template([::AWSConfig], arguments::Dict)
-    Inspector.create_assessment_template([::AWSConfig]; assessmentTargetArn=, assessmentTemplateName=, durationInSeconds=, rulesPackageArns=, <keyword arguments>)
+    using AWSSDK.Inspector.create_assessment_template
+    create_assessment_template([::AWSConfig], arguments::Dict)
+    create_assessment_template([::AWSConfig]; assessmentTargetArn=, assessmentTemplateName=, durationInSeconds=, rulesPackageArns=, <keyword arguments>)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "CreateAssessmentTemplate", arguments::Dict)
@@ -240,9 +240,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.create_resource_group([::AWSConfig], arguments::Dict)
-    Inspector.create_resource_group([::AWSConfig]; resourceGroupTags=)
+    using AWSSDK.Inspector.create_resource_group
+    create_resource_group([::AWSConfig], arguments::Dict)
+    create_resource_group([::AWSConfig]; resourceGroupTags=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "CreateResourceGroup", arguments::Dict)
@@ -309,9 +309,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.delete_assessment_run([::AWSConfig], arguments::Dict)
-    Inspector.delete_assessment_run([::AWSConfig]; assessmentRunArn=)
+    using AWSSDK.Inspector.delete_assessment_run
+    delete_assessment_run([::AWSConfig], arguments::Dict)
+    delete_assessment_run([::AWSConfig]; assessmentRunArn=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "DeleteAssessmentRun", arguments::Dict)
@@ -355,9 +355,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.delete_assessment_target([::AWSConfig], arguments::Dict)
-    Inspector.delete_assessment_target([::AWSConfig]; assessmentTargetArn=)
+    using AWSSDK.Inspector.delete_assessment_target
+    delete_assessment_target([::AWSConfig], arguments::Dict)
+    delete_assessment_target([::AWSConfig]; assessmentTargetArn=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "DeleteAssessmentTarget", arguments::Dict)
@@ -401,9 +401,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.delete_assessment_template([::AWSConfig], arguments::Dict)
-    Inspector.delete_assessment_template([::AWSConfig]; assessmentTemplateArn=)
+    using AWSSDK.Inspector.delete_assessment_template
+    delete_assessment_template([::AWSConfig], arguments::Dict)
+    delete_assessment_template([::AWSConfig]; assessmentTemplateArn=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "DeleteAssessmentTemplate", arguments::Dict)
@@ -447,9 +447,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.describe_assessment_runs([::AWSConfig], arguments::Dict)
-    Inspector.describe_assessment_runs([::AWSConfig]; assessmentRunArns=)
+    using AWSSDK.Inspector.describe_assessment_runs
+    describe_assessment_runs([::AWSConfig], arguments::Dict)
+    describe_assessment_runs([::AWSConfig]; assessmentRunArns=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "DescribeAssessmentRuns", arguments::Dict)
@@ -572,9 +572,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.describe_assessment_targets([::AWSConfig], arguments::Dict)
-    Inspector.describe_assessment_targets([::AWSConfig]; assessmentTargetArns=)
+    using AWSSDK.Inspector.describe_assessment_targets
+    describe_assessment_targets([::AWSConfig], arguments::Dict)
+    describe_assessment_targets([::AWSConfig]; assessmentTargetArns=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "DescribeAssessmentTargets", arguments::Dict)
@@ -642,9 +642,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.describe_assessment_templates([::AWSConfig], arguments::Dict)
-    Inspector.describe_assessment_templates([::AWSConfig]; assessmentTemplateArns=)
+    using AWSSDK.Inspector.describe_assessment_templates
+    describe_assessment_templates([::AWSConfig], arguments::Dict)
+    describe_assessment_templates([::AWSConfig]; assessmentTemplateArns=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "DescribeAssessmentTemplates", arguments::Dict)
@@ -718,9 +718,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.describe_cross_account_access_role([::AWSConfig])
-    Inspector.
+    using AWSSDK.Inspector.describe_cross_account_access_role
+    describe_cross_account_access_role([::AWSConfig])
+    
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "DescribeCrossAccountAccessRole",)
@@ -762,9 +762,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.describe_findings([::AWSConfig], arguments::Dict)
-    Inspector.describe_findings([::AWSConfig]; findingArns=, <keyword arguments>)
+    using AWSSDK.Inspector.describe_findings
+    describe_findings([::AWSConfig], arguments::Dict)
+    describe_findings([::AWSConfig]; findingArns=, <keyword arguments>)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "DescribeFindings", arguments::Dict)
@@ -861,9 +861,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.describe_resource_groups([::AWSConfig], arguments::Dict)
-    Inspector.describe_resource_groups([::AWSConfig]; resourceGroupArns=)
+    using AWSSDK.Inspector.describe_resource_groups
+    describe_resource_groups([::AWSConfig], arguments::Dict)
+    describe_resource_groups([::AWSConfig]; resourceGroupArns=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "DescribeResourceGroups", arguments::Dict)
@@ -934,9 +934,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.describe_rules_packages([::AWSConfig], arguments::Dict)
-    Inspector.describe_rules_packages([::AWSConfig]; rulesPackageArns=, <keyword arguments>)
+    using AWSSDK.Inspector.describe_rules_packages
+    describe_rules_packages([::AWSConfig], arguments::Dict)
+    describe_rules_packages([::AWSConfig]; rulesPackageArns=, <keyword arguments>)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "DescribeRulesPackages", arguments::Dict)
@@ -1008,9 +1008,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.get_assessment_report([::AWSConfig], arguments::Dict)
-    Inspector.get_assessment_report([::AWSConfig]; assessmentRunArn=, reportFileFormat=, reportType=)
+    using AWSSDK.Inspector.get_assessment_report
+    get_assessment_report([::AWSConfig], arguments::Dict)
+    get_assessment_report([::AWSConfig]; assessmentRunArn=, reportFileFormat=, reportType=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "GetAssessmentReport", arguments::Dict)
@@ -1055,9 +1055,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.get_telemetry_metadata([::AWSConfig], arguments::Dict)
-    Inspector.get_telemetry_metadata([::AWSConfig]; assessmentRunArn=)
+    using AWSSDK.Inspector.get_telemetry_metadata
+    get_telemetry_metadata([::AWSConfig], arguments::Dict)
+    get_telemetry_metadata([::AWSConfig]; assessmentRunArn=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "GetTelemetryMetadata", arguments::Dict)
@@ -1258,9 +1258,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.list_assessment_run_agents([::AWSConfig], arguments::Dict)
-    Inspector.list_assessment_run_agents([::AWSConfig]; assessmentRunArn=, <keyword arguments>)
+    using AWSSDK.Inspector.list_assessment_run_agents
+    list_assessment_run_agents([::AWSConfig], arguments::Dict)
+    list_assessment_run_agents([::AWSConfig]; assessmentRunArn=, <keyword arguments>)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "ListAssessmentRunAgents", arguments::Dict)
@@ -1490,9 +1490,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.list_assessment_runs([::AWSConfig], arguments::Dict)
-    Inspector.list_assessment_runs([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Inspector.list_assessment_runs
+    list_assessment_runs([::AWSConfig], arguments::Dict)
+    list_assessment_runs([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "ListAssessmentRuns", arguments::Dict)
@@ -1590,9 +1590,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.list_assessment_targets([::AWSConfig], arguments::Dict)
-    Inspector.list_assessment_targets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Inspector.list_assessment_targets
+    list_assessment_targets([::AWSConfig], arguments::Dict)
+    list_assessment_targets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "ListAssessmentTargets", arguments::Dict)
@@ -1660,9 +1660,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.list_assessment_templates([::AWSConfig], arguments::Dict)
-    Inspector.list_assessment_templates([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Inspector.list_assessment_templates
+    list_assessment_templates([::AWSConfig], arguments::Dict)
+    list_assessment_templates([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "ListAssessmentTemplates", arguments::Dict)
@@ -1747,9 +1747,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.list_event_subscriptions([::AWSConfig], arguments::Dict)
-    Inspector.list_event_subscriptions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Inspector.list_event_subscriptions
+    list_event_subscriptions([::AWSConfig], arguments::Dict)
+    list_event_subscriptions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "ListEventSubscriptions", arguments::Dict)
@@ -1825,9 +1825,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.list_findings([::AWSConfig], arguments::Dict)
-    Inspector.list_findings([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Inspector.list_findings
+    list_findings([::AWSConfig], arguments::Dict)
+    list_findings([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "ListFindings", arguments::Dict)
@@ -1923,9 +1923,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.list_rules_packages([::AWSConfig], arguments::Dict)
-    Inspector.list_rules_packages([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Inspector.list_rules_packages
+    list_rules_packages([::AWSConfig], arguments::Dict)
+    list_rules_packages([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "ListRulesPackages", arguments::Dict)
@@ -1990,9 +1990,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.list_tags_for_resource([::AWSConfig], arguments::Dict)
-    Inspector.list_tags_for_resource([::AWSConfig]; resourceArn=)
+    using AWSSDK.Inspector.list_tags_for_resource
+    list_tags_for_resource([::AWSConfig], arguments::Dict)
+    list_tags_for_resource([::AWSConfig]; resourceArn=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "ListTagsForResource", arguments::Dict)
@@ -2052,9 +2052,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.preview_agents([::AWSConfig], arguments::Dict)
-    Inspector.preview_agents([::AWSConfig]; previewAgentsArn=, <keyword arguments>)
+    using AWSSDK.Inspector.preview_agents
+    preview_agents([::AWSConfig], arguments::Dict)
+    preview_agents([::AWSConfig]; previewAgentsArn=, <keyword arguments>)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "PreviewAgents", arguments::Dict)
@@ -2123,9 +2123,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.register_cross_account_access_role([::AWSConfig], arguments::Dict)
-    Inspector.register_cross_account_access_role([::AWSConfig]; roleArn=)
+    using AWSSDK.Inspector.register_cross_account_access_role
+    register_cross_account_access_role([::AWSConfig], arguments::Dict)
+    register_cross_account_access_role([::AWSConfig]; roleArn=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "RegisterCrossAccountAccessRole", arguments::Dict)
@@ -2169,9 +2169,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.remove_attributes_from_findings([::AWSConfig], arguments::Dict)
-    Inspector.remove_attributes_from_findings([::AWSConfig]; findingArns=, attributeKeys=)
+    using AWSSDK.Inspector.remove_attributes_from_findings
+    remove_attributes_from_findings([::AWSConfig], arguments::Dict)
+    remove_attributes_from_findings([::AWSConfig]; findingArns=, attributeKeys=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "RemoveAttributesFromFindings", arguments::Dict)
@@ -2237,9 +2237,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.set_tags_for_resource([::AWSConfig], arguments::Dict)
-    Inspector.set_tags_for_resource([::AWSConfig]; resourceArn=, <keyword arguments>)
+    using AWSSDK.Inspector.set_tags_for_resource
+    set_tags_for_resource([::AWSConfig], arguments::Dict)
+    set_tags_for_resource([::AWSConfig]; resourceArn=, <keyword arguments>)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "SetTagsForResource", arguments::Dict)
@@ -2298,9 +2298,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.start_assessment_run([::AWSConfig], arguments::Dict)
-    Inspector.start_assessment_run([::AWSConfig]; assessmentTemplateArn=, <keyword arguments>)
+    using AWSSDK.Inspector.start_assessment_run
+    start_assessment_run([::AWSConfig], arguments::Dict)
+    start_assessment_run([::AWSConfig]; assessmentTemplateArn=, <keyword arguments>)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "StartAssessmentRun", arguments::Dict)
@@ -2360,9 +2360,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.stop_assessment_run([::AWSConfig], arguments::Dict)
-    Inspector.stop_assessment_run([::AWSConfig]; assessmentRunArn=)
+    using AWSSDK.Inspector.stop_assessment_run
+    stop_assessment_run([::AWSConfig], arguments::Dict)
+    stop_assessment_run([::AWSConfig]; assessmentRunArn=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "StopAssessmentRun", arguments::Dict)
@@ -2406,9 +2406,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.subscribe_to_event([::AWSConfig], arguments::Dict)
-    Inspector.subscribe_to_event([::AWSConfig]; resourceArn=, event=, topicArn=)
+    using AWSSDK.Inspector.subscribe_to_event
+    subscribe_to_event([::AWSConfig], arguments::Dict)
+    subscribe_to_event([::AWSConfig]; resourceArn=, event=, topicArn=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "SubscribeToEvent", arguments::Dict)
@@ -2462,9 +2462,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.unsubscribe_from_event([::AWSConfig], arguments::Dict)
-    Inspector.unsubscribe_from_event([::AWSConfig]; resourceArn=, event=, topicArn=)
+    using AWSSDK.Inspector.unsubscribe_from_event
+    unsubscribe_from_event([::AWSConfig], arguments::Dict)
+    unsubscribe_from_event([::AWSConfig]; resourceArn=, event=, topicArn=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "UnsubscribeFromEvent", arguments::Dict)
@@ -2518,9 +2518,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/inspec
 
 
 """
-    using AWSSDK.Inspector
-    Inspector.update_assessment_target([::AWSConfig], arguments::Dict)
-    Inspector.update_assessment_target([::AWSConfig]; assessmentTargetArn=, assessmentTargetName=, resourceGroupArn=)
+    using AWSSDK.Inspector.update_assessment_target
+    update_assessment_target([::AWSConfig], arguments::Dict)
+    update_assessment_target([::AWSConfig]; assessmentTargetArn=, assessmentTargetName=, resourceGroupArn=)
 
     using AWSCore.Services.inspector
     inspector([::AWSConfig], "UpdateAssessmentTarget", arguments::Dict)

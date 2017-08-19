@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.DynamoDBStreams
-    DynamoDBStreams.describe_stream([::AWSConfig], arguments::Dict)
-    DynamoDBStreams.describe_stream([::AWSConfig]; StreamArn=, <keyword arguments>)
+    using AWSSDK.DynamoDBStreams.describe_stream
+    describe_stream([::AWSConfig], arguments::Dict)
+    describe_stream([::AWSConfig]; StreamArn=, <keyword arguments>)
 
     using AWSCore.Services.streams_dynamodb
     streams_dynamodb([::AWSConfig], "DescribeStream", arguments::Dict)
@@ -132,9 +132,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/stream
 
 
 """
-    using AWSSDK.DynamoDBStreams
-    DynamoDBStreams.get_records([::AWSConfig], arguments::Dict)
-    DynamoDBStreams.get_records([::AWSConfig]; ShardIterator=, <keyword arguments>)
+    using AWSSDK.DynamoDBStreams.get_records
+    get_records([::AWSConfig], arguments::Dict)
+    get_records([::AWSConfig]; ShardIterator=, <keyword arguments>)
 
     using AWSCore.Services.streams_dynamodb
     streams_dynamodb([::AWSConfig], "GetRecords", arguments::Dict)
@@ -263,9 +263,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/stream
 
 
 """
-    using AWSSDK.DynamoDBStreams
-    DynamoDBStreams.get_shard_iterator([::AWSConfig], arguments::Dict)
-    DynamoDBStreams.get_shard_iterator([::AWSConfig]; StreamArn=, ShardId=, ShardIteratorType=, <keyword arguments>)
+    using AWSSDK.DynamoDBStreams.get_shard_iterator
+    get_shard_iterator([::AWSConfig], arguments::Dict)
+    get_shard_iterator([::AWSConfig]; StreamArn=, ShardId=, ShardIteratorType=, <keyword arguments>)
 
     using AWSCore.Services.streams_dynamodb
     streams_dynamodb([::AWSConfig], "GetShardIterator", arguments::Dict)
@@ -345,9 +345,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/stream
 
 
 """
-    using AWSSDK.DynamoDBStreams
-    DynamoDBStreams.list_streams([::AWSConfig], arguments::Dict)
-    DynamoDBStreams.list_streams([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DynamoDBStreams.list_streams
+    list_streams([::AWSConfig], arguments::Dict)
+    list_streams([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.streams_dynamodb
     streams_dynamodb([::AWSConfig], "ListStreams", arguments::Dict)

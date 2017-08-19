@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.abort_multipart_upload([::AWSConfig], arguments::Dict)
-    Glacier.abort_multipart_upload([::AWSConfig]; accountId=, vaultName=, uploadId=)
+    using AWSSDK.Glacier.abort_multipart_upload
+    abort_multipart_upload([::AWSConfig], arguments::Dict)
+    abort_multipart_upload([::AWSConfig]; accountId=, vaultName=, uploadId=)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "DELETE", "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", arguments::Dict)
@@ -77,9 +77,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.abort_vault_lock([::AWSConfig], arguments::Dict)
-    Glacier.abort_vault_lock([::AWSConfig]; accountId=, vaultName=)
+    using AWSSDK.Glacier.abort_vault_lock
+    abort_vault_lock([::AWSConfig], arguments::Dict)
+    abort_vault_lock([::AWSConfig]; accountId=, vaultName=)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "DELETE", "/{accountId}/vaults/{vaultName}/lock-policy", arguments::Dict)
@@ -132,9 +132,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.add_tags_to_vault([::AWSConfig], arguments::Dict)
-    Glacier.add_tags_to_vault([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
+    using AWSSDK.Glacier.add_tags_to_vault
+    add_tags_to_vault([::AWSConfig], arguments::Dict)
+    add_tags_to_vault([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "POST", "/{accountId}/vaults/{vaultName}/tags?operation=add", arguments::Dict)
@@ -191,9 +191,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.complete_multipart_upload([::AWSConfig], arguments::Dict)
-    Glacier.complete_multipart_upload([::AWSConfig]; accountId=, vaultName=, uploadId=, <keyword arguments>)
+    using AWSSDK.Glacier.complete_multipart_upload
+    complete_multipart_upload([::AWSConfig], arguments::Dict)
+    complete_multipart_upload([::AWSConfig]; accountId=, vaultName=, uploadId=, <keyword arguments>)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "POST", "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", arguments::Dict)
@@ -280,9 +280,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.complete_vault_lock([::AWSConfig], arguments::Dict)
-    Glacier.complete_vault_lock([::AWSConfig]; accountId=, vaultName=, lockId=)
+    using AWSSDK.Glacier.complete_vault_lock
+    complete_vault_lock([::AWSConfig], arguments::Dict)
+    complete_vault_lock([::AWSConfig]; accountId=, vaultName=, lockId=)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "POST", "/{accountId}/vaults/{vaultName}/lock-policy/{lockId}", arguments::Dict)
@@ -340,9 +340,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.create_vault([::AWSConfig], arguments::Dict)
-    Glacier.create_vault([::AWSConfig]; accountId=, vaultName=)
+    using AWSSDK.Glacier.create_vault
+    create_vault([::AWSConfig], arguments::Dict)
+    create_vault([::AWSConfig]; accountId=, vaultName=)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "PUT", "/{accountId}/vaults/{vaultName}", arguments::Dict)
@@ -414,9 +414,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.delete_archive([::AWSConfig], arguments::Dict)
-    Glacier.delete_archive([::AWSConfig]; accountId=, vaultName=, archiveId=)
+    using AWSSDK.Glacier.delete_archive
+    delete_archive([::AWSConfig], arguments::Dict)
+    delete_archive([::AWSConfig]; accountId=, vaultName=, archiveId=)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "DELETE", "/{accountId}/vaults/{vaultName}/archives/{archiveId}", arguments::Dict)
@@ -480,9 +480,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.delete_vault([::AWSConfig], arguments::Dict)
-    Glacier.delete_vault([::AWSConfig]; accountId=, vaultName=)
+    using AWSSDK.Glacier.delete_vault
+    delete_vault([::AWSConfig], arguments::Dict)
+    delete_vault([::AWSConfig]; accountId=, vaultName=)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "DELETE", "/{accountId}/vaults/{vaultName}", arguments::Dict)
@@ -537,9 +537,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.delete_vault_access_policy([::AWSConfig], arguments::Dict)
-    Glacier.delete_vault_access_policy([::AWSConfig]; accountId=, vaultName=)
+    using AWSSDK.Glacier.delete_vault_access_policy
+    delete_vault_access_policy([::AWSConfig], arguments::Dict)
+    delete_vault_access_policy([::AWSConfig]; accountId=, vaultName=)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "DELETE", "/{accountId}/vaults/{vaultName}/access-policy", arguments::Dict)
@@ -590,9 +590,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.delete_vault_notifications([::AWSConfig], arguments::Dict)
-    Glacier.delete_vault_notifications([::AWSConfig]; accountId=, vaultName=)
+    using AWSSDK.Glacier.delete_vault_notifications
+    delete_vault_notifications([::AWSConfig], arguments::Dict)
+    delete_vault_notifications([::AWSConfig]; accountId=, vaultName=)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "DELETE", "/{accountId}/vaults/{vaultName}/notification-configuration", arguments::Dict)
@@ -645,9 +645,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.describe_job([::AWSConfig], arguments::Dict)
-    Glacier.describe_job([::AWSConfig]; accountId=, vaultName=, jobId=)
+    using AWSSDK.Glacier.describe_job
+    describe_job([::AWSConfig], arguments::Dict)
+    describe_job([::AWSConfig]; accountId=, vaultName=, jobId=)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "GET", "/{accountId}/vaults/{vaultName}/jobs/{jobId}", arguments::Dict)
@@ -729,9 +729,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.describe_vault([::AWSConfig], arguments::Dict)
-    Glacier.describe_vault([::AWSConfig]; accountId=, vaultName=)
+    using AWSSDK.Glacier.describe_vault
+    describe_vault([::AWSConfig], arguments::Dict)
+    describe_vault([::AWSConfig]; accountId=, vaultName=)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "GET", "/{accountId}/vaults/{vaultName}", arguments::Dict)
@@ -799,9 +799,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.get_data_retrieval_policy([::AWSConfig], arguments::Dict)
-    Glacier.get_data_retrieval_policy([::AWSConfig]; accountId=)
+    using AWSSDK.Glacier.get_data_retrieval_policy
+    get_data_retrieval_policy([::AWSConfig], arguments::Dict)
+    get_data_retrieval_policy([::AWSConfig]; accountId=)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "GET", "/{accountId}/policies/data-retrieval", arguments::Dict)
@@ -863,9 +863,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.get_job_output([::AWSConfig], arguments::Dict)
-    Glacier.get_job_output([::AWSConfig]; accountId=, vaultName=, jobId=, <keyword arguments>)
+    using AWSSDK.Glacier.get_job_output
+    get_job_output([::AWSConfig], arguments::Dict)
+    get_job_output([::AWSConfig]; accountId=, vaultName=, jobId=, <keyword arguments>)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "GET", "/{accountId}/vaults/{vaultName}/jobs/{jobId}/output", arguments::Dict)
@@ -962,9 +962,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.get_vault_access_policy([::AWSConfig], arguments::Dict)
-    Glacier.get_vault_access_policy([::AWSConfig]; accountId=, vaultName=)
+    using AWSSDK.Glacier.get_vault_access_policy
+    get_vault_access_policy([::AWSConfig], arguments::Dict)
+    get_vault_access_policy([::AWSConfig]; accountId=, vaultName=)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "GET", "/{accountId}/vaults/{vaultName}/access-policy", arguments::Dict)
@@ -1026,9 +1026,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.get_vault_lock([::AWSConfig], arguments::Dict)
-    Glacier.get_vault_lock([::AWSConfig]; accountId=, vaultName=)
+    using AWSSDK.Glacier.get_vault_lock
+    get_vault_lock([::AWSConfig], arguments::Dict)
+    get_vault_lock([::AWSConfig]; accountId=, vaultName=)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "GET", "/{accountId}/vaults/{vaultName}/lock-policy", arguments::Dict)
@@ -1103,9 +1103,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.get_vault_notifications([::AWSConfig], arguments::Dict)
-    Glacier.get_vault_notifications([::AWSConfig]; accountId=, vaultName=)
+    using AWSSDK.Glacier.get_vault_notifications
+    get_vault_notifications([::AWSConfig], arguments::Dict)
+    get_vault_notifications([::AWSConfig]; accountId=, vaultName=)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "GET", "/{accountId}/vaults/{vaultName}/notification-configuration", arguments::Dict)
@@ -1177,9 +1177,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.initiate_job([::AWSConfig], arguments::Dict)
-    Glacier.initiate_job([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
+    using AWSSDK.Glacier.initiate_job
+    initiate_job([::AWSConfig], arguments::Dict)
+    initiate_job([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "POST", "/{accountId}/vaults/{vaultName}/jobs", arguments::Dict)
@@ -1328,9 +1328,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.initiate_multipart_upload([::AWSConfig], arguments::Dict)
-    Glacier.initiate_multipart_upload([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
+    using AWSSDK.Glacier.initiate_multipart_upload
+    initiate_multipart_upload([::AWSConfig], arguments::Dict)
+    initiate_multipart_upload([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "POST", "/{accountId}/vaults/{vaultName}/multipart-uploads", arguments::Dict)
@@ -1415,9 +1415,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.initiate_vault_lock([::AWSConfig], arguments::Dict)
-    Glacier.initiate_vault_lock([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
+    using AWSSDK.Glacier.initiate_vault_lock
+    initiate_vault_lock([::AWSConfig], arguments::Dict)
+    initiate_vault_lock([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "POST", "/{accountId}/vaults/{vaultName}/lock-policy", arguments::Dict)
@@ -1500,9 +1500,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.list_jobs([::AWSConfig], arguments::Dict)
-    Glacier.list_jobs([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
+    using AWSSDK.Glacier.list_jobs
+    list_jobs([::AWSConfig], arguments::Dict)
+    list_jobs([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "GET", "/{accountId}/vaults/{vaultName}/jobs", arguments::Dict)
@@ -1618,9 +1618,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.list_multipart_uploads([::AWSConfig], arguments::Dict)
-    Glacier.list_multipart_uploads([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
+    using AWSSDK.Glacier.list_multipart_uploads
+    list_multipart_uploads([::AWSConfig], arguments::Dict)
+    list_multipart_uploads([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "GET", "/{accountId}/vaults/{vaultName}/multipart-uploads", arguments::Dict)
@@ -1719,9 +1719,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.list_parts([::AWSConfig], arguments::Dict)
-    Glacier.list_parts([::AWSConfig]; accountId=, vaultName=, uploadId=, <keyword arguments>)
+    using AWSSDK.Glacier.list_parts
+    list_parts([::AWSConfig], arguments::Dict)
+    list_parts([::AWSConfig]; accountId=, vaultName=, uploadId=, <keyword arguments>)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "GET", "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", arguments::Dict)
@@ -1815,9 +1815,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.list_provisioned_capacity([::AWSConfig], arguments::Dict)
-    Glacier.list_provisioned_capacity([::AWSConfig]; accountId=)
+    using AWSSDK.Glacier.list_provisioned_capacity
+    list_provisioned_capacity([::AWSConfig], arguments::Dict)
+    list_provisioned_capacity([::AWSConfig]; accountId=)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "GET", "/{accountId}/provisioned-capacity", arguments::Dict)
@@ -1883,9 +1883,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.list_tags_for_vault([::AWSConfig], arguments::Dict)
-    Glacier.list_tags_for_vault([::AWSConfig]; accountId=, vaultName=)
+    using AWSSDK.Glacier.list_tags_for_vault
+    list_tags_for_vault([::AWSConfig], arguments::Dict)
+    list_tags_for_vault([::AWSConfig]; accountId=, vaultName=)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "GET", "/{accountId}/vaults/{vaultName}/tags", arguments::Dict)
@@ -1948,9 +1948,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.list_vaults([::AWSConfig], arguments::Dict)
-    Glacier.list_vaults([::AWSConfig]; accountId=, <keyword arguments>)
+    using AWSSDK.Glacier.list_vaults
+    list_vaults([::AWSConfig], arguments::Dict)
+    list_vaults([::AWSConfig]; accountId=, <keyword arguments>)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "GET", "/{accountId}/vaults", arguments::Dict)
@@ -2030,9 +2030,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.purchase_provisioned_capacity([::AWSConfig], arguments::Dict)
-    Glacier.purchase_provisioned_capacity([::AWSConfig]; accountId=)
+    using AWSSDK.Glacier.purchase_provisioned_capacity
+    purchase_provisioned_capacity([::AWSConfig], arguments::Dict)
+    purchase_provisioned_capacity([::AWSConfig]; accountId=)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "POST", "/{accountId}/provisioned-capacity", arguments::Dict)
@@ -2087,9 +2087,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.remove_tags_from_vault([::AWSConfig], arguments::Dict)
-    Glacier.remove_tags_from_vault([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
+    using AWSSDK.Glacier.remove_tags_from_vault
+    remove_tags_from_vault([::AWSConfig], arguments::Dict)
+    remove_tags_from_vault([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "POST", "/{accountId}/vaults/{vaultName}/tags?operation=remove", arguments::Dict)
@@ -2146,9 +2146,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.set_data_retrieval_policy([::AWSConfig], arguments::Dict)
-    Glacier.set_data_retrieval_policy([::AWSConfig]; accountId=, <keyword arguments>)
+    using AWSSDK.Glacier.set_data_retrieval_policy
+    set_data_retrieval_policy([::AWSConfig], arguments::Dict)
+    set_data_retrieval_policy([::AWSConfig]; accountId=, <keyword arguments>)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "PUT", "/{accountId}/policies/data-retrieval", arguments::Dict)
@@ -2211,9 +2211,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.set_vault_access_policy([::AWSConfig], arguments::Dict)
-    Glacier.set_vault_access_policy([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
+    using AWSSDK.Glacier.set_vault_access_policy
+    set_vault_access_policy([::AWSConfig], arguments::Dict)
+    set_vault_access_policy([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "PUT", "/{accountId}/vaults/{vaultName}/access-policy", arguments::Dict)
@@ -2269,9 +2269,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.set_vault_notifications([::AWSConfig], arguments::Dict)
-    Glacier.set_vault_notifications([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
+    using AWSSDK.Glacier.set_vault_notifications
+    set_vault_notifications([::AWSConfig], arguments::Dict)
+    set_vault_notifications([::AWSConfig]; accountId=, vaultName=, <keyword arguments>)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "PUT", "/{accountId}/vaults/{vaultName}/notification-configuration", arguments::Dict)
@@ -2348,9 +2348,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.upload_archive([::AWSConfig], arguments::Dict)
-    Glacier.upload_archive([::AWSConfig]; vaultName=, accountId=, <keyword arguments>)
+    using AWSSDK.Glacier.upload_archive
+    upload_archive([::AWSConfig], arguments::Dict)
+    upload_archive([::AWSConfig]; vaultName=, accountId=, <keyword arguments>)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "POST", "/{accountId}/vaults/{vaultName}/archives", arguments::Dict)
@@ -2439,9 +2439,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 
 """
-    using AWSSDK.Glacier
-    Glacier.upload_multipart_part([::AWSConfig], arguments::Dict)
-    Glacier.upload_multipart_part([::AWSConfig]; accountId=, vaultName=, uploadId=, <keyword arguments>)
+    using AWSSDK.Glacier.upload_multipart_part
+    upload_multipart_part([::AWSConfig], arguments::Dict)
+    upload_multipart_part([::AWSConfig]; accountId=, vaultName=, uploadId=, <keyword arguments>)
 
     using AWSCore.Services.glacier
     glacier([::AWSConfig], "PUT", "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", arguments::Dict)

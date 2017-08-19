@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.DAX
-    DAX.create_cluster([::AWSConfig], arguments::Dict)
-    DAX.create_cluster([::AWSConfig]; ClusterName=, NodeType=, ReplicationFactor=, IamRoleArn=, <keyword arguments>)
+    using AWSSDK.DAX.create_cluster
+    create_cluster([::AWSConfig], arguments::Dict)
+    create_cluster([::AWSConfig]; ClusterName=, NodeType=, ReplicationFactor=, IamRoleArn=, <keyword arguments>)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "CreateCluster", arguments::Dict)
@@ -139,9 +139,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.create_parameter_group([::AWSConfig], arguments::Dict)
-    DAX.create_parameter_group([::AWSConfig]; ParameterGroupName=, <keyword arguments>)
+    using AWSSDK.DAX.create_parameter_group
+    create_parameter_group([::AWSConfig], arguments::Dict)
+    create_parameter_group([::AWSConfig]; ParameterGroupName=, <keyword arguments>)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "CreateParameterGroup", arguments::Dict)
@@ -182,9 +182,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.create_subnet_group([::AWSConfig], arguments::Dict)
-    DAX.create_subnet_group([::AWSConfig]; SubnetGroupName=, SubnetIds=, <keyword arguments>)
+    using AWSSDK.DAX.create_subnet_group
+    create_subnet_group([::AWSConfig], arguments::Dict)
+    create_subnet_group([::AWSConfig]; SubnetGroupName=, SubnetIds=, <keyword arguments>)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "CreateSubnetGroup", arguments::Dict)
@@ -229,9 +229,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.decrease_replication_factor([::AWSConfig], arguments::Dict)
-    DAX.decrease_replication_factor([::AWSConfig]; ClusterName=, NewReplicationFactor=, <keyword arguments>)
+    using AWSSDK.DAX.decrease_replication_factor
+    decrease_replication_factor([::AWSConfig], arguments::Dict)
+    decrease_replication_factor([::AWSConfig]; ClusterName=, NewReplicationFactor=, <keyword arguments>)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "DecreaseReplicationFactor", arguments::Dict)
@@ -283,9 +283,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.delete_cluster([::AWSConfig], arguments::Dict)
-    DAX.delete_cluster([::AWSConfig]; ClusterName=)
+    using AWSSDK.DAX.delete_cluster
+    delete_cluster([::AWSConfig], arguments::Dict)
+    delete_cluster([::AWSConfig]; ClusterName=)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "DeleteCluster", arguments::Dict)
@@ -322,9 +322,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.delete_parameter_group([::AWSConfig], arguments::Dict)
-    DAX.delete_parameter_group([::AWSConfig]; ParameterGroupName=)
+    using AWSSDK.DAX.delete_parameter_group
+    delete_parameter_group([::AWSConfig], arguments::Dict)
+    delete_parameter_group([::AWSConfig]; ParameterGroupName=)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "DeleteParameterGroup", arguments::Dict)
@@ -361,9 +361,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.delete_subnet_group([::AWSConfig], arguments::Dict)
-    DAX.delete_subnet_group([::AWSConfig]; SubnetGroupName=)
+    using AWSSDK.DAX.delete_subnet_group
+    delete_subnet_group([::AWSConfig], arguments::Dict)
+    delete_subnet_group([::AWSConfig]; SubnetGroupName=)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "DeleteSubnetGroup", arguments::Dict)
@@ -403,9 +403,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.describe_clusters([::AWSConfig], arguments::Dict)
-    DAX.describe_clusters([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DAX.describe_clusters
+    describe_clusters([::AWSConfig], arguments::Dict)
+    describe_clusters([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "DescribeClusters", arguments::Dict)
@@ -460,9 +460,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.describe_default_parameters([::AWSConfig], arguments::Dict)
-    DAX.describe_default_parameters([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DAX.describe_default_parameters
+    describe_default_parameters([::AWSConfig], arguments::Dict)
+    describe_default_parameters([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "DescribeDefaultParameters", arguments::Dict)
@@ -505,9 +505,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.describe_events([::AWSConfig], arguments::Dict)
-    DAX.describe_events([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DAX.describe_events
+    describe_events([::AWSConfig], arguments::Dict)
+    describe_events([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "DescribeEvents", arguments::Dict)
@@ -572,9 +572,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.describe_parameter_groups([::AWSConfig], arguments::Dict)
-    DAX.describe_parameter_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DAX.describe_parameter_groups
+    describe_parameter_groups([::AWSConfig], arguments::Dict)
+    describe_parameter_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "DescribeParameterGroups", arguments::Dict)
@@ -621,9 +621,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.describe_parameters([::AWSConfig], arguments::Dict)
-    DAX.describe_parameters([::AWSConfig]; ParameterGroupName=, <keyword arguments>)
+    using AWSSDK.DAX.describe_parameters
+    describe_parameters([::AWSConfig], arguments::Dict)
+    describe_parameters([::AWSConfig]; ParameterGroupName=, <keyword arguments>)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "DescribeParameters", arguments::Dict)
@@ -674,9 +674,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.describe_subnet_groups([::AWSConfig], arguments::Dict)
-    DAX.describe_subnet_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DAX.describe_subnet_groups
+    describe_subnet_groups([::AWSConfig], arguments::Dict)
+    describe_subnet_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "DescribeSubnetGroups", arguments::Dict)
@@ -723,9 +723,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.increase_replication_factor([::AWSConfig], arguments::Dict)
-    DAX.increase_replication_factor([::AWSConfig]; ClusterName=, NewReplicationFactor=, <keyword arguments>)
+    using AWSSDK.DAX.increase_replication_factor
+    increase_replication_factor([::AWSConfig], arguments::Dict)
+    increase_replication_factor([::AWSConfig]; ClusterName=, NewReplicationFactor=, <keyword arguments>)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "IncreaseReplicationFactor", arguments::Dict)
@@ -770,9 +770,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.list_tags([::AWSConfig], arguments::Dict)
-    DAX.list_tags([::AWSConfig]; ResourceName=, <keyword arguments>)
+    using AWSSDK.DAX.list_tags
+    list_tags([::AWSConfig], arguments::Dict)
+    list_tags([::AWSConfig]; ResourceName=, <keyword arguments>)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "ListTags", arguments::Dict)
@@ -813,9 +813,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.reboot_node([::AWSConfig], arguments::Dict)
-    DAX.reboot_node([::AWSConfig]; ClusterName=, NodeId=)
+    using AWSSDK.DAX.reboot_node
+    reboot_node([::AWSConfig], arguments::Dict)
+    reboot_node([::AWSConfig]; ClusterName=, NodeId=)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "RebootNode", arguments::Dict)
@@ -856,9 +856,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.tag_resource([::AWSConfig], arguments::Dict)
-    DAX.tag_resource([::AWSConfig]; ResourceName=, Tags=)
+    using AWSSDK.DAX.tag_resource
+    tag_resource([::AWSConfig], arguments::Dict)
+    tag_resource([::AWSConfig]; ResourceName=, Tags=)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "TagResource", arguments::Dict)
@@ -904,9 +904,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.untag_resource([::AWSConfig], arguments::Dict)
-    DAX.untag_resource([::AWSConfig]; ResourceName=, TagKeys=)
+    using AWSSDK.DAX.untag_resource
+    untag_resource([::AWSConfig], arguments::Dict)
+    untag_resource([::AWSConfig]; ResourceName=, TagKeys=)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "UntagResource", arguments::Dict)
@@ -947,9 +947,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.update_cluster([::AWSConfig], arguments::Dict)
-    DAX.update_cluster([::AWSConfig]; ClusterName=, <keyword arguments>)
+    using AWSSDK.DAX.update_cluster
+    update_cluster([::AWSConfig], arguments::Dict)
+    update_cluster([::AWSConfig]; ClusterName=, <keyword arguments>)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "UpdateCluster", arguments::Dict)
@@ -1010,9 +1010,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.update_parameter_group([::AWSConfig], arguments::Dict)
-    DAX.update_parameter_group([::AWSConfig]; ParameterGroupName=, ParameterNameValues=)
+    using AWSSDK.DAX.update_parameter_group
+    update_parameter_group([::AWSConfig], arguments::Dict)
+    update_parameter_group([::AWSConfig]; ParameterGroupName=, ParameterNameValues=)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "UpdateParameterGroup", arguments::Dict)
@@ -1058,9 +1058,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-20
 
 
 """
-    using AWSSDK.DAX
-    DAX.update_subnet_group([::AWSConfig], arguments::Dict)
-    DAX.update_subnet_group([::AWSConfig]; SubnetGroupName=, <keyword arguments>)
+    using AWSSDK.DAX.update_subnet_group
+    update_subnet_group([::AWSConfig], arguments::Dict)
+    update_subnet_group([::AWSConfig]; SubnetGroupName=, <keyword arguments>)
 
     using AWSCore.Services.dax
     dax([::AWSConfig], "UpdateSubnetGroup", arguments::Dict)

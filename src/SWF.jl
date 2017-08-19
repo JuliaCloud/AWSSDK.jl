@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.SWF
-    SWF.count_closed_workflow_executions([::AWSConfig], arguments::Dict)
-    SWF.count_closed_workflow_executions([::AWSConfig]; domain=, <keyword arguments>)
+    using AWSSDK.SWF.count_closed_workflow_executions
+    count_closed_workflow_executions([::AWSConfig], arguments::Dict)
+    count_closed_workflow_executions([::AWSConfig]; domain=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "CountClosedWorkflowExecutions", arguments::Dict)
@@ -130,9 +130,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.count_open_workflow_executions([::AWSConfig], arguments::Dict)
-    SWF.count_open_workflow_executions([::AWSConfig]; domain=, startTimeFilter=, <keyword arguments>)
+    using AWSSDK.SWF.count_open_workflow_executions
+    count_open_workflow_executions([::AWSConfig], arguments::Dict)
+    count_open_workflow_executions([::AWSConfig]; domain=, startTimeFilter=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "CountOpenWorkflowExecutions", arguments::Dict)
@@ -225,9 +225,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.count_pending_activity_tasks([::AWSConfig], arguments::Dict)
-    SWF.count_pending_activity_tasks([::AWSConfig]; domain=, taskList=)
+    using AWSSDK.SWF.count_pending_activity_tasks
+    count_pending_activity_tasks([::AWSConfig], arguments::Dict)
+    count_pending_activity_tasks([::AWSConfig]; domain=, taskList=)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "CountPendingActivityTasks", arguments::Dict)
@@ -280,9 +280,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.count_pending_decision_tasks([::AWSConfig], arguments::Dict)
-    SWF.count_pending_decision_tasks([::AWSConfig]; domain=, taskList=)
+    using AWSSDK.SWF.count_pending_decision_tasks
+    count_pending_decision_tasks([::AWSConfig], arguments::Dict)
+    count_pending_decision_tasks([::AWSConfig]; domain=, taskList=)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "CountPendingDecisionTasks", arguments::Dict)
@@ -335,9 +335,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.deprecate_activity_type([::AWSConfig], arguments::Dict)
-    SWF.deprecate_activity_type([::AWSConfig]; domain=, activityType=)
+    using AWSSDK.SWF.deprecate_activity_type
+    deprecate_activity_type([::AWSConfig], arguments::Dict)
+    deprecate_activity_type([::AWSConfig]; domain=, activityType=)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "DeprecateActivityType", arguments::Dict)
@@ -398,9 +398,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.deprecate_domain([::AWSConfig], arguments::Dict)
-    SWF.deprecate_domain([::AWSConfig]; name=)
+    using AWSSDK.SWF.deprecate_domain
+    deprecate_domain([::AWSConfig], arguments::Dict)
+    deprecate_domain([::AWSConfig]; name=)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "DeprecateDomain", arguments::Dict)
@@ -448,9 +448,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.deprecate_workflow_type([::AWSConfig], arguments::Dict)
-    SWF.deprecate_workflow_type([::AWSConfig]; domain=, workflowType=)
+    using AWSSDK.SWF.deprecate_workflow_type
+    deprecate_workflow_type([::AWSConfig], arguments::Dict)
+    deprecate_workflow_type([::AWSConfig]; domain=, workflowType=)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "DeprecateWorkflowType", arguments::Dict)
@@ -511,9 +511,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.describe_activity_type([::AWSConfig], arguments::Dict)
-    SWF.describe_activity_type([::AWSConfig]; domain=, activityType=)
+    using AWSSDK.SWF.describe_activity_type
+    describe_activity_type([::AWSConfig], arguments::Dict)
+    describe_activity_type([::AWSConfig]; domain=, activityType=)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "DescribeActivityType", arguments::Dict)
@@ -575,9 +575,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.describe_domain([::AWSConfig], arguments::Dict)
-    SWF.describe_domain([::AWSConfig]; name=)
+    using AWSSDK.SWF.describe_domain
+    describe_domain([::AWSConfig], arguments::Dict)
+    describe_domain([::AWSConfig]; name=)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "DescribeDomain", arguments::Dict)
@@ -626,9 +626,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.describe_workflow_execution([::AWSConfig], arguments::Dict)
-    SWF.describe_workflow_execution([::AWSConfig]; domain=, execution=)
+    using AWSSDK.SWF.describe_workflow_execution
+    describe_workflow_execution([::AWSConfig], arguments::Dict)
+    describe_workflow_execution([::AWSConfig]; domain=, execution=)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "DescribeWorkflowExecution", arguments::Dict)
@@ -689,9 +689,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.describe_workflow_type([::AWSConfig], arguments::Dict)
-    SWF.describe_workflow_type([::AWSConfig]; domain=, workflowType=)
+    using AWSSDK.SWF.describe_workflow_type
+    describe_workflow_type([::AWSConfig], arguments::Dict)
+    describe_workflow_type([::AWSConfig]; domain=, workflowType=)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "DescribeWorkflowType", arguments::Dict)
@@ -753,9 +753,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.get_workflow_execution_history([::AWSConfig], arguments::Dict)
-    SWF.get_workflow_execution_history([::AWSConfig]; domain=, execution=, <keyword arguments>)
+    using AWSSDK.SWF.get_workflow_execution_history
+    get_workflow_execution_history([::AWSConfig], arguments::Dict)
+    get_workflow_execution_history([::AWSConfig]; domain=, execution=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "GetWorkflowExecutionHistory", arguments::Dict)
@@ -832,9 +832,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.list_activity_types([::AWSConfig], arguments::Dict)
-    SWF.list_activity_types([::AWSConfig]; domain=, registrationStatus=, <keyword arguments>)
+    using AWSSDK.SWF.list_activity_types
+    list_activity_types([::AWSConfig], arguments::Dict)
+    list_activity_types([::AWSConfig]; domain=, registrationStatus=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "ListActivityTypes", arguments::Dict)
@@ -907,9 +907,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.list_closed_workflow_executions([::AWSConfig], arguments::Dict)
-    SWF.list_closed_workflow_executions([::AWSConfig]; domain=, <keyword arguments>)
+    using AWSSDK.SWF.list_closed_workflow_executions
+    list_closed_workflow_executions([::AWSConfig], arguments::Dict)
+    list_closed_workflow_executions([::AWSConfig]; domain=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "ListClosedWorkflowExecutions", arguments::Dict)
@@ -1040,9 +1040,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.list_domains([::AWSConfig], arguments::Dict)
-    SWF.list_domains([::AWSConfig]; registrationStatus=, <keyword arguments>)
+    using AWSSDK.SWF.list_domains
+    list_domains([::AWSConfig], arguments::Dict)
+    list_domains([::AWSConfig]; registrationStatus=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "ListDomains", arguments::Dict)
@@ -1110,9 +1110,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.list_open_workflow_executions([::AWSConfig], arguments::Dict)
-    SWF.list_open_workflow_executions([::AWSConfig]; domain=, startTimeFilter=, <keyword arguments>)
+    using AWSSDK.SWF.list_open_workflow_executions
+    list_open_workflow_executions([::AWSConfig], arguments::Dict)
+    list_open_workflow_executions([::AWSConfig]; domain=, startTimeFilter=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "ListOpenWorkflowExecutions", arguments::Dict)
@@ -1221,9 +1221,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.list_workflow_types([::AWSConfig], arguments::Dict)
-    SWF.list_workflow_types([::AWSConfig]; domain=, registrationStatus=, <keyword arguments>)
+    using AWSSDK.SWF.list_workflow_types
+    list_workflow_types([::AWSConfig], arguments::Dict)
+    list_workflow_types([::AWSConfig]; domain=, registrationStatus=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "ListWorkflowTypes", arguments::Dict)
@@ -1296,9 +1296,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.poll_for_activity_task([::AWSConfig], arguments::Dict)
-    SWF.poll_for_activity_task([::AWSConfig]; domain=, taskList=, <keyword arguments>)
+    using AWSSDK.SWF.poll_for_activity_task
+    poll_for_activity_task([::AWSConfig], arguments::Dict)
+    poll_for_activity_task([::AWSConfig]; domain=, taskList=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "PollForActivityTask", arguments::Dict)
@@ -1360,9 +1360,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.poll_for_decision_task([::AWSConfig], arguments::Dict)
-    SWF.poll_for_decision_task([::AWSConfig]; domain=, taskList=, <keyword arguments>)
+    using AWSSDK.SWF.poll_for_decision_task
+    poll_for_decision_task([::AWSConfig], arguments::Dict)
+    poll_for_decision_task([::AWSConfig]; domain=, taskList=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "PollForDecisionTask", arguments::Dict)
@@ -1448,9 +1448,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.record_activity_task_heartbeat([::AWSConfig], arguments::Dict)
-    SWF.record_activity_task_heartbeat([::AWSConfig]; taskToken=, <keyword arguments>)
+    using AWSSDK.SWF.record_activity_task_heartbeat
+    record_activity_task_heartbeat([::AWSConfig], arguments::Dict)
+    record_activity_task_heartbeat([::AWSConfig]; taskToken=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "RecordActivityTaskHeartbeat", arguments::Dict)
@@ -1519,9 +1519,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.register_activity_type([::AWSConfig], arguments::Dict)
-    SWF.register_activity_type([::AWSConfig]; domain=, name=, version=, <keyword arguments>)
+    using AWSSDK.SWF.register_activity_type
+    register_activity_type([::AWSConfig], arguments::Dict)
+    register_activity_type([::AWSConfig]; domain=, name=, version=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "RegisterActivityType", arguments::Dict)
@@ -1628,9 +1628,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.register_domain([::AWSConfig], arguments::Dict)
-    SWF.register_domain([::AWSConfig]; name=, workflowExecutionRetentionPeriodInDays=, <keyword arguments>)
+    using AWSSDK.SWF.register_domain
+    register_domain([::AWSConfig], arguments::Dict)
+    register_domain([::AWSConfig]; name=, workflowExecutionRetentionPeriodInDays=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "RegisterDomain", arguments::Dict)
@@ -1689,9 +1689,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.register_workflow_type([::AWSConfig], arguments::Dict)
-    SWF.register_workflow_type([::AWSConfig]; domain=, name=, version=, <keyword arguments>)
+    using AWSSDK.SWF.register_workflow_type
+    register_workflow_type([::AWSConfig], arguments::Dict)
+    register_workflow_type([::AWSConfig]; domain=, name=, version=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "RegisterWorkflowType", arguments::Dict)
@@ -1807,9 +1807,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.request_cancel_workflow_execution([::AWSConfig], arguments::Dict)
-    SWF.request_cancel_workflow_execution([::AWSConfig]; domain=, workflowId=, <keyword arguments>)
+    using AWSSDK.SWF.request_cancel_workflow_execution
+    request_cancel_workflow_execution([::AWSConfig], arguments::Dict)
+    request_cancel_workflow_execution([::AWSConfig]; domain=, workflowId=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "RequestCancelWorkflowExecution", arguments::Dict)
@@ -1868,9 +1868,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.respond_activity_task_canceled([::AWSConfig], arguments::Dict)
-    SWF.respond_activity_task_canceled([::AWSConfig]; taskToken=, <keyword arguments>)
+    using AWSSDK.SWF.respond_activity_task_canceled
+    respond_activity_task_canceled([::AWSConfig], arguments::Dict)
+    respond_activity_task_canceled([::AWSConfig]; taskToken=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "RespondActivityTaskCanceled", arguments::Dict)
@@ -1929,9 +1929,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.respond_activity_task_completed([::AWSConfig], arguments::Dict)
-    SWF.respond_activity_task_completed([::AWSConfig]; taskToken=, <keyword arguments>)
+    using AWSSDK.SWF.respond_activity_task_completed
+    respond_activity_task_completed([::AWSConfig], arguments::Dict)
+    respond_activity_task_completed([::AWSConfig]; taskToken=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "RespondActivityTaskCompleted", arguments::Dict)
@@ -1988,9 +1988,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.respond_activity_task_failed([::AWSConfig], arguments::Dict)
-    SWF.respond_activity_task_failed([::AWSConfig]; taskToken=, <keyword arguments>)
+    using AWSSDK.SWF.respond_activity_task_failed
+    respond_activity_task_failed([::AWSConfig], arguments::Dict)
+    respond_activity_task_failed([::AWSConfig]; taskToken=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "RespondActivityTaskFailed", arguments::Dict)
@@ -2048,9 +2048,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.respond_decision_task_completed([::AWSConfig], arguments::Dict)
-    SWF.respond_decision_task_completed([::AWSConfig]; taskToken=, <keyword arguments>)
+    using AWSSDK.SWF.respond_decision_task_completed
+    respond_decision_task_completed([::AWSConfig], arguments::Dict)
+    respond_decision_task_completed([::AWSConfig]; taskToken=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "RespondDecisionTaskCompleted", arguments::Dict)
@@ -2182,9 +2182,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.signal_workflow_execution([::AWSConfig], arguments::Dict)
-    SWF.signal_workflow_execution([::AWSConfig]; domain=, workflowId=, signalName=, <keyword arguments>)
+    using AWSSDK.SWF.signal_workflow_execution
+    signal_workflow_execution([::AWSConfig], arguments::Dict)
+    signal_workflow_execution([::AWSConfig]; domain=, workflowId=, signalName=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "SignalWorkflowExecution", arguments::Dict)
@@ -2251,9 +2251,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.start_workflow_execution([::AWSConfig], arguments::Dict)
-    SWF.start_workflow_execution([::AWSConfig]; domain=, workflowId=, workflowType=, <keyword arguments>)
+    using AWSSDK.SWF.start_workflow_execution
+    start_workflow_execution([::AWSConfig], arguments::Dict)
+    start_workflow_execution([::AWSConfig]; domain=, workflowId=, workflowType=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "StartWorkflowExecution", arguments::Dict)
@@ -2398,9 +2398,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-20
 
 
 """
-    using AWSSDK.SWF
-    SWF.terminate_workflow_execution([::AWSConfig], arguments::Dict)
-    SWF.terminate_workflow_execution([::AWSConfig]; domain=, workflowId=, <keyword arguments>)
+    using AWSSDK.SWF.terminate_workflow_execution
+    terminate_workflow_execution([::AWSConfig], arguments::Dict)
+    terminate_workflow_execution([::AWSConfig]; domain=, workflowId=, <keyword arguments>)
 
     using AWSCore.Services.swf
     swf([::AWSConfig], "TerminateWorkflowExecution", arguments::Dict)

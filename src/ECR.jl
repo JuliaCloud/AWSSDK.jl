@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.ECR
-    ECR.batch_check_layer_availability([::AWSConfig], arguments::Dict)
-    ECR.batch_check_layer_availability([::AWSConfig]; repositoryName=, layerDigests=, <keyword arguments>)
+    using AWSSDK.ECR.batch_check_layer_availability
+    batch_check_layer_availability([::AWSConfig], arguments::Dict)
+    batch_check_layer_availability([::AWSConfig]; repositoryName=, layerDigests=, <keyword arguments>)
 
     using AWSCore.Services.ecr
     ecr([::AWSConfig], "BatchCheckLayerAvailability", arguments::Dict)
@@ -63,9 +63,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
-    using AWSSDK.ECR
-    ECR.batch_delete_image([::AWSConfig], arguments::Dict)
-    ECR.batch_delete_image([::AWSConfig]; repositoryName=, imageIds=, <keyword arguments>)
+    using AWSSDK.ECR.batch_delete_image
+    batch_delete_image([::AWSConfig], arguments::Dict)
+    batch_delete_image([::AWSConfig]; repositoryName=, imageIds=, <keyword arguments>)
 
     using AWSCore.Services.ecr
     ecr([::AWSConfig], "BatchDeleteImage", arguments::Dict)
@@ -150,9 +150,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
-    using AWSSDK.ECR
-    ECR.batch_get_image([::AWSConfig], arguments::Dict)
-    ECR.batch_get_image([::AWSConfig]; repositoryName=, imageIds=, <keyword arguments>)
+    using AWSSDK.ECR.batch_get_image
+    batch_get_image([::AWSConfig], arguments::Dict)
+    batch_get_image([::AWSConfig]; repositoryName=, imageIds=, <keyword arguments>)
 
     using AWSCore.Services.ecr
     ecr([::AWSConfig], "BatchGetImage", arguments::Dict)
@@ -248,9 +248,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
-    using AWSSDK.ECR
-    ECR.complete_layer_upload([::AWSConfig], arguments::Dict)
-    ECR.complete_layer_upload([::AWSConfig]; repositoryName=, uploadId=, layerDigests=, <keyword arguments>)
+    using AWSSDK.ECR.complete_layer_upload
+    complete_layer_upload([::AWSConfig], arguments::Dict)
+    complete_layer_upload([::AWSConfig]; repositoryName=, uploadId=, layerDigests=, <keyword arguments>)
 
     using AWSCore.Services.ecr
     ecr([::AWSConfig], "CompleteLayerUpload", arguments::Dict)
@@ -302,9 +302,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
-    using AWSSDK.ECR
-    ECR.create_repository([::AWSConfig], arguments::Dict)
-    ECR.create_repository([::AWSConfig]; repositoryName=)
+    using AWSSDK.ECR.create_repository
+    create_repository([::AWSConfig], arguments::Dict)
+    create_repository([::AWSConfig]; repositoryName=)
 
     using AWSCore.Services.ecr
     ecr([::AWSConfig], "CreateRepository", arguments::Dict)
@@ -363,9 +363,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
-    using AWSSDK.ECR
-    ECR.delete_repository([::AWSConfig], arguments::Dict)
-    ECR.delete_repository([::AWSConfig]; repositoryName=, <keyword arguments>)
+    using AWSSDK.ECR.delete_repository
+    delete_repository([::AWSConfig], arguments::Dict)
+    delete_repository([::AWSConfig]; repositoryName=, <keyword arguments>)
 
     using AWSCore.Services.ecr
     ecr([::AWSConfig], "DeleteRepository", arguments::Dict)
@@ -433,9 +433,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
-    using AWSSDK.ECR
-    ECR.delete_repository_policy([::AWSConfig], arguments::Dict)
-    ECR.delete_repository_policy([::AWSConfig]; repositoryName=, <keyword arguments>)
+    using AWSSDK.ECR.delete_repository_policy
+    delete_repository_policy([::AWSConfig], arguments::Dict)
+    delete_repository_policy([::AWSConfig]; repositoryName=, <keyword arguments>)
 
     using AWSCore.Services.ecr
     ecr([::AWSConfig], "DeleteRepositoryPolicy", arguments::Dict)
@@ -496,9 +496,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
-    using AWSSDK.ECR
-    ECR.describe_images([::AWSConfig], arguments::Dict)
-    ECR.describe_images([::AWSConfig]; repositoryName=, <keyword arguments>)
+    using AWSSDK.ECR.describe_images
+    describe_images([::AWSConfig], arguments::Dict)
+    describe_images([::AWSConfig]; repositoryName=, <keyword arguments>)
 
     using AWSCore.Services.ecr
     ecr([::AWSConfig], "DescribeImages", arguments::Dict)
@@ -563,9 +563,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
-    using AWSSDK.ECR
-    ECR.describe_repositories([::AWSConfig], arguments::Dict)
-    ECR.describe_repositories([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ECR.describe_repositories
+    describe_repositories([::AWSConfig], arguments::Dict)
+    describe_repositories([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ecr
     ecr([::AWSConfig], "DescribeRepositories", arguments::Dict)
@@ -646,9 +646,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
-    using AWSSDK.ECR
-    ECR.get_authorization_token([::AWSConfig], arguments::Dict)
-    ECR.get_authorization_token([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ECR.get_authorization_token
+    get_authorization_token([::AWSConfig], arguments::Dict)
+    get_authorization_token([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ecr
     ecr([::AWSConfig], "GetAuthorizationToken", arguments::Dict)
@@ -711,9 +711,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
-    using AWSSDK.ECR
-    ECR.get_download_url_for_layer([::AWSConfig], arguments::Dict)
-    ECR.get_download_url_for_layer([::AWSConfig]; repositoryName=, layerDigest=, <keyword arguments>)
+    using AWSSDK.ECR.get_download_url_for_layer
+    get_download_url_for_layer([::AWSConfig], arguments::Dict)
+    get_download_url_for_layer([::AWSConfig]; repositoryName=, layerDigest=, <keyword arguments>)
 
     using AWSCore.Services.ecr
     ecr([::AWSConfig], "GetDownloadUrlForLayer", arguments::Dict)
@@ -761,9 +761,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
-    using AWSSDK.ECR
-    ECR.get_repository_policy([::AWSConfig], arguments::Dict)
-    ECR.get_repository_policy([::AWSConfig]; repositoryName=, <keyword arguments>)
+    using AWSSDK.ECR.get_repository_policy
+    get_repository_policy([::AWSConfig], arguments::Dict)
+    get_repository_policy([::AWSConfig]; repositoryName=, <keyword arguments>)
 
     using AWSCore.Services.ecr
     ecr([::AWSConfig], "GetRepositoryPolicy", arguments::Dict)
@@ -834,9 +834,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
-    using AWSSDK.ECR
-    ECR.initiate_layer_upload([::AWSConfig], arguments::Dict)
-    ECR.initiate_layer_upload([::AWSConfig]; repositoryName=, <keyword arguments>)
+    using AWSSDK.ECR.initiate_layer_upload
+    initiate_layer_upload([::AWSConfig], arguments::Dict)
+    initiate_layer_upload([::AWSConfig]; repositoryName=, <keyword arguments>)
 
     using AWSCore.Services.ecr
     ecr([::AWSConfig], "InitiateLayerUpload", arguments::Dict)
@@ -880,9 +880,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
-    using AWSSDK.ECR
-    ECR.list_images([::AWSConfig], arguments::Dict)
-    ECR.list_images([::AWSConfig]; repositoryName=, <keyword arguments>)
+    using AWSSDK.ECR.list_images
+    list_images([::AWSConfig], arguments::Dict)
+    list_images([::AWSConfig]; repositoryName=, <keyword arguments>)
 
     using AWSCore.Services.ecr
     ecr([::AWSConfig], "ListImages", arguments::Dict)
@@ -963,9 +963,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
-    using AWSSDK.ECR
-    ECR.put_image([::AWSConfig], arguments::Dict)
-    ECR.put_image([::AWSConfig]; repositoryName=, imageManifest=, <keyword arguments>)
+    using AWSSDK.ECR.put_image
+    put_image([::AWSConfig], arguments::Dict)
+    put_image([::AWSConfig]; repositoryName=, imageManifest=, <keyword arguments>)
 
     using AWSCore.Services.ecr
     ecr([::AWSConfig], "PutImage", arguments::Dict)
@@ -1017,9 +1017,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
-    using AWSSDK.ECR
-    ECR.set_repository_policy([::AWSConfig], arguments::Dict)
-    ECR.set_repository_policy([::AWSConfig]; repositoryName=, policyText=, <keyword arguments>)
+    using AWSSDK.ECR.set_repository_policy
+    set_repository_policy([::AWSConfig], arguments::Dict)
+    set_repository_policy([::AWSConfig]; repositoryName=, policyText=, <keyword arguments>)
 
     using AWSCore.Services.ecr
     ecr([::AWSConfig], "SetRepositoryPolicy", arguments::Dict)
@@ -1068,9 +1068,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
-    using AWSSDK.ECR
-    ECR.upload_layer_part([::AWSConfig], arguments::Dict)
-    ECR.upload_layer_part([::AWSConfig]; repositoryName=, uploadId=, partFirstByte=, partLastByte=, layerPartBlob=, <keyword arguments>)
+    using AWSSDK.ECR.upload_layer_part
+    upload_layer_part([::AWSConfig], arguments::Dict)
+    upload_layer_part([::AWSConfig]; repositoryName=, uploadId=, partFirstByte=, partLastByte=, layerPartBlob=, <keyword arguments>)
 
     using AWSCore.Services.ecr
     ecr([::AWSConfig], "UploadLayerPart", arguments::Dict)

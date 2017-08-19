@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.add_custom_attributes([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.add_custom_attributes([::AWSConfig]; UserPoolId=, CustomAttributes=)
+    using AWSSDK.CognitoIdentityServiceProvider.add_custom_attributes
+    add_custom_attributes([::AWSConfig], arguments::Dict)
+    add_custom_attributes([::AWSConfig]; UserPoolId=, CustomAttributes=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AddCustomAttributes", arguments::Dict)
@@ -72,9 +72,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_add_user_to_group([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_add_user_to_group([::AWSConfig]; UserPoolId=, Username=, GroupName=)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_add_user_to_group
+    admin_add_user_to_group([::AWSConfig], arguments::Dict)
+    admin_add_user_to_group([::AWSConfig]; UserPoolId=, Username=, GroupName=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminAddUserToGroup", arguments::Dict)
@@ -117,9 +117,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_confirm_sign_up([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_confirm_sign_up([::AWSConfig]; UserPoolId=, Username=)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_confirm_sign_up
+    admin_confirm_sign_up([::AWSConfig], arguments::Dict)
+    admin_confirm_sign_up([::AWSConfig]; UserPoolId=, Username=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminConfirmSignUp", arguments::Dict)
@@ -162,9 +162,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_create_user([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_create_user([::AWSConfig]; UserPoolId=, Username=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_create_user
+    admin_create_user([::AWSConfig], arguments::Dict)
+    admin_create_user([::AWSConfig]; UserPoolId=, Username=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminCreateUser", arguments::Dict)
@@ -265,9 +265,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_delete_user([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_delete_user([::AWSConfig]; UserPoolId=, Username=)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_delete_user
+    admin_delete_user([::AWSConfig], arguments::Dict)
+    admin_delete_user([::AWSConfig]; UserPoolId=, Username=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminDeleteUser", arguments::Dict)
@@ -306,9 +306,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_delete_user_attributes([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_delete_user_attributes([::AWSConfig]; UserPoolId=, Username=, UserAttributeNames=)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_delete_user_attributes
+    admin_delete_user_attributes([::AWSConfig], arguments::Dict)
+    admin_delete_user_attributes([::AWSConfig]; UserPoolId=, Username=, UserAttributeNames=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminDeleteUserAttributes", arguments::Dict)
@@ -357,9 +357,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_disable_user([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_disable_user([::AWSConfig]; UserPoolId=, Username=)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_disable_user
+    admin_disable_user([::AWSConfig], arguments::Dict)
+    admin_disable_user([::AWSConfig]; UserPoolId=, Username=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminDisableUser", arguments::Dict)
@@ -402,9 +402,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_enable_user([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_enable_user([::AWSConfig]; UserPoolId=, Username=)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_enable_user
+    admin_enable_user([::AWSConfig], arguments::Dict)
+    admin_enable_user([::AWSConfig]; UserPoolId=, Username=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminEnableUser", arguments::Dict)
@@ -447,9 +447,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_forget_device([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_forget_device([::AWSConfig]; UserPoolId=, Username=, DeviceKey=)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_forget_device
+    admin_forget_device([::AWSConfig], arguments::Dict)
+    admin_forget_device([::AWSConfig]; UserPoolId=, Username=, DeviceKey=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminForgetDevice", arguments::Dict)
@@ -492,9 +492,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_get_device([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_get_device([::AWSConfig]; DeviceKey=, UserPoolId=, Username=)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_get_device
+    admin_get_device([::AWSConfig], arguments::Dict)
+    admin_get_device([::AWSConfig]; DeviceKey=, UserPoolId=, Username=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminGetDevice", arguments::Dict)
@@ -541,9 +541,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_get_user([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_get_user([::AWSConfig]; UserPoolId=, Username=)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_get_user
+    admin_get_user([::AWSConfig], arguments::Dict)
+    admin_get_user([::AWSConfig]; UserPoolId=, Username=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminGetUser", arguments::Dict)
@@ -586,9 +586,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_initiate_auth([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_initiate_auth([::AWSConfig]; UserPoolId=, ClientId=, AuthFlow=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_initiate_auth
+    admin_initiate_auth([::AWSConfig], arguments::Dict)
+    admin_initiate_auth([::AWSConfig]; UserPoolId=, ClientId=, AuthFlow=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminInitiateAuth", arguments::Dict)
@@ -665,9 +665,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_list_devices([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_list_devices([::AWSConfig]; UserPoolId=, Username=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_list_devices
+    admin_list_devices([::AWSConfig], arguments::Dict)
+    admin_list_devices([::AWSConfig]; UserPoolId=, Username=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminListDevices", arguments::Dict)
@@ -718,9 +718,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_list_groups_for_user([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_list_groups_for_user([::AWSConfig]; Username=, UserPoolId=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_list_groups_for_user
+    admin_list_groups_for_user([::AWSConfig], arguments::Dict)
+    admin_list_groups_for_user([::AWSConfig]; Username=, UserPoolId=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminListGroupsForUser", arguments::Dict)
@@ -771,9 +771,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_remove_user_from_group([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_remove_user_from_group([::AWSConfig]; UserPoolId=, Username=, GroupName=)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_remove_user_from_group
+    admin_remove_user_from_group([::AWSConfig], arguments::Dict)
+    admin_remove_user_from_group([::AWSConfig]; UserPoolId=, Username=, GroupName=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminRemoveUserFromGroup", arguments::Dict)
@@ -816,9 +816,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_reset_user_password([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_reset_user_password([::AWSConfig]; UserPoolId=, Username=)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_reset_user_password
+    admin_reset_user_password([::AWSConfig], arguments::Dict)
+    admin_reset_user_password([::AWSConfig]; UserPoolId=, Username=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminResetUserPassword", arguments::Dict)
@@ -863,9 +863,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_respond_to_auth_challenge([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_respond_to_auth_challenge([::AWSConfig]; UserPoolId=, ClientId=, ChallengeName=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_respond_to_auth_challenge
+    admin_respond_to_auth_challenge([::AWSConfig], arguments::Dict)
+    admin_respond_to_auth_challenge([::AWSConfig]; UserPoolId=, ClientId=, ChallengeName=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminRespondToAuthChallenge", arguments::Dict)
@@ -930,9 +930,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_set_user_settings([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_set_user_settings([::AWSConfig]; UserPoolId=, Username=, MFAOptions=)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_set_user_settings
+    admin_set_user_settings([::AWSConfig], arguments::Dict)
+    admin_set_user_settings([::AWSConfig]; UserPoolId=, Username=, MFAOptions=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminSetUserSettings", arguments::Dict)
@@ -984,9 +984,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_update_device_status([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_update_device_status([::AWSConfig]; UserPoolId=, Username=, DeviceKey=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_update_device_status
+    admin_update_device_status([::AWSConfig], arguments::Dict)
+    admin_update_device_status([::AWSConfig]; UserPoolId=, Username=, DeviceKey=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminUpdateDeviceStatus", arguments::Dict)
@@ -1037,9 +1037,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_update_user_attributes([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_update_user_attributes([::AWSConfig]; UserPoolId=, Username=, UserAttributes=)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_update_user_attributes
+    admin_update_user_attributes([::AWSConfig], arguments::Dict)
+    admin_update_user_attributes([::AWSConfig]; UserPoolId=, Username=, UserAttributes=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminUpdateUserAttributes", arguments::Dict)
@@ -1097,9 +1097,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.admin_user_global_sign_out([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.admin_user_global_sign_out([::AWSConfig]; UserPoolId=, Username=)
+    using AWSSDK.CognitoIdentityServiceProvider.admin_user_global_sign_out
+    admin_user_global_sign_out([::AWSConfig], arguments::Dict)
+    admin_user_global_sign_out([::AWSConfig]; UserPoolId=, Username=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "AdminUserGlobalSignOut", arguments::Dict)
@@ -1142,9 +1142,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.change_password([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.change_password([::AWSConfig]; PreviousPassword=, ProposedPassword=, AccessToken=)
+    using AWSSDK.CognitoIdentityServiceProvider.change_password
+    change_password([::AWSConfig], arguments::Dict)
+    change_password([::AWSConfig]; PreviousPassword=, ProposedPassword=, AccessToken=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "ChangePassword", arguments::Dict)
@@ -1189,9 +1189,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.confirm_device([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.confirm_device([::AWSConfig]; AccessToken=, DeviceKey=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.confirm_device
+    confirm_device([::AWSConfig], arguments::Dict)
+    confirm_device([::AWSConfig]; AccessToken=, DeviceKey=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "ConfirmDevice", arguments::Dict)
@@ -1245,9 +1245,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.confirm_forgot_password([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.confirm_forgot_password([::AWSConfig]; ClientId=, Username=, ConfirmationCode=, Password=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.confirm_forgot_password
+    confirm_forgot_password([::AWSConfig], arguments::Dict)
+    confirm_forgot_password([::AWSConfig]; ClientId=, Username=, ConfirmationCode=, Password=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "ConfirmForgotPassword", arguments::Dict)
@@ -1300,9 +1300,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.confirm_sign_up([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.confirm_sign_up([::AWSConfig]; ClientId=, Username=, ConfirmationCode=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.confirm_sign_up
+    confirm_sign_up([::AWSConfig], arguments::Dict)
+    confirm_sign_up([::AWSConfig]; ClientId=, Username=, ConfirmationCode=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "ConfirmSignUp", arguments::Dict)
@@ -1355,9 +1355,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.create_group([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.create_group([::AWSConfig]; GroupName=, UserPoolId=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.create_group
+    create_group([::AWSConfig], arguments::Dict)
+    create_group([::AWSConfig]; GroupName=, UserPoolId=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "CreateGroup", arguments::Dict)
@@ -1416,9 +1416,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.create_identity_provider([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.create_identity_provider([::AWSConfig]; UserPoolId=, ProviderName=, ProviderType=, ProviderDetails=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.create_identity_provider
+    create_identity_provider([::AWSConfig], arguments::Dict)
+    create_identity_provider([::AWSConfig]; UserPoolId=, ProviderName=, ProviderType=, ProviderDetails=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "CreateIdentityProvider", arguments::Dict)
@@ -1475,9 +1475,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.create_user_import_job([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.create_user_import_job([::AWSConfig]; JobName=, UserPoolId=, CloudWatchLogsRoleArn=)
+    using AWSSDK.CognitoIdentityServiceProvider.create_user_import_job
+    create_user_import_job([::AWSConfig], arguments::Dict)
+    create_user_import_job([::AWSConfig]; JobName=, UserPoolId=, CloudWatchLogsRoleArn=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "CreateUserImportJob", arguments::Dict)
@@ -1522,9 +1522,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.create_user_pool([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.create_user_pool([::AWSConfig]; PoolName=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.create_user_pool
+    create_user_pool([::AWSConfig], arguments::Dict)
+    create_user_pool([::AWSConfig]; PoolName=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "CreateUserPool", arguments::Dict)
@@ -1685,9 +1685,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.create_user_pool_client([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.create_user_pool_client([::AWSConfig]; UserPoolId=, ClientName=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.create_user_pool_client
+    create_user_pool_client([::AWSConfig], arguments::Dict)
+    create_user_pool_client([::AWSConfig]; UserPoolId=, ClientName=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "CreateUserPoolClient", arguments::Dict)
@@ -1778,9 +1778,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.create_user_pool_domain([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.create_user_pool_domain([::AWSConfig]; Domain=, UserPoolId=)
+    using AWSSDK.CognitoIdentityServiceProvider.create_user_pool_domain
+    create_user_pool_domain([::AWSConfig], arguments::Dict)
+    create_user_pool_domain([::AWSConfig]; Domain=, UserPoolId=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "CreateUserPoolDomain", arguments::Dict)
@@ -1821,9 +1821,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.delete_group([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.delete_group([::AWSConfig]; GroupName=, UserPoolId=)
+    using AWSSDK.CognitoIdentityServiceProvider.delete_group
+    delete_group([::AWSConfig], arguments::Dict)
+    delete_group([::AWSConfig]; GroupName=, UserPoolId=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "DeleteGroup", arguments::Dict)
@@ -1862,9 +1862,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.delete_identity_provider([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.delete_identity_provider([::AWSConfig]; UserPoolId=, ProviderName=)
+    using AWSSDK.CognitoIdentityServiceProvider.delete_identity_provider
+    delete_identity_provider([::AWSConfig], arguments::Dict)
+    delete_identity_provider([::AWSConfig]; UserPoolId=, ProviderName=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "DeleteIdentityProvider", arguments::Dict)
@@ -1901,9 +1901,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.delete_user([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.delete_user([::AWSConfig]; AccessToken=)
+    using AWSSDK.CognitoIdentityServiceProvider.delete_user
+    delete_user([::AWSConfig], arguments::Dict)
+    delete_user([::AWSConfig]; AccessToken=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "DeleteUser", arguments::Dict)
@@ -1936,9 +1936,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.delete_user_attributes([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.delete_user_attributes([::AWSConfig]; UserAttributeNames=, AccessToken=)
+    using AWSSDK.CognitoIdentityServiceProvider.delete_user_attributes
+    delete_user_attributes([::AWSConfig], arguments::Dict)
+    delete_user_attributes([::AWSConfig]; UserAttributeNames=, AccessToken=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "DeleteUserAttributes", arguments::Dict)
@@ -1981,9 +1981,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.delete_user_pool([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.delete_user_pool([::AWSConfig]; UserPoolId=)
+    using AWSSDK.CognitoIdentityServiceProvider.delete_user_pool
+    delete_user_pool([::AWSConfig], arguments::Dict)
+    delete_user_pool([::AWSConfig]; UserPoolId=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "DeleteUserPool", arguments::Dict)
@@ -2016,9 +2016,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.delete_user_pool_client([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.delete_user_pool_client([::AWSConfig]; UserPoolId=, ClientId=)
+    using AWSSDK.CognitoIdentityServiceProvider.delete_user_pool_client
+    delete_user_pool_client([::AWSConfig], arguments::Dict)
+    delete_user_pool_client([::AWSConfig]; UserPoolId=, ClientId=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "DeleteUserPoolClient", arguments::Dict)
@@ -2055,9 +2055,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.delete_user_pool_domain([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.delete_user_pool_domain([::AWSConfig]; Domain=, UserPoolId=)
+    using AWSSDK.CognitoIdentityServiceProvider.delete_user_pool_domain
+    delete_user_pool_domain([::AWSConfig], arguments::Dict)
+    delete_user_pool_domain([::AWSConfig]; Domain=, UserPoolId=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "DeleteUserPoolDomain", arguments::Dict)
@@ -2098,9 +2098,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.describe_identity_provider([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.describe_identity_provider([::AWSConfig]; UserPoolId=, ProviderName=)
+    using AWSSDK.CognitoIdentityServiceProvider.describe_identity_provider
+    describe_identity_provider([::AWSConfig], arguments::Dict)
+    describe_identity_provider([::AWSConfig]; UserPoolId=, ProviderName=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "DescribeIdentityProvider", arguments::Dict)
@@ -2141,9 +2141,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.describe_user_import_job([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.describe_user_import_job([::AWSConfig]; UserPoolId=, JobId=)
+    using AWSSDK.CognitoIdentityServiceProvider.describe_user_import_job
+    describe_user_import_job([::AWSConfig], arguments::Dict)
+    describe_user_import_job([::AWSConfig]; UserPoolId=, JobId=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "DescribeUserImportJob", arguments::Dict)
@@ -2184,9 +2184,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.describe_user_pool([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.describe_user_pool([::AWSConfig]; UserPoolId=)
+    using AWSSDK.CognitoIdentityServiceProvider.describe_user_pool
+    describe_user_pool([::AWSConfig], arguments::Dict)
+    describe_user_pool([::AWSConfig]; UserPoolId=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "DescribeUserPool", arguments::Dict)
@@ -2223,9 +2223,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.describe_user_pool_client([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.describe_user_pool_client([::AWSConfig]; UserPoolId=, ClientId=)
+    using AWSSDK.CognitoIdentityServiceProvider.describe_user_pool_client
+    describe_user_pool_client([::AWSConfig], arguments::Dict)
+    describe_user_pool_client([::AWSConfig]; UserPoolId=, ClientId=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "DescribeUserPoolClient", arguments::Dict)
@@ -2266,9 +2266,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.describe_user_pool_domain([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.describe_user_pool_domain([::AWSConfig]; Domain=)
+    using AWSSDK.CognitoIdentityServiceProvider.describe_user_pool_domain
+    describe_user_pool_domain([::AWSConfig], arguments::Dict)
+    describe_user_pool_domain([::AWSConfig]; Domain=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "DescribeUserPoolDomain", arguments::Dict)
@@ -2305,9 +2305,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.forget_device([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.forget_device([::AWSConfig]; DeviceKey=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.forget_device
+    forget_device([::AWSConfig], arguments::Dict)
+    forget_device([::AWSConfig]; DeviceKey=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "ForgetDevice", arguments::Dict)
@@ -2344,9 +2344,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.forgot_password([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.forgot_password([::AWSConfig]; ClientId=, Username=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.forgot_password
+    forgot_password([::AWSConfig], arguments::Dict)
+    forgot_password([::AWSConfig]; ClientId=, Username=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "ForgotPassword", arguments::Dict)
@@ -2391,9 +2391,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.get_csvheader([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.get_csvheader([::AWSConfig]; UserPoolId=)
+    using AWSSDK.CognitoIdentityServiceProvider.get_csvheader
+    get_csvheader([::AWSConfig], arguments::Dict)
+    get_csvheader([::AWSConfig]; UserPoolId=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "GetCSVHeader", arguments::Dict)
@@ -2430,9 +2430,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.get_device([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.get_device([::AWSConfig]; DeviceKey=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.get_device
+    get_device([::AWSConfig], arguments::Dict)
+    get_device([::AWSConfig]; DeviceKey=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "GetDevice", arguments::Dict)
@@ -2473,9 +2473,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.get_group([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.get_group([::AWSConfig]; GroupName=, UserPoolId=)
+    using AWSSDK.CognitoIdentityServiceProvider.get_group
+    get_group([::AWSConfig], arguments::Dict)
+    get_group([::AWSConfig]; GroupName=, UserPoolId=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "GetGroup", arguments::Dict)
@@ -2518,9 +2518,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.get_identity_provider_by_identifier([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.get_identity_provider_by_identifier([::AWSConfig]; UserPoolId=, IdpIdentifier=)
+    using AWSSDK.CognitoIdentityServiceProvider.get_identity_provider_by_identifier
+    get_identity_provider_by_identifier([::AWSConfig], arguments::Dict)
+    get_identity_provider_by_identifier([::AWSConfig]; UserPoolId=, IdpIdentifier=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "GetIdentityProviderByIdentifier", arguments::Dict)
@@ -2561,9 +2561,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.get_user([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.get_user([::AWSConfig]; AccessToken=)
+    using AWSSDK.CognitoIdentityServiceProvider.get_user
+    get_user([::AWSConfig], arguments::Dict)
+    get_user([::AWSConfig]; AccessToken=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "GetUser", arguments::Dict)
@@ -2600,9 +2600,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.get_user_attribute_verification_code([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.get_user_attribute_verification_code([::AWSConfig]; AccessToken=, AttributeName=)
+    using AWSSDK.CognitoIdentityServiceProvider.get_user_attribute_verification_code
+    get_user_attribute_verification_code([::AWSConfig], arguments::Dict)
+    get_user_attribute_verification_code([::AWSConfig]; AccessToken=, AttributeName=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "GetUserAttributeVerificationCode", arguments::Dict)
@@ -2643,9 +2643,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.global_sign_out([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.global_sign_out([::AWSConfig]; AccessToken=)
+    using AWSSDK.CognitoIdentityServiceProvider.global_sign_out
+    global_sign_out([::AWSConfig], arguments::Dict)
+    global_sign_out([::AWSConfig]; AccessToken=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "GlobalSignOut", arguments::Dict)
@@ -2682,9 +2682,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.initiate_auth([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.initiate_auth([::AWSConfig]; AuthFlow=, ClientId=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.initiate_auth
+    initiate_auth([::AWSConfig], arguments::Dict)
+    initiate_auth([::AWSConfig]; AuthFlow=, ClientId=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "InitiateAuth", arguments::Dict)
@@ -2753,9 +2753,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.list_devices([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.list_devices([::AWSConfig]; AccessToken=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.list_devices
+    list_devices([::AWSConfig], arguments::Dict)
+    list_devices([::AWSConfig]; AccessToken=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "ListDevices", arguments::Dict)
@@ -2800,9 +2800,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.list_groups([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.list_groups([::AWSConfig]; UserPoolId=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.list_groups
+    list_groups([::AWSConfig], arguments::Dict)
+    list_groups([::AWSConfig]; UserPoolId=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "ListGroups", arguments::Dict)
@@ -2849,9 +2849,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.list_identity_providers([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.list_identity_providers([::AWSConfig]; UserPoolId=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.list_identity_providers
+    list_identity_providers([::AWSConfig], arguments::Dict)
+    list_identity_providers([::AWSConfig]; UserPoolId=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "ListIdentityProviders", arguments::Dict)
@@ -2896,9 +2896,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.list_user_import_jobs([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.list_user_import_jobs([::AWSConfig]; UserPoolId=, MaxResults=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.list_user_import_jobs
+    list_user_import_jobs([::AWSConfig], arguments::Dict)
+    list_user_import_jobs([::AWSConfig]; UserPoolId=, MaxResults=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "ListUserImportJobs", arguments::Dict)
@@ -2943,9 +2943,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.list_user_pool_clients([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.list_user_pool_clients([::AWSConfig]; UserPoolId=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.list_user_pool_clients
+    list_user_pool_clients([::AWSConfig], arguments::Dict)
+    list_user_pool_clients([::AWSConfig]; UserPoolId=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "ListUserPoolClients", arguments::Dict)
@@ -2990,9 +2990,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.list_user_pools([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.list_user_pools([::AWSConfig]; MaxResults=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.list_user_pools
+    list_user_pools([::AWSConfig], arguments::Dict)
+    list_user_pools([::AWSConfig]; MaxResults=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "ListUserPools", arguments::Dict)
@@ -3033,9 +3033,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.list_users([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.list_users([::AWSConfig]; UserPoolId=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.list_users
+    list_users([::AWSConfig], arguments::Dict)
+    list_users([::AWSConfig]; UserPoolId=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "ListUsers", arguments::Dict)
@@ -3120,9 +3120,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.list_users_in_group([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.list_users_in_group([::AWSConfig]; UserPoolId=, GroupName=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.list_users_in_group
+    list_users_in_group([::AWSConfig], arguments::Dict)
+    list_users_in_group([::AWSConfig]; UserPoolId=, GroupName=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "ListUsersInGroup", arguments::Dict)
@@ -3173,9 +3173,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.resend_confirmation_code([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.resend_confirmation_code([::AWSConfig]; ClientId=, Username=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.resend_confirmation_code
+    resend_confirmation_code([::AWSConfig], arguments::Dict)
+    resend_confirmation_code([::AWSConfig]; ClientId=, Username=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "ResendConfirmationCode", arguments::Dict)
@@ -3220,9 +3220,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.respond_to_auth_challenge([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.respond_to_auth_challenge([::AWSConfig]; ClientId=, ChallengeName=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.respond_to_auth_challenge
+    respond_to_auth_challenge([::AWSConfig], arguments::Dict)
+    respond_to_auth_challenge([::AWSConfig]; ClientId=, ChallengeName=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "RespondToAuthChallenge", arguments::Dict)
@@ -3279,9 +3279,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.set_user_settings([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.set_user_settings([::AWSConfig]; AccessToken=, MFAOptions=)
+    using AWSSDK.CognitoIdentityServiceProvider.set_user_settings
+    set_user_settings([::AWSConfig], arguments::Dict)
+    set_user_settings([::AWSConfig]; AccessToken=, MFAOptions=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "SetUserSettings", arguments::Dict)
@@ -3327,9 +3327,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.sign_up([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.sign_up([::AWSConfig]; ClientId=, Username=, Password=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.sign_up
+    sign_up([::AWSConfig], arguments::Dict)
+    sign_up([::AWSConfig]; ClientId=, Username=, Password=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "SignUp", arguments::Dict)
@@ -3398,9 +3398,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.start_user_import_job([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.start_user_import_job([::AWSConfig]; UserPoolId=, JobId=)
+    using AWSSDK.CognitoIdentityServiceProvider.start_user_import_job
+    start_user_import_job([::AWSConfig], arguments::Dict)
+    start_user_import_job([::AWSConfig]; UserPoolId=, JobId=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "StartUserImportJob", arguments::Dict)
@@ -3441,9 +3441,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.stop_user_import_job([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.stop_user_import_job([::AWSConfig]; UserPoolId=, JobId=)
+    using AWSSDK.CognitoIdentityServiceProvider.stop_user_import_job
+    stop_user_import_job([::AWSConfig], arguments::Dict)
+    stop_user_import_job([::AWSConfig]; UserPoolId=, JobId=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "StopUserImportJob", arguments::Dict)
@@ -3484,9 +3484,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.update_device_status([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.update_device_status([::AWSConfig]; AccessToken=, DeviceKey=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.update_device_status
+    update_device_status([::AWSConfig], arguments::Dict)
+    update_device_status([::AWSConfig]; AccessToken=, DeviceKey=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "UpdateDeviceStatus", arguments::Dict)
@@ -3531,9 +3531,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.update_group([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.update_group([::AWSConfig]; GroupName=, UserPoolId=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.update_group
+    update_group([::AWSConfig], arguments::Dict)
+    update_group([::AWSConfig]; GroupName=, UserPoolId=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "UpdateGroup", arguments::Dict)
@@ -3588,9 +3588,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.update_identity_provider([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.update_identity_provider([::AWSConfig]; UserPoolId=, ProviderName=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.update_identity_provider
+    update_identity_provider([::AWSConfig], arguments::Dict)
+    update_identity_provider([::AWSConfig]; UserPoolId=, ProviderName=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "UpdateIdentityProvider", arguments::Dict)
@@ -3643,9 +3643,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.update_user_attributes([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.update_user_attributes([::AWSConfig]; UserAttributes=, AccessToken=)
+    using AWSSDK.CognitoIdentityServiceProvider.update_user_attributes
+    update_user_attributes([::AWSConfig], arguments::Dict)
+    update_user_attributes([::AWSConfig]; UserAttributes=, AccessToken=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "UpdateUserAttributes", arguments::Dict)
@@ -3693,9 +3693,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.update_user_pool([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.update_user_pool([::AWSConfig]; UserPoolId=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.update_user_pool
+    update_user_pool([::AWSConfig], arguments::Dict)
+    update_user_pool([::AWSConfig]; UserPoolId=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "UpdateUserPool", arguments::Dict)
@@ -3834,9 +3834,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.update_user_pool_client([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.update_user_pool_client([::AWSConfig]; UserPoolId=, ClientId=, <keyword arguments>)
+    using AWSSDK.CognitoIdentityServiceProvider.update_user_pool_client
+    update_user_pool_client([::AWSConfig], arguments::Dict)
+    update_user_pool_client([::AWSConfig]; UserPoolId=, ClientId=, <keyword arguments>)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "UpdateUserPoolClient", arguments::Dict)
@@ -3927,9 +3927,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoIdentityServiceProvider
-    CognitoIdentityServiceProvider.verify_user_attribute([::AWSConfig], arguments::Dict)
-    CognitoIdentityServiceProvider.verify_user_attribute([::AWSConfig]; AccessToken=, AttributeName=, Code=)
+    using AWSSDK.CognitoIdentityServiceProvider.verify_user_attribute
+    verify_user_attribute([::AWSConfig], arguments::Dict)
+    verify_user_attribute([::AWSConfig]; AccessToken=, AttributeName=, Code=)
 
     using AWSCore.Services.cognito_idp
     cognito_idp([::AWSConfig], "VerifyUserAttribute", arguments::Dict)

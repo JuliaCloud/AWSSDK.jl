@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.accept_portfolio_share([::AWSConfig], arguments::Dict)
-    ServiceCatalog.accept_portfolio_share([::AWSConfig]; PortfolioId=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.accept_portfolio_share
+    accept_portfolio_share([::AWSConfig], arguments::Dict)
+    accept_portfolio_share([::AWSConfig]; PortfolioId=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "AcceptPortfolioShare", arguments::Dict)
@@ -64,9 +64,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.associate_principal_with_portfolio([::AWSConfig], arguments::Dict)
-    ServiceCatalog.associate_principal_with_portfolio([::AWSConfig]; PortfolioId=, PrincipalARN=, PrincipalType=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.associate_principal_with_portfolio
+    associate_principal_with_portfolio([::AWSConfig], arguments::Dict)
+    associate_principal_with_portfolio([::AWSConfig]; PortfolioId=, PrincipalARN=, PrincipalType=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "AssociatePrincipalWithPortfolio", arguments::Dict)
@@ -123,9 +123,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.associate_product_with_portfolio([::AWSConfig], arguments::Dict)
-    ServiceCatalog.associate_product_with_portfolio([::AWSConfig]; ProductId=, PortfolioId=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.associate_product_with_portfolio
+    associate_product_with_portfolio([::AWSConfig], arguments::Dict)
+    associate_product_with_portfolio([::AWSConfig]; ProductId=, PortfolioId=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "AssociateProductWithPortfolio", arguments::Dict)
@@ -182,9 +182,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.associate_tag_option_with_resource([::AWSConfig], arguments::Dict)
-    ServiceCatalog.associate_tag_option_with_resource([::AWSConfig]; ResourceId=, TagOptionId=)
+    using AWSSDK.ServiceCatalog.associate_tag_option_with_resource
+    associate_tag_option_with_resource([::AWSConfig], arguments::Dict)
+    associate_tag_option_with_resource([::AWSConfig]; ResourceId=, TagOptionId=)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "AssociateTagOptionWithResource", arguments::Dict)
@@ -225,9 +225,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.create_constraint([::AWSConfig], arguments::Dict)
-    ServiceCatalog.create_constraint([::AWSConfig]; PortfolioId=, ProductId=, Parameters=, Type=, IdempotencyToken=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.create_constraint
+    create_constraint([::AWSConfig], arguments::Dict)
+    create_constraint([::AWSConfig]; PortfolioId=, ProductId=, Parameters=, Type=, IdempotencyToken=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "CreateConstraint", arguments::Dict)
@@ -302,9 +302,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.create_portfolio([::AWSConfig], arguments::Dict)
-    ServiceCatalog.create_portfolio([::AWSConfig]; DisplayName=, ProviderName=, IdempotencyToken=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.create_portfolio
+    create_portfolio([::AWSConfig], arguments::Dict)
+    create_portfolio([::AWSConfig]; DisplayName=, ProviderName=, IdempotencyToken=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "CreatePortfolio", arguments::Dict)
@@ -374,9 +374,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.create_portfolio_share([::AWSConfig], arguments::Dict)
-    ServiceCatalog.create_portfolio_share([::AWSConfig]; PortfolioId=, AccountId=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.create_portfolio_share
+    create_portfolio_share([::AWSConfig], arguments::Dict)
+    create_portfolio_share([::AWSConfig]; PortfolioId=, AccountId=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "CreatePortfolioShare", arguments::Dict)
@@ -429,9 +429,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.create_product([::AWSConfig], arguments::Dict)
-    ServiceCatalog.create_product([::AWSConfig]; Name=, Owner=, ProductType=, ProvisioningArtifactParameters=, IdempotencyToken=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.create_product
+    create_product([::AWSConfig], arguments::Dict)
+    create_product([::AWSConfig]; Name=, Owner=, ProductType=, ProvisioningArtifactParameters=, IdempotencyToken=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "CreateProduct", arguments::Dict)
@@ -532,9 +532,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.create_provisioning_artifact([::AWSConfig], arguments::Dict)
-    ServiceCatalog.create_provisioning_artifact([::AWSConfig]; ProductId=, Parameters=, IdempotencyToken=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.create_provisioning_artifact
+    create_provisioning_artifact([::AWSConfig], arguments::Dict)
+    create_provisioning_artifact([::AWSConfig]; ProductId=, Parameters=, IdempotencyToken=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "CreateProvisioningArtifact", arguments::Dict)
@@ -600,9 +600,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.create_tag_option([::AWSConfig], arguments::Dict)
-    ServiceCatalog.create_tag_option([::AWSConfig]; Key=, Value=)
+    using AWSSDK.ServiceCatalog.create_tag_option
+    create_tag_option([::AWSConfig], arguments::Dict)
+    create_tag_option([::AWSConfig]; Key=, Value=)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "CreateTagOption", arguments::Dict)
@@ -643,9 +643,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.delete_constraint([::AWSConfig], arguments::Dict)
-    ServiceCatalog.delete_constraint([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.delete_constraint
+    delete_constraint([::AWSConfig], arguments::Dict)
+    delete_constraint([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DeleteConstraint", arguments::Dict)
@@ -694,9 +694,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.delete_portfolio([::AWSConfig], arguments::Dict)
-    ServiceCatalog.delete_portfolio([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.delete_portfolio
+    delete_portfolio([::AWSConfig], arguments::Dict)
+    delete_portfolio([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DeletePortfolio", arguments::Dict)
@@ -745,9 +745,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.delete_portfolio_share([::AWSConfig], arguments::Dict)
-    ServiceCatalog.delete_portfolio_share([::AWSConfig]; PortfolioId=, AccountId=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.delete_portfolio_share
+    delete_portfolio_share([::AWSConfig], arguments::Dict)
+    delete_portfolio_share([::AWSConfig]; PortfolioId=, AccountId=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DeletePortfolioShare", arguments::Dict)
@@ -800,9 +800,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.delete_product([::AWSConfig], arguments::Dict)
-    ServiceCatalog.delete_product([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.delete_product
+    delete_product([::AWSConfig], arguments::Dict)
+    delete_product([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DeleteProduct", arguments::Dict)
@@ -851,9 +851,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.delete_provisioning_artifact([::AWSConfig], arguments::Dict)
-    ServiceCatalog.delete_provisioning_artifact([::AWSConfig]; ProductId=, ProvisioningArtifactId=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.delete_provisioning_artifact
+    delete_provisioning_artifact([::AWSConfig], arguments::Dict)
+    delete_provisioning_artifact([::AWSConfig]; ProductId=, ProvisioningArtifactId=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DeleteProvisioningArtifact", arguments::Dict)
@@ -906,9 +906,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.describe_constraint([::AWSConfig], arguments::Dict)
-    ServiceCatalog.describe_constraint([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.describe_constraint
+    describe_constraint([::AWSConfig], arguments::Dict)
+    describe_constraint([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DescribeConstraint", arguments::Dict)
@@ -957,9 +957,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.describe_portfolio([::AWSConfig], arguments::Dict)
-    ServiceCatalog.describe_portfolio([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.describe_portfolio
+    describe_portfolio([::AWSConfig], arguments::Dict)
+    describe_portfolio([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DescribePortfolio", arguments::Dict)
@@ -1008,9 +1008,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.describe_product([::AWSConfig], arguments::Dict)
-    ServiceCatalog.describe_product([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.describe_product
+    describe_product([::AWSConfig], arguments::Dict)
+    describe_product([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DescribeProduct", arguments::Dict)
@@ -1061,9 +1061,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.describe_product_as_admin([::AWSConfig], arguments::Dict)
-    ServiceCatalog.describe_product_as_admin([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.describe_product_as_admin
+    describe_product_as_admin([::AWSConfig], arguments::Dict)
+    describe_product_as_admin([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DescribeProductAsAdmin", arguments::Dict)
@@ -1112,9 +1112,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.describe_product_view([::AWSConfig], arguments::Dict)
-    ServiceCatalog.describe_product_view([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.describe_product_view
+    describe_product_view([::AWSConfig], arguments::Dict)
+    describe_product_view([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DescribeProductView", arguments::Dict)
@@ -1165,9 +1165,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.describe_provisioned_product([::AWSConfig], arguments::Dict)
-    ServiceCatalog.describe_provisioned_product([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.describe_provisioned_product
+    describe_provisioned_product([::AWSConfig], arguments::Dict)
+    describe_provisioned_product([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DescribeProvisionedProduct", arguments::Dict)
@@ -1216,9 +1216,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.describe_provisioning_artifact([::AWSConfig], arguments::Dict)
-    ServiceCatalog.describe_provisioning_artifact([::AWSConfig]; ProvisioningArtifactId=, ProductId=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.describe_provisioning_artifact
+    describe_provisioning_artifact([::AWSConfig], arguments::Dict)
+    describe_provisioning_artifact([::AWSConfig]; ProvisioningArtifactId=, ProductId=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DescribeProvisioningArtifact", arguments::Dict)
@@ -1275,9 +1275,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.describe_provisioning_parameters([::AWSConfig], arguments::Dict)
-    ServiceCatalog.describe_provisioning_parameters([::AWSConfig]; ProductId=, ProvisioningArtifactId=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.describe_provisioning_parameters
+    describe_provisioning_parameters([::AWSConfig], arguments::Dict)
+    describe_provisioning_parameters([::AWSConfig]; ProductId=, ProvisioningArtifactId=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DescribeProvisioningParameters", arguments::Dict)
@@ -1336,9 +1336,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.describe_record([::AWSConfig], arguments::Dict)
-    ServiceCatalog.describe_record([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.describe_record
+    describe_record([::AWSConfig], arguments::Dict)
+    describe_record([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DescribeRecord", arguments::Dict)
@@ -1395,9 +1395,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.describe_tag_option([::AWSConfig], arguments::Dict)
-    ServiceCatalog.describe_tag_option([::AWSConfig]; Id=)
+    using AWSSDK.ServiceCatalog.describe_tag_option
+    describe_tag_option([::AWSConfig], arguments::Dict)
+    describe_tag_option([::AWSConfig]; Id=)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DescribeTagOption", arguments::Dict)
@@ -1434,9 +1434,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.disassociate_principal_from_portfolio([::AWSConfig], arguments::Dict)
-    ServiceCatalog.disassociate_principal_from_portfolio([::AWSConfig]; PortfolioId=, PrincipalARN=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.disassociate_principal_from_portfolio
+    disassociate_principal_from_portfolio([::AWSConfig], arguments::Dict)
+    disassociate_principal_from_portfolio([::AWSConfig]; PortfolioId=, PrincipalARN=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DisassociatePrincipalFromPortfolio", arguments::Dict)
@@ -1489,9 +1489,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.disassociate_product_from_portfolio([::AWSConfig], arguments::Dict)
-    ServiceCatalog.disassociate_product_from_portfolio([::AWSConfig]; ProductId=, PortfolioId=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.disassociate_product_from_portfolio
+    disassociate_product_from_portfolio([::AWSConfig], arguments::Dict)
+    disassociate_product_from_portfolio([::AWSConfig]; ProductId=, PortfolioId=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DisassociateProductFromPortfolio", arguments::Dict)
@@ -1544,9 +1544,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.disassociate_tag_option_from_resource([::AWSConfig], arguments::Dict)
-    ServiceCatalog.disassociate_tag_option_from_resource([::AWSConfig]; ResourceId=, TagOptionId=)
+    using AWSSDK.ServiceCatalog.disassociate_tag_option_from_resource
+    disassociate_tag_option_from_resource([::AWSConfig], arguments::Dict)
+    disassociate_tag_option_from_resource([::AWSConfig]; ResourceId=, TagOptionId=)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "DisassociateTagOptionFromResource", arguments::Dict)
@@ -1587,9 +1587,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.list_accepted_portfolio_shares([::AWSConfig], arguments::Dict)
-    ServiceCatalog.list_accepted_portfolio_shares([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ServiceCatalog.list_accepted_portfolio_shares
+    list_accepted_portfolio_shares([::AWSConfig], arguments::Dict)
+    list_accepted_portfolio_shares([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "ListAcceptedPortfolioShares", arguments::Dict)
@@ -1642,9 +1642,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.list_constraints_for_portfolio([::AWSConfig], arguments::Dict)
-    ServiceCatalog.list_constraints_for_portfolio([::AWSConfig]; PortfolioId=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.list_constraints_for_portfolio
+    list_constraints_for_portfolio([::AWSConfig], arguments::Dict)
+    list_constraints_for_portfolio([::AWSConfig]; PortfolioId=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "ListConstraintsForPortfolio", arguments::Dict)
@@ -1705,9 +1705,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.list_launch_paths([::AWSConfig], arguments::Dict)
-    ServiceCatalog.list_launch_paths([::AWSConfig]; ProductId=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.list_launch_paths
+    list_launch_paths([::AWSConfig], arguments::Dict)
+    list_launch_paths([::AWSConfig]; ProductId=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "ListLaunchPaths", arguments::Dict)
@@ -1764,9 +1764,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.list_portfolio_access([::AWSConfig], arguments::Dict)
-    ServiceCatalog.list_portfolio_access([::AWSConfig]; PortfolioId=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.list_portfolio_access
+    list_portfolio_access([::AWSConfig], arguments::Dict)
+    list_portfolio_access([::AWSConfig]; PortfolioId=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "ListPortfolioAccess", arguments::Dict)
@@ -1815,9 +1815,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.list_portfolios([::AWSConfig], arguments::Dict)
-    ServiceCatalog.list_portfolios([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ServiceCatalog.list_portfolios
+    list_portfolios([::AWSConfig], arguments::Dict)
+    list_portfolios([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "ListPortfolios", arguments::Dict)
@@ -1870,9 +1870,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.list_portfolios_for_product([::AWSConfig], arguments::Dict)
-    ServiceCatalog.list_portfolios_for_product([::AWSConfig]; ProductId=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.list_portfolios_for_product
+    list_portfolios_for_product([::AWSConfig], arguments::Dict)
+    list_portfolios_for_product([::AWSConfig]; ProductId=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "ListPortfoliosForProduct", arguments::Dict)
@@ -1929,9 +1929,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.list_principals_for_portfolio([::AWSConfig], arguments::Dict)
-    ServiceCatalog.list_principals_for_portfolio([::AWSConfig]; PortfolioId=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.list_principals_for_portfolio
+    list_principals_for_portfolio([::AWSConfig], arguments::Dict)
+    list_principals_for_portfolio([::AWSConfig]; PortfolioId=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "ListPrincipalsForPortfolio", arguments::Dict)
@@ -1988,9 +1988,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.list_provisioning_artifacts([::AWSConfig], arguments::Dict)
-    ServiceCatalog.list_provisioning_artifacts([::AWSConfig]; ProductId=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.list_provisioning_artifacts
+    list_provisioning_artifacts([::AWSConfig], arguments::Dict)
+    list_provisioning_artifacts([::AWSConfig]; ProductId=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "ListProvisioningArtifacts", arguments::Dict)
@@ -2039,9 +2039,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.list_record_history([::AWSConfig], arguments::Dict)
-    ServiceCatalog.list_record_history([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ServiceCatalog.list_record_history
+    list_record_history([::AWSConfig], arguments::Dict)
+    list_record_history([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "ListRecordHistory", arguments::Dict)
@@ -2112,9 +2112,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.list_resources_for_tag_option([::AWSConfig], arguments::Dict)
-    ServiceCatalog.list_resources_for_tag_option([::AWSConfig]; TagOptionId=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.list_resources_for_tag_option
+    list_resources_for_tag_option([::AWSConfig], arguments::Dict)
+    list_resources_for_tag_option([::AWSConfig]; TagOptionId=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "ListResourcesForTagOption", arguments::Dict)
@@ -2163,9 +2163,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.list_tag_options([::AWSConfig], arguments::Dict)
-    ServiceCatalog.list_tag_options([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ServiceCatalog.list_tag_options
+    list_tag_options([::AWSConfig], arguments::Dict)
+    list_tag_options([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "ListTagOptions", arguments::Dict)
@@ -2216,9 +2216,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.provision_product([::AWSConfig], arguments::Dict)
-    ServiceCatalog.provision_product([::AWSConfig]; ProductId=, ProvisioningArtifactId=, ProvisionedProductName=, ProvisionToken=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.provision_product
+    provision_product([::AWSConfig], arguments::Dict)
+    provision_product([::AWSConfig]; ProductId=, ProvisioningArtifactId=, ProvisionedProductName=, ProvisionToken=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "ProvisionProduct", arguments::Dict)
@@ -2307,9 +2307,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.reject_portfolio_share([::AWSConfig], arguments::Dict)
-    ServiceCatalog.reject_portfolio_share([::AWSConfig]; PortfolioId=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.reject_portfolio_share
+    reject_portfolio_share([::AWSConfig], arguments::Dict)
+    reject_portfolio_share([::AWSConfig]; PortfolioId=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "RejectPortfolioShare", arguments::Dict)
@@ -2358,9 +2358,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.scan_provisioned_products([::AWSConfig], arguments::Dict)
-    ServiceCatalog.scan_provisioned_products([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ServiceCatalog.scan_provisioned_products
+    scan_provisioned_products([::AWSConfig], arguments::Dict)
+    scan_provisioned_products([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "ScanProvisionedProducts", arguments::Dict)
@@ -2422,9 +2422,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.search_products([::AWSConfig], arguments::Dict)
-    ServiceCatalog.search_products([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ServiceCatalog.search_products
+    search_products([::AWSConfig], arguments::Dict)
+    search_products([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "SearchProducts", arguments::Dict)
@@ -2491,9 +2491,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.search_products_as_admin([::AWSConfig], arguments::Dict)
-    ServiceCatalog.search_products_as_admin([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ServiceCatalog.search_products_as_admin
+    search_products_as_admin([::AWSConfig], arguments::Dict)
+    search_products_as_admin([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "SearchProductsAsAdmin", arguments::Dict)
@@ -2566,9 +2566,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.terminate_provisioned_product([::AWSConfig], arguments::Dict)
-    ServiceCatalog.terminate_provisioned_product([::AWSConfig]; TerminateToken=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.terminate_provisioned_product
+    terminate_provisioned_product([::AWSConfig], arguments::Dict)
+    terminate_provisioned_product([::AWSConfig]; TerminateToken=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "TerminateProvisionedProduct", arguments::Dict)
@@ -2633,9 +2633,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.update_constraint([::AWSConfig], arguments::Dict)
-    ServiceCatalog.update_constraint([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.update_constraint
+    update_constraint([::AWSConfig], arguments::Dict)
+    update_constraint([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "UpdateConstraint", arguments::Dict)
@@ -2688,9 +2688,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.update_portfolio([::AWSConfig], arguments::Dict)
-    ServiceCatalog.update_portfolio([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.update_portfolio
+    update_portfolio([::AWSConfig], arguments::Dict)
+    update_portfolio([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "UpdatePortfolio", arguments::Dict)
@@ -2764,9 +2764,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.update_product([::AWSConfig], arguments::Dict)
-    ServiceCatalog.update_product([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.update_product
+    update_product([::AWSConfig], arguments::Dict)
+    update_product([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "UpdateProduct", arguments::Dict)
@@ -2856,9 +2856,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.update_provisioned_product([::AWSConfig], arguments::Dict)
-    ServiceCatalog.update_provisioned_product([::AWSConfig]; UpdateToken=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.update_provisioned_product
+    update_provisioned_product([::AWSConfig], arguments::Dict)
+    update_provisioned_product([::AWSConfig]; UpdateToken=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "UpdateProvisionedProduct", arguments::Dict)
@@ -2939,9 +2939,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.update_provisioning_artifact([::AWSConfig], arguments::Dict)
-    ServiceCatalog.update_provisioning_artifact([::AWSConfig]; ProductId=, ProvisioningArtifactId=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.update_provisioning_artifact
+    update_provisioning_artifact([::AWSConfig], arguments::Dict)
+    update_provisioning_artifact([::AWSConfig]; ProductId=, ProvisioningArtifactId=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "UpdateProvisioningArtifact", arguments::Dict)
@@ -3002,9 +3002,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
-    using AWSSDK.ServiceCatalog
-    ServiceCatalog.update_tag_option([::AWSConfig], arguments::Dict)
-    ServiceCatalog.update_tag_option([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.ServiceCatalog.update_tag_option
+    update_tag_option([::AWSConfig], arguments::Dict)
+    update_tag_option([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.servicecatalog
     servicecatalog([::AWSConfig], "UpdateTagOption", arguments::Dict)

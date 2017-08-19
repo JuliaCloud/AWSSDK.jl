@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.S3
-    S3.abort_multipart_upload([::AWSConfig], arguments::Dict)
-    S3.abort_multipart_upload([::AWSConfig]; Bucket=, Key=, uploadId=, <keyword arguments>)
+    using AWSSDK.S3.abort_multipart_upload
+    abort_multipart_upload([::AWSConfig], arguments::Dict)
+    abort_multipart_upload([::AWSConfig]; Bucket=, Key=, uploadId=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "DELETE", "/{Bucket}/{Key+}", arguments::Dict)
@@ -86,9 +86,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.complete_multipart_upload([::AWSConfig], arguments::Dict)
-    S3.complete_multipart_upload([::AWSConfig]; Bucket=, Key=, uploadId=, <keyword arguments>)
+    using AWSSDK.S3.complete_multipart_upload
+    complete_multipart_upload([::AWSConfig], arguments::Dict)
+    complete_multipart_upload([::AWSConfig]; Bucket=, Key=, uploadId=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "POST", "/{Bucket}/{Key+}", arguments::Dict)
@@ -177,9 +177,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.copy_object([::AWSConfig], arguments::Dict)
-    S3.copy_object([::AWSConfig]; Bucket=, x-amz-copy-source=, Key=, <keyword arguments>)
+    using AWSSDK.S3.copy_object
+    copy_object([::AWSConfig], arguments::Dict)
+    copy_object([::AWSConfig]; Bucket=, x-amz-copy-source=, Key=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}/{Key+}", arguments::Dict)
@@ -367,9 +367,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.create_bucket([::AWSConfig], arguments::Dict)
-    S3.create_bucket([::AWSConfig]; Bucket=, <keyword arguments>)
+    using AWSSDK.S3.create_bucket
+    create_bucket([::AWSConfig], arguments::Dict)
+    create_bucket([::AWSConfig]; Bucket=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}", arguments::Dict)
@@ -473,9 +473,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.create_multipart_upload([::AWSConfig], arguments::Dict)
-    S3.create_multipart_upload([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
+    using AWSSDK.S3.create_multipart_upload
+    create_multipart_upload([::AWSConfig], arguments::Dict)
+    create_multipart_upload([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "POST", "/{Bucket}/{Key+}?uploads", arguments::Dict)
@@ -619,9 +619,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.delete_bucket([::AWSConfig], arguments::Dict)
-    S3.delete_bucket([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.delete_bucket
+    delete_bucket([::AWSConfig], arguments::Dict)
+    delete_bucket([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "DELETE", "/{Bucket}", arguments::Dict)
@@ -661,9 +661,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.delete_bucket_analytics_configuration([::AWSConfig], arguments::Dict)
-    S3.delete_bucket_analytics_configuration([::AWSConfig]; Bucket=, id=)
+    using AWSSDK.S3.delete_bucket_analytics_configuration
+    delete_bucket_analytics_configuration([::AWSConfig], arguments::Dict)
+    delete_bucket_analytics_configuration([::AWSConfig]; Bucket=, id=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "DELETE", "/{Bucket}?analytics", arguments::Dict)
@@ -696,9 +696,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.delete_bucket_cors([::AWSConfig], arguments::Dict)
-    S3.delete_bucket_cors([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.delete_bucket_cors
+    delete_bucket_cors([::AWSConfig], arguments::Dict)
+    delete_bucket_cors([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "DELETE", "/{Bucket}?cors", arguments::Dict)
@@ -738,9 +738,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.delete_bucket_inventory_configuration([::AWSConfig], arguments::Dict)
-    S3.delete_bucket_inventory_configuration([::AWSConfig]; Bucket=, id=)
+    using AWSSDK.S3.delete_bucket_inventory_configuration
+    delete_bucket_inventory_configuration([::AWSConfig], arguments::Dict)
+    delete_bucket_inventory_configuration([::AWSConfig]; Bucket=, id=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "DELETE", "/{Bucket}?inventory", arguments::Dict)
@@ -773,9 +773,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.delete_bucket_lifecycle([::AWSConfig], arguments::Dict)
-    S3.delete_bucket_lifecycle([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.delete_bucket_lifecycle
+    delete_bucket_lifecycle([::AWSConfig], arguments::Dict)
+    delete_bucket_lifecycle([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "DELETE", "/{Bucket}?lifecycle", arguments::Dict)
@@ -815,9 +815,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.delete_bucket_metrics_configuration([::AWSConfig], arguments::Dict)
-    S3.delete_bucket_metrics_configuration([::AWSConfig]; Bucket=, id=)
+    using AWSSDK.S3.delete_bucket_metrics_configuration
+    delete_bucket_metrics_configuration([::AWSConfig], arguments::Dict)
+    delete_bucket_metrics_configuration([::AWSConfig]; Bucket=, id=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "DELETE", "/{Bucket}?metrics", arguments::Dict)
@@ -850,9 +850,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.delete_bucket_policy([::AWSConfig], arguments::Dict)
-    S3.delete_bucket_policy([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.delete_bucket_policy
+    delete_bucket_policy([::AWSConfig], arguments::Dict)
+    delete_bucket_policy([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "DELETE", "/{Bucket}?policy", arguments::Dict)
@@ -892,9 +892,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.delete_bucket_replication([::AWSConfig], arguments::Dict)
-    S3.delete_bucket_replication([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.delete_bucket_replication
+    delete_bucket_replication([::AWSConfig], arguments::Dict)
+    delete_bucket_replication([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "DELETE", "/{Bucket}?replication", arguments::Dict)
@@ -934,9 +934,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.delete_bucket_tagging([::AWSConfig], arguments::Dict)
-    S3.delete_bucket_tagging([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.delete_bucket_tagging
+    delete_bucket_tagging([::AWSConfig], arguments::Dict)
+    delete_bucket_tagging([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "DELETE", "/{Bucket}?tagging", arguments::Dict)
@@ -976,9 +976,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.delete_bucket_website([::AWSConfig], arguments::Dict)
-    S3.delete_bucket_website([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.delete_bucket_website
+    delete_bucket_website([::AWSConfig], arguments::Dict)
+    delete_bucket_website([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "DELETE", "/{Bucket}?website", arguments::Dict)
@@ -1018,9 +1018,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.delete_object([::AWSConfig], arguments::Dict)
-    S3.delete_object([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
+    using AWSSDK.S3.delete_object
+    delete_object([::AWSConfig], arguments::Dict)
+    delete_object([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "DELETE", "/{Bucket}/{Key+}", arguments::Dict)
@@ -1100,9 +1100,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.delete_object_tagging([::AWSConfig], arguments::Dict)
-    S3.delete_object_tagging([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
+    using AWSSDK.S3.delete_object_tagging
+    delete_object_tagging([::AWSConfig], arguments::Dict)
+    delete_object_tagging([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "DELETE", "/{Bucket}/{Key+}?tagging", arguments::Dict)
@@ -1182,9 +1182,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.delete_objects([::AWSConfig], arguments::Dict)
-    S3.delete_objects([::AWSConfig]; Bucket=, Delete=, <keyword arguments>)
+    using AWSSDK.S3.delete_objects
+    delete_objects([::AWSConfig], arguments::Dict)
+    delete_objects([::AWSConfig]; Bucket=, Delete=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "POST", "/{Bucket}?delete", arguments::Dict)
@@ -1317,9 +1317,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_accelerate_configuration([::AWSConfig], arguments::Dict)
-    S3.get_bucket_accelerate_configuration([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.get_bucket_accelerate_configuration
+    get_bucket_accelerate_configuration([::AWSConfig], arguments::Dict)
+    get_bucket_accelerate_configuration([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?accelerate", arguments::Dict)
@@ -1352,9 +1352,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_acl([::AWSConfig], arguments::Dict)
-    S3.get_bucket_acl([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.get_bucket_acl
+    get_bucket_acl([::AWSConfig], arguments::Dict)
+    get_bucket_acl([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?acl", arguments::Dict)
@@ -1387,9 +1387,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_analytics_configuration([::AWSConfig], arguments::Dict)
-    S3.get_bucket_analytics_configuration([::AWSConfig]; Bucket=, id=)
+    using AWSSDK.S3.get_bucket_analytics_configuration
+    get_bucket_analytics_configuration([::AWSConfig], arguments::Dict)
+    get_bucket_analytics_configuration([::AWSConfig]; Bucket=, id=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?analytics", arguments::Dict)
@@ -1426,9 +1426,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_cors([::AWSConfig], arguments::Dict)
-    S3.get_bucket_cors([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.get_bucket_cors
+    get_bucket_cors([::AWSConfig], arguments::Dict)
+    get_bucket_cors([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?cors", arguments::Dict)
@@ -1492,9 +1492,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_inventory_configuration([::AWSConfig], arguments::Dict)
-    S3.get_bucket_inventory_configuration([::AWSConfig]; Bucket=, id=)
+    using AWSSDK.S3.get_bucket_inventory_configuration
+    get_bucket_inventory_configuration([::AWSConfig], arguments::Dict)
+    get_bucket_inventory_configuration([::AWSConfig]; Bucket=, id=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?inventory", arguments::Dict)
@@ -1531,9 +1531,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_lifecycle([::AWSConfig], arguments::Dict)
-    S3.get_bucket_lifecycle([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.get_bucket_lifecycle
+    get_bucket_lifecycle([::AWSConfig], arguments::Dict)
+    get_bucket_lifecycle([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?lifecycle", arguments::Dict)
@@ -1593,9 +1593,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_lifecycle_configuration([::AWSConfig], arguments::Dict)
-    S3.get_bucket_lifecycle_configuration([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.get_bucket_lifecycle_configuration
+    get_bucket_lifecycle_configuration([::AWSConfig], arguments::Dict)
+    get_bucket_lifecycle_configuration([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?lifecycle", arguments::Dict)
@@ -1658,9 +1658,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_location([::AWSConfig], arguments::Dict)
-    S3.get_bucket_location([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.get_bucket_location
+    get_bucket_location([::AWSConfig], arguments::Dict)
+    get_bucket_location([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?location", arguments::Dict)
@@ -1711,9 +1711,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_logging([::AWSConfig], arguments::Dict)
-    S3.get_bucket_logging([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.get_bucket_logging
+    get_bucket_logging([::AWSConfig], arguments::Dict)
+    get_bucket_logging([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?logging", arguments::Dict)
@@ -1746,9 +1746,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_metrics_configuration([::AWSConfig], arguments::Dict)
-    S3.get_bucket_metrics_configuration([::AWSConfig]; Bucket=, id=)
+    using AWSSDK.S3.get_bucket_metrics_configuration
+    get_bucket_metrics_configuration([::AWSConfig], arguments::Dict)
+    get_bucket_metrics_configuration([::AWSConfig]; Bucket=, id=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?metrics", arguments::Dict)
@@ -1785,9 +1785,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_notification([::AWSConfig], arguments::Dict)
-    S3.get_bucket_notification([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.get_bucket_notification
+    get_bucket_notification([::AWSConfig], arguments::Dict)
+    get_bucket_notification([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?notification", arguments::Dict)
@@ -1886,9 +1886,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_notification_configuration([::AWSConfig], arguments::Dict)
-    S3.get_bucket_notification_configuration([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.get_bucket_notification_configuration
+    get_bucket_notification_configuration([::AWSConfig], arguments::Dict)
+    get_bucket_notification_configuration([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?notification", arguments::Dict)
@@ -1921,9 +1921,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_policy([::AWSConfig], arguments::Dict)
-    S3.get_bucket_policy([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.get_bucket_policy
+    get_bucket_policy([::AWSConfig], arguments::Dict)
+    get_bucket_policy([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?policy", arguments::Dict)
@@ -1974,9 +1974,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_replication([::AWSConfig], arguments::Dict)
-    S3.get_bucket_replication([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.get_bucket_replication
+    get_bucket_replication([::AWSConfig], arguments::Dict)
+    get_bucket_replication([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?replication", arguments::Dict)
@@ -2039,9 +2039,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_request_payment([::AWSConfig], arguments::Dict)
-    S3.get_bucket_request_payment([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.get_bucket_request_payment
+    get_bucket_request_payment([::AWSConfig], arguments::Dict)
+    get_bucket_request_payment([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?requestPayment", arguments::Dict)
@@ -2092,9 +2092,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_tagging([::AWSConfig], arguments::Dict)
-    S3.get_bucket_tagging([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.get_bucket_tagging
+    get_bucket_tagging([::AWSConfig], arguments::Dict)
+    get_bucket_tagging([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?tagging", arguments::Dict)
@@ -2154,9 +2154,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_versioning([::AWSConfig], arguments::Dict)
-    S3.get_bucket_versioning([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.get_bucket_versioning
+    get_bucket_versioning([::AWSConfig], arguments::Dict)
+    get_bucket_versioning([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?versioning", arguments::Dict)
@@ -2208,9 +2208,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_bucket_website([::AWSConfig], arguments::Dict)
-    S3.get_bucket_website([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.get_bucket_website
+    get_bucket_website([::AWSConfig], arguments::Dict)
+    get_bucket_website([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?website", arguments::Dict)
@@ -2266,9 +2266,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_object([::AWSConfig], arguments::Dict)
-    S3.get_object([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
+    using AWSSDK.S3.get_object
+    get_object([::AWSConfig], arguments::Dict)
+    get_object([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}/{Key+}", arguments::Dict)
@@ -2434,9 +2434,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_object_acl([::AWSConfig], arguments::Dict)
-    S3.get_object_acl([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
+    using AWSSDK.S3.get_object_acl
+    get_object_acl([::AWSConfig], arguments::Dict)
+    get_object_acl([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}/{Key+}?acl", arguments::Dict)
@@ -2541,9 +2541,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_object_tagging([::AWSConfig], arguments::Dict)
-    S3.get_object_tagging([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
+    using AWSSDK.S3.get_object_tagging
+    get_object_tagging([::AWSConfig], arguments::Dict)
+    get_object_tagging([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}/{Key+}?tagging", arguments::Dict)
@@ -2639,9 +2639,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.get_object_torrent([::AWSConfig], arguments::Dict)
-    S3.get_object_torrent([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
+    using AWSSDK.S3.get_object_torrent
+    get_object_torrent([::AWSConfig], arguments::Dict)
+    get_object_torrent([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}/{Key+}?torrent", arguments::Dict)
@@ -2701,9 +2701,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.head_bucket([::AWSConfig], arguments::Dict)
-    S3.head_bucket([::AWSConfig]; Bucket=)
+    using AWSSDK.S3.head_bucket
+    head_bucket([::AWSConfig], arguments::Dict)
+    head_bucket([::AWSConfig]; Bucket=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "HEAD", "/{Bucket}", arguments::Dict)
@@ -2747,9 +2747,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.head_object([::AWSConfig], arguments::Dict)
-    S3.head_object([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
+    using AWSSDK.S3.head_object
+    head_object([::AWSConfig], arguments::Dict)
+    head_object([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "HEAD", "/{Bucket}/{Key+}", arguments::Dict)
@@ -2861,9 +2861,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.list_bucket_analytics_configurations([::AWSConfig], arguments::Dict)
-    S3.list_bucket_analytics_configurations([::AWSConfig]; Bucket=, <keyword arguments>)
+    using AWSSDK.S3.list_bucket_analytics_configurations
+    list_bucket_analytics_configurations([::AWSConfig], arguments::Dict)
+    list_bucket_analytics_configurations([::AWSConfig]; Bucket=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?analytics", arguments::Dict)
@@ -2900,9 +2900,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.list_bucket_inventory_configurations([::AWSConfig], arguments::Dict)
-    S3.list_bucket_inventory_configurations([::AWSConfig]; Bucket=, <keyword arguments>)
+    using AWSSDK.S3.list_bucket_inventory_configurations
+    list_bucket_inventory_configurations([::AWSConfig], arguments::Dict)
+    list_bucket_inventory_configurations([::AWSConfig]; Bucket=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?inventory", arguments::Dict)
@@ -2939,9 +2939,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.list_bucket_metrics_configurations([::AWSConfig], arguments::Dict)
-    S3.list_bucket_metrics_configurations([::AWSConfig]; Bucket=, <keyword arguments>)
+    using AWSSDK.S3.list_bucket_metrics_configurations
+    list_bucket_metrics_configurations([::AWSConfig], arguments::Dict)
+    list_bucket_metrics_configurations([::AWSConfig]; Bucket=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?metrics", arguments::Dict)
@@ -2978,9 +2978,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.list_buckets([::AWSConfig])
-    S3.
+    using AWSSDK.S3.list_buckets
+    list_buckets([::AWSConfig])
+    
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/",)
@@ -3033,9 +3033,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.list_multipart_uploads([::AWSConfig], arguments::Dict)
-    S3.list_multipart_uploads([::AWSConfig]; Bucket=, <keyword arguments>)
+    using AWSSDK.S3.list_multipart_uploads
+    list_multipart_uploads([::AWSConfig], arguments::Dict)
+    list_multipart_uploads([::AWSConfig]; Bucket=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?uploads", arguments::Dict)
@@ -3196,9 +3196,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.list_object_versions([::AWSConfig], arguments::Dict)
-    S3.list_object_versions([::AWSConfig]; Bucket=, <keyword arguments>)
+    using AWSSDK.S3.list_object_versions
+    list_object_versions([::AWSConfig], arguments::Dict)
+    list_object_versions([::AWSConfig]; Bucket=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?versions", arguments::Dict)
@@ -3301,9 +3301,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.list_objects([::AWSConfig], arguments::Dict)
-    S3.list_objects([::AWSConfig]; Bucket=, <keyword arguments>)
+    using AWSSDK.S3.list_objects
+    list_objects([::AWSConfig], arguments::Dict)
+    list_objects([::AWSConfig]; Bucket=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}", arguments::Dict)
@@ -3407,9 +3407,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.list_objects_v2([::AWSConfig], arguments::Dict)
-    S3.list_objects_v2([::AWSConfig]; Bucket=, <keyword arguments>)
+    using AWSSDK.S3.list_objects_v2
+    list_objects_v2([::AWSConfig], arguments::Dict)
+    list_objects_v2([::AWSConfig]; Bucket=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}?list-type=2", arguments::Dict)
@@ -3518,9 +3518,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.list_parts([::AWSConfig], arguments::Dict)
-    S3.list_parts([::AWSConfig]; Bucket=, Key=, uploadId=, <keyword arguments>)
+    using AWSSDK.S3.list_parts
+    list_parts([::AWSConfig], arguments::Dict)
+    list_parts([::AWSConfig]; Bucket=, Key=, uploadId=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "GET", "/{Bucket}/{Key+}", arguments::Dict)
@@ -3615,9 +3615,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_bucket_accelerate_configuration([::AWSConfig], arguments::Dict)
-    S3.put_bucket_accelerate_configuration([::AWSConfig]; Bucket=, AccelerateConfiguration=)
+    using AWSSDK.S3.put_bucket_accelerate_configuration
+    put_bucket_accelerate_configuration([::AWSConfig], arguments::Dict)
+    put_bucket_accelerate_configuration([::AWSConfig]; Bucket=, AccelerateConfiguration=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}?accelerate", arguments::Dict)
@@ -3650,9 +3650,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_bucket_acl([::AWSConfig], arguments::Dict)
-    S3.put_bucket_acl([::AWSConfig]; Bucket=, <keyword arguments>)
+    using AWSSDK.S3.put_bucket_acl
+    put_bucket_acl([::AWSConfig], arguments::Dict)
+    put_bucket_acl([::AWSConfig]; Bucket=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}?acl", arguments::Dict)
@@ -3743,9 +3743,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_bucket_analytics_configuration([::AWSConfig], arguments::Dict)
-    S3.put_bucket_analytics_configuration([::AWSConfig]; Bucket=, id=, AnalyticsConfiguration=)
+    using AWSSDK.S3.put_bucket_analytics_configuration
+    put_bucket_analytics_configuration([::AWSConfig], arguments::Dict)
+    put_bucket_analytics_configuration([::AWSConfig]; Bucket=, id=, AnalyticsConfiguration=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}?analytics", arguments::Dict)
@@ -3809,9 +3809,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_bucket_cors([::AWSConfig], arguments::Dict)
-    S3.put_bucket_cors([::AWSConfig]; Bucket=, CORSConfiguration=, <keyword arguments>)
+    using AWSSDK.S3.put_bucket_cors
+    put_bucket_cors([::AWSConfig], arguments::Dict)
+    put_bucket_cors([::AWSConfig]; Bucket=, CORSConfiguration=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}?cors", arguments::Dict)
@@ -3901,9 +3901,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_bucket_inventory_configuration([::AWSConfig], arguments::Dict)
-    S3.put_bucket_inventory_configuration([::AWSConfig]; Bucket=, id=, InventoryConfiguration=)
+    using AWSSDK.S3.put_bucket_inventory_configuration
+    put_bucket_inventory_configuration([::AWSConfig], arguments::Dict)
+    put_bucket_inventory_configuration([::AWSConfig]; Bucket=, id=, InventoryConfiguration=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}?inventory", arguments::Dict)
@@ -3955,9 +3955,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_bucket_lifecycle([::AWSConfig], arguments::Dict)
-    S3.put_bucket_lifecycle([::AWSConfig]; Bucket=, <keyword arguments>)
+    using AWSSDK.S3.put_bucket_lifecycle
+    put_bucket_lifecycle([::AWSConfig], arguments::Dict)
+    put_bucket_lifecycle([::AWSConfig]; Bucket=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}?lifecycle", arguments::Dict)
@@ -4016,9 +4016,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_bucket_lifecycle_configuration([::AWSConfig], arguments::Dict)
-    S3.put_bucket_lifecycle_configuration([::AWSConfig]; Bucket=, <keyword arguments>)
+    using AWSSDK.S3.put_bucket_lifecycle_configuration
+    put_bucket_lifecycle_configuration([::AWSConfig], arguments::Dict)
+    put_bucket_lifecycle_configuration([::AWSConfig]; Bucket=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}?lifecycle", arguments::Dict)
@@ -4118,9 +4118,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_bucket_logging([::AWSConfig], arguments::Dict)
-    S3.put_bucket_logging([::AWSConfig]; Bucket=, BucketLoggingStatus=, <keyword arguments>)
+    using AWSSDK.S3.put_bucket_logging
+    put_bucket_logging([::AWSConfig], arguments::Dict)
+    put_bucket_logging([::AWSConfig]; Bucket=, BucketLoggingStatus=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}?logging", arguments::Dict)
@@ -4198,9 +4198,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_bucket_metrics_configuration([::AWSConfig], arguments::Dict)
-    S3.put_bucket_metrics_configuration([::AWSConfig]; Bucket=, id=, MetricsConfiguration=)
+    using AWSSDK.S3.put_bucket_metrics_configuration
+    put_bucket_metrics_configuration([::AWSConfig], arguments::Dict)
+    put_bucket_metrics_configuration([::AWSConfig]; Bucket=, id=, MetricsConfiguration=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}?metrics", arguments::Dict)
@@ -4255,9 +4255,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_bucket_notification([::AWSConfig], arguments::Dict)
-    S3.put_bucket_notification([::AWSConfig]; Bucket=, NotificationConfiguration=, <keyword arguments>)
+    using AWSSDK.S3.put_bucket_notification
+    put_bucket_notification([::AWSConfig], arguments::Dict)
+    put_bucket_notification([::AWSConfig]; Bucket=, NotificationConfiguration=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}?notification", arguments::Dict)
@@ -4316,9 +4316,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_bucket_notification_configuration([::AWSConfig], arguments::Dict)
-    S3.put_bucket_notification_configuration([::AWSConfig]; Bucket=, NotificationConfiguration=)
+    using AWSSDK.S3.put_bucket_notification_configuration
+    put_bucket_notification_configuration([::AWSConfig], arguments::Dict)
+    put_bucket_notification_configuration([::AWSConfig]; Bucket=, NotificationConfiguration=)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}?notification", arguments::Dict)
@@ -4402,9 +4402,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_bucket_policy([::AWSConfig], arguments::Dict)
-    S3.put_bucket_policy([::AWSConfig]; Bucket=, Policy=, <keyword arguments>)
+    using AWSSDK.S3.put_bucket_policy
+    put_bucket_policy([::AWSConfig], arguments::Dict)
+    put_bucket_policy([::AWSConfig]; Bucket=, Policy=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}?policy", arguments::Dict)
@@ -4453,9 +4453,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_bucket_replication([::AWSConfig], arguments::Dict)
-    S3.put_bucket_replication([::AWSConfig]; Bucket=, ReplicationConfiguration=, <keyword arguments>)
+    using AWSSDK.S3.put_bucket_replication
+    put_bucket_replication([::AWSConfig], arguments::Dict)
+    put_bucket_replication([::AWSConfig]; Bucket=, ReplicationConfiguration=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}?replication", arguments::Dict)
@@ -4529,9 +4529,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_bucket_request_payment([::AWSConfig], arguments::Dict)
-    S3.put_bucket_request_payment([::AWSConfig]; Bucket=, RequestPaymentConfiguration=, <keyword arguments>)
+    using AWSSDK.S3.put_bucket_request_payment
+    put_bucket_request_payment([::AWSConfig], arguments::Dict)
+    put_bucket_request_payment([::AWSConfig]; Bucket=, RequestPaymentConfiguration=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}?requestPayment", arguments::Dict)
@@ -4582,9 +4582,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_bucket_tagging([::AWSConfig], arguments::Dict)
-    S3.put_bucket_tagging([::AWSConfig]; Bucket=, Tagging=, <keyword arguments>)
+    using AWSSDK.S3.put_bucket_tagging
+    put_bucket_tagging([::AWSConfig], arguments::Dict)
+    put_bucket_tagging([::AWSConfig]; Bucket=, Tagging=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}?tagging", arguments::Dict)
@@ -4649,9 +4649,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_bucket_versioning([::AWSConfig], arguments::Dict)
-    S3.put_bucket_versioning([::AWSConfig]; Bucket=, VersioningConfiguration=, <keyword arguments>)
+    using AWSSDK.S3.put_bucket_versioning
+    put_bucket_versioning([::AWSConfig], arguments::Dict)
+    put_bucket_versioning([::AWSConfig]; Bucket=, VersioningConfiguration=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}?versioning", arguments::Dict)
@@ -4712,9 +4712,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_bucket_website([::AWSConfig], arguments::Dict)
-    S3.put_bucket_website([::AWSConfig]; Bucket=, WebsiteConfiguration=, <keyword arguments>)
+    using AWSSDK.S3.put_bucket_website
+    put_bucket_website([::AWSConfig], arguments::Dict)
+    put_bucket_website([::AWSConfig]; Bucket=, WebsiteConfiguration=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}?website", arguments::Dict)
@@ -4793,9 +4793,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_object([::AWSConfig], arguments::Dict)
-    S3.put_object([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
+    using AWSSDK.S3.put_object
+    put_object([::AWSConfig], arguments::Dict)
+    put_object([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}/{Key+}", arguments::Dict)
@@ -5087,9 +5087,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_object_acl([::AWSConfig], arguments::Dict)
-    S3.put_object_acl([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
+    using AWSSDK.S3.put_object_acl
+    put_object_acl([::AWSConfig], arguments::Dict)
+    put_object_acl([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}/{Key+}?acl", arguments::Dict)
@@ -5211,9 +5211,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.put_object_tagging([::AWSConfig], arguments::Dict)
-    S3.put_object_tagging([::AWSConfig]; Bucket=, Key=, Tagging=, <keyword arguments>)
+    using AWSSDK.S3.put_object_tagging
+    put_object_tagging([::AWSConfig], arguments::Dict)
+    put_object_tagging([::AWSConfig]; Bucket=, Key=, Tagging=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}/{Key+}?tagging", arguments::Dict)
@@ -5298,9 +5298,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.restore_object([::AWSConfig], arguments::Dict)
-    S3.restore_object([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
+    using AWSSDK.S3.restore_object
+    restore_object([::AWSConfig], arguments::Dict)
+    restore_object([::AWSConfig]; Bucket=, Key=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "POST", "/{Bucket}/{Key+}?restore", arguments::Dict)
@@ -5383,9 +5383,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.upload_part([::AWSConfig], arguments::Dict)
-    S3.upload_part([::AWSConfig]; Bucket=, Key=, partNumber=, uploadId=, <keyword arguments>)
+    using AWSSDK.S3.upload_part
+    upload_part([::AWSConfig], arguments::Dict)
+    upload_part([::AWSConfig]; Bucket=, Key=, partNumber=, uploadId=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}/{Key+}", arguments::Dict)
@@ -5482,9 +5482,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
-    using AWSSDK.S3
-    S3.upload_part_copy([::AWSConfig], arguments::Dict)
-    S3.upload_part_copy([::AWSConfig]; Bucket=, x-amz-copy-source=, Key=, partNumber=, uploadId=, <keyword arguments>)
+    using AWSSDK.S3.upload_part_copy
+    upload_part_copy([::AWSConfig], arguments::Dict)
+    upload_part_copy([::AWSConfig]; Bucket=, x-amz-copy-source=, Key=, partNumber=, uploadId=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}/{Key+}", arguments::Dict)

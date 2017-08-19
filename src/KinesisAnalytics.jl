@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.KinesisAnalytics
-    KinesisAnalytics.add_application_cloud_watch_logging_option([::AWSConfig], arguments::Dict)
-    KinesisAnalytics.add_application_cloud_watch_logging_option([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, CloudWatchLoggingOption=)
+    using AWSSDK.KinesisAnalytics.add_application_cloud_watch_logging_option
+    add_application_cloud_watch_logging_option([::AWSConfig], arguments::Dict)
+    add_application_cloud_watch_logging_option([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, CloudWatchLoggingOption=)
 
     using AWSCore.Services.kinesisanalytics
     kinesisanalytics([::AWSConfig], "AddApplicationCloudWatchLoggingOption", arguments::Dict)
@@ -65,9 +65,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.KinesisAnalytics
-    KinesisAnalytics.add_application_input([::AWSConfig], arguments::Dict)
-    KinesisAnalytics.add_application_input([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, Input=)
+    using AWSSDK.KinesisAnalytics.add_application_input
+    add_application_input([::AWSConfig], arguments::Dict)
+    add_application_input([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, Input=)
 
     using AWSCore.Services.kinesisanalytics
     kinesisanalytics([::AWSConfig], "AddApplicationInput", arguments::Dict)
@@ -149,9 +149,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.KinesisAnalytics
-    KinesisAnalytics.add_application_output([::AWSConfig], arguments::Dict)
-    KinesisAnalytics.add_application_output([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, Output=)
+    using AWSSDK.KinesisAnalytics.add_application_output
+    add_application_output([::AWSConfig], arguments::Dict)
+    add_application_output([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, Output=)
 
     using AWSCore.Services.kinesisanalytics
     kinesisanalytics([::AWSConfig], "AddApplicationOutput", arguments::Dict)
@@ -219,9 +219,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.KinesisAnalytics
-    KinesisAnalytics.add_application_reference_data_source([::AWSConfig], arguments::Dict)
-    KinesisAnalytics.add_application_reference_data_source([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, ReferenceDataSource=)
+    using AWSSDK.KinesisAnalytics.add_application_reference_data_source
+    add_application_reference_data_source([::AWSConfig], arguments::Dict)
+    add_application_reference_data_source([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, ReferenceDataSource=)
 
     using AWSCore.Services.kinesisanalytics
     kinesisanalytics([::AWSConfig], "AddApplicationReferenceDataSource", arguments::Dict)
@@ -299,9 +299,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.KinesisAnalytics
-    KinesisAnalytics.create_application([::AWSConfig], arguments::Dict)
-    KinesisAnalytics.create_application([::AWSConfig]; ApplicationName=, <keyword arguments>)
+    using AWSSDK.KinesisAnalytics.create_application
+    create_application([::AWSConfig], arguments::Dict)
+    create_application([::AWSConfig]; ApplicationName=, <keyword arguments>)
 
     using AWSCore.Services.kinesisanalytics
     kinesisanalytics([::AWSConfig], "CreateApplication", arguments::Dict)
@@ -433,9 +433,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.KinesisAnalytics
-    KinesisAnalytics.delete_application([::AWSConfig], arguments::Dict)
-    KinesisAnalytics.delete_application([::AWSConfig]; ApplicationName=, CreateTimestamp=)
+    using AWSSDK.KinesisAnalytics.delete_application
+    delete_application([::AWSConfig], arguments::Dict)
+    delete_application([::AWSConfig]; ApplicationName=, CreateTimestamp=)
 
     using AWSCore.Services.kinesisanalytics
     kinesisanalytics([::AWSConfig], "DeleteApplication", arguments::Dict)
@@ -478,9 +478,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.KinesisAnalytics
-    KinesisAnalytics.delete_application_cloud_watch_logging_option([::AWSConfig], arguments::Dict)
-    KinesisAnalytics.delete_application_cloud_watch_logging_option([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, CloudWatchLoggingOptionId=)
+    using AWSSDK.KinesisAnalytics.delete_application_cloud_watch_logging_option
+    delete_application_cloud_watch_logging_option([::AWSConfig], arguments::Dict)
+    delete_application_cloud_watch_logging_option([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, CloudWatchLoggingOptionId=)
 
     using AWSCore.Services.kinesisanalytics
     kinesisanalytics([::AWSConfig], "DeleteApplicationCloudWatchLoggingOption", arguments::Dict)
@@ -525,9 +525,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.KinesisAnalytics
-    KinesisAnalytics.delete_application_output([::AWSConfig], arguments::Dict)
-    KinesisAnalytics.delete_application_output([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, OutputId=)
+    using AWSSDK.KinesisAnalytics.delete_application_output
+    delete_application_output([::AWSConfig], arguments::Dict)
+    delete_application_output([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, OutputId=)
 
     using AWSCore.Services.kinesisanalytics
     kinesisanalytics([::AWSConfig], "DeleteApplicationOutput", arguments::Dict)
@@ -574,9 +574,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.KinesisAnalytics
-    KinesisAnalytics.delete_application_reference_data_source([::AWSConfig], arguments::Dict)
-    KinesisAnalytics.delete_application_reference_data_source([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, ReferenceId=)
+    using AWSSDK.KinesisAnalytics.delete_application_reference_data_source
+    delete_application_reference_data_source([::AWSConfig], arguments::Dict)
+    delete_application_reference_data_source([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, ReferenceId=)
 
     using AWSCore.Services.kinesisanalytics
     kinesisanalytics([::AWSConfig], "DeleteApplicationReferenceDataSource", arguments::Dict)
@@ -625,9 +625,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.KinesisAnalytics
-    KinesisAnalytics.describe_application([::AWSConfig], arguments::Dict)
-    KinesisAnalytics.describe_application([::AWSConfig]; ApplicationName=)
+    using AWSSDK.KinesisAnalytics.describe_application
+    describe_application([::AWSConfig], arguments::Dict)
+    describe_application([::AWSConfig]; ApplicationName=)
 
     using AWSCore.Services.kinesisanalytics
     kinesisanalytics([::AWSConfig], "DescribeApplication", arguments::Dict)
@@ -668,9 +668,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.KinesisAnalytics
-    KinesisAnalytics.discover_input_schema([::AWSConfig], arguments::Dict)
-    KinesisAnalytics.discover_input_schema([::AWSConfig]; ResourceARN=, RoleARN=, InputStartingPositionConfiguration=)
+    using AWSSDK.KinesisAnalytics.discover_input_schema
+    discover_input_schema([::AWSConfig], arguments::Dict)
+    discover_input_schema([::AWSConfig]; ResourceARN=, RoleARN=, InputStartingPositionConfiguration=)
 
     using AWSCore.Services.kinesisanalytics
     kinesisanalytics([::AWSConfig], "DiscoverInputSchema", arguments::Dict)
@@ -719,9 +719,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.KinesisAnalytics
-    KinesisAnalytics.list_applications([::AWSConfig], arguments::Dict)
-    KinesisAnalytics.list_applications([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.KinesisAnalytics.list_applications
+    list_applications([::AWSConfig], arguments::Dict)
+    list_applications([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.kinesisanalytics
     kinesisanalytics([::AWSConfig], "ListApplications", arguments::Dict)
@@ -762,9 +762,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.KinesisAnalytics
-    KinesisAnalytics.start_application([::AWSConfig], arguments::Dict)
-    KinesisAnalytics.start_application([::AWSConfig]; ApplicationName=, InputConfigurations=)
+    using AWSSDK.KinesisAnalytics.start_application
+    start_application([::AWSConfig], arguments::Dict)
+    start_application([::AWSConfig]; ApplicationName=, InputConfigurations=)
 
     using AWSCore.Services.kinesisanalytics
     kinesisanalytics([::AWSConfig], "StartApplication", arguments::Dict)
@@ -818,9 +818,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.KinesisAnalytics
-    KinesisAnalytics.stop_application([::AWSConfig], arguments::Dict)
-    KinesisAnalytics.stop_application([::AWSConfig]; ApplicationName=)
+    using AWSSDK.KinesisAnalytics.stop_application
+    stop_application([::AWSConfig], arguments::Dict)
+    stop_application([::AWSConfig]; ApplicationName=)
 
     using AWSCore.Services.kinesisanalytics
     kinesisanalytics([::AWSConfig], "StopApplication", arguments::Dict)
@@ -859,9 +859,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.KinesisAnalytics
-    KinesisAnalytics.update_application([::AWSConfig], arguments::Dict)
-    KinesisAnalytics.update_application([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, ApplicationUpdate=)
+    using AWSSDK.KinesisAnalytics.update_application
+    update_application([::AWSConfig], arguments::Dict)
+    update_application([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, ApplicationUpdate=)
 
     using AWSCore.Services.kinesisanalytics
     kinesisanalytics([::AWSConfig], "UpdateApplication", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.ACM
-    ACM.add_tags_to_certificate([::AWSConfig], arguments::Dict)
-    ACM.add_tags_to_certificate([::AWSConfig]; CertificateArn=, Tags=)
+    using AWSSDK.ACM.add_tags_to_certificate
+    add_tags_to_certificate([::AWSConfig], arguments::Dict)
+    add_tags_to_certificate([::AWSConfig]; CertificateArn=, Tags=)
 
     using AWSCore.Services.acm
     acm([::AWSConfig], "AddTagsToCertificate", arguments::Dict)
@@ -65,9 +65,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/acm-20
 
 
 """
-    using AWSSDK.ACM
-    ACM.delete_certificate([::AWSConfig], arguments::Dict)
-    ACM.delete_certificate([::AWSConfig]; CertificateArn=)
+    using AWSSDK.ACM.delete_certificate
+    delete_certificate([::AWSConfig], arguments::Dict)
+    delete_certificate([::AWSConfig]; CertificateArn=)
 
     using AWSCore.Services.acm
     acm([::AWSConfig], "DeleteCertificate", arguments::Dict)
@@ -107,9 +107,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/acm-20
 
 
 """
-    using AWSSDK.ACM
-    ACM.describe_certificate([::AWSConfig], arguments::Dict)
-    ACM.describe_certificate([::AWSConfig]; CertificateArn=)
+    using AWSSDK.ACM.describe_certificate
+    describe_certificate([::AWSConfig], arguments::Dict)
+    describe_certificate([::AWSConfig]; CertificateArn=)
 
     using AWSCore.Services.acm
     acm([::AWSConfig], "DescribeCertificate", arguments::Dict)
@@ -150,9 +150,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/acm-20
 
 
 """
-    using AWSSDK.ACM
-    ACM.get_certificate([::AWSConfig], arguments::Dict)
-    ACM.get_certificate([::AWSConfig]; CertificateArn=)
+    using AWSSDK.ACM.get_certificate
+    get_certificate([::AWSConfig], arguments::Dict)
+    get_certificate([::AWSConfig]; CertificateArn=)
 
     using AWSCore.Services.acm
     acm([::AWSConfig], "GetCertificate", arguments::Dict)
@@ -196,9 +196,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/acm-20
 
 
 """
-    using AWSSDK.ACM
-    ACM.import_certificate([::AWSConfig], arguments::Dict)
-    ACM.import_certificate([::AWSConfig]; Certificate=, PrivateKey=, <keyword arguments>)
+    using AWSSDK.ACM.import_certificate
+    import_certificate([::AWSConfig], arguments::Dict)
+    import_certificate([::AWSConfig]; Certificate=, PrivateKey=, <keyword arguments>)
 
     using AWSCore.Services.acm
     acm([::AWSConfig], "ImportCertificate", arguments::Dict)
@@ -270,9 +270,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/acm-20
 
 
 """
-    using AWSSDK.ACM
-    ACM.list_certificates([::AWSConfig], arguments::Dict)
-    ACM.list_certificates([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ACM.list_certificates
+    list_certificates([::AWSConfig], arguments::Dict)
+    list_certificates([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.acm
     acm([::AWSConfig], "ListCertificates", arguments::Dict)
@@ -313,9 +313,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/acm-20
 
 
 """
-    using AWSSDK.ACM
-    ACM.list_tags_for_certificate([::AWSConfig], arguments::Dict)
-    ACM.list_tags_for_certificate([::AWSConfig]; CertificateArn=)
+    using AWSSDK.ACM.list_tags_for_certificate
+    list_tags_for_certificate([::AWSConfig], arguments::Dict)
+    list_tags_for_certificate([::AWSConfig]; CertificateArn=)
 
     using AWSCore.Services.acm
     acm([::AWSConfig], "ListTagsForCertificate", arguments::Dict)
@@ -356,9 +356,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/acm-20
 
 
 """
-    using AWSSDK.ACM
-    ACM.remove_tags_from_certificate([::AWSConfig], arguments::Dict)
-    ACM.remove_tags_from_certificate([::AWSConfig]; CertificateArn=, Tags=)
+    using AWSSDK.ACM.remove_tags_from_certificate
+    remove_tags_from_certificate([::AWSConfig], arguments::Dict)
+    remove_tags_from_certificate([::AWSConfig]; CertificateArn=, Tags=)
 
     using AWSCore.Services.acm
     acm([::AWSConfig], "RemoveTagsFromCertificate", arguments::Dict)
@@ -406,9 +406,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/acm-20
 
 
 """
-    using AWSSDK.ACM
-    ACM.request_certificate([::AWSConfig], arguments::Dict)
-    ACM.request_certificate([::AWSConfig]; DomainName=, <keyword arguments>)
+    using AWSSDK.ACM.request_certificate
+    request_certificate([::AWSConfig], arguments::Dict)
+    request_certificate([::AWSConfig]; DomainName=, <keyword arguments>)
 
     using AWSCore.Services.acm
     acm([::AWSConfig], "RequestCertificate", arguments::Dict)
@@ -470,9 +470,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/acm-20
 
 
 """
-    using AWSSDK.ACM
-    ACM.resend_validation_email([::AWSConfig], arguments::Dict)
-    ACM.resend_validation_email([::AWSConfig]; CertificateArn=, Domain=, ValidationDomain=)
+    using AWSSDK.ACM.resend_validation_email
+    resend_validation_email([::AWSConfig], arguments::Dict)
+    resend_validation_email([::AWSConfig]; CertificateArn=, Domain=, ValidationDomain=)
 
     using AWSCore.Services.acm
     acm([::AWSConfig], "ResendValidationEmail", arguments::Dict)

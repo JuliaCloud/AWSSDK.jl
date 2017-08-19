@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.cancel_update_stack([::AWSConfig], arguments::Dict)
-    CloudFormation.cancel_update_stack([::AWSConfig]; StackName=, <keyword arguments>)
+    using AWSSDK.CloudFormation.cancel_update_stack
+    cancel_update_stack([::AWSConfig], arguments::Dict)
+    cancel_update_stack([::AWSConfig]; StackName=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "CancelUpdateStack", arguments::Dict)
@@ -55,9 +55,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.continue_update_rollback([::AWSConfig], arguments::Dict)
-    CloudFormation.continue_update_rollback([::AWSConfig]; StackName=, <keyword arguments>)
+    using AWSSDK.CloudFormation.continue_update_rollback
+    continue_update_rollback([::AWSConfig], arguments::Dict)
+    continue_update_rollback([::AWSConfig]; StackName=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "ContinueUpdateRollback", arguments::Dict)
@@ -123,9 +123,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.create_change_set([::AWSConfig], arguments::Dict)
-    CloudFormation.create_change_set([::AWSConfig]; StackName=, ChangeSetName=, <keyword arguments>)
+    using AWSSDK.CloudFormation.create_change_set
+    create_change_set([::AWSConfig], arguments::Dict)
+    create_change_set([::AWSConfig]; StackName=, ChangeSetName=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "CreateChangeSet", arguments::Dict)
@@ -249,9 +249,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.create_stack([::AWSConfig], arguments::Dict)
-    CloudFormation.create_stack([::AWSConfig]; StackName=, <keyword arguments>)
+    using AWSSDK.CloudFormation.create_stack
+    create_stack([::AWSConfig], arguments::Dict)
+    create_stack([::AWSConfig]; StackName=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "CreateStack", arguments::Dict)
@@ -380,9 +380,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.create_stack_instances([::AWSConfig], arguments::Dict)
-    CloudFormation.create_stack_instances([::AWSConfig]; StackSetName=, Accounts=, Regions=, <keyword arguments>)
+    using AWSSDK.CloudFormation.create_stack_instances
+    create_stack_instances([::AWSConfig], arguments::Dict)
+    create_stack_instances([::AWSConfig]; StackSetName=, Accounts=, Regions=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "CreateStackInstances", arguments::Dict)
@@ -449,9 +449,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.create_stack_set([::AWSConfig], arguments::Dict)
-    CloudFormation.create_stack_set([::AWSConfig]; StackSetName=, <keyword arguments>)
+    using AWSSDK.CloudFormation.create_stack_set
+    create_stack_set([::AWSConfig], arguments::Dict)
+    create_stack_set([::AWSConfig]; StackSetName=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "CreateStackSet", arguments::Dict)
@@ -560,9 +560,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.delete_change_set([::AWSConfig], arguments::Dict)
-    CloudFormation.delete_change_set([::AWSConfig]; ChangeSetName=, <keyword arguments>)
+    using AWSSDK.CloudFormation.delete_change_set
+    delete_change_set([::AWSConfig], arguments::Dict)
+    delete_change_set([::AWSConfig]; ChangeSetName=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "DeleteChangeSet", arguments::Dict)
@@ -605,9 +605,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.delete_stack([::AWSConfig], arguments::Dict)
-    CloudFormation.delete_stack([::AWSConfig]; StackName=, <keyword arguments>)
+    using AWSSDK.CloudFormation.delete_stack
+    delete_stack([::AWSConfig], arguments::Dict)
+    delete_stack([::AWSConfig]; StackName=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "DeleteStack", arguments::Dict)
@@ -660,9 +660,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.delete_stack_instances([::AWSConfig], arguments::Dict)
-    CloudFormation.delete_stack_instances([::AWSConfig]; StackSetName=, Accounts=, Regions=, RetainStacks=, <keyword arguments>)
+    using AWSSDK.CloudFormation.delete_stack_instances
+    delete_stack_instances([::AWSConfig], arguments::Dict)
+    delete_stack_instances([::AWSConfig]; StackSetName=, Accounts=, Regions=, RetainStacks=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "DeleteStackInstances", arguments::Dict)
@@ -733,9 +733,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.delete_stack_set([::AWSConfig], arguments::Dict)
-    CloudFormation.delete_stack_set([::AWSConfig]; StackSetName=)
+    using AWSSDK.CloudFormation.delete_stack_set
+    delete_stack_set([::AWSConfig], arguments::Dict)
+    delete_stack_set([::AWSConfig]; StackSetName=)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "DeleteStackSet", arguments::Dict)
@@ -772,9 +772,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.describe_account_limits([::AWSConfig], arguments::Dict)
-    CloudFormation.describe_account_limits([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudFormation.describe_account_limits
+    describe_account_limits([::AWSConfig], arguments::Dict)
+    describe_account_limits([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "DescribeAccountLimits", arguments::Dict)
@@ -807,9 +807,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.describe_change_set([::AWSConfig], arguments::Dict)
-    CloudFormation.describe_change_set([::AWSConfig]; ChangeSetName=, <keyword arguments>)
+    using AWSSDK.CloudFormation.describe_change_set
+    describe_change_set([::AWSConfig], arguments::Dict)
+    describe_change_set([::AWSConfig]; ChangeSetName=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "DescribeChangeSet", arguments::Dict)
@@ -854,9 +854,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.describe_stack_events([::AWSConfig], arguments::Dict)
-    CloudFormation.describe_stack_events([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudFormation.describe_stack_events
+    describe_stack_events([::AWSConfig], arguments::Dict)
+    describe_stack_events([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "DescribeStackEvents", arguments::Dict)
@@ -902,9 +902,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.describe_stack_instance([::AWSConfig], arguments::Dict)
-    CloudFormation.describe_stack_instance([::AWSConfig]; StackSetName=, StackInstanceAccount=, StackInstanceRegion=)
+    using AWSSDK.CloudFormation.describe_stack_instance
+    describe_stack_instance([::AWSConfig], arguments::Dict)
+    describe_stack_instance([::AWSConfig]; StackSetName=, StackInstanceAccount=, StackInstanceRegion=)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "DescribeStackInstance", arguments::Dict)
@@ -951,9 +951,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.describe_stack_resource([::AWSConfig], arguments::Dict)
-    CloudFormation.describe_stack_resource([::AWSConfig]; StackName=, LogicalResourceId=)
+    using AWSSDK.CloudFormation.describe_stack_resource
+    describe_stack_resource([::AWSConfig], arguments::Dict)
+    describe_stack_resource([::AWSConfig]; StackName=, LogicalResourceId=)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "DescribeStackResource", arguments::Dict)
@@ -1000,9 +1000,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.describe_stack_resources([::AWSConfig], arguments::Dict)
-    CloudFormation.describe_stack_resources([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudFormation.describe_stack_resources
+    describe_stack_resources([::AWSConfig], arguments::Dict)
+    describe_stack_resources([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "DescribeStackResources", arguments::Dict)
@@ -1069,9 +1069,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.describe_stack_set([::AWSConfig], arguments::Dict)
-    CloudFormation.describe_stack_set([::AWSConfig]; StackSetName=)
+    using AWSSDK.CloudFormation.describe_stack_set
+    describe_stack_set([::AWSConfig], arguments::Dict)
+    describe_stack_set([::AWSConfig]; StackSetName=)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "DescribeStackSet", arguments::Dict)
@@ -1108,9 +1108,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.describe_stack_set_operation([::AWSConfig], arguments::Dict)
-    CloudFormation.describe_stack_set_operation([::AWSConfig]; StackSetName=, OperationId=)
+    using AWSSDK.CloudFormation.describe_stack_set_operation
+    describe_stack_set_operation([::AWSConfig], arguments::Dict)
+    describe_stack_set_operation([::AWSConfig]; StackSetName=, OperationId=)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "DescribeStackSetOperation", arguments::Dict)
@@ -1151,9 +1151,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.describe_stacks([::AWSConfig], arguments::Dict)
-    CloudFormation.describe_stacks([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudFormation.describe_stacks
+    describe_stacks([::AWSConfig], arguments::Dict)
+    describe_stacks([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "DescribeStacks", arguments::Dict)
@@ -1199,9 +1199,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.estimate_template_cost([::AWSConfig], arguments::Dict)
-    CloudFormation.estimate_template_cost([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudFormation.estimate_template_cost
+    estimate_template_cost([::AWSConfig], arguments::Dict)
+    estimate_template_cost([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "EstimateTemplateCost", arguments::Dict)
@@ -1252,9 +1252,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.execute_change_set([::AWSConfig], arguments::Dict)
-    CloudFormation.execute_change_set([::AWSConfig]; ChangeSetName=, <keyword arguments>)
+    using AWSSDK.CloudFormation.execute_change_set
+    execute_change_set([::AWSConfig], arguments::Dict)
+    execute_change_set([::AWSConfig]; ChangeSetName=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "ExecuteChangeSet", arguments::Dict)
@@ -1303,9 +1303,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.get_stack_policy([::AWSConfig], arguments::Dict)
-    CloudFormation.get_stack_policy([::AWSConfig]; StackName=)
+    using AWSSDK.CloudFormation.get_stack_policy
+    get_stack_policy([::AWSConfig], arguments::Dict)
+    get_stack_policy([::AWSConfig]; StackName=)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "GetStackPolicy", arguments::Dict)
@@ -1338,9 +1338,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.get_template([::AWSConfig], arguments::Dict)
-    CloudFormation.get_template([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudFormation.get_template
+    get_template([::AWSConfig], arguments::Dict)
+    get_template([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "GetTemplate", arguments::Dict)
@@ -1398,9 +1398,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.get_template_summary([::AWSConfig], arguments::Dict)
-    CloudFormation.get_template_summary([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudFormation.get_template_summary
+    get_template_summary([::AWSConfig], arguments::Dict)
+    get_template_summary([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "GetTemplateSummary", arguments::Dict)
@@ -1459,9 +1459,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.list_change_sets([::AWSConfig], arguments::Dict)
-    CloudFormation.list_change_sets([::AWSConfig]; StackName=, <keyword arguments>)
+    using AWSSDK.CloudFormation.list_change_sets
+    list_change_sets([::AWSConfig], arguments::Dict)
+    list_change_sets([::AWSConfig]; StackName=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "ListChangeSets", arguments::Dict)
@@ -1498,9 +1498,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.list_exports([::AWSConfig], arguments::Dict)
-    CloudFormation.list_exports([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudFormation.list_exports
+    list_exports([::AWSConfig], arguments::Dict)
+    list_exports([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "ListExports", arguments::Dict)
@@ -1535,9 +1535,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.list_imports([::AWSConfig], arguments::Dict)
-    CloudFormation.list_imports([::AWSConfig]; ExportName=, <keyword arguments>)
+    using AWSSDK.CloudFormation.list_imports
+    list_imports([::AWSConfig], arguments::Dict)
+    list_imports([::AWSConfig]; ExportName=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "ListImports", arguments::Dict)
@@ -1576,9 +1576,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.list_stack_instances([::AWSConfig], arguments::Dict)
-    CloudFormation.list_stack_instances([::AWSConfig]; StackSetName=, <keyword arguments>)
+    using AWSSDK.CloudFormation.list_stack_instances
+    list_stack_instances([::AWSConfig], arguments::Dict)
+    list_stack_instances([::AWSConfig]; StackSetName=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "ListStackInstances", arguments::Dict)
@@ -1631,9 +1631,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.list_stack_resources([::AWSConfig], arguments::Dict)
-    CloudFormation.list_stack_resources([::AWSConfig]; StackName=, <keyword arguments>)
+    using AWSSDK.CloudFormation.list_stack_resources
+    list_stack_resources([::AWSConfig], arguments::Dict)
+    list_stack_resources([::AWSConfig]; StackName=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "ListStackResources", arguments::Dict)
@@ -1678,9 +1678,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.list_stack_set_operation_results([::AWSConfig], arguments::Dict)
-    CloudFormation.list_stack_set_operation_results([::AWSConfig]; StackSetName=, OperationId=, <keyword arguments>)
+    using AWSSDK.CloudFormation.list_stack_set_operation_results
+    list_stack_set_operation_results([::AWSConfig], arguments::Dict)
+    list_stack_set_operation_results([::AWSConfig]; StackSetName=, OperationId=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "ListStackSetOperationResults", arguments::Dict)
@@ -1729,9 +1729,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.list_stack_set_operations([::AWSConfig], arguments::Dict)
-    CloudFormation.list_stack_set_operations([::AWSConfig]; StackSetName=, <keyword arguments>)
+    using AWSSDK.CloudFormation.list_stack_set_operations
+    list_stack_set_operations([::AWSConfig], arguments::Dict)
+    list_stack_set_operations([::AWSConfig]; StackSetName=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "ListStackSetOperations", arguments::Dict)
@@ -1776,9 +1776,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.list_stack_sets([::AWSConfig], arguments::Dict)
-    CloudFormation.list_stack_sets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudFormation.list_stack_sets
+    list_stack_sets([::AWSConfig], arguments::Dict)
+    list_stack_sets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "ListStackSets", arguments::Dict)
@@ -1819,9 +1819,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.list_stacks([::AWSConfig], arguments::Dict)
-    CloudFormation.list_stacks([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudFormation.list_stacks
+    list_stacks([::AWSConfig], arguments::Dict)
+    list_stacks([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "ListStacks", arguments::Dict)
@@ -1858,9 +1858,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.set_stack_policy([::AWSConfig], arguments::Dict)
-    CloudFormation.set_stack_policy([::AWSConfig]; StackName=, <keyword arguments>)
+    using AWSSDK.CloudFormation.set_stack_policy
+    set_stack_policy([::AWSConfig], arguments::Dict)
+    set_stack_policy([::AWSConfig]; StackName=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "SetStackPolicy", arguments::Dict)
@@ -1897,9 +1897,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.signal_resource([::AWSConfig], arguments::Dict)
-    CloudFormation.signal_resource([::AWSConfig]; StackName=, LogicalResourceId=, UniqueId=, Status=)
+    using AWSSDK.CloudFormation.signal_resource
+    signal_resource([::AWSConfig], arguments::Dict)
+    signal_resource([::AWSConfig]; StackName=, LogicalResourceId=, UniqueId=, Status=)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "SignalResource", arguments::Dict)
@@ -1940,9 +1940,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.stop_stack_set_operation([::AWSConfig], arguments::Dict)
-    CloudFormation.stop_stack_set_operation([::AWSConfig]; StackSetName=, OperationId=)
+    using AWSSDK.CloudFormation.stop_stack_set_operation
+    stop_stack_set_operation([::AWSConfig], arguments::Dict)
+    stop_stack_set_operation([::AWSConfig]; StackSetName=, OperationId=)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "StopStackSetOperation", arguments::Dict)
@@ -1983,9 +1983,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.update_stack([::AWSConfig], arguments::Dict)
-    CloudFormation.update_stack([::AWSConfig]; StackName=, <keyword arguments>)
+    using AWSSDK.CloudFormation.update_stack
+    update_stack([::AWSConfig], arguments::Dict)
+    update_stack([::AWSConfig]; StackName=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "UpdateStack", arguments::Dict)
@@ -2123,9 +2123,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.update_stack_set([::AWSConfig], arguments::Dict)
-    CloudFormation.update_stack_set([::AWSConfig]; StackSetName=, <keyword arguments>)
+    using AWSSDK.CloudFormation.update_stack_set
+    update_stack_set([::AWSConfig], arguments::Dict)
+    update_stack_set([::AWSConfig]; StackSetName=, <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "UpdateStackSet", arguments::Dict)
@@ -2263,9 +2263,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFormation
-    CloudFormation.validate_template([::AWSConfig], arguments::Dict)
-    CloudFormation.validate_template([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudFormation.validate_template
+    validate_template([::AWSConfig], arguments::Dict)
+    validate_template([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudformation
     cloudformation([::AWSConfig], "ValidateTemplate", arguments::Dict)

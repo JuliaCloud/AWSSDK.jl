@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Firehose
-    Firehose.create_delivery_stream([::AWSConfig], arguments::Dict)
-    Firehose.create_delivery_stream([::AWSConfig]; DeliveryStreamName=, <keyword arguments>)
+    using AWSSDK.Firehose.create_delivery_stream
+    create_delivery_stream([::AWSConfig], arguments::Dict)
+    create_delivery_stream([::AWSConfig]; DeliveryStreamName=, <keyword arguments>)
 
     using AWSCore.Services.firehose
     firehose([::AWSConfig], "CreateDeliveryStream", arguments::Dict)
@@ -271,9 +271,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/fireho
 
 
 """
-    using AWSSDK.Firehose
-    Firehose.delete_delivery_stream([::AWSConfig], arguments::Dict)
-    Firehose.delete_delivery_stream([::AWSConfig]; DeliveryStreamName=)
+    using AWSSDK.Firehose.delete_delivery_stream
+    delete_delivery_stream([::AWSConfig], arguments::Dict)
+    delete_delivery_stream([::AWSConfig]; DeliveryStreamName=)
 
     using AWSCore.Services.firehose
     firehose([::AWSConfig], "DeleteDeliveryStream", arguments::Dict)
@@ -316,9 +316,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/fireho
 
 
 """
-    using AWSSDK.Firehose
-    Firehose.describe_delivery_stream([::AWSConfig], arguments::Dict)
-    Firehose.describe_delivery_stream([::AWSConfig]; DeliveryStreamName=, <keyword arguments>)
+    using AWSSDK.Firehose.describe_delivery_stream
+    describe_delivery_stream([::AWSConfig], arguments::Dict)
+    describe_delivery_stream([::AWSConfig]; DeliveryStreamName=, <keyword arguments>)
 
     using AWSCore.Services.firehose
     firehose([::AWSConfig], "DescribeDeliveryStream", arguments::Dict)
@@ -363,9 +363,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/fireho
 
 
 """
-    using AWSSDK.Firehose
-    Firehose.list_delivery_streams([::AWSConfig], arguments::Dict)
-    Firehose.list_delivery_streams([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Firehose.list_delivery_streams
+    list_delivery_streams([::AWSConfig], arguments::Dict)
+    list_delivery_streams([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.firehose
     firehose([::AWSConfig], "ListDeliveryStreams", arguments::Dict)
@@ -404,9 +404,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/fireho
 
 
 """
-    using AWSSDK.Firehose
-    Firehose.put_record([::AWSConfig], arguments::Dict)
-    Firehose.put_record([::AWSConfig]; DeliveryStreamName=, Record=)
+    using AWSSDK.Firehose.put_record
+    put_record([::AWSConfig], arguments::Dict)
+    put_record([::AWSConfig]; DeliveryStreamName=, Record=)
 
     using AWSCore.Services.firehose
     firehose([::AWSConfig], "PutRecord", arguments::Dict)
@@ -459,9 +459,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/fireho
 
 
 """
-    using AWSSDK.Firehose
-    Firehose.put_record_batch([::AWSConfig], arguments::Dict)
-    Firehose.put_record_batch([::AWSConfig]; DeliveryStreamName=, Records=)
+    using AWSSDK.Firehose.put_record_batch
+    put_record_batch([::AWSConfig], arguments::Dict)
+    put_record_batch([::AWSConfig]; DeliveryStreamName=, Records=)
 
     using AWSCore.Services.firehose
     firehose([::AWSConfig], "PutRecordBatch", arguments::Dict)
@@ -520,9 +520,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/fireho
 
 
 """
-    using AWSSDK.Firehose
-    Firehose.update_destination([::AWSConfig], arguments::Dict)
-    Firehose.update_destination([::AWSConfig]; DeliveryStreamName=, CurrentDeliveryStreamVersionId=, DestinationId=, <keyword arguments>)
+    using AWSSDK.Firehose.update_destination
+    update_destination([::AWSConfig], arguments::Dict)
+    update_destination([::AWSConfig]; DeliveryStreamName=, CurrentDeliveryStreamVersionId=, DestinationId=, <keyword arguments>)
 
     using AWSCore.Services.firehose
     firehose([::AWSConfig], "UpdateDestination", arguments::Dict)

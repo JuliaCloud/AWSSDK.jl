@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.delete_config_rule([::AWSConfig], arguments::Dict)
-    ConfigService.delete_config_rule([::AWSConfig]; ConfigRuleName=)
+    using AWSSDK.ConfigService.delete_config_rule
+    delete_config_rule([::AWSConfig], arguments::Dict)
+    delete_config_rule([::AWSConfig]; ConfigRuleName=)
 
     using AWSCore.Services.config
     config([::AWSConfig], "DeleteConfigRule", arguments::Dict)
@@ -52,9 +52,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.delete_configuration_recorder([::AWSConfig], arguments::Dict)
-    ConfigService.delete_configuration_recorder([::AWSConfig]; ConfigurationRecorderName=)
+    using AWSSDK.ConfigService.delete_configuration_recorder
+    delete_configuration_recorder([::AWSConfig], arguments::Dict)
+    delete_configuration_recorder([::AWSConfig]; ConfigurationRecorderName=)
 
     using AWSCore.Services.config
     config([::AWSConfig], "DeleteConfigurationRecorder", arguments::Dict)
@@ -91,9 +91,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.delete_delivery_channel([::AWSConfig], arguments::Dict)
-    ConfigService.delete_delivery_channel([::AWSConfig]; DeliveryChannelName=)
+    using AWSSDK.ConfigService.delete_delivery_channel
+    delete_delivery_channel([::AWSConfig], arguments::Dict)
+    delete_delivery_channel([::AWSConfig]; DeliveryChannelName=)
 
     using AWSCore.Services.config
     config([::AWSConfig], "DeleteDeliveryChannel", arguments::Dict)
@@ -128,9 +128,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.delete_evaluation_results([::AWSConfig], arguments::Dict)
-    ConfigService.delete_evaluation_results([::AWSConfig]; ConfigRuleName=)
+    using AWSSDK.ConfigService.delete_evaluation_results
+    delete_evaluation_results([::AWSConfig], arguments::Dict)
+    delete_evaluation_results([::AWSConfig]; ConfigRuleName=)
 
     using AWSCore.Services.config
     config([::AWSConfig], "DeleteEvaluationResults", arguments::Dict)
@@ -167,9 +167,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.deliver_config_snapshot([::AWSConfig], arguments::Dict)
-    ConfigService.deliver_config_snapshot([::AWSConfig]; deliveryChannelName=)
+    using AWSSDK.ConfigService.deliver_config_snapshot
+    deliver_config_snapshot([::AWSConfig], arguments::Dict)
+    deliver_config_snapshot([::AWSConfig]; deliveryChannelName=)
 
     using AWSCore.Services.config
     config([::AWSConfig], "DeliverConfigSnapshot", arguments::Dict)
@@ -212,9 +212,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.describe_compliance_by_config_rule([::AWSConfig], arguments::Dict)
-    ConfigService.describe_compliance_by_config_rule([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ConfigService.describe_compliance_by_config_rule
+    describe_compliance_by_config_rule([::AWSConfig], arguments::Dict)
+    describe_compliance_by_config_rule([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.config
     config([::AWSConfig], "DescribeComplianceByConfigRule", arguments::Dict)
@@ -271,9 +271,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.describe_compliance_by_resource([::AWSConfig], arguments::Dict)
-    ConfigService.describe_compliance_by_resource([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ConfigService.describe_compliance_by_resource
+    describe_compliance_by_resource([::AWSConfig], arguments::Dict)
+    describe_compliance_by_resource([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.config
     config([::AWSConfig], "DescribeComplianceByResource", arguments::Dict)
@@ -338,9 +338,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.describe_config_rule_evaluation_status([::AWSConfig], arguments::Dict)
-    ConfigService.describe_config_rule_evaluation_status([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ConfigService.describe_config_rule_evaluation_status
+    describe_config_rule_evaluation_status([::AWSConfig], arguments::Dict)
+    describe_config_rule_evaluation_status([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.config
     config([::AWSConfig], "DescribeConfigRuleEvaluationStatus", arguments::Dict)
@@ -389,9 +389,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.describe_config_rules([::AWSConfig], arguments::Dict)
-    ConfigService.describe_config_rules([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ConfigService.describe_config_rules
+    describe_config_rules([::AWSConfig], arguments::Dict)
+    describe_config_rules([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.config
     config([::AWSConfig], "DescribeConfigRules", arguments::Dict)
@@ -432,9 +432,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.describe_configuration_recorder_status([::AWSConfig], arguments::Dict)
-    ConfigService.describe_configuration_recorder_status([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ConfigService.describe_configuration_recorder_status
+    describe_configuration_recorder_status([::AWSConfig], arguments::Dict)
+    describe_configuration_recorder_status([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.config
     config([::AWSConfig], "DescribeConfigurationRecorderStatus", arguments::Dict)
@@ -474,9 +474,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.describe_configuration_recorders([::AWSConfig], arguments::Dict)
-    ConfigService.describe_configuration_recorders([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ConfigService.describe_configuration_recorders
+    describe_configuration_recorders([::AWSConfig], arguments::Dict)
+    describe_configuration_recorders([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.config
     config([::AWSConfig], "DescribeConfigurationRecorders", arguments::Dict)
@@ -516,9 +516,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.describe_delivery_channel_status([::AWSConfig], arguments::Dict)
-    ConfigService.describe_delivery_channel_status([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ConfigService.describe_delivery_channel_status
+    describe_delivery_channel_status([::AWSConfig], arguments::Dict)
+    describe_delivery_channel_status([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.config
     config([::AWSConfig], "DescribeDeliveryChannelStatus", arguments::Dict)
@@ -558,9 +558,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.describe_delivery_channels([::AWSConfig], arguments::Dict)
-    ConfigService.describe_delivery_channels([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ConfigService.describe_delivery_channels
+    describe_delivery_channels([::AWSConfig], arguments::Dict)
+    describe_delivery_channels([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.config
     config([::AWSConfig], "DescribeDeliveryChannels", arguments::Dict)
@@ -600,9 +600,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.get_compliance_details_by_config_rule([::AWSConfig], arguments::Dict)
-    ConfigService.get_compliance_details_by_config_rule([::AWSConfig]; ConfigRuleName=, <keyword arguments>)
+    using AWSSDK.ConfigService.get_compliance_details_by_config_rule
+    get_compliance_details_by_config_rule([::AWSConfig], arguments::Dict)
+    get_compliance_details_by_config_rule([::AWSConfig]; ConfigRuleName=, <keyword arguments>)
 
     using AWSCore.Services.config
     config([::AWSConfig], "GetComplianceDetailsByConfigRule", arguments::Dict)
@@ -653,9 +653,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.get_compliance_details_by_resource([::AWSConfig], arguments::Dict)
-    ConfigService.get_compliance_details_by_resource([::AWSConfig]; ResourceType=, ResourceId=, <keyword arguments>)
+    using AWSSDK.ConfigService.get_compliance_details_by_resource
+    get_compliance_details_by_resource([::AWSConfig], arguments::Dict)
+    get_compliance_details_by_resource([::AWSConfig]; ResourceType=, ResourceId=, <keyword arguments>)
 
     using AWSCore.Services.config
     config([::AWSConfig], "GetComplianceDetailsByResource", arguments::Dict)
@@ -706,9 +706,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.get_compliance_summary_by_config_rule([::AWSConfig])
-    ConfigService.
+    using AWSSDK.ConfigService.get_compliance_summary_by_config_rule
+    get_compliance_summary_by_config_rule([::AWSConfig])
+    
 
     using AWSCore.Services.config
     config([::AWSConfig], "GetComplianceSummaryByConfigRule",)
@@ -733,9 +733,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.get_compliance_summary_by_resource_type([::AWSConfig], arguments::Dict)
-    ConfigService.get_compliance_summary_by_resource_type([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ConfigService.get_compliance_summary_by_resource_type
+    get_compliance_summary_by_resource_type([::AWSConfig], arguments::Dict)
+    get_compliance_summary_by_resource_type([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.config
     config([::AWSConfig], "GetComplianceSummaryByResourceType", arguments::Dict)
@@ -774,9 +774,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.get_resource_config_history([::AWSConfig], arguments::Dict)
-    ConfigService.get_resource_config_history([::AWSConfig]; resourceType=, resourceId=, <keyword arguments>)
+    using AWSSDK.ConfigService.get_resource_config_history
+    get_resource_config_history([::AWSConfig], arguments::Dict)
+    get_resource_config_history([::AWSConfig]; resourceType=, resourceId=, <keyword arguments>)
 
     using AWSCore.Services.config
     config([::AWSConfig], "GetResourceConfigHistory", arguments::Dict)
@@ -842,9 +842,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.list_discovered_resources([::AWSConfig], arguments::Dict)
-    ConfigService.list_discovered_resources([::AWSConfig]; resourceType=, <keyword arguments>)
+    using AWSSDK.ConfigService.list_discovered_resources
+    list_discovered_resources([::AWSConfig], arguments::Dict)
+    list_discovered_resources([::AWSConfig]; resourceType=, <keyword arguments>)
 
     using AWSCore.Services.config
     config([::AWSConfig], "ListDiscoveredResources", arguments::Dict)
@@ -906,9 +906,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.put_config_rule([::AWSConfig], arguments::Dict)
-    ConfigService.put_config_rule([::AWSConfig]; ConfigRule=)
+    using AWSSDK.ConfigService.put_config_rule
+    put_config_rule([::AWSConfig], arguments::Dict)
+    put_config_rule([::AWSConfig]; ConfigRule=)
 
     using AWSCore.Services.config
     config([::AWSConfig], "PutConfigRule", arguments::Dict)
@@ -982,9 +982,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.put_configuration_recorder([::AWSConfig], arguments::Dict)
-    ConfigService.put_configuration_recorder([::AWSConfig]; ConfigurationRecorder=)
+    using AWSSDK.ConfigService.put_configuration_recorder
+    put_configuration_recorder([::AWSConfig], arguments::Dict)
+    put_configuration_recorder([::AWSConfig]; ConfigurationRecorder=)
 
     using AWSCore.Services.config
     config([::AWSConfig], "PutConfigurationRecorder", arguments::Dict)
@@ -1034,9 +1034,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.put_delivery_channel([::AWSConfig], arguments::Dict)
-    ConfigService.put_delivery_channel([::AWSConfig]; DeliveryChannel=)
+    using AWSSDK.ConfigService.put_delivery_channel
+    put_delivery_channel([::AWSConfig], arguments::Dict)
+    put_delivery_channel([::AWSConfig]; DeliveryChannel=)
 
     using AWSCore.Services.config
     config([::AWSConfig], "PutDeliveryChannel", arguments::Dict)
@@ -1084,9 +1084,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.put_evaluations([::AWSConfig], arguments::Dict)
-    ConfigService.put_evaluations([::AWSConfig]; ResultToken=, <keyword arguments>)
+    using AWSSDK.ConfigService.put_evaluations
+    put_evaluations([::AWSConfig], arguments::Dict)
+    put_evaluations([::AWSConfig]; ResultToken=, <keyword arguments>)
 
     using AWSCore.Services.config
     config([::AWSConfig], "PutEvaluations", arguments::Dict)
@@ -1142,9 +1142,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.start_config_rules_evaluation([::AWSConfig], arguments::Dict)
-    ConfigService.start_config_rules_evaluation([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ConfigService.start_config_rules_evaluation
+    start_config_rules_evaluation([::AWSConfig], arguments::Dict)
+    start_config_rules_evaluation([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.config
     config([::AWSConfig], "StartConfigRulesEvaluation", arguments::Dict)
@@ -1200,9 +1200,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.start_configuration_recorder([::AWSConfig], arguments::Dict)
-    ConfigService.start_configuration_recorder([::AWSConfig]; ConfigurationRecorderName=)
+    using AWSSDK.ConfigService.start_configuration_recorder
+    start_configuration_recorder([::AWSConfig], arguments::Dict)
+    start_configuration_recorder([::AWSConfig]; ConfigurationRecorderName=)
 
     using AWSCore.Services.config
     config([::AWSConfig], "StartConfigurationRecorder", arguments::Dict)
@@ -1237,9 +1237,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
-    using AWSSDK.ConfigService
-    ConfigService.stop_configuration_recorder([::AWSConfig], arguments::Dict)
-    ConfigService.stop_configuration_recorder([::AWSConfig]; ConfigurationRecorderName=)
+    using AWSSDK.ConfigService.stop_configuration_recorder
+    stop_configuration_recorder([::AWSConfig], arguments::Dict)
+    stop_configuration_recorder([::AWSConfig]; ConfigurationRecorderName=)
 
     using AWSCore.Services.config
     config([::AWSConfig], "StopConfigurationRecorder", arguments::Dict)

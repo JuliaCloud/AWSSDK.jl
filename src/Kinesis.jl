@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.add_tags_to_stream([::AWSConfig], arguments::Dict)
-    Kinesis.add_tags_to_stream([::AWSConfig]; StreamName=, Tags=)
+    using AWSSDK.Kinesis.add_tags_to_stream
+    add_tags_to_stream([::AWSConfig], arguments::Dict)
+    add_tags_to_stream([::AWSConfig]; StreamName=, Tags=)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "AddTagsToStream", arguments::Dict)
@@ -54,9 +54,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.create_stream([::AWSConfig], arguments::Dict)
-    Kinesis.create_stream([::AWSConfig]; StreamName=, ShardCount=)
+    using AWSSDK.Kinesis.create_stream
+    create_stream([::AWSConfig], arguments::Dict)
+    create_stream([::AWSConfig]; StreamName=, ShardCount=)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "CreateStream", arguments::Dict)
@@ -113,9 +113,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.decrease_stream_retention_period([::AWSConfig], arguments::Dict)
-    Kinesis.decrease_stream_retention_period([::AWSConfig]; StreamName=, RetentionPeriodHours=)
+    using AWSSDK.Kinesis.decrease_stream_retention_period
+    decrease_stream_retention_period([::AWSConfig], arguments::Dict)
+    decrease_stream_retention_period([::AWSConfig]; StreamName=, RetentionPeriodHours=)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "DecreaseStreamRetentionPeriod", arguments::Dict)
@@ -154,9 +154,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.delete_stream([::AWSConfig], arguments::Dict)
-    Kinesis.delete_stream([::AWSConfig]; StreamName=)
+    using AWSSDK.Kinesis.delete_stream
+    delete_stream([::AWSConfig], arguments::Dict)
+    delete_stream([::AWSConfig]; StreamName=)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "DeleteStream", arguments::Dict)
@@ -199,9 +199,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.describe_limits([::AWSConfig], arguments::Dict)
-    Kinesis.describe_limits([::AWSConfig]; )
+    using AWSSDK.Kinesis.describe_limits
+    describe_limits([::AWSConfig], arguments::Dict)
+    describe_limits([::AWSConfig]; )
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "DescribeLimits", arguments::Dict)
@@ -238,9 +238,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.describe_stream([::AWSConfig], arguments::Dict)
-    Kinesis.describe_stream([::AWSConfig]; StreamName=, <keyword arguments>)
+    using AWSSDK.Kinesis.describe_stream
+    describe_stream([::AWSConfig], arguments::Dict)
+    describe_stream([::AWSConfig]; StreamName=, <keyword arguments>)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "DescribeStream", arguments::Dict)
@@ -293,9 +293,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.disable_enhanced_monitoring([::AWSConfig], arguments::Dict)
-    Kinesis.disable_enhanced_monitoring([::AWSConfig]; StreamName=, ShardLevelMetrics=)
+    using AWSSDK.Kinesis.disable_enhanced_monitoring
+    disable_enhanced_monitoring([::AWSConfig], arguments::Dict)
+    disable_enhanced_monitoring([::AWSConfig]; StreamName=, ShardLevelMetrics=)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "DisableEnhancedMonitoring", arguments::Dict)
@@ -356,9 +356,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.enable_enhanced_monitoring([::AWSConfig], arguments::Dict)
-    Kinesis.enable_enhanced_monitoring([::AWSConfig]; StreamName=, ShardLevelMetrics=)
+    using AWSSDK.Kinesis.enable_enhanced_monitoring
+    enable_enhanced_monitoring([::AWSConfig], arguments::Dict)
+    enable_enhanced_monitoring([::AWSConfig]; StreamName=, ShardLevelMetrics=)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "EnableEnhancedMonitoring", arguments::Dict)
@@ -419,9 +419,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.get_records([::AWSConfig], arguments::Dict)
-    Kinesis.get_records([::AWSConfig]; ShardIterator=, <keyword arguments>)
+    using AWSSDK.Kinesis.get_records
+    get_records([::AWSConfig], arguments::Dict)
+    get_records([::AWSConfig]; ShardIterator=, <keyword arguments>)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "GetRecords", arguments::Dict)
@@ -474,9 +474,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.get_shard_iterator([::AWSConfig], arguments::Dict)
-    Kinesis.get_shard_iterator([::AWSConfig]; StreamName=, ShardId=, ShardIteratorType=, <keyword arguments>)
+    using AWSSDK.Kinesis.get_shard_iterator
+    get_shard_iterator([::AWSConfig], arguments::Dict)
+    get_shard_iterator([::AWSConfig]; StreamName=, ShardId=, ShardIteratorType=, <keyword arguments>)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "GetShardIterator", arguments::Dict)
@@ -553,9 +553,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.increase_stream_retention_period([::AWSConfig], arguments::Dict)
-    Kinesis.increase_stream_retention_period([::AWSConfig]; StreamName=, RetentionPeriodHours=)
+    using AWSSDK.Kinesis.increase_stream_retention_period
+    increase_stream_retention_period([::AWSConfig], arguments::Dict)
+    increase_stream_retention_period([::AWSConfig]; StreamName=, RetentionPeriodHours=)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "IncreaseStreamRetentionPeriod", arguments::Dict)
@@ -594,9 +594,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.list_streams([::AWSConfig], arguments::Dict)
-    Kinesis.list_streams([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Kinesis.list_streams
+    list_streams([::AWSConfig], arguments::Dict)
+    list_streams([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "ListStreams", arguments::Dict)
@@ -643,9 +643,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.list_tags_for_stream([::AWSConfig], arguments::Dict)
-    Kinesis.list_tags_for_stream([::AWSConfig]; StreamName=, <keyword arguments>)
+    using AWSSDK.Kinesis.list_tags_for_stream
+    list_tags_for_stream([::AWSConfig], arguments::Dict)
+    list_tags_for_stream([::AWSConfig]; StreamName=, <keyword arguments>)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "ListTagsForStream", arguments::Dict)
@@ -690,9 +690,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.merge_shards([::AWSConfig], arguments::Dict)
-    Kinesis.merge_shards([::AWSConfig]; StreamName=, ShardToMerge=, AdjacentShardToMerge=)
+    using AWSSDK.Kinesis.merge_shards
+    merge_shards([::AWSConfig], arguments::Dict)
+    merge_shards([::AWSConfig]; StreamName=, ShardToMerge=, AdjacentShardToMerge=)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "MergeShards", arguments::Dict)
@@ -747,9 +747,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.put_record([::AWSConfig], arguments::Dict)
-    Kinesis.put_record([::AWSConfig]; StreamName=, Data=, PartitionKey=, <keyword arguments>)
+    using AWSSDK.Kinesis.put_record
+    put_record([::AWSConfig], arguments::Dict)
+    put_record([::AWSConfig]; StreamName=, Data=, PartitionKey=, <keyword arguments>)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "PutRecord", arguments::Dict)
@@ -818,9 +818,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.put_records([::AWSConfig], arguments::Dict)
-    Kinesis.put_records([::AWSConfig]; Records=, StreamName=)
+    using AWSSDK.Kinesis.put_records
+    put_records([::AWSConfig], arguments::Dict)
+    put_records([::AWSConfig]; Records=, StreamName=)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "PutRecords", arguments::Dict)
@@ -887,9 +887,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.remove_tags_from_stream([::AWSConfig], arguments::Dict)
-    Kinesis.remove_tags_from_stream([::AWSConfig]; StreamName=, TagKeys=)
+    using AWSSDK.Kinesis.remove_tags_from_stream
+    remove_tags_from_stream([::AWSConfig], arguments::Dict)
+    remove_tags_from_stream([::AWSConfig]; StreamName=, TagKeys=)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "RemoveTagsFromStream", arguments::Dict)
@@ -928,9 +928,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.split_shard([::AWSConfig], arguments::Dict)
-    Kinesis.split_shard([::AWSConfig]; StreamName=, ShardToSplit=, NewStartingHashKey=)
+    using AWSSDK.Kinesis.split_shard
+    split_shard([::AWSConfig], arguments::Dict)
+    split_shard([::AWSConfig]; StreamName=, ShardToSplit=, NewStartingHashKey=)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "SplitShard", arguments::Dict)
@@ -989,9 +989,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.start_stream_encryption([::AWSConfig], arguments::Dict)
-    Kinesis.start_stream_encryption([::AWSConfig]; StreamName=, EncryptionType=, KeyId=)
+    using AWSSDK.Kinesis.start_stream_encryption
+    start_stream_encryption([::AWSConfig], arguments::Dict)
+    start_stream_encryption([::AWSConfig]; StreamName=, EncryptionType=, KeyId=)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "StartStreamEncryption", arguments::Dict)
@@ -1042,9 +1042,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.stop_stream_encryption([::AWSConfig], arguments::Dict)
-    Kinesis.stop_stream_encryption([::AWSConfig]; StreamName=, EncryptionType=, KeyId=)
+    using AWSSDK.Kinesis.stop_stream_encryption
+    stop_stream_encryption([::AWSConfig], arguments::Dict)
+    stop_stream_encryption([::AWSConfig]; StreamName=, EncryptionType=, KeyId=)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "StopStreamEncryption", arguments::Dict)
@@ -1095,9 +1095,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
-    using AWSSDK.Kinesis
-    Kinesis.update_shard_count([::AWSConfig], arguments::Dict)
-    Kinesis.update_shard_count([::AWSConfig]; StreamName=, TargetShardCount=, ScalingType=)
+    using AWSSDK.Kinesis.update_shard_count
+    update_shard_count([::AWSConfig], arguments::Dict)
+    update_shard_count([::AWSConfig]; StreamName=, TargetShardCount=, ScalingType=)
 
     using AWSCore.Services.kinesis
     kinesis([::AWSConfig], "UpdateShardCount", arguments::Dict)

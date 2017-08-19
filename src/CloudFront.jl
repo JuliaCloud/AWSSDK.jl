@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.create_cloud_front_origin_access_identity([::AWSConfig], arguments::Dict)
-    CloudFront.create_cloud_front_origin_access_identity([::AWSConfig]; CloudFrontOriginAccessIdentityConfig=)
+    using AWSSDK.CloudFront.create_cloud_front_origin_access_identity
+    create_cloud_front_origin_access_identity([::AWSConfig], arguments::Dict)
+    create_cloud_front_origin_access_identity([::AWSConfig]; CloudFrontOriginAccessIdentityConfig=)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "POST", "/2017-03-25/origin-access-identity/cloudfront", arguments::Dict)
@@ -57,9 +57,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.create_distribution([::AWSConfig], arguments::Dict)
-    CloudFront.create_distribution([::AWSConfig]; DistributionConfig=)
+    using AWSSDK.CloudFront.create_distribution
+    create_distribution([::AWSConfig], arguments::Dict)
+    create_distribution([::AWSConfig]; DistributionConfig=)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "POST", "/2017-03-25/distribution", arguments::Dict)
@@ -265,9 +265,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.create_distribution_with_tags([::AWSConfig], arguments::Dict)
-    CloudFront.create_distribution_with_tags([::AWSConfig]; DistributionConfigWithTags=)
+    using AWSSDK.CloudFront.create_distribution_with_tags
+    create_distribution_with_tags([::AWSConfig], arguments::Dict)
+    create_distribution_with_tags([::AWSConfig]; DistributionConfigWithTags=)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "POST", "/2017-03-25/distribution?WithTags", arguments::Dict)
@@ -479,9 +479,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.create_invalidation([::AWSConfig], arguments::Dict)
-    CloudFront.create_invalidation([::AWSConfig]; DistributionId=, InvalidationBatch=)
+    using AWSSDK.CloudFront.create_invalidation
+    create_invalidation([::AWSConfig], arguments::Dict)
+    create_invalidation([::AWSConfig]; DistributionId=, InvalidationBatch=)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "POST", "/2017-03-25/distribution/{DistributionId}/invalidation", arguments::Dict)
@@ -530,9 +530,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.create_streaming_distribution([::AWSConfig], arguments::Dict)
-    CloudFront.create_streaming_distribution([::AWSConfig]; StreamingDistributionConfig=)
+    using AWSSDK.CloudFront.create_streaming_distribution
+    create_streaming_distribution([::AWSConfig], arguments::Dict)
+    create_streaming_distribution([::AWSConfig]; StreamingDistributionConfig=)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "POST", "/2017-03-25/streaming-distribution", arguments::Dict)
@@ -603,9 +603,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.create_streaming_distribution_with_tags([::AWSConfig], arguments::Dict)
-    CloudFront.create_streaming_distribution_with_tags([::AWSConfig]; StreamingDistributionConfigWithTags=)
+    using AWSSDK.CloudFront.create_streaming_distribution_with_tags
+    create_streaming_distribution_with_tags([::AWSConfig], arguments::Dict)
+    create_streaming_distribution_with_tags([::AWSConfig]; StreamingDistributionConfigWithTags=)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "POST", "/2017-03-25/streaming-distribution?WithTags", arguments::Dict)
@@ -673,9 +673,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.delete_cloud_front_origin_access_identity([::AWSConfig], arguments::Dict)
-    CloudFront.delete_cloud_front_origin_access_identity([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.CloudFront.delete_cloud_front_origin_access_identity
+    delete_cloud_front_origin_access_identity([::AWSConfig], arguments::Dict)
+    delete_cloud_front_origin_access_identity([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "DELETE", "/2017-03-25/origin-access-identity/cloudfront/{Id}", arguments::Dict)
@@ -712,9 +712,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.delete_distribution([::AWSConfig], arguments::Dict)
-    CloudFront.delete_distribution([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.CloudFront.delete_distribution
+    delete_distribution([::AWSConfig], arguments::Dict)
+    delete_distribution([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "DELETE", "/2017-03-25/distribution/{Id}", arguments::Dict)
@@ -751,9 +751,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.delete_streaming_distribution([::AWSConfig], arguments::Dict)
-    CloudFront.delete_streaming_distribution([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.CloudFront.delete_streaming_distribution
+    delete_streaming_distribution([::AWSConfig], arguments::Dict)
+    delete_streaming_distribution([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "DELETE", "/2017-03-25/streaming-distribution/{Id}", arguments::Dict)
@@ -810,9 +810,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.get_cloud_front_origin_access_identity([::AWSConfig], arguments::Dict)
-    CloudFront.get_cloud_front_origin_access_identity([::AWSConfig]; Id=)
+    using AWSSDK.CloudFront.get_cloud_front_origin_access_identity
+    get_cloud_front_origin_access_identity([::AWSConfig], arguments::Dict)
+    get_cloud_front_origin_access_identity([::AWSConfig]; Id=)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "GET", "/2017-03-25/origin-access-identity/cloudfront/{Id}", arguments::Dict)
@@ -849,9 +849,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.get_cloud_front_origin_access_identity_config([::AWSConfig], arguments::Dict)
-    CloudFront.get_cloud_front_origin_access_identity_config([::AWSConfig]; Id=)
+    using AWSSDK.CloudFront.get_cloud_front_origin_access_identity_config
+    get_cloud_front_origin_access_identity_config([::AWSConfig], arguments::Dict)
+    get_cloud_front_origin_access_identity_config([::AWSConfig]; Id=)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "GET", "/2017-03-25/origin-access-identity/cloudfront/{Id}/config", arguments::Dict)
@@ -888,9 +888,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.get_distribution([::AWSConfig], arguments::Dict)
-    CloudFront.get_distribution([::AWSConfig]; Id=)
+    using AWSSDK.CloudFront.get_distribution
+    get_distribution([::AWSConfig], arguments::Dict)
+    get_distribution([::AWSConfig]; Id=)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "GET", "/2017-03-25/distribution/{Id}", arguments::Dict)
@@ -927,9 +927,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.get_distribution_config([::AWSConfig], arguments::Dict)
-    CloudFront.get_distribution_config([::AWSConfig]; Id=)
+    using AWSSDK.CloudFront.get_distribution_config
+    get_distribution_config([::AWSConfig], arguments::Dict)
+    get_distribution_config([::AWSConfig]; Id=)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "GET", "/2017-03-25/distribution/{Id}/config", arguments::Dict)
@@ -966,9 +966,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.get_invalidation([::AWSConfig], arguments::Dict)
-    CloudFront.get_invalidation([::AWSConfig]; DistributionId=, Id=)
+    using AWSSDK.CloudFront.get_invalidation
+    get_invalidation([::AWSConfig], arguments::Dict)
+    get_invalidation([::AWSConfig]; DistributionId=, Id=)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "GET", "/2017-03-25/distribution/{DistributionId}/invalidation/{Id}", arguments::Dict)
@@ -1009,9 +1009,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.get_streaming_distribution([::AWSConfig], arguments::Dict)
-    CloudFront.get_streaming_distribution([::AWSConfig]; Id=)
+    using AWSSDK.CloudFront.get_streaming_distribution
+    get_streaming_distribution([::AWSConfig], arguments::Dict)
+    get_streaming_distribution([::AWSConfig]; Id=)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "GET", "/2017-03-25/streaming-distribution/{Id}", arguments::Dict)
@@ -1048,9 +1048,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.get_streaming_distribution_config([::AWSConfig], arguments::Dict)
-    CloudFront.get_streaming_distribution_config([::AWSConfig]; Id=)
+    using AWSSDK.CloudFront.get_streaming_distribution_config
+    get_streaming_distribution_config([::AWSConfig], arguments::Dict)
+    get_streaming_distribution_config([::AWSConfig]; Id=)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "GET", "/2017-03-25/streaming-distribution/{Id}/config", arguments::Dict)
@@ -1087,9 +1087,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.list_cloud_front_origin_access_identities([::AWSConfig], arguments::Dict)
-    CloudFront.list_cloud_front_origin_access_identities([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudFront.list_cloud_front_origin_access_identities
+    list_cloud_front_origin_access_identities([::AWSConfig], arguments::Dict)
+    list_cloud_front_origin_access_identities([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "GET", "/2017-03-25/origin-access-identity/cloudfront", arguments::Dict)
@@ -1130,9 +1130,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.list_distributions([::AWSConfig], arguments::Dict)
-    CloudFront.list_distributions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudFront.list_distributions
+    list_distributions([::AWSConfig], arguments::Dict)
+    list_distributions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "GET", "/2017-03-25/distribution", arguments::Dict)
@@ -1173,9 +1173,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.list_distributions_by_web_aclid([::AWSConfig], arguments::Dict)
-    CloudFront.list_distributions_by_web_aclid([::AWSConfig]; WebACLId=, <keyword arguments>)
+    using AWSSDK.CloudFront.list_distributions_by_web_aclid
+    list_distributions_by_web_aclid([::AWSConfig], arguments::Dict)
+    list_distributions_by_web_aclid([::AWSConfig]; WebACLId=, <keyword arguments>)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "GET", "/2017-03-25/distributionsByWebACLId/{WebACLId}", arguments::Dict)
@@ -1220,9 +1220,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.list_invalidations([::AWSConfig], arguments::Dict)
-    CloudFront.list_invalidations([::AWSConfig]; DistributionId=, <keyword arguments>)
+    using AWSSDK.CloudFront.list_invalidations
+    list_invalidations([::AWSConfig], arguments::Dict)
+    list_invalidations([::AWSConfig]; DistributionId=, <keyword arguments>)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "GET", "/2017-03-25/distribution/{DistributionId}/invalidation", arguments::Dict)
@@ -1267,9 +1267,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.list_streaming_distributions([::AWSConfig], arguments::Dict)
-    CloudFront.list_streaming_distributions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudFront.list_streaming_distributions
+    list_streaming_distributions([::AWSConfig], arguments::Dict)
+    list_streaming_distributions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "GET", "/2017-03-25/streaming-distribution", arguments::Dict)
@@ -1310,9 +1310,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.list_tags_for_resource([::AWSConfig], arguments::Dict)
-    CloudFront.list_tags_for_resource([::AWSConfig]; Resource=)
+    using AWSSDK.CloudFront.list_tags_for_resource
+    list_tags_for_resource([::AWSConfig], arguments::Dict)
+    list_tags_for_resource([::AWSConfig]; Resource=)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "GET", "/2017-03-25/tagging", arguments::Dict)
@@ -1349,9 +1349,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.tag_resource([::AWSConfig], arguments::Dict)
-    CloudFront.tag_resource([::AWSConfig]; Resource=, Tags=)
+    using AWSSDK.CloudFront.tag_resource
+    tag_resource([::AWSConfig], arguments::Dict)
+    tag_resource([::AWSConfig]; Resource=, Tags=)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "POST", "/2017-03-25/tagging?Operation=Tag", arguments::Dict)
@@ -1393,9 +1393,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.untag_resource([::AWSConfig], arguments::Dict)
-    CloudFront.untag_resource([::AWSConfig]; Resource=, TagKeys=)
+    using AWSSDK.CloudFront.untag_resource
+    untag_resource([::AWSConfig], arguments::Dict)
+    untag_resource([::AWSConfig]; Resource=, TagKeys=)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "POST", "/2017-03-25/tagging?Operation=Untag", arguments::Dict)
@@ -1432,9 +1432,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.update_cloud_front_origin_access_identity([::AWSConfig], arguments::Dict)
-    CloudFront.update_cloud_front_origin_access_identity([::AWSConfig]; CloudFrontOriginAccessIdentityConfig=, Id=, <keyword arguments>)
+    using AWSSDK.CloudFront.update_cloud_front_origin_access_identity
+    update_cloud_front_origin_access_identity([::AWSConfig], arguments::Dict)
+    update_cloud_front_origin_access_identity([::AWSConfig]; CloudFrontOriginAccessIdentityConfig=, Id=, <keyword arguments>)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "PUT", "/2017-03-25/origin-access-identity/cloudfront/{Id}/config", arguments::Dict)
@@ -1484,9 +1484,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.update_distribution([::AWSConfig], arguments::Dict)
-    CloudFront.update_distribution([::AWSConfig]; DistributionConfig=, Id=, <keyword arguments>)
+    using AWSSDK.CloudFront.update_distribution
+    update_distribution([::AWSConfig], arguments::Dict)
+    update_distribution([::AWSConfig]; DistributionConfig=, Id=, <keyword arguments>)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "PUT", "/2017-03-25/distribution/{Id}/config", arguments::Dict)
@@ -1727,9 +1727,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 
 """
-    using AWSSDK.CloudFront
-    CloudFront.update_streaming_distribution([::AWSConfig], arguments::Dict)
-    CloudFront.update_streaming_distribution([::AWSConfig]; StreamingDistributionConfig=, Id=, <keyword arguments>)
+    using AWSSDK.CloudFront.update_streaming_distribution
+    update_streaming_distribution([::AWSConfig], arguments::Dict)
+    update_streaming_distribution([::AWSConfig]; StreamingDistributionConfig=, Id=, <keyword arguments>)
 
     using AWSCore.Services.cloudfront
     cloudfront([::AWSConfig], "PUT", "/2017-03-25/streaming-distribution/{Id}/config", arguments::Dict)

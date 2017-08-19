@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.build_suggesters([::AWSConfig], arguments::Dict)
-    CloudSearch.build_suggesters([::AWSConfig]; DomainName=)
+    using AWSSDK.CloudSearch.build_suggesters
+    build_suggesters([::AWSConfig], arguments::Dict)
+    build_suggesters([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "BuildSuggesters", arguments::Dict)
@@ -52,9 +52,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.create_domain([::AWSConfig], arguments::Dict)
-    CloudSearch.create_domain([::AWSConfig]; DomainName=)
+    using AWSSDK.CloudSearch.create_domain
+    create_domain([::AWSConfig], arguments::Dict)
+    create_domain([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "CreateDomain", arguments::Dict)
@@ -91,9 +91,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.define_analysis_scheme([::AWSConfig], arguments::Dict)
-    CloudSearch.define_analysis_scheme([::AWSConfig]; DomainName=, AnalysisScheme=)
+    using AWSSDK.CloudSearch.define_analysis_scheme
+    define_analysis_scheme([::AWSConfig], arguments::Dict)
+    define_analysis_scheme([::AWSConfig]; DomainName=, AnalysisScheme=)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "DefineAnalysisScheme", arguments::Dict)
@@ -146,9 +146,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.define_expression([::AWSConfig], arguments::Dict)
-    CloudSearch.define_expression([::AWSConfig]; DomainName=, Expression=)
+    using AWSSDK.CloudSearch.define_expression
+    define_expression([::AWSConfig], arguments::Dict)
+    define_expression([::AWSConfig]; DomainName=, Expression=)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "DefineExpression", arguments::Dict)
@@ -194,9 +194,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.define_index_field([::AWSConfig], arguments::Dict)
-    CloudSearch.define_index_field([::AWSConfig]; DomainName=, IndexField=)
+    using AWSSDK.CloudSearch.define_index_field
+    define_index_field([::AWSConfig], arguments::Dict)
+    define_index_field([::AWSConfig]; DomainName=, IndexField=)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "DefineIndexField", arguments::Dict)
@@ -325,9 +325,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.define_suggester([::AWSConfig], arguments::Dict)
-    CloudSearch.define_suggester([::AWSConfig]; DomainName=, Suggester=)
+    using AWSSDK.CloudSearch.define_suggester
+    define_suggester([::AWSConfig], arguments::Dict)
+    define_suggester([::AWSConfig]; DomainName=, Suggester=)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "DefineSuggester", arguments::Dict)
@@ -377,9 +377,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.delete_analysis_scheme([::AWSConfig], arguments::Dict)
-    CloudSearch.delete_analysis_scheme([::AWSConfig]; DomainName=, AnalysisSchemeName=)
+    using AWSSDK.CloudSearch.delete_analysis_scheme
+    delete_analysis_scheme([::AWSConfig], arguments::Dict)
+    delete_analysis_scheme([::AWSConfig]; DomainName=, AnalysisSchemeName=)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "DeleteAnalysisScheme", arguments::Dict)
@@ -420,9 +420,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.delete_domain([::AWSConfig], arguments::Dict)
-    CloudSearch.delete_domain([::AWSConfig]; DomainName=)
+    using AWSSDK.CloudSearch.delete_domain
+    delete_domain([::AWSConfig], arguments::Dict)
+    delete_domain([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "DeleteDomain", arguments::Dict)
@@ -459,9 +459,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.delete_expression([::AWSConfig], arguments::Dict)
-    CloudSearch.delete_expression([::AWSConfig]; DomainName=, ExpressionName=)
+    using AWSSDK.CloudSearch.delete_expression
+    delete_expression([::AWSConfig], arguments::Dict)
+    delete_expression([::AWSConfig]; DomainName=, ExpressionName=)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "DeleteExpression", arguments::Dict)
@@ -502,9 +502,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.delete_index_field([::AWSConfig], arguments::Dict)
-    CloudSearch.delete_index_field([::AWSConfig]; DomainName=, IndexFieldName=)
+    using AWSSDK.CloudSearch.delete_index_field
+    delete_index_field([::AWSConfig], arguments::Dict)
+    delete_index_field([::AWSConfig]; DomainName=, IndexFieldName=)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "DeleteIndexField", arguments::Dict)
@@ -545,9 +545,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.delete_suggester([::AWSConfig], arguments::Dict)
-    CloudSearch.delete_suggester([::AWSConfig]; DomainName=, SuggesterName=)
+    using AWSSDK.CloudSearch.delete_suggester
+    delete_suggester([::AWSConfig], arguments::Dict)
+    delete_suggester([::AWSConfig]; DomainName=, SuggesterName=)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "DeleteSuggester", arguments::Dict)
@@ -588,9 +588,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.describe_analysis_schemes([::AWSConfig], arguments::Dict)
-    CloudSearch.describe_analysis_schemes([::AWSConfig]; DomainName=, <keyword arguments>)
+    using AWSSDK.CloudSearch.describe_analysis_schemes
+    describe_analysis_schemes([::AWSConfig], arguments::Dict)
+    describe_analysis_schemes([::AWSConfig]; DomainName=, <keyword arguments>)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "DescribeAnalysisSchemes", arguments::Dict)
@@ -635,9 +635,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.describe_availability_options([::AWSConfig], arguments::Dict)
-    CloudSearch.describe_availability_options([::AWSConfig]; DomainName=, <keyword arguments>)
+    using AWSSDK.CloudSearch.describe_availability_options
+    describe_availability_options([::AWSConfig], arguments::Dict)
+    describe_availability_options([::AWSConfig]; DomainName=, <keyword arguments>)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "DescribeAvailabilityOptions", arguments::Dict)
@@ -678,9 +678,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.describe_domains([::AWSConfig], arguments::Dict)
-    CloudSearch.describe_domains([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudSearch.describe_domains
+    describe_domains([::AWSConfig], arguments::Dict)
+    describe_domains([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "DescribeDomains", arguments::Dict)
@@ -717,9 +717,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.describe_expressions([::AWSConfig], arguments::Dict)
-    CloudSearch.describe_expressions([::AWSConfig]; DomainName=, <keyword arguments>)
+    using AWSSDK.CloudSearch.describe_expressions
+    describe_expressions([::AWSConfig], arguments::Dict)
+    describe_expressions([::AWSConfig]; DomainName=, <keyword arguments>)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "DescribeExpressions", arguments::Dict)
@@ -764,9 +764,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.describe_index_fields([::AWSConfig], arguments::Dict)
-    CloudSearch.describe_index_fields([::AWSConfig]; DomainName=, <keyword arguments>)
+    using AWSSDK.CloudSearch.describe_index_fields
+    describe_index_fields([::AWSConfig], arguments::Dict)
+    describe_index_fields([::AWSConfig]; DomainName=, <keyword arguments>)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "DescribeIndexFields", arguments::Dict)
@@ -811,9 +811,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.describe_scaling_parameters([::AWSConfig], arguments::Dict)
-    CloudSearch.describe_scaling_parameters([::AWSConfig]; DomainName=)
+    using AWSSDK.CloudSearch.describe_scaling_parameters
+    describe_scaling_parameters([::AWSConfig], arguments::Dict)
+    describe_scaling_parameters([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "DescribeScalingParameters", arguments::Dict)
@@ -850,9 +850,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.describe_service_access_policies([::AWSConfig], arguments::Dict)
-    CloudSearch.describe_service_access_policies([::AWSConfig]; DomainName=, <keyword arguments>)
+    using AWSSDK.CloudSearch.describe_service_access_policies
+    describe_service_access_policies([::AWSConfig], arguments::Dict)
+    describe_service_access_policies([::AWSConfig]; DomainName=, <keyword arguments>)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "DescribeServiceAccessPolicies", arguments::Dict)
@@ -893,9 +893,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.describe_suggesters([::AWSConfig], arguments::Dict)
-    CloudSearch.describe_suggesters([::AWSConfig]; DomainName=, <keyword arguments>)
+    using AWSSDK.CloudSearch.describe_suggesters
+    describe_suggesters([::AWSConfig], arguments::Dict)
+    describe_suggesters([::AWSConfig]; DomainName=, <keyword arguments>)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "DescribeSuggesters", arguments::Dict)
@@ -940,9 +940,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.index_documents([::AWSConfig], arguments::Dict)
-    CloudSearch.index_documents([::AWSConfig]; DomainName=)
+    using AWSSDK.CloudSearch.index_documents
+    index_documents([::AWSConfig], arguments::Dict)
+    index_documents([::AWSConfig]; DomainName=)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "IndexDocuments", arguments::Dict)
@@ -979,9 +979,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.list_domain_names([::AWSConfig])
-    CloudSearch.
+    using AWSSDK.CloudSearch.list_domain_names
+    list_domain_names([::AWSConfig])
+    
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "ListDomainNames",)
@@ -1010,9 +1010,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.update_availability_options([::AWSConfig], arguments::Dict)
-    CloudSearch.update_availability_options([::AWSConfig]; DomainName=, MultiAZ=)
+    using AWSSDK.CloudSearch.update_availability_options
+    update_availability_options([::AWSConfig], arguments::Dict)
+    update_availability_options([::AWSConfig]; DomainName=, MultiAZ=)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "UpdateAvailabilityOptions", arguments::Dict)
@@ -1053,9 +1053,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.update_scaling_parameters([::AWSConfig], arguments::Dict)
-    CloudSearch.update_scaling_parameters([::AWSConfig]; DomainName=, ScalingParameters=)
+    using AWSSDK.CloudSearch.update_scaling_parameters
+    update_scaling_parameters([::AWSConfig], arguments::Dict)
+    update_scaling_parameters([::AWSConfig]; DomainName=, ScalingParameters=)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "UpdateScalingParameters", arguments::Dict)
@@ -1102,9 +1102,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 
 
 """
-    using AWSSDK.CloudSearch
-    CloudSearch.update_service_access_policies([::AWSConfig], arguments::Dict)
-    CloudSearch.update_service_access_policies([::AWSConfig]; DomainName=, AccessPolicies=)
+    using AWSSDK.CloudSearch.update_service_access_policies
+    update_service_access_policies([::AWSConfig], arguments::Dict)
+    update_service_access_policies([::AWSConfig]; DomainName=, AccessPolicies=)
 
     using AWSCore.Services.cloudsearch
     cloudsearch([::AWSConfig], "UpdateServiceAccessPolicies", arguments::Dict)

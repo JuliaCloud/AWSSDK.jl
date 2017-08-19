@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Polly
-    Polly.delete_lexicon([::AWSConfig], arguments::Dict)
-    Polly.delete_lexicon([::AWSConfig]; LexiconName=)
+    using AWSSDK.Polly.delete_lexicon
+    delete_lexicon([::AWSConfig], arguments::Dict)
+    delete_lexicon([::AWSConfig]; LexiconName=)
 
     using AWSCore.Services.polly
     polly([::AWSConfig], "DELETE", "/v1/lexicons/{LexiconName}", arguments::Dict)
@@ -72,9 +72,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/polly-
 
 
 """
-    using AWSSDK.Polly
-    Polly.describe_voices([::AWSConfig], arguments::Dict)
-    Polly.describe_voices([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Polly.describe_voices
+    describe_voices([::AWSConfig], arguments::Dict)
+    describe_voices([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.polly
     polly([::AWSConfig], "GET", "/v1/voices", arguments::Dict)
@@ -163,9 +163,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/polly-
 
 
 """
-    using AWSSDK.Polly
-    Polly.get_lexicon([::AWSConfig], arguments::Dict)
-    Polly.get_lexicon([::AWSConfig]; LexiconName=)
+    using AWSSDK.Polly.get_lexicon
+    get_lexicon([::AWSConfig], arguments::Dict)
+    get_lexicon([::AWSConfig]; LexiconName=)
 
     using AWSCore.Services.polly
     polly([::AWSConfig], "GET", "/v1/lexicons/{LexiconName}", arguments::Dict)
@@ -243,9 +243,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/polly-
 
 
 """
-    using AWSSDK.Polly
-    Polly.list_lexicons([::AWSConfig], arguments::Dict)
-    Polly.list_lexicons([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Polly.list_lexicons
+    list_lexicons([::AWSConfig], arguments::Dict)
+    list_lexicons([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.polly
     polly([::AWSConfig], "GET", "/v1/lexicons", arguments::Dict)
@@ -312,9 +312,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/polly-
 
 
 """
-    using AWSSDK.Polly
-    Polly.put_lexicon([::AWSConfig], arguments::Dict)
-    Polly.put_lexicon([::AWSConfig]; LexiconName=, Content=)
+    using AWSSDK.Polly.put_lexicon
+    put_lexicon([::AWSConfig], arguments::Dict)
+    put_lexicon([::AWSConfig]; LexiconName=, Content=)
 
     using AWSCore.Services.polly
     polly([::AWSConfig], "PUT", "/v1/lexicons/{LexiconName}", arguments::Dict)
@@ -376,9 +376,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/polly-
 
 
 """
-    using AWSSDK.Polly
-    Polly.synthesize_speech([::AWSConfig], arguments::Dict)
-    Polly.synthesize_speech([::AWSConfig]; OutputFormat=, Text=, VoiceId=, <keyword arguments>)
+    using AWSSDK.Polly.synthesize_speech
+    synthesize_speech([::AWSConfig], arguments::Dict)
+    synthesize_speech([::AWSConfig]; OutputFormat=, Text=, VoiceId=, <keyword arguments>)
 
     using AWSCore.Services.polly
     polly([::AWSConfig], "POST", "/v1/speech", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.ECS
-    ECS.create_cluster([::AWSConfig], arguments::Dict)
-    ECS.create_cluster([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ECS.create_cluster
+    create_cluster([::AWSConfig], arguments::Dict)
+    create_cluster([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "CreateCluster", arguments::Dict)
@@ -78,9 +78,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.create_service([::AWSConfig], arguments::Dict)
-    ECS.create_service([::AWSConfig]; serviceName=, taskDefinition=, desiredCount=, <keyword arguments>)
+    using AWSSDK.ECS.create_service
+    create_service([::AWSConfig], arguments::Dict)
+    create_service([::AWSConfig]; serviceName=, taskDefinition=, desiredCount=, <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "CreateService", arguments::Dict)
@@ -326,9 +326,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.delete_attributes([::AWSConfig], arguments::Dict)
-    ECS.delete_attributes([::AWSConfig]; attributes=, <keyword arguments>)
+    using AWSSDK.ECS.delete_attributes
+    delete_attributes([::AWSConfig], arguments::Dict)
+    delete_attributes([::AWSConfig]; attributes=, <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "DeleteAttributes", arguments::Dict)
@@ -376,9 +376,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.delete_cluster([::AWSConfig], arguments::Dict)
-    ECS.delete_cluster([::AWSConfig]; cluster=)
+    using AWSSDK.ECS.delete_cluster
+    delete_cluster([::AWSConfig], arguments::Dict)
+    delete_cluster([::AWSConfig]; cluster=)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "DeleteCluster", arguments::Dict)
@@ -441,9 +441,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.delete_service([::AWSConfig], arguments::Dict)
-    ECS.delete_service([::AWSConfig]; service=, <keyword arguments>)
+    using AWSSDK.ECS.delete_service
+    delete_service([::AWSConfig], arguments::Dict)
+    delete_service([::AWSConfig]; service=, <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "DeleteService", arguments::Dict)
@@ -505,9 +505,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.deregister_container_instance([::AWSConfig], arguments::Dict)
-    ECS.deregister_container_instance([::AWSConfig]; containerInstance=, <keyword arguments>)
+    using AWSSDK.ECS.deregister_container_instance
+    deregister_container_instance([::AWSConfig], arguments::Dict)
+    deregister_container_instance([::AWSConfig]; containerInstance=, <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "DeregisterContainerInstance", arguments::Dict)
@@ -581,9 +581,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.deregister_task_definition([::AWSConfig], arguments::Dict)
-    ECS.deregister_task_definition([::AWSConfig]; taskDefinition=)
+    using AWSSDK.ECS.deregister_task_definition
+    deregister_task_definition([::AWSConfig], arguments::Dict)
+    deregister_task_definition([::AWSConfig]; taskDefinition=)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "DeregisterTaskDefinition", arguments::Dict)
@@ -625,9 +625,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.describe_clusters([::AWSConfig], arguments::Dict)
-    ECS.describe_clusters([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ECS.describe_clusters
+    describe_clusters([::AWSConfig], arguments::Dict)
+    describe_clusters([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "DescribeClusters", arguments::Dict)
@@ -693,9 +693,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.describe_container_instances([::AWSConfig], arguments::Dict)
-    ECS.describe_container_instances([::AWSConfig]; containerInstances=, <keyword arguments>)
+    using AWSSDK.ECS.describe_container_instances
+    describe_container_instances([::AWSConfig], arguments::Dict)
+    describe_container_instances([::AWSConfig]; containerInstances=, <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "DescribeContainerInstances", arguments::Dict)
@@ -828,9 +828,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.describe_services([::AWSConfig], arguments::Dict)
-    ECS.describe_services([::AWSConfig]; services=, <keyword arguments>)
+    using AWSSDK.ECS.describe_services
+    describe_services([::AWSConfig], arguments::Dict)
+    describe_services([::AWSConfig]; services=, <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "DescribeServices", arguments::Dict)
@@ -932,9 +932,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.describe_task_definition([::AWSConfig], arguments::Dict)
-    ECS.describe_task_definition([::AWSConfig]; taskDefinition=)
+    using AWSSDK.ECS.describe_task_definition
+    describe_task_definition([::AWSConfig], arguments::Dict)
+    describe_task_definition([::AWSConfig]; taskDefinition=)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "DescribeTaskDefinition", arguments::Dict)
@@ -1048,9 +1048,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.describe_tasks([::AWSConfig], arguments::Dict)
-    ECS.describe_tasks([::AWSConfig]; tasks=, <keyword arguments>)
+    using AWSSDK.ECS.describe_tasks
+    describe_tasks([::AWSConfig], arguments::Dict)
+    describe_tasks([::AWSConfig]; tasks=, <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "DescribeTasks", arguments::Dict)
@@ -1146,9 +1146,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.discover_poll_endpoint([::AWSConfig], arguments::Dict)
-    ECS.discover_poll_endpoint([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ECS.discover_poll_endpoint
+    discover_poll_endpoint([::AWSConfig], arguments::Dict)
+    discover_poll_endpoint([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "DiscoverPollEndpoint", arguments::Dict)
@@ -1193,9 +1193,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.list_attributes([::AWSConfig], arguments::Dict)
-    ECS.list_attributes([::AWSConfig]; targetType=, <keyword arguments>)
+    using AWSSDK.ECS.list_attributes
+    list_attributes([::AWSConfig], arguments::Dict)
+    list_attributes([::AWSConfig]; targetType=, <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "ListAttributes", arguments::Dict)
@@ -1255,9 +1255,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.list_clusters([::AWSConfig], arguments::Dict)
-    ECS.list_clusters([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ECS.list_clusters
+    list_clusters([::AWSConfig], arguments::Dict)
+    list_clusters([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "ListClusters", arguments::Dict)
@@ -1322,9 +1322,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.list_container_instances([::AWSConfig], arguments::Dict)
-    ECS.list_container_instances([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ECS.list_container_instances
+    list_container_instances([::AWSConfig], arguments::Dict)
+    list_container_instances([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "ListContainerInstances", arguments::Dict)
@@ -1401,9 +1401,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.list_services([::AWSConfig], arguments::Dict)
-    ECS.list_services([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ECS.list_services
+    list_services([::AWSConfig], arguments::Dict)
+    list_services([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "ListServices", arguments::Dict)
@@ -1471,9 +1471,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.list_task_definition_families([::AWSConfig], arguments::Dict)
-    ECS.list_task_definition_families([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ECS.list_task_definition_families
+    list_task_definition_families([::AWSConfig], arguments::Dict)
+    list_task_definition_families([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "ListTaskDefinitionFamilies", arguments::Dict)
@@ -1571,9 +1571,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.list_task_definitions([::AWSConfig], arguments::Dict)
-    ECS.list_task_definitions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ECS.list_task_definitions
+    list_task_definitions([::AWSConfig], arguments::Dict)
+    list_task_definitions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "ListTaskDefinitions", arguments::Dict)
@@ -1677,9 +1677,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.list_tasks([::AWSConfig], arguments::Dict)
-    ECS.list_tasks([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ECS.list_tasks
+    list_tasks([::AWSConfig], arguments::Dict)
+    list_tasks([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "ListTasks", arguments::Dict)
@@ -1794,9 +1794,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.put_attributes([::AWSConfig], arguments::Dict)
-    ECS.put_attributes([::AWSConfig]; attributes=, <keyword arguments>)
+    using AWSSDK.ECS.put_attributes
+    put_attributes([::AWSConfig], arguments::Dict)
+    put_attributes([::AWSConfig]; attributes=, <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "PutAttributes", arguments::Dict)
@@ -1844,9 +1844,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.register_container_instance([::AWSConfig], arguments::Dict)
-    ECS.register_container_instance([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ECS.register_container_instance
+    register_container_instance([::AWSConfig], arguments::Dict)
+    register_container_instance([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "RegisterContainerInstance", arguments::Dict)
@@ -1933,9 +1933,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.register_task_definition([::AWSConfig], arguments::Dict)
-    ECS.register_task_definition([::AWSConfig]; family=, containerDefinitions=, <keyword arguments>)
+    using AWSSDK.ECS.register_task_definition
+    register_task_definition([::AWSConfig], arguments::Dict)
+    register_task_definition([::AWSConfig]; family=, containerDefinitions=, <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "RegisterTaskDefinition", arguments::Dict)
@@ -2130,9 +2130,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.run_task([::AWSConfig], arguments::Dict)
-    ECS.run_task([::AWSConfig]; taskDefinition=, <keyword arguments>)
+    using AWSSDK.ECS.run_task
+    run_task([::AWSConfig], arguments::Dict)
+    run_task([::AWSConfig]; taskDefinition=, <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "RunTask", arguments::Dict)
@@ -2273,9 +2273,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.start_task([::AWSConfig], arguments::Dict)
-    ECS.start_task([::AWSConfig]; taskDefinition=, containerInstances=, <keyword arguments>)
+    using AWSSDK.ECS.start_task
+    start_task([::AWSConfig], arguments::Dict)
+    start_task([::AWSConfig]; taskDefinition=, containerInstances=, <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "StartTask", arguments::Dict)
@@ -2354,9 +2354,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.stop_task([::AWSConfig], arguments::Dict)
-    ECS.stop_task([::AWSConfig]; task=, <keyword arguments>)
+    using AWSSDK.ECS.stop_task
+    stop_task([::AWSConfig], arguments::Dict)
+    stop_task([::AWSConfig]; task=, <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "StopTask", arguments::Dict)
@@ -2406,9 +2406,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.submit_container_state_change([::AWSConfig], arguments::Dict)
-    ECS.submit_container_state_change([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ECS.submit_container_state_change
+    submit_container_state_change([::AWSConfig], arguments::Dict)
+    submit_container_state_change([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "SubmitContainerStateChange", arguments::Dict)
@@ -2480,9 +2480,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.submit_task_state_change([::AWSConfig], arguments::Dict)
-    ECS.submit_task_state_change([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ECS.submit_task_state_change
+    submit_task_state_change([::AWSConfig], arguments::Dict)
+    submit_task_state_change([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "SubmitTaskStateChange", arguments::Dict)
@@ -2535,9 +2535,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.update_container_agent([::AWSConfig], arguments::Dict)
-    ECS.update_container_agent([::AWSConfig]; containerInstance=, <keyword arguments>)
+    using AWSSDK.ECS.update_container_agent
+    update_container_agent([::AWSConfig], arguments::Dict)
+    update_container_agent([::AWSConfig]; containerInstance=, <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "UpdateContainerAgent", arguments::Dict)
@@ -2580,9 +2580,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.update_container_instances_state([::AWSConfig], arguments::Dict)
-    ECS.update_container_instances_state([::AWSConfig]; containerInstances=, status=, <keyword arguments>)
+    using AWSSDK.ECS.update_container_instances_state
+    update_container_instances_state([::AWSConfig], arguments::Dict)
+    update_container_instances_state([::AWSConfig]; containerInstances=, status=, <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "UpdateContainerInstancesState", arguments::Dict)
@@ -2643,9 +2643,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 
 """
-    using AWSSDK.ECS
-    ECS.update_service([::AWSConfig], arguments::Dict)
-    ECS.update_service([::AWSConfig]; service=, <keyword arguments>)
+    using AWSSDK.ECS.update_service
+    update_service([::AWSConfig], arguments::Dict)
+    update_service([::AWSConfig]; service=, <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "UpdateService", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Budgets
-    Budgets.create_budget([::AWSConfig], arguments::Dict)
-    Budgets.create_budget([::AWSConfig]; AccountId=, Budget=, <keyword arguments>)
+    using AWSSDK.Budgets.create_budget
+    create_budget([::AWSConfig], arguments::Dict)
+    create_budget([::AWSConfig]; AccountId=, Budget=, <keyword arguments>)
 
     using AWSCore.Services.budgets
     budgets([::AWSConfig], "CreateBudget", arguments::Dict)
@@ -102,9 +102,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/budget
 
 
 """
-    using AWSSDK.Budgets
-    Budgets.create_notification([::AWSConfig], arguments::Dict)
-    Budgets.create_notification([::AWSConfig]; AccountId=, BudgetName=, Notification=, Subscribers=)
+    using AWSSDK.Budgets.create_notification
+    create_notification([::AWSConfig], arguments::Dict)
+    create_notification([::AWSConfig]; AccountId=, BudgetName=, Notification=, Subscribers=)
 
     using AWSCore.Services.budgets
     budgets([::AWSConfig], "CreateNotification", arguments::Dict)
@@ -164,9 +164,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/budget
 
 
 """
-    using AWSSDK.Budgets
-    Budgets.create_subscriber([::AWSConfig], arguments::Dict)
-    Budgets.create_subscriber([::AWSConfig]; AccountId=, BudgetName=, Notification=, Subscriber=)
+    using AWSSDK.Budgets.create_subscriber
+    create_subscriber([::AWSConfig], arguments::Dict)
+    create_subscriber([::AWSConfig]; AccountId=, BudgetName=, Notification=, Subscriber=)
 
     using AWSCore.Services.budgets
     budgets([::AWSConfig], "CreateSubscriber", arguments::Dict)
@@ -226,9 +226,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/budget
 
 
 """
-    using AWSSDK.Budgets
-    Budgets.delete_budget([::AWSConfig], arguments::Dict)
-    Budgets.delete_budget([::AWSConfig]; AccountId=, BudgetName=)
+    using AWSSDK.Budgets.delete_budget
+    delete_budget([::AWSConfig], arguments::Dict)
+    delete_budget([::AWSConfig]; AccountId=, BudgetName=)
 
     using AWSCore.Services.budgets
     budgets([::AWSConfig], "DeleteBudget", arguments::Dict)
@@ -269,9 +269,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/budget
 
 
 """
-    using AWSSDK.Budgets
-    Budgets.delete_notification([::AWSConfig], arguments::Dict)
-    Budgets.delete_notification([::AWSConfig]; AccountId=, BudgetName=, Notification=)
+    using AWSSDK.Budgets.delete_notification
+    delete_notification([::AWSConfig], arguments::Dict)
+    delete_notification([::AWSConfig]; AccountId=, BudgetName=, Notification=)
 
     using AWSCore.Services.budgets
     budgets([::AWSConfig], "DeleteNotification", arguments::Dict)
@@ -322,9 +322,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/budget
 
 
 """
-    using AWSSDK.Budgets
-    Budgets.delete_subscriber([::AWSConfig], arguments::Dict)
-    Budgets.delete_subscriber([::AWSConfig]; AccountId=, BudgetName=, Notification=, Subscriber=)
+    using AWSSDK.Budgets.delete_subscriber
+    delete_subscriber([::AWSConfig], arguments::Dict)
+    delete_subscriber([::AWSConfig]; AccountId=, BudgetName=, Notification=, Subscriber=)
 
     using AWSCore.Services.budgets
     budgets([::AWSConfig], "DeleteSubscriber", arguments::Dict)
@@ -384,9 +384,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/budget
 
 
 """
-    using AWSSDK.Budgets
-    Budgets.describe_budget([::AWSConfig], arguments::Dict)
-    Budgets.describe_budget([::AWSConfig]; AccountId=, BudgetName=)
+    using AWSSDK.Budgets.describe_budget
+    describe_budget([::AWSConfig], arguments::Dict)
+    describe_budget([::AWSConfig]; AccountId=, BudgetName=)
 
     using AWSCore.Services.budgets
     budgets([::AWSConfig], "DescribeBudget", arguments::Dict)
@@ -427,9 +427,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/budget
 
 
 """
-    using AWSSDK.Budgets
-    Budgets.describe_budgets([::AWSConfig], arguments::Dict)
-    Budgets.describe_budgets([::AWSConfig]; AccountId=, <keyword arguments>)
+    using AWSSDK.Budgets.describe_budgets
+    describe_budgets([::AWSConfig], arguments::Dict)
+    describe_budgets([::AWSConfig]; AccountId=, <keyword arguments>)
 
     using AWSCore.Services.budgets
     budgets([::AWSConfig], "DescribeBudgets", arguments::Dict)
@@ -474,9 +474,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/budget
 
 
 """
-    using AWSSDK.Budgets
-    Budgets.describe_notifications_for_budget([::AWSConfig], arguments::Dict)
-    Budgets.describe_notifications_for_budget([::AWSConfig]; AccountId=, BudgetName=, <keyword arguments>)
+    using AWSSDK.Budgets.describe_notifications_for_budget
+    describe_notifications_for_budget([::AWSConfig], arguments::Dict)
+    describe_notifications_for_budget([::AWSConfig]; AccountId=, BudgetName=, <keyword arguments>)
 
     using AWSCore.Services.budgets
     budgets([::AWSConfig], "DescribeNotificationsForBudget", arguments::Dict)
@@ -525,9 +525,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/budget
 
 
 """
-    using AWSSDK.Budgets
-    Budgets.describe_subscribers_for_notification([::AWSConfig], arguments::Dict)
-    Budgets.describe_subscribers_for_notification([::AWSConfig]; AccountId=, BudgetName=, Notification=, <keyword arguments>)
+    using AWSSDK.Budgets.describe_subscribers_for_notification
+    describe_subscribers_for_notification([::AWSConfig], arguments::Dict)
+    describe_subscribers_for_notification([::AWSConfig]; AccountId=, BudgetName=, Notification=, <keyword arguments>)
 
     using AWSCore.Services.budgets
     budgets([::AWSConfig], "DescribeSubscribersForNotification", arguments::Dict)
@@ -586,9 +586,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/budget
 
 
 """
-    using AWSSDK.Budgets
-    Budgets.update_budget([::AWSConfig], arguments::Dict)
-    Budgets.update_budget([::AWSConfig]; AccountId=, NewBudget=)
+    using AWSSDK.Budgets.update_budget
+    update_budget([::AWSConfig], arguments::Dict)
+    update_budget([::AWSConfig]; AccountId=, NewBudget=)
 
     using AWSCore.Services.budgets
     budgets([::AWSConfig], "UpdateBudget", arguments::Dict)
@@ -659,9 +659,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/budget
 
 
 """
-    using AWSSDK.Budgets
-    Budgets.update_notification([::AWSConfig], arguments::Dict)
-    Budgets.update_notification([::AWSConfig]; AccountId=, BudgetName=, OldNotification=, NewNotification=)
+    using AWSSDK.Budgets.update_notification
+    update_notification([::AWSConfig], arguments::Dict)
+    update_notification([::AWSConfig]; AccountId=, BudgetName=, OldNotification=, NewNotification=)
 
     using AWSCore.Services.budgets
     budgets([::AWSConfig], "UpdateNotification", arguments::Dict)
@@ -722,9 +722,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/budget
 
 
 """
-    using AWSSDK.Budgets
-    Budgets.update_subscriber([::AWSConfig], arguments::Dict)
-    Budgets.update_subscriber([::AWSConfig]; AccountId=, BudgetName=, Notification=, OldSubscriber=, NewSubscriber=)
+    using AWSSDK.Budgets.update_subscriber
+    update_subscriber([::AWSConfig], arguments::Dict)
+    update_subscriber([::AWSConfig]; AccountId=, BudgetName=, Notification=, OldSubscriber=, NewSubscriber=)
 
     using AWSCore.Services.budgets
     budgets([::AWSConfig], "UpdateSubscriber", arguments::Dict)

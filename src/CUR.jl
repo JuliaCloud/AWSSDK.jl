@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CUR
-    CUR.delete_report_definition([::AWSConfig], arguments::Dict)
-    CUR.delete_report_definition([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CUR.delete_report_definition
+    delete_report_definition([::AWSConfig], arguments::Dict)
+    delete_report_definition([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cur
     cur([::AWSConfig], "DeleteReportDefinition", arguments::Dict)
@@ -52,9 +52,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cur-20
 
 
 """
-    using AWSSDK.CUR
-    CUR.describe_report_definitions([::AWSConfig], arguments::Dict)
-    CUR.describe_report_definitions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CUR.describe_report_definitions
+    describe_report_definitions([::AWSConfig], arguments::Dict)
+    describe_report_definitions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cur
     cur([::AWSConfig], "DescribeReportDefinitions", arguments::Dict)
@@ -95,9 +95,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cur-20
 
 
 """
-    using AWSSDK.CUR
-    CUR.put_report_definition([::AWSConfig], arguments::Dict)
-    CUR.put_report_definition([::AWSConfig]; ReportDefinition=)
+    using AWSSDK.CUR.put_report_definition
+    put_report_definition([::AWSConfig], arguments::Dict)
+    put_report_definition([::AWSConfig]; ReportDefinition=)
 
     using AWSCore.Services.cur
     cur([::AWSConfig], "PutReportDefinition", arguments::Dict)

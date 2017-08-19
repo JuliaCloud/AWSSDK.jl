@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.create_campaign([::AWSConfig], arguments::Dict)
-    Pinpoint.create_campaign([::AWSConfig]; application-id=, WriteCampaignRequest=)
+    using AWSSDK.Pinpoint.create_campaign
+    create_campaign([::AWSConfig], arguments::Dict)
+    create_campaign([::AWSConfig]; application-id=, WriteCampaignRequest=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "POST", "/v1/apps/{application-id}/campaigns", arguments::Dict)
@@ -194,9 +194,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.create_import_job([::AWSConfig], arguments::Dict)
-    Pinpoint.create_import_job([::AWSConfig]; application-id=, ImportJobRequest=)
+    using AWSSDK.Pinpoint.create_import_job
+    create_import_job([::AWSConfig], arguments::Dict)
+    create_import_job([::AWSConfig]; application-id=, ImportJobRequest=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "POST", "/v1/apps/{application-id}/jobs/import", arguments::Dict)
@@ -248,9 +248,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.create_segment([::AWSConfig], arguments::Dict)
-    Pinpoint.create_segment([::AWSConfig]; application-id=, WriteSegmentRequest=)
+    using AWSSDK.Pinpoint.create_segment
+    create_segment([::AWSConfig], arguments::Dict)
+    create_segment([::AWSConfig]; application-id=, WriteSegmentRequest=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "POST", "/v1/apps/{application-id}/segments", arguments::Dict)
@@ -333,9 +333,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.delete_apns_channel([::AWSConfig], arguments::Dict)
-    Pinpoint.delete_apns_channel([::AWSConfig]; application-id=)
+    using AWSSDK.Pinpoint.delete_apns_channel
+    delete_apns_channel([::AWSConfig], arguments::Dict)
+    delete_apns_channel([::AWSConfig]; application-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/channels/apns", arguments::Dict)
@@ -372,9 +372,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.delete_apns_sandbox_channel([::AWSConfig], arguments::Dict)
-    Pinpoint.delete_apns_sandbox_channel([::AWSConfig]; application-id=)
+    using AWSSDK.Pinpoint.delete_apns_sandbox_channel
+    delete_apns_sandbox_channel([::AWSConfig], arguments::Dict)
+    delete_apns_sandbox_channel([::AWSConfig]; application-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/channels/apns_sandbox", arguments::Dict)
@@ -411,9 +411,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.delete_campaign([::AWSConfig], arguments::Dict)
-    Pinpoint.delete_campaign([::AWSConfig]; application-id=, campaign-id=)
+    using AWSSDK.Pinpoint.delete_campaign
+    delete_campaign([::AWSConfig], arguments::Dict)
+    delete_campaign([::AWSConfig]; application-id=, campaign-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/campaigns/{campaign-id}", arguments::Dict)
@@ -454,9 +454,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.delete_email_channel([::AWSConfig], arguments::Dict)
-    Pinpoint.delete_email_channel([::AWSConfig]; application-id=)
+    using AWSSDK.Pinpoint.delete_email_channel
+    delete_email_channel([::AWSConfig], arguments::Dict)
+    delete_email_channel([::AWSConfig]; application-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/channels/email", arguments::Dict)
@@ -493,9 +493,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.delete_event_stream([::AWSConfig], arguments::Dict)
-    Pinpoint.delete_event_stream([::AWSConfig]; application-id=)
+    using AWSSDK.Pinpoint.delete_event_stream
+    delete_event_stream([::AWSConfig], arguments::Dict)
+    delete_event_stream([::AWSConfig]; application-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/eventstream", arguments::Dict)
@@ -532,9 +532,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.delete_gcm_channel([::AWSConfig], arguments::Dict)
-    Pinpoint.delete_gcm_channel([::AWSConfig]; application-id=)
+    using AWSSDK.Pinpoint.delete_gcm_channel
+    delete_gcm_channel([::AWSConfig], arguments::Dict)
+    delete_gcm_channel([::AWSConfig]; application-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/channels/gcm", arguments::Dict)
@@ -571,9 +571,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.delete_segment([::AWSConfig], arguments::Dict)
-    Pinpoint.delete_segment([::AWSConfig]; application-id=, segment-id=)
+    using AWSSDK.Pinpoint.delete_segment
+    delete_segment([::AWSConfig], arguments::Dict)
+    delete_segment([::AWSConfig]; application-id=, segment-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/segments/{segment-id}", arguments::Dict)
@@ -614,9 +614,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.delete_sms_channel([::AWSConfig], arguments::Dict)
-    Pinpoint.delete_sms_channel([::AWSConfig]; application-id=)
+    using AWSSDK.Pinpoint.delete_sms_channel
+    delete_sms_channel([::AWSConfig], arguments::Dict)
+    delete_sms_channel([::AWSConfig]; application-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/channels/sms", arguments::Dict)
@@ -653,9 +653,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_apns_channel([::AWSConfig], arguments::Dict)
-    Pinpoint.get_apns_channel([::AWSConfig]; application-id=)
+    using AWSSDK.Pinpoint.get_apns_channel
+    get_apns_channel([::AWSConfig], arguments::Dict)
+    get_apns_channel([::AWSConfig]; application-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/channels/apns", arguments::Dict)
@@ -692,9 +692,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_apns_sandbox_channel([::AWSConfig], arguments::Dict)
-    Pinpoint.get_apns_sandbox_channel([::AWSConfig]; application-id=)
+    using AWSSDK.Pinpoint.get_apns_sandbox_channel
+    get_apns_sandbox_channel([::AWSConfig], arguments::Dict)
+    get_apns_sandbox_channel([::AWSConfig]; application-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/channels/apns_sandbox", arguments::Dict)
@@ -731,9 +731,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_application_settings([::AWSConfig], arguments::Dict)
-    Pinpoint.get_application_settings([::AWSConfig]; application-id=)
+    using AWSSDK.Pinpoint.get_application_settings
+    get_application_settings([::AWSConfig], arguments::Dict)
+    get_application_settings([::AWSConfig]; application-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/settings", arguments::Dict)
@@ -770,9 +770,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_campaign([::AWSConfig], arguments::Dict)
-    Pinpoint.get_campaign([::AWSConfig]; application-id=, campaign-id=)
+    using AWSSDK.Pinpoint.get_campaign
+    get_campaign([::AWSConfig], arguments::Dict)
+    get_campaign([::AWSConfig]; application-id=, campaign-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/campaigns/{campaign-id}", arguments::Dict)
@@ -813,9 +813,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_campaign_activities([::AWSConfig], arguments::Dict)
-    Pinpoint.get_campaign_activities([::AWSConfig]; application-id=, campaign-id=, <keyword arguments>)
+    using AWSSDK.Pinpoint.get_campaign_activities
+    get_campaign_activities([::AWSConfig], arguments::Dict)
+    get_campaign_activities([::AWSConfig]; application-id=, campaign-id=, <keyword arguments>)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/campaigns/{campaign-id}/activities", arguments::Dict)
@@ -864,9 +864,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_campaign_version([::AWSConfig], arguments::Dict)
-    Pinpoint.get_campaign_version([::AWSConfig]; application-id=, campaign-id=, version=)
+    using AWSSDK.Pinpoint.get_campaign_version
+    get_campaign_version([::AWSConfig], arguments::Dict)
+    get_campaign_version([::AWSConfig]; application-id=, campaign-id=, version=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/campaigns/{campaign-id}/versions/{version}", arguments::Dict)
@@ -911,9 +911,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_campaign_versions([::AWSConfig], arguments::Dict)
-    Pinpoint.get_campaign_versions([::AWSConfig]; application-id=, campaign-id=, <keyword arguments>)
+    using AWSSDK.Pinpoint.get_campaign_versions
+    get_campaign_versions([::AWSConfig], arguments::Dict)
+    get_campaign_versions([::AWSConfig]; application-id=, campaign-id=, <keyword arguments>)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/campaigns/{campaign-id}/versions", arguments::Dict)
@@ -962,9 +962,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_campaigns([::AWSConfig], arguments::Dict)
-    Pinpoint.get_campaigns([::AWSConfig]; application-id=, <keyword arguments>)
+    using AWSSDK.Pinpoint.get_campaigns
+    get_campaigns([::AWSConfig], arguments::Dict)
+    get_campaigns([::AWSConfig]; application-id=, <keyword arguments>)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/campaigns", arguments::Dict)
@@ -1009,9 +1009,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_email_channel([::AWSConfig], arguments::Dict)
-    Pinpoint.get_email_channel([::AWSConfig]; application-id=)
+    using AWSSDK.Pinpoint.get_email_channel
+    get_email_channel([::AWSConfig], arguments::Dict)
+    get_email_channel([::AWSConfig]; application-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/channels/email", arguments::Dict)
@@ -1048,9 +1048,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_endpoint([::AWSConfig], arguments::Dict)
-    Pinpoint.get_endpoint([::AWSConfig]; application-id=, endpoint-id=)
+    using AWSSDK.Pinpoint.get_endpoint
+    get_endpoint([::AWSConfig], arguments::Dict)
+    get_endpoint([::AWSConfig]; application-id=, endpoint-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/endpoints/{endpoint-id}", arguments::Dict)
@@ -1091,9 +1091,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_event_stream([::AWSConfig], arguments::Dict)
-    Pinpoint.get_event_stream([::AWSConfig]; application-id=)
+    using AWSSDK.Pinpoint.get_event_stream
+    get_event_stream([::AWSConfig], arguments::Dict)
+    get_event_stream([::AWSConfig]; application-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/eventstream", arguments::Dict)
@@ -1130,9 +1130,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_gcm_channel([::AWSConfig], arguments::Dict)
-    Pinpoint.get_gcm_channel([::AWSConfig]; application-id=)
+    using AWSSDK.Pinpoint.get_gcm_channel
+    get_gcm_channel([::AWSConfig], arguments::Dict)
+    get_gcm_channel([::AWSConfig]; application-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/channels/gcm", arguments::Dict)
@@ -1169,9 +1169,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_import_job([::AWSConfig], arguments::Dict)
-    Pinpoint.get_import_job([::AWSConfig]; application-id=, job-id=)
+    using AWSSDK.Pinpoint.get_import_job
+    get_import_job([::AWSConfig], arguments::Dict)
+    get_import_job([::AWSConfig]; application-id=, job-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/jobs/import/{job-id}", arguments::Dict)
@@ -1212,9 +1212,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_import_jobs([::AWSConfig], arguments::Dict)
-    Pinpoint.get_import_jobs([::AWSConfig]; application-id=, <keyword arguments>)
+    using AWSSDK.Pinpoint.get_import_jobs
+    get_import_jobs([::AWSConfig], arguments::Dict)
+    get_import_jobs([::AWSConfig]; application-id=, <keyword arguments>)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/jobs/import", arguments::Dict)
@@ -1259,9 +1259,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_segment([::AWSConfig], arguments::Dict)
-    Pinpoint.get_segment([::AWSConfig]; application-id=, segment-id=)
+    using AWSSDK.Pinpoint.get_segment
+    get_segment([::AWSConfig], arguments::Dict)
+    get_segment([::AWSConfig]; application-id=, segment-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/segments/{segment-id}", arguments::Dict)
@@ -1302,9 +1302,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_segment_import_jobs([::AWSConfig], arguments::Dict)
-    Pinpoint.get_segment_import_jobs([::AWSConfig]; application-id=, segment-id=, <keyword arguments>)
+    using AWSSDK.Pinpoint.get_segment_import_jobs
+    get_segment_import_jobs([::AWSConfig], arguments::Dict)
+    get_segment_import_jobs([::AWSConfig]; application-id=, segment-id=, <keyword arguments>)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/segments/{segment-id}/jobs/import", arguments::Dict)
@@ -1353,9 +1353,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_segment_version([::AWSConfig], arguments::Dict)
-    Pinpoint.get_segment_version([::AWSConfig]; application-id=, segment-id=, version=)
+    using AWSSDK.Pinpoint.get_segment_version
+    get_segment_version([::AWSConfig], arguments::Dict)
+    get_segment_version([::AWSConfig]; application-id=, segment-id=, version=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/segments/{segment-id}/versions/{version}", arguments::Dict)
@@ -1400,9 +1400,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_segment_versions([::AWSConfig], arguments::Dict)
-    Pinpoint.get_segment_versions([::AWSConfig]; application-id=, segment-id=, <keyword arguments>)
+    using AWSSDK.Pinpoint.get_segment_versions
+    get_segment_versions([::AWSConfig], arguments::Dict)
+    get_segment_versions([::AWSConfig]; application-id=, segment-id=, <keyword arguments>)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/segments/{segment-id}/versions", arguments::Dict)
@@ -1451,9 +1451,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_segments([::AWSConfig], arguments::Dict)
-    Pinpoint.get_segments([::AWSConfig]; application-id=, <keyword arguments>)
+    using AWSSDK.Pinpoint.get_segments
+    get_segments([::AWSConfig], arguments::Dict)
+    get_segments([::AWSConfig]; application-id=, <keyword arguments>)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/segments", arguments::Dict)
@@ -1498,9 +1498,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.get_sms_channel([::AWSConfig], arguments::Dict)
-    Pinpoint.get_sms_channel([::AWSConfig]; application-id=)
+    using AWSSDK.Pinpoint.get_sms_channel
+    get_sms_channel([::AWSConfig], arguments::Dict)
+    get_sms_channel([::AWSConfig]; application-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/channels/sms", arguments::Dict)
@@ -1537,9 +1537,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.put_event_stream([::AWSConfig], arguments::Dict)
-    Pinpoint.put_event_stream([::AWSConfig]; application-id=, WriteEventStream=)
+    using AWSSDK.Pinpoint.put_event_stream
+    put_event_stream([::AWSConfig], arguments::Dict)
+    put_event_stream([::AWSConfig]; application-id=, WriteEventStream=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "POST", "/v1/apps/{application-id}/eventstream", arguments::Dict)
@@ -1586,9 +1586,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.send_messages([::AWSConfig], arguments::Dict)
-    Pinpoint.send_messages([::AWSConfig]; application-id=, MessageRequest=)
+    using AWSSDK.Pinpoint.send_messages
+    send_messages([::AWSConfig], arguments::Dict)
+    send_messages([::AWSConfig]; application-id=, MessageRequest=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "POST", "/v1/apps/{application-id}/messages", arguments::Dict)
@@ -1687,9 +1687,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.update_apns_channel([::AWSConfig], arguments::Dict)
-    Pinpoint.update_apns_channel([::AWSConfig]; APNSChannelRequest=, application-id=)
+    using AWSSDK.Pinpoint.update_apns_channel
+    update_apns_channel([::AWSConfig], arguments::Dict)
+    update_apns_channel([::AWSConfig]; APNSChannelRequest=, application-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/channels/apns", arguments::Dict)
@@ -1736,9 +1736,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.update_apns_sandbox_channel([::AWSConfig], arguments::Dict)
-    Pinpoint.update_apns_sandbox_channel([::AWSConfig]; APNSSandboxChannelRequest=, application-id=)
+    using AWSSDK.Pinpoint.update_apns_sandbox_channel
+    update_apns_sandbox_channel([::AWSConfig], arguments::Dict)
+    update_apns_sandbox_channel([::AWSConfig]; APNSSandboxChannelRequest=, application-id=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/channels/apns_sandbox", arguments::Dict)
@@ -1785,9 +1785,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.update_application_settings([::AWSConfig], arguments::Dict)
-    Pinpoint.update_application_settings([::AWSConfig]; application-id=, WriteApplicationSettingsRequest=)
+    using AWSSDK.Pinpoint.update_application_settings
+    update_application_settings([::AWSConfig], arguments::Dict)
+    update_application_settings([::AWSConfig]; application-id=, WriteApplicationSettingsRequest=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/settings", arguments::Dict)
@@ -1839,9 +1839,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.update_campaign([::AWSConfig], arguments::Dict)
-    Pinpoint.update_campaign([::AWSConfig]; application-id=, campaign-id=, WriteCampaignRequest=)
+    using AWSSDK.Pinpoint.update_campaign
+    update_campaign([::AWSConfig], arguments::Dict)
+    update_campaign([::AWSConfig]; application-id=, campaign-id=, WriteCampaignRequest=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/campaigns/{campaign-id}", arguments::Dict)
@@ -2024,9 +2024,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.update_email_channel([::AWSConfig], arguments::Dict)
-    Pinpoint.update_email_channel([::AWSConfig]; application-id=, EmailChannelRequest=)
+    using AWSSDK.Pinpoint.update_email_channel
+    update_email_channel([::AWSConfig], arguments::Dict)
+    update_email_channel([::AWSConfig]; application-id=, EmailChannelRequest=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/channels/email", arguments::Dict)
@@ -2074,9 +2074,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.update_endpoint([::AWSConfig], arguments::Dict)
-    Pinpoint.update_endpoint([::AWSConfig]; application-id=, endpoint-id=, EndpointRequest=)
+    using AWSSDK.Pinpoint.update_endpoint
+    update_endpoint([::AWSConfig], arguments::Dict)
+    update_endpoint([::AWSConfig]; application-id=, endpoint-id=, EndpointRequest=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/endpoints/{endpoint-id}", arguments::Dict)
@@ -2154,9 +2154,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.update_endpoints_batch([::AWSConfig], arguments::Dict)
-    Pinpoint.update_endpoints_batch([::AWSConfig]; application-id=, EndpointBatchRequest=)
+    using AWSSDK.Pinpoint.update_endpoints_batch
+    update_endpoints_batch([::AWSConfig], arguments::Dict)
+    update_endpoints_batch([::AWSConfig]; application-id=, EndpointBatchRequest=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/endpoints", arguments::Dict)
@@ -2231,9 +2231,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.update_gcm_channel([::AWSConfig], arguments::Dict)
-    Pinpoint.update_gcm_channel([::AWSConfig]; application-id=, GCMChannelRequest=)
+    using AWSSDK.Pinpoint.update_gcm_channel
+    update_gcm_channel([::AWSConfig], arguments::Dict)
+    update_gcm_channel([::AWSConfig]; application-id=, GCMChannelRequest=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/channels/gcm", arguments::Dict)
@@ -2279,9 +2279,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.update_segment([::AWSConfig], arguments::Dict)
-    Pinpoint.update_segment([::AWSConfig]; application-id=, segment-id=, WriteSegmentRequest=)
+    using AWSSDK.Pinpoint.update_segment
+    update_segment([::AWSConfig], arguments::Dict)
+    update_segment([::AWSConfig]; application-id=, segment-id=, WriteSegmentRequest=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/segments/{segment-id}", arguments::Dict)
@@ -2368,9 +2368,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
-    using AWSSDK.Pinpoint
-    Pinpoint.update_sms_channel([::AWSConfig], arguments::Dict)
-    Pinpoint.update_sms_channel([::AWSConfig]; application-id=, SMSChannelRequest=)
+    using AWSSDK.Pinpoint.update_sms_channel
+    update_sms_channel([::AWSConfig], arguments::Dict)
+    update_sms_channel([::AWSConfig]; application-id=, SMSChannelRequest=)
 
     using AWSCore.Services.pinpoint
     pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/channels/sms", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.acknowledge_job([::AWSConfig], arguments::Dict)
-    CodePipeline.acknowledge_job([::AWSConfig]; jobId=, nonce=)
+    using AWSSDK.CodePipeline.acknowledge_job
+    acknowledge_job([::AWSConfig], arguments::Dict)
+    acknowledge_job([::AWSConfig]; jobId=, nonce=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "AcknowledgeJob", arguments::Dict)
@@ -56,9 +56,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.acknowledge_third_party_job([::AWSConfig], arguments::Dict)
-    CodePipeline.acknowledge_third_party_job([::AWSConfig]; jobId=, nonce=, clientToken=)
+    using AWSSDK.CodePipeline.acknowledge_third_party_job
+    acknowledge_third_party_job([::AWSConfig], arguments::Dict)
+    acknowledge_third_party_job([::AWSConfig]; jobId=, nonce=, clientToken=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "AcknowledgeThirdPartyJob", arguments::Dict)
@@ -103,9 +103,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.create_custom_action_type([::AWSConfig], arguments::Dict)
-    CodePipeline.create_custom_action_type([::AWSConfig]; category=, provider=, version=, inputArtifactDetails=, outputArtifactDetails=, <keyword arguments>)
+    using AWSSDK.CodePipeline.create_custom_action_type
+    create_custom_action_type([::AWSConfig], arguments::Dict)
+    create_custom_action_type([::AWSConfig]; category=, provider=, version=, inputArtifactDetails=, outputArtifactDetails=, <keyword arguments>)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "CreateCustomActionType", arguments::Dict)
@@ -199,9 +199,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.create_pipeline([::AWSConfig], arguments::Dict)
-    CodePipeline.create_pipeline([::AWSConfig]; pipeline=)
+    using AWSSDK.CodePipeline.create_pipeline
+    create_pipeline([::AWSConfig], arguments::Dict)
+    create_pipeline([::AWSConfig]; pipeline=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "CreatePipeline", arguments::Dict)
@@ -273,9 +273,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.delete_custom_action_type([::AWSConfig], arguments::Dict)
-    CodePipeline.delete_custom_action_type([::AWSConfig]; category=, provider=, version=)
+    using AWSSDK.CodePipeline.delete_custom_action_type
+    delete_custom_action_type([::AWSConfig], arguments::Dict)
+    delete_custom_action_type([::AWSConfig]; category=, provider=, version=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "DeleteCustomActionType", arguments::Dict)
@@ -319,9 +319,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.delete_pipeline([::AWSConfig], arguments::Dict)
-    CodePipeline.delete_pipeline([::AWSConfig]; name=)
+    using AWSSDK.CodePipeline.delete_pipeline
+    delete_pipeline([::AWSConfig], arguments::Dict)
+    delete_pipeline([::AWSConfig]; name=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "DeletePipeline", arguments::Dict)
@@ -354,9 +354,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.disable_stage_transition([::AWSConfig], arguments::Dict)
-    CodePipeline.disable_stage_transition([::AWSConfig]; pipelineName=, stageName=, transitionType=, reason=)
+    using AWSSDK.CodePipeline.disable_stage_transition
+    disable_stage_transition([::AWSConfig], arguments::Dict)
+    disable_stage_transition([::AWSConfig]; pipelineName=, stageName=, transitionType=, reason=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "DisableStageTransition", arguments::Dict)
@@ -401,9 +401,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.enable_stage_transition([::AWSConfig], arguments::Dict)
-    CodePipeline.enable_stage_transition([::AWSConfig]; pipelineName=, stageName=, transitionType=)
+    using AWSSDK.CodePipeline.enable_stage_transition
+    enable_stage_transition([::AWSConfig], arguments::Dict)
+    enable_stage_transition([::AWSConfig]; pipelineName=, stageName=, transitionType=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "EnableStageTransition", arguments::Dict)
@@ -444,9 +444,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.get_job_details([::AWSConfig], arguments::Dict)
-    CodePipeline.get_job_details([::AWSConfig]; jobId=)
+    using AWSSDK.CodePipeline.get_job_details
+    get_job_details([::AWSConfig], arguments::Dict)
+    get_job_details([::AWSConfig]; jobId=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "GetJobDetails", arguments::Dict)
@@ -486,9 +486,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.get_pipeline([::AWSConfig], arguments::Dict)
-    CodePipeline.get_pipeline([::AWSConfig]; name=, <keyword arguments>)
+    using AWSSDK.CodePipeline.get_pipeline
+    get_pipeline([::AWSConfig], arguments::Dict)
+    get_pipeline([::AWSConfig]; name=, <keyword arguments>)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "GetPipeline", arguments::Dict)
@@ -529,9 +529,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.get_pipeline_execution([::AWSConfig], arguments::Dict)
-    CodePipeline.get_pipeline_execution([::AWSConfig]; pipelineName=, pipelineExecutionId=)
+    using AWSSDK.CodePipeline.get_pipeline_execution
+    get_pipeline_execution([::AWSConfig], arguments::Dict)
+    get_pipeline_execution([::AWSConfig]; pipelineName=, pipelineExecutionId=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "GetPipelineExecution", arguments::Dict)
@@ -572,9 +572,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.get_pipeline_state([::AWSConfig], arguments::Dict)
-    CodePipeline.get_pipeline_state([::AWSConfig]; name=)
+    using AWSSDK.CodePipeline.get_pipeline_state
+    get_pipeline_state([::AWSConfig], arguments::Dict)
+    get_pipeline_state([::AWSConfig]; name=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "GetPipelineState", arguments::Dict)
@@ -611,9 +611,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.get_third_party_job_details([::AWSConfig], arguments::Dict)
-    CodePipeline.get_third_party_job_details([::AWSConfig]; jobId=, clientToken=)
+    using AWSSDK.CodePipeline.get_third_party_job_details
+    get_third_party_job_details([::AWSConfig], arguments::Dict)
+    get_third_party_job_details([::AWSConfig]; jobId=, clientToken=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "GetThirdPartyJobDetails", arguments::Dict)
@@ -657,9 +657,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.list_action_types([::AWSConfig], arguments::Dict)
-    CodePipeline.list_action_types([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodePipeline.list_action_types
+    list_action_types([::AWSConfig], arguments::Dict)
+    list_action_types([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "ListActionTypes", arguments::Dict)
@@ -700,9 +700,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.list_pipeline_executions([::AWSConfig], arguments::Dict)
-    CodePipeline.list_pipeline_executions([::AWSConfig]; pipelineName=, <keyword arguments>)
+    using AWSSDK.CodePipeline.list_pipeline_executions
+    list_pipeline_executions([::AWSConfig], arguments::Dict)
+    list_pipeline_executions([::AWSConfig]; pipelineName=, <keyword arguments>)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "ListPipelineExecutions", arguments::Dict)
@@ -747,9 +747,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.list_pipelines([::AWSConfig], arguments::Dict)
-    CodePipeline.list_pipelines([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodePipeline.list_pipelines
+    list_pipelines([::AWSConfig], arguments::Dict)
+    list_pipelines([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "ListPipelines", arguments::Dict)
@@ -786,9 +786,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.poll_for_jobs([::AWSConfig], arguments::Dict)
-    CodePipeline.poll_for_jobs([::AWSConfig]; actionTypeId=, <keyword arguments>)
+    using AWSSDK.CodePipeline.poll_for_jobs
+    poll_for_jobs([::AWSConfig], arguments::Dict)
+    poll_for_jobs([::AWSConfig]; actionTypeId=, <keyword arguments>)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "PollForJobs", arguments::Dict)
@@ -843,9 +843,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.poll_for_third_party_jobs([::AWSConfig], arguments::Dict)
-    CodePipeline.poll_for_third_party_jobs([::AWSConfig]; actionTypeId=, <keyword arguments>)
+    using AWSSDK.CodePipeline.poll_for_third_party_jobs
+    poll_for_third_party_jobs([::AWSConfig], arguments::Dict)
+    poll_for_third_party_jobs([::AWSConfig]; actionTypeId=, <keyword arguments>)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "PollForThirdPartyJobs", arguments::Dict)
@@ -896,9 +896,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.put_action_revision([::AWSConfig], arguments::Dict)
-    CodePipeline.put_action_revision([::AWSConfig]; pipelineName=, stageName=, actionName=, actionRevision=)
+    using AWSSDK.CodePipeline.put_action_revision
+    put_action_revision([::AWSConfig], arguments::Dict)
+    put_action_revision([::AWSConfig]; pipelineName=, stageName=, actionName=, actionRevision=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "PutActionRevision", arguments::Dict)
@@ -953,9 +953,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.put_approval_result([::AWSConfig], arguments::Dict)
-    CodePipeline.put_approval_result([::AWSConfig]; pipelineName=, stageName=, actionName=, result=, token=)
+    using AWSSDK.CodePipeline.put_approval_result
+    put_approval_result([::AWSConfig], arguments::Dict)
+    put_approval_result([::AWSConfig]; pipelineName=, stageName=, actionName=, result=, token=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "PutApprovalResult", arguments::Dict)
@@ -1013,9 +1013,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.put_job_failure_result([::AWSConfig], arguments::Dict)
-    CodePipeline.put_job_failure_result([::AWSConfig]; jobId=, failureDetails=)
+    using AWSSDK.CodePipeline.put_job_failure_result
+    put_job_failure_result([::AWSConfig], arguments::Dict)
+    put_job_failure_result([::AWSConfig]; jobId=, failureDetails=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "PutJobFailureResult", arguments::Dict)
@@ -1058,9 +1058,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.put_job_success_result([::AWSConfig], arguments::Dict)
-    CodePipeline.put_job_success_result([::AWSConfig]; jobId=, <keyword arguments>)
+    using AWSSDK.CodePipeline.put_job_success_result
+    put_job_success_result([::AWSConfig], arguments::Dict)
+    put_job_success_result([::AWSConfig]; jobId=, <keyword arguments>)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "PutJobSuccessResult", arguments::Dict)
@@ -1118,9 +1118,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.put_third_party_job_failure_result([::AWSConfig], arguments::Dict)
-    CodePipeline.put_third_party_job_failure_result([::AWSConfig]; jobId=, clientToken=, failureDetails=)
+    using AWSSDK.CodePipeline.put_third_party_job_failure_result
+    put_third_party_job_failure_result([::AWSConfig], arguments::Dict)
+    put_third_party_job_failure_result([::AWSConfig]; jobId=, clientToken=, failureDetails=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "PutThirdPartyJobFailureResult", arguments::Dict)
@@ -1167,9 +1167,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.put_third_party_job_success_result([::AWSConfig], arguments::Dict)
-    CodePipeline.put_third_party_job_success_result([::AWSConfig]; jobId=, clientToken=, <keyword arguments>)
+    using AWSSDK.CodePipeline.put_third_party_job_success_result
+    put_third_party_job_success_result([::AWSConfig], arguments::Dict)
+    put_third_party_job_success_result([::AWSConfig]; jobId=, clientToken=, <keyword arguments>)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "PutThirdPartyJobSuccessResult", arguments::Dict)
@@ -1231,9 +1231,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.retry_stage_execution([::AWSConfig], arguments::Dict)
-    CodePipeline.retry_stage_execution([::AWSConfig]; pipelineName=, stageName=, pipelineExecutionId=, retryMode=)
+    using AWSSDK.CodePipeline.retry_stage_execution
+    retry_stage_execution([::AWSConfig], arguments::Dict)
+    retry_stage_execution([::AWSConfig]; pipelineName=, stageName=, pipelineExecutionId=, retryMode=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "RetryStageExecution", arguments::Dict)
@@ -1282,9 +1282,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.start_pipeline_execution([::AWSConfig], arguments::Dict)
-    CodePipeline.start_pipeline_execution([::AWSConfig]; name=)
+    using AWSSDK.CodePipeline.start_pipeline_execution
+    start_pipeline_execution([::AWSConfig], arguments::Dict)
+    start_pipeline_execution([::AWSConfig]; name=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "StartPipelineExecution", arguments::Dict)
@@ -1321,9 +1321,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 
 """
-    using AWSSDK.CodePipeline
-    CodePipeline.update_pipeline([::AWSConfig], arguments::Dict)
-    CodePipeline.update_pipeline([::AWSConfig]; pipeline=)
+    using AWSSDK.CodePipeline.update_pipeline
+    update_pipeline([::AWSConfig], arguments::Dict)
+    update_pipeline([::AWSConfig]; pipeline=)
 
     using AWSCore.Services.codepipeline
     codepipeline([::AWSConfig], "UpdatePipeline", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.STS
-    STS.assume_role([::AWSConfig], arguments::Dict)
-    STS.assume_role([::AWSConfig]; RoleArn=, RoleSessionName=, <keyword arguments>)
+    using AWSSDK.STS.assume_role
+    assume_role([::AWSConfig], arguments::Dict)
+    assume_role([::AWSConfig]; RoleArn=, RoleSessionName=, <keyword arguments>)
 
     using AWSCore.Services.sts
     sts([::AWSConfig], "AssumeRole", arguments::Dict)
@@ -154,9 +154,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sts-20
 
 
 """
-    using AWSSDK.STS
-    STS.assume_role_with_saml([::AWSConfig], arguments::Dict)
-    STS.assume_role_with_saml([::AWSConfig]; RoleArn=, PrincipalArn=, SAMLAssertion=, <keyword arguments>)
+    using AWSSDK.STS.assume_role_with_saml
+    assume_role_with_saml([::AWSConfig], arguments::Dict)
+    assume_role_with_saml([::AWSConfig]; RoleArn=, PrincipalArn=, SAMLAssertion=, <keyword arguments>)
 
     using AWSCore.Services.sts
     sts([::AWSConfig], "AssumeRoleWithSAML", arguments::Dict)
@@ -246,9 +246,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sts-20
 
 
 """
-    using AWSSDK.STS
-    STS.assume_role_with_web_identity([::AWSConfig], arguments::Dict)
-    STS.assume_role_with_web_identity([::AWSConfig]; RoleArn=, RoleSessionName=, WebIdentityToken=, <keyword arguments>)
+    using AWSSDK.STS.assume_role_with_web_identity
+    assume_role_with_web_identity([::AWSConfig], arguments::Dict)
+    assume_role_with_web_identity([::AWSConfig]; RoleArn=, RoleSessionName=, WebIdentityToken=, <keyword arguments>)
 
     using AWSCore.Services.sts
     sts([::AWSConfig], "AssumeRoleWithWebIdentity", arguments::Dict)
@@ -386,9 +386,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sts-20
 
 
 """
-    using AWSSDK.STS
-    STS.decode_authorization_message([::AWSConfig], arguments::Dict)
-    STS.decode_authorization_message([::AWSConfig]; EncodedMessage=)
+    using AWSSDK.STS.decode_authorization_message
+    decode_authorization_message([::AWSConfig], arguments::Dict)
+    decode_authorization_message([::AWSConfig]; EncodedMessage=)
 
     using AWSCore.Services.sts
     sts([::AWSConfig], "DecodeAuthorizationMessage", arguments::Dict)
@@ -462,9 +462,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sts-20
 
 
 """
-    using AWSSDK.STS
-    STS.get_caller_identity([::AWSConfig], arguments::Dict)
-    STS.get_caller_identity([::AWSConfig]; )
+    using AWSSDK.STS.get_caller_identity
+    get_caller_identity([::AWSConfig], arguments::Dict)
+    get_caller_identity([::AWSConfig]; )
 
     using AWSCore.Services.sts
     sts([::AWSConfig], "GetCallerIdentity", arguments::Dict)
@@ -553,9 +553,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sts-20
 
 
 """
-    using AWSSDK.STS
-    STS.get_federation_token([::AWSConfig], arguments::Dict)
-    STS.get_federation_token([::AWSConfig]; Name=, <keyword arguments>)
+    using AWSSDK.STS.get_federation_token
+    get_federation_token([::AWSConfig], arguments::Dict)
+    get_federation_token([::AWSConfig]; Name=, <keyword arguments>)
 
     using AWSCore.Services.sts
     sts([::AWSConfig], "GetFederationToken", arguments::Dict)
@@ -670,9 +670,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sts-20
 
 
 """
-    using AWSSDK.STS
-    STS.get_session_token([::AWSConfig], arguments::Dict)
-    STS.get_session_token([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.STS.get_session_token
+    get_session_token([::AWSConfig], arguments::Dict)
+    get_session_token([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.sts
     sts([::AWSConfig], "GetSessionToken", arguments::Dict)

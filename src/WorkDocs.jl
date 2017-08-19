@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.abort_document_version_upload([::AWSConfig], arguments::Dict)
-    WorkDocs.abort_document_version_upload([::AWSConfig]; DocumentId=, VersionId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.abort_document_version_upload
+    abort_document_version_upload([::AWSConfig], arguments::Dict)
+    abort_document_version_upload([::AWSConfig]; DocumentId=, VersionId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "DELETE", "/api/v1/documents/{DocumentId}/versions/{VersionId}", arguments::Dict)
@@ -56,9 +56,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.activate_user([::AWSConfig], arguments::Dict)
-    WorkDocs.activate_user([::AWSConfig]; UserId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.activate_user
+    activate_user([::AWSConfig], arguments::Dict)
+    activate_user([::AWSConfig]; UserId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "POST", "/api/v1/users/{UserId}/activation", arguments::Dict)
@@ -99,9 +99,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.add_resource_permissions([::AWSConfig], arguments::Dict)
-    WorkDocs.add_resource_permissions([::AWSConfig]; ResourceId=, Principals=, <keyword arguments>)
+    using AWSSDK.WorkDocs.add_resource_permissions
+    add_resource_permissions([::AWSConfig], arguments::Dict)
+    add_resource_permissions([::AWSConfig]; ResourceId=, Principals=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "POST", "/api/v1/resources/{ResourceId}/permissions", arguments::Dict)
@@ -152,9 +152,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.create_comment([::AWSConfig], arguments::Dict)
-    WorkDocs.create_comment([::AWSConfig]; DocumentId=, VersionId=, Text=, <keyword arguments>)
+    using AWSSDK.WorkDocs.create_comment
+    create_comment([::AWSConfig], arguments::Dict)
+    create_comment([::AWSConfig]; DocumentId=, VersionId=, Text=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "POST", "/api/v1/documents/{DocumentId}/versions/{VersionId}/comment", arguments::Dict)
@@ -219,9 +219,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.create_custom_metadata([::AWSConfig], arguments::Dict)
-    WorkDocs.create_custom_metadata([::AWSConfig]; ResourceId=, CustomMetadata=, <keyword arguments>)
+    using AWSSDK.WorkDocs.create_custom_metadata
+    create_custom_metadata([::AWSConfig], arguments::Dict)
+    create_custom_metadata([::AWSConfig]; ResourceId=, CustomMetadata=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "PUT", "/api/v1/resources/{ResourceId}/customMetadata", arguments::Dict)
@@ -270,9 +270,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.create_folder([::AWSConfig], arguments::Dict)
-    WorkDocs.create_folder([::AWSConfig]; ParentFolderId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.create_folder
+    create_folder([::AWSConfig], arguments::Dict)
+    create_folder([::AWSConfig]; ParentFolderId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "POST", "/api/v1/folders", arguments::Dict)
@@ -317,9 +317,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.create_labels([::AWSConfig], arguments::Dict)
-    WorkDocs.create_labels([::AWSConfig]; ResourceId=, Labels=, <keyword arguments>)
+    using AWSSDK.WorkDocs.create_labels
+    create_labels([::AWSConfig], arguments::Dict)
+    create_labels([::AWSConfig]; ResourceId=, Labels=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "PUT", "/api/v1/resources/{ResourceId}/labels", arguments::Dict)
@@ -364,9 +364,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.create_notification_subscription([::AWSConfig], arguments::Dict)
-    WorkDocs.create_notification_subscription([::AWSConfig]; OrganizationId=, Endpoint=, Protocol=, SubscriptionType=)
+    using AWSSDK.WorkDocs.create_notification_subscription
+    create_notification_subscription([::AWSConfig], arguments::Dict)
+    create_notification_subscription([::AWSConfig]; OrganizationId=, Endpoint=, Protocol=, SubscriptionType=)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "POST", "/api/v1/organizations/{OrganizationId}/subscriptions", arguments::Dict)
@@ -417,9 +417,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.create_user([::AWSConfig], arguments::Dict)
-    WorkDocs.create_user([::AWSConfig]; Username=, GivenName=, Surname=, Password=, <keyword arguments>)
+    using AWSSDK.WorkDocs.create_user
+    create_user([::AWSConfig], arguments::Dict)
+    create_user([::AWSConfig]; Username=, GivenName=, Surname=, Password=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "POST", "/api/v1/users", arguments::Dict)
@@ -493,9 +493,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.deactivate_user([::AWSConfig], arguments::Dict)
-    WorkDocs.deactivate_user([::AWSConfig]; UserId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.deactivate_user
+    deactivate_user([::AWSConfig], arguments::Dict)
+    deactivate_user([::AWSConfig]; UserId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "DELETE", "/api/v1/users/{UserId}/activation", arguments::Dict)
@@ -532,9 +532,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.delete_comment([::AWSConfig], arguments::Dict)
-    WorkDocs.delete_comment([::AWSConfig]; DocumentId=, VersionId=, CommentId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.delete_comment
+    delete_comment([::AWSConfig], arguments::Dict)
+    delete_comment([::AWSConfig]; DocumentId=, VersionId=, CommentId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "DELETE", "/api/v1/documents/{DocumentId}/versions/{VersionId}/comment/{CommentId}", arguments::Dict)
@@ -579,9 +579,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.delete_custom_metadata([::AWSConfig], arguments::Dict)
-    WorkDocs.delete_custom_metadata([::AWSConfig]; ResourceId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.delete_custom_metadata
+    delete_custom_metadata([::AWSConfig], arguments::Dict)
+    delete_custom_metadata([::AWSConfig]; ResourceId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "DELETE", "/api/v1/resources/{ResourceId}/customMetadata", arguments::Dict)
@@ -634,9 +634,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.delete_document([::AWSConfig], arguments::Dict)
-    WorkDocs.delete_document([::AWSConfig]; DocumentId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.delete_document
+    delete_document([::AWSConfig], arguments::Dict)
+    delete_document([::AWSConfig]; DocumentId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "DELETE", "/api/v1/documents/{DocumentId}", arguments::Dict)
@@ -673,9 +673,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.delete_folder([::AWSConfig], arguments::Dict)
-    WorkDocs.delete_folder([::AWSConfig]; FolderId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.delete_folder
+    delete_folder([::AWSConfig], arguments::Dict)
+    delete_folder([::AWSConfig]; FolderId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "DELETE", "/api/v1/folders/{FolderId}", arguments::Dict)
@@ -712,9 +712,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.delete_folder_contents([::AWSConfig], arguments::Dict)
-    WorkDocs.delete_folder_contents([::AWSConfig]; FolderId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.delete_folder_contents
+    delete_folder_contents([::AWSConfig], arguments::Dict)
+    delete_folder_contents([::AWSConfig]; FolderId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "DELETE", "/api/v1/folders/{FolderId}/contents", arguments::Dict)
@@ -751,9 +751,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.delete_labels([::AWSConfig], arguments::Dict)
-    WorkDocs.delete_labels([::AWSConfig]; ResourceId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.delete_labels
+    delete_labels([::AWSConfig], arguments::Dict)
+    delete_labels([::AWSConfig]; ResourceId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "DELETE", "/api/v1/resources/{ResourceId}/labels", arguments::Dict)
@@ -802,9 +802,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.delete_notification_subscription([::AWSConfig], arguments::Dict)
-    WorkDocs.delete_notification_subscription([::AWSConfig]; SubscriptionId=, OrganizationId=)
+    using AWSSDK.WorkDocs.delete_notification_subscription
+    delete_notification_subscription([::AWSConfig], arguments::Dict)
+    delete_notification_subscription([::AWSConfig]; SubscriptionId=, OrganizationId=)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "DELETE", "/api/v1/organizations/{OrganizationId}/subscriptions/{SubscriptionId}", arguments::Dict)
@@ -841,9 +841,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.delete_user([::AWSConfig], arguments::Dict)
-    WorkDocs.delete_user([::AWSConfig]; UserId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.delete_user
+    delete_user([::AWSConfig], arguments::Dict)
+    delete_user([::AWSConfig]; UserId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "DELETE", "/api/v1/users/{UserId}", arguments::Dict)
@@ -880,9 +880,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.describe_activities([::AWSConfig], arguments::Dict)
-    WorkDocs.describe_activities([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WorkDocs.describe_activities
+    describe_activities([::AWSConfig], arguments::Dict)
+    describe_activities([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "GET", "/api/v1/activities", arguments::Dict)
@@ -943,9 +943,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.describe_comments([::AWSConfig], arguments::Dict)
-    WorkDocs.describe_comments([::AWSConfig]; DocumentId=, VersionId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.describe_comments
+    describe_comments([::AWSConfig], arguments::Dict)
+    describe_comments([::AWSConfig]; DocumentId=, VersionId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "GET", "/api/v1/documents/{DocumentId}/versions/{VersionId}/comments", arguments::Dict)
@@ -998,9 +998,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.describe_document_versions([::AWSConfig], arguments::Dict)
-    WorkDocs.describe_document_versions([::AWSConfig]; DocumentId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.describe_document_versions
+    describe_document_versions([::AWSConfig], arguments::Dict)
+    describe_document_versions([::AWSConfig]; DocumentId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "GET", "/api/v1/documents/{DocumentId}/versions", arguments::Dict)
@@ -1059,9 +1059,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.describe_folder_contents([::AWSConfig], arguments::Dict)
-    WorkDocs.describe_folder_contents([::AWSConfig]; FolderId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.describe_folder_contents
+    describe_folder_contents([::AWSConfig], arguments::Dict)
+    describe_folder_contents([::AWSConfig]; FolderId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "GET", "/api/v1/folders/{FolderId}/contents", arguments::Dict)
@@ -1128,9 +1128,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.describe_notification_subscriptions([::AWSConfig], arguments::Dict)
-    WorkDocs.describe_notification_subscriptions([::AWSConfig]; OrganizationId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.describe_notification_subscriptions
+    describe_notification_subscriptions([::AWSConfig], arguments::Dict)
+    describe_notification_subscriptions([::AWSConfig]; OrganizationId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "GET", "/api/v1/organizations/{OrganizationId}/subscriptions", arguments::Dict)
@@ -1175,9 +1175,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.describe_resource_permissions([::AWSConfig], arguments::Dict)
-    WorkDocs.describe_resource_permissions([::AWSConfig]; ResourceId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.describe_resource_permissions
+    describe_resource_permissions([::AWSConfig], arguments::Dict)
+    describe_resource_permissions([::AWSConfig]; ResourceId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "GET", "/api/v1/resources/{ResourceId}/permissions", arguments::Dict)
@@ -1226,9 +1226,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.describe_root_folders([::AWSConfig], arguments::Dict)
-    WorkDocs.describe_root_folders([::AWSConfig]; Authentication=, <keyword arguments>)
+    using AWSSDK.WorkDocs.describe_root_folders
+    describe_root_folders([::AWSConfig], arguments::Dict)
+    describe_root_folders([::AWSConfig]; Authentication=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "GET", "/api/v1/me/root", arguments::Dict)
@@ -1273,9 +1273,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.describe_users([::AWSConfig], arguments::Dict)
-    WorkDocs.describe_users([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WorkDocs.describe_users
+    describe_users([::AWSConfig], arguments::Dict)
+    describe_users([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "GET", "/api/v1/users", arguments::Dict)
@@ -1350,9 +1350,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.get_current_user([::AWSConfig], arguments::Dict)
-    WorkDocs.get_current_user([::AWSConfig]; Authentication=)
+    using AWSSDK.WorkDocs.get_current_user
+    get_current_user([::AWSConfig], arguments::Dict)
+    get_current_user([::AWSConfig]; Authentication=)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "GET", "/api/v1/me", arguments::Dict)
@@ -1389,9 +1389,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.get_document([::AWSConfig], arguments::Dict)
-    WorkDocs.get_document([::AWSConfig]; DocumentId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.get_document
+    get_document([::AWSConfig], arguments::Dict)
+    get_document([::AWSConfig]; DocumentId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "GET", "/api/v1/documents/{DocumentId}", arguments::Dict)
@@ -1436,9 +1436,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.get_document_path([::AWSConfig], arguments::Dict)
-    WorkDocs.get_document_path([::AWSConfig]; DocumentId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.get_document_path
+    get_document_path([::AWSConfig], arguments::Dict)
+    get_document_path([::AWSConfig]; DocumentId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "GET", "/api/v1/documents/{DocumentId}/path", arguments::Dict)
@@ -1493,9 +1493,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.get_document_version([::AWSConfig], arguments::Dict)
-    WorkDocs.get_document_version([::AWSConfig]; DocumentId=, VersionId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.get_document_version
+    get_document_version([::AWSConfig], arguments::Dict)
+    get_document_version([::AWSConfig]; DocumentId=, VersionId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "GET", "/api/v1/documents/{DocumentId}/versions/{VersionId}", arguments::Dict)
@@ -1548,9 +1548,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.get_folder([::AWSConfig], arguments::Dict)
-    WorkDocs.get_folder([::AWSConfig]; FolderId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.get_folder
+    get_folder([::AWSConfig], arguments::Dict)
+    get_folder([::AWSConfig]; FolderId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "GET", "/api/v1/folders/{FolderId}", arguments::Dict)
@@ -1595,9 +1595,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.get_folder_path([::AWSConfig], arguments::Dict)
-    WorkDocs.get_folder_path([::AWSConfig]; FolderId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.get_folder_path
+    get_folder_path([::AWSConfig], arguments::Dict)
+    get_folder_path([::AWSConfig]; FolderId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "GET", "/api/v1/folders/{FolderId}/path", arguments::Dict)
@@ -1652,9 +1652,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.initiate_document_version_upload([::AWSConfig], arguments::Dict)
-    WorkDocs.initiate_document_version_upload([::AWSConfig]; ParentFolderId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.initiate_document_version_upload
+    initiate_document_version_upload([::AWSConfig], arguments::Dict)
+    initiate_document_version_upload([::AWSConfig]; ParentFolderId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "POST", "/api/v1/documents", arguments::Dict)
@@ -1723,9 +1723,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.remove_all_resource_permissions([::AWSConfig], arguments::Dict)
-    WorkDocs.remove_all_resource_permissions([::AWSConfig]; ResourceId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.remove_all_resource_permissions
+    remove_all_resource_permissions([::AWSConfig], arguments::Dict)
+    remove_all_resource_permissions([::AWSConfig]; ResourceId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "DELETE", "/api/v1/resources/{ResourceId}/permissions", arguments::Dict)
@@ -1762,9 +1762,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.remove_resource_permission([::AWSConfig], arguments::Dict)
-    WorkDocs.remove_resource_permission([::AWSConfig]; ResourceId=, PrincipalId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.remove_resource_permission
+    remove_resource_permission([::AWSConfig], arguments::Dict)
+    remove_resource_permission([::AWSConfig]; ResourceId=, PrincipalId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "DELETE", "/api/v1/resources/{ResourceId}/permissions/{PrincipalId}", arguments::Dict)
@@ -1809,9 +1809,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.update_document([::AWSConfig], arguments::Dict)
-    WorkDocs.update_document([::AWSConfig]; DocumentId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.update_document
+    update_document([::AWSConfig], arguments::Dict)
+    update_document([::AWSConfig]; DocumentId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "PATCH", "/api/v1/documents/{DocumentId}", arguments::Dict)
@@ -1860,9 +1860,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.update_document_version([::AWSConfig], arguments::Dict)
-    WorkDocs.update_document_version([::AWSConfig]; DocumentId=, VersionId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.update_document_version
+    update_document_version([::AWSConfig], arguments::Dict)
+    update_document_version([::AWSConfig]; DocumentId=, VersionId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "PATCH", "/api/v1/documents/{DocumentId}/versions/{VersionId}", arguments::Dict)
@@ -1909,9 +1909,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.update_folder([::AWSConfig], arguments::Dict)
-    WorkDocs.update_folder([::AWSConfig]; FolderId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.update_folder
+    update_folder([::AWSConfig], arguments::Dict)
+    update_folder([::AWSConfig]; FolderId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "PATCH", "/api/v1/folders/{FolderId}", arguments::Dict)
@@ -1960,9 +1960,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 
 """
-    using AWSSDK.WorkDocs
-    WorkDocs.update_user([::AWSConfig], arguments::Dict)
-    WorkDocs.update_user([::AWSConfig]; UserId=, <keyword arguments>)
+    using AWSSDK.WorkDocs.update_user
+    update_user([::AWSConfig], arguments::Dict)
+    update_user([::AWSConfig]; UserId=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "PATCH", "/api/v1/users/{UserId}", arguments::Dict)

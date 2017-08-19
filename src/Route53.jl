@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Route53
-    Route53.associate_vpcwith_hosted_zone([::AWSConfig], arguments::Dict)
-    Route53.associate_vpcwith_hosted_zone([::AWSConfig]; Id=, VPC=, <keyword arguments>)
+    using AWSSDK.Route53.associate_vpcwith_hosted_zone
+    associate_vpcwith_hosted_zone([::AWSConfig], arguments::Dict)
+    associate_vpcwith_hosted_zone([::AWSConfig]; Id=, VPC=, <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "POST", "/2013-04-01/hostedzone/{Id}/associatevpc", arguments::Dict)
@@ -101,9 +101,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.change_resource_record_sets([::AWSConfig], arguments::Dict)
-    Route53.change_resource_record_sets([::AWSConfig]; Id=, ChangeBatch=)
+    using AWSSDK.Route53.change_resource_record_sets
+    change_resource_record_sets([::AWSConfig], arguments::Dict)
+    change_resource_record_sets([::AWSConfig]; Id=, ChangeBatch=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "POST", "/2013-04-01/hostedzone/{Id}/rrset/", arguments::Dict)
@@ -830,9 +830,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.change_tags_for_resource([::AWSConfig], arguments::Dict)
-    Route53.change_tags_for_resource([::AWSConfig]; ResourceType=, ResourceId=, <keyword arguments>)
+    using AWSSDK.Route53.change_tags_for_resource
+    change_tags_for_resource([::AWSConfig], arguments::Dict)
+    change_tags_for_resource([::AWSConfig]; ResourceType=, ResourceId=, <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "POST", "/2013-04-01/tags/{ResourceType}/{ResourceId}", arguments::Dict)
@@ -926,9 +926,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.create_health_check([::AWSConfig], arguments::Dict)
-    Route53.create_health_check([::AWSConfig]; CallerReference=, HealthCheckConfig=)
+    using AWSSDK.Route53.create_health_check
+    create_health_check([::AWSConfig], arguments::Dict)
+    create_health_check([::AWSConfig]; CallerReference=, HealthCheckConfig=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "POST", "/2013-04-01/healthcheck", arguments::Dict)
@@ -1015,9 +1015,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.create_hosted_zone([::AWSConfig], arguments::Dict)
-    Route53.create_hosted_zone([::AWSConfig]; Name=, CallerReference=, <keyword arguments>)
+    using AWSSDK.Route53.create_hosted_zone
+    create_hosted_zone([::AWSConfig], arguments::Dict)
+    create_hosted_zone([::AWSConfig]; Name=, CallerReference=, <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "POST", "/2013-04-01/hostedzone", arguments::Dict)
@@ -1107,9 +1107,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.create_reusable_delegation_set([::AWSConfig], arguments::Dict)
-    Route53.create_reusable_delegation_set([::AWSConfig]; CallerReference=, <keyword arguments>)
+    using AWSSDK.Route53.create_reusable_delegation_set
+    create_reusable_delegation_set([::AWSConfig], arguments::Dict)
+    create_reusable_delegation_set([::AWSConfig]; CallerReference=, <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "POST", "/2013-04-01/delegationset", arguments::Dict)
@@ -1155,9 +1155,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.create_traffic_policy([::AWSConfig], arguments::Dict)
-    Route53.create_traffic_policy([::AWSConfig]; Name=, Document=, <keyword arguments>)
+    using AWSSDK.Route53.create_traffic_policy
+    create_traffic_policy([::AWSConfig], arguments::Dict)
+    create_traffic_policy([::AWSConfig]; Name=, Document=, <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "POST", "/2013-04-01/trafficpolicy", arguments::Dict)
@@ -1202,9 +1202,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.create_traffic_policy_instance([::AWSConfig], arguments::Dict)
-    Route53.create_traffic_policy_instance([::AWSConfig]; HostedZoneId=, Name=, TTL=, TrafficPolicyId=, TrafficPolicyVersion=)
+    using AWSSDK.Route53.create_traffic_policy_instance
+    create_traffic_policy_instance([::AWSConfig], arguments::Dict)
+    create_traffic_policy_instance([::AWSConfig]; HostedZoneId=, Name=, TTL=, TrafficPolicyId=, TrafficPolicyVersion=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "POST", "/2013-04-01/trafficpolicyinstance", arguments::Dict)
@@ -1257,9 +1257,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.create_traffic_policy_version([::AWSConfig], arguments::Dict)
-    Route53.create_traffic_policy_version([::AWSConfig]; Id=, Document=, <keyword arguments>)
+    using AWSSDK.Route53.create_traffic_policy_version
+    create_traffic_policy_version([::AWSConfig], arguments::Dict)
+    create_traffic_policy_version([::AWSConfig]; Id=, Document=, <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "POST", "/2013-04-01/trafficpolicy/{Id}", arguments::Dict)
@@ -1304,9 +1304,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.create_vpcassociation_authorization([::AWSConfig], arguments::Dict)
-    Route53.create_vpcassociation_authorization([::AWSConfig]; Id=, VPC=)
+    using AWSSDK.Route53.create_vpcassociation_authorization
+    create_vpcassociation_authorization([::AWSConfig], arguments::Dict)
+    create_vpcassociation_authorization([::AWSConfig]; Id=, VPC=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "POST", "/2013-04-01/hostedzone/{Id}/authorizevpcassociation", arguments::Dict)
@@ -1355,9 +1355,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.delete_health_check([::AWSConfig], arguments::Dict)
-    Route53.delete_health_check([::AWSConfig]; HealthCheckId=)
+    using AWSSDK.Route53.delete_health_check
+    delete_health_check([::AWSConfig], arguments::Dict)
+    delete_health_check([::AWSConfig]; HealthCheckId=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "DELETE", "/2013-04-01/healthcheck/{HealthCheckId}", arguments::Dict)
@@ -1397,9 +1397,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.delete_hosted_zone([::AWSConfig], arguments::Dict)
-    Route53.delete_hosted_zone([::AWSConfig]; Id=)
+    using AWSSDK.Route53.delete_hosted_zone
+    delete_hosted_zone([::AWSConfig], arguments::Dict)
+    delete_hosted_zone([::AWSConfig]; Id=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "DELETE", "/2013-04-01/hostedzone/{Id}", arguments::Dict)
@@ -1449,9 +1449,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.delete_reusable_delegation_set([::AWSConfig], arguments::Dict)
-    Route53.delete_reusable_delegation_set([::AWSConfig]; Id=)
+    using AWSSDK.Route53.delete_reusable_delegation_set
+    delete_reusable_delegation_set([::AWSConfig], arguments::Dict)
+    delete_reusable_delegation_set([::AWSConfig]; Id=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "DELETE", "/2013-04-01/delegationset/{Id}", arguments::Dict)
@@ -1493,9 +1493,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.delete_traffic_policy([::AWSConfig], arguments::Dict)
-    Route53.delete_traffic_policy([::AWSConfig]; Id=, Version=)
+    using AWSSDK.Route53.delete_traffic_policy
+    delete_traffic_policy([::AWSConfig], arguments::Dict)
+    delete_traffic_policy([::AWSConfig]; Id=, Version=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "DELETE", "/2013-04-01/trafficpolicy/{Id}/{Version}", arguments::Dict)
@@ -1536,9 +1536,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.delete_traffic_policy_instance([::AWSConfig], arguments::Dict)
-    Route53.delete_traffic_policy_instance([::AWSConfig]; Id=)
+    using AWSSDK.Route53.delete_traffic_policy_instance
+    delete_traffic_policy_instance([::AWSConfig], arguments::Dict)
+    delete_traffic_policy_instance([::AWSConfig]; Id=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "DELETE", "/2013-04-01/trafficpolicyinstance/{Id}", arguments::Dict)
@@ -1581,9 +1581,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.delete_vpcassociation_authorization([::AWSConfig], arguments::Dict)
-    Route53.delete_vpcassociation_authorization([::AWSConfig]; Id=, VPC=)
+    using AWSSDK.Route53.delete_vpcassociation_authorization
+    delete_vpcassociation_authorization([::AWSConfig], arguments::Dict)
+    delete_vpcassociation_authorization([::AWSConfig]; Id=, VPC=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "POST", "/2013-04-01/hostedzone/{Id}/deauthorizevpcassociation", arguments::Dict)
@@ -1632,9 +1632,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.disassociate_vpcfrom_hosted_zone([::AWSConfig], arguments::Dict)
-    Route53.disassociate_vpcfrom_hosted_zone([::AWSConfig]; Id=, VPC=, <keyword arguments>)
+    using AWSSDK.Route53.disassociate_vpcfrom_hosted_zone
+    disassociate_vpcfrom_hosted_zone([::AWSConfig], arguments::Dict)
+    disassociate_vpcfrom_hosted_zone([::AWSConfig]; Id=, VPC=, <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "POST", "/2013-04-01/hostedzone/{Id}/disassociatevpc", arguments::Dict)
@@ -1690,9 +1690,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.get_change([::AWSConfig], arguments::Dict)
-    Route53.get_change([::AWSConfig]; Id=)
+    using AWSSDK.Route53.get_change
+    get_change([::AWSConfig], arguments::Dict)
+    get_change([::AWSConfig]; Id=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/change/{Id}", arguments::Dict)
@@ -1733,9 +1733,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.get_checker_ip_ranges([::AWSConfig], arguments::Dict)
-    Route53.get_checker_ip_ranges([::AWSConfig]; )
+    using AWSSDK.Route53.get_checker_ip_ranges
+    get_checker_ip_ranges([::AWSConfig], arguments::Dict)
+    get_checker_ip_ranges([::AWSConfig]; )
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/checkeripranges", arguments::Dict)
@@ -1764,9 +1764,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.get_geo_location([::AWSConfig], arguments::Dict)
-    Route53.get_geo_location([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Route53.get_geo_location
+    get_geo_location([::AWSConfig], arguments::Dict)
+    get_geo_location([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/geolocation", arguments::Dict)
@@ -1837,9 +1837,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.get_health_check([::AWSConfig], arguments::Dict)
-    Route53.get_health_check([::AWSConfig]; HealthCheckId=)
+    using AWSSDK.Route53.get_health_check
+    get_health_check([::AWSConfig], arguments::Dict)
+    get_health_check([::AWSConfig]; HealthCheckId=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/healthcheck/{HealthCheckId}", arguments::Dict)
@@ -1876,9 +1876,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.get_health_check_count([::AWSConfig], arguments::Dict)
-    Route53.get_health_check_count([::AWSConfig]; )
+    using AWSSDK.Route53.get_health_check_count
+    get_health_check_count([::AWSConfig], arguments::Dict)
+    get_health_check_count([::AWSConfig]; )
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/healthcheckcount", arguments::Dict)
@@ -1907,9 +1907,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.get_health_check_last_failure_reason([::AWSConfig], arguments::Dict)
-    Route53.get_health_check_last_failure_reason([::AWSConfig]; HealthCheckId=)
+    using AWSSDK.Route53.get_health_check_last_failure_reason
+    get_health_check_last_failure_reason([::AWSConfig], arguments::Dict)
+    get_health_check_last_failure_reason([::AWSConfig]; HealthCheckId=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/healthcheck/{HealthCheckId}/lastfailurereason", arguments::Dict)
@@ -1946,9 +1946,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.get_health_check_status([::AWSConfig], arguments::Dict)
-    Route53.get_health_check_status([::AWSConfig]; HealthCheckId=)
+    using AWSSDK.Route53.get_health_check_status
+    get_health_check_status([::AWSConfig], arguments::Dict)
+    get_health_check_status([::AWSConfig]; HealthCheckId=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/healthcheck/{HealthCheckId}/status", arguments::Dict)
@@ -1988,9 +1988,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.get_hosted_zone([::AWSConfig], arguments::Dict)
-    Route53.get_hosted_zone([::AWSConfig]; Id=)
+    using AWSSDK.Route53.get_hosted_zone
+    get_hosted_zone([::AWSConfig], arguments::Dict)
+    get_hosted_zone([::AWSConfig]; Id=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/hostedzone/{Id}", arguments::Dict)
@@ -2061,9 +2061,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.get_hosted_zone_count([::AWSConfig], arguments::Dict)
-    Route53.get_hosted_zone_count([::AWSConfig]; )
+    using AWSSDK.Route53.get_hosted_zone_count
+    get_hosted_zone_count([::AWSConfig], arguments::Dict)
+    get_hosted_zone_count([::AWSConfig]; )
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/hostedzonecount", arguments::Dict)
@@ -2096,9 +2096,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.get_reusable_delegation_set([::AWSConfig], arguments::Dict)
-    Route53.get_reusable_delegation_set([::AWSConfig]; Id=)
+    using AWSSDK.Route53.get_reusable_delegation_set
+    get_reusable_delegation_set([::AWSConfig], arguments::Dict)
+    get_reusable_delegation_set([::AWSConfig]; Id=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/delegationset/{Id}", arguments::Dict)
@@ -2135,9 +2135,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.get_traffic_policy([::AWSConfig], arguments::Dict)
-    Route53.get_traffic_policy([::AWSConfig]; Id=, Version=)
+    using AWSSDK.Route53.get_traffic_policy
+    get_traffic_policy([::AWSConfig], arguments::Dict)
+    get_traffic_policy([::AWSConfig]; Id=, Version=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/trafficpolicy/{Id}/{Version}", arguments::Dict)
@@ -2178,9 +2178,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.get_traffic_policy_instance([::AWSConfig], arguments::Dict)
-    Route53.get_traffic_policy_instance([::AWSConfig]; Id=)
+    using AWSSDK.Route53.get_traffic_policy_instance
+    get_traffic_policy_instance([::AWSConfig], arguments::Dict)
+    get_traffic_policy_instance([::AWSConfig]; Id=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/trafficpolicyinstance/{Id}", arguments::Dict)
@@ -2223,9 +2223,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.get_traffic_policy_instance_count([::AWSConfig], arguments::Dict)
-    Route53.get_traffic_policy_instance_count([::AWSConfig]; )
+    using AWSSDK.Route53.get_traffic_policy_instance_count
+    get_traffic_policy_instance_count([::AWSConfig], arguments::Dict)
+    get_traffic_policy_instance_count([::AWSConfig]; )
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/trafficpolicyinstancecount", arguments::Dict)
@@ -2254,9 +2254,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.list_geo_locations([::AWSConfig], arguments::Dict)
-    Route53.list_geo_locations([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Route53.list_geo_locations
+    list_geo_locations([::AWSConfig], arguments::Dict)
+    list_geo_locations([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/geolocations", arguments::Dict)
@@ -2313,9 +2313,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.list_health_checks([::AWSConfig], arguments::Dict)
-    Route53.list_health_checks([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Route53.list_health_checks
+    list_health_checks([::AWSConfig], arguments::Dict)
+    list_health_checks([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/healthcheck", arguments::Dict)
@@ -2360,9 +2360,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.list_hosted_zones([::AWSConfig], arguments::Dict)
-    Route53.list_hosted_zones([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Route53.list_hosted_zones
+    list_hosted_zones([::AWSConfig], arguments::Dict)
+    list_hosted_zones([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/hostedzone", arguments::Dict)
@@ -2413,9 +2413,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.list_hosted_zones_by_name([::AWSConfig], arguments::Dict)
-    Route53.list_hosted_zones_by_name([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Route53.list_hosted_zones_by_name
+    list_hosted_zones_by_name([::AWSConfig], arguments::Dict)
+    list_hosted_zones_by_name([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/hostedzonesbyname", arguments::Dict)
@@ -2486,9 +2486,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.list_resource_record_sets([::AWSConfig], arguments::Dict)
-    Route53.list_resource_record_sets([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.Route53.list_resource_record_sets
+    list_resource_record_sets([::AWSConfig], arguments::Dict)
+    list_resource_record_sets([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/hostedzone/{Id}/rrset", arguments::Dict)
@@ -2607,9 +2607,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.list_reusable_delegation_sets([::AWSConfig], arguments::Dict)
-    Route53.list_reusable_delegation_sets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Route53.list_reusable_delegation_sets
+    list_reusable_delegation_sets([::AWSConfig], arguments::Dict)
+    list_reusable_delegation_sets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/delegationset", arguments::Dict)
@@ -2654,9 +2654,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.list_tags_for_resource([::AWSConfig], arguments::Dict)
-    Route53.list_tags_for_resource([::AWSConfig]; ResourceType=, ResourceId=)
+    using AWSSDK.Route53.list_tags_for_resource
+    list_tags_for_resource([::AWSConfig], arguments::Dict)
+    list_tags_for_resource([::AWSConfig]; ResourceType=, ResourceId=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/tags/{ResourceType}/{ResourceId}", arguments::Dict)
@@ -2703,9 +2703,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.list_tags_for_resources([::AWSConfig], arguments::Dict)
-    Route53.list_tags_for_resources([::AWSConfig]; ResourceType=, ResourceIds=)
+    using AWSSDK.Route53.list_tags_for_resources
+    list_tags_for_resources([::AWSConfig], arguments::Dict)
+    list_tags_for_resources([::AWSConfig]; ResourceType=, ResourceIds=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "POST", "/2013-04-01/tags/{ResourceType}", arguments::Dict)
@@ -2752,9 +2752,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.list_traffic_policies([::AWSConfig], arguments::Dict)
-    Route53.list_traffic_policies([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Route53.list_traffic_policies
+    list_traffic_policies([::AWSConfig], arguments::Dict)
+    list_traffic_policies([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/trafficpolicies", arguments::Dict)
@@ -2797,9 +2797,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.list_traffic_policy_instances([::AWSConfig], arguments::Dict)
-    Route53.list_traffic_policy_instances([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Route53.list_traffic_policy_instances
+    list_traffic_policy_instances([::AWSConfig], arguments::Dict)
+    list_traffic_policy_instances([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/trafficpolicyinstances", arguments::Dict)
@@ -2859,9 +2859,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.list_traffic_policy_instances_by_hosted_zone([::AWSConfig], arguments::Dict)
-    Route53.list_traffic_policy_instances_by_hosted_zone([::AWSConfig]; id=, <keyword arguments>)
+    using AWSSDK.Route53.list_traffic_policy_instances_by_hosted_zone
+    list_traffic_policy_instances_by_hosted_zone([::AWSConfig], arguments::Dict)
+    list_traffic_policy_instances_by_hosted_zone([::AWSConfig]; id=, <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/trafficpolicyinstances/hostedzone", arguments::Dict)
@@ -2919,9 +2919,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.list_traffic_policy_instances_by_policy([::AWSConfig], arguments::Dict)
-    Route53.list_traffic_policy_instances_by_policy([::AWSConfig]; id=, version=, <keyword arguments>)
+    using AWSSDK.Route53.list_traffic_policy_instances_by_policy
+    list_traffic_policy_instances_by_policy([::AWSConfig], arguments::Dict)
+    list_traffic_policy_instances_by_policy([::AWSConfig]; id=, version=, <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/trafficpolicyinstances/trafficpolicy", arguments::Dict)
@@ -2995,9 +2995,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.list_traffic_policy_versions([::AWSConfig], arguments::Dict)
-    Route53.list_traffic_policy_versions([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.Route53.list_traffic_policy_versions
+    list_traffic_policy_versions([::AWSConfig], arguments::Dict)
+    list_traffic_policy_versions([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/trafficpolicies/{Id}/versions", arguments::Dict)
@@ -3046,9 +3046,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.list_vpcassociation_authorizations([::AWSConfig], arguments::Dict)
-    Route53.list_vpcassociation_authorizations([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.Route53.list_vpcassociation_authorizations
+    list_vpcassociation_authorizations([::AWSConfig], arguments::Dict)
+    list_vpcassociation_authorizations([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/hostedzone/{Id}/authorizevpcassociation", arguments::Dict)
@@ -3095,9 +3095,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.test_dnsanswer([::AWSConfig], arguments::Dict)
-    Route53.test_dnsanswer([::AWSConfig]; hostedzoneid=, recordname=, recordtype=, <keyword arguments>)
+    using AWSSDK.Route53.test_dnsanswer
+    test_dnsanswer([::AWSConfig], arguments::Dict)
+    test_dnsanswer([::AWSConfig]; hostedzoneid=, recordname=, recordtype=, <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "GET", "/2013-04-01/testdnsanswer", arguments::Dict)
@@ -3154,9 +3154,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.update_health_check([::AWSConfig], arguments::Dict)
-    Route53.update_health_check([::AWSConfig]; HealthCheckId=, <keyword arguments>)
+    using AWSSDK.Route53.update_health_check
+    update_health_check([::AWSConfig], arguments::Dict)
+    update_health_check([::AWSConfig]; HealthCheckId=, <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "POST", "/2013-04-01/healthcheck/{HealthCheckId}", arguments::Dict)
@@ -3338,9 +3338,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.update_hosted_zone_comment([::AWSConfig], arguments::Dict)
-    Route53.update_hosted_zone_comment([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.Route53.update_hosted_zone_comment
+    update_hosted_zone_comment([::AWSConfig], arguments::Dict)
+    update_hosted_zone_comment([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "POST", "/2013-04-01/hostedzone/{Id}", arguments::Dict)
@@ -3381,9 +3381,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.update_traffic_policy_comment([::AWSConfig], arguments::Dict)
-    Route53.update_traffic_policy_comment([::AWSConfig]; Id=, Version=, Comment=)
+    using AWSSDK.Route53.update_traffic_policy_comment
+    update_traffic_policy_comment([::AWSConfig], arguments::Dict)
+    update_traffic_policy_comment([::AWSConfig]; Id=, Version=, Comment=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "POST", "/2013-04-01/trafficpolicy/{Id}/{Version}", arguments::Dict)
@@ -3428,9 +3428,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
-    using AWSSDK.Route53
-    Route53.update_traffic_policy_instance([::AWSConfig], arguments::Dict)
-    Route53.update_traffic_policy_instance([::AWSConfig]; Id=, TTL=, TrafficPolicyId=, TrafficPolicyVersion=)
+    using AWSSDK.Route53.update_traffic_policy_instance
+    update_traffic_policy_instance([::AWSConfig], arguments::Dict)
+    update_traffic_policy_instance([::AWSConfig]; Id=, TTL=, TrafficPolicyId=, TrafficPolicyVersion=)
 
     using AWSCore.Services.route53
     route53([::AWSConfig], "POST", "/2013-04-01/trafficpolicyinstance/{Id}", arguments::Dict)

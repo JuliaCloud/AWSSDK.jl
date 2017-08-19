@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.EMR
-    EMR.add_instance_fleet([::AWSConfig], arguments::Dict)
-    EMR.add_instance_fleet([::AWSConfig]; ClusterId=, InstanceFleet=)
+    using AWSSDK.EMR.add_instance_fleet
+    add_instance_fleet([::AWSConfig], arguments::Dict)
+    add_instance_fleet([::AWSConfig]; ClusterId=, InstanceFleet=)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "AddInstanceFleet", arguments::Dict)
@@ -93,9 +93,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.add_instance_groups([::AWSConfig], arguments::Dict)
-    EMR.add_instance_groups([::AWSConfig]; InstanceGroups=, JobFlowId=)
+    using AWSSDK.EMR.add_instance_groups
+    add_instance_groups([::AWSConfig], arguments::Dict)
+    add_instance_groups([::AWSConfig]; InstanceGroups=, JobFlowId=)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "AddInstanceGroups", arguments::Dict)
@@ -193,9 +193,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.add_job_flow_steps([::AWSConfig], arguments::Dict)
-    EMR.add_job_flow_steps([::AWSConfig]; JobFlowId=, Steps=)
+    using AWSSDK.EMR.add_job_flow_steps
+    add_job_flow_steps([::AWSConfig], arguments::Dict)
+    add_job_flow_steps([::AWSConfig]; JobFlowId=, Steps=)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "AddJobFlowSteps", arguments::Dict)
@@ -258,9 +258,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.add_tags([::AWSConfig], arguments::Dict)
-    EMR.add_tags([::AWSConfig]; ResourceId=, Tags=)
+    using AWSSDK.EMR.add_tags
+    add_tags([::AWSConfig], arguments::Dict)
+    add_tags([::AWSConfig]; ResourceId=, Tags=)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "AddTags", arguments::Dict)
@@ -306,9 +306,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.cancel_steps([::AWSConfig], arguments::Dict)
-    EMR.cancel_steps([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EMR.cancel_steps
+    cancel_steps([::AWSConfig], arguments::Dict)
+    cancel_steps([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "CancelSteps", arguments::Dict)
@@ -349,9 +349,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.create_security_configuration([::AWSConfig], arguments::Dict)
-    EMR.create_security_configuration([::AWSConfig]; Name=, SecurityConfiguration=)
+    using AWSSDK.EMR.create_security_configuration
+    create_security_configuration([::AWSConfig], arguments::Dict)
+    create_security_configuration([::AWSConfig]; Name=, SecurityConfiguration=)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "CreateSecurityConfiguration", arguments::Dict)
@@ -392,9 +392,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.delete_security_configuration([::AWSConfig], arguments::Dict)
-    EMR.delete_security_configuration([::AWSConfig]; Name=)
+    using AWSSDK.EMR.delete_security_configuration
+    delete_security_configuration([::AWSConfig], arguments::Dict)
+    delete_security_configuration([::AWSConfig]; Name=)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "DeleteSecurityConfiguration", arguments::Dict)
@@ -431,9 +431,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.describe_cluster([::AWSConfig], arguments::Dict)
-    EMR.describe_cluster([::AWSConfig]; ClusterId=)
+    using AWSSDK.EMR.describe_cluster
+    describe_cluster([::AWSConfig], arguments::Dict)
+    describe_cluster([::AWSConfig]; ClusterId=)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "DescribeCluster", arguments::Dict)
@@ -470,9 +470,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.describe_job_flows([::AWSConfig], arguments::Dict)
-    EMR.describe_job_flows([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EMR.describe_job_flows
+    describe_job_flows([::AWSConfig], arguments::Dict)
+    describe_job_flows([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "DescribeJobFlows", arguments::Dict)
@@ -533,9 +533,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.describe_security_configuration([::AWSConfig], arguments::Dict)
-    EMR.describe_security_configuration([::AWSConfig]; Name=)
+    using AWSSDK.EMR.describe_security_configuration
+    describe_security_configuration([::AWSConfig], arguments::Dict)
+    describe_security_configuration([::AWSConfig]; Name=)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "DescribeSecurityConfiguration", arguments::Dict)
@@ -572,9 +572,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.describe_step([::AWSConfig], arguments::Dict)
-    EMR.describe_step([::AWSConfig]; ClusterId=, StepId=)
+    using AWSSDK.EMR.describe_step
+    describe_step([::AWSConfig], arguments::Dict)
+    describe_step([::AWSConfig]; ClusterId=, StepId=)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "DescribeStep", arguments::Dict)
@@ -615,9 +615,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.list_bootstrap_actions([::AWSConfig], arguments::Dict)
-    EMR.list_bootstrap_actions([::AWSConfig]; ClusterId=, <keyword arguments>)
+    using AWSSDK.EMR.list_bootstrap_actions
+    list_bootstrap_actions([::AWSConfig], arguments::Dict)
+    list_bootstrap_actions([::AWSConfig]; ClusterId=, <keyword arguments>)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "ListBootstrapActions", arguments::Dict)
@@ -658,9 +658,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.list_clusters([::AWSConfig], arguments::Dict)
-    EMR.list_clusters([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EMR.list_clusters
+    list_clusters([::AWSConfig], arguments::Dict)
+    list_clusters([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "ListClusters", arguments::Dict)
@@ -709,9 +709,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.list_instance_fleets([::AWSConfig], arguments::Dict)
-    EMR.list_instance_fleets([::AWSConfig]; ClusterId=, <keyword arguments>)
+    using AWSSDK.EMR.list_instance_fleets
+    list_instance_fleets([::AWSConfig], arguments::Dict)
+    list_instance_fleets([::AWSConfig]; ClusterId=, <keyword arguments>)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "ListInstanceFleets", arguments::Dict)
@@ -755,9 +755,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.list_instance_groups([::AWSConfig], arguments::Dict)
-    EMR.list_instance_groups([::AWSConfig]; ClusterId=, <keyword arguments>)
+    using AWSSDK.EMR.list_instance_groups
+    list_instance_groups([::AWSConfig], arguments::Dict)
+    list_instance_groups([::AWSConfig]; ClusterId=, <keyword arguments>)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "ListInstanceGroups", arguments::Dict)
@@ -798,9 +798,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.list_instances([::AWSConfig], arguments::Dict)
-    EMR.list_instances([::AWSConfig]; ClusterId=, <keyword arguments>)
+    using AWSSDK.EMR.list_instances
+    list_instances([::AWSConfig], arguments::Dict)
+    list_instances([::AWSConfig]; ClusterId=, <keyword arguments>)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "ListInstances", arguments::Dict)
@@ -861,9 +861,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.list_security_configurations([::AWSConfig], arguments::Dict)
-    EMR.list_security_configurations([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EMR.list_security_configurations
+    list_security_configurations([::AWSConfig], arguments::Dict)
+    list_security_configurations([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "ListSecurityConfigurations", arguments::Dict)
@@ -900,9 +900,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.list_steps([::AWSConfig], arguments::Dict)
-    EMR.list_steps([::AWSConfig]; ClusterId=, <keyword arguments>)
+    using AWSSDK.EMR.list_steps
+    list_steps([::AWSConfig], arguments::Dict)
+    list_steps([::AWSConfig]; ClusterId=, <keyword arguments>)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "ListSteps", arguments::Dict)
@@ -951,9 +951,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.modify_instance_fleet([::AWSConfig], arguments::Dict)
-    EMR.modify_instance_fleet([::AWSConfig]; ClusterId=, InstanceFleet=)
+    using AWSSDK.EMR.modify_instance_fleet
+    modify_instance_fleet([::AWSConfig], arguments::Dict)
+    modify_instance_fleet([::AWSConfig]; ClusterId=, InstanceFleet=)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "ModifyInstanceFleet", arguments::Dict)
@@ -999,9 +999,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.modify_instance_groups([::AWSConfig], arguments::Dict)
-    EMR.modify_instance_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EMR.modify_instance_groups
+    modify_instance_groups([::AWSConfig], arguments::Dict)
+    modify_instance_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "ModifyInstanceGroups", arguments::Dict)
@@ -1052,9 +1052,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.put_auto_scaling_policy([::AWSConfig], arguments::Dict)
-    EMR.put_auto_scaling_policy([::AWSConfig]; ClusterId=, InstanceGroupId=, AutoScalingPolicy=)
+    using AWSSDK.EMR.put_auto_scaling_policy
+    put_auto_scaling_policy([::AWSConfig], arguments::Dict)
+    put_auto_scaling_policy([::AWSConfig]; ClusterId=, InstanceGroupId=, AutoScalingPolicy=)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "PutAutoScalingPolicy", arguments::Dict)
@@ -1128,9 +1128,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.remove_auto_scaling_policy([::AWSConfig], arguments::Dict)
-    EMR.remove_auto_scaling_policy([::AWSConfig]; ClusterId=, InstanceGroupId=)
+    using AWSSDK.EMR.remove_auto_scaling_policy
+    remove_auto_scaling_policy([::AWSConfig], arguments::Dict)
+    remove_auto_scaling_policy([::AWSConfig]; ClusterId=, InstanceGroupId=)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "RemoveAutoScalingPolicy", arguments::Dict)
@@ -1167,9 +1167,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.remove_tags([::AWSConfig], arguments::Dict)
-    EMR.remove_tags([::AWSConfig]; ResourceId=, TagKeys=)
+    using AWSSDK.EMR.remove_tags
+    remove_tags([::AWSConfig], arguments::Dict)
+    remove_tags([::AWSConfig]; ResourceId=, TagKeys=)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "RemoveTags", arguments::Dict)
@@ -1212,9 +1212,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.run_job_flow([::AWSConfig], arguments::Dict)
-    EMR.run_job_flow([::AWSConfig]; Name=, Instances=, <keyword arguments>)
+    using AWSSDK.EMR.run_job_flow
+    run_job_flow([::AWSConfig], arguments::Dict)
+    run_job_flow([::AWSConfig]; Name=, Instances=, <keyword arguments>)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "RunJobFlow", arguments::Dict)
@@ -1536,9 +1536,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.set_termination_protection([::AWSConfig], arguments::Dict)
-    EMR.set_termination_protection([::AWSConfig]; JobFlowIds=, TerminationProtected=)
+    using AWSSDK.EMR.set_termination_protection
+    set_termination_protection([::AWSConfig], arguments::Dict)
+    set_termination_protection([::AWSConfig]; JobFlowIds=, TerminationProtected=)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "SetTerminationProtection", arguments::Dict)
@@ -1581,9 +1581,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.set_visible_to_all_users([::AWSConfig], arguments::Dict)
-    EMR.set_visible_to_all_users([::AWSConfig]; JobFlowIds=, VisibleToAllUsers=)
+    using AWSSDK.EMR.set_visible_to_all_users
+    set_visible_to_all_users([::AWSConfig], arguments::Dict)
+    set_visible_to_all_users([::AWSConfig]; JobFlowIds=, VisibleToAllUsers=)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "SetVisibleToAllUsers", arguments::Dict)
@@ -1620,9 +1620,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EMR
-    EMR.terminate_job_flows([::AWSConfig], arguments::Dict)
-    EMR.terminate_job_flows([::AWSConfig]; JobFlowIds=)
+    using AWSSDK.EMR.terminate_job_flows
+    terminate_job_flows([::AWSConfig], arguments::Dict)
+    terminate_job_flows([::AWSConfig]; JobFlowIds=)
 
     using AWSCore.Services.elasticmapreduce
     elasticmapreduce([::AWSConfig], "TerminateJobFlows", arguments::Dict)

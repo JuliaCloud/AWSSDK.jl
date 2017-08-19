@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.OpsWorksCM
-    OpsWorksCM.associate_node([::AWSConfig], arguments::Dict)
-    OpsWorksCM.associate_node([::AWSConfig]; ServerName=, NodeName=, EngineAttributes=)
+    using AWSSDK.OpsWorksCM.associate_node
+    associate_node([::AWSConfig], arguments::Dict)
+    associate_node([::AWSConfig]; ServerName=, NodeName=, EngineAttributes=)
 
     using AWSCore.Services.opsworkscm
     opsworkscm([::AWSConfig], "AssociateNode", arguments::Dict)
@@ -75,9 +75,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorksCM
-    OpsWorksCM.create_backup([::AWSConfig], arguments::Dict)
-    OpsWorksCM.create_backup([::AWSConfig]; ServerName=, <keyword arguments>)
+    using AWSSDK.OpsWorksCM.create_backup
+    create_backup([::AWSConfig], arguments::Dict)
+    create_backup([::AWSConfig]; ServerName=, <keyword arguments>)
 
     using AWSCore.Services.opsworkscm
     opsworkscm([::AWSConfig], "CreateBackup", arguments::Dict)
@@ -124,9 +124,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorksCM
-    OpsWorksCM.create_server([::AWSConfig], arguments::Dict)
-    OpsWorksCM.create_server([::AWSConfig]; ServerName=, InstanceProfileArn=, InstanceType=, ServiceRoleArn=, <keyword arguments>)
+    using AWSSDK.OpsWorksCM.create_server
+    create_server([::AWSConfig], arguments::Dict)
+    create_server([::AWSConfig]; ServerName=, InstanceProfileArn=, InstanceType=, ServiceRoleArn=, <keyword arguments>)
 
     using AWSCore.Services.opsworkscm
     opsworkscm([::AWSConfig], "CreateServer", arguments::Dict)
@@ -266,9 +266,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorksCM
-    OpsWorksCM.delete_backup([::AWSConfig], arguments::Dict)
-    OpsWorksCM.delete_backup([::AWSConfig]; BackupId=)
+    using AWSSDK.OpsWorksCM.delete_backup
+    delete_backup([::AWSConfig], arguments::Dict)
+    delete_backup([::AWSConfig]; BackupId=)
 
     using AWSCore.Services.opsworkscm
     opsworkscm([::AWSConfig], "DeleteBackup", arguments::Dict)
@@ -307,9 +307,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorksCM
-    OpsWorksCM.delete_server([::AWSConfig], arguments::Dict)
-    OpsWorksCM.delete_server([::AWSConfig]; ServerName=)
+    using AWSSDK.OpsWorksCM.delete_server
+    delete_server([::AWSConfig], arguments::Dict)
+    delete_server([::AWSConfig]; ServerName=)
 
     using AWSCore.Services.opsworkscm
     opsworkscm([::AWSConfig], "DeleteServer", arguments::Dict)
@@ -350,9 +350,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorksCM
-    OpsWorksCM.describe_account_attributes([::AWSConfig], arguments::Dict)
-    OpsWorksCM.describe_account_attributes([::AWSConfig]; )
+    using AWSSDK.OpsWorksCM.describe_account_attributes
+    describe_account_attributes([::AWSConfig], arguments::Dict)
+    describe_account_attributes([::AWSConfig]; )
 
     using AWSCore.Services.opsworkscm
     opsworkscm([::AWSConfig], "DescribeAccountAttributes", arguments::Dict)
@@ -383,9 +383,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorksCM
-    OpsWorksCM.describe_backups([::AWSConfig], arguments::Dict)
-    OpsWorksCM.describe_backups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorksCM.describe_backups
+    describe_backups([::AWSConfig], arguments::Dict)
+    describe_backups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworkscm
     opsworkscm([::AWSConfig], "DescribeBackups", arguments::Dict)
@@ -438,9 +438,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorksCM
-    OpsWorksCM.describe_events([::AWSConfig], arguments::Dict)
-    OpsWorksCM.describe_events([::AWSConfig]; ServerName=, <keyword arguments>)
+    using AWSSDK.OpsWorksCM.describe_events
+    describe_events([::AWSConfig], arguments::Dict)
+    describe_events([::AWSConfig]; ServerName=, <keyword arguments>)
 
     using AWSCore.Services.opsworkscm
     opsworkscm([::AWSConfig], "DescribeEvents", arguments::Dict)
@@ -489,9 +489,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorksCM
-    OpsWorksCM.describe_node_association_status([::AWSConfig], arguments::Dict)
-    OpsWorksCM.describe_node_association_status([::AWSConfig]; NodeAssociationStatusToken=, ServerName=)
+    using AWSSDK.OpsWorksCM.describe_node_association_status
+    describe_node_association_status([::AWSConfig], arguments::Dict)
+    describe_node_association_status([::AWSConfig]; NodeAssociationStatusToken=, ServerName=)
 
     using AWSCore.Services.opsworkscm
     opsworkscm([::AWSConfig], "DescribeNodeAssociationStatus", arguments::Dict)
@@ -534,9 +534,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorksCM
-    OpsWorksCM.describe_servers([::AWSConfig], arguments::Dict)
-    OpsWorksCM.describe_servers([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorksCM.describe_servers
+    describe_servers([::AWSConfig], arguments::Dict)
+    describe_servers([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworkscm
     opsworkscm([::AWSConfig], "DescribeServers", arguments::Dict)
@@ -585,9 +585,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorksCM
-    OpsWorksCM.disassociate_node([::AWSConfig], arguments::Dict)
-    OpsWorksCM.disassociate_node([::AWSConfig]; ServerName=, NodeName=, <keyword arguments>)
+    using AWSSDK.OpsWorksCM.disassociate_node
+    disassociate_node([::AWSConfig], arguments::Dict)
+    disassociate_node([::AWSConfig]; ServerName=, NodeName=, <keyword arguments>)
 
     using AWSCore.Services.opsworkscm
     opsworkscm([::AWSConfig], "DisassociateNode", arguments::Dict)
@@ -643,9 +643,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorksCM
-    OpsWorksCM.restore_server([::AWSConfig], arguments::Dict)
-    OpsWorksCM.restore_server([::AWSConfig]; BackupId=, ServerName=, <keyword arguments>)
+    using AWSSDK.OpsWorksCM.restore_server
+    restore_server([::AWSConfig], arguments::Dict)
+    restore_server([::AWSConfig]; BackupId=, ServerName=, <keyword arguments>)
 
     using AWSCore.Services.opsworkscm
     opsworkscm([::AWSConfig], "RestoreServer", arguments::Dict)
@@ -698,9 +698,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorksCM
-    OpsWorksCM.start_maintenance([::AWSConfig], arguments::Dict)
-    OpsWorksCM.start_maintenance([::AWSConfig]; ServerName=)
+    using AWSSDK.OpsWorksCM.start_maintenance
+    start_maintenance([::AWSConfig], arguments::Dict)
+    start_maintenance([::AWSConfig]; ServerName=)
 
     using AWSCore.Services.opsworkscm
     opsworkscm([::AWSConfig], "StartMaintenance", arguments::Dict)
@@ -739,9 +739,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorksCM
-    OpsWorksCM.update_server([::AWSConfig], arguments::Dict)
-    OpsWorksCM.update_server([::AWSConfig]; ServerName=, <keyword arguments>)
+    using AWSSDK.OpsWorksCM.update_server
+    update_server([::AWSConfig], arguments::Dict)
+    update_server([::AWSConfig]; ServerName=, <keyword arguments>)
 
     using AWSCore.Services.opsworkscm
     opsworkscm([::AWSConfig], "UpdateServer", arguments::Dict)
@@ -796,9 +796,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorksCM
-    OpsWorksCM.update_server_engine_attributes([::AWSConfig], arguments::Dict)
-    OpsWorksCM.update_server_engine_attributes([::AWSConfig]; ServerName=, AttributeName=, <keyword arguments>)
+    using AWSSDK.OpsWorksCM.update_server_engine_attributes
+    update_server_engine_attributes([::AWSConfig], arguments::Dict)
+    update_server_engine_attributes([::AWSConfig]; ServerName=, AttributeName=, <keyword arguments>)
 
     using AWSCore.Services.opsworkscm
     opsworkscm([::AWSConfig], "UpdateServerEngineAttributes", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CodeCommit
-    CodeCommit.batch_get_repositories([::AWSConfig], arguments::Dict)
-    CodeCommit.batch_get_repositories([::AWSConfig]; repositoryNames=)
+    using AWSSDK.CodeCommit.batch_get_repositories
+    batch_get_repositories([::AWSConfig], arguments::Dict)
+    batch_get_repositories([::AWSConfig]; repositoryNames=)
 
     using AWSCore.Services.codecommit
     codecommit([::AWSConfig], "BatchGetRepositories", arguments::Dict)
@@ -55,9 +55,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codeco
 
 
 """
-    using AWSSDK.CodeCommit
-    CodeCommit.create_branch([::AWSConfig], arguments::Dict)
-    CodeCommit.create_branch([::AWSConfig]; repositoryName=, branchName=, commitId=)
+    using AWSSDK.CodeCommit.create_branch
+    create_branch([::AWSConfig], arguments::Dict)
+    create_branch([::AWSConfig]; repositoryName=, branchName=, commitId=)
 
     using AWSCore.Services.codecommit
     codecommit([::AWSConfig], "CreateBranch", arguments::Dict)
@@ -101,9 +101,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codeco
 
 
 """
-    using AWSSDK.CodeCommit
-    CodeCommit.create_repository([::AWSConfig], arguments::Dict)
-    CodeCommit.create_repository([::AWSConfig]; repositoryName=, <keyword arguments>)
+    using AWSSDK.CodeCommit.create_repository
+    create_repository([::AWSConfig], arguments::Dict)
+    create_repository([::AWSConfig]; repositoryName=, <keyword arguments>)
 
     using AWSCore.Services.codecommit
     codecommit([::AWSConfig], "CreateRepository", arguments::Dict)
@@ -150,9 +150,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codeco
 
 
 """
-    using AWSSDK.CodeCommit
-    CodeCommit.delete_repository([::AWSConfig], arguments::Dict)
-    CodeCommit.delete_repository([::AWSConfig]; repositoryName=)
+    using AWSSDK.CodeCommit.delete_repository
+    delete_repository([::AWSConfig], arguments::Dict)
+    delete_repository([::AWSConfig]; repositoryName=)
 
     using AWSCore.Services.codecommit
     codecommit([::AWSConfig], "DeleteRepository", arguments::Dict)
@@ -192,9 +192,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codeco
 
 
 """
-    using AWSSDK.CodeCommit
-    CodeCommit.get_blob([::AWSConfig], arguments::Dict)
-    CodeCommit.get_blob([::AWSConfig]; repositoryName=, blobId=)
+    using AWSSDK.CodeCommit.get_blob
+    get_blob([::AWSConfig], arguments::Dict)
+    get_blob([::AWSConfig]; repositoryName=, blobId=)
 
     using AWSCore.Services.codecommit
     codecommit([::AWSConfig], "GetBlob", arguments::Dict)
@@ -235,9 +235,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codeco
 
 
 """
-    using AWSSDK.CodeCommit
-    CodeCommit.get_branch([::AWSConfig], arguments::Dict)
-    CodeCommit.get_branch([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodeCommit.get_branch
+    get_branch([::AWSConfig], arguments::Dict)
+    get_branch([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codecommit
     codecommit([::AWSConfig], "GetBranch", arguments::Dict)
@@ -278,9 +278,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codeco
 
 
 """
-    using AWSSDK.CodeCommit
-    CodeCommit.get_commit([::AWSConfig], arguments::Dict)
-    CodeCommit.get_commit([::AWSConfig]; repositoryName=, commitId=)
+    using AWSSDK.CodeCommit.get_commit
+    get_commit([::AWSConfig], arguments::Dict)
+    get_commit([::AWSConfig]; repositoryName=, commitId=)
 
     using AWSCore.Services.codecommit
     codecommit([::AWSConfig], "GetCommit", arguments::Dict)
@@ -321,9 +321,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codeco
 
 
 """
-    using AWSSDK.CodeCommit
-    CodeCommit.get_differences([::AWSConfig], arguments::Dict)
-    CodeCommit.get_differences([::AWSConfig]; repositoryName=, afterCommitSpecifier=, <keyword arguments>)
+    using AWSSDK.CodeCommit.get_differences
+    get_differences([::AWSConfig], arguments::Dict)
+    get_differences([::AWSConfig]; repositoryName=, afterCommitSpecifier=, <keyword arguments>)
 
     using AWSCore.Services.codecommit
     codecommit([::AWSConfig], "GetDifferences", arguments::Dict)
@@ -384,9 +384,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codeco
 
 
 """
-    using AWSSDK.CodeCommit
-    CodeCommit.get_repository([::AWSConfig], arguments::Dict)
-    CodeCommit.get_repository([::AWSConfig]; repositoryName=)
+    using AWSSDK.CodeCommit.get_repository
+    get_repository([::AWSConfig], arguments::Dict)
+    get_repository([::AWSConfig]; repositoryName=)
 
     using AWSCore.Services.codecommit
     codecommit([::AWSConfig], "GetRepository", arguments::Dict)
@@ -426,9 +426,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codeco
 
 
 """
-    using AWSSDK.CodeCommit
-    CodeCommit.get_repository_triggers([::AWSConfig], arguments::Dict)
-    CodeCommit.get_repository_triggers([::AWSConfig]; repositoryName=)
+    using AWSSDK.CodeCommit.get_repository_triggers
+    get_repository_triggers([::AWSConfig], arguments::Dict)
+    get_repository_triggers([::AWSConfig]; repositoryName=)
 
     using AWSCore.Services.codecommit
     codecommit([::AWSConfig], "GetRepositoryTriggers", arguments::Dict)
@@ -465,9 +465,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codeco
 
 
 """
-    using AWSSDK.CodeCommit
-    CodeCommit.list_branches([::AWSConfig], arguments::Dict)
-    CodeCommit.list_branches([::AWSConfig]; repositoryName=, <keyword arguments>)
+    using AWSSDK.CodeCommit.list_branches
+    list_branches([::AWSConfig], arguments::Dict)
+    list_branches([::AWSConfig]; repositoryName=, <keyword arguments>)
 
     using AWSCore.Services.codecommit
     codecommit([::AWSConfig], "ListBranches", arguments::Dict)
@@ -508,9 +508,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codeco
 
 
 """
-    using AWSSDK.CodeCommit
-    CodeCommit.list_repositories([::AWSConfig], arguments::Dict)
-    CodeCommit.list_repositories([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodeCommit.list_repositories
+    list_repositories([::AWSConfig], arguments::Dict)
+    list_repositories([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codecommit
     codecommit([::AWSConfig], "ListRepositories", arguments::Dict)
@@ -555,9 +555,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codeco
 
 
 """
-    using AWSSDK.CodeCommit
-    CodeCommit.put_repository_triggers([::AWSConfig], arguments::Dict)
-    CodeCommit.put_repository_triggers([::AWSConfig]; repositoryName=, triggers=)
+    using AWSSDK.CodeCommit.put_repository_triggers
+    put_repository_triggers([::AWSConfig], arguments::Dict)
+    put_repository_triggers([::AWSConfig]; repositoryName=, triggers=)
 
     using AWSCore.Services.codecommit
     codecommit([::AWSConfig], "PutRepositoryTriggers", arguments::Dict)
@@ -606,9 +606,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codeco
 
 
 """
-    using AWSSDK.CodeCommit
-    CodeCommit.test_repository_triggers([::AWSConfig], arguments::Dict)
-    CodeCommit.test_repository_triggers([::AWSConfig]; repositoryName=, triggers=)
+    using AWSSDK.CodeCommit.test_repository_triggers
+    test_repository_triggers([::AWSConfig], arguments::Dict)
+    test_repository_triggers([::AWSConfig]; repositoryName=, triggers=)
 
     using AWSCore.Services.codecommit
     codecommit([::AWSConfig], "TestRepositoryTriggers", arguments::Dict)
@@ -657,9 +657,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codeco
 
 
 """
-    using AWSSDK.CodeCommit
-    CodeCommit.update_default_branch([::AWSConfig], arguments::Dict)
-    CodeCommit.update_default_branch([::AWSConfig]; repositoryName=, defaultBranchName=)
+    using AWSSDK.CodeCommit.update_default_branch
+    update_default_branch([::AWSConfig], arguments::Dict)
+    update_default_branch([::AWSConfig]; repositoryName=, defaultBranchName=)
 
     using AWSCore.Services.codecommit
     codecommit([::AWSConfig], "UpdateDefaultBranch", arguments::Dict)
@@ -699,9 +699,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codeco
 
 
 """
-    using AWSSDK.CodeCommit
-    CodeCommit.update_repository_description([::AWSConfig], arguments::Dict)
-    CodeCommit.update_repository_description([::AWSConfig]; repositoryName=, <keyword arguments>)
+    using AWSSDK.CodeCommit.update_repository_description
+    update_repository_description([::AWSConfig], arguments::Dict)
+    update_repository_description([::AWSConfig]; repositoryName=, <keyword arguments>)
 
     using AWSCore.Services.codecommit
     codecommit([::AWSConfig], "UpdateRepositoryDescription", arguments::Dict)
@@ -741,9 +741,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codeco
 
 
 """
-    using AWSSDK.CodeCommit
-    CodeCommit.update_repository_name([::AWSConfig], arguments::Dict)
-    CodeCommit.update_repository_name([::AWSConfig]; oldName=, newName=)
+    using AWSSDK.CodeCommit.update_repository_name
+    update_repository_name([::AWSConfig], arguments::Dict)
+    update_repository_name([::AWSConfig]; oldName=, newName=)
 
     using AWSCore.Services.codecommit
     codecommit([::AWSConfig], "UpdateRepositoryName", arguments::Dict)

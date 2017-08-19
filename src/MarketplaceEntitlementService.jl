@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.MarketplaceEntitlementService
-    MarketplaceEntitlementService.get_entitlements([::AWSConfig], arguments::Dict)
-    MarketplaceEntitlementService.get_entitlements([::AWSConfig]; ProductCode=, <keyword arguments>)
+    using AWSSDK.MarketplaceEntitlementService.get_entitlements
+    get_entitlements([::AWSConfig], arguments::Dict)
+    get_entitlements([::AWSConfig]; ProductCode=, <keyword arguments>)
 
     using AWSCore.Services.entitlement_marketplace
     entitlement_marketplace([::AWSConfig], "GetEntitlements", arguments::Dict)

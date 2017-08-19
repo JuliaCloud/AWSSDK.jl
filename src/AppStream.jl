@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.associate_fleet([::AWSConfig], arguments::Dict)
-    AppStream.associate_fleet([::AWSConfig]; FleetName=, StackName=)
+    using AWSSDK.AppStream.associate_fleet
+    associate_fleet([::AWSConfig], arguments::Dict)
+    associate_fleet([::AWSConfig]; FleetName=, StackName=)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "AssociateFleet", arguments::Dict)
@@ -56,9 +56,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.create_directory_config([::AWSConfig], arguments::Dict)
-    AppStream.create_directory_config([::AWSConfig]; DirectoryName=, OrganizationalUnitDistinguishedNames=, ServiceAccountCredentials=)
+    using AWSSDK.AppStream.create_directory_config
+    create_directory_config([::AWSConfig], arguments::Dict)
+    create_directory_config([::AWSConfig]; DirectoryName=, OrganizationalUnitDistinguishedNames=, ServiceAccountCredentials=)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "CreateDirectoryConfig", arguments::Dict)
@@ -108,9 +108,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.create_fleet([::AWSConfig], arguments::Dict)
-    AppStream.create_fleet([::AWSConfig]; Name=, ImageName=, InstanceType=, ComputeCapacity=, <keyword arguments>)
+    using AWSSDK.AppStream.create_fleet
+    create_fleet([::AWSConfig], arguments::Dict)
+    create_fleet([::AWSConfig]; Name=, ImageName=, InstanceType=, ComputeCapacity=, <keyword arguments>)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "CreateFleet", arguments::Dict)
@@ -221,9 +221,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.create_stack([::AWSConfig], arguments::Dict)
-    AppStream.create_stack([::AWSConfig]; Name=, <keyword arguments>)
+    using AWSSDK.AppStream.create_stack
+    create_stack([::AWSConfig], arguments::Dict)
+    create_stack([::AWSConfig]; Name=, <keyword arguments>)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "CreateStack", arguments::Dict)
@@ -277,9 +277,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.create_streaming_url([::AWSConfig], arguments::Dict)
-    AppStream.create_streaming_url([::AWSConfig]; StackName=, FleetName=, UserId=, <keyword arguments>)
+    using AWSSDK.AppStream.create_streaming_url
+    create_streaming_url([::AWSConfig], arguments::Dict)
+    create_streaming_url([::AWSConfig]; StackName=, FleetName=, UserId=, <keyword arguments>)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "CreateStreamingURL", arguments::Dict)
@@ -336,9 +336,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.delete_directory_config([::AWSConfig], arguments::Dict)
-    AppStream.delete_directory_config([::AWSConfig]; DirectoryName=)
+    using AWSSDK.AppStream.delete_directory_config
+    delete_directory_config([::AWSConfig], arguments::Dict)
+    delete_directory_config([::AWSConfig]; DirectoryName=)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "DeleteDirectoryConfig", arguments::Dict)
@@ -375,9 +375,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.delete_fleet([::AWSConfig], arguments::Dict)
-    AppStream.delete_fleet([::AWSConfig]; Name=)
+    using AWSSDK.AppStream.delete_fleet
+    delete_fleet([::AWSConfig], arguments::Dict)
+    delete_fleet([::AWSConfig]; Name=)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "DeleteFleet", arguments::Dict)
@@ -414,9 +414,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.delete_stack([::AWSConfig], arguments::Dict)
-    AppStream.delete_stack([::AWSConfig]; Name=)
+    using AWSSDK.AppStream.delete_stack
+    delete_stack([::AWSConfig], arguments::Dict)
+    delete_stack([::AWSConfig]; Name=)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "DeleteStack", arguments::Dict)
@@ -453,9 +453,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.describe_directory_configs([::AWSConfig], arguments::Dict)
-    AppStream.describe_directory_configs([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.AppStream.describe_directory_configs
+    describe_directory_configs([::AWSConfig], arguments::Dict)
+    describe_directory_configs([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "DescribeDirectoryConfigs", arguments::Dict)
@@ -500,9 +500,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.describe_fleets([::AWSConfig], arguments::Dict)
-    AppStream.describe_fleets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.AppStream.describe_fleets
+    describe_fleets([::AWSConfig], arguments::Dict)
+    describe_fleets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "DescribeFleets", arguments::Dict)
@@ -543,9 +543,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.describe_images([::AWSConfig], arguments::Dict)
-    AppStream.describe_images([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.AppStream.describe_images
+    describe_images([::AWSConfig], arguments::Dict)
+    describe_images([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "DescribeImages", arguments::Dict)
@@ -582,9 +582,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.describe_sessions([::AWSConfig], arguments::Dict)
-    AppStream.describe_sessions([::AWSConfig]; StackName=, FleetName=, <keyword arguments>)
+    using AWSSDK.AppStream.describe_sessions
+    describe_sessions([::AWSConfig], arguments::Dict)
+    describe_sessions([::AWSConfig]; StackName=, FleetName=, <keyword arguments>)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "DescribeSessions", arguments::Dict)
@@ -641,9 +641,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.describe_stacks([::AWSConfig], arguments::Dict)
-    AppStream.describe_stacks([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.AppStream.describe_stacks
+    describe_stacks([::AWSConfig], arguments::Dict)
+    describe_stacks([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "DescribeStacks", arguments::Dict)
@@ -684,9 +684,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.disassociate_fleet([::AWSConfig], arguments::Dict)
-    AppStream.disassociate_fleet([::AWSConfig]; FleetName=, StackName=)
+    using AWSSDK.AppStream.disassociate_fleet
+    disassociate_fleet([::AWSConfig], arguments::Dict)
+    disassociate_fleet([::AWSConfig]; FleetName=, StackName=)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "DisassociateFleet", arguments::Dict)
@@ -727,9 +727,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.expire_session([::AWSConfig], arguments::Dict)
-    AppStream.expire_session([::AWSConfig]; SessionId=)
+    using AWSSDK.AppStream.expire_session
+    expire_session([::AWSConfig], arguments::Dict)
+    expire_session([::AWSConfig]; SessionId=)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "ExpireSession", arguments::Dict)
@@ -762,9 +762,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.list_associated_fleets([::AWSConfig], arguments::Dict)
-    AppStream.list_associated_fleets([::AWSConfig]; StackName=, <keyword arguments>)
+    using AWSSDK.AppStream.list_associated_fleets
+    list_associated_fleets([::AWSConfig], arguments::Dict)
+    list_associated_fleets([::AWSConfig]; StackName=, <keyword arguments>)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "ListAssociatedFleets", arguments::Dict)
@@ -801,9 +801,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.list_associated_stacks([::AWSConfig], arguments::Dict)
-    AppStream.list_associated_stacks([::AWSConfig]; FleetName=, <keyword arguments>)
+    using AWSSDK.AppStream.list_associated_stacks
+    list_associated_stacks([::AWSConfig], arguments::Dict)
+    list_associated_stacks([::AWSConfig]; FleetName=, <keyword arguments>)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "ListAssociatedStacks", arguments::Dict)
@@ -840,9 +840,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.start_fleet([::AWSConfig], arguments::Dict)
-    AppStream.start_fleet([::AWSConfig]; Name=)
+    using AWSSDK.AppStream.start_fleet
+    start_fleet([::AWSConfig], arguments::Dict)
+    start_fleet([::AWSConfig]; Name=)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "StartFleet", arguments::Dict)
@@ -879,9 +879,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.stop_fleet([::AWSConfig], arguments::Dict)
-    AppStream.stop_fleet([::AWSConfig]; Name=)
+    using AWSSDK.AppStream.stop_fleet
+    stop_fleet([::AWSConfig], arguments::Dict)
+    stop_fleet([::AWSConfig]; Name=)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "StopFleet", arguments::Dict)
@@ -918,9 +918,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.update_directory_config([::AWSConfig], arguments::Dict)
-    AppStream.update_directory_config([::AWSConfig]; DirectoryName=, <keyword arguments>)
+    using AWSSDK.AppStream.update_directory_config
+    update_directory_config([::AWSConfig], arguments::Dict)
+    update_directory_config([::AWSConfig]; DirectoryName=, <keyword arguments>)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "UpdateDirectoryConfig", arguments::Dict)
@@ -970,9 +970,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.update_fleet([::AWSConfig], arguments::Dict)
-    AppStream.update_fleet([::AWSConfig]; Name=, <keyword arguments>)
+    using AWSSDK.AppStream.update_fleet
+    update_fleet([::AWSConfig], arguments::Dict)
+    update_fleet([::AWSConfig]; Name=, <keyword arguments>)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "UpdateFleet", arguments::Dict)
@@ -1091,9 +1091,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
-    using AWSSDK.AppStream
-    AppStream.update_stack([::AWSConfig], arguments::Dict)
-    AppStream.update_stack([::AWSConfig]; Name=, <keyword arguments>)
+    using AWSSDK.AppStream.update_stack
+    update_stack([::AWSConfig], arguments::Dict)
+    update_stack([::AWSConfig]; Name=, <keyword arguments>)
 
     using AWSCore.Services.appstream
     appstream([::AWSConfig], "UpdateStack", arguments::Dict)

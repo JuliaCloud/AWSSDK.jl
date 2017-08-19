@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.ApplicationAutoScaling
-    ApplicationAutoScaling.delete_scaling_policy([::AWSConfig], arguments::Dict)
-    ApplicationAutoScaling.delete_scaling_policy([::AWSConfig]; PolicyName=, ServiceNamespace=, ResourceId=, ScalableDimension=)
+    using AWSSDK.ApplicationAutoScaling.delete_scaling_policy
+    delete_scaling_policy([::AWSConfig], arguments::Dict)
+    delete_scaling_policy([::AWSConfig]; PolicyName=, ServiceNamespace=, ResourceId=, ScalableDimension=)
 
     using AWSCore.Services.application_autoscaling
     application_autoscaling([::AWSConfig], "DeleteScalingPolicy", arguments::Dict)
@@ -117,9 +117,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/applic
 
 
 """
-    using AWSSDK.ApplicationAutoScaling
-    ApplicationAutoScaling.deregister_scalable_target([::AWSConfig], arguments::Dict)
-    ApplicationAutoScaling.deregister_scalable_target([::AWSConfig]; ServiceNamespace=, ResourceId=, ScalableDimension=)
+    using AWSSDK.ApplicationAutoScaling.deregister_scalable_target
+    deregister_scalable_target([::AWSConfig], arguments::Dict)
+    deregister_scalable_target([::AWSConfig]; ServiceNamespace=, ResourceId=, ScalableDimension=)
 
     using AWSCore.Services.application_autoscaling
     application_autoscaling([::AWSConfig], "DeregisterScalableTarget", arguments::Dict)
@@ -216,9 +216,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/applic
 
 
 """
-    using AWSSDK.ApplicationAutoScaling
-    ApplicationAutoScaling.describe_scalable_targets([::AWSConfig], arguments::Dict)
-    ApplicationAutoScaling.describe_scalable_targets([::AWSConfig]; ServiceNamespace=, <keyword arguments>)
+    using AWSSDK.ApplicationAutoScaling.describe_scalable_targets
+    describe_scalable_targets([::AWSConfig], arguments::Dict)
+    describe_scalable_targets([::AWSConfig]; ServiceNamespace=, <keyword arguments>)
 
     using AWSCore.Services.application_autoscaling
     application_autoscaling([::AWSConfig], "DescribeScalableTargets", arguments::Dict)
@@ -333,9 +333,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/applic
 
 
 """
-    using AWSSDK.ApplicationAutoScaling
-    ApplicationAutoScaling.describe_scaling_activities([::AWSConfig], arguments::Dict)
-    ApplicationAutoScaling.describe_scaling_activities([::AWSConfig]; ServiceNamespace=, <keyword arguments>)
+    using AWSSDK.ApplicationAutoScaling.describe_scaling_activities
+    describe_scaling_activities([::AWSConfig], arguments::Dict)
+    describe_scaling_activities([::AWSConfig]; ServiceNamespace=, <keyword arguments>)
 
     using AWSCore.Services.application_autoscaling
     application_autoscaling([::AWSConfig], "DescribeScalingActivities", arguments::Dict)
@@ -455,9 +455,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/applic
 
 
 """
-    using AWSSDK.ApplicationAutoScaling
-    ApplicationAutoScaling.describe_scaling_policies([::AWSConfig], arguments::Dict)
-    ApplicationAutoScaling.describe_scaling_policies([::AWSConfig]; ServiceNamespace=, <keyword arguments>)
+    using AWSSDK.ApplicationAutoScaling.describe_scaling_policies
+    describe_scaling_policies([::AWSConfig], arguments::Dict)
+    describe_scaling_policies([::AWSConfig]; ServiceNamespace=, <keyword arguments>)
 
     using AWSCore.Services.application_autoscaling
     application_autoscaling([::AWSConfig], "DescribeScalingPolicies", arguments::Dict)
@@ -593,9 +593,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/applic
 
 
 """
-    using AWSSDK.ApplicationAutoScaling
-    ApplicationAutoScaling.put_scaling_policy([::AWSConfig], arguments::Dict)
-    ApplicationAutoScaling.put_scaling_policy([::AWSConfig]; PolicyName=, ServiceNamespace=, ResourceId=, ScalableDimension=, <keyword arguments>)
+    using AWSSDK.ApplicationAutoScaling.put_scaling_policy
+    put_scaling_policy([::AWSConfig], arguments::Dict)
+    put_scaling_policy([::AWSConfig]; PolicyName=, ServiceNamespace=, ResourceId=, ScalableDimension=, <keyword arguments>)
 
     using AWSCore.Services.application_autoscaling
     application_autoscaling([::AWSConfig], "PutScalingPolicy", arguments::Dict)
@@ -793,9 +793,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/applic
 
 
 """
-    using AWSSDK.ApplicationAutoScaling
-    ApplicationAutoScaling.register_scalable_target([::AWSConfig], arguments::Dict)
-    ApplicationAutoScaling.register_scalable_target([::AWSConfig]; ServiceNamespace=, ResourceId=, ScalableDimension=, <keyword arguments>)
+    using AWSSDK.ApplicationAutoScaling.register_scalable_target
+    register_scalable_target([::AWSConfig], arguments::Dict)
+    register_scalable_target([::AWSConfig]; ServiceNamespace=, ResourceId=, ScalableDimension=, <keyword arguments>)
 
     using AWSCore.Services.application_autoscaling
     application_autoscaling([::AWSConfig], "RegisterScalableTarget", arguments::Dict)

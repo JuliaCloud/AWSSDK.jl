@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.MarketplaceCommerceAnalytics
-    MarketplaceCommerceAnalytics.generate_data_set([::AWSConfig], arguments::Dict)
-    MarketplaceCommerceAnalytics.generate_data_set([::AWSConfig]; dataSetType=, dataSetPublicationDate=, roleNameArn=, destinationS3BucketName=, snsTopicArn=, <keyword arguments>)
+    using AWSSDK.MarketplaceCommerceAnalytics.generate_data_set
+    generate_data_set([::AWSConfig], arguments::Dict)
+    generate_data_set([::AWSConfig]; dataSetType=, dataSetPublicationDate=, roleNameArn=, destinationS3BucketName=, snsTopicArn=, <keyword arguments>)
 
     using AWSCore.Services.marketplacecommerceanalytics
     marketplacecommerceanalytics([::AWSConfig], "GenerateDataSet", arguments::Dict)
@@ -174,9 +174,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/market
 
 
 """
-    using AWSSDK.MarketplaceCommerceAnalytics
-    MarketplaceCommerceAnalytics.start_support_data_export([::AWSConfig], arguments::Dict)
-    MarketplaceCommerceAnalytics.start_support_data_export([::AWSConfig]; dataSetType=, fromDate=, roleNameArn=, destinationS3BucketName=, snsTopicArn=, <keyword arguments>)
+    using AWSSDK.MarketplaceCommerceAnalytics.start_support_data_export
+    start_support_data_export([::AWSConfig], arguments::Dict)
+    start_support_data_export([::AWSConfig]; dataSetType=, fromDate=, roleNameArn=, destinationS3BucketName=, snsTopicArn=, <keyword arguments>)
 
     using AWSCore.Services.marketplacecommerceanalytics
     marketplacecommerceanalytics([::AWSConfig], "StartSupportDataExport", arguments::Dict)

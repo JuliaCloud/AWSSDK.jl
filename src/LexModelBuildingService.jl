@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.create_bot_version([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.create_bot_version([::AWSConfig]; name=, <keyword arguments>)
+    using AWSSDK.LexModelBuildingService.create_bot_version
+    create_bot_version([::AWSConfig], arguments::Dict)
+    create_bot_version([::AWSConfig]; name=, <keyword arguments>)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "POST", "/bots/{name}/versions", arguments::Dict)
@@ -63,9 +63,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.create_intent_version([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.create_intent_version([::AWSConfig]; name=, <keyword arguments>)
+    using AWSSDK.LexModelBuildingService.create_intent_version
+    create_intent_version([::AWSConfig], arguments::Dict)
+    create_intent_version([::AWSConfig]; name=, <keyword arguments>)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "POST", "/intents/{name}/versions", arguments::Dict)
@@ -113,9 +113,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.create_slot_type_version([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.create_slot_type_version([::AWSConfig]; name=, <keyword arguments>)
+    using AWSSDK.LexModelBuildingService.create_slot_type_version
+    create_slot_type_version([::AWSConfig], arguments::Dict)
+    create_slot_type_version([::AWSConfig]; name=, <keyword arguments>)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "POST", "/slottypes/{name}/versions", arguments::Dict)
@@ -163,9 +163,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.delete_bot([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.delete_bot([::AWSConfig]; name=)
+    using AWSSDK.LexModelBuildingService.delete_bot
+    delete_bot([::AWSConfig], arguments::Dict)
+    delete_bot([::AWSConfig]; name=)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "DELETE", "/bots/{name}", arguments::Dict)
@@ -202,9 +202,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.delete_bot_alias([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.delete_bot_alias([::AWSConfig]; name=, botName=)
+    using AWSSDK.LexModelBuildingService.delete_bot_alias
+    delete_bot_alias([::AWSConfig], arguments::Dict)
+    delete_bot_alias([::AWSConfig]; name=, botName=)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "DELETE", "/bots/{botName}/aliases/{name}", arguments::Dict)
@@ -243,9 +243,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.delete_bot_channel_association([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.delete_bot_channel_association([::AWSConfig]; name=, botName=, aliasName=)
+    using AWSSDK.LexModelBuildingService.delete_bot_channel_association
+    delete_bot_channel_association([::AWSConfig], arguments::Dict)
+    delete_bot_channel_association([::AWSConfig]; name=, botName=, aliasName=)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "DELETE", "/bots/{botName}/aliases/{aliasName}/channels/{name}", arguments::Dict)
@@ -288,9 +288,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.delete_bot_version([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.delete_bot_version([::AWSConfig]; name=, version=)
+    using AWSSDK.LexModelBuildingService.delete_bot_version
+    delete_bot_version([::AWSConfig], arguments::Dict)
+    delete_bot_version([::AWSConfig]; name=, version=)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "DELETE", "/bots/{name}/versions/{version}", arguments::Dict)
@@ -329,9 +329,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.delete_intent([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.delete_intent([::AWSConfig]; name=)
+    using AWSSDK.LexModelBuildingService.delete_intent
+    delete_intent([::AWSConfig], arguments::Dict)
+    delete_intent([::AWSConfig]; name=)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "DELETE", "/intents/{name}", arguments::Dict)
@@ -371,9 +371,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.delete_intent_version([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.delete_intent_version([::AWSConfig]; name=, version=)
+    using AWSSDK.LexModelBuildingService.delete_intent_version
+    delete_intent_version([::AWSConfig], arguments::Dict)
+    delete_intent_version([::AWSConfig]; name=, version=)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "DELETE", "/intents/{name}/versions/{version}", arguments::Dict)
@@ -412,9 +412,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.delete_slot_type([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.delete_slot_type([::AWSConfig]; name=)
+    using AWSSDK.LexModelBuildingService.delete_slot_type
+    delete_slot_type([::AWSConfig], arguments::Dict)
+    delete_slot_type([::AWSConfig]; name=)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "DELETE", "/slottypes/{name}", arguments::Dict)
@@ -454,9 +454,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.delete_slot_type_version([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.delete_slot_type_version([::AWSConfig]; name=, version=)
+    using AWSSDK.LexModelBuildingService.delete_slot_type_version
+    delete_slot_type_version([::AWSConfig], arguments::Dict)
+    delete_slot_type_version([::AWSConfig]; name=, version=)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "DELETE", "/slottypes/{name}/version/{version}", arguments::Dict)
@@ -495,9 +495,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.delete_utterances([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.delete_utterances([::AWSConfig]; botName=, userId=)
+    using AWSSDK.LexModelBuildingService.delete_utterances
+    delete_utterances([::AWSConfig], arguments::Dict)
+    delete_utterances([::AWSConfig]; botName=, userId=)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "DELETE", "/bots/{botName}/utterances/{userId}", arguments::Dict)
@@ -540,9 +540,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.get_bot([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.get_bot([::AWSConfig]; name=, versionoralias=)
+    using AWSSDK.LexModelBuildingService.get_bot
+    get_bot([::AWSConfig], arguments::Dict)
+    get_bot([::AWSConfig]; name=, versionoralias=)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "GET", "/bots/{name}/versions/{versionoralias}", arguments::Dict)
@@ -644,9 +644,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.get_bot_alias([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.get_bot_alias([::AWSConfig]; name=, botName=)
+    using AWSSDK.LexModelBuildingService.get_bot_alias
+    get_bot_alias([::AWSConfig], arguments::Dict)
+    get_bot_alias([::AWSConfig]; name=, botName=)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "GET", "/bots/{botName}/aliases/{name}", arguments::Dict)
@@ -689,9 +689,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.get_bot_aliases([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.get_bot_aliases([::AWSConfig]; botName=, <keyword arguments>)
+    using AWSSDK.LexModelBuildingService.get_bot_aliases
+    get_bot_aliases([::AWSConfig], arguments::Dict)
+    get_bot_aliases([::AWSConfig]; botName=, <keyword arguments>)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "GET", "/bots/{botName}/aliases/", arguments::Dict)
@@ -742,9 +742,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.get_bot_channel_association([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.get_bot_channel_association([::AWSConfig]; name=, botName=, aliasName=)
+    using AWSSDK.LexModelBuildingService.get_bot_channel_association
+    get_bot_channel_association([::AWSConfig], arguments::Dict)
+    get_bot_channel_association([::AWSConfig]; name=, botName=, aliasName=)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "GET", "/bots/{botName}/aliases/{aliasName}/channels/{name}", arguments::Dict)
@@ -791,9 +791,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.get_bot_channel_associations([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.get_bot_channel_associations([::AWSConfig]; botName=, aliasName=, <keyword arguments>)
+    using AWSSDK.LexModelBuildingService.get_bot_channel_associations
+    get_bot_channel_associations([::AWSConfig], arguments::Dict)
+    get_bot_channel_associations([::AWSConfig]; botName=, aliasName=, <keyword arguments>)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "GET", "/bots/{botName}/aliases/{aliasName}/channels/", arguments::Dict)
@@ -848,9 +848,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.get_bot_versions([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.get_bot_versions([::AWSConfig]; name=, <keyword arguments>)
+    using AWSSDK.LexModelBuildingService.get_bot_versions
+    get_bot_versions([::AWSConfig], arguments::Dict)
+    get_bot_versions([::AWSConfig]; name=, <keyword arguments>)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "GET", "/bots/{name}/versions/", arguments::Dict)
@@ -901,9 +901,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.get_bots([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.get_bots([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.LexModelBuildingService.get_bots
+    get_bots([::AWSConfig], arguments::Dict)
+    get_bots([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "GET", "/bots/", arguments::Dict)
@@ -982,9 +982,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.get_builtin_intent([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.get_builtin_intent([::AWSConfig]; signature=)
+    using AWSSDK.LexModelBuildingService.get_builtin_intent
+    get_builtin_intent([::AWSConfig], arguments::Dict)
+    get_builtin_intent([::AWSConfig]; signature=)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "GET", "/builtins/intents/{signature}", arguments::Dict)
@@ -1023,9 +1023,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.get_builtin_intents([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.get_builtin_intents([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.LexModelBuildingService.get_builtin_intents
+    get_builtin_intents([::AWSConfig], arguments::Dict)
+    get_builtin_intents([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "GET", "/builtins/intents/", arguments::Dict)
@@ -1076,9 +1076,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.get_builtin_slot_types([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.get_builtin_slot_types([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.LexModelBuildingService.get_builtin_slot_types
+    get_builtin_slot_types([::AWSConfig], arguments::Dict)
+    get_builtin_slot_types([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "GET", "/builtins/slottypes/", arguments::Dict)
@@ -1131,9 +1131,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.get_intent([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.get_intent([::AWSConfig]; name=, version=)
+    using AWSSDK.LexModelBuildingService.get_intent
+    get_intent([::AWSConfig], arguments::Dict)
+    get_intent([::AWSConfig]; name=, version=)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "GET", "/intents/{name}/versions/{version}", arguments::Dict)
@@ -1325,9 +1325,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.get_intent_versions([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.get_intent_versions([::AWSConfig]; name=, <keyword arguments>)
+    using AWSSDK.LexModelBuildingService.get_intent_versions
+    get_intent_versions([::AWSConfig], arguments::Dict)
+    get_intent_versions([::AWSConfig]; name=, <keyword arguments>)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "GET", "/intents/{name}/versions/", arguments::Dict)
@@ -1378,9 +1378,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.get_intents([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.get_intents([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.LexModelBuildingService.get_intents
+    get_intents([::AWSConfig], arguments::Dict)
+    get_intents([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "GET", "/intents/", arguments::Dict)
@@ -1458,9 +1458,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.get_slot_type([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.get_slot_type([::AWSConfig]; name=, version=)
+    using AWSSDK.LexModelBuildingService.get_slot_type
+    get_slot_type([::AWSConfig], arguments::Dict)
+    get_slot_type([::AWSConfig]; name=, version=)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "GET", "/slottypes/{name}/versions/{version}", arguments::Dict)
@@ -1535,9 +1535,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.get_slot_type_versions([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.get_slot_type_versions([::AWSConfig]; name=, <keyword arguments>)
+    using AWSSDK.LexModelBuildingService.get_slot_type_versions
+    get_slot_type_versions([::AWSConfig], arguments::Dict)
+    get_slot_type_versions([::AWSConfig]; name=, <keyword arguments>)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "GET", "/slottypes/{name}/versions/", arguments::Dict)
@@ -1588,9 +1588,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.get_slot_types([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.get_slot_types([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.LexModelBuildingService.get_slot_types
+    get_slot_types([::AWSConfig], arguments::Dict)
+    get_slot_types([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "GET", "/slottypes/", arguments::Dict)
@@ -1682,9 +1682,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.get_utterances_view([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.get_utterances_view([::AWSConfig]; botname=, bot_versions=, status_type=)
+    using AWSSDK.LexModelBuildingService.get_utterances_view
+    get_utterances_view([::AWSConfig], arguments::Dict)
+    get_utterances_view([::AWSConfig]; botname=, bot_versions=, status_type=)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "GET", "/bots/{botname}/utterances?view=aggregation", arguments::Dict)
@@ -1739,9 +1739,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.put_bot([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.put_bot([::AWSConfig]; name=, locale=, childDirected=, <keyword arguments>)
+    using AWSSDK.LexModelBuildingService.put_bot
+    put_bot([::AWSConfig], arguments::Dict)
+    put_bot([::AWSConfig]; name=, locale=, childDirected=, <keyword arguments>)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "PUT", "/bots/{name}/versions/\$LATEST", arguments::Dict)
@@ -1962,9 +1962,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.put_bot_alias([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.put_bot_alias([::AWSConfig]; name=, botVersion=, botName=, <keyword arguments>)
+    using AWSSDK.LexModelBuildingService.put_bot_alias
+    put_bot_alias([::AWSConfig], arguments::Dict)
+    put_bot_alias([::AWSConfig]; name=, botVersion=, botName=, <keyword arguments>)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "PUT", "/bots/{botName}/aliases/{name}", arguments::Dict)
@@ -2023,9 +2023,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.put_intent([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.put_intent([::AWSConfig]; name=, <keyword arguments>)
+    using AWSSDK.LexModelBuildingService.put_intent
+    put_intent([::AWSConfig], arguments::Dict)
+    put_intent([::AWSConfig]; name=, <keyword arguments>)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "PUT", "/intents/{name}/versions/\$LATEST", arguments::Dict)
@@ -2520,9 +2520,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 
 """
-    using AWSSDK.LexModelBuildingService
-    LexModelBuildingService.put_slot_type([::AWSConfig], arguments::Dict)
-    LexModelBuildingService.put_slot_type([::AWSConfig]; name=, <keyword arguments>)
+    using AWSSDK.LexModelBuildingService.put_slot_type
+    put_slot_type([::AWSConfig], arguments::Dict)
+    put_slot_type([::AWSConfig]; name=, <keyword arguments>)
 
     using AWSCore.Services.lex_models
     lex_models([::AWSConfig], "PUT", "/slottypes/{name}/versions/\$LATEST", arguments::Dict)

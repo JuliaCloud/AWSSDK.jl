@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CodeStar
-    CodeStar.associate_team_member([::AWSConfig], arguments::Dict)
-    CodeStar.associate_team_member([::AWSConfig]; projectId=, userArn=, projectRole=, <keyword arguments>)
+    using AWSSDK.CodeStar.associate_team_member
+    associate_team_member([::AWSConfig], arguments::Dict)
+    associate_team_member([::AWSConfig]; projectId=, userArn=, projectRole=, <keyword arguments>)
 
     using AWSCore.Services.codestar
     codestar([::AWSConfig], "AssociateTeamMember", arguments::Dict)
@@ -68,9 +68,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codest
 
 
 """
-    using AWSSDK.CodeStar
-    CodeStar.create_project([::AWSConfig], arguments::Dict)
-    CodeStar.create_project([::AWSConfig]; name=, id=, <keyword arguments>)
+    using AWSSDK.CodeStar.create_project
+    create_project([::AWSConfig], arguments::Dict)
+    create_project([::AWSConfig]; name=, id=, <keyword arguments>)
 
     using AWSCore.Services.codestar
     codestar([::AWSConfig], "CreateProject", arguments::Dict)
@@ -119,9 +119,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codest
 
 
 """
-    using AWSSDK.CodeStar
-    CodeStar.create_user_profile([::AWSConfig], arguments::Dict)
-    CodeStar.create_user_profile([::AWSConfig]; userArn=, displayName=, emailAddress=, <keyword arguments>)
+    using AWSSDK.CodeStar.create_user_profile
+    create_user_profile([::AWSConfig], arguments::Dict)
+    create_user_profile([::AWSConfig]; userArn=, displayName=, emailAddress=, <keyword arguments>)
 
     using AWSCore.Services.codestar
     codestar([::AWSConfig], "CreateUserProfile", arguments::Dict)
@@ -170,9 +170,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codest
 
 
 """
-    using AWSSDK.CodeStar
-    CodeStar.delete_project([::AWSConfig], arguments::Dict)
-    CodeStar.delete_project([::AWSConfig]; id=, <keyword arguments>)
+    using AWSSDK.CodeStar.delete_project
+    delete_project([::AWSConfig], arguments::Dict)
+    delete_project([::AWSConfig]; id=, <keyword arguments>)
 
     using AWSCore.Services.codestar
     codestar([::AWSConfig], "DeleteProject", arguments::Dict)
@@ -217,9 +217,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codest
 
 
 """
-    using AWSSDK.CodeStar
-    CodeStar.delete_user_profile([::AWSConfig], arguments::Dict)
-    CodeStar.delete_user_profile([::AWSConfig]; userArn=)
+    using AWSSDK.CodeStar.delete_user_profile
+    delete_user_profile([::AWSConfig], arguments::Dict)
+    delete_user_profile([::AWSConfig]; userArn=)
 
     using AWSCore.Services.codestar
     codestar([::AWSConfig], "DeleteUserProfile", arguments::Dict)
@@ -256,9 +256,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codest
 
 
 """
-    using AWSSDK.CodeStar
-    CodeStar.describe_project([::AWSConfig], arguments::Dict)
-    CodeStar.describe_project([::AWSConfig]; id=)
+    using AWSSDK.CodeStar.describe_project
+    describe_project([::AWSConfig], arguments::Dict)
+    describe_project([::AWSConfig]; id=)
 
     using AWSCore.Services.codestar
     codestar([::AWSConfig], "DescribeProject", arguments::Dict)
@@ -295,9 +295,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codest
 
 
 """
-    using AWSSDK.CodeStar
-    CodeStar.describe_user_profile([::AWSConfig], arguments::Dict)
-    CodeStar.describe_user_profile([::AWSConfig]; userArn=)
+    using AWSSDK.CodeStar.describe_user_profile
+    describe_user_profile([::AWSConfig], arguments::Dict)
+    describe_user_profile([::AWSConfig]; userArn=)
 
     using AWSCore.Services.codestar
     codestar([::AWSConfig], "DescribeUserProfile", arguments::Dict)
@@ -334,9 +334,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codest
 
 
 """
-    using AWSSDK.CodeStar
-    CodeStar.disassociate_team_member([::AWSConfig], arguments::Dict)
-    CodeStar.disassociate_team_member([::AWSConfig]; projectId=, userArn=)
+    using AWSSDK.CodeStar.disassociate_team_member
+    disassociate_team_member([::AWSConfig], arguments::Dict)
+    disassociate_team_member([::AWSConfig]; projectId=, userArn=)
 
     using AWSCore.Services.codestar
     codestar([::AWSConfig], "DisassociateTeamMember", arguments::Dict)
@@ -377,9 +377,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codest
 
 
 """
-    using AWSSDK.CodeStar
-    CodeStar.list_projects([::AWSConfig], arguments::Dict)
-    CodeStar.list_projects([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodeStar.list_projects
+    list_projects([::AWSConfig], arguments::Dict)
+    list_projects([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codestar
     codestar([::AWSConfig], "ListProjects", arguments::Dict)
@@ -420,9 +420,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codest
 
 
 """
-    using AWSSDK.CodeStar
-    CodeStar.list_resources([::AWSConfig], arguments::Dict)
-    CodeStar.list_resources([::AWSConfig]; projectId=, <keyword arguments>)
+    using AWSSDK.CodeStar.list_resources
+    list_resources([::AWSConfig], arguments::Dict)
+    list_resources([::AWSConfig]; projectId=, <keyword arguments>)
 
     using AWSCore.Services.codestar
     codestar([::AWSConfig], "ListResources", arguments::Dict)
@@ -467,9 +467,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codest
 
 
 """
-    using AWSSDK.CodeStar
-    CodeStar.list_team_members([::AWSConfig], arguments::Dict)
-    CodeStar.list_team_members([::AWSConfig]; projectId=, <keyword arguments>)
+    using AWSSDK.CodeStar.list_team_members
+    list_team_members([::AWSConfig], arguments::Dict)
+    list_team_members([::AWSConfig]; projectId=, <keyword arguments>)
 
     using AWSCore.Services.codestar
     codestar([::AWSConfig], "ListTeamMembers", arguments::Dict)
@@ -514,9 +514,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codest
 
 
 """
-    using AWSSDK.CodeStar
-    CodeStar.list_user_profiles([::AWSConfig], arguments::Dict)
-    CodeStar.list_user_profiles([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodeStar.list_user_profiles
+    list_user_profiles([::AWSConfig], arguments::Dict)
+    list_user_profiles([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codestar
     codestar([::AWSConfig], "ListUserProfiles", arguments::Dict)
@@ -557,9 +557,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codest
 
 
 """
-    using AWSSDK.CodeStar
-    CodeStar.update_project([::AWSConfig], arguments::Dict)
-    CodeStar.update_project([::AWSConfig]; id=, <keyword arguments>)
+    using AWSSDK.CodeStar.update_project
+    update_project([::AWSConfig], arguments::Dict)
+    update_project([::AWSConfig]; id=, <keyword arguments>)
 
     using AWSCore.Services.codestar
     codestar([::AWSConfig], "UpdateProject", arguments::Dict)
@@ -604,9 +604,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codest
 
 
 """
-    using AWSSDK.CodeStar
-    CodeStar.update_team_member([::AWSConfig], arguments::Dict)
-    CodeStar.update_team_member([::AWSConfig]; projectId=, userArn=, <keyword arguments>)
+    using AWSSDK.CodeStar.update_team_member
+    update_team_member([::AWSConfig], arguments::Dict)
+    update_team_member([::AWSConfig]; projectId=, userArn=, <keyword arguments>)
 
     using AWSCore.Services.codestar
     codestar([::AWSConfig], "UpdateTeamMember", arguments::Dict)
@@ -655,9 +655,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codest
 
 
 """
-    using AWSSDK.CodeStar
-    CodeStar.update_user_profile([::AWSConfig], arguments::Dict)
-    CodeStar.update_user_profile([::AWSConfig]; userArn=, <keyword arguments>)
+    using AWSSDK.CodeStar.update_user_profile
+    update_user_profile([::AWSConfig], arguments::Dict)
+    update_user_profile([::AWSConfig]; userArn=, <keyword arguments>)
 
     using AWSCore.Services.codestar
     codestar([::AWSConfig], "UpdateUserProfile", arguments::Dict)

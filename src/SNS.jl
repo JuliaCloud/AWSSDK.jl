@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.SNS
-    SNS.add_permission([::AWSConfig], arguments::Dict)
-    SNS.add_permission([::AWSConfig]; TopicArn=, Label=, AWSAccountId=, ActionName=)
+    using AWSSDK.SNS.add_permission
+    add_permission([::AWSConfig], arguments::Dict)
+    add_permission([::AWSConfig]; TopicArn=, Label=, AWSAccountId=, ActionName=)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "AddPermission", arguments::Dict)
@@ -62,9 +62,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.check_if_phone_number_is_opted_out([::AWSConfig], arguments::Dict)
-    SNS.check_if_phone_number_is_opted_out([::AWSConfig]; phoneNumber=)
+    using AWSSDK.SNS.check_if_phone_number_is_opted_out
+    check_if_phone_number_is_opted_out([::AWSConfig], arguments::Dict)
+    check_if_phone_number_is_opted_out([::AWSConfig]; phoneNumber=)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "CheckIfPhoneNumberIsOptedOut", arguments::Dict)
@@ -103,9 +103,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.confirm_subscription([::AWSConfig], arguments::Dict)
-    SNS.confirm_subscription([::AWSConfig]; TopicArn=, Token=, <keyword arguments>)
+    using AWSSDK.SNS.confirm_subscription
+    confirm_subscription([::AWSConfig], arguments::Dict)
+    confirm_subscription([::AWSConfig]; TopicArn=, Token=, <keyword arguments>)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "ConfirmSubscription", arguments::Dict)
@@ -150,9 +150,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.create_platform_application([::AWSConfig], arguments::Dict)
-    SNS.create_platform_application([::AWSConfig]; Name=, Platform=, Attributes=)
+    using AWSSDK.SNS.create_platform_application
+    create_platform_application([::AWSConfig], arguments::Dict)
+    create_platform_application([::AWSConfig]; Name=, Platform=, Attributes=)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "CreatePlatformApplication", arguments::Dict)
@@ -199,9 +199,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.create_platform_endpoint([::AWSConfig], arguments::Dict)
-    SNS.create_platform_endpoint([::AWSConfig]; PlatformApplicationArn=, Token=, <keyword arguments>)
+    using AWSSDK.SNS.create_platform_endpoint
+    create_platform_endpoint([::AWSConfig], arguments::Dict)
+    create_platform_endpoint([::AWSConfig]; PlatformApplicationArn=, Token=, <keyword arguments>)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "CreatePlatformEndpoint", arguments::Dict)
@@ -252,9 +252,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.create_topic([::AWSConfig], arguments::Dict)
-    SNS.create_topic([::AWSConfig]; Name=)
+    using AWSSDK.SNS.create_topic
+    create_topic([::AWSConfig], arguments::Dict)
+    create_topic([::AWSConfig]; Name=)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "CreateTopic", arguments::Dict)
@@ -293,9 +293,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.delete_endpoint([::AWSConfig], arguments::Dict)
-    SNS.delete_endpoint([::AWSConfig]; EndpointArn=)
+    using AWSSDK.SNS.delete_endpoint
+    delete_endpoint([::AWSConfig], arguments::Dict)
+    delete_endpoint([::AWSConfig]; EndpointArn=)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "DeleteEndpoint", arguments::Dict)
@@ -330,9 +330,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.delete_platform_application([::AWSConfig], arguments::Dict)
-    SNS.delete_platform_application([::AWSConfig]; PlatformApplicationArn=)
+    using AWSSDK.SNS.delete_platform_application
+    delete_platform_application([::AWSConfig], arguments::Dict)
+    delete_platform_application([::AWSConfig]; PlatformApplicationArn=)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "DeletePlatformApplication", arguments::Dict)
@@ -365,9 +365,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.delete_topic([::AWSConfig], arguments::Dict)
-    SNS.delete_topic([::AWSConfig]; TopicArn=)
+    using AWSSDK.SNS.delete_topic
+    delete_topic([::AWSConfig], arguments::Dict)
+    delete_topic([::AWSConfig]; TopicArn=)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "DeleteTopic", arguments::Dict)
@@ -400,9 +400,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.get_endpoint_attributes([::AWSConfig], arguments::Dict)
-    SNS.get_endpoint_attributes([::AWSConfig]; EndpointArn=)
+    using AWSSDK.SNS.get_endpoint_attributes
+    get_endpoint_attributes([::AWSConfig], arguments::Dict)
+    get_endpoint_attributes([::AWSConfig]; EndpointArn=)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "GetEndpointAttributes", arguments::Dict)
@@ -439,9 +439,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.get_platform_application_attributes([::AWSConfig], arguments::Dict)
-    SNS.get_platform_application_attributes([::AWSConfig]; PlatformApplicationArn=)
+    using AWSSDK.SNS.get_platform_application_attributes
+    get_platform_application_attributes([::AWSConfig], arguments::Dict)
+    get_platform_application_attributes([::AWSConfig]; PlatformApplicationArn=)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "GetPlatformApplicationAttributes", arguments::Dict)
@@ -478,9 +478,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.get_smsattributes([::AWSConfig], arguments::Dict)
-    SNS.get_smsattributes([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SNS.get_smsattributes
+    get_smsattributes([::AWSConfig], arguments::Dict)
+    get_smsattributes([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "GetSMSAttributes", arguments::Dict)
@@ -523,9 +523,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.get_subscription_attributes([::AWSConfig], arguments::Dict)
-    SNS.get_subscription_attributes([::AWSConfig]; SubscriptionArn=)
+    using AWSSDK.SNS.get_subscription_attributes
+    get_subscription_attributes([::AWSConfig], arguments::Dict)
+    get_subscription_attributes([::AWSConfig]; SubscriptionArn=)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "GetSubscriptionAttributes", arguments::Dict)
@@ -562,9 +562,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.get_topic_attributes([::AWSConfig], arguments::Dict)
-    SNS.get_topic_attributes([::AWSConfig]; TopicArn=)
+    using AWSSDK.SNS.get_topic_attributes
+    get_topic_attributes([::AWSConfig], arguments::Dict)
+    get_topic_attributes([::AWSConfig]; TopicArn=)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "GetTopicAttributes", arguments::Dict)
@@ -601,9 +601,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.list_endpoints_by_platform_application([::AWSConfig], arguments::Dict)
-    SNS.list_endpoints_by_platform_application([::AWSConfig]; PlatformApplicationArn=, <keyword arguments>)
+    using AWSSDK.SNS.list_endpoints_by_platform_application
+    list_endpoints_by_platform_application([::AWSConfig], arguments::Dict)
+    list_endpoints_by_platform_application([::AWSConfig]; PlatformApplicationArn=, <keyword arguments>)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "ListEndpointsByPlatformApplication", arguments::Dict)
@@ -644,9 +644,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.list_phone_numbers_opted_out([::AWSConfig], arguments::Dict)
-    SNS.list_phone_numbers_opted_out([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SNS.list_phone_numbers_opted_out
+    list_phone_numbers_opted_out([::AWSConfig], arguments::Dict)
+    list_phone_numbers_opted_out([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "ListPhoneNumbersOptedOut", arguments::Dict)
@@ -685,9 +685,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.list_platform_applications([::AWSConfig], arguments::Dict)
-    SNS.list_platform_applications([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SNS.list_platform_applications
+    list_platform_applications([::AWSConfig], arguments::Dict)
+    list_platform_applications([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "ListPlatformApplications", arguments::Dict)
@@ -724,9 +724,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.list_subscriptions([::AWSConfig], arguments::Dict)
-    SNS.list_subscriptions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SNS.list_subscriptions
+    list_subscriptions([::AWSConfig], arguments::Dict)
+    list_subscriptions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "ListSubscriptions", arguments::Dict)
@@ -763,9 +763,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.list_subscriptions_by_topic([::AWSConfig], arguments::Dict)
-    SNS.list_subscriptions_by_topic([::AWSConfig]; TopicArn=, <keyword arguments>)
+    using AWSSDK.SNS.list_subscriptions_by_topic
+    list_subscriptions_by_topic([::AWSConfig], arguments::Dict)
+    list_subscriptions_by_topic([::AWSConfig]; TopicArn=, <keyword arguments>)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "ListSubscriptionsByTopic", arguments::Dict)
@@ -806,9 +806,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.list_topics([::AWSConfig], arguments::Dict)
-    SNS.list_topics([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SNS.list_topics
+    list_topics([::AWSConfig], arguments::Dict)
+    list_topics([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "ListTopics", arguments::Dict)
@@ -845,9 +845,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.opt_in_phone_number([::AWSConfig], arguments::Dict)
-    SNS.opt_in_phone_number([::AWSConfig]; phoneNumber=)
+    using AWSSDK.SNS.opt_in_phone_number
+    opt_in_phone_number([::AWSConfig], arguments::Dict)
+    opt_in_phone_number([::AWSConfig]; phoneNumber=)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "OptInPhoneNumber", arguments::Dict)
@@ -886,9 +886,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.publish([::AWSConfig], arguments::Dict)
-    SNS.publish([::AWSConfig]; Message=, <keyword arguments>)
+    using AWSSDK.SNS.publish
+    publish([::AWSConfig], arguments::Dict)
+    publish([::AWSConfig]; Message=, <keyword arguments>)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "Publish", arguments::Dict)
@@ -997,9 +997,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.remove_permission([::AWSConfig], arguments::Dict)
-    SNS.remove_permission([::AWSConfig]; TopicArn=, Label=)
+    using AWSSDK.SNS.remove_permission
+    remove_permission([::AWSConfig], arguments::Dict)
+    remove_permission([::AWSConfig]; TopicArn=, Label=)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "RemovePermission", arguments::Dict)
@@ -1036,9 +1036,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.set_endpoint_attributes([::AWSConfig], arguments::Dict)
-    SNS.set_endpoint_attributes([::AWSConfig]; EndpointArn=, Attributes=)
+    using AWSSDK.SNS.set_endpoint_attributes
+    set_endpoint_attributes([::AWSConfig], arguments::Dict)
+    set_endpoint_attributes([::AWSConfig]; EndpointArn=, Attributes=)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "SetEndpointAttributes", arguments::Dict)
@@ -1081,9 +1081,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.set_platform_application_attributes([::AWSConfig], arguments::Dict)
-    SNS.set_platform_application_attributes([::AWSConfig]; PlatformApplicationArn=, Attributes=)
+    using AWSSDK.SNS.set_platform_application_attributes
+    set_platform_application_attributes([::AWSConfig], arguments::Dict)
+    set_platform_application_attributes([::AWSConfig]; PlatformApplicationArn=, Attributes=)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "SetPlatformApplicationAttributes", arguments::Dict)
@@ -1138,9 +1138,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.set_smsattributes([::AWSConfig], arguments::Dict)
-    SNS.set_smsattributes([::AWSConfig]; attributes=)
+    using AWSSDK.SNS.set_smsattributes
+    set_smsattributes([::AWSConfig], arguments::Dict)
+    set_smsattributes([::AWSConfig]; attributes=)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "SetSMSAttributes", arguments::Dict)
@@ -1220,9 +1220,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.set_subscription_attributes([::AWSConfig], arguments::Dict)
-    SNS.set_subscription_attributes([::AWSConfig]; SubscriptionArn=, AttributeName=, <keyword arguments>)
+    using AWSSDK.SNS.set_subscription_attributes
+    set_subscription_attributes([::AWSConfig], arguments::Dict)
+    set_subscription_attributes([::AWSConfig]; SubscriptionArn=, AttributeName=, <keyword arguments>)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "SetSubscriptionAttributes", arguments::Dict)
@@ -1265,9 +1265,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.set_topic_attributes([::AWSConfig], arguments::Dict)
-    SNS.set_topic_attributes([::AWSConfig]; TopicArn=, AttributeName=, <keyword arguments>)
+    using AWSSDK.SNS.set_topic_attributes
+    set_topic_attributes([::AWSConfig], arguments::Dict)
+    set_topic_attributes([::AWSConfig]; TopicArn=, AttributeName=, <keyword arguments>)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "SetTopicAttributes", arguments::Dict)
@@ -1310,9 +1310,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.subscribe([::AWSConfig], arguments::Dict)
-    SNS.subscribe([::AWSConfig]; TopicArn=, Protocol=, <keyword arguments>)
+    using AWSSDK.SNS.subscribe
+    subscribe([::AWSConfig], arguments::Dict)
+    subscribe([::AWSConfig]; TopicArn=, Protocol=, <keyword arguments>)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "Subscribe", arguments::Dict)
@@ -1389,9 +1389,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 
 """
-    using AWSSDK.SNS
-    SNS.unsubscribe([::AWSConfig], arguments::Dict)
-    SNS.unsubscribe([::AWSConfig]; SubscriptionArn=)
+    using AWSSDK.SNS.unsubscribe
+    unsubscribe([::AWSConfig], arguments::Dict)
+    unsubscribe([::AWSConfig]; SubscriptionArn=)
 
     using AWSCore.Services.sns
     sns([::AWSConfig], "Unsubscribe", arguments::Dict)

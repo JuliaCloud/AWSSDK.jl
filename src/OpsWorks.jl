@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.assign_instance([::AWSConfig], arguments::Dict)
-    OpsWorks.assign_instance([::AWSConfig]; InstanceId=, LayerIds=)
+    using AWSSDK.OpsWorks.assign_instance
+    assign_instance([::AWSConfig], arguments::Dict)
+    assign_instance([::AWSConfig]; InstanceId=, LayerIds=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "AssignInstance", arguments::Dict)
@@ -60,9 +60,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.assign_volume([::AWSConfig], arguments::Dict)
-    OpsWorks.assign_volume([::AWSConfig]; VolumeId=, <keyword arguments>)
+    using AWSSDK.OpsWorks.assign_volume
+    assign_volume([::AWSConfig], arguments::Dict)
+    assign_volume([::AWSConfig]; VolumeId=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "AssignVolume", arguments::Dict)
@@ -101,9 +101,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.associate_elastic_ip([::AWSConfig], arguments::Dict)
-    OpsWorks.associate_elastic_ip([::AWSConfig]; ElasticIp=, <keyword arguments>)
+    using AWSSDK.OpsWorks.associate_elastic_ip
+    associate_elastic_ip([::AWSConfig], arguments::Dict)
+    associate_elastic_ip([::AWSConfig]; ElasticIp=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "AssociateElasticIp", arguments::Dict)
@@ -142,9 +142,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.attach_elastic_load_balancer([::AWSConfig], arguments::Dict)
-    OpsWorks.attach_elastic_load_balancer([::AWSConfig]; ElasticLoadBalancerName=, LayerId=)
+    using AWSSDK.OpsWorks.attach_elastic_load_balancer
+    attach_elastic_load_balancer([::AWSConfig], arguments::Dict)
+    attach_elastic_load_balancer([::AWSConfig]; ElasticLoadBalancerName=, LayerId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "AttachElasticLoadBalancer", arguments::Dict)
@@ -186,9 +186,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.clone_stack([::AWSConfig], arguments::Dict)
-    OpsWorks.clone_stack([::AWSConfig]; SourceStackId=, ServiceRoleArn=, <keyword arguments>)
+    using AWSSDK.OpsWorks.clone_stack
+    clone_stack([::AWSConfig], arguments::Dict)
+    clone_stack([::AWSConfig]; SourceStackId=, ServiceRoleArn=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "CloneStack", arguments::Dict)
@@ -409,9 +409,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.create_app([::AWSConfig], arguments::Dict)
-    OpsWorks.create_app([::AWSConfig]; StackId=, Name=, Type=, <keyword arguments>)
+    using AWSSDK.OpsWorks.create_app
+    create_app([::AWSConfig], arguments::Dict)
+    create_app([::AWSConfig]; StackId=, Name=, Type=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "CreateApp", arguments::Dict)
@@ -526,9 +526,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.create_deployment([::AWSConfig], arguments::Dict)
-    OpsWorks.create_deployment([::AWSConfig]; StackId=, Command=, <keyword arguments>)
+    using AWSSDK.OpsWorks.create_deployment
+    create_deployment([::AWSConfig], arguments::Dict)
+    create_deployment([::AWSConfig]; StackId=, Command=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "CreateDeployment", arguments::Dict)
@@ -600,9 +600,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.create_instance([::AWSConfig], arguments::Dict)
-    OpsWorks.create_instance([::AWSConfig]; StackId=, LayerIds=, InstanceType=, <keyword arguments>)
+    using AWSSDK.OpsWorks.create_instance
+    create_instance([::AWSConfig], arguments::Dict)
+    create_instance([::AWSConfig]; StackId=, LayerIds=, InstanceType=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "CreateInstance", arguments::Dict)
@@ -750,9 +750,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.create_layer([::AWSConfig], arguments::Dict)
-    OpsWorks.create_layer([::AWSConfig]; StackId=, Type=, Name=, Shortname=, <keyword arguments>)
+    using AWSSDK.OpsWorks.create_layer
+    create_layer([::AWSConfig], arguments::Dict)
+    create_layer([::AWSConfig]; StackId=, Type=, Name=, Shortname=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "CreateLayer", arguments::Dict)
@@ -908,9 +908,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.create_stack([::AWSConfig], arguments::Dict)
-    OpsWorks.create_stack([::AWSConfig]; Name=, Region=, ServiceRoleArn=, DefaultInstanceProfileArn=, <keyword arguments>)
+    using AWSSDK.OpsWorks.create_stack
+    create_stack([::AWSConfig], arguments::Dict)
+    create_stack([::AWSConfig]; Name=, Region=, ServiceRoleArn=, DefaultInstanceProfileArn=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "CreateStack", arguments::Dict)
@@ -1113,9 +1113,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.create_user_profile([::AWSConfig], arguments::Dict)
-    OpsWorks.create_user_profile([::AWSConfig]; IamUserArn=, <keyword arguments>)
+    using AWSSDK.OpsWorks.create_user_profile
+    create_user_profile([::AWSConfig], arguments::Dict)
+    create_user_profile([::AWSConfig]; IamUserArn=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "CreateUserProfile", arguments::Dict)
@@ -1166,9 +1166,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.delete_app([::AWSConfig], arguments::Dict)
-    OpsWorks.delete_app([::AWSConfig]; AppId=)
+    using AWSSDK.OpsWorks.delete_app
+    delete_app([::AWSConfig], arguments::Dict)
+    delete_app([::AWSConfig]; AppId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DeleteApp", arguments::Dict)
@@ -1203,9 +1203,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.delete_instance([::AWSConfig], arguments::Dict)
-    OpsWorks.delete_instance([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.OpsWorks.delete_instance
+    delete_instance([::AWSConfig], arguments::Dict)
+    delete_instance([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DeleteInstance", arguments::Dict)
@@ -1250,9 +1250,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.delete_layer([::AWSConfig], arguments::Dict)
-    OpsWorks.delete_layer([::AWSConfig]; LayerId=)
+    using AWSSDK.OpsWorks.delete_layer
+    delete_layer([::AWSConfig], arguments::Dict)
+    delete_layer([::AWSConfig]; LayerId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DeleteLayer", arguments::Dict)
@@ -1287,9 +1287,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.delete_stack([::AWSConfig], arguments::Dict)
-    OpsWorks.delete_stack([::AWSConfig]; StackId=)
+    using AWSSDK.OpsWorks.delete_stack
+    delete_stack([::AWSConfig], arguments::Dict)
+    delete_stack([::AWSConfig]; StackId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DeleteStack", arguments::Dict)
@@ -1324,9 +1324,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.delete_user_profile([::AWSConfig], arguments::Dict)
-    OpsWorks.delete_user_profile([::AWSConfig]; IamUserArn=)
+    using AWSSDK.OpsWorks.delete_user_profile
+    delete_user_profile([::AWSConfig], arguments::Dict)
+    delete_user_profile([::AWSConfig]; IamUserArn=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DeleteUserProfile", arguments::Dict)
@@ -1361,9 +1361,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.deregister_ecs_cluster([::AWSConfig], arguments::Dict)
-    OpsWorks.deregister_ecs_cluster([::AWSConfig]; EcsClusterArn=)
+    using AWSSDK.OpsWorks.deregister_ecs_cluster
+    deregister_ecs_cluster([::AWSConfig], arguments::Dict)
+    deregister_ecs_cluster([::AWSConfig]; EcsClusterArn=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DeregisterEcsCluster", arguments::Dict)
@@ -1398,9 +1398,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.deregister_elastic_ip([::AWSConfig], arguments::Dict)
-    OpsWorks.deregister_elastic_ip([::AWSConfig]; ElasticIp=)
+    using AWSSDK.OpsWorks.deregister_elastic_ip
+    deregister_elastic_ip([::AWSConfig], arguments::Dict)
+    deregister_elastic_ip([::AWSConfig]; ElasticIp=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DeregisterElasticIp", arguments::Dict)
@@ -1435,9 +1435,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.deregister_instance([::AWSConfig], arguments::Dict)
-    OpsWorks.deregister_instance([::AWSConfig]; InstanceId=)
+    using AWSSDK.OpsWorks.deregister_instance
+    deregister_instance([::AWSConfig], arguments::Dict)
+    deregister_instance([::AWSConfig]; InstanceId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DeregisterInstance", arguments::Dict)
@@ -1472,9 +1472,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.deregister_rds_db_instance([::AWSConfig], arguments::Dict)
-    OpsWorks.deregister_rds_db_instance([::AWSConfig]; RdsDbInstanceArn=)
+    using AWSSDK.OpsWorks.deregister_rds_db_instance
+    deregister_rds_db_instance([::AWSConfig], arguments::Dict)
+    deregister_rds_db_instance([::AWSConfig]; RdsDbInstanceArn=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DeregisterRdsDbInstance", arguments::Dict)
@@ -1509,9 +1509,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.deregister_volume([::AWSConfig], arguments::Dict)
-    OpsWorks.deregister_volume([::AWSConfig]; VolumeId=)
+    using AWSSDK.OpsWorks.deregister_volume
+    deregister_volume([::AWSConfig], arguments::Dict)
+    deregister_volume([::AWSConfig]; VolumeId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DeregisterVolume", arguments::Dict)
@@ -1546,9 +1546,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_agent_versions([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_agent_versions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorks.describe_agent_versions
+    describe_agent_versions([::AWSConfig], arguments::Dict)
+    describe_agent_versions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeAgentVersions", arguments::Dict)
@@ -1594,9 +1594,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_apps([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_apps([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorks.describe_apps
+    describe_apps([::AWSConfig], arguments::Dict)
+    describe_apps([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeApps", arguments::Dict)
@@ -1642,9 +1642,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_commands([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_commands([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorks.describe_commands
+    describe_commands([::AWSConfig], arguments::Dict)
+    describe_commands([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeCommands", arguments::Dict)
@@ -1694,9 +1694,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_deployments([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_deployments([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorks.describe_deployments
+    describe_deployments([::AWSConfig], arguments::Dict)
+    describe_deployments([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeDeployments", arguments::Dict)
@@ -1746,9 +1746,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_ecs_clusters([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_ecs_clusters([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorks.describe_ecs_clusters
+    describe_ecs_clusters([::AWSConfig], arguments::Dict)
+    describe_ecs_clusters([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeEcsClusters", arguments::Dict)
@@ -1801,9 +1801,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_elastic_ips([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_elastic_ips([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorks.describe_elastic_ips
+    describe_elastic_ips([::AWSConfig], arguments::Dict)
+    describe_elastic_ips([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeElasticIps", arguments::Dict)
@@ -1853,9 +1853,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_elastic_load_balancers([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_elastic_load_balancers([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorks.describe_elastic_load_balancers
+    describe_elastic_load_balancers([::AWSConfig], arguments::Dict)
+    describe_elastic_load_balancers([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeElasticLoadBalancers", arguments::Dict)
@@ -1901,9 +1901,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_instances([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_instances([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorks.describe_instances
+    describe_instances([::AWSConfig], arguments::Dict)
+    describe_instances([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeInstances", arguments::Dict)
@@ -1953,9 +1953,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_layers([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_layers([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorks.describe_layers
+    describe_layers([::AWSConfig], arguments::Dict)
+    describe_layers([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeLayers", arguments::Dict)
@@ -2001,9 +2001,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_load_based_auto_scaling([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_load_based_auto_scaling([::AWSConfig]; LayerIds=)
+    using AWSSDK.OpsWorks.describe_load_based_auto_scaling
+    describe_load_based_auto_scaling([::AWSConfig], arguments::Dict)
+    describe_load_based_auto_scaling([::AWSConfig]; LayerIds=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeLoadBasedAutoScaling", arguments::Dict)
@@ -2045,9 +2045,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_my_user_profile([::AWSConfig])
-    OpsWorks.
+    using AWSSDK.OpsWorks.describe_my_user_profile
+    describe_my_user_profile([::AWSConfig])
+    
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeMyUserProfile",)
@@ -2074,9 +2074,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_permissions([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_permissions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorks.describe_permissions
+    describe_permissions([::AWSConfig], arguments::Dict)
+    describe_permissions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribePermissions", arguments::Dict)
@@ -2119,9 +2119,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_raid_arrays([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_raid_arrays([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorks.describe_raid_arrays
+    describe_raid_arrays([::AWSConfig], arguments::Dict)
+    describe_raid_arrays([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeRaidArrays", arguments::Dict)
@@ -2171,9 +2171,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_rds_db_instances([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_rds_db_instances([::AWSConfig]; StackId=, <keyword arguments>)
+    using AWSSDK.OpsWorks.describe_rds_db_instances
+    describe_rds_db_instances([::AWSConfig], arguments::Dict)
+    describe_rds_db_instances([::AWSConfig]; StackId=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeRdsDbInstances", arguments::Dict)
@@ -2218,9 +2218,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_service_errors([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_service_errors([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorks.describe_service_errors
+    describe_service_errors([::AWSConfig], arguments::Dict)
+    describe_service_errors([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeServiceErrors", arguments::Dict)
@@ -2269,9 +2269,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_stack_provisioning_parameters([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_stack_provisioning_parameters([::AWSConfig]; StackId=)
+    using AWSSDK.OpsWorks.describe_stack_provisioning_parameters
+    describe_stack_provisioning_parameters([::AWSConfig], arguments::Dict)
+    describe_stack_provisioning_parameters([::AWSConfig]; StackId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeStackProvisioningParameters", arguments::Dict)
@@ -2310,9 +2310,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_stack_summary([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_stack_summary([::AWSConfig]; StackId=)
+    using AWSSDK.OpsWorks.describe_stack_summary
+    describe_stack_summary([::AWSConfig], arguments::Dict)
+    describe_stack_summary([::AWSConfig]; StackId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeStackSummary", arguments::Dict)
@@ -2351,9 +2351,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_stacks([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_stacks([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorks.describe_stacks
+    describe_stacks([::AWSConfig], arguments::Dict)
+    describe_stacks([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeStacks", arguments::Dict)
@@ -2392,9 +2392,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_time_based_auto_scaling([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_time_based_auto_scaling([::AWSConfig]; InstanceIds=)
+    using AWSSDK.OpsWorks.describe_time_based_auto_scaling
+    describe_time_based_auto_scaling([::AWSConfig], arguments::Dict)
+    describe_time_based_auto_scaling([::AWSConfig]; InstanceIds=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeTimeBasedAutoScaling", arguments::Dict)
@@ -2436,9 +2436,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_user_profiles([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_user_profiles([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorks.describe_user_profiles
+    describe_user_profiles([::AWSConfig], arguments::Dict)
+    describe_user_profiles([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeUserProfiles", arguments::Dict)
@@ -2477,9 +2477,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.describe_volumes([::AWSConfig], arguments::Dict)
-    OpsWorks.describe_volumes([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorks.describe_volumes
+    describe_volumes([::AWSConfig], arguments::Dict)
+    describe_volumes([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DescribeVolumes", arguments::Dict)
@@ -2533,9 +2533,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.detach_elastic_load_balancer([::AWSConfig], arguments::Dict)
-    OpsWorks.detach_elastic_load_balancer([::AWSConfig]; ElasticLoadBalancerName=, LayerId=)
+    using AWSSDK.OpsWorks.detach_elastic_load_balancer
+    detach_elastic_load_balancer([::AWSConfig], arguments::Dict)
+    detach_elastic_load_balancer([::AWSConfig]; ElasticLoadBalancerName=, LayerId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DetachElasticLoadBalancer", arguments::Dict)
@@ -2574,9 +2574,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.disassociate_elastic_ip([::AWSConfig], arguments::Dict)
-    OpsWorks.disassociate_elastic_ip([::AWSConfig]; ElasticIp=)
+    using AWSSDK.OpsWorks.disassociate_elastic_ip
+    disassociate_elastic_ip([::AWSConfig], arguments::Dict)
+    disassociate_elastic_ip([::AWSConfig]; ElasticIp=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "DisassociateElasticIp", arguments::Dict)
@@ -2611,9 +2611,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.get_hostname_suggestion([::AWSConfig], arguments::Dict)
-    OpsWorks.get_hostname_suggestion([::AWSConfig]; LayerId=)
+    using AWSSDK.OpsWorks.get_hostname_suggestion
+    get_hostname_suggestion([::AWSConfig], arguments::Dict)
+    get_hostname_suggestion([::AWSConfig]; LayerId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "GetHostnameSuggestion", arguments::Dict)
@@ -2652,9 +2652,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.grant_access([::AWSConfig], arguments::Dict)
-    OpsWorks.grant_access([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.OpsWorks.grant_access
+    grant_access([::AWSConfig], arguments::Dict)
+    grant_access([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "GrantAccess", arguments::Dict)
@@ -2699,9 +2699,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.list_tags([::AWSConfig], arguments::Dict)
-    OpsWorks.list_tags([::AWSConfig]; ResourceArn=, <keyword arguments>)
+    using AWSSDK.OpsWorks.list_tags
+    list_tags([::AWSConfig], arguments::Dict)
+    list_tags([::AWSConfig]; ResourceArn=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "ListTags", arguments::Dict)
@@ -2746,9 +2746,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.reboot_instance([::AWSConfig], arguments::Dict)
-    OpsWorks.reboot_instance([::AWSConfig]; InstanceId=)
+    using AWSSDK.OpsWorks.reboot_instance
+    reboot_instance([::AWSConfig], arguments::Dict)
+    reboot_instance([::AWSConfig]; InstanceId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "RebootInstance", arguments::Dict)
@@ -2783,9 +2783,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.register_ecs_cluster([::AWSConfig], arguments::Dict)
-    OpsWorks.register_ecs_cluster([::AWSConfig]; EcsClusterArn=, StackId=)
+    using AWSSDK.OpsWorks.register_ecs_cluster
+    register_ecs_cluster([::AWSConfig], arguments::Dict)
+    register_ecs_cluster([::AWSConfig]; EcsClusterArn=, StackId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "RegisterEcsCluster", arguments::Dict)
@@ -2828,9 +2828,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.register_elastic_ip([::AWSConfig], arguments::Dict)
-    OpsWorks.register_elastic_ip([::AWSConfig]; ElasticIp=, StackId=)
+    using AWSSDK.OpsWorks.register_elastic_ip
+    register_elastic_ip([::AWSConfig], arguments::Dict)
+    register_elastic_ip([::AWSConfig]; ElasticIp=, StackId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "RegisterElasticIp", arguments::Dict)
@@ -2873,9 +2873,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.register_instance([::AWSConfig], arguments::Dict)
-    OpsWorks.register_instance([::AWSConfig]; StackId=, <keyword arguments>)
+    using AWSSDK.OpsWorks.register_instance
+    register_instance([::AWSConfig], arguments::Dict)
+    register_instance([::AWSConfig]; StackId=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "RegisterInstance", arguments::Dict)
@@ -2948,9 +2948,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.register_rds_db_instance([::AWSConfig], arguments::Dict)
-    OpsWorks.register_rds_db_instance([::AWSConfig]; StackId=, RdsDbInstanceArn=, DbUser=, DbPassword=)
+    using AWSSDK.OpsWorks.register_rds_db_instance
+    register_rds_db_instance([::AWSConfig], arguments::Dict)
+    register_rds_db_instance([::AWSConfig]; StackId=, RdsDbInstanceArn=, DbUser=, DbPassword=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "RegisterRdsDbInstance", arguments::Dict)
@@ -2997,9 +2997,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.register_volume([::AWSConfig], arguments::Dict)
-    OpsWorks.register_volume([::AWSConfig]; StackId=, <keyword arguments>)
+    using AWSSDK.OpsWorks.register_volume
+    register_volume([::AWSConfig], arguments::Dict)
+    register_volume([::AWSConfig]; StackId=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "RegisterVolume", arguments::Dict)
@@ -3042,9 +3042,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.set_load_based_auto_scaling([::AWSConfig], arguments::Dict)
-    OpsWorks.set_load_based_auto_scaling([::AWSConfig]; LayerId=, <keyword arguments>)
+    using AWSSDK.OpsWorks.set_load_based_auto_scaling
+    set_load_based_auto_scaling([::AWSConfig], arguments::Dict)
+    set_load_based_auto_scaling([::AWSConfig]; LayerId=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "SetLoadBasedAutoScaling", arguments::Dict)
@@ -3114,9 +3114,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.set_permission([::AWSConfig], arguments::Dict)
-    OpsWorks.set_permission([::AWSConfig]; StackId=, IamUserArn=, <keyword arguments>)
+    using AWSSDK.OpsWorks.set_permission
+    set_permission([::AWSConfig], arguments::Dict)
+    set_permission([::AWSConfig]; StackId=, IamUserArn=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "SetPermission", arguments::Dict)
@@ -3179,9 +3179,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.set_time_based_auto_scaling([::AWSConfig], arguments::Dict)
-    OpsWorks.set_time_based_auto_scaling([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.OpsWorks.set_time_based_auto_scaling
+    set_time_based_auto_scaling([::AWSConfig], arguments::Dict)
+    set_time_based_auto_scaling([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "SetTimeBasedAutoScaling", arguments::Dict)
@@ -3230,9 +3230,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.start_instance([::AWSConfig], arguments::Dict)
-    OpsWorks.start_instance([::AWSConfig]; InstanceId=)
+    using AWSSDK.OpsWorks.start_instance
+    start_instance([::AWSConfig], arguments::Dict)
+    start_instance([::AWSConfig]; InstanceId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "StartInstance", arguments::Dict)
@@ -3267,9 +3267,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.start_stack([::AWSConfig], arguments::Dict)
-    OpsWorks.start_stack([::AWSConfig]; StackId=)
+    using AWSSDK.OpsWorks.start_stack
+    start_stack([::AWSConfig], arguments::Dict)
+    start_stack([::AWSConfig]; StackId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "StartStack", arguments::Dict)
@@ -3304,9 +3304,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.stop_instance([::AWSConfig], arguments::Dict)
-    OpsWorks.stop_instance([::AWSConfig]; InstanceId=)
+    using AWSSDK.OpsWorks.stop_instance
+    stop_instance([::AWSConfig], arguments::Dict)
+    stop_instance([::AWSConfig]; InstanceId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "StopInstance", arguments::Dict)
@@ -3341,9 +3341,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.stop_stack([::AWSConfig], arguments::Dict)
-    OpsWorks.stop_stack([::AWSConfig]; StackId=)
+    using AWSSDK.OpsWorks.stop_stack
+    stop_stack([::AWSConfig], arguments::Dict)
+    stop_stack([::AWSConfig]; StackId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "StopStack", arguments::Dict)
@@ -3378,9 +3378,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.tag_resource([::AWSConfig], arguments::Dict)
-    OpsWorks.tag_resource([::AWSConfig]; ResourceArn=, Tags=)
+    using AWSSDK.OpsWorks.tag_resource
+    tag_resource([::AWSConfig], arguments::Dict)
+    tag_resource([::AWSConfig]; ResourceArn=, Tags=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "TagResource", arguments::Dict)
@@ -3427,9 +3427,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.unassign_instance([::AWSConfig], arguments::Dict)
-    OpsWorks.unassign_instance([::AWSConfig]; InstanceId=)
+    using AWSSDK.OpsWorks.unassign_instance
+    unassign_instance([::AWSConfig], arguments::Dict)
+    unassign_instance([::AWSConfig]; InstanceId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "UnassignInstance", arguments::Dict)
@@ -3464,9 +3464,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.unassign_volume([::AWSConfig], arguments::Dict)
-    OpsWorks.unassign_volume([::AWSConfig]; VolumeId=)
+    using AWSSDK.OpsWorks.unassign_volume
+    unassign_volume([::AWSConfig], arguments::Dict)
+    unassign_volume([::AWSConfig]; VolumeId=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "UnassignVolume", arguments::Dict)
@@ -3501,9 +3501,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.untag_resource([::AWSConfig], arguments::Dict)
-    OpsWorks.untag_resource([::AWSConfig]; ResourceArn=, TagKeys=)
+    using AWSSDK.OpsWorks.untag_resource
+    untag_resource([::AWSConfig], arguments::Dict)
+    untag_resource([::AWSConfig]; ResourceArn=, TagKeys=)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "UntagResource", arguments::Dict)
@@ -3540,9 +3540,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.update_app([::AWSConfig], arguments::Dict)
-    OpsWorks.update_app([::AWSConfig]; AppId=, <keyword arguments>)
+    using AWSSDK.OpsWorks.update_app
+    update_app([::AWSConfig], arguments::Dict)
+    update_app([::AWSConfig]; AppId=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "UpdateApp", arguments::Dict)
@@ -3649,9 +3649,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.update_elastic_ip([::AWSConfig], arguments::Dict)
-    OpsWorks.update_elastic_ip([::AWSConfig]; ElasticIp=, <keyword arguments>)
+    using AWSSDK.OpsWorks.update_elastic_ip
+    update_elastic_ip([::AWSConfig], arguments::Dict)
+    update_elastic_ip([::AWSConfig]; ElasticIp=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "UpdateElasticIp", arguments::Dict)
@@ -3690,9 +3690,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.update_instance([::AWSConfig], arguments::Dict)
-    OpsWorks.update_instance([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.OpsWorks.update_instance
+    update_instance([::AWSConfig], arguments::Dict)
+    update_instance([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "UpdateInstance", arguments::Dict)
@@ -3799,9 +3799,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.update_layer([::AWSConfig], arguments::Dict)
-    OpsWorks.update_layer([::AWSConfig]; LayerId=, <keyword arguments>)
+    using AWSSDK.OpsWorks.update_layer
+    update_layer([::AWSConfig], arguments::Dict)
+    update_layer([::AWSConfig]; LayerId=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "UpdateLayer", arguments::Dict)
@@ -3944,9 +3944,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.update_my_user_profile([::AWSConfig], arguments::Dict)
-    OpsWorks.update_my_user_profile([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.OpsWorks.update_my_user_profile
+    update_my_user_profile([::AWSConfig], arguments::Dict)
+    update_my_user_profile([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "UpdateMyUserProfile", arguments::Dict)
@@ -3981,9 +3981,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.update_rds_db_instance([::AWSConfig], arguments::Dict)
-    OpsWorks.update_rds_db_instance([::AWSConfig]; RdsDbInstanceArn=, <keyword arguments>)
+    using AWSSDK.OpsWorks.update_rds_db_instance
+    update_rds_db_instance([::AWSConfig], arguments::Dict)
+    update_rds_db_instance([::AWSConfig]; RdsDbInstanceArn=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "UpdateRdsDbInstance", arguments::Dict)
@@ -4026,9 +4026,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.update_stack([::AWSConfig], arguments::Dict)
-    OpsWorks.update_stack([::AWSConfig]; StackId=, <keyword arguments>)
+    using AWSSDK.OpsWorks.update_stack
+    update_stack([::AWSConfig], arguments::Dict)
+    update_stack([::AWSConfig]; StackId=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "UpdateStack", arguments::Dict)
@@ -4209,9 +4209,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.update_user_profile([::AWSConfig], arguments::Dict)
-    OpsWorks.update_user_profile([::AWSConfig]; IamUserArn=, <keyword arguments>)
+    using AWSSDK.OpsWorks.update_user_profile
+    update_user_profile([::AWSConfig], arguments::Dict)
+    update_user_profile([::AWSConfig]; IamUserArn=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "UpdateUserProfile", arguments::Dict)
@@ -4258,9 +4258,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 
 """
-    using AWSSDK.OpsWorks
-    OpsWorks.update_volume([::AWSConfig], arguments::Dict)
-    OpsWorks.update_volume([::AWSConfig]; VolumeId=, <keyword arguments>)
+    using AWSSDK.OpsWorks.update_volume
+    update_volume([::AWSConfig], arguments::Dict)
+    update_volume([::AWSConfig]; VolumeId=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "UpdateVolume", arguments::Dict)

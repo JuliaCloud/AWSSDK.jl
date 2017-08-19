@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Iot
-    Iot.accept_certificate_transfer([::AWSConfig], arguments::Dict)
-    Iot.accept_certificate_transfer([::AWSConfig]; certificateId=, <keyword arguments>)
+    using AWSSDK.Iot.accept_certificate_transfer
+    accept_certificate_transfer([::AWSConfig], arguments::Dict)
+    accept_certificate_transfer([::AWSConfig]; certificateId=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "PATCH", "/accept-certificate-transfer/{certificateId}", arguments::Dict)
@@ -54,9 +54,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.attach_principal_policy([::AWSConfig], arguments::Dict)
-    Iot.attach_principal_policy([::AWSConfig]; policyName=, x-amzn-iot-principal=)
+    using AWSSDK.Iot.attach_principal_policy
+    attach_principal_policy([::AWSConfig], arguments::Dict)
+    attach_principal_policy([::AWSConfig]; policyName=, x-amzn-iot-principal=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "PUT", "/principal-policies/{policyName}", arguments::Dict)
@@ -93,9 +93,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.attach_thing_principal([::AWSConfig], arguments::Dict)
-    Iot.attach_thing_principal([::AWSConfig]; thingName=, x-amzn-principal=)
+    using AWSSDK.Iot.attach_thing_principal
+    attach_thing_principal([::AWSConfig], arguments::Dict)
+    attach_thing_principal([::AWSConfig]; thingName=, x-amzn-principal=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "PUT", "/things/{thingName}/principals", arguments::Dict)
@@ -136,9 +136,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.cancel_certificate_transfer([::AWSConfig], arguments::Dict)
-    Iot.cancel_certificate_transfer([::AWSConfig]; certificateId=)
+    using AWSSDK.Iot.cancel_certificate_transfer
+    cancel_certificate_transfer([::AWSConfig], arguments::Dict)
+    cancel_certificate_transfer([::AWSConfig]; certificateId=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "PATCH", "/cancel-certificate-transfer/{certificateId}", arguments::Dict)
@@ -175,9 +175,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.create_certificate_from_csr([::AWSConfig], arguments::Dict)
-    Iot.create_certificate_from_csr([::AWSConfig]; certificateSigningRequest=, <keyword arguments>)
+    using AWSSDK.Iot.create_certificate_from_csr
+    create_certificate_from_csr([::AWSConfig], arguments::Dict)
+    create_certificate_from_csr([::AWSConfig]; certificateSigningRequest=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "POST", "/certificates", arguments::Dict)
@@ -244,9 +244,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.create_keys_and_certificate([::AWSConfig], arguments::Dict)
-    Iot.create_keys_and_certificate([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Iot.create_keys_and_certificate
+    create_keys_and_certificate([::AWSConfig], arguments::Dict)
+    create_keys_and_certificate([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "POST", "/keys-and-certificate", arguments::Dict)
@@ -285,9 +285,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.create_policy([::AWSConfig], arguments::Dict)
-    Iot.create_policy([::AWSConfig]; policyName=, policyDocument=)
+    using AWSSDK.Iot.create_policy
+    create_policy([::AWSConfig], arguments::Dict)
+    create_policy([::AWSConfig]; policyName=, policyDocument=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "POST", "/policies/{policyName}", arguments::Dict)
@@ -330,9 +330,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.create_policy_version([::AWSConfig], arguments::Dict)
-    Iot.create_policy_version([::AWSConfig]; policyName=, policyDocument=, <keyword arguments>)
+    using AWSSDK.Iot.create_policy_version
+    create_policy_version([::AWSConfig], arguments::Dict)
+    create_policy_version([::AWSConfig]; policyName=, policyDocument=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "POST", "/policies/{policyName}/version", arguments::Dict)
@@ -379,9 +379,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.create_thing([::AWSConfig], arguments::Dict)
-    Iot.create_thing([::AWSConfig]; thingName=, <keyword arguments>)
+    using AWSSDK.Iot.create_thing
+    create_thing([::AWSConfig], arguments::Dict)
+    create_thing([::AWSConfig]; thingName=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "POST", "/things/{thingName}", arguments::Dict)
@@ -433,9 +433,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.create_thing_type([::AWSConfig], arguments::Dict)
-    Iot.create_thing_type([::AWSConfig]; thingTypeName=, <keyword arguments>)
+    using AWSSDK.Iot.create_thing_type
+    create_thing_type([::AWSConfig], arguments::Dict)
+    create_thing_type([::AWSConfig]; thingTypeName=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "POST", "/thing-types/{thingTypeName}", arguments::Dict)
@@ -481,9 +481,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.create_topic_rule([::AWSConfig], arguments::Dict)
-    Iot.create_topic_rule([::AWSConfig]; ruleName=, topicRulePayload=)
+    using AWSSDK.Iot.create_topic_rule
+    create_topic_rule([::AWSConfig], arguments::Dict)
+    create_topic_rule([::AWSConfig]; ruleName=, topicRulePayload=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "POST", "/rules/{ruleName}", arguments::Dict)
@@ -601,9 +601,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.delete_cacertificate([::AWSConfig], arguments::Dict)
-    Iot.delete_cacertificate([::AWSConfig]; caCertificateId=)
+    using AWSSDK.Iot.delete_cacertificate
+    delete_cacertificate([::AWSConfig], arguments::Dict)
+    delete_cacertificate([::AWSConfig]; caCertificateId=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "DELETE", "/cacertificate/{caCertificateId}", arguments::Dict)
@@ -640,9 +640,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.delete_certificate([::AWSConfig], arguments::Dict)
-    Iot.delete_certificate([::AWSConfig]; certificateId=)
+    using AWSSDK.Iot.delete_certificate
+    delete_certificate([::AWSConfig], arguments::Dict)
+    delete_certificate([::AWSConfig]; certificateId=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "DELETE", "/certificates/{certificateId}", arguments::Dict)
@@ -677,9 +677,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.delete_policy([::AWSConfig], arguments::Dict)
-    Iot.delete_policy([::AWSConfig]; policyName=)
+    using AWSSDK.Iot.delete_policy
+    delete_policy([::AWSConfig], arguments::Dict)
+    delete_policy([::AWSConfig]; policyName=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "DELETE", "/policies/{policyName}", arguments::Dict)
@@ -718,9 +718,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.delete_policy_version([::AWSConfig], arguments::Dict)
-    Iot.delete_policy_version([::AWSConfig]; policyName=, policyVersionId=)
+    using AWSSDK.Iot.delete_policy_version
+    delete_policy_version([::AWSConfig], arguments::Dict)
+    delete_policy_version([::AWSConfig]; policyName=, policyVersionId=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "DELETE", "/policies/{policyName}/version/{policyVersionId}", arguments::Dict)
@@ -757,9 +757,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.delete_registration_code([::AWSConfig], arguments::Dict)
-    Iot.delete_registration_code([::AWSConfig]; )
+    using AWSSDK.Iot.delete_registration_code
+    delete_registration_code([::AWSConfig], arguments::Dict)
+    delete_registration_code([::AWSConfig]; )
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "DELETE", "/registrationcode", arguments::Dict)
@@ -792,9 +792,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.delete_thing([::AWSConfig], arguments::Dict)
-    Iot.delete_thing([::AWSConfig]; thingName=, <keyword arguments>)
+    using AWSSDK.Iot.delete_thing
+    delete_thing([::AWSConfig], arguments::Dict)
+    delete_thing([::AWSConfig]; thingName=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "DELETE", "/things/{thingName}", arguments::Dict)
@@ -835,9 +835,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.delete_thing_type([::AWSConfig], arguments::Dict)
-    Iot.delete_thing_type([::AWSConfig]; thingTypeName=)
+    using AWSSDK.Iot.delete_thing_type
+    delete_thing_type([::AWSConfig], arguments::Dict)
+    delete_thing_type([::AWSConfig]; thingTypeName=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "DELETE", "/thing-types/{thingTypeName}", arguments::Dict)
@@ -874,9 +874,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.delete_topic_rule([::AWSConfig], arguments::Dict)
-    Iot.delete_topic_rule([::AWSConfig]; ruleName=)
+    using AWSSDK.Iot.delete_topic_rule
+    delete_topic_rule([::AWSConfig], arguments::Dict)
+    delete_topic_rule([::AWSConfig]; ruleName=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "DELETE", "/rules/{ruleName}", arguments::Dict)
@@ -909,9 +909,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.deprecate_thing_type([::AWSConfig], arguments::Dict)
-    Iot.deprecate_thing_type([::AWSConfig]; thingTypeName=, <keyword arguments>)
+    using AWSSDK.Iot.deprecate_thing_type
+    deprecate_thing_type([::AWSConfig], arguments::Dict)
+    deprecate_thing_type([::AWSConfig]; thingTypeName=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "POST", "/thing-types/{thingTypeName}/deprecate", arguments::Dict)
@@ -952,9 +952,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.describe_cacertificate([::AWSConfig], arguments::Dict)
-    Iot.describe_cacertificate([::AWSConfig]; caCertificateId=)
+    using AWSSDK.Iot.describe_cacertificate
+    describe_cacertificate([::AWSConfig], arguments::Dict)
+    describe_cacertificate([::AWSConfig]; caCertificateId=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/cacertificate/{caCertificateId}", arguments::Dict)
@@ -991,9 +991,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.describe_certificate([::AWSConfig], arguments::Dict)
-    Iot.describe_certificate([::AWSConfig]; certificateId=)
+    using AWSSDK.Iot.describe_certificate
+    describe_certificate([::AWSConfig], arguments::Dict)
+    describe_certificate([::AWSConfig]; certificateId=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/certificates/{certificateId}", arguments::Dict)
@@ -1030,9 +1030,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.describe_endpoint([::AWSConfig], arguments::Dict)
-    Iot.describe_endpoint([::AWSConfig]; )
+    using AWSSDK.Iot.describe_endpoint
+    describe_endpoint([::AWSConfig], arguments::Dict)
+    describe_endpoint([::AWSConfig]; )
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/endpoint", arguments::Dict)
@@ -1065,9 +1065,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.describe_thing([::AWSConfig], arguments::Dict)
-    Iot.describe_thing([::AWSConfig]; thingName=)
+    using AWSSDK.Iot.describe_thing
+    describe_thing([::AWSConfig], arguments::Dict)
+    describe_thing([::AWSConfig]; thingName=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/things/{thingName}", arguments::Dict)
@@ -1104,9 +1104,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.describe_thing_type([::AWSConfig], arguments::Dict)
-    Iot.describe_thing_type([::AWSConfig]; thingTypeName=)
+    using AWSSDK.Iot.describe_thing_type
+    describe_thing_type([::AWSConfig], arguments::Dict)
+    describe_thing_type([::AWSConfig]; thingTypeName=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/thing-types/{thingTypeName}", arguments::Dict)
@@ -1143,9 +1143,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.detach_principal_policy([::AWSConfig], arguments::Dict)
-    Iot.detach_principal_policy([::AWSConfig]; policyName=, x-amzn-iot-principal=)
+    using AWSSDK.Iot.detach_principal_policy
+    detach_principal_policy([::AWSConfig], arguments::Dict)
+    detach_principal_policy([::AWSConfig]; policyName=, x-amzn-iot-principal=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "DELETE", "/principal-policies/{policyName}", arguments::Dict)
@@ -1184,9 +1184,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.detach_thing_principal([::AWSConfig], arguments::Dict)
-    Iot.detach_thing_principal([::AWSConfig]; thingName=, x-amzn-principal=)
+    using AWSSDK.Iot.detach_thing_principal
+    detach_thing_principal([::AWSConfig], arguments::Dict)
+    detach_thing_principal([::AWSConfig]; thingName=, x-amzn-principal=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "DELETE", "/things/{thingName}/principals", arguments::Dict)
@@ -1227,9 +1227,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.disable_topic_rule([::AWSConfig], arguments::Dict)
-    Iot.disable_topic_rule([::AWSConfig]; ruleName=)
+    using AWSSDK.Iot.disable_topic_rule
+    disable_topic_rule([::AWSConfig], arguments::Dict)
+    disable_topic_rule([::AWSConfig]; ruleName=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "POST", "/rules/{ruleName}/disable", arguments::Dict)
@@ -1262,9 +1262,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.enable_topic_rule([::AWSConfig], arguments::Dict)
-    Iot.enable_topic_rule([::AWSConfig]; ruleName=)
+    using AWSSDK.Iot.enable_topic_rule
+    enable_topic_rule([::AWSConfig], arguments::Dict)
+    enable_topic_rule([::AWSConfig]; ruleName=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "POST", "/rules/{ruleName}/enable", arguments::Dict)
@@ -1297,9 +1297,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.get_logging_options([::AWSConfig], arguments::Dict)
-    Iot.get_logging_options([::AWSConfig]; )
+    using AWSSDK.Iot.get_logging_options
+    get_logging_options([::AWSConfig], arguments::Dict)
+    get_logging_options([::AWSConfig]; )
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/loggingOptions", arguments::Dict)
@@ -1332,9 +1332,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.get_policy([::AWSConfig], arguments::Dict)
-    Iot.get_policy([::AWSConfig]; policyName=)
+    using AWSSDK.Iot.get_policy
+    get_policy([::AWSConfig], arguments::Dict)
+    get_policy([::AWSConfig]; policyName=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/policies/{policyName}", arguments::Dict)
@@ -1371,9 +1371,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.get_policy_version([::AWSConfig], arguments::Dict)
-    Iot.get_policy_version([::AWSConfig]; policyName=, policyVersionId=)
+    using AWSSDK.Iot.get_policy_version
+    get_policy_version([::AWSConfig], arguments::Dict)
+    get_policy_version([::AWSConfig]; policyName=, policyVersionId=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/policies/{policyName}/version/{policyVersionId}", arguments::Dict)
@@ -1414,9 +1414,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.get_registration_code([::AWSConfig], arguments::Dict)
-    Iot.get_registration_code([::AWSConfig]; )
+    using AWSSDK.Iot.get_registration_code
+    get_registration_code([::AWSConfig], arguments::Dict)
+    get_registration_code([::AWSConfig]; )
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/registrationcode", arguments::Dict)
@@ -1449,9 +1449,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.get_topic_rule([::AWSConfig], arguments::Dict)
-    Iot.get_topic_rule([::AWSConfig]; ruleName=)
+    using AWSSDK.Iot.get_topic_rule
+    get_topic_rule([::AWSConfig], arguments::Dict)
+    get_topic_rule([::AWSConfig]; ruleName=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/rules/{ruleName}", arguments::Dict)
@@ -1488,9 +1488,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.list_cacertificates([::AWSConfig], arguments::Dict)
-    Iot.list_cacertificates([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Iot.list_cacertificates
+    list_cacertificates([::AWSConfig], arguments::Dict)
+    list_cacertificates([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/cacertificates", arguments::Dict)
@@ -1537,9 +1537,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.list_certificates([::AWSConfig], arguments::Dict)
-    Iot.list_certificates([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Iot.list_certificates
+    list_certificates([::AWSConfig], arguments::Dict)
+    list_certificates([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/certificates", arguments::Dict)
@@ -1586,9 +1586,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.list_certificates_by_ca([::AWSConfig], arguments::Dict)
-    Iot.list_certificates_by_ca([::AWSConfig]; caCertificateId=, <keyword arguments>)
+    using AWSSDK.Iot.list_certificates_by_ca
+    list_certificates_by_ca([::AWSConfig], arguments::Dict)
+    list_certificates_by_ca([::AWSConfig]; caCertificateId=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/certificates-by-ca/{caCertificateId}", arguments::Dict)
@@ -1637,9 +1637,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.list_outgoing_certificates([::AWSConfig], arguments::Dict)
-    Iot.list_outgoing_certificates([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Iot.list_outgoing_certificates
+    list_outgoing_certificates([::AWSConfig], arguments::Dict)
+    list_outgoing_certificates([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/certificates-out-going", arguments::Dict)
@@ -1684,9 +1684,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.list_policies([::AWSConfig], arguments::Dict)
-    Iot.list_policies([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Iot.list_policies
+    list_policies([::AWSConfig], arguments::Dict)
+    list_policies([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/policies", arguments::Dict)
@@ -1731,9 +1731,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.list_policy_principals([::AWSConfig], arguments::Dict)
-    Iot.list_policy_principals([::AWSConfig]; x-amzn-iot-policy=, <keyword arguments>)
+    using AWSSDK.Iot.list_policy_principals
+    list_policy_principals([::AWSConfig], arguments::Dict)
+    list_policy_principals([::AWSConfig]; x-amzn-iot-policy=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/policy-principals", arguments::Dict)
@@ -1782,9 +1782,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.list_policy_versions([::AWSConfig], arguments::Dict)
-    Iot.list_policy_versions([::AWSConfig]; policyName=)
+    using AWSSDK.Iot.list_policy_versions
+    list_policy_versions([::AWSConfig], arguments::Dict)
+    list_policy_versions([::AWSConfig]; policyName=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/policies/{policyName}/version", arguments::Dict)
@@ -1821,9 +1821,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.list_principal_policies([::AWSConfig], arguments::Dict)
-    Iot.list_principal_policies([::AWSConfig]; x-amzn-iot-principal=, <keyword arguments>)
+    using AWSSDK.Iot.list_principal_policies
+    list_principal_policies([::AWSConfig], arguments::Dict)
+    list_principal_policies([::AWSConfig]; x-amzn-iot-principal=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/principal-policies", arguments::Dict)
@@ -1872,9 +1872,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.list_principal_things([::AWSConfig], arguments::Dict)
-    Iot.list_principal_things([::AWSConfig]; x-amzn-principal=, <keyword arguments>)
+    using AWSSDK.Iot.list_principal_things
+    list_principal_things([::AWSConfig], arguments::Dict)
+    list_principal_things([::AWSConfig]; x-amzn-principal=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/principals/things", arguments::Dict)
@@ -1919,9 +1919,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.list_thing_principals([::AWSConfig], arguments::Dict)
-    Iot.list_thing_principals([::AWSConfig]; thingName=)
+    using AWSSDK.Iot.list_thing_principals
+    list_thing_principals([::AWSConfig], arguments::Dict)
+    list_thing_principals([::AWSConfig]; thingName=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/things/{thingName}/principals", arguments::Dict)
@@ -1958,9 +1958,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.list_thing_types([::AWSConfig], arguments::Dict)
-    Iot.list_thing_types([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Iot.list_thing_types
+    list_thing_types([::AWSConfig], arguments::Dict)
+    list_thing_types([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/thing-types", arguments::Dict)
@@ -2005,9 +2005,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.list_things([::AWSConfig], arguments::Dict)
-    Iot.list_things([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Iot.list_things
+    list_things([::AWSConfig], arguments::Dict)
+    list_things([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/things", arguments::Dict)
@@ -2060,9 +2060,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.list_topic_rules([::AWSConfig], arguments::Dict)
-    Iot.list_topic_rules([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Iot.list_topic_rules
+    list_topic_rules([::AWSConfig], arguments::Dict)
+    list_topic_rules([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/rules", arguments::Dict)
@@ -2111,9 +2111,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.register_cacertificate([::AWSConfig], arguments::Dict)
-    Iot.register_cacertificate([::AWSConfig]; caCertificate=, verificationCertificate=, <keyword arguments>)
+    using AWSSDK.Iot.register_cacertificate
+    register_cacertificate([::AWSConfig], arguments::Dict)
+    register_cacertificate([::AWSConfig]; caCertificate=, verificationCertificate=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "POST", "/cacertificate", arguments::Dict)
@@ -2162,9 +2162,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.register_certificate([::AWSConfig], arguments::Dict)
-    Iot.register_certificate([::AWSConfig]; certificatePem=, <keyword arguments>)
+    using AWSSDK.Iot.register_certificate
+    register_certificate([::AWSConfig], arguments::Dict)
+    register_certificate([::AWSConfig]; certificatePem=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "POST", "/certificate/register", arguments::Dict)
@@ -2213,9 +2213,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.reject_certificate_transfer([::AWSConfig], arguments::Dict)
-    Iot.reject_certificate_transfer([::AWSConfig]; certificateId=, <keyword arguments>)
+    using AWSSDK.Iot.reject_certificate_transfer
+    reject_certificate_transfer([::AWSConfig], arguments::Dict)
+    reject_certificate_transfer([::AWSConfig]; certificateId=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "PATCH", "/reject-certificate-transfer/{certificateId}", arguments::Dict)
@@ -2256,9 +2256,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.replace_topic_rule([::AWSConfig], arguments::Dict)
-    Iot.replace_topic_rule([::AWSConfig]; ruleName=, topicRulePayload=)
+    using AWSSDK.Iot.replace_topic_rule
+    replace_topic_rule([::AWSConfig], arguments::Dict)
+    replace_topic_rule([::AWSConfig]; ruleName=, topicRulePayload=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "PATCH", "/rules/{ruleName}", arguments::Dict)
@@ -2376,9 +2376,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.set_default_policy_version([::AWSConfig], arguments::Dict)
-    Iot.set_default_policy_version([::AWSConfig]; policyName=, policyVersionId=)
+    using AWSSDK.Iot.set_default_policy_version
+    set_default_policy_version([::AWSConfig], arguments::Dict)
+    set_default_policy_version([::AWSConfig]; policyName=, policyVersionId=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "PATCH", "/policies/{policyName}/version/{policyVersionId}", arguments::Dict)
@@ -2415,9 +2415,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.set_logging_options([::AWSConfig], arguments::Dict)
-    Iot.set_logging_options([::AWSConfig]; loggingOptionsPayload=)
+    using AWSSDK.Iot.set_logging_options
+    set_logging_options([::AWSConfig], arguments::Dict)
+    set_logging_options([::AWSConfig]; loggingOptionsPayload=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "POST", "/loggingOptions", arguments::Dict)
@@ -2455,9 +2455,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.transfer_certificate([::AWSConfig], arguments::Dict)
-    Iot.transfer_certificate([::AWSConfig]; certificateId=, targetAwsAccount=, <keyword arguments>)
+    using AWSSDK.Iot.transfer_certificate
+    transfer_certificate([::AWSConfig], arguments::Dict)
+    transfer_certificate([::AWSConfig]; certificateId=, targetAwsAccount=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "PATCH", "/transfer-certificate/{certificateId}", arguments::Dict)
@@ -2510,9 +2510,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.update_cacertificate([::AWSConfig], arguments::Dict)
-    Iot.update_cacertificate([::AWSConfig]; caCertificateId=, <keyword arguments>)
+    using AWSSDK.Iot.update_cacertificate
+    update_cacertificate([::AWSConfig], arguments::Dict)
+    update_cacertificate([::AWSConfig]; caCertificateId=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "PUT", "/cacertificate/{caCertificateId}", arguments::Dict)
@@ -2555,9 +2555,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.update_certificate([::AWSConfig], arguments::Dict)
-    Iot.update_certificate([::AWSConfig]; certificateId=, newStatus=)
+    using AWSSDK.Iot.update_certificate
+    update_certificate([::AWSConfig], arguments::Dict)
+    update_certificate([::AWSConfig]; certificateId=, newStatus=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "PUT", "/certificates/{certificateId}", arguments::Dict)
@@ -2602,9 +2602,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 
 """
-    using AWSSDK.Iot
-    Iot.update_thing([::AWSConfig], arguments::Dict)
-    Iot.update_thing([::AWSConfig]; thingName=, <keyword arguments>)
+    using AWSSDK.Iot.update_thing
+    update_thing([::AWSConfig], arguments::Dict)
+    update_thing([::AWSConfig]; thingName=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "PATCH", "/things/{thingName}", arguments::Dict)

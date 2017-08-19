@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.ELB
-    ELB.add_tags([::AWSConfig], arguments::Dict)
-    ELB.add_tags([::AWSConfig]; LoadBalancerNames=, Tags=)
+    using AWSSDK.ELB.add_tags
+    add_tags([::AWSConfig], arguments::Dict)
+    add_tags([::AWSConfig]; LoadBalancerNames=, Tags=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "AddTags", arguments::Dict)
@@ -88,9 +88,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.apply_security_groups_to_load_balancer([::AWSConfig], arguments::Dict)
-    ELB.apply_security_groups_to_load_balancer([::AWSConfig]; LoadBalancerName=, SecurityGroups=)
+    using AWSSDK.ELB.apply_security_groups_to_load_balancer
+    apply_security_groups_to_load_balancer([::AWSConfig], arguments::Dict)
+    apply_security_groups_to_load_balancer([::AWSConfig]; LoadBalancerName=, SecurityGroups=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "ApplySecurityGroupsToLoadBalancer", arguments::Dict)
@@ -156,9 +156,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.attach_load_balancer_to_subnets([::AWSConfig], arguments::Dict)
-    ELB.attach_load_balancer_to_subnets([::AWSConfig]; LoadBalancerName=, Subnets=)
+    using AWSSDK.ELB.attach_load_balancer_to_subnets
+    attach_load_balancer_to_subnets([::AWSConfig], arguments::Dict)
+    attach_load_balancer_to_subnets([::AWSConfig]; LoadBalancerName=, Subnets=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "AttachLoadBalancerToSubnets", arguments::Dict)
@@ -225,9 +225,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.configure_health_check([::AWSConfig], arguments::Dict)
-    ELB.configure_health_check([::AWSConfig]; LoadBalancerName=, HealthCheck=)
+    using AWSSDK.ELB.configure_health_check
+    configure_health_check([::AWSConfig], arguments::Dict)
+    configure_health_check([::AWSConfig]; LoadBalancerName=, HealthCheck=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "ConfigureHealthCheck", arguments::Dict)
@@ -309,9 +309,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.create_app_cookie_stickiness_policy([::AWSConfig], arguments::Dict)
-    ELB.create_app_cookie_stickiness_policy([::AWSConfig]; LoadBalancerName=, PolicyName=, CookieName=)
+    using AWSSDK.ELB.create_app_cookie_stickiness_policy
+    create_app_cookie_stickiness_policy([::AWSConfig], arguments::Dict)
+    create_app_cookie_stickiness_policy([::AWSConfig]; LoadBalancerName=, PolicyName=, CookieName=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "CreateAppCookieStickinessPolicy", arguments::Dict)
@@ -375,9 +375,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.create_lbcookie_stickiness_policy([::AWSConfig], arguments::Dict)
-    ELB.create_lbcookie_stickiness_policy([::AWSConfig]; LoadBalancerName=, PolicyName=, <keyword arguments>)
+    using AWSSDK.ELB.create_lbcookie_stickiness_policy
+    create_lbcookie_stickiness_policy([::AWSConfig], arguments::Dict)
+    create_lbcookie_stickiness_policy([::AWSConfig]; LoadBalancerName=, PolicyName=, <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "CreateLBCookieStickinessPolicy", arguments::Dict)
@@ -441,9 +441,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.create_load_balancer([::AWSConfig], arguments::Dict)
-    ELB.create_load_balancer([::AWSConfig]; LoadBalancerName=, Listeners=, <keyword arguments>)
+    using AWSSDK.ELB.create_load_balancer
+    create_load_balancer([::AWSConfig], arguments::Dict)
+    create_load_balancer([::AWSConfig]; LoadBalancerName=, Listeners=, <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "CreateLoadBalancer", arguments::Dict)
@@ -706,9 +706,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.create_load_balancer_listeners([::AWSConfig], arguments::Dict)
-    ELB.create_load_balancer_listeners([::AWSConfig]; LoadBalancerName=, Listeners=)
+    using AWSSDK.ELB.create_load_balancer_listeners
+    create_load_balancer_listeners([::AWSConfig], arguments::Dict)
+    create_load_balancer_listeners([::AWSConfig]; LoadBalancerName=, Listeners=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "CreateLoadBalancerListeners", arguments::Dict)
@@ -798,9 +798,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.create_load_balancer_policy([::AWSConfig], arguments::Dict)
-    ELB.create_load_balancer_policy([::AWSConfig]; LoadBalancerName=, PolicyName=, PolicyTypeName=, <keyword arguments>)
+    using AWSSDK.ELB.create_load_balancer_policy
+    create_load_balancer_policy([::AWSConfig], arguments::Dict)
+    create_load_balancer_policy([::AWSConfig]; LoadBalancerName=, PolicyName=, PolicyTypeName=, <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "CreateLoadBalancerPolicy", arguments::Dict)
@@ -913,9 +913,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.delete_load_balancer([::AWSConfig], arguments::Dict)
-    ELB.delete_load_balancer([::AWSConfig]; LoadBalancerName=)
+    using AWSSDK.ELB.delete_load_balancer
+    delete_load_balancer([::AWSConfig], arguments::Dict)
+    delete_load_balancer([::AWSConfig]; LoadBalancerName=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "DeleteLoadBalancer", arguments::Dict)
@@ -963,9 +963,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.delete_load_balancer_listeners([::AWSConfig], arguments::Dict)
-    ELB.delete_load_balancer_listeners([::AWSConfig]; LoadBalancerName=, LoadBalancerPorts=)
+    using AWSSDK.ELB.delete_load_balancer_listeners
+    delete_load_balancer_listeners([::AWSConfig], arguments::Dict)
+    delete_load_balancer_listeners([::AWSConfig]; LoadBalancerName=, LoadBalancerPorts=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "DeleteLoadBalancerListeners", arguments::Dict)
@@ -1020,9 +1020,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.delete_load_balancer_policy([::AWSConfig], arguments::Dict)
-    ELB.delete_load_balancer_policy([::AWSConfig]; LoadBalancerName=, PolicyName=)
+    using AWSSDK.ELB.delete_load_balancer_policy
+    delete_load_balancer_policy([::AWSConfig], arguments::Dict)
+    delete_load_balancer_policy([::AWSConfig]; LoadBalancerName=, PolicyName=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "DeleteLoadBalancerPolicy", arguments::Dict)
@@ -1075,9 +1075,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.deregister_instances_from_load_balancer([::AWSConfig], arguments::Dict)
-    ELB.deregister_instances_from_load_balancer([::AWSConfig]; LoadBalancerName=, Instances=)
+    using AWSSDK.ELB.deregister_instances_from_load_balancer
+    deregister_instances_from_load_balancer([::AWSConfig], arguments::Dict)
+    deregister_instances_from_load_balancer([::AWSConfig]; LoadBalancerName=, Instances=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "DeregisterInstancesFromLoadBalancer", arguments::Dict)
@@ -1152,9 +1152,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.describe_account_limits([::AWSConfig], arguments::Dict)
-    ELB.describe_account_limits([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ELB.describe_account_limits
+    describe_account_limits([::AWSConfig], arguments::Dict)
+    describe_account_limits([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "DescribeAccountLimits", arguments::Dict)
@@ -1193,9 +1193,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.describe_instance_health([::AWSConfig], arguments::Dict)
-    ELB.describe_instance_health([::AWSConfig]; LoadBalancerName=, <keyword arguments>)
+    using AWSSDK.ELB.describe_instance_health
+    describe_instance_health([::AWSConfig], arguments::Dict)
+    describe_instance_health([::AWSConfig]; LoadBalancerName=, <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "DescribeInstanceHealth", arguments::Dict)
@@ -1267,9 +1267,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.describe_load_balancer_attributes([::AWSConfig], arguments::Dict)
-    ELB.describe_load_balancer_attributes([::AWSConfig]; LoadBalancerName=)
+    using AWSSDK.ELB.describe_load_balancer_attributes
+    describe_load_balancer_attributes([::AWSConfig], arguments::Dict)
+    describe_load_balancer_attributes([::AWSConfig]; LoadBalancerName=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "DescribeLoadBalancerAttributes", arguments::Dict)
@@ -1338,9 +1338,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.describe_load_balancer_policies([::AWSConfig], arguments::Dict)
-    ELB.describe_load_balancer_policies([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ELB.describe_load_balancer_policies
+    describe_load_balancer_policies([::AWSConfig], arguments::Dict)
+    describe_load_balancer_policies([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "DescribeLoadBalancerPolicies", arguments::Dict)
@@ -1415,9 +1415,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.describe_load_balancer_policy_types([::AWSConfig], arguments::Dict)
-    ELB.describe_load_balancer_policy_types([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ELB.describe_load_balancer_policy_types
+    describe_load_balancer_policy_types([::AWSConfig], arguments::Dict)
+    describe_load_balancer_policy_types([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "DescribeLoadBalancerPolicyTypes", arguments::Dict)
@@ -1490,9 +1490,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.describe_load_balancers([::AWSConfig], arguments::Dict)
-    ELB.describe_load_balancers([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ELB.describe_load_balancers
+    describe_load_balancers([::AWSConfig], arguments::Dict)
+    describe_load_balancers([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "DescribeLoadBalancers", arguments::Dict)
@@ -1646,9 +1646,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.describe_tags([::AWSConfig], arguments::Dict)
-    ELB.describe_tags([::AWSConfig]; LoadBalancerNames=)
+    using AWSSDK.ELB.describe_tags
+    describe_tags([::AWSConfig], arguments::Dict)
+    describe_tags([::AWSConfig]; LoadBalancerNames=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "DescribeTags", arguments::Dict)
@@ -1719,9 +1719,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.detach_load_balancer_from_subnets([::AWSConfig], arguments::Dict)
-    ELB.detach_load_balancer_from_subnets([::AWSConfig]; LoadBalancerName=, Subnets=)
+    using AWSSDK.ELB.detach_load_balancer_from_subnets
+    detach_load_balancer_from_subnets([::AWSConfig], arguments::Dict)
+    detach_load_balancer_from_subnets([::AWSConfig]; LoadBalancerName=, Subnets=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "DetachLoadBalancerFromSubnets", arguments::Dict)
@@ -1787,9 +1787,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.disable_availability_zones_for_load_balancer([::AWSConfig], arguments::Dict)
-    ELB.disable_availability_zones_for_load_balancer([::AWSConfig]; LoadBalancerName=, AvailabilityZones=)
+    using AWSSDK.ELB.disable_availability_zones_for_load_balancer
+    disable_availability_zones_for_load_balancer([::AWSConfig], arguments::Dict)
+    disable_availability_zones_for_load_balancer([::AWSConfig]; LoadBalancerName=, AvailabilityZones=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "DisableAvailabilityZonesForLoadBalancer", arguments::Dict)
@@ -1857,9 +1857,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.enable_availability_zones_for_load_balancer([::AWSConfig], arguments::Dict)
-    ELB.enable_availability_zones_for_load_balancer([::AWSConfig]; LoadBalancerName=, AvailabilityZones=)
+    using AWSSDK.ELB.enable_availability_zones_for_load_balancer
+    enable_availability_zones_for_load_balancer([::AWSConfig], arguments::Dict)
+    enable_availability_zones_for_load_balancer([::AWSConfig]; LoadBalancerName=, AvailabilityZones=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "EnableAvailabilityZonesForLoadBalancer", arguments::Dict)
@@ -1928,9 +1928,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.modify_load_balancer_attributes([::AWSConfig], arguments::Dict)
-    ELB.modify_load_balancer_attributes([::AWSConfig]; LoadBalancerName=, LoadBalancerAttributes=)
+    using AWSSDK.ELB.modify_load_balancer_attributes
+    modify_load_balancer_attributes([::AWSConfig], arguments::Dict)
+    modify_load_balancer_attributes([::AWSConfig]; LoadBalancerName=, LoadBalancerAttributes=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "ModifyLoadBalancerAttributes", arguments::Dict)
@@ -2060,9 +2060,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.register_instances_with_load_balancer([::AWSConfig], arguments::Dict)
-    ELB.register_instances_with_load_balancer([::AWSConfig]; LoadBalancerName=, Instances=)
+    using AWSSDK.ELB.register_instances_with_load_balancer
+    register_instances_with_load_balancer([::AWSConfig], arguments::Dict)
+    register_instances_with_load_balancer([::AWSConfig]; LoadBalancerName=, Instances=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "RegisterInstancesWithLoadBalancer", arguments::Dict)
@@ -2146,9 +2146,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.remove_tags([::AWSConfig], arguments::Dict)
-    ELB.remove_tags([::AWSConfig]; LoadBalancerNames=, Tags=)
+    using AWSSDK.ELB.remove_tags
+    remove_tags([::AWSConfig], arguments::Dict)
+    remove_tags([::AWSConfig]; LoadBalancerNames=, Tags=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "RemoveTags", arguments::Dict)
@@ -2207,9 +2207,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.set_load_balancer_listener_sslcertificate([::AWSConfig], arguments::Dict)
-    ELB.set_load_balancer_listener_sslcertificate([::AWSConfig]; LoadBalancerName=, LoadBalancerPort=, SSLCertificateId=)
+    using AWSSDK.ELB.set_load_balancer_listener_sslcertificate
+    set_load_balancer_listener_sslcertificate([::AWSConfig], arguments::Dict)
+    set_load_balancer_listener_sslcertificate([::AWSConfig]; LoadBalancerName=, LoadBalancerPort=, SSLCertificateId=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "SetLoadBalancerListenerSSLCertificate", arguments::Dict)
@@ -2269,9 +2269,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.set_load_balancer_policies_for_backend_server([::AWSConfig], arguments::Dict)
-    ELB.set_load_balancer_policies_for_backend_server([::AWSConfig]; LoadBalancerName=, InstancePort=, PolicyNames=)
+    using AWSSDK.ELB.set_load_balancer_policies_for_backend_server
+    set_load_balancer_policies_for_backend_server([::AWSConfig], arguments::Dict)
+    set_load_balancer_policies_for_backend_server([::AWSConfig]; LoadBalancerName=, InstancePort=, PolicyNames=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "SetLoadBalancerPoliciesForBackendServer", arguments::Dict)
@@ -2337,9 +2337,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELB
-    ELB.set_load_balancer_policies_of_listener([::AWSConfig], arguments::Dict)
-    ELB.set_load_balancer_policies_of_listener([::AWSConfig]; LoadBalancerName=, LoadBalancerPort=, PolicyNames=)
+    using AWSSDK.ELB.set_load_balancer_policies_of_listener
+    set_load_balancer_policies_of_listener([::AWSConfig], arguments::Dict)
+    set_load_balancer_policies_of_listener([::AWSConfig]; LoadBalancerName=, LoadBalancerPort=, PolicyNames=)
 
     using AWSCore.Services.elasticloadbalancing
     elasticloadbalancing([::AWSConfig], "SetLoadBalancerPoliciesOfListener", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.add_tags_to_resource([::AWSConfig], arguments::Dict)
-    CloudHSM.add_tags_to_resource([::AWSConfig]; ResourceArn=, TagList=)
+    using AWSSDK.CloudHSM.add_tags_to_resource
+    add_tags_to_resource([::AWSConfig], arguments::Dict)
+    add_tags_to_resource([::AWSConfig]; ResourceArn=, TagList=)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "AddTagsToResource", arguments::Dict)
@@ -63,9 +63,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.create_hapg([::AWSConfig], arguments::Dict)
-    CloudHSM.create_hapg([::AWSConfig]; Label=)
+    using AWSSDK.CloudHSM.create_hapg
+    create_hapg([::AWSConfig], arguments::Dict)
+    create_hapg([::AWSConfig]; Label=)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "CreateHapg", arguments::Dict)
@@ -102,9 +102,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.create_hsm([::AWSConfig], arguments::Dict)
-    CloudHSM.create_hsm([::AWSConfig]; SubnetId=, SshKey=, IamRoleArn=, SubscriptionType=, <keyword arguments>)
+    using AWSSDK.CloudHSM.create_hsm
+    create_hsm([::AWSConfig], arguments::Dict)
+    create_hsm([::AWSConfig]; SubnetId=, SshKey=, IamRoleArn=, SubscriptionType=, <keyword arguments>)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "CreateHsm", arguments::Dict)
@@ -176,9 +176,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.create_luna_client([::AWSConfig], arguments::Dict)
-    CloudHSM.create_luna_client([::AWSConfig]; Certificate=, <keyword arguments>)
+    using AWSSDK.CloudHSM.create_luna_client
+    create_luna_client([::AWSConfig], arguments::Dict)
+    create_luna_client([::AWSConfig]; Certificate=, <keyword arguments>)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "CreateLunaClient", arguments::Dict)
@@ -219,9 +219,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.delete_hapg([::AWSConfig], arguments::Dict)
-    CloudHSM.delete_hapg([::AWSConfig]; HapgArn=)
+    using AWSSDK.CloudHSM.delete_hapg
+    delete_hapg([::AWSConfig], arguments::Dict)
+    delete_hapg([::AWSConfig]; HapgArn=)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "DeleteHapg", arguments::Dict)
@@ -258,9 +258,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.delete_hsm([::AWSConfig], arguments::Dict)
-    CloudHSM.delete_hsm([::AWSConfig]; HsmArn=)
+    using AWSSDK.CloudHSM.delete_hsm
+    delete_hsm([::AWSConfig], arguments::Dict)
+    delete_hsm([::AWSConfig]; HsmArn=)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "DeleteHsm", arguments::Dict)
@@ -297,9 +297,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.delete_luna_client([::AWSConfig], arguments::Dict)
-    CloudHSM.delete_luna_client([::AWSConfig]; ClientArn=)
+    using AWSSDK.CloudHSM.delete_luna_client
+    delete_luna_client([::AWSConfig], arguments::Dict)
+    delete_luna_client([::AWSConfig]; ClientArn=)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "DeleteLunaClient", arguments::Dict)
@@ -336,9 +336,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.describe_hapg([::AWSConfig], arguments::Dict)
-    CloudHSM.describe_hapg([::AWSConfig]; HapgArn=)
+    using AWSSDK.CloudHSM.describe_hapg
+    describe_hapg([::AWSConfig], arguments::Dict)
+    describe_hapg([::AWSConfig]; HapgArn=)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "DescribeHapg", arguments::Dict)
@@ -375,9 +375,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.describe_hsm([::AWSConfig], arguments::Dict)
-    CloudHSM.describe_hsm([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudHSM.describe_hsm
+    describe_hsm([::AWSConfig], arguments::Dict)
+    describe_hsm([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "DescribeHsm", arguments::Dict)
@@ -418,9 +418,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.describe_luna_client([::AWSConfig], arguments::Dict)
-    CloudHSM.describe_luna_client([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudHSM.describe_luna_client
+    describe_luna_client([::AWSConfig], arguments::Dict)
+    describe_luna_client([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "DescribeLunaClient", arguments::Dict)
@@ -461,9 +461,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.get_config([::AWSConfig], arguments::Dict)
-    CloudHSM.get_config([::AWSConfig]; ClientArn=, ClientVersion=, HapgList=)
+    using AWSSDK.CloudHSM.get_config
+    get_config([::AWSConfig], arguments::Dict)
+    get_config([::AWSConfig]; ClientArn=, ClientVersion=, HapgList=)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "GetConfig", arguments::Dict)
@@ -508,9 +508,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.list_available_zones([::AWSConfig], arguments::Dict)
-    CloudHSM.list_available_zones([::AWSConfig]; )
+    using AWSSDK.CloudHSM.list_available_zones
+    list_available_zones([::AWSConfig], arguments::Dict)
+    list_available_zones([::AWSConfig]; )
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "ListAvailableZones", arguments::Dict)
@@ -543,9 +543,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.list_hapgs([::AWSConfig], arguments::Dict)
-    CloudHSM.list_hapgs([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudHSM.list_hapgs
+    list_hapgs([::AWSConfig], arguments::Dict)
+    list_hapgs([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "ListHapgs", arguments::Dict)
@@ -584,9 +584,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.list_hsms([::AWSConfig], arguments::Dict)
-    CloudHSM.list_hsms([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudHSM.list_hsms
+    list_hsms([::AWSConfig], arguments::Dict)
+    list_hsms([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "ListHsms", arguments::Dict)
@@ -625,9 +625,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.list_luna_clients([::AWSConfig], arguments::Dict)
-    CloudHSM.list_luna_clients([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudHSM.list_luna_clients
+    list_luna_clients([::AWSConfig], arguments::Dict)
+    list_luna_clients([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "ListLunaClients", arguments::Dict)
@@ -666,9 +666,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.list_tags_for_resource([::AWSConfig], arguments::Dict)
-    CloudHSM.list_tags_for_resource([::AWSConfig]; ResourceArn=)
+    using AWSSDK.CloudHSM.list_tags_for_resource
+    list_tags_for_resource([::AWSConfig], arguments::Dict)
+    list_tags_for_resource([::AWSConfig]; ResourceArn=)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "ListTagsForResource", arguments::Dict)
@@ -705,9 +705,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.modify_hapg([::AWSConfig], arguments::Dict)
-    CloudHSM.modify_hapg([::AWSConfig]; HapgArn=, <keyword arguments>)
+    using AWSSDK.CloudHSM.modify_hapg
+    modify_hapg([::AWSConfig], arguments::Dict)
+    modify_hapg([::AWSConfig]; HapgArn=, <keyword arguments>)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "ModifyHapg", arguments::Dict)
@@ -752,9 +752,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.modify_hsm([::AWSConfig], arguments::Dict)
-    CloudHSM.modify_hsm([::AWSConfig]; HsmArn=, <keyword arguments>)
+    using AWSSDK.CloudHSM.modify_hsm
+    modify_hsm([::AWSConfig], arguments::Dict)
+    modify_hsm([::AWSConfig]; HsmArn=, <keyword arguments>)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "ModifyHsm", arguments::Dict)
@@ -816,9 +816,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.modify_luna_client([::AWSConfig], arguments::Dict)
-    CloudHSM.modify_luna_client([::AWSConfig]; ClientArn=, Certificate=)
+    using AWSSDK.CloudHSM.modify_luna_client
+    modify_luna_client([::AWSConfig], arguments::Dict)
+    modify_luna_client([::AWSConfig]; ClientArn=, Certificate=)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "ModifyLunaClient", arguments::Dict)
@@ -861,9 +861,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudh
 
 
 """
-    using AWSSDK.CloudHSM
-    CloudHSM.remove_tags_from_resource([::AWSConfig], arguments::Dict)
-    CloudHSM.remove_tags_from_resource([::AWSConfig]; ResourceArn=, TagKeyList=)
+    using AWSSDK.CloudHSM.remove_tags_from_resource
+    remove_tags_from_resource([::AWSConfig], arguments::Dict)
+    remove_tags_from_resource([::AWSConfig]; ResourceArn=, TagKeyList=)
 
     using AWSCore.Services.cloudhsm
     cloudhsm([::AWSConfig], "RemoveTagsFromResource", arguments::Dict)

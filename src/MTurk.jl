@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.accept_qualification_request([::AWSConfig], arguments::Dict)
-    MTurk.accept_qualification_request([::AWSConfig]; QualificationRequestId=, <keyword arguments>)
+    using AWSSDK.MTurk.accept_qualification_request
+    accept_qualification_request([::AWSConfig], arguments::Dict)
+    accept_qualification_request([::AWSConfig]; QualificationRequestId=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "AcceptQualificationRequest", arguments::Dict)
@@ -60,9 +60,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.approve_assignment([::AWSConfig], arguments::Dict)
-    MTurk.approve_assignment([::AWSConfig]; AssignmentId=, <keyword arguments>)
+    using AWSSDK.MTurk.approve_assignment
+    approve_assignment([::AWSConfig], arguments::Dict)
+    approve_assignment([::AWSConfig]; AssignmentId=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "ApproveAssignment", arguments::Dict)
@@ -117,9 +117,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.associate_qualification_with_worker([::AWSConfig], arguments::Dict)
-    MTurk.associate_qualification_with_worker([::AWSConfig]; QualificationTypeId=, WorkerId=, <keyword arguments>)
+    using AWSSDK.MTurk.associate_qualification_with_worker
+    associate_qualification_with_worker([::AWSConfig], arguments::Dict)
+    associate_qualification_with_worker([::AWSConfig]; QualificationTypeId=, WorkerId=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "AssociateQualificationWithWorker", arguments::Dict)
@@ -173,9 +173,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.create_additional_assignments_for_hit([::AWSConfig], arguments::Dict)
-    MTurk.create_additional_assignments_for_hit([::AWSConfig]; HITId=, <keyword arguments>)
+    using AWSSDK.MTurk.create_additional_assignments_for_hit
+    create_additional_assignments_for_hit([::AWSConfig], arguments::Dict)
+    create_additional_assignments_for_hit([::AWSConfig]; HITId=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "CreateAdditionalAssignmentsForHIT", arguments::Dict)
@@ -227,9 +227,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.create_hit([::AWSConfig], arguments::Dict)
-    MTurk.create_hit([::AWSConfig]; LifetimeInSeconds=, AssignmentDurationInSeconds=, Reward=, Title=, Description=, <keyword arguments>)
+    using AWSSDK.MTurk.create_hit
+    create_hit([::AWSConfig], arguments::Dict)
+    create_hit([::AWSConfig]; LifetimeInSeconds=, AssignmentDurationInSeconds=, Reward=, Title=, Description=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "CreateHIT", arguments::Dict)
@@ -388,9 +388,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.create_hittype([::AWSConfig], arguments::Dict)
-    MTurk.create_hittype([::AWSConfig]; AssignmentDurationInSeconds=, Reward=, Title=, Description=, <keyword arguments>)
+    using AWSSDK.MTurk.create_hittype
+    create_hittype([::AWSConfig], arguments::Dict)
+    create_hittype([::AWSConfig]; AssignmentDurationInSeconds=, Reward=, Title=, Description=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "CreateHITType", arguments::Dict)
@@ -462,9 +462,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.create_hitwith_hittype([::AWSConfig], arguments::Dict)
-    MTurk.create_hitwith_hittype([::AWSConfig]; HITTypeId=, LifetimeInSeconds=, <keyword arguments>)
+    using AWSSDK.MTurk.create_hitwith_hittype
+    create_hitwith_hittype([::AWSConfig], arguments::Dict)
+    create_hitwith_hittype([::AWSConfig]; HITTypeId=, LifetimeInSeconds=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "CreateHITWithHITType", arguments::Dict)
@@ -586,9 +586,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.create_qualification_type([::AWSConfig], arguments::Dict)
-    MTurk.create_qualification_type([::AWSConfig]; Name=, Description=, QualificationTypeStatus=, <keyword arguments>)
+    using AWSSDK.MTurk.create_qualification_type
+    create_qualification_type([::AWSConfig], arguments::Dict)
+    create_qualification_type([::AWSConfig]; Name=, Description=, QualificationTypeStatus=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "CreateQualificationType", arguments::Dict)
@@ -675,9 +675,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.create_worker_block([::AWSConfig], arguments::Dict)
-    MTurk.create_worker_block([::AWSConfig]; WorkerId=, Reason=)
+    using AWSSDK.MTurk.create_worker_block
+    create_worker_block([::AWSConfig], arguments::Dict)
+    create_worker_block([::AWSConfig]; WorkerId=, Reason=)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "CreateWorkerBlock", arguments::Dict)
@@ -718,9 +718,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.delete_hit([::AWSConfig], arguments::Dict)
-    MTurk.delete_hit([::AWSConfig]; HITId=)
+    using AWSSDK.MTurk.delete_hit
+    delete_hit([::AWSConfig], arguments::Dict)
+    delete_hit([::AWSConfig]; HITId=)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "DeleteHIT", arguments::Dict)
@@ -768,9 +768,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.delete_qualification_type([::AWSConfig], arguments::Dict)
-    MTurk.delete_qualification_type([::AWSConfig]; QualificationTypeId=)
+    using AWSSDK.MTurk.delete_qualification_type
+    delete_qualification_type([::AWSConfig], arguments::Dict)
+    delete_qualification_type([::AWSConfig]; QualificationTypeId=)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "DeleteQualificationType", arguments::Dict)
@@ -812,9 +812,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.delete_worker_block([::AWSConfig], arguments::Dict)
-    MTurk.delete_worker_block([::AWSConfig]; WorkerId=, <keyword arguments>)
+    using AWSSDK.MTurk.delete_worker_block
+    delete_worker_block([::AWSConfig], arguments::Dict)
+    delete_worker_block([::AWSConfig]; WorkerId=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "DeleteWorkerBlock", arguments::Dict)
@@ -855,9 +855,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.disassociate_qualification_from_worker([::AWSConfig], arguments::Dict)
-    MTurk.disassociate_qualification_from_worker([::AWSConfig]; WorkerId=, QualificationTypeId=, <keyword arguments>)
+    using AWSSDK.MTurk.disassociate_qualification_from_worker
+    disassociate_qualification_from_worker([::AWSConfig], arguments::Dict)
+    disassociate_qualification_from_worker([::AWSConfig]; WorkerId=, QualificationTypeId=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "DisassociateQualificationFromWorker", arguments::Dict)
@@ -904,9 +904,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.get_account_balance([::AWSConfig], arguments::Dict)
-    MTurk.get_account_balance([::AWSConfig]; )
+    using AWSSDK.MTurk.get_account_balance
+    get_account_balance([::AWSConfig], arguments::Dict)
+    get_account_balance([::AWSConfig]; )
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "GetAccountBalance", arguments::Dict)
@@ -939,9 +939,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.get_assignment([::AWSConfig], arguments::Dict)
-    MTurk.get_assignment([::AWSConfig]; AssignmentId=)
+    using AWSSDK.MTurk.get_assignment
+    get_assignment([::AWSConfig], arguments::Dict)
+    get_assignment([::AWSConfig]; AssignmentId=)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "GetAssignment", arguments::Dict)
@@ -978,9 +978,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.get_file_upload_url([::AWSConfig], arguments::Dict)
-    MTurk.get_file_upload_url([::AWSConfig]; AssignmentId=, QuestionIdentifier=)
+    using AWSSDK.MTurk.get_file_upload_url
+    get_file_upload_url([::AWSConfig], arguments::Dict)
+    get_file_upload_url([::AWSConfig]; AssignmentId=, QuestionIdentifier=)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "GetFileUploadURL", arguments::Dict)
@@ -1021,9 +1021,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.get_hit([::AWSConfig], arguments::Dict)
-    MTurk.get_hit([::AWSConfig]; HITId=)
+    using AWSSDK.MTurk.get_hit
+    get_hit([::AWSConfig], arguments::Dict)
+    get_hit([::AWSConfig]; HITId=)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "GetHIT", arguments::Dict)
@@ -1060,9 +1060,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.get_qualification_score([::AWSConfig], arguments::Dict)
-    MTurk.get_qualification_score([::AWSConfig]; QualificationTypeId=, WorkerId=)
+    using AWSSDK.MTurk.get_qualification_score
+    get_qualification_score([::AWSConfig], arguments::Dict)
+    get_qualification_score([::AWSConfig]; QualificationTypeId=, WorkerId=)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "GetQualificationScore", arguments::Dict)
@@ -1107,9 +1107,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.get_qualification_type([::AWSConfig], arguments::Dict)
-    MTurk.get_qualification_type([::AWSConfig]; QualificationTypeId=)
+    using AWSSDK.MTurk.get_qualification_type
+    get_qualification_type([::AWSConfig], arguments::Dict)
+    get_qualification_type([::AWSConfig]; QualificationTypeId=)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "GetQualificationType", arguments::Dict)
@@ -1146,9 +1146,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.list_assignments_for_hit([::AWSConfig], arguments::Dict)
-    MTurk.list_assignments_for_hit([::AWSConfig]; HITId=, <keyword arguments>)
+    using AWSSDK.MTurk.list_assignments_for_hit
+    list_assignments_for_hit([::AWSConfig], arguments::Dict)
+    list_assignments_for_hit([::AWSConfig]; HITId=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "ListAssignmentsForHIT", arguments::Dict)
@@ -1205,9 +1205,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.list_bonus_payments([::AWSConfig], arguments::Dict)
-    MTurk.list_bonus_payments([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.MTurk.list_bonus_payments
+    list_bonus_payments([::AWSConfig], arguments::Dict)
+    list_bonus_payments([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "ListBonusPayments", arguments::Dict)
@@ -1256,9 +1256,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.list_hits([::AWSConfig], arguments::Dict)
-    MTurk.list_hits([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.MTurk.list_hits
+    list_hits([::AWSConfig], arguments::Dict)
+    list_hits([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "ListHITs", arguments::Dict)
@@ -1299,9 +1299,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.list_hits_for_qualification_type([::AWSConfig], arguments::Dict)
-    MTurk.list_hits_for_qualification_type([::AWSConfig]; QualificationTypeId=, <keyword arguments>)
+    using AWSSDK.MTurk.list_hits_for_qualification_type
+    list_hits_for_qualification_type([::AWSConfig], arguments::Dict)
+    list_hits_for_qualification_type([::AWSConfig]; QualificationTypeId=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "ListHITsForQualificationType", arguments::Dict)
@@ -1346,9 +1346,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.list_qualification_requests([::AWSConfig], arguments::Dict)
-    MTurk.list_qualification_requests([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.MTurk.list_qualification_requests
+    list_qualification_requests([::AWSConfig], arguments::Dict)
+    list_qualification_requests([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "ListQualificationRequests", arguments::Dict)
@@ -1393,9 +1393,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.list_qualification_types([::AWSConfig], arguments::Dict)
-    MTurk.list_qualification_types([::AWSConfig]; MustBeRequestable=, <keyword arguments>)
+    using AWSSDK.MTurk.list_qualification_types
+    list_qualification_types([::AWSConfig], arguments::Dict)
+    list_qualification_types([::AWSConfig]; MustBeRequestable=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "ListQualificationTypes", arguments::Dict)
@@ -1448,9 +1448,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.list_review_policy_results_for_hit([::AWSConfig], arguments::Dict)
-    MTurk.list_review_policy_results_for_hit([::AWSConfig]; HITId=, <keyword arguments>)
+    using AWSSDK.MTurk.list_review_policy_results_for_hit
+    list_review_policy_results_for_hit([::AWSConfig], arguments::Dict)
+    list_review_policy_results_for_hit([::AWSConfig]; HITId=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "ListReviewPolicyResultsForHIT", arguments::Dict)
@@ -1507,9 +1507,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.list_reviewable_hits([::AWSConfig], arguments::Dict)
-    MTurk.list_reviewable_hits([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.MTurk.list_reviewable_hits
+    list_reviewable_hits([::AWSConfig], arguments::Dict)
+    list_reviewable_hits([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "ListReviewableHITs", arguments::Dict)
@@ -1558,9 +1558,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.list_worker_blocks([::AWSConfig], arguments::Dict)
-    MTurk.list_worker_blocks([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.MTurk.list_worker_blocks
+    list_worker_blocks([::AWSConfig], arguments::Dict)
+    list_worker_blocks([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "ListWorkerBlocks", arguments::Dict)
@@ -1601,9 +1601,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.list_workers_with_qualification_type([::AWSConfig], arguments::Dict)
-    MTurk.list_workers_with_qualification_type([::AWSConfig]; QualificationTypeId=, <keyword arguments>)
+    using AWSSDK.MTurk.list_workers_with_qualification_type
+    list_workers_with_qualification_type([::AWSConfig], arguments::Dict)
+    list_workers_with_qualification_type([::AWSConfig]; QualificationTypeId=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "ListWorkersWithQualificationType", arguments::Dict)
@@ -1652,9 +1652,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.notify_workers([::AWSConfig], arguments::Dict)
-    MTurk.notify_workers([::AWSConfig]; Subject=, MessageText=, WorkerIds=)
+    using AWSSDK.MTurk.notify_workers
+    notify_workers([::AWSConfig], arguments::Dict)
+    notify_workers([::AWSConfig]; Subject=, MessageText=, WorkerIds=)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "NotifyWorkers", arguments::Dict)
@@ -1699,9 +1699,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.reject_assignment([::AWSConfig], arguments::Dict)
-    MTurk.reject_assignment([::AWSConfig]; AssignmentId=, <keyword arguments>)
+    using AWSSDK.MTurk.reject_assignment
+    reject_assignment([::AWSConfig], arguments::Dict)
+    reject_assignment([::AWSConfig]; AssignmentId=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "RejectAssignment", arguments::Dict)
@@ -1746,9 +1746,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.reject_qualification_request([::AWSConfig], arguments::Dict)
-    MTurk.reject_qualification_request([::AWSConfig]; QualificationRequestId=, <keyword arguments>)
+    using AWSSDK.MTurk.reject_qualification_request
+    reject_qualification_request([::AWSConfig], arguments::Dict)
+    reject_qualification_request([::AWSConfig]; QualificationRequestId=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "RejectQualificationRequest", arguments::Dict)
@@ -1791,9 +1791,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.send_bonus([::AWSConfig], arguments::Dict)
-    MTurk.send_bonus([::AWSConfig]; WorkerId=, BonusAmount=, AssignmentId=, <keyword arguments>)
+    using AWSSDK.MTurk.send_bonus
+    send_bonus([::AWSConfig], arguments::Dict)
+    send_bonus([::AWSConfig]; WorkerId=, BonusAmount=, AssignmentId=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "SendBonus", arguments::Dict)
@@ -1846,9 +1846,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.send_test_event_notification([::AWSConfig], arguments::Dict)
-    MTurk.send_test_event_notification([::AWSConfig]; Notification=, TestEventType=)
+    using AWSSDK.MTurk.send_test_event_notification
+    send_test_event_notification([::AWSConfig], arguments::Dict)
+    send_test_event_notification([::AWSConfig]; Notification=, TestEventType=)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "SendTestEventNotification", arguments::Dict)
@@ -1896,9 +1896,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.update_expiration_for_hit([::AWSConfig], arguments::Dict)
-    MTurk.update_expiration_for_hit([::AWSConfig]; HITId=, <keyword arguments>)
+    using AWSSDK.MTurk.update_expiration_for_hit
+    update_expiration_for_hit([::AWSConfig], arguments::Dict)
+    update_expiration_for_hit([::AWSConfig]; HITId=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "UpdateExpirationForHIT", arguments::Dict)
@@ -1939,9 +1939,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.update_hitreview_status([::AWSConfig], arguments::Dict)
-    MTurk.update_hitreview_status([::AWSConfig]; HITId=, <keyword arguments>)
+    using AWSSDK.MTurk.update_hitreview_status
+    update_hitreview_status([::AWSConfig], arguments::Dict)
+    update_hitreview_status([::AWSConfig]; HITId=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "UpdateHITReviewStatus", arguments::Dict)
@@ -1986,9 +1986,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.update_hittype_of_hit([::AWSConfig], arguments::Dict)
-    MTurk.update_hittype_of_hit([::AWSConfig]; HITId=, HITTypeId=)
+    using AWSSDK.MTurk.update_hittype_of_hit
+    update_hittype_of_hit([::AWSConfig], arguments::Dict)
+    update_hittype_of_hit([::AWSConfig]; HITId=, HITTypeId=)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "UpdateHITTypeOfHIT", arguments::Dict)
@@ -2029,9 +2029,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.update_notification_settings([::AWSConfig], arguments::Dict)
-    MTurk.update_notification_settings([::AWSConfig]; HITTypeId=, <keyword arguments>)
+    using AWSSDK.MTurk.update_notification_settings
+    update_notification_settings([::AWSConfig], arguments::Dict)
+    update_notification_settings([::AWSConfig]; HITTypeId=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "UpdateNotificationSettings", arguments::Dict)
@@ -2083,9 +2083,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 
 """
-    using AWSSDK.MTurk
-    MTurk.update_qualification_type([::AWSConfig], arguments::Dict)
-    MTurk.update_qualification_type([::AWSConfig]; QualificationTypeId=, <keyword arguments>)
+    using AWSSDK.MTurk.update_qualification_type
+    update_qualification_type([::AWSConfig], arguments::Dict)
+    update_qualification_type([::AWSConfig]; QualificationTypeId=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "UpdateQualificationType", arguments::Dict)

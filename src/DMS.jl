@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.DMS
-    DMS.add_tags_to_resource([::AWSConfig], arguments::Dict)
-    DMS.add_tags_to_resource([::AWSConfig]; ResourceArn=, Tags=)
+    using AWSSDK.DMS.add_tags_to_resource
+    add_tags_to_resource([::AWSConfig], arguments::Dict)
+    add_tags_to_resource([::AWSConfig]; ResourceArn=, Tags=)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "AddTagsToResource", arguments::Dict)
@@ -85,9 +85,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.create_endpoint([::AWSConfig], arguments::Dict)
-    DMS.create_endpoint([::AWSConfig]; EndpointIdentifier=, EndpointType=, EngineName=, <keyword arguments>)
+    using AWSSDK.DMS.create_endpoint
+    create_endpoint([::AWSConfig], arguments::Dict)
+    create_endpoint([::AWSConfig]; EndpointIdentifier=, EndpointType=, EngineName=, <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "CreateEndpoint", arguments::Dict)
@@ -262,9 +262,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.create_event_subscription([::AWSConfig], arguments::Dict)
-    DMS.create_event_subscription([::AWSConfig]; SubscriptionName=, SnsTopicArn=, <keyword arguments>)
+    using AWSSDK.DMS.create_event_subscription
+    create_event_subscription([::AWSConfig], arguments::Dict)
+    create_event_subscription([::AWSConfig]; SubscriptionName=, SnsTopicArn=, <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "CreateEventSubscription", arguments::Dict)
@@ -338,9 +338,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.create_replication_instance([::AWSConfig], arguments::Dict)
-    DMS.create_replication_instance([::AWSConfig]; ReplicationInstanceIdentifier=, ReplicationInstanceClass=, <keyword arguments>)
+    using AWSSDK.DMS.create_replication_instance
+    create_replication_instance([::AWSConfig], arguments::Dict)
+    create_replication_instance([::AWSConfig]; ReplicationInstanceIdentifier=, ReplicationInstanceClass=, <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "CreateReplicationInstance", arguments::Dict)
@@ -543,9 +543,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.create_replication_subnet_group([::AWSConfig], arguments::Dict)
-    DMS.create_replication_subnet_group([::AWSConfig]; ReplicationSubnetGroupIdentifier=, ReplicationSubnetGroupDescription=, SubnetIds=, <keyword arguments>)
+    using AWSSDK.DMS.create_replication_subnet_group
+    create_replication_subnet_group([::AWSConfig], arguments::Dict)
+    create_replication_subnet_group([::AWSConfig]; ReplicationSubnetGroupIdentifier=, ReplicationSubnetGroupDescription=, SubnetIds=, <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "CreateReplicationSubnetGroup", arguments::Dict)
@@ -634,9 +634,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.create_replication_task([::AWSConfig], arguments::Dict)
-    DMS.create_replication_task([::AWSConfig]; ReplicationTaskIdentifier=, SourceEndpointArn=, TargetEndpointArn=, ReplicationInstanceArn=, MigrationType=, TableMappings=, <keyword arguments>)
+    using AWSSDK.DMS.create_replication_task
+    create_replication_task([::AWSConfig], arguments::Dict)
+    create_replication_task([::AWSConfig]; ReplicationTaskIdentifier=, SourceEndpointArn=, TargetEndpointArn=, ReplicationInstanceArn=, MigrationType=, TableMappings=, <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "CreateReplicationTask", arguments::Dict)
@@ -762,9 +762,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.delete_certificate([::AWSConfig], arguments::Dict)
-    DMS.delete_certificate([::AWSConfig]; CertificateArn=)
+    using AWSSDK.DMS.delete_certificate
+    delete_certificate([::AWSConfig], arguments::Dict)
+    delete_certificate([::AWSConfig]; CertificateArn=)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DeleteCertificate", arguments::Dict)
@@ -821,9 +821,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.delete_endpoint([::AWSConfig], arguments::Dict)
-    DMS.delete_endpoint([::AWSConfig]; EndpointArn=)
+    using AWSSDK.DMS.delete_endpoint
+    delete_endpoint([::AWSConfig], arguments::Dict)
+    delete_endpoint([::AWSConfig]; EndpointArn=)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DeleteEndpoint", arguments::Dict)
@@ -892,9 +892,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.delete_event_subscription([::AWSConfig], arguments::Dict)
-    DMS.delete_event_subscription([::AWSConfig]; SubscriptionName=)
+    using AWSSDK.DMS.delete_event_subscription
+    delete_event_subscription([::AWSConfig], arguments::Dict)
+    delete_event_subscription([::AWSConfig]; SubscriptionName=)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DeleteEventSubscription", arguments::Dict)
@@ -931,9 +931,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.delete_replication_instance([::AWSConfig], arguments::Dict)
-    DMS.delete_replication_instance([::AWSConfig]; ReplicationInstanceArn=)
+    using AWSSDK.DMS.delete_replication_instance
+    delete_replication_instance([::AWSConfig], arguments::Dict)
+    delete_replication_instance([::AWSConfig]; ReplicationInstanceArn=)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DeleteReplicationInstance", arguments::Dict)
@@ -1043,9 +1043,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.delete_replication_subnet_group([::AWSConfig], arguments::Dict)
-    DMS.delete_replication_subnet_group([::AWSConfig]; ReplicationSubnetGroupIdentifier=)
+    using AWSSDK.DMS.delete_replication_subnet_group
+    delete_replication_subnet_group([::AWSConfig], arguments::Dict)
+    delete_replication_subnet_group([::AWSConfig]; ReplicationSubnetGroupIdentifier=)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DeleteReplicationSubnetGroup", arguments::Dict)
@@ -1100,9 +1100,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.delete_replication_task([::AWSConfig], arguments::Dict)
-    DMS.delete_replication_task([::AWSConfig]; ReplicationTaskArn=)
+    using AWSSDK.DMS.delete_replication_task
+    delete_replication_task([::AWSConfig], arguments::Dict)
+    delete_replication_task([::AWSConfig]; ReplicationTaskArn=)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DeleteReplicationTask", arguments::Dict)
@@ -1168,9 +1168,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.describe_account_attributes([::AWSConfig], arguments::Dict)
-    DMS.describe_account_attributes([::AWSConfig]; )
+    using AWSSDK.DMS.describe_account_attributes
+    describe_account_attributes([::AWSConfig], arguments::Dict)
+    describe_account_attributes([::AWSConfig]; )
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DescribeAccountAttributes", arguments::Dict)
@@ -1235,9 +1235,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.describe_certificates([::AWSConfig], arguments::Dict)
-    DMS.describe_certificates([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DMS.describe_certificates
+    describe_certificates([::AWSConfig], arguments::Dict)
+    describe_certificates([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DescribeCertificates", arguments::Dict)
@@ -1320,9 +1320,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.describe_connections([::AWSConfig], arguments::Dict)
-    DMS.describe_connections([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DMS.describe_connections
+    describe_connections([::AWSConfig], arguments::Dict)
+    describe_connections([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DescribeConnections", arguments::Dict)
@@ -1415,9 +1415,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.describe_endpoint_types([::AWSConfig], arguments::Dict)
-    DMS.describe_endpoint_types([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DMS.describe_endpoint_types
+    describe_endpoint_types([::AWSConfig], arguments::Dict)
+    describe_endpoint_types([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DescribeEndpointTypes", arguments::Dict)
@@ -1500,9 +1500,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.describe_endpoints([::AWSConfig], arguments::Dict)
-    DMS.describe_endpoints([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DMS.describe_endpoints
+    describe_endpoints([::AWSConfig], arguments::Dict)
+    describe_endpoints([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DescribeEndpoints", arguments::Dict)
@@ -1589,9 +1589,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.describe_event_categories([::AWSConfig], arguments::Dict)
-    DMS.describe_event_categories([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DMS.describe_event_categories
+    describe_event_categories([::AWSConfig], arguments::Dict)
+    describe_event_categories([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DescribeEventCategories", arguments::Dict)
@@ -1635,9 +1635,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.describe_event_subscriptions([::AWSConfig], arguments::Dict)
-    DMS.describe_event_subscriptions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DMS.describe_event_subscriptions
+    describe_event_subscriptions([::AWSConfig], arguments::Dict)
+    describe_event_subscriptions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DescribeEventSubscriptions", arguments::Dict)
@@ -1697,9 +1697,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.describe_events([::AWSConfig], arguments::Dict)
-    DMS.describe_events([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DMS.describe_events
+    describe_events([::AWSConfig], arguments::Dict)
+    describe_events([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DescribeEvents", arguments::Dict)
@@ -1775,9 +1775,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.describe_orderable_replication_instances([::AWSConfig], arguments::Dict)
-    DMS.describe_orderable_replication_instances([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DMS.describe_orderable_replication_instances
+    describe_orderable_replication_instances([::AWSConfig], arguments::Dict)
+    describe_orderable_replication_instances([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DescribeOrderableReplicationInstances", arguments::Dict)
@@ -1840,9 +1840,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.describe_refresh_schemas_status([::AWSConfig], arguments::Dict)
-    DMS.describe_refresh_schemas_status([::AWSConfig]; EndpointArn=)
+    using AWSSDK.DMS.describe_refresh_schemas_status
+    describe_refresh_schemas_status([::AWSConfig], arguments::Dict)
+    describe_refresh_schemas_status([::AWSConfig]; EndpointArn=)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DescribeRefreshSchemasStatus", arguments::Dict)
@@ -1899,9 +1899,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.describe_replication_instances([::AWSConfig], arguments::Dict)
-    DMS.describe_replication_instances([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DMS.describe_replication_instances
+    describe_replication_instances([::AWSConfig], arguments::Dict)
+    describe_replication_instances([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DescribeReplicationInstances", arguments::Dict)
@@ -1988,9 +1988,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.describe_replication_subnet_groups([::AWSConfig], arguments::Dict)
-    DMS.describe_replication_subnet_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DMS.describe_replication_subnet_groups
+    describe_replication_subnet_groups([::AWSConfig], arguments::Dict)
+    describe_replication_subnet_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DescribeReplicationSubnetGroups", arguments::Dict)
@@ -2075,9 +2075,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.describe_replication_tasks([::AWSConfig], arguments::Dict)
-    DMS.describe_replication_tasks([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DMS.describe_replication_tasks
+    describe_replication_tasks([::AWSConfig], arguments::Dict)
+    describe_replication_tasks([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DescribeReplicationTasks", arguments::Dict)
@@ -2164,9 +2164,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.describe_schemas([::AWSConfig], arguments::Dict)
-    DMS.describe_schemas([::AWSConfig]; EndpointArn=, <keyword arguments>)
+    using AWSSDK.DMS.describe_schemas
+    describe_schemas([::AWSConfig], arguments::Dict)
+    describe_schemas([::AWSConfig]; EndpointArn=, <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DescribeSchemas", arguments::Dict)
@@ -2238,9 +2238,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.describe_table_statistics([::AWSConfig], arguments::Dict)
-    DMS.describe_table_statistics([::AWSConfig]; ReplicationTaskArn=, <keyword arguments>)
+    using AWSSDK.DMS.describe_table_statistics
+    describe_table_statistics([::AWSConfig], arguments::Dict)
+    describe_table_statistics([::AWSConfig]; ReplicationTaskArn=, <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "DescribeTableStatistics", arguments::Dict)
@@ -2313,9 +2313,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.import_certificate([::AWSConfig], arguments::Dict)
-    DMS.import_certificate([::AWSConfig]; CertificateIdentifier=, <keyword arguments>)
+    using AWSSDK.DMS.import_certificate
+    import_certificate([::AWSConfig], arguments::Dict)
+    import_certificate([::AWSConfig]; CertificateIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "ImportCertificate", arguments::Dict)
@@ -2390,9 +2390,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.list_tags_for_resource([::AWSConfig], arguments::Dict)
-    DMS.list_tags_for_resource([::AWSConfig]; ResourceArn=)
+    using AWSSDK.DMS.list_tags_for_resource
+    list_tags_for_resource([::AWSConfig], arguments::Dict)
+    list_tags_for_resource([::AWSConfig]; ResourceArn=)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "ListTagsForResource", arguments::Dict)
@@ -2449,9 +2449,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.modify_endpoint([::AWSConfig], arguments::Dict)
-    DMS.modify_endpoint([::AWSConfig]; EndpointArn=, <keyword arguments>)
+    using AWSSDK.DMS.modify_endpoint
+    modify_endpoint([::AWSConfig], arguments::Dict)
+    modify_endpoint([::AWSConfig]; EndpointArn=, <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "ModifyEndpoint", arguments::Dict)
@@ -2603,9 +2603,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.modify_event_subscription([::AWSConfig], arguments::Dict)
-    DMS.modify_event_subscription([::AWSConfig]; SubscriptionName=, <keyword arguments>)
+    using AWSSDK.DMS.modify_event_subscription
+    modify_event_subscription([::AWSConfig], arguments::Dict)
+    modify_event_subscription([::AWSConfig]; SubscriptionName=, <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "ModifyEventSubscription", arguments::Dict)
@@ -2660,9 +2660,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.modify_replication_instance([::AWSConfig], arguments::Dict)
-    DMS.modify_replication_instance([::AWSConfig]; ReplicationInstanceArn=, <keyword arguments>)
+    using AWSSDK.DMS.modify_replication_instance
+    modify_replication_instance([::AWSConfig], arguments::Dict)
+    modify_replication_instance([::AWSConfig]; ReplicationInstanceArn=, <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "ModifyReplicationInstance", arguments::Dict)
@@ -2833,9 +2833,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.modify_replication_subnet_group([::AWSConfig], arguments::Dict)
-    DMS.modify_replication_subnet_group([::AWSConfig]; ReplicationSubnetGroupIdentifier=, SubnetIds=, <keyword arguments>)
+    using AWSSDK.DMS.modify_replication_subnet_group
+    modify_replication_subnet_group([::AWSConfig], arguments::Dict)
+    modify_replication_subnet_group([::AWSConfig]; ReplicationSubnetGroupIdentifier=, SubnetIds=, <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "ModifyReplicationSubnetGroup", arguments::Dict)
@@ -2904,9 +2904,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.modify_replication_task([::AWSConfig], arguments::Dict)
-    DMS.modify_replication_task([::AWSConfig]; ReplicationTaskArn=, <keyword arguments>)
+    using AWSSDK.DMS.modify_replication_task
+    modify_replication_task([::AWSConfig], arguments::Dict)
+    modify_replication_task([::AWSConfig]; ReplicationTaskArn=, <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "ModifyReplicationTask", arguments::Dict)
@@ -2979,9 +2979,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.refresh_schemas([::AWSConfig], arguments::Dict)
-    DMS.refresh_schemas([::AWSConfig]; EndpointArn=, ReplicationInstanceArn=)
+    using AWSSDK.DMS.refresh_schemas
+    refresh_schemas([::AWSConfig], arguments::Dict)
+    refresh_schemas([::AWSConfig]; EndpointArn=, ReplicationInstanceArn=)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "RefreshSchemas", arguments::Dict)
@@ -3043,9 +3043,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.reload_tables([::AWSConfig], arguments::Dict)
-    DMS.reload_tables([::AWSConfig]; ReplicationTaskArn=, TablesToReload=)
+    using AWSSDK.DMS.reload_tables
+    reload_tables([::AWSConfig], arguments::Dict)
+    reload_tables([::AWSConfig]; ReplicationTaskArn=, TablesToReload=)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "ReloadTables", arguments::Dict)
@@ -3091,9 +3091,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.remove_tags_from_resource([::AWSConfig], arguments::Dict)
-    DMS.remove_tags_from_resource([::AWSConfig]; ResourceArn=, TagKeys=)
+    using AWSSDK.DMS.remove_tags_from_resource
+    remove_tags_from_resource([::AWSConfig], arguments::Dict)
+    remove_tags_from_resource([::AWSConfig]; ResourceArn=, TagKeys=)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "RemoveTagsFromResource", arguments::Dict)
@@ -3155,9 +3155,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.start_replication_task([::AWSConfig], arguments::Dict)
-    DMS.start_replication_task([::AWSConfig]; ReplicationTaskArn=, StartReplicationTaskType=, <keyword arguments>)
+    using AWSSDK.DMS.start_replication_task
+    start_replication_task([::AWSConfig], arguments::Dict)
+    start_replication_task([::AWSConfig]; ReplicationTaskArn=, StartReplicationTaskType=, <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "StartReplicationTask", arguments::Dict)
@@ -3235,9 +3235,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.stop_replication_task([::AWSConfig], arguments::Dict)
-    DMS.stop_replication_task([::AWSConfig]; ReplicationTaskArn=)
+    using AWSSDK.DMS.stop_replication_task
+    stop_replication_task([::AWSConfig], arguments::Dict)
+    stop_replication_task([::AWSConfig]; ReplicationTaskArn=)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "StopReplicationTask", arguments::Dict)
@@ -3303,9 +3303,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 
 """
-    using AWSSDK.DMS
-    DMS.test_connection([::AWSConfig], arguments::Dict)
-    DMS.test_connection([::AWSConfig]; ReplicationInstanceArn=, EndpointArn=)
+    using AWSSDK.DMS.test_connection
+    test_connection([::AWSConfig], arguments::Dict)
+    test_connection([::AWSConfig]; ReplicationInstanceArn=, EndpointArn=)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "TestConnection", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.activate_gateway([::AWSConfig], arguments::Dict)
-    StorageGateway.activate_gateway([::AWSConfig]; ActivationKey=, GatewayName=, GatewayTimezone=, GatewayRegion=, <keyword arguments>)
+    using AWSSDK.StorageGateway.activate_gateway
+    activate_gateway([::AWSConfig], arguments::Dict)
+    activate_gateway([::AWSConfig]; ActivationKey=, GatewayName=, GatewayTimezone=, GatewayRegion=, <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "ActivateGateway", arguments::Dict)
@@ -111,9 +111,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.add_cache([::AWSConfig], arguments::Dict)
-    StorageGateway.add_cache([::AWSConfig]; GatewayARN=, DiskIds=)
+    using AWSSDK.StorageGateway.add_cache
+    add_cache([::AWSConfig], arguments::Dict)
+    add_cache([::AWSConfig]; GatewayARN=, DiskIds=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "AddCache", arguments::Dict)
@@ -178,9 +178,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.add_tags_to_resource([::AWSConfig], arguments::Dict)
-    StorageGateway.add_tags_to_resource([::AWSConfig]; ResourceARN=, Tags=)
+    using AWSSDK.StorageGateway.add_tags_to_resource
+    add_tags_to_resource([::AWSConfig], arguments::Dict)
+    add_tags_to_resource([::AWSConfig]; ResourceARN=, Tags=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "AddTagsToResource", arguments::Dict)
@@ -261,9 +261,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.add_upload_buffer([::AWSConfig], arguments::Dict)
-    StorageGateway.add_upload_buffer([::AWSConfig]; GatewayARN=, DiskIds=)
+    using AWSSDK.StorageGateway.add_upload_buffer
+    add_upload_buffer([::AWSConfig], arguments::Dict)
+    add_upload_buffer([::AWSConfig]; GatewayARN=, DiskIds=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "AddUploadBuffer", arguments::Dict)
@@ -328,9 +328,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.add_working_storage([::AWSConfig], arguments::Dict)
-    StorageGateway.add_working_storage([::AWSConfig]; GatewayARN=, DiskIds=)
+    using AWSSDK.StorageGateway.add_working_storage
+    add_working_storage([::AWSConfig], arguments::Dict)
+    add_working_storage([::AWSConfig]; GatewayARN=, DiskIds=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "AddWorkingStorage", arguments::Dict)
@@ -398,9 +398,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.cancel_archival([::AWSConfig], arguments::Dict)
-    StorageGateway.cancel_archival([::AWSConfig]; GatewayARN=, TapeARN=)
+    using AWSSDK.StorageGateway.cancel_archival
+    cancel_archival([::AWSConfig], arguments::Dict)
+    cancel_archival([::AWSConfig]; GatewayARN=, TapeARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "CancelArchival", arguments::Dict)
@@ -460,9 +460,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.cancel_retrieval([::AWSConfig], arguments::Dict)
-    StorageGateway.cancel_retrieval([::AWSConfig]; GatewayARN=, TapeARN=)
+    using AWSSDK.StorageGateway.cancel_retrieval
+    cancel_retrieval([::AWSConfig], arguments::Dict)
+    cancel_retrieval([::AWSConfig]; GatewayARN=, TapeARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "CancelRetrieval", arguments::Dict)
@@ -522,9 +522,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.create_cachedi_scsivolume([::AWSConfig], arguments::Dict)
-    StorageGateway.create_cachedi_scsivolume([::AWSConfig]; GatewayARN=, VolumeSizeInBytes=, TargetName=, NetworkInterfaceId=, ClientToken=, <keyword arguments>)
+    using AWSSDK.StorageGateway.create_cachedi_scsivolume
+    create_cachedi_scsivolume([::AWSConfig], arguments::Dict)
+    create_cachedi_scsivolume([::AWSConfig]; GatewayARN=, VolumeSizeInBytes=, TargetName=, NetworkInterfaceId=, ClientToken=, <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "CreateCachediSCSIVolume", arguments::Dict)
@@ -616,9 +616,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.create_nfsfile_share([::AWSConfig], arguments::Dict)
-    StorageGateway.create_nfsfile_share([::AWSConfig]; ClientToken=, GatewayARN=, Role=, LocationARN=, <keyword arguments>)
+    using AWSSDK.StorageGateway.create_nfsfile_share
+    create_nfsfile_share([::AWSConfig], arguments::Dict)
+    create_nfsfile_share([::AWSConfig]; ClientToken=, GatewayARN=, Role=, LocationARN=, <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "CreateNFSFileShare", arguments::Dict)
@@ -713,9 +713,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.create_snapshot([::AWSConfig], arguments::Dict)
-    StorageGateway.create_snapshot([::AWSConfig]; VolumeARN=, SnapshotDescription=)
+    using AWSSDK.StorageGateway.create_snapshot
+    create_snapshot([::AWSConfig], arguments::Dict)
+    create_snapshot([::AWSConfig]; VolumeARN=, SnapshotDescription=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "CreateSnapshot", arguments::Dict)
@@ -786,9 +786,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.create_snapshot_from_volume_recovery_point([::AWSConfig], arguments::Dict)
-    StorageGateway.create_snapshot_from_volume_recovery_point([::AWSConfig]; VolumeARN=, SnapshotDescription=)
+    using AWSSDK.StorageGateway.create_snapshot_from_volume_recovery_point
+    create_snapshot_from_volume_recovery_point([::AWSConfig], arguments::Dict)
+    create_snapshot_from_volume_recovery_point([::AWSConfig]; VolumeARN=, SnapshotDescription=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "CreateSnapshotFromVolumeRecoveryPoint", arguments::Dict)
@@ -857,9 +857,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.create_storedi_scsivolume([::AWSConfig], arguments::Dict)
-    StorageGateway.create_storedi_scsivolume([::AWSConfig]; GatewayARN=, DiskId=, PreserveExistingData=, TargetName=, NetworkInterfaceId=, <keyword arguments>)
+    using AWSSDK.StorageGateway.create_storedi_scsivolume
+    create_storedi_scsivolume([::AWSConfig], arguments::Dict)
+    create_storedi_scsivolume([::AWSConfig]; GatewayARN=, DiskId=, PreserveExistingData=, TargetName=, NetworkInterfaceId=, <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "CreateStorediSCSIVolume", arguments::Dict)
@@ -949,9 +949,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.create_tape_with_barcode([::AWSConfig], arguments::Dict)
-    StorageGateway.create_tape_with_barcode([::AWSConfig]; GatewayARN=, TapeSizeInBytes=, TapeBarcode=)
+    using AWSSDK.StorageGateway.create_tape_with_barcode
+    create_tape_with_barcode([::AWSConfig], arguments::Dict)
+    create_tape_with_barcode([::AWSConfig]; GatewayARN=, TapeSizeInBytes=, TapeBarcode=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "CreateTapeWithBarcode", arguments::Dict)
@@ -1022,9 +1022,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.create_tapes([::AWSConfig], arguments::Dict)
-    StorageGateway.create_tapes([::AWSConfig]; GatewayARN=, TapeSizeInBytes=, ClientToken=, NumTapesToCreate=, TapeBarcodePrefix=)
+    using AWSSDK.StorageGateway.create_tapes
+    create_tapes([::AWSConfig], arguments::Dict)
+    create_tapes([::AWSConfig]; GatewayARN=, TapeSizeInBytes=, ClientToken=, NumTapesToCreate=, TapeBarcodePrefix=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "CreateTapes", arguments::Dict)
@@ -1115,9 +1115,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.delete_bandwidth_rate_limit([::AWSConfig], arguments::Dict)
-    StorageGateway.delete_bandwidth_rate_limit([::AWSConfig]; GatewayARN=, BandwidthType=)
+    using AWSSDK.StorageGateway.delete_bandwidth_rate_limit
+    delete_bandwidth_rate_limit([::AWSConfig], arguments::Dict)
+    delete_bandwidth_rate_limit([::AWSConfig]; GatewayARN=, BandwidthType=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DeleteBandwidthRateLimit", arguments::Dict)
@@ -1179,9 +1179,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.delete_chap_credentials([::AWSConfig], arguments::Dict)
-    StorageGateway.delete_chap_credentials([::AWSConfig]; TargetARN=, InitiatorName=)
+    using AWSSDK.StorageGateway.delete_chap_credentials
+    delete_chap_credentials([::AWSConfig], arguments::Dict)
+    delete_chap_credentials([::AWSConfig]; TargetARN=, InitiatorName=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DeleteChapCredentials", arguments::Dict)
@@ -1242,9 +1242,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.delete_file_share([::AWSConfig], arguments::Dict)
-    StorageGateway.delete_file_share([::AWSConfig]; FileShareARN=)
+    using AWSSDK.StorageGateway.delete_file_share
+    delete_file_share([::AWSConfig], arguments::Dict)
+    delete_file_share([::AWSConfig]; FileShareARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DeleteFileShare", arguments::Dict)
@@ -1281,9 +1281,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.delete_gateway([::AWSConfig], arguments::Dict)
-    StorageGateway.delete_gateway([::AWSConfig]; GatewayARN=)
+    using AWSSDK.StorageGateway.delete_gateway
+    delete_gateway([::AWSConfig], arguments::Dict)
+    delete_gateway([::AWSConfig]; GatewayARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DeleteGateway", arguments::Dict)
@@ -1343,9 +1343,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.delete_snapshot_schedule([::AWSConfig], arguments::Dict)
-    StorageGateway.delete_snapshot_schedule([::AWSConfig]; VolumeARN=)
+    using AWSSDK.StorageGateway.delete_snapshot_schedule
+    delete_snapshot_schedule([::AWSConfig], arguments::Dict)
+    delete_snapshot_schedule([::AWSConfig]; VolumeARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DeleteSnapshotSchedule", arguments::Dict)
@@ -1405,9 +1405,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.delete_tape([::AWSConfig], arguments::Dict)
-    StorageGateway.delete_tape([::AWSConfig]; GatewayARN=, TapeARN=)
+    using AWSSDK.StorageGateway.delete_tape
+    delete_tape([::AWSConfig], arguments::Dict)
+    delete_tape([::AWSConfig]; GatewayARN=, TapeARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DeleteTape", arguments::Dict)
@@ -1467,9 +1467,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.delete_tape_archive([::AWSConfig], arguments::Dict)
-    StorageGateway.delete_tape_archive([::AWSConfig]; TapeARN=)
+    using AWSSDK.StorageGateway.delete_tape_archive
+    delete_tape_archive([::AWSConfig], arguments::Dict)
+    delete_tape_archive([::AWSConfig]; TapeARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DeleteTapeArchive", arguments::Dict)
@@ -1524,9 +1524,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.delete_volume([::AWSConfig], arguments::Dict)
-    StorageGateway.delete_volume([::AWSConfig]; VolumeARN=)
+    using AWSSDK.StorageGateway.delete_volume
+    delete_volume([::AWSConfig], arguments::Dict)
+    delete_volume([::AWSConfig]; VolumeARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DeleteVolume", arguments::Dict)
@@ -1585,9 +1585,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.describe_bandwidth_rate_limit([::AWSConfig], arguments::Dict)
-    StorageGateway.describe_bandwidth_rate_limit([::AWSConfig]; GatewayARN=)
+    using AWSSDK.StorageGateway.describe_bandwidth_rate_limit
+    describe_bandwidth_rate_limit([::AWSConfig], arguments::Dict)
+    describe_bandwidth_rate_limit([::AWSConfig]; GatewayARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DescribeBandwidthRateLimit", arguments::Dict)
@@ -1646,9 +1646,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.describe_cache([::AWSConfig], arguments::Dict)
-    StorageGateway.describe_cache([::AWSConfig]; GatewayARN=)
+    using AWSSDK.StorageGateway.describe_cache
+    describe_cache([::AWSConfig], arguments::Dict)
+    describe_cache([::AWSConfig]; GatewayARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DescribeCache", arguments::Dict)
@@ -1714,9 +1714,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.describe_cachedi_scsivolumes([::AWSConfig], arguments::Dict)
-    StorageGateway.describe_cachedi_scsivolumes([::AWSConfig]; VolumeARNs=)
+    using AWSSDK.StorageGateway.describe_cachedi_scsivolumes
+    describe_cachedi_scsivolumes([::AWSConfig], arguments::Dict)
+    describe_cachedi_scsivolumes([::AWSConfig]; VolumeARNs=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DescribeCachediSCSIVolumes", arguments::Dict)
@@ -1790,9 +1790,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.describe_chap_credentials([::AWSConfig], arguments::Dict)
-    StorageGateway.describe_chap_credentials([::AWSConfig]; TargetARN=)
+    using AWSSDK.StorageGateway.describe_chap_credentials
+    describe_chap_credentials([::AWSConfig], arguments::Dict)
+    describe_chap_credentials([::AWSConfig]; TargetARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DescribeChapCredentials", arguments::Dict)
@@ -1854,9 +1854,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.describe_gateway_information([::AWSConfig], arguments::Dict)
-    StorageGateway.describe_gateway_information([::AWSConfig]; GatewayARN=)
+    using AWSSDK.StorageGateway.describe_gateway_information
+    describe_gateway_information([::AWSConfig], arguments::Dict)
+    describe_gateway_information([::AWSConfig]; GatewayARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DescribeGatewayInformation", arguments::Dict)
@@ -1923,9 +1923,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.describe_maintenance_start_time([::AWSConfig], arguments::Dict)
-    StorageGateway.describe_maintenance_start_time([::AWSConfig]; GatewayARN=)
+    using AWSSDK.StorageGateway.describe_maintenance_start_time
+    describe_maintenance_start_time([::AWSConfig], arguments::Dict)
+    describe_maintenance_start_time([::AWSConfig]; GatewayARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DescribeMaintenanceStartTime", arguments::Dict)
@@ -1984,9 +1984,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.describe_nfsfile_shares([::AWSConfig], arguments::Dict)
-    StorageGateway.describe_nfsfile_shares([::AWSConfig]; FileShareARNList=)
+    using AWSSDK.StorageGateway.describe_nfsfile_shares
+    describe_nfsfile_shares([::AWSConfig], arguments::Dict)
+    describe_nfsfile_shares([::AWSConfig]; FileShareARNList=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DescribeNFSFileShares", arguments::Dict)
@@ -2023,9 +2023,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.describe_snapshot_schedule([::AWSConfig], arguments::Dict)
-    StorageGateway.describe_snapshot_schedule([::AWSConfig]; VolumeARN=)
+    using AWSSDK.StorageGateway.describe_snapshot_schedule
+    describe_snapshot_schedule([::AWSConfig], arguments::Dict)
+    describe_snapshot_schedule([::AWSConfig]; VolumeARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DescribeSnapshotSchedule", arguments::Dict)
@@ -2084,9 +2084,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.describe_storedi_scsivolumes([::AWSConfig], arguments::Dict)
-    StorageGateway.describe_storedi_scsivolumes([::AWSConfig]; VolumeARNs=)
+    using AWSSDK.StorageGateway.describe_storedi_scsivolumes
+    describe_storedi_scsivolumes([::AWSConfig], arguments::Dict)
+    describe_storedi_scsivolumes([::AWSConfig]; VolumeARNs=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DescribeStorediSCSIVolumes", arguments::Dict)
@@ -2159,9 +2159,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.describe_tape_archives([::AWSConfig], arguments::Dict)
-    StorageGateway.describe_tape_archives([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.StorageGateway.describe_tape_archives
+    describe_tape_archives([::AWSConfig], arguments::Dict)
+    describe_tape_archives([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DescribeTapeArchives", arguments::Dict)
@@ -2247,9 +2247,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.describe_tape_recovery_points([::AWSConfig], arguments::Dict)
-    StorageGateway.describe_tape_recovery_points([::AWSConfig]; GatewayARN=, <keyword arguments>)
+    using AWSSDK.StorageGateway.describe_tape_recovery_points
+    describe_tape_recovery_points([::AWSConfig], arguments::Dict)
+    describe_tape_recovery_points([::AWSConfig]; GatewayARN=, <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DescribeTapeRecoveryPoints", arguments::Dict)
@@ -2325,9 +2325,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.describe_tapes([::AWSConfig], arguments::Dict)
-    StorageGateway.describe_tapes([::AWSConfig]; GatewayARN=, <keyword arguments>)
+    using AWSSDK.StorageGateway.describe_tapes
+    describe_tapes([::AWSConfig], arguments::Dict)
+    describe_tapes([::AWSConfig]; GatewayARN=, <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DescribeTapes", arguments::Dict)
@@ -2419,9 +2419,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.describe_upload_buffer([::AWSConfig], arguments::Dict)
-    StorageGateway.describe_upload_buffer([::AWSConfig]; GatewayARN=)
+    using AWSSDK.StorageGateway.describe_upload_buffer
+    describe_upload_buffer([::AWSConfig], arguments::Dict)
+    describe_upload_buffer([::AWSConfig]; GatewayARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DescribeUploadBuffer", arguments::Dict)
@@ -2508,9 +2508,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.describe_vtldevices([::AWSConfig], arguments::Dict)
-    StorageGateway.describe_vtldevices([::AWSConfig]; GatewayARN=, <keyword arguments>)
+    using AWSSDK.StorageGateway.describe_vtldevices
+    describe_vtldevices([::AWSConfig], arguments::Dict)
+    describe_vtldevices([::AWSConfig]; GatewayARN=, <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DescribeVTLDevices", arguments::Dict)
@@ -2626,9 +2626,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.describe_working_storage([::AWSConfig], arguments::Dict)
-    StorageGateway.describe_working_storage([::AWSConfig]; GatewayARN=)
+    using AWSSDK.StorageGateway.describe_working_storage
+    describe_working_storage([::AWSConfig], arguments::Dict)
+    describe_working_storage([::AWSConfig]; GatewayARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DescribeWorkingStorage", arguments::Dict)
@@ -2694,9 +2694,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.disable_gateway([::AWSConfig], arguments::Dict)
-    StorageGateway.disable_gateway([::AWSConfig]; GatewayARN=)
+    using AWSSDK.StorageGateway.disable_gateway
+    disable_gateway([::AWSConfig], arguments::Dict)
+    disable_gateway([::AWSConfig]; GatewayARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DisableGateway", arguments::Dict)
@@ -2756,9 +2756,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.list_file_shares([::AWSConfig], arguments::Dict)
-    StorageGateway.list_file_shares([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.StorageGateway.list_file_shares
+    list_file_shares([::AWSConfig], arguments::Dict)
+    list_file_shares([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "ListFileShares", arguments::Dict)
@@ -2803,9 +2803,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.list_gateways([::AWSConfig], arguments::Dict)
-    StorageGateway.list_gateways([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.StorageGateway.list_gateways
+    list_gateways([::AWSConfig], arguments::Dict)
+    list_gateways([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "ListGateways", arguments::Dict)
@@ -2877,9 +2877,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.list_local_disks([::AWSConfig], arguments::Dict)
-    StorageGateway.list_local_disks([::AWSConfig]; GatewayARN=)
+    using AWSSDK.StorageGateway.list_local_disks
+    list_local_disks([::AWSConfig], arguments::Dict)
+    list_local_disks([::AWSConfig]; GatewayARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "ListLocalDisks", arguments::Dict)
@@ -2955,9 +2955,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.list_tags_for_resource([::AWSConfig], arguments::Dict)
-    StorageGateway.list_tags_for_resource([::AWSConfig]; ResourceARN=, <keyword arguments>)
+    using AWSSDK.StorageGateway.list_tags_for_resource
+    list_tags_for_resource([::AWSConfig], arguments::Dict)
+    list_tags_for_resource([::AWSConfig]; ResourceARN=, <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "ListTagsForResource", arguments::Dict)
@@ -3029,9 +3029,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.list_tapes([::AWSConfig], arguments::Dict)
-    StorageGateway.list_tapes([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.StorageGateway.list_tapes
+    list_tapes([::AWSConfig], arguments::Dict)
+    list_tapes([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "ListTapes", arguments::Dict)
@@ -3078,9 +3078,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.list_volume_initiators([::AWSConfig], arguments::Dict)
-    StorageGateway.list_volume_initiators([::AWSConfig]; VolumeARN=)
+    using AWSSDK.StorageGateway.list_volume_initiators
+    list_volume_initiators([::AWSConfig], arguments::Dict)
+    list_volume_initiators([::AWSConfig]; VolumeARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "ListVolumeInitiators", arguments::Dict)
@@ -3117,9 +3117,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.list_volume_recovery_points([::AWSConfig], arguments::Dict)
-    StorageGateway.list_volume_recovery_points([::AWSConfig]; GatewayARN=)
+    using AWSSDK.StorageGateway.list_volume_recovery_points
+    list_volume_recovery_points([::AWSConfig], arguments::Dict)
+    list_volume_recovery_points([::AWSConfig]; GatewayARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "ListVolumeRecoveryPoints", arguments::Dict)
@@ -3183,9 +3183,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.list_volumes([::AWSConfig], arguments::Dict)
-    StorageGateway.list_volumes([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.StorageGateway.list_volumes
+    list_volumes([::AWSConfig], arguments::Dict)
+    list_volumes([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "ListVolumes", arguments::Dict)
@@ -3271,9 +3271,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.refresh_cache([::AWSConfig], arguments::Dict)
-    StorageGateway.refresh_cache([::AWSConfig]; FileShareARN=)
+    using AWSSDK.StorageGateway.refresh_cache
+    refresh_cache([::AWSConfig], arguments::Dict)
+    refresh_cache([::AWSConfig]; FileShareARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "RefreshCache", arguments::Dict)
@@ -3310,9 +3310,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.remove_tags_from_resource([::AWSConfig], arguments::Dict)
-    StorageGateway.remove_tags_from_resource([::AWSConfig]; ResourceARN=, TagKeys=)
+    using AWSSDK.StorageGateway.remove_tags_from_resource
+    remove_tags_from_resource([::AWSConfig], arguments::Dict)
+    remove_tags_from_resource([::AWSConfig]; ResourceARN=, TagKeys=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "RemoveTagsFromResource", arguments::Dict)
@@ -3375,9 +3375,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.reset_cache([::AWSConfig], arguments::Dict)
-    StorageGateway.reset_cache([::AWSConfig]; GatewayARN=)
+    using AWSSDK.StorageGateway.reset_cache
+    reset_cache([::AWSConfig], arguments::Dict)
+    reset_cache([::AWSConfig]; GatewayARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "ResetCache", arguments::Dict)
@@ -3435,9 +3435,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.retrieve_tape_archive([::AWSConfig], arguments::Dict)
-    StorageGateway.retrieve_tape_archive([::AWSConfig]; TapeARN=, GatewayARN=)
+    using AWSSDK.StorageGateway.retrieve_tape_archive
+    retrieve_tape_archive([::AWSConfig], arguments::Dict)
+    retrieve_tape_archive([::AWSConfig]; TapeARN=, GatewayARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "RetrieveTapeArchive", arguments::Dict)
@@ -3501,9 +3501,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.retrieve_tape_recovery_point([::AWSConfig], arguments::Dict)
-    StorageGateway.retrieve_tape_recovery_point([::AWSConfig]; TapeARN=, GatewayARN=)
+    using AWSSDK.StorageGateway.retrieve_tape_recovery_point
+    retrieve_tape_recovery_point([::AWSConfig], arguments::Dict)
+    retrieve_tape_recovery_point([::AWSConfig]; TapeARN=, GatewayARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "RetrieveTapeRecoveryPoint", arguments::Dict)
@@ -3568,9 +3568,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.set_local_console_password([::AWSConfig], arguments::Dict)
-    StorageGateway.set_local_console_password([::AWSConfig]; GatewayARN=, LocalConsolePassword=)
+    using AWSSDK.StorageGateway.set_local_console_password
+    set_local_console_password([::AWSConfig], arguments::Dict)
+    set_local_console_password([::AWSConfig]; GatewayARN=, LocalConsolePassword=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "SetLocalConsolePassword", arguments::Dict)
@@ -3630,9 +3630,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.shutdown_gateway([::AWSConfig], arguments::Dict)
-    StorageGateway.shutdown_gateway([::AWSConfig]; GatewayARN=)
+    using AWSSDK.StorageGateway.shutdown_gateway
+    shutdown_gateway([::AWSConfig], arguments::Dict)
+    shutdown_gateway([::AWSConfig]; GatewayARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "ShutdownGateway", arguments::Dict)
@@ -3699,9 +3699,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.start_gateway([::AWSConfig], arguments::Dict)
-    StorageGateway.start_gateway([::AWSConfig]; GatewayARN=)
+    using AWSSDK.StorageGateway.start_gateway
+    start_gateway([::AWSConfig], arguments::Dict)
+    start_gateway([::AWSConfig]; GatewayARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "StartGateway", arguments::Dict)
@@ -3761,9 +3761,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.update_bandwidth_rate_limit([::AWSConfig], arguments::Dict)
-    StorageGateway.update_bandwidth_rate_limit([::AWSConfig]; GatewayARN=, <keyword arguments>)
+    using AWSSDK.StorageGateway.update_bandwidth_rate_limit
+    update_bandwidth_rate_limit([::AWSConfig], arguments::Dict)
+    update_bandwidth_rate_limit([::AWSConfig]; GatewayARN=, <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "UpdateBandwidthRateLimit", arguments::Dict)
@@ -3832,9 +3832,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.update_chap_credentials([::AWSConfig], arguments::Dict)
-    StorageGateway.update_chap_credentials([::AWSConfig]; TargetARN=, SecretToAuthenticateInitiator=, InitiatorName=, <keyword arguments>)
+    using AWSSDK.StorageGateway.update_chap_credentials
+    update_chap_credentials([::AWSConfig], arguments::Dict)
+    update_chap_credentials([::AWSConfig]; TargetARN=, SecretToAuthenticateInitiator=, InitiatorName=, <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "UpdateChapCredentials", arguments::Dict)
@@ -3916,9 +3916,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.update_gateway_information([::AWSConfig], arguments::Dict)
-    StorageGateway.update_gateway_information([::AWSConfig]; GatewayARN=, <keyword arguments>)
+    using AWSSDK.StorageGateway.update_gateway_information
+    update_gateway_information([::AWSConfig], arguments::Dict)
+    update_gateway_information([::AWSConfig]; GatewayARN=, <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "UpdateGatewayInformation", arguments::Dict)
@@ -3987,9 +3987,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.update_gateway_software_now([::AWSConfig], arguments::Dict)
-    StorageGateway.update_gateway_software_now([::AWSConfig]; GatewayARN=)
+    using AWSSDK.StorageGateway.update_gateway_software_now
+    update_gateway_software_now([::AWSConfig], arguments::Dict)
+    update_gateway_software_now([::AWSConfig]; GatewayARN=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "UpdateGatewaySoftwareNow", arguments::Dict)
@@ -4050,9 +4050,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.update_maintenance_start_time([::AWSConfig], arguments::Dict)
-    StorageGateway.update_maintenance_start_time([::AWSConfig]; GatewayARN=, HourOfDay=, MinuteOfHour=, DayOfWeek=)
+    using AWSSDK.StorageGateway.update_maintenance_start_time
+    update_maintenance_start_time([::AWSConfig], arguments::Dict)
+    update_maintenance_start_time([::AWSConfig]; GatewayARN=, HourOfDay=, MinuteOfHour=, DayOfWeek=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "UpdateMaintenanceStartTime", arguments::Dict)
@@ -4122,9 +4122,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.update_nfsfile_share([::AWSConfig], arguments::Dict)
-    StorageGateway.update_nfsfile_share([::AWSConfig]; FileShareARN=, <keyword arguments>)
+    using AWSSDK.StorageGateway.update_nfsfile_share
+    update_nfsfile_share([::AWSConfig], arguments::Dict)
+    update_nfsfile_share([::AWSConfig]; FileShareARN=, <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "UpdateNFSFileShare", arguments::Dict)
@@ -4220,9 +4220,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.update_snapshot_schedule([::AWSConfig], arguments::Dict)
-    StorageGateway.update_snapshot_schedule([::AWSConfig]; VolumeARN=, StartAt=, RecurrenceInHours=, <keyword arguments>)
+    using AWSSDK.StorageGateway.update_snapshot_schedule
+    update_snapshot_schedule([::AWSConfig], arguments::Dict)
+    update_snapshot_schedule([::AWSConfig]; VolumeARN=, StartAt=, RecurrenceInHours=, <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "UpdateSnapshotSchedule", arguments::Dict)
@@ -4296,9 +4296,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 
 """
-    using AWSSDK.StorageGateway
-    StorageGateway.update_vtldevice_type([::AWSConfig], arguments::Dict)
-    StorageGateway.update_vtldevice_type([::AWSConfig]; VTLDeviceARN=, DeviceType=)
+    using AWSSDK.StorageGateway.update_vtldevice_type
+    update_vtldevice_type([::AWSConfig], arguments::Dict)
+    update_vtldevice_type([::AWSConfig]; VTLDeviceARN=, DeviceType=)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "UpdateVTLDeviceType", arguments::Dict)

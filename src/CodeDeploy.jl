@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.add_tags_to_on_premises_instances([::AWSConfig], arguments::Dict)
-    CodeDeploy.add_tags_to_on_premises_instances([::AWSConfig]; tags=, instanceNames=)
+    using AWSSDK.CodeDeploy.add_tags_to_on_premises_instances
+    add_tags_to_on_premises_instances([::AWSConfig], arguments::Dict)
+    add_tags_to_on_premises_instances([::AWSConfig]; tags=, instanceNames=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "AddTagsToOnPremisesInstances", arguments::Dict)
@@ -59,9 +59,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.batch_get_application_revisions([::AWSConfig], arguments::Dict)
-    CodeDeploy.batch_get_application_revisions([::AWSConfig]; applicationName=, revisions=)
+    using AWSSDK.CodeDeploy.batch_get_application_revisions
+    batch_get_application_revisions([::AWSConfig], arguments::Dict)
+    batch_get_application_revisions([::AWSConfig]; applicationName=, revisions=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "BatchGetApplicationRevisions", arguments::Dict)
@@ -117,9 +117,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.batch_get_applications([::AWSConfig], arguments::Dict)
-    CodeDeploy.batch_get_applications([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodeDeploy.batch_get_applications
+    batch_get_applications([::AWSConfig], arguments::Dict)
+    batch_get_applications([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "BatchGetApplications", arguments::Dict)
@@ -156,9 +156,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.batch_get_deployment_groups([::AWSConfig], arguments::Dict)
-    CodeDeploy.batch_get_deployment_groups([::AWSConfig]; applicationName=, deploymentGroupNames=)
+    using AWSSDK.CodeDeploy.batch_get_deployment_groups
+    batch_get_deployment_groups([::AWSConfig], arguments::Dict)
+    batch_get_deployment_groups([::AWSConfig]; applicationName=, deploymentGroupNames=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "BatchGetDeploymentGroups", arguments::Dict)
@@ -199,9 +199,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.batch_get_deployment_instances([::AWSConfig], arguments::Dict)
-    CodeDeploy.batch_get_deployment_instances([::AWSConfig]; deploymentId=, instanceIds=)
+    using AWSSDK.CodeDeploy.batch_get_deployment_instances
+    batch_get_deployment_instances([::AWSConfig], arguments::Dict)
+    batch_get_deployment_instances([::AWSConfig]; deploymentId=, instanceIds=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "BatchGetDeploymentInstances", arguments::Dict)
@@ -242,9 +242,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.batch_get_deployments([::AWSConfig], arguments::Dict)
-    CodeDeploy.batch_get_deployments([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodeDeploy.batch_get_deployments
+    batch_get_deployments([::AWSConfig], arguments::Dict)
+    batch_get_deployments([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "BatchGetDeployments", arguments::Dict)
@@ -281,9 +281,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.batch_get_on_premises_instances([::AWSConfig], arguments::Dict)
-    CodeDeploy.batch_get_on_premises_instances([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodeDeploy.batch_get_on_premises_instances
+    batch_get_on_premises_instances([::AWSConfig], arguments::Dict)
+    batch_get_on_premises_instances([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "BatchGetOnPremisesInstances", arguments::Dict)
@@ -320,9 +320,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.continue_deployment([::AWSConfig], arguments::Dict)
-    CodeDeploy.continue_deployment([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodeDeploy.continue_deployment
+    continue_deployment([::AWSConfig], arguments::Dict)
+    continue_deployment([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "ContinueDeployment", arguments::Dict)
@@ -355,9 +355,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.create_application([::AWSConfig], arguments::Dict)
-    CodeDeploy.create_application([::AWSConfig]; applicationName=)
+    using AWSSDK.CodeDeploy.create_application
+    create_application([::AWSConfig], arguments::Dict)
+    create_application([::AWSConfig]; applicationName=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "CreateApplication", arguments::Dict)
@@ -394,9 +394,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.create_deployment([::AWSConfig], arguments::Dict)
-    CodeDeploy.create_deployment([::AWSConfig]; applicationName=, <keyword arguments>)
+    using AWSSDK.CodeDeploy.create_deployment
+    create_deployment([::AWSConfig], arguments::Dict)
+    create_deployment([::AWSConfig]; applicationName=, <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "CreateDeployment", arguments::Dict)
@@ -510,9 +510,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.create_deployment_config([::AWSConfig], arguments::Dict)
-    CodeDeploy.create_deployment_config([::AWSConfig]; deploymentConfigName=, <keyword arguments>)
+    using AWSSDK.CodeDeploy.create_deployment_config
+    create_deployment_config([::AWSConfig], arguments::Dict)
+    create_deployment_config([::AWSConfig]; deploymentConfigName=, <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "CreateDeploymentConfig", arguments::Dict)
@@ -568,9 +568,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.create_deployment_group([::AWSConfig], arguments::Dict)
-    CodeDeploy.create_deployment_group([::AWSConfig]; applicationName=, deploymentGroupName=, serviceRoleArn=, <keyword arguments>)
+    using AWSSDK.CodeDeploy.create_deployment_group
+    create_deployment_group([::AWSConfig], arguments::Dict)
+    create_deployment_group([::AWSConfig]; applicationName=, deploymentGroupName=, serviceRoleArn=, <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "CreateDeploymentGroup", arguments::Dict)
@@ -705,9 +705,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.delete_application([::AWSConfig], arguments::Dict)
-    CodeDeploy.delete_application([::AWSConfig]; applicationName=)
+    using AWSSDK.CodeDeploy.delete_application
+    delete_application([::AWSConfig], arguments::Dict)
+    delete_application([::AWSConfig]; applicationName=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "DeleteApplication", arguments::Dict)
@@ -740,9 +740,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.delete_deployment_config([::AWSConfig], arguments::Dict)
-    CodeDeploy.delete_deployment_config([::AWSConfig]; deploymentConfigName=)
+    using AWSSDK.CodeDeploy.delete_deployment_config
+    delete_deployment_config([::AWSConfig], arguments::Dict)
+    delete_deployment_config([::AWSConfig]; deploymentConfigName=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "DeleteDeploymentConfig", arguments::Dict)
@@ -778,9 +778,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.delete_deployment_group([::AWSConfig], arguments::Dict)
-    CodeDeploy.delete_deployment_group([::AWSConfig]; applicationName=, deploymentGroupName=)
+    using AWSSDK.CodeDeploy.delete_deployment_group
+    delete_deployment_group([::AWSConfig], arguments::Dict)
+    delete_deployment_group([::AWSConfig]; applicationName=, deploymentGroupName=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "DeleteDeploymentGroup", arguments::Dict)
@@ -821,9 +821,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.deregister_on_premises_instance([::AWSConfig], arguments::Dict)
-    CodeDeploy.deregister_on_premises_instance([::AWSConfig]; instanceName=)
+    using AWSSDK.CodeDeploy.deregister_on_premises_instance
+    deregister_on_premises_instance([::AWSConfig], arguments::Dict)
+    deregister_on_premises_instance([::AWSConfig]; instanceName=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "DeregisterOnPremisesInstance", arguments::Dict)
@@ -856,9 +856,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.get_application([::AWSConfig], arguments::Dict)
-    CodeDeploy.get_application([::AWSConfig]; applicationName=)
+    using AWSSDK.CodeDeploy.get_application
+    get_application([::AWSConfig], arguments::Dict)
+    get_application([::AWSConfig]; applicationName=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "GetApplication", arguments::Dict)
@@ -895,9 +895,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.get_application_revision([::AWSConfig], arguments::Dict)
-    CodeDeploy.get_application_revision([::AWSConfig]; applicationName=, revision=)
+    using AWSSDK.CodeDeploy.get_application_revision
+    get_application_revision([::AWSConfig], arguments::Dict)
+    get_application_revision([::AWSConfig]; applicationName=, revision=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "GetApplicationRevision", arguments::Dict)
@@ -953,9 +953,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.get_deployment([::AWSConfig], arguments::Dict)
-    CodeDeploy.get_deployment([::AWSConfig]; deploymentId=)
+    using AWSSDK.CodeDeploy.get_deployment
+    get_deployment([::AWSConfig], arguments::Dict)
+    get_deployment([::AWSConfig]; deploymentId=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "GetDeployment", arguments::Dict)
@@ -992,9 +992,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.get_deployment_config([::AWSConfig], arguments::Dict)
-    CodeDeploy.get_deployment_config([::AWSConfig]; deploymentConfigName=)
+    using AWSSDK.CodeDeploy.get_deployment_config
+    get_deployment_config([::AWSConfig], arguments::Dict)
+    get_deployment_config([::AWSConfig]; deploymentConfigName=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "GetDeploymentConfig", arguments::Dict)
@@ -1031,9 +1031,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.get_deployment_group([::AWSConfig], arguments::Dict)
-    CodeDeploy.get_deployment_group([::AWSConfig]; applicationName=, deploymentGroupName=)
+    using AWSSDK.CodeDeploy.get_deployment_group
+    get_deployment_group([::AWSConfig], arguments::Dict)
+    get_deployment_group([::AWSConfig]; applicationName=, deploymentGroupName=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "GetDeploymentGroup", arguments::Dict)
@@ -1074,9 +1074,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.get_deployment_instance([::AWSConfig], arguments::Dict)
-    CodeDeploy.get_deployment_instance([::AWSConfig]; deploymentId=, instanceId=)
+    using AWSSDK.CodeDeploy.get_deployment_instance
+    get_deployment_instance([::AWSConfig], arguments::Dict)
+    get_deployment_instance([::AWSConfig]; deploymentId=, instanceId=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "GetDeploymentInstance", arguments::Dict)
@@ -1117,9 +1117,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.get_on_premises_instance([::AWSConfig], arguments::Dict)
-    CodeDeploy.get_on_premises_instance([::AWSConfig]; instanceName=)
+    using AWSSDK.CodeDeploy.get_on_premises_instance
+    get_on_premises_instance([::AWSConfig], arguments::Dict)
+    get_on_premises_instance([::AWSConfig]; instanceName=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "GetOnPremisesInstance", arguments::Dict)
@@ -1156,9 +1156,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.list_application_revisions([::AWSConfig], arguments::Dict)
-    CodeDeploy.list_application_revisions([::AWSConfig]; applicationName=, <keyword arguments>)
+    using AWSSDK.CodeDeploy.list_application_revisions
+    list_application_revisions([::AWSConfig], arguments::Dict)
+    list_application_revisions([::AWSConfig]; applicationName=, <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "ListApplicationRevisions", arguments::Dict)
@@ -1243,9 +1243,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.list_applications([::AWSConfig], arguments::Dict)
-    CodeDeploy.list_applications([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodeDeploy.list_applications
+    list_applications([::AWSConfig], arguments::Dict)
+    list_applications([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "ListApplications", arguments::Dict)
@@ -1282,9 +1282,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.list_deployment_configs([::AWSConfig], arguments::Dict)
-    CodeDeploy.list_deployment_configs([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodeDeploy.list_deployment_configs
+    list_deployment_configs([::AWSConfig], arguments::Dict)
+    list_deployment_configs([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "ListDeploymentConfigs", arguments::Dict)
@@ -1321,9 +1321,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.list_deployment_groups([::AWSConfig], arguments::Dict)
-    CodeDeploy.list_deployment_groups([::AWSConfig]; applicationName=, <keyword arguments>)
+    using AWSSDK.CodeDeploy.list_deployment_groups
+    list_deployment_groups([::AWSConfig], arguments::Dict)
+    list_deployment_groups([::AWSConfig]; applicationName=, <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "ListDeploymentGroups", arguments::Dict)
@@ -1364,9 +1364,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.list_deployment_instances([::AWSConfig], arguments::Dict)
-    CodeDeploy.list_deployment_instances([::AWSConfig]; deploymentId=, <keyword arguments>)
+    using AWSSDK.CodeDeploy.list_deployment_instances
+    list_deployment_instances([::AWSConfig], arguments::Dict)
+    list_deployment_instances([::AWSConfig]; deploymentId=, <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "ListDeploymentInstances", arguments::Dict)
@@ -1427,9 +1427,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.list_deployments([::AWSConfig], arguments::Dict)
-    CodeDeploy.list_deployments([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodeDeploy.list_deployments
+    list_deployments([::AWSConfig], arguments::Dict)
+    list_deployments([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "ListDeployments", arguments::Dict)
@@ -1499,9 +1499,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.list_git_hub_account_token_names([::AWSConfig], arguments::Dict)
-    CodeDeploy.list_git_hub_account_token_names([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodeDeploy.list_git_hub_account_token_names
+    list_git_hub_account_token_names([::AWSConfig], arguments::Dict)
+    list_git_hub_account_token_names([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "ListGitHubAccountTokenNames", arguments::Dict)
@@ -1538,9 +1538,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.list_on_premises_instances([::AWSConfig], arguments::Dict)
-    CodeDeploy.list_on_premises_instances([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodeDeploy.list_on_premises_instances
+    list_on_premises_instances([::AWSConfig], arguments::Dict)
+    list_on_premises_instances([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "ListOnPremisesInstances", arguments::Dict)
@@ -1597,9 +1597,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.register_application_revision([::AWSConfig], arguments::Dict)
-    CodeDeploy.register_application_revision([::AWSConfig]; applicationName=, revision=, <keyword arguments>)
+    using AWSSDK.CodeDeploy.register_application_revision
+    register_application_revision([::AWSConfig], arguments::Dict)
+    register_application_revision([::AWSConfig]; applicationName=, revision=, <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "RegisterApplicationRevision", arguments::Dict)
@@ -1655,9 +1655,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.register_on_premises_instance([::AWSConfig], arguments::Dict)
-    CodeDeploy.register_on_premises_instance([::AWSConfig]; instanceName=, <keyword arguments>)
+    using AWSSDK.CodeDeploy.register_on_premises_instance
+    register_on_premises_instance([::AWSConfig], arguments::Dict)
+    register_on_premises_instance([::AWSConfig]; instanceName=, <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "RegisterOnPremisesInstance", arguments::Dict)
@@ -1701,9 +1701,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.remove_tags_from_on_premises_instances([::AWSConfig], arguments::Dict)
-    CodeDeploy.remove_tags_from_on_premises_instances([::AWSConfig]; tags=, instanceNames=)
+    using AWSSDK.CodeDeploy.remove_tags_from_on_premises_instances
+    remove_tags_from_on_premises_instances([::AWSConfig], arguments::Dict)
+    remove_tags_from_on_premises_instances([::AWSConfig]; tags=, instanceNames=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "RemoveTagsFromOnPremisesInstances", arguments::Dict)
@@ -1745,9 +1745,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.skip_wait_time_for_instance_termination([::AWSConfig], arguments::Dict)
-    CodeDeploy.skip_wait_time_for_instance_termination([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodeDeploy.skip_wait_time_for_instance_termination
+    skip_wait_time_for_instance_termination([::AWSConfig], arguments::Dict)
+    skip_wait_time_for_instance_termination([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "SkipWaitTimeForInstanceTermination", arguments::Dict)
@@ -1780,9 +1780,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.stop_deployment([::AWSConfig], arguments::Dict)
-    CodeDeploy.stop_deployment([::AWSConfig]; deploymentId=, <keyword arguments>)
+    using AWSSDK.CodeDeploy.stop_deployment
+    stop_deployment([::AWSConfig], arguments::Dict)
+    stop_deployment([::AWSConfig]; deploymentId=, <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "StopDeployment", arguments::Dict)
@@ -1823,9 +1823,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.update_application([::AWSConfig], arguments::Dict)
-    CodeDeploy.update_application([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodeDeploy.update_application
+    update_application([::AWSConfig], arguments::Dict)
+    update_application([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "UpdateApplication", arguments::Dict)
@@ -1862,9 +1862,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 
 
 """
-    using AWSSDK.CodeDeploy
-    CodeDeploy.update_deployment_group([::AWSConfig], arguments::Dict)
-    CodeDeploy.update_deployment_group([::AWSConfig]; applicationName=, currentDeploymentGroupName=, <keyword arguments>)
+    using AWSSDK.CodeDeploy.update_deployment_group
+    update_deployment_group([::AWSConfig], arguments::Dict)
+    update_deployment_group([::AWSConfig]; applicationName=, currentDeploymentGroupName=, <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "UpdateDeploymentGroup", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.add_facet_to_object([::AWSConfig], arguments::Dict)
-    CloudDirectory.add_facet_to_object([::AWSConfig]; x-amz-data-partition=, SchemaFacet=, ObjectReference=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.add_facet_to_object
+    add_facet_to_object([::AWSConfig], arguments::Dict)
+    add_facet_to_object([::AWSConfig]; x-amz-data-partition=, SchemaFacet=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/facets", arguments::Dict)
@@ -84,9 +84,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.apply_schema([::AWSConfig], arguments::Dict)
-    CloudDirectory.apply_schema([::AWSConfig]; PublishedSchemaArn=, x-amz-data-partition=)
+    using AWSSDK.CloudDirectory.apply_schema
+    apply_schema([::AWSConfig], arguments::Dict)
+    apply_schema([::AWSConfig]; PublishedSchemaArn=, x-amz-data-partition=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/apply", arguments::Dict)
@@ -127,9 +127,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.attach_object([::AWSConfig], arguments::Dict)
-    CloudDirectory.attach_object([::AWSConfig]; x-amz-data-partition=, ParentReference=, ChildReference=, LinkName=)
+    using AWSSDK.CloudDirectory.attach_object
+    attach_object([::AWSConfig], arguments::Dict)
+    attach_object([::AWSConfig]; x-amz-data-partition=, ParentReference=, ChildReference=, LinkName=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/attach", arguments::Dict)
@@ -182,9 +182,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.attach_policy([::AWSConfig], arguments::Dict)
-    CloudDirectory.attach_policy([::AWSConfig]; PolicyReference=, ObjectReference=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.attach_policy
+    attach_policy([::AWSConfig], arguments::Dict)
+    attach_policy([::AWSConfig]; PolicyReference=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/policy/attach", arguments::Dict)
@@ -229,9 +229,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.attach_to_index([::AWSConfig], arguments::Dict)
-    CloudDirectory.attach_to_index([::AWSConfig]; x-amz-data-partition=, IndexReference=, TargetReference=)
+    using AWSSDK.CloudDirectory.attach_to_index
+    attach_to_index([::AWSConfig], arguments::Dict)
+    attach_to_index([::AWSConfig]; x-amz-data-partition=, IndexReference=, TargetReference=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/index/attach", arguments::Dict)
@@ -276,9 +276,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.attach_typed_link([::AWSConfig], arguments::Dict)
-    CloudDirectory.attach_typed_link([::AWSConfig]; x-amz-data-partition=, SourceObjectReference=, TargetObjectReference=, TypedLinkFacet=, Attributes=)
+    using AWSSDK.CloudDirectory.attach_typed_link
+    attach_typed_link([::AWSConfig], arguments::Dict)
+    attach_typed_link([::AWSConfig]; x-amz-data-partition=, SourceObjectReference=, TargetObjectReference=, TypedLinkFacet=, Attributes=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/attach", arguments::Dict)
@@ -347,9 +347,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.batch_read([::AWSConfig], arguments::Dict)
-    CloudDirectory.batch_read([::AWSConfig]; x-amz-data-partition=, Operations=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.batch_read
+    batch_read([::AWSConfig], arguments::Dict)
+    batch_read([::AWSConfig]; x-amz-data-partition=, Operations=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/batchread", arguments::Dict)
@@ -527,9 +527,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.batch_write([::AWSConfig], arguments::Dict)
-    CloudDirectory.batch_write([::AWSConfig]; x-amz-data-partition=, Operations=)
+    using AWSSDK.CloudDirectory.batch_write
+    batch_write([::AWSConfig], arguments::Dict)
+    batch_write([::AWSConfig]; x-amz-data-partition=, Operations=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/batchwrite", arguments::Dict)
@@ -714,9 +714,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.create_directory([::AWSConfig], arguments::Dict)
-    CloudDirectory.create_directory([::AWSConfig]; Name=, x-amz-data-partition=)
+    using AWSSDK.CloudDirectory.create_directory
+    create_directory([::AWSConfig], arguments::Dict)
+    create_directory([::AWSConfig]; Name=, x-amz-data-partition=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/directory/create", arguments::Dict)
@@ -757,9 +757,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.create_facet([::AWSConfig], arguments::Dict)
-    CloudDirectory.create_facet([::AWSConfig]; x-amz-data-partition=, Name=, ObjectType=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.create_facet
+    create_facet([::AWSConfig], arguments::Dict)
+    create_facet([::AWSConfig]; x-amz-data-partition=, Name=, ObjectType=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/facet/create", arguments::Dict)
@@ -837,9 +837,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.create_index([::AWSConfig], arguments::Dict)
-    CloudDirectory.create_index([::AWSConfig]; x-amz-data-partition=, OrderedIndexedAttributeList=, IsUnique=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.create_index
+    create_index([::AWSConfig], arguments::Dict)
+    create_index([::AWSConfig]; x-amz-data-partition=, OrderedIndexedAttributeList=, IsUnique=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/index", arguments::Dict)
@@ -898,9 +898,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.create_object([::AWSConfig], arguments::Dict)
-    CloudDirectory.create_object([::AWSConfig]; x-amz-data-partition=, SchemaFacets=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.create_object
+    create_object([::AWSConfig], arguments::Dict)
+    create_object([::AWSConfig]; x-amz-data-partition=, SchemaFacets=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object", arguments::Dict)
@@ -973,9 +973,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.create_schema([::AWSConfig], arguments::Dict)
-    CloudDirectory.create_schema([::AWSConfig]; Name=)
+    using AWSSDK.CloudDirectory.create_schema
+    create_schema([::AWSConfig], arguments::Dict)
+    create_schema([::AWSConfig]; Name=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/create", arguments::Dict)
@@ -1018,9 +1018,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.create_typed_link_facet([::AWSConfig], arguments::Dict)
-    CloudDirectory.create_typed_link_facet([::AWSConfig]; x-amz-data-partition=, Facet=)
+    using AWSSDK.CloudDirectory.create_typed_link_facet
+    create_typed_link_facet([::AWSConfig], arguments::Dict)
+    create_typed_link_facet([::AWSConfig]; x-amz-data-partition=, Facet=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/facet/create", arguments::Dict)
@@ -1080,9 +1080,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.delete_directory([::AWSConfig], arguments::Dict)
-    CloudDirectory.delete_directory([::AWSConfig]; x-amz-data-partition=)
+    using AWSSDK.CloudDirectory.delete_directory
+    delete_directory([::AWSConfig], arguments::Dict)
+    delete_directory([::AWSConfig]; x-amz-data-partition=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/directory", arguments::Dict)
@@ -1119,9 +1119,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.delete_facet([::AWSConfig], arguments::Dict)
-    CloudDirectory.delete_facet([::AWSConfig]; x-amz-data-partition=, Name=)
+    using AWSSDK.CloudDirectory.delete_facet
+    delete_facet([::AWSConfig], arguments::Dict)
+    delete_facet([::AWSConfig]; x-amz-data-partition=, Name=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/facet/delete", arguments::Dict)
@@ -1162,9 +1162,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.delete_object([::AWSConfig], arguments::Dict)
-    CloudDirectory.delete_object([::AWSConfig]; x-amz-data-partition=, ObjectReference=)
+    using AWSSDK.CloudDirectory.delete_object
+    delete_object([::AWSConfig], arguments::Dict)
+    delete_object([::AWSConfig]; x-amz-data-partition=, ObjectReference=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/delete", arguments::Dict)
@@ -1205,9 +1205,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.delete_schema([::AWSConfig], arguments::Dict)
-    CloudDirectory.delete_schema([::AWSConfig]; x-amz-data-partition=)
+    using AWSSDK.CloudDirectory.delete_schema
+    delete_schema([::AWSConfig], arguments::Dict)
+    delete_schema([::AWSConfig]; x-amz-data-partition=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema", arguments::Dict)
@@ -1244,9 +1244,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.delete_typed_link_facet([::AWSConfig], arguments::Dict)
-    CloudDirectory.delete_typed_link_facet([::AWSConfig]; x-amz-data-partition=, Name=)
+    using AWSSDK.CloudDirectory.delete_typed_link_facet
+    delete_typed_link_facet([::AWSConfig], arguments::Dict)
+    delete_typed_link_facet([::AWSConfig]; x-amz-data-partition=, Name=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/facet/delete", arguments::Dict)
@@ -1287,9 +1287,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.detach_from_index([::AWSConfig], arguments::Dict)
-    CloudDirectory.detach_from_index([::AWSConfig]; x-amz-data-partition=, IndexReference=, TargetReference=)
+    using AWSSDK.CloudDirectory.detach_from_index
+    detach_from_index([::AWSConfig], arguments::Dict)
+    detach_from_index([::AWSConfig]; x-amz-data-partition=, IndexReference=, TargetReference=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/index/detach", arguments::Dict)
@@ -1334,9 +1334,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.detach_object([::AWSConfig], arguments::Dict)
-    CloudDirectory.detach_object([::AWSConfig]; x-amz-data-partition=, ParentReference=, LinkName=)
+    using AWSSDK.CloudDirectory.detach_object
+    detach_object([::AWSConfig], arguments::Dict)
+    detach_object([::AWSConfig]; x-amz-data-partition=, ParentReference=, LinkName=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/detach", arguments::Dict)
@@ -1381,9 +1381,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.detach_policy([::AWSConfig], arguments::Dict)
-    CloudDirectory.detach_policy([::AWSConfig]; x-amz-data-partition=, PolicyReference=, ObjectReference=)
+    using AWSSDK.CloudDirectory.detach_policy
+    detach_policy([::AWSConfig], arguments::Dict)
+    detach_policy([::AWSConfig]; x-amz-data-partition=, PolicyReference=, ObjectReference=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/policy/detach", arguments::Dict)
@@ -1428,9 +1428,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.detach_typed_link([::AWSConfig], arguments::Dict)
-    CloudDirectory.detach_typed_link([::AWSConfig]; x-amz-data-partition=, TypedLinkSpecifier=)
+    using AWSSDK.CloudDirectory.detach_typed_link
+    detach_typed_link([::AWSConfig], arguments::Dict)
+    detach_typed_link([::AWSConfig]; x-amz-data-partition=, TypedLinkSpecifier=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/detach", arguments::Dict)
@@ -1486,9 +1486,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.disable_directory([::AWSConfig], arguments::Dict)
-    CloudDirectory.disable_directory([::AWSConfig]; x-amz-data-partition=)
+    using AWSSDK.CloudDirectory.disable_directory
+    disable_directory([::AWSConfig], arguments::Dict)
+    disable_directory([::AWSConfig]; x-amz-data-partition=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/directory/disable", arguments::Dict)
@@ -1525,9 +1525,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.enable_directory([::AWSConfig], arguments::Dict)
-    CloudDirectory.enable_directory([::AWSConfig]; x-amz-data-partition=)
+    using AWSSDK.CloudDirectory.enable_directory
+    enable_directory([::AWSConfig], arguments::Dict)
+    enable_directory([::AWSConfig]; x-amz-data-partition=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/directory/enable", arguments::Dict)
@@ -1564,9 +1564,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.get_directory([::AWSConfig], arguments::Dict)
-    CloudDirectory.get_directory([::AWSConfig]; x-amz-data-partition=)
+    using AWSSDK.CloudDirectory.get_directory
+    get_directory([::AWSConfig], arguments::Dict)
+    get_directory([::AWSConfig]; x-amz-data-partition=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/directory/get", arguments::Dict)
@@ -1603,9 +1603,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.get_facet([::AWSConfig], arguments::Dict)
-    CloudDirectory.get_facet([::AWSConfig]; x-amz-data-partition=, Name=)
+    using AWSSDK.CloudDirectory.get_facet
+    get_facet([::AWSConfig], arguments::Dict)
+    get_facet([::AWSConfig]; x-amz-data-partition=, Name=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/facet", arguments::Dict)
@@ -1646,9 +1646,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.get_object_information([::AWSConfig], arguments::Dict)
-    CloudDirectory.get_object_information([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.get_object_information
+    get_object_information([::AWSConfig], arguments::Dict)
+    get_object_information([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/information", arguments::Dict)
@@ -1693,9 +1693,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.get_schema_as_json([::AWSConfig], arguments::Dict)
-    CloudDirectory.get_schema_as_json([::AWSConfig]; x-amz-data-partition=)
+    using AWSSDK.CloudDirectory.get_schema_as_json
+    get_schema_as_json([::AWSConfig], arguments::Dict)
+    get_schema_as_json([::AWSConfig]; x-amz-data-partition=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/schema/json", arguments::Dict)
@@ -1732,9 +1732,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.get_typed_link_facet_information([::AWSConfig], arguments::Dict)
-    CloudDirectory.get_typed_link_facet_information([::AWSConfig]; x-amz-data-partition=, Name=)
+    using AWSSDK.CloudDirectory.get_typed_link_facet_information
+    get_typed_link_facet_information([::AWSConfig], arguments::Dict)
+    get_typed_link_facet_information([::AWSConfig]; x-amz-data-partition=, Name=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/facet/get", arguments::Dict)
@@ -1775,9 +1775,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_applied_schema_arns([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_applied_schema_arns([::AWSConfig]; DirectoryArn=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_applied_schema_arns
+    list_applied_schema_arns([::AWSConfig], arguments::Dict)
+    list_applied_schema_arns([::AWSConfig]; DirectoryArn=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/schema/applied", arguments::Dict)
@@ -1822,9 +1822,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_attached_indices([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_attached_indices([::AWSConfig]; x-amz-data-partition=, TargetReference=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_attached_indices
+    list_attached_indices([::AWSConfig], arguments::Dict)
+    list_attached_indices([::AWSConfig]; x-amz-data-partition=, TargetReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/indices", arguments::Dict)
@@ -1877,9 +1877,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_development_schema_arns([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_development_schema_arns([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_development_schema_arns
+    list_development_schema_arns([::AWSConfig], arguments::Dict)
+    list_development_schema_arns([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/schema/development", arguments::Dict)
@@ -1920,9 +1920,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_directories([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_directories([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_directories
+    list_directories([::AWSConfig], arguments::Dict)
+    list_directories([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/directory/list", arguments::Dict)
@@ -1967,9 +1967,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_facet_attributes([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_facet_attributes([::AWSConfig]; x-amz-data-partition=, Name=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_facet_attributes
+    list_facet_attributes([::AWSConfig], arguments::Dict)
+    list_facet_attributes([::AWSConfig]; x-amz-data-partition=, Name=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/facet/attributes", arguments::Dict)
@@ -2018,9 +2018,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_facet_names([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_facet_names([::AWSConfig]; x-amz-data-partition=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_facet_names
+    list_facet_names([::AWSConfig], arguments::Dict)
+    list_facet_names([::AWSConfig]; x-amz-data-partition=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/facet/list", arguments::Dict)
@@ -2065,9 +2065,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_incoming_typed_links([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_incoming_typed_links([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_incoming_typed_links
+    list_incoming_typed_links([::AWSConfig], arguments::Dict)
+    list_incoming_typed_links([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/incoming", arguments::Dict)
@@ -2155,9 +2155,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_index([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_index([::AWSConfig]; x-amz-data-partition=, IndexReference=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_index
+    list_index([::AWSConfig], arguments::Dict)
+    list_index([::AWSConfig]; x-amz-data-partition=, IndexReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/index/targets", arguments::Dict)
@@ -2240,9 +2240,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_object_attributes([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_object_attributes([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_object_attributes
+    list_object_attributes([::AWSConfig], arguments::Dict)
+    list_object_attributes([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/attributes", arguments::Dict)
@@ -2304,9 +2304,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_object_children([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_object_children([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_object_children
+    list_object_children([::AWSConfig], arguments::Dict)
+    list_object_children([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/children", arguments::Dict)
@@ -2359,9 +2359,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_object_parent_paths([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_object_parent_paths([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_object_parent_paths
+    list_object_parent_paths([::AWSConfig], arguments::Dict)
+    list_object_parent_paths([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/parentpaths", arguments::Dict)
@@ -2412,9 +2412,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_object_parents([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_object_parents([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_object_parents
+    list_object_parents([::AWSConfig], arguments::Dict)
+    list_object_parents([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/parent", arguments::Dict)
@@ -2467,9 +2467,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_object_policies([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_object_policies([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_object_policies
+    list_object_policies([::AWSConfig], arguments::Dict)
+    list_object_policies([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/policy", arguments::Dict)
@@ -2522,9 +2522,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_outgoing_typed_links([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_outgoing_typed_links([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_outgoing_typed_links
+    list_outgoing_typed_links([::AWSConfig], arguments::Dict)
+    list_outgoing_typed_links([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/outgoing", arguments::Dict)
@@ -2612,9 +2612,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_policy_attachments([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_policy_attachments([::AWSConfig]; x-amz-data-partition=, PolicyReference=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_policy_attachments
+    list_policy_attachments([::AWSConfig], arguments::Dict)
+    list_policy_attachments([::AWSConfig]; x-amz-data-partition=, PolicyReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/policy/attachment", arguments::Dict)
@@ -2667,9 +2667,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_published_schema_arns([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_published_schema_arns([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_published_schema_arns
+    list_published_schema_arns([::AWSConfig], arguments::Dict)
+    list_published_schema_arns([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/schema/published", arguments::Dict)
@@ -2710,9 +2710,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_tags_for_resource([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_tags_for_resource([::AWSConfig]; ResourceArn=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_tags_for_resource
+    list_tags_for_resource([::AWSConfig], arguments::Dict)
+    list_tags_for_resource([::AWSConfig]; ResourceArn=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/tags", arguments::Dict)
@@ -2757,9 +2757,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_typed_link_facet_attributes([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_typed_link_facet_attributes([::AWSConfig]; x-amz-data-partition=, Name=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_typed_link_facet_attributes
+    list_typed_link_facet_attributes([::AWSConfig], arguments::Dict)
+    list_typed_link_facet_attributes([::AWSConfig]; x-amz-data-partition=, Name=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes", arguments::Dict)
@@ -2808,9 +2808,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.list_typed_link_facet_names([::AWSConfig], arguments::Dict)
-    CloudDirectory.list_typed_link_facet_names([::AWSConfig]; x-amz-data-partition=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.list_typed_link_facet_names
+    list_typed_link_facet_names([::AWSConfig], arguments::Dict)
+    list_typed_link_facet_names([::AWSConfig]; x-amz-data-partition=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/facet/list", arguments::Dict)
@@ -2855,9 +2855,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.lookup_policy([::AWSConfig], arguments::Dict)
-    CloudDirectory.lookup_policy([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.lookup_policy
+    lookup_policy([::AWSConfig], arguments::Dict)
+    lookup_policy([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/policy/lookup", arguments::Dict)
@@ -2906,9 +2906,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.publish_schema([::AWSConfig], arguments::Dict)
-    CloudDirectory.publish_schema([::AWSConfig]; x-amz-data-partition=, Version=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.publish_schema
+    publish_schema([::AWSConfig], arguments::Dict)
+    publish_schema([::AWSConfig]; x-amz-data-partition=, Version=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/publish", arguments::Dict)
@@ -2953,9 +2953,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.put_schema_from_json([::AWSConfig], arguments::Dict)
-    CloudDirectory.put_schema_from_json([::AWSConfig]; x-amz-data-partition=, Document=)
+    using AWSSDK.CloudDirectory.put_schema_from_json
+    put_schema_from_json([::AWSConfig], arguments::Dict)
+    put_schema_from_json([::AWSConfig]; x-amz-data-partition=, Document=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/json", arguments::Dict)
@@ -2996,9 +2996,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.remove_facet_from_object([::AWSConfig], arguments::Dict)
-    CloudDirectory.remove_facet_from_object([::AWSConfig]; x-amz-data-partition=, SchemaFacet=, ObjectReference=)
+    using AWSSDK.CloudDirectory.remove_facet_from_object
+    remove_facet_from_object([::AWSConfig], arguments::Dict)
+    remove_facet_from_object([::AWSConfig]; x-amz-data-partition=, SchemaFacet=, ObjectReference=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/facets/delete", arguments::Dict)
@@ -3048,9 +3048,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.tag_resource([::AWSConfig], arguments::Dict)
-    CloudDirectory.tag_resource([::AWSConfig]; ResourceArn=, Tags=)
+    using AWSSDK.CloudDirectory.tag_resource
+    tag_resource([::AWSConfig], arguments::Dict)
+    tag_resource([::AWSConfig]; ResourceArn=, Tags=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/tags/add", arguments::Dict)
@@ -3096,9 +3096,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.untag_resource([::AWSConfig], arguments::Dict)
-    CloudDirectory.untag_resource([::AWSConfig]; ResourceArn=, TagKeys=)
+    using AWSSDK.CloudDirectory.untag_resource
+    untag_resource([::AWSConfig], arguments::Dict)
+    untag_resource([::AWSConfig]; ResourceArn=, TagKeys=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/tags/remove", arguments::Dict)
@@ -3139,9 +3139,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.update_facet([::AWSConfig], arguments::Dict)
-    CloudDirectory.update_facet([::AWSConfig]; x-amz-data-partition=, Name=, <keyword arguments>)
+    using AWSSDK.CloudDirectory.update_facet
+    update_facet([::AWSConfig], arguments::Dict)
+    update_facet([::AWSConfig]; x-amz-data-partition=, Name=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/facet", arguments::Dict)
@@ -3220,9 +3220,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.update_object_attributes([::AWSConfig], arguments::Dict)
-    CloudDirectory.update_object_attributes([::AWSConfig]; x-amz-data-partition=, ObjectReference=, AttributeUpdates=)
+    using AWSSDK.CloudDirectory.update_object_attributes
+    update_object_attributes([::AWSConfig], arguments::Dict)
+    update_object_attributes([::AWSConfig]; x-amz-data-partition=, ObjectReference=, AttributeUpdates=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/update", arguments::Dict)
@@ -3285,9 +3285,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.update_schema([::AWSConfig], arguments::Dict)
-    CloudDirectory.update_schema([::AWSConfig]; x-amz-data-partition=, Name=)
+    using AWSSDK.CloudDirectory.update_schema
+    update_schema([::AWSConfig], arguments::Dict)
+    update_schema([::AWSConfig]; x-amz-data-partition=, Name=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/update", arguments::Dict)
@@ -3328,9 +3328,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 
 """
-    using AWSSDK.CloudDirectory
-    CloudDirectory.update_typed_link_facet([::AWSConfig], arguments::Dict)
-    CloudDirectory.update_typed_link_facet([::AWSConfig]; x-amz-data-partition=, Name=, AttributeUpdates=, IdentityAttributeOrder=)
+    using AWSSDK.CloudDirectory.update_typed_link_facet
+    update_typed_link_facet([::AWSConfig], arguments::Dict)
+    update_typed_link_facet([::AWSConfig]; x-amz-data-partition=, Name=, AttributeUpdates=, IdentityAttributeOrder=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/facet", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CognitoSync
-    CognitoSync.bulk_publish([::AWSConfig], arguments::Dict)
-    CognitoSync.bulk_publish([::AWSConfig]; IdentityPoolId=)
+    using AWSSDK.CognitoSync.bulk_publish
+    bulk_publish([::AWSConfig], arguments::Dict)
+    bulk_publish([::AWSConfig]; IdentityPoolId=)
 
     using AWSCore.Services.cognito_sync
     cognito_sync([::AWSConfig], "POST", "/identitypools/{IdentityPoolId}/bulkpublish", arguments::Dict)
@@ -54,9 +54,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoSync
-    CognitoSync.delete_dataset([::AWSConfig], arguments::Dict)
-    CognitoSync.delete_dataset([::AWSConfig]; IdentityPoolId=, IdentityId=, DatasetName=)
+    using AWSSDK.CognitoSync.delete_dataset
+    delete_dataset([::AWSConfig], arguments::Dict)
+    delete_dataset([::AWSConfig]; IdentityPoolId=, IdentityId=, DatasetName=)
 
     using AWSCore.Services.cognito_sync
     cognito_sync([::AWSConfig], "DELETE", "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", arguments::Dict)
@@ -103,9 +103,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoSync
-    CognitoSync.describe_dataset([::AWSConfig], arguments::Dict)
-    CognitoSync.describe_dataset([::AWSConfig]; IdentityPoolId=, IdentityId=, DatasetName=)
+    using AWSSDK.CognitoSync.describe_dataset
+    describe_dataset([::AWSConfig], arguments::Dict)
+    describe_dataset([::AWSConfig]; IdentityPoolId=, IdentityId=, DatasetName=)
 
     using AWSCore.Services.cognito_sync
     cognito_sync([::AWSConfig], "GET", "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", arguments::Dict)
@@ -152,9 +152,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoSync
-    CognitoSync.describe_identity_pool_usage([::AWSConfig], arguments::Dict)
-    CognitoSync.describe_identity_pool_usage([::AWSConfig]; IdentityPoolId=)
+    using AWSSDK.CognitoSync.describe_identity_pool_usage
+    describe_identity_pool_usage([::AWSConfig], arguments::Dict)
+    describe_identity_pool_usage([::AWSConfig]; IdentityPoolId=)
 
     using AWSCore.Services.cognito_sync
     cognito_sync([::AWSConfig], "GET", "/identitypools/{IdentityPoolId}", arguments::Dict)
@@ -193,9 +193,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoSync
-    CognitoSync.describe_identity_usage([::AWSConfig], arguments::Dict)
-    CognitoSync.describe_identity_usage([::AWSConfig]; IdentityPoolId=, IdentityId=)
+    using AWSSDK.CognitoSync.describe_identity_usage
+    describe_identity_usage([::AWSConfig], arguments::Dict)
+    describe_identity_usage([::AWSConfig]; IdentityPoolId=, IdentityId=)
 
     using AWSCore.Services.cognito_sync
     cognito_sync([::AWSConfig], "GET", "/identitypools/{IdentityPoolId}/identities/{IdentityId}", arguments::Dict)
@@ -238,9 +238,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoSync
-    CognitoSync.get_bulk_publish_details([::AWSConfig], arguments::Dict)
-    CognitoSync.get_bulk_publish_details([::AWSConfig]; IdentityPoolId=)
+    using AWSSDK.CognitoSync.get_bulk_publish_details
+    get_bulk_publish_details([::AWSConfig], arguments::Dict)
+    get_bulk_publish_details([::AWSConfig]; IdentityPoolId=)
 
     using AWSCore.Services.cognito_sync
     cognito_sync([::AWSConfig], "POST", "/identitypools/{IdentityPoolId}/getBulkPublishDetails", arguments::Dict)
@@ -279,9 +279,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoSync
-    CognitoSync.get_cognito_events([::AWSConfig], arguments::Dict)
-    CognitoSync.get_cognito_events([::AWSConfig]; IdentityPoolId=)
+    using AWSSDK.CognitoSync.get_cognito_events
+    get_cognito_events([::AWSConfig], arguments::Dict)
+    get_cognito_events([::AWSConfig]; IdentityPoolId=)
 
     using AWSCore.Services.cognito_sync
     cognito_sync([::AWSConfig], "GET", "/identitypools/{IdentityPoolId}/events", arguments::Dict)
@@ -320,9 +320,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoSync
-    CognitoSync.get_identity_pool_configuration([::AWSConfig], arguments::Dict)
-    CognitoSync.get_identity_pool_configuration([::AWSConfig]; IdentityPoolId=)
+    using AWSSDK.CognitoSync.get_identity_pool_configuration
+    get_identity_pool_configuration([::AWSConfig], arguments::Dict)
+    get_identity_pool_configuration([::AWSConfig]; IdentityPoolId=)
 
     using AWSCore.Services.cognito_sync
     cognito_sync([::AWSConfig], "GET", "/identitypools/{IdentityPoolId}/configuration", arguments::Dict)
@@ -361,9 +361,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoSync
-    CognitoSync.list_datasets([::AWSConfig], arguments::Dict)
-    CognitoSync.list_datasets([::AWSConfig]; IdentityPoolId=, IdentityId=, <keyword arguments>)
+    using AWSSDK.CognitoSync.list_datasets
+    list_datasets([::AWSConfig], arguments::Dict)
+    list_datasets([::AWSConfig]; IdentityPoolId=, IdentityId=, <keyword arguments>)
 
     using AWSCore.Services.cognito_sync
     cognito_sync([::AWSConfig], "GET", "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets", arguments::Dict)
@@ -414,9 +414,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoSync
-    CognitoSync.list_identity_pool_usage([::AWSConfig], arguments::Dict)
-    CognitoSync.list_identity_pool_usage([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CognitoSync.list_identity_pool_usage
+    list_identity_pool_usage([::AWSConfig], arguments::Dict)
+    list_identity_pool_usage([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cognito_sync
     cognito_sync([::AWSConfig], "GET", "/identitypools", arguments::Dict)
@@ -459,9 +459,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoSync
-    CognitoSync.list_records([::AWSConfig], arguments::Dict)
-    CognitoSync.list_records([::AWSConfig]; IdentityPoolId=, IdentityId=, DatasetName=, <keyword arguments>)
+    using AWSSDK.CognitoSync.list_records
+    list_records([::AWSConfig], arguments::Dict)
+    list_records([::AWSConfig]; IdentityPoolId=, IdentityId=, DatasetName=, <keyword arguments>)
 
     using AWSCore.Services.cognito_sync
     cognito_sync([::AWSConfig], "GET", "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/records", arguments::Dict)
@@ -524,9 +524,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoSync
-    CognitoSync.register_device([::AWSConfig], arguments::Dict)
-    CognitoSync.register_device([::AWSConfig]; IdentityPoolId=, IdentityId=, Platform=, Token=)
+    using AWSSDK.CognitoSync.register_device
+    register_device([::AWSConfig], arguments::Dict)
+    register_device([::AWSConfig]; IdentityPoolId=, IdentityId=, Platform=, Token=)
 
     using AWSCore.Services.cognito_sync
     cognito_sync([::AWSConfig], "POST", "/identitypools/{IdentityPoolId}/identity/{IdentityId}/device", arguments::Dict)
@@ -577,9 +577,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoSync
-    CognitoSync.set_cognito_events([::AWSConfig], arguments::Dict)
-    CognitoSync.set_cognito_events([::AWSConfig]; IdentityPoolId=, Events=)
+    using AWSSDK.CognitoSync.set_cognito_events
+    set_cognito_events([::AWSConfig], arguments::Dict)
+    set_cognito_events([::AWSConfig]; IdentityPoolId=, Events=)
 
     using AWSCore.Services.cognito_sync
     cognito_sync([::AWSConfig], "POST", "/identitypools/{IdentityPoolId}/events", arguments::Dict)
@@ -618,9 +618,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoSync
-    CognitoSync.set_identity_pool_configuration([::AWSConfig], arguments::Dict)
-    CognitoSync.set_identity_pool_configuration([::AWSConfig]; IdentityPoolId=, <keyword arguments>)
+    using AWSSDK.CognitoSync.set_identity_pool_configuration
+    set_identity_pool_configuration([::AWSConfig], arguments::Dict)
+    set_identity_pool_configuration([::AWSConfig]; IdentityPoolId=, <keyword arguments>)
 
     using AWSCore.Services.cognito_sync
     cognito_sync([::AWSConfig], "POST", "/identitypools/{IdentityPoolId}/configuration", arguments::Dict)
@@ -678,9 +678,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoSync
-    CognitoSync.subscribe_to_dataset([::AWSConfig], arguments::Dict)
-    CognitoSync.subscribe_to_dataset([::AWSConfig]; IdentityPoolId=, IdentityId=, DatasetName=, DeviceId=)
+    using AWSSDK.CognitoSync.subscribe_to_dataset
+    subscribe_to_dataset([::AWSConfig], arguments::Dict)
+    subscribe_to_dataset([::AWSConfig]; IdentityPoolId=, IdentityId=, DatasetName=, DeviceId=)
 
     using AWSCore.Services.cognito_sync
     cognito_sync([::AWSConfig], "POST", "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}", arguments::Dict)
@@ -731,9 +731,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoSync
-    CognitoSync.unsubscribe_from_dataset([::AWSConfig], arguments::Dict)
-    CognitoSync.unsubscribe_from_dataset([::AWSConfig]; IdentityPoolId=, IdentityId=, DatasetName=, DeviceId=)
+    using AWSSDK.CognitoSync.unsubscribe_from_dataset
+    unsubscribe_from_dataset([::AWSConfig], arguments::Dict)
+    unsubscribe_from_dataset([::AWSConfig]; IdentityPoolId=, IdentityId=, DatasetName=, DeviceId=)
 
     using AWSCore.Services.cognito_sync
     cognito_sync([::AWSConfig], "DELETE", "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}", arguments::Dict)
@@ -784,9 +784,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
-    using AWSSDK.CognitoSync
-    CognitoSync.update_records([::AWSConfig], arguments::Dict)
-    CognitoSync.update_records([::AWSConfig]; IdentityPoolId=, IdentityId=, DatasetName=, SyncSessionToken=, <keyword arguments>)
+    using AWSSDK.CognitoSync.update_records
+    update_records([::AWSConfig], arguments::Dict)
+    update_records([::AWSConfig]; IdentityPoolId=, IdentityId=, DatasetName=, SyncSessionToken=, <keyword arguments>)
 
     using AWSCore.Services.cognito_sync
     cognito_sync([::AWSConfig], "POST", "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", arguments::Dict)

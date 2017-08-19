@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.cancel_export_task([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.cancel_export_task([::AWSConfig]; taskId=)
+    using AWSSDK.CloudWatchLogs.cancel_export_task
+    cancel_export_task([::AWSConfig], arguments::Dict)
+    cancel_export_task([::AWSConfig]; taskId=)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "CancelExportTask", arguments::Dict)
@@ -50,9 +50,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.create_export_task([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.create_export_task([::AWSConfig]; logGroupName=, from=, to=, destination=, <keyword arguments>)
+    using AWSSDK.CloudWatchLogs.create_export_task
+    create_export_task([::AWSConfig], arguments::Dict)
+    create_export_task([::AWSConfig]; logGroupName=, from=, to=, destination=, <keyword arguments>)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "CreateExportTask", arguments::Dict)
@@ -117,9 +117,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.create_log_group([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.create_log_group([::AWSConfig]; logGroupName=, <keyword arguments>)
+    using AWSSDK.CloudWatchLogs.create_log_group
+    create_log_group([::AWSConfig], arguments::Dict)
+    create_log_group([::AWSConfig]; logGroupName=, <keyword arguments>)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "CreateLogGroup", arguments::Dict)
@@ -166,9 +166,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.create_log_stream([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.create_log_stream([::AWSConfig]; logGroupName=, logStreamName=)
+    using AWSSDK.CloudWatchLogs.create_log_stream
+    create_log_stream([::AWSConfig], arguments::Dict)
+    create_log_stream([::AWSConfig]; logGroupName=, logStreamName=)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "CreateLogStream", arguments::Dict)
@@ -215,9 +215,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.delete_destination([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.delete_destination([::AWSConfig]; destinationName=)
+    using AWSSDK.CloudWatchLogs.delete_destination
+    delete_destination([::AWSConfig], arguments::Dict)
+    delete_destination([::AWSConfig]; destinationName=)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "DeleteDestination", arguments::Dict)
@@ -250,9 +250,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.delete_log_group([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.delete_log_group([::AWSConfig]; logGroupName=)
+    using AWSSDK.CloudWatchLogs.delete_log_group
+    delete_log_group([::AWSConfig], arguments::Dict)
+    delete_log_group([::AWSConfig]; logGroupName=)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "DeleteLogGroup", arguments::Dict)
@@ -285,9 +285,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.delete_log_stream([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.delete_log_stream([::AWSConfig]; logGroupName=, logStreamName=)
+    using AWSSDK.CloudWatchLogs.delete_log_stream
+    delete_log_stream([::AWSConfig], arguments::Dict)
+    delete_log_stream([::AWSConfig]; logGroupName=, logStreamName=)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "DeleteLogStream", arguments::Dict)
@@ -324,9 +324,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.delete_metric_filter([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.delete_metric_filter([::AWSConfig]; logGroupName=, filterName=)
+    using AWSSDK.CloudWatchLogs.delete_metric_filter
+    delete_metric_filter([::AWSConfig], arguments::Dict)
+    delete_metric_filter([::AWSConfig]; logGroupName=, filterName=)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "DeleteMetricFilter", arguments::Dict)
@@ -363,9 +363,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.delete_retention_policy([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.delete_retention_policy([::AWSConfig]; logGroupName=)
+    using AWSSDK.CloudWatchLogs.delete_retention_policy
+    delete_retention_policy([::AWSConfig], arguments::Dict)
+    delete_retention_policy([::AWSConfig]; logGroupName=)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "DeleteRetentionPolicy", arguments::Dict)
@@ -400,9 +400,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.delete_subscription_filter([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.delete_subscription_filter([::AWSConfig]; logGroupName=, filterName=)
+    using AWSSDK.CloudWatchLogs.delete_subscription_filter
+    delete_subscription_filter([::AWSConfig], arguments::Dict)
+    delete_subscription_filter([::AWSConfig]; logGroupName=, filterName=)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "DeleteSubscriptionFilter", arguments::Dict)
@@ -439,9 +439,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.describe_destinations([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.describe_destinations([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudWatchLogs.describe_destinations
+    describe_destinations([::AWSConfig], arguments::Dict)
+    describe_destinations([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "DescribeDestinations", arguments::Dict)
@@ -486,9 +486,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.describe_export_tasks([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.describe_export_tasks([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudWatchLogs.describe_export_tasks
+    describe_export_tasks([::AWSConfig], arguments::Dict)
+    describe_export_tasks([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "DescribeExportTasks", arguments::Dict)
@@ -537,9 +537,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.describe_log_groups([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.describe_log_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudWatchLogs.describe_log_groups
+    describe_log_groups([::AWSConfig], arguments::Dict)
+    describe_log_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "DescribeLogGroups", arguments::Dict)
@@ -584,9 +584,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.describe_log_streams([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.describe_log_streams([::AWSConfig]; logGroupName=, <keyword arguments>)
+    using AWSSDK.CloudWatchLogs.describe_log_streams
+    describe_log_streams([::AWSConfig], arguments::Dict)
+    describe_log_streams([::AWSConfig]; logGroupName=, <keyword arguments>)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "DescribeLogStreams", arguments::Dict)
@@ -651,9 +651,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.describe_metric_filters([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.describe_metric_filters([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CloudWatchLogs.describe_metric_filters
+    describe_metric_filters([::AWSConfig], arguments::Dict)
+    describe_metric_filters([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "DescribeMetricFilters", arguments::Dict)
@@ -710,9 +710,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.describe_subscription_filters([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.describe_subscription_filters([::AWSConfig]; logGroupName=, <keyword arguments>)
+    using AWSSDK.CloudWatchLogs.describe_subscription_filters
+    describe_subscription_filters([::AWSConfig], arguments::Dict)
+    describe_subscription_filters([::AWSConfig]; logGroupName=, <keyword arguments>)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "DescribeSubscriptionFilters", arguments::Dict)
@@ -761,9 +761,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.filter_log_events([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.filter_log_events([::AWSConfig]; logGroupName=, <keyword arguments>)
+    using AWSSDK.CloudWatchLogs.filter_log_events
+    filter_log_events([::AWSConfig], arguments::Dict)
+    filter_log_events([::AWSConfig]; logGroupName=, <keyword arguments>)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "FilterLogEvents", arguments::Dict)
@@ -830,9 +830,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.get_log_events([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.get_log_events([::AWSConfig]; logGroupName=, logStreamName=, <keyword arguments>)
+    using AWSSDK.CloudWatchLogs.get_log_events
+    get_log_events([::AWSConfig], arguments::Dict)
+    get_log_events([::AWSConfig]; logGroupName=, logStreamName=, <keyword arguments>)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "GetLogEvents", arguments::Dict)
@@ -895,9 +895,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.list_tags_log_group([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.list_tags_log_group([::AWSConfig]; logGroupName=)
+    using AWSSDK.CloudWatchLogs.list_tags_log_group
+    list_tags_log_group([::AWSConfig], arguments::Dict)
+    list_tags_log_group([::AWSConfig]; logGroupName=)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "ListTagsLogGroup", arguments::Dict)
@@ -936,9 +936,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.put_destination([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.put_destination([::AWSConfig]; destinationName=, targetArn=, roleArn=)
+    using AWSSDK.CloudWatchLogs.put_destination
+    put_destination([::AWSConfig], arguments::Dict)
+    put_destination([::AWSConfig]; destinationName=, targetArn=, roleArn=)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "PutDestination", arguments::Dict)
@@ -985,9 +985,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.put_destination_policy([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.put_destination_policy([::AWSConfig]; destinationName=, accessPolicy=)
+    using AWSSDK.CloudWatchLogs.put_destination_policy
+    put_destination_policy([::AWSConfig], arguments::Dict)
+    put_destination_policy([::AWSConfig]; destinationName=, accessPolicy=)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "PutDestinationPolicy", arguments::Dict)
@@ -1024,9 +1024,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.put_log_events([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.put_log_events([::AWSConfig]; logGroupName=, logStreamName=, logEvents=, <keyword arguments>)
+    using AWSSDK.CloudWatchLogs.put_log_events
+    put_log_events([::AWSConfig], arguments::Dict)
+    put_log_events([::AWSConfig]; logGroupName=, logStreamName=, logEvents=, <keyword arguments>)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "PutLogEvents", arguments::Dict)
@@ -1096,9 +1096,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.put_metric_filter([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.put_metric_filter([::AWSConfig]; logGroupName=, filterName=, filterPattern=, metricTransformations=)
+    using AWSSDK.CloudWatchLogs.put_metric_filter
+    put_metric_filter([::AWSConfig], arguments::Dict)
+    put_metric_filter([::AWSConfig]; logGroupName=, filterName=, filterPattern=, metricTransformations=)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "PutMetricFilter", arguments::Dict)
@@ -1152,9 +1152,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.put_retention_policy([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.put_retention_policy([::AWSConfig]; logGroupName=, retentionInDays=)
+    using AWSSDK.CloudWatchLogs.put_retention_policy
+    put_retention_policy([::AWSConfig], arguments::Dict)
+    put_retention_policy([::AWSConfig]; logGroupName=, retentionInDays=)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "PutRetentionPolicy", arguments::Dict)
@@ -1191,9 +1191,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.put_subscription_filter([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.put_subscription_filter([::AWSConfig]; logGroupName=, filterName=, filterPattern=, destinationArn=, <keyword arguments>)
+    using AWSSDK.CloudWatchLogs.put_subscription_filter
+    put_subscription_filter([::AWSConfig], arguments::Dict)
+    put_subscription_filter([::AWSConfig]; logGroupName=, filterName=, filterPattern=, destinationArn=, <keyword arguments>)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "PutSubscriptionFilter", arguments::Dict)
@@ -1264,9 +1264,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.tag_log_group([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.tag_log_group([::AWSConfig]; logGroupName=, tags=)
+    using AWSSDK.CloudWatchLogs.tag_log_group
+    tag_log_group([::AWSConfig], arguments::Dict)
+    tag_log_group([::AWSConfig]; logGroupName=, tags=)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "TagLogGroup", arguments::Dict)
@@ -1307,9 +1307,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.test_metric_filter([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.test_metric_filter([::AWSConfig]; filterPattern=, logEventMessages=)
+    using AWSSDK.CloudWatchLogs.test_metric_filter
+    test_metric_filter([::AWSConfig], arguments::Dict)
+    test_metric_filter([::AWSConfig]; filterPattern=, logEventMessages=)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "TestMetricFilter", arguments::Dict)
@@ -1350,9 +1350,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
-    using AWSSDK.CloudWatchLogs
-    CloudWatchLogs.untag_log_group([::AWSConfig], arguments::Dict)
-    CloudWatchLogs.untag_log_group([::AWSConfig]; logGroupName=, tags=)
+    using AWSSDK.CloudWatchLogs.untag_log_group
+    untag_log_group([::AWSConfig], arguments::Dict)
+    untag_log_group([::AWSConfig]; logGroupName=, tags=)
 
     using AWSCore.Services.logs
     logs([::AWSConfig], "UntagLogGroup", arguments::Dict)

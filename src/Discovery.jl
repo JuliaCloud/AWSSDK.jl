@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.associate_configuration_items_to_application([::AWSConfig], arguments::Dict)
-    Discovery.associate_configuration_items_to_application([::AWSConfig]; applicationConfigurationId=, configurationIds=)
+    using AWSSDK.Discovery.associate_configuration_items_to_application
+    associate_configuration_items_to_application([::AWSConfig], arguments::Dict)
+    associate_configuration_items_to_application([::AWSConfig]; applicationConfigurationId=, configurationIds=)
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "AssociateConfigurationItemsToApplication", arguments::Dict)
@@ -56,9 +56,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.create_application([::AWSConfig], arguments::Dict)
-    Discovery.create_application([::AWSConfig]; name=, <keyword arguments>)
+    using AWSSDK.Discovery.create_application
+    create_application([::AWSConfig], arguments::Dict)
+    create_application([::AWSConfig]; name=, <keyword arguments>)
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "CreateApplication", arguments::Dict)
@@ -99,9 +99,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.create_tags([::AWSConfig], arguments::Dict)
-    Discovery.create_tags([::AWSConfig]; configurationIds=, tags=)
+    using AWSSDK.Discovery.create_tags
+    create_tags([::AWSConfig], arguments::Dict)
+    create_tags([::AWSConfig]; configurationIds=, tags=)
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "CreateTags", arguments::Dict)
@@ -149,9 +149,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.delete_applications([::AWSConfig], arguments::Dict)
-    Discovery.delete_applications([::AWSConfig]; configurationIds=)
+    using AWSSDK.Discovery.delete_applications
+    delete_applications([::AWSConfig], arguments::Dict)
+    delete_applications([::AWSConfig]; configurationIds=)
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "DeleteApplications", arguments::Dict)
@@ -188,9 +188,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.delete_tags([::AWSConfig], arguments::Dict)
-    Discovery.delete_tags([::AWSConfig]; configurationIds=, <keyword arguments>)
+    using AWSSDK.Discovery.delete_tags
+    delete_tags([::AWSConfig], arguments::Dict)
+    delete_tags([::AWSConfig]; configurationIds=, <keyword arguments>)
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "DeleteTags", arguments::Dict)
@@ -238,9 +238,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.describe_agents([::AWSConfig], arguments::Dict)
-    Discovery.describe_agents([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Discovery.describe_agents
+    describe_agents([::AWSConfig], arguments::Dict)
+    describe_agents([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "DescribeAgents", arguments::Dict)
@@ -297,9 +297,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.describe_configurations([::AWSConfig], arguments::Dict)
-    Discovery.describe_configurations([::AWSConfig]; configurationIds=)
+    using AWSSDK.Discovery.describe_configurations
+    describe_configurations([::AWSConfig], arguments::Dict)
+    describe_configurations([::AWSConfig]; configurationIds=)
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "DescribeConfigurations", arguments::Dict)
@@ -338,9 +338,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.describe_export_configurations([::AWSConfig], arguments::Dict)
-    Discovery.describe_export_configurations([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Discovery.describe_export_configurations
+    describe_export_configurations([::AWSConfig], arguments::Dict)
+    describe_export_configurations([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "DescribeExportConfigurations", arguments::Dict)
@@ -387,9 +387,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.describe_export_tasks([::AWSConfig], arguments::Dict)
-    Discovery.describe_export_tasks([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Discovery.describe_export_tasks
+    describe_export_tasks([::AWSConfig], arguments::Dict)
+    describe_export_tasks([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "DescribeExportTasks", arguments::Dict)
@@ -446,9 +446,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.describe_tags([::AWSConfig], arguments::Dict)
-    Discovery.describe_tags([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Discovery.describe_tags
+    describe_tags([::AWSConfig], arguments::Dict)
+    describe_tags([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "DescribeTags", arguments::Dict)
@@ -498,9 +498,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.disassociate_configuration_items_from_application([::AWSConfig], arguments::Dict)
-    Discovery.disassociate_configuration_items_from_application([::AWSConfig]; applicationConfigurationId=, configurationIds=)
+    using AWSSDK.Discovery.disassociate_configuration_items_from_application
+    disassociate_configuration_items_from_application([::AWSConfig], arguments::Dict)
+    disassociate_configuration_items_from_application([::AWSConfig]; applicationConfigurationId=, configurationIds=)
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "DisassociateConfigurationItemsFromApplication", arguments::Dict)
@@ -541,9 +541,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.export_configurations([::AWSConfig])
-    Discovery.
+    using AWSSDK.Discovery.export_configurations
+    export_configurations([::AWSConfig])
+    
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "ExportConfigurations",)
@@ -574,9 +574,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.get_discovery_summary([::AWSConfig], arguments::Dict)
-    Discovery.get_discovery_summary([::AWSConfig]; )
+    using AWSSDK.Discovery.get_discovery_summary
+    get_discovery_summary([::AWSConfig], arguments::Dict)
+    get_discovery_summary([::AWSConfig]; )
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "GetDiscoverySummary", arguments::Dict)
@@ -609,9 +609,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.list_configurations([::AWSConfig], arguments::Dict)
-    Discovery.list_configurations([::AWSConfig]; configurationType=, <keyword arguments>)
+    using AWSSDK.Discovery.list_configurations
+    list_configurations([::AWSConfig], arguments::Dict)
+    list_configurations([::AWSConfig]; configurationType=, <keyword arguments>)
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "ListConfigurations", arguments::Dict)
@@ -679,9 +679,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.list_server_neighbors([::AWSConfig], arguments::Dict)
-    Discovery.list_server_neighbors([::AWSConfig]; configurationId=, <keyword arguments>)
+    using AWSSDK.Discovery.list_server_neighbors
+    list_server_neighbors([::AWSConfig], arguments::Dict)
+    list_server_neighbors([::AWSConfig]; configurationId=, <keyword arguments>)
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "ListServerNeighbors", arguments::Dict)
@@ -734,9 +734,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.start_data_collection_by_agent_ids([::AWSConfig], arguments::Dict)
-    Discovery.start_data_collection_by_agent_ids([::AWSConfig]; agentIds=)
+    using AWSSDK.Discovery.start_data_collection_by_agent_ids
+    start_data_collection_by_agent_ids([::AWSConfig], arguments::Dict)
+    start_data_collection_by_agent_ids([::AWSConfig]; agentIds=)
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "StartDataCollectionByAgentIds", arguments::Dict)
@@ -773,9 +773,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.start_export_task([::AWSConfig], arguments::Dict)
-    Discovery.start_export_task([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Discovery.start_export_task
+    start_export_task([::AWSConfig], arguments::Dict)
+    start_export_task([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "StartExportTask", arguments::Dict)
@@ -834,9 +834,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.stop_data_collection_by_agent_ids([::AWSConfig], arguments::Dict)
-    Discovery.stop_data_collection_by_agent_ids([::AWSConfig]; agentIds=)
+    using AWSSDK.Discovery.stop_data_collection_by_agent_ids
+    stop_data_collection_by_agent_ids([::AWSConfig], arguments::Dict)
+    stop_data_collection_by_agent_ids([::AWSConfig]; agentIds=)
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "StopDataCollectionByAgentIds", arguments::Dict)
@@ -873,9 +873,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 
 """
-    using AWSSDK.Discovery
-    Discovery.update_application([::AWSConfig], arguments::Dict)
-    Discovery.update_application([::AWSConfig]; configurationId=, <keyword arguments>)
+    using AWSSDK.Discovery.update_application
+    update_application([::AWSConfig], arguments::Dict)
+    update_application([::AWSConfig]; configurationId=, <keyword arguments>)
 
     using AWSCore.Services.discovery
     discovery([::AWSConfig], "UpdateApplication", arguments::Dict)

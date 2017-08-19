@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Shield
-    Shield.create_protection([::AWSConfig], arguments::Dict)
-    Shield.create_protection([::AWSConfig]; Name=, ResourceArn=)
+    using AWSSDK.Shield.create_protection
+    create_protection([::AWSConfig], arguments::Dict)
+    create_protection([::AWSConfig]; Name=, ResourceArn=)
 
     using AWSCore.Services.shield
     shield([::AWSConfig], "CreateProtection", arguments::Dict)
@@ -56,9 +56,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/shield
 
 
 """
-    using AWSSDK.Shield
-    Shield.create_subscription([::AWSConfig], arguments::Dict)
-    Shield.create_subscription([::AWSConfig]; )
+    using AWSSDK.Shield.create_subscription
+    create_subscription([::AWSConfig], arguments::Dict)
+    create_subscription([::AWSConfig]; )
 
     using AWSCore.Services.shield
     shield([::AWSConfig], "CreateSubscription", arguments::Dict)
@@ -91,9 +91,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/shield
 
 
 """
-    using AWSSDK.Shield
-    Shield.delete_protection([::AWSConfig], arguments::Dict)
-    Shield.delete_protection([::AWSConfig]; ProtectionId=)
+    using AWSSDK.Shield.delete_protection
+    delete_protection([::AWSConfig], arguments::Dict)
+    delete_protection([::AWSConfig]; ProtectionId=)
 
     using AWSCore.Services.shield
     shield([::AWSConfig], "DeleteProtection", arguments::Dict)
@@ -130,9 +130,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/shield
 
 
 """
-    using AWSSDK.Shield
-    Shield.delete_subscription([::AWSConfig], arguments::Dict)
-    Shield.delete_subscription([::AWSConfig]; )
+    using AWSSDK.Shield.delete_subscription
+    delete_subscription([::AWSConfig], arguments::Dict)
+    delete_subscription([::AWSConfig]; )
 
     using AWSCore.Services.shield
     shield([::AWSConfig], "DeleteSubscription", arguments::Dict)
@@ -165,9 +165,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/shield
 
 
 """
-    using AWSSDK.Shield
-    Shield.describe_attack([::AWSConfig], arguments::Dict)
-    Shield.describe_attack([::AWSConfig]; AttackId=)
+    using AWSSDK.Shield.describe_attack
+    describe_attack([::AWSConfig], arguments::Dict)
+    describe_attack([::AWSConfig]; AttackId=)
 
     using AWSCore.Services.shield
     shield([::AWSConfig], "DescribeAttack", arguments::Dict)
@@ -204,9 +204,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/shield
 
 
 """
-    using AWSSDK.Shield
-    Shield.describe_protection([::AWSConfig], arguments::Dict)
-    Shield.describe_protection([::AWSConfig]; ProtectionId=)
+    using AWSSDK.Shield.describe_protection
+    describe_protection([::AWSConfig], arguments::Dict)
+    describe_protection([::AWSConfig]; ProtectionId=)
 
     using AWSCore.Services.shield
     shield([::AWSConfig], "DescribeProtection", arguments::Dict)
@@ -243,9 +243,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/shield
 
 
 """
-    using AWSSDK.Shield
-    Shield.describe_subscription([::AWSConfig], arguments::Dict)
-    Shield.describe_subscription([::AWSConfig]; )
+    using AWSSDK.Shield.describe_subscription
+    describe_subscription([::AWSConfig], arguments::Dict)
+    describe_subscription([::AWSConfig]; )
 
     using AWSCore.Services.shield
     shield([::AWSConfig], "DescribeSubscription", arguments::Dict)
@@ -278,9 +278,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/shield
 
 
 """
-    using AWSSDK.Shield
-    Shield.list_attacks([::AWSConfig], arguments::Dict)
-    Shield.list_attacks([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Shield.list_attacks
+    list_attacks([::AWSConfig], arguments::Dict)
+    list_attacks([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.shield
     shield([::AWSConfig], "ListAttacks", arguments::Dict)
@@ -343,9 +343,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/shield
 
 
 """
-    using AWSSDK.Shield
-    Shield.list_protections([::AWSConfig], arguments::Dict)
-    Shield.list_protections([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Shield.list_protections
+    list_protections([::AWSConfig], arguments::Dict)
+    list_protections([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.shield
     shield([::AWSConfig], "ListProtections", arguments::Dict)

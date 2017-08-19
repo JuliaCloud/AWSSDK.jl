@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.MobileAnalytics
-    MobileAnalytics.put_events([::AWSConfig], arguments::Dict)
-    MobileAnalytics.put_events([::AWSConfig]; events=, x-amz-Client-Context=, <keyword arguments>)
+    using AWSSDK.MobileAnalytics.put_events
+    put_events([::AWSConfig], arguments::Dict)
+    put_events([::AWSConfig]; events=, x-amz-Client-Context=, <keyword arguments>)
 
     using AWSCore.Services.mobileanalytics
     mobileanalytics([::AWSConfig], "POST", "/2014-06-05/events", arguments::Dict)

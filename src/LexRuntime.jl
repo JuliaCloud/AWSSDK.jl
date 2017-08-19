@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.LexRuntime
-    LexRuntime.post_content([::AWSConfig], arguments::Dict)
-    LexRuntime.post_content([::AWSConfig]; botName=, botAlias=, userId=, Content-Type=, inputStream=, <keyword arguments>)
+    using AWSSDK.LexRuntime.post_content
+    post_content([::AWSConfig], arguments::Dict)
+    post_content([::AWSConfig]; botName=, botAlias=, userId=, Content-Type=, inputStream=, <keyword arguments>)
 
     using AWSCore.Services.runtime_lex
     runtime_lex([::AWSConfig], "POST", "/bot/{botName}/alias/{botAlias}/user/{userId}/content", arguments::Dict)
@@ -161,9 +161,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/runtim
 
 
 """
-    using AWSSDK.LexRuntime
-    LexRuntime.post_text([::AWSConfig], arguments::Dict)
-    LexRuntime.post_text([::AWSConfig]; botName=, botAlias=, userId=, inputText=, <keyword arguments>)
+    using AWSSDK.LexRuntime.post_text
+    post_text([::AWSConfig], arguments::Dict)
+    post_text([::AWSConfig]; botName=, botAlias=, userId=, inputText=, <keyword arguments>)
 
     using AWSCore.Services.runtime_lex
     runtime_lex([::AWSConfig], "POST", "/bot/{botName}/alias/{botAlias}/user/{userId}/text", arguments::Dict)

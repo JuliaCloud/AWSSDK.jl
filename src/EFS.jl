@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.EFS
-    EFS.create_file_system([::AWSConfig], arguments::Dict)
-    EFS.create_file_system([::AWSConfig]; CreationToken=, <keyword arguments>)
+    using AWSSDK.EFS.create_file_system
+    create_file_system([::AWSConfig], arguments::Dict)
+    create_file_system([::AWSConfig]; CreationToken=, <keyword arguments>)
 
     using AWSCore.Services.elasticfilesystem
     elasticfilesystem([::AWSConfig], "POST", "/2015-02-01/file-systems", arguments::Dict)
@@ -104,9 +104,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EFS
-    EFS.create_mount_target([::AWSConfig], arguments::Dict)
-    EFS.create_mount_target([::AWSConfig]; FileSystemId=, SubnetId=, <keyword arguments>)
+    using AWSSDK.EFS.create_mount_target
+    create_mount_target([::AWSConfig], arguments::Dict)
+    create_mount_target([::AWSConfig]; FileSystemId=, SubnetId=, <keyword arguments>)
 
     using AWSCore.Services.elasticfilesystem
     elasticfilesystem([::AWSConfig], "POST", "/2015-02-01/mount-targets", arguments::Dict)
@@ -233,9 +233,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EFS
-    EFS.create_tags([::AWSConfig], arguments::Dict)
-    EFS.create_tags([::AWSConfig]; FileSystemId=, Tags=)
+    using AWSSDK.EFS.create_tags
+    create_tags([::AWSConfig], arguments::Dict)
+    create_tags([::AWSConfig]; FileSystemId=, Tags=)
 
     using AWSCore.Services.elasticfilesystem
     elasticfilesystem([::AWSConfig], "POST", "/2015-02-01/create-tags/{FileSystemId}", arguments::Dict)
@@ -296,9 +296,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EFS
-    EFS.delete_file_system([::AWSConfig], arguments::Dict)
-    EFS.delete_file_system([::AWSConfig]; FileSystemId=)
+    using AWSSDK.EFS.delete_file_system
+    delete_file_system([::AWSConfig], arguments::Dict)
+    delete_file_system([::AWSConfig]; FileSystemId=)
 
     using AWSCore.Services.elasticfilesystem
     elasticfilesystem([::AWSConfig], "DELETE", "/2015-02-01/file-systems/{FileSystemId}", arguments::Dict)
@@ -349,9 +349,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EFS
-    EFS.delete_mount_target([::AWSConfig], arguments::Dict)
-    EFS.delete_mount_target([::AWSConfig]; MountTargetId=)
+    using AWSSDK.EFS.delete_mount_target
+    delete_mount_target([::AWSConfig], arguments::Dict)
+    delete_mount_target([::AWSConfig]; MountTargetId=)
 
     using AWSCore.Services.elasticfilesystem
     elasticfilesystem([::AWSConfig], "DELETE", "/2015-02-01/mount-targets/{MountTargetId}", arguments::Dict)
@@ -408,9 +408,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EFS
-    EFS.delete_tags([::AWSConfig], arguments::Dict)
-    EFS.delete_tags([::AWSConfig]; FileSystemId=, TagKeys=)
+    using AWSSDK.EFS.delete_tags
+    delete_tags([::AWSConfig], arguments::Dict)
+    delete_tags([::AWSConfig]; FileSystemId=, TagKeys=)
 
     using AWSCore.Services.elasticfilesystem
     elasticfilesystem([::AWSConfig], "POST", "/2015-02-01/delete-tags/{FileSystemId}", arguments::Dict)
@@ -463,9 +463,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EFS
-    EFS.describe_file_systems([::AWSConfig], arguments::Dict)
-    EFS.describe_file_systems([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EFS.describe_file_systems
+    describe_file_systems([::AWSConfig], arguments::Dict)
+    describe_file_systems([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticfilesystem
     elasticfilesystem([::AWSConfig], "GET", "/2015-02-01/file-systems", arguments::Dict)
@@ -556,9 +556,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EFS
-    EFS.describe_mount_target_security_groups([::AWSConfig], arguments::Dict)
-    EFS.describe_mount_target_security_groups([::AWSConfig]; MountTargetId=)
+    using AWSSDK.EFS.describe_mount_target_security_groups
+    describe_mount_target_security_groups([::AWSConfig], arguments::Dict)
+    describe_mount_target_security_groups([::AWSConfig]; MountTargetId=)
 
     using AWSCore.Services.elasticfilesystem
     elasticfilesystem([::AWSConfig], "GET", "/2015-02-01/mount-targets/{MountTargetId}/security-groups", arguments::Dict)
@@ -621,9 +621,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EFS
-    EFS.describe_mount_targets([::AWSConfig], arguments::Dict)
-    EFS.describe_mount_targets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.EFS.describe_mount_targets
+    describe_mount_targets([::AWSConfig], arguments::Dict)
+    describe_mount_targets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticfilesystem
     elasticfilesystem([::AWSConfig], "GET", "/2015-02-01/mount-targets", arguments::Dict)
@@ -702,9 +702,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EFS
-    EFS.describe_tags([::AWSConfig], arguments::Dict)
-    EFS.describe_tags([::AWSConfig]; FileSystemId=, <keyword arguments>)
+    using AWSSDK.EFS.describe_tags
+    describe_tags([::AWSConfig], arguments::Dict)
+    describe_tags([::AWSConfig]; FileSystemId=, <keyword arguments>)
 
     using AWSCore.Services.elasticfilesystem
     elasticfilesystem([::AWSConfig], "GET", "/2015-02-01/tags/{FileSystemId}/", arguments::Dict)
@@ -774,9 +774,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.EFS
-    EFS.modify_mount_target_security_groups([::AWSConfig], arguments::Dict)
-    EFS.modify_mount_target_security_groups([::AWSConfig]; MountTargetId=, <keyword arguments>)
+    using AWSSDK.EFS.modify_mount_target_security_groups
+    modify_mount_target_security_groups([::AWSConfig], arguments::Dict)
+    modify_mount_target_security_groups([::AWSConfig]; MountTargetId=, <keyword arguments>)
 
     using AWSCore.Services.elasticfilesystem
     elasticfilesystem([::AWSConfig], "PUT", "/2015-02-01/mount-targets/{MountTargetId}/security-groups", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Rekognition
-    Rekognition.compare_faces([::AWSConfig], arguments::Dict)
-    Rekognition.compare_faces([::AWSConfig]; SourceImage=, TargetImage=, <keyword arguments>)
+    using AWSSDK.Rekognition.compare_faces
+    compare_faces([::AWSConfig], arguments::Dict)
+    compare_faces([::AWSConfig]; SourceImage=, TargetImage=, <keyword arguments>)
 
     using AWSCore.Services.rekognition
     rekognition([::AWSConfig], "CompareFaces", arguments::Dict)
@@ -149,9 +149,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rekogn
 
 
 """
-    using AWSSDK.Rekognition
-    Rekognition.create_collection([::AWSConfig], arguments::Dict)
-    Rekognition.create_collection([::AWSConfig]; CollectionId=)
+    using AWSSDK.Rekognition.create_collection
+    create_collection([::AWSConfig], arguments::Dict)
+    create_collection([::AWSConfig]; CollectionId=)
 
     using AWSCore.Services.rekognition
     rekognition([::AWSConfig], "CreateCollection", arguments::Dict)
@@ -216,9 +216,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rekogn
 
 
 """
-    using AWSSDK.Rekognition
-    Rekognition.delete_collection([::AWSConfig], arguments::Dict)
-    Rekognition.delete_collection([::AWSConfig]; CollectionId=)
+    using AWSSDK.Rekognition.delete_collection
+    delete_collection([::AWSConfig], arguments::Dict)
+    delete_collection([::AWSConfig]; CollectionId=)
 
     using AWSCore.Services.rekognition
     rekognition([::AWSConfig], "DeleteCollection", arguments::Dict)
@@ -275,9 +275,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rekogn
 
 
 """
-    using AWSSDK.Rekognition
-    Rekognition.delete_faces([::AWSConfig], arguments::Dict)
-    Rekognition.delete_faces([::AWSConfig]; CollectionId=, FaceIds=)
+    using AWSSDK.Rekognition.delete_faces
+    delete_faces([::AWSConfig], arguments::Dict)
+    delete_faces([::AWSConfig]; CollectionId=, FaceIds=)
 
     using AWSCore.Services.rekognition
     rekognition([::AWSConfig], "DeleteFaces", arguments::Dict)
@@ -343,9 +343,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rekogn
 
 
 """
-    using AWSSDK.Rekognition
-    Rekognition.detect_faces([::AWSConfig], arguments::Dict)
-    Rekognition.detect_faces([::AWSConfig]; Image=, <keyword arguments>)
+    using AWSSDK.Rekognition.detect_faces
+    detect_faces([::AWSConfig], arguments::Dict)
+    detect_faces([::AWSConfig]; Image=, <keyword arguments>)
 
     using AWSCore.Services.rekognition
     rekognition([::AWSConfig], "DetectFaces", arguments::Dict)
@@ -478,9 +478,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rekogn
 
 
 """
-    using AWSSDK.Rekognition
-    Rekognition.detect_labels([::AWSConfig], arguments::Dict)
-    Rekognition.detect_labels([::AWSConfig]; Image=, <keyword arguments>)
+    using AWSSDK.Rekognition.detect_labels
+    detect_labels([::AWSConfig], arguments::Dict)
+    detect_labels([::AWSConfig]; Image=, <keyword arguments>)
 
     using AWSCore.Services.rekognition
     rekognition([::AWSConfig], "DetectLabels", arguments::Dict)
@@ -597,9 +597,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rekogn
 
 
 """
-    using AWSSDK.Rekognition
-    Rekognition.detect_moderation_labels([::AWSConfig], arguments::Dict)
-    Rekognition.detect_moderation_labels([::AWSConfig]; Image=, <keyword arguments>)
+    using AWSSDK.Rekognition.detect_moderation_labels
+    detect_moderation_labels([::AWSConfig], arguments::Dict)
+    detect_moderation_labels([::AWSConfig]; Image=, <keyword arguments>)
 
     using AWSCore.Services.rekognition
     rekognition([::AWSConfig], "DetectModerationLabels", arguments::Dict)
@@ -653,9 +653,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rekogn
 
 
 """
-    using AWSSDK.Rekognition
-    Rekognition.get_celebrity_info([::AWSConfig], arguments::Dict)
-    Rekognition.get_celebrity_info([::AWSConfig]; Id=)
+    using AWSSDK.Rekognition.get_celebrity_info
+    get_celebrity_info([::AWSConfig], arguments::Dict)
+    get_celebrity_info([::AWSConfig]; Id=)
 
     using AWSCore.Services.rekognition
     rekognition([::AWSConfig], "GetCelebrityInfo", arguments::Dict)
@@ -694,9 +694,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rekogn
 
 
 """
-    using AWSSDK.Rekognition
-    Rekognition.index_faces([::AWSConfig], arguments::Dict)
-    Rekognition.index_faces([::AWSConfig]; CollectionId=, Image=, <keyword arguments>)
+    using AWSSDK.Rekognition.index_faces
+    index_faces([::AWSConfig], arguments::Dict)
+    index_faces([::AWSConfig]; CollectionId=, Image=, <keyword arguments>)
 
     using AWSCore.Services.rekognition
     rekognition([::AWSConfig], "IndexFaces", arguments::Dict)
@@ -912,9 +912,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rekogn
 
 
 """
-    using AWSSDK.Rekognition
-    Rekognition.list_collections([::AWSConfig], arguments::Dict)
-    Rekognition.list_collections([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Rekognition.list_collections
+    list_collections([::AWSConfig], arguments::Dict)
+    list_collections([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rekognition
     rekognition([::AWSConfig], "ListCollections", arguments::Dict)
@@ -979,9 +979,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rekogn
 
 
 """
-    using AWSSDK.Rekognition
-    Rekognition.list_faces([::AWSConfig], arguments::Dict)
-    Rekognition.list_faces([::AWSConfig]; CollectionId=, <keyword arguments>)
+    using AWSSDK.Rekognition.list_faces
+    list_faces([::AWSConfig], arguments::Dict)
+    list_faces([::AWSConfig]; CollectionId=, <keyword arguments>)
 
     using AWSCore.Services.rekognition
     rekognition([::AWSConfig], "ListFaces", arguments::Dict)
@@ -1169,9 +1169,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rekogn
 
 
 """
-    using AWSSDK.Rekognition
-    Rekognition.recognize_celebrities([::AWSConfig], arguments::Dict)
-    Rekognition.recognize_celebrities([::AWSConfig]; Image=)
+    using AWSSDK.Rekognition.recognize_celebrities
+    recognize_celebrities([::AWSConfig], arguments::Dict)
+    recognize_celebrities([::AWSConfig]; Image=)
 
     using AWSCore.Services.rekognition
     rekognition([::AWSConfig], "RecognizeCelebrities", arguments::Dict)
@@ -1227,9 +1227,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rekogn
 
 
 """
-    using AWSSDK.Rekognition
-    Rekognition.search_faces([::AWSConfig], arguments::Dict)
-    Rekognition.search_faces([::AWSConfig]; CollectionId=, FaceId=, <keyword arguments>)
+    using AWSSDK.Rekognition.search_faces
+    search_faces([::AWSConfig], arguments::Dict)
+    search_faces([::AWSConfig]; CollectionId=, FaceId=, <keyword arguments>)
 
     using AWSCore.Services.rekognition
     rekognition([::AWSConfig], "SearchFaces", arguments::Dict)
@@ -1352,9 +1352,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rekogn
 
 
 """
-    using AWSSDK.Rekognition
-    Rekognition.search_faces_by_image([::AWSConfig], arguments::Dict)
-    Rekognition.search_faces_by_image([::AWSConfig]; CollectionId=, Image=, <keyword arguments>)
+    using AWSSDK.Rekognition.search_faces_by_image
+    search_faces_by_image([::AWSConfig], arguments::Dict)
+    search_faces_by_image([::AWSConfig]; CollectionId=, Image=, <keyword arguments>)
 
     using AWSCore.Services.rekognition
     rekognition([::AWSConfig], "SearchFacesByImage", arguments::Dict)

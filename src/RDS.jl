@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.RDS
-    RDS.add_role_to_dbcluster([::AWSConfig], arguments::Dict)
-    RDS.add_role_to_dbcluster([::AWSConfig]; DBClusterIdentifier=, RoleArn=)
+    using AWSSDK.RDS.add_role_to_dbcluster
+    add_role_to_dbcluster([::AWSConfig], arguments::Dict)
+    add_role_to_dbcluster([::AWSConfig]; DBClusterIdentifier=, RoleArn=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "AddRoleToDBCluster", arguments::Dict)
@@ -52,9 +52,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.add_source_identifier_to_subscription([::AWSConfig], arguments::Dict)
-    RDS.add_source_identifier_to_subscription([::AWSConfig]; SubscriptionName=, SourceIdentifier=)
+    using AWSSDK.RDS.add_source_identifier_to_subscription
+    add_source_identifier_to_subscription([::AWSConfig], arguments::Dict)
+    add_source_identifier_to_subscription([::AWSConfig]; SubscriptionName=, SourceIdentifier=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "AddSourceIdentifierToSubscription", arguments::Dict)
@@ -105,9 +105,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.add_tags_to_resource([::AWSConfig], arguments::Dict)
-    RDS.add_tags_to_resource([::AWSConfig]; ResourceName=, Tags=)
+    using AWSSDK.RDS.add_tags_to_resource
+    add_tags_to_resource([::AWSConfig], arguments::Dict)
+    add_tags_to_resource([::AWSConfig]; ResourceName=, Tags=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "AddTagsToResource", arguments::Dict)
@@ -151,9 +151,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.apply_pending_maintenance_action([::AWSConfig], arguments::Dict)
-    RDS.apply_pending_maintenance_action([::AWSConfig]; ResourceIdentifier=, ApplyAction=, OptInType=)
+    using AWSSDK.RDS.apply_pending_maintenance_action
+    apply_pending_maintenance_action([::AWSConfig], arguments::Dict)
+    apply_pending_maintenance_action([::AWSConfig]; ResourceIdentifier=, ApplyAction=, OptInType=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "ApplyPendingMaintenanceAction", arguments::Dict)
@@ -208,9 +208,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.authorize_dbsecurity_group_ingress([::AWSConfig], arguments::Dict)
-    RDS.authorize_dbsecurity_group_ingress([::AWSConfig]; DBSecurityGroupName=, <keyword arguments>)
+    using AWSSDK.RDS.authorize_dbsecurity_group_ingress
+    authorize_dbsecurity_group_ingress([::AWSConfig], arguments::Dict)
+    authorize_dbsecurity_group_ingress([::AWSConfig]; DBSecurityGroupName=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "AuthorizeDBSecurityGroupIngress", arguments::Dict)
@@ -268,9 +268,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.copy_dbcluster_parameter_group([::AWSConfig], arguments::Dict)
-    RDS.copy_dbcluster_parameter_group([::AWSConfig]; SourceDBClusterParameterGroupIdentifier=, TargetDBClusterParameterGroupIdentifier=, TargetDBClusterParameterGroupDescription=, <keyword arguments>)
+    using AWSSDK.RDS.copy_dbcluster_parameter_group
+    copy_dbcluster_parameter_group([::AWSConfig], arguments::Dict)
+    copy_dbcluster_parameter_group([::AWSConfig]; SourceDBClusterParameterGroupIdentifier=, TargetDBClusterParameterGroupIdentifier=, TargetDBClusterParameterGroupDescription=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "CopyDBClusterParameterGroup", arguments::Dict)
@@ -344,9 +344,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.copy_dbcluster_snapshot([::AWSConfig], arguments::Dict)
-    RDS.copy_dbcluster_snapshot([::AWSConfig]; SourceDBClusterSnapshotIdentifier=, TargetDBClusterSnapshotIdentifier=, <keyword arguments>)
+    using AWSSDK.RDS.copy_dbcluster_snapshot
+    copy_dbcluster_snapshot([::AWSConfig], arguments::Dict)
+    copy_dbcluster_snapshot([::AWSConfig]; SourceDBClusterSnapshotIdentifier=, TargetDBClusterSnapshotIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "CopyDBClusterSnapshot", arguments::Dict)
@@ -489,9 +489,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.copy_dbparameter_group([::AWSConfig], arguments::Dict)
-    RDS.copy_dbparameter_group([::AWSConfig]; SourceDBParameterGroupIdentifier=, TargetDBParameterGroupIdentifier=, TargetDBParameterGroupDescription=, <keyword arguments>)
+    using AWSSDK.RDS.copy_dbparameter_group
+    copy_dbparameter_group([::AWSConfig], arguments::Dict)
+    copy_dbparameter_group([::AWSConfig]; SourceDBParameterGroupIdentifier=, TargetDBParameterGroupIdentifier=, TargetDBParameterGroupDescription=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "CopyDBParameterGroup", arguments::Dict)
@@ -563,9 +563,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.copy_dbsnapshot([::AWSConfig], arguments::Dict)
-    RDS.copy_dbsnapshot([::AWSConfig]; SourceDBSnapshotIdentifier=, TargetDBSnapshotIdentifier=, <keyword arguments>)
+    using AWSSDK.RDS.copy_dbsnapshot
+    copy_dbsnapshot([::AWSConfig], arguments::Dict)
+    copy_dbsnapshot([::AWSConfig]; SourceDBSnapshotIdentifier=, TargetDBSnapshotIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "CopyDBSnapshot", arguments::Dict)
@@ -696,9 +696,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.copy_option_group([::AWSConfig], arguments::Dict)
-    RDS.copy_option_group([::AWSConfig]; SourceOptionGroupIdentifier=, TargetOptionGroupIdentifier=, TargetOptionGroupDescription=, <keyword arguments>)
+    using AWSSDK.RDS.copy_option_group
+    copy_option_group([::AWSConfig], arguments::Dict)
+    copy_option_group([::AWSConfig]; SourceOptionGroupIdentifier=, TargetOptionGroupIdentifier=, TargetOptionGroupDescription=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "CopyOptionGroup", arguments::Dict)
@@ -772,9 +772,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.create_dbcluster([::AWSConfig], arguments::Dict)
-    RDS.create_dbcluster([::AWSConfig]; DBClusterIdentifier=, Engine=, <keyword arguments>)
+    using AWSSDK.RDS.create_dbcluster
+    create_dbcluster([::AWSConfig], arguments::Dict)
+    create_dbcluster([::AWSConfig]; DBClusterIdentifier=, Engine=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "CreateDBCluster", arguments::Dict)
@@ -999,9 +999,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.create_dbcluster_parameter_group([::AWSConfig], arguments::Dict)
-    RDS.create_dbcluster_parameter_group([::AWSConfig]; DBClusterParameterGroupName=, DBParameterGroupFamily=, Description=, <keyword arguments>)
+    using AWSSDK.RDS.create_dbcluster_parameter_group
+    create_dbcluster_parameter_group([::AWSConfig], arguments::Dict)
+    create_dbcluster_parameter_group([::AWSConfig]; DBClusterParameterGroupName=, DBParameterGroupFamily=, Description=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "CreateDBClusterParameterGroup", arguments::Dict)
@@ -1075,9 +1075,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.create_dbcluster_snapshot([::AWSConfig], arguments::Dict)
-    RDS.create_dbcluster_snapshot([::AWSConfig]; DBClusterSnapshotIdentifier=, DBClusterIdentifier=, <keyword arguments>)
+    using AWSSDK.RDS.create_dbcluster_snapshot
+    create_dbcluster_snapshot([::AWSConfig], arguments::Dict)
+    create_dbcluster_snapshot([::AWSConfig]; DBClusterSnapshotIdentifier=, DBClusterIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "CreateDBClusterSnapshot", arguments::Dict)
@@ -1147,9 +1147,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.create_dbinstance([::AWSConfig], arguments::Dict)
-    RDS.create_dbinstance([::AWSConfig]; DBInstanceIdentifier=, DBInstanceClass=, Engine=, <keyword arguments>)
+    using AWSSDK.RDS.create_dbinstance
+    create_dbinstance([::AWSConfig], arguments::Dict)
+    create_dbinstance([::AWSConfig]; DBInstanceIdentifier=, DBInstanceClass=, Engine=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "CreateDBInstance", arguments::Dict)
@@ -1823,9 +1823,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.create_dbinstance_read_replica([::AWSConfig], arguments::Dict)
-    RDS.create_dbinstance_read_replica([::AWSConfig]; DBInstanceIdentifier=, SourceDBInstanceIdentifier=, <keyword arguments>)
+    using AWSSDK.RDS.create_dbinstance_read_replica
+    create_dbinstance_read_replica([::AWSConfig], arguments::Dict)
+    create_dbinstance_read_replica([::AWSConfig]; DBInstanceIdentifier=, SourceDBInstanceIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "CreateDBInstanceReadReplica", arguments::Dict)
@@ -2066,9 +2066,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.create_dbparameter_group([::AWSConfig], arguments::Dict)
-    RDS.create_dbparameter_group([::AWSConfig]; DBParameterGroupName=, DBParameterGroupFamily=, Description=, <keyword arguments>)
+    using AWSSDK.RDS.create_dbparameter_group
+    create_dbparameter_group([::AWSConfig], arguments::Dict)
+    create_dbparameter_group([::AWSConfig]; DBParameterGroupName=, DBParameterGroupFamily=, Description=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "CreateDBParameterGroup", arguments::Dict)
@@ -2138,9 +2138,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.create_dbsecurity_group([::AWSConfig], arguments::Dict)
-    RDS.create_dbsecurity_group([::AWSConfig]; DBSecurityGroupName=, DBSecurityGroupDescription=, <keyword arguments>)
+    using AWSSDK.RDS.create_dbsecurity_group
+    create_dbsecurity_group([::AWSConfig], arguments::Dict)
+    create_dbsecurity_group([::AWSConfig]; DBSecurityGroupName=, DBSecurityGroupDescription=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "CreateDBSecurityGroup", arguments::Dict)
@@ -2202,9 +2202,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.create_dbsnapshot([::AWSConfig], arguments::Dict)
-    RDS.create_dbsnapshot([::AWSConfig]; DBSnapshotIdentifier=, DBInstanceIdentifier=, <keyword arguments>)
+    using AWSSDK.RDS.create_dbsnapshot
+    create_dbsnapshot([::AWSConfig], arguments::Dict)
+    create_dbsnapshot([::AWSConfig]; DBSnapshotIdentifier=, DBInstanceIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "CreateDBSnapshot", arguments::Dict)
@@ -2274,9 +2274,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.create_dbsubnet_group([::AWSConfig], arguments::Dict)
-    RDS.create_dbsubnet_group([::AWSConfig]; DBSubnetGroupName=, DBSubnetGroupDescription=, SubnetIds=, <keyword arguments>)
+    using AWSSDK.RDS.create_dbsubnet_group
+    create_dbsubnet_group([::AWSConfig], arguments::Dict)
+    create_dbsubnet_group([::AWSConfig]; DBSubnetGroupName=, DBSubnetGroupDescription=, SubnetIds=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "CreateDBSubnetGroup", arguments::Dict)
@@ -2334,9 +2334,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.create_event_subscription([::AWSConfig], arguments::Dict)
-    RDS.create_event_subscription([::AWSConfig]; SubscriptionName=, SnsTopicArn=, <keyword arguments>)
+    using AWSSDK.RDS.create_event_subscription
+    create_event_subscription([::AWSConfig], arguments::Dict)
+    create_event_subscription([::AWSConfig]; SubscriptionName=, SnsTopicArn=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "CreateEventSubscription", arguments::Dict)
@@ -2422,9 +2422,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.create_option_group([::AWSConfig], arguments::Dict)
-    RDS.create_option_group([::AWSConfig]; OptionGroupName=, EngineName=, MajorEngineVersion=, OptionGroupDescription=, <keyword arguments>)
+    using AWSSDK.RDS.create_option_group
+    create_option_group([::AWSConfig], arguments::Dict)
+    create_option_group([::AWSConfig]; OptionGroupName=, EngineName=, MajorEngineVersion=, OptionGroupDescription=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "CreateOptionGroup", arguments::Dict)
@@ -2492,9 +2492,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.delete_dbcluster([::AWSConfig], arguments::Dict)
-    RDS.delete_dbcluster([::AWSConfig]; DBClusterIdentifier=, <keyword arguments>)
+    using AWSSDK.RDS.delete_dbcluster
+    delete_dbcluster([::AWSConfig], arguments::Dict)
+    delete_dbcluster([::AWSConfig]; DBClusterIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DeleteDBCluster", arguments::Dict)
@@ -2565,9 +2565,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.delete_dbcluster_parameter_group([::AWSConfig], arguments::Dict)
-    RDS.delete_dbcluster_parameter_group([::AWSConfig]; DBClusterParameterGroupName=)
+    using AWSSDK.RDS.delete_dbcluster_parameter_group
+    delete_dbcluster_parameter_group([::AWSConfig], arguments::Dict)
+    delete_dbcluster_parameter_group([::AWSConfig]; DBClusterParameterGroupName=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DeleteDBClusterParameterGroup", arguments::Dict)
@@ -2610,9 +2610,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.delete_dbcluster_snapshot([::AWSConfig], arguments::Dict)
-    RDS.delete_dbcluster_snapshot([::AWSConfig]; DBClusterSnapshotIdentifier=)
+    using AWSSDK.RDS.delete_dbcluster_snapshot
+    delete_dbcluster_snapshot([::AWSConfig], arguments::Dict)
+    delete_dbcluster_snapshot([::AWSConfig]; DBClusterSnapshotIdentifier=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DeleteDBClusterSnapshot", arguments::Dict)
@@ -2656,9 +2656,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.delete_dbinstance([::AWSConfig], arguments::Dict)
-    RDS.delete_dbinstance([::AWSConfig]; DBInstanceIdentifier=, <keyword arguments>)
+    using AWSSDK.RDS.delete_dbinstance
+    delete_dbinstance([::AWSConfig], arguments::Dict)
+    delete_dbinstance([::AWSConfig]; DBInstanceIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DeleteDBInstance", arguments::Dict)
@@ -2745,9 +2745,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.delete_dbparameter_group([::AWSConfig], arguments::Dict)
-    RDS.delete_dbparameter_group([::AWSConfig]; DBParameterGroupName=)
+    using AWSSDK.RDS.delete_dbparameter_group
+    delete_dbparameter_group([::AWSConfig], arguments::Dict)
+    delete_dbparameter_group([::AWSConfig]; DBParameterGroupName=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DeleteDBParameterGroup", arguments::Dict)
@@ -2788,9 +2788,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.delete_dbsecurity_group([::AWSConfig], arguments::Dict)
-    RDS.delete_dbsecurity_group([::AWSConfig]; DBSecurityGroupName=)
+    using AWSSDK.RDS.delete_dbsecurity_group
+    delete_dbsecurity_group([::AWSConfig], arguments::Dict)
+    delete_dbsecurity_group([::AWSConfig]; DBSecurityGroupName=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DeleteDBSecurityGroup", arguments::Dict)
@@ -2839,9 +2839,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.delete_dbsnapshot([::AWSConfig], arguments::Dict)
-    RDS.delete_dbsnapshot([::AWSConfig]; DBSnapshotIdentifier=)
+    using AWSSDK.RDS.delete_dbsnapshot
+    delete_dbsnapshot([::AWSConfig], arguments::Dict)
+    delete_dbsnapshot([::AWSConfig]; DBSnapshotIdentifier=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DeleteDBSnapshot", arguments::Dict)
@@ -2883,9 +2883,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.delete_dbsubnet_group([::AWSConfig], arguments::Dict)
-    RDS.delete_dbsubnet_group([::AWSConfig]; DBSubnetGroupName=)
+    using AWSSDK.RDS.delete_dbsubnet_group
+    delete_dbsubnet_group([::AWSConfig], arguments::Dict)
+    delete_dbsubnet_group([::AWSConfig]; DBSubnetGroupName=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DeleteDBSubnetGroup", arguments::Dict)
@@ -2930,9 +2930,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.delete_event_subscription([::AWSConfig], arguments::Dict)
-    RDS.delete_event_subscription([::AWSConfig]; SubscriptionName=)
+    using AWSSDK.RDS.delete_event_subscription
+    delete_event_subscription([::AWSConfig], arguments::Dict)
+    delete_event_subscription([::AWSConfig]; SubscriptionName=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DeleteEventSubscription", arguments::Dict)
@@ -2969,9 +2969,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.delete_option_group([::AWSConfig], arguments::Dict)
-    RDS.delete_option_group([::AWSConfig]; OptionGroupName=)
+    using AWSSDK.RDS.delete_option_group
+    delete_option_group([::AWSConfig], arguments::Dict)
+    delete_option_group([::AWSConfig]; OptionGroupName=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DeleteOptionGroup", arguments::Dict)
@@ -3007,9 +3007,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_account_attributes([::AWSConfig], arguments::Dict)
-    RDS.describe_account_attributes([::AWSConfig]; )
+    using AWSSDK.RDS.describe_account_attributes
+    describe_account_attributes([::AWSConfig], arguments::Dict)
+    describe_account_attributes([::AWSConfig]; )
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeAccountAttributes", arguments::Dict)
@@ -3040,9 +3040,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_certificates([::AWSConfig], arguments::Dict)
-    RDS.describe_certificates([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_certificates
+    describe_certificates([::AWSConfig], arguments::Dict)
+    describe_certificates([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeCertificates", arguments::Dict)
@@ -3108,9 +3108,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_dbcluster_parameter_groups([::AWSConfig], arguments::Dict)
-    RDS.describe_dbcluster_parameter_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_dbcluster_parameter_groups
+    describe_dbcluster_parameter_groups([::AWSConfig], arguments::Dict)
+    describe_dbcluster_parameter_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeDBClusterParameterGroups", arguments::Dict)
@@ -3178,9 +3178,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_dbcluster_parameters([::AWSConfig], arguments::Dict)
-    RDS.describe_dbcluster_parameters([::AWSConfig]; DBClusterParameterGroupName=, <keyword arguments>)
+    using AWSSDK.RDS.describe_dbcluster_parameters
+    describe_dbcluster_parameters([::AWSConfig], arguments::Dict)
+    describe_dbcluster_parameters([::AWSConfig]; DBClusterParameterGroupName=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeDBClusterParameters", arguments::Dict)
@@ -3252,9 +3252,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_dbcluster_snapshot_attributes([::AWSConfig], arguments::Dict)
-    RDS.describe_dbcluster_snapshot_attributes([::AWSConfig]; DBClusterSnapshotIdentifier=)
+    using AWSSDK.RDS.describe_dbcluster_snapshot_attributes
+    describe_dbcluster_snapshot_attributes([::AWSConfig], arguments::Dict)
+    describe_dbcluster_snapshot_attributes([::AWSConfig]; DBClusterSnapshotIdentifier=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeDBClusterSnapshotAttributes", arguments::Dict)
@@ -3295,9 +3295,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_dbcluster_snapshots([::AWSConfig], arguments::Dict)
-    RDS.describe_dbcluster_snapshots([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_dbcluster_snapshots
+    describe_dbcluster_snapshots([::AWSConfig], arguments::Dict)
+    describe_dbcluster_snapshots([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeDBClusterSnapshots", arguments::Dict)
@@ -3407,9 +3407,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_dbclusters([::AWSConfig], arguments::Dict)
-    RDS.describe_dbclusters([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_dbclusters
+    describe_dbclusters([::AWSConfig], arguments::Dict)
+    describe_dbclusters([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeDBClusters", arguments::Dict)
@@ -3481,9 +3481,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_dbengine_versions([::AWSConfig], arguments::Dict)
-    RDS.describe_dbengine_versions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_dbengine_versions
+    describe_dbengine_versions([::AWSConfig], arguments::Dict)
+    describe_dbengine_versions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeDBEngineVersions", arguments::Dict)
@@ -3567,9 +3567,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_dbinstances([::AWSConfig], arguments::Dict)
-    RDS.describe_dbinstances([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_dbinstances
+    describe_dbinstances([::AWSConfig], arguments::Dict)
+    describe_dbinstances([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeDBInstances", arguments::Dict)
@@ -3641,9 +3641,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_dblog_files([::AWSConfig], arguments::Dict)
-    RDS.describe_dblog_files([::AWSConfig]; DBInstanceIdentifier=, <keyword arguments>)
+    using AWSSDK.RDS.describe_dblog_files
+    describe_dblog_files([::AWSConfig], arguments::Dict)
+    describe_dblog_files([::AWSConfig]; DBInstanceIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeDBLogFiles", arguments::Dict)
@@ -3717,9 +3717,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_dbparameter_groups([::AWSConfig], arguments::Dict)
-    RDS.describe_dbparameter_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_dbparameter_groups
+    describe_dbparameter_groups([::AWSConfig], arguments::Dict)
+    describe_dbparameter_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeDBParameterGroups", arguments::Dict)
@@ -3785,9 +3785,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_dbparameters([::AWSConfig], arguments::Dict)
-    RDS.describe_dbparameters([::AWSConfig]; DBParameterGroupName=, <keyword arguments>)
+    using AWSSDK.RDS.describe_dbparameters
+    describe_dbparameters([::AWSConfig], arguments::Dict)
+    describe_dbparameters([::AWSConfig]; DBParameterGroupName=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeDBParameters", arguments::Dict)
@@ -3861,9 +3861,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_dbsecurity_groups([::AWSConfig], arguments::Dict)
-    RDS.describe_dbsecurity_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_dbsecurity_groups
+    describe_dbsecurity_groups([::AWSConfig], arguments::Dict)
+    describe_dbsecurity_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeDBSecurityGroups", arguments::Dict)
@@ -3921,9 +3921,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_dbsnapshot_attributes([::AWSConfig], arguments::Dict)
-    RDS.describe_dbsnapshot_attributes([::AWSConfig]; DBSnapshotIdentifier=)
+    using AWSSDK.RDS.describe_dbsnapshot_attributes
+    describe_dbsnapshot_attributes([::AWSConfig], arguments::Dict)
+    describe_dbsnapshot_attributes([::AWSConfig]; DBSnapshotIdentifier=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeDBSnapshotAttributes", arguments::Dict)
@@ -3964,9 +3964,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_dbsnapshots([::AWSConfig], arguments::Dict)
-    RDS.describe_dbsnapshots([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_dbsnapshots
+    describe_dbsnapshots([::AWSConfig], arguments::Dict)
+    describe_dbsnapshots([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeDBSnapshots", arguments::Dict)
@@ -4074,9 +4074,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_dbsubnet_groups([::AWSConfig], arguments::Dict)
-    RDS.describe_dbsubnet_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_dbsubnet_groups
+    describe_dbsubnet_groups([::AWSConfig], arguments::Dict)
+    describe_dbsubnet_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeDBSubnetGroups", arguments::Dict)
@@ -4136,9 +4136,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_engine_default_cluster_parameters([::AWSConfig], arguments::Dict)
-    RDS.describe_engine_default_cluster_parameters([::AWSConfig]; DBParameterGroupFamily=, <keyword arguments>)
+    using AWSSDK.RDS.describe_engine_default_cluster_parameters
+    describe_engine_default_cluster_parameters([::AWSConfig], arguments::Dict)
+    describe_engine_default_cluster_parameters([::AWSConfig]; DBParameterGroupFamily=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeEngineDefaultClusterParameters", arguments::Dict)
@@ -4194,9 +4194,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_engine_default_parameters([::AWSConfig], arguments::Dict)
-    RDS.describe_engine_default_parameters([::AWSConfig]; DBParameterGroupFamily=, <keyword arguments>)
+    using AWSSDK.RDS.describe_engine_default_parameters
+    describe_engine_default_parameters([::AWSConfig], arguments::Dict)
+    describe_engine_default_parameters([::AWSConfig]; DBParameterGroupFamily=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeEngineDefaultParameters", arguments::Dict)
@@ -4250,9 +4250,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_event_categories([::AWSConfig], arguments::Dict)
-    RDS.describe_event_categories([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_event_categories
+    describe_event_categories([::AWSConfig], arguments::Dict)
+    describe_event_categories([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeEventCategories", arguments::Dict)
@@ -4296,9 +4296,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_event_subscriptions([::AWSConfig], arguments::Dict)
-    RDS.describe_event_subscriptions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_event_subscriptions
+    describe_event_subscriptions([::AWSConfig], arguments::Dict)
+    describe_event_subscriptions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeEventSubscriptions", arguments::Dict)
@@ -4358,9 +4358,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_events([::AWSConfig], arguments::Dict)
-    RDS.describe_events([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_events
+    describe_events([::AWSConfig], arguments::Dict)
+    describe_events([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeEvents", arguments::Dict)
@@ -4454,9 +4454,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_option_group_options([::AWSConfig], arguments::Dict)
-    RDS.describe_option_group_options([::AWSConfig]; EngineName=, <keyword arguments>)
+    using AWSSDK.RDS.describe_option_group_options
+    describe_option_group_options([::AWSConfig], arguments::Dict)
+    describe_option_group_options([::AWSConfig]; EngineName=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeOptionGroupOptions", arguments::Dict)
@@ -4514,9 +4514,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_option_groups([::AWSConfig], arguments::Dict)
-    RDS.describe_option_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_option_groups
+    describe_option_groups([::AWSConfig], arguments::Dict)
+    describe_option_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeOptionGroups", arguments::Dict)
@@ -4582,9 +4582,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_orderable_dbinstance_options([::AWSConfig], arguments::Dict)
-    RDS.describe_orderable_dbinstance_options([::AWSConfig]; Engine=, <keyword arguments>)
+    using AWSSDK.RDS.describe_orderable_dbinstance_options
+    describe_orderable_dbinstance_options([::AWSConfig], arguments::Dict)
+    describe_orderable_dbinstance_options([::AWSConfig]; Engine=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeOrderableDBInstanceOptions", arguments::Dict)
@@ -4654,9 +4654,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_pending_maintenance_actions([::AWSConfig], arguments::Dict)
-    RDS.describe_pending_maintenance_actions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_pending_maintenance_actions
+    describe_pending_maintenance_actions([::AWSConfig], arguments::Dict)
+    describe_pending_maintenance_actions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribePendingMaintenanceActions", arguments::Dict)
@@ -4720,9 +4720,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_reserved_dbinstances([::AWSConfig], arguments::Dict)
-    RDS.describe_reserved_dbinstances([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_reserved_dbinstances
+    describe_reserved_dbinstances([::AWSConfig], arguments::Dict)
+    describe_reserved_dbinstances([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeReservedDBInstances", arguments::Dict)
@@ -4808,9 +4808,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_reserved_dbinstances_offerings([::AWSConfig], arguments::Dict)
-    RDS.describe_reserved_dbinstances_offerings([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_reserved_dbinstances_offerings
+    describe_reserved_dbinstances_offerings([::AWSConfig], arguments::Dict)
+    describe_reserved_dbinstances_offerings([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeReservedDBInstancesOfferings", arguments::Dict)
@@ -4894,9 +4894,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.describe_source_regions([::AWSConfig], arguments::Dict)
-    RDS.describe_source_regions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.describe_source_regions
+    describe_source_regions([::AWSConfig], arguments::Dict)
+    describe_source_regions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DescribeSourceRegions", arguments::Dict)
@@ -4954,9 +4954,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.download_dblog_file_portion([::AWSConfig], arguments::Dict)
-    RDS.download_dblog_file_portion([::AWSConfig]; DBInstanceIdentifier=, LogFileName=, <keyword arguments>)
+    using AWSSDK.RDS.download_dblog_file_portion
+    download_dblog_file_portion([::AWSConfig], arguments::Dict)
+    download_dblog_file_portion([::AWSConfig]; DBInstanceIdentifier=, LogFileName=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "DownloadDBLogFilePortion", arguments::Dict)
@@ -5023,9 +5023,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.failover_dbcluster([::AWSConfig], arguments::Dict)
-    RDS.failover_dbcluster([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.RDS.failover_dbcluster
+    failover_dbcluster([::AWSConfig], arguments::Dict)
+    failover_dbcluster([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "FailoverDBCluster", arguments::Dict)
@@ -5082,9 +5082,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.list_tags_for_resource([::AWSConfig], arguments::Dict)
-    RDS.list_tags_for_resource([::AWSConfig]; ResourceName=, <keyword arguments>)
+    using AWSSDK.RDS.list_tags_for_resource
+    list_tags_for_resource([::AWSConfig], arguments::Dict)
+    list_tags_for_resource([::AWSConfig]; ResourceName=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "ListTagsForResource", arguments::Dict)
@@ -5132,9 +5132,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.modify_dbcluster([::AWSConfig], arguments::Dict)
-    RDS.modify_dbcluster([::AWSConfig]; DBClusterIdentifier=, <keyword arguments>)
+    using AWSSDK.RDS.modify_dbcluster
+    modify_dbcluster([::AWSConfig], arguments::Dict)
+    modify_dbcluster([::AWSConfig]; DBClusterIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "ModifyDBCluster", arguments::Dict)
@@ -5275,9 +5275,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.modify_dbcluster_parameter_group([::AWSConfig], arguments::Dict)
-    RDS.modify_dbcluster_parameter_group([::AWSConfig]; DBClusterParameterGroupName=, Parameters=)
+    using AWSSDK.RDS.modify_dbcluster_parameter_group
+    modify_dbcluster_parameter_group([::AWSConfig], arguments::Dict)
+    modify_dbcluster_parameter_group([::AWSConfig]; DBClusterParameterGroupName=, Parameters=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "ModifyDBClusterParameterGroup", arguments::Dict)
@@ -5339,9 +5339,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.modify_dbcluster_snapshot_attribute([::AWSConfig], arguments::Dict)
-    RDS.modify_dbcluster_snapshot_attribute([::AWSConfig]; DBClusterSnapshotIdentifier=, AttributeName=, <keyword arguments>)
+    using AWSSDK.RDS.modify_dbcluster_snapshot_attribute
+    modify_dbcluster_snapshot_attribute([::AWSConfig], arguments::Dict)
+    modify_dbcluster_snapshot_attribute([::AWSConfig]; DBClusterSnapshotIdentifier=, AttributeName=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "ModifyDBClusterSnapshotAttribute", arguments::Dict)
@@ -5400,9 +5400,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.modify_dbinstance([::AWSConfig], arguments::Dict)
-    RDS.modify_dbinstance([::AWSConfig]; DBInstanceIdentifier=, <keyword arguments>)
+    using AWSSDK.RDS.modify_dbinstance
+    modify_dbinstance([::AWSConfig], arguments::Dict)
+    modify_dbinstance([::AWSConfig]; DBInstanceIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "ModifyDBInstance", arguments::Dict)
@@ -5802,9 +5802,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.modify_dbparameter_group([::AWSConfig], arguments::Dict)
-    RDS.modify_dbparameter_group([::AWSConfig]; DBParameterGroupName=, Parameters=)
+    using AWSSDK.RDS.modify_dbparameter_group
+    modify_dbparameter_group([::AWSConfig], arguments::Dict)
+    modify_dbparameter_group([::AWSConfig]; DBParameterGroupName=, Parameters=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "ModifyDBParameterGroup", arguments::Dict)
@@ -5879,9 +5879,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.modify_dbsnapshot([::AWSConfig], arguments::Dict)
-    RDS.modify_dbsnapshot([::AWSConfig]; DBSnapshotIdentifier=, <keyword arguments>)
+    using AWSSDK.RDS.modify_dbsnapshot
+    modify_dbsnapshot([::AWSConfig], arguments::Dict)
+    modify_dbsnapshot([::AWSConfig]; DBSnapshotIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "ModifyDBSnapshot", arguments::Dict)
@@ -5924,9 +5924,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.modify_dbsnapshot_attribute([::AWSConfig], arguments::Dict)
-    RDS.modify_dbsnapshot_attribute([::AWSConfig]; DBSnapshotIdentifier=, AttributeName=, <keyword arguments>)
+    using AWSSDK.RDS.modify_dbsnapshot_attribute
+    modify_dbsnapshot_attribute([::AWSConfig], arguments::Dict)
+    modify_dbsnapshot_attribute([::AWSConfig]; DBSnapshotIdentifier=, AttributeName=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "ModifyDBSnapshotAttribute", arguments::Dict)
@@ -5985,9 +5985,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.modify_dbsubnet_group([::AWSConfig], arguments::Dict)
-    RDS.modify_dbsubnet_group([::AWSConfig]; DBSubnetGroupName=, SubnetIds=, <keyword arguments>)
+    using AWSSDK.RDS.modify_dbsubnet_group
+    modify_dbsubnet_group([::AWSConfig], arguments::Dict)
+    modify_dbsubnet_group([::AWSConfig]; DBSubnetGroupName=, SubnetIds=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "ModifyDBSubnetGroup", arguments::Dict)
@@ -6036,9 +6036,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.modify_event_subscription([::AWSConfig], arguments::Dict)
-    RDS.modify_event_subscription([::AWSConfig]; SubscriptionName=, <keyword arguments>)
+    using AWSSDK.RDS.modify_event_subscription
+    modify_event_subscription([::AWSConfig], arguments::Dict)
+    modify_event_subscription([::AWSConfig]; SubscriptionName=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "ModifyEventSubscription", arguments::Dict)
@@ -6095,9 +6095,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.modify_option_group([::AWSConfig], arguments::Dict)
-    RDS.modify_option_group([::AWSConfig]; OptionGroupName=, <keyword arguments>)
+    using AWSSDK.RDS.modify_option_group
+    modify_option_group([::AWSConfig], arguments::Dict)
+    modify_option_group([::AWSConfig]; OptionGroupName=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "ModifyOptionGroup", arguments::Dict)
@@ -6167,9 +6167,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.promote_read_replica([::AWSConfig], arguments::Dict)
-    RDS.promote_read_replica([::AWSConfig]; DBInstanceIdentifier=, <keyword arguments>)
+    using AWSSDK.RDS.promote_read_replica
+    promote_read_replica([::AWSConfig], arguments::Dict)
+    promote_read_replica([::AWSConfig]; DBInstanceIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "PromoteReadReplica", arguments::Dict)
@@ -6247,9 +6247,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.promote_read_replica_dbcluster([::AWSConfig], arguments::Dict)
-    RDS.promote_read_replica_dbcluster([::AWSConfig]; DBClusterIdentifier=)
+    using AWSSDK.RDS.promote_read_replica_dbcluster
+    promote_read_replica_dbcluster([::AWSConfig], arguments::Dict)
+    promote_read_replica_dbcluster([::AWSConfig]; DBClusterIdentifier=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "PromoteReadReplicaDBCluster", arguments::Dict)
@@ -6296,9 +6296,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.purchase_reserved_dbinstances_offering([::AWSConfig], arguments::Dict)
-    RDS.purchase_reserved_dbinstances_offering([::AWSConfig]; ReservedDBInstancesOfferingId=, <keyword arguments>)
+    using AWSSDK.RDS.purchase_reserved_dbinstances_offering
+    purchase_reserved_dbinstances_offering([::AWSConfig], arguments::Dict)
+    purchase_reserved_dbinstances_offering([::AWSConfig]; ReservedDBInstancesOfferingId=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "PurchaseReservedDBInstancesOffering", arguments::Dict)
@@ -6358,9 +6358,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.reboot_dbinstance([::AWSConfig], arguments::Dict)
-    RDS.reboot_dbinstance([::AWSConfig]; DBInstanceIdentifier=, <keyword arguments>)
+    using AWSSDK.RDS.reboot_dbinstance
+    reboot_dbinstance([::AWSConfig], arguments::Dict)
+    reboot_dbinstance([::AWSConfig]; DBInstanceIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "RebootDBInstance", arguments::Dict)
@@ -6415,9 +6415,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.remove_role_from_dbcluster([::AWSConfig], arguments::Dict)
-    RDS.remove_role_from_dbcluster([::AWSConfig]; DBClusterIdentifier=, RoleArn=)
+    using AWSSDK.RDS.remove_role_from_dbcluster
+    remove_role_from_dbcluster([::AWSConfig], arguments::Dict)
+    remove_role_from_dbcluster([::AWSConfig]; DBClusterIdentifier=, RoleArn=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "RemoveRoleFromDBCluster", arguments::Dict)
@@ -6454,9 +6454,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.remove_source_identifier_from_subscription([::AWSConfig], arguments::Dict)
-    RDS.remove_source_identifier_from_subscription([::AWSConfig]; SubscriptionName=, SourceIdentifier=)
+    using AWSSDK.RDS.remove_source_identifier_from_subscription
+    remove_source_identifier_from_subscription([::AWSConfig], arguments::Dict)
+    remove_source_identifier_from_subscription([::AWSConfig]; SubscriptionName=, SourceIdentifier=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "RemoveSourceIdentifierFromSubscription", arguments::Dict)
@@ -6497,9 +6497,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.remove_tags_from_resource([::AWSConfig], arguments::Dict)
-    RDS.remove_tags_from_resource([::AWSConfig]; ResourceName=, TagKeys=)
+    using AWSSDK.RDS.remove_tags_from_resource
+    remove_tags_from_resource([::AWSConfig], arguments::Dict)
+    remove_tags_from_resource([::AWSConfig]; ResourceName=, TagKeys=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "RemoveTagsFromResource", arguments::Dict)
@@ -6538,9 +6538,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.reset_dbcluster_parameter_group([::AWSConfig], arguments::Dict)
-    RDS.reset_dbcluster_parameter_group([::AWSConfig]; DBClusterParameterGroupName=, <keyword arguments>)
+    using AWSSDK.RDS.reset_dbcluster_parameter_group
+    reset_dbcluster_parameter_group([::AWSConfig], arguments::Dict)
+    reset_dbcluster_parameter_group([::AWSConfig]; DBClusterParameterGroupName=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "ResetDBClusterParameterGroup", arguments::Dict)
@@ -6602,9 +6602,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.reset_dbparameter_group([::AWSConfig], arguments::Dict)
-    RDS.reset_dbparameter_group([::AWSConfig]; DBParameterGroupName=, <keyword arguments>)
+    using AWSSDK.RDS.reset_dbparameter_group
+    reset_dbparameter_group([::AWSConfig], arguments::Dict)
+    reset_dbparameter_group([::AWSConfig]; DBParameterGroupName=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "ResetDBParameterGroup", arguments::Dict)
@@ -6688,9 +6688,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.restore_dbcluster_from_s3([::AWSConfig], arguments::Dict)
-    RDS.restore_dbcluster_from_s3([::AWSConfig]; DBClusterIdentifier=, Engine=, MasterUsername=, MasterUserPassword=, SourceEngine=, SourceEngineVersion=, S3BucketName=, S3IngestionRoleArn=, <keyword arguments>)
+    using AWSSDK.RDS.restore_dbcluster_from_s3
+    restore_dbcluster_from_s3([::AWSConfig], arguments::Dict)
+    restore_dbcluster_from_s3([::AWSConfig]; DBClusterIdentifier=, Engine=, MasterUsername=, MasterUserPassword=, SourceEngine=, SourceEngineVersion=, S3BucketName=, S3IngestionRoleArn=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "RestoreDBClusterFromS3", arguments::Dict)
@@ -6908,9 +6908,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.restore_dbcluster_from_snapshot([::AWSConfig], arguments::Dict)
-    RDS.restore_dbcluster_from_snapshot([::AWSConfig]; DBClusterIdentifier=, SnapshotIdentifier=, Engine=, <keyword arguments>)
+    using AWSSDK.RDS.restore_dbcluster_from_snapshot
+    restore_dbcluster_from_snapshot([::AWSConfig], arguments::Dict)
+    restore_dbcluster_from_snapshot([::AWSConfig]; DBClusterIdentifier=, SnapshotIdentifier=, Engine=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "RestoreDBClusterFromSnapshot", arguments::Dict)
@@ -7042,9 +7042,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.restore_dbcluster_to_point_in_time([::AWSConfig], arguments::Dict)
-    RDS.restore_dbcluster_to_point_in_time([::AWSConfig]; DBClusterIdentifier=, SourceDBClusterIdentifier=, <keyword arguments>)
+    using AWSSDK.RDS.restore_dbcluster_to_point_in_time
+    restore_dbcluster_to_point_in_time([::AWSConfig], arguments::Dict)
+    restore_dbcluster_to_point_in_time([::AWSConfig]; DBClusterIdentifier=, SourceDBClusterIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "RestoreDBClusterToPointInTime", arguments::Dict)
@@ -7198,9 +7198,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.restore_dbinstance_from_dbsnapshot([::AWSConfig], arguments::Dict)
-    RDS.restore_dbinstance_from_dbsnapshot([::AWSConfig]; DBInstanceIdentifier=, DBSnapshotIdentifier=, <keyword arguments>)
+    using AWSSDK.RDS.restore_dbinstance_from_dbsnapshot
+    restore_dbinstance_from_dbsnapshot([::AWSConfig], arguments::Dict)
+    restore_dbinstance_from_dbsnapshot([::AWSConfig]; DBInstanceIdentifier=, DBSnapshotIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "RestoreDBInstanceFromDBSnapshot", arguments::Dict)
@@ -7413,9 +7413,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.restore_dbinstance_to_point_in_time([::AWSConfig], arguments::Dict)
-    RDS.restore_dbinstance_to_point_in_time([::AWSConfig]; SourceDBInstanceIdentifier=, TargetDBInstanceIdentifier=, <keyword arguments>)
+    using AWSSDK.RDS.restore_dbinstance_to_point_in_time
+    restore_dbinstance_to_point_in_time([::AWSConfig], arguments::Dict)
+    restore_dbinstance_to_point_in_time([::AWSConfig]; SourceDBInstanceIdentifier=, TargetDBInstanceIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "RestoreDBInstanceToPointInTime", arguments::Dict)
@@ -7648,9 +7648,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.revoke_dbsecurity_group_ingress([::AWSConfig], arguments::Dict)
-    RDS.revoke_dbsecurity_group_ingress([::AWSConfig]; DBSecurityGroupName=, <keyword arguments>)
+    using AWSSDK.RDS.revoke_dbsecurity_group_ingress
+    revoke_dbsecurity_group_ingress([::AWSConfig], arguments::Dict)
+    revoke_dbsecurity_group_ingress([::AWSConfig]; DBSecurityGroupName=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "RevokeDBSecurityGroupIngress", arguments::Dict)
@@ -7703,9 +7703,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.start_dbinstance([::AWSConfig], arguments::Dict)
-    RDS.start_dbinstance([::AWSConfig]; DBInstanceIdentifier=)
+    using AWSSDK.RDS.start_dbinstance
+    start_dbinstance([::AWSConfig], arguments::Dict)
+    start_dbinstance([::AWSConfig]; DBInstanceIdentifier=)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "StartDBInstance", arguments::Dict)
@@ -7742,9 +7742,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
-    using AWSSDK.RDS
-    RDS.stop_dbinstance([::AWSConfig], arguments::Dict)
-    RDS.stop_dbinstance([::AWSConfig]; DBInstanceIdentifier=, <keyword arguments>)
+    using AWSSDK.RDS.stop_dbinstance
+    stop_dbinstance([::AWSConfig], arguments::Dict)
+    stop_dbinstance([::AWSConfig]; DBInstanceIdentifier=, <keyword arguments>)
 
     using AWSCore.Services.rds
     rds([::AWSConfig], "StopDBInstance", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.SSM
-    SSM.add_tags_to_resource([::AWSConfig], arguments::Dict)
-    SSM.add_tags_to_resource([::AWSConfig]; ResourceType=, ResourceId=, Tags=)
+    using AWSSDK.SSM.add_tags_to_resource
+    add_tags_to_resource([::AWSConfig], arguments::Dict)
+    add_tags_to_resource([::AWSConfig]; ResourceType=, ResourceId=, Tags=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "AddTagsToResource", arguments::Dict)
@@ -71,9 +71,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.cancel_command([::AWSConfig], arguments::Dict)
-    SSM.cancel_command([::AWSConfig]; CommandId=, <keyword arguments>)
+    using AWSSDK.SSM.cancel_command
+    cancel_command([::AWSConfig], arguments::Dict)
+    cancel_command([::AWSConfig]; CommandId=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "CancelCommand", arguments::Dict)
@@ -114,9 +114,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.create_activation([::AWSConfig], arguments::Dict)
-    SSM.create_activation([::AWSConfig]; IamRole=, <keyword arguments>)
+    using AWSSDK.SSM.create_activation
+    create_activation([::AWSConfig], arguments::Dict)
+    create_activation([::AWSConfig]; IamRole=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "CreateActivation", arguments::Dict)
@@ -169,9 +169,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.create_association([::AWSConfig], arguments::Dict)
-    SSM.create_association([::AWSConfig]; Name=, <keyword arguments>)
+    using AWSSDK.SSM.create_association
+    create_association([::AWSConfig], arguments::Dict)
+    create_association([::AWSConfig]; Name=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "CreateAssociation", arguments::Dict)
@@ -247,9 +247,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.create_association_batch([::AWSConfig], arguments::Dict)
-    SSM.create_association_batch([::AWSConfig]; Entries=)
+    using AWSSDK.SSM.create_association_batch
+    create_association_batch([::AWSConfig], arguments::Dict)
+    create_association_batch([::AWSConfig]; Entries=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "CreateAssociationBatch", arguments::Dict)
@@ -307,9 +307,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.create_document([::AWSConfig], arguments::Dict)
-    SSM.create_document([::AWSConfig]; Content=, Name=, <keyword arguments>)
+    using AWSSDK.SSM.create_document
+    create_document([::AWSConfig], arguments::Dict)
+    create_document([::AWSConfig]; Content=, Name=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "CreateDocument", arguments::Dict)
@@ -356,9 +356,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.create_maintenance_window([::AWSConfig], arguments::Dict)
-    SSM.create_maintenance_window([::AWSConfig]; Name=, Schedule=, Duration=, Cutoff=, AllowUnassociatedTargets=, <keyword arguments>)
+    using AWSSDK.SSM.create_maintenance_window
+    create_maintenance_window([::AWSConfig], arguments::Dict)
+    create_maintenance_window([::AWSConfig]; Name=, Schedule=, Duration=, Cutoff=, AllowUnassociatedTargets=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "CreateMaintenanceWindow", arguments::Dict)
@@ -415,9 +415,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.create_patch_baseline([::AWSConfig], arguments::Dict)
-    SSM.create_patch_baseline([::AWSConfig]; Name=, <keyword arguments>)
+    using AWSSDK.SSM.create_patch_baseline
+    create_patch_baseline([::AWSConfig], arguments::Dict)
+    create_patch_baseline([::AWSConfig]; Name=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "CreatePatchBaseline", arguments::Dict)
@@ -500,9 +500,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.create_resource_data_sync([::AWSConfig], arguments::Dict)
-    SSM.create_resource_data_sync([::AWSConfig]; SyncName=, S3Destination=)
+    using AWSSDK.SSM.create_resource_data_sync
+    create_resource_data_sync([::AWSConfig], arguments::Dict)
+    create_resource_data_sync([::AWSConfig]; SyncName=, S3Destination=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "CreateResourceDataSync", arguments::Dict)
@@ -552,9 +552,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.delete_activation([::AWSConfig], arguments::Dict)
-    SSM.delete_activation([::AWSConfig]; ActivationId=)
+    using AWSSDK.SSM.delete_activation
+    delete_activation([::AWSConfig], arguments::Dict)
+    delete_activation([::AWSConfig]; ActivationId=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DeleteActivation", arguments::Dict)
@@ -591,9 +591,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.delete_association([::AWSConfig], arguments::Dict)
-    SSM.delete_association([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.delete_association
+    delete_association([::AWSConfig], arguments::Dict)
+    delete_association([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DeleteAssociation", arguments::Dict)
@@ -640,9 +640,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.delete_document([::AWSConfig], arguments::Dict)
-    SSM.delete_document([::AWSConfig]; Name=)
+    using AWSSDK.SSM.delete_document
+    delete_document([::AWSConfig], arguments::Dict)
+    delete_document([::AWSConfig]; Name=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DeleteDocument", arguments::Dict)
@@ -681,9 +681,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.delete_maintenance_window([::AWSConfig], arguments::Dict)
-    SSM.delete_maintenance_window([::AWSConfig]; WindowId=)
+    using AWSSDK.SSM.delete_maintenance_window
+    delete_maintenance_window([::AWSConfig], arguments::Dict)
+    delete_maintenance_window([::AWSConfig]; WindowId=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DeleteMaintenanceWindow", arguments::Dict)
@@ -720,9 +720,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.delete_parameter([::AWSConfig], arguments::Dict)
-    SSM.delete_parameter([::AWSConfig]; Name=)
+    using AWSSDK.SSM.delete_parameter
+    delete_parameter([::AWSConfig], arguments::Dict)
+    delete_parameter([::AWSConfig]; Name=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DeleteParameter", arguments::Dict)
@@ -759,9 +759,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.delete_parameters([::AWSConfig], arguments::Dict)
-    SSM.delete_parameters([::AWSConfig]; Names=)
+    using AWSSDK.SSM.delete_parameters
+    delete_parameters([::AWSConfig], arguments::Dict)
+    delete_parameters([::AWSConfig]; Names=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DeleteParameters", arguments::Dict)
@@ -798,9 +798,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.delete_patch_baseline([::AWSConfig], arguments::Dict)
-    SSM.delete_patch_baseline([::AWSConfig]; BaselineId=)
+    using AWSSDK.SSM.delete_patch_baseline
+    delete_patch_baseline([::AWSConfig], arguments::Dict)
+    delete_patch_baseline([::AWSConfig]; BaselineId=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DeletePatchBaseline", arguments::Dict)
@@ -837,9 +837,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.delete_resource_data_sync([::AWSConfig], arguments::Dict)
-    SSM.delete_resource_data_sync([::AWSConfig]; SyncName=)
+    using AWSSDK.SSM.delete_resource_data_sync
+    delete_resource_data_sync([::AWSConfig], arguments::Dict)
+    delete_resource_data_sync([::AWSConfig]; SyncName=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DeleteResourceDataSync", arguments::Dict)
@@ -876,9 +876,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.deregister_managed_instance([::AWSConfig], arguments::Dict)
-    SSM.deregister_managed_instance([::AWSConfig]; InstanceId=)
+    using AWSSDK.SSM.deregister_managed_instance
+    deregister_managed_instance([::AWSConfig], arguments::Dict)
+    deregister_managed_instance([::AWSConfig]; InstanceId=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DeregisterManagedInstance", arguments::Dict)
@@ -915,9 +915,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.deregister_patch_baseline_for_patch_group([::AWSConfig], arguments::Dict)
-    SSM.deregister_patch_baseline_for_patch_group([::AWSConfig]; BaselineId=, PatchGroup=)
+    using AWSSDK.SSM.deregister_patch_baseline_for_patch_group
+    deregister_patch_baseline_for_patch_group([::AWSConfig], arguments::Dict)
+    deregister_patch_baseline_for_patch_group([::AWSConfig]; BaselineId=, PatchGroup=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DeregisterPatchBaselineForPatchGroup", arguments::Dict)
@@ -958,9 +958,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.deregister_target_from_maintenance_window([::AWSConfig], arguments::Dict)
-    SSM.deregister_target_from_maintenance_window([::AWSConfig]; WindowId=, WindowTargetId=)
+    using AWSSDK.SSM.deregister_target_from_maintenance_window
+    deregister_target_from_maintenance_window([::AWSConfig], arguments::Dict)
+    deregister_target_from_maintenance_window([::AWSConfig]; WindowId=, WindowTargetId=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DeregisterTargetFromMaintenanceWindow", arguments::Dict)
@@ -1001,9 +1001,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.deregister_task_from_maintenance_window([::AWSConfig], arguments::Dict)
-    SSM.deregister_task_from_maintenance_window([::AWSConfig]; WindowId=, WindowTaskId=)
+    using AWSSDK.SSM.deregister_task_from_maintenance_window
+    deregister_task_from_maintenance_window([::AWSConfig], arguments::Dict)
+    deregister_task_from_maintenance_window([::AWSConfig]; WindowId=, WindowTaskId=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DeregisterTaskFromMaintenanceWindow", arguments::Dict)
@@ -1044,9 +1044,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_activations([::AWSConfig], arguments::Dict)
-    SSM.describe_activations([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.describe_activations
+    describe_activations([::AWSConfig], arguments::Dict)
+    describe_activations([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeActivations", arguments::Dict)
@@ -1096,9 +1096,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_association([::AWSConfig], arguments::Dict)
-    SSM.describe_association([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.describe_association
+    describe_association([::AWSConfig], arguments::Dict)
+    describe_association([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeAssociation", arguments::Dict)
@@ -1143,9 +1143,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_automation_executions([::AWSConfig], arguments::Dict)
-    SSM.describe_automation_executions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.describe_automation_executions
+    describe_automation_executions([::AWSConfig], arguments::Dict)
+    describe_automation_executions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeAutomationExecutions", arguments::Dict)
@@ -1195,9 +1195,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_available_patches([::AWSConfig], arguments::Dict)
-    SSM.describe_available_patches([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.describe_available_patches
+    describe_available_patches([::AWSConfig], arguments::Dict)
+    describe_available_patches([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeAvailablePatches", arguments::Dict)
@@ -1247,9 +1247,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_document([::AWSConfig], arguments::Dict)
-    SSM.describe_document([::AWSConfig]; Name=, <keyword arguments>)
+    using AWSSDK.SSM.describe_document
+    describe_document([::AWSConfig], arguments::Dict)
+    describe_document([::AWSConfig]; Name=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeDocument", arguments::Dict)
@@ -1290,9 +1290,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_document_permission([::AWSConfig], arguments::Dict)
-    SSM.describe_document_permission([::AWSConfig]; Name=, PermissionType=)
+    using AWSSDK.SSM.describe_document_permission
+    describe_document_permission([::AWSConfig], arguments::Dict)
+    describe_document_permission([::AWSConfig]; Name=, PermissionType=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeDocumentPermission", arguments::Dict)
@@ -1333,9 +1333,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_effective_instance_associations([::AWSConfig], arguments::Dict)
-    SSM.describe_effective_instance_associations([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.SSM.describe_effective_instance_associations
+    describe_effective_instance_associations([::AWSConfig], arguments::Dict)
+    describe_effective_instance_associations([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeEffectiveInstanceAssociations", arguments::Dict)
@@ -1380,9 +1380,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_effective_patches_for_patch_baseline([::AWSConfig], arguments::Dict)
-    SSM.describe_effective_patches_for_patch_baseline([::AWSConfig]; BaselineId=, <keyword arguments>)
+    using AWSSDK.SSM.describe_effective_patches_for_patch_baseline
+    describe_effective_patches_for_patch_baseline([::AWSConfig], arguments::Dict)
+    describe_effective_patches_for_patch_baseline([::AWSConfig]; BaselineId=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeEffectivePatchesForPatchBaseline", arguments::Dict)
@@ -1427,9 +1427,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_instance_associations_status([::AWSConfig], arguments::Dict)
-    SSM.describe_instance_associations_status([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.SSM.describe_instance_associations_status
+    describe_instance_associations_status([::AWSConfig], arguments::Dict)
+    describe_instance_associations_status([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeInstanceAssociationsStatus", arguments::Dict)
@@ -1474,9 +1474,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_instance_information([::AWSConfig], arguments::Dict)
-    SSM.describe_instance_information([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.describe_instance_information
+    describe_instance_information([::AWSConfig], arguments::Dict)
+    describe_instance_information([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeInstanceInformation", arguments::Dict)
@@ -1535,9 +1535,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_instance_patch_states([::AWSConfig], arguments::Dict)
-    SSM.describe_instance_patch_states([::AWSConfig]; InstanceIds=, <keyword arguments>)
+    using AWSSDK.SSM.describe_instance_patch_states
+    describe_instance_patch_states([::AWSConfig], arguments::Dict)
+    describe_instance_patch_states([::AWSConfig]; InstanceIds=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeInstancePatchStates", arguments::Dict)
@@ -1582,9 +1582,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_instance_patch_states_for_patch_group([::AWSConfig], arguments::Dict)
-    SSM.describe_instance_patch_states_for_patch_group([::AWSConfig]; PatchGroup=, <keyword arguments>)
+    using AWSSDK.SSM.describe_instance_patch_states_for_patch_group
+    describe_instance_patch_states_for_patch_group([::AWSConfig], arguments::Dict)
+    describe_instance_patch_states_for_patch_group([::AWSConfig]; PatchGroup=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeInstancePatchStatesForPatchGroup", arguments::Dict)
@@ -1645,9 +1645,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_instance_patches([::AWSConfig], arguments::Dict)
-    SSM.describe_instance_patches([::AWSConfig]; InstanceId=, <keyword arguments>)
+    using AWSSDK.SSM.describe_instance_patches
+    describe_instance_patches([::AWSConfig], arguments::Dict)
+    describe_instance_patches([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeInstancePatches", arguments::Dict)
@@ -1705,9 +1705,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_maintenance_window_execution_task_invocations([::AWSConfig], arguments::Dict)
-    SSM.describe_maintenance_window_execution_task_invocations([::AWSConfig]; WindowExecutionId=, TaskId=, <keyword arguments>)
+    using AWSSDK.SSM.describe_maintenance_window_execution_task_invocations
+    describe_maintenance_window_execution_task_invocations([::AWSConfig], arguments::Dict)
+    describe_maintenance_window_execution_task_invocations([::AWSConfig]; WindowExecutionId=, TaskId=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeMaintenanceWindowExecutionTaskInvocations", arguments::Dict)
@@ -1765,9 +1765,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_maintenance_window_execution_tasks([::AWSConfig], arguments::Dict)
-    SSM.describe_maintenance_window_execution_tasks([::AWSConfig]; WindowExecutionId=, <keyword arguments>)
+    using AWSSDK.SSM.describe_maintenance_window_execution_tasks
+    describe_maintenance_window_execution_tasks([::AWSConfig], arguments::Dict)
+    describe_maintenance_window_execution_tasks([::AWSConfig]; WindowExecutionId=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeMaintenanceWindowExecutionTasks", arguments::Dict)
@@ -1821,9 +1821,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_maintenance_window_executions([::AWSConfig], arguments::Dict)
-    SSM.describe_maintenance_window_executions([::AWSConfig]; WindowId=, <keyword arguments>)
+    using AWSSDK.SSM.describe_maintenance_window_executions
+    describe_maintenance_window_executions([::AWSConfig], arguments::Dict)
+    describe_maintenance_window_executions([::AWSConfig]; WindowId=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeMaintenanceWindowExecutions", arguments::Dict)
@@ -1883,9 +1883,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_maintenance_window_targets([::AWSConfig], arguments::Dict)
-    SSM.describe_maintenance_window_targets([::AWSConfig]; WindowId=, <keyword arguments>)
+    using AWSSDK.SSM.describe_maintenance_window_targets
+    describe_maintenance_window_targets([::AWSConfig], arguments::Dict)
+    describe_maintenance_window_targets([::AWSConfig]; WindowId=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeMaintenanceWindowTargets", arguments::Dict)
@@ -1939,9 +1939,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_maintenance_window_tasks([::AWSConfig], arguments::Dict)
-    SSM.describe_maintenance_window_tasks([::AWSConfig]; WindowId=, <keyword arguments>)
+    using AWSSDK.SSM.describe_maintenance_window_tasks
+    describe_maintenance_window_tasks([::AWSConfig], arguments::Dict)
+    describe_maintenance_window_tasks([::AWSConfig]; WindowId=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeMaintenanceWindowTasks", arguments::Dict)
@@ -1995,9 +1995,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_maintenance_windows([::AWSConfig], arguments::Dict)
-    SSM.describe_maintenance_windows([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.describe_maintenance_windows
+    describe_maintenance_windows([::AWSConfig], arguments::Dict)
+    describe_maintenance_windows([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeMaintenanceWindows", arguments::Dict)
@@ -2047,9 +2047,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_parameters([::AWSConfig], arguments::Dict)
-    SSM.describe_parameters([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.describe_parameters
+    describe_parameters([::AWSConfig], arguments::Dict)
+    describe_parameters([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribeParameters", arguments::Dict)
@@ -2109,9 +2109,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_patch_baselines([::AWSConfig], arguments::Dict)
-    SSM.describe_patch_baselines([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.describe_patch_baselines
+    describe_patch_baselines([::AWSConfig], arguments::Dict)
+    describe_patch_baselines([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribePatchBaselines", arguments::Dict)
@@ -2165,9 +2165,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_patch_group_state([::AWSConfig], arguments::Dict)
-    SSM.describe_patch_group_state([::AWSConfig]; PatchGroup=)
+    using AWSSDK.SSM.describe_patch_group_state
+    describe_patch_group_state([::AWSConfig], arguments::Dict)
+    describe_patch_group_state([::AWSConfig]; PatchGroup=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribePatchGroupState", arguments::Dict)
@@ -2204,9 +2204,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.describe_patch_groups([::AWSConfig], arguments::Dict)
-    SSM.describe_patch_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.describe_patch_groups
+    describe_patch_groups([::AWSConfig], arguments::Dict)
+    describe_patch_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DescribePatchGroups", arguments::Dict)
@@ -2256,9 +2256,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.get_automation_execution([::AWSConfig], arguments::Dict)
-    SSM.get_automation_execution([::AWSConfig]; AutomationExecutionId=)
+    using AWSSDK.SSM.get_automation_execution
+    get_automation_execution([::AWSConfig], arguments::Dict)
+    get_automation_execution([::AWSConfig]; AutomationExecutionId=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "GetAutomationExecution", arguments::Dict)
@@ -2295,9 +2295,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.get_command_invocation([::AWSConfig], arguments::Dict)
-    SSM.get_command_invocation([::AWSConfig]; CommandId=, InstanceId=, <keyword arguments>)
+    using AWSSDK.SSM.get_command_invocation
+    get_command_invocation([::AWSConfig], arguments::Dict)
+    get_command_invocation([::AWSConfig]; CommandId=, InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "GetCommandInvocation", arguments::Dict)
@@ -2342,9 +2342,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.get_default_patch_baseline([::AWSConfig], arguments::Dict)
-    SSM.get_default_patch_baseline([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.get_default_patch_baseline
+    get_default_patch_baseline([::AWSConfig], arguments::Dict)
+    get_default_patch_baseline([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "GetDefaultPatchBaseline", arguments::Dict)
@@ -2381,9 +2381,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.get_deployable_patch_snapshot_for_instance([::AWSConfig], arguments::Dict)
-    SSM.get_deployable_patch_snapshot_for_instance([::AWSConfig]; InstanceId=, SnapshotId=)
+    using AWSSDK.SSM.get_deployable_patch_snapshot_for_instance
+    get_deployable_patch_snapshot_for_instance([::AWSConfig], arguments::Dict)
+    get_deployable_patch_snapshot_for_instance([::AWSConfig]; InstanceId=, SnapshotId=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "GetDeployablePatchSnapshotForInstance", arguments::Dict)
@@ -2424,9 +2424,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.get_document([::AWSConfig], arguments::Dict)
-    SSM.get_document([::AWSConfig]; Name=, <keyword arguments>)
+    using AWSSDK.SSM.get_document
+    get_document([::AWSConfig], arguments::Dict)
+    get_document([::AWSConfig]; Name=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "GetDocument", arguments::Dict)
@@ -2467,9 +2467,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.get_inventory([::AWSConfig], arguments::Dict)
-    SSM.get_inventory([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.get_inventory
+    get_inventory([::AWSConfig], arguments::Dict)
+    get_inventory([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "GetInventory", arguments::Dict)
@@ -2524,9 +2524,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.get_inventory_schema([::AWSConfig], arguments::Dict)
-    SSM.get_inventory_schema([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.get_inventory_schema
+    get_inventory_schema([::AWSConfig], arguments::Dict)
+    get_inventory_schema([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "GetInventorySchema", arguments::Dict)
@@ -2571,9 +2571,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.get_maintenance_window([::AWSConfig], arguments::Dict)
-    SSM.get_maintenance_window([::AWSConfig]; WindowId=)
+    using AWSSDK.SSM.get_maintenance_window
+    get_maintenance_window([::AWSConfig], arguments::Dict)
+    get_maintenance_window([::AWSConfig]; WindowId=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "GetMaintenanceWindow", arguments::Dict)
@@ -2610,9 +2610,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.get_maintenance_window_execution([::AWSConfig], arguments::Dict)
-    SSM.get_maintenance_window_execution([::AWSConfig]; WindowExecutionId=)
+    using AWSSDK.SSM.get_maintenance_window_execution
+    get_maintenance_window_execution([::AWSConfig], arguments::Dict)
+    get_maintenance_window_execution([::AWSConfig]; WindowExecutionId=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "GetMaintenanceWindowExecution", arguments::Dict)
@@ -2649,9 +2649,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.get_maintenance_window_execution_task([::AWSConfig], arguments::Dict)
-    SSM.get_maintenance_window_execution_task([::AWSConfig]; WindowExecutionId=, TaskId=)
+    using AWSSDK.SSM.get_maintenance_window_execution_task
+    get_maintenance_window_execution_task([::AWSConfig], arguments::Dict)
+    get_maintenance_window_execution_task([::AWSConfig]; WindowExecutionId=, TaskId=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "GetMaintenanceWindowExecutionTask", arguments::Dict)
@@ -2692,9 +2692,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.get_parameter([::AWSConfig], arguments::Dict)
-    SSM.get_parameter([::AWSConfig]; Name=, <keyword arguments>)
+    using AWSSDK.SSM.get_parameter
+    get_parameter([::AWSConfig], arguments::Dict)
+    get_parameter([::AWSConfig]; Name=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "GetParameter", arguments::Dict)
@@ -2735,9 +2735,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.get_parameter_history([::AWSConfig], arguments::Dict)
-    SSM.get_parameter_history([::AWSConfig]; Name=, <keyword arguments>)
+    using AWSSDK.SSM.get_parameter_history
+    get_parameter_history([::AWSConfig], arguments::Dict)
+    get_parameter_history([::AWSConfig]; Name=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "GetParameterHistory", arguments::Dict)
@@ -2786,9 +2786,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.get_parameters([::AWSConfig], arguments::Dict)
-    SSM.get_parameters([::AWSConfig]; Names=, <keyword arguments>)
+    using AWSSDK.SSM.get_parameters
+    get_parameters([::AWSConfig], arguments::Dict)
+    get_parameters([::AWSConfig]; Names=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "GetParameters", arguments::Dict)
@@ -2829,9 +2829,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.get_parameters_by_path([::AWSConfig], arguments::Dict)
-    SSM.get_parameters_by_path([::AWSConfig]; Path=, <keyword arguments>)
+    using AWSSDK.SSM.get_parameters_by_path
+    get_parameters_by_path([::AWSConfig], arguments::Dict)
+    get_parameters_by_path([::AWSConfig]; Path=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "GetParametersByPath", arguments::Dict)
@@ -2896,9 +2896,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.get_patch_baseline([::AWSConfig], arguments::Dict)
-    SSM.get_patch_baseline([::AWSConfig]; BaselineId=)
+    using AWSSDK.SSM.get_patch_baseline
+    get_patch_baseline([::AWSConfig], arguments::Dict)
+    get_patch_baseline([::AWSConfig]; BaselineId=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "GetPatchBaseline", arguments::Dict)
@@ -2935,9 +2935,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.get_patch_baseline_for_patch_group([::AWSConfig], arguments::Dict)
-    SSM.get_patch_baseline_for_patch_group([::AWSConfig]; PatchGroup=, <keyword arguments>)
+    using AWSSDK.SSM.get_patch_baseline_for_patch_group
+    get_patch_baseline_for_patch_group([::AWSConfig], arguments::Dict)
+    get_patch_baseline_for_patch_group([::AWSConfig]; PatchGroup=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "GetPatchBaselineForPatchGroup", arguments::Dict)
@@ -2978,9 +2978,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.list_associations([::AWSConfig], arguments::Dict)
-    SSM.list_associations([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.list_associations
+    list_associations([::AWSConfig], arguments::Dict)
+    list_associations([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "ListAssociations", arguments::Dict)
@@ -3030,9 +3030,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.list_command_invocations([::AWSConfig], arguments::Dict)
-    SSM.list_command_invocations([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.list_command_invocations
+    list_command_invocations([::AWSConfig], arguments::Dict)
+    list_command_invocations([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "ListCommandInvocations", arguments::Dict)
@@ -3094,9 +3094,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.list_commands([::AWSConfig], arguments::Dict)
-    SSM.list_commands([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.list_commands
+    list_commands([::AWSConfig], arguments::Dict)
+    list_commands([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "ListCommands", arguments::Dict)
@@ -3154,9 +3154,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.list_document_versions([::AWSConfig], arguments::Dict)
-    SSM.list_document_versions([::AWSConfig]; Name=, <keyword arguments>)
+    using AWSSDK.SSM.list_document_versions
+    list_document_versions([::AWSConfig], arguments::Dict)
+    list_document_versions([::AWSConfig]; Name=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "ListDocumentVersions", arguments::Dict)
@@ -3201,9 +3201,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.list_documents([::AWSConfig], arguments::Dict)
-    SSM.list_documents([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.list_documents
+    list_documents([::AWSConfig], arguments::Dict)
+    list_documents([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "ListDocuments", arguments::Dict)
@@ -3253,9 +3253,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.list_inventory_entries([::AWSConfig], arguments::Dict)
-    SSM.list_inventory_entries([::AWSConfig]; InstanceId=, TypeName=, <keyword arguments>)
+    using AWSSDK.SSM.list_inventory_entries
+    list_inventory_entries([::AWSConfig], arguments::Dict)
+    list_inventory_entries([::AWSConfig]; InstanceId=, TypeName=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "ListInventoryEntries", arguments::Dict)
@@ -3314,9 +3314,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.list_resource_data_sync([::AWSConfig], arguments::Dict)
-    SSM.list_resource_data_sync([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SSM.list_resource_data_sync
+    list_resource_data_sync([::AWSConfig], arguments::Dict)
+    list_resource_data_sync([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "ListResourceDataSync", arguments::Dict)
@@ -3359,9 +3359,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.list_tags_for_resource([::AWSConfig], arguments::Dict)
-    SSM.list_tags_for_resource([::AWSConfig]; ResourceType=, ResourceId=)
+    using AWSSDK.SSM.list_tags_for_resource
+    list_tags_for_resource([::AWSConfig], arguments::Dict)
+    list_tags_for_resource([::AWSConfig]; ResourceType=, ResourceId=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "ListTagsForResource", arguments::Dict)
@@ -3402,9 +3402,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.modify_document_permission([::AWSConfig], arguments::Dict)
-    SSM.modify_document_permission([::AWSConfig]; Name=, PermissionType=, <keyword arguments>)
+    using AWSSDK.SSM.modify_document_permission
+    modify_document_permission([::AWSConfig], arguments::Dict)
+    modify_document_permission([::AWSConfig]; Name=, PermissionType=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "ModifyDocumentPermission", arguments::Dict)
@@ -3453,9 +3453,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.put_inventory([::AWSConfig], arguments::Dict)
-    SSM.put_inventory([::AWSConfig]; InstanceId=, Items=)
+    using AWSSDK.SSM.put_inventory
+    put_inventory([::AWSConfig], arguments::Dict)
+    put_inventory([::AWSConfig]; InstanceId=, Items=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "PutInventory", arguments::Dict)
@@ -3504,9 +3504,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.put_parameter([::AWSConfig], arguments::Dict)
-    SSM.put_parameter([::AWSConfig]; Name=, Value=, Type=, <keyword arguments>)
+    using AWSSDK.SSM.put_parameter
+    put_parameter([::AWSConfig], arguments::Dict)
+    put_parameter([::AWSConfig]; Name=, Value=, Type=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "PutParameter", arguments::Dict)
@@ -3567,9 +3567,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.register_default_patch_baseline([::AWSConfig], arguments::Dict)
-    SSM.register_default_patch_baseline([::AWSConfig]; BaselineId=)
+    using AWSSDK.SSM.register_default_patch_baseline
+    register_default_patch_baseline([::AWSConfig], arguments::Dict)
+    register_default_patch_baseline([::AWSConfig]; BaselineId=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "RegisterDefaultPatchBaseline", arguments::Dict)
@@ -3606,9 +3606,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.register_patch_baseline_for_patch_group([::AWSConfig], arguments::Dict)
-    SSM.register_patch_baseline_for_patch_group([::AWSConfig]; BaselineId=, PatchGroup=)
+    using AWSSDK.SSM.register_patch_baseline_for_patch_group
+    register_patch_baseline_for_patch_group([::AWSConfig], arguments::Dict)
+    register_patch_baseline_for_patch_group([::AWSConfig]; BaselineId=, PatchGroup=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "RegisterPatchBaselineForPatchGroup", arguments::Dict)
@@ -3649,9 +3649,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.register_target_with_maintenance_window([::AWSConfig], arguments::Dict)
-    SSM.register_target_with_maintenance_window([::AWSConfig]; WindowId=, ResourceType=, Targets=, <keyword arguments>)
+    using AWSSDK.SSM.register_target_with_maintenance_window
+    register_target_with_maintenance_window([::AWSConfig], arguments::Dict)
+    register_target_with_maintenance_window([::AWSConfig]; WindowId=, ResourceType=, Targets=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "RegisterTargetWithMaintenanceWindow", arguments::Dict)
@@ -3709,9 +3709,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.register_task_with_maintenance_window([::AWSConfig], arguments::Dict)
-    SSM.register_task_with_maintenance_window([::AWSConfig]; WindowId=, Targets=, TaskArn=, ServiceRoleArn=, TaskType=, MaxConcurrency=, MaxErrors=, <keyword arguments>)
+    using AWSSDK.SSM.register_task_with_maintenance_window
+    register_task_with_maintenance_window([::AWSConfig], arguments::Dict)
+    register_task_with_maintenance_window([::AWSConfig]; WindowId=, Targets=, TaskArn=, ServiceRoleArn=, TaskType=, MaxConcurrency=, MaxErrors=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "RegisterTaskWithMaintenanceWindow", arguments::Dict)
@@ -3799,9 +3799,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.remove_tags_from_resource([::AWSConfig], arguments::Dict)
-    SSM.remove_tags_from_resource([::AWSConfig]; ResourceType=, ResourceId=, TagKeys=)
+    using AWSSDK.SSM.remove_tags_from_resource
+    remove_tags_from_resource([::AWSConfig], arguments::Dict)
+    remove_tags_from_resource([::AWSConfig]; ResourceType=, ResourceId=, TagKeys=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "RemoveTagsFromResource", arguments::Dict)
@@ -3846,9 +3846,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.send_command([::AWSConfig], arguments::Dict)
-    SSM.send_command([::AWSConfig]; DocumentName=, <keyword arguments>)
+    using AWSSDK.SSM.send_command
+    send_command([::AWSConfig], arguments::Dict)
+    send_command([::AWSConfig]; DocumentName=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "SendCommand", arguments::Dict)
@@ -3958,9 +3958,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.start_automation_execution([::AWSConfig], arguments::Dict)
-    SSM.start_automation_execution([::AWSConfig]; DocumentName=, <keyword arguments>)
+    using AWSSDK.SSM.start_automation_execution
+    start_automation_execution([::AWSConfig], arguments::Dict)
+    start_automation_execution([::AWSConfig]; DocumentName=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "StartAutomationExecution", arguments::Dict)
@@ -4005,9 +4005,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.stop_automation_execution([::AWSConfig], arguments::Dict)
-    SSM.stop_automation_execution([::AWSConfig]; AutomationExecutionId=)
+    using AWSSDK.SSM.stop_automation_execution
+    stop_automation_execution([::AWSConfig], arguments::Dict)
+    stop_automation_execution([::AWSConfig]; AutomationExecutionId=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "StopAutomationExecution", arguments::Dict)
@@ -4044,9 +4044,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.update_association([::AWSConfig], arguments::Dict)
-    SSM.update_association([::AWSConfig]; AssociationId=, <keyword arguments>)
+    using AWSSDK.SSM.update_association
+    update_association([::AWSConfig], arguments::Dict)
+    update_association([::AWSConfig]; AssociationId=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "UpdateAssociation", arguments::Dict)
@@ -4118,9 +4118,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.update_association_status([::AWSConfig], arguments::Dict)
-    SSM.update_association_status([::AWSConfig]; Name=, InstanceId=, AssociationStatus=)
+    using AWSSDK.SSM.update_association_status
+    update_association_status([::AWSConfig], arguments::Dict)
+    update_association_status([::AWSConfig]; Name=, InstanceId=, AssociationStatus=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "UpdateAssociationStatus", arguments::Dict)
@@ -4172,9 +4172,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.update_document([::AWSConfig], arguments::Dict)
-    SSM.update_document([::AWSConfig]; Content=, Name=, <keyword arguments>)
+    using AWSSDK.SSM.update_document
+    update_document([::AWSConfig], arguments::Dict)
+    update_document([::AWSConfig]; Content=, Name=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "UpdateDocument", arguments::Dict)
@@ -4219,9 +4219,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.update_document_default_version([::AWSConfig], arguments::Dict)
-    SSM.update_document_default_version([::AWSConfig]; Name=, DocumentVersion=)
+    using AWSSDK.SSM.update_document_default_version
+    update_document_default_version([::AWSConfig], arguments::Dict)
+    update_document_default_version([::AWSConfig]; Name=, DocumentVersion=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "UpdateDocumentDefaultVersion", arguments::Dict)
@@ -4262,9 +4262,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.update_maintenance_window([::AWSConfig], arguments::Dict)
-    SSM.update_maintenance_window([::AWSConfig]; WindowId=, <keyword arguments>)
+    using AWSSDK.SSM.update_maintenance_window
+    update_maintenance_window([::AWSConfig], arguments::Dict)
+    update_maintenance_window([::AWSConfig]; WindowId=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "UpdateMaintenanceWindow", arguments::Dict)
@@ -4325,9 +4325,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.update_managed_instance_role([::AWSConfig], arguments::Dict)
-    SSM.update_managed_instance_role([::AWSConfig]; InstanceId=, IamRole=)
+    using AWSSDK.SSM.update_managed_instance_role
+    update_managed_instance_role([::AWSConfig], arguments::Dict)
+    update_managed_instance_role([::AWSConfig]; InstanceId=, IamRole=)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "UpdateManagedInstanceRole", arguments::Dict)
@@ -4368,9 +4368,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
-    using AWSSDK.SSM
-    SSM.update_patch_baseline([::AWSConfig], arguments::Dict)
-    SSM.update_patch_baseline([::AWSConfig]; BaselineId=, <keyword arguments>)
+    using AWSSDK.SSM.update_patch_baseline
+    update_patch_baseline([::AWSConfig], arguments::Dict)
+    update_patch_baseline([::AWSConfig]; BaselineId=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "UpdatePatchBaseline", arguments::Dict)

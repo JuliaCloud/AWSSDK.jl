@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.add_ip_routes([::AWSConfig], arguments::Dict)
-    DirectoryService.add_ip_routes([::AWSConfig]; DirectoryId=, IpRoutes=, <keyword arguments>)
+    using AWSSDK.DirectoryService.add_ip_routes
+    add_ip_routes([::AWSConfig], arguments::Dict)
+    add_ip_routes([::AWSConfig]; DirectoryId=, IpRoutes=, <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "AddIpRoutes", arguments::Dict)
@@ -109,9 +109,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.add_tags_to_resource([::AWSConfig], arguments::Dict)
-    DirectoryService.add_tags_to_resource([::AWSConfig]; ResourceId=, Tags=)
+    using AWSSDK.DirectoryService.add_tags_to_resource
+    add_tags_to_resource([::AWSConfig], arguments::Dict)
+    add_tags_to_resource([::AWSConfig]; ResourceId=, Tags=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "AddTagsToResource", arguments::Dict)
@@ -157,9 +157,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.cancel_schema_extension([::AWSConfig], arguments::Dict)
-    DirectoryService.cancel_schema_extension([::AWSConfig]; DirectoryId=, SchemaExtensionId=)
+    using AWSSDK.DirectoryService.cancel_schema_extension
+    cancel_schema_extension([::AWSConfig], arguments::Dict)
+    cancel_schema_extension([::AWSConfig]; DirectoryId=, SchemaExtensionId=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "CancelSchemaExtension", arguments::Dict)
@@ -200,9 +200,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.connect_directory([::AWSConfig], arguments::Dict)
-    DirectoryService.connect_directory([::AWSConfig]; Name=, Password=, Size=, ConnectSettings=, <keyword arguments>)
+    using AWSSDK.DirectoryService.connect_directory
+    connect_directory([::AWSConfig], arguments::Dict)
+    connect_directory([::AWSConfig]; Name=, Password=, Size=, ConnectSettings=, <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "ConnectDirectory", arguments::Dict)
@@ -268,9 +268,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.create_alias([::AWSConfig], arguments::Dict)
-    DirectoryService.create_alias([::AWSConfig]; DirectoryId=, Alias=)
+    using AWSSDK.DirectoryService.create_alias
+    create_alias([::AWSConfig], arguments::Dict)
+    create_alias([::AWSConfig]; DirectoryId=, Alias=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "CreateAlias", arguments::Dict)
@@ -316,9 +316,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.create_computer([::AWSConfig], arguments::Dict)
-    DirectoryService.create_computer([::AWSConfig]; DirectoryId=, ComputerName=, Password=, <keyword arguments>)
+    using AWSSDK.DirectoryService.create_computer
+    create_computer([::AWSConfig], arguments::Dict)
+    create_computer([::AWSConfig]; DirectoryId=, ComputerName=, Password=, <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "CreateComputer", arguments::Dict)
@@ -376,9 +376,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.create_conditional_forwarder([::AWSConfig], arguments::Dict)
-    DirectoryService.create_conditional_forwarder([::AWSConfig]; DirectoryId=, RemoteDomainName=, DnsIpAddrs=)
+    using AWSSDK.DirectoryService.create_conditional_forwarder
+    create_conditional_forwarder([::AWSConfig], arguments::Dict)
+    create_conditional_forwarder([::AWSConfig]; DirectoryId=, RemoteDomainName=, DnsIpAddrs=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "CreateConditionalForwarder", arguments::Dict)
@@ -423,9 +423,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.create_directory([::AWSConfig], arguments::Dict)
-    DirectoryService.create_directory([::AWSConfig]; Name=, Password=, Size=, <keyword arguments>)
+    using AWSSDK.DirectoryService.create_directory
+    create_directory([::AWSConfig], arguments::Dict)
+    create_directory([::AWSConfig]; Name=, Password=, Size=, <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "CreateDirectory", arguments::Dict)
@@ -489,9 +489,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.create_microsoft_ad([::AWSConfig], arguments::Dict)
-    DirectoryService.create_microsoft_ad([::AWSConfig]; Name=, Password=, VpcSettings=, <keyword arguments>)
+    using AWSSDK.DirectoryService.create_microsoft_ad
+    create_microsoft_ad([::AWSConfig], arguments::Dict)
+    create_microsoft_ad([::AWSConfig]; Name=, Password=, VpcSettings=, <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "CreateMicrosoftAD", arguments::Dict)
@@ -551,9 +551,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.create_snapshot([::AWSConfig], arguments::Dict)
-    DirectoryService.create_snapshot([::AWSConfig]; DirectoryId=, <keyword arguments>)
+    using AWSSDK.DirectoryService.create_snapshot
+    create_snapshot([::AWSConfig], arguments::Dict)
+    create_snapshot([::AWSConfig]; DirectoryId=, <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "CreateSnapshot", arguments::Dict)
@@ -597,9 +597,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.create_trust([::AWSConfig], arguments::Dict)
-    DirectoryService.create_trust([::AWSConfig]; DirectoryId=, RemoteDomainName=, TrustPassword=, TrustDirection=, <keyword arguments>)
+    using AWSSDK.DirectoryService.create_trust
+    create_trust([::AWSConfig], arguments::Dict)
+    create_trust([::AWSConfig]; DirectoryId=, RemoteDomainName=, TrustPassword=, TrustDirection=, <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "CreateTrust", arguments::Dict)
@@ -658,9 +658,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.delete_conditional_forwarder([::AWSConfig], arguments::Dict)
-    DirectoryService.delete_conditional_forwarder([::AWSConfig]; DirectoryId=, RemoteDomainName=)
+    using AWSSDK.DirectoryService.delete_conditional_forwarder
+    delete_conditional_forwarder([::AWSConfig], arguments::Dict)
+    delete_conditional_forwarder([::AWSConfig]; DirectoryId=, RemoteDomainName=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "DeleteConditionalForwarder", arguments::Dict)
@@ -701,9 +701,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.delete_directory([::AWSConfig], arguments::Dict)
-    DirectoryService.delete_directory([::AWSConfig]; DirectoryId=)
+    using AWSSDK.DirectoryService.delete_directory
+    delete_directory([::AWSConfig], arguments::Dict)
+    delete_directory([::AWSConfig]; DirectoryId=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "DeleteDirectory", arguments::Dict)
@@ -742,9 +742,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.delete_snapshot([::AWSConfig], arguments::Dict)
-    DirectoryService.delete_snapshot([::AWSConfig]; SnapshotId=)
+    using AWSSDK.DirectoryService.delete_snapshot
+    delete_snapshot([::AWSConfig], arguments::Dict)
+    delete_snapshot([::AWSConfig]; SnapshotId=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "DeleteSnapshot", arguments::Dict)
@@ -781,9 +781,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.delete_trust([::AWSConfig], arguments::Dict)
-    DirectoryService.delete_trust([::AWSConfig]; TrustId=, <keyword arguments>)
+    using AWSSDK.DirectoryService.delete_trust
+    delete_trust([::AWSConfig], arguments::Dict)
+    delete_trust([::AWSConfig]; TrustId=, <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "DeleteTrust", arguments::Dict)
@@ -824,9 +824,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.deregister_event_topic([::AWSConfig], arguments::Dict)
-    DirectoryService.deregister_event_topic([::AWSConfig]; DirectoryId=, TopicName=)
+    using AWSSDK.DirectoryService.deregister_event_topic
+    deregister_event_topic([::AWSConfig], arguments::Dict)
+    deregister_event_topic([::AWSConfig]; DirectoryId=, TopicName=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "DeregisterEventTopic", arguments::Dict)
@@ -867,9 +867,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.describe_conditional_forwarders([::AWSConfig], arguments::Dict)
-    DirectoryService.describe_conditional_forwarders([::AWSConfig]; DirectoryId=, <keyword arguments>)
+    using AWSSDK.DirectoryService.describe_conditional_forwarders
+    describe_conditional_forwarders([::AWSConfig], arguments::Dict)
+    describe_conditional_forwarders([::AWSConfig]; DirectoryId=, <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "DescribeConditionalForwarders", arguments::Dict)
@@ -912,9 +912,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.describe_directories([::AWSConfig], arguments::Dict)
-    DirectoryService.describe_directories([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DirectoryService.describe_directories
+    describe_directories([::AWSConfig], arguments::Dict)
+    describe_directories([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "DescribeDirectories", arguments::Dict)
@@ -967,9 +967,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.describe_domain_controllers([::AWSConfig], arguments::Dict)
-    DirectoryService.describe_domain_controllers([::AWSConfig]; DirectoryId=, <keyword arguments>)
+    using AWSSDK.DirectoryService.describe_domain_controllers
+    describe_domain_controllers([::AWSConfig], arguments::Dict)
+    describe_domain_controllers([::AWSConfig]; DirectoryId=, <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "DescribeDomainControllers", arguments::Dict)
@@ -1018,9 +1018,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.describe_event_topics([::AWSConfig], arguments::Dict)
-    DirectoryService.describe_event_topics([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DirectoryService.describe_event_topics
+    describe_event_topics([::AWSConfig], arguments::Dict)
+    describe_event_topics([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "DescribeEventTopics", arguments::Dict)
@@ -1065,9 +1065,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.describe_snapshots([::AWSConfig], arguments::Dict)
-    DirectoryService.describe_snapshots([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DirectoryService.describe_snapshots
+    describe_snapshots([::AWSConfig], arguments::Dict)
+    describe_snapshots([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "DescribeSnapshots", arguments::Dict)
@@ -1120,9 +1120,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.describe_trusts([::AWSConfig], arguments::Dict)
-    DirectoryService.describe_trusts([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DirectoryService.describe_trusts
+    describe_trusts([::AWSConfig], arguments::Dict)
+    describe_trusts([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "DescribeTrusts", arguments::Dict)
@@ -1175,9 +1175,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.disable_radius([::AWSConfig], arguments::Dict)
-    DirectoryService.disable_radius([::AWSConfig]; DirectoryId=)
+    using AWSSDK.DirectoryService.disable_radius
+    disable_radius([::AWSConfig], arguments::Dict)
+    disable_radius([::AWSConfig]; DirectoryId=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "DisableRadius", arguments::Dict)
@@ -1214,9 +1214,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.disable_sso([::AWSConfig], arguments::Dict)
-    DirectoryService.disable_sso([::AWSConfig]; DirectoryId=, <keyword arguments>)
+    using AWSSDK.DirectoryService.disable_sso
+    disable_sso([::AWSConfig], arguments::Dict)
+    disable_sso([::AWSConfig]; DirectoryId=, <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "DisableSso", arguments::Dict)
@@ -1263,9 +1263,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.enable_radius([::AWSConfig], arguments::Dict)
-    DirectoryService.enable_radius([::AWSConfig]; DirectoryId=, RadiusSettings=)
+    using AWSSDK.DirectoryService.enable_radius
+    enable_radius([::AWSConfig], arguments::Dict)
+    enable_radius([::AWSConfig]; DirectoryId=, RadiusSettings=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "EnableRadius", arguments::Dict)
@@ -1317,9 +1317,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.enable_sso([::AWSConfig], arguments::Dict)
-    DirectoryService.enable_sso([::AWSConfig]; DirectoryId=, <keyword arguments>)
+    using AWSSDK.DirectoryService.enable_sso
+    enable_sso([::AWSConfig], arguments::Dict)
+    enable_sso([::AWSConfig]; DirectoryId=, <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "EnableSso", arguments::Dict)
@@ -1366,9 +1366,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.get_directory_limits([::AWSConfig], arguments::Dict)
-    DirectoryService.get_directory_limits([::AWSConfig]; )
+    using AWSSDK.DirectoryService.get_directory_limits
+    get_directory_limits([::AWSConfig], arguments::Dict)
+    get_directory_limits([::AWSConfig]; )
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "GetDirectoryLimits", arguments::Dict)
@@ -1401,9 +1401,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.get_snapshot_limits([::AWSConfig], arguments::Dict)
-    DirectoryService.get_snapshot_limits([::AWSConfig]; DirectoryId=)
+    using AWSSDK.DirectoryService.get_snapshot_limits
+    get_snapshot_limits([::AWSConfig], arguments::Dict)
+    get_snapshot_limits([::AWSConfig]; DirectoryId=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "GetSnapshotLimits", arguments::Dict)
@@ -1440,9 +1440,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.list_ip_routes([::AWSConfig], arguments::Dict)
-    DirectoryService.list_ip_routes([::AWSConfig]; DirectoryId=, <keyword arguments>)
+    using AWSSDK.DirectoryService.list_ip_routes
+    list_ip_routes([::AWSConfig], arguments::Dict)
+    list_ip_routes([::AWSConfig]; DirectoryId=, <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "ListIpRoutes", arguments::Dict)
@@ -1487,9 +1487,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.list_schema_extensions([::AWSConfig], arguments::Dict)
-    DirectoryService.list_schema_extensions([::AWSConfig]; DirectoryId=, <keyword arguments>)
+    using AWSSDK.DirectoryService.list_schema_extensions
+    list_schema_extensions([::AWSConfig], arguments::Dict)
+    list_schema_extensions([::AWSConfig]; DirectoryId=, <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "ListSchemaExtensions", arguments::Dict)
@@ -1534,9 +1534,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.list_tags_for_resource([::AWSConfig], arguments::Dict)
-    DirectoryService.list_tags_for_resource([::AWSConfig]; ResourceId=, <keyword arguments>)
+    using AWSSDK.DirectoryService.list_tags_for_resource
+    list_tags_for_resource([::AWSConfig], arguments::Dict)
+    list_tags_for_resource([::AWSConfig]; ResourceId=, <keyword arguments>)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "ListTagsForResource", arguments::Dict)
@@ -1581,9 +1581,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.register_event_topic([::AWSConfig], arguments::Dict)
-    DirectoryService.register_event_topic([::AWSConfig]; DirectoryId=, TopicName=)
+    using AWSSDK.DirectoryService.register_event_topic
+    register_event_topic([::AWSConfig], arguments::Dict)
+    register_event_topic([::AWSConfig]; DirectoryId=, TopicName=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "RegisterEventTopic", arguments::Dict)
@@ -1624,9 +1624,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.remove_ip_routes([::AWSConfig], arguments::Dict)
-    DirectoryService.remove_ip_routes([::AWSConfig]; DirectoryId=, CidrIps=)
+    using AWSSDK.DirectoryService.remove_ip_routes
+    remove_ip_routes([::AWSConfig], arguments::Dict)
+    remove_ip_routes([::AWSConfig]; DirectoryId=, CidrIps=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "RemoveIpRoutes", arguments::Dict)
@@ -1667,9 +1667,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.remove_tags_from_resource([::AWSConfig], arguments::Dict)
-    DirectoryService.remove_tags_from_resource([::AWSConfig]; ResourceId=, TagKeys=)
+    using AWSSDK.DirectoryService.remove_tags_from_resource
+    remove_tags_from_resource([::AWSConfig], arguments::Dict)
+    remove_tags_from_resource([::AWSConfig]; ResourceId=, TagKeys=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "RemoveTagsFromResource", arguments::Dict)
@@ -1710,9 +1710,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.restore_from_snapshot([::AWSConfig], arguments::Dict)
-    DirectoryService.restore_from_snapshot([::AWSConfig]; SnapshotId=)
+    using AWSSDK.DirectoryService.restore_from_snapshot
+    restore_from_snapshot([::AWSConfig], arguments::Dict)
+    restore_from_snapshot([::AWSConfig]; SnapshotId=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "RestoreFromSnapshot", arguments::Dict)
@@ -1753,9 +1753,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.start_schema_extension([::AWSConfig], arguments::Dict)
-    DirectoryService.start_schema_extension([::AWSConfig]; DirectoryId=, CreateSnapshotBeforeSchemaExtension=, LdifContent=, Description=)
+    using AWSSDK.DirectoryService.start_schema_extension
+    start_schema_extension([::AWSConfig], arguments::Dict)
+    start_schema_extension([::AWSConfig]; DirectoryId=, CreateSnapshotBeforeSchemaExtension=, LdifContent=, Description=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "StartSchemaExtension", arguments::Dict)
@@ -1804,9 +1804,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.update_conditional_forwarder([::AWSConfig], arguments::Dict)
-    DirectoryService.update_conditional_forwarder([::AWSConfig]; DirectoryId=, RemoteDomainName=, DnsIpAddrs=)
+    using AWSSDK.DirectoryService.update_conditional_forwarder
+    update_conditional_forwarder([::AWSConfig], arguments::Dict)
+    update_conditional_forwarder([::AWSConfig]; DirectoryId=, RemoteDomainName=, DnsIpAddrs=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "UpdateConditionalForwarder", arguments::Dict)
@@ -1851,9 +1851,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.update_number_of_domain_controllers([::AWSConfig], arguments::Dict)
-    DirectoryService.update_number_of_domain_controllers([::AWSConfig]; DirectoryId=, DesiredNumber=)
+    using AWSSDK.DirectoryService.update_number_of_domain_controllers
+    update_number_of_domain_controllers([::AWSConfig], arguments::Dict)
+    update_number_of_domain_controllers([::AWSConfig]; DirectoryId=, DesiredNumber=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "UpdateNumberOfDomainControllers", arguments::Dict)
@@ -1894,9 +1894,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.update_radius([::AWSConfig], arguments::Dict)
-    DirectoryService.update_radius([::AWSConfig]; DirectoryId=, RadiusSettings=)
+    using AWSSDK.DirectoryService.update_radius
+    update_radius([::AWSConfig], arguments::Dict)
+    update_radius([::AWSConfig]; DirectoryId=, RadiusSettings=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "UpdateRadius", arguments::Dict)
@@ -1948,9 +1948,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-201
 
 
 """
-    using AWSSDK.DirectoryService
-    DirectoryService.verify_trust([::AWSConfig], arguments::Dict)
-    DirectoryService.verify_trust([::AWSConfig]; TrustId=)
+    using AWSSDK.DirectoryService.verify_trust
+    verify_trust([::AWSConfig], arguments::Dict)
+    verify_trust([::AWSConfig]; TrustId=)
 
     using AWSCore.Services.ds
     ds([::AWSConfig], "VerifyTrust", arguments::Dict)

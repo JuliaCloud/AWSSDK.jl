@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.add_tags_to_resource([::AWSConfig], arguments::Dict)
-    ElastiCache.add_tags_to_resource([::AWSConfig]; ResourceName=, Tags=)
+    using AWSSDK.ElastiCache.add_tags_to_resource
+    add_tags_to_resource([::AWSConfig], arguments::Dict)
+    add_tags_to_resource([::AWSConfig]; ResourceName=, Tags=)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "AddTagsToResource", arguments::Dict)
@@ -65,9 +65,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.authorize_cache_security_group_ingress([::AWSConfig], arguments::Dict)
-    ElastiCache.authorize_cache_security_group_ingress([::AWSConfig]; CacheSecurityGroupName=, EC2SecurityGroupName=, EC2SecurityGroupOwnerId=)
+    using AWSSDK.ElastiCache.authorize_cache_security_group_ingress
+    authorize_cache_security_group_ingress([::AWSConfig], arguments::Dict)
+    authorize_cache_security_group_ingress([::AWSConfig]; CacheSecurityGroupName=, EC2SecurityGroupName=, EC2SecurityGroupOwnerId=)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "AuthorizeCacheSecurityGroupIngress", arguments::Dict)
@@ -115,9 +115,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.copy_snapshot([::AWSConfig], arguments::Dict)
-    ElastiCache.copy_snapshot([::AWSConfig]; SourceSnapshotName=, TargetSnapshotName=, <keyword arguments>)
+    using AWSSDK.ElastiCache.copy_snapshot
+    copy_snapshot([::AWSConfig], arguments::Dict)
+    copy_snapshot([::AWSConfig]; SourceSnapshotName=, TargetSnapshotName=, <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "CopySnapshot", arguments::Dict)
@@ -208,9 +208,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.create_cache_cluster([::AWSConfig], arguments::Dict)
-    ElastiCache.create_cache_cluster([::AWSConfig]; CacheClusterId=, <keyword arguments>)
+    using AWSSDK.ElastiCache.create_cache_cluster
+    create_cache_cluster([::AWSConfig], arguments::Dict)
+    create_cache_cluster([::AWSConfig]; CacheClusterId=, <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "CreateCacheCluster", arguments::Dict)
@@ -474,9 +474,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.create_cache_parameter_group([::AWSConfig], arguments::Dict)
-    ElastiCache.create_cache_parameter_group([::AWSConfig]; CacheParameterGroupName=, CacheParameterGroupFamily=, Description=)
+    using AWSSDK.ElastiCache.create_cache_parameter_group
+    create_cache_parameter_group([::AWSConfig], arguments::Dict)
+    create_cache_parameter_group([::AWSConfig]; CacheParameterGroupName=, CacheParameterGroupFamily=, Description=)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "CreateCacheParameterGroup", arguments::Dict)
@@ -529,9 +529,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.create_cache_security_group([::AWSConfig], arguments::Dict)
-    ElastiCache.create_cache_security_group([::AWSConfig]; CacheSecurityGroupName=, Description=)
+    using AWSSDK.ElastiCache.create_cache_security_group
+    create_cache_security_group([::AWSConfig], arguments::Dict)
+    create_cache_security_group([::AWSConfig]; CacheSecurityGroupName=, Description=)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "CreateCacheSecurityGroup", arguments::Dict)
@@ -578,9 +578,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.create_cache_subnet_group([::AWSConfig], arguments::Dict)
-    ElastiCache.create_cache_subnet_group([::AWSConfig]; CacheSubnetGroupName=, CacheSubnetGroupDescription=, SubnetIds=)
+    using AWSSDK.ElastiCache.create_cache_subnet_group
+    create_cache_subnet_group([::AWSConfig], arguments::Dict)
+    create_cache_subnet_group([::AWSConfig]; CacheSubnetGroupName=, CacheSubnetGroupDescription=, SubnetIds=)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "CreateCacheSubnetGroup", arguments::Dict)
@@ -631,9 +631,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.create_replication_group([::AWSConfig], arguments::Dict)
-    ElastiCache.create_replication_group([::AWSConfig]; ReplicationGroupId=, ReplicationGroupDescription=, <keyword arguments>)
+    using AWSSDK.ElastiCache.create_replication_group
+    create_replication_group([::AWSConfig], arguments::Dict)
+    create_replication_group([::AWSConfig]; ReplicationGroupId=, ReplicationGroupDescription=, <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "CreateReplicationGroup", arguments::Dict)
@@ -927,9 +927,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.create_snapshot([::AWSConfig], arguments::Dict)
-    ElastiCache.create_snapshot([::AWSConfig]; SnapshotName=, <keyword arguments>)
+    using AWSSDK.ElastiCache.create_snapshot
+    create_snapshot([::AWSConfig], arguments::Dict)
+    create_snapshot([::AWSConfig]; SnapshotName=, <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "CreateSnapshot", arguments::Dict)
@@ -977,9 +977,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.delete_cache_cluster([::AWSConfig], arguments::Dict)
-    ElastiCache.delete_cache_cluster([::AWSConfig]; CacheClusterId=, <keyword arguments>)
+    using AWSSDK.ElastiCache.delete_cache_cluster
+    delete_cache_cluster([::AWSConfig], arguments::Dict)
+    delete_cache_cluster([::AWSConfig]; CacheClusterId=, <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DeleteCacheCluster", arguments::Dict)
@@ -1025,9 +1025,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.delete_cache_parameter_group([::AWSConfig], arguments::Dict)
-    ElastiCache.delete_cache_parameter_group([::AWSConfig]; CacheParameterGroupName=)
+    using AWSSDK.ElastiCache.delete_cache_parameter_group
+    delete_cache_parameter_group([::AWSConfig], arguments::Dict)
+    delete_cache_parameter_group([::AWSConfig]; CacheParameterGroupName=)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DeleteCacheParameterGroup", arguments::Dict)
@@ -1063,9 +1063,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.delete_cache_security_group([::AWSConfig], arguments::Dict)
-    ElastiCache.delete_cache_security_group([::AWSConfig]; CacheSecurityGroupName=)
+    using AWSSDK.ElastiCache.delete_cache_security_group
+    delete_cache_security_group([::AWSConfig], arguments::Dict)
+    delete_cache_security_group([::AWSConfig]; CacheSecurityGroupName=)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DeleteCacheSecurityGroup", arguments::Dict)
@@ -1104,9 +1104,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.delete_cache_subnet_group([::AWSConfig], arguments::Dict)
-    ElastiCache.delete_cache_subnet_group([::AWSConfig]; CacheSubnetGroupName=)
+    using AWSSDK.ElastiCache.delete_cache_subnet_group
+    delete_cache_subnet_group([::AWSConfig], arguments::Dict)
+    delete_cache_subnet_group([::AWSConfig]; CacheSubnetGroupName=)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DeleteCacheSubnetGroup", arguments::Dict)
@@ -1144,9 +1144,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.delete_replication_group([::AWSConfig], arguments::Dict)
-    ElastiCache.delete_replication_group([::AWSConfig]; ReplicationGroupId=, <keyword arguments>)
+    using AWSSDK.ElastiCache.delete_replication_group
+    delete_replication_group([::AWSConfig], arguments::Dict)
+    delete_replication_group([::AWSConfig]; ReplicationGroupId=, <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DeleteReplicationGroup", arguments::Dict)
@@ -1196,9 +1196,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.delete_snapshot([::AWSConfig], arguments::Dict)
-    ElastiCache.delete_snapshot([::AWSConfig]; SnapshotName=)
+    using AWSSDK.ElastiCache.delete_snapshot
+    delete_snapshot([::AWSConfig], arguments::Dict)
+    delete_snapshot([::AWSConfig]; SnapshotName=)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DeleteSnapshot", arguments::Dict)
@@ -1238,9 +1238,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.describe_cache_clusters([::AWSConfig], arguments::Dict)
-    ElastiCache.describe_cache_clusters([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElastiCache.describe_cache_clusters
+    describe_cache_clusters([::AWSConfig], arguments::Dict)
+    describe_cache_clusters([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DescribeCacheClusters", arguments::Dict)
@@ -1307,9 +1307,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.describe_cache_engine_versions([::AWSConfig], arguments::Dict)
-    ElastiCache.describe_cache_engine_versions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElastiCache.describe_cache_engine_versions
+    describe_cache_engine_versions([::AWSConfig], arguments::Dict)
+    describe_cache_engine_versions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DescribeCacheEngineVersions", arguments::Dict)
@@ -1378,9 +1378,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.describe_cache_parameter_groups([::AWSConfig], arguments::Dict)
-    ElastiCache.describe_cache_parameter_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElastiCache.describe_cache_parameter_groups
+    describe_cache_parameter_groups([::AWSConfig], arguments::Dict)
+    describe_cache_parameter_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DescribeCacheParameterGroups", arguments::Dict)
@@ -1429,9 +1429,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.describe_cache_parameters([::AWSConfig], arguments::Dict)
-    ElastiCache.describe_cache_parameters([::AWSConfig]; CacheParameterGroupName=, <keyword arguments>)
+    using AWSSDK.ElastiCache.describe_cache_parameters
+    describe_cache_parameters([::AWSConfig], arguments::Dict)
+    describe_cache_parameters([::AWSConfig]; CacheParameterGroupName=, <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DescribeCacheParameters", arguments::Dict)
@@ -1486,9 +1486,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.describe_cache_security_groups([::AWSConfig], arguments::Dict)
-    ElastiCache.describe_cache_security_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElastiCache.describe_cache_security_groups
+    describe_cache_security_groups([::AWSConfig], arguments::Dict)
+    describe_cache_security_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DescribeCacheSecurityGroups", arguments::Dict)
@@ -1537,9 +1537,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.describe_cache_subnet_groups([::AWSConfig], arguments::Dict)
-    ElastiCache.describe_cache_subnet_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElastiCache.describe_cache_subnet_groups
+    describe_cache_subnet_groups([::AWSConfig], arguments::Dict)
+    describe_cache_subnet_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DescribeCacheSubnetGroups", arguments::Dict)
@@ -1588,9 +1588,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.describe_engine_default_parameters([::AWSConfig], arguments::Dict)
-    ElastiCache.describe_engine_default_parameters([::AWSConfig]; CacheParameterGroupFamily=, <keyword arguments>)
+    using AWSSDK.ElastiCache.describe_engine_default_parameters
+    describe_engine_default_parameters([::AWSConfig], arguments::Dict)
+    describe_engine_default_parameters([::AWSConfig]; CacheParameterGroupFamily=, <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DescribeEngineDefaultParameters", arguments::Dict)
@@ -1641,9 +1641,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.describe_events([::AWSConfig], arguments::Dict)
-    ElastiCache.describe_events([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElastiCache.describe_events
+    describe_events([::AWSConfig], arguments::Dict)
+    describe_events([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DescribeEvents", arguments::Dict)
@@ -1714,9 +1714,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.describe_replication_groups([::AWSConfig], arguments::Dict)
-    ElastiCache.describe_replication_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElastiCache.describe_replication_groups
+    describe_replication_groups([::AWSConfig], arguments::Dict)
+    describe_replication_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DescribeReplicationGroups", arguments::Dict)
@@ -1770,9 +1770,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.describe_reserved_cache_nodes([::AWSConfig], arguments::Dict)
-    ElastiCache.describe_reserved_cache_nodes([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElastiCache.describe_reserved_cache_nodes
+    describe_reserved_cache_nodes([::AWSConfig], arguments::Dict)
+    describe_reserved_cache_nodes([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DescribeReservedCacheNodes", arguments::Dict)
@@ -1871,9 +1871,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.describe_reserved_cache_nodes_offerings([::AWSConfig], arguments::Dict)
-    ElastiCache.describe_reserved_cache_nodes_offerings([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElastiCache.describe_reserved_cache_nodes_offerings
+    describe_reserved_cache_nodes_offerings([::AWSConfig], arguments::Dict)
+    describe_reserved_cache_nodes_offerings([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DescribeReservedCacheNodesOfferings", arguments::Dict)
@@ -1970,9 +1970,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.describe_snapshots([::AWSConfig], arguments::Dict)
-    ElastiCache.describe_snapshots([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElastiCache.describe_snapshots
+    describe_snapshots([::AWSConfig], arguments::Dict)
+    describe_snapshots([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "DescribeSnapshots", arguments::Dict)
@@ -2040,9 +2040,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.list_allowed_node_type_modifications([::AWSConfig], arguments::Dict)
-    ElastiCache.list_allowed_node_type_modifications([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElastiCache.list_allowed_node_type_modifications
+    list_allowed_node_type_modifications([::AWSConfig], arguments::Dict)
+    list_allowed_node_type_modifications([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "ListAllowedNodeTypeModifications", arguments::Dict)
@@ -2091,9 +2091,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.list_tags_for_resource([::AWSConfig], arguments::Dict)
-    ElastiCache.list_tags_for_resource([::AWSConfig]; ResourceName=)
+    using AWSSDK.ElastiCache.list_tags_for_resource
+    list_tags_for_resource([::AWSConfig], arguments::Dict)
+    list_tags_for_resource([::AWSConfig]; ResourceName=)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "ListTagsForResource", arguments::Dict)
@@ -2134,9 +2134,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.modify_cache_cluster([::AWSConfig], arguments::Dict)
-    ElastiCache.modify_cache_cluster([::AWSConfig]; CacheClusterId=, <keyword arguments>)
+    using AWSSDK.ElastiCache.modify_cache_cluster
+    modify_cache_cluster([::AWSConfig], arguments::Dict)
+    modify_cache_cluster([::AWSConfig]; CacheClusterId=, <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "ModifyCacheCluster", arguments::Dict)
@@ -2353,9 +2353,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.modify_cache_parameter_group([::AWSConfig], arguments::Dict)
-    ElastiCache.modify_cache_parameter_group([::AWSConfig]; CacheParameterGroupName=, ParameterNameValues=)
+    using AWSSDK.ElastiCache.modify_cache_parameter_group
+    modify_cache_parameter_group([::AWSConfig], arguments::Dict)
+    modify_cache_parameter_group([::AWSConfig]; CacheParameterGroupName=, ParameterNameValues=)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "ModifyCacheParameterGroup", arguments::Dict)
@@ -2401,9 +2401,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.modify_cache_subnet_group([::AWSConfig], arguments::Dict)
-    ElastiCache.modify_cache_subnet_group([::AWSConfig]; CacheSubnetGroupName=, <keyword arguments>)
+    using AWSSDK.ElastiCache.modify_cache_subnet_group
+    modify_cache_subnet_group([::AWSConfig], arguments::Dict)
+    modify_cache_subnet_group([::AWSConfig]; CacheSubnetGroupName=, <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "ModifyCacheSubnetGroup", arguments::Dict)
@@ -2452,9 +2452,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.modify_replication_group([::AWSConfig], arguments::Dict)
-    ElastiCache.modify_replication_group([::AWSConfig]; ReplicationGroupId=, <keyword arguments>)
+    using AWSSDK.ElastiCache.modify_replication_group
+    modify_replication_group([::AWSConfig], arguments::Dict)
+    modify_replication_group([::AWSConfig]; ReplicationGroupId=, <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "ModifyReplicationGroup", arguments::Dict)
@@ -2619,9 +2619,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.purchase_reserved_cache_nodes_offering([::AWSConfig], arguments::Dict)
-    ElastiCache.purchase_reserved_cache_nodes_offering([::AWSConfig]; ReservedCacheNodesOfferingId=, <keyword arguments>)
+    using AWSSDK.ElastiCache.purchase_reserved_cache_nodes_offering
+    purchase_reserved_cache_nodes_offering([::AWSConfig], arguments::Dict)
+    purchase_reserved_cache_nodes_offering([::AWSConfig]; ReservedCacheNodesOfferingId=, <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "PurchaseReservedCacheNodesOffering", arguments::Dict)
@@ -2675,9 +2675,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.reboot_cache_cluster([::AWSConfig], arguments::Dict)
-    ElastiCache.reboot_cache_cluster([::AWSConfig]; CacheClusterId=, CacheNodeIdsToReboot=)
+    using AWSSDK.ElastiCache.reboot_cache_cluster
+    reboot_cache_cluster([::AWSConfig], arguments::Dict)
+    reboot_cache_cluster([::AWSConfig]; CacheClusterId=, CacheNodeIdsToReboot=)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "RebootCacheCluster", arguments::Dict)
@@ -2722,9 +2722,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.remove_tags_from_resource([::AWSConfig], arguments::Dict)
-    ElastiCache.remove_tags_from_resource([::AWSConfig]; ResourceName=, TagKeys=)
+    using AWSSDK.ElastiCache.remove_tags_from_resource
+    remove_tags_from_resource([::AWSConfig], arguments::Dict)
+    remove_tags_from_resource([::AWSConfig]; ResourceName=, TagKeys=)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "RemoveTagsFromResource", arguments::Dict)
@@ -2767,9 +2767,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.reset_cache_parameter_group([::AWSConfig], arguments::Dict)
-    ElastiCache.reset_cache_parameter_group([::AWSConfig]; CacheParameterGroupName=, <keyword arguments>)
+    using AWSSDK.ElastiCache.reset_cache_parameter_group
+    reset_cache_parameter_group([::AWSConfig], arguments::Dict)
+    reset_cache_parameter_group([::AWSConfig]; CacheParameterGroupName=, <keyword arguments>)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "ResetCacheParameterGroup", arguments::Dict)
@@ -2821,9 +2821,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.revoke_cache_security_group_ingress([::AWSConfig], arguments::Dict)
-    ElastiCache.revoke_cache_security_group_ingress([::AWSConfig]; CacheSecurityGroupName=, EC2SecurityGroupName=, EC2SecurityGroupOwnerId=)
+    using AWSSDK.ElastiCache.revoke_cache_security_group_ingress
+    revoke_cache_security_group_ingress([::AWSConfig], arguments::Dict)
+    revoke_cache_security_group_ingress([::AWSConfig]; CacheSecurityGroupName=, EC2SecurityGroupName=, EC2SecurityGroupOwnerId=)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "RevokeCacheSecurityGroupIngress", arguments::Dict)
@@ -2868,9 +2868,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElastiCache
-    ElastiCache.test_failover([::AWSConfig], arguments::Dict)
-    ElastiCache.test_failover([::AWSConfig]; ReplicationGroupId=, NodeGroupId=)
+    using AWSSDK.ElastiCache.test_failover
+    test_failover([::AWSConfig], arguments::Dict)
+    test_failover([::AWSConfig]; ReplicationGroupId=, NodeGroupId=)
 
     using AWSCore.Services.elasticache
     elasticache([::AWSConfig], "TestFailover", arguments::Dict)

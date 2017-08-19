@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.create_alias([::AWSConfig], arguments::Dict)
-    GameLift.create_alias([::AWSConfig]; Name=, RoutingStrategy=, <keyword arguments>)
+    using AWSSDK.GameLift.create_alias
+    create_alias([::AWSConfig], arguments::Dict)
+    create_alias([::AWSConfig]; Name=, RoutingStrategy=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "CreateAlias", arguments::Dict)
@@ -84,9 +84,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.create_build([::AWSConfig], arguments::Dict)
-    GameLift.create_build([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.GameLift.create_build
+    create_build([::AWSConfig], arguments::Dict)
+    create_build([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "CreateBuild", arguments::Dict)
@@ -158,9 +158,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.create_fleet([::AWSConfig], arguments::Dict)
-    GameLift.create_fleet([::AWSConfig]; Name=, BuildId=, EC2InstanceType=, <keyword arguments>)
+    using AWSSDK.GameLift.create_fleet
+    create_fleet([::AWSConfig], arguments::Dict)
+    create_fleet([::AWSConfig]; Name=, BuildId=, EC2InstanceType=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "CreateFleet", arguments::Dict)
@@ -337,9 +337,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.create_game_session([::AWSConfig], arguments::Dict)
-    GameLift.create_game_session([::AWSConfig]; MaximumPlayerSessionCount=, <keyword arguments>)
+    using AWSSDK.GameLift.create_game_session
+    create_game_session([::AWSConfig], arguments::Dict)
+    create_game_session([::AWSConfig]; MaximumPlayerSessionCount=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "CreateGameSession", arguments::Dict)
@@ -441,9 +441,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.create_game_session_queue([::AWSConfig], arguments::Dict)
-    GameLift.create_game_session_queue([::AWSConfig]; Name=, <keyword arguments>)
+    using AWSSDK.GameLift.create_game_session_queue
+    create_game_session_queue([::AWSConfig], arguments::Dict)
+    create_game_session_queue([::AWSConfig]; Name=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "CreateGameSessionQueue", arguments::Dict)
@@ -513,9 +513,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.create_player_session([::AWSConfig], arguments::Dict)
-    GameLift.create_player_session([::AWSConfig]; GameSessionId=, PlayerId=, <keyword arguments>)
+    using AWSSDK.GameLift.create_player_session
+    create_player_session([::AWSConfig], arguments::Dict)
+    create_player_session([::AWSConfig]; GameSessionId=, PlayerId=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "CreatePlayerSession", arguments::Dict)
@@ -580,9 +580,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.create_player_sessions([::AWSConfig], arguments::Dict)
-    GameLift.create_player_sessions([::AWSConfig]; GameSessionId=, PlayerIds=, <keyword arguments>)
+    using AWSSDK.GameLift.create_player_sessions
+    create_player_sessions([::AWSConfig], arguments::Dict)
+    create_player_sessions([::AWSConfig]; GameSessionId=, PlayerIds=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "CreatePlayerSessions", arguments::Dict)
@@ -647,9 +647,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.delete_alias([::AWSConfig], arguments::Dict)
-    GameLift.delete_alias([::AWSConfig]; AliasId=)
+    using AWSSDK.GameLift.delete_alias
+    delete_alias([::AWSConfig], arguments::Dict)
+    delete_alias([::AWSConfig]; AliasId=)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DeleteAlias", arguments::Dict)
@@ -696,9 +696,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.delete_build([::AWSConfig], arguments::Dict)
-    GameLift.delete_build([::AWSConfig]; BuildId=)
+    using AWSSDK.GameLift.delete_build
+    delete_build([::AWSConfig], arguments::Dict)
+    delete_build([::AWSConfig]; BuildId=)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DeleteBuild", arguments::Dict)
@@ -745,9 +745,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.delete_fleet([::AWSConfig], arguments::Dict)
-    GameLift.delete_fleet([::AWSConfig]; FleetId=)
+    using AWSSDK.GameLift.delete_fleet
+    delete_fleet([::AWSConfig], arguments::Dict)
+    delete_fleet([::AWSConfig]; FleetId=)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DeleteFleet", arguments::Dict)
@@ -826,9 +826,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.delete_game_session_queue([::AWSConfig], arguments::Dict)
-    GameLift.delete_game_session_queue([::AWSConfig]; Name=)
+    using AWSSDK.GameLift.delete_game_session_queue
+    delete_game_session_queue([::AWSConfig], arguments::Dict)
+    delete_game_session_queue([::AWSConfig]; Name=)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DeleteGameSessionQueue", arguments::Dict)
@@ -875,9 +875,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.delete_scaling_policy([::AWSConfig], arguments::Dict)
-    GameLift.delete_scaling_policy([::AWSConfig]; Name=, FleetId=)
+    using AWSSDK.GameLift.delete_scaling_policy
+    delete_scaling_policy([::AWSConfig], arguments::Dict)
+    delete_scaling_policy([::AWSConfig]; Name=, FleetId=)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DeleteScalingPolicy", arguments::Dict)
@@ -958,9 +958,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.describe_alias([::AWSConfig], arguments::Dict)
-    GameLift.describe_alias([::AWSConfig]; AliasId=)
+    using AWSSDK.GameLift.describe_alias
+    describe_alias([::AWSConfig], arguments::Dict)
+    describe_alias([::AWSConfig]; AliasId=)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DescribeAlias", arguments::Dict)
@@ -1013,9 +1013,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.describe_build([::AWSConfig], arguments::Dict)
-    GameLift.describe_build([::AWSConfig]; BuildId=)
+    using AWSSDK.GameLift.describe_build
+    describe_build([::AWSConfig], arguments::Dict)
+    describe_build([::AWSConfig]; BuildId=)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DescribeBuild", arguments::Dict)
@@ -1064,9 +1064,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.describe_ec2instance_limits([::AWSConfig], arguments::Dict)
-    GameLift.describe_ec2instance_limits([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.GameLift.describe_ec2instance_limits
+    describe_ec2instance_limits([::AWSConfig], arguments::Dict)
+    describe_ec2instance_limits([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DescribeEC2InstanceLimits", arguments::Dict)
@@ -1153,9 +1153,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.describe_fleet_attributes([::AWSConfig], arguments::Dict)
-    GameLift.describe_fleet_attributes([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.GameLift.describe_fleet_attributes
+    describe_fleet_attributes([::AWSConfig], arguments::Dict)
+    describe_fleet_attributes([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DescribeFleetAttributes", arguments::Dict)
@@ -1247,9 +1247,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.describe_fleet_capacity([::AWSConfig], arguments::Dict)
-    GameLift.describe_fleet_capacity([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.GameLift.describe_fleet_capacity
+    describe_fleet_capacity([::AWSConfig], arguments::Dict)
+    describe_fleet_capacity([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DescribeFleetCapacity", arguments::Dict)
@@ -1341,9 +1341,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.describe_fleet_events([::AWSConfig], arguments::Dict)
-    GameLift.describe_fleet_events([::AWSConfig]; FleetId=, <keyword arguments>)
+    using AWSSDK.GameLift.describe_fleet_events
+    describe_fleet_events([::AWSConfig], arguments::Dict)
+    describe_fleet_events([::AWSConfig]; FleetId=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DescribeFleetEvents", arguments::Dict)
@@ -1440,9 +1440,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.describe_fleet_port_settings([::AWSConfig], arguments::Dict)
-    GameLift.describe_fleet_port_settings([::AWSConfig]; FleetId=)
+    using AWSSDK.GameLift.describe_fleet_port_settings
+    describe_fleet_port_settings([::AWSConfig], arguments::Dict)
+    describe_fleet_port_settings([::AWSConfig]; FleetId=)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DescribeFleetPortSettings", arguments::Dict)
@@ -1523,9 +1523,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.describe_fleet_utilization([::AWSConfig], arguments::Dict)
-    GameLift.describe_fleet_utilization([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.GameLift.describe_fleet_utilization
+    describe_fleet_utilization([::AWSConfig], arguments::Dict)
+    describe_fleet_utilization([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DescribeFleetUtilization", arguments::Dict)
@@ -1617,9 +1617,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.describe_game_session_details([::AWSConfig], arguments::Dict)
-    GameLift.describe_game_session_details([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.GameLift.describe_game_session_details
+    describe_game_session_details([::AWSConfig], arguments::Dict)
+    describe_game_session_details([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DescribeGameSessionDetails", arguments::Dict)
@@ -1700,9 +1700,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.describe_game_session_placement([::AWSConfig], arguments::Dict)
-    GameLift.describe_game_session_placement([::AWSConfig]; PlacementId=)
+    using AWSSDK.GameLift.describe_game_session_placement
+    describe_game_session_placement([::AWSConfig], arguments::Dict)
+    describe_game_session_placement([::AWSConfig]; PlacementId=)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DescribeGameSessionPlacement", arguments::Dict)
@@ -1761,9 +1761,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.describe_game_session_queues([::AWSConfig], arguments::Dict)
-    GameLift.describe_game_session_queues([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.GameLift.describe_game_session_queues
+    describe_game_session_queues([::AWSConfig], arguments::Dict)
+    describe_game_session_queues([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DescribeGameSessionQueues", arguments::Dict)
@@ -1818,9 +1818,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.describe_game_sessions([::AWSConfig], arguments::Dict)
-    GameLift.describe_game_sessions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.GameLift.describe_game_sessions
+    describe_game_sessions([::AWSConfig], arguments::Dict)
+    describe_game_sessions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DescribeGameSessions", arguments::Dict)
@@ -1903,9 +1903,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.describe_instances([::AWSConfig], arguments::Dict)
-    GameLift.describe_instances([::AWSConfig]; FleetId=, <keyword arguments>)
+    using AWSSDK.GameLift.describe_instances
+    describe_instances([::AWSConfig], arguments::Dict)
+    describe_instances([::AWSConfig]; FleetId=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DescribeInstances", arguments::Dict)
@@ -1956,9 +1956,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.describe_player_sessions([::AWSConfig], arguments::Dict)
-    GameLift.describe_player_sessions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.GameLift.describe_player_sessions
+    describe_player_sessions([::AWSConfig], arguments::Dict)
+    describe_player_sessions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DescribePlayerSessions", arguments::Dict)
@@ -2045,9 +2045,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.describe_runtime_configuration([::AWSConfig], arguments::Dict)
-    GameLift.describe_runtime_configuration([::AWSConfig]; FleetId=)
+    using AWSSDK.GameLift.describe_runtime_configuration
+    describe_runtime_configuration([::AWSConfig], arguments::Dict)
+    describe_runtime_configuration([::AWSConfig]; FleetId=)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DescribeRuntimeConfiguration", arguments::Dict)
@@ -2128,9 +2128,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.describe_scaling_policies([::AWSConfig], arguments::Dict)
-    GameLift.describe_scaling_policies([::AWSConfig]; FleetId=, <keyword arguments>)
+    using AWSSDK.GameLift.describe_scaling_policies
+    describe_scaling_policies([::AWSConfig], arguments::Dict)
+    describe_scaling_policies([::AWSConfig]; FleetId=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "DescribeScalingPolicies", arguments::Dict)
@@ -2239,9 +2239,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.get_game_session_log_url([::AWSConfig], arguments::Dict)
-    GameLift.get_game_session_log_url([::AWSConfig]; GameSessionId=)
+    using AWSSDK.GameLift.get_game_session_log_url
+    get_game_session_log_url([::AWSConfig], arguments::Dict)
+    get_game_session_log_url([::AWSConfig]; GameSessionId=)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "GetGameSessionLogUrl", arguments::Dict)
@@ -2303,9 +2303,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.get_instance_access([::AWSConfig], arguments::Dict)
-    GameLift.get_instance_access([::AWSConfig]; FleetId=, InstanceId=)
+    using AWSSDK.GameLift.get_instance_access
+    get_instance_access([::AWSConfig], arguments::Dict)
+    get_instance_access([::AWSConfig]; FleetId=, InstanceId=)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "GetInstanceAccess", arguments::Dict)
@@ -2350,9 +2350,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.list_aliases([::AWSConfig], arguments::Dict)
-    GameLift.list_aliases([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.GameLift.list_aliases
+    list_aliases([::AWSConfig], arguments::Dict)
+    list_aliases([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "ListAliases", arguments::Dict)
@@ -2424,9 +2424,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.list_builds([::AWSConfig], arguments::Dict)
-    GameLift.list_builds([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.GameLift.list_builds
+    list_builds([::AWSConfig], arguments::Dict)
+    list_builds([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "ListBuilds", arguments::Dict)
@@ -2494,9 +2494,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.list_fleets([::AWSConfig], arguments::Dict)
-    GameLift.list_fleets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.GameLift.list_fleets
+    list_fleets([::AWSConfig], arguments::Dict)
+    list_fleets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "ListFleets", arguments::Dict)
@@ -2588,9 +2588,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.put_scaling_policy([::AWSConfig], arguments::Dict)
-    GameLift.put_scaling_policy([::AWSConfig]; Name=, FleetId=, ScalingAdjustment=, ScalingAdjustmentType=, Threshold=, ComparisonOperator=, EvaluationPeriods=, MetricName=)
+    using AWSSDK.GameLift.put_scaling_policy
+    put_scaling_policy([::AWSConfig], arguments::Dict)
+    put_scaling_policy([::AWSConfig]; Name=, FleetId=, ScalingAdjustment=, ScalingAdjustmentType=, Threshold=, ComparisonOperator=, EvaluationPeriods=, MetricName=)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "PutScalingPolicy", arguments::Dict)
@@ -2727,9 +2727,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.request_upload_credentials([::AWSConfig], arguments::Dict)
-    GameLift.request_upload_credentials([::AWSConfig]; BuildId=)
+    using AWSSDK.GameLift.request_upload_credentials
+    request_upload_credentials([::AWSConfig], arguments::Dict)
+    request_upload_credentials([::AWSConfig]; BuildId=)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "RequestUploadCredentials", arguments::Dict)
@@ -2766,9 +2766,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.resolve_alias([::AWSConfig], arguments::Dict)
-    GameLift.resolve_alias([::AWSConfig]; AliasId=)
+    using AWSSDK.GameLift.resolve_alias
+    resolve_alias([::AWSConfig], arguments::Dict)
+    resolve_alias([::AWSConfig]; AliasId=)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "ResolveAlias", arguments::Dict)
@@ -2819,9 +2819,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.search_game_sessions([::AWSConfig], arguments::Dict)
-    GameLift.search_game_sessions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.GameLift.search_game_sessions
+    search_game_sessions([::AWSConfig], arguments::Dict)
+    search_game_sessions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "SearchGameSessions", arguments::Dict)
@@ -2949,9 +2949,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.start_game_session_placement([::AWSConfig], arguments::Dict)
-    GameLift.start_game_session_placement([::AWSConfig]; PlacementId=, GameSessionQueueName=, MaximumPlayerSessionCount=, <keyword arguments>)
+    using AWSSDK.GameLift.start_game_session_placement
+    start_game_session_placement([::AWSConfig], arguments::Dict)
+    start_game_session_placement([::AWSConfig]; PlacementId=, GameSessionQueueName=, MaximumPlayerSessionCount=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "StartGameSessionPlacement", arguments::Dict)
@@ -3070,9 +3070,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.stop_game_session_placement([::AWSConfig], arguments::Dict)
-    GameLift.stop_game_session_placement([::AWSConfig]; PlacementId=)
+    using AWSSDK.GameLift.stop_game_session_placement
+    stop_game_session_placement([::AWSConfig], arguments::Dict)
+    stop_game_session_placement([::AWSConfig]; PlacementId=)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "StopGameSessionPlacement", arguments::Dict)
@@ -3131,9 +3131,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.update_alias([::AWSConfig], arguments::Dict)
-    GameLift.update_alias([::AWSConfig]; AliasId=, <keyword arguments>)
+    using AWSSDK.GameLift.update_alias
+    update_alias([::AWSConfig], arguments::Dict)
+    update_alias([::AWSConfig]; AliasId=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "UpdateAlias", arguments::Dict)
@@ -3202,9 +3202,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.update_build([::AWSConfig], arguments::Dict)
-    GameLift.update_build([::AWSConfig]; BuildId=, <keyword arguments>)
+    using AWSSDK.GameLift.update_build
+    update_build([::AWSConfig], arguments::Dict)
+    update_build([::AWSConfig]; BuildId=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "UpdateBuild", arguments::Dict)
@@ -3261,9 +3261,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.update_fleet_attributes([::AWSConfig], arguments::Dict)
-    GameLift.update_fleet_attributes([::AWSConfig]; FleetId=, <keyword arguments>)
+    using AWSSDK.GameLift.update_fleet_attributes
+    update_fleet_attributes([::AWSConfig], arguments::Dict)
+    update_fleet_attributes([::AWSConfig]; FleetId=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "UpdateFleetAttributes", arguments::Dict)
@@ -3373,9 +3373,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.update_fleet_capacity([::AWSConfig], arguments::Dict)
-    GameLift.update_fleet_capacity([::AWSConfig]; FleetId=, <keyword arguments>)
+    using AWSSDK.GameLift.update_fleet_capacity
+    update_fleet_capacity([::AWSConfig], arguments::Dict)
+    update_fleet_capacity([::AWSConfig]; FleetId=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "UpdateFleetCapacity", arguments::Dict)
@@ -3472,9 +3472,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.update_fleet_port_settings([::AWSConfig], arguments::Dict)
-    GameLift.update_fleet_port_settings([::AWSConfig]; FleetId=, <keyword arguments>)
+    using AWSSDK.GameLift.update_fleet_port_settings
+    update_fleet_port_settings([::AWSConfig], arguments::Dict)
+    update_fleet_port_settings([::AWSConfig]; FleetId=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "UpdateFleetPortSettings", arguments::Dict)
@@ -3577,9 +3577,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.update_game_session([::AWSConfig], arguments::Dict)
-    GameLift.update_game_session([::AWSConfig]; GameSessionId=, <keyword arguments>)
+    using AWSSDK.GameLift.update_game_session
+    update_game_session([::AWSConfig], arguments::Dict)
+    update_game_session([::AWSConfig]; GameSessionId=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "UpdateGameSession", arguments::Dict)
@@ -3658,9 +3658,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.update_game_session_queue([::AWSConfig], arguments::Dict)
-    GameLift.update_game_session_queue([::AWSConfig]; Name=, <keyword arguments>)
+    using AWSSDK.GameLift.update_game_session_queue
+    update_game_session_queue([::AWSConfig], arguments::Dict)
+    update_game_session_queue([::AWSConfig]; Name=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "UpdateGameSessionQueue", arguments::Dict)
@@ -3724,9 +3724,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
-    using AWSSDK.GameLift
-    GameLift.update_runtime_configuration([::AWSConfig], arguments::Dict)
-    GameLift.update_runtime_configuration([::AWSConfig]; FleetId=, RuntimeConfiguration=)
+    using AWSSDK.GameLift.update_runtime_configuration
+    update_runtime_configuration([::AWSConfig], arguments::Dict)
+    update_runtime_configuration([::AWSConfig]; FleetId=, RuntimeConfiguration=)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "UpdateRuntimeConfiguration", arguments::Dict)

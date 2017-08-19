@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Batch
-    Batch.cancel_job([::AWSConfig], arguments::Dict)
-    Batch.cancel_job([::AWSConfig]; jobId=, reason=)
+    using AWSSDK.Batch.cancel_job
+    cancel_job([::AWSConfig], arguments::Dict)
+    cancel_job([::AWSConfig]; jobId=, reason=)
 
     using AWSCore.Services.batch
     batch([::AWSConfig], "POST", "/v1/canceljob", arguments::Dict)
@@ -75,9 +75,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 
 """
-    using AWSSDK.Batch
-    Batch.create_compute_environment([::AWSConfig], arguments::Dict)
-    Batch.create_compute_environment([::AWSConfig]; computeEnvironmentName=, type=, serviceRole=, <keyword arguments>)
+    using AWSSDK.Batch.create_compute_environment
+    create_compute_environment([::AWSConfig], arguments::Dict)
+    create_compute_environment([::AWSConfig]; computeEnvironmentName=, type=, serviceRole=, <keyword arguments>)
 
     using AWSCore.Services.batch
     batch([::AWSConfig], "POST", "/v1/createcomputeenvironment", arguments::Dict)
@@ -244,9 +244,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 
 """
-    using AWSSDK.Batch
-    Batch.create_job_queue([::AWSConfig], arguments::Dict)
-    Batch.create_job_queue([::AWSConfig]; jobQueueName=, priority=, computeEnvironmentOrder=, <keyword arguments>)
+    using AWSSDK.Batch.create_job_queue
+    create_job_queue([::AWSConfig], arguments::Dict)
+    create_job_queue([::AWSConfig]; jobQueueName=, priority=, computeEnvironmentOrder=, <keyword arguments>)
 
     using AWSCore.Services.batch
     batch([::AWSConfig], "POST", "/v1/createjobqueue", arguments::Dict)
@@ -360,9 +360,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 
 """
-    using AWSSDK.Batch
-    Batch.delete_compute_environment([::AWSConfig], arguments::Dict)
-    Batch.delete_compute_environment([::AWSConfig]; computeEnvironment=)
+    using AWSSDK.Batch.delete_compute_environment
+    delete_compute_environment([::AWSConfig], arguments::Dict)
+    delete_compute_environment([::AWSConfig]; computeEnvironment=)
 
     using AWSCore.Services.batch
     batch([::AWSConfig], "POST", "/v1/deletecomputeenvironment", arguments::Dict)
@@ -419,9 +419,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 
 """
-    using AWSSDK.Batch
-    Batch.delete_job_queue([::AWSConfig], arguments::Dict)
-    Batch.delete_job_queue([::AWSConfig]; jobQueue=)
+    using AWSSDK.Batch.delete_job_queue
+    delete_job_queue([::AWSConfig], arguments::Dict)
+    delete_job_queue([::AWSConfig]; jobQueue=)
 
     using AWSCore.Services.batch
     batch([::AWSConfig], "POST", "/v1/deletejobqueue", arguments::Dict)
@@ -478,9 +478,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 
 """
-    using AWSSDK.Batch
-    Batch.deregister_job_definition([::AWSConfig], arguments::Dict)
-    Batch.deregister_job_definition([::AWSConfig]; jobDefinition=)
+    using AWSSDK.Batch.deregister_job_definition
+    deregister_job_definition([::AWSConfig], arguments::Dict)
+    deregister_job_definition([::AWSConfig]; jobDefinition=)
 
     using AWSCore.Services.batch
     batch([::AWSConfig], "POST", "/v1/deregisterjobdefinition", arguments::Dict)
@@ -535,9 +535,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 
 """
-    using AWSSDK.Batch
-    Batch.describe_compute_environments([::AWSConfig], arguments::Dict)
-    Batch.describe_compute_environments([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Batch.describe_compute_environments
+    describe_compute_environments([::AWSConfig], arguments::Dict)
+    describe_compute_environments([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.batch
     batch([::AWSConfig], "POST", "/v1/describecomputeenvironments", arguments::Dict)
@@ -640,9 +640,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 
 """
-    using AWSSDK.Batch
-    Batch.describe_job_definitions([::AWSConfig], arguments::Dict)
-    Batch.describe_job_definitions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Batch.describe_job_definitions
+    describe_job_definitions([::AWSConfig], arguments::Dict)
+    describe_job_definitions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.batch
     batch([::AWSConfig], "POST", "/v1/describejobdefinitions", arguments::Dict)
@@ -745,9 +745,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 
 """
-    using AWSSDK.Batch
-    Batch.describe_job_queues([::AWSConfig], arguments::Dict)
-    Batch.describe_job_queues([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Batch.describe_job_queues
+    describe_job_queues([::AWSConfig], arguments::Dict)
+    describe_job_queues([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.batch
     batch([::AWSConfig], "POST", "/v1/describejobqueues", arguments::Dict)
@@ -830,9 +830,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 
 """
-    using AWSSDK.Batch
-    Batch.describe_jobs([::AWSConfig], arguments::Dict)
-    Batch.describe_jobs([::AWSConfig]; jobs=)
+    using AWSSDK.Batch.describe_jobs
+    describe_jobs([::AWSConfig], arguments::Dict)
+    describe_jobs([::AWSConfig]; jobs=)
 
     using AWSCore.Services.batch
     batch([::AWSConfig], "POST", "/v1/describejobs", arguments::Dict)
@@ -929,9 +929,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 
 """
-    using AWSSDK.Batch
-    Batch.list_jobs([::AWSConfig], arguments::Dict)
-    Batch.list_jobs([::AWSConfig]; jobQueue=, <keyword arguments>)
+    using AWSSDK.Batch.list_jobs
+    list_jobs([::AWSConfig], arguments::Dict)
+    list_jobs([::AWSConfig]; jobQueue=, <keyword arguments>)
 
     using AWSCore.Services.batch
     batch([::AWSConfig], "POST", "/v1/listjobs", arguments::Dict)
@@ -1030,9 +1030,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 
 """
-    using AWSSDK.Batch
-    Batch.register_job_definition([::AWSConfig], arguments::Dict)
-    Batch.register_job_definition([::AWSConfig]; jobDefinitionName=, type=, <keyword arguments>)
+    using AWSSDK.Batch.register_job_definition
+    register_job_definition([::AWSConfig], arguments::Dict)
+    register_job_definition([::AWSConfig]; jobDefinitionName=, type=, <keyword arguments>)
 
     using AWSCore.Services.batch
     batch([::AWSConfig], "POST", "/v1/registerjobdefinition", arguments::Dict)
@@ -1144,9 +1144,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 
 """
-    using AWSSDK.Batch
-    Batch.submit_job([::AWSConfig], arguments::Dict)
-    Batch.submit_job([::AWSConfig]; jobName=, jobQueue=, jobDefinition=, <keyword arguments>)
+    using AWSSDK.Batch.submit_job
+    submit_job([::AWSConfig], arguments::Dict)
+    submit_job([::AWSConfig]; jobName=, jobQueue=, jobDefinition=, <keyword arguments>)
 
     using AWSCore.Services.batch
     batch([::AWSConfig], "POST", "/v1/submitjob", arguments::Dict)
@@ -1240,9 +1240,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 
 """
-    using AWSSDK.Batch
-    Batch.terminate_job([::AWSConfig], arguments::Dict)
-    Batch.terminate_job([::AWSConfig]; jobId=, reason=)
+    using AWSSDK.Batch.terminate_job
+    terminate_job([::AWSConfig], arguments::Dict)
+    terminate_job([::AWSConfig]; jobId=, reason=)
 
     using AWSCore.Services.batch
     batch([::AWSConfig], "POST", "/v1/terminatejob", arguments::Dict)
@@ -1302,9 +1302,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 
 """
-    using AWSSDK.Batch
-    Batch.update_compute_environment([::AWSConfig], arguments::Dict)
-    Batch.update_compute_environment([::AWSConfig]; computeEnvironment=, <keyword arguments>)
+    using AWSSDK.Batch.update_compute_environment
+    update_compute_environment([::AWSConfig], arguments::Dict)
+    update_compute_environment([::AWSConfig]; computeEnvironment=, <keyword arguments>)
 
     using AWSCore.Services.batch
     batch([::AWSConfig], "POST", "/v1/updatecomputeenvironment", arguments::Dict)
@@ -1379,9 +1379,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 
 """
-    using AWSSDK.Batch
-    Batch.update_job_queue([::AWSConfig], arguments::Dict)
-    Batch.update_job_queue([::AWSConfig]; jobQueue=, <keyword arguments>)
+    using AWSSDK.Batch.update_job_queue
+    update_job_queue([::AWSConfig], arguments::Dict)
+    update_job_queue([::AWSConfig]; jobQueue=, <keyword arguments>)
 
     using AWSCore.Services.batch
     batch([::AWSConfig], "POST", "/v1/updatejobqueue", arguments::Dict)

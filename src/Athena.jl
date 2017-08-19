@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Athena
-    Athena.batch_get_named_query([::AWSConfig], arguments::Dict)
-    Athena.batch_get_named_query([::AWSConfig]; NamedQueryIds=)
+    using AWSSDK.Athena.batch_get_named_query
+    batch_get_named_query([::AWSConfig], arguments::Dict)
+    batch_get_named_query([::AWSConfig]; NamedQueryIds=)
 
     using AWSCore.Services.athena
     athena([::AWSConfig], "BatchGetNamedQuery", arguments::Dict)
@@ -52,9 +52,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena
 
 
 """
-    using AWSSDK.Athena
-    Athena.batch_get_query_execution([::AWSConfig], arguments::Dict)
-    Athena.batch_get_query_execution([::AWSConfig]; QueryExecutionIds=)
+    using AWSSDK.Athena.batch_get_query_execution
+    batch_get_query_execution([::AWSConfig], arguments::Dict)
+    batch_get_query_execution([::AWSConfig]; QueryExecutionIds=)
 
     using AWSCore.Services.athena
     athena([::AWSConfig], "BatchGetQueryExecution", arguments::Dict)
@@ -91,9 +91,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena
 
 
 """
-    using AWSSDK.Athena
-    Athena.create_named_query([::AWSConfig], arguments::Dict)
-    Athena.create_named_query([::AWSConfig]; Name=, Database=, QueryString=, <keyword arguments>)
+    using AWSSDK.Athena.create_named_query
+    create_named_query([::AWSConfig], arguments::Dict)
+    create_named_query([::AWSConfig]; Name=, Database=, QueryString=, <keyword arguments>)
 
     using AWSCore.Services.athena
     athena([::AWSConfig], "CreateNamedQuery", arguments::Dict)
@@ -151,9 +151,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena
 
 
 """
-    using AWSSDK.Athena
-    Athena.delete_named_query([::AWSConfig], arguments::Dict)
-    Athena.delete_named_query([::AWSConfig]; NamedQueryId=)
+    using AWSSDK.Athena.delete_named_query
+    delete_named_query([::AWSConfig], arguments::Dict)
+    delete_named_query([::AWSConfig]; NamedQueryId=)
 
     using AWSCore.Services.athena
     athena([::AWSConfig], "DeleteNamedQuery", arguments::Dict)
@@ -192,9 +192,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena
 
 
 """
-    using AWSSDK.Athena
-    Athena.get_named_query([::AWSConfig], arguments::Dict)
-    Athena.get_named_query([::AWSConfig]; NamedQueryId=)
+    using AWSSDK.Athena.get_named_query
+    get_named_query([::AWSConfig], arguments::Dict)
+    get_named_query([::AWSConfig]; NamedQueryId=)
 
     using AWSCore.Services.athena
     athena([::AWSConfig], "GetNamedQuery", arguments::Dict)
@@ -231,9 +231,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena
 
 
 """
-    using AWSSDK.Athena
-    Athena.get_query_execution([::AWSConfig], arguments::Dict)
-    Athena.get_query_execution([::AWSConfig]; QueryExecutionId=)
+    using AWSSDK.Athena.get_query_execution
+    get_query_execution([::AWSConfig], arguments::Dict)
+    get_query_execution([::AWSConfig]; QueryExecutionId=)
 
     using AWSCore.Services.athena
     athena([::AWSConfig], "GetQueryExecution", arguments::Dict)
@@ -270,9 +270,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena
 
 
 """
-    using AWSSDK.Athena
-    Athena.get_query_results([::AWSConfig], arguments::Dict)
-    Athena.get_query_results([::AWSConfig]; QueryExecutionId=, <keyword arguments>)
+    using AWSSDK.Athena.get_query_results
+    get_query_results([::AWSConfig], arguments::Dict)
+    get_query_results([::AWSConfig]; QueryExecutionId=, <keyword arguments>)
 
     using AWSCore.Services.athena
     athena([::AWSConfig], "GetQueryResults", arguments::Dict)
@@ -317,9 +317,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena
 
 
 """
-    using AWSSDK.Athena
-    Athena.list_named_queries([::AWSConfig], arguments::Dict)
-    Athena.list_named_queries([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Athena.list_named_queries
+    list_named_queries([::AWSConfig], arguments::Dict)
+    list_named_queries([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.athena
     athena([::AWSConfig], "ListNamedQueries", arguments::Dict)
@@ -362,9 +362,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena
 
 
 """
-    using AWSSDK.Athena
-    Athena.list_query_executions([::AWSConfig], arguments::Dict)
-    Athena.list_query_executions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Athena.list_query_executions
+    list_query_executions([::AWSConfig], arguments::Dict)
+    list_query_executions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.athena
     athena([::AWSConfig], "ListQueryExecutions", arguments::Dict)
@@ -407,9 +407,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena
 
 
 """
-    using AWSSDK.Athena
-    Athena.start_query_execution([::AWSConfig], arguments::Dict)
-    Athena.start_query_execution([::AWSConfig]; QueryString=, ResultConfiguration=, <keyword arguments>)
+    using AWSSDK.Athena.start_query_execution
+    start_query_execution([::AWSConfig], arguments::Dict)
+    start_query_execution([::AWSConfig]; QueryString=, ResultConfiguration=, <keyword arguments>)
 
     using AWSCore.Services.athena
     athena([::AWSConfig], "StartQueryExecution", arguments::Dict)
@@ -471,9 +471,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena
 
 
 """
-    using AWSSDK.Athena
-    Athena.stop_query_execution([::AWSConfig], arguments::Dict)
-    Athena.stop_query_execution([::AWSConfig]; QueryExecutionId=)
+    using AWSSDK.Athena.stop_query_execution
+    stop_query_execution([::AWSConfig], arguments::Dict)
+    stop_query_execution([::AWSConfig]; QueryExecutionId=)
 
     using AWSCore.Services.athena
     athena([::AWSConfig], "StopQueryExecution", arguments::Dict)

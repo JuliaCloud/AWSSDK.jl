@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.CodeBuild
-    CodeBuild.batch_get_builds([::AWSConfig], arguments::Dict)
-    CodeBuild.batch_get_builds([::AWSConfig]; ids=)
+    using AWSSDK.CodeBuild.batch_get_builds
+    batch_get_builds([::AWSConfig], arguments::Dict)
+    batch_get_builds([::AWSConfig]; ids=)
 
     using AWSCore.Services.codebuild
     codebuild([::AWSConfig], "BatchGetBuilds", arguments::Dict)
@@ -52,9 +52,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebu
 
 
 """
-    using AWSSDK.CodeBuild
-    CodeBuild.batch_get_projects([::AWSConfig], arguments::Dict)
-    CodeBuild.batch_get_projects([::AWSConfig]; names=)
+    using AWSSDK.CodeBuild.batch_get_projects
+    batch_get_projects([::AWSConfig], arguments::Dict)
+    batch_get_projects([::AWSConfig]; names=)
 
     using AWSCore.Services.codebuild
     codebuild([::AWSConfig], "BatchGetProjects", arguments::Dict)
@@ -91,9 +91,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebu
 
 
 """
-    using AWSSDK.CodeBuild
-    CodeBuild.create_project([::AWSConfig], arguments::Dict)
-    CodeBuild.create_project([::AWSConfig]; name=, source=, artifacts=, environment=, <keyword arguments>)
+    using AWSSDK.CodeBuild.create_project
+    create_project([::AWSConfig], arguments::Dict)
+    create_project([::AWSConfig]; name=, source=, artifacts=, environment=, <keyword arguments>)
 
     using AWSCore.Services.codebuild
     codebuild([::AWSConfig], "CreateProject", arguments::Dict)
@@ -201,9 +201,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebu
 
 
 """
-    using AWSSDK.CodeBuild
-    CodeBuild.delete_project([::AWSConfig], arguments::Dict)
-    CodeBuild.delete_project([::AWSConfig]; name=)
+    using AWSSDK.CodeBuild.delete_project
+    delete_project([::AWSConfig], arguments::Dict)
+    delete_project([::AWSConfig]; name=)
 
     using AWSCore.Services.codebuild
     codebuild([::AWSConfig], "DeleteProject", arguments::Dict)
@@ -240,9 +240,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebu
 
 
 """
-    using AWSSDK.CodeBuild
-    CodeBuild.list_builds([::AWSConfig], arguments::Dict)
-    CodeBuild.list_builds([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodeBuild.list_builds
+    list_builds([::AWSConfig], arguments::Dict)
+    list_builds([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codebuild
     codebuild([::AWSConfig], "ListBuilds", arguments::Dict)
@@ -287,9 +287,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebu
 
 
 """
-    using AWSSDK.CodeBuild
-    CodeBuild.list_builds_for_project([::AWSConfig], arguments::Dict)
-    CodeBuild.list_builds_for_project([::AWSConfig]; projectName=, <keyword arguments>)
+    using AWSSDK.CodeBuild.list_builds_for_project
+    list_builds_for_project([::AWSConfig], arguments::Dict)
+    list_builds_for_project([::AWSConfig]; projectName=, <keyword arguments>)
 
     using AWSCore.Services.codebuild
     codebuild([::AWSConfig], "ListBuildsForProject", arguments::Dict)
@@ -338,9 +338,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebu
 
 
 """
-    using AWSSDK.CodeBuild
-    CodeBuild.list_curated_environment_images([::AWSConfig], arguments::Dict)
-    CodeBuild.list_curated_environment_images([::AWSConfig]; )
+    using AWSSDK.CodeBuild.list_curated_environment_images
+    list_curated_environment_images([::AWSConfig], arguments::Dict)
+    list_curated_environment_images([::AWSConfig]; )
 
     using AWSCore.Services.codebuild
     codebuild([::AWSConfig], "ListCuratedEnvironmentImages", arguments::Dict)
@@ -369,9 +369,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebu
 
 
 """
-    using AWSSDK.CodeBuild
-    CodeBuild.list_projects([::AWSConfig], arguments::Dict)
-    CodeBuild.list_projects([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.CodeBuild.list_projects
+    list_projects([::AWSConfig], arguments::Dict)
+    list_projects([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.codebuild
     codebuild([::AWSConfig], "ListProjects", arguments::Dict)
@@ -430,9 +430,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebu
 
 
 """
-    using AWSSDK.CodeBuild
-    CodeBuild.start_build([::AWSConfig], arguments::Dict)
-    CodeBuild.start_build([::AWSConfig]; projectName=, <keyword arguments>)
+    using AWSSDK.CodeBuild.start_build
+    start_build([::AWSConfig], arguments::Dict)
+    start_build([::AWSConfig]; projectName=, <keyword arguments>)
 
     using AWSCore.Services.codebuild
     codebuild([::AWSConfig], "StartBuild", arguments::Dict)
@@ -507,9 +507,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebu
 
 
 """
-    using AWSSDK.CodeBuild
-    CodeBuild.stop_build([::AWSConfig], arguments::Dict)
-    CodeBuild.stop_build([::AWSConfig]; id=)
+    using AWSSDK.CodeBuild.stop_build
+    stop_build([::AWSConfig], arguments::Dict)
+    stop_build([::AWSConfig]; id=)
 
     using AWSCore.Services.codebuild
     codebuild([::AWSConfig], "StopBuild", arguments::Dict)
@@ -546,9 +546,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebu
 
 
 """
-    using AWSSDK.CodeBuild
-    CodeBuild.update_project([::AWSConfig], arguments::Dict)
-    CodeBuild.update_project([::AWSConfig]; name=, <keyword arguments>)
+    using AWSSDK.CodeBuild.update_project
+    update_project([::AWSConfig], arguments::Dict)
+    update_project([::AWSConfig]; name=, <keyword arguments>)
 
     using AWSCore.Services.codebuild
     codebuild([::AWSConfig], "UpdateProject", arguments::Dict)

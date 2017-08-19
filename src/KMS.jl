@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.KMS
-    KMS.cancel_key_deletion([::AWSConfig], arguments::Dict)
-    KMS.cancel_key_deletion([::AWSConfig]; KeyId=)
+    using AWSSDK.KMS.cancel_key_deletion
+    cancel_key_deletion([::AWSConfig], arguments::Dict)
+    cancel_key_deletion([::AWSConfig]; KeyId=)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "CancelKeyDeletion", arguments::Dict)
@@ -80,9 +80,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.create_alias([::AWSConfig], arguments::Dict)
-    KMS.create_alias([::AWSConfig]; AliasName=, TargetKeyId=)
+    using AWSSDK.KMS.create_alias
+    create_alias([::AWSConfig], arguments::Dict)
+    create_alias([::AWSConfig]; AliasName=, TargetKeyId=)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "CreateAlias", arguments::Dict)
@@ -139,9 +139,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.create_grant([::AWSConfig], arguments::Dict)
-    KMS.create_grant([::AWSConfig]; KeyId=, GranteePrincipal=, <keyword arguments>)
+    using AWSSDK.KMS.create_grant
+    create_grant([::AWSConfig], arguments::Dict)
+    create_grant([::AWSConfig]; KeyId=, GranteePrincipal=, <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "CreateGrant", arguments::Dict)
@@ -249,9 +249,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.create_key([::AWSConfig], arguments::Dict)
-    KMS.create_key([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.KMS.create_key
+    create_key([::AWSConfig], arguments::Dict)
+    create_key([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "CreateKey", arguments::Dict)
@@ -381,9 +381,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.decrypt([::AWSConfig], arguments::Dict)
-    KMS.decrypt([::AWSConfig]; CiphertextBlob=, <keyword arguments>)
+    using AWSSDK.KMS.decrypt
+    decrypt([::AWSConfig], arguments::Dict)
+    decrypt([::AWSConfig]; CiphertextBlob=, <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "Decrypt", arguments::Dict)
@@ -457,9 +457,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.delete_alias([::AWSConfig], arguments::Dict)
-    KMS.delete_alias([::AWSConfig]; AliasName=)
+    using AWSSDK.KMS.delete_alias
+    delete_alias([::AWSConfig], arguments::Dict)
+    delete_alias([::AWSConfig]; AliasName=)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "DeleteAlias", arguments::Dict)
@@ -503,9 +503,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.delete_imported_key_material([::AWSConfig], arguments::Dict)
-    KMS.delete_imported_key_material([::AWSConfig]; KeyId=)
+    using AWSSDK.KMS.delete_imported_key_material
+    delete_imported_key_material([::AWSConfig], arguments::Dict)
+    delete_imported_key_material([::AWSConfig]; KeyId=)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "DeleteImportedKeyMaterial", arguments::Dict)
@@ -559,9 +559,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.describe_key([::AWSConfig], arguments::Dict)
-    KMS.describe_key([::AWSConfig]; KeyId=, <keyword arguments>)
+    using AWSSDK.KMS.describe_key
+    describe_key([::AWSConfig], arguments::Dict)
+    describe_key([::AWSConfig]; KeyId=, <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "DescribeKey", arguments::Dict)
@@ -640,9 +640,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.disable_key([::AWSConfig], arguments::Dict)
-    KMS.disable_key([::AWSConfig]; KeyId=)
+    using AWSSDK.KMS.disable_key
+    disable_key([::AWSConfig], arguments::Dict)
+    disable_key([::AWSConfig]; KeyId=)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "DisableKey", arguments::Dict)
@@ -692,9 +692,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.disable_key_rotation([::AWSConfig], arguments::Dict)
-    KMS.disable_key_rotation([::AWSConfig]; KeyId=)
+    using AWSSDK.KMS.disable_key_rotation
+    disable_key_rotation([::AWSConfig], arguments::Dict)
+    disable_key_rotation([::AWSConfig]; KeyId=)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "DisableKeyRotation", arguments::Dict)
@@ -742,9 +742,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.enable_key([::AWSConfig], arguments::Dict)
-    KMS.enable_key([::AWSConfig]; KeyId=)
+    using AWSSDK.KMS.enable_key
+    enable_key([::AWSConfig], arguments::Dict)
+    enable_key([::AWSConfig]; KeyId=)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "EnableKey", arguments::Dict)
@@ -792,9 +792,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.enable_key_rotation([::AWSConfig], arguments::Dict)
-    KMS.enable_key_rotation([::AWSConfig]; KeyId=)
+    using AWSSDK.KMS.enable_key_rotation
+    enable_key_rotation([::AWSConfig], arguments::Dict)
+    enable_key_rotation([::AWSConfig]; KeyId=)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "EnableKeyRotation", arguments::Dict)
@@ -842,9 +842,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.encrypt([::AWSConfig], arguments::Dict)
-    KMS.encrypt([::AWSConfig]; KeyId=, Plaintext=, <keyword arguments>)
+    using AWSSDK.KMS.encrypt
+    encrypt([::AWSConfig], arguments::Dict)
+    encrypt([::AWSConfig]; KeyId=, Plaintext=, <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "Encrypt", arguments::Dict)
@@ -931,9 +931,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.generate_data_key([::AWSConfig], arguments::Dict)
-    KMS.generate_data_key([::AWSConfig]; KeyId=, <keyword arguments>)
+    using AWSSDK.KMS.generate_data_key
+    generate_data_key([::AWSConfig], arguments::Dict)
+    generate_data_key([::AWSConfig]; KeyId=, <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "GenerateDataKey", arguments::Dict)
@@ -1043,9 +1043,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.generate_data_key_without_plaintext([::AWSConfig], arguments::Dict)
-    KMS.generate_data_key_without_plaintext([::AWSConfig]; KeyId=, <keyword arguments>)
+    using AWSSDK.KMS.generate_data_key_without_plaintext
+    generate_data_key_without_plaintext([::AWSConfig], arguments::Dict)
+    generate_data_key_without_plaintext([::AWSConfig]; KeyId=, <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "GenerateDataKeyWithoutPlaintext", arguments::Dict)
@@ -1134,9 +1134,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.generate_random([::AWSConfig], arguments::Dict)
-    KMS.generate_random([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.KMS.generate_random
+    generate_random([::AWSConfig], arguments::Dict)
+    generate_random([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "GenerateRandom", arguments::Dict)
@@ -1193,9 +1193,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.get_key_policy([::AWSConfig], arguments::Dict)
-    KMS.get_key_policy([::AWSConfig]; KeyId=, PolicyName=)
+    using AWSSDK.KMS.get_key_policy
+    get_key_policy([::AWSConfig], arguments::Dict)
+    get_key_policy([::AWSConfig]; KeyId=, PolicyName=)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "GetKeyPolicy", arguments::Dict)
@@ -1271,9 +1271,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.get_key_rotation_status([::AWSConfig], arguments::Dict)
-    KMS.get_key_rotation_status([::AWSConfig]; KeyId=)
+    using AWSSDK.KMS.get_key_rotation_status
+    get_key_rotation_status([::AWSConfig], arguments::Dict)
+    get_key_rotation_status([::AWSConfig]; KeyId=)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "GetKeyRotationStatus", arguments::Dict)
@@ -1332,9 +1332,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.get_parameters_for_import([::AWSConfig], arguments::Dict)
-    KMS.get_parameters_for_import([::AWSConfig]; KeyId=, WrappingAlgorithm=, WrappingKeySpec=)
+    using AWSSDK.KMS.get_parameters_for_import
+    get_parameters_for_import([::AWSConfig], arguments::Dict)
+    get_parameters_for_import([::AWSConfig]; KeyId=, WrappingAlgorithm=, WrappingKeySpec=)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "GetParametersForImport", arguments::Dict)
@@ -1412,9 +1412,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.import_key_material([::AWSConfig], arguments::Dict)
-    KMS.import_key_material([::AWSConfig]; KeyId=, ImportToken=, EncryptedKeyMaterial=, <keyword arguments>)
+    using AWSSDK.KMS.import_key_material
+    import_key_material([::AWSConfig], arguments::Dict)
+    import_key_material([::AWSConfig]; KeyId=, ImportToken=, EncryptedKeyMaterial=, <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "ImportKeyMaterial", arguments::Dict)
@@ -1493,9 +1493,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.list_aliases([::AWSConfig], arguments::Dict)
-    KMS.list_aliases([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.KMS.list_aliases
+    list_aliases([::AWSConfig], arguments::Dict)
+    list_aliases([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "ListAliases", arguments::Dict)
@@ -1591,9 +1591,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.list_grants([::AWSConfig], arguments::Dict)
-    KMS.list_grants([::AWSConfig]; KeyId=, <keyword arguments>)
+    using AWSSDK.KMS.list_grants
+    list_grants([::AWSConfig], arguments::Dict)
+    list_grants([::AWSConfig]; KeyId=, <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "ListGrants", arguments::Dict)
@@ -1715,9 +1715,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.list_key_policies([::AWSConfig], arguments::Dict)
-    KMS.list_key_policies([::AWSConfig]; KeyId=, <keyword arguments>)
+    using AWSSDK.KMS.list_key_policies
+    list_key_policies([::AWSConfig], arguments::Dict)
+    list_key_policies([::AWSConfig]; KeyId=, <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "ListKeyPolicies", arguments::Dict)
@@ -1791,9 +1791,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.list_keys([::AWSConfig], arguments::Dict)
-    KMS.list_keys([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.KMS.list_keys
+    list_keys([::AWSConfig], arguments::Dict)
+    list_keys([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "ListKeys", arguments::Dict)
@@ -1877,9 +1877,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.list_resource_tags([::AWSConfig], arguments::Dict)
-    KMS.list_resource_tags([::AWSConfig]; KeyId=, <keyword arguments>)
+    using AWSSDK.KMS.list_resource_tags
+    list_resource_tags([::AWSConfig], arguments::Dict)
+    list_resource_tags([::AWSConfig]; KeyId=, <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "ListResourceTags", arguments::Dict)
@@ -1964,9 +1964,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.list_retirable_grants([::AWSConfig], arguments::Dict)
-    KMS.list_retirable_grants([::AWSConfig]; RetiringPrincipal=, <keyword arguments>)
+    using AWSSDK.KMS.list_retirable_grants
+    list_retirable_grants([::AWSConfig], arguments::Dict)
+    list_retirable_grants([::AWSConfig]; RetiringPrincipal=, <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "ListRetirableGrants", arguments::Dict)
@@ -2049,9 +2049,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.put_key_policy([::AWSConfig], arguments::Dict)
-    KMS.put_key_policy([::AWSConfig]; KeyId=, PolicyName=, Policy=, <keyword arguments>)
+    using AWSSDK.KMS.put_key_policy
+    put_key_policy([::AWSConfig], arguments::Dict)
+    put_key_policy([::AWSConfig]; KeyId=, PolicyName=, Policy=, <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "PutKeyPolicy", arguments::Dict)
@@ -2209,9 +2209,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.re_encrypt([::AWSConfig], arguments::Dict)
-    KMS.re_encrypt([::AWSConfig]; CiphertextBlob=, DestinationKeyId=, <keyword arguments>)
+    using AWSSDK.KMS.re_encrypt
+    re_encrypt([::AWSConfig], arguments::Dict)
+    re_encrypt([::AWSConfig]; CiphertextBlob=, DestinationKeyId=, <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "ReEncrypt", arguments::Dict)
@@ -2297,9 +2297,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.retire_grant([::AWSConfig], arguments::Dict)
-    KMS.retire_grant([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.KMS.retire_grant
+    retire_grant([::AWSConfig], arguments::Dict)
+    retire_grant([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "RetireGrant", arguments::Dict)
@@ -2364,9 +2364,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.revoke_grant([::AWSConfig], arguments::Dict)
-    KMS.revoke_grant([::AWSConfig]; KeyId=, GrantId=)
+    using AWSSDK.KMS.revoke_grant
+    revoke_grant([::AWSConfig], arguments::Dict)
+    revoke_grant([::AWSConfig]; KeyId=, GrantId=)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "RevokeGrant", arguments::Dict)
@@ -2419,9 +2419,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.schedule_key_deletion([::AWSConfig], arguments::Dict)
-    KMS.schedule_key_deletion([::AWSConfig]; KeyId=, <keyword arguments>)
+    using AWSSDK.KMS.schedule_key_deletion
+    schedule_key_deletion([::AWSConfig], arguments::Dict)
+    schedule_key_deletion([::AWSConfig]; KeyId=, <keyword arguments>)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "ScheduleKeyDeletion", arguments::Dict)
@@ -2497,9 +2497,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.tag_resource([::AWSConfig], arguments::Dict)
-    KMS.tag_resource([::AWSConfig]; KeyId=, Tags=)
+    using AWSSDK.KMS.tag_resource
+    tag_resource([::AWSConfig], arguments::Dict)
+    tag_resource([::AWSConfig]; KeyId=, Tags=)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "TagResource", arguments::Dict)
@@ -2566,9 +2566,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.untag_resource([::AWSConfig], arguments::Dict)
-    KMS.untag_resource([::AWSConfig]; KeyId=, TagKeys=)
+    using AWSSDK.KMS.untag_resource
+    untag_resource([::AWSConfig], arguments::Dict)
+    untag_resource([::AWSConfig]; KeyId=, TagKeys=)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "UntagResource", arguments::Dict)
@@ -2626,9 +2626,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.update_alias([::AWSConfig], arguments::Dict)
-    KMS.update_alias([::AWSConfig]; AliasName=, TargetKeyId=)
+    using AWSSDK.KMS.update_alias
+    update_alias([::AWSConfig], arguments::Dict)
+    update_alias([::AWSConfig]; AliasName=, TargetKeyId=)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "UpdateAlias", arguments::Dict)
@@ -2689,9 +2689,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 
 """
-    using AWSSDK.KMS
-    KMS.update_key_description([::AWSConfig], arguments::Dict)
-    KMS.update_key_description([::AWSConfig]; KeyId=, Description=)
+    using AWSSDK.KMS.update_key_description
+    update_key_description([::AWSConfig], arguments::Dict)
+    update_key_description([::AWSConfig]; KeyId=, Description=)
 
     using AWSCore.Services.kms
     kms([::AWSConfig], "UpdateKeyDescription", arguments::Dict)

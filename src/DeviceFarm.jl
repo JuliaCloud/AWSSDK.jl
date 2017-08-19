@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.create_device_pool([::AWSConfig], arguments::Dict)
-    DeviceFarm.create_device_pool([::AWSConfig]; projectArn=, name=, rules=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.create_device_pool
+    create_device_pool([::AWSConfig], arguments::Dict)
+    create_device_pool([::AWSConfig]; projectArn=, name=, rules=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "CreateDevicePool", arguments::Dict)
@@ -95,9 +95,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.create_network_profile([::AWSConfig], arguments::Dict)
-    DeviceFarm.create_network_profile([::AWSConfig]; projectArn=, name=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.create_network_profile
+    create_network_profile([::AWSConfig], arguments::Dict)
+    create_network_profile([::AWSConfig]; projectArn=, name=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "CreateNetworkProfile", arguments::Dict)
@@ -178,9 +178,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.create_project([::AWSConfig], arguments::Dict)
-    DeviceFarm.create_project([::AWSConfig]; name=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.create_project
+    create_project([::AWSConfig], arguments::Dict)
+    create_project([::AWSConfig]; name=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "CreateProject", arguments::Dict)
@@ -243,9 +243,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.create_remote_access_session([::AWSConfig], arguments::Dict)
-    DeviceFarm.create_remote_access_session([::AWSConfig]; projectArn=, deviceArn=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.create_remote_access_session
+    create_remote_access_session([::AWSConfig], arguments::Dict)
+    create_remote_access_session([::AWSConfig]; projectArn=, deviceArn=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "CreateRemoteAccessSession", arguments::Dict)
@@ -319,9 +319,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.create_upload([::AWSConfig], arguments::Dict)
-    DeviceFarm.create_upload([::AWSConfig]; projectArn=, name=, type=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.create_upload
+    create_upload([::AWSConfig], arguments::Dict)
+    create_upload([::AWSConfig]; projectArn=, name=, type=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "CreateUpload", arguments::Dict)
@@ -433,9 +433,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.delete_device_pool([::AWSConfig], arguments::Dict)
-    DeviceFarm.delete_device_pool([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.delete_device_pool
+    delete_device_pool([::AWSConfig], arguments::Dict)
+    delete_device_pool([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "DeleteDevicePool", arguments::Dict)
@@ -490,9 +490,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.delete_network_profile([::AWSConfig], arguments::Dict)
-    DeviceFarm.delete_network_profile([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.delete_network_profile
+    delete_network_profile([::AWSConfig], arguments::Dict)
+    delete_network_profile([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "DeleteNetworkProfile", arguments::Dict)
@@ -529,9 +529,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.delete_project([::AWSConfig], arguments::Dict)
-    DeviceFarm.delete_project([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.delete_project
+    delete_project([::AWSConfig], arguments::Dict)
+    delete_project([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "DeleteProject", arguments::Dict)
@@ -588,9 +588,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.delete_remote_access_session([::AWSConfig], arguments::Dict)
-    DeviceFarm.delete_remote_access_session([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.delete_remote_access_session
+    delete_remote_access_session([::AWSConfig], arguments::Dict)
+    delete_remote_access_session([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "DeleteRemoteAccessSession", arguments::Dict)
@@ -645,9 +645,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.delete_run([::AWSConfig], arguments::Dict)
-    DeviceFarm.delete_run([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.delete_run
+    delete_run([::AWSConfig], arguments::Dict)
+    delete_run([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "DeleteRun", arguments::Dict)
@@ -704,9 +704,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.delete_upload([::AWSConfig], arguments::Dict)
-    DeviceFarm.delete_upload([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.delete_upload
+    delete_upload([::AWSConfig], arguments::Dict)
+    delete_upload([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "DeleteUpload", arguments::Dict)
@@ -761,9 +761,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.get_account_settings([::AWSConfig], arguments::Dict)
-    DeviceFarm.get_account_settings([::AWSConfig]; )
+    using AWSSDK.DeviceFarm.get_account_settings
+    get_account_settings([::AWSConfig], arguments::Dict)
+    get_account_settings([::AWSConfig]; )
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "GetAccountSettings", arguments::Dict)
@@ -820,9 +820,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.get_device([::AWSConfig], arguments::Dict)
-    DeviceFarm.get_device([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.get_device
+    get_device([::AWSConfig], arguments::Dict)
+    get_device([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "GetDevice", arguments::Dict)
@@ -897,9 +897,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.get_device_pool([::AWSConfig], arguments::Dict)
-    DeviceFarm.get_device_pool([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.get_device_pool
+    get_device_pool([::AWSConfig], arguments::Dict)
+    get_device_pool([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "GetDevicePool", arguments::Dict)
@@ -956,9 +956,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.get_device_pool_compatibility([::AWSConfig], arguments::Dict)
-    DeviceFarm.get_device_pool_compatibility([::AWSConfig]; devicePoolArn=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.get_device_pool_compatibility
+    get_device_pool_compatibility([::AWSConfig], arguments::Dict)
+    get_device_pool_compatibility([::AWSConfig]; devicePoolArn=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "GetDevicePoolCompatibility", arguments::Dict)
@@ -1069,9 +1069,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.get_job([::AWSConfig], arguments::Dict)
-    DeviceFarm.get_job([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.get_job
+    get_job([::AWSConfig], arguments::Dict)
+    get_job([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "GetJob", arguments::Dict)
@@ -1128,9 +1128,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.get_network_profile([::AWSConfig], arguments::Dict)
-    DeviceFarm.get_network_profile([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.get_network_profile
+    get_network_profile([::AWSConfig], arguments::Dict)
+    get_network_profile([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "GetNetworkProfile", arguments::Dict)
@@ -1167,9 +1167,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.get_offering_status([::AWSConfig], arguments::Dict)
-    DeviceFarm.get_offering_status([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DeviceFarm.get_offering_status
+    get_offering_status([::AWSConfig], arguments::Dict)
+    get_offering_status([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "GetOfferingStatus", arguments::Dict)
@@ -1246,9 +1246,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.get_project([::AWSConfig], arguments::Dict)
-    DeviceFarm.get_project([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.get_project
+    get_project([::AWSConfig], arguments::Dict)
+    get_project([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "GetProject", arguments::Dict)
@@ -1307,9 +1307,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.get_remote_access_session([::AWSConfig], arguments::Dict)
-    DeviceFarm.get_remote_access_session([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.get_remote_access_session
+    get_remote_access_session([::AWSConfig], arguments::Dict)
+    get_remote_access_session([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "GetRemoteAccessSession", arguments::Dict)
@@ -1366,9 +1366,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.get_run([::AWSConfig], arguments::Dict)
-    DeviceFarm.get_run([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.get_run
+    get_run([::AWSConfig], arguments::Dict)
+    get_run([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "GetRun", arguments::Dict)
@@ -1448,9 +1448,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.get_suite([::AWSConfig], arguments::Dict)
-    DeviceFarm.get_suite([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.get_suite
+    get_suite([::AWSConfig], arguments::Dict)
+    get_suite([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "GetSuite", arguments::Dict)
@@ -1507,9 +1507,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.get_test([::AWSConfig], arguments::Dict)
-    DeviceFarm.get_test([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.get_test
+    get_test([::AWSConfig], arguments::Dict)
+    get_test([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "GetTest", arguments::Dict)
@@ -1566,9 +1566,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.get_upload([::AWSConfig], arguments::Dict)
-    DeviceFarm.get_upload([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.get_upload
+    get_upload([::AWSConfig], arguments::Dict)
+    get_upload([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "GetUpload", arguments::Dict)
@@ -1625,9 +1625,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.install_to_remote_access_session([::AWSConfig], arguments::Dict)
-    DeviceFarm.install_to_remote_access_session([::AWSConfig]; remoteAccessSessionArn=, appArn=)
+    using AWSSDK.DeviceFarm.install_to_remote_access_session
+    install_to_remote_access_session([::AWSConfig], arguments::Dict)
+    install_to_remote_access_session([::AWSConfig]; remoteAccessSessionArn=, appArn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "InstallToRemoteAccessSession", arguments::Dict)
@@ -1689,9 +1689,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.list_artifacts([::AWSConfig], arguments::Dict)
-    DeviceFarm.list_artifacts([::AWSConfig]; arn=, type=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.list_artifacts
+    list_artifacts([::AWSConfig], arguments::Dict)
+    list_artifacts([::AWSConfig]; arn=, type=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "ListArtifacts", arguments::Dict)
@@ -1756,9 +1756,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.list_device_pools([::AWSConfig], arguments::Dict)
-    DeviceFarm.list_device_pools([::AWSConfig]; arn=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.list_device_pools
+    list_device_pools([::AWSConfig], arguments::Dict)
+    list_device_pools([::AWSConfig]; arn=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "ListDevicePools", arguments::Dict)
@@ -1853,9 +1853,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.list_devices([::AWSConfig], arguments::Dict)
-    DeviceFarm.list_devices([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DeviceFarm.list_devices
+    list_devices([::AWSConfig], arguments::Dict)
+    list_devices([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "ListDevices", arguments::Dict)
@@ -1914,9 +1914,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.list_jobs([::AWSConfig], arguments::Dict)
-    DeviceFarm.list_jobs([::AWSConfig]; arn=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.list_jobs
+    list_jobs([::AWSConfig], arguments::Dict)
+    list_jobs([::AWSConfig]; arn=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "ListJobs", arguments::Dict)
@@ -1968,9 +1968,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.list_network_profiles([::AWSConfig], arguments::Dict)
-    DeviceFarm.list_network_profiles([::AWSConfig]; arn=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.list_network_profiles
+    list_network_profiles([::AWSConfig], arguments::Dict)
+    list_network_profiles([::AWSConfig]; arn=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "ListNetworkProfiles", arguments::Dict)
@@ -2015,9 +2015,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.list_offering_promotions([::AWSConfig], arguments::Dict)
-    DeviceFarm.list_offering_promotions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DeviceFarm.list_offering_promotions
+    list_offering_promotions([::AWSConfig], arguments::Dict)
+    list_offering_promotions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "ListOfferingPromotions", arguments::Dict)
@@ -2054,9 +2054,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.list_offering_transactions([::AWSConfig], arguments::Dict)
-    DeviceFarm.list_offering_transactions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DeviceFarm.list_offering_transactions
+    list_offering_transactions([::AWSConfig], arguments::Dict)
+    list_offering_transactions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "ListOfferingTransactions", arguments::Dict)
@@ -2188,9 +2188,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.list_offerings([::AWSConfig], arguments::Dict)
-    DeviceFarm.list_offerings([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DeviceFarm.list_offerings
+    list_offerings([::AWSConfig], arguments::Dict)
+    list_offerings([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "ListOfferings", arguments::Dict)
@@ -2306,9 +2306,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.list_projects([::AWSConfig], arguments::Dict)
-    DeviceFarm.list_projects([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DeviceFarm.list_projects
+    list_projects([::AWSConfig], arguments::Dict)
+    list_projects([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "ListProjects", arguments::Dict)
@@ -2379,9 +2379,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.list_remote_access_sessions([::AWSConfig], arguments::Dict)
-    DeviceFarm.list_remote_access_sessions([::AWSConfig]; arn=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.list_remote_access_sessions
+    list_remote_access_sessions([::AWSConfig], arguments::Dict)
+    list_remote_access_sessions([::AWSConfig]; arn=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "ListRemoteAccessSessions", arguments::Dict)
@@ -2443,9 +2443,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.list_runs([::AWSConfig], arguments::Dict)
-    DeviceFarm.list_runs([::AWSConfig]; arn=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.list_runs
+    list_runs([::AWSConfig], arguments::Dict)
+    list_runs([::AWSConfig]; arn=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "ListRuns", arguments::Dict)
@@ -2532,9 +2532,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.list_samples([::AWSConfig], arguments::Dict)
-    DeviceFarm.list_samples([::AWSConfig]; arn=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.list_samples
+    list_samples([::AWSConfig], arguments::Dict)
+    list_samples([::AWSConfig]; arn=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "ListSamples", arguments::Dict)
@@ -2596,9 +2596,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.list_suites([::AWSConfig], arguments::Dict)
-    DeviceFarm.list_suites([::AWSConfig]; arn=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.list_suites
+    list_suites([::AWSConfig], arguments::Dict)
+    list_suites([::AWSConfig]; arn=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "ListSuites", arguments::Dict)
@@ -2660,9 +2660,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.list_tests([::AWSConfig], arguments::Dict)
-    DeviceFarm.list_tests([::AWSConfig]; arn=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.list_tests
+    list_tests([::AWSConfig], arguments::Dict)
+    list_tests([::AWSConfig]; arn=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "ListTests", arguments::Dict)
@@ -2724,9 +2724,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.list_unique_problems([::AWSConfig], arguments::Dict)
-    DeviceFarm.list_unique_problems([::AWSConfig]; arn=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.list_unique_problems
+    list_unique_problems([::AWSConfig], arguments::Dict)
+    list_unique_problems([::AWSConfig]; arn=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "ListUniqueProblems", arguments::Dict)
@@ -2788,9 +2788,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.list_uploads([::AWSConfig], arguments::Dict)
-    DeviceFarm.list_uploads([::AWSConfig]; arn=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.list_uploads
+    list_uploads([::AWSConfig], arguments::Dict)
+    list_uploads([::AWSConfig]; arn=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "ListUploads", arguments::Dict)
@@ -2852,9 +2852,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.purchase_offering([::AWSConfig], arguments::Dict)
-    DeviceFarm.purchase_offering([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DeviceFarm.purchase_offering
+    purchase_offering([::AWSConfig], arguments::Dict)
+    purchase_offering([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "PurchaseOffering", arguments::Dict)
@@ -2936,9 +2936,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.renew_offering([::AWSConfig], arguments::Dict)
-    DeviceFarm.renew_offering([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DeviceFarm.renew_offering
+    renew_offering([::AWSConfig], arguments::Dict)
+    renew_offering([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "RenewOffering", arguments::Dict)
@@ -3016,9 +3016,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.schedule_run([::AWSConfig], arguments::Dict)
-    DeviceFarm.schedule_run([::AWSConfig]; projectArn=, devicePoolArn=, test=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.schedule_run
+    schedule_run([::AWSConfig], arguments::Dict)
+    schedule_run([::AWSConfig]; projectArn=, devicePoolArn=, test=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "ScheduleRun", arguments::Dict)
@@ -3136,9 +3136,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.stop_remote_access_session([::AWSConfig], arguments::Dict)
-    DeviceFarm.stop_remote_access_session([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.stop_remote_access_session
+    stop_remote_access_session([::AWSConfig], arguments::Dict)
+    stop_remote_access_session([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "StopRemoteAccessSession", arguments::Dict)
@@ -3175,9 +3175,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.stop_run([::AWSConfig], arguments::Dict)
-    DeviceFarm.stop_run([::AWSConfig]; arn=)
+    using AWSSDK.DeviceFarm.stop_run
+    stop_run([::AWSConfig], arguments::Dict)
+    stop_run([::AWSConfig]; arn=)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "StopRun", arguments::Dict)
@@ -3234,9 +3234,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.update_device_pool([::AWSConfig], arguments::Dict)
-    DeviceFarm.update_device_pool([::AWSConfig]; arn=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.update_device_pool
+    update_device_pool([::AWSConfig], arguments::Dict)
+    update_device_pool([::AWSConfig]; arn=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "UpdateDevicePool", arguments::Dict)
@@ -3320,9 +3320,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.update_network_profile([::AWSConfig], arguments::Dict)
-    DeviceFarm.update_network_profile([::AWSConfig]; arn=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.update_network_profile
+    update_network_profile([::AWSConfig], arguments::Dict)
+    update_network_profile([::AWSConfig]; arn=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "UpdateNetworkProfile", arguments::Dict)
@@ -3403,9 +3403,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 
 """
-    using AWSSDK.DeviceFarm
-    DeviceFarm.update_project([::AWSConfig], arguments::Dict)
-    DeviceFarm.update_project([::AWSConfig]; arn=, <keyword arguments>)
+    using AWSSDK.DeviceFarm.update_project
+    update_project([::AWSConfig], arguments::Dict)
+    update_project([::AWSConfig]; arn=, <keyword arguments>)
 
     using AWSCore.Services.devicefarm
     devicefarm([::AWSConfig], "UpdateProject", arguments::Dict)

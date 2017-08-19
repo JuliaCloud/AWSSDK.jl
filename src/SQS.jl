@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.SQS
-    SQS.add_permission([::AWSConfig], arguments::Dict)
-    SQS.add_permission([::AWSConfig]; QueueUrl=, Label=, AWSAccountIds=, Actions=)
+    using AWSSDK.SQS.add_permission
+    add_permission([::AWSConfig], arguments::Dict)
+    add_permission([::AWSConfig]; QueueUrl=, Label=, AWSAccountIds=, Actions=)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "AddPermission", arguments::Dict)
@@ -91,9 +91,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 
 
 """
-    using AWSSDK.SQS
-    SQS.change_message_visibility([::AWSConfig], arguments::Dict)
-    SQS.change_message_visibility([::AWSConfig]; QueueUrl=, ReceiptHandle=, VisibilityTimeout=)
+    using AWSSDK.SQS.change_message_visibility
+    change_message_visibility([::AWSConfig], arguments::Dict)
+    change_message_visibility([::AWSConfig]; QueueUrl=, ReceiptHandle=, VisibilityTimeout=)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "ChangeMessageVisibility", arguments::Dict)
@@ -149,9 +149,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 
 
 """
-    using AWSSDK.SQS
-    SQS.change_message_visibility_batch([::AWSConfig], arguments::Dict)
-    SQS.change_message_visibility_batch([::AWSConfig]; QueueUrl=, Entries=)
+    using AWSSDK.SQS.change_message_visibility_batch
+    change_message_visibility_batch([::AWSConfig], arguments::Dict)
+    change_message_visibility_batch([::AWSConfig]; QueueUrl=, Entries=)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "ChangeMessageVisibilityBatch", arguments::Dict)
@@ -210,9 +210,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 
 
 """
-    using AWSSDK.SQS
-    SQS.create_queue([::AWSConfig], arguments::Dict)
-    SQS.create_queue([::AWSConfig]; QueueName=, <keyword arguments>)
+    using AWSSDK.SQS.create_queue
+    create_queue([::AWSConfig], arguments::Dict)
+    create_queue([::AWSConfig]; QueueName=, <keyword arguments>)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "CreateQueue", arguments::Dict)
@@ -346,9 +346,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 
 
 """
-    using AWSSDK.SQS
-    SQS.delete_message([::AWSConfig], arguments::Dict)
-    SQS.delete_message([::AWSConfig]; QueueUrl=, ReceiptHandle=)
+    using AWSSDK.SQS.delete_message
+    delete_message([::AWSConfig], arguments::Dict)
+    delete_message([::AWSConfig]; QueueUrl=, ReceiptHandle=)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "DeleteMessage", arguments::Dict)
@@ -392,9 +392,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 
 
 """
-    using AWSSDK.SQS
-    SQS.delete_message_batch([::AWSConfig], arguments::Dict)
-    SQS.delete_message_batch([::AWSConfig]; QueueUrl=, Entries=)
+    using AWSSDK.SQS.delete_message_batch
+    delete_message_batch([::AWSConfig], arguments::Dict)
+    delete_message_batch([::AWSConfig]; QueueUrl=, Entries=)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "DeleteMessageBatch", arguments::Dict)
@@ -452,9 +452,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 
 
 """
-    using AWSSDK.SQS
-    SQS.delete_queue([::AWSConfig], arguments::Dict)
-    SQS.delete_queue([::AWSConfig]; QueueUrl=)
+    using AWSSDK.SQS.delete_queue
+    delete_queue([::AWSConfig], arguments::Dict)
+    delete_queue([::AWSConfig]; QueueUrl=)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "DeleteQueue", arguments::Dict)
@@ -492,9 +492,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 
 
 """
-    using AWSSDK.SQS
-    SQS.get_queue_attributes([::AWSConfig], arguments::Dict)
-    SQS.get_queue_attributes([::AWSConfig]; QueueUrl=, <keyword arguments>)
+    using AWSSDK.SQS.get_queue_attributes
+    get_queue_attributes([::AWSConfig], arguments::Dict)
+    get_queue_attributes([::AWSConfig]; QueueUrl=, <keyword arguments>)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "GetQueueAttributes", arguments::Dict)
@@ -595,9 +595,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 
 
 """
-    using AWSSDK.SQS
-    SQS.get_queue_url([::AWSConfig], arguments::Dict)
-    SQS.get_queue_url([::AWSConfig]; QueueName=, <keyword arguments>)
+    using AWSSDK.SQS.get_queue_url
+    get_queue_url([::AWSConfig], arguments::Dict)
+    get_queue_url([::AWSConfig]; QueueName=, <keyword arguments>)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "GetQueueUrl", arguments::Dict)
@@ -642,9 +642,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 
 
 """
-    using AWSSDK.SQS
-    SQS.list_dead_letter_source_queues([::AWSConfig], arguments::Dict)
-    SQS.list_dead_letter_source_queues([::AWSConfig]; QueueUrl=)
+    using AWSSDK.SQS.list_dead_letter_source_queues
+    list_dead_letter_source_queues([::AWSConfig], arguments::Dict)
+    list_dead_letter_source_queues([::AWSConfig]; QueueUrl=)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "ListDeadLetterSourceQueues", arguments::Dict)
@@ -685,9 +685,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 
 
 """
-    using AWSSDK.SQS
-    SQS.list_queues([::AWSConfig], arguments::Dict)
-    SQS.list_queues([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.SQS.list_queues
+    list_queues([::AWSConfig], arguments::Dict)
+    list_queues([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "ListQueues", arguments::Dict)
@@ -722,9 +722,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 
 
 """
-    using AWSSDK.SQS
-    SQS.purge_queue([::AWSConfig], arguments::Dict)
-    SQS.purge_queue([::AWSConfig]; QueueUrl=)
+    using AWSSDK.SQS.purge_queue
+    purge_queue([::AWSConfig], arguments::Dict)
+    purge_queue([::AWSConfig]; QueueUrl=)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "PurgeQueue", arguments::Dict)
@@ -764,9 +764,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 
 
 """
-    using AWSSDK.SQS
-    SQS.receive_message([::AWSConfig], arguments::Dict)
-    SQS.receive_message([::AWSConfig]; QueueUrl=, <keyword arguments>)
+    using AWSSDK.SQS.receive_message
+    receive_message([::AWSConfig], arguments::Dict)
+    receive_message([::AWSConfig]; QueueUrl=, <keyword arguments>)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "ReceiveMessage", arguments::Dict)
@@ -943,9 +943,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 
 
 """
-    using AWSSDK.SQS
-    SQS.remove_permission([::AWSConfig], arguments::Dict)
-    SQS.remove_permission([::AWSConfig]; QueueUrl=, Label=)
+    using AWSSDK.SQS.remove_permission
+    remove_permission([::AWSConfig], arguments::Dict)
+    remove_permission([::AWSConfig]; QueueUrl=, Label=)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "RemovePermission", arguments::Dict)
@@ -980,9 +980,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 
 
 """
-    using AWSSDK.SQS
-    SQS.send_message([::AWSConfig], arguments::Dict)
-    SQS.send_message([::AWSConfig]; QueueUrl=, MessageBody=, <keyword arguments>)
+    using AWSSDK.SQS.send_message
+    send_message([::AWSConfig], arguments::Dict)
+    send_message([::AWSConfig]; QueueUrl=, MessageBody=, <keyword arguments>)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "SendMessage", arguments::Dict)
@@ -1096,9 +1096,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 
 
 """
-    using AWSSDK.SQS
-    SQS.send_message_batch([::AWSConfig], arguments::Dict)
-    SQS.send_message_batch([::AWSConfig]; QueueUrl=, Entries=)
+    using AWSSDK.SQS.send_message_batch
+    send_message_batch([::AWSConfig], arguments::Dict)
+    send_message_batch([::AWSConfig]; QueueUrl=, Entries=)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "SendMessageBatch", arguments::Dict)
@@ -1170,9 +1170,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 
 
 """
-    using AWSSDK.SQS
-    SQS.set_queue_attributes([::AWSConfig], arguments::Dict)
-    SQS.set_queue_attributes([::AWSConfig]; QueueUrl=, Attribute=)
+    using AWSSDK.SQS.set_queue_attributes
+    set_queue_attributes([::AWSConfig], arguments::Dict)
+    set_queue_attributes([::AWSConfig]; QueueUrl=, Attribute=)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "SetQueueAttributes", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.Snowball
-    Snowball.cancel_cluster([::AWSConfig], arguments::Dict)
-    Snowball.cancel_cluster([::AWSConfig]; ClusterId=)
+    using AWSSDK.Snowball.cancel_cluster
+    cancel_cluster([::AWSConfig], arguments::Dict)
+    cancel_cluster([::AWSConfig]; ClusterId=)
 
     using AWSCore.Services.snowball
     snowball([::AWSConfig], "CancelCluster", arguments::Dict)
@@ -63,9 +63,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowba
 
 
 """
-    using AWSSDK.Snowball
-    Snowball.cancel_job([::AWSConfig], arguments::Dict)
-    Snowball.cancel_job([::AWSConfig]; JobId=)
+    using AWSSDK.Snowball.cancel_job
+    cancel_job([::AWSConfig], arguments::Dict)
+    cancel_job([::AWSConfig]; JobId=)
 
     using AWSCore.Services.snowball
     snowball([::AWSConfig], "CancelJob", arguments::Dict)
@@ -113,9 +113,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowba
 
 
 """
-    using AWSSDK.Snowball
-    Snowball.create_address([::AWSConfig], arguments::Dict)
-    Snowball.create_address([::AWSConfig]; Address=)
+    using AWSSDK.Snowball.create_address
+    create_address([::AWSConfig], arguments::Dict)
+    create_address([::AWSConfig]; Address=)
 
     using AWSCore.Services.snowball
     snowball([::AWSConfig], "CreateAddress", arguments::Dict)
@@ -196,9 +196,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowba
 
 
 """
-    using AWSSDK.Snowball
-    Snowball.create_cluster([::AWSConfig], arguments::Dict)
-    Snowball.create_cluster([::AWSConfig]; JobType=, Resources=, AddressId=, RoleARN=, ShippingOption=, <keyword arguments>)
+    using AWSSDK.Snowball.create_cluster
+    create_cluster([::AWSConfig], arguments::Dict)
+    create_cluster([::AWSConfig]; JobType=, Resources=, AddressId=, RoleARN=, ShippingOption=, <keyword arguments>)
 
     using AWSCore.Services.snowball
     snowball([::AWSConfig], "CreateCluster", arguments::Dict)
@@ -339,9 +339,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowba
 
 
 """
-    using AWSSDK.Snowball
-    Snowball.create_job([::AWSConfig], arguments::Dict)
-    Snowball.create_job([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Snowball.create_job
+    create_job([::AWSConfig], arguments::Dict)
+    create_job([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.snowball
     snowball([::AWSConfig], "CreateJob", arguments::Dict)
@@ -495,9 +495,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowba
 
 
 """
-    using AWSSDK.Snowball
-    Snowball.describe_address([::AWSConfig], arguments::Dict)
-    Snowball.describe_address([::AWSConfig]; AddressId=)
+    using AWSSDK.Snowball.describe_address
+    describe_address([::AWSConfig], arguments::Dict)
+    describe_address([::AWSConfig]; AddressId=)
 
     using AWSCore.Services.snowball
     snowball([::AWSConfig], "DescribeAddress", arguments::Dict)
@@ -562,9 +562,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowba
 
 
 """
-    using AWSSDK.Snowball
-    Snowball.describe_addresses([::AWSConfig], arguments::Dict)
-    Snowball.describe_addresses([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Snowball.describe_addresses
+    describe_addresses([::AWSConfig], arguments::Dict)
+    describe_addresses([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.snowball
     snowball([::AWSConfig], "DescribeAddresses", arguments::Dict)
@@ -635,9 +635,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowba
 
 
 """
-    using AWSSDK.Snowball
-    Snowball.describe_cluster([::AWSConfig], arguments::Dict)
-    Snowball.describe_cluster([::AWSConfig]; ClusterId=)
+    using AWSSDK.Snowball.describe_cluster
+    describe_cluster([::AWSConfig], arguments::Dict)
+    describe_cluster([::AWSConfig]; ClusterId=)
 
     using AWSCore.Services.snowball
     snowball([::AWSConfig], "DescribeCluster", arguments::Dict)
@@ -718,9 +718,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowba
 
 
 """
-    using AWSSDK.Snowball
-    Snowball.describe_job([::AWSConfig], arguments::Dict)
-    Snowball.describe_job([::AWSConfig]; JobId=)
+    using AWSSDK.Snowball.describe_job
+    describe_job([::AWSConfig], arguments::Dict)
+    describe_job([::AWSConfig]; JobId=)
 
     using AWSCore.Services.snowball
     snowball([::AWSConfig], "DescribeJob", arguments::Dict)
@@ -805,9 +805,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowba
 
 
 """
-    using AWSSDK.Snowball
-    Snowball.get_job_manifest([::AWSConfig], arguments::Dict)
-    Snowball.get_job_manifest([::AWSConfig]; JobId=)
+    using AWSSDK.Snowball.get_job_manifest
+    get_job_manifest([::AWSConfig], arguments::Dict)
+    get_job_manifest([::AWSConfig]; JobId=)
 
     using AWSCore.Services.snowball
     snowball([::AWSConfig], "GetJobManifest", arguments::Dict)
@@ -874,9 +874,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowba
 
 
 """
-    using AWSSDK.Snowball
-    Snowball.get_job_unlock_code([::AWSConfig], arguments::Dict)
-    Snowball.get_job_unlock_code([::AWSConfig]; JobId=)
+    using AWSSDK.Snowball.get_job_unlock_code
+    get_job_unlock_code([::AWSConfig], arguments::Dict)
+    get_job_unlock_code([::AWSConfig]; JobId=)
 
     using AWSCore.Services.snowball
     snowball([::AWSConfig], "GetJobUnlockCode", arguments::Dict)
@@ -939,9 +939,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowba
 
 
 """
-    using AWSSDK.Snowball
-    Snowball.get_snowball_usage([::AWSConfig], arguments::Dict)
-    Snowball.get_snowball_usage([::AWSConfig]; )
+    using AWSSDK.Snowball.get_snowball_usage
+    get_snowball_usage([::AWSConfig], arguments::Dict)
+    get_snowball_usage([::AWSConfig]; )
 
     using AWSCore.Services.snowball
     snowball([::AWSConfig], "GetSnowballUsage", arguments::Dict)
@@ -993,9 +993,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowba
 
 
 """
-    using AWSSDK.Snowball
-    Snowball.list_cluster_jobs([::AWSConfig], arguments::Dict)
-    Snowball.list_cluster_jobs([::AWSConfig]; ClusterId=, <keyword arguments>)
+    using AWSSDK.Snowball.list_cluster_jobs
+    list_cluster_jobs([::AWSConfig], arguments::Dict)
+    list_cluster_jobs([::AWSConfig]; ClusterId=, <keyword arguments>)
 
     using AWSCore.Services.snowball
     snowball([::AWSConfig], "ListClusterJobs", arguments::Dict)
@@ -1104,9 +1104,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowba
 
 
 """
-    using AWSSDK.Snowball
-    Snowball.list_clusters([::AWSConfig], arguments::Dict)
-    Snowball.list_clusters([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Snowball.list_clusters
+    list_clusters([::AWSConfig], arguments::Dict)
+    list_clusters([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.snowball
     snowball([::AWSConfig], "ListClusters", arguments::Dict)
@@ -1172,9 +1172,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowba
 
 
 """
-    using AWSSDK.Snowball
-    Snowball.list_jobs([::AWSConfig], arguments::Dict)
-    Snowball.list_jobs([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.Snowball.list_jobs
+    list_jobs([::AWSConfig], arguments::Dict)
+    list_jobs([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.snowball
     snowball([::AWSConfig], "ListJobs", arguments::Dict)
@@ -1243,9 +1243,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowba
 
 
 """
-    using AWSSDK.Snowball
-    Snowball.update_cluster([::AWSConfig], arguments::Dict)
-    Snowball.update_cluster([::AWSConfig]; ClusterId=, <keyword arguments>)
+    using AWSSDK.Snowball.update_cluster
+    update_cluster([::AWSConfig], arguments::Dict)
+    update_cluster([::AWSConfig]; ClusterId=, <keyword arguments>)
 
     using AWSCore.Services.snowball
     snowball([::AWSConfig], "UpdateCluster", arguments::Dict)
@@ -1343,9 +1343,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowba
 
 
 """
-    using AWSSDK.Snowball
-    Snowball.update_job([::AWSConfig], arguments::Dict)
-    Snowball.update_job([::AWSConfig]; JobId=, <keyword arguments>)
+    using AWSSDK.Snowball.update_job
+    update_job([::AWSConfig], arguments::Dict)
+    update_job([::AWSConfig]; JobId=, <keyword arguments>)
 
     using AWSCore.Services.snowball
     snowball([::AWSConfig], "UpdateJob", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.associate_web_acl([::AWSConfig], arguments::Dict)
-    WAFRegional.associate_web_acl([::AWSConfig]; WebACLId=, ResourceArn=)
+    using AWSSDK.WAFRegional.associate_web_acl
+    associate_web_acl([::AWSConfig], arguments::Dict)
+    associate_web_acl([::AWSConfig]; WebACLId=, ResourceArn=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "AssociateWebACL", arguments::Dict)
@@ -56,9 +56,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.create_byte_match_set([::AWSConfig], arguments::Dict)
-    WAFRegional.create_byte_match_set([::AWSConfig]; Name=, ChangeToken=)
+    using AWSSDK.WAFRegional.create_byte_match_set
+    create_byte_match_set([::AWSConfig], arguments::Dict)
+    create_byte_match_set([::AWSConfig]; Name=, ChangeToken=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "CreateByteMatchSet", arguments::Dict)
@@ -111,9 +111,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.create_ipset([::AWSConfig], arguments::Dict)
-    WAFRegional.create_ipset([::AWSConfig]; Name=, ChangeToken=)
+    using AWSSDK.WAFRegional.create_ipset
+    create_ipset([::AWSConfig], arguments::Dict)
+    create_ipset([::AWSConfig]; Name=, ChangeToken=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "CreateIPSet", arguments::Dict)
@@ -195,9 +195,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.create_rate_based_rule([::AWSConfig], arguments::Dict)
-    WAFRegional.create_rate_based_rule([::AWSConfig]; Name=, MetricName=, RateKey=, RateLimit=, ChangeToken=)
+    using AWSSDK.WAFRegional.create_rate_based_rule
+    create_rate_based_rule([::AWSConfig], arguments::Dict)
+    create_rate_based_rule([::AWSConfig]; Name=, MetricName=, RateKey=, RateLimit=, ChangeToken=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "CreateRateBasedRule", arguments::Dict)
@@ -288,9 +288,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.create_rule([::AWSConfig], arguments::Dict)
-    WAFRegional.create_rule([::AWSConfig]; Name=, MetricName=, ChangeToken=)
+    using AWSSDK.WAFRegional.create_rule
+    create_rule([::AWSConfig], arguments::Dict)
+    create_rule([::AWSConfig]; Name=, MetricName=, ChangeToken=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "CreateRule", arguments::Dict)
@@ -389,9 +389,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.create_size_constraint_set([::AWSConfig], arguments::Dict)
-    WAFRegional.create_size_constraint_set([::AWSConfig]; Name=, ChangeToken=)
+    using AWSSDK.WAFRegional.create_size_constraint_set
+    create_size_constraint_set([::AWSConfig], arguments::Dict)
+    create_size_constraint_set([::AWSConfig]; Name=, ChangeToken=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "CreateSizeConstraintSet", arguments::Dict)
@@ -477,9 +477,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.create_sql_injection_match_set([::AWSConfig], arguments::Dict)
-    WAFRegional.create_sql_injection_match_set([::AWSConfig]; Name=, ChangeToken=)
+    using AWSSDK.WAFRegional.create_sql_injection_match_set
+    create_sql_injection_match_set([::AWSConfig], arguments::Dict)
+    create_sql_injection_match_set([::AWSConfig]; Name=, ChangeToken=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "CreateSqlInjectionMatchSet", arguments::Dict)
@@ -563,9 +563,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.create_web_acl([::AWSConfig], arguments::Dict)
-    WAFRegional.create_web_acl([::AWSConfig]; Name=, MetricName=, DefaultAction=, ChangeToken=)
+    using AWSSDK.WAFRegional.create_web_acl
+    create_web_acl([::AWSConfig], arguments::Dict)
+    create_web_acl([::AWSConfig]; Name=, MetricName=, DefaultAction=, ChangeToken=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "CreateWebACL", arguments::Dict)
@@ -672,9 +672,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.create_xss_match_set([::AWSConfig], arguments::Dict)
-    WAFRegional.create_xss_match_set([::AWSConfig]; Name=, ChangeToken=)
+    using AWSSDK.WAFRegional.create_xss_match_set
+    create_xss_match_set([::AWSConfig], arguments::Dict)
+    create_xss_match_set([::AWSConfig]; Name=, ChangeToken=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "CreateXssMatchSet", arguments::Dict)
@@ -758,9 +758,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.delete_byte_match_set([::AWSConfig], arguments::Dict)
-    WAFRegional.delete_byte_match_set([::AWSConfig]; ByteMatchSetId=, ChangeToken=)
+    using AWSSDK.WAFRegional.delete_byte_match_set
+    delete_byte_match_set([::AWSConfig], arguments::Dict)
+    delete_byte_match_set([::AWSConfig]; ByteMatchSetId=, ChangeToken=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "DeleteByteMatchSet", arguments::Dict)
@@ -830,9 +830,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.delete_ipset([::AWSConfig], arguments::Dict)
-    WAFRegional.delete_ipset([::AWSConfig]; IPSetId=, ChangeToken=)
+    using AWSSDK.WAFRegional.delete_ipset
+    delete_ipset([::AWSConfig], arguments::Dict)
+    delete_ipset([::AWSConfig]; IPSetId=, ChangeToken=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "DeleteIPSet", arguments::Dict)
@@ -902,9 +902,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.delete_rate_based_rule([::AWSConfig], arguments::Dict)
-    WAFRegional.delete_rate_based_rule([::AWSConfig]; RuleId=, ChangeToken=)
+    using AWSSDK.WAFRegional.delete_rate_based_rule
+    delete_rate_based_rule([::AWSConfig], arguments::Dict)
+    delete_rate_based_rule([::AWSConfig]; RuleId=, ChangeToken=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "DeleteRateBasedRule", arguments::Dict)
@@ -955,9 +955,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.delete_rule([::AWSConfig], arguments::Dict)
-    WAFRegional.delete_rule([::AWSConfig]; RuleId=, ChangeToken=)
+    using AWSSDK.WAFRegional.delete_rule
+    delete_rule([::AWSConfig], arguments::Dict)
+    delete_rule([::AWSConfig]; RuleId=, ChangeToken=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "DeleteRule", arguments::Dict)
@@ -1027,9 +1027,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.delete_size_constraint_set([::AWSConfig], arguments::Dict)
-    WAFRegional.delete_size_constraint_set([::AWSConfig]; SizeConstraintSetId=, ChangeToken=)
+    using AWSSDK.WAFRegional.delete_size_constraint_set
+    delete_size_constraint_set([::AWSConfig], arguments::Dict)
+    delete_size_constraint_set([::AWSConfig]; SizeConstraintSetId=, ChangeToken=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "DeleteSizeConstraintSet", arguments::Dict)
@@ -1099,9 +1099,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.delete_sql_injection_match_set([::AWSConfig], arguments::Dict)
-    WAFRegional.delete_sql_injection_match_set([::AWSConfig]; SqlInjectionMatchSetId=, ChangeToken=)
+    using AWSSDK.WAFRegional.delete_sql_injection_match_set
+    delete_sql_injection_match_set([::AWSConfig], arguments::Dict)
+    delete_sql_injection_match_set([::AWSConfig]; SqlInjectionMatchSetId=, ChangeToken=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "DeleteSqlInjectionMatchSet", arguments::Dict)
@@ -1171,9 +1171,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.delete_web_acl([::AWSConfig], arguments::Dict)
-    WAFRegional.delete_web_acl([::AWSConfig]; WebACLId=, ChangeToken=)
+    using AWSSDK.WAFRegional.delete_web_acl
+    delete_web_acl([::AWSConfig], arguments::Dict)
+    delete_web_acl([::AWSConfig]; WebACLId=, ChangeToken=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "DeleteWebACL", arguments::Dict)
@@ -1241,9 +1241,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.delete_xss_match_set([::AWSConfig], arguments::Dict)
-    WAFRegional.delete_xss_match_set([::AWSConfig]; XssMatchSetId=, ChangeToken=)
+    using AWSSDK.WAFRegional.delete_xss_match_set
+    delete_xss_match_set([::AWSConfig], arguments::Dict)
+    delete_xss_match_set([::AWSConfig]; XssMatchSetId=, ChangeToken=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "DeleteXssMatchSet", arguments::Dict)
@@ -1313,9 +1313,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.disassociate_web_acl([::AWSConfig], arguments::Dict)
-    WAFRegional.disassociate_web_acl([::AWSConfig]; ResourceArn=)
+    using AWSSDK.WAFRegional.disassociate_web_acl
+    disassociate_web_acl([::AWSConfig], arguments::Dict)
+    disassociate_web_acl([::AWSConfig]; ResourceArn=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "DisassociateWebACL", arguments::Dict)
@@ -1352,9 +1352,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.get_byte_match_set([::AWSConfig], arguments::Dict)
-    WAFRegional.get_byte_match_set([::AWSConfig]; ByteMatchSetId=)
+    using AWSSDK.WAFRegional.get_byte_match_set
+    get_byte_match_set([::AWSConfig], arguments::Dict)
+    get_byte_match_set([::AWSConfig]; ByteMatchSetId=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "GetByteMatchSet", arguments::Dict)
@@ -1423,9 +1423,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.get_change_token([::AWSConfig], arguments::Dict)
-    WAFRegional.get_change_token([::AWSConfig]; )
+    using AWSSDK.WAFRegional.get_change_token
+    get_change_token([::AWSConfig], arguments::Dict)
+    get_change_token([::AWSConfig]; )
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "GetChangeToken", arguments::Dict)
@@ -1480,9 +1480,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.get_change_token_status([::AWSConfig], arguments::Dict)
-    WAFRegional.get_change_token_status([::AWSConfig]; ChangeToken=)
+    using AWSSDK.WAFRegional.get_change_token_status
+    get_change_token_status([::AWSConfig], arguments::Dict)
+    get_change_token_status([::AWSConfig]; ChangeToken=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "GetChangeTokenStatus", arguments::Dict)
@@ -1543,9 +1543,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.get_ipset([::AWSConfig], arguments::Dict)
-    WAFRegional.get_ipset([::AWSConfig]; IPSetId=)
+    using AWSSDK.WAFRegional.get_ipset
+    get_ipset([::AWSConfig], arguments::Dict)
+    get_ipset([::AWSConfig]; IPSetId=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "GetIPSet", arguments::Dict)
@@ -1609,9 +1609,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.get_rate_based_rule([::AWSConfig], arguments::Dict)
-    WAFRegional.get_rate_based_rule([::AWSConfig]; RuleId=)
+    using AWSSDK.WAFRegional.get_rate_based_rule
+    get_rate_based_rule([::AWSConfig], arguments::Dict)
+    get_rate_based_rule([::AWSConfig]; RuleId=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "GetRateBasedRule", arguments::Dict)
@@ -1648,9 +1648,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.get_rate_based_rule_managed_keys([::AWSConfig], arguments::Dict)
-    WAFRegional.get_rate_based_rule_managed_keys([::AWSConfig]; RuleId=, <keyword arguments>)
+    using AWSSDK.WAFRegional.get_rate_based_rule_managed_keys
+    get_rate_based_rule_managed_keys([::AWSConfig], arguments::Dict)
+    get_rate_based_rule_managed_keys([::AWSConfig]; RuleId=, <keyword arguments>)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "GetRateBasedRuleManagedKeys", arguments::Dict)
@@ -1691,9 +1691,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.get_rule([::AWSConfig], arguments::Dict)
-    WAFRegional.get_rule([::AWSConfig]; RuleId=)
+    using AWSSDK.WAFRegional.get_rule
+    get_rule([::AWSConfig], arguments::Dict)
+    get_rule([::AWSConfig]; RuleId=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "GetRule", arguments::Dict)
@@ -1759,9 +1759,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.get_sampled_requests([::AWSConfig], arguments::Dict)
-    WAFRegional.get_sampled_requests([::AWSConfig]; WebAclId=, RuleId=, TimeWindow=, MaxItems=)
+    using AWSSDK.WAFRegional.get_sampled_requests
+    get_sampled_requests([::AWSConfig], arguments::Dict)
+    get_sampled_requests([::AWSConfig]; WebAclId=, RuleId=, TimeWindow=, MaxItems=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "GetSampledRequests", arguments::Dict)
@@ -1868,9 +1868,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.get_size_constraint_set([::AWSConfig], arguments::Dict)
-    WAFRegional.get_size_constraint_set([::AWSConfig]; SizeConstraintSetId=)
+    using AWSSDK.WAFRegional.get_size_constraint_set
+    get_size_constraint_set([::AWSConfig], arguments::Dict)
+    get_size_constraint_set([::AWSConfig]; SizeConstraintSetId=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "GetSizeConstraintSet", arguments::Dict)
@@ -1938,9 +1938,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.get_sql_injection_match_set([::AWSConfig], arguments::Dict)
-    WAFRegional.get_sql_injection_match_set([::AWSConfig]; SqlInjectionMatchSetId=)
+    using AWSSDK.WAFRegional.get_sql_injection_match_set
+    get_sql_injection_match_set([::AWSConfig], arguments::Dict)
+    get_sql_injection_match_set([::AWSConfig]; SqlInjectionMatchSetId=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "GetSqlInjectionMatchSet", arguments::Dict)
@@ -2006,9 +2006,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.get_web_acl([::AWSConfig], arguments::Dict)
-    WAFRegional.get_web_acl([::AWSConfig]; WebACLId=)
+    using AWSSDK.WAFRegional.get_web_acl
+    get_web_acl([::AWSConfig], arguments::Dict)
+    get_web_acl([::AWSConfig]; WebACLId=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "GetWebACL", arguments::Dict)
@@ -2079,9 +2079,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.get_web_aclfor_resource([::AWSConfig], arguments::Dict)
-    WAFRegional.get_web_aclfor_resource([::AWSConfig]; ResourceArn=)
+    using AWSSDK.WAFRegional.get_web_aclfor_resource
+    get_web_aclfor_resource([::AWSConfig], arguments::Dict)
+    get_web_aclfor_resource([::AWSConfig]; ResourceArn=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "GetWebACLForResource", arguments::Dict)
@@ -2118,9 +2118,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.get_xss_match_set([::AWSConfig], arguments::Dict)
-    WAFRegional.get_xss_match_set([::AWSConfig]; XssMatchSetId=)
+    using AWSSDK.WAFRegional.get_xss_match_set
+    get_xss_match_set([::AWSConfig], arguments::Dict)
+    get_xss_match_set([::AWSConfig]; XssMatchSetId=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "GetXssMatchSet", arguments::Dict)
@@ -2186,9 +2186,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.list_byte_match_sets([::AWSConfig], arguments::Dict)
-    WAFRegional.list_byte_match_sets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WAFRegional.list_byte_match_sets
+    list_byte_match_sets([::AWSConfig], arguments::Dict)
+    list_byte_match_sets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "ListByteMatchSets", arguments::Dict)
@@ -2229,9 +2229,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.list_ipsets([::AWSConfig], arguments::Dict)
-    WAFRegional.list_ipsets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WAFRegional.list_ipsets
+    list_ipsets([::AWSConfig], arguments::Dict)
+    list_ipsets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "ListIPSets", arguments::Dict)
@@ -2295,9 +2295,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.list_rate_based_rules([::AWSConfig], arguments::Dict)
-    WAFRegional.list_rate_based_rules([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WAFRegional.list_rate_based_rules
+    list_rate_based_rules([::AWSConfig], arguments::Dict)
+    list_rate_based_rules([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "ListRateBasedRules", arguments::Dict)
@@ -2338,9 +2338,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.list_resources_for_web_acl([::AWSConfig], arguments::Dict)
-    WAFRegional.list_resources_for_web_acl([::AWSConfig]; WebACLId=)
+    using AWSSDK.WAFRegional.list_resources_for_web_acl
+    list_resources_for_web_acl([::AWSConfig], arguments::Dict)
+    list_resources_for_web_acl([::AWSConfig]; WebACLId=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "ListResourcesForWebACL", arguments::Dict)
@@ -2377,9 +2377,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.list_rules([::AWSConfig], arguments::Dict)
-    WAFRegional.list_rules([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WAFRegional.list_rules
+    list_rules([::AWSConfig], arguments::Dict)
+    list_rules([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "ListRules", arguments::Dict)
@@ -2443,9 +2443,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.list_size_constraint_sets([::AWSConfig], arguments::Dict)
-    WAFRegional.list_size_constraint_sets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WAFRegional.list_size_constraint_sets
+    list_size_constraint_sets([::AWSConfig], arguments::Dict)
+    list_size_constraint_sets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "ListSizeConstraintSets", arguments::Dict)
@@ -2509,9 +2509,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.list_sql_injection_match_sets([::AWSConfig], arguments::Dict)
-    WAFRegional.list_sql_injection_match_sets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WAFRegional.list_sql_injection_match_sets
+    list_sql_injection_match_sets([::AWSConfig], arguments::Dict)
+    list_sql_injection_match_sets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "ListSqlInjectionMatchSets", arguments::Dict)
@@ -2575,9 +2575,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.list_web_acls([::AWSConfig], arguments::Dict)
-    WAFRegional.list_web_acls([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WAFRegional.list_web_acls
+    list_web_acls([::AWSConfig], arguments::Dict)
+    list_web_acls([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "ListWebACLs", arguments::Dict)
@@ -2641,9 +2641,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.list_xss_match_sets([::AWSConfig], arguments::Dict)
-    WAFRegional.list_xss_match_sets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.WAFRegional.list_xss_match_sets
+    list_xss_match_sets([::AWSConfig], arguments::Dict)
+    list_xss_match_sets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "ListXssMatchSets", arguments::Dict)
@@ -2707,9 +2707,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.update_byte_match_set([::AWSConfig], arguments::Dict)
-    WAFRegional.update_byte_match_set([::AWSConfig]; ByteMatchSetId=, ChangeToken=, Updates=)
+    using AWSSDK.WAFRegional.update_byte_match_set
+    update_byte_match_set([::AWSConfig], arguments::Dict)
+    update_byte_match_set([::AWSConfig]; ByteMatchSetId=, ChangeToken=, Updates=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "UpdateByteMatchSet", arguments::Dict)
@@ -2828,9 +2828,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.update_ipset([::AWSConfig], arguments::Dict)
-    WAFRegional.update_ipset([::AWSConfig]; IPSetId=, ChangeToken=, Updates=)
+    using AWSSDK.WAFRegional.update_ipset
+    update_ipset([::AWSConfig], arguments::Dict)
+    update_ipset([::AWSConfig]; IPSetId=, ChangeToken=, Updates=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "UpdateIPSet", arguments::Dict)
@@ -2947,9 +2947,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.update_rate_based_rule([::AWSConfig], arguments::Dict)
-    WAFRegional.update_rate_based_rule([::AWSConfig]; RuleId=, ChangeToken=, Updates=, RateLimit=)
+    using AWSSDK.WAFRegional.update_rate_based_rule
+    update_rate_based_rule([::AWSConfig], arguments::Dict)
+    update_rate_based_rule([::AWSConfig]; RuleId=, ChangeToken=, Updates=, RateLimit=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "UpdateRateBasedRule", arguments::Dict)
@@ -3031,9 +3031,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.update_rule([::AWSConfig], arguments::Dict)
-    WAFRegional.update_rule([::AWSConfig]; RuleId=, ChangeToken=, Updates=)
+    using AWSSDK.WAFRegional.update_rule
+    update_rule([::AWSConfig], arguments::Dict)
+    update_rule([::AWSConfig]; RuleId=, ChangeToken=, Updates=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "UpdateRule", arguments::Dict)
@@ -3144,9 +3144,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.update_size_constraint_set([::AWSConfig], arguments::Dict)
-    WAFRegional.update_size_constraint_set([::AWSConfig]; SizeConstraintSetId=, ChangeToken=, Updates=)
+    using AWSSDK.WAFRegional.update_size_constraint_set
+    update_size_constraint_set([::AWSConfig], arguments::Dict)
+    update_size_constraint_set([::AWSConfig]; SizeConstraintSetId=, ChangeToken=, Updates=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "UpdateSizeConstraintSet", arguments::Dict)
@@ -3264,9 +3264,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.update_sql_injection_match_set([::AWSConfig], arguments::Dict)
-    WAFRegional.update_sql_injection_match_set([::AWSConfig]; SqlInjectionMatchSetId=, ChangeToken=, Updates=)
+    using AWSSDK.WAFRegional.update_sql_injection_match_set
+    update_sql_injection_match_set([::AWSConfig], arguments::Dict)
+    update_sql_injection_match_set([::AWSConfig]; SqlInjectionMatchSetId=, ChangeToken=, Updates=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "UpdateSqlInjectionMatchSet", arguments::Dict)
@@ -3376,9 +3376,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.update_web_acl([::AWSConfig], arguments::Dict)
-    WAFRegional.update_web_acl([::AWSConfig]; WebACLId=, ChangeToken=, <keyword arguments>)
+    using AWSSDK.WAFRegional.update_web_acl
+    update_web_acl([::AWSConfig], arguments::Dict)
+    update_web_acl([::AWSConfig]; WebACLId=, ChangeToken=, <keyword arguments>)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "UpdateWebACL", arguments::Dict)
@@ -3503,9 +3503,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
-    using AWSSDK.WAFRegional
-    WAFRegional.update_xss_match_set([::AWSConfig], arguments::Dict)
-    WAFRegional.update_xss_match_set([::AWSConfig]; XssMatchSetId=, ChangeToken=, Updates=)
+    using AWSSDK.WAFRegional.update_xss_match_set
+    update_xss_match_set([::AWSConfig], arguments::Dict)
+    update_xss_match_set([::AWSConfig]; XssMatchSetId=, ChangeToken=, Updates=)
 
     using AWSCore.Services.waf_regional
     waf_regional([::AWSConfig], "UpdateXssMatchSet", arguments::Dict)

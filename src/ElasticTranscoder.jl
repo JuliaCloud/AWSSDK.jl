@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.ElasticTranscoder
-    ElasticTranscoder.cancel_job([::AWSConfig], arguments::Dict)
-    ElasticTranscoder.cancel_job([::AWSConfig]; Id=)
+    using AWSSDK.ElasticTranscoder.cancel_job
+    cancel_job([::AWSConfig], arguments::Dict)
+    cancel_job([::AWSConfig]; Id=)
 
     using AWSCore.Services.elastictranscoder
     elastictranscoder([::AWSConfig], "DELETE", "/2012-09-25/jobs/{Id}", arguments::Dict)
@@ -57,9 +57,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticTranscoder
-    ElasticTranscoder.create_job([::AWSConfig], arguments::Dict)
-    ElasticTranscoder.create_job([::AWSConfig]; PipelineId=, <keyword arguments>)
+    using AWSSDK.ElasticTranscoder.create_job
+    create_job([::AWSConfig], arguments::Dict)
+    create_job([::AWSConfig]; PipelineId=, <keyword arguments>)
 
     using AWSCore.Services.elastictranscoder
     elastictranscoder([::AWSConfig], "POST", "/2012-09-25/jobs", arguments::Dict)
@@ -384,9 +384,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticTranscoder
-    ElasticTranscoder.create_pipeline([::AWSConfig], arguments::Dict)
-    ElasticTranscoder.create_pipeline([::AWSConfig]; Name=, InputBucket=, Role=, <keyword arguments>)
+    using AWSSDK.ElasticTranscoder.create_pipeline
+    create_pipeline([::AWSConfig], arguments::Dict)
+    create_pipeline([::AWSConfig]; Name=, InputBucket=, Role=, <keyword arguments>)
 
     using AWSCore.Services.elastictranscoder
     elastictranscoder([::AWSConfig], "POST", "/2012-09-25/pipelines", arguments::Dict)
@@ -574,9 +574,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticTranscoder
-    ElasticTranscoder.create_preset([::AWSConfig], arguments::Dict)
-    ElasticTranscoder.create_preset([::AWSConfig]; Name=, Container=, <keyword arguments>)
+    using AWSSDK.ElasticTranscoder.create_preset
+    create_preset([::AWSConfig], arguments::Dict)
+    create_preset([::AWSConfig]; Name=, Container=, <keyword arguments>)
 
     using AWSCore.Services.elastictranscoder
     elastictranscoder([::AWSConfig], "POST", "/2012-09-25/presets", arguments::Dict)
@@ -692,9 +692,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticTranscoder
-    ElasticTranscoder.delete_pipeline([::AWSConfig], arguments::Dict)
-    ElasticTranscoder.delete_pipeline([::AWSConfig]; Id=)
+    using AWSSDK.ElasticTranscoder.delete_pipeline
+    delete_pipeline([::AWSConfig], arguments::Dict)
+    delete_pipeline([::AWSConfig]; Id=)
 
     using AWSCore.Services.elastictranscoder
     elastictranscoder([::AWSConfig], "DELETE", "/2012-09-25/pipelines/{Id}", arguments::Dict)
@@ -733,9 +733,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticTranscoder
-    ElasticTranscoder.delete_preset([::AWSConfig], arguments::Dict)
-    ElasticTranscoder.delete_preset([::AWSConfig]; Id=)
+    using AWSSDK.ElasticTranscoder.delete_preset
+    delete_preset([::AWSConfig], arguments::Dict)
+    delete_preset([::AWSConfig]; Id=)
 
     using AWSCore.Services.elastictranscoder
     elastictranscoder([::AWSConfig], "DELETE", "/2012-09-25/presets/{Id}", arguments::Dict)
@@ -775,9 +775,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticTranscoder
-    ElasticTranscoder.list_jobs_by_pipeline([::AWSConfig], arguments::Dict)
-    ElasticTranscoder.list_jobs_by_pipeline([::AWSConfig]; PipelineId=, <keyword arguments>)
+    using AWSSDK.ElasticTranscoder.list_jobs_by_pipeline
+    list_jobs_by_pipeline([::AWSConfig], arguments::Dict)
+    list_jobs_by_pipeline([::AWSConfig]; PipelineId=, <keyword arguments>)
 
     using AWSCore.Services.elastictranscoder
     elastictranscoder([::AWSConfig], "GET", "/2012-09-25/jobsByPipeline/{PipelineId}", arguments::Dict)
@@ -824,9 +824,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticTranscoder
-    ElasticTranscoder.list_jobs_by_status([::AWSConfig], arguments::Dict)
-    ElasticTranscoder.list_jobs_by_status([::AWSConfig]; Status=, <keyword arguments>)
+    using AWSSDK.ElasticTranscoder.list_jobs_by_status
+    list_jobs_by_status([::AWSConfig], arguments::Dict)
+    list_jobs_by_status([::AWSConfig]; Status=, <keyword arguments>)
 
     using AWSCore.Services.elastictranscoder
     elastictranscoder([::AWSConfig], "GET", "/2012-09-25/jobsByStatus/{Status}", arguments::Dict)
@@ -871,9 +871,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticTranscoder
-    ElasticTranscoder.list_pipelines([::AWSConfig], arguments::Dict)
-    ElasticTranscoder.list_pipelines([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticTranscoder.list_pipelines
+    list_pipelines([::AWSConfig], arguments::Dict)
+    list_pipelines([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elastictranscoder
     elastictranscoder([::AWSConfig], "GET", "/2012-09-25/pipelines", arguments::Dict)
@@ -914,9 +914,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticTranscoder
-    ElasticTranscoder.list_presets([::AWSConfig], arguments::Dict)
-    ElasticTranscoder.list_presets([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ElasticTranscoder.list_presets
+    list_presets([::AWSConfig], arguments::Dict)
+    list_presets([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elastictranscoder
     elastictranscoder([::AWSConfig], "GET", "/2012-09-25/presets", arguments::Dict)
@@ -957,9 +957,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticTranscoder
-    ElasticTranscoder.read_job([::AWSConfig], arguments::Dict)
-    ElasticTranscoder.read_job([::AWSConfig]; Id=)
+    using AWSSDK.ElasticTranscoder.read_job
+    read_job([::AWSConfig], arguments::Dict)
+    read_job([::AWSConfig]; Id=)
 
     using AWSCore.Services.elastictranscoder
     elastictranscoder([::AWSConfig], "GET", "/2012-09-25/jobs/{Id}", arguments::Dict)
@@ -996,9 +996,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticTranscoder
-    ElasticTranscoder.read_pipeline([::AWSConfig], arguments::Dict)
-    ElasticTranscoder.read_pipeline([::AWSConfig]; Id=)
+    using AWSSDK.ElasticTranscoder.read_pipeline
+    read_pipeline([::AWSConfig], arguments::Dict)
+    read_pipeline([::AWSConfig]; Id=)
 
     using AWSCore.Services.elastictranscoder
     elastictranscoder([::AWSConfig], "GET", "/2012-09-25/pipelines/{Id}", arguments::Dict)
@@ -1035,9 +1035,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticTranscoder
-    ElasticTranscoder.read_preset([::AWSConfig], arguments::Dict)
-    ElasticTranscoder.read_preset([::AWSConfig]; Id=)
+    using AWSSDK.ElasticTranscoder.read_preset
+    read_preset([::AWSConfig], arguments::Dict)
+    read_preset([::AWSConfig]; Id=)
 
     using AWSCore.Services.elastictranscoder
     elastictranscoder([::AWSConfig], "GET", "/2012-09-25/presets/{Id}", arguments::Dict)
@@ -1074,9 +1074,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticTranscoder
-    ElasticTranscoder.test_role([::AWSConfig], arguments::Dict)
-    ElasticTranscoder.test_role([::AWSConfig]; Role=, InputBucket=, OutputBucket=, Topics=)
+    using AWSSDK.ElasticTranscoder.test_role
+    test_role([::AWSConfig], arguments::Dict)
+    test_role([::AWSConfig]; Role=, InputBucket=, OutputBucket=, Topics=)
 
     using AWSCore.Services.elastictranscoder
     elastictranscoder([::AWSConfig], "POST", "/2012-09-25/roleTests", arguments::Dict)
@@ -1127,9 +1127,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticTranscoder
-    ElasticTranscoder.update_pipeline([::AWSConfig], arguments::Dict)
-    ElasticTranscoder.update_pipeline([::AWSConfig]; Id=, <keyword arguments>)
+    using AWSSDK.ElasticTranscoder.update_pipeline
+    update_pipeline([::AWSConfig], arguments::Dict)
+    update_pipeline([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.elastictranscoder
     elastictranscoder([::AWSConfig], "PUT", "/2012-09-25/pipelines/{Id}", arguments::Dict)
@@ -1305,9 +1305,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticTranscoder
-    ElasticTranscoder.update_pipeline_notifications([::AWSConfig], arguments::Dict)
-    ElasticTranscoder.update_pipeline_notifications([::AWSConfig]; Id=, Notifications=)
+    using AWSSDK.ElasticTranscoder.update_pipeline_notifications
+    update_pipeline_notifications([::AWSConfig], arguments::Dict)
+    update_pipeline_notifications([::AWSConfig]; Id=, Notifications=)
 
     using AWSCore.Services.elastictranscoder
     elastictranscoder([::AWSConfig], "POST", "/2012-09-25/pipelines/{Id}/notifications", arguments::Dict)
@@ -1368,9 +1368,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ElasticTranscoder
-    ElasticTranscoder.update_pipeline_status([::AWSConfig], arguments::Dict)
-    ElasticTranscoder.update_pipeline_status([::AWSConfig]; Id=, Status=)
+    using AWSSDK.ElasticTranscoder.update_pipeline_status
+    update_pipeline_status([::AWSConfig], arguments::Dict)
+    update_pipeline_status([::AWSConfig]; Id=, Status=)
 
     using AWSCore.Services.elastictranscoder
     elastictranscoder([::AWSConfig], "POST", "/2012-09-25/pipelines/{Id}/status", arguments::Dict)

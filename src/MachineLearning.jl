@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.add_tags([::AWSConfig], arguments::Dict)
-    MachineLearning.add_tags([::AWSConfig]; Tags=, ResourceId=, ResourceType=)
+    using AWSSDK.MachineLearning.add_tags
+    add_tags([::AWSConfig], arguments::Dict)
+    add_tags([::AWSConfig]; Tags=, ResourceId=, ResourceType=)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "AddTags", arguments::Dict)
@@ -65,9 +65,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.create_batch_prediction([::AWSConfig], arguments::Dict)
-    MachineLearning.create_batch_prediction([::AWSConfig]; BatchPredictionId=, MLModelId=, BatchPredictionDataSourceId=, OutputUri=, <keyword arguments>)
+    using AWSSDK.MachineLearning.create_batch_prediction
+    create_batch_prediction([::AWSConfig], arguments::Dict)
+    create_batch_prediction([::AWSConfig]; BatchPredictionId=, MLModelId=, BatchPredictionDataSourceId=, OutputUri=, <keyword arguments>)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "CreateBatchPrediction", arguments::Dict)
@@ -126,9 +126,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.create_data_source_from_rds([::AWSConfig], arguments::Dict)
-    MachineLearning.create_data_source_from_rds([::AWSConfig]; DataSourceId=, RDSData=, RoleARN=, <keyword arguments>)
+    using AWSSDK.MachineLearning.create_data_source_from_rds
+    create_data_source_from_rds([::AWSConfig], arguments::Dict)
+    create_data_source_from_rds([::AWSConfig]; DataSourceId=, RDSData=, RoleARN=, <keyword arguments>)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "CreateDataSourceFromRDS", arguments::Dict)
@@ -229,9 +229,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.create_data_source_from_redshift([::AWSConfig], arguments::Dict)
-    MachineLearning.create_data_source_from_redshift([::AWSConfig]; DataSourceId=, DataSpec=, RoleARN=, <keyword arguments>)
+    using AWSSDK.MachineLearning.create_data_source_from_redshift
+    create_data_source_from_redshift([::AWSConfig], arguments::Dict)
+    create_data_source_from_redshift([::AWSConfig]; DataSourceId=, DataSpec=, RoleARN=, <keyword arguments>)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "CreateDataSourceFromRedshift", arguments::Dict)
@@ -332,9 +332,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.create_data_source_from_s3([::AWSConfig], arguments::Dict)
-    MachineLearning.create_data_source_from_s3([::AWSConfig]; DataSourceId=, DataSpec=, <keyword arguments>)
+    using AWSSDK.MachineLearning.create_data_source_from_s3
+    create_data_source_from_s3([::AWSConfig], arguments::Dict)
+    create_data_source_from_s3([::AWSConfig]; DataSourceId=, DataSpec=, <keyword arguments>)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "CreateDataSourceFromS3", arguments::Dict)
@@ -408,9 +408,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.create_evaluation([::AWSConfig], arguments::Dict)
-    MachineLearning.create_evaluation([::AWSConfig]; EvaluationId=, MLModelId=, EvaluationDataSourceId=, <keyword arguments>)
+    using AWSSDK.MachineLearning.create_evaluation
+    create_evaluation([::AWSConfig], arguments::Dict)
+    create_evaluation([::AWSConfig]; EvaluationId=, MLModelId=, EvaluationDataSourceId=, <keyword arguments>)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "CreateEvaluation", arguments::Dict)
@@ -465,9 +465,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.create_mlmodel([::AWSConfig], arguments::Dict)
-    MachineLearning.create_mlmodel([::AWSConfig]; MLModelId=, MLModelType=, TrainingDataSourceId=, <keyword arguments>)
+    using AWSSDK.MachineLearning.create_mlmodel
+    create_mlmodel([::AWSConfig], arguments::Dict)
+    create_mlmodel([::AWSConfig]; MLModelId=, MLModelType=, TrainingDataSourceId=, <keyword arguments>)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "CreateMLModel", arguments::Dict)
@@ -560,9 +560,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.create_realtime_endpoint([::AWSConfig], arguments::Dict)
-    MachineLearning.create_realtime_endpoint([::AWSConfig]; MLModelId=)
+    using AWSSDK.MachineLearning.create_realtime_endpoint
+    create_realtime_endpoint([::AWSConfig], arguments::Dict)
+    create_realtime_endpoint([::AWSConfig]; MLModelId=)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "CreateRealtimeEndpoint", arguments::Dict)
@@ -599,9 +599,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.delete_batch_prediction([::AWSConfig], arguments::Dict)
-    MachineLearning.delete_batch_prediction([::AWSConfig]; BatchPredictionId=)
+    using AWSSDK.MachineLearning.delete_batch_prediction
+    delete_batch_prediction([::AWSConfig], arguments::Dict)
+    delete_batch_prediction([::AWSConfig]; BatchPredictionId=)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "DeleteBatchPrediction", arguments::Dict)
@@ -642,9 +642,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.delete_data_source([::AWSConfig], arguments::Dict)
-    MachineLearning.delete_data_source([::AWSConfig]; DataSourceId=)
+    using AWSSDK.MachineLearning.delete_data_source
+    delete_data_source([::AWSConfig], arguments::Dict)
+    delete_data_source([::AWSConfig]; DataSourceId=)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "DeleteDataSource", arguments::Dict)
@@ -685,9 +685,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.delete_evaluation([::AWSConfig], arguments::Dict)
-    MachineLearning.delete_evaluation([::AWSConfig]; EvaluationId=)
+    using AWSSDK.MachineLearning.delete_evaluation
+    delete_evaluation([::AWSConfig], arguments::Dict)
+    delete_evaluation([::AWSConfig]; EvaluationId=)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "DeleteEvaluation", arguments::Dict)
@@ -730,9 +730,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.delete_mlmodel([::AWSConfig], arguments::Dict)
-    MachineLearning.delete_mlmodel([::AWSConfig]; MLModelId=)
+    using AWSSDK.MachineLearning.delete_mlmodel
+    delete_mlmodel([::AWSConfig], arguments::Dict)
+    delete_mlmodel([::AWSConfig]; MLModelId=)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "DeleteMLModel", arguments::Dict)
@@ -773,9 +773,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.delete_realtime_endpoint([::AWSConfig], arguments::Dict)
-    MachineLearning.delete_realtime_endpoint([::AWSConfig]; MLModelId=)
+    using AWSSDK.MachineLearning.delete_realtime_endpoint
+    delete_realtime_endpoint([::AWSConfig], arguments::Dict)
+    delete_realtime_endpoint([::AWSConfig]; MLModelId=)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "DeleteRealtimeEndpoint", arguments::Dict)
@@ -812,9 +812,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.delete_tags([::AWSConfig], arguments::Dict)
-    MachineLearning.delete_tags([::AWSConfig]; TagKeys=, ResourceId=, ResourceType=)
+    using AWSSDK.MachineLearning.delete_tags
+    delete_tags([::AWSConfig], arguments::Dict)
+    delete_tags([::AWSConfig]; TagKeys=, ResourceId=, ResourceType=)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "DeleteTags", arguments::Dict)
@@ -861,9 +861,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.describe_batch_predictions([::AWSConfig], arguments::Dict)
-    MachineLearning.describe_batch_predictions([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.MachineLearning.describe_batch_predictions
+    describe_batch_predictions([::AWSConfig], arguments::Dict)
+    describe_batch_predictions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "DescribeBatchPredictions", arguments::Dict)
@@ -961,9 +961,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.describe_data_sources([::AWSConfig], arguments::Dict)
-    MachineLearning.describe_data_sources([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.MachineLearning.describe_data_sources
+    describe_data_sources([::AWSConfig], arguments::Dict)
+    describe_data_sources([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "DescribeDataSources", arguments::Dict)
@@ -1059,9 +1059,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.describe_evaluations([::AWSConfig], arguments::Dict)
-    MachineLearning.describe_evaluations([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.MachineLearning.describe_evaluations
+    describe_evaluations([::AWSConfig], arguments::Dict)
+    describe_evaluations([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "DescribeEvaluations", arguments::Dict)
@@ -1159,9 +1159,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.describe_mlmodels([::AWSConfig], arguments::Dict)
-    MachineLearning.describe_mlmodels([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.MachineLearning.describe_mlmodels
+    describe_mlmodels([::AWSConfig], arguments::Dict)
+    describe_mlmodels([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "DescribeMLModels", arguments::Dict)
@@ -1261,9 +1261,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.describe_tags([::AWSConfig], arguments::Dict)
-    MachineLearning.describe_tags([::AWSConfig]; ResourceId=, ResourceType=)
+    using AWSSDK.MachineLearning.describe_tags
+    describe_tags([::AWSConfig], arguments::Dict)
+    describe_tags([::AWSConfig]; ResourceId=, ResourceType=)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "DescribeTags", arguments::Dict)
@@ -1304,9 +1304,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.get_batch_prediction([::AWSConfig], arguments::Dict)
-    MachineLearning.get_batch_prediction([::AWSConfig]; BatchPredictionId=)
+    using AWSSDK.MachineLearning.get_batch_prediction
+    get_batch_prediction([::AWSConfig], arguments::Dict)
+    get_batch_prediction([::AWSConfig]; BatchPredictionId=)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "GetBatchPrediction", arguments::Dict)
@@ -1343,9 +1343,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.get_data_source([::AWSConfig], arguments::Dict)
-    MachineLearning.get_data_source([::AWSConfig]; DataSourceId=, <keyword arguments>)
+    using AWSSDK.MachineLearning.get_data_source
+    get_data_source([::AWSConfig], arguments::Dict)
+    get_data_source([::AWSConfig]; DataSourceId=, <keyword arguments>)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "GetDataSource", arguments::Dict)
@@ -1392,9 +1392,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.get_evaluation([::AWSConfig], arguments::Dict)
-    MachineLearning.get_evaluation([::AWSConfig]; EvaluationId=)
+    using AWSSDK.MachineLearning.get_evaluation
+    get_evaluation([::AWSConfig], arguments::Dict)
+    get_evaluation([::AWSConfig]; EvaluationId=)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "GetEvaluation", arguments::Dict)
@@ -1431,9 +1431,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.get_mlmodel([::AWSConfig], arguments::Dict)
-    MachineLearning.get_mlmodel([::AWSConfig]; MLModelId=, <keyword arguments>)
+    using AWSSDK.MachineLearning.get_mlmodel
+    get_mlmodel([::AWSConfig], arguments::Dict)
+    get_mlmodel([::AWSConfig]; MLModelId=, <keyword arguments>)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "GetMLModel", arguments::Dict)
@@ -1480,9 +1480,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.predict([::AWSConfig], arguments::Dict)
-    MachineLearning.predict([::AWSConfig]; MLModelId=, Record=, PredictEndpoint=)
+    using AWSSDK.MachineLearning.predict
+    predict([::AWSConfig], arguments::Dict)
+    predict([::AWSConfig]; MLModelId=, Record=, PredictEndpoint=)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "Predict", arguments::Dict)
@@ -1532,9 +1532,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.update_batch_prediction([::AWSConfig], arguments::Dict)
-    MachineLearning.update_batch_prediction([::AWSConfig]; BatchPredictionId=, BatchPredictionName=)
+    using AWSSDK.MachineLearning.update_batch_prediction
+    update_batch_prediction([::AWSConfig], arguments::Dict)
+    update_batch_prediction([::AWSConfig]; BatchPredictionId=, BatchPredictionName=)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "UpdateBatchPrediction", arguments::Dict)
@@ -1577,9 +1577,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.update_data_source([::AWSConfig], arguments::Dict)
-    MachineLearning.update_data_source([::AWSConfig]; DataSourceId=, DataSourceName=)
+    using AWSSDK.MachineLearning.update_data_source
+    update_data_source([::AWSConfig], arguments::Dict)
+    update_data_source([::AWSConfig]; DataSourceId=, DataSourceName=)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "UpdateDataSource", arguments::Dict)
@@ -1622,9 +1622,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.update_evaluation([::AWSConfig], arguments::Dict)
-    MachineLearning.update_evaluation([::AWSConfig]; EvaluationId=, EvaluationName=)
+    using AWSSDK.MachineLearning.update_evaluation
+    update_evaluation([::AWSConfig], arguments::Dict)
+    update_evaluation([::AWSConfig]; EvaluationId=, EvaluationName=)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "UpdateEvaluation", arguments::Dict)
@@ -1667,9 +1667,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machin
 
 
 """
-    using AWSSDK.MachineLearning
-    MachineLearning.update_mlmodel([::AWSConfig], arguments::Dict)
-    MachineLearning.update_mlmodel([::AWSConfig]; MLModelId=, <keyword arguments>)
+    using AWSSDK.MachineLearning.update_mlmodel
+    update_mlmodel([::AWSConfig], arguments::Dict)
+    update_mlmodel([::AWSConfig]; MLModelId=, <keyword arguments>)
 
     using AWSCore.Services.machinelearning
     machinelearning([::AWSConfig], "UpdateMLModel", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.add_tags([::AWSConfig], arguments::Dict)
-    ELBv2.add_tags([::AWSConfig]; ResourceArns=, Tags=)
+    using AWSSDK.ELBv2.add_tags
+    add_tags([::AWSConfig], arguments::Dict)
+    add_tags([::AWSConfig]; ResourceArns=, Tags=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "AddTags", arguments::Dict)
@@ -88,9 +88,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.create_listener([::AWSConfig], arguments::Dict)
-    ELBv2.create_listener([::AWSConfig]; LoadBalancerArn=, Protocol=, Port=, DefaultActions=, <keyword arguments>)
+    using AWSSDK.ELBv2.create_listener
+    create_listener([::AWSConfig], arguments::Dict)
+    create_listener([::AWSConfig]; LoadBalancerArn=, Protocol=, Port=, DefaultActions=, <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "CreateListener", arguments::Dict)
@@ -248,9 +248,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.create_load_balancer([::AWSConfig], arguments::Dict)
-    ELBv2.create_load_balancer([::AWSConfig]; Name=, Subnets=, <keyword arguments>)
+    using AWSSDK.ELBv2.create_load_balancer
+    create_load_balancer([::AWSConfig], arguments::Dict)
+    create_load_balancer([::AWSConfig]; Name=, Subnets=, <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "CreateLoadBalancer", arguments::Dict)
@@ -428,9 +428,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.create_rule([::AWSConfig], arguments::Dict)
-    ELBv2.create_rule([::AWSConfig]; ListenerArn=, Conditions=, Priority=, Actions=)
+    using AWSSDK.ELBv2.create_rule
+    create_rule([::AWSConfig], arguments::Dict)
+    create_rule([::AWSConfig]; ListenerArn=, Conditions=, Priority=, Actions=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "CreateRule", arguments::Dict)
@@ -568,9 +568,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.create_target_group([::AWSConfig], arguments::Dict)
-    ELBv2.create_target_group([::AWSConfig]; Name=, Protocol=, Port=, VpcId=, <keyword arguments>)
+    using AWSSDK.ELBv2.create_target_group
+    create_target_group([::AWSConfig], arguments::Dict)
+    create_target_group([::AWSConfig]; Name=, Protocol=, Port=, VpcId=, <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "CreateTargetGroup", arguments::Dict)
@@ -700,9 +700,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.delete_listener([::AWSConfig], arguments::Dict)
-    ELBv2.delete_listener([::AWSConfig]; ListenerArn=)
+    using AWSSDK.ELBv2.delete_listener
+    delete_listener([::AWSConfig], arguments::Dict)
+    delete_listener([::AWSConfig]; ListenerArn=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "DeleteListener", arguments::Dict)
@@ -752,9 +752,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.delete_load_balancer([::AWSConfig], arguments::Dict)
-    ELBv2.delete_load_balancer([::AWSConfig]; LoadBalancerArn=)
+    using AWSSDK.ELBv2.delete_load_balancer
+    delete_load_balancer([::AWSConfig], arguments::Dict)
+    delete_load_balancer([::AWSConfig]; LoadBalancerArn=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "DeleteLoadBalancer", arguments::Dict)
@@ -806,9 +806,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.delete_rule([::AWSConfig], arguments::Dict)
-    ELBv2.delete_rule([::AWSConfig]; RuleArn=)
+    using AWSSDK.ELBv2.delete_rule
+    delete_rule([::AWSConfig], arguments::Dict)
+    delete_rule([::AWSConfig]; RuleArn=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "DeleteRule", arguments::Dict)
@@ -856,9 +856,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.delete_target_group([::AWSConfig], arguments::Dict)
-    ELBv2.delete_target_group([::AWSConfig]; TargetGroupArn=)
+    using AWSSDK.ELBv2.delete_target_group
+    delete_target_group([::AWSConfig], arguments::Dict)
+    delete_target_group([::AWSConfig]; TargetGroupArn=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "DeleteTargetGroup", arguments::Dict)
@@ -908,9 +908,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.deregister_targets([::AWSConfig], arguments::Dict)
-    ELBv2.deregister_targets([::AWSConfig]; TargetGroupArn=, Targets=)
+    using AWSSDK.ELBv2.deregister_targets
+    deregister_targets([::AWSConfig], arguments::Dict)
+    deregister_targets([::AWSConfig]; TargetGroupArn=, Targets=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "DeregisterTargets", arguments::Dict)
@@ -972,9 +972,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.describe_account_limits([::AWSConfig], arguments::Dict)
-    ELBv2.describe_account_limits([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ELBv2.describe_account_limits
+    describe_account_limits([::AWSConfig], arguments::Dict)
+    describe_account_limits([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "DescribeAccountLimits", arguments::Dict)
@@ -1013,9 +1013,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.describe_listeners([::AWSConfig], arguments::Dict)
-    ELBv2.describe_listeners([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ELBv2.describe_listeners
+    describe_listeners([::AWSConfig], arguments::Dict)
+    describe_listeners([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "DescribeListeners", arguments::Dict)
@@ -1097,9 +1097,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.describe_load_balancer_attributes([::AWSConfig], arguments::Dict)
-    ELBv2.describe_load_balancer_attributes([::AWSConfig]; LoadBalancerArn=)
+    using AWSSDK.ELBv2.describe_load_balancer_attributes
+    describe_load_balancer_attributes([::AWSConfig], arguments::Dict)
+    describe_load_balancer_attributes([::AWSConfig]; LoadBalancerArn=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "DescribeLoadBalancerAttributes", arguments::Dict)
@@ -1175,9 +1175,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.describe_load_balancers([::AWSConfig], arguments::Dict)
-    ELBv2.describe_load_balancers([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ELBv2.describe_load_balancers
+    describe_load_balancers([::AWSConfig], arguments::Dict)
+    describe_load_balancers([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "DescribeLoadBalancers", arguments::Dict)
@@ -1275,9 +1275,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.describe_rules([::AWSConfig], arguments::Dict)
-    ELBv2.describe_rules([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ELBv2.describe_rules
+    describe_rules([::AWSConfig], arguments::Dict)
+    describe_rules([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "DescribeRules", arguments::Dict)
@@ -1366,9 +1366,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.describe_sslpolicies([::AWSConfig], arguments::Dict)
-    ELBv2.describe_sslpolicies([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ELBv2.describe_sslpolicies
+    describe_sslpolicies([::AWSConfig], arguments::Dict)
+    describe_sslpolicies([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "DescribeSSLPolicies", arguments::Dict)
@@ -1522,9 +1522,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.describe_tags([::AWSConfig], arguments::Dict)
-    ELBv2.describe_tags([::AWSConfig]; ResourceArns=)
+    using AWSSDK.ELBv2.describe_tags
+    describe_tags([::AWSConfig], arguments::Dict)
+    describe_tags([::AWSConfig]; ResourceArns=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "DescribeTags", arguments::Dict)
@@ -1595,9 +1595,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.describe_target_group_attributes([::AWSConfig], arguments::Dict)
-    ELBv2.describe_target_group_attributes([::AWSConfig]; TargetGroupArn=)
+    using AWSSDK.ELBv2.describe_target_group_attributes
+    describe_target_group_attributes([::AWSConfig], arguments::Dict)
+    describe_target_group_attributes([::AWSConfig]; TargetGroupArn=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "DescribeTargetGroupAttributes", arguments::Dict)
@@ -1669,9 +1669,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.describe_target_groups([::AWSConfig], arguments::Dict)
-    ELBv2.describe_target_groups([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.ELBv2.describe_target_groups
+    describe_target_groups([::AWSConfig], arguments::Dict)
+    describe_target_groups([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "DescribeTargetGroups", arguments::Dict)
@@ -1767,9 +1767,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.describe_target_health([::AWSConfig], arguments::Dict)
-    ELBv2.describe_target_health([::AWSConfig]; TargetGroupArn=, <keyword arguments>)
+    using AWSSDK.ELBv2.describe_target_health
+    describe_target_health([::AWSConfig], arguments::Dict)
+    describe_target_health([::AWSConfig]; TargetGroupArn=, <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "DescribeTargetHealth", arguments::Dict)
@@ -1890,9 +1890,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.modify_listener([::AWSConfig], arguments::Dict)
-    ELBv2.modify_listener([::AWSConfig]; ListenerArn=, <keyword arguments>)
+    using AWSSDK.ELBv2.modify_listener
+    modify_listener([::AWSConfig], arguments::Dict)
+    modify_listener([::AWSConfig]; ListenerArn=, <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "ModifyListener", arguments::Dict)
@@ -2035,9 +2035,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.modify_load_balancer_attributes([::AWSConfig], arguments::Dict)
-    ELBv2.modify_load_balancer_attributes([::AWSConfig]; LoadBalancerArn=, Attributes=)
+    using AWSSDK.ELBv2.modify_load_balancer_attributes
+    modify_load_balancer_attributes([::AWSConfig], arguments::Dict)
+    modify_load_balancer_attributes([::AWSConfig]; LoadBalancerArn=, Attributes=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "ModifyLoadBalancerAttributes", arguments::Dict)
@@ -2228,9 +2228,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.modify_rule([::AWSConfig], arguments::Dict)
-    ELBv2.modify_rule([::AWSConfig]; RuleArn=, <keyword arguments>)
+    using AWSSDK.ELBv2.modify_rule
+    modify_rule([::AWSConfig], arguments::Dict)
+    modify_rule([::AWSConfig]; RuleArn=, <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "ModifyRule", arguments::Dict)
@@ -2335,9 +2335,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.modify_target_group([::AWSConfig], arguments::Dict)
-    ELBv2.modify_target_group([::AWSConfig]; TargetGroupArn=, <keyword arguments>)
+    using AWSSDK.ELBv2.modify_target_group
+    modify_target_group([::AWSConfig], arguments::Dict)
+    modify_target_group([::AWSConfig]; TargetGroupArn=, <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "ModifyTargetGroup", arguments::Dict)
@@ -2448,9 +2448,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.modify_target_group_attributes([::AWSConfig], arguments::Dict)
-    ELBv2.modify_target_group_attributes([::AWSConfig]; TargetGroupArn=, Attributes=)
+    using AWSSDK.ELBv2.modify_target_group_attributes
+    modify_target_group_attributes([::AWSConfig], arguments::Dict)
+    modify_target_group_attributes([::AWSConfig]; TargetGroupArn=, Attributes=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "ModifyTargetGroupAttributes", arguments::Dict)
@@ -2537,9 +2537,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.register_targets([::AWSConfig], arguments::Dict)
-    ELBv2.register_targets([::AWSConfig]; TargetGroupArn=, Targets=)
+    using AWSSDK.ELBv2.register_targets
+    register_targets([::AWSConfig], arguments::Dict)
+    register_targets([::AWSConfig]; TargetGroupArn=, Targets=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "RegisterTargets", arguments::Dict)
@@ -2631,9 +2631,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.remove_tags([::AWSConfig], arguments::Dict)
-    ELBv2.remove_tags([::AWSConfig]; ResourceArns=, TagKeys=)
+    using AWSSDK.ELBv2.remove_tags
+    remove_tags([::AWSConfig], arguments::Dict)
+    remove_tags([::AWSConfig]; ResourceArns=, TagKeys=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "RemoveTags", arguments::Dict)
@@ -2693,9 +2693,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.set_ip_address_type([::AWSConfig], arguments::Dict)
-    ELBv2.set_ip_address_type([::AWSConfig]; LoadBalancerArn=, IpAddressType=)
+    using AWSSDK.ELBv2.set_ip_address_type
+    set_ip_address_type([::AWSConfig], arguments::Dict)
+    set_ip_address_type([::AWSConfig]; LoadBalancerArn=, IpAddressType=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "SetIpAddressType", arguments::Dict)
@@ -2736,9 +2736,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.set_rule_priorities([::AWSConfig], arguments::Dict)
-    ELBv2.set_rule_priorities([::AWSConfig]; RulePriorities=)
+    using AWSSDK.ELBv2.set_rule_priorities
+    set_rule_priorities([::AWSConfig], arguments::Dict)
+    set_rule_priorities([::AWSConfig]; RulePriorities=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "SetRulePriorities", arguments::Dict)
@@ -2825,9 +2825,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.set_security_groups([::AWSConfig], arguments::Dict)
-    ELBv2.set_security_groups([::AWSConfig]; LoadBalancerArn=, SecurityGroups=)
+    using AWSSDK.ELBv2.set_security_groups
+    set_security_groups([::AWSConfig], arguments::Dict)
+    set_security_groups([::AWSConfig]; LoadBalancerArn=, SecurityGroups=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "SetSecurityGroups", arguments::Dict)
@@ -2891,9 +2891,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
-    using AWSSDK.ELBv2
-    ELBv2.set_subnets([::AWSConfig], arguments::Dict)
-    ELBv2.set_subnets([::AWSConfig]; LoadBalancerArn=, Subnets=)
+    using AWSSDK.ELBv2.set_subnets
+    set_subnets([::AWSConfig], arguments::Dict)
+    set_subnets([::AWSConfig]; LoadBalancerArn=, Subnets=)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "SetSubnets", arguments::Dict)

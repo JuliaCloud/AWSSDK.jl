@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.MarketplaceMetering
-    MarketplaceMetering.batch_meter_usage([::AWSConfig], arguments::Dict)
-    MarketplaceMetering.batch_meter_usage([::AWSConfig]; UsageRecords=, ProductCode=)
+    using AWSSDK.MarketplaceMetering.batch_meter_usage
+    batch_meter_usage([::AWSConfig], arguments::Dict)
+    batch_meter_usage([::AWSConfig]; UsageRecords=, ProductCode=)
 
     using AWSCore.Services.meteringmarketplace
     meteringmarketplace([::AWSConfig], "BatchMeterUsage", arguments::Dict)
@@ -69,9 +69,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/meteri
 
 
 """
-    using AWSSDK.MarketplaceMetering
-    MarketplaceMetering.meter_usage([::AWSConfig], arguments::Dict)
-    MarketplaceMetering.meter_usage([::AWSConfig]; ProductCode=, Timestamp=, UsageDimension=, UsageQuantity=, DryRun=)
+    using AWSSDK.MarketplaceMetering.meter_usage
+    meter_usage([::AWSConfig], arguments::Dict)
+    meter_usage([::AWSConfig]; ProductCode=, Timestamp=, UsageDimension=, UsageQuantity=, DryRun=)
 
     using AWSCore.Services.meteringmarketplace
     meteringmarketplace([::AWSConfig], "MeterUsage", arguments::Dict)
@@ -126,9 +126,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/meteri
 
 
 """
-    using AWSSDK.MarketplaceMetering
-    MarketplaceMetering.resolve_customer([::AWSConfig], arguments::Dict)
-    MarketplaceMetering.resolve_customer([::AWSConfig]; RegistrationToken=)
+    using AWSSDK.MarketplaceMetering.resolve_customer
+    resolve_customer([::AWSConfig], arguments::Dict)
+    resolve_customer([::AWSConfig]; RegistrationToken=)
 
     using AWSCore.Services.meteringmarketplace
     meteringmarketplace([::AWSConfig], "ResolveCustomer", arguments::Dict)

@@ -13,9 +13,9 @@ using AWSCore
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.allocate_connection_on_interconnect([::AWSConfig], arguments::Dict)
-    DirectConnect.allocate_connection_on_interconnect([::AWSConfig]; bandwidth=, connectionName=, ownerAccount=, interconnectId=, vlan=)
+    using AWSSDK.DirectConnect.allocate_connection_on_interconnect
+    allocate_connection_on_interconnect([::AWSConfig], arguments::Dict)
+    allocate_connection_on_interconnect([::AWSConfig]; bandwidth=, connectionName=, ownerAccount=, interconnectId=, vlan=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "AllocateConnectionOnInterconnect", arguments::Dict)
@@ -97,9 +97,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.allocate_hosted_connection([::AWSConfig], arguments::Dict)
-    DirectConnect.allocate_hosted_connection([::AWSConfig]; connectionId=, ownerAccount=, bandwidth=, connectionName=, vlan=)
+    using AWSSDK.DirectConnect.allocate_hosted_connection
+    allocate_hosted_connection([::AWSConfig], arguments::Dict)
+    allocate_hosted_connection([::AWSConfig]; connectionId=, ownerAccount=, bandwidth=, connectionName=, vlan=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "AllocateHostedConnection", arguments::Dict)
@@ -179,9 +179,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.allocate_private_virtual_interface([::AWSConfig], arguments::Dict)
-    DirectConnect.allocate_private_virtual_interface([::AWSConfig]; connectionId=, ownerAccount=, newPrivateVirtualInterfaceAllocation=)
+    using AWSSDK.DirectConnect.allocate_private_virtual_interface
+    allocate_private_virtual_interface([::AWSConfig], arguments::Dict)
+    allocate_private_virtual_interface([::AWSConfig]; connectionId=, ownerAccount=, newPrivateVirtualInterfaceAllocation=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "AllocatePrivateVirtualInterface", arguments::Dict)
@@ -244,9 +244,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.allocate_public_virtual_interface([::AWSConfig], arguments::Dict)
-    DirectConnect.allocate_public_virtual_interface([::AWSConfig]; connectionId=, ownerAccount=, newPublicVirtualInterfaceAllocation=)
+    using AWSSDK.DirectConnect.allocate_public_virtual_interface
+    allocate_public_virtual_interface([::AWSConfig], arguments::Dict)
+    allocate_public_virtual_interface([::AWSConfig]; connectionId=, ownerAccount=, newPublicVirtualInterfaceAllocation=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "AllocatePublicVirtualInterface", arguments::Dict)
@@ -314,9 +314,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.associate_connection_with_lag([::AWSConfig], arguments::Dict)
-    DirectConnect.associate_connection_with_lag([::AWSConfig]; connectionId=, lagId=)
+    using AWSSDK.DirectConnect.associate_connection_with_lag
+    associate_connection_with_lag([::AWSConfig], arguments::Dict)
+    associate_connection_with_lag([::AWSConfig]; connectionId=, lagId=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "AssociateConnectionWithLag", arguments::Dict)
@@ -369,9 +369,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.associate_hosted_connection([::AWSConfig], arguments::Dict)
-    DirectConnect.associate_hosted_connection([::AWSConfig]; connectionId=, parentConnectionId=)
+    using AWSSDK.DirectConnect.associate_hosted_connection
+    associate_hosted_connection([::AWSConfig], arguments::Dict)
+    associate_hosted_connection([::AWSConfig]; connectionId=, parentConnectionId=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "AssociateHostedConnection", arguments::Dict)
@@ -423,9 +423,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.associate_virtual_interface([::AWSConfig], arguments::Dict)
-    DirectConnect.associate_virtual_interface([::AWSConfig]; virtualInterfaceId=, connectionId=)
+    using AWSSDK.DirectConnect.associate_virtual_interface
+    associate_virtual_interface([::AWSConfig], arguments::Dict)
+    associate_virtual_interface([::AWSConfig]; virtualInterfaceId=, connectionId=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "AssociateVirtualInterface", arguments::Dict)
@@ -478,9 +478,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.confirm_connection([::AWSConfig], arguments::Dict)
-    DirectConnect.confirm_connection([::AWSConfig]; connectionId=)
+    using AWSSDK.DirectConnect.confirm_connection
+    confirm_connection([::AWSConfig], arguments::Dict)
+    confirm_connection([::AWSConfig]; connectionId=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "ConfirmConnection", arguments::Dict)
@@ -519,9 +519,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.confirm_private_virtual_interface([::AWSConfig], arguments::Dict)
-    DirectConnect.confirm_private_virtual_interface([::AWSConfig]; virtualInterfaceId=, virtualGatewayId=)
+    using AWSSDK.DirectConnect.confirm_private_virtual_interface
+    confirm_private_virtual_interface([::AWSConfig], arguments::Dict)
+    confirm_private_virtual_interface([::AWSConfig]; virtualInterfaceId=, virtualGatewayId=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "ConfirmPrivateVirtualInterface", arguments::Dict)
@@ -568,9 +568,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.confirm_public_virtual_interface([::AWSConfig], arguments::Dict)
-    DirectConnect.confirm_public_virtual_interface([::AWSConfig]; virtualInterfaceId=)
+    using AWSSDK.DirectConnect.confirm_public_virtual_interface
+    confirm_public_virtual_interface([::AWSConfig], arguments::Dict)
+    confirm_public_virtual_interface([::AWSConfig]; virtualInterfaceId=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "ConfirmPublicVirtualInterface", arguments::Dict)
@@ -609,9 +609,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.create_bgppeer([::AWSConfig], arguments::Dict)
-    DirectConnect.create_bgppeer([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DirectConnect.create_bgppeer
+    create_bgppeer([::AWSConfig], arguments::Dict)
+    create_bgppeer([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "CreateBGPPeer", arguments::Dict)
@@ -672,9 +672,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.create_connection([::AWSConfig], arguments::Dict)
-    DirectConnect.create_connection([::AWSConfig]; location=, bandwidth=, connectionName=, <keyword arguments>)
+    using AWSSDK.DirectConnect.create_connection
+    create_connection([::AWSConfig], arguments::Dict)
+    create_connection([::AWSConfig]; location=, bandwidth=, connectionName=, <keyword arguments>)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "CreateConnection", arguments::Dict)
@@ -727,9 +727,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.create_interconnect([::AWSConfig], arguments::Dict)
-    DirectConnect.create_interconnect([::AWSConfig]; interconnectName=, bandwidth=, location=, <keyword arguments>)
+    using AWSSDK.DirectConnect.create_interconnect
+    create_interconnect([::AWSConfig], arguments::Dict)
+    create_interconnect([::AWSConfig]; interconnectName=, bandwidth=, location=, <keyword arguments>)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "CreateInterconnect", arguments::Dict)
@@ -801,9 +801,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.create_lag([::AWSConfig], arguments::Dict)
-    DirectConnect.create_lag([::AWSConfig]; numberOfConnections=, location=, connectionsBandwidth=, lagName=, <keyword arguments>)
+    using AWSSDK.DirectConnect.create_lag
+    create_lag([::AWSConfig], arguments::Dict)
+    create_lag([::AWSConfig]; numberOfConnections=, location=, connectionsBandwidth=, lagName=, <keyword arguments>)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "CreateLag", arguments::Dict)
@@ -880,9 +880,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.create_private_virtual_interface([::AWSConfig], arguments::Dict)
-    DirectConnect.create_private_virtual_interface([::AWSConfig]; connectionId=, newPrivateVirtualInterface=)
+    using AWSSDK.DirectConnect.create_private_virtual_interface
+    create_private_virtual_interface([::AWSConfig], arguments::Dict)
+    create_private_virtual_interface([::AWSConfig]; connectionId=, newPrivateVirtualInterface=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "CreatePrivateVirtualInterface", arguments::Dict)
@@ -936,9 +936,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.create_public_virtual_interface([::AWSConfig], arguments::Dict)
-    DirectConnect.create_public_virtual_interface([::AWSConfig]; connectionId=, newPublicVirtualInterface=)
+    using AWSSDK.DirectConnect.create_public_virtual_interface
+    create_public_virtual_interface([::AWSConfig], arguments::Dict)
+    create_public_virtual_interface([::AWSConfig]; connectionId=, newPublicVirtualInterface=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "CreatePublicVirtualInterface", arguments::Dict)
@@ -994,9 +994,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.delete_bgppeer([::AWSConfig], arguments::Dict)
-    DirectConnect.delete_bgppeer([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DirectConnect.delete_bgppeer
+    delete_bgppeer([::AWSConfig], arguments::Dict)
+    delete_bgppeer([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DeleteBGPPeer", arguments::Dict)
@@ -1045,9 +1045,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.delete_connection([::AWSConfig], arguments::Dict)
-    DirectConnect.delete_connection([::AWSConfig]; connectionId=)
+    using AWSSDK.DirectConnect.delete_connection
+    delete_connection([::AWSConfig], arguments::Dict)
+    delete_connection([::AWSConfig]; connectionId=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DeleteConnection", arguments::Dict)
@@ -1086,9 +1086,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.delete_interconnect([::AWSConfig], arguments::Dict)
-    DirectConnect.delete_interconnect([::AWSConfig]; interconnectId=)
+    using AWSSDK.DirectConnect.delete_interconnect
+    delete_interconnect([::AWSConfig], arguments::Dict)
+    delete_interconnect([::AWSConfig]; interconnectId=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DeleteInterconnect", arguments::Dict)
@@ -1128,9 +1128,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.delete_lag([::AWSConfig], arguments::Dict)
-    DirectConnect.delete_lag([::AWSConfig]; lagId=)
+    using AWSSDK.DirectConnect.delete_lag
+    delete_lag([::AWSConfig], arguments::Dict)
+    delete_lag([::AWSConfig]; lagId=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DeleteLag", arguments::Dict)
@@ -1171,9 +1171,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.delete_virtual_interface([::AWSConfig], arguments::Dict)
-    DirectConnect.delete_virtual_interface([::AWSConfig]; virtualInterfaceId=)
+    using AWSSDK.DirectConnect.delete_virtual_interface
+    delete_virtual_interface([::AWSConfig], arguments::Dict)
+    delete_virtual_interface([::AWSConfig]; virtualInterfaceId=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DeleteVirtualInterface", arguments::Dict)
@@ -1210,9 +1210,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.describe_connection_loa([::AWSConfig], arguments::Dict)
-    DirectConnect.describe_connection_loa([::AWSConfig]; connectionId=, <keyword arguments>)
+    using AWSSDK.DirectConnect.describe_connection_loa
+    describe_connection_loa([::AWSConfig], arguments::Dict)
+    describe_connection_loa([::AWSConfig]; connectionId=, <keyword arguments>)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DescribeConnectionLoa", arguments::Dict)
@@ -1263,9 +1263,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.describe_connections([::AWSConfig], arguments::Dict)
-    DirectConnect.describe_connections([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DirectConnect.describe_connections
+    describe_connections([::AWSConfig], arguments::Dict)
+    describe_connections([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DescribeConnections", arguments::Dict)
@@ -1304,9 +1304,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.describe_connections_on_interconnect([::AWSConfig], arguments::Dict)
-    DirectConnect.describe_connections_on_interconnect([::AWSConfig]; interconnectId=)
+    using AWSSDK.DirectConnect.describe_connections_on_interconnect
+    describe_connections_on_interconnect([::AWSConfig], arguments::Dict)
+    describe_connections_on_interconnect([::AWSConfig]; interconnectId=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DescribeConnectionsOnInterconnect", arguments::Dict)
@@ -1352,9 +1352,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.describe_hosted_connections([::AWSConfig], arguments::Dict)
-    DirectConnect.describe_hosted_connections([::AWSConfig]; connectionId=)
+    using AWSSDK.DirectConnect.describe_hosted_connections
+    describe_hosted_connections([::AWSConfig], arguments::Dict)
+    describe_hosted_connections([::AWSConfig]; connectionId=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DescribeHostedConnections", arguments::Dict)
@@ -1398,9 +1398,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.describe_interconnect_loa([::AWSConfig], arguments::Dict)
-    DirectConnect.describe_interconnect_loa([::AWSConfig]; interconnectId=, <keyword arguments>)
+    using AWSSDK.DirectConnect.describe_interconnect_loa
+    describe_interconnect_loa([::AWSConfig], arguments::Dict)
+    describe_interconnect_loa([::AWSConfig]; interconnectId=, <keyword arguments>)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DescribeInterconnectLoa", arguments::Dict)
@@ -1451,9 +1451,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.describe_interconnects([::AWSConfig], arguments::Dict)
-    DirectConnect.describe_interconnects([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DirectConnect.describe_interconnects
+    describe_interconnects([::AWSConfig], arguments::Dict)
+    describe_interconnects([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DescribeInterconnects", arguments::Dict)
@@ -1492,9 +1492,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.describe_lags([::AWSConfig], arguments::Dict)
-    DirectConnect.describe_lags([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DirectConnect.describe_lags
+    describe_lags([::AWSConfig], arguments::Dict)
+    describe_lags([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DescribeLags", arguments::Dict)
@@ -1537,9 +1537,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.describe_loa([::AWSConfig], arguments::Dict)
-    DirectConnect.describe_loa([::AWSConfig]; connectionId=, <keyword arguments>)
+    using AWSSDK.DirectConnect.describe_loa
+    describe_loa([::AWSConfig], arguments::Dict)
+    describe_loa([::AWSConfig]; connectionId=, <keyword arguments>)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DescribeLoa", arguments::Dict)
@@ -1594,9 +1594,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.describe_locations([::AWSConfig])
-    DirectConnect.
+    using AWSSDK.DirectConnect.describe_locations
+    describe_locations([::AWSConfig])
+    
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DescribeLocations",)
@@ -1625,9 +1625,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.describe_tags([::AWSConfig], arguments::Dict)
-    DirectConnect.describe_tags([::AWSConfig]; resourceArns=)
+    using AWSSDK.DirectConnect.describe_tags
+    describe_tags([::AWSConfig], arguments::Dict)
+    describe_tags([::AWSConfig]; resourceArns=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DescribeTags", arguments::Dict)
@@ -1664,9 +1664,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.describe_virtual_gateways([::AWSConfig])
-    DirectConnect.
+    using AWSSDK.DirectConnect.describe_virtual_gateways
+    describe_virtual_gateways([::AWSConfig])
+    
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DescribeVirtualGateways",)
@@ -1697,9 +1697,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.describe_virtual_interfaces([::AWSConfig], arguments::Dict)
-    DirectConnect.describe_virtual_interfaces([::AWSConfig]; <keyword arguments>)
+    using AWSSDK.DirectConnect.describe_virtual_interfaces
+    describe_virtual_interfaces([::AWSConfig], arguments::Dict)
+    describe_virtual_interfaces([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DescribeVirtualInterfaces", arguments::Dict)
@@ -1742,9 +1742,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.disassociate_connection_from_lag([::AWSConfig], arguments::Dict)
-    DirectConnect.disassociate_connection_from_lag([::AWSConfig]; connectionId=, lagId=)
+    using AWSSDK.DirectConnect.disassociate_connection_from_lag
+    disassociate_connection_from_lag([::AWSConfig], arguments::Dict)
+    disassociate_connection_from_lag([::AWSConfig]; connectionId=, lagId=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "DisassociateConnectionFromLag", arguments::Dict)
@@ -1795,9 +1795,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.tag_resource([::AWSConfig], arguments::Dict)
-    DirectConnect.tag_resource([::AWSConfig]; resourceArn=, tags=)
+    using AWSSDK.DirectConnect.tag_resource
+    tag_resource([::AWSConfig], arguments::Dict)
+    tag_resource([::AWSConfig]; resourceArn=, tags=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "TagResource", arguments::Dict)
@@ -1847,9 +1847,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.untag_resource([::AWSConfig], arguments::Dict)
-    DirectConnect.untag_resource([::AWSConfig]; resourceArn=, tagKeys=)
+    using AWSSDK.DirectConnect.untag_resource
+    untag_resource([::AWSConfig], arguments::Dict)
+    untag_resource([::AWSConfig]; resourceArn=, tagKeys=)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "UntagResource", arguments::Dict)
@@ -1890,9 +1890,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
-    using AWSSDK.DirectConnect
-    DirectConnect.update_lag([::AWSConfig], arguments::Dict)
-    DirectConnect.update_lag([::AWSConfig]; lagId=, <keyword arguments>)
+    using AWSSDK.DirectConnect.update_lag
+    update_lag([::AWSConfig], arguments::Dict)
+    update_lag([::AWSConfig]; lagId=, <keyword arguments>)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "UpdateLag", arguments::Dict)
