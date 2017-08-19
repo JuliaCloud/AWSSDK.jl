@@ -4,8 +4,6 @@ Julia interface for [Amazon Web Services](https://aws.amazon.com).
 
 Based on [JuliaCloud/AWSCore.jl](https://github.com/JuliaCloud/AWSCore.jl).
 
-See [documentation](https://juliacloud.github.io/AWSCore.jl/build/index.html).
-
 This package provides automatically generated low-level API wrappers and
 documentation strings for each operation in each Amazon Web Service.
 
@@ -20,6 +18,10 @@ The following high-level packages are also available:
 [AWS SDB](http://github.com/samoconnor/AWSSDB.jl).
 These packages include operation sepcific result structure parsing, error
 handling, type conveniance functions, iterators, etc.
+
+
+Full documentation [is available here](https://juliacloud.github.io/AWSCore.jl/build/index.html),
+or see below for some examples of how to get started.
 
 
 ## Configuration
