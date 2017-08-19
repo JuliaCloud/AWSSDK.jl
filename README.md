@@ -44,6 +44,8 @@ configure command: `aws configure`.
 ```julia
 julia> using AWSSDK.SNS
 
+julia> AWSCore.set_debug_level(1)
+
 julia> SNS.publish(PhoneNumber="+61401555555", Message="Hello")
 Dict{String,Any} with 1 entry:
   "MessageId" => "f0607542-7b54-5c66-b271-27453b0bd979"
