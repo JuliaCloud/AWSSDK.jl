@@ -5012,7 +5012,7 @@ The following example uploads an object. The request specifies optional object t
 Input:
 ```
 [
-    "Body" => "c:\HappyFace.jpg",
+    "Body" => "c:\\HappyFace.jpg",
     "Bucket" => "examplebucket",
     "Key" => "HappyFace.jpg",
     "Tagging" => "key1=value1&key2=value2"
