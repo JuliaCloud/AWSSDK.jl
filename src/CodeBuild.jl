@@ -117,7 +117,7 @@ A description that makes the build project easy to identify.
 Information about the build input source code for the build project.
 ```
  source = [
-        "type" => <required> "CODECOMMIT", "CODEPIPELINE", "GITHUB" or "S3",
+        "type" => <required> "CODECOMMIT", "CODEPIPELINE", "GITHUB", "S3" or "BITBUCKET",
         "location" =>  ::String,
         "buildspec" =>  ::String,
         "auth" =>  [
@@ -575,7 +575,7 @@ A new or replacement description of the build project.
 Information to be changed about the build input source code for the build project.
 ```
  source = [
-        "type" => <required> "CODECOMMIT", "CODEPIPELINE", "GITHUB" or "S3",
+        "type" => <required> "CODECOMMIT", "CODEPIPELINE", "GITHUB", "S3" or "BITBUCKET",
         "location" =>  ::String,
         "buildspec" =>  ::String,
         "auth" =>  [

@@ -221,7 +221,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 Enables ingress to a DBSecurityGroup using one of two forms of authorization. First, EC2 or VPC security groups can be added to the DBSecurityGroup if the application using the database is running on EC2 or VPC instances. Second, IP ranges are available if the application accessing your database is running on the Internet. Required parameters for this API are one of CIDR range, EC2SecurityGroupId for VPC, or (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId for non-VPC).
 
 **Note**
-> You cannot authorize ingress from an EC2 security group in one region to an Amazon RDS DB instance in another. You cannot authorize ingress from a VPC security group in one VPC to an Amazon RDS DB instance in another.
+> You cannot authorize ingress from an EC2 security group in one AWS Region to an Amazon RDS DB instance in another. You cannot authorize ingress from a VPC security group in one VPC to an Amazon RDS DB instance in another.
 
 For an overview of CIDR ranges, go to the [Wikipedia Tutorial](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
@@ -289,9 +289,9 @@ Constraints:
 
 *   Must specify a valid DB cluster parameter group.
 
-*   If the source DB cluster parameter group is in the same region as the copy, specify a valid DB parameter group identifier, for example `my-db-cluster-param-group`, or a valid ARN.
+*   If the source DB cluster parameter group is in the same AWS Region as the copy, specify a valid DB parameter group identifier, for example `my-db-cluster-param-group`, or a valid ARN.
 
-*   If the source DB parameter group is in a different region than the copy, specify a valid DB cluster parameter group ARN, for example `arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1`.
+*   If the source DB parameter group is in a different AWS Region than the copy, specify a valid DB cluster parameter group ARN, for example `arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1`.
 
 
 ## `TargetDBClusterParameterGroupIdentifier = ::String` -- *Required*
@@ -358,29 +358,29 @@ Copies a snapshot of a DB cluster.
 
 To copy a DB cluster snapshot from a shared manual DB cluster snapshot, `SourceDBClusterSnapshotIdentifier` must be the Amazon Resource Name (ARN) of the shared DB cluster snapshot.
 
-You can copy an encrypted DB cluster snapshot from another AWS region. In that case, the region where you call the `CopyDBClusterSnapshot` action is the destination region for the encrypted DB cluster snapshot to be copied to. To copy an encrypted DB cluster snapshot from another region, you must provide the following values:
+You can copy an encrypted DB cluster snapshot from another AWS Region. In that case, the AWS Region where you call the `CopyDBClusterSnapshot` action is the destination AWS Region for the encrypted DB cluster snapshot to be copied to. To copy an encrypted DB cluster snapshot from another AWS Region, you must provide the following values:
 
-*   `KmsKeyId` - The AWS Key Management System (KMS) key identifier for the key to use to encrypt the copy of the DB cluster snapshot in the destination region.
+*   `KmsKeyId` - The AWS Key Management System (KMS) key identifier for the key to use to encrypt the copy of the DB cluster snapshot in the destination AWS Region.
 
-*   `PreSignedUrl` - A URL that contains a Signature Version 4 signed request for the `CopyDBClusterSnapshot` action to be called in the source region where the DB cluster snapshot will be copied from. The pre-signed URL must be a valid request for the `CopyDBClusterSnapshot` API action that can be executed in the source region that contains the encrypted DB cluster snapshot to be copied.
+*   `PreSignedUrl` - A URL that contains a Signature Version 4 signed request for the `CopyDBClusterSnapshot` action to be called in the source AWS Region where the DB cluster snapshot will be copied from. The pre-signed URL must be a valid request for the `CopyDBClusterSnapshot` API action that can be executed in the source AWS Region that contains the encrypted DB cluster snapshot to be copied.
 
     The pre-signed URL request must contain the following parameter values:
 
-    *   `KmsKeyId` - The KMS key identifier for the key to use to encrypt the copy of the DB cluster snapshot in the destination region. This is the same identifier for both the `CopyDBClusterSnapshot` action that is called in the destination region, and the action contained in the pre-signed URL.
+    *   `KmsKeyId` - The KMS key identifier for the key to use to encrypt the copy of the DB cluster snapshot in the destination AWS Region. This is the same identifier for both the `CopyDBClusterSnapshot` action that is called in the destination AWS Region, and the action contained in the pre-signed URL.
 
-    *   `DestinationRegion` - The name of the region that the DB cluster snapshot will be created in.
+    *   `DestinationRegion` - The name of the AWS Region that the DB cluster snapshot will be created in.
 
-    *   `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot identifier for the encrypted DB cluster snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source region. For example, if you are copying an encrypted DB cluster snapshot from the us-west-2 region, then your `SourceDBClusterSnapshotIdentifier` looks like the following example: `arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115`.
+    *   `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot identifier for the encrypted DB cluster snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For example, if you are copying an encrypted DB cluster snapshot from the us-west-2 region, then your `SourceDBClusterSnapshotIdentifier` looks like the following example: `arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115`.
 
     To learn how to generate a Signature Version 4 signed request, see [Authenticating Requests: Using Query Parameters (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) and [Signature Version 4 Signing Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
-*   `TargetDBClusterSnapshotIdentifier` - The identifier for the new copy of the DB cluster snapshot in the destination region.
+*   `TargetDBClusterSnapshotIdentifier` - The identifier for the new copy of the DB cluster snapshot in the destination AWS Region.
 
-*   `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot identifier for the encrypted DB cluster snapshot to be copied. This identifier must be in the ARN format for the source region and is the same value as the `SourceDBClusterSnapshotIdentifier` in the pre-signed URL.
+*   `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot identifier for the encrypted DB cluster snapshot to be copied. This identifier must be in the ARN format for the source AWS Region and is the same value as the `SourceDBClusterSnapshotIdentifier` in the pre-signed URL.
 
 To cancel the copy operation once it is in progress, delete the target DB cluster snapshot identified by `TargetDBClusterSnapshotIdentifier` while that DB cluster snapshot is in "copying" status.
 
-For more information on copying encrypted DB cluster snapshots from one region to another, see [Copying a DB Cluster Snapshot in the Same Account, Either in the Same Region or Across Regions](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBClusterSnapshot.CrossRegion) in the Amazon RDS User Guide.
+For more information on copying encrypted DB cluster snapshots from one AWS Region to another, see [Copying a DB Cluster Snapshot in the Same Account, Either in the Same Region or Across Regions](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBClusterSnapshot.CrossRegion) in the Amazon RDS User Guide.
 
 For more information on Amazon Aurora, see [Aurora on Amazon RDS](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html) in the *Amazon RDS User Guide.*
 
@@ -389,7 +389,7 @@ For more information on Amazon Aurora, see [Aurora on Amazon RDS](http://docs.aw
 ## `SourceDBClusterSnapshotIdentifier = ::String` -- *Required*
 The identifier of the DB cluster snapshot to copy. This parameter is not case-sensitive.
 
-You cannot copy an encrypted, shared DB cluster snapshot from one AWS region to another.
+You cannot copy an encrypted, shared DB cluster snapshot from one AWS Region to another.
 
 Constraints:
 
@@ -401,9 +401,9 @@ Constraints:
 
 *   Must specify a valid system snapshot in the "available" state.
 
-*   If the source snapshot is in the same region as the copy, specify a valid DB snapshot identifier.
+*   If the source snapshot is in the same AWS Region as the copy, specify a valid DB snapshot identifier.
 
-*   If the source snapshot is in a different region than the copy, specify a valid DB cluster snapshot ARN. For more information, go to [Copying a DB Snapshot or DB Cluster Snapshot](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html).
+*   If the source snapshot is in a different AWS Region than the copy, specify a valid DB cluster snapshot ARN. For more information, go to [Copying a DB Snapshot or DB Cluster Snapshot](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html).
 
 Example: `my-cluster-snapshot1`
 
@@ -431,19 +431,19 @@ If you copy an encrypted DB cluster snapshot from your AWS account, you can spec
 
 If you copy an encrypted DB cluster snapshot that is shared from another AWS account, then you must specify a value for `KmsKeyId`.
 
-To copy an encrypted DB cluster snapshot to another region, you must set `KmsKeyId` to the KMS key ID you want to use to encrypt the copy of the DB cluster snapshot in the destination region. KMS encryption keys are specific to the region that they are created in, and you cannot use encryption keys from one region in another region.
+To copy an encrypted DB cluster snapshot to another AWS Region, you must set `KmsKeyId` to the KMS key ID you want to use to encrypt the copy of the DB cluster snapshot in the destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and you cannot use encryption keys from one AWS Region in another AWS Region.
 
 
 ## `PreSignedUrl = ::String`
-The URL that contains a Signature Version 4 signed request for the `CopyDBClusterSnapshot` API action in the AWS region that contains the source DB cluster snapshot to copy. The `PreSignedUrl` parameter must be used when copying an encrypted DB cluster snapshot from another AWS region.
+The URL that contains a Signature Version 4 signed request for the `CopyDBClusterSnapshot` API action in the AWS Region that contains the source DB cluster snapshot to copy. The `PreSignedUrl` parameter must be used when copying an encrypted DB cluster snapshot from another AWS Region.
 
-The pre-signed URL must be a valid request for the `CopyDBSClusterSnapshot` API action that can be executed in the source region that contains the encrypted DB cluster snapshot to be copied. The pre-signed URL request must contain the following parameter values:
+The pre-signed URL must be a valid request for the `CopyDBSClusterSnapshot` API action that can be executed in the source AWS Region that contains the encrypted DB cluster snapshot to be copied. The pre-signed URL request must contain the following parameter values:
 
-*   `KmsKeyId` - The KMS key identifier for the key to use to encrypt the copy of the DB cluster snapshot in the destination region. This is the same identifier for both the `CopyDBClusterSnapshot` action that is called in the destination region, and the action contained in the pre-signed URL.
+*   `KmsKeyId` - The KMS key identifier for the key to use to encrypt the copy of the DB cluster snapshot in the destination AWS Region. This is the same identifier for both the `CopyDBClusterSnapshot` action that is called in the destination AWS Region, and the action contained in the pre-signed URL.
 
-*   `DestinationRegion` - The name of the region that the DB cluster snapshot will be created in.
+*   `DestinationRegion` - The name of the AWS Region that the DB cluster snapshot will be created in.
 
-*   `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot identifier for the encrypted DB cluster snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source region. For example, if you are copying an encrypted DB cluster snapshot from the us-west-2 region, then your `SourceDBClusterSnapshotIdentifier` looks like the following example: `arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115`.
+*   `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot identifier for the encrypted DB cluster snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For example, if you are copying an encrypted DB cluster snapshot from the us-west-2 region, then your `SourceDBClusterSnapshotIdentifier` looks like the following example: `arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115`.
 
 To learn how to generate a Signature Version 4 signed request, see [Authenticating Requests: Using Query Parameters (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) and [Signature Version 4 Signing Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
@@ -575,9 +575,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 Copies the specified DB snapshot. The source DB snapshot must be in the "available" state.
 
-You can copy a snapshot from one AWS region to another. In that case, the region where you call the `CopyDBSnapshot` action is the destination region for the DB snapshot copy.
+You can copy a snapshot from one AWS Region to another. In that case, the AWS Region where you call the `CopyDBSnapshot` action is the destination AWS Region for the DB snapshot copy.
 
-You cannot copy an encrypted, shared DB snapshot from one AWS region to another.
+You cannot copy an encrypted, shared DB snapshot from one AWS Region to another.
 
 For more information about copying snapshots, see [Copying a DB Snapshot](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopyDBSnapshot.html) in the Amazon RDS User Guide.
 
@@ -586,13 +586,13 @@ For more information about copying snapshots, see [Copying a DB Snapshot](http:/
 ## `SourceDBSnapshotIdentifier = ::String` -- *Required*
 The identifier for the source DB snapshot.
 
-If the source snapshot is in the same region as the copy, specify a valid DB snapshot identifier. For example, `rds:mysql-instance1-snapshot-20130805`.
+If the source snapshot is in the same AWS Region as the copy, specify a valid DB snapshot identifier. For example, you might specify `rds:mysql-instance1-snapshot-20130805`.
 
-If the source snapshot is in a different region than the copy, specify a valid DB snapshot ARN. For example, `arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20130805`.
+If the source snapshot is in a different AWS Region than the copy, specify a valid DB snapshot ARN. For example, you might specify `arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20130805`.
 
 If you are copying from a shared manual DB snapshot, this parameter must be the Amazon Resource Name (ARN) of the shared DB snapshot.
 
-If you are copying an encrypted snapshot this parameter must be in the ARN format for the source region, and must match the `SourceDBSnapshotIdentifier` in the `PreSignedUrl` parameter.
+If you are copying an encrypted snapshot this parameter must be in the ARN format for the source AWS Region, and must match the `SourceDBSnapshotIdentifier` in the `PreSignedUrl` parameter.
 
 Constraints:
 
@@ -628,7 +628,7 @@ If you copy an encrypted DB snapshot that is shared from another AWS account, th
 
 If you specify this parameter when you copy an unencrypted snapshot, the copy is encrypted.
 
-If you copy an encrypted snapshot to a different AWS region, then you must specify a KMS key for the destination AWS region. KMS encryption keys are specific to the region that they are created in, and you cannot use encryption keys from one region in another region.
+If you copy an encrypted snapshot to a different AWS Region, then you must specify a KMS key for the destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and you cannot use encryption keys from one AWS Region in another AWS Region.
 
 
 ## `Tags = [[ ... ], ...]`
@@ -645,19 +645,19 @@ True to copy all tags from the source DB snapshot to the target DB snapshot; oth
 
 
 ## `PreSignedUrl = ::String`
-The URL that contains a Signature Version 4 signed request for the `CopyDBSnapshot` API action in the source AWS region that contains the source DB snapshot to copy.
+The URL that contains a Signature Version 4 signed request for the `CopyDBSnapshot` API action in the source AWS Region that contains the source DB snapshot to copy.
 
-You must specify this parameter when you copy an encrypted DB snapshot from another AWS region by using the Amazon RDS API. You can specify the source region option instead of this parameter when you copy an encrypted DB snapshot from another AWS region by using the AWS CLI.
+You must specify this parameter when you copy an encrypted DB snapshot from another AWS Region by using the Amazon RDS API. You can specify the source region option instead of this parameter when you copy an encrypted DB snapshot from another AWS Region by using the AWS CLI.
 
-The presigned URL must be a valid request for the `CopyDBSnapshot` API action that can be executed in the source region that contains the encrypted DB snapshot to be copied. The presigned URL request must contain the following parameter values:
+The presigned URL must be a valid request for the `CopyDBSnapshot` API action that can be executed in the source AWS Region that contains the encrypted DB snapshot to be copied. The presigned URL request must contain the following parameter values:
 
-*   `DestinationRegion` - The AWS Region that the encrypted DB snapshot will be copied to. This region is the same one where the `CopyDBSnapshot` action is called that contains this presigned URL.
+*   `DestinationRegion` - The AWS Region that the encrypted DB snapshot will be copied to. This AWS Region is the same one where the `CopyDBSnapshot` action is called that contains this presigned URL.
 
-    For example, if you copy an encrypted DB snapshot from the us-west-2 region to the us-east-1 region, then you will call the `CopyDBSnapshot` action in the us-east-1 region and provide a presigned URL that contains a call to the `CopyDBSnapshot` action in the us-west-2 region. For this example, the `DestinationRegion` in the presigned URL must be set to the us-east-1 region.
+    For example, if you copy an encrypted DB snapshot from the us-west-2 region to the us-east-1 region, then you call the `CopyDBSnapshot` action in the us-east-1 region and provide a presigned URL that contains a call to the `CopyDBSnapshot` action in the us-west-2 region. For this example, the `DestinationRegion` in the presigned URL must be set to the us-east-1 region.
 
-*   `KmsKeyId` - The KMS key identifier for the key to use to encrypt the copy of the DB snapshot in the destination region. This is the same identifier for both the `CopyDBSnapshot` action that is called in the destination region, and the action contained in the presigned URL.
+*   `KmsKeyId` - The KMS key identifier for the key to use to encrypt the copy of the DB snapshot in the destination AWS Region. This is the same identifier for both the `CopyDBSnapshot` action that is called in the destination AWS Region, and the action contained in the presigned URL.
 
-*   `SourceDBSnapshotIdentifier` - The DB snapshot identifier for the encrypted snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source region. For example, if you are copying an encrypted DB snapshot from the us-west-2 region, then your `SourceDBSnapshotIdentifier` looks like the following example: `arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20161115`.
+*   `SourceDBSnapshotIdentifier` - The DB snapshot identifier for the encrypted snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For example, if you are copying an encrypted DB snapshot from the us-west-2 region, then your `SourceDBSnapshotIdentifier` looks like the following example: `arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20161115`.
 
 To learn how to generate a Signature Version 4 signed request, see [Authenticating Requests: Using Query Parameters (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) and [Signature Version 4 Signing Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
@@ -666,9 +666,9 @@ To learn how to generate a Signature Version 4 signed request, see [Authenticati
 
 
 ## `OptionGroupName = ::String`
-The name of an option group to associate with the copy.
+The name of an option group to associate with the copy of the snapshot.
 
-Specify this option if you are copying a snapshot from one AWS region to another, and your DB instance uses a non-default option group. If your source DB instance uses Transparent Data Encryption for Oracle or Microsoft SQL Server, you must specify this option when copying across regions. For more information, see [Option Group Considerations](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopySnapshot.Options).
+Specify this option if you are copying a snapshot from one AWS Region to another, and your DB instance uses a nondefault option group. If your source DB instance uses Transparent Data Encryption for Oracle or Microsoft SQL Server, you must specify this option when copying across regions. For more information, see [Option Group Considerations](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopySnapshot.Options).
 
 
 ## `SourceRegion = ::String`
@@ -717,9 +717,9 @@ Constraints:
 
 *   Must specify a valid option group.
 
-*   If the source option group is in the same region as the copy, specify a valid option group identifier, for example `my-option-group`, or a valid ARN.
+*   If the source option group is in the same AWS Region as the copy, specify a valid option group identifier, for example `my-option-group`, or a valid ARN.
 
-*   If the source option group is in a different region than the copy, specify a valid option group ARN, for example `arn:aws:rds:us-west-2:123456789012:og:special-options`.
+*   If the source option group is in a different AWS Region than the copy, specify a valid option group ARN, for example `arn:aws:rds:us-west-2:123456789012:og:special-options`.
 
 
 ## `TargetOptionGroupIdentifier = ::String` -- *Required*
@@ -897,7 +897,7 @@ Permanent options cannot be removed from an option group. The option group canno
 ## `PreferredBackupWindow = ::String`
 The daily time range during which automated backups are created if automated backups are enabled using the `BackupRetentionPeriod` parameter.
 
-Default: A 30-minute window selected at random from an 8-hour block of time per region. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
+Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
 
 Constraints:
 
@@ -915,7 +915,7 @@ The weekly time range during which system maintenance can occur, in Universal Co
 
 Format: `ddd:hh24:mi-ddd:hh24:mi`
 
-Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
+Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region, occurring on a random day of the week. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
@@ -944,23 +944,23 @@ The KMS key identifier for an encrypted DB cluster.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are creating a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB cluster, then you can use the KMS key alias instead of the ARN for the KMS encryption key.
 
-If the `StorageEncrypted` parameter is true, and you do not specify a value for the `KmsKeyId` parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+If the `StorageEncrypted` parameter is true, and you do not specify a value for the `KmsKeyId` parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.
 
-If you create a Read Replica of an encrypted DB cluster in another region, you must set `KmsKeyId` to a KMS key ID that is valid in the destination region. This key is used to encrypt the Read Replica in that region.
+If you create a Read Replica of an encrypted DB cluster in another AWS Region, you must set `KmsKeyId` to a KMS key ID that is valid in the destination AWS Region. This key is used to encrypt the Read Replica in that AWS Region.
 
 
 ## `PreSignedUrl = ::String`
-A URL that contains a Signature Version 4 signed request for the `CreateDBCluster` action to be called in the source region where the DB cluster will be replicated from. You only need to specify `PreSignedUrl` when you are performing cross-region replication from an encrypted DB cluster.
+A URL that contains a Signature Version 4 signed request for the `CreateDBCluster` action to be called in the source AWS Region where the DB cluster will be replicated from. You only need to specify `PreSignedUrl` when you are performing cross-region replication from an encrypted DB cluster.
 
-The pre-signed URL must be a valid request for the `CreateDBCluster` API action that can be executed in the source region that contains the encrypted DB cluster to be copied.
+The pre-signed URL must be a valid request for the `CreateDBCluster` API action that can be executed in the source AWS Region that contains the encrypted DB cluster to be copied.
 
 The pre-signed URL request must contain the following parameter values:
 
-*   `KmsKeyId` - The KMS key identifier for the key to use to encrypt the copy of the DB cluster in the destination region. This should refer to the same KMS key for both the `CreateDBCluster` action that is called in the destination region, and the action contained in the pre-signed URL.
+*   `KmsKeyId` - The KMS key identifier for the key to use to encrypt the copy of the DB cluster in the destination AWS Region. This should refer to the same KMS key for both the `CreateDBCluster` action that is called in the destination AWS Region, and the action contained in the pre-signed URL.
 
-*   `DestinationRegion` - The name of the region that Aurora Read Replica will be created in.
+*   `DestinationRegion` - The name of the AWS Region that Aurora Read Replica will be created in.
 
-*   `ReplicationSourceIdentifier` - The DB cluster identifier for the encrypted DB cluster to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source region. For example, if you are copying an encrypted DB cluster from the us-west-2 region, then your `ReplicationSourceIdentifier` would look like Example: `arn:aws:rds:us-west-2:123456789012:cluster:aurora-cluster1`.
+*   `ReplicationSourceIdentifier` - The DB cluster identifier for the encrypted DB cluster to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For example, if you are copying an encrypted DB cluster from the us-west-2 region, then your `ReplicationSourceIdentifier` would look like Example: `arn:aws:rds:us-west-2:123456789012:cluster:aurora-cluster1`.
 
 To learn how to generate a Signature Version 4 signed request, see [Authenticating Requests: Using Query Parameters (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) and [Signature Version 4 Signing Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
@@ -1228,7 +1228,7 @@ The DB instance identifier. This parameter is stored as a lowercase string.
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens (1 to 15 for SQL Server).
+*   Must contain from 1 to 63 alphanumeric characters or hyphens.
 
 *   First character must be a letter.
 
@@ -1276,7 +1276,7 @@ Valid Values: `db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xl
 ## `Engine = ::String` -- *Required*
 The name of the database engine to be used for this instance.
 
-Not every database engine is available for every AWS region.
+Not every database engine is available for every AWS Region.
 
 Valid Values:
 
@@ -1306,11 +1306,11 @@ Valid Values:
 
 
 ## `MasterUsername = ::String`
-The name for the master database user.
+The name for the master user.
 
 **Amazon Aurora**
 
-Not applicable. You specify the name for the master database user when you create your DB cluster.
+Not applicable. The name for the master user is managed by the DB cluster. For more information, see [CreateDBCluster](@ref).
 
 **MariaDB**
 
@@ -1362,11 +1362,11 @@ Constraints:
 
 
 ## `MasterUserPassword = ::String`
-The password for the master database user. Can be any printable ASCII character except "/", \"\"\", or "@".
+The password for the master user. Can be any printable ASCII character except "/", \"\"\", or "@".
 
 **Amazon Aurora**
 
-Not applicable. You specify the password for the master database user when you create your DB cluster.
+Not applicable. The password for the master user is managed by the DB cluster. For more information, see [CreateDBCluster](@ref).
 
 **MariaDB**
 
@@ -1398,17 +1398,21 @@ Default: The default DB security group for the database engine.
 ## `VpcSecurityGroupIds = [::String, ...]`
 A list of EC2 VPC security groups to associate with this DB instance.
 
+**Amazon Aurora**
+
+Not applicable. The associated list of EC2 VPC security groups is managed by the DB cluster. For more information, see [CreateDBCluster](@ref).
+
 Default: The default EC2 VPC security group for the DB subnet group's VPC.
 
 
 ## `AvailabilityZone = ::String`
 The EC2 Availability Zone that the database instance will be created in. For information on regions and Availability Zones, see [Regions and Availability Zones](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 
-Default: A random, system-chosen Availability Zone in the endpoint's region.
+Default: A random, system-chosen Availability Zone in the endpoint's AWS Region.
 
 Example: `us-east-1d`
 
-Constraint: The AvailabilityZone parameter cannot be specified if the MultiAZ parameter is set to `true`. The specified Availability Zone must be in the same region as the current endpoint.
+Constraint: The AvailabilityZone parameter cannot be specified if the MultiAZ parameter is set to `true`. The specified Availability Zone must be in the same AWS Region as the current endpoint.
 
 
 ## `DBSubnetGroupName = ::String`
@@ -1422,7 +1426,7 @@ The weekly time range during which system maintenance can occur, in Universal Co
 
 Format: `ddd:hh24:mi-ddd:hh24:mi`
 
-Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
+Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region, occurring on a random day of the week. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
@@ -1444,6 +1448,10 @@ Constraints:
 ## `BackupRetentionPeriod = ::Int`
 The number of days for which automated backups are retained. Setting this parameter to a positive number enables backups. Setting this parameter to 0 disables automated backups.
 
+**Amazon Aurora**
+
+Not applicable. The retention period for automated backups is managed by the DB cluster. For more information, see [CreateDBCluster](@ref).
+
 Default: 1
 
 Constraints:
@@ -1456,7 +1464,11 @@ Constraints:
 ## `PreferredBackupWindow = ::String`
 The daily time range during which automated backups are created if automated backups are enabled, using the `BackupRetentionPeriod` parameter. For more information, see [DB Instance Backups](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.BackingUpAndRestoringAmazonRDSInstances.html).
 
-Default: A 30-minute window selected at random from an 8-hour block of time per region. To see the time blocks available, see [Adjusting the Preferred DB Instance Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow).
+**Amazon Aurora**
+
+Not applicable. The daily time range for creating automated backups is managed by the DB cluster. For more information, see [CreateDBCluster](@ref).
+
+Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region. To see the time blocks available, see [Adjusting the Preferred DB Instance Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow).
 
 Constraints:
 
@@ -1524,11 +1536,11 @@ Specifies if the DB instance is a Multi-AZ deployment. You cannot set the Availa
 ## `EngineVersion = ::String`
 The version number of the database engine to use.
 
-The following are the database engines and major and minor versions that are available with Amazon RDS. Not every database engine is available for every AWS region.
+The following are the database engines and major and minor versions that are available with Amazon RDS. Not every database engine is available for every AWS Region.
 
 **Amazon Aurora**
 
-*   Version 5.6 (available in these AWS regions: ap-northeast-1, ap-northeast-2, ap-south-1, ap-southeast-2, eu-west-1, us-east-1, us-east-2, us-west-2): `5.6.10a`
+Not applicable. The version number of the database engine to be used by the DB instance is managed by the DB cluster. For more information, see [CreateDBCluster](@ref).
 
 **MariaDB**
 
@@ -1582,8 +1594,6 @@ The following are the database engines and major and minor versions that are ava
 
 *   `5.7.11` (supported in all AWS regions)
 
-*   `5.7.10` (supported in all regions except us-east-2, ca-central-1, eu-west-2)
-
 *   `5.6.35` (supported in all AWS regions)
 
 *   `5.6.34` (supported in all AWS regions)
@@ -1591,18 +1601,6 @@ The following are the database engines and major and minor versions that are ava
 *   `5.6.29` (supported in all AWS regions)
 
 *   `5.6.27` (supported in all regions except us-east-2, ca-central-1, eu-west-2)
-
-*   `5.6.23` (supported in all regions except us-east-2, ap-south-1, ca-central-1, eu-west-2)
-
-*   `5.6.22` (supported in all regions except us-east-2, ap-south-1, ap-northeast-2, ca-central-1, eu-west-2)
-
-*   `5.6.21b` (supported in all regions except us-east-2, ap-south-1, ap-northeast-2, ca-central-1, eu-west-2)
-
-*   `5.6.21` (supported in all regions except us-east-2, ap-south-1, ap-northeast-2, ca-central-1, eu-west-2)
-
-*   `5.6.19b` (supported in all regions except us-east-2, ap-south-1, ap-northeast-2, ca-central-1, eu-west-2)
-
-*   `5.6.19a` (supported in all regions except us-east-2, ap-south-1, ap-northeast-2, ca-central-1, eu-west-2)
 
 *   `5.5.54` (supported in all AWS regions)
 
@@ -1690,6 +1688,10 @@ Permanent options, such as the TDE option for Oracle Advanced Security TDE, cann
 ## `CharacterSetName = ::String`
 For supported engines, indicates that the DB instance should be associated with the specified CharacterSet.
 
+**Amazon Aurora**
+
+Not applicable. The character set is managed by the DB cluster. For more information, see [CreateDBCluster](@ref).
+
 
 ## `PubliclyAccessible = ::Bool`
 Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an internal instance with a DNS name that resolves to a private IP address.
@@ -1741,6 +1743,10 @@ The password for the given ARN from the Key Store in order to access the device.
 ## `StorageEncrypted = ::Bool`
 Specifies whether the DB instance is encrypted.
 
+**Amazon Aurora**
+
+Not applicable. The encryption for DB instances is managed by the DB cluster. For more information, see [CreateDBCluster](@ref).
+
 Default: false
 
 
@@ -1749,7 +1755,11 @@ The KMS key identifier for an encrypted DB instance.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are creating a DB instance with the same AWS account that owns the KMS encryption key used to encrypt the new DB instance, then you can use the KMS key alias instead of the ARN for the KM encryption key.
 
-If the `StorageEncrypted` parameter is true, and you do not specify a value for the `KmsKeyId` parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+**Amazon Aurora**
+
+Not applicable. The KMS key identifier is managed by the DB cluster. For more information, see [CreateDBCluster](@ref).
+
+If the `StorageEncrypted` parameter is true, and you do not specify a value for the `KmsKeyId` parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.
 
 
 ## `Domain = ::String`
@@ -1795,6 +1805,12 @@ True to enable mapping of AWS Identity and Access Management (IAM) accounts to d
 
 You can enable IAM database authentication for the following database engines:
 
+**Amazon Aurora**
+
+Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more information, see [CreateDBCluster](@ref).
+
+**MySQL**
+
 *   For MySQL 5.6, minor version 5.6.34 or higher
 
 *   For MySQL 5.7, minor version 5.7.16 or higher
@@ -1833,7 +1849,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 # CreateDBInstanceReadReplica Operation
 
-Creates a DB instance for a DB instance running MySQL, MariaDB, or PostgreSQL that acts as a Read Replica of a source DB instance.
+Creates a new DB instance that acts as a Read Replica for an existing source DB instance. You can create a Read Replica for a DB instance running MySQL, MariaDB, or PostgreSQL.
 
 **Note**
 > Amazon Aurora does not support this action. You must call the `CreateDBInstance` action to create a DB instance for an Aurora DB cluster.
@@ -1843,29 +1859,7 @@ All Read Replica DB instances are created as Single-AZ deployments with backups 
 **Important**
 > The source DB instance must have backup retention enabled.
 
-You can create an encrypted Read Replica in a different AWS Region than the source DB instance. In that case, the region where you call the `CreateDBInstanceReadReplica` action is the destination region of the encrypted Read Replica. The source DB instance must be encrypted.
-
-To create an encrypted Read Replica in another AWS Region, you must provide the following values:
-
-*   `KmsKeyId` - The AWS Key Management System (KMS) key identifier for the key to use to encrypt the Read Replica in the destination region.
-
-*   `PreSignedUrl` - A URL that contains a Signature Version 4 signed request for the `CreateDBInstanceReadReplica` API action in the AWS region that contains the source DB instance. The `PreSignedUrl` parameter must be used when encrypting a Read Replica from another AWS region.
-
-    The presigned URL must be a valid request for the `CreateDBInstanceReadReplica` API action that can be executed in the source region that contains the encrypted DB instance. The presigned URL request must contain the following parameter values:
-
-    *   `DestinationRegion` - The AWS Region that the Read Replica is created in. This region is the same one where the `CreateDBInstanceReadReplica` action is called that contains this presigned URL.
-
-        For example, if you create an encrypted Read Replica in the us-east-1 region, and the source DB instance is in the west-2 region, then you call the `CreateDBInstanceReadReplica` action in the us-east-1 region and provide a presigned URL that contains a call to the `CreateDBInstanceReadReplica` action in the us-west-2 region. For this example, the `DestinationRegion` in the presigned URL must be set to the us-east-1 region.
-
-    *   `KmsKeyId` - The KMS key identifier for the key to use to encrypt the Read Replica in the destination region. This is the same identifier for both the `CreateDBInstanceReadReplica` action that is called in the destination region, and the action contained in the presigned URL.
-
-    *   `SourceDBInstanceIdentifier` - The DB instance identifier for the encrypted Read Replica to be created. This identifier must be in the Amazon Resource Name (ARN) format for the source region. For example, if you create an encrypted Read Replica from a DB instance in the us-west-2 region, then your `SourceDBInstanceIdentifier` would look like this example: `arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-instance-20161115`.
-
-    To learn how to generate a Signature Version 4 signed request, see [Authenticating Requests: Using Query Parameters (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) and [Signature Version 4 Signing Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
-
-*   `DBInstanceIdentifier` - The identifier for the encrypted Read Replica in the destination region.
-
-*   `SourceDBInstanceIdentifier` - The DB instance identifier for the encrypted Read Replica. This identifier must be in the ARN format for the source region and is the same value as the `SourceDBInstanceIdentifier` in the presigned URL.
+For more information, see [Working with PostgreSQL, MySQL, and MariaDB Read Replicas](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html).
 
 # Arguments
 
@@ -1886,9 +1880,9 @@ Constraints:
 
 *   The specified DB instance must have automatic backups enabled, its backup retention period must be greater than 0.
 
-*   If the source DB instance is in the same region as the Read Replica, specify a valid DB instance identifier.
+*   If the source DB instance is in the same AWS Region as the Read Replica, specify a valid DB instance identifier.
 
-*   If the source DB instance is in a different region than the Read Replica, specify a valid DB instance ARN. For more information, go to [Constructing a Amazon RDS Amazon Resource Name (ARN)](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
+*   If the source DB instance is in a different AWS Region than the Read Replica, specify a valid DB instance ARN. For more information, go to [Constructing a Amazon RDS Amazon Resource Name (ARN)](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
 
 
 ## `DBInstanceClass = ::String`
@@ -1902,7 +1896,7 @@ Default: Inherits from the source DB instance.
 ## `AvailabilityZone = ::String`
 The Amazon EC2 Availability Zone that the Read Replica will be created in.
 
-Default: A random, system-chosen Availability Zone in the endpoint's region.
+Default: A random, system-chosen Availability Zone in the endpoint's AWS Region.
 
 Example: `us-east-1d`
 
@@ -1955,11 +1949,11 @@ Specifies a DB subnet group for the DB instance. The new DB instance will be cre
 
 Constraints:
 
-*   Can only be specified if the source DB instance identifier specifies a DB instance in another region.
+*   Can only be specified if the source DB instance identifier specifies a DB instance in another AWS Region.
 
-*   The specified DB subnet group must be in the same region in which the operation is running.
+*   The specified DB subnet group must be in the same AWS Region in which the operation is running.
 
-*   All Read Replicas in one region that are created from the same source DB instance must either:>
+*   All Read Replicas in one AWS Region that are created from the same source DB instance must either:>
 
     *   Specify DB subnet groups from the same VPC. All these Read Replicas will be created in the same VPC.
 
@@ -2001,25 +1995,27 @@ If `MonitoringInterval` is set to a value other than 0, then you must supply a `
 ## `KmsKeyId = ::String`
 The AWS KMS key ID for an encrypted Read Replica. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
 
-If you create an unencrypted Read Replica and specify a value for the `KmsKeyId` parameter, Amazon RDS encrypts the target Read Replica using the specified KMS encryption key.
+If you specify this parameter when you create a Read Replica from an unencrypted DB instance, the Read Replica is encrypted.
 
-If you create an encrypted Read Replica from your AWS account, you can specify a value for `KmsKeyId` to encrypt the Read Replica with a new KMS encryption key. If you don't specify a value for `KmsKeyId`, then the Read Replica is encrypted with the same KMS key as the source DB instance.
+If you create an encrypted Read Replica in the same AWS Region as the source DB instance, then you do not have to specify a value for this parameter. The Read Replica is encrypted with the same KMS key as the source DB instance.
 
-If you create an encrypted Read Replica in a different AWS region, then you must specify a KMS key for the destination AWS region. KMS encryption keys are specific to the region that they are created in, and you cannot use encryption keys from one region in another region.
+If you create an encrypted Read Replica in a different AWS Region, then you must specify a KMS key for the destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and you cannot use encryption keys from one AWS Region in another AWS Region.
 
 
 ## `PreSignedUrl = ::String`
-The URL that contains a Signature Version 4 signed request for the `CreateDBInstanceReadReplica` API action in the AWS region that contains the source DB instance. The `PreSignedUrl` parameter must be used when encrypting a Read Replica from another AWS region.
+The URL that contains a Signature Version 4 signed request for the `CreateDBInstanceReadReplica` API action in the source AWS Region that contains the source DB instance.
 
-The presigned URL must be a valid request for the `CreateDBInstanceReadReplica` API action that can be executed in the source region that contains the encrypted DB instance. The presigned URL request must contain the following parameter values:
+You must specify this parameter when you create an encrypted Read Replica from another AWS Region by using the Amazon RDS API. You can specify the source region option instead of this parameter when you create an encrypted Read Replica from another AWS Region by using the AWS CLI.
 
-*   `DestinationRegion` - The AWS Region that the Read Replica is created in. This region is the same one where the `CreateDBInstanceReadReplica` action is called that contains this presigned URL.
+The presigned URL must be a valid request for the `CreateDBInstanceReadReplica` API action that can be executed in the source AWS Region that contains the encrypted source DB instance. The presigned URL request must contain the following parameter values:
 
-    For example, if you create an encrypted Read Replica in the us-east-1 region, and the source DB instance is in the west-2 region, then you call the `CreateDBInstanceReadReplica` action in the us-east-1 region and provide a presigned URL that contains a call to the `CreateDBInstanceReadReplica` action in the us-west-2 region. For this example, the `DestinationRegion` in the presigned URL must be set to the us-east-1 region.
+*   `DestinationRegion` - The AWS Region that the encrypted Read Replica will be created in. This AWS Region is the same one where the `CreateDBInstanceReadReplica` action is called that contains this presigned URL.
 
-*   `KmsKeyId` - The KMS key identifier for the key to use to encrypt the Read Replica in the destination region. This is the same identifier for both the `CreateDBInstanceReadReplica` action that is called in the destination region, and the action contained in the presigned URL.
+    For example, if you create an encrypted DB instance in the us-west-1 region, from a source DB instance in the us-east-2 region, then you call the `CreateDBInstanceReadReplica` action in the us-east-1 region and provide a presigned URL that contains a call to the `CreateDBInstanceReadReplica` action in the us-west-2 region. For this example, the `DestinationRegion` in the presigned URL must be set to the us-east-1 region.
 
-*   `SourceDBInstanceIdentifier` - The DB instance identifier for the encrypted Read Replica to be created. This identifier must be in the Amazon Resource Name (ARN) format for the source region. For example, if you create an encrypted Read Replica from a DB instance in the us-west-2 region, then your `SourceDBInstanceIdentifier` would look like this example: `arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-instance-20161115`.
+*   `KmsKeyId` - The KMS key identifier for the key to use to encrypt the Read Replica in the destination AWS Region. This is the same identifier for both the `CreateDBInstanceReadReplica` action that is called in the destination AWS Region, and the action contained in the presigned URL.
+
+*   `SourceDBInstanceIdentifier` - The DB instance identifier for the encrypted DB instance to be replicated. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For example, if you are creating an encrypted Read Replica from a DB instance in the us-west-2 region, then your `SourceDBInstanceIdentifier` looks like the following example: `arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115`.
 
 To learn how to generate a Signature Version 4 signed request, see [Authenticating Requests: Using Query Parameters (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) and [Signature Version 4 Signing Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
@@ -2284,7 +2280,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 # CreateDBSubnetGroup Operation
 
-Creates a new DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the region.
+Creates a new DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the AWS Region.
 
 # Arguments
 
@@ -4904,12 +4900,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 # DescribeSourceRegions Operation
 
-Returns a list of the source AWS regions where the current AWS region can create a Read Replica or copy a DB snapshot from. This API action supports pagination.
+Returns a list of the source AWS regions where the current AWS Region can create a Read Replica or copy a DB snapshot from. This API action supports pagination.
 
 # Arguments
 
 ## `RegionName = ::String`
-The source region name. For example, `us-east-1`.
+The source AWS Region name. For example, `us-east-1`.
 
 Constraints:
 
@@ -5223,7 +5219,7 @@ Permanent options cannot be removed from an option group. The option group canno
 ## `PreferredBackupWindow = ::String`
 The daily time range during which automated backups are created if automated backups are enabled, using the `BackupRetentionPeriod` parameter.
 
-Default: A 30-minute window selected at random from an 8-hour block of time per region. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
+Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
 
 Constraints:
 
@@ -5241,7 +5237,7 @@ The weekly time range during which system maintenance can occur, in Universal Co
 
 Format: `ddd:hh24:mi-ddd:hh24:mi`
 
-Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
+Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region, occurring on a random day of the week. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
@@ -5511,6 +5507,10 @@ Constraints:
 ## `VpcSecurityGroupIds = [::String, ...]`
 A list of EC2 VPC security groups to authorize on this DB instance. This change is asynchronously applied as soon as possible.
 
+**Amazon Aurora**
+
+Not applicable. The associated list of EC2 VPC security groups is managed by the DB cluster. For more information, see [ModifyDBCluster](@ref).
+
 Constraints:
 
 *   Must be 1 to 255 alphanumeric characters
@@ -5529,9 +5529,13 @@ Default: `false`
 
 
 ## `MasterUserPassword = ::String`
-The new password for the DB instance master user. Can be any printable ASCII character except "/", \"\"\", or "@".
+The new password for the master user. Can be any printable ASCII character except "/", \"\"\", or "@".
 
 Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible. Between the time of the request and the completion of the request, the `MasterUserPassword` element exists in the `PendingModifiedValues` element of the operation response.
+
+**Amazon Aurora**
+
+Not applicable. The password for the master user is managed by the DB cluster. For more information, see [ModifyDBCluster](@ref).
 
 Default: Uses existing setting
 
@@ -5554,6 +5558,10 @@ The number of days to retain automated backups. Setting this parameter to a posi
 
 Changing this parameter can result in an outage if you change from 0 to a non-zero value or from a non-zero value to 0. These changes are applied during the next maintenance window unless the `ApplyImmediately` parameter is set to `true` for this request. If you change the parameter from one non-zero value to another non-zero value, the change is asynchronously applied as soon as possible.
 
+**Amazon Aurora**
+
+Not applicable. The retention period for automated backups is managed by the DB cluster. For more information, see [ModifyDBCluster](@ref).
+
 Default: Uses existing setting
 
 Constraints:
@@ -5569,6 +5577,10 @@ Constraints:
 
 ## `PreferredBackupWindow = ::String`
 The daily time range during which automated backups are created if automated backups are enabled, as determined by the `BackupRetentionPeriod` parameter. Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible.
+
+**Amazon Aurora**
+
+Not applicable. The daily time range for creating automated backups is managed by the DB cluster. For more information, see [ModifyDBCluster](@ref).
 
 Constraints:
 
@@ -5602,7 +5614,7 @@ Constraints: Cannot be specified if the DB instance is a Read Replica.
 ## `EngineVersion = ::String`
 The version number of the database engine to upgrade to. Changing this parameter results in an outage and the change is applied during the next maintenance window unless the `ApplyImmediately` parameter is set to `true` for this request.
 
-For major version upgrades, if a non-default DB parameter group is currently in use, a new DB parameter group in the DB parameter group family for the new engine version must be specified. The new DB parameter group can be the default for that DB parameter group family.
+For major version upgrades, if a nondefault DB parameter group is currently in use, a new DB parameter group in the DB parameter group family for the new engine version must be specified. The new DB parameter group can be the default for that DB parameter group family.
 
 For a list of valid engine versions, see [CreateDBInstance](@ref).
 
@@ -5773,6 +5785,12 @@ Valid Values: 0 - 15
 True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise false.
 
 You can enable IAM database authentication for the following database engines
+
+**Amazon Aurora**
+
+Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more information, see [ModifyDBCluster](@ref).
+
+**MySQL**
 
 *   For MySQL 5.6, minor version 5.6.34 or higher
 
@@ -5995,7 +6013,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 # ModifyDBSubnetGroup Operation
 
-Modifies an existing DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the region.
+Modifies an existing DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the AWS Region.
 
 # Arguments
 
@@ -6213,7 +6231,7 @@ Constraints:
 ## `PreferredBackupWindow = ::String`
 The daily time range during which automated backups are created if automated backups are enabled, using the `BackupRetentionPeriod` parameter.
 
-Default: A 30-minute window selected at random from an 8-hour block of time per region. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
+Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
 
 Constraints:
 
@@ -6809,7 +6827,7 @@ Permanent options cannot be removed from an option group. An option group cannot
 ## `PreferredBackupWindow = ::String`
 The daily time range during which automated backups are created if automated backups are enabled using the `BackupRetentionPeriod` parameter.
 
-Default: A 30-minute window selected at random from an 8-hour block of time per region. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
+Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
 
 Constraints:
 
@@ -6827,7 +6845,7 @@ The weekly time range during which system maintenance can occur, in Universal Co
 
 Format: `ddd:hh24:mi-ddd:hh24:mi`
 
-Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
+Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region, occurring on a random day of the week. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
@@ -6852,7 +6870,7 @@ The KMS key identifier for an encrypted DB cluster.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are creating a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB cluster, then you can use the KMS key alias instead of the ARN for the KM encryption key.
 
-If the `StorageEncrypted` parameter is true, and you do not specify a value for the `KmsKeyId` parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+If the `StorageEncrypted` parameter is true, and you do not specify a value for the `KmsKeyId` parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.
 
 
 ## `EnableIAMDatabaseAuthentication = ::Bool`
@@ -7054,6 +7072,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before `LatestRestorableTime` for up to `BackupRetentionPeriod` days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group.
 
+**Note**
+> This action only restores the DB cluster, not the DB instances for that DB cluster. You must invoke the [CreateDBInstance](@ref) action to create DB instances for the restored DB cluster, specifying the identifier of the restored DB cluster in `DBClusterIdentifier`. You can create DB instances only after the `RestoreDBClusterToPointInTime` action has completed and the DB cluster is available.
+
 For more information on Amazon Aurora, see [Aurora on Amazon RDS](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html) in the *Amazon RDS User Guide.*
 
 # Arguments
@@ -7221,7 +7242,7 @@ Name of the DB instance to create from the DB snapshot. This parameter isn't cas
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens (1 to 15 for SQL Server)
+*   Must contain from 1 to 63 alphanumeric characters or hyphens
 
 *   First character must be a letter
 

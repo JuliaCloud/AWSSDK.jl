@@ -374,6 +374,10 @@ Creates a new Maintenance Window.
 The name of the Maintenance Window.
 
 
+## `Description = ::String`
+An optional description for the Maintenance Window. We recommend specifying a description to help your organize your Maintenance Windows.
+
+
 ## `Schedule = ::String` -- *Required*
 The schedule of the Maintenance Window in the form of a cron or rate expression.
 
@@ -769,7 +773,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # DeleteParameters Operation
 
-Delete a list of parameters.
+Delete a list of parameters. This API is used to delete parameters by using the Amazon EC2 console.
 
 # Arguments
 
@@ -960,11 +964,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 """
     using AWSSDK.SSM.deregister_target_from_maintenance_window
     deregister_target_from_maintenance_window([::AWSConfig], arguments::Dict)
-    deregister_target_from_maintenance_window([::AWSConfig]; WindowId=, WindowTargetId=)
+    deregister_target_from_maintenance_window([::AWSConfig]; WindowId=, WindowTargetId=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "DeregisterTargetFromMaintenanceWindow", arguments::Dict)
-    ssm([::AWSConfig], "DeregisterTargetFromMaintenanceWindow", WindowId=, WindowTargetId=)
+    ssm([::AWSConfig], "DeregisterTargetFromMaintenanceWindow", WindowId=, WindowTargetId=, <keyword arguments>)
 
 # DeregisterTargetFromMaintenanceWindow Operation
 
@@ -980,6 +984,10 @@ The ID of the Maintenance Window the target should be removed from.
 The ID of the target definition to remove.
 
 
+## `Safe = ::Bool`
+The system checks if the target is being referenced by a task. If the target is being referenced, the system returns and error and does not deregister the target from the Maintenance Window.
+
+
 
 
 # Returns
@@ -988,7 +996,7 @@ The ID of the target definition to remove.
 
 # Exceptions
 
-`DoesNotExistException` or `InternalServerError`.
+`DoesNotExistException`, `InternalServerError` or `TargetInUseException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeregisterTargetFromMaintenanceWindow)
 """
@@ -1831,7 +1839,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # DescribeMaintenanceWindowExecutions Operation
 
-Lists the executions of a Maintenance Window (meaning, information about when the Maintenance Window was scheduled to be active and information about tasks registered and run with the Maintenance Window).
+Lists the executions of a Maintenance Window. This includes information about when the Maintenance Window was scheduled to be active, and information about tasks registered and run with the Maintenance Window.
 
 # Arguments
 
@@ -2058,6 +2066,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 # DescribeParameters Operation
 
 Get information about a parameter.
+
+Request results are returned on a best-effort basis. If you specify `MaxResults` in the request, the response includes information up to the limit specified. The number of items returned, however, can be between zero and the value of `MaxResults`. If the service reaches an internal limit while processing the results, it stops the operation and returns the matching values up to that point and a `NextToken`. You can specify the `NextToken` in a subsequent call to get the next set of results.
 
 # Arguments
 
@@ -2550,6 +2560,10 @@ The token for the next set of items to return. (You received this token from a p
 The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 
 
+## `SubType = ::Bool`
+Returns the sub-type schema for a specified inventory type.
+
+
 
 
 # Returns
@@ -2689,6 +2703,96 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 @inline get_maintenance_window_execution_task(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetMaintenanceWindowExecutionTask", args)
 
 @inline get_maintenance_window_execution_task(args) = get_maintenance_window_execution_task(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SSM.get_maintenance_window_execution_task_invocation
+    get_maintenance_window_execution_task_invocation([::AWSConfig], arguments::Dict)
+    get_maintenance_window_execution_task_invocation([::AWSConfig]; WindowExecutionId=, TaskId=, InvocationId=)
+
+    using AWSCore.Services.ssm
+    ssm([::AWSConfig], "GetMaintenanceWindowExecutionTaskInvocation", arguments::Dict)
+    ssm([::AWSConfig], "GetMaintenanceWindowExecutionTaskInvocation", WindowExecutionId=, TaskId=, InvocationId=)
+
+# GetMaintenanceWindowExecutionTaskInvocation Operation
+
+Retrieves a task invocation. A task invocation is a specific task executing on a specific target. Maintenance Windows report status for all invocations.
+
+# Arguments
+
+## `WindowExecutionId = ::String` -- *Required*
+The ID of the Maintenance Window execution the task is part of.
+
+
+## `TaskId = ::String` -- *Required*
+The ID of the specific task in the Maintenance Window task that should be retrieved.
+
+
+## `InvocationId = ::String` -- *Required*
+The invocation ID to retrieve.
+
+
+
+
+# Returns
+
+`GetMaintenanceWindowExecutionTaskInvocationResult`
+
+# Exceptions
+
+`DoesNotExistException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetMaintenanceWindowExecutionTaskInvocation)
+"""
+
+@inline get_maintenance_window_execution_task_invocation(aws::AWSConfig=default_aws_config(); args...) = get_maintenance_window_execution_task_invocation(aws, args)
+
+@inline get_maintenance_window_execution_task_invocation(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetMaintenanceWindowExecutionTaskInvocation", args)
+
+@inline get_maintenance_window_execution_task_invocation(args) = get_maintenance_window_execution_task_invocation(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SSM.get_maintenance_window_task
+    get_maintenance_window_task([::AWSConfig], arguments::Dict)
+    get_maintenance_window_task([::AWSConfig]; WindowId=, WindowTaskId=)
+
+    using AWSCore.Services.ssm
+    ssm([::AWSConfig], "GetMaintenanceWindowTask", arguments::Dict)
+    ssm([::AWSConfig], "GetMaintenanceWindowTask", WindowId=, WindowTaskId=)
+
+# GetMaintenanceWindowTask Operation
+
+Lists the tasks in a Maintenance Window.
+
+# Arguments
+
+## `WindowId = ::String` -- *Required*
+The Maintenance Window ID that includes the task to retrieve.
+
+
+## `WindowTaskId = ::String` -- *Required*
+The Maintenance Window task ID to retrieve.
+
+
+
+
+# Returns
+
+`GetMaintenanceWindowTaskResult`
+
+# Exceptions
+
+`DoesNotExistException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetMaintenanceWindowTask)
+"""
+
+@inline get_maintenance_window_task(aws::AWSConfig=default_aws_config(); args...) = get_maintenance_window_task(aws, args)
+
+@inline get_maintenance_window_task(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetMaintenanceWindowTask", args)
+
+@inline get_maintenance_window_task(args) = get_maintenance_window_task(default_aws_config(), args)
 
 
 """
@@ -2840,6 +2944,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 # GetParametersByPath Operation
 
 Retrieve parameters in a specific hierarchy. For more information, see [Working with Systems Manager Parameters](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html).
+
+Request results are returned on a best-effort basis. If you specify `MaxResults` in the request, the response includes information up to the limit specified. The number of items returned, however, can be between zero and the value of `MaxResults`. If the service reaches an internal limit while processing the results, it stops the operation and returns the matching values up to that point and a `NextToken`. You can specify the `NextToken` in a subsequent call to get the next set of results.
 
 # Arguments
 
@@ -3154,6 +3260,120 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
+    using AWSSDK.SSM.list_compliance_items
+    list_compliance_items([::AWSConfig], arguments::Dict)
+    list_compliance_items([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.ssm
+    ssm([::AWSConfig], "ListComplianceItems", arguments::Dict)
+    ssm([::AWSConfig], "ListComplianceItems", <keyword arguments>)
+
+# ListComplianceItems Operation
+
+For a specified resource ID, this API returns a list of compliance statuses for different resource types. Currently, you can only specify one resource ID per call. List results depend on the criteria specified in the filter.
+
+# Arguments
+
+## `Filters = [[ ... ], ...]`
+One or more compliance filters. Use a filter to return a more specific list of results.
+```
+ Filters = [[
+        "Key" =>  ::String,
+        "Values" =>  [::String, ...],
+        "Type" =>  "EQUAL", "NOT_EQUAL", "BEGIN_WITH", "LESS_THAN" or "GREATER_THAN"
+    ], ...]
+```
+
+## `ResourceIds = [::String, ...]`
+The ID for the resources from which you want to get compliance information. Currently, you can only specify one resource ID.
+
+
+## `ResourceTypes = [::String, ...]`
+The type of resource from which you want to get compliance information. Currently, the only supported resource type is `ManagedInstance`.
+
+
+## `NextToken = ::String`
+A token to start the list. Use this token to get the next set of results.
+
+
+## `MaxResults = ::Int`
+The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+
+
+
+
+# Returns
+
+`ListComplianceItemsResult`
+
+# Exceptions
+
+`InvalidResourceType`, `InvalidResourceId`, `InternalServerError`, `InvalidFilter` or `InvalidNextToken`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListComplianceItems)
+"""
+
+@inline list_compliance_items(aws::AWSConfig=default_aws_config(); args...) = list_compliance_items(aws, args)
+
+@inline list_compliance_items(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "ListComplianceItems", args)
+
+@inline list_compliance_items(args) = list_compliance_items(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SSM.list_compliance_summaries
+    list_compliance_summaries([::AWSConfig], arguments::Dict)
+    list_compliance_summaries([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.ssm
+    ssm([::AWSConfig], "ListComplianceSummaries", arguments::Dict)
+    ssm([::AWSConfig], "ListComplianceSummaries", <keyword arguments>)
+
+# ListComplianceSummaries Operation
+
+Returns a summary count of compliant and non-compliant resources for a compliance type. For example, this call can return State Manager associations, patches, or custom compliance types according to the filter criteria you specify.
+
+# Arguments
+
+## `Filters = [[ ... ], ...]`
+One or more compliance or inventory filters. Use a filter to return a more specific list of results.
+```
+ Filters = [[
+        "Key" =>  ::String,
+        "Values" =>  [::String, ...],
+        "Type" =>  "EQUAL", "NOT_EQUAL", "BEGIN_WITH", "LESS_THAN" or "GREATER_THAN"
+    ], ...]
+```
+
+## `NextToken = ::String`
+A token to start the list. Use this token to get the next set of results.
+
+
+## `MaxResults = ::Int`
+The maximum number of items to return for this call. Currently, you can specify null or 50. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+
+
+
+
+# Returns
+
+`ListComplianceSummariesResult`
+
+# Exceptions
+
+`InvalidFilter`, `InvalidNextToken` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListComplianceSummaries)
+"""
+
+@inline list_compliance_summaries(aws::AWSConfig=default_aws_config(); args...) = list_compliance_summaries(aws, args)
+
+@inline list_compliance_summaries(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "ListComplianceSummaries", args)
+
+@inline list_compliance_summaries(args) = list_compliance_summaries(default_aws_config(), args)
+
+
+"""
     using AWSSDK.SSM.list_document_versions
     list_document_versions([::AWSConfig], arguments::Dict)
     list_document_versions([::AWSConfig]; Name=, <keyword arguments>)
@@ -3314,6 +3534,59 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
+    using AWSSDK.SSM.list_resource_compliance_summaries
+    list_resource_compliance_summaries([::AWSConfig], arguments::Dict)
+    list_resource_compliance_summaries([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.ssm
+    ssm([::AWSConfig], "ListResourceComplianceSummaries", arguments::Dict)
+    ssm([::AWSConfig], "ListResourceComplianceSummaries", <keyword arguments>)
+
+# ListResourceComplianceSummaries Operation
+
+Returns a resource-level summary count. The summary includes information about compliant and non-compliant statuses and detailed compliance-item severity counts, according to the filter criteria you specify.
+
+# Arguments
+
+## `Filters = [[ ... ], ...]`
+One or more filters. Use a filter to return a more specific list of results.
+```
+ Filters = [[
+        "Key" =>  ::String,
+        "Values" =>  [::String, ...],
+        "Type" =>  "EQUAL", "NOT_EQUAL", "BEGIN_WITH", "LESS_THAN" or "GREATER_THAN"
+    ], ...]
+```
+
+## `NextToken = ::String`
+A token to start the list. Use this token to get the next set of results.
+
+
+## `MaxResults = ::Int`
+The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+
+
+
+
+# Returns
+
+`ListResourceComplianceSummariesResult`
+
+# Exceptions
+
+`InvalidFilter`, `InvalidNextToken` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListResourceComplianceSummaries)
+"""
+
+@inline list_resource_compliance_summaries(aws::AWSConfig=default_aws_config(); args...) = list_resource_compliance_summaries(aws, args)
+
+@inline list_resource_compliance_summaries(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "ListResourceComplianceSummaries", args)
+
+@inline list_resource_compliance_summaries(args) = list_resource_compliance_summaries(default_aws_config(), args)
+
+
+"""
     using AWSSDK.SSM.list_resource_data_sync
     list_resource_data_sync([::AWSConfig], arguments::Dict)
     list_resource_data_sync([::AWSConfig]; <keyword arguments>)
@@ -3453,6 +3726,79 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
+    using AWSSDK.SSM.put_compliance_items
+    put_compliance_items([::AWSConfig], arguments::Dict)
+    put_compliance_items([::AWSConfig]; ResourceId=, ResourceType=, ComplianceType=, ExecutionSummary=, Items=, <keyword arguments>)
+
+    using AWSCore.Services.ssm
+    ssm([::AWSConfig], "PutComplianceItems", arguments::Dict)
+    ssm([::AWSConfig], "PutComplianceItems", ResourceId=, ResourceType=, ComplianceType=, ExecutionSummary=, Items=, <keyword arguments>)
+
+# PutComplianceItems Operation
+
+Registers a compliance type and other compliance details on a designated resource. This API lets you register custom compliance details with a resource. This call overwrites existing compliance information on the resource, so you must provide a full list of compliance items each time you send the request.
+
+# Arguments
+
+## `ResourceId = ::String` -- *Required*
+Specify an ID for this resource. For a managed instance, this is the instance ID.
+
+
+## `ResourceType = ::String` -- *Required*
+Specify the type of resource. `ManagedInstance` is currently the only supported resource type.
+
+
+## `ComplianceType = ::String` -- *Required*
+Specify the compliance type. For example, specify Association (for a State Manager association), Patch, or Custom:`string`.
+
+
+## `ExecutionSummary = [ ... ]` -- *Required*
+A summary of the call execution that includes an execution ID, the type of execution (for example, `Command`), and the date/time of the execution using a datetime object that is saved in the following format: yyyy-MM-dd'T'HH:mm:ss'Z'.
+```
+ ExecutionSummary = [
+        "ExecutionTime" => <required> timestamp,
+        "ExecutionId" =>  ::String,
+        "ExecutionType" =>  ::String
+    ]
+```
+
+## `Items = [[ ... ], ...]` -- *Required*
+Information about the compliance as defined by the resource type. For example, for a patch compliance type, `Items` includes information about the PatchSeverity, Classification, etc.
+```
+ Items = [[
+        "Id" =>  ::String,
+        "Title" =>  ::String,
+        "Severity" => <required> "CRITICAL", "HIGH", "MEDIUM", "LOW", "INFORMATIONAL" or "UNSPECIFIED",
+        "Status" => <required> "COMPLIANT" or "NON_COMPLIANT",
+        "Details" =>  ::Dict{String,String}
+    ], ...]
+```
+
+## `ItemContentHash = ::String`
+MD5 or Sha256 content hash. The content hash is used to determine if existing information should be overwritten or ignored. If the content hashes match, ,the request to put compliance information is ignored.
+
+
+
+
+# Returns
+
+`PutComplianceItemsResult`
+
+# Exceptions
+
+`InternalServerError`, `InvalidItemContentException`, `TotalSizeLimitExceededException`, `ItemSizeLimitExceededException`, `ComplianceTypeCountLimitExceededException`, `InvalidResourceType` or `InvalidResourceId`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/PutComplianceItems)
+"""
+
+@inline put_compliance_items(aws::AWSConfig=default_aws_config(); args...) = put_compliance_items(aws, args)
+
+@inline put_compliance_items(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "PutComplianceItems", args)
+
+@inline put_compliance_items(args) = put_compliance_items(default_aws_config(), args)
+
+
+"""
     using AWSSDK.SSM.put_inventory
     put_inventory([::AWSConfig], arguments::Dict)
     put_inventory([::AWSConfig]; InstanceId=, Items=)
@@ -3479,7 +3825,8 @@ The inventory items that you want to add or update on instances.
         "SchemaVersion" => <required> ::String,
         "CaptureTime" => <required> ::String,
         "ContentHash" =>  ::String,
-        "Content" =>  [::Dict{String,String}, ...]
+        "Content" =>  [::Dict{String,String}, ...],
+        "Context" =>  ::Dict{String,String}
     ], ...]
 ```
 
@@ -3491,7 +3838,7 @@ The inventory items that you want to add or update on instances.
 
 # Exceptions
 
-`InternalServerError`, `InvalidInstanceId`, `InvalidTypeNameException`, `InvalidItemContentException`, `TotalSizeLimitExceededException`, `ItemSizeLimitExceededException`, `ItemContentMismatchException`, `CustomSchemaCountLimitExceededException` or `UnsupportedInventorySchemaVersionException`.
+`InternalServerError`, `InvalidInstanceId`, `InvalidTypeNameException`, `InvalidItemContentException`, `TotalSizeLimitExceededException`, `ItemSizeLimitExceededException`, `ItemContentMismatchException`, `CustomSchemaCountLimitExceededException`, `UnsupportedInventorySchemaVersionException`, `UnsupportedInventoryItemContextException`, `InvalidInventoryItemContextException` or `SubTypeCountLimitExceededException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/PutInventory)
 """
@@ -3684,6 +4031,14 @@ The targets (either instances or tags). Instances are specified using Key=instan
 User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.
 
 
+## `Name = ::String`
+An optional name for the target.
+
+
+## `Description = ::String`
+An optional description for the target.
+
+
 ## `ClientToken = ::String`
 User-provided idempotency token.
 
@@ -3744,13 +4099,48 @@ The ARN of the task to execute
 The role that should be assumed when executing the task.
 
 
-## `TaskType = "RUN_COMMAND"` -- *Required*
+## `TaskType = "RUN_COMMAND", "AUTOMATION", "STEP_FUNCTIONS" or "LAMBDA"` -- *Required*
 The type of task being registered.
 
 
 ## `TaskParameters = ::Dict{String,String}`
 The parameters that should be passed to the task when it is executed.
 
+
+## `TaskInvocationParameters = [ ... ]`
+Parameters the task should use during execution. Populate only the fields that match the task type. All other fields should be empty.
+```
+ TaskInvocationParameters = [
+        "RunCommand" =>  [
+            "Comment" =>  ::String,
+            "DocumentHash" =>  ::String,
+            "DocumentHashType" =>  "Sha256" or "Sha1",
+            "NotificationConfig" =>  [
+                "NotificationArn" =>  ::String,
+                "NotificationEvents" =>  ["All", "InProgress", "Success", "TimedOut", "Cancelled" or "Failed", ...],
+                "NotificationType" =>  "Command" or "Invocation"
+            ],
+            "OutputS3BucketName" =>  ::String,
+            "OutputS3KeyPrefix" =>  ::String,
+            "Parameters" =>  ::Dict{String,String},
+            "ServiceRoleArn" =>  ::String,
+            "TimeoutSeconds" =>  ::Int
+        ],
+        "Automation" =>  [
+            "DocumentVersion" =>  ::String,
+            "Parameters" =>  ::Dict{String,String}
+        ],
+        "StepFunctions" =>  [
+            "Input" =>  ::String,
+            "Name" =>  ::String
+        ],
+        "Lambda" =>  [
+            "ClientContext" =>  ::String,
+            "Qualifier" =>  ::String,
+            "Payload" =>  blob
+        ]
+    ]
+```
 
 ## `Priority = ::Int`
 The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.
@@ -3774,6 +4164,14 @@ A structure containing information about an Amazon S3 bucket to write instance-l
     ]
 ```
 
+## `Name = ::String`
+An optional name for the task.
+
+
+## `Description = ::String`
+An optional description for the task.
+
+
 ## `ClientToken = ::String`
 User-provided idempotency token.
 
@@ -3786,7 +4184,7 @@ User-provided idempotency token.
 
 # Exceptions
 
-`IdempotentParameterMismatch`, `DoesNotExistException`, `ResourceLimitExceededException` or `InternalServerError`.
+`IdempotentParameterMismatch`, `DoesNotExistException`, `ResourceLimitExceededException`, `FeatureNotAvailableException` or `InternalServerError`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/RegisterTaskWithMaintenanceWindow)
 """
@@ -3843,6 +4241,53 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 @inline remove_tags_from_resource(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "RemoveTagsFromResource", args)
 
 @inline remove_tags_from_resource(args) = remove_tags_from_resource(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SSM.send_automation_signal
+    send_automation_signal([::AWSConfig], arguments::Dict)
+    send_automation_signal([::AWSConfig]; AutomationExecutionId=, SignalType=, <keyword arguments>)
+
+    using AWSCore.Services.ssm
+    ssm([::AWSConfig], "SendAutomationSignal", arguments::Dict)
+    ssm([::AWSConfig], "SendAutomationSignal", AutomationExecutionId=, SignalType=, <keyword arguments>)
+
+# SendAutomationSignal Operation
+
+Sends a signal to an Automation execution to change the current behavior or status of the execution.
+
+# Arguments
+
+## `AutomationExecutionId = ::String` -- *Required*
+The unique identifier for an existing Automation execution that you want to send the signal to.
+
+
+## `SignalType = "Approve" or "Reject"` -- *Required*
+The type of signal. Valid signal types include the following: Approve and Reject
+
+
+## `Payload = ::Dict{String,String}`
+The data sent with the signal. The data schema depends on the type of signal used in the request.
+
+
+
+
+# Returns
+
+`SendAutomationSignalResult`
+
+# Exceptions
+
+`AutomationExecutionNotFoundException`, `InvalidAutomationSignalException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/SendAutomationSignal)
+"""
+
+@inline send_automation_signal(aws::AWSConfig=default_aws_config(); args...) = send_automation_signal(aws, args)
+
+@inline send_automation_signal(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "SendAutomationSignal", args)
+
+@inline send_automation_signal(args) = send_automation_signal(default_aws_config(), args)
 
 
 """
@@ -4284,6 +4729,10 @@ The ID of the Maintenance Window to update.
 The name of the Maintenance Window.
 
 
+## `Description = ::String`
+An optional description for the update request.
+
+
 ## `Schedule = ::String`
 The schedule of the Maintenance Window in the form of a cron or rate expression.
 
@@ -4304,6 +4753,10 @@ Whether targets must be registered with the Maintenance Window before tasks can 
 Whether the Maintenance Window is enabled.
 
 
+## `Replace = ::Bool`
+If you specify True, then all fields that are required by the CreateMaintenanceWindow API are also required for this API request. Optional fields that are not specified will be set to null.
+
+
 
 
 # Returns
@@ -4322,6 +4775,239 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 @inline update_maintenance_window(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "UpdateMaintenanceWindow", args)
 
 @inline update_maintenance_window(args) = update_maintenance_window(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SSM.update_maintenance_window_target
+    update_maintenance_window_target([::AWSConfig], arguments::Dict)
+    update_maintenance_window_target([::AWSConfig]; WindowId=, WindowTargetId=, <keyword arguments>)
+
+    using AWSCore.Services.ssm
+    ssm([::AWSConfig], "UpdateMaintenanceWindowTarget", arguments::Dict)
+    ssm([::AWSConfig], "UpdateMaintenanceWindowTarget", WindowId=, WindowTargetId=, <keyword arguments>)
+
+# UpdateMaintenanceWindowTarget Operation
+
+Modifies the target of an existing Maintenance Window. You can't change the target type, but you can change the following:
+
+The target from being an ID target to a Tag target, or a Tag target to an ID target.
+
+The IDs of an ID target.
+
+The tags of a Tag target.
+
+The Owner.
+
+The Name.
+
+The Description.
+
+Also note that if a parameter is null, then the corresponding field is not modified.
+
+# Arguments
+
+## `WindowId = ::String` -- *Required*
+The Maintenance Window ID for which you want to modify the target.
+
+
+## `WindowTargetId = ::String` -- *Required*
+The target ID that you want to modify.
+
+
+## `Targets = [[ ... ], ...]`
+The targets that you want to add or replace.
+```
+ Targets = [[
+        "Key" =>  ::String,
+        "Values" =>  [::String, ...]
+    ], ...]
+```
+
+## `OwnerInformation = ::String`
+User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.
+
+
+## `Name = ::String`
+A name for the update.
+
+
+## `Description = ::String`
+An optional description for the update.
+
+
+## `Replace = ::Bool`
+If you specify True, then all fields that are required by the RegisterTargetWithMaintenanceWindow API are also required for this API request. Optional fields that are not specified will be set to null.
+
+
+
+
+# Returns
+
+`UpdateMaintenanceWindowTargetResult`
+
+# Exceptions
+
+`DoesNotExistException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdateMaintenanceWindowTarget)
+"""
+
+@inline update_maintenance_window_target(aws::AWSConfig=default_aws_config(); args...) = update_maintenance_window_target(aws, args)
+
+@inline update_maintenance_window_target(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "UpdateMaintenanceWindowTarget", args)
+
+@inline update_maintenance_window_target(args) = update_maintenance_window_target(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SSM.update_maintenance_window_task
+    update_maintenance_window_task([::AWSConfig], arguments::Dict)
+    update_maintenance_window_task([::AWSConfig]; WindowId=, WindowTaskId=, <keyword arguments>)
+
+    using AWSCore.Services.ssm
+    ssm([::AWSConfig], "UpdateMaintenanceWindowTask", arguments::Dict)
+    ssm([::AWSConfig], "UpdateMaintenanceWindowTask", WindowId=, WindowTaskId=, <keyword arguments>)
+
+# UpdateMaintenanceWindowTask Operation
+
+Modifies a task assigned to a Maintenance Window. You can't change the task type, but you can change the following:
+
+The Task Arn. For example, you can change a RUN_COMMAND task from AWS-RunPowerShellScript to AWS-RunShellScript.
+
+The service role ARN.
+
+The task parameters.
+
+The task priority.
+
+The task MaxConcurrency and MaxErrors.
+
+The log location.
+
+If a parameter is null, then the corresponding field is not modified. Also, if you set Replace to true, then all fields required by the RegisterTaskWithMaintenanceWindow operation are required for this request. Optional fields that aren't specified are be set to null.
+
+# Arguments
+
+## `WindowId = ::String` -- *Required*
+The Maintenance Window ID that contains the task that you want to modify.
+
+
+## `WindowTaskId = ::String` -- *Required*
+The task ID that you want to modify.
+
+
+## `Targets = [[ ... ], ...]`
+The targets (either instances or tags) that you want to modify. Instances are specified using Key=instanceids,Values=instanceID_1,instanceID_2. Tags are specified using Key=tag_name,Values=tag_value.
+```
+ Targets = [[
+        "Key" =>  ::String,
+        "Values" =>  [::String, ...]
+    ], ...]
+```
+
+## `TaskArn = ::String`
+The task ARN that you want to modify.
+
+
+## `ServiceRoleArn = ::String`
+The IAM service role ARN that you want to modify. The system assumes this role during task exectuion.
+
+
+## `TaskParameters = ::Dict{String,String}`
+The parameters that you want to modify. The map has the following format:
+
+Key: string, between 1 and 255 characters
+
+Value: an array of strings, each string is between 1 and 255 characters
+
+
+## `TaskInvocationParameters = [ ... ]`
+Parameters the task should use during execution. Populate only the fields that match the task type. All other fields should be empty.
+```
+ TaskInvocationParameters = [
+        "RunCommand" =>  [
+            "Comment" =>  ::String,
+            "DocumentHash" =>  ::String,
+            "DocumentHashType" =>  "Sha256" or "Sha1",
+            "NotificationConfig" =>  [
+                "NotificationArn" =>  ::String,
+                "NotificationEvents" =>  ["All", "InProgress", "Success", "TimedOut", "Cancelled" or "Failed", ...],
+                "NotificationType" =>  "Command" or "Invocation"
+            ],
+            "OutputS3BucketName" =>  ::String,
+            "OutputS3KeyPrefix" =>  ::String,
+            "Parameters" =>  ::Dict{String,String},
+            "ServiceRoleArn" =>  ::String,
+            "TimeoutSeconds" =>  ::Int
+        ],
+        "Automation" =>  [
+            "DocumentVersion" =>  ::String,
+            "Parameters" =>  ::Dict{String,String}
+        ],
+        "StepFunctions" =>  [
+            "Input" =>  ::String,
+            "Name" =>  ::String
+        ],
+        "Lambda" =>  [
+            "ClientContext" =>  ::String,
+            "Qualifier" =>  ::String,
+            "Payload" =>  blob
+        ]
+    ]
+```
+
+## `Priority = ::Int`
+The new task priority that you want to specify. The lower the number, the higher the priority. Tasks that have the same priority are scheduled in parallel.
+
+
+## `MaxConcurrency = ::String`
+The new `MaxConcurrency` value you want to specify. `MaxConcurrency` is the number of targets that are allowed to run this task in parallel.
+
+
+## `MaxErrors = ::String`
+The new `MaxErrors` value you want to specify. `MaxErrors` is the maximum number of errors that are allowed before the task stops being scheduled.
+
+
+## `LoggingInfo = [ ... ]`
+The new logging location in Amazon S3 that you want to specify.
+```
+ LoggingInfo = [
+        "S3BucketName" => <required> ::String,
+        "S3KeyPrefix" =>  ::String,
+        "S3Region" => <required> ::String
+    ]
+```
+
+## `Name = ::String`
+The new task name that you want to specify.
+
+
+## `Description = ::String`
+The new task description that you want to specify.
+
+
+## `Replace = ::Bool`
+If you specify True, then all fields that are required by the RegisterTaskWithMaintenanceWndow API are also required for this API request. Optional fields that are not specified will be set to null.
+
+
+
+
+# Returns
+
+`UpdateMaintenanceWindowTaskResult`
+
+# Exceptions
+
+`DoesNotExistException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdateMaintenanceWindowTask)
+"""
+
+@inline update_maintenance_window_task(aws::AWSConfig=default_aws_config(); args...) = update_maintenance_window_task(aws, args)
+
+@inline update_maintenance_window_task(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "UpdateMaintenanceWindowTask", args)
+
+@inline update_maintenance_window_task(args) = update_maintenance_window_task(default_aws_config(), args)
 
 
 """

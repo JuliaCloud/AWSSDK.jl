@@ -774,6 +774,83 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 
 """
+    using AWSSDK.ConfigService.get_discovered_resource_counts
+    get_discovered_resource_counts([::AWSConfig], arguments::Dict)
+    get_discovered_resource_counts([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.config
+    config([::AWSConfig], "GetDiscoveredResourceCounts", arguments::Dict)
+    config([::AWSConfig], "GetDiscoveredResourceCounts", <keyword arguments>)
+
+# GetDiscoveredResourceCounts Operation
+
+Returns the resource types, the number of each resource type, and the total number of resources that AWS Config is recording in this region for your AWS account.
+
+**Example**
+
+1.  AWS Config is recording three resource types in the US East (Ohio) Region for your account: 25 EC2 instances, 20 IAM users, and 15 S3 buckets.
+
+2.  You make a call to the `GetDiscoveredResourceCounts` action and specify that you want all resource types.
+
+3.  AWS Config returns the following:
+
+    *   The resource types (EC2 instances, IAM users, and S3 buckets)
+
+    *   The number of each resource type (25, 20, and 15)
+
+    *   The total number of all resources (60)
+
+The response is paginated. By default, AWS Config lists 100 [ResourceCount](@ref) objects on each page. You can customize this number with the `limit` parameter. The response includes a `nextToken` string. To get the next page of results, run the request again and specify the string for the `nextToken` parameter.
+
+**Note**
+> If you make a call to the [GetDiscoveredResourceCounts](@ref) action, you may not immediately receive resource counts in the following situations:
+
+*   You are a new AWS Config customer
+
+*   You just enabled resource recording
+
+It may take a few minutes for AWS Config to record and count your resources. Wait a few minutes and then retry the [GetDiscoveredResourceCounts](@ref) action.
+
+# Arguments
+
+## `resourceTypes = [::String, ...]`
+The comma-separated list that specifies the resource types that you want the AWS Config to return. For example, (`"AWS::EC2::Instance"`, `"AWS::IAM::User"`).
+
+If a value for `resourceTypes` is not specified, AWS Config returns all resource types that AWS Config is recording in the region for your account.
+
+**Note**
+> If the configuration recorder is turned off, AWS Config returns an empty list of [ResourceCount](@ref) objects. If the configuration recorder is not recording a specific resource type (for example, S3 buckets), that resource type is not returned in the list of [ResourceCount](@ref) objects.
+
+
+## `limit = ::Int`
+The maximum number of [ResourceCount](@ref) objects returned on each page. The default is 100. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.
+
+
+## `nextToken = ::String`
+The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
+
+
+
+
+# Returns
+
+`GetDiscoveredResourceCountsResponse`
+
+# Exceptions
+
+`ValidationException`, `InvalidLimitException` or `InvalidNextTokenException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/GetDiscoveredResourceCounts)
+"""
+
+@inline get_discovered_resource_counts(aws::AWSConfig=default_aws_config(); args...) = get_discovered_resource_counts(aws, args)
+
+@inline get_discovered_resource_counts(aws::AWSConfig, args) = AWSCore.Services.config(aws, "GetDiscoveredResourceCounts", args)
+
+@inline get_discovered_resource_counts(args) = get_discovered_resource_counts(default_aws_config(), args)
+
+
+"""
     using AWSSDK.ConfigService.get_resource_config_history
     get_resource_config_history([::AWSConfig], arguments::Dict)
     get_resource_config_history([::AWSConfig]; resourceType=, resourceId=, <keyword arguments>)
@@ -786,14 +863,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/config
 
 Returns a list of configuration items for the specified resource. The list contains details about each state of the resource during the specified time interval.
 
-The response is paginated, and by default, AWS Config returns a limit of 10 configuration items per page. You can customize this number with the `limit` parameter. The response includes a `nextToken` string, and to get the next page of results, run the request again and enter this string for the `nextToken` parameter.
+The response is paginated. By default, AWS Config returns a limit of 10 configuration items per page. You can customize this number with the `limit` parameter. The response includes a `nextToken` string. To get the next page of results, run the request again and specify the string for the `nextToken` parameter.
 
 **Note**
 > Each call to the API is limited to span a duration of seven days. It is likely that the number of records returned is smaller than the specified `limit`. In such cases, you can make another call, using the `nextToken`.
 
 # Arguments
 
-## `resourceType = "AWS::EC2::CustomerGateway", "AWS::EC2::EIP", "AWS::EC2::Host", "AWS::EC2::Instance", "AWS::EC2::InternetGateway", "AWS::EC2::NetworkAcl", "AWS::EC2::NetworkInterface", "AWS::EC2::RouteTable", "AWS::EC2::SecurityGroup", "AWS::EC2::Subnet", "AWS::CloudTrail::Trail", "AWS::EC2::Volume", "AWS::EC2::VPC", "AWS::EC2::VPNConnection", "AWS::EC2::VPNGateway", "AWS::IAM::Group", "AWS::IAM::Policy", "AWS::IAM::Role", "AWS::IAM::User", "AWS::ACM::Certificate", "AWS::RDS::DBInstance", "AWS::RDS::DBSubnetGroup", "AWS::RDS::DBSecurityGroup", "AWS::RDS::DBSnapshot", "AWS::RDS::EventSubscription", "AWS::ElasticLoadBalancingV2::LoadBalancer", "AWS::S3::Bucket", "AWS::SSM::ManagedInstanceInventory", "AWS::Redshift::Cluster", "AWS::Redshift::ClusterSnapshot", "AWS::Redshift::ClusterParameterGroup", "AWS::Redshift::ClusterSecurityGroup", "AWS::Redshift::ClusterSubnetGroup", "AWS::Redshift::EventSubscription" or "AWS::CloudWatch::Alarm"` -- *Required*
+## `resourceType = "AWS::EC2::CustomerGateway", "AWS::EC2::EIP", "AWS::EC2::Host", "AWS::EC2::Instance", "AWS::EC2::InternetGateway", "AWS::EC2::NetworkAcl", "AWS::EC2::NetworkInterface", "AWS::EC2::RouteTable", "AWS::EC2::SecurityGroup", "AWS::EC2::Subnet", "AWS::CloudTrail::Trail", "AWS::EC2::Volume", "AWS::EC2::VPC", "AWS::EC2::VPNConnection", "AWS::EC2::VPNGateway", "AWS::IAM::Group", "AWS::IAM::Policy", "AWS::IAM::Role", "AWS::IAM::User", "AWS::ACM::Certificate", "AWS::RDS::DBInstance", "AWS::RDS::DBSubnetGroup", "AWS::RDS::DBSecurityGroup", "AWS::RDS::DBSnapshot", "AWS::RDS::EventSubscription", "AWS::ElasticLoadBalancingV2::LoadBalancer", "AWS::S3::Bucket", "AWS::SSM::ManagedInstanceInventory", "AWS::Redshift::Cluster", "AWS::Redshift::ClusterSnapshot", "AWS::Redshift::ClusterParameterGroup", "AWS::Redshift::ClusterSecurityGroup", "AWS::Redshift::ClusterSubnetGroup", "AWS::Redshift::EventSubscription", "AWS::CloudWatch::Alarm" or "AWS::CloudFormation::Stack"` -- *Required*
 The resource type.
 
 
@@ -857,11 +934,11 @@ Accepts a resource type and returns a list of resource identifiers for the resou
 **Note**
 > You can specify either resource IDs or a resource name but not both in the same request.
 
-The response is paginated, and by default AWS Config lists 100 resource identifiers on each page. You can customize this number with the `limit` parameter. The response includes a `nextToken` string, and to get the next page of results, run the request again and enter this string for the `nextToken` parameter.
+The response is paginated. By default, AWS Config lists 100 resource identifiers on each page. You can customize this number with the `limit` parameter. The response includes a `nextToken` string. To get the next page of results, run the request again and specify the string for the `nextToken` parameter.
 
 # Arguments
 
-## `resourceType = "AWS::EC2::CustomerGateway", "AWS::EC2::EIP", "AWS::EC2::Host", "AWS::EC2::Instance", "AWS::EC2::InternetGateway", "AWS::EC2::NetworkAcl", "AWS::EC2::NetworkInterface", "AWS::EC2::RouteTable", "AWS::EC2::SecurityGroup", "AWS::EC2::Subnet", "AWS::CloudTrail::Trail", "AWS::EC2::Volume", "AWS::EC2::VPC", "AWS::EC2::VPNConnection", "AWS::EC2::VPNGateway", "AWS::IAM::Group", "AWS::IAM::Policy", "AWS::IAM::Role", "AWS::IAM::User", "AWS::ACM::Certificate", "AWS::RDS::DBInstance", "AWS::RDS::DBSubnetGroup", "AWS::RDS::DBSecurityGroup", "AWS::RDS::DBSnapshot", "AWS::RDS::EventSubscription", "AWS::ElasticLoadBalancingV2::LoadBalancer", "AWS::S3::Bucket", "AWS::SSM::ManagedInstanceInventory", "AWS::Redshift::Cluster", "AWS::Redshift::ClusterSnapshot", "AWS::Redshift::ClusterParameterGroup", "AWS::Redshift::ClusterSecurityGroup", "AWS::Redshift::ClusterSubnetGroup", "AWS::Redshift::EventSubscription" or "AWS::CloudWatch::Alarm"` -- *Required*
+## `resourceType = "AWS::EC2::CustomerGateway", "AWS::EC2::EIP", "AWS::EC2::Host", "AWS::EC2::Instance", "AWS::EC2::InternetGateway", "AWS::EC2::NetworkAcl", "AWS::EC2::NetworkInterface", "AWS::EC2::RouteTable", "AWS::EC2::SecurityGroup", "AWS::EC2::Subnet", "AWS::CloudTrail::Trail", "AWS::EC2::Volume", "AWS::EC2::VPC", "AWS::EC2::VPNConnection", "AWS::EC2::VPNGateway", "AWS::IAM::Group", "AWS::IAM::Policy", "AWS::IAM::Role", "AWS::IAM::User", "AWS::ACM::Certificate", "AWS::RDS::DBInstance", "AWS::RDS::DBSubnetGroup", "AWS::RDS::DBSecurityGroup", "AWS::RDS::DBSnapshot", "AWS::RDS::EventSubscription", "AWS::ElasticLoadBalancingV2::LoadBalancer", "AWS::S3::Bucket", "AWS::SSM::ManagedInstanceInventory", "AWS::Redshift::Cluster", "AWS::Redshift::ClusterSnapshot", "AWS::Redshift::ClusterParameterGroup", "AWS::Redshift::ClusterSecurityGroup", "AWS::Redshift::ClusterSubnetGroup", "AWS::Redshift::EventSubscription", "AWS::CloudWatch::Alarm" or "AWS::CloudFormation::Stack"` -- *Required*
 The type of resources that you want AWS Config to list in the response.
 
 
@@ -1012,7 +1089,7 @@ The configuration recorder object that records each configuration change made to
         "recordingGroup" =>  [
             "allSupported" =>  ::Bool,
             "includeGlobalResourceTypes" =>  ::Bool,
-            "resourceTypes" =>  ["AWS::EC2::CustomerGateway", "AWS::EC2::EIP", "AWS::EC2::Host", "AWS::EC2::Instance", "AWS::EC2::InternetGateway", "AWS::EC2::NetworkAcl", "AWS::EC2::NetworkInterface", "AWS::EC2::RouteTable", "AWS::EC2::SecurityGroup", "AWS::EC2::Subnet", "AWS::CloudTrail::Trail", "AWS::EC2::Volume", "AWS::EC2::VPC", "AWS::EC2::VPNConnection", "AWS::EC2::VPNGateway", "AWS::IAM::Group", "AWS::IAM::Policy", "AWS::IAM::Role", "AWS::IAM::User", "AWS::ACM::Certificate", "AWS::RDS::DBInstance", "AWS::RDS::DBSubnetGroup", "AWS::RDS::DBSecurityGroup", "AWS::RDS::DBSnapshot", "AWS::RDS::EventSubscription", "AWS::ElasticLoadBalancingV2::LoadBalancer", "AWS::S3::Bucket", "AWS::SSM::ManagedInstanceInventory", "AWS::Redshift::Cluster", "AWS::Redshift::ClusterSnapshot", "AWS::Redshift::ClusterParameterGroup", "AWS::Redshift::ClusterSecurityGroup", "AWS::Redshift::ClusterSubnetGroup", "AWS::Redshift::EventSubscription" or "AWS::CloudWatch::Alarm", ...]
+            "resourceTypes" =>  ["AWS::EC2::CustomerGateway", "AWS::EC2::EIP", "AWS::EC2::Host", "AWS::EC2::Instance", "AWS::EC2::InternetGateway", "AWS::EC2::NetworkAcl", "AWS::EC2::NetworkInterface", "AWS::EC2::RouteTable", "AWS::EC2::SecurityGroup", "AWS::EC2::Subnet", "AWS::CloudTrail::Trail", "AWS::EC2::Volume", "AWS::EC2::VPC", "AWS::EC2::VPNConnection", "AWS::EC2::VPNGateway", "AWS::IAM::Group", "AWS::IAM::Policy", "AWS::IAM::Role", "AWS::IAM::User", "AWS::ACM::Certificate", "AWS::RDS::DBInstance", "AWS::RDS::DBSubnetGroup", "AWS::RDS::DBSecurityGroup", "AWS::RDS::DBSnapshot", "AWS::RDS::EventSubscription", "AWS::ElasticLoadBalancingV2::LoadBalancer", "AWS::S3::Bucket", "AWS::SSM::ManagedInstanceInventory", "AWS::Redshift::Cluster", "AWS::Redshift::ClusterSnapshot", "AWS::Redshift::ClusterParameterGroup", "AWS::Redshift::ClusterSecurityGroup", "AWS::Redshift::ClusterSubnetGroup", "AWS::Redshift::EventSubscription", "AWS::CloudWatch::Alarm" or "AWS::CloudFormation::Stack", ...]
         ]
     ]
 ```

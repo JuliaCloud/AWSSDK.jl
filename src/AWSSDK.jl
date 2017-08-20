@@ -7,6 +7,7 @@
 
 module AWSSDK
 
+include("MigrationHub.jl")
 include("ACM.jl")
 include("APIGateway.jl")
 include("ApplicationAutoScaling.jl")
@@ -19,6 +20,7 @@ include("CloudDirectory.jl")
 include("CloudFormation.jl")
 include("CloudFront.jl")
 include("CloudHSM.jl")
+include("CloudHSMV2.jl")
 include("CloudSearch.jl")
 include("CloudSearchDomain.jl")
 include("CloudTrail.jl")
@@ -57,6 +59,7 @@ include("CloudWatchEvents.jl")
 include("Firehose.jl")
 include("GameLift.jl")
 include("Glacier.jl")
+include("Glue.jl")
 include("Greengrass.jl")
 include("Health.jl")
 include("IAM.jl")

@@ -36,7 +36,7 @@ A user- or system-generated token that identifies the entity that requested the 
 
 
 ## `userArn = ::String` -- *Required*
-The Amazon Resource Name (ARN) for the IAM user you want to add to the DevHub project.
+The Amazon Resource Name (ARN) for the IAM user you want to add to the AWS CodeStar project.
 
 
 ## `projectRole = ::String` -- *Required*

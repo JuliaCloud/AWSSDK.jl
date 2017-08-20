@@ -13,6 +13,45 @@ using AWSCore
 
 
 """
+    using AWSSDK.Pinpoint.create_app
+    create_app([::AWSConfig], arguments::Dict)
+    create_app([::AWSConfig]; CreateApplicationRequest=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "POST", "/v1/apps", arguments::Dict)
+    pinpoint([::AWSConfig], "POST", "/v1/apps", CreateApplicationRequest=)
+
+# CreateApp Operation
+
+Used to create an app.
+
+# Arguments
+
+## `CreateApplicationRequest = ["Name" =>  ::String]` -- *Required*
+
+
+
+
+
+# Returns
+
+`CreateAppResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateApp)
+"""
+
+@inline create_app(aws::AWSConfig=default_aws_config(); args...) = create_app(aws, args)
+
+@inline create_app(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "POST", "/v1/apps", args)
+
+@inline create_app(args) = create_app(default_aws_config(), args)
+
+
+"""
     using AWSSDK.Pinpoint.create_campaign
     create_campaign([::AWSConfig], arguments::Dict)
     create_campaign([::AWSConfig]; application-id=, WriteCampaignRequest=)
@@ -45,6 +84,7 @@ Creates or updates a campaign.
                     "ImageUrl" =>  ::String,
                     "JsonBody" =>  ::String,
                     "MediaUrl" =>  ::String,
+                    "RawContent" =>  ::String,
                     "SilentPush" =>  ::Bool,
                     "Title" =>  ::String,
                     "Url" =>  ::String
@@ -57,12 +97,14 @@ Creates or updates a campaign.
                     "ImageUrl" =>  ::String,
                     "JsonBody" =>  ::String,
                     "MediaUrl" =>  ::String,
+                    "RawContent" =>  ::String,
                     "SilentPush" =>  ::Bool,
                     "Title" =>  ::String,
                     "Url" =>  ::String
                 ],
                 "EmailMessage" =>  [
                     "Body" =>  ::String,
+                    "FromAddress" =>  ::String,
                     "HtmlBody" =>  ::String,
                     "Title" =>  ::String
                 ],
@@ -74,6 +116,7 @@ Creates or updates a campaign.
                     "ImageUrl" =>  ::String,
                     "JsonBody" =>  ::String,
                     "MediaUrl" =>  ::String,
+                    "RawContent" =>  ::String,
                     "SilentPush" =>  ::Bool,
                     "Title" =>  ::String,
                     "Url" =>  ::String
@@ -115,6 +158,7 @@ Creates or updates a campaign.
                 "ImageUrl" =>  ::String,
                 "JsonBody" =>  ::String,
                 "MediaUrl" =>  ::String,
+                "RawContent" =>  ::String,
                 "SilentPush" =>  ::Bool,
                 "Title" =>  ::String,
                 "Url" =>  ::String
@@ -127,12 +171,14 @@ Creates or updates a campaign.
                 "ImageUrl" =>  ::String,
                 "JsonBody" =>  ::String,
                 "MediaUrl" =>  ::String,
+                "RawContent" =>  ::String,
                 "SilentPush" =>  ::Bool,
                 "Title" =>  ::String,
                 "Url" =>  ::String
             ],
             "EmailMessage" =>  [
                 "Body" =>  ::String,
+                "FromAddress" =>  ::String,
                 "HtmlBody" =>  ::String,
                 "Title" =>  ::String
             ],
@@ -144,6 +190,7 @@ Creates or updates a campaign.
                 "ImageUrl" =>  ::String,
                 "JsonBody" =>  ::String,
                 "MediaUrl" =>  ::String,
+                "RawContent" =>  ::String,
                 "SilentPush" =>  ::Bool,
                 "Title" =>  ::String,
                 "Url" =>  ::String
@@ -408,6 +455,45 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 @inline delete_apns_sandbox_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/channels/apns_sandbox", args)
 
 @inline delete_apns_sandbox_channel(args) = delete_apns_sandbox_channel(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.delete_app
+    delete_app([::AWSConfig], arguments::Dict)
+    delete_app([::AWSConfig]; application-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}", arguments::Dict)
+    pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}", application-id=)
+
+# DeleteApp Operation
+
+Deletes an app.
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`DeleteAppResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteApp)
+"""
+
+@inline delete_app(aws::AWSConfig=default_aws_config(); args...) = delete_app(aws, args)
+
+@inline delete_app(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}", args)
+
+@inline delete_app(args) = delete_app(default_aws_config(), args)
 
 
 """
@@ -731,6 +817,45 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
+    using AWSSDK.Pinpoint.get_app
+    get_app([::AWSConfig], arguments::Dict)
+    get_app([::AWSConfig]; application-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}", arguments::Dict)
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}", application-id=)
+
+# GetApp Operation
+
+Returns information about an app.
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`GetAppResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApp)
+"""
+
+@inline get_app(aws::AWSConfig=default_aws_config(); args...) = get_app(aws, args)
+
+@inline get_app(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}", args)
+
+@inline get_app(args) = get_app(default_aws_config(), args)
+
+
+"""
     using AWSSDK.Pinpoint.get_application_settings
     get_application_settings([::AWSConfig], arguments::Dict)
     get_application_settings([::AWSConfig]; application-id=)
@@ -767,6 +892,49 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 @inline get_application_settings(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/settings", args)
 
 @inline get_application_settings(args) = get_application_settings(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.get_apps
+    get_apps([::AWSConfig], arguments::Dict)
+    get_apps([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "GET", "/v1/apps", arguments::Dict)
+    pinpoint([::AWSConfig], "GET", "/v1/apps", <keyword arguments>)
+
+# GetApps Operation
+
+Returns information about your apps.
+
+# Arguments
+
+## `page-size = ::String`
+
+
+
+## `token = ::String`
+
+
+
+
+
+# Returns
+
+`GetAppsResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApps)
+"""
+
+@inline get_apps(aws::AWSConfig=default_aws_config(); args...) = get_apps(aws, args)
+
+@inline get_apps(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps", args)
+
+@inline get_apps(args) = get_apps(default_aws_config(), args)
 
 
 """
@@ -836,11 +1004,11 @@ Returns information about the activity performed by a campaign.
 
 
 ## `page-size = ::String`
-
+The number of entries you want on each page in the response.
 
 
 ## `token = ::String`
-
+The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 
 
 
@@ -934,11 +1102,11 @@ Returns information about your campaign versions.
 
 
 ## `page-size = ::String`
-
+The number of entries you want on each page in the response.
 
 
 ## `token = ::String`
-
+The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 
 
 
@@ -981,11 +1149,11 @@ Returns information about your campaigns.
 
 
 ## `page-size = ::String`
-
+The number of entries you want on each page in the response.
 
 
 ## `token = ::String`
-
+The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 
 
 
@@ -1231,11 +1399,11 @@ Returns information about your import jobs.
 
 
 ## `page-size = ::String`
-
+The number of entries you want on each page in the response.
 
 
 ## `token = ::String`
-
+The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 
 
 
@@ -1321,7 +1489,7 @@ Returns a list of import jobs for a specific segment.
 
 
 ## `page-size = ::String`
-
+The number of entries you want on each page in the response.
 
 
 ## `segment-id = ::String` -- *Required*
@@ -1329,7 +1497,7 @@ Returns a list of import jobs for a specific segment.
 
 
 ## `token = ::String`
-
+The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 
 
 
@@ -1419,7 +1587,7 @@ Returns information about your segment versions.
 
 
 ## `page-size = ::String`
-
+The number of entries you want on each page in the response.
 
 
 ## `segment-id = ::String` -- *Required*
@@ -1427,7 +1595,7 @@ Returns information about your segment versions.
 
 
 ## `token = ::String`
-
+The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 
 
 
@@ -1470,11 +1638,11 @@ Used to get information about your segments.
 
 
 ## `page-size = ::String`
-
+The number of entries you want on each page in the response.
 
 
 ## `token = ::String`
-
+The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 
 
 
@@ -1875,6 +2043,7 @@ Use to update a campaign.
                     "ImageUrl" =>  ::String,
                     "JsonBody" =>  ::String,
                     "MediaUrl" =>  ::String,
+                    "RawContent" =>  ::String,
                     "SilentPush" =>  ::Bool,
                     "Title" =>  ::String,
                     "Url" =>  ::String
@@ -1887,12 +2056,14 @@ Use to update a campaign.
                     "ImageUrl" =>  ::String,
                     "JsonBody" =>  ::String,
                     "MediaUrl" =>  ::String,
+                    "RawContent" =>  ::String,
                     "SilentPush" =>  ::Bool,
                     "Title" =>  ::String,
                     "Url" =>  ::String
                 ],
                 "EmailMessage" =>  [
                     "Body" =>  ::String,
+                    "FromAddress" =>  ::String,
                     "HtmlBody" =>  ::String,
                     "Title" =>  ::String
                 ],
@@ -1904,6 +2075,7 @@ Use to update a campaign.
                     "ImageUrl" =>  ::String,
                     "JsonBody" =>  ::String,
                     "MediaUrl" =>  ::String,
+                    "RawContent" =>  ::String,
                     "SilentPush" =>  ::Bool,
                     "Title" =>  ::String,
                     "Url" =>  ::String
@@ -1945,6 +2117,7 @@ Use to update a campaign.
                 "ImageUrl" =>  ::String,
                 "JsonBody" =>  ::String,
                 "MediaUrl" =>  ::String,
+                "RawContent" =>  ::String,
                 "SilentPush" =>  ::Bool,
                 "Title" =>  ::String,
                 "Url" =>  ::String
@@ -1957,12 +2130,14 @@ Use to update a campaign.
                 "ImageUrl" =>  ::String,
                 "JsonBody" =>  ::String,
                 "MediaUrl" =>  ::String,
+                "RawContent" =>  ::String,
                 "SilentPush" =>  ::Bool,
                 "Title" =>  ::String,
                 "Url" =>  ::String
             ],
             "EmailMessage" =>  [
                 "Body" =>  ::String,
+                "FromAddress" =>  ::String,
                 "HtmlBody" =>  ::String,
                 "Title" =>  ::String
             ],
@@ -1974,6 +2149,7 @@ Use to update a campaign.
                 "ImageUrl" =>  ::String,
                 "JsonBody" =>  ::String,
                 "MediaUrl" =>  ::String,
+                "RawContent" =>  ::String,
                 "SilentPush" =>  ::Bool,
                 "Title" =>  ::String,
                 "Url" =>  ::String

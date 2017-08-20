@@ -460,7 +460,12 @@ Information about the instances that will belong to the replacement environment 
             "Value" =>  ::String,
             "Type" =>  "KEY_ONLY", "VALUE_ONLY" or "KEY_AND_VALUE"
         ], ...],
-        "autoScalingGroups" =>  [::String, ...]
+        "autoScalingGroups" =>  [::String, ...],
+        "ec2TagSet" =>  ["ec2TagSetList" =>  [[[
+                "Key" =>  ::String,
+                "Value" =>  ::String,
+                "Type" =>  "KEY_ONLY", "VALUE_ONLY" or "KEY_AND_VALUE"
+            ], ...], ...]]
     ]
 ```
 
@@ -512,11 +517,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 """
     using AWSSDK.CodeDeploy.create_deployment_config
     create_deployment_config([::AWSConfig], arguments::Dict)
-    create_deployment_config([::AWSConfig]; deploymentConfigName=, <keyword arguments>)
+    create_deployment_config([::AWSConfig]; deploymentConfigName=, minimumHealthyHosts=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "CreateDeploymentConfig", arguments::Dict)
-    codedeploy([::AWSConfig], "CreateDeploymentConfig", deploymentConfigName=, <keyword arguments>)
+    codedeploy([::AWSConfig], "CreateDeploymentConfig", deploymentConfigName=, minimumHealthyHosts=)
 
 # CreateDeploymentConfig Operation
 
@@ -528,7 +533,7 @@ Creates a deployment configuration.
 The name of the deployment configuration to create.
 
 
-## `minimumHealthyHosts = [ ... ]`
+## `minimumHealthyHosts = [ ... ]` -- *Required*
 The minimum number of healthy instances that should be available at any time during the deployment. There are two parameters expected in the input: type and value.
 
 The type parameter takes either of the following values:
@@ -599,7 +604,7 @@ For more information about the predefined deployment configurations in AWS CodeD
 
 
 ## `ec2TagFilters = [[ ... ], ...]`
-The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the specified tags.
+The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the specified tags. Cannot be used in the same call as ec2TagSet.
 ```
  ec2TagFilters = [[
         "Key" =>  ::String,
@@ -609,7 +614,7 @@ The Amazon EC2 tags on which to filter. The deployment group will include EC2 in
 ```
 
 ## `onPremisesInstanceTagFilters = [[ ... ], ...]`
-The on-premises instance tags on which to filter. The deployment group will include on-premises instances with any of the specified tags.
+The on-premises instance tags on which to filter. The deployment group will include on-premises instances with any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.
 ```
  onPremisesInstanceTagFilters = [[
         "Key" =>  ::String,
@@ -680,9 +685,34 @@ Information about blue/green deployment options for a deployment group.
     ]
 ```
 
-## `loadBalancerInfo = ["elbInfoList" =>  [["name" =>  ::String], ...]]`
+## `loadBalancerInfo = [ ... ]`
 Information about the load balancer used in a deployment.
+```
+ loadBalancerInfo = [
+        "elbInfoList" =>  [["name" =>  ::String], ...],
+        "targetGroupInfoList" =>  [["name" =>  ::String], ...]
+    ]
+```
 
+## `ec2TagSet = ["ec2TagSetList" =>  [[[ ... ], ...], ...]]`
+Information about groups of tags applied to EC2 instances. The deployment group will include only EC2 instances identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
+```
+ ec2TagSet = ["ec2TagSetList" =>  [[[
+            "Key" =>  ::String,
+            "Value" =>  ::String,
+            "Type" =>  "KEY_ONLY", "VALUE_ONLY" or "KEY_AND_VALUE"
+        ], ...], ...]]
+```
+
+## `onPremisesTagSet = ["onPremisesTagSetList" =>  [[[ ... ], ...], ...]]`
+Information about groups of tags applied to on-premises instances. The deployment group will include only on-premises instances identified by all the tag groups. Cannot be used in the same call as onPremisesInstanceTagFilters.
+```
+ onPremisesTagSet = ["onPremisesTagSetList" =>  [[[
+            "Key" =>  ::String,
+            "Value" =>  ::String,
+            "Type" =>  "KEY_ONLY", "VALUE_ONLY" or "KEY_AND_VALUE"
+        ], ...], ...]]
+```
 
 
 
@@ -692,7 +722,7 @@ Information about the load balancer used in a deployment.
 
 # Exceptions
 
-`ApplicationNameRequiredException`, `InvalidApplicationNameException`, `ApplicationDoesNotExistException`, `DeploymentGroupNameRequiredException`, `InvalidDeploymentGroupNameException`, `DeploymentGroupAlreadyExistsException`, `InvalidEC2TagException`, `InvalidTagException`, `InvalidAutoScalingGroupException`, `InvalidDeploymentConfigNameException`, `DeploymentConfigDoesNotExistException`, `RoleRequiredException`, `InvalidRoleException`, `DeploymentGroupLimitExceededException`, `LifecycleHookLimitExceededException`, `InvalidTriggerConfigException`, `TriggerTargetsLimitExceededException`, `InvalidAlarmConfigException`, `AlarmsLimitExceededException`, `InvalidAutoRollbackConfigException`, `InvalidLoadBalancerInfoException`, `InvalidDeploymentStyleException` or `InvalidBlueGreenDeploymentConfigurationException`.
+`ApplicationNameRequiredException`, `InvalidApplicationNameException`, `ApplicationDoesNotExistException`, `DeploymentGroupNameRequiredException`, `InvalidDeploymentGroupNameException`, `DeploymentGroupAlreadyExistsException`, `InvalidEC2TagException`, `InvalidTagException`, `InvalidAutoScalingGroupException`, `InvalidDeploymentConfigNameException`, `DeploymentConfigDoesNotExistException`, `RoleRequiredException`, `InvalidRoleException`, `DeploymentGroupLimitExceededException`, `LifecycleHookLimitExceededException`, `InvalidTriggerConfigException`, `TriggerTargetsLimitExceededException`, `InvalidAlarmConfigException`, `AlarmsLimitExceededException`, `InvalidAutoRollbackConfigException`, `InvalidLoadBalancerInfoException`, `InvalidDeploymentStyleException`, `InvalidBlueGreenDeploymentConfigurationException`, `InvalidEC2TagCombinationException`, `InvalidOnPremisesTagCombinationException` or `TagSetListLimitExceededException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/CreateDeploymentGroup)
 """
@@ -1974,9 +2004,34 @@ Information about blue/green deployment options for a deployment group.
     ]
 ```
 
-## `loadBalancerInfo = ["elbInfoList" =>  [["name" =>  ::String], ...]]`
+## `loadBalancerInfo = [ ... ]`
 Information about the load balancer used in a deployment.
+```
+ loadBalancerInfo = [
+        "elbInfoList" =>  [["name" =>  ::String], ...],
+        "targetGroupInfoList" =>  [["name" =>  ::String], ...]
+    ]
+```
 
+## `ec2TagSet = ["ec2TagSetList" =>  [[[ ... ], ...], ...]]`
+Information about groups of tags applied to on-premises instances. The deployment group will include only EC2 instances identified by all the tag groups.
+```
+ ec2TagSet = ["ec2TagSetList" =>  [[[
+            "Key" =>  ::String,
+            "Value" =>  ::String,
+            "Type" =>  "KEY_ONLY", "VALUE_ONLY" or "KEY_AND_VALUE"
+        ], ...], ...]]
+```
+
+## `onPremisesTagSet = ["onPremisesTagSetList" =>  [[[ ... ], ...], ...]]`
+Information about an on-premises instance tag set. The deployment group will include only on-premises instances identified by all the tag groups.
+```
+ onPremisesTagSet = ["onPremisesTagSetList" =>  [[[
+            "Key" =>  ::String,
+            "Value" =>  ::String,
+            "Type" =>  "KEY_ONLY", "VALUE_ONLY" or "KEY_AND_VALUE"
+        ], ...], ...]]
+```
 
 
 
@@ -1986,7 +2041,7 @@ Information about the load balancer used in a deployment.
 
 # Exceptions
 
-`ApplicationNameRequiredException`, `InvalidApplicationNameException`, `ApplicationDoesNotExistException`, `InvalidDeploymentGroupNameException`, `DeploymentGroupAlreadyExistsException`, `DeploymentGroupNameRequiredException`, `DeploymentGroupDoesNotExistException`, `InvalidEC2TagException`, `InvalidTagException`, `InvalidAutoScalingGroupException`, `InvalidDeploymentConfigNameException`, `DeploymentConfigDoesNotExistException`, `InvalidRoleException`, `LifecycleHookLimitExceededException`, `InvalidTriggerConfigException`, `TriggerTargetsLimitExceededException`, `InvalidAlarmConfigException`, `AlarmsLimitExceededException`, `InvalidAutoRollbackConfigException`, `InvalidLoadBalancerInfoException`, `InvalidDeploymentStyleException` or `InvalidBlueGreenDeploymentConfigurationException`.
+`ApplicationNameRequiredException`, `InvalidApplicationNameException`, `ApplicationDoesNotExistException`, `InvalidDeploymentGroupNameException`, `DeploymentGroupAlreadyExistsException`, `DeploymentGroupNameRequiredException`, `DeploymentGroupDoesNotExistException`, `InvalidEC2TagException`, `InvalidTagException`, `InvalidAutoScalingGroupException`, `InvalidDeploymentConfigNameException`, `DeploymentConfigDoesNotExistException`, `InvalidRoleException`, `LifecycleHookLimitExceededException`, `InvalidTriggerConfigException`, `TriggerTargetsLimitExceededException`, `InvalidAlarmConfigException`, `AlarmsLimitExceededException`, `InvalidAutoRollbackConfigException`, `InvalidLoadBalancerInfoException`, `InvalidDeploymentStyleException`, `InvalidBlueGreenDeploymentConfigurationException`, `InvalidEC2TagCombinationException`, `InvalidOnPremisesTagCombinationException` or `TagSetListLimitExceededException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/UpdateDeploymentGroup)
 """

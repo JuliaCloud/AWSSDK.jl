@@ -357,6 +357,65 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
+    using AWSSDK.CognitoIdentityServiceProvider.admin_disable_provider_for_user
+    admin_disable_provider_for_user([::AWSConfig], arguments::Dict)
+    admin_disable_provider_for_user([::AWSConfig]; UserPoolId=, User=)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "AdminDisableProviderForUser", arguments::Dict)
+    cognito_idp([::AWSConfig], "AdminDisableProviderForUser", UserPoolId=, User=)
+
+# AdminDisableProviderForUser Operation
+
+Disables the user from signing in with the specified external (SAML or social) identity provider. If the user to disable is a Cognito User Pools native username + password user, they are not permitted to use their password to sign-in. If the user to disable is a linked external IdP user, any link between that user and an existing user is removed. The next time the external user (no longer attached to the previously linked `DestinationUser`) signs in, they must create a new user account. See [AdminLinkProviderForUser](API_AdminLinkProviderForUser.html).
+
+This action is enabled only for admin access and requires developer credentials.
+
+The `ProviderName` must match the value specified when creating an IdP for the pool.
+
+To disable a native username + password user, the `ProviderName` value must be `Cognito` and the `ProviderAttributeName` must be `Cognito_Subject`, with the `ProviderAttributeValue` being the name that is used in the user pool for the user.
+
+The `ProviderAttributeName` must always be `Cognito_Subject` for social identity providers. The `ProviderAttributeValue` must always be the exact subject that was used when the user was originally linked as a source user.
+
+For de-linking a SAML identity, there are two scenarios. If the linked identity has not yet been used to sign-in, the `ProviderAttributeName` and `ProviderAttributeValue` must be the same values that were used for the `SourceUser` when the identities were originally linked in the [AdminLinkProviderForUser](API_AdminLinkProviderForUser.html) call. (If the linking was done with `ProviderAttributeName` set to `Cognito_Subject`, the same applies here). However, if the user has already signed in, the `ProviderAttributeName` must be `Cognito_Subject` and `ProviderAttributeValue` must be the subject of the SAML assertion.
+
+# Arguments
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID for the user pool.
+
+
+## `User = [ ... ]` -- *Required*
+The user to be disabled.
+```
+ User = [
+        "ProviderName" =>  ::String,
+        "ProviderAttributeName" =>  ::String,
+        "ProviderAttributeValue" =>  ::String
+    ]
+```
+
+
+
+# Returns
+
+`AdminDisableProviderForUserResponse`
+
+# Exceptions
+
+`ResourceNotFoundException`, `InvalidParameterException`, `TooManyRequestsException`, `NotAuthorizedException`, `UserNotFoundException`, `AliasExistsException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminDisableProviderForUser)
+"""
+
+@inline admin_disable_provider_for_user(aws::AWSConfig=default_aws_config(); args...) = admin_disable_provider_for_user(aws, args)
+
+@inline admin_disable_provider_for_user(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminDisableProviderForUser", args)
+
+@inline admin_disable_provider_for_user(args) = admin_disable_provider_for_user(default_aws_config(), args)
+
+
+"""
     using AWSSDK.CognitoIdentityServiceProvider.admin_disable_user
     admin_disable_user([::AWSConfig], arguments::Dict)
     admin_disable_user([::AWSConfig]; UserPoolId=, Username=)
@@ -662,6 +721,80 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 @inline admin_initiate_auth(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminInitiateAuth", args)
 
 @inline admin_initiate_auth(args) = admin_initiate_auth(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CognitoIdentityServiceProvider.admin_link_provider_for_user
+    admin_link_provider_for_user([::AWSConfig], arguments::Dict)
+    admin_link_provider_for_user([::AWSConfig]; UserPoolId=, DestinationUser=, SourceUser=)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "AdminLinkProviderForUser", arguments::Dict)
+    cognito_idp([::AWSConfig], "AdminLinkProviderForUser", UserPoolId=, DestinationUser=, SourceUser=)
+
+# AdminLinkProviderForUser Operation
+
+Links an existing user account in a user pool (`DestinationUser`) to an identity from an external identity provider (`SourceUser`) based on a specified attribute name and value from the external identity provider. This allows you to create a link from the existing user account to an external federated user identity that has not yet been used to sign in, so that the federated user identity can be used to sign in as the existing user account.
+
+For example, if there is an existing user with a username and password, this API links that user to a federated user identity, so that when the federated user identity is used, the user signs in as the existing user account.
+
+**Important**
+> Because this API allows a user with an external federated identity to sign in as an existing user in the user pool, it is critical that it only be used with external identity providers and provider attributes that have been trusted by the application owner.
+
+See also [AdminDisableProviderForUser](API_AdminDisableProviderForUser.html).
+
+This action is enabled only for admin access and requires developer credentials.
+
+# Arguments
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID for the user pool.
+
+
+## `DestinationUser = [ ... ]` -- *Required*
+The existing user in the user pool to be linked to the external identity provider user account. Can be a native (Username + Password) Cognito User Pools user or a federated user (for example, a SAML or Facebook user). If the user doesn't exist, an exception is thrown. This is the user that is returned when the new user (with the linked identity provider attribute) signs in.
+
+The `ProviderAttributeValue` for the `DestinationUser` must match the username for the user in the user pool. The `ProviderAttributeName` will always be ignored.
+```
+ DestinationUser = [
+        "ProviderName" =>  ::String,
+        "ProviderAttributeName" =>  ::String,
+        "ProviderAttributeValue" =>  ::String
+    ]
+```
+
+## `SourceUser = [ ... ]` -- *Required*
+An external identity provider account for a user who does not currently exist yet in the user pool. This user must be a federated user (for example, a SAML or Facebook user), not another native user.
+
+If the `SourceUser` is a federated social identity provider user (Facebook, Google, or Login with Amazon), you must set the `ProviderAttributeName` to `Cognito_Subject`. For social identity providers, the `ProviderName` will be `Facebook`, `Google`, or `LoginWithAmazon`, and Cognito will automatically parse the Facebook, Google, and Login with Amazon tokens for `id`, `sub`, and `user_id`, respectively. The `ProviderAttributeValue` for the user must be the same value as the `id`, `sub`, or `user_id` value found in the social identity provider token.
+
+For SAML, the `ProviderAttributeName` can be any value that matches a claim in the SAML assertion. If you wish to link SAML users based on the subject of the SAML assertion, you should map the subject to a claim through the SAML identity provider and submit that claim name as the `ProviderAttributeName`. If you set `ProviderAttributeName` to `Cognito_Subject`, Cognito will automatically parse the default unique identifier found in the subject from the SAML token.
+```
+ SourceUser = [
+        "ProviderName" =>  ::String,
+        "ProviderAttributeName" =>  ::String,
+        "ProviderAttributeValue" =>  ::String
+    ]
+```
+
+
+
+# Returns
+
+`AdminLinkProviderForUserResponse`
+
+# Exceptions
+
+`ResourceNotFoundException`, `InvalidParameterException`, `TooManyRequestsException`, `NotAuthorizedException`, `UserNotFoundException`, `AliasExistsException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminLinkProviderForUser)
+"""
+
+@inline admin_link_provider_for_user(aws::AWSConfig=default_aws_config(); args...) = admin_link_provider_for_user(aws, args)
+
+@inline admin_link_provider_for_user(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminLinkProviderForUser", args)
+
+@inline admin_link_provider_for_user(args) = admin_link_provider_for_user(default_aws_config(), args)
 
 
 """
@@ -1260,7 +1393,7 @@ Allows a user to enter a confirmation code to reset a forgotten password.
 # Arguments
 
 ## `ClientId = ::String` -- *Required*
-The ID of the client associated with the user pool.
+The app client ID of the app associated with the user pool.
 
 
 ## `SecretHash = ::String`
@@ -1315,7 +1448,7 @@ Confirms registration of a user and handles the existing alias from a previous u
 # Arguments
 
 ## `ClientId = ::String` -- *Required*
-The ID of the client associated with the user pool.
+The ID of the app client associated with the user pool.
 
 
 ## `SecretHash = ::String`
@@ -1438,7 +1571,7 @@ The user pool ID.
 The identity provider name.
 
 
-## `ProviderType = "SAML"` -- *Required*
+## `ProviderType = "SAML", "Facebook", "Google" or "LoginWithAmazon"` -- *Required*
 The identity provider type.
 
 
@@ -1472,6 +1605,62 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 @inline create_identity_provider(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "CreateIdentityProvider", args)
 
 @inline create_identity_provider(args) = create_identity_provider(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CognitoIdentityServiceProvider.create_resource_server
+    create_resource_server([::AWSConfig], arguments::Dict)
+    create_resource_server([::AWSConfig]; UserPoolId=, Identifier=, Name=, <keyword arguments>)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "CreateResourceServer", arguments::Dict)
+    cognito_idp([::AWSConfig], "CreateResourceServer", UserPoolId=, Identifier=, Name=, <keyword arguments>)
+
+# CreateResourceServer Operation
+
+Creates a new OAuth2.0 resource server and defines custom scopes in it.
+
+# Arguments
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID for the user pool.
+
+
+## `Identifier = ::String` -- *Required*
+A unique resource server identifier for the resource server. This could be an HTTPS endpoint where the resource server is located. For example, `https://my-weather-api.example.com`.
+
+
+## `Name = ::String` -- *Required*
+A friendly name for the resource server.
+
+
+## `Scopes = [[ ... ], ...]`
+A list of scopes. Each scope is map, where the keys are `name` and `description`.
+```
+ Scopes = [[
+        "ScopeName" => <required> ::String,
+        "ScopeDescription" => <required> ::String
+    ], ...]
+```
+
+
+
+# Returns
+
+`CreateResourceServerResponse`
+
+# Exceptions
+
+`InvalidParameterException`, `ResourceNotFoundException`, `NotAuthorizedException`, `TooManyRequestsException`, `LimitExceededException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CreateResourceServer)
+"""
+
+@inline create_resource_server(aws::AWSConfig=default_aws_config(); args...) = create_resource_server(aws, args)
+
+@inline create_resource_server(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "CreateResourceServer", args)
+
+@inline create_resource_server(args) = create_resource_server(default_aws_config(), args)
 
 
 """
@@ -1590,6 +1779,19 @@ A string representing the email verification message.
 ## `EmailVerificationSubject = ::String`
 A string representing the email verification subject.
 
+
+## `VerificationMessageTemplate = [ ... ]`
+The template for the verification message that the user sees when the app requests permission to access the user's information.
+```
+ VerificationMessageTemplate = [
+        "SmsMessage" =>  ::String,
+        "EmailMessage" =>  ::String,
+        "EmailSubject" =>  ::String,
+        "EmailMessageByLink" =>  ::String,
+        "EmailSubjectByLink" =>  ::String,
+        "DefaultEmailOption" =>  "CONFIRM_WITH_LINK" or "CONFIRM_WITH_CODE"
+    ]
+```
 
 ## `SmsAuthenticationMessage = ::String`
 A string representing the SMS authentication message.
@@ -1901,6 +2103,45 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
+    using AWSSDK.CognitoIdentityServiceProvider.delete_resource_server
+    delete_resource_server([::AWSConfig], arguments::Dict)
+    delete_resource_server([::AWSConfig]; UserPoolId=, Identifier=)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "DeleteResourceServer", arguments::Dict)
+    cognito_idp([::AWSConfig], "DeleteResourceServer", UserPoolId=, Identifier=)
+
+# DeleteResourceServer Operation
+
+Deletes a resource server.
+
+# Arguments
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID for the user pool that hosts the resource server.
+
+
+## `Identifier = ::String` -- *Required*
+The identifier for the resource server.
+
+
+
+
+# Exceptions
+
+`InvalidParameterException`, `ResourceNotFoundException`, `NotAuthorizedException`, `TooManyRequestsException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteResourceServer)
+"""
+
+@inline delete_resource_server(aws::AWSConfig=default_aws_config(); args...) = delete_resource_server(aws, args)
+
+@inline delete_resource_server(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "DeleteResourceServer", args)
+
+@inline delete_resource_server(args) = delete_resource_server(default_aws_config(), args)
+
+
+"""
     using AWSSDK.CognitoIdentityServiceProvider.delete_user
     delete_user([::AWSConfig], arguments::Dict)
     delete_user([::AWSConfig]; AccessToken=)
@@ -1911,7 +2152,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 # DeleteUser Operation
 
-Allows a user to delete one's self.
+Allows a user to delete himself or herself.
 
 # Arguments
 
@@ -2035,7 +2276,7 @@ The user pool ID for the user pool where you want to delete the client.
 
 
 ## `ClientId = ::String` -- *Required*
-The ID of the client associated with the user pool.
+The app client ID of the app associated with the user pool.
 
 
 
@@ -2141,6 +2382,49 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
+    using AWSSDK.CognitoIdentityServiceProvider.describe_resource_server
+    describe_resource_server([::AWSConfig], arguments::Dict)
+    describe_resource_server([::AWSConfig]; UserPoolId=, Identifier=)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "DescribeResourceServer", arguments::Dict)
+    cognito_idp([::AWSConfig], "DescribeResourceServer", UserPoolId=, Identifier=)
+
+# DescribeResourceServer Operation
+
+Describes a resource server.
+
+# Arguments
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID for the user pool that hosts the resource server.
+
+
+## `Identifier = ::String` -- *Required*
+The identifier for the resource server
+
+
+
+
+# Returns
+
+`DescribeResourceServerResponse`
+
+# Exceptions
+
+`InvalidParameterException`, `ResourceNotFoundException`, `NotAuthorizedException`, `TooManyRequestsException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DescribeResourceServer)
+"""
+
+@inline describe_resource_server(aws::AWSConfig=default_aws_config(); args...) = describe_resource_server(aws, args)
+
+@inline describe_resource_server(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "DescribeResourceServer", args)
+
+@inline describe_resource_server(args) = describe_resource_server(default_aws_config(), args)
+
+
+"""
     using AWSSDK.CognitoIdentityServiceProvider.describe_user_import_job
     describe_user_import_job([::AWSConfig], arguments::Dict)
     describe_user_import_job([::AWSConfig]; UserPoolId=, JobId=)
@@ -2242,7 +2526,7 @@ The user pool ID for the user pool you want to describe.
 
 
 ## `ClientId = ::String` -- *Required*
-The ID of the client associated with the user pool.
+The app client ID of the app associated with the user pool.
 
 
 
@@ -2558,6 +2842,49 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 @inline get_identity_provider_by_identifier(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "GetIdentityProviderByIdentifier", args)
 
 @inline get_identity_provider_by_identifier(args) = get_identity_provider_by_identifier(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CognitoIdentityServiceProvider.get_uicustomization
+    get_uicustomization([::AWSConfig], arguments::Dict)
+    get_uicustomization([::AWSConfig]; UserPoolId=, <keyword arguments>)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "GetUICustomization", arguments::Dict)
+    cognito_idp([::AWSConfig], "GetUICustomization", UserPoolId=, <keyword arguments>)
+
+# GetUICustomization Operation
+
+Gets the UI Customization information for a particular app client's app UI, if there is something set. If nothing is set for the particular client, but there is an existing pool level customization (app `clientId` will be `ALL`), then that is returned. If nothing is present, then an empty shape is returned.
+
+# Arguments
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID for the user pool.
+
+
+## `ClientId = ::String`
+The client ID for the client app.
+
+
+
+
+# Returns
+
+`GetUICustomizationResponse`
+
+# Exceptions
+
+`InvalidParameterException`, `ResourceNotFoundException`, `NotAuthorizedException`, `TooManyRequestsException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetUICustomization)
+"""
+
+@inline get_uicustomization(aws::AWSConfig=default_aws_config(); args...) = get_uicustomization(aws, args)
+
+@inline get_uicustomization(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "GetUICustomization", args)
+
+@inline get_uicustomization(args) = get_uicustomization(default_aws_config(), args)
 
 
 """
@@ -2893,6 +3220,53 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 @inline list_identity_providers(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ListIdentityProviders", args)
 
 @inline list_identity_providers(args) = list_identity_providers(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CognitoIdentityServiceProvider.list_resource_servers
+    list_resource_servers([::AWSConfig], arguments::Dict)
+    list_resource_servers([::AWSConfig]; UserPoolId=, <keyword arguments>)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "ListResourceServers", arguments::Dict)
+    cognito_idp([::AWSConfig], "ListResourceServers", UserPoolId=, <keyword arguments>)
+
+# ListResourceServers Operation
+
+Lists the resource servers for a user pool.
+
+# Arguments
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID for the user pool.
+
+
+## `MaxResults = ::Int`
+The maximum number of resource servers to return.
+
+
+## `NextToken = ::String`
+A pagination token.
+
+
+
+
+# Returns
+
+`ListResourceServersResponse`
+
+# Exceptions
+
+`InvalidParameterException`, `ResourceNotFoundException`, `NotAuthorizedException`, `TooManyRequestsException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListResourceServers)
+"""
+
+@inline list_resource_servers(aws::AWSConfig=default_aws_config(); args...) = list_resource_servers(aws, args)
+
+@inline list_resource_servers(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ListResourceServers", args)
+
+@inline list_resource_servers(args) = list_resource_servers(default_aws_config(), args)
 
 
 """
@@ -3279,6 +3653,62 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
+    using AWSSDK.CognitoIdentityServiceProvider.set_uicustomization
+    set_uicustomization([::AWSConfig], arguments::Dict)
+    set_uicustomization([::AWSConfig]; UserPoolId=, <keyword arguments>)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "SetUICustomization", arguments::Dict)
+    cognito_idp([::AWSConfig], "SetUICustomization", UserPoolId=, <keyword arguments>)
+
+# SetUICustomization Operation
+
+Sets the UI customization information for a user pool's built-in app UI.
+
+You can specify app UI customization settings for a single client (with a specific `clientId`) or for all clients (by setting the `clientId` to `ALL`). If you specify `ALL`, the default configuration will be used for every client that has no UI customization set previously. If you specify UI customization settings for a particular client, it will no longer fall back to the `ALL` configuration.
+
+**Note**
+> To use this API, your user pool must have a domain associated with it. Otherwise, there is no place to host the app's pages, and the service will throw an error.
+
+# Arguments
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID for the user pool.
+
+
+## `ClientId = ::String`
+The client ID for the client app.
+
+
+## `CSS = ::String`
+The CSS values in the UI customization.
+
+
+## `ImageFile = blob`
+The uploaded logo image for the UI customization.
+
+
+
+
+# Returns
+
+`SetUICustomizationResponse`
+
+# Exceptions
+
+`InvalidParameterException`, `ResourceNotFoundException`, `NotAuthorizedException`, `TooManyRequestsException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/SetUICustomization)
+"""
+
+@inline set_uicustomization(aws::AWSConfig=default_aws_config(); args...) = set_uicustomization(aws, args)
+
+@inline set_uicustomization(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "SetUICustomization", args)
+
+@inline set_uicustomization(args) = set_uicustomization(default_aws_config(), args)
+
+
+"""
     using AWSSDK.CognitoIdentityServiceProvider.set_user_settings
     set_user_settings([::AWSConfig], arguments::Dict)
     set_user_settings([::AWSConfig]; AccessToken=, MFAOptions=)
@@ -3643,6 +4073,62 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 
 """
+    using AWSSDK.CognitoIdentityServiceProvider.update_resource_server
+    update_resource_server([::AWSConfig], arguments::Dict)
+    update_resource_server([::AWSConfig]; UserPoolId=, Identifier=, Name=, <keyword arguments>)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "UpdateResourceServer", arguments::Dict)
+    cognito_idp([::AWSConfig], "UpdateResourceServer", UserPoolId=, Identifier=, Name=, <keyword arguments>)
+
+# UpdateResourceServer Operation
+
+Updates the name and scopes of resource server. All other fields are read-only.
+
+# Arguments
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID for the user pool.
+
+
+## `Identifier = ::String` -- *Required*
+The identifier for the resource server.
+
+
+## `Name = ::String` -- *Required*
+The name of the resource server.
+
+
+## `Scopes = [[ ... ], ...]`
+The scope values to be set for the resource server.
+```
+ Scopes = [[
+        "ScopeName" => <required> ::String,
+        "ScopeDescription" => <required> ::String
+    ], ...]
+```
+
+
+
+# Returns
+
+`UpdateResourceServerResponse`
+
+# Exceptions
+
+`InvalidParameterException`, `ResourceNotFoundException`, `NotAuthorizedException`, `TooManyRequestsException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateResourceServer)
+"""
+
+@inline update_resource_server(aws::AWSConfig=default_aws_config(); args...) = update_resource_server(aws, args)
+
+@inline update_resource_server(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "UpdateResourceServer", args)
+
+@inline update_resource_server(args) = update_resource_server(default_aws_config(), args)
+
+
+"""
     using AWSSDK.CognitoIdentityServiceProvider.update_user_attributes
     update_user_attributes([::AWSConfig], arguments::Dict)
     update_user_attributes([::AWSConfig]; UserAttributes=, AccessToken=)
@@ -3753,6 +4239,19 @@ The contents of the email verification message.
 ## `EmailVerificationSubject = ::String`
 The subject of the email verification message.
 
+
+## `VerificationMessageTemplate = [ ... ]`
+The template for verification messages.
+```
+ VerificationMessageTemplate = [
+        "SmsMessage" =>  ::String,
+        "EmailMessage" =>  ::String,
+        "EmailSubject" =>  ::String,
+        "EmailMessageByLink" =>  ::String,
+        "EmailSubjectByLink" =>  ::String,
+        "DefaultEmailOption" =>  "CONFIRM_WITH_LINK" or "CONFIRM_WITH_CODE"
+    ]
+```
 
 ## `SmsAuthenticationMessage = ::String`
 The contents of the SMS authentication message.
@@ -3885,7 +4384,7 @@ A list of allowed callback URLs for the identity providers.
 
 
 ## `LogoutURLs = [::String, ...]`
-A list ofallowed logout URLs for the identity providers.
+A list of allowed logout URLs for the identity providers.
 
 
 ## `DefaultRedirectURI = ::String`

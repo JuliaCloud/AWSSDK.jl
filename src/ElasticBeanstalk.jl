@@ -593,7 +593,7 @@ If no application is found with this name, `CreateEnvironment` returns an `Inval
 ## `EnvironmentName = ::String`
 A unique name for the deployment environment. Used in the application URL.
 
-Constraint: Must be from 4 to 40 characters in length. The name can contain only letters, numbers, and hyphens. It cannot start or end with a hyphen. This name must be unique in your account. If the specified name already exists, AWS Elastic Beanstalk returns an `InvalidParameterValue` error.
+Constraint: Must be from 4 to 40 characters in length. The name can contain only letters, numbers, and hyphens. It cannot start or end with a hyphen. This name must be unique within a region in your account. If the specified name already exists in the region, AWS Elastic Beanstalk returns an `InvalidParameterValue` error.
 
 Default: If the CNAME parameter is not specified, the environment name becomes part of the CNAME, and therefore part of the visible URL for your application.
 
@@ -646,7 +646,7 @@ This is an alternative to specifying a template name. If specified, AWS Elastic 
 
 
 ## `PlatformArn = ::String`
-The ARN of the custom platform.
+The ARN of the platform.
 
 
 ## `OptionSettings = [[ ... ], ...]`
@@ -1115,11 +1115,15 @@ Specify a version label to show a specific application version.
 
 
 ## `MaxRecords = ::Int`
-Specify a maximum number of application versions to paginate in the request.
+For a paginated request. Specify a maximum number of application versions to include in each response.
+
+If no `MaxRecords` is specified, all available application versions are retrieved in a single response.
 
 
 ## `NextToken = ::String`
-Specify a next token to retrieve the next page in a paginated request.
+For a paginated request. Specify a token from a previous response page to retrieve the next response page. All other parameter values must be identical to the ones specified in the initial request.
+
+If no `NextToken` is specified, the first page is retrieved.
 
 
 
@@ -1827,6 +1831,18 @@ Indicates whether to include deleted environments:
 
 ## `IncludedDeletedBackTo = timestamp`
 If specified when `IncludeDeleted` is set to `true`, then environments deleted after this date are displayed.
+
+
+## `MaxRecords = ::Int`
+For a paginated request. Specify a maximum number of environments to include in each response.
+
+If no `MaxRecords` is specified, all available environments are retrieved in a single response.
+
+
+## `NextToken = ::String`
+For a paginated request. Specify a token from a previous response page to retrieve the next response page. All other parameter values must be identical to the ones specified in the initial request.
+
+If no `NextToken` is specified, the first page is retrieved.
 
 
 

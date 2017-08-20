@@ -134,7 +134,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 Creates a configuration set event destination.
 
 **Note**
-> When you create or update an event destination, you must provide one, and only one, destination. The destination can be either Amazon CloudWatch or Amazon Kinesis Firehose.
+> When you create or update an event destination, you must provide one, and only one, destination. The destination can be Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS).
 
 An event destination is the AWS service to which Amazon SES publishes the email sending events associated with a configuration set. For information about using configuration sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
@@ -152,16 +152,17 @@ An object that describes the AWS service to which Amazon SES will publish the em
  EventDestination = [
         "Name" => <required> ::String,
         "Enabled" =>  ::Bool,
-        "MatchingEventTypes" => <required> ["send", "reject", "bounce", "complaint" or "delivery", ...],
+        "MatchingEventTypes" => <required> ["send", "reject", "bounce", "complaint", "delivery", "open" or "click", ...],
         "KinesisFirehoseDestination" =>  [
             "IAMRoleARN" => <required> ::String,
             "DeliveryStreamARN" => <required> ::String
         ],
         "CloudWatchDestination" =>  ["DimensionConfigurations" => <required> [[
                 "DimensionName" => <required> ::String,
-                "DimensionValueSource" => <required> "messageTag" or "emailHeader",
+                "DimensionValueSource" => <required> "messageTag", "emailHeader" or "linkTag",
                 "DefaultDimensionValue" => <required> ::String
-            ], ...]]
+            ], ...]],
+        "SNSDestination" =>  ["TopicARN" => <required> ::String]
     ]
 ```
 
@@ -173,7 +174,7 @@ An object that describes the AWS service to which Amazon SES will publish the em
 
 # Exceptions
 
-`ConfigurationSetDoesNotExistException`, `EventDestinationAlreadyExistsException`, `InvalidCloudWatchDestinationException`, `InvalidFirehoseDestinationException` or `LimitExceededException`.
+`ConfigurationSetDoesNotExistException`, `EventDestinationAlreadyExistsException`, `InvalidCloudWatchDestinationException`, `InvalidFirehoseDestinationException`, `InvalidSNSDestinationException` or `LimitExceededException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateConfigurationSetEventDestination)
 """
@@ -1421,6 +1422,10 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 Given a list of identities (email addresses and/or domains), returns the verification status and (for domain identities) the verification token for each identity.
 
+The verification status of an email address is "Pending" until the email address owner clicks the link within the verification email that Amazon SES sent to that address. If the email address owner clicks the link within 24 hours, the verification status of the email address changes to "Success". If the link is not clicked within 24 hours, the verification status changes to "Failed." In that case, if you still want to verify the email address, you must restart the verification process from the beginning.
+
+For domain identities, the domain's verification status is "Pending" as Amazon SES searches for the required TXT record in the DNS settings of the domain. When Amazon SES detects the record, the domain's verification status changes to "Success". If Amazon SES is unable to detect the record within 72 hours, the domain's verification status changes to "Failed." In that case, if you still want to verify the domain, you must restart the verification process from the beginning.
+
 This action is throttled at one request per second and can only get verification attributes for up to 100 identities at a time.
 
 # Arguments
@@ -2164,6 +2169,8 @@ There are several important points to know about `SendEmail`:
 
 *   The total size of the message cannot exceed 10 MB. This includes any attachments that are part of the message.
 
+*   You must provide at least one recipient email address. The recipient address can be a To: address, a CC: address, or a BCC: address. If any email address you provide is invalid, Amazon SES rejects the entire email.
+
 *   Amazon SES has a limit on the total number of recipients per message. The combined number of To:, CC: and BCC: email addresses cannot exceed 50. If you need to send an email message to a larger audience, you can divide your recipient list into groups of 50 or fewer, and then call Amazon SES repeatedly to send the message to each group.
 
 *   For every message that you send, the total number of recipients (To:, CC: and BCC:) is counted against your sending quota - the maximum number of emails you can send in a 24-hour period. For information about your sending quota, go to the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html).
@@ -2337,6 +2344,8 @@ There are several important points to know about `SendRawEmail`:
 
 *   The total size of the message cannot exceed 10 MB. This includes any attachments that are part of the message.
 
+*   You must provide at least one recipient email address. The recipient address can be a To: address, a CC: address, or a BCC: address. If any email address you provide is invalid, Amazon SES rejects the entire email.
+
 *   Amazon SES has a limit on the total number of recipients per message. The combined number of To:, CC: and BCC: email addresses cannot exceed 50. If you need to send an email message to a larger audience, you can divide your recipient list into groups of 50 or fewer, and then call Amazon SES repeatedly to send the message to each group.
 
 *   The To:, CC:, and BCC: headers in the raw message can contain a group list. Note that each recipient in a group list counts towards the 50-recipient limit.
@@ -2385,6 +2394,8 @@ The raw text of the message. The client is responsible for ensuring the followin
 *   MIME content types must be among those supported by Amazon SES. For more information, go to the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html).
 
 *   Must be base64-encoded.
+
+*   Per [RFC 5321](https://tools.ietf.org/html/rfc5321#section-4.5.3.1.6), the maximum length of each line of text, including the <CRLF>, must not exceed 1,000 characters.
 
 
 ## `FromArn = ::String`
@@ -2920,9 +2931,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 Updates the event destination of a configuration set.
 
 **Note**
-> When you create or update an event destination, you must provide one, and only one, destination. The destination can be either Amazon CloudWatch or Amazon Kinesis Firehose.
+> When you create or update an event destination, you must provide one, and only one, destination. The destination can be Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS).
 
-Event destinations are associated with configuration sets, which enable you to publish email sending events to Amazon CloudWatch or Amazon Kinesis Firehose. For information about using configuration sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
+Event destinations are associated with configuration sets, which enable you to publish email sending events to Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS). For information about using configuration sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
 This action is throttled at one request per second.
 
@@ -2938,16 +2949,17 @@ The event destination object that you want to apply to the specified configurati
  EventDestination = [
         "Name" => <required> ::String,
         "Enabled" =>  ::Bool,
-        "MatchingEventTypes" => <required> ["send", "reject", "bounce", "complaint" or "delivery", ...],
+        "MatchingEventTypes" => <required> ["send", "reject", "bounce", "complaint", "delivery", "open" or "click", ...],
         "KinesisFirehoseDestination" =>  [
             "IAMRoleARN" => <required> ::String,
             "DeliveryStreamARN" => <required> ::String
         ],
         "CloudWatchDestination" =>  ["DimensionConfigurations" => <required> [[
                 "DimensionName" => <required> ::String,
-                "DimensionValueSource" => <required> "messageTag" or "emailHeader",
+                "DimensionValueSource" => <required> "messageTag", "emailHeader" or "linkTag",
                 "DefaultDimensionValue" => <required> ::String
-            ], ...]]
+            ], ...]],
+        "SNSDestination" =>  ["TopicARN" => <required> ::String]
     ]
 ```
 
@@ -2959,7 +2971,7 @@ The event destination object that you want to apply to the specified configurati
 
 # Exceptions
 
-`ConfigurationSetDoesNotExistException`, `EventDestinationDoesNotExistException`, `InvalidCloudWatchDestinationException` or `InvalidFirehoseDestinationException`.
+`ConfigurationSetDoesNotExistException`, `EventDestinationDoesNotExistException`, `InvalidCloudWatchDestinationException`, `InvalidFirehoseDestinationException` or `InvalidSNSDestinationException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/UpdateConfigurationSetEventDestination)
 """

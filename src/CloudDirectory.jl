@@ -635,6 +635,10 @@ A list of operations that are part of the batch.
             "PolicyReference" => <required> ["Selector" =>  ::String],
             "ObjectReference" => <required> ["Selector" =>  ::String]
         ],
+        "DetachPolicy" =>  [
+            "PolicyReference" => <required> ["Selector" =>  ::String],
+            "ObjectReference" => <required> ["Selector" =>  ::String]
+        ],
         "CreateIndex" =>  [
             "OrderedIndexedAttributeList" => <required> [[
                 "SchemaArn" => <required> ::String,

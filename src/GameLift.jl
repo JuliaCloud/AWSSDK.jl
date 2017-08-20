@@ -13,6 +13,69 @@ using AWSCore
 
 
 """
+    using AWSSDK.GameLift.accept_match
+    accept_match([::AWSConfig], arguments::Dict)
+    accept_match([::AWSConfig]; TicketId=, PlayerIds=, AcceptanceType=)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "AcceptMatch", arguments::Dict)
+    gamelift([::AWSConfig], "AcceptMatch", TicketId=, PlayerIds=, AcceptanceType=)
+
+# AcceptMatch Operation
+
+Registers a player's acceptance or rejection of a proposed FlexMatch match. A matchmaking configuration may require player acceptance; if so, then matches built with that configuration cannot be completed unless all players accept the proposed match within a specified time limit.
+
+When FlexMatch builds a match, all the matchmaking tickets involved in the proposed match are placed into status `REQUIRES_ACCEPTANCE`. This is a trigger for your game to get acceptance from all players in the ticket. Acceptances are only valid for tickets when they are in this status; all other acceptances result in an error.
+
+To register acceptance, specify the ticket ID, a response, and one or more players. Once all players have registered acceptance, the matchmaking tickets advance to status `PLACING`, where a new game session is created for the match.
+
+If any player rejects the match, or if acceptances are not received before a specified timeout, the proposed match is dropped. The matchmaking tickets are then handled in one of two ways: For tickets where all players accepted the match, the ticket status is returned to `SEARCHING` to find a new match. For tickets where one or more players failed to accept the match, the ticket status is set to `FAILED`, and processing is terminated. A new matchmaking request for these players can be submitted as needed.
+
+Matchmaking-related operations include:
+
+*   [StartMatchmaking](@ref)
+
+*   [DescribeMatchmaking](@ref)
+
+*   [StopMatchmaking](@ref)
+
+*   [AcceptMatch](@ref)
+
+# Arguments
+
+## `TicketId = ::String` -- *Required*
+Unique identifier for a matchmaking ticket. The ticket must be in status `REQUIRES_ACCEPTANCE`; otherwise this request will fail.
+
+
+## `PlayerIds = [::String, ...]` -- *Required*
+Unique identifier for a player delivering the response. This parameter can include one or multiple player IDs.
+
+
+## `AcceptanceType = "ACCEPT" or "REJECT"` -- *Required*
+Player response to the proposed match.
+
+
+
+
+# Returns
+
+`AcceptMatchOutput`
+
+# Exceptions
+
+`InvalidRequestException`, `NotFoundException`, `InternalServiceException` or `UnsupportedRegionException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/AcceptMatch)
+"""
+
+@inline accept_match(aws::AWSConfig=default_aws_config(); args...) = accept_match(aws, args)
+
+@inline accept_match(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "AcceptMatch", args)
+
+@inline accept_match(args) = accept_match(default_aws_config(), args)
+
+
+"""
     using AWSSDK.GameLift.create_alias
     create_alias([::AWSConfig], arguments::Dict)
     create_alias([::AWSConfig]; Name=, RoutingStrategy=, <keyword arguments>)
@@ -178,7 +241,7 @@ You can also configure the new fleet with the following settings:
 
 *   Access permissions for inbound traffic
 
-*   Fleetwide game session protection
+*   Fleet-wide game session protection
 
 *   Resource creation limit
 
@@ -349,13 +412,15 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 Creates a multiplayer game session for players. This action creates a game session record and assigns an available server process in the specified fleet to host the game session. A fleet must have an `ACTIVE` status before a game session can be created in it.
 
-To create a game session, specify either fleet ID or alias ID and indicate a maximum number of players to allow in the game session. You can also provide a name and game-specific properties for this game session. If successful, a [GameSession](@ref) object is returned containing game session properties, including a game session ID with the custom string you provided.
+To create a game session, specify either fleet ID or alias ID and indicate a maximum number of players to allow in the game session. You can also provide a name and game-specific properties for this game session. If successful, a [GameSession](@ref) object is returned containing the game session properties and other settings you specified.
 
 **Idempotency tokens.** You can add a token that uniquely identifies game session requests. This is useful for ensuring that game session requests are idempotent. Multiple requests with the same idempotency token are processed only once; subsequent requests return the original result. All response values are the same with the exception of game session status, which may change.
 
 **Resource creation limits.** If you are creating a game session on a fleet with a resource creation limit policy in force, then you must specify a creator ID. Without this ID, Amazon GameLift has no way to evaluate the policy for this new game session request.
 
-By default, newly created game sessions allow new players to join. Use [UpdateGameSession](@ref) to change the game session's player session creation policy.
+**Player acceptance policy.** By default, newly created game sessions are open to new players. You can restrict new player access by using [UpdateGameSession](@ref) to change the game session's player session creation policy.
+
+**Game session logs.** Logs are retained for all active game sessions for 14 days. To access the logs, call [GetGameSessionLogUrl](@ref) to download the log files.
 
 *Available in Amazon GameLift Local.*
 
@@ -400,7 +465,7 @@ Descriptive label that is associated with a game session. Session names do not n
 
 
 ## `GameProperties = [[ ... ], ...]`
-Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.
+Set of developer-defined properties for a game session, formatted as a set of type:value pairs. These properties are included in the [GameSession](@ref) object, which is passed to the game server with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 ```
  GameProperties = [[
         "Key" => <required> ::String,
@@ -417,7 +482,11 @@ Unique identifier for a player or entity creating the game session. This ID is u
 
 
 ## `IdempotencyToken = ::String`
-Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ID has the following format: `arn:aws:gamelift:<region>::gamesession/<fleet ID>/<custom ID string or idempotency token>`.)
+Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ID has the following format: `arn:aws:gamelift:<region>::gamesession/<fleet ID>/<custom ID string or idempotency token>`.) Idempotency tokens remain in use for 30 days after a game session has ended; game session objects are retained for this time period and then deleted.
+
+
+## `GameSessionData = ::String`
+Set of developer-defined game session properties, formatted as a single string value. This data is included in the [GameSession](@ref) object, which is passed to the game server with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
 
@@ -472,11 +541,11 @@ Queue-related operations include:
 # Arguments
 
 ## `Name = ::String` -- *Required*
-Descriptive label that is associated with queue. Queue names must be unique within each region.
+Descriptive label that is associated with game session queue. Queue names must be unique within each region.
 
 
 ## `TimeoutInSeconds = ::Int`
-Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status.
+Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a `TIMED_OUT` status.
 
 
 ## `PlayerLatencyPolicies = [[ ... ], ...]`
@@ -510,6 +579,179 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 @inline create_game_session_queue(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "CreateGameSessionQueue", args)
 
 @inline create_game_session_queue(args) = create_game_session_queue(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.GameLift.create_matchmaking_configuration
+    create_matchmaking_configuration([::AWSConfig], arguments::Dict)
+    create_matchmaking_configuration([::AWSConfig]; Name=, GameSessionQueueArns=, RequestTimeoutSeconds=, AcceptanceRequired=, RuleSetName=, <keyword arguments>)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "CreateMatchmakingConfiguration", arguments::Dict)
+    gamelift([::AWSConfig], "CreateMatchmakingConfiguration", Name=, GameSessionQueueArns=, RequestTimeoutSeconds=, AcceptanceRequired=, RuleSetName=, <keyword arguments>)
+
+# CreateMatchmakingConfiguration Operation
+
+Defines a new matchmaking configuration for use with FlexMatch. A matchmaking configuration sets out guidelines for matching players and getting the matches into games. You can set up multiple matchmaking configurations to handle the scenarios needed for your game. Each matchmaking request ([StartMatchmaking](@ref)) specifies a configuration for the match and provides player attributes to support the configuration being used.
+
+To create a matchmaking configuration, at a minimum you must specify the following: configuration name; a rule set that governs how to evaluate players and find acceptable matches; a game session queue to use when placing a new game session for the match; and the maximum time allowed for a matchmaking attempt.
+
+**Player acceptance** -- In each configuration, you have the option to require that all players accept participation in a proposed match. To enable this feature, set *AcceptanceRequired* to true and specify a time limit for player acceptance. Players have the option to accept or reject a proposed match, and a match does not move ahead to game session placement unless all matched players accept.
+
+**Matchmaking status notification** -- There are two ways to track the progress of matchmaking tickets: (1) polling ticket status with [DescribeMatchmaking](@ref); or (2) receiving notifications with Amazon Simple Notification Service (SNS). To use notifications, you first need to set up an SNS topic to receive the notifications, and provide the topic ARN in the matchmaking configuration (see [Setting up Notifications for Matchmaking](http://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)). Since notifications promise only "best effort" delivery, we recommend calling `DescribeMatchmaking` if no notifications are received within 30 seconds.
+
+Operations related to match configurations and rule sets include:
+
+*   [CreateMatchmakingConfiguration](@ref)
+
+*   [DescribeMatchmakingConfigurations](@ref)
+
+*   [UpdateMatchmakingConfiguration](@ref)
+
+*   [DeleteMatchmakingConfiguration](@ref)
+
+*   [CreateMatchmakingRuleSet](@ref)
+
+*   [DescribeMatchmakingRuleSets](@ref)
+
+*   [ValidateMatchmakingRuleSet](@ref)
+
+# Arguments
+
+## `Name = ::String` -- *Required*
+Unique identifier for a matchmaking configuration. This name is used to identify the configuration associated with a matchmaking request or ticket.
+
+
+## `Description = ::String`
+Meaningful description of the matchmaking configuration.
+
+
+## `GameSessionQueueArns = [::String, ...]` -- *Required*
+Amazon Resource Name ([ARN](http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html)) that is assigned to a game session queue and uniquely identifies it. Format is `arn:aws:gamelift:<region>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912`. These queues are used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be located in any region.
+
+
+## `RequestTimeoutSeconds = ::Int` -- *Required*
+Maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out. Requests that time out can be resubmitted as needed.
+
+
+## `AcceptanceTimeoutSeconds = ::Int`
+Length of time (in seconds) to wait for players to accept a proposed match. If any player rejects the match or fails to accept before the timeout, the ticket continues to look for an acceptable match.
+
+
+## `AcceptanceRequired = ::Bool` -- *Required*
+Flag that determines whether or not a match that was created with this configuration must be accepted by the matched players. To require acceptance, set to TRUE.
+
+
+## `RuleSetName = ::String` -- *Required*
+Unique identifier for a matchmaking rule set to use with this configuration. A matchmaking configuration can only use rule sets that are defined in the same region.
+
+
+## `NotificationTarget = ::String`
+SNS topic ARN that is set up to receive matchmaking notifications.
+
+
+## `AdditionalPlayerCount = ::Int`
+Number of player slots in a match to keep open for future players. For example, if the configuration's rule set specifies a match for a single 12-person team, and the additional player count is set to 2, only 10 players are selected for the match.
+
+
+## `CustomEventData = ::String`
+Information to attached to all events related to the matchmaking configuration.
+
+
+## `GameProperties = [[ ... ], ...]`
+Set of developer-defined properties for a game session, formatted as a set of type:value pairs. These properties are included in the [GameSession](@ref) object, which is passed to the game server with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new [GameSession](@ref) object that is created for a successful match.
+```
+ GameProperties = [[
+        "Key" => <required> ::String,
+        "Value" => <required> ::String
+    ], ...]
+```
+
+## `GameSessionData = ::String`
+Set of developer-defined game session properties, formatted as a single string value. This data is included in the [GameSession](@ref) object, which is passed to the game server with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new [GameSession](@ref) object that is created for a successful match.
+
+
+
+
+# Returns
+
+`CreateMatchmakingConfigurationOutput`
+
+# Exceptions
+
+`InvalidRequestException`, `LimitExceededException`, `NotFoundException`, `InternalServiceException` or `UnsupportedRegionException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateMatchmakingConfiguration)
+"""
+
+@inline create_matchmaking_configuration(aws::AWSConfig=default_aws_config(); args...) = create_matchmaking_configuration(aws, args)
+
+@inline create_matchmaking_configuration(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "CreateMatchmakingConfiguration", args)
+
+@inline create_matchmaking_configuration(args) = create_matchmaking_configuration(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.GameLift.create_matchmaking_rule_set
+    create_matchmaking_rule_set([::AWSConfig], arguments::Dict)
+    create_matchmaking_rule_set([::AWSConfig]; Name=, RuleSetBody=)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "CreateMatchmakingRuleSet", arguments::Dict)
+    gamelift([::AWSConfig], "CreateMatchmakingRuleSet", Name=, RuleSetBody=)
+
+# CreateMatchmakingRuleSet Operation
+
+Creates a new rule set for FlexMatch matchmaking. A rule set describes the type of match to create, such as the number and size of teams, and sets the parameters for acceptable player matches, such as minimum skill level or character type. Rule sets are used in matchmaking configurations, which define how matchmaking requests are handled. Each [MatchmakingConfiguration](@ref) uses one rule set; you can set up multiple rule sets to handle the scenarios that suit your game (such as for different game modes), and create a separate matchmaking configuration for each rule set. See additional information on rule set content in the [MatchmakingRuleSet](@ref) structure. For help creating rule sets, including useful examples, see the topic [Adding FlexMatch to Your Game](http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
+
+Once created, matchmaking rule sets cannot be changed or deleted, so we recommend checking the rule set syntax using [ValidateMatchmakingRuleSet](@ref)before creating the rule set.
+
+To create a matchmaking rule set, provide the set of rules and a unique name. Rule sets must be defined in the same region as the matchmaking configuration they will be used with. Rule sets cannot be edited or deleted. If you need to change a rule set, create a new one with the necessary edits and then update matchmaking configurations to use the new rule set.
+
+Operations related to match configurations and rule sets include:
+
+*   [CreateMatchmakingConfiguration](@ref)
+
+*   [DescribeMatchmakingConfigurations](@ref)
+
+*   [UpdateMatchmakingConfiguration](@ref)
+
+*   [DeleteMatchmakingConfiguration](@ref)
+
+*   [CreateMatchmakingRuleSet](@ref)
+
+*   [DescribeMatchmakingRuleSets](@ref)
+
+*   [ValidateMatchmakingRuleSet](@ref)
+
+# Arguments
+
+## `Name = ::String` -- *Required*
+Unique identifier for a matchmaking rule set. This name is used to identify the rule set associated with a matchmaking configuration.
+
+
+## `RuleSetBody = ::String` -- *Required*
+Collection of matchmaking rules, formatted as a JSON string. (Note that comments are not allowed in JSON, but most elements support a description field.)
+
+
+
+
+# Returns
+
+`CreateMatchmakingRuleSetOutput`
+
+# Exceptions
+
+`InvalidRequestException`, `InternalServiceException` or `UnsupportedRegionException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateMatchmakingRuleSet)
+"""
+
+@inline create_matchmaking_rule_set(aws::AWSConfig=default_aws_config(); args...) = create_matchmaking_rule_set(aws, args)
+
+@inline create_matchmaking_rule_set(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "CreateMatchmakingRuleSet", args)
+
+@inline create_matchmaking_rule_set(args) = create_matchmaking_rule_set(default_aws_config(), args)
 
 
 """
@@ -851,7 +1093,7 @@ Queue-related operations include:
 # Arguments
 
 ## `Name = ::String` -- *Required*
-Descriptive label that is associated with queue. Queue names must be unique within each region.
+Descriptive label that is associated with game session queue. Queue names must be unique within each region.
 
 
 
@@ -872,6 +1114,61 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 @inline delete_game_session_queue(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DeleteGameSessionQueue", args)
 
 @inline delete_game_session_queue(args) = delete_game_session_queue(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.GameLift.delete_matchmaking_configuration
+    delete_matchmaking_configuration([::AWSConfig], arguments::Dict)
+    delete_matchmaking_configuration([::AWSConfig]; Name=)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "DeleteMatchmakingConfiguration", arguments::Dict)
+    gamelift([::AWSConfig], "DeleteMatchmakingConfiguration", Name=)
+
+# DeleteMatchmakingConfiguration Operation
+
+Permanently removes a FlexMatch matchmaking configuration. To delete, specify the configuration name. A matchmaking configuration cannot be deleted if it is being used in any active matchmaking tickets.
+
+Operations related to match configurations and rule sets include:
+
+*   [CreateMatchmakingConfiguration](@ref)
+
+*   [DescribeMatchmakingConfigurations](@ref)
+
+*   [UpdateMatchmakingConfiguration](@ref)
+
+*   [DeleteMatchmakingConfiguration](@ref)
+
+*   [CreateMatchmakingRuleSet](@ref)
+
+*   [DescribeMatchmakingRuleSets](@ref)
+
+*   [ValidateMatchmakingRuleSet](@ref)
+
+# Arguments
+
+## `Name = ::String` -- *Required*
+Unique identifier for a matchmaking configuration
+
+
+
+
+# Returns
+
+`DeleteMatchmakingConfigurationOutput`
+
+# Exceptions
+
+`InvalidRequestException`, `NotFoundException`, `InternalServiceException` or `UnsupportedRegionException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DeleteMatchmakingConfiguration)
+"""
+
+@inline delete_matchmaking_configuration(aws::AWSConfig=default_aws_config(); args...) = delete_matchmaking_configuration(aws, args)
+
+@inline delete_matchmaking_configuration(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DeleteMatchmakingConfiguration", args)
+
+@inline delete_matchmaking_configuration(args) = delete_matchmaking_configuration(default_aws_config(), args)
 
 
 """
@@ -1223,7 +1520,7 @@ Maximum number of results to return. Use this parameter with `NextToken` to get 
 
 
 ## `NextToken = ::String`
-Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.
+Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.
 
 
 
@@ -1317,7 +1614,7 @@ Maximum number of results to return. Use this parameter with `NextToken` to get 
 
 
 ## `NextToken = ::String`
-Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.
+Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.
 
 
 
@@ -1416,7 +1713,7 @@ Maximum number of results to return. Use this parameter with `NextToken` to get 
 
 
 ## `NextToken = ::String`
-Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.
+Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 
 
 
@@ -1593,7 +1890,7 @@ Maximum number of results to return. Use this parameter with `NextToken` to get 
 
 
 ## `NextToken = ::String`
-Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.
+Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.
 
 
 
@@ -1676,7 +1973,7 @@ Maximum number of results to return. Use this parameter with `NextToken` to get 
 
 
 ## `NextToken = ::String`
-Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.
+Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 
 
 
@@ -1794,7 +2091,7 @@ Maximum number of results to return. Use this parameter with `NextToken` to get 
 
 
 ## `NextToken = ::String`
-Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.
+Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 
 
 
@@ -1879,7 +2176,7 @@ Maximum number of results to return. Use this parameter with `NextToken` to get 
 
 
 ## `NextToken = ::String`
-Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.
+Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 
 
 
@@ -1932,7 +2229,7 @@ Maximum number of results to return. Use this parameter with `NextToken` to get 
 
 
 ## `NextToken = ::String`
-Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.
+Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 
 
 
@@ -1953,6 +2250,189 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 @inline describe_instances(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeInstances", args)
 
 @inline describe_instances(args) = describe_instances(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.GameLift.describe_matchmaking
+    describe_matchmaking([::AWSConfig], arguments::Dict)
+    describe_matchmaking([::AWSConfig]; TicketIds=)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "DescribeMatchmaking", arguments::Dict)
+    gamelift([::AWSConfig], "DescribeMatchmaking", TicketIds=)
+
+# DescribeMatchmaking Operation
+
+Retrieves a set of one or more matchmaking tickets. Use this operation to retrieve ticket information, including status and--once a successful match is made--acquire connection information for the resulting new game session.
+
+You can use this operation to track the progress of matchmaking requests (through polling) as an alternative to using event notifications. See more details on tracking matchmaking requests through polling or notifications in [StartMatchmaking](@ref).
+
+You can request data for a one or a list of ticket IDs. If the request is successful, a ticket object is returned for each requested ID. When specifying a list of ticket IDs, objects are returned only for tickets that currently exist.
+
+Matchmaking-related operations include:
+
+*   [StartMatchmaking](@ref)
+
+*   [DescribeMatchmaking](@ref)
+
+*   [StopMatchmaking](@ref)
+
+*   [AcceptMatch](@ref)
+
+# Arguments
+
+## `TicketIds = [::String, ...]` -- *Required*
+Unique identifier for a matchmaking ticket. To request all existing tickets, leave this parameter empty.
+
+
+
+
+# Returns
+
+`DescribeMatchmakingOutput`
+
+# Exceptions
+
+`InvalidRequestException`, `InternalServiceException` or `UnsupportedRegionException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeMatchmaking)
+"""
+
+@inline describe_matchmaking(aws::AWSConfig=default_aws_config(); args...) = describe_matchmaking(aws, args)
+
+@inline describe_matchmaking(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeMatchmaking", args)
+
+@inline describe_matchmaking(args) = describe_matchmaking(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.GameLift.describe_matchmaking_configurations
+    describe_matchmaking_configurations([::AWSConfig], arguments::Dict)
+    describe_matchmaking_configurations([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "DescribeMatchmakingConfigurations", arguments::Dict)
+    gamelift([::AWSConfig], "DescribeMatchmakingConfigurations", <keyword arguments>)
+
+# DescribeMatchmakingConfigurations Operation
+
+Retrieves the details of FlexMatch matchmaking configurations. with this operation, you have the following options: (1) retrieve all existing configurations, (2) provide the names of one or more configurations to retrieve, or (3) retrieve all configurations that use a specified rule set name. When requesting multiple items, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a configuration is returned for each requested name. When specifying a list of names, only configurations that currently exist are returned.
+
+Operations related to match configurations and rule sets include:
+
+*   [CreateMatchmakingConfiguration](@ref)
+
+*   [DescribeMatchmakingConfigurations](@ref)
+
+*   [UpdateMatchmakingConfiguration](@ref)
+
+*   [DeleteMatchmakingConfiguration](@ref)
+
+*   [CreateMatchmakingRuleSet](@ref)
+
+*   [DescribeMatchmakingRuleSets](@ref)
+
+*   [ValidateMatchmakingRuleSet](@ref)
+
+# Arguments
+
+## `Names = [::String, ...]`
+Unique identifier for a matchmaking configuration(s) to retrieve. To request all existing configurations, leave this parameter empty.
+
+
+## `RuleSetName = ::String`
+Unique identifier for a matchmaking rule set. Use this parameter to retrieve all matchmaking configurations that use this rule set.
+
+
+## `Limit = ::Int`
+Maximum number of results to return. Use this parameter with `NextToken` to get results as a set of sequential pages. This parameter is limited to 10.
+
+
+## `NextToken = ::String`
+Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
+
+
+
+
+# Returns
+
+`DescribeMatchmakingConfigurationsOutput`
+
+# Exceptions
+
+`InvalidRequestException`, `InternalServiceException` or `UnsupportedRegionException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeMatchmakingConfigurations)
+"""
+
+@inline describe_matchmaking_configurations(aws::AWSConfig=default_aws_config(); args...) = describe_matchmaking_configurations(aws, args)
+
+@inline describe_matchmaking_configurations(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeMatchmakingConfigurations", args)
+
+@inline describe_matchmaking_configurations(args) = describe_matchmaking_configurations(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.GameLift.describe_matchmaking_rule_sets
+    describe_matchmaking_rule_sets([::AWSConfig], arguments::Dict)
+    describe_matchmaking_rule_sets([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "DescribeMatchmakingRuleSets", arguments::Dict)
+    gamelift([::AWSConfig], "DescribeMatchmakingRuleSets", <keyword arguments>)
+
+# DescribeMatchmakingRuleSets Operation
+
+Retrieves the details for FlexMatch matchmaking rule sets. You can request all existing rule sets for the region, or provide a list of one or more rule set names. When requesting multiple items, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a rule set is returned for each requested name.
+
+Operations related to match configurations and rule sets include:
+
+*   [CreateMatchmakingConfiguration](@ref)
+
+*   [DescribeMatchmakingConfigurations](@ref)
+
+*   [UpdateMatchmakingConfiguration](@ref)
+
+*   [DeleteMatchmakingConfiguration](@ref)
+
+*   [CreateMatchmakingRuleSet](@ref)
+
+*   [DescribeMatchmakingRuleSets](@ref)
+
+*   [ValidateMatchmakingRuleSet](@ref)
+
+# Arguments
+
+## `Names = [::String, ...]`
+Unique identifier for a matchmaking rule set. This name is used to identify the rule set associated with a matchmaking configuration.
+
+
+## `Limit = ::Int`
+Maximum number of results to return. Use this parameter with `NextToken` to get results as a set of sequential pages.
+
+
+## `NextToken = ::String`
+Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
+
+
+
+
+# Returns
+
+`DescribeMatchmakingRuleSetsOutput`
+
+# Exceptions
+
+`InvalidRequestException`, `InternalServiceException`, `NotFoundException` or `UnsupportedRegionException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeMatchmakingRuleSets)
+"""
+
+@inline describe_matchmaking_rule_sets(aws::AWSConfig=default_aws_config(); args...) = describe_matchmaking_rule_sets(aws, args)
+
+@inline describe_matchmaking_rule_sets(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeMatchmakingRuleSets", args)
+
+@inline describe_matchmaking_rule_sets(args) = describe_matchmaking_rule_sets(default_aws_config(), args)
 
 
 """
@@ -2021,7 +2501,7 @@ Maximum number of results to return. Use this parameter with `NextToken` to get 
 
 
 ## `NextToken = ::String`
-Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. If a player session ID is specified, this parameter is ignored.
+Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value. If a player session ID is specified, this parameter is ignored.
 
 
 
@@ -2215,7 +2695,7 @@ Maximum number of results to return. Use this parameter with `NextToken` to get 
 
 
 ## `NextToken = ::String`
-Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.
+Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 
 
 
@@ -2249,7 +2729,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 # GetGameSessionLogUrl Operation
 
-Retrieves the location of stored game session logs for a specified game session. When a game session is terminated, Amazon GameLift automatically stores the logs in Amazon S3. Use this URL to download the logs.
+Retrieves the location of stored game session logs for a specified game session. When a game session is terminated, Amazon GameLift automatically stores the logs in Amazon S3 and retains them for 14 days. Use this URL to download the logs.
 
 **Note**
 > See the [AWS Service Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift) page for maximum log file sizes. Log files that exceed this limit are not saved.
@@ -2400,7 +2880,7 @@ Maximum number of results to return. Use this parameter with `NextToken` to get 
 
 
 ## `NextToken = ::String`
-Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.
+Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 
 
 
@@ -2470,7 +2950,7 @@ Maximum number of results to return. Use this parameter with `NextToken` to get 
 
 
 ## `NextToken = ::String`
-Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.
+Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 
 
 
@@ -2564,7 +3044,7 @@ Maximum number of results to return. Use this parameter with `NextToken` to get 
 
 
 ## `NextToken = ::String`
-Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.
+Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 
 
 
@@ -2925,7 +3405,7 @@ Maximum number of results to return. Use this parameter with `NextToken` to get 
 
 
 ## `NextToken = ::String`
-Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.
+Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 
 
 
@@ -2979,7 +3459,7 @@ To place a new game session request, specify the following:
 
 If successful, a new game session placement is created.
 
-To track the status of a placement request, call [DescribeGameSessionPlacement](@ref) and check the request's status. If the status is `Fulfilled`, a new game session has been created and a game session ARN and region are referenced. If the placement request times out, you can resubmit the request or retry it with a different queue.
+To track the status of a placement request, call [DescribeGameSessionPlacement](@ref) and check the request's status. If the status is `FULFILLED`, a new game session has been created and a game session ARN and region are referenced. If the placement request times out, you can resubmit the request or retry it with a different queue.
 
 Game-session-related operations include:
 
@@ -3014,7 +3494,7 @@ Name of the queue to use to place the new game session.
 
 
 ## `GameProperties = [[ ... ], ...]`
-Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.
+Set of developer-defined properties for a game session, formatted as a set of type:value pairs. These properties are included in the [GameSession](@ref) object, which is passed to the game server with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 ```
  GameProperties = [[
         "Key" => <required> ::String,
@@ -3031,7 +3511,7 @@ Descriptive label that is associated with a game session. Session names do not n
 
 
 ## `PlayerLatencies = [[ ... ], ...]`
-Set of values, expressed in milliseconds, indicating the amount of latency that players are experiencing when connected to AWS regions. This information is used to try to place the new game session where it can offer the best possible gameplay experience for the players.
+Set of values, expressed in milliseconds, indicating the amount of latency that a player experiences when connected to AWS regions. This information is used to try to place the new game session where it can offer the best possible gameplay experience for the players.
 ```
  PlayerLatencies = [[
         "PlayerId" =>  ::String,
@@ -3048,6 +3528,10 @@ Set of information on each player to create a player session for.
         "PlayerData" =>  ::String
     ], ...]
 ```
+
+## `GameSessionData = ::String`
+Set of developer-defined game session properties, formatted as a single string value. This data is included in the [GameSession](@ref) object, which is passed to the game server with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+
 
 
 
@@ -3070,6 +3554,90 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
+    using AWSSDK.GameLift.start_matchmaking
+    start_matchmaking([::AWSConfig], arguments::Dict)
+    start_matchmaking([::AWSConfig]; ConfigurationName=, Players=, <keyword arguments>)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "StartMatchmaking", arguments::Dict)
+    gamelift([::AWSConfig], "StartMatchmaking", ConfigurationName=, Players=, <keyword arguments>)
+
+# StartMatchmaking Operation
+
+Uses FlexMatch to create a game match for a group of players based on custom matchmaking rules, and starts a new game for the matched players. Each matchmaking request specifies the type of match to build (team configuration, rules for an acceptable match, etc.). The request also specifies the players to find a match for and where to host the new game session for optimal performance. A matchmaking request might start with a single player or a group of players who want to play together. FlexMatch finds additional players as needed to fill the match. Match type, rules, and the queue used to place a new game session are defined in a `MatchmakingConfiguration`. For complete information on setting up and using FlexMatch, see the topic [Adding FlexMatch to Your Game](http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
+
+To start matchmaking, provide a unique ticket ID, specify a matchmaking configuration, and include the players to be matched. You must also include a set of player attributes relevant for the matchmaking configuration. If successful, a matchmaking ticket is returned with status set to `QUEUED`. Track the status of the ticket to respond as needed and acquire game session connection information for sucessfully completed matches.
+
+**Tracking ticket status** -- A couple of options are available for tracking the status of matchmaking requests:
+
+*   Polling -- Call `DescribeMatchmaking`. This operation returns the full ticket object, including current status and (for completed tickets) game session connection info. We recommend polling no more than once every 10 seconds.
+
+*   Notifications -- Get event notifications for changes in ticket status using Amazon Simple Notification Service (SNS). Notifications are easy to set up (see [CreateMatchmakingConfiguration](@ref)) and typically deliver match status changes faster and more efficiently than polling. We recommend that you use polling to back up to notifications (since delivery is not guaranteed) and call `DescribeMatchmaking` only when notifications are not received within 30 seconds.
+
+**Processing a matchmaking request** -- FlexMatch handles a matchmaking request as follows:
+
+1.  Your client code submits a `StartMatchmaking` request for one or more players and tracks the status of the request ticket.
+
+2.  FlexMatch uses this ticket and others in process to build an acceptable match. When a potential match is identified, all tickets in the proposed match are advanced to the next status.
+
+3.  If the match requires player acceptance (set in the matchmaking configuration), the tickets move into status `REQUIRES_ACCEPTANCE`. This status triggers your client code to solicit acceptance from all players in every ticket involved in the match, and then call [AcceptMatch](@ref) for each player. If any player rejects or fails to accept the match before a specified timeout, the proposed match is dropped (see `AcceptMatch` for more details).
+
+4.  Once a match is proposed and accepted, the matchmaking tickets move into status `PLACING`. FlexMatch locates resources for a new game session using the game session queue (set in the matchmaking configuration) and creates the game session based on the match data.
+
+5.  When the match is successfully placed, the matchmaking tickets move into `COMPLETED` status. Connection information (including game session endpoint and player session) is added to the matchmaking tickets. Matched players can use the connection information to join the game.
+
+Matchmaking-related operations include:
+
+*   [StartMatchmaking](@ref)
+
+*   [DescribeMatchmaking](@ref)
+
+*   [StopMatchmaking](@ref)
+
+*   [AcceptMatch](@ref)
+
+# Arguments
+
+## `TicketId = ::String`
+Unique identifier for a matchmaking ticket. Use this identifier to track the matchmaking ticket status and retrieve match results.
+
+
+## `ConfigurationName = ::String` -- *Required*
+Name of the matchmaking configuration to use for this request. Matchmaking configurations must exist in the same region as this request.
+
+
+## `Players = [[ ... ], ...]` -- *Required*
+Information on each player to be matched. This information must include a player ID, and may contain player attributes and latency data to be used in the matchmaking process. After a successful match, `Player` objects contain the name of the team the player is assigned to.
+```
+ Players = [[
+        "PlayerId" =>  ::String,
+        "PlayerAttributes" =>  ::Dict{String,String},
+        "Team" =>  ::String,
+        "LatencyInMs" =>  ::Dict{String,String}
+    ], ...]
+```
+
+
+
+# Returns
+
+`StartMatchmakingOutput`
+
+# Exceptions
+
+`InvalidRequestException`, `NotFoundException`, `InternalServiceException` or `UnsupportedRegionException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/StartMatchmaking)
+"""
+
+@inline start_matchmaking(aws::AWSConfig=default_aws_config(); args...) = start_matchmaking(aws, args)
+
+@inline start_matchmaking(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "StartMatchmaking", args)
+
+@inline start_matchmaking(args) = start_matchmaking(default_aws_config(), args)
+
+
+"""
     using AWSSDK.GameLift.stop_game_session_placement
     stop_game_session_placement([::AWSConfig], arguments::Dict)
     stop_game_session_placement([::AWSConfig]; PlacementId=)
@@ -3080,7 +3648,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 # StopGameSessionPlacement Operation
 
-Cancels a game session placement that is in Pending status. To stop a placement, provide the placement ID values. If successful, the placement is moved to Cancelled status.
+Cancels a game session placement that is in `PENDING` status. To stop a placement, provide the placement ID values. If successful, the placement is moved to `CANCELLED` status.
 
 Game-session-related operations include:
 
@@ -3128,6 +3696,55 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 @inline stop_game_session_placement(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "StopGameSessionPlacement", args)
 
 @inline stop_game_session_placement(args) = stop_game_session_placement(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.GameLift.stop_matchmaking
+    stop_matchmaking([::AWSConfig], arguments::Dict)
+    stop_matchmaking([::AWSConfig]; TicketId=)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "StopMatchmaking", arguments::Dict)
+    gamelift([::AWSConfig], "StopMatchmaking", TicketId=)
+
+# StopMatchmaking Operation
+
+Cancels a matchmaking ticket that is currently being processed. To stop the matchmaking operation, specify the ticket ID. If successful, work on the ticket is stopped, and the ticket status is changed to `CANCELLED`.
+
+Matchmaking-related operations include:
+
+*   [StartMatchmaking](@ref)
+
+*   [DescribeMatchmaking](@ref)
+
+*   [StopMatchmaking](@ref)
+
+*   [AcceptMatch](@ref)
+
+# Arguments
+
+## `TicketId = ::String` -- *Required*
+Unique identifier for a matchmaking ticket.
+
+
+
+
+# Returns
+
+`StopMatchmakingOutput`
+
+# Exceptions
+
+`InvalidRequestException`, `NotFoundException`, `InternalServiceException` or `UnsupportedRegionException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/StopMatchmaking)
+"""
+
+@inline stop_matchmaking(aws::AWSConfig=default_aws_config(); args...) = stop_matchmaking(aws, args)
+
+@inline stop_matchmaking(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "StopMatchmaking", args)
+
+@inline stop_matchmaking(args) = stop_matchmaking(default_aws_config(), args)
 
 
 """
@@ -3683,11 +4300,11 @@ Queue-related operations include:
 # Arguments
 
 ## `Name = ::String` -- *Required*
-Descriptive label that is associated with queue. Queue names must be unique within each region.
+Descriptive label that is associated with game session queue. Queue names must be unique within each region.
 
 
 ## `TimeoutInSeconds = ::Int`
-Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status.
+Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a `TIMED_OUT` status.
 
 
 ## `PlayerLatencyPolicies = [[ ... ], ...]`
@@ -3721,6 +4338,110 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 @inline update_game_session_queue(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "UpdateGameSessionQueue", args)
 
 @inline update_game_session_queue(args) = update_game_session_queue(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.GameLift.update_matchmaking_configuration
+    update_matchmaking_configuration([::AWSConfig], arguments::Dict)
+    update_matchmaking_configuration([::AWSConfig]; Name=, <keyword arguments>)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "UpdateMatchmakingConfiguration", arguments::Dict)
+    gamelift([::AWSConfig], "UpdateMatchmakingConfiguration", Name=, <keyword arguments>)
+
+# UpdateMatchmakingConfiguration Operation
+
+Updates settings for a FlexMatch matchmaking configuration. To update settings, specify the configuration name to be updated and provide the new settings.
+
+Operations related to match configurations and rule sets include:
+
+*   [CreateMatchmakingConfiguration](@ref)
+
+*   [DescribeMatchmakingConfigurations](@ref)
+
+*   [UpdateMatchmakingConfiguration](@ref)
+
+*   [DeleteMatchmakingConfiguration](@ref)
+
+*   [CreateMatchmakingRuleSet](@ref)
+
+*   [DescribeMatchmakingRuleSets](@ref)
+
+*   [ValidateMatchmakingRuleSet](@ref)
+
+# Arguments
+
+## `Name = ::String` -- *Required*
+Unique identifier for a matchmaking configuration to update.
+
+
+## `Description = ::String`
+Descriptive label that is associated with matchmaking configuration.
+
+
+## `GameSessionQueueArns = [::String, ...]`
+Amazon Resource Name ([ARN](http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html)) that is assigned to a game session queue and uniquely identifies it. Format is `arn:aws:gamelift:<region>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912`. These queues are used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be located in any region.
+
+
+## `RequestTimeoutSeconds = ::Int`
+Maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out. Requests that time out can be resubmitted as needed.
+
+
+## `AcceptanceTimeoutSeconds = ::Int`
+Length of time (in seconds) to wait for players to accept a proposed match. If any player rejects the match or fails to accept before the timeout, the ticket continues to look for an acceptable match.
+
+
+## `AcceptanceRequired = ::Bool`
+Flag that determines whether or not a match that was created with this configuration must be accepted by the matched players. To require acceptance, set to TRUE.
+
+
+## `RuleSetName = ::String`
+Unique identifier for a matchmaking rule set to use with this configuration. A matchmaking configuration can only use rule sets that are defined in the same region.
+
+
+## `NotificationTarget = ::String`
+SNS topic ARN that is set up to receive matchmaking notifications. See [Setting up Notifications for Matchmaking](http://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html) for more information.
+
+
+## `AdditionalPlayerCount = ::Int`
+Number of player slots in a match to keep open for future players. For example, if the configuration's rule set specifies a match for a single 12-person team, and the additional player count is set to 2, only 10 players are selected for the match.
+
+
+## `CustomEventData = ::String`
+Information to attached to all events related to the matchmaking configuration.
+
+
+## `GameProperties = [[ ... ], ...]`
+Set of developer-defined properties for a game session, formatted as a set of type:value pairs. These properties are included in the [GameSession](@ref) object, which is passed to the game server with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new [GameSession](@ref) object that is created for a successful match.
+```
+ GameProperties = [[
+        "Key" => <required> ::String,
+        "Value" => <required> ::String
+    ], ...]
+```
+
+## `GameSessionData = ::String`
+Set of developer-defined game session properties, formatted as a single string value. This data is included in the [GameSession](@ref) object, which is passed to the game server with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new [GameSession](@ref) object that is created for a successful match.
+
+
+
+
+# Returns
+
+`UpdateMatchmakingConfigurationOutput`
+
+# Exceptions
+
+`InvalidRequestException`, `NotFoundException`, `InternalServiceException` or `UnsupportedRegionException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateMatchmakingConfiguration)
+"""
+
+@inline update_matchmaking_configuration(aws::AWSConfig=default_aws_config(); args...) = update_matchmaking_configuration(aws, args)
+
+@inline update_matchmaking_configuration(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "UpdateMatchmakingConfiguration", args)
+
+@inline update_matchmaking_configuration(args) = update_matchmaking_configuration(default_aws_config(), args)
 
 
 """
@@ -3822,6 +4543,61 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 @inline update_runtime_configuration(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "UpdateRuntimeConfiguration", args)
 
 @inline update_runtime_configuration(args) = update_runtime_configuration(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.GameLift.validate_matchmaking_rule_set
+    validate_matchmaking_rule_set([::AWSConfig], arguments::Dict)
+    validate_matchmaking_rule_set([::AWSConfig]; RuleSetBody=)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "ValidateMatchmakingRuleSet", arguments::Dict)
+    gamelift([::AWSConfig], "ValidateMatchmakingRuleSet", RuleSetBody=)
+
+# ValidateMatchmakingRuleSet Operation
+
+Validates the syntax of a matchmaking rule or rule set. This operation checks that the rule set uses syntactically correct JSON and that it conforms to allowed property expressions. To validate syntax, provide a rule set string.
+
+Operations related to match configurations and rule sets include:
+
+*   [CreateMatchmakingConfiguration](@ref)
+
+*   [DescribeMatchmakingConfigurations](@ref)
+
+*   [UpdateMatchmakingConfiguration](@ref)
+
+*   [DeleteMatchmakingConfiguration](@ref)
+
+*   [CreateMatchmakingRuleSet](@ref)
+
+*   [DescribeMatchmakingRuleSets](@ref)
+
+*   [ValidateMatchmakingRuleSet](@ref)
+
+# Arguments
+
+## `RuleSetBody = ::String` -- *Required*
+Collection of matchmaking rules to validate, formatted as a JSON string.
+
+
+
+
+# Returns
+
+`ValidateMatchmakingRuleSetOutput`
+
+# Exceptions
+
+`InternalServiceException`, `UnsupportedRegionException` or `InvalidRequestException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/ValidateMatchmakingRuleSet)
+"""
+
+@inline validate_matchmaking_rule_set(aws::AWSConfig=default_aws_config(); args...) = validate_matchmaking_rule_set(aws, args)
+
+@inline validate_matchmaking_rule_set(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "ValidateMatchmakingRuleSet", args)
+
+@inline validate_matchmaking_rule_set(args) = validate_matchmaking_rule_set(default_aws_config(), args)
 
 
 

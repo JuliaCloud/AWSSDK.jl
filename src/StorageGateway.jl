@@ -894,7 +894,7 @@ Valid Values: true, false
 
 
 ## `TargetName = ::String` -- *Required*
-The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. For example, specifying `TargetName` as *myvolume* results in the target ARN of arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume. The target name must be unique across all volumes of a gateway.
+The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. For example, specifying `TargetName` as *myvolume* results in the target ARN of arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume. The target name must be unique across all volumes of a gateway.
 
 
 ## `NetworkInterfaceId = ::String` -- *Required*
@@ -959,7 +959,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # CreateTapeWithBarcode Operation
 
-Creates a virtual tape by using your own barcode. You write data to the virtual tape and then archive the tape. This operation is only supported in the tape gateway architecture.
+Creates a virtual tape by using your own barcode. You write data to the virtual tape and then archive the tape. A barcode is unique and can not be reused if it has already been used on a tape . This applies to barcodes used on deleted tapes. This operation is only supported in the tape gateway. architecture.
 
 **Note**
 > Cache storage must be allocated to the gateway before you can create a virtual tape. Use the [AddCache](@ref) operation to add cache storage to a gateway.
@@ -979,6 +979,9 @@ The size, in bytes, of the virtual tape that you want to create.
 
 ## `TapeBarcode = ::String` -- *Required*
 The barcode that you want to assign to the tape.
+
+**Note**
+> Barcodes cannot be reused. This includes barcodes used for tapes that have been deleted.
 
 
 
@@ -1244,11 +1247,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 """
     using AWSSDK.StorageGateway.delete_file_share
     delete_file_share([::AWSConfig], arguments::Dict)
-    delete_file_share([::AWSConfig]; FileShareARN=)
+    delete_file_share([::AWSConfig]; FileShareARN=, <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "DeleteFileShare", arguments::Dict)
-    storagegateway([::AWSConfig], "DeleteFileShare", FileShareARN=)
+    storagegateway([::AWSConfig], "DeleteFileShare", FileShareARN=, <keyword arguments>)
 
 # DeleteFileShare Operation
 
@@ -1258,6 +1261,10 @@ Deletes a file share from a file gateway. This operation is only supported in th
 
 ## `FileShareARN = ::String` -- *Required*
 The Amazon Resource Name (ARN) of the file share to be deleted.
+
+
+## `ForceDelete = ::Bool`
+If set to true, deletes a file share immediately and aborts all data uploads to AWS. Otherwise the file share is not deleted until all data is uploaded to AWS. This process aborts the data upload process and the file share enters the FORCE_DELETING status.
 
 
 
@@ -3281,7 +3288,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # RefreshCache Operation
 
-Refreshes the cache for the specified file share. This operation finds objects in the Amazon S3 bucket that were added or removed since the gateway last listed the bucket's contents and cached the results.
+Refreshes the cache for the specified file share. This operation finds objects in the Amazon S3 bucket that were added, removed or replaced since the gateway last listed the bucket's contents and cached the results.
 
 # Arguments
 
@@ -4196,7 +4203,7 @@ The user mapped to anonymous user. Valid options are the following:
 
 
 ## `ReadOnly = ::Bool`
-Sets the write status of a file share: "true" if the write status is read-only, and otherwise "false".
+Sets the write status of a file share: "true" if the write status is read-only, otherwise "false".
 
 
 
