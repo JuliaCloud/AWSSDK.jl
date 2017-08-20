@@ -296,11 +296,11 @@ Specifies the customer-provided encryption key for Amazon S3 to use in encryptin
 
 
 ## `x-amz-server-side-encryption-customer-key-MD5 = ::String`
-Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321\. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
 ## `x-amz-server-side-encryption-aws-kms-key-id = ::String`
-Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not made via SSL or using SigV4\. Documentation on configuring any of the officially supported AWS SDKs and CLI can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
+Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not made via SSL or using SigV4. Documentation on configuring any of the officially supported AWS SDKs and CLI can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
 
 
 ## `x-amz-copy-source-server-side-encryption-customer-algorithm = ::String`
@@ -312,7 +312,7 @@ Specifies the customer-provided encryption key for Amazon S3 to use to decrypt t
 
 
 ## `x-amz-copy-source-server-side-encryption-customer-key-MD5 = ::String`
-Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321\. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
 ## `x-amz-request-payer = "requester"`
@@ -566,11 +566,11 @@ Specifies the customer-provided encryption key for Amazon S3 to use in encryptin
 
 
 ## `x-amz-server-side-encryption-customer-key-MD5 = ::String`
-Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321\. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
 ## `x-amz-server-side-encryption-aws-kms-key-id = ::String`
-Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not made via SSL or using SigV4\. Documentation on configuring any of the officially supported AWS SDKs and CLI can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
+Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not made via SSL or using SigV4. Documentation on configuring any of the officially supported AWS SDKs and CLI can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
 
 
 ## `x-amz-request-payer = "requester"`
@@ -2345,7 +2345,7 @@ Specifies the customer-provided encryption key for Amazon S3 to use in encryptin
 
 
 ## `x-amz-server-side-encryption-customer-key-MD5 = ::String`
-Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321\. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
 ## `x-amz-request-payer = "requester"`
@@ -2353,7 +2353,7 @@ Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321\. A
 
 
 ## `partNumber = ::Int`
-Part number of the object being read. This is a positive integer between 1 and 10,000\. Effectively performs a 'ranged' GET request for the part specified. Useful for downloading just a part of an object.
+Part number of the object being read. This is a positive integer between 1 and 10,000. Effectively performs a 'ranged' GET request for the part specified. Useful for downloading just a part of an object.
 
 
 
@@ -2802,7 +2802,7 @@ Specifies the customer-provided encryption key for Amazon S3 to use in encryptin
 
 
 ## `x-amz-server-side-encryption-customer-key-MD5 = ::String`
-Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321\. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
 ## `x-amz-request-payer = "requester"`
@@ -2810,7 +2810,7 @@ Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321\. A
 
 
 ## `partNumber = ::Int`
-Part number of the object being read. This is a positive integer between 1 and 10,000\. Effectively performs a 'ranged' HEAD request for the part specified. Useful querying about the size of the part and the number of parts in this object.
+Part number of the object being read. This is a positive integer between 1 and 10,000. Effectively performs a 'ranged' HEAD request for the part specified. Useful querying about the size of the part and the number of parts in this object.
 
 
 
@@ -4896,11 +4896,11 @@ Specifies the customer-provided encryption key for Amazon S3 to use in encryptin
 
 
 ## `x-amz-server-side-encryption-customer-key-MD5 = ::String`
-Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321\. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
 ## `x-amz-server-side-encryption-aws-kms-key-id = ::String`
-Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not made via SSL or using SigV4\. Documentation on configuring any of the officially supported AWS SDKs and CLI can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
+Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not made via SSL or using SigV4. Documentation on configuring any of the officially supported AWS SDKs and CLI can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
 
 
 ## `x-amz-request-payer = "requester"`
@@ -5436,7 +5436,7 @@ Specifies the customer-provided encryption key for Amazon S3 to use in encryptin
 
 
 ## `x-amz-server-side-encryption-customer-key-MD5 = ::String`
-Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321\. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
 ## `x-amz-request-payer = "requester"`
@@ -5545,7 +5545,7 @@ Specifies the customer-provided encryption key for Amazon S3 to use in encryptin
 
 
 ## `x-amz-server-side-encryption-customer-key-MD5 = ::String`
-Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321\. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
 ## `x-amz-copy-source-server-side-encryption-customer-algorithm = ::String`
@@ -5557,7 +5557,7 @@ Specifies the customer-provided encryption key for Amazon S3 to use to decrypt t
 
 
 ## `x-amz-copy-source-server-side-encryption-customer-key-MD5 = ::String`
-Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321\. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
 ## `x-amz-request-payer = "requester"`

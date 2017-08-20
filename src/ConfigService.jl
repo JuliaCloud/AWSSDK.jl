@@ -310,7 +310,7 @@ The allowed values are `COMPLIANT`, `NON_COMPLIANT`, and `INSUFFICIENT_DATA`.
 
 
 ## `Limit = ::Int`
-The maximum number of evaluation results returned on each page. The default is 10\. You cannot specify a limit greater than 100\. If you specify 0, AWS Config uses the default.
+The maximum number of evaluation results returned on each page. The default is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.
 
 
 ## `NextToken = ::String`
@@ -625,7 +625,7 @@ The allowed values are `COMPLIANT`, `NON_COMPLIANT`, and `NOT_APPLICABLE`.
 
 
 ## `Limit = ::Int`
-The maximum number of evaluation results returned on each page. The default is 10\. You cannot specify a limit greater than 100\. If you specify 0, AWS Config uses the default.
+The maximum number of evaluation results returned on each page. The default is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.
 
 
 ## `NextToken = ::String`
@@ -814,7 +814,7 @@ The chronological order for configuration items listed. By default the results a
 
 
 ## `limit = ::Int`
-The maximum number of configuration items returned on each page. The default is 10\. You cannot specify a limit greater than 100\. If you specify 0, AWS Config uses the default.
+The maximum number of configuration items returned on each page. The default is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.
 
 
 ## `nextToken = ::String`
@@ -874,7 +874,7 @@ The custom name of only those resources that you want AWS Config to list in the 
 
 
 ## `limit = ::Int`
-The maximum number of resource identifiers returned on each page. The default is 100\. You cannot specify a limit greater than 100\. If you specify 0, AWS Config uses the default.
+The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.
 
 
 ## `includeDeletedResources = ::Bool`

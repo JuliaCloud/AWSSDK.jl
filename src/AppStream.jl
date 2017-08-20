@@ -176,7 +176,7 @@ The maximum time for which a streaming session can run. The input can be any num
 
 
 ## `DisconnectTimeoutInSeconds = ::Int`
-The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600\.
+The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600.
 
 
 ## `Description = ::String`

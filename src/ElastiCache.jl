@@ -284,7 +284,7 @@ Default: System chosen Availability Zones.
 ## `NumCacheNodes = ::Int`
 The initial number of cache nodes that the cache cluster has.
 
-For clusters running Redis, this value must be 1\. For clusters running Memcached, this value must be between 1 and 20.
+For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1 and 20.
 
 If you need more than 20 nodes for your Memcached cluster, please fill out the ElastiCache Limit Increase Request form at [http://aws.amazon.com/contact-us/elasticache-node-limit-request/](http://aws.amazon.com/contact-us/elasticache-node-limit-request/).
 
@@ -366,7 +366,7 @@ A list of cost allocation tags to be added to this resource. A tag is a key-valu
 ```
 
 ## `SnapshotArns = [::String, ...]`
-A single-element string list containing an Amazon Resource Name (ARN) that uniquely identifies a Redis RDB snapshot file stored in Amazon S3\. The snapshot file is used to populate the node group (shard). The Amazon S3 object name in the ARN cannot contain any commas.
+A single-element string list containing an Amazon Resource Name (ARN) that uniquely identifies a Redis RDB snapshot file stored in Amazon S3. The snapshot file is used to populate the node group (shard). The Amazon S3 object name in the ARN cannot contain any commas.
 
 **Note**
 > This parameter is only valid if the `Engine` parameter is `redis`.
@@ -700,7 +700,7 @@ The number of clusters this replication group initially has.
 
 This parameter is not used if there is more than one node group (shard). You should use `ReplicasPerNodeGroup` instead.
 
-If `AutomaticFailoverEnabled` is `true`, the value of this parameter must be at least 2\. If `AutomaticFailoverEnabled` is `false` you can omit this parameter (it will default to 1), or you can explicitly set it to a value between 2 and 6.
+If `AutomaticFailoverEnabled` is `true`, the value of this parameter must be at least 2. If `AutomaticFailoverEnabled` is `false` you can omit this parameter (it will default to 1), or you can explicitly set it to a value between 2 and 6.
 
 The maximum permitted value for `NumCacheClusters` is 6 (primary plus 5 replicas).
 
@@ -818,7 +818,7 @@ A list of cost allocation tags to be added to this resource. A tag is a key-valu
 ```
 
 ## `SnapshotArns = [::String, ...]`
-A list of Amazon Resource Names (ARN) that uniquely identify the Redis RDB snapshot files stored in Amazon S3\. The snapshot files are used to populate the new replication group. The Amazon S3 object name in the ARN cannot contain any commas. The new replication group will have the number of node groups (console: shards) specified by the parameter *NumNodeGroups* or the number of node groups configured by *NodeGroupConfiguration* regardless of the number of ARNs specified here.
+A list of Amazon Resource Names (ARN) that uniquely identify the Redis RDB snapshot files stored in Amazon S3. The snapshot files are used to populate the new replication group. The Amazon S3 object name in the ARN cannot contain any commas. The new replication group will have the number of node groups (console: shards) specified by the parameter *NumNodeGroups* or the number of node groups configured by *NodeGroupConfiguration* regardless of the number of ARNs specified here.
 
 **Note**
 > This parameter is only valid if the `Engine` parameter is `redis`.
@@ -2157,7 +2157,7 @@ The number of cache nodes that the cache cluster should have. If the value for `
 
 If you are removing cache nodes, you must use the `CacheNodeIdsToRemove` parameter to provide the IDs of the specific cache nodes to remove.
 
-For clusters running Redis, this value must be 1\. For clusters running Memcached, this value must be between 1 and 20.
+For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1 and 20.
 
 **Note**
 > Adding or removing Memcached cache nodes can be applied immediately or as a pending operation (see `ApplyImmediately`).

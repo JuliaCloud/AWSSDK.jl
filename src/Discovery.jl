@@ -363,7 +363,7 @@ The maximum number of results that you want to display as a part of the query.
 
 
 ## `nextToken = ::String`
-A token to get the next set of results. For example, if you specify 100 IDs for `DescribeExportConfigurationsRequest\$exportIds` but set `DescribeExportConfigurationsRequest\$maxResults` to 10, you get results in a set of 10\. Use the token in the query to get the next set of 10.
+A token to get the next set of results. For example, if you specify 100 IDs for `DescribeExportConfigurationsRequest\$exportIds` but set `DescribeExportConfigurationsRequest\$maxResults` to 10, you get results in a set of 10. Use the token in the query to get the next set of 10.
 
 
 

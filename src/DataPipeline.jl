@@ -652,7 +652,7 @@ The starting point for the results to be returned. For the first call, this valu
 
 
 ## `limit = ::Int`
-The maximum number of object names that `QueryObjects` will return in a single call. The default value is 100\.
+The maximum number of object names that `QueryObjects` will return in a single call. The default value is 100.
 
 
 

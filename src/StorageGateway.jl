@@ -338,7 +338,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # AddWorkingStorage Operation
 
-Configures one or more gateway local disks as working storage for a gateway. This operation is only supported in the stored volume gateway architecture. This operation is deprecated in cached volume API version 20120630\. Use [AddUploadBuffer](@ref) instead.
+Configures one or more gateway local disks as working storage for a gateway. This operation is only supported in the stored volume gateway architecture. This operation is deprecated in cached volume API version 20120630. Use [AddUploadBuffer](@ref) instead.
 
 **Note**
 > Working storage is also referred to as upload buffer. You can also use the [AddUploadBuffer](@ref) operation to add upload buffer to a stored volume gateway.
@@ -352,7 +352,7 @@ In the request, you specify the gateway Amazon Resource Name (ARN) to which you 
 
 
 ## `DiskIds = [::String, ...]` -- *Required*
-An array of strings that identify disks that are to be configured as working storage. Each string have a minimum length of 1 and maximum length of 300\. You can get the disk IDs from the [ListLocalDisks](@ref) API.
+An array of strings that identify disks that are to be configured as working storage. Each string have a minimum length of 1 and maximum length of 300. You can get the disk IDs from the [ListLocalDisks](@ref) API.
 
 
 
@@ -655,7 +655,7 @@ The Amazon Resource Name (ARN) of the file gateway on which you want to create a
 
 
 ## `KMSEncrypted = ::Bool`
-True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3\. Optional.
+True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.
 
 
 ## `KMSKey = ::String`
@@ -3867,7 +3867,7 @@ The iSCSI initiator that connects to the target.
 ## `SecretToAuthenticateTarget = ::String`
 The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).
 
-Byte constraints: Minimum bytes of 12\. Maximum bytes of 16.
+Byte constraints: Minimum bytes of 12. Maximum bytes of 16.
 
 **Note**
 > The secret key must be between 12 and 16 bytes when encoded in UTF-8.
@@ -4159,7 +4159,7 @@ The Amazon Resource Name (ARN) of the file share to be updated.
 
 
 ## `KMSEncrypted = ::Bool`
-True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3\. Optional.
+True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.
 
 
 ## `KMSKey = ::String`

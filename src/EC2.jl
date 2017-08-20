@@ -1750,7 +1750,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # CopySnapshot Operation
 
-Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3\. You can copy the snapshot within the same region or from one region to another. You can use the snapshot to create EBS volumes or Amazon Machine Images (AMIs). The snapshot is copied to the regional endpoint that you send the HTTP request to.
+Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3. You can copy the snapshot within the same region or from one region to another. You can use the snapshot to create EBS volumes or Amazon Machine Images (AMIs). The snapshot is copied to the regional endpoint that you send the HTTP request to.
 
 Copies of encrypted EBS snapshots remain encrypted. Copies of unencrypted snapshots remain unencrypted, unless the `Encrypted` flag is specified during the snapshot copy operation. By default, encrypted snapshot copies use the default AWS Key Management Service (AWS KMS) customer master key (CMK); however, you can specify a non-default CMK with the `KmsKeyId` parameter.
 
@@ -1784,7 +1784,7 @@ The full ARN of the AWS Key Management Service (AWS KMS) CMK to use when creatin
 
 
 ## `PresignedUrl = ::String`
-The pre-signed URL that facilitates copying an encrypted snapshot. This parameter is only required when copying an encrypted snapshot with the Amazon EC2 Query API; it is available as an optional parameter in all other cases. The `PresignedUrl` should use the snapshot source endpoint, the `CopySnapshot` action, and include the `SourceRegion`, `SourceSnapshotId`, and `DestinationRegion` parameters. The `PresignedUrl` must be signed using AWS Signature Version 4\. Because EBS snapshots are stored in Amazon S3, the signing algorithm for this parameter uses the same logic that is described in [Authenticating Requests by Using Query Parameters (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) in the *Amazon Simple Storage Service API Reference*. An invalid or improperly signed `PresignedUrl` will cause the copy operation to fail asynchronously, and the snapshot will move to an `error` state.
+The pre-signed URL that facilitates copying an encrypted snapshot. This parameter is only required when copying an encrypted snapshot with the Amazon EC2 Query API; it is available as an optional parameter in all other cases. The `PresignedUrl` should use the snapshot source endpoint, the `CopySnapshot` action, and include the `SourceRegion`, `SourceSnapshotId`, and `DestinationRegion` parameters. The `PresignedUrl` must be signed using AWS Signature Version 4. Because EBS snapshots are stored in Amazon S3, the signing algorithm for this parameter uses the same logic that is described in [Authenticating Requests by Using Query Parameters (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) in the *Amazon Simple Storage Service API Reference*. An invalid or improperly signed `PresignedUrl` will cause the copy operation to fail asynchronously, and the snapshot will move to an `error` state.
 
 
 ## `SourceRegion = ::String` -- *Required*
@@ -2183,7 +2183,7 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `InputStorageLocation = [ ... ]` -- *Required*
-The location of the encrypted design checkpoint in Amazon S3\. The input must be a tarball.
+The location of the encrypted design checkpoint in Amazon S3. The input must be a tarball.
 ```
  InputStorageLocation = [
         "Bucket" =>  ::String,
@@ -2703,7 +2703,7 @@ Indicates whether to allow or deny the traffic that matches the rule.
 ## `RuleNumber = ::Int` -- *Required*
 The rule number for the entry (for example, 100). ACL entries are processed in ascending order by rule number.
 
-Constraints: Positive integer from 1 to 32766\. The range 32767 to 65535 is reserved for internal use.
+Constraints: Positive integer from 1 to 32766. The range 32767 to 65535 is reserved for internal use.
 
 
 
@@ -3298,7 +3298,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # CreateSnapshot Operation
 
-Creates a snapshot of an EBS volume and stores it in Amazon S3\. You can use snapshots for backups, to make copies of EBS volumes, and to save data before shutting down an instance.
+Creates a snapshot of an EBS volume and stores it in Amazon S3. You can use snapshots for backups, to make copies of EBS volumes, and to save data before shutting down an instance.
 
 When a snapshot is created, any AWS Marketplace product codes that are associated with the source volume are propagated to the snapshot.
 
@@ -7202,7 +7202,7 @@ Constraints: Maximum 100 explicitly specified instance IDs.
 
 
 ## `MaxResults = ::Int`
-The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value. This value can be between 5 and 1000\. You cannot specify this parameter and the instance IDs parameter in the same call.
+The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value. This value can be between 5 and 1000. You cannot specify this parameter and the instance IDs parameter in the same call.
 
 
 ## `NextToken = ::String`
@@ -7442,7 +7442,7 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `MaxResults = ::Int`
-The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value. This value can be between 5 and 1000\. You cannot specify this parameter and the instance IDs parameter or tag filters in the same call.
+The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value. This value can be between 5 and 1000. You cannot specify this parameter and the instance IDs parameter or tag filters in the same call.
 
 
 ## `NextToken = ::String`
@@ -9136,7 +9136,7 @@ The time period for the first schedule to start.
 ```
 
 ## `MaxResults = ::Int`
-The maximum number of results to return in a single call. This value can be between 5 and 300\. The default value is 300\. To retrieve the remaining results, make another call with the returned `NextToken` value.
+The maximum number of results to return in a single call. This value can be between 5 and 300. The default value is 300. To retrieve the remaining results, make another call with the returned `NextToken` value.
 
 
 ## `MaxSlotDurationInHours = ::Int`
@@ -9267,7 +9267,7 @@ One or more filters.
 ```
 
 ## `MaxResults = ::Int`
-The maximum number of results to return in a single call. This value can be between 5 and 300\. The default value is 100\. To retrieve the remaining results, make another call with the returned `NextToken` value.
+The maximum number of results to return in a single call. This value can be between 5 and 300. The default value is 100. To retrieve the remaining results, make another call with the returned `NextToken` value.
 
 
 ## `NextToken = ::String`
@@ -9797,7 +9797,7 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `MaxResults = ::Int`
-The maximum number of results to return in a single call. Specify a value between 1 and 1000\. The default value is 1000\. To retrieve the remaining results, make another call with the returned `NextToken` value.
+The maximum number of results to return in a single call. Specify a value between 1 and 1000. The default value is 1000. To retrieve the remaining results, make another call with the returned `NextToken` value.
 
 
 ## `NextToken = ::String`
@@ -9875,7 +9875,7 @@ The type of events to describe. By default, all events are described.
 
 
 ## `MaxResults = ::Int`
-The maximum number of results to return in a single call. Specify a value between 1 and 1000\. The default value is 1000\. To retrieve the remaining results, make another call with the returned `NextToken` value.
+The maximum number of results to return in a single call. Specify a value between 1 and 1000. The default value is 1000. To retrieve the remaining results, make another call with the returned `NextToken` value.
 
 
 ## `NextToken = ::String`
@@ -9981,7 +9981,7 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `MaxResults = ::Int`
-The maximum number of results to return in a single call. Specify a value between 1 and 1000\. The default value is 1000\. To retrieve the remaining results, make another call with the returned `NextToken` value.
+The maximum number of results to return in a single call. Specify a value between 1 and 1000. The default value is 1000. To retrieve the remaining results, make another call with the returned `NextToken` value.
 
 
 ## `NextToken = ::String`
@@ -10311,7 +10311,7 @@ Filters the results by the specified instance types. Note that T2 and HS1 instan
 
 
 ## `MaxResults = ::Int`
-The maximum number of results to return in a single call. Specify a value between 1 and 1000\. The default value is 1000\. To retrieve the remaining results, make another call with the returned `NextToken` value.
+The maximum number of results to return in a single call. Specify a value between 1 and 1000. The default value is 1000. To retrieve the remaining results, make another call with the returned `NextToken` value.
 
 
 ## `NextToken = ::String`
@@ -10582,7 +10582,7 @@ One or more filters.
 ```
 
 ## `MaxResults = ::Int`
-The maximum number of results to return in a single call. This value can be between 5 and 1000\. To retrieve the remaining results, make another call with the returned `NextToken` value.
+The maximum number of results to return in a single call. This value can be between 5 and 1000. To retrieve the remaining results, make another call with the returned `NextToken` value.
 
 
 ## `NextToken = ::String`

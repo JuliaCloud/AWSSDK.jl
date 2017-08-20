@@ -23,7 +23,7 @@ using AWSCore
 
 # AddTags Operation
 
-Adds one or more tags to a trail, up to a limit of 50\. Tags must be unique per trail. Overwrites an existing tag's value when a new value is specified for an existing tag key. If you specify a key without a value, the tag will be created with the specified key and a value of null. You can tag a trail that applies to all regions only from the region in which the trail was created (that is, from its home region).
+Adds one or more tags to a trail, up to a limit of 50. Tags must be unique per trail. Overwrites an existing tag's value when a new value is specified for an existing tag key. If you specify a key without a value, the tag will be created with the specified key and a value of null. You can tag a trail that applies to all regions only from the region in which the trail was created (that is, from its home region).
 
 # Arguments
 
@@ -115,7 +115,7 @@ Specifies whether the trail is created in the current region or in all regions. 
 Specifies whether log file integrity validation is enabled. The default is false.
 
 **Note**
-> When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10\. The same applies whenever you stop CloudTrail logging or delete a trail.
+> When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.
 
 
 ## `CloudWatchLogsLogGroupArn = ::String`
@@ -503,7 +503,7 @@ Specifies that only events that occur before or at the specified time are return
 
 
 ## `MaxResults = ::Int`
-The number of events to return. Possible values are 1 through 50\. The default is 10.
+The number of events to return. Possible values are 1 through 50. The default is 10.
 
 
 ## `NextToken = ::String`
@@ -801,7 +801,7 @@ Specifies whether the trail applies only to the current region or to all regions
 Specifies whether log file validation is enabled. The default is false.
 
 **Note**
-> When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10\. The same applies whenever you stop CloudTrail logging or delete a trail.
+> When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.
 
 
 ## `CloudWatchLogsLogGroupArn = ::String`

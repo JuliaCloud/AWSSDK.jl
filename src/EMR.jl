@@ -207,7 +207,7 @@ AddJobFlowSteps adds new steps to a running cluster. A maximum of 256 steps are 
 
 If your cluster is long-running (such as a Hive data warehouse) or complex, you may require more than 256 steps to process your data. You can bypass the 256-step limitation in various ways, including using SSH to connect to the master node and submitting queries directly to the software running on the master node, such as Hive and Hadoop. For more information on how to do this, see [Add More than 256 Steps to a Cluster](http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/AddMoreThan256Steps.html) in the *Amazon EMR Management Guide*.
 
-A step specifies the location of a JAR file stored either on the master node of the cluster or in Amazon S3\. Each step is performed by the main function of the main class of the JAR file. The main class can be specified either in the manifest of the JAR or by using the MainFunction parameter of the step.
+A step specifies the location of a JAR file stored either on the master node of the cluster or in Amazon S3. Each step is performed by the main function of the main class of the JAR file. The main class can be specified either in the manifest of the JAR or by using the MainFunction parameter of the step.
 
 Amazon EMR executes each step in the order listed. For a step to be considered complete, the main function must exit with a zero exit code and all Hadoop jobs started while the step was running must have completed and run successfully.
 
@@ -316,7 +316,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 # CancelSteps Operation
 
-Cancels a pending step or steps in a running cluster. Available only in Amazon EMR versions 4.8.0 and later, excluding version 5.0.0\. A maximum of 256 steps are allowed in each CancelSteps request. CancelSteps is idempotent but asynchronous; it does not guarantee a step will be canceled, even if the request is successfully submitted. You can only cancel steps that are in a `PENDING` state.
+Cancels a pending step or steps in a running cluster. Available only in Amazon EMR versions 4.8.0 and later, excluding version 5.0.0. A maximum of 256 steps are allowed in each CancelSteps request. CancelSteps is idempotent but asynchronous; it does not guarantee a step will be canceled, even if the request is successfully submitted. You can only cancel steps that are in a `PENDING` state.
 
 # Arguments
 
@@ -808,7 +808,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 # ListInstances Operation
 
-Provides information for all active EC2 instances and EC2 instances terminated in the last 30 days, up to a maximum of 2,000\. EC2 instances in any of the following states are considered active: AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
+Provides information for all active EC2 instances and EC2 instances terminated in the last 30 days, up to a maximum of 2,000. EC2 instances in any of the following states are considered active: AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
 
 # Arguments
 
@@ -1222,7 +1222,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 # RunJobFlow Operation
 
-RunJobFlow creates and starts running a new cluster (job flow). The cluster runs the steps specified. After the steps complete, the cluster stops and the HDFS partition is lost. To prevent loss of data, configure the last step of the job flow to store results in Amazon S3\. If the [JobFlowInstancesConfig](@ref) `KeepJobFlowAliveWhenNoSteps` parameter is set to `TRUE`, the cluster transitions to the WAITING state rather than shutting down after the steps have completed.
+RunJobFlow creates and starts running a new cluster (job flow). The cluster runs the steps specified. After the steps complete, the cluster stops and the HDFS partition is lost. To prevent loss of data, configure the last step of the job flow to store results in Amazon S3. If the [JobFlowInstancesConfig](@ref) `KeepJobFlowAliveWhenNoSteps` parameter is set to `TRUE`, the cluster transitions to the WAITING state rather than shutting down after the steps have completed.
 
 For additional protection, you can set the [JobFlowInstancesConfig](@ref) `TerminationProtected` parameter to `TRUE` to lock the cluster and prevent it from being terminated by API call, user intervention, or in the event of a job flow error.
 
@@ -1632,7 +1632,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 TerminateJobFlows shuts a list of clusters (job flows) down. When a job flow is shut down, any step not yet completed is canceled and the EC2 instances on which the cluster is running are stopped. Any log files not already saved are uploaded to Amazon S3 if a LogUri was specified when the cluster was created.
 
-The maximum number of clusters allowed is 10\. The call to `TerminateJobFlows` is asynchronous. Depending on the configuration of the cluster, it may take up to 1-5 minutes for the cluster to completely terminate and release allocated resources, such as Amazon EC2 instances.
+The maximum number of clusters allowed is 10. The call to `TerminateJobFlows` is asynchronous. Depending on the configuration of the cluster, it may take up to 1-5 minutes for the cluster to completely terminate and release allocated resources, such as Amazon EC2 instances.
 
 # Arguments
 

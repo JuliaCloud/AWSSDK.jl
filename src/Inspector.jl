@@ -1292,7 +1292,7 @@ You can use this parameter when paginating results. Set the value of this parame
 
 
 ## `maxResults = ::Int`
-You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10\. The maximum value is 500.
+You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.
 
 
 
@@ -1541,7 +1541,7 @@ You can use this parameter when paginating results. Set the value of this parame
 
 
 ## `maxResults = ::Int`
-You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10\. The maximum value is 500.
+You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.
 
 
 
@@ -1615,7 +1615,7 @@ You can use this parameter when paginating results. Set the value of this parame
 
 
 ## `maxResults = ::Int`
-You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10\. The maximum value is 500.
+You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.
 
 
 
@@ -1698,7 +1698,7 @@ You can use this parameter when paginating results. Set the value of this parame
 
 
 ## `maxResults = ::Int`
-You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10\. The maximum value is 500.
+You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.
 
 
 
@@ -1770,7 +1770,7 @@ You can use this parameter when paginating results. Set the value of this parame
 
 
 ## `maxResults = ::Int`
-You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10\. The maximum value is 500.
+You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.
 
 
 
@@ -1874,7 +1874,7 @@ You can use this parameter when paginating results. Set the value of this parame
 
 
 ## `maxResults = ::Int`
-You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10\. The maximum value is 500.
+You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.
 
 
 
@@ -1942,7 +1942,7 @@ You can use this parameter when paginating results. Set the value of this parame
 
 
 ## `maxResults = ::Int`
-You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10\. The maximum value is 500.
+You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.
 
 
 
@@ -2075,7 +2075,7 @@ You can use this parameter when paginating results. Set the value of this parame
 
 
 ## `maxResults = ::Int`
-You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10\. The maximum value is 500.
+You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.
 
 
 

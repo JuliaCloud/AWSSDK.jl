@@ -771,7 +771,7 @@ Delete a streaming distribution. To delete an RTMP distribution using the CloudF
 
 3.  Update the XML document that was returned in the response to your `GET Streaming Distribution Config` request to change the value of `Enabled` to `false`.
 
-4.  Submit a `PUT Streaming Distribution Config` request to update the configuration for your distribution. In the request body, include the XML document that you updated in Step 3\. Then set the value of the HTTP `If-Match` header to the value of the `ETag` header that CloudFront returned when you submitted the `GET Streaming Distribution Config` request in Step 2.
+4.  Submit a `PUT Streaming Distribution Config` request to update the configuration for your distribution. In the request body, include the XML document that you updated in Step 3. Then set the value of the HTTP `If-Match` header to the value of the `ETag` header that CloudFront returned when you submitted the `GET Streaming Distribution Config` request in Step 2.
 
 5.  Review the response to the `PUT Streaming Distribution Config` request to confirm that the distribution was successfully disabled.
 
@@ -1512,7 +1512,7 @@ For information about updating a distribution using the CloudFront console, see 
 
 3.  Submit an `UpdateDistribution` request to update the configuration for your distribution:
 
-    *   In the request body, include the XML document that you updated in Step 2\. The request body must include an XML document with a `DistributionConfig` element.
+    *   In the request body, include the XML document that you updated in Step 2. The request body must include an XML document with a `DistributionConfig` element.
 
     *   Set the value of the HTTP `If-Match` header to the value of the `ETag` header that CloudFront returned when you submitted the `GetDistributionConfig` request in Step 1.
 

@@ -50,7 +50,7 @@ The name of the delivery stream. This name must be unique per AWS account in the
 
 
 ## `S3DestinationConfiguration = [ ... ]`
-[Deprecated] The destination in Amazon S3\. You can specify only one destination.
+[Deprecated] The destination in Amazon S3. You can specify only one destination.
 ```
  S3DestinationConfiguration = [
         "RoleARN" => <required> ::String,
@@ -74,7 +74,7 @@ The name of the delivery stream. This name must be unique per AWS account in the
 ```
 
 ## `ExtendedS3DestinationConfiguration = [ ... ]`
-The destination in Amazon S3\. You can specify only one destination.
+The destination in Amazon S3. You can specify only one destination.
 ```
  ExtendedS3DestinationConfiguration = [
         "RoleARN" => <required> ::String,

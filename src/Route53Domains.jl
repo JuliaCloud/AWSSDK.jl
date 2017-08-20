@@ -858,7 +858,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 # TransferDomain Operation
 
-This operation transfers a domain from another registrar to Amazon Route 53\. When the transfer is complete, the domain is registered with the AWS registrar partner, Gandi.
+This operation transfers a domain from another registrar to Amazon Route 53. When the transfer is complete, the domain is registered with the AWS registrar partner, Gandi.
 
 For transfer requirements, a detailed procedure, and information about viewing the status of a domain transfer, see [Transferring Registration for a Domain to Amazon Route 53](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html) in the *Amazon Route 53 Developer Guide*.
 

@@ -2437,7 +2437,7 @@ If the domain name includes escape characters or Punycode, `ListHostedZonesByNam
 
 The labels are reversed and alphabetized using the escaped value. For more information about valid domain name formats, including internationalized domain names, see [DNS Domain Name Format](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html) in the *Amazon Route 53 Developer Guide*.
 
-Amazon Route 53 returns up to 100 items in each response. If you have a lot of hosted zones, use the `MaxItems` parameter to list them in groups of up to 100\. The response includes values that help navigate from one group of `MaxItems` hosted zones to the next:
+Amazon Route 53 returns up to 100 items in each response. If you have a lot of hosted zones, use the `MaxItems` parameter to list them in groups of up to 100. The response includes values that help navigate from one group of `MaxItems` hosted zones to the next:
 
 *   The `DNSName` and `HostedZoneId` elements in the response contain the values, if any, specified for the `dnsname` and `hostedzoneid` parameters in the request that produced the current response.
 
@@ -3130,7 +3130,7 @@ If the resolver that you specified for resolverip supports EDNS0, specify the IP
 
 
 ## `edns0clientsubnetmask = ::String`
-If you specify an IP address for `edns0clientsubnetip`, you can optionally specify the number of bits of the IP address that you want the checking tool to include in the DNS query. For example, if you specify `192.0.2.44` for `edns0clientsubnetip` and `24` for `edns0clientsubnetmask`, the checking tool will simulate a request from 192.0.2.0/24\. The default value is 24 bits for IPv4 addresses and 64 bits for IPv6 addresses.
+If you specify an IP address for `edns0clientsubnetip`, you can optionally specify the number of bits of the IP address that you want the checking tool to include in the DNS query. For example, if you specify `192.0.2.44` for `edns0clientsubnetip` and `24` for `edns0clientsubnetmask`, the checking tool will simulate a request from 192.0.2.0/24. The default value is 24 bits for IPv4 addresses and 64 bits for IPv6 addresses.
 
 
 

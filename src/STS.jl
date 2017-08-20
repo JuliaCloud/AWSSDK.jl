@@ -286,7 +286,7 @@ For more information about how to use web identity federation and the `AssumeRol
 
 *   [AWS SDK for iOS](http://aws.amazon.com/sdkforios/) and [AWS SDK for Android](http://aws.amazon.com/sdkforandroid/). These toolkits contain sample apps that show how to invoke the identity providers, and then how to use the information from these providers to get and use temporary security credentials.
 
-*   [Web Identity Federation with Mobile Applications](http://aws.amazon.com/articles/4617974389850313). This article discusses web identity federation and shows an example of how to use web identity federation to get access to content in Amazon S3\.
+*   [Web Identity Federation with Mobile Applications](http://aws.amazon.com/articles/4617974389850313). This article discusses web identity federation and shows an example of how to use web identity federation to get access to content in Amazon S3.
 
 # Arguments
 

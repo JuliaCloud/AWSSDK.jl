@@ -275,7 +275,7 @@ The scalable dimension associated with the scalable target. This string consists
 
 
 ## `MaxResults = ::Int`
-The maximum number of scalable target results. This value can be between 1 and 50\. The default value is 50.
+The maximum number of scalable target results. This value can be between 1 and 50. The default value is 50.
 
 If this parameter is used, the operation returns up to `MaxResults` results at a time, along with a `NextToken` value. To get the next set of results, include the `NextToken` value in a subsequent call. If this parameter is not used, the operation returns up to 50 results and a `NextToken` value, if applicable.
 
@@ -392,7 +392,7 @@ The scalable dimension. This string consists of the service namespace, resource 
 
 
 ## `MaxResults = ::Int`
-The maximum number of scalable target results. This value can be between 1 and 50\. The default value is 50.
+The maximum number of scalable target results. This value can be between 1 and 50. The default value is 50.
 
 If this parameter is used, the operation returns up to `MaxResults` results at a time, along with a `NextToken` value. To get the next set of results, include the `NextToken` value in a subsequent call. If this parameter is not used, the operation returns up to 50 results and a `NextToken` value, if applicable.
 
@@ -518,7 +518,7 @@ The scalable dimension. This string consists of the service namespace, resource 
 
 
 ## `MaxResults = ::Int`
-The maximum number of scalable target results. This value can be between 1 and 50\. The default value is 50.
+The maximum number of scalable target results. This value can be between 1 and 50. The default value is 50.
 
 If this parameter is used, the operation returns up to `MaxResults` results at a time, along with a `NextToken` value. To get the next set of results, include the `NextToken` value in a subsequent call. If this parameter is not used, the operation returns up to 50 results and a `NextToken` value, if applicable.
 

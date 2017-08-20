@@ -351,7 +351,7 @@ The policy name.
 
 
 ## `policyDocument = ::String` -- *Required*
-The JSON document that describes the policy. Minimum length of 1\. Maximum length of 2048, excluding whitespaces
+The JSON document that describes the policy. Minimum length of 1. Maximum length of 2048, excluding whitespaces
 
 
 ## `setAsDefault = ::Bool`
@@ -1500,7 +1500,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 Lists the CA certificates registered for your AWS account.
 
-The results are paginated with a default page size of 25\. You can use the returned marker to retrieve additional results.
+The results are paginated with a default page size of 25. You can use the returned marker to retrieve additional results.
 
 # Arguments
 
@@ -1549,7 +1549,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 
 Lists the certificates registered in your AWS account.
 
-The results are paginated with a default page size of 25\. You can use the returned marker to retrieve additional results.
+The results are paginated with a default page size of 25. You can use the returned marker to retrieve additional results.
 
 # Arguments
 

@@ -129,7 +129,7 @@ Registers your on-premises server or virtual machine with Amazon EC2 so that you
 # Arguments
 
 ## `Description = ::String`
-A userdefined description of the resource that you want to register with Amazon EC2\.
+A userdefined description of the resource that you want to register with Amazon EC2.
 
 
 ## `DefaultInstanceName = ::String`
@@ -510,9 +510,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # CreateResourceDataSync Operation
 
-Creates a resource data sync configuration to a single bucket in Amazon S3\. This is an asynchronous operation that returns immediately. After a successful initial sync is completed, the system continuously syncs data to the Amazon S3 bucket. To check the status of the sync, use the [ListResourceDataSync](API_ListResourceDataSync.html) operation.
+Creates a resource data sync configuration to a single bucket in Amazon S3. This is an asynchronous operation that returns immediately. After a successful initial sync is completed, the system continuously syncs data to the Amazon S3 bucket. To check the status of the sync, use the [ListResourceDataSync](API_ListResourceDataSync.html) operation.
 
-By default, data is not encrypted in Amazon S3\. We strongly recommend that you enable encryption in Amazon S3 to ensure secure data storage. We also recommend that you secure access to the Amazon S3 bucket by creating a restrictive bucket policy. To view an example of a restrictive Amazon S3 bucket policy for Resource Data Sync, see [Configuring Resource Data Sync for Inventory](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-configuring.html#sysman-inventory-datasync).
+By default, data is not encrypted in Amazon S3. We strongly recommend that you enable encryption in Amazon S3 to ensure secure data storage. We also recommend that you secure access to the Amazon S3 bucket by creating a restrictive bucket policy. To view an example of a restrictive Amazon S3 bucket policy for Resource Data Sync, see [Configuring Resource Data Sync for Inventory](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-configuring.html#sysman-inventory-datasync).
 
 # Arguments
 
@@ -3916,11 +3916,11 @@ The directory structure within the S3 bucket where the responses should be store
 
 
 ## `MaxConcurrency = ::String`
-(Optional) The maximum number of instances that are allowed to execute the command at the same time. You can specify a number such as 10 or a percentage such as 10%. The default value is 50\. For more information about how to use MaxConcurrency, see [Using Concurrency Controls](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-velocity.html).
+(Optional) The maximum number of instances that are allowed to execute the command at the same time. You can specify a number such as 10 or a percentage such as 10%. The default value is 50. For more information about how to use MaxConcurrency, see [Using Concurrency Controls](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-velocity.html).
 
 
 ## `MaxErrors = ::String`
-The maximum number of errors allowed without the command failing. When the command fails one more time beyond the value of MaxErrors, the systems stops sending the command to additional targets. You can specify a number like 10 or a percentage like 10%. The default value is 50\. For more information about how to use MaxErrors, see [Using Error Controls](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html).
+The maximum number of errors allowed without the command failing. When the command fails one more time beyond the value of MaxErrors, the systems stops sending the command to additional targets. You can specify a number like 10 or a percentage like 10%. The default value is 50. For more information about how to use MaxErrors, see [Using Error Controls](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html).
 
 
 ## `ServiceRoleArn = ::String`

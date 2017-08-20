@@ -1519,7 +1519,7 @@ To retrieve an archive or retrieve a vault inventory from Amazon Glacier, you fi
 
 The List Jobs operation supports pagination. You should always check the response `Marker` field. If there are no more jobs to list, the `Marker` field is set to `null`. If there are more jobs to list, the `Marker` field is set to a non-null value, which you can use to continue the pagination of the list. To return a list of jobs that begins at a specific job, set the marker request parameter to the `Marker` value for that job that you obtained from a previous List Jobs request.
 
-You can set a maximum limit for the number of jobs returned in the response by specifying the `limit` parameter in the request. The default limit is 1000\. The number of jobs returned might be fewer than the limit, but the number of returned jobs never exceeds the limit.
+You can set a maximum limit for the number of jobs returned in the response by specifying the `limit` parameter in the request. The default limit is 1000. The number of jobs returned might be fewer than the limit, but the number of returned jobs never exceeds the limit.
 
 Additionally, you can filter the jobs list returned by specifying the optional `statuscode` parameter or `completed` parameter, or both. Using the `statuscode` parameter, you can specify to return only jobs that match either the `InProgress`, `Succeeded`, or `Failed` status. Using the `completed` parameter, you can specify to return only jobs that were completed (`true`) or jobs that were not completed (`false`).
 
@@ -1536,7 +1536,7 @@ The name of the vault.
 
 
 ## `limit = ::String`
-The maximum number of jobs to be returned. The default limit is 1000\. The number of jobs returned might be fewer than the specified limit, but the number of returned jobs never exceeds the limit.
+The maximum number of jobs to be returned. The default limit is 1000. The number of jobs returned might be fewer than the specified limit, but the number of returned jobs never exceeds the limit.
 
 
 ## `marker = ::String`
@@ -1756,7 +1756,7 @@ An opaque string used for pagination. This value specifies the part at which the
 
 
 ## `limit = ::String`
-The maximum number of parts to be returned. The default limit is 1000\. The number of parts returned might be fewer than the specified limit, but the number of returned parts never exceeds the limit.
+The maximum number of parts to be returned. The default limit is 1000. The number of parts returned might be fewer than the specified limit, but the number of returned parts never exceeds the limit.
 
 
 
@@ -1977,7 +1977,7 @@ A string used for pagination. The marker specifies the vault ARN after which the
 
 
 ## `limit = ::String`
-The maximum number of vaults to be returned. The default limit is 1000\. The number of vaults returned might be fewer than the specified limit, but the number of returned vaults never exceeds the limit.
+The maximum number of vaults to be returned. The default limit is 1000. The number of vaults returned might be fewer than the specified limit, but the number of returned vaults never exceeds the limit.
 
 
 
@@ -2487,7 +2487,7 @@ The SHA256 tree hash of the data being uploaded.
 
 
 ## `Content-Range = ::String`
-Identifies the range of bytes in the assembled archive that will be uploaded in this part. Amazon Glacier uses this information to assemble the archive in the proper sequence. The format of this header follows RFC 2616\. An example header is Content-Range:bytes 0-4194303/*.
+Identifies the range of bytes in the assembled archive that will be uploaded in this part. Amazon Glacier uses this information to assemble the archive in the proper sequence. The format of this header follows RFC 2616. An example header is Content-Range:bytes 0-4194303/*.
 
 
 ## `body = blob`

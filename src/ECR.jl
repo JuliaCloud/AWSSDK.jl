@@ -535,7 +535,7 @@ The `nextToken` value returned from a previous paginated `DescribeImages` reques
 
 
 ## `maxResults = ::Int`
-The maximum number of repository results returned by `DescribeImages` in paginated output. When this parameter is used, `DescribeImages` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeImages` request with the returned `nextToken` value. This value can be between 1 and 100\. If this parameter is not used, then `DescribeImages` returns up to 100 results and a `nextToken` value, if applicable.
+The maximum number of repository results returned by `DescribeImages` in paginated output. When this parameter is used, `DescribeImages` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeImages` request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter is not used, then `DescribeImages` returns up to 100 results and a `nextToken` value, if applicable.
 
 
 ## `filter = ["tagStatus" =>  "TAGGED" or "UNTAGGED"]`
@@ -593,7 +593,7 @@ The `nextToken` value returned from a previous paginated `DescribeRepositories` 
 
 
 ## `maxResults = ::Int`
-The maximum number of repository results returned by `DescribeRepositories` in paginated output. When this parameter is used, `DescribeRepositories` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeRepositories` request with the returned `nextToken` value. This value can be between 1 and 100\. If this parameter is not used, then `DescribeRepositories` returns up to 100 results and a `nextToken` value, if applicable.
+The maximum number of repository results returned by `DescribeRepositories` in paginated output. When this parameter is used, `DescribeRepositories` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeRepositories` request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter is not used, then `DescribeRepositories` returns up to 100 results and a `nextToken` value, if applicable.
 
 
 
@@ -912,7 +912,7 @@ The `nextToken` value returned from a previous paginated `ListImages` request wh
 
 
 ## `maxResults = ::Int`
-The maximum number of image results returned by `ListImages` in paginated output. When this parameter is used, `ListImages` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `ListImages` request with the returned `nextToken` value. This value can be between 1 and 100\. If this parameter is not used, then `ListImages` returns up to 100 results and a `nextToken` value, if applicable.
+The maximum number of image results returned by `ListImages` in paginated output. When this parameter is used, `ListImages` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `ListImages` request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter is not used, then `ListImages` returns up to 100 results and a `nextToken` value, if applicable.
 
 
 ## `filter = ["tagStatus" =>  "TAGGED" or "UNTAGGED"]`

@@ -1403,7 +1403,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lights
 
 Returns information about all operations.
 
-Results are returned from oldest to newest, up to a maximum of 200\. Results can be paged by making each subsequent call to `GetOperations` use the maximum (last) `statusChangedAt` value from the previous request.
+Results are returned from oldest to newest, up to a maximum of 200. Results can be paged by making each subsequent call to `GetOperations` use the maximum (last) `statusChangedAt` value from the previous request.
 
 # Arguments
 

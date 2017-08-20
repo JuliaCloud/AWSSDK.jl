@@ -397,7 +397,7 @@ The `ListDomains` operation lists all domains associated with the Access Key ID.
 # Arguments
 
 ## `MaxNumberOfDomains = ::Int`
-The maximum number of domain names you want returned. The range is 1 to 100\. The default setting is 100.
+The maximum number of domain names you want returned. The range is 1 to 100. The default setting is 100.
 
 
 ## `NextToken = ::String`

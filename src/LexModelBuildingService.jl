@@ -28,7 +28,7 @@ Creates a new version of the bot based on the `\$LATEST` version. If the `\$LATE
 **Note**
 > You can update only the `\$LATEST` version of the bot. You can't update the numbered versions that you create with the `CreateBotVersion` operation.
 
-When you create the first version of a bot, Amazon Lex sets the version to 1\. Subsequent versions increment by 1\. For more information, see [versioning-intro](@ref).
+When you create the first version of a bot, Amazon Lex sets the version to 1. Subsequent versions increment by 1. For more information, see [versioning-intro](@ref).
 
 This operation requires permission for the `lex:CreateBotVersion` action.
 
@@ -78,7 +78,7 @@ Creates a new version of an intent based on the `\$LATEST` version of the intent
 **Note**
 > You can update only the `\$LATEST` version of the intent. You can't update the numbered versions that you create with the `CreateIntentVersion` operation.
 
-When you create a version of an intent, Amazon Lex sets the version to 1\. Subsequent versions increment by 1\. For more information, see [versioning-intro](@ref).
+When you create a version of an intent, Amazon Lex sets the version to 1. Subsequent versions increment by 1. For more information, see [versioning-intro](@ref).
 
 This operation requires permissions to perform the `lex:CreateIntentVersion` action.
 
@@ -128,7 +128,7 @@ Creates a new version of a slot type based on the `\$LATEST` version of the spec
 **Note**
 > You can update only the `\$LATEST` version of a slot type. You can't update the numbered versions that you create with the `CreateSlotTypeVersion` operation.
 
-When you create a version of a slot type, Amazon Lex sets the version to 1\. Subsequent versions increment by 1\. For more information, see [versioning-intro](@ref).
+When you create a version of a slot type, Amazon Lex sets the version to 1. Subsequent versions increment by 1. For more information, see [versioning-intro](@ref).
 
 This operation requires permissions for the `lex:CreateSlotTypeVersion` action.
 
@@ -714,7 +714,7 @@ A pagination token for fetching the next page of aliases. If the response to thi
 
 
 ## `maxResults = ::Int`
-The maximum number of aliases to return in the response. The default is 50\. .
+The maximum number of aliases to return in the response. The default is 50. .
 
 
 ## `nameContains = ::String`
@@ -820,7 +820,7 @@ A pagination token for fetching the next page of associations. If the response t
 
 
 ## `maxResults = ::Int`
-The maximum number of associations to return in the response. The default is 50\.
+The maximum number of associations to return in the response. The default is 50.
 
 
 ## `nameContains = ::String`

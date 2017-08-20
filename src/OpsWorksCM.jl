@@ -140,7 +140,7 @@ This operation is asynchronous.
 
 A `LimitExceededException` is thrown when you have created the maximum number of servers (10). A `ResourceAlreadyExistsException` is thrown when a server with the same name already exists in the account. A `ResourceNotFoundException` is thrown when you specify a backup ID that is not valid or is for a backup that does not exist. A `ValidationException` is thrown when parameters of the request are not valid.
 
-If you do not specify a security group by adding the `SecurityGroupIds` parameter, AWS OpsWorks creates a new security group. The default security group opens the Chef server to the world on TCP port 443\. If a KeyName is present, AWS OpsWorks enables SSH access. SSH is also open to the world on TCP port 22\.
+If you do not specify a security group by adding the `SecurityGroupIds` parameter, AWS OpsWorks creates a new security group. The default security group opens the Chef server to the world on TCP port 443. If a KeyName is present, AWS OpsWorks enables SSH access. SSH is also open to the world on TCP port 22.
 
 By default, the Chef Server is accessible from any IP address. We recommend that you update your security group rules to allow access from known IP addresses and address ranges only. To edit security group rules, open Security Groups in the navigation pane of the EC2 management console.
 
@@ -173,7 +173,7 @@ Optional engine attributes on a specified server.
 
 *   `CHEF_PIVOTAL_KEY`: A base64-encoded RSA private key that is not stored by AWS OpsWorks for Chef. This private key is required to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one is generated and returned in the response.
 
-*   `CHEF_DELIVERY_ADMIN_PASSWORD`: The password for the administrative user in the Chef Automate GUI. The password length is a minimum of eight characters, and a maximum of 32\. The password can contain letters, numbers, and special characters (!/@#\$%^&+=_). The password must contain at least one lower case letter, one upper case letter, one number, and one special character. When no CHEF_DELIVERY_ADMIN_PASSWORD is set, one is generated and returned in the response.
+*   `CHEF_DELIVERY_ADMIN_PASSWORD`: The password for the administrative user in the Chef Automate GUI. The password length is a minimum of eight characters, and a maximum of 32. The password can contain letters, numbers, and special characters (!/@#\$%^&+=_). The password must contain at least one lower case letter, one upper case letter, one number, and one special character. When no CHEF_DELIVERY_ADMIN_PASSWORD is set, one is generated and returned in the response.
 ```
  EngineAttributes = [[
         "Name" =>  ::String,
@@ -236,7 +236,7 @@ The IDs of subnets in which to launch the server EC2 instance.
 
 Amazon EC2-Classic customers: This field is required. All servers must run within a VPC. The VPC must have "Auto Assign Public IP" enabled.
 
-EC2-VPC customers: This field is optional. If you do not specify subnet IDs, your EC2 instances are created in a default subnet that is selected by Amazon EC2\. If you specify subnet IDs, the VPC must have "Auto Assign Public IP" enabled.
+EC2-VPC customers: This field is optional. If you do not specify subnet IDs, your EC2 instances are created in a default subnet that is selected by Amazon EC2. If you specify subnet IDs, the VPC must have "Auto Assign Public IP" enabled.
 
 For more information about supported Amazon EC2 platforms, see [Supported Platforms](http://docs.aws.amazon.com/https:/docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
 

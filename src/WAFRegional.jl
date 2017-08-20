@@ -1658,7 +1658,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 # GetRateBasedRuleManagedKeys Operation
 
-Returns an array of IP addresses currently being blocked by the [RateBasedRule](@ref) that is specified by the `RuleId`. The maximum number of managed keys that will be blocked is 10,000\. If more than 10,000 addresses exceed the rate limit, the 10,000 addresses with the highest rates will be blocked.
+Returns an array of IP addresses currently being blocked by the [RateBasedRule](@ref) that is specified by the `RuleId`. The maximum number of managed keys that will be blocked is 10,000. If more than 10,000 addresses exceed the rate limit, the 10,000 addresses with the highest rates will be blocked.
 
 # Arguments
 
@@ -2846,7 +2846,7 @@ Inserts or deletes [IPSetDescriptor](@ref) objects in an `IPSet`. For each `IPSe
 
 *   The IP address in CIDR notation, for example, `192.0.2.0/24` (for the range of IP addresses from `192.0.2.0` to `192.0.2.255`) or `192.0.2.44/32` (for the individual IP address `192.0.2.44`).
 
-AWS WAF supports /8, /16, /24, and /32 IP address ranges for IPv4, and /24, /32, /48, /56, /64 and /128 for IPv6\. For more information about CIDR notation, see the Wikipedia entry [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+AWS WAF supports /8, /16, /24, and /32 IP address ranges for IPv4, and /24, /32, /48, /56, /64 and /128 for IPv6. For more information about CIDR notation, see the Wikipedia entry [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 IPv6 addresses can be represented using any of the following formats:
 

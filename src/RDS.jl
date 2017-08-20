@@ -1678,7 +1678,7 @@ Valid values: `license-included` | `bring-your-own-license` | `general-public-li
 ## `Iops = ::Int`
 The amount of Provisioned IOPS (input/output operations per second) to be initially allocated for the DB instance.
 
-Constraints: Must be a multiple between 3 and 10 of the storage amount for the DB instance. Must also be an integer multiple of 1000\. For example, if the size of your DB instance is 500 GB, then your `Iops` value can be 2000, 3000, 4000, or 5000\.
+Constraints: Must be a multiple between 3 and 10 of the storage amount for the DB instance. Must also be an integer multiple of 1000. For example, if the size of your DB instance is 500 GB, then your `Iops` value can be 2000, 3000, 4000, or 5000.
 
 
 ## `OptionGroupName = ::String`
@@ -1761,7 +1761,7 @@ True to copy all tags from the DB instance to snapshots of the DB instance; othe
 
 
 ## `MonitoringInterval = ::Int`
-The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance. To disable collecting Enhanced Monitoring metrics, specify 0\. The default is 0.
+The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance. To disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.
 
 If `MonitoringRoleArn` is specified, then you must also set `MonitoringInterval` to a value other than 0.
 
@@ -1985,7 +1985,7 @@ True to copy all tags from the Read Replica to snapshots of the Read Replica; ot
 
 
 ## `MonitoringInterval = ::Int`
-The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the Read Replica. To disable collecting Enhanced Monitoring metrics, specify 0\. The default is 0.
+The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the Read Replica. To disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.
 
 If `MonitoringRoleArn` is specified, then you must also set `MonitoringInterval` to a value other than 0.
 
@@ -5552,7 +5552,7 @@ Constraints: The DB parameter group must be in the same DB parameter group famil
 ## `BackupRetentionPeriod = ::Int`
 The number of days to retain automated backups. Setting this parameter to a positive number enables backups. Setting this parameter to 0 disables automated backups.
 
-Changing this parameter can result in an outage if you change from 0 to a non-zero value or from a non-zero value to 0\. These changes are applied during the next maintenance window unless the `ApplyImmediately` parameter is set to `true` for this request. If you change the parameter from one non-zero value to another non-zero value, the change is asynchronously applied as soon as possible.
+Changing this parameter can result in an outage if you change from 0 to a non-zero value or from a non-zero value to 0. These changes are applied during the next maintenance window unless the `ApplyImmediately` parameter is set to `true` for this request. If you change the parameter from one non-zero value to another non-zero value, the change is asynchronously applied as soon as possible.
 
 Default: Uses existing setting
 
@@ -5628,7 +5628,7 @@ The new Provisioned IOPS (I/O operations per second) value for the RDS instance.
 
 Default: Uses existing setting
 
-Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value. If you are migrating from Provisioned IOPS to standard storage, set this value to 0\. The DB instance will require a reboot for the change in storage type to take effect.
+Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value. If you are migrating from Provisioned IOPS to standard storage, set this value to 0. The DB instance will require a reboot for the change in storage type to take effect.
 
 **SQL Server**
 
@@ -5688,7 +5688,7 @@ True to copy all tags from the DB instance to snapshots of the DB instance; othe
 
 
 ## `MonitoringInterval = ::Int`
-The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance. To disable collecting Enhanced Monitoring metrics, specify 0\. The default is 0.
+The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance. To disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.
 
 If `MonitoringRoleArn` is specified, then you must also set `MonitoringInterval` to a value other than 0.
 

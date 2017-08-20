@@ -556,7 +556,7 @@ A list of up to 100 compute environment names or full Amazon Resource Name (ARN)
 
 
 ## `maxResults = ::Int`
-The maximum number of cluster results returned by `DescribeComputeEnvironments` in paginated output. When this parameter is used, `DescribeComputeEnvironments` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeComputeEnvironments` request with the returned `nextToken` value. This value can be between 1 and 100\. If this parameter is not used, then `DescribeComputeEnvironments` returns up to 100 results and a `nextToken` value if applicable.
+The maximum number of cluster results returned by `DescribeComputeEnvironments` in paginated output. When this parameter is used, `DescribeComputeEnvironments` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeComputeEnvironments` request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter is not used, then `DescribeComputeEnvironments` returns up to 100 results and a `nextToken` value if applicable.
 
 
 ## `nextToken = ::String`
@@ -659,7 +659,7 @@ A space-separated list of up to 100 job definition names or full Amazon Resource
 
 
 ## `maxResults = ::Int`
-The maximum number of results returned by `DescribeJobDefinitions` in paginated output. When this parameter is used, `DescribeJobDefinitions` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeJobDefinitions` request with the returned `nextToken` value. This value can be between 1 and 100\. If this parameter is not used, then `DescribeJobDefinitions` returns up to 100 results and a `nextToken` value if applicable.
+The maximum number of results returned by `DescribeJobDefinitions` in paginated output. When this parameter is used, `DescribeJobDefinitions` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeJobDefinitions` request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter is not used, then `DescribeJobDefinitions` returns up to 100 results and a `nextToken` value if applicable.
 
 
 ## `jobDefinitionName = ::String`
@@ -764,7 +764,7 @@ A list of up to 100 queue names or full queue Amazon Resource Name (ARN) entries
 
 
 ## `maxResults = ::Int`
-The maximum number of results returned by `DescribeJobQueues` in paginated output. When this parameter is used, `DescribeJobQueues` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeJobQueues` request with the returned `nextToken` value. This value can be between 1 and 100\. If this parameter is not used, then `DescribeJobQueues` returns up to 100 results and a `nextToken` value if applicable.
+The maximum number of results returned by `DescribeJobQueues` in paginated output. When this parameter is used, `DescribeJobQueues` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeJobQueues` request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter is not used, then `DescribeJobQueues` returns up to 100 results and a `nextToken` value if applicable.
 
 
 ## `nextToken = ::String`
@@ -952,7 +952,7 @@ The job status with which to filter jobs in the specified queue.
 
 
 ## `maxResults = ::Int`
-The maximum number of results returned by `ListJobs` in paginated output. When this parameter is used, `ListJobs` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `ListJobs` request with the returned `nextToken` value. This value can be between 1 and 100\. If this parameter is not used, then `ListJobs` returns up to 100 results and a `nextToken` value if applicable.
+The maximum number of results returned by `ListJobs` in paginated output. When this parameter is used, `ListJobs` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `ListJobs` request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter is not used, then `ListJobs` returns up to 100 results and a `nextToken` value if applicable.
 
 
 ## `nextToken = ::String`

@@ -2249,7 +2249,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 # GetGameSessionLogUrl Operation
 
-Retrieves the location of stored game session logs for a specified game session. When a game session is terminated, Amazon GameLift automatically stores the logs in Amazon S3\. Use this URL to download the logs.
+Retrieves the location of stored game session logs for a specified game session. When a game session is terminated, Amazon GameLift automatically stores the logs in Amazon S3. Use this URL to download the logs.
 
 **Note**
 > See the [AWS Service Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift) page for maximum log file sizes. Log files that exceed this limit are not saved.
@@ -2921,7 +2921,7 @@ For example, this sort expression returns the oldest active sessions first: `"So
 
 
 ## `Limit = ::Int`
-Maximum number of results to return. Use this parameter with `NextToken` to get results as a set of sequential pages. The maximum number of results returned is 20, even if this value is not set or is set higher than 20\.
+Maximum number of results to return. Use this parameter with `NextToken` to get results as a set of sequential pages. The maximum number of results returned is 20, even if this value is not set or is set higher than 20.
 
 
 ## `NextToken = ::String`

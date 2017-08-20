@@ -30,7 +30,7 @@ When you create a queue, you have full control access rights for the queue. Only
 **Note**
 > `AddPermission` writes an Amazon-SQS-generated policy. If you want to write your own policy, use `[SetQueueAttributes](@ref)` to upload your policy. For more information about writing your own policy, see [Using The Access Policy Language](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AccessPolicyLanguage.html) in the *Amazon SQS Developer Guide*.
 
-Some actions take lists of parameters. These lists are specified using the `param.n` notation. Values of `n` are integers starting from 1\. For example, a parameter list with two elements looks like this:
+Some actions take lists of parameters. These lists are specified using the `param.n` notation. Values of `n` are integers starting from 1. For example, a parameter list with two elements looks like this:
 
 `&Attribute.1=this`
 
@@ -165,7 +165,7 @@ Changes the visibility timeout of multiple messages. This is a batch version of 
 > Because the batch request can result in a combination of successful and unsuccessful actions, you should check for batch errors even when the call returns an HTTP status code of `200`.
 
 **Note**
-> Some actions take lists of parameters. These lists are specified using the `param.n` notation. Values of `n` are integers starting from 1\. For example, a parameter list with two elements looks like this:
+> Some actions take lists of parameters. These lists are specified using the `param.n` notation. Values of `n` are integers starting from 1. For example, a parameter list with two elements looks like this:
 
 `&Attribute.1=this`
 
@@ -240,7 +240,7 @@ To get the queue URL, use the `[GetQueueUrl](@ref)` action. `[GetQueueUrl](@ref)
 *   If the queue name, attribute names, or attribute values don't match an existing queue, `CreateQueue` returns an error.
 
 **Note**
-> Some actions take lists of parameters. These lists are specified using the `param.n` notation. Values of `n` are integers starting from 1\. For example, a parameter list with two elements looks like this:
+> Some actions take lists of parameters. These lists are specified using the `param.n` notation. Values of `n` are integers starting from 1. For example, a parameter list with two elements looks like this:
 
 `&Attribute.1=this`
 
@@ -280,7 +280,7 @@ The following lists the names, descriptions, and values of the special request p
     **Note**
     > The dead letter queue of a FIFO queue must also be a FIFO queue. Similarly, the dead letter queue of a standard queue must also be a standard queue.
 
-*   `VisibilityTimeout` - The visibility timeout for the queue. Valid values: An integer from 0 to 43,200 (12 hours). The default is 30\. For more information about the visibility timeout, see [Visibility Timeout](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html) in the *Amazon SQS Developer Guide*.
+*   `VisibilityTimeout` - The visibility timeout for the queue. Valid values: An integer from 0 to 43,200 (12 hours). The default is 30. For more information about the visibility timeout, see [Visibility Timeout](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html) in the *Amazon SQS Developer Guide*.
 
 The following attributes apply only to [server-side-encryption](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
 
@@ -408,7 +408,7 @@ Deletes up to ten messages from the specified queue. This is a batch version of 
 > Because the batch request can result in a combination of successful and unsuccessful actions, you should check for batch errors even when the call returns an HTTP status code of `200`.
 
 **Note**
-> Some actions take lists of parameters. These lists are specified using the `param.n` notation. Values of `n` are integers starting from 1\. For example, a parameter list with two elements looks like this:
+> Some actions take lists of parameters. These lists are specified using the `param.n` notation. Values of `n` are integers starting from 1. For example, a parameter list with two elements looks like this:
 
 `&Attribute.1=this`
 
@@ -508,7 +508,7 @@ Gets attributes for the specified queue.
 > To determine whether a queue is [FIFO](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html), you can check whether `QueueName` ends with the `.fifo` suffix.
 
 **Note**
-> Some actions take lists of parameters. These lists are specified using the `param.n` notation. Values of `n` are integers starting from 1\. For example, a parameter list with two elements looks like this:
+> Some actions take lists of parameters. These lists are specified using the `param.n` notation. Values of `n` are integers starting from 1. For example, a parameter list with two elements looks like this:
 
 `&Attribute.1=this`
 
@@ -695,7 +695,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 
 # ListQueues Operation
 
-Returns a list of your queues. The maximum number of queues that can be returned is 1,000\. If you specify a value for the optional `QueueNamePrefix` parameter, only queues with a name that begins with the specified value are returned.
+Returns a list of your queues. The maximum number of queues that can be returned is 1,000. If you specify a value for the optional `QueueNamePrefix` parameter, only queues with a name that begins with the specified value are returned.
 
 # Arguments
 
@@ -882,7 +882,7 @@ When using `ReceiveMessage`, you can send a list of attribute names to receive, 
 
 
 ## `MaxNumberOfMessages = ::Int`
-The maximum number of messages to return. Amazon SQS never returns more messages than this value (however, fewer messages might be returned). Valid values are 1 to 10\. Default is 1.
+The maximum number of messages to return. Amazon SQS never returns more messages than this value (however, fewer messages might be returned). Valid values are 1 to 10. Default is 1.
 
 
 ## `VisibilityTimeout = ::Int`
@@ -1019,7 +1019,7 @@ Any characters not included in this list will be rejected. For more information,
 
 
 ## `DelaySeconds = ::Int`
-The length of time, in seconds, for which to delay a specific message. Valid values: 0 to 900\. Maximum: 15 minutes. Messages with a positive `DelaySeconds` value become available for processing after the delay period is finished. If you don't specify a value, the default value for the queue applies.
+The length of time, in seconds, for which to delay a specific message. Valid values: 0 to 900. Maximum: 15 minutes. Messages with a positive `DelaySeconds` value become available for processing after the delay period is finished. If you don't specify a value, the default value for the queue applies.
 
 **Note**
 > When you set `FifoQueue`, you can't set `DelaySeconds` per message. You can set this parameter only on a queue level.
@@ -1122,7 +1122,7 @@ Any characters not included in this list will be rejected. For more information,
 If you don't specify the `DelaySeconds` parameter for an entry, Amazon SQS uses the default value for the queue.
 
 **Note**
-> Some actions take lists of parameters. These lists are specified using the `param.n` notation. Values of `n` are integers starting from 1\. For example, a parameter list with two elements looks like this:
+> Some actions take lists of parameters. These lists are specified using the `param.n` notation. Values of `n` are integers starting from 1. For example, a parameter list with two elements looks like this:
 
 `&Attribute.1=this`
 
@@ -1206,14 +1206,14 @@ The following lists the names, descriptions, and values of the special request p
 
 *   `Policy` - The queue's policy. A valid AWS policy. For more information about policy structure, see [Overview of AWS IAM Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html) in the *Amazon IAM User Guide*.
 
-*   `ReceiveMessageWaitTimeSeconds` - The length of time, in seconds, for which a `[ReceiveMessage](@ref)` action waits for a message to arrive. Valid values: an integer from 0 to 20 (seconds). The default is 0\.
+*   `ReceiveMessageWaitTimeSeconds` - The length of time, in seconds, for which a `[ReceiveMessage](@ref)` action waits for a message to arrive. Valid values: an integer from 0 to 20 (seconds). The default is 0.
 
 *   `RedrivePolicy` - The parameters for the dead letter queue functionality of the source queue. For more information about the redrive policy and dead letter queues, see [Using Amazon SQS Dead Letter Queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html) in the *Amazon SQS Developer Guide*.
 
     **Note**
     > The dead letter queue of a FIFO queue must also be a FIFO queue. Similarly, the dead letter queue of a standard queue must also be a standard queue.
 
-*   `VisibilityTimeout` - The visibility timeout for the queue. Valid values: an integer from 0 to 43,200 (12 hours). The default is 30\. For more information about the visibility timeout, see [Visibility Timeout](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html) in the *Amazon SQS Developer Guide*.
+*   `VisibilityTimeout` - The visibility timeout for the queue. Valid values: an integer from 0 to 43,200 (12 hours). The default is 30. For more information about the visibility timeout, see [Visibility Timeout](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html) in the *Amazon SQS Developer Guide*.
 
 The following attributes apply only to [server-side-encryption](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
 

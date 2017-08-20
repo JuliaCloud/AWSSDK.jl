@@ -306,7 +306,7 @@ Segments must include the following fields. For the full segment document schema
 
 *   `in_progress` - Set to `true` instead of specifying an `end_time` to record that a segment has been started, but is not complete. Send an in progress segment when your application receives a request that will take a long time to serve, to trace the fact that the request was received. When the response is sent, send the complete segment to overwrite the in-progress segment.
 
-A `trace_id` consists of three numbers separated by hyphens. For example, 1-58406520-a006649127e371903a2de979\. This includes:
+A `trace_id` consists of three numbers separated by hyphens. For example, 1-58406520-a006649127e371903a2de979. This includes:
 
 **Trace ID Format**
 

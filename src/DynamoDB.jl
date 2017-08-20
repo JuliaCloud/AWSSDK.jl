@@ -420,7 +420,7 @@ Each local secondary index in the array includes the following:
 
         *   `ALL` - All of the table attributes are projected into the index.
 
-    *   `NonKeyAttributes` - A list of one or more non-key attribute names that are projected into the secondary index. The total count of attributes provided in `NonKeyAttributes`, summed across all of the secondary indexes, must not exceed 20\. If you project the same attribute into two different indexes, this counts as two distinct attributes when determining the total.
+    *   `NonKeyAttributes` - A list of one or more non-key attribute names that are projected into the secondary index. The total count of attributes provided in `NonKeyAttributes`, summed across all of the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two distinct attributes when determining the total.
 ```
  LocalSecondaryIndexes = [[
         "IndexName" => <required> ::String,
@@ -452,7 +452,7 @@ One or more global secondary indexes (the maximum is five) to be created on the 
 
         *   `ALL` - All of the table attributes are projected into the index.
 
-    *   `NonKeyAttributes` - A list of one or more non-key attribute names that are projected into the secondary index. The total count of attributes provided in `NonKeyAttributes`, summed across all of the secondary indexes, must not exceed 20\. If you project the same attribute into two different indexes, this counts as two distinct attributes when determining the total.
+    *   `NonKeyAttributes` - A list of one or more non-key attribute names that are projected into the secondary index. The total count of attributes provided in `NonKeyAttributes`, summed across all of the secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two distinct attributes when determining the total.
 
 *   `ProvisionedThroughput` - The provisioned throughput settings for the global secondary index, consisting of read and write capacity units.
 ```
@@ -1856,7 +1856,7 @@ In a parallel scan, a `Scan` request that includes `ExclusiveStartKey` must spec
 ## `TotalSegments = ::Int`
 For a parallel `Scan` request, `TotalSegments` represents the total number of segments into which the `Scan` operation will be divided. The value of `TotalSegments` corresponds to the number of application workers that will perform the parallel scan. For example, if you want to use four application threads to scan a table or an index, specify a `TotalSegments` value of 4.
 
-The value for `TotalSegments` must be greater than or equal to 1, and less than or equal to 1000000\. If you specify a `TotalSegments` value of 1, the `Scan` operation will be sequential rather than parallel.
+The value for `TotalSegments` must be greater than or equal to 1, and less than or equal to 1000000. If you specify a `TotalSegments` value of 1, the `Scan` operation will be sequential rather than parallel.
 
 If you specify `TotalSegments`, you must also specify `Segment`.
 
@@ -1864,7 +1864,7 @@ If you specify `TotalSegments`, you must also specify `Segment`.
 ## `Segment = ::Int`
 For a parallel `Scan` request, `Segment` identifies an individual segment to be scanned by an application worker.
 
-Segment IDs are zero-based, so the first segment is always 0\. For example, if you want to use four application threads to scan a table or an index, then the first thread specifies a `Segment` value of 0, the second thread specifies 1, and so on.
+Segment IDs are zero-based, so the first segment is always 0. For example, if you want to use four application threads to scan a table or an index, then the first thread specifies a `Segment` value of 0, the second thread specifies 1, and so on.
 
 The value of `LastEvaluatedKey` returned from a parallel `Scan` request must be used as `ExclusiveStartKey` with the same segment ID in a subsequent `Scan` operation.
 

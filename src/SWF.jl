@@ -1758,7 +1758,7 @@ The duration is specified in seconds, an integer greater than or equal to `0`. Y
 ## `defaultExecutionStartToCloseTimeout = ::String`
 If set, specifies the default maximum duration for executions of this workflow type. You can override this default when starting an execution through the [StartWorkflowExecution](@ref) Action or `StartChildWorkflowExecution` [Decision](@ref).
 
-The duration is specified in seconds; an integer greater than or equal to 0\. Unlike some of the other timeout parameters in Amazon SWF, you cannot specify a value of "NONE" for `defaultExecutionStartToCloseTimeout`; there is a one-year max limit on the time that a workflow execution can run. Exceeding this limit always causes the workflow execution to time out.
+The duration is specified in seconds; an integer greater than or equal to 0. Unlike some of the other timeout parameters in Amazon SWF, you cannot specify a value of "NONE" for `defaultExecutionStartToCloseTimeout`; there is a one-year max limit on the time that a workflow execution can run. Exceeding this limit always causes the workflow execution to time out.
 
 
 ## `defaultTaskList = ["name" => <required> ::String]`

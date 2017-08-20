@@ -265,7 +265,7 @@ The name of the stream to describe.
 
 
 ## `Limit = ::Int`
-The maximum number of shards to return in a single call. The default value is 100\. If you specify a value greater than 100, at most 100 shards are returned.
+The maximum number of shards to return in a single call. The default value is 100. If you specify a value greater than 100, at most 100 shards are returned.
 
 
 ## `ExclusiveStartShardId = ::String`
@@ -450,7 +450,7 @@ The position in the shard from which you want to start sequentially reading data
 
 
 ## `Limit = ::Int`
-The maximum number of records to return. Specify a value of up to 10,000\. If you specify a value that is greater than 10,000, [GetRecords](@ref) throws `InvalidArgumentException`.
+The maximum number of records to return. Specify a value of up to 10,000. If you specify a value that is greater than 10,000, [GetRecords](@ref) throws `InvalidArgumentException`.
 
 
 
@@ -700,7 +700,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 # MergeShards Operation
 
-Merges two adjacent shards in an Amazon Kinesis stream and combines them into a single shard to reduce the stream's capacity to ingest and transport data. Two shards are considered adjacent if the union of the hash key ranges for the two shards form a contiguous set with no gaps. For example, if you have two shards, one with a hash key range of 276...381 and the other with a hash key range of 382...454, then you could merge these two shards into a single shard that would have a hash key range of 276...454\. After the merge, the single child shard receives data for all hash key values covered by the two parent shards.
+Merges two adjacent shards in an Amazon Kinesis stream and combines them into a single shard to reduce the stream's capacity to ingest and transport data. Two shards are considered adjacent if the union of the hash key ranges for the two shards form a contiguous set with no gaps. For example, if you have two shards, one with a hash key range of 276...381 and the other with a hash key range of 382...454, then you could merge these two shards into a single shard that would have a hash key range of 276...454. After the merge, the single child shard receives data for all hash key values covered by the two parent shards.
 
 `MergeShards` is called when there is a need to reduce the overall capacity of a stream because of excess capacity that is not being used. You must specify the shard to be merged and the adjacent shard for a stream. For more information about merging shards, see [Merge Two Shards](http://docs.aws.amazon.com/kinesis/latest/dev/kinesis-using-sdk-java-resharding-merge.html) in the *Amazon Kinesis Streams Developer Guide*.
 

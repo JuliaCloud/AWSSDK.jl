@@ -611,7 +611,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 # ListEndpointsByPlatformApplication Operation
 
-Lists the endpoints and endpoint attributes for devices in a supported push notification service, such as GCM and APNS. The results for `ListEndpointsByPlatformApplication` are paginated and return a limited list of endpoints, up to 100\. If additional records are available after the first page results, then a NextToken string will be returned. To receive the next page, you call `ListEndpointsByPlatformApplication` again using the NextToken string received from the previous call. When there are no more records to return, NextToken will be null. For more information, see [Using Amazon SNS Mobile Push Notifications](http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
+Lists the endpoints and endpoint attributes for devices in a supported push notification service, such as GCM and APNS. The results for `ListEndpointsByPlatformApplication` are paginated and return a limited list of endpoints, up to 100. If additional records are available after the first page results, then a NextToken string will be returned. To receive the next page, you call `ListEndpointsByPlatformApplication` again using the NextToken string received from the previous call. When there are no more records to return, NextToken will be null. For more information, see [Using Amazon SNS Mobile Push Notifications](http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 # Arguments
 
@@ -695,7 +695,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 # ListPlatformApplications Operation
 
-Lists the platform application objects for the supported push notification services, such as APNS and GCM. The results for `ListPlatformApplications` are paginated and return a limited list of applications, up to 100\. If additional records are available after the first page results, then a NextToken string will be returned. To receive the next page, you call `ListPlatformApplications` using the NextToken string received from the previous call. When there are no more records to return, NextToken will be null. For more information, see [Using Amazon SNS Mobile Push Notifications](http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
+Lists the platform application objects for the supported push notification services, such as APNS and GCM. The results for `ListPlatformApplications` are paginated and return a limited list of applications, up to 100. If additional records are available after the first page results, then a NextToken string will be returned. To receive the next page, you call `ListPlatformApplications` using the NextToken string received from the previous call. When there are no more records to return, NextToken will be null. For more information, see [Using Amazon SNS Mobile Push Notifications](http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 # Arguments
 
@@ -734,7 +734,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 # ListSubscriptions Operation
 
-Returns a list of the requester's subscriptions. Each call returns a limited list of subscriptions, up to 100\. If there are more subscriptions, a `NextToken` is also returned. Use the `NextToken` parameter in a new `ListSubscriptions` call to get further results.
+Returns a list of the requester's subscriptions. Each call returns a limited list of subscriptions, up to 100. If there are more subscriptions, a `NextToken` is also returned. Use the `NextToken` parameter in a new `ListSubscriptions` call to get further results.
 
 # Arguments
 
@@ -773,7 +773,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 # ListSubscriptionsByTopic Operation
 
-Returns a list of the subscriptions to a specific topic. Each call returns a limited list of subscriptions, up to 100\. If there are more subscriptions, a `NextToken` is also returned. Use the `NextToken` parameter in a new `ListSubscriptionsByTopic` call to get further results.
+Returns a list of the subscriptions to a specific topic. Each call returns a limited list of subscriptions, up to 100. If there are more subscriptions, a `NextToken` is also returned. Use the `NextToken` parameter in a new `ListSubscriptionsByTopic` call to get further results.
 
 # Arguments
 
@@ -816,7 +816,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 # ListTopics Operation
 
-Returns a list of the requester's topics. Each call returns a limited list of topics, up to 100\. If there are more topics, a `NextToken` is also returned. Use the `NextToken` parameter in a new `ListTopics` call to get further results.
+Returns a list of the requester's topics. Each call returns a limited list of topics, up to 100. If there are more topics, a `NextToken` is also returned. Use the `NextToken` parameter in a new `ListTopics` call to get further results.
 
 # Arguments
 
@@ -1166,7 +1166,7 @@ By default, the spend limit is set to the maximum allowed by Amazon SNS. If you 
 
 `DeliveryStatusIAMRole` – The ARN of the IAM role that allows Amazon SNS to write logs about SMS deliveries in CloudWatch Logs. For each SMS message that you send, Amazon SNS writes a log that includes the message price, the success or failure status, the reason for failure (if the message failed), the message dwell time, and other information.
 
-`DeliveryStatusSuccessSamplingRate` – The percentage of successful SMS deliveries for which Amazon SNS will write logs in CloudWatch Logs. The value can be an integer from 0 - 100\. For example, to write logs only for failed deliveries, set this value to `0`. To write logs for 10% of your successful deliveries, set it to `10`.
+`DeliveryStatusSuccessSamplingRate` – The percentage of successful SMS deliveries for which Amazon SNS will write logs in CloudWatch Logs. The value can be an integer from 0 - 100. For example, to write logs only for failed deliveries, set this value to `0`. To write logs for 10% of your successful deliveries, set it to `10`.
 
 `DefaultSenderID` – A string, such as your business brand, that is displayed as the sender on the receiving device. Support for sender IDs varies by country. The sender ID can be 1 - 11 alphanumeric characters, and it must contain at least one letter.
 
