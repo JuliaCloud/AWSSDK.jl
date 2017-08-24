@@ -167,7 +167,7 @@ A complex type that contains an optional comment and the `Changes` element.
             "Action" => <required> "CREATE", "DELETE" or "UPSERT",
             "ResourceRecordSet" => <required> [
                 "Name" => <required> ::String,
-                "Type" => <required> "SOA", "A", "TXT", "NS", "CNAME", "MX", "NAPTR", "PTR", "SRV", "SPF" or "AAAA",
+                "Type" => <required> "SOA", "A", "TXT", "NS", "CNAME", "MX", "NAPTR", "PTR", "SRV", "SPF", "AAAA" or "CAA",
                 "SetIdentifier" =>  ::String,
                 "Weight" =>  ::Int,
                 "Region" =>  "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1", "eu-west-1", "eu-west-2", "eu-central-1", "ap-southeast-1", "ap-southeast-2", "ap-northeast-1", "ap-northeast-2", "sa-east-1", "cn-north-1" or "ap-south-1",
@@ -2558,12 +2558,12 @@ The ID of the hosted zone that contains the resource record sets that you want t
 The first name in the lexicographic ordering of resource record sets that you want to list.
 
 
-## `type = "SOA", "A", "TXT", "NS", "CNAME", "MX", "NAPTR", "PTR", "SRV", "SPF" or "AAAA"`
+## `type = "SOA", "A", "TXT", "NS", "CNAME", "MX", "NAPTR", "PTR", "SRV", "SPF", "AAAA" or "CAA"`
 The type of resource record set to begin the record listing from.
 
-Valid values for basic resource record sets: `A` | `AAAA` | `CNAME` | `MX` | `NAPTR` | `NS` | `PTR` | `SOA` | `SPF` | `SRV` | `TXT`
+Valid values for basic resource record sets: `A` | `AAAA` | `CAA` | `CNAME` | `MX` | `NAPTR` | `NS` | `PTR` | `SOA` | `SPF` | `SRV` | `TXT`
 
-Values for weighted, latency, geo, and failover resource record sets: `A` | `AAAA` | `CNAME` | `MX` | `NAPTR` | `PTR` | `SPF` | `SRV` | `TXT`
+Values for weighted, latency, geo, and failover resource record sets: `A` | `AAAA` | `CAA` | `CNAME` | `MX` | `NAPTR` | `PTR` | `SPF` | `SRV` | `TXT`
 
 Values for alias resource record sets:
 
@@ -2574,6 +2574,8 @@ Values for alias resource record sets:
 *   **ELB load balancer**: A | AAAA
 
 *   **Amazon S3 bucket**: A
+
+*   **Another resource record set in this hosted zone:** The type of the resource record set that the alias references.
 
 Constraint: Specifying `type` without specifying `name` returns an `InvalidInput` error.
 
@@ -2828,7 +2830,7 @@ If the value of `IsTruncated` in the previous response was `true`, you have more
 If the value of `IsTruncated` in the previous response was `false`, there are no more traffic policy instances to get.
 
 
-## `trafficpolicyinstancetype = "SOA", "A", "TXT", "NS", "CNAME", "MX", "NAPTR", "PTR", "SRV", "SPF" or "AAAA"`
+## `trafficpolicyinstancetype = "SOA", "A", "TXT", "NS", "CNAME", "MX", "NAPTR", "PTR", "SRV", "SPF", "AAAA" or "CAA"`
 If the value of `IsTruncated` in the previous response was `true`, you have more traffic policy instances. To get more traffic policy instances, submit another `ListTrafficPolicyInstances` request. For the value of `trafficpolicyinstancetype`, specify the value of `TrafficPolicyInstanceTypeMarker` from the previous response, which is the type of the first traffic policy instance in the next group of traffic policy instances.
 
 If the value of `IsTruncated` in the previous response was `false`, there are no more traffic policy instances to get.
@@ -2888,7 +2890,7 @@ If the value of `IsTruncated` in the previous response is true, you have more tr
 If the value of `IsTruncated` in the previous response was `false`, there are no more traffic policy instances to get.
 
 
-## `trafficpolicyinstancetype = "SOA", "A", "TXT", "NS", "CNAME", "MX", "NAPTR", "PTR", "SRV", "SPF" or "AAAA"`
+## `trafficpolicyinstancetype = "SOA", "A", "TXT", "NS", "CNAME", "MX", "NAPTR", "PTR", "SRV", "SPF", "AAAA" or "CAA"`
 If the value of `IsTruncated` in the previous response is true, you have more traffic policy instances. To get more traffic policy instances, submit another `ListTrafficPolicyInstances` request. For the value of `trafficpolicyinstancetype`, specify the value of `TrafficPolicyInstanceTypeMarker` from the previous response, which is the type of the first traffic policy instance in the next group of traffic policy instances.
 
 If the value of `IsTruncated` in the previous response was `false`, there are no more traffic policy instances to get.
@@ -2962,7 +2964,7 @@ For the value of `trafficpolicyinstancename`, specify the value of `TrafficPolic
 If the value of `IsTruncated` in the previous response was `false`, there are no more traffic policy instances to get.
 
 
-## `trafficpolicyinstancetype = "SOA", "A", "TXT", "NS", "CNAME", "MX", "NAPTR", "PTR", "SRV", "SPF" or "AAAA"`
+## `trafficpolicyinstancetype = "SOA", "A", "TXT", "NS", "CNAME", "MX", "NAPTR", "PTR", "SRV", "SPF", "AAAA" or "CAA"`
 If the value of `IsTruncated` in the previous response was `true`, you have more traffic policy instances. To get more traffic policy instances, submit another `ListTrafficPolicyInstancesByPolicy` request.
 
 For the value of `trafficpolicyinstancetype`, specify the value of `TrafficPolicyInstanceTypeMarker` from the previous response, which is the name of the first traffic policy instance that Amazon Route 53 will return if you submit another request.
@@ -3117,7 +3119,7 @@ The ID of the hosted zone that you want Amazon Route 53 to simulate a query for.
 The name of the resource record set that you want Amazon Route 53 to simulate a query for.
 
 
-## `recordtype = "SOA", "A", "TXT", "NS", "CNAME", "MX", "NAPTR", "PTR", "SRV", "SPF" or "AAAA"` -- *Required*
+## `recordtype = "SOA", "A", "TXT", "NS", "CNAME", "MX", "NAPTR", "PTR", "SRV", "SPF", "AAAA" or "CAA"` -- *Required*
 The type of the resource record set.
 
 

@@ -157,6 +157,14 @@ The instance type of compute resources for the fleet. Fleet instances are launch
 
 *   stream.memory.8xlarge
 
+*   stream.graphics-pro.4xlarge
+
+*   stream.graphics-pro.8xlarge
+
+*   stream.graphics-pro.16xlarge
+
+*   stream.graphics-desktop.2xlarge
+
 
 ## `ComputeCapacity = ["DesiredInstances" => <required> ::Int]` -- *Required*
 The parameters for the capacity allocated to the fleet.
@@ -1018,6 +1026,14 @@ The instance type of compute resources for the fleet. Fleet instances are launch
 *   stream.memory.4xlarge
 
 *   stream.memory.8xlarge
+
+*   stream.graphics-pro.4xlarge
+
+*   stream.graphics-pro.8xlarge
+
+*   stream.graphics-pro.16xlarge
+
+*   stream.graphics-desktop.2xlarge
 
 
 ## `ComputeCapacity = ["DesiredInstances" => <required> ::Int]`

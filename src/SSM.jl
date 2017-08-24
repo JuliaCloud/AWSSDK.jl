@@ -226,6 +226,10 @@ An Amazon S3 bucket where you want to store the output details of the request.
         ]]
 ```
 
+## `AssociationName = ::String`
+Specify a descriptive name for the association.
+
+
 
 
 # Returns
@@ -282,7 +286,8 @@ One or more associations.
                 "OutputS3Region" =>  ::String,
                 "OutputS3BucketName" =>  ::String,
                 "OutputS3KeyPrefix" =>  ::String
-            ]]
+            ]],
+        "AssociationName" =>  ::String
     ], ...]
 ```
 
@@ -375,7 +380,7 @@ The name of the Maintenance Window.
 
 
 ## `Description = ::String`
-An optional description for the Maintenance Window. We recommend specifying a description to help your organize your Maintenance Windows.
+An optional description for the Maintenance Window. We recommend specifying a description to help you organize your Maintenance Windows.
 
 
 ## `Schedule = ::String` -- *Required*
@@ -391,7 +396,9 @@ The number of hours before the end of the Maintenance Window that Systems Manage
 
 
 ## `AllowUnassociatedTargets = ::Bool` -- *Required*
-Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.
+Enables a Maintenance Window task to execute on managed instances, even if you have not registered those instances as targets. If enabled, then you must specify the unregistered instances (by instance ID) when you register a task with the Maintenance Window
+
+If you don't enable this option, then you must specify previously-registered targets when you register a task with the Maintenance Window.
 
 
 ## `ClientToken = ::String`
@@ -985,7 +992,7 @@ The ID of the target definition to remove.
 
 
 ## `Safe = ::Bool`
-The system checks if the target is being referenced by a task. If the target is being referenced, the system returns and error and does not deregister the target from the Maintenance Window.
+The system checks if the target is being referenced by a task. If the target is being referenced, the system returns an error and does not deregister the target from the Maintenance Window.
 
 
 
@@ -1130,6 +1137,10 @@ The instance ID.
 The association ID for which you want information.
 
 
+## `AssociationVersion = ::String`
+Specify the association version to retrieve. To view the latest version, either specify `\$LATEST` for this parameter, or omit this parameter. To view a list of all associations for an instance, use ListInstanceAssociations. To get a list of versions for a specific association, use ListAssociationVersions.
+
+
 
 
 # Returns
@@ -1138,7 +1149,7 @@ The association ID for which you want information.
 
 # Exceptions
 
-`AssociationDoesNotExist`, `InternalServerError`, `InvalidDocument` or `InvalidInstanceId`.
+`AssociationDoesNotExist`, `InvalidAssociationVersion`, `InternalServerError`, `InvalidDocument` or `InvalidInstanceId`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeAssociation)
 """
@@ -2721,7 +2732,7 @@ Retrieves a task invocation. A task invocation is a specific task executing on a
 # Arguments
 
 ## `WindowExecutionId = ::String` -- *Required*
-The ID of the Maintenance Window execution the task is part of.
+The ID of the Maintenance Window execution for which the task is a part.
 
 
 ## `TaskId = ::String` -- *Required*
@@ -3084,6 +3095,53 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 
 """
+    using AWSSDK.SSM.list_association_versions
+    list_association_versions([::AWSConfig], arguments::Dict)
+    list_association_versions([::AWSConfig]; AssociationId=, <keyword arguments>)
+
+    using AWSCore.Services.ssm
+    ssm([::AWSConfig], "ListAssociationVersions", arguments::Dict)
+    ssm([::AWSConfig], "ListAssociationVersions", AssociationId=, <keyword arguments>)
+
+# ListAssociationVersions Operation
+
+Retrieves all versions of an association for a specific association ID.
+
+# Arguments
+
+## `AssociationId = ::String` -- *Required*
+The association ID for which you want to view all versions.
+
+
+## `MaxResults = ::Int`
+The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+
+
+## `NextToken = ::String`
+A token to start the list. Use this token to get the next set of results.
+
+
+
+
+# Returns
+
+`ListAssociationVersionsResult`
+
+# Exceptions
+
+`InternalServerError`, `InvalidNextToken` or `AssociationDoesNotExist`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListAssociationVersions)
+"""
+
+@inline list_association_versions(aws::AWSConfig=default_aws_config(); args...) = list_association_versions(aws, args)
+
+@inline list_association_versions(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "ListAssociationVersions", args)
+
+@inline list_association_versions(args) = list_association_versions(default_aws_config(), args)
+
+
+"""
     using AWSSDK.SSM.list_associations
     list_associations([::AWSConfig], arguments::Dict)
     list_associations([::AWSConfig]; <keyword arguments>)
@@ -3102,7 +3160,7 @@ Lists the associations for the specified Systems Manager document or instance.
 One or more filters. Use a filter to return a more specific list of results.
 ```
  AssociationFilterList = [[
-        "key" => <required> "InstanceId", "Name", "AssociationId", "AssociationStatusName", "LastExecutedBefore" or "LastExecutedAfter",
+        "key" => <required> "InstanceId", "Name", "AssociationId", "AssociationStatusName", "LastExecutedBefore", "LastExecutedAfter" or "AssociationName",
         "value" => <required> ::String
     ], ...]
 ```
@@ -3270,7 +3328,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # ListComplianceItems Operation
 
-For a specified resource ID, this API returns a list of compliance statuses for different resource types. Currently, you can only specify one resource ID per call. List results depend on the criteria specified in the filter.
+For a specified resource ID, this API action returns a list of compliance statuses for different resource types. Currently, you can only specify one resource ID per call. List results depend on the criteria specified in the filter.
 
 # Arguments
 
@@ -3285,11 +3343,11 @@ One or more compliance filters. Use a filter to return a more specific list of r
 ```
 
 ## `ResourceIds = [::String, ...]`
-The ID for the resources from which you want to get compliance information. Currently, you can only specify one resource ID.
+The ID for the resources from which to get compliance information. Currently, you can only specify one resource ID.
 
 
 ## `ResourceTypes = [::String, ...]`
-The type of resource from which you want to get compliance information. Currently, the only supported resource type is `ManagedInstance`.
+The type of resource from which to get compliance information. Currently, the only supported resource type is `ManagedInstance`.
 
 
 ## `NextToken = ::String`
@@ -3331,7 +3389,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # ListComplianceSummaries Operation
 
-Returns a summary count of compliant and non-compliant resources for a compliance type. For example, this call can return State Manager associations, patches, or custom compliance types according to the filter criteria you specify.
+Returns a summary count of compliant and non-compliant resources for a compliance type. For example, this call can return State Manager associations, patches, or custom compliance types according to the filter criteria that you specify.
 
 # Arguments
 
@@ -3736,7 +3794,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # PutComplianceItems Operation
 
-Registers a compliance type and other compliance details on a designated resource. This API lets you register custom compliance details with a resource. This call overwrites existing compliance information on the resource, so you must provide a full list of compliance items each time you send the request.
+Registers a compliance type and other compliance details on a designated resource. This action lets you register custom compliance details with a resource. This call overwrites existing compliance information on the resource, so you must provide a full list of compliance items each time that you send the request.
 
 # Arguments
 
@@ -3775,7 +3833,7 @@ Information about the compliance as defined by the resource type. For example, f
 ```
 
 ## `ItemContentHash = ::String`
-MD5 or Sha256 content hash. The content hash is used to determine if existing information should be overwritten or ignored. If the content hashes match, ,the request to put compliance information is ignored.
+MD5 or SHA-256 content hash. The content hash is used to determine if existing information should be overwritten or ignored. If the content hashes match, the request to put compliance information is ignored.
 
 
 
@@ -4108,7 +4166,7 @@ The parameters that should be passed to the task when it is executed.
 
 
 ## `TaskInvocationParameters = [ ... ]`
-Parameters the task should use during execution. Populate only the fields that match the task type. All other fields should be empty.
+The parameters that the task should use during execution. Populate only the fields that match the task type. All other fields should be empty.
 ```
  TaskInvocationParameters = [
         "RunCommand" =>  [
@@ -4499,7 +4557,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # UpdateAssociation Operation
 
-Updates an association. You can only update the document version, schedule, parameters, and Amazon S3 output of an association.
+Updates an association. You can update the association name and version, the document version, schedule, parameters, and Amazon S3 output.
 
 # Arguments
 
@@ -4542,6 +4600,14 @@ The targets of the association.
     ], ...]
 ```
 
+## `AssociationName = ::String`
+The name of the association that you want to update.
+
+
+## `AssociationVersion = ::String`
+This parameter is provided for concurrency control purposes. You must specify the latest association version in the service. If you want to ensure that this request succeeds, either specify `\$LATEST`, or omit this parameter.
+
+
 
 
 # Returns
@@ -4550,7 +4616,7 @@ The targets of the association.
 
 # Exceptions
 
-`InternalServerError`, `InvalidSchedule`, `InvalidParameters`, `InvalidOutputLocation`, `InvalidDocumentVersion`, `AssociationDoesNotExist`, `InvalidUpdate`, `TooManyUpdates`, `InvalidDocument` or `InvalidTarget`.
+`InternalServerError`, `InvalidSchedule`, `InvalidParameters`, `InvalidOutputLocation`, `InvalidDocumentVersion`, `AssociationDoesNotExist`, `InvalidUpdate`, `TooManyUpdates`, `InvalidDocument`, `InvalidTarget`, `InvalidAssociationVersion` or `AssociationVersionLimitExceeded`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdateAssociation)
 """
@@ -4754,7 +4820,7 @@ Whether the Maintenance Window is enabled.
 
 
 ## `Replace = ::Bool`
-If you specify True, then all fields that are required by the CreateMaintenanceWindow API are also required for this API request. Optional fields that are not specified will be set to null.
+If True, then all fields that are required by the CreateMaintenanceWindow action are also required for this API request. Optional fields that are not specified are set to null.
 
 
 
@@ -4792,30 +4858,30 @@ Modifies the target of an existing Maintenance Window. You can't change the targ
 
 The target from being an ID target to a Tag target, or a Tag target to an ID target.
 
-The IDs of an ID target.
+IDs for an ID target.
 
-The tags of a Tag target.
+Tags for a Tag target.
 
-The Owner.
+Owner.
 
-The Name.
+Name.
 
-The Description.
+Description.
 
-Also note that if a parameter is null, then the corresponding field is not modified.
+If a parameter is null, then the corresponding field is not modified.
 
 # Arguments
 
 ## `WindowId = ::String` -- *Required*
-The Maintenance Window ID for which you want to modify the target.
+The Maintenance Window ID with which to modify the target.
 
 
 ## `WindowTargetId = ::String` -- *Required*
-The target ID that you want to modify.
+The target ID to modify.
 
 
 ## `Targets = [[ ... ], ...]`
-The targets that you want to add or replace.
+The targets to add or replace.
 ```
  Targets = [[
         "Key" =>  ::String,
@@ -4836,7 +4902,7 @@ An optional description for the update.
 
 
 ## `Replace = ::Bool`
-If you specify True, then all fields that are required by the RegisterTargetWithMaintenanceWindow API are also required for this API request. Optional fields that are not specified will be set to null.
+If True, then all fields that are required by the RegisterTargetWithMaintenanceWindow action are also required for this API request. Optional fields that are not specified are set to null.
 
 
 
@@ -4870,34 +4936,34 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # UpdateMaintenanceWindowTask Operation
 
-Modifies a task assigned to a Maintenance Window. You can't change the task type, but you can change the following:
+Modifies a task assigned to a Maintenance Window. You can't change the task type, but you can change the following values:
 
-The Task Arn. For example, you can change a RUN_COMMAND task from AWS-RunPowerShellScript to AWS-RunShellScript.
+Task ARN. For example, you can change a RUN_COMMAND task from AWS-RunPowerShellScript to AWS-RunShellScript.
 
-The service role ARN.
+Service role ARN.
 
-The task parameters.
+Task parameters.
 
-The task priority.
+Task priority.
 
-The task MaxConcurrency and MaxErrors.
+Task MaxConcurrency and MaxErrors.
 
-The log location.
+Log location.
 
-If a parameter is null, then the corresponding field is not modified. Also, if you set Replace to true, then all fields required by the RegisterTaskWithMaintenanceWindow operation are required for this request. Optional fields that aren't specified are be set to null.
+If a parameter is null, then the corresponding field is not modified. Also, if you set Replace to true, then all fields required by the RegisterTaskWithMaintenanceWindow action are required for this request. Optional fields that aren't specified are set to null.
 
 # Arguments
 
 ## `WindowId = ::String` -- *Required*
-The Maintenance Window ID that contains the task that you want to modify.
+The Maintenance Window ID that contains the task to modify.
 
 
 ## `WindowTaskId = ::String` -- *Required*
-The task ID that you want to modify.
+The task ID to modify.
 
 
 ## `Targets = [[ ... ], ...]`
-The targets (either instances or tags) that you want to modify. Instances are specified using Key=instanceids,Values=instanceID_1,instanceID_2. Tags are specified using Key=tag_name,Values=tag_value.
+The targets (either instances or tags) to modify. Instances are specified using Key=instanceids,Values=instanceID_1,instanceID_2. Tags are specified using Key=tag_name,Values=tag_value.
 ```
  Targets = [[
         "Key" =>  ::String,
@@ -4906,15 +4972,15 @@ The targets (either instances or tags) that you want to modify. Instances are sp
 ```
 
 ## `TaskArn = ::String`
-The task ARN that you want to modify.
+The task ARN to modify.
 
 
 ## `ServiceRoleArn = ::String`
-The IAM service role ARN that you want to modify. The system assumes this role during task exectuion.
+The IAM service role ARN to modify. The system assumes this role during task execution.
 
 
 ## `TaskParameters = ::Dict{String,String}`
-The parameters that you want to modify. The map has the following format:
+The parameters to modify. The map has the following format:
 
 Key: string, between 1 and 255 characters
 
@@ -4922,7 +4988,7 @@ Value: an array of strings, each string is between 1 and 255 characters
 
 
 ## `TaskInvocationParameters = [ ... ]`
-Parameters the task should use during execution. Populate only the fields that match the task type. All other fields should be empty.
+The parameters that the task should use during execution. Populate only the fields that match the task type. All other fields should be empty.
 ```
  TaskInvocationParameters = [
         "RunCommand" =>  [
@@ -4957,7 +5023,7 @@ Parameters the task should use during execution. Populate only the fields that m
 ```
 
 ## `Priority = ::Int`
-The new task priority that you want to specify. The lower the number, the higher the priority. Tasks that have the same priority are scheduled in parallel.
+The new task priority to specify. The lower the number, the higher the priority. Tasks that have the same priority are scheduled in parallel.
 
 
 ## `MaxConcurrency = ::String`
@@ -4965,11 +5031,11 @@ The new `MaxConcurrency` value you want to specify. `MaxConcurrency` is the numb
 
 
 ## `MaxErrors = ::String`
-The new `MaxErrors` value you want to specify. `MaxErrors` is the maximum number of errors that are allowed before the task stops being scheduled.
+The new `MaxErrors` value to specify. `MaxErrors` is the maximum number of errors that are allowed before the task stops being scheduled.
 
 
 ## `LoggingInfo = [ ... ]`
-The new logging location in Amazon S3 that you want to specify.
+The new logging location in Amazon S3 to specify.
 ```
  LoggingInfo = [
         "S3BucketName" => <required> ::String,
@@ -4979,15 +5045,15 @@ The new logging location in Amazon S3 that you want to specify.
 ```
 
 ## `Name = ::String`
-The new task name that you want to specify.
+The new task name to specify.
 
 
 ## `Description = ::String`
-The new task description that you want to specify.
+The new task description to specify.
 
 
 ## `Replace = ::Bool`
-If you specify True, then all fields that are required by the RegisterTaskWithMaintenanceWndow API are also required for this API request. Optional fields that are not specified will be set to null.
+If True, then all fields that are required by the RegisterTaskWithMaintenanceWndow action are also required for this API request. Optional fields that are not specified are set to null.
 
 
 
