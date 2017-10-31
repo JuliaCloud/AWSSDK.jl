@@ -32,11 +32,11 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `ReservedInstanceId = [::String, ...]` -- *Required*
-The IDs of the Convertible Reserved Instances to exchange for other Convertible Reserved Instances of the same or higher value.
+The IDs of the Convertible Reserved Instances to exchange for another Convertible Reserved Instance of the same or higher value.
 
 
 ## `TargetConfiguration = [[ ... ], ...]`
-The configurations of the Convertible Reserved Instance offerings that you are purchasing in this exchange.
+The configuration of the target Convertible Reserved Instance to exchange for your current Convertible Reserved Instances.
 ```
  TargetConfiguration = [[
         "InstanceCount" =>  ::Int,
@@ -694,12 +694,18 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # AssociateVpcCidrBlock Operation
 
-Associates a CIDR block with your VPC. You can only associate a single Amazon-provided IPv6 CIDR block with your VPC. The IPv6 CIDR block size is fixed at /56.
+Associates a CIDR block with your VPC. You can associate a secondary IPv4 CIDR block, or you can associate an Amazon-provided IPv6 CIDR block. The IPv6 CIDR block size is fixed at /56.
+
+For more information about associating CIDR blocks with your VPC and applicable restrictions, see [VPC and Subnet Sizing](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#VPC_Sizing) in the *Amazon Virtual Private Cloud User Guide*.
 
 # Arguments
 
 ## `AmazonProvidedIpv6CidrBlock = ::Bool`
 Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for the VPC. You cannot specify the range of IPv6 addresses, or the size of the CIDR block.
+
+
+## `CidrBlock = ::String`
+An IPv4 CIDR block to associate with the VPC.
 
 
 ## `VpcId = ::String` -- *Required*
@@ -993,7 +999,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 Attaches a virtual private gateway to a VPC. You can attach one virtual private gateway to one VPC at a time.
 
-For more information, see [Adding a Hardware Virtual Private Gateway to Your VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
+For more information, see [AWS Managed VPN Connections](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
 
 # Arguments
 
@@ -1038,7 +1044,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 [EC2-VPC only] Adds one or more egress rules to a security group for use with a VPC. Specifically, this action permits instances to send traffic to one or more destination IPv4 or IPv6 CIDR address ranges, or to one or more destination security groups for the same VPC. This action doesn't apply to security groups for use in EC2-Classic. For more information, see [Security Groups for Your VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html) in the *Amazon Virtual Private Cloud User Guide*. For more information about security group limits, see [Amazon VPC Limits](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html).
 
-Each rule consists of the protocol (for example, TCP), plus either a CIDR range or a source group. For the TCP and UDP protocols, you must also specify the destination port or port range. For the ICMP protocol, you must also specify the ICMP type and code. You can use -1 for the type or code to mean all types or all codes.
+Each rule consists of the protocol (for example, TCP), plus either a CIDR range or a source group. For the TCP and UDP protocols, you must also specify the destination port or port range. For the ICMP protocol, you must also specify the ICMP type and code. You can use -1 for the type or code to mean all types or all codes. You can optionally specify a description for the rule.
 
 Rule changes are propagated to affected instances as quickly as possible. However, a small delay might occur.
 
@@ -1053,16 +1059,26 @@ The ID of the security group.
 
 
 ## `IpPermissions = [[ ... ], ...]`
-A set of IP permissions. You can't specify a destination security group and a CIDR IP address range.
+One or more sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in the same set of permissions.
 ```
  IpPermissions = [[
         "FromPort" =>  ::Int,
         "IpProtocol" =>  ::String,
-        "IpRanges" =>  [["CidrIp" =>  ::String], ...],
-        "Ipv6Ranges" =>  [["CidrIpv6" =>  ::String], ...],
-        "PrefixListIds" =>  [["PrefixListId" =>  ::String], ...],
+        "IpRanges" =>  [[
+            "CidrIp" =>  ::String,
+            "Description" =>  ::String
+        ], ...],
+        "Ipv6Ranges" =>  [[
+            "CidrIpv6" =>  ::String,
+            "Description" =>  ::String
+        ], ...],
+        "PrefixListIds" =>  [[
+            "Description" =>  ::String,
+            "PrefixListId" =>  ::String
+        ], ...],
         "ToPort" =>  ::Int,
         "Groups" =>  [[
+            "Description" =>  ::String,
             "GroupId" =>  ::String,
             "GroupName" =>  ::String,
             "PeeringStatus" =>  ::String,
@@ -1074,27 +1090,27 @@ A set of IP permissions. You can't specify a destination security group and a CI
 ```
 
 ## `CidrIp = ::String`
-The CIDR IPv4 address range. We recommend that you specify the CIDR range in a set of IP permissions instead.
+Not supported. Use a set of IP permissions to specify the CIDR.
 
 
 ## `FromPort = ::Int`
-The start of port range for the TCP and UDP protocols, or an ICMP type number. We recommend that you specify the port range in a set of IP permissions instead.
+Not supported. Use a set of IP permissions to specify the port.
 
 
 ## `IpProtocol = ::String`
-The IP protocol name or number. We recommend that you specify the protocol in a set of IP permissions instead.
+Not supported. Use a set of IP permissions to specify the protocol name or number.
 
 
 ## `ToPort = ::Int`
-The end of port range for the TCP and UDP protocols, or an ICMP type number. We recommend that you specify the port range in a set of IP permissions instead.
+Not supported. Use a set of IP permissions to specify the port.
 
 
 ## `SourceSecurityGroupName = ::String`
-The name of a destination security group. To authorize outbound access to a destination security group, we recommend that you use a set of IP permissions instead.
+Not supported. Use a set of IP permissions to specify a destination security group.
 
 
 ## `SourceSecurityGroupOwnerId = ::String`
-The AWS account number for a destination security group. To authorize outbound access to a destination security group, we recommend that you use a set of IP permissions instead.
+Not supported. Use a set of IP permissions to specify a destination security group.
 
 
 
@@ -1128,6 +1144,8 @@ Rule changes are propagated to instances within the security group as quickly as
 
 [EC2-VPC] This action gives one or more IPv4 or IPv6 CIDR address ranges permission to access a security group in your VPC, or gives one or more other security groups (called the *source groups*) permission to access a security group for your VPC. The security groups must all be for the same VPC or a peer VPC in a VPC peering connection. For more information about VPC security group limits, see [Amazon VPC Limits](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html).
 
+You can optionally specify a description for the security group rule.
+
 # Arguments
 
 ## `CidrIp = ::String`
@@ -1135,28 +1153,38 @@ The CIDR IPv4 address range. You can't specify this parameter when specifying a 
 
 
 ## `FromPort = ::Int`
-The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type number. For the ICMP/ICMPv6 type number, use `-1` to specify all types.
+The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type number. For the ICMP/ICMPv6 type number, use `-1` to specify all types. If you specify all ICMP/ICMPv6 types, you must specify all codes.
 
 
 ## `GroupId = ::String`
-The ID of the security group. Required for a nondefault VPC.
+The ID of the security group. You must specify either the security group ID or the security group name in the request. For security groups in a nondefault VPC, you must specify the security group ID.
 
 
 ## `GroupName = ::String`
-[EC2-Classic, default VPC] The name of the security group.
+[EC2-Classic, default VPC] The name of the security group. You must specify either the security group ID or the security group name in the request.
 
 
 ## `IpPermissions = [[ ... ], ...]`
-A set of IP permissions. Can be used to specify multiple rules in a single command.
+One or more sets of IP permissions. Can be used to specify multiple rules in a single command.
 ```
  IpPermissions = [[
         "FromPort" =>  ::Int,
         "IpProtocol" =>  ::String,
-        "IpRanges" =>  [["CidrIp" =>  ::String], ...],
-        "Ipv6Ranges" =>  [["CidrIpv6" =>  ::String], ...],
-        "PrefixListIds" =>  [["PrefixListId" =>  ::String], ...],
+        "IpRanges" =>  [[
+            "CidrIp" =>  ::String,
+            "Description" =>  ::String
+        ], ...],
+        "Ipv6Ranges" =>  [[
+            "CidrIpv6" =>  ::String,
+            "Description" =>  ::String
+        ], ...],
+        "PrefixListIds" =>  [[
+            "Description" =>  ::String,
+            "PrefixListId" =>  ::String
+        ], ...],
         "ToPort" =>  ::Int,
         "Groups" =>  [[
+            "Description" =>  ::String,
             "GroupId" =>  ::String,
             "GroupName" =>  ::String,
             "PeeringStatus" =>  ::String,
@@ -1176,11 +1204,11 @@ The IP protocol name (`tcp`, `udp`, `icmp`) or number (see [Protocol Numbers](ht
 
 
 ## `SourceSecurityGroupOwnerId = ::String`
-[EC2-Classic] The AWS account number for the source security group, if the source security group is in a different account. You can't specify this parameter in combination with the following parameters: the CIDR IP address range, the IP protocol, the start of the port range, and the end of the port range. Creates rules that grant full ICMP, UDP, and TCP access. To create a rule with a specific IP protocol and port range, use a set of IP permissions instead.
+[EC2-Classic] The AWS account ID for the source security group, if the source security group is in a different account. You can't specify this parameter in combination with the following parameters: the CIDR IP address range, the IP protocol, the start of the port range, and the end of the port range. Creates rules that grant full ICMP, UDP, and TCP access. To create a rule with a specific IP protocol and port range, use a set of IP permissions instead.
 
 
 ## `ToPort = ::Int`
-The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code number. For the ICMP/ICMPv6 code number, use `-1` to specify all codes.
+The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code number. For the ICMP/ICMPv6 code number, use `-1` to specify all codes. If you specify all ICMP/ICMPv6 types, you must specify all codes.
 
 
 ## `DryRun = ::Bool`
@@ -1631,7 +1659,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # ConfirmProductInstance Operation
 
-Determines whether a product code is associated with an instance. This action can only be used by the owner of the product code. It is useful when a product code owner needs to verify whether another user's instance is eligible for support.
+Determines whether a product code is associated with an instance. This action can only be used by the owner of the product code. It is useful when a product code owner must verify whether another user's instance is eligible for support.
 
 # Arguments
 
@@ -1680,6 +1708,61 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 @inline confirm_product_instance(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ConfirmProductInstance", args)
 
 @inline confirm_product_instance(args) = confirm_product_instance(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.copy_fpga_image
+    copy_fpga_image([::AWSConfig], arguments::Dict)
+    copy_fpga_image([::AWSConfig]; SourceFpgaImageId=, SourceRegion=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "CopyFpgaImage", arguments::Dict)
+    ec2([::AWSConfig], "CopyFpgaImage", SourceFpgaImageId=, SourceRegion=, <keyword arguments>)
+
+# CopyFpgaImage Operation
+
+Copies the specified Amazon FPGA Image (AFI) to the current region.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `SourceFpgaImageId = ::String` -- *Required*
+The ID of the source AFI.
+
+
+## `Description = ::String`
+The description for the new AFI.
+
+
+## `Name = ::String`
+The name for the new AFI. The default is the name of the source AFI.
+
+
+## `SourceRegion = ::String` -- *Required*
+The region that contains the source AFI.
+
+
+## `ClientToken = ::String`
+Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
+
+
+
+
+# Returns
+
+`CopyFpgaImageResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CopyFpgaImage)
+"""
+
+@inline copy_fpga_image(aws::AWSConfig=default_aws_config(); args...) = copy_fpga_image(aws, args)
+
+@inline copy_fpga_image(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CopyFpgaImage", args)
+
+@inline copy_fpga_image(args) = copy_fpga_image(default_aws_config(), args)
 
 
 """
@@ -1862,7 +1945,7 @@ For devices that use Border Gateway Protocol (BGP), you can also provide the dev
 **Note**
 > Amazon EC2 supports all 2-byte ASN numbers in the range of 1 - 65534, with the exception of 7224, which is reserved in the `us-east-1` region, and 9059, which is reserved in the `eu-west-1` region.
 
-For more information about VPN customer gateways, see [Adding a Hardware Virtual Private Gateway to Your VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
+For more information about VPN customer gateways, see [AWS Managed VPN Connections](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
 
 **Important**
 > You cannot create more than one customer gateway with the same VPN type, IP address, and BGP ASN parameter values. If you run an identical request more than one time, the first request creates the customer gateway, and subsequent requests return information about the existing customer gateway. The subsequent requests do not create new customer gateway resources.
@@ -2936,7 +3019,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # CreatePlacementGroup Operation
 
-Creates a placement group that you launch cluster instances into. You must give the group a name that's unique within the scope of your account.
+Creates a placement group that you launch cluster instances into. Give the group a name that's unique within the scope of your account.
 
 For more information about placement groups and cluster instances, see [Cluster Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
@@ -3456,7 +3539,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 Creates a subnet in an existing VPC.
 
-When you create each subnet, you provide the VPC ID and the CIDR block you want for the subnet. After you create a subnet, you can't change its CIDR block. The subnet's IPv4 CIDR block can be the same as the VPC's IPv4 CIDR block (assuming you want only a single subnet in the VPC), or a subset of the VPC's IPv4 CIDR block. If you create more than one subnet in a VPC, the subnets' CIDR blocks must not overlap. The smallest IPv4 subnet (and VPC) you can create uses a /28 netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536 IPv4 addresses).
+When you create each subnet, you provide the VPC ID and the IPv4 CIDR block you want for the subnet. After you create a subnet, you can't change its CIDR block. The size of the subnet's IPv4 CIDR block can be the same as a VPC's IPv4 CIDR block, or a subset of a VPC's IPv4 CIDR block. If you create more than one subnet in a VPC, the subnets' CIDR blocks must not overlap. The smallest IPv4 subnet (and VPC) you can create uses a /28 netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536 IPv4 addresses).
 
 If you've associated an IPv6 CIDR block with your VPC, you can create a subnet with an IPv6 CIDR block that uses a /64 prefix length.
 
@@ -3966,7 +4049,7 @@ If you decide to shut down your VPN connection for any reason and later create a
 
 This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error.
 
-For more information about VPN connections, see [Adding a Hardware Virtual Private Gateway to Your VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
+For more information, see [AWS Managed VPN Connections](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
 
 # Arguments
 
@@ -3986,11 +4069,17 @@ The ID of the virtual private gateway.
 Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 
 
-## `Options = ["StaticRoutesOnly" =>  ::Bool]`
-Indicates whether the VPN connection requires static routes. If you are creating a VPN connection for a device that does not support BGP, you must specify `true`.
-
-Default: `false`
-
+## `Options = [ ... ]`
+The options for the VPN connection.
+```
+ Options = [
+        "StaticRoutesOnly" =>  ::Bool,
+        "TunnelOptions" =>  [[
+            "TunnelInsideCidr" =>  ::String,
+            "PreSharedKey" =>  ::String
+        ], ...]
+    ]
+```
 
 
 
@@ -4021,7 +4110,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 Creates a static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway.
 
-For more information about VPN connections, see [Adding a Hardware Virtual Private Gateway to Your VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
+For more information about VPN connections, see [AWS Managed VPN Connections](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
 
 # Arguments
 
@@ -4058,7 +4147,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 Creates a virtual private gateway. A virtual private gateway is the endpoint on the VPC side of your VPN connection. You can create a virtual private gateway before creating the VPC itself.
 
-For more information about virtual private gateways, see [Adding a Hardware Virtual Private Gateway to Your VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
+For more information about virtual private gateways, see [AWS Managed VPN Connections](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
 
 # Arguments
 
@@ -4068,6 +4157,12 @@ The Availability Zone for the virtual private gateway.
 
 ## `Type = "ipsec.1"` -- *Required*
 The type of VPN connection this virtual private gateway supports.
+
+
+## `AmazonSideAsn = ::Int`
+A private Autonomous System Number (ASN) for the Amazon side of a BGP session. If you're using a 16-bit ASN, it must be in the 64512 to 65534 range. If you're using a 32-bit ASN, it must be in the 4200000000 to 4294967294 range.
+
+Default: 64512
 
 
 ## `DryRun = ::Bool`
@@ -4254,6 +4349,45 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 @inline delete_flow_logs(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteFlowLogs", args)
 
 @inline delete_flow_logs(args) = delete_flow_logs(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.delete_fpga_image
+    delete_fpga_image([::AWSConfig], arguments::Dict)
+    delete_fpga_image([::AWSConfig]; FpgaImageId=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DeleteFpgaImage", arguments::Dict)
+    ec2([::AWSConfig], "DeleteFpgaImage", FpgaImageId=, <keyword arguments>)
+
+# DeleteFpgaImage Operation
+
+Deletes the specified Amazon FPGA Image (AFI).
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `FpgaImageId = ::String` -- *Required*
+The ID of the AFI.
+
+
+
+
+# Returns
+
+`DeleteFpgaImageResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteFpgaImage)
+"""
+
+@inline delete_fpga_image(aws::AWSConfig=default_aws_config(); args...) = delete_fpga_image(aws, args)
+
+@inline delete_fpga_image(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteFpgaImage", args)
+
+@inline delete_fpga_image(args) = delete_fpga_image(default_aws_config(), args)
 
 
 """
@@ -4939,9 +5073,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DeleteTags Operation
 
-Deletes the specified set of tags from the specified set of resources. This call is designed to follow a `DescribeTags` request.
+Deletes the specified set of tags from the specified set of resources.
 
-For more information about tags, see [Tagging Your Resources](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon Elastic Compute Cloud User Guide*.
+To list the current tags, use [DescribeTags](@ref). For more information about tags, see [Tagging Your Resources](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 # Arguments
 
@@ -4950,11 +5084,11 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `ResourceId = [::String, ...]` -- *Required*
-The ID of the resource. For example, ami-1a2b3c4d. You can specify more than one resource ID.
+The IDs of one or more resources.
 
 
 ## `Tag = [[ ... ], ...]`
-One or more tags to delete. If you omit the `value` parameter, we delete the tag regardless of its value. If you specify this parameter with an empty string as the value, we delete the key only if its value is an empty string.
+One or more tags to delete. If you omit this parameter, we delete all tags for the specified resources. Specify a tag key and an optional tag value to delete specific tags. If you specify a tag key without a tag value, we delete any tag with this key regardless of its value. If you specify a tag key with an empty string as the tag value, we delete the tag only if its value is an empty string.
 ```
  Tag = [[
         "Key" =>  ::String,
@@ -5932,7 +6066,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 Describes one or more of your VPN customer gateways.
 
-For more information about VPN customer gateways, see [Adding a Hardware Virtual Private Gateway to Your VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
+For more information about VPN customer gateways, see [AWS Managed VPN Connections](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
 
 # Arguments
 
@@ -6324,6 +6458,49 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 @inline describe_flow_logs(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeFlowLogs", args)
 
 @inline describe_flow_logs(args) = describe_flow_logs(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.describe_fpga_image_attribute
+    describe_fpga_image_attribute([::AWSConfig], arguments::Dict)
+    describe_fpga_image_attribute([::AWSConfig]; FpgaImageId=, Attribute=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DescribeFpgaImageAttribute", arguments::Dict)
+    ec2([::AWSConfig], "DescribeFpgaImageAttribute", FpgaImageId=, Attribute=, <keyword arguments>)
+
+# DescribeFpgaImageAttribute Operation
+
+Describes the specified attribute of the specified Amazon FPGA Image (AFI).
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `FpgaImageId = ::String` -- *Required*
+The ID of the AFI.
+
+
+## `Attribute = "description", "name", "loadPermission" or "productCodes"` -- *Required*
+The AFI attribute.
+
+
+
+
+# Returns
+
+`DescribeFpgaImageAttributeResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFpgaImageAttribute)
+"""
+
+@inline describe_fpga_image_attribute(aws::AWSConfig=default_aws_config(); args...) = describe_fpga_image_attribute(aws, args)
+
+@inline describe_fpga_image_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeFpgaImageAttribute", args)
+
+@inline describe_fpga_image_attribute(args) = describe_fpga_image_attribute(default_aws_config(), args)
 
 
 """
@@ -7379,7 +7556,7 @@ One or more filters.
 
 *   `network-interface.status` - The status of the network interface (`available`) | `in-use`).
 
-*   `network-interface.source-dest-check` - Whether the network interface performs source/destination checking. A value of `true` means checking is enabled, and `false` means checking is disabled. The value must be `false` for the network interface to perform network address translation (NAT) in your VPC.
+*   `network-interface.source-dest-check` - Whether the network interface performs source/destination checking. A value of `true` means that checking is enabled, and `false` means that checking is disabled. The value must be `false` for the network interface to perform network address translation (NAT) in your VPC.
 
 *   `network-interface.subnet-id` - The ID of the subnet for the network interface.
 
@@ -7405,15 +7582,15 @@ One or more filters.
 
 *   `requester-id` - The ID of the entity that launched the instance on your behalf (for example, AWS Management Console, Auto Scaling, and so on).
 
-*   `reservation-id` - The ID of the instance's reservation. A reservation ID is created any time you launch an instance. A reservation ID has a one-to-one relationship with an instance launch request, but can be associated with more than one instance if you launch multiple instances using the same launch request. For example, if you launch one instance, you'll get one reservation ID. If you launch ten instances using the same launch request, you'll also get one reservation ID.
+*   `reservation-id` - The ID of the instance's reservation. A reservation ID is created any time you launch an instance. A reservation ID has a one-to-one relationship with an instance launch request, but can be associated with more than one instance if you launch multiple instances using the same launch request. For example, if you launch one instance, you get one reservation ID. If you launch ten instances using the same launch request, you also get one reservation ID.
 
 *   `root-device-name` - The name of the root device for the instance (for example, `/dev/sda1` or `/dev/xvda`).
 
 *   `root-device-type` - The type of root device that the instance uses (`ebs` | `instance-store`).
 
-*   `source-dest-check` - Indicates whether the instance performs source/destination checking. A value of `true` means that checking is enabled, and `false` means checking is disabled. The value must be `false` for the instance to perform network address translation (NAT) in your VPC.
+*   `source-dest-check` - Indicates whether the instance performs source/destination checking. A value of `true` means that checking is enabled, and `false` means that checking is disabled. The value must be `false` for the instance to perform network address translation (NAT) in your VPC.
 
-*   `spot-instance-request-id` - The ID of the Spot instance request.
+*   `spot-instance-request-id` - The ID of the Spot Instance request.
 
 *   `state-reason-code` - The reason code for the state change.
 
@@ -7423,7 +7600,7 @@ One or more filters.
 
 *   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
+*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of the tag's key). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
 
 *   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
 
@@ -7753,6 +7930,12 @@ One or more filters.
 *   `state` - The state of the NAT gateway (`pending` | `failed` | `available` | `deleting` | `deleted`).
 
 *   `subnet-id` - The ID of the subnet in which the NAT gateway resides.
+
+*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+
+*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
+
+*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
 
 *   `vpc-id` - The ID of the VPC in which the NAT gateway resides.
 ```
@@ -8881,7 +9064,7 @@ One or more filters.
 Include Reserved Instance Marketplace offerings in the response.
 
 
-## `InstanceType = "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge"`
+## `InstanceType = "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge"`
 The instance type that the reservation will cover (for example, `m1.small`). For more information, see [Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 
@@ -9467,6 +9650,14 @@ Default: Describes all your security groups.
 
 ## `DryRun = ::Bool`
 Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `NextToken = ::String`
+The token to request the next page of results.
+
+
+## `MaxResults = ::Int`
+The maximum number of results to return in a single call. To retrieve the remaining results, make another request with the returned `NextToken` value. This value can be between 5 and 1000.
 
 
 
@@ -10130,27 +10321,27 @@ One or more filters.
 
 *   `launch.key-name` - The name of the key pair the instance launched with.
 
-*   `launch.monitoring-enabled` - Whether monitoring is enabled for the Spot instance.
+*   `launch.monitoring-enabled` - Whether detailed monitoring is enabled for the Spot instance.
 
 *   `launch.ramdisk-id` - The RAM disk ID.
 
-*   `network-interface.network-interface-id` - The ID of the network interface.
+*   `launched-availability-zone` - The Availability Zone in which the bid is launched.
 
-*   `network-interface.device-index` - The index of the device for the network interface attachment on the instance.
-
-*   `network-interface.subnet-id` - The ID of the subnet for the instance.
-
-*   `network-interface.description` - A description of the network interface.
-
-*   `network-interface.private-ip-address` - The primary private IP address of the network interface.
+*   `network-interface.addresses.primary` - Indicates whether the IP address is the primary private IP address.
 
 *   `network-interface.delete-on-termination` - Indicates whether the network interface is deleted when the instance is terminated.
 
+*   `network-interface.description` - A description of the network interface.
+
+*   `network-interface.device-index` - The index of the device for the network interface attachment on the instance.
+
 *   `network-interface.group-id` - The ID of the security group associated with the network interface.
 
-*   `network-interface.group-name` - The name of the security group associated with the network interface.
+*   `network-interface.network-interface-id` - The ID of the network interface.
 
-*   `network-interface.addresses.primary` - Indicates whether the IP address is the primary private IP address.
+*   `network-interface.private-ip-address` - The primary private IP address of the network interface.
+
+*   `network-interface.subnet-id` - The ID of the subnet for the instance.
 
 *   `product-description` - The product description associated with the instance (`Linux/UNIX` | `Windows`).
 
@@ -10171,8 +10362,6 @@ One or more filters.
 *   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
 
 *   `type` - The type of Spot instance request (`one-time` | `persistent`).
-
-*   `launched-availability-zone` - The Availability Zone in which the bid is launched.
 
 *   `valid-from` - The start date of the request.
 
@@ -10314,7 +10503,7 @@ Checks whether you have the required permissions for the action, without actuall
 The date and time, up to the current date, from which to stop retrieving the price history data, in UTC format (for example, *YYYY*-*MM*-*DD*T*HH*:*MM*:*SS*Z).
 
 
-## `InstanceType = ["t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge", ...]`
+## `InstanceType = ["t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge", ...]`
 Filters the results by the specified instance types. Note that T2 and HS1 instance types are not supported.
 
 
@@ -11515,7 +11704,13 @@ Describes one or more of your VPCs.
 ## `Filter = [[ ... ], ...]`
 One or more filters.
 
-*   `cidr` - The IPv4 CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's CIDR block for information to be returned for the VPC. Must contain the slash followed by one or two digits (for example, `/28`).
+*   `cidr` - The primary IPv4 CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's CIDR block for information to be returned for the VPC. Must contain the slash followed by one or two digits (for example, `/28`).
+
+*   `cidr-block-association.cidr-block` - An IPv4 CIDR block associated with the VPC.
+
+*   `cidr-block-association.association-id` - The association ID for an IPv4 CIDR block associated with the VPC.
+
+*   `cidr-block-association.state` - The state of an IPv4 CIDR block associated with the VPC.
 
 *   `dhcp-options-id` - The ID of a set of DHCP options.
 
@@ -11617,7 +11812,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 Describes one or more of your VPN connections.
 
-For more information about VPN connections, see [Adding a Hardware Virtual Private Gateway to Your VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
+For more information about VPN connections, see [AWS Managed VPN Connections](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
 
 # Arguments
 
@@ -11693,12 +11888,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 Describes one or more of your virtual private gateways.
 
-For more information about virtual private gateways, see [Adding an IPsec Hardware VPN to Your VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
+For more information about virtual private gateways, see [AWS Managed VPN Connections](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) in the *Amazon Virtual Private Cloud User Guide*.
 
 # Arguments
 
 ## `Filter = [[ ... ], ...]`
 One or more filters.
+
+*   `amazon-side-asn` - The Autonomous System Number (ASN) for the Amazon side of the gateway.
 
 *   `attachment.state` - The current state of the attachment between the gateway and the VPC (`attaching` | `attached` | `detaching` | `detached`).
 
@@ -12329,7 +12526,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DisassociateVpcCidrBlock Operation
 
-Disassociates a CIDR block from a VPC. Currently, you can disassociate an IPv6 CIDR block only. You must detach or delete all gateways and resources that are associated with the CIDR block before you can disassociate it.
+Disassociates a CIDR block from a VPC. To disassociate the CIDR block, you must specify its association ID. You can get the association ID by using [DescribeVpcs](@ref). You must detach or delete all gateways and resources that are associated with the CIDR block before you can disassociate it.
+
+You cannot disassociate the CIDR block with which you originally created the VPC (the primary CIDR block).
 
 # Arguments
 
@@ -12535,7 +12734,7 @@ Gets the console output for the specified instance.
 
 Instances do not have a physical monitor through which you can view their console output. They also lack physical controls that allow you to power up, reboot, or shut them down. To allow these actions, we provide them through the Amazon EC2 API and command line interface.
 
-Instance console output is buffered and posted shortly after instance boot, reboot, and termination. Amazon EC2 preserves the most recent 64 KB output which is available for at least one hour after the most recent post.
+Instance console output is buffered and posted shortly after instance boot, reboot, and termination. Amazon EC2 preserves the most recent 64 KB output, which is available for at least one hour after the most recent post.
 
 For Linux instances, the instance console output displays the exact console output that would normally be displayed on a physical monitor attached to a computer. This output is buffered because the instance produces it and then posts it to a store where the instance's owner can retrieve it.
 
@@ -12664,13 +12863,15 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # GetPasswordData Operation
 
-Retrieves the encrypted administrator password for an instance running Windows.
+Retrieves the encrypted administrator password for a running Windows instance.
 
-The Windows password is generated at boot if the `EC2Config` service plugin, `Ec2SetPassword`, is enabled. This usually only happens the first time an AMI is launched, and then `Ec2SetPassword` is automatically disabled. The password is not generated for rebundled AMIs unless `Ec2SetPassword` is enabled before bundling.
+The Windows password is generated at boot by the `EC2Config` service or `EC2Launch` scripts (Windows Server 2016 and later). This usually only happens the first time an instance is launched. For more information, see [EC2Config](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/UsingConfig_WinAMI.html) and [EC2Launch](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch.html) in the Amazon Elastic Compute Cloud User Guide.
+
+For the `EC2Config` service, the password is not generated for rebundled AMIs unless `Ec2SetPassword` is enabled before bundling.
 
 The password is encrypted using the key pair that you specified when you launched the instance. You must provide the corresponding key pair file.
 
-Password generation and encryption takes a few moments. We recommend that you wait up to 15 minutes after launching an instance before trying to retrieve the generated password.
+When you launch an instance, password generation and encryption may take a few minutes. If you try to retrieve the password before it's available, the output returns an empty string. We recommend that you wait up to 15 minutes after launching an instance before trying to retrieve the generated password.
 
 # Arguments
 
@@ -12709,7 +12910,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # GetReservedInstancesExchangeQuote Operation
 
-Returns details about the values and term of your specified Convertible Reserved Instances. When a target configuration is specified, it returns information about whether the exchange is valid and can be performed.
+Returns a quote and exchange information for exchanging one or more specified Convertible Reserved Instances for a new Convertible Reserved Instance. If the exchange cannot be performed, the reason is returned in the response. Use [AcceptReservedInstancesExchangeQuote](@ref) to perform the exchange.
 
 # Arguments
 
@@ -12722,7 +12923,7 @@ The IDs of the Convertible Reserved Instances to exchange.
 
 
 ## `TargetConfiguration = [[ ... ], ...]`
-The configuration requirements of the Convertible Reserved Instances to exchange for your current Convertible Reserved Instances.
+The configuration of the target Convertible Reserved Instance to exchange for your current Convertible Reserved Instances.
 ```
  TargetConfiguration = [[
         "InstanceCount" =>  ::Int,
@@ -12894,7 +13095,7 @@ The launch specification.
         "GroupId" =>  [::String, ...],
         "GroupName" =>  [::String, ...],
         "InstanceInitiatedShutdownBehavior" =>  "stop" or "terminate",
-        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
+        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
         "Monitoring" =>  ::Bool,
         "Placement" =>  [
             "AvailabilityZone" =>  ::String,
@@ -13107,6 +13308,88 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 
 """
+    using AWSSDK.EC2.modify_fpga_image_attribute
+    modify_fpga_image_attribute([::AWSConfig], arguments::Dict)
+    modify_fpga_image_attribute([::AWSConfig]; FpgaImageId=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "ModifyFpgaImageAttribute", arguments::Dict)
+    ec2([::AWSConfig], "ModifyFpgaImageAttribute", FpgaImageId=, <keyword arguments>)
+
+# ModifyFpgaImageAttribute Operation
+
+Modifies the specified attribute of the specified Amazon FPGA Image (AFI).
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `FpgaImageId = ::String` -- *Required*
+The ID of the AFI.
+
+
+## `Attribute = "description", "name", "loadPermission" or "productCodes"`
+The name of the attribute.
+
+
+## `OperationType = "add" or "remove"`
+The operation type.
+
+
+## `UserId = [::String, ...]`
+One or more AWS account IDs. This parameter is valid only when modifying the `loadPermission` attribute.
+
+
+## `UserGroup = [::String, ...]`
+One or more user groups. This parameter is valid only when modifying the `loadPermission` attribute.
+
+
+## `ProductCode = [::String, ...]`
+One or more product codes. After you add a product code to an AFI, it can't be removed. This parameter is valid only when modifying the `productCodes` attribute.
+
+
+## `LoadPermission = [ ... ]`
+The load permission for the AFI.
+```
+ LoadPermission = [
+        "Add" =>  [[
+            "Group" =>  "all",
+            "UserId" =>  ::String
+        ], ...],
+        "Remove" =>  [[
+            "Group" =>  "all",
+            "UserId" =>  ::String
+        ], ...]
+    ]
+```
+
+## `Description = ::String`
+A description for the AFI.
+
+
+## `Name = ::String`
+A name for the AFI.
+
+
+
+
+# Returns
+
+`ModifyFpgaImageAttributeResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyFpgaImageAttribute)
+"""
+
+@inline modify_fpga_image_attribute(aws::AWSConfig=default_aws_config(); args...) = modify_fpga_image_attribute(aws, args)
+
+@inline modify_fpga_image_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyFpgaImageAttribute", args)
+
+@inline modify_fpga_image_attribute(args) = modify_fpga_image_attribute(default_aws_config(), args)
+
+
+"""
     using AWSSDK.EC2.modify_hosts
     modify_hosts([::AWSConfig], arguments::Dict)
     modify_hosts([::AWSConfig]; AutoPlacement=, HostId=)
@@ -13240,22 +13523,20 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # ModifyImageAttribute Operation
 
-Modifies the specified attribute of the specified AMI. You can specify only one attribute at a time.
+Modifies the specified attribute of the specified AMI. You can specify only one attribute at a time. You can use the `Attribute` parameter to specify the attribute or one of the following parameters: `Description`, `LaunchPermission`, or `ProductCode`.
 
-**Note**
-> AWS Marketplace product codes cannot be modified. Images with an AWS Marketplace product code cannot be made public.
+AWS Marketplace product codes cannot be modified. Images with an AWS Marketplace product code cannot be made public.
 
-**Note**
-> The SriovNetSupport enhanced networking attribute cannot be changed using this command. Instead, enable SriovNetSupport on an instance and create an AMI from the instance. This will result in an image with SriovNetSupport enabled.
+To enable the SriovNetSupport enhanced networking attribute of an image, enable SriovNetSupport on an instance and create an AMI from the instance.
 
 # Arguments
 
 ## `Attribute = ::String`
-The name of the attribute to modify.
+The name of the attribute to modify. The valid values are `description`, `launchPermission`, and `productCodes`.
 
 
 ## `Description = ["Value" =>  ::String]`
-A description for the AMI.
+A new description for the AMI.
 
 
 ## `ImageId = ::String` -- *Required*
@@ -13263,7 +13544,7 @@ The ID of the AMI.
 
 
 ## `LaunchPermission = [ ... ]`
-A launch permission modification.
+A new launch permission for the AMI.
 ```
  LaunchPermission = [
         "Add" =>  [[
@@ -13278,23 +13559,23 @@ A launch permission modification.
 ```
 
 ## `OperationType = "add" or "remove"`
-The operation type.
+The operation type. This parameter can be used only when the `Attribute` parameter is `launchPermission`.
 
 
 ## `ProductCode = [::String, ...]`
-One or more product codes. After you add a product code to an AMI, it can't be removed. This is only valid when modifying the `productCodes` attribute.
+One or more DevPay product codes. After you add a product code to an AMI, it can't be removed.
 
 
 ## `UserGroup = [::String, ...]`
-One or more user groups. This is only valid when modifying the `launchPermission` attribute.
+One or more user groups. This parameter can be used only when the `Attribute` parameter is `launchPermission`.
 
 
 ## `UserId = [::String, ...]`
-One or more AWS account IDs. This is only valid when modifying the `launchPermission` attribute.
+One or more AWS account IDs. This parameter can be used only when the `Attribute` parameter is `launchPermission`.
 
 
 ## `Value = ::String`
-The value of the attribute being modified. This is only valid when modifying the `description` attribute.
+The value of the attribute being modified. This parameter can be used only when the `Attribute` parameter is `description` or `productCodes`.
 
 
 ## `DryRun = ::Bool`
@@ -13331,7 +13612,7 @@ To modify some attributes, the instance must be stopped. For more information, s
 # Arguments
 
 ## `SourceDestCheck = ["Value" =>  ::Bool]`
-Specifies whether source/destination checking is enabled. A value of `true` means that checking is enabled, and `false` means checking is disabled. This value must be `false` for a NAT instance to perform NAT.
+Specifies whether source/destination checking is enabled. A value of `true` means that checking is enabled, and `false` means that checking is disabled. This value must be `false` for a NAT instance to perform NAT.
 
 
 ## `Attribute = "instanceType", "kernel", "ramdisk", "userData", "disableApiTermination", "instanceInitiatedShutdownBehavior", "rootDeviceName", "blockDeviceMapping", "productCodes", "sourceDestCheck", "groupSet", "ebsOptimized", "sriovNetSupport" or "enaSupport"`
@@ -13363,7 +13644,7 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `EbsOptimized = ["Value" =>  ::Bool]`
-Specifies whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS Optimized instance.
+Specifies whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS Optimized instance.
 
 
 ## `EnaSupport = ["Value" =>  ::Bool]`
@@ -13405,7 +13686,7 @@ This option is supported only for HVM instances. Specifying this option with a P
 
 
 ## `UserData = ["Value" =>  blob]`
-Changes the instance's user data to the specified value. If you are using an AWS SDK or command line tool, Base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide Base64-encoded text.
+Changes the instance's user data to the specified value. If you are using an AWS SDK or command line tool, base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide base64-encoded text.
 
 
 ## `Value = ::String`
@@ -13604,7 +13885,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # ModifyReservedInstances Operation
 
-Modifies the Availability Zone, instance count, instance type, or network platform (EC2-Classic or EC2-VPC) of your Standard Reserved Instances. The Reserved Instances to be modified must be identical, except for Availability Zone, network platform, and instance type.
+Modifies the Availability Zone, instance count, instance type, or network platform (EC2-Classic or EC2-VPC) of your Reserved Instances. The Reserved Instances to be modified must be identical, except for Availability Zone, network platform, and instance type.
 
 For more information, see [Modifying Reserved Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html) in the Amazon Elastic Compute Cloud User Guide.
 
@@ -13624,7 +13905,7 @@ The configuration settings for the Reserved Instances to modify.
  ReservedInstancesConfigurationSetItemType = [[
         "AvailabilityZone" =>  ::String,
         "InstanceCount" =>  ::Int,
-        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
+        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
         "Platform" =>  ::String,
         "Scope" =>  "Availability Zone" or "Region"
     ], ...]
@@ -14236,6 +14517,53 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 @inline modify_vpc_peering_connection_options(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyVpcPeeringConnectionOptions", args)
 
 @inline modify_vpc_peering_connection_options(args) = modify_vpc_peering_connection_options(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.modify_vpc_tenancy
+    modify_vpc_tenancy([::AWSConfig], arguments::Dict)
+    modify_vpc_tenancy([::AWSConfig]; VpcId=, InstanceTenancy=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "ModifyVpcTenancy", arguments::Dict)
+    ec2([::AWSConfig], "ModifyVpcTenancy", VpcId=, InstanceTenancy=, <keyword arguments>)
+
+# ModifyVpcTenancy Operation
+
+Modifies the instance tenancy attribute of the specified VPC. You can change the instance tenancy attribute of a VPC to `default` only. You cannot change the instance tenancy attribute to `dedicated`.
+
+After you modify the tenancy of the VPC, any new instances that you launch into the VPC have a tenancy of `default`, unless you specify otherwise during launch. The tenancy of any existing instances in the VPC is not affected.
+
+For more information about Dedicated Instances, see [Dedicated Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html) in the *Amazon Elastic Compute Cloud User Guide*.
+
+# Arguments
+
+## `VpcId = ::String` -- *Required*
+The ID of the VPC.
+
+
+## `InstanceTenancy = "default"` -- *Required*
+The instance tenancy attribute for the VPC.
+
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+
+
+# Returns
+
+`ModifyVpcTenancyResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcTenancy)
+"""
+
+@inline modify_vpc_tenancy(aws::AWSConfig=default_aws_config(); args...) = modify_vpc_tenancy(aws, args)
+
+@inline modify_vpc_tenancy(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyVpcTenancy", args)
+
+@inline modify_vpc_tenancy(args) = modify_vpc_tenancy(default_aws_config(), args)
 
 
 """
@@ -15236,7 +15564,7 @@ One or more instances.
 
 
 ## `ReasonCode = ["instance-stuck-in-state", "unresponsive", "not-accepting-credentials", "password-not-available", "performance-network", "performance-instance-store", "performance-ebs-volume", "performance-other" or "other", ...]` -- *Required*
-One or more reason codes that describes the health state of your instance.
+One or more reason codes that describe the health state of your instance.
 
 *   `instance-stuck-in-state`: My instance is stuck in a state.
 
@@ -15246,11 +15574,11 @@ One or more reason codes that describes the health state of your instance.
 
 *   `password-not-available`: A password is not available for my instance.
 
-*   `performance-network`: My instance is experiencing performance problems which I believe are network related.
+*   `performance-network`: My instance is experiencing performance problems that I believe are network related.
 
-*   `performance-instance-store`: My instance is experiencing performance problems which I believe are related to the instance stores.
+*   `performance-instance-store`: My instance is experiencing performance problems that I believe are related to the instance stores.
 
-*   `performance-ebs-volume`: My instance is experiencing performance problems which I believe are related to an EBS volume.
+*   `performance-ebs-volume`: My instance is experiencing performance problems that I believe are related to an EBS volume.
 
 *   `performance-other`: My instance is experiencing performance problems.
 
@@ -15338,7 +15666,7 @@ The configuration for the Spot fleet request.
                 "Name" =>  ::String
             ],
             "ImageId" =>  ::String,
-            "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
+            "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
             "KernelId" =>  ::String,
             "KeyName" =>  ::String,
             "Monitoring" =>  ["Enabled" =>  ::Bool],
@@ -15383,7 +15711,8 @@ The configuration for the Spot fleet request.
         "Type" =>  "request" or "maintain",
         "ValidFrom" =>  timestamp,
         "ValidUntil" =>  timestamp,
-        "ReplaceUnhealthyInstances" =>  ::Bool
+        "ReplaceUnhealthyInstances" =>  ::Bool,
+        "InstanceInterruptionBehavior" =>  "stop" or "terminate"
     ]
 ```
 
@@ -15642,7 +15971,7 @@ The launch specification.
             "Name" =>  ::String
         ],
         "ImageId" =>  ::String,
-        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
+        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
         "KernelId" =>  ::String,
         "KeyName" =>  ::String,
         "Monitoring" =>  ["Enabled" => <required> ::Bool],
@@ -15694,6 +16023,10 @@ Default: The request is effective indefinitely.
 The end date of the request. If this is a one-time request, the request remains active until all instances launch, the request is canceled, or this date is reached. If the request is persistent, it remains active until it is canceled or this date and time is reached.
 
 Default: The request is effective indefinitely.
+
+
+## `InstanceInterruptionBehavior = "stop" or "terminate"`
+Indicates whether a Spot instance stops or terminates when it is interrupted.
 
 
 
@@ -15761,6 +16094,49 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 @inline request_spot_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "RequestSpotInstances", args)
 
 @inline request_spot_instances(args) = request_spot_instances(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.reset_fpga_image_attribute
+    reset_fpga_image_attribute([::AWSConfig], arguments::Dict)
+    reset_fpga_image_attribute([::AWSConfig]; FpgaImageId=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "ResetFpgaImageAttribute", arguments::Dict)
+    ec2([::AWSConfig], "ResetFpgaImageAttribute", FpgaImageId=, <keyword arguments>)
+
+# ResetFpgaImageAttribute Operation
+
+Resets the specified attribute of the specified Amazon FPGA Image (AFI) to its default value. You can only reset the load permission attribute.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `FpgaImageId = ::String` -- *Required*
+The ID of the AFI.
+
+
+## `Attribute = "loadPermission"`
+The attribute.
+
+
+
+
+# Returns
+
+`ResetFpgaImageAttributeResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetFpgaImageAttribute)
+"""
+
+@inline reset_fpga_image_attribute(aws::AWSConfig=default_aws_config(); args...) = reset_fpga_image_attribute(aws, args)
+
+@inline reset_fpga_image_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ResetFpgaImageAttribute", args)
+
+@inline reset_fpga_image_attribute(args) = reset_fpga_image_attribute(default_aws_config(), args)
 
 
 """
@@ -16017,9 +16393,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # RevokeSecurityGroupEgress Operation
 
-[EC2-VPC only] Removes one or more egress rules from a security group for EC2-VPC. This action doesn't apply to security groups for use in EC2-Classic. The values that you specify in the revoke request (for example, ports) must match the existing rule's values for the rule to be revoked.
+[EC2-VPC only] Removes one or more egress rules from a security group for EC2-VPC. This action doesn't apply to security groups for use in EC2-Classic. To remove a rule, the values that you specify (for example, ports) must match the existing rule's values exactly.
 
-Each rule consists of the protocol and the IPv4 or IPv6 CIDR range or source security group. For the TCP and UDP protocols, you must also specify the destination port or range of ports. For the ICMP protocol, you must also specify the ICMP type and code.
+Each rule consists of the protocol and the IPv4 or IPv6 CIDR range or source security group. For the TCP and UDP protocols, you must also specify the destination port or range of ports. For the ICMP protocol, you must also specify the ICMP type and code. If the security group rule has a description, you do not have to specify the description to revoke the rule.
 
 Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay might occur.
 
@@ -16034,16 +16410,26 @@ The ID of the security group.
 
 
 ## `IpPermissions = [[ ... ], ...]`
-A set of IP permissions. You can't specify a destination security group and a CIDR IP address range.
+One or more sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in the same set of permissions.
 ```
  IpPermissions = [[
         "FromPort" =>  ::Int,
         "IpProtocol" =>  ::String,
-        "IpRanges" =>  [["CidrIp" =>  ::String], ...],
-        "Ipv6Ranges" =>  [["CidrIpv6" =>  ::String], ...],
-        "PrefixListIds" =>  [["PrefixListId" =>  ::String], ...],
+        "IpRanges" =>  [[
+            "CidrIp" =>  ::String,
+            "Description" =>  ::String
+        ], ...],
+        "Ipv6Ranges" =>  [[
+            "CidrIpv6" =>  ::String,
+            "Description" =>  ::String
+        ], ...],
+        "PrefixListIds" =>  [[
+            "Description" =>  ::String,
+            "PrefixListId" =>  ::String
+        ], ...],
         "ToPort" =>  ::Int,
         "Groups" =>  [[
+            "Description" =>  ::String,
             "GroupId" =>  ::String,
             "GroupName" =>  ::String,
             "PeeringStatus" =>  ::String,
@@ -16055,27 +16441,27 @@ A set of IP permissions. You can't specify a destination security group and a CI
 ```
 
 ## `CidrIp = ::String`
-The CIDR IP address range. We recommend that you specify the CIDR range in a set of IP permissions instead.
+Not supported. Use a set of IP permissions to specify the CIDR.
 
 
 ## `FromPort = ::Int`
-The start of port range for the TCP and UDP protocols, or an ICMP type number. We recommend that you specify the port range in a set of IP permissions instead.
+Not supported. Use a set of IP permissions to specify the port.
 
 
 ## `IpProtocol = ::String`
-The IP protocol name or number. We recommend that you specify the protocol in a set of IP permissions instead.
+Not supported. Use a set of IP permissions to specify the protocol name or number.
 
 
 ## `ToPort = ::Int`
-The end of port range for the TCP and UDP protocols, or an ICMP type number. We recommend that you specify the port range in a set of IP permissions instead.
+Not supported. Use a set of IP permissions to specify the port.
 
 
 ## `SourceSecurityGroupName = ::String`
-The name of a destination security group. To revoke outbound access to a destination security group, we recommend that you use a set of IP permissions instead.
+Not supported. Use a set of IP permissions to specify a destination security group.
 
 
 ## `SourceSecurityGroupOwnerId = ::String`
-The AWS account number for a destination security group. To revoke outbound access to a destination security group, we recommend that you use a set of IP permissions instead.
+Not supported. Use a set of IP permissions to specify a destination security group.
 
 
 
@@ -16101,12 +16487,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # RevokeSecurityGroupIngress Operation
 
-Removes one or more ingress rules from a security group. The values that you specify in the revoke request (for example, ports) must match the existing rule's values for the rule to be removed.
+Removes one or more ingress rules from a security group. To remove a rule, the values that you specify (for example, ports) must match the existing rule's values exactly.
 
 **Note**
 > [EC2-Classic security groups only] If the values you specify do not match the existing rule's values, no error is returned. Use [DescribeSecurityGroups](@ref) to verify that the rule has been removed.
 
-Each rule consists of the protocol and the CIDR range or source security group. For the TCP and UDP protocols, you must also specify the destination port or range of ports. For the ICMP protocol, you must also specify the ICMP type and code.
+Each rule consists of the protocol and the CIDR range or source security group. For the TCP and UDP protocols, you must also specify the destination port or range of ports. For the ICMP protocol, you must also specify the ICMP type and code. If the security group rule has a description, you do not have to specify the description to revoke the rule.
 
 Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay might occur.
 
@@ -16121,24 +16507,34 @@ The start of port range for the TCP and UDP protocols, or an ICMP type number. F
 
 
 ## `GroupId = ::String`
-The ID of the security group. Required for a security group in a nondefault VPC.
+The ID of the security group. You must specify either the security group ID or the security group name in the request. For security groups in a nondefault VPC, you must specify the security group ID.
 
 
 ## `GroupName = ::String`
-[EC2-Classic, default VPC] The name of the security group.
+[EC2-Classic, default VPC] The name of the security group. You must specify either the security group ID or the security group name in the request.
 
 
 ## `IpPermissions = [[ ... ], ...]`
-A set of IP permissions. You can't specify a source security group and a CIDR IP address range.
+One or more sets of IP permissions. You can't specify a source security group and a CIDR IP address range in the same set of permissions.
 ```
  IpPermissions = [[
         "FromPort" =>  ::Int,
         "IpProtocol" =>  ::String,
-        "IpRanges" =>  [["CidrIp" =>  ::String], ...],
-        "Ipv6Ranges" =>  [["CidrIpv6" =>  ::String], ...],
-        "PrefixListIds" =>  [["PrefixListId" =>  ::String], ...],
+        "IpRanges" =>  [[
+            "CidrIp" =>  ::String,
+            "Description" =>  ::String
+        ], ...],
+        "Ipv6Ranges" =>  [[
+            "CidrIpv6" =>  ::String,
+            "Description" =>  ::String
+        ], ...],
+        "PrefixListIds" =>  [[
+            "Description" =>  ::String,
+            "PrefixListId" =>  ::String
+        ], ...],
         "ToPort" =>  ::Int,
         "Groups" =>  [[
+            "Description" =>  ::String,
             "GroupId" =>  ::String,
             "GroupName" =>  ::String,
             "PeeringStatus" =>  ::String,
@@ -16210,7 +16606,7 @@ You can specify a number of options, or leave the default options. The following
 
 *   If any of the AMIs have a product code attached for which the user has not subscribed, the request fails.
 
-To ensure faster instance launches, break up large requests into smaller batches. For example, create 5 separate launch requests for 100 instances each instead of 1 launch request for 500 instances.
+To ensure faster instance launches, break up large requests into smaller batches. For example, create five separate launch requests for 100 instances each instead of one launch request for 500 instances.
 
 An instance is ready for you to use when it's in the `running` state. You can check the state of your instance using [DescribeInstances](@ref). You can tag instances and EBS volumes during launch, after launch, or both. For more information, see [CreateTags](@ref) and [Tagging Your Amazon EC2 Resources](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html).
 
@@ -16245,7 +16641,7 @@ The block device mapping.
 The ID of the AMI, which you can get by calling [DescribeImages](@ref).
 
 
-## `InstanceType = "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge"`
+## `InstanceType = "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge"`
 The instance type. For more information, see [Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 Default: `m1.small`
@@ -16326,7 +16722,7 @@ Default: Amazon EC2 uses the default security group.
 
 
 ## `UserData = ::String`
-The user data to make available to the instance. For more information, see [Running Commands on Your Linux Instance at Launch](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) (Linux) and [Adding User Data](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data) (Windows). If you are using an AWS SDK or command line tool, Base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide Base64-encoded text.
+The user data to make available to the instance. For more information, see [Running Commands on Your Linux Instance at Launch](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) (Linux) and [Adding User Data](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data) (Windows). If you are using a command line tool, base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide base64-encoded text.
 
 
 ## `AdditionalInfo = ::String`
@@ -16350,7 +16746,7 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `EbsOptimized = ::Bool`
-Indicates whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized instance.
+Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized instance.
 
 Default: `false`
 
@@ -16623,9 +17019,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # StartInstances Operation
 
-Starts an Amazon EBS-backed AMI that you've previously stopped.
+Starts an Amazon EBS-backed instance that you've previously stopped.
 
-Instances that use Amazon EBS volumes as their root devices can be quickly stopped and started. When an instance is stopped, the compute resources are released and you are not billed for hourly instance usage. However, your root partition Amazon EBS volume remains, continues to persist your data, and you are charged for Amazon EBS volume usage. You can restart your instance at any time. Each time you transition an instance from stopped to started, Amazon EC2 charges a full instance hour, even if transitions happen multiple times within a single hour.
+Instances that use Amazon EBS volumes as their root devices can be quickly stopped and started. When an instance is stopped, the compute resources are released and you are not billed for instance usage. However, your root partition Amazon EBS volume remains and continues to persist your data, and you are charged for Amazon EBS volume usage. You can restart your instance at any time. Every time you start your Windows instance, Amazon EC2 charges you for a full instance hour. If you stop and restart your Windows instance, a new instance hour begins and Amazon EC2 charges you for another full instance hour even if you are still within the same 60-minute period when it was stopped. Every time you start your Linux instance, Amazon EC2 charges a one-minute minimum for instance usage, and thereafter charges per second for instance usage.
 
 Before stopping an instance, make sure it is in a state from which it can be restarted. Stopping an instance does not preserve data stored in RAM.
 
@@ -16676,9 +17072,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 Stops an Amazon EBS-backed instance.
 
-We don't charge hourly usage for a stopped instance, or data transfer fees; however, your root partition Amazon EBS volume remains, continues to persist your data, and you are charged for Amazon EBS volume usage. Each time you transition an instance from stopped to started, Amazon EC2 charges a full instance hour, even if transitions happen multiple times within a single hour.
+We don't charge usage for a stopped instance, or data transfer fees; however, your root partition Amazon EBS volume remains and continues to persist your data, and you are charged for Amazon EBS volume usage. Every time you start your Windows instance, Amazon EC2 charges you for a full instance hour. If you stop and restart your Windows instance, a new instance hour begins and Amazon EC2 charges you for another full instance hour even if you are still within the same 60-minute period when it was stopped. Every time you start your Linux instance, Amazon EC2 charges a one-minute minimum for instance usage, and thereafter charges per second for instance usage.
 
-You can't start or stop Spot instances, and you can't stop instance store-backed instances.
+You can't start or stop Spot Instances, and you can't stop instance store-backed instances.
 
 When you stop an instance, we shut it down. You can restart your instance at any time. Before stopping an instance, make sure it is in a state from which it can be restarted. Stopping an instance does not preserve data stored in RAM.
 
@@ -16894,6 +17290,158 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 @inline unmonitor_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "UnmonitorInstances", args)
 
 @inline unmonitor_instances(args) = unmonitor_instances(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.update_security_group_rule_descriptions_egress
+    update_security_group_rule_descriptions_egress([::AWSConfig], arguments::Dict)
+    update_security_group_rule_descriptions_egress([::AWSConfig]; IpPermissions=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "UpdateSecurityGroupRuleDescriptionsEgress", arguments::Dict)
+    ec2([::AWSConfig], "UpdateSecurityGroupRuleDescriptionsEgress", IpPermissions=, <keyword arguments>)
+
+# UpdateSecurityGroupRuleDescriptionsEgress Operation
+
+[EC2-VPC only] Updates the description of an egress (outbound) security group rule. You can replace an existing description, or add a description to a rule that did not have one previously.
+
+You specify the description as part of the IP permissions structure. You can remove a description for a security group rule by omitting the description parameter in the request.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `GroupId = ::String`
+The ID of the security group. You must specify either the security group ID or the security group name in the request. For security groups in a nondefault VPC, you must specify the security group ID.
+
+
+## `GroupName = ::String`
+[Default VPC] The name of the security group. You must specify either the security group ID or the security group name in the request.
+
+
+## `IpPermissions = [[ ... ], ...]` -- *Required*
+The IP permissions for the security group rule.
+```
+ IpPermissions = [[
+        "FromPort" =>  ::Int,
+        "IpProtocol" =>  ::String,
+        "IpRanges" =>  [[
+            "CidrIp" =>  ::String,
+            "Description" =>  ::String
+        ], ...],
+        "Ipv6Ranges" =>  [[
+            "CidrIpv6" =>  ::String,
+            "Description" =>  ::String
+        ], ...],
+        "PrefixListIds" =>  [[
+            "Description" =>  ::String,
+            "PrefixListId" =>  ::String
+        ], ...],
+        "ToPort" =>  ::Int,
+        "Groups" =>  [[
+            "Description" =>  ::String,
+            "GroupId" =>  ::String,
+            "GroupName" =>  ::String,
+            "PeeringStatus" =>  ::String,
+            "UserId" =>  ::String,
+            "VpcId" =>  ::String,
+            "VpcPeeringConnectionId" =>  ::String
+        ], ...]
+    ], ...]
+```
+
+
+
+# Returns
+
+`UpdateSecurityGroupRuleDescriptionsEgressResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UpdateSecurityGroupRuleDescriptionsEgress)
+"""
+
+@inline update_security_group_rule_descriptions_egress(aws::AWSConfig=default_aws_config(); args...) = update_security_group_rule_descriptions_egress(aws, args)
+
+@inline update_security_group_rule_descriptions_egress(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "UpdateSecurityGroupRuleDescriptionsEgress", args)
+
+@inline update_security_group_rule_descriptions_egress(args) = update_security_group_rule_descriptions_egress(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.update_security_group_rule_descriptions_ingress
+    update_security_group_rule_descriptions_ingress([::AWSConfig], arguments::Dict)
+    update_security_group_rule_descriptions_ingress([::AWSConfig]; IpPermissions=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "UpdateSecurityGroupRuleDescriptionsIngress", arguments::Dict)
+    ec2([::AWSConfig], "UpdateSecurityGroupRuleDescriptionsIngress", IpPermissions=, <keyword arguments>)
+
+# UpdateSecurityGroupRuleDescriptionsIngress Operation
+
+Updates the description of an ingress (inbound) security group rule. You can replace an existing description, or add a description to a rule that did not have one previously.
+
+You specify the description as part of the IP permissions structure. You can remove a description for a security group rule by omitting the description parameter in the request.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `GroupId = ::String`
+The ID of the security group. You must specify either the security group ID or the security group name in the request. For security groups in a nondefault VPC, you must specify the security group ID.
+
+
+## `GroupName = ::String`
+[EC2-Classic, default VPC] The name of the security group. You must specify either the security group ID or the security group name in the request.
+
+
+## `IpPermissions = [[ ... ], ...]` -- *Required*
+The IP permissions for the security group rule.
+```
+ IpPermissions = [[
+        "FromPort" =>  ::Int,
+        "IpProtocol" =>  ::String,
+        "IpRanges" =>  [[
+            "CidrIp" =>  ::String,
+            "Description" =>  ::String
+        ], ...],
+        "Ipv6Ranges" =>  [[
+            "CidrIpv6" =>  ::String,
+            "Description" =>  ::String
+        ], ...],
+        "PrefixListIds" =>  [[
+            "Description" =>  ::String,
+            "PrefixListId" =>  ::String
+        ], ...],
+        "ToPort" =>  ::Int,
+        "Groups" =>  [[
+            "Description" =>  ::String,
+            "GroupId" =>  ::String,
+            "GroupName" =>  ::String,
+            "PeeringStatus" =>  ::String,
+            "UserId" =>  ::String,
+            "VpcId" =>  ::String,
+            "VpcPeeringConnectionId" =>  ::String
+        ], ...]
+    ], ...]
+```
+
+
+
+# Returns
+
+`UpdateSecurityGroupRuleDescriptionsIngressResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UpdateSecurityGroupRuleDescriptionsIngress)
+"""
+
+@inline update_security_group_rule_descriptions_ingress(aws::AWSConfig=default_aws_config(); args...) = update_security_group_rule_descriptions_ingress(aws, args)
+
+@inline update_security_group_rule_descriptions_ingress(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "UpdateSecurityGroupRuleDescriptionsIngress", args)
+
+@inline update_security_group_rule_descriptions_ingress(args) = update_security_group_rule_descriptions_ingress(default_aws_config(), args)
 
 
 

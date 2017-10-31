@@ -1107,6 +1107,147 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
+    using AWSSDK.Route53.create_query_logging_config
+    create_query_logging_config([::AWSConfig], arguments::Dict)
+    create_query_logging_config([::AWSConfig]; HostedZoneId=, CloudWatchLogsLogGroupArn=)
+
+    using AWSCore.Services.route53
+    route53([::AWSConfig], "POST", "/2013-04-01/queryloggingconfig", arguments::Dict)
+    route53([::AWSConfig], "POST", "/2013-04-01/queryloggingconfig", HostedZoneId=, CloudWatchLogsLogGroupArn=)
+
+# CreateQueryLoggingConfig Operation
+
+Creates a configuration for DNS query logging. After you create a query logging configuration, Amazon Route 53 begins to publish log data to an Amazon CloudWatch Logs log group.
+
+DNS query logs contain information about the queries that Amazon Route 53 receives for a specified public hosted zone, such as the following:
+
+*   Amazon Route 53 edge location that responded to the DNS query
+
+*   Domain or subdomain that was requested
+
+*   DNS record type, such as A or AAAA
+
+*   DNS response code, such as `NoError` or `ServFail`
+
+<dl>
+
+<dt>Log Group and Resource Policy</dt>
+
+<dd>
+
+Before you create a query logging configuration, perform the following operations.
+
+**Note**
+> If you create a query logging configuration using the Amazon Route 53 console, Amazon Route 53 performs these operations automatically.
+
+1.  Create a CloudWatch Logs log group, and make note of the ARN, which you specify when you create a query logging configuration. Note the following:
+
+    *   You must create the log group in the us-east-1 region.
+
+    *   You must use the same AWS account to create the log group and the hosted zone that you want to configure query logging for.
+
+    *   When you create log groups for query logging, we recommend that you use a consistent prefix, for example:
+
+        `/aws/route53/*hosted zone name*`
+
+        In the next step, you'll create a resource policy, which controls access to one or more log groups and the associated AWS resources, such as Amazon Route 53 hosted zones. There's a limit on the number of resource policies that you can create, so we recommend that you use a consistent prefix so you can use the same resource policy for all the log groups that you create for query logging.
+
+2.  Create a CloudWatch Logs resource policy, and give it the permissions that Amazon Route 53 needs to create log streams and to to send query logs to log streams. For the value of `Resource`, specify the ARN for the log group that you created in the previous step. To use the same resource policy for all the CloudWatch Logs log groups that you created for query logging configurations, replace the hosted zone name with `*`, for example:
+
+    `arn:aws:logs:us-east-1:123412341234:log-group:/aws/route53/*`
+
+    **Note**
+    > You can't use the CloudWatch console to create or edit a resource policy. You must use the CloudWatch API, one of the AWS SDKs, or the AWS CLI.
+
+</dd>
+
+<dt>Log Streams and Edge Locations</dt>
+
+<dd>
+
+When Amazon Route 53 finishes creating the configuration for DNS query logging, it does the following:
+
+*   Creates a log stream for an edge location the first time that the edge location responds to DNS queries for the specified hosted zone. That log stream is used to log all queries that Amazon Route 53 responds to for that edge location.
+
+*   Begins to send query logs to the applicable log stream.
+
+The name of each log stream is in the following format:
+
+`*hosted zone ID*/*edge location code*`
+
+The edge location code is a three-letter code and an arbitrarily assigned number, for example, DFW3. The three-letter code typically corresponds with the International Air Transport Association airport code for an airport near the edge location. (These abbreviations might change in the future.) For a list of edge locations, see "The Amazon Route 53 Global Network" on the [Amazon Route 53 Product Details](http://aws.amazon.com/route53/details/) page.
+
+</dd>
+
+<dt>Queries That Are Logged</dt>
+
+<dd>
+
+Query logs contain only the queries that DNS resolvers forward to Amazon Route 53. If a DNS resolver has already cached the response to a query (such as the IP address for a load balancer for example.com), the resolver will continue to return the cached response. It doesn't forward another query to Amazon Route 53 until the TTL for the corresponding resource record set expires. Depending on how many DNS queries are submitted for a resource record set, and depending on the TTL for that resource record set, query logs might contain information about only one query out of every several thousand queries that are submitted to DNS. For more information about how DNS works, see [Routing Internet Traffic to Your Website or Web Application](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html) in the *Amazon Route 53 Developer Guide*.
+
+</dd>
+
+<dt>Log File Format</dt>
+
+<dd>
+
+For a list of the values in each query log and the format of each value, see [Logging DNS Queries](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html) in the *Amazon Route 53 Developer Guide*.
+
+</dd>
+
+<dt>Pricing</dt>
+
+<dd>
+
+For information about charges for query logs, see [Amazon CloudWatch Pricing](http://aws.amazon.com/cloudwatch/pricing/).
+
+</dd>
+
+<dt>How to Stop Logging</dt>
+
+<dd>
+
+If you want Amazon Route 53 to stop sending query logs to CloudWatch Logs, delete the query logging configuration. For more information, see [DeleteQueryLoggingConfig](@ref).
+
+</dd>
+
+</dl>
+
+# Arguments
+
+## `HostedZoneId = ::String` -- *Required*
+The ID of the hosted zone that you want to log queries for. You can log queries only for public hosted zones.
+
+
+## `CloudWatchLogsLogGroupArn = ::String` -- *Required*
+The Amazon Resource Name (ARN) for the log group that you want to Amazon Route 53 to send query logs to. This is the format of the ARN:
+
+arn:aws:logs:*region*:*account-id*:log-group:*log_group_name*
+
+To get the ARN for a log group, you can use the CloudWatch console, the [DescribeLogGroups](http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html) API action, the [describe-log-groups](http://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html) command, or the applicable command in one of the AWS SDKs.
+
+
+
+
+# Returns
+
+`CreateQueryLoggingConfigResponse`
+
+# Exceptions
+
+`ConcurrentModification`, `NoSuchHostedZone`, `NoSuchCloudWatchLogsLogGroup`, `InvalidInput`, `QueryLoggingConfigAlreadyExists` or `InsufficientCloudWatchLogsResourcePolicy`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateQueryLoggingConfig)
+"""
+
+@inline create_query_logging_config(aws::AWSConfig=default_aws_config(); args...) = create_query_logging_config(aws, args)
+
+@inline create_query_logging_config(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/queryloggingconfig", args)
+
+@inline create_query_logging_config(args) = create_query_logging_config(default_aws_config(), args)
+
+
+"""
     using AWSSDK.Route53.create_reusable_delegation_set
     create_reusable_delegation_set([::AWSConfig], arguments::Dict)
     create_reusable_delegation_set([::AWSConfig]; CallerReference=, <keyword arguments>)
@@ -1446,6 +1587,47 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 @inline delete_hosted_zone(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "DELETE", "/2013-04-01/hostedzone/{Id}", args)
 
 @inline delete_hosted_zone(args) = delete_hosted_zone(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Route53.delete_query_logging_config
+    delete_query_logging_config([::AWSConfig], arguments::Dict)
+    delete_query_logging_config([::AWSConfig]; Id=)
+
+    using AWSCore.Services.route53
+    route53([::AWSConfig], "DELETE", "/2013-04-01/queryloggingconfig/{Id}", arguments::Dict)
+    route53([::AWSConfig], "DELETE", "/2013-04-01/queryloggingconfig/{Id}", Id=)
+
+# DeleteQueryLoggingConfig Operation
+
+Deletes a configuration for DNS query logging. If you delete a configuration, Amazon Route 53 stops sending query logs to CloudWatch Logs. Amazon Route 53 doesn't delete any logs that are already in CloudWatch Logs.
+
+For more information about DNS query logs, see [CreateQueryLoggingConfig](@ref).
+
+# Arguments
+
+## `Id = ::String` -- *Required*
+The ID of the configuration that you want to delete.
+
+
+
+
+# Returns
+
+`DeleteQueryLoggingConfigResponse`
+
+# Exceptions
+
+`ConcurrentModification`, `NoSuchQueryLoggingConfig` or `InvalidInput`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DeleteQueryLoggingConfig)
+"""
+
+@inline delete_query_logging_config(aws::AWSConfig=default_aws_config(); args...) = delete_query_logging_config(aws, args)
+
+@inline delete_query_logging_config(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "DELETE", "/2013-04-01/queryloggingconfig/{Id}", args)
+
+@inline delete_query_logging_config(args) = delete_query_logging_config(default_aws_config(), args)
 
 
 """
@@ -2096,6 +2278,47 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
+    using AWSSDK.Route53.get_query_logging_config
+    get_query_logging_config([::AWSConfig], arguments::Dict)
+    get_query_logging_config([::AWSConfig]; Id=)
+
+    using AWSCore.Services.route53
+    route53([::AWSConfig], "GET", "/2013-04-01/queryloggingconfig/{Id}", arguments::Dict)
+    route53([::AWSConfig], "GET", "/2013-04-01/queryloggingconfig/{Id}", Id=)
+
+# GetQueryLoggingConfig Operation
+
+Gets information about a specified configuration for DNS query logging.
+
+For more information about DNS query logs, see [CreateQueryLoggingConfig](@ref) and [Logging DNS Queries](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html).
+
+# Arguments
+
+## `Id = ::String` -- *Required*
+The ID of the configuration for DNS query logging that you want to get information about.
+
+
+
+
+# Returns
+
+`GetQueryLoggingConfigResponse`
+
+# Exceptions
+
+`NoSuchQueryLoggingConfig` or `InvalidInput`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetQueryLoggingConfig)
+"""
+
+@inline get_query_logging_config(aws::AWSConfig=default_aws_config(); args...) = get_query_logging_config(aws, args)
+
+@inline get_query_logging_config(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/queryloggingconfig/{Id}", args)
+
+@inline get_query_logging_config(args) = get_query_logging_config(default_aws_config(), args)
+
+
+"""
     using AWSSDK.Route53.get_reusable_delegation_set
     get_reusable_delegation_set([::AWSConfig], arguments::Dict)
     get_reusable_delegation_set([::AWSConfig]; Id=)
@@ -2483,6 +2706,63 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 @inline list_hosted_zones_by_name(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/hostedzonesbyname", args)
 
 @inline list_hosted_zones_by_name(args) = list_hosted_zones_by_name(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Route53.list_query_logging_configs
+    list_query_logging_configs([::AWSConfig], arguments::Dict)
+    list_query_logging_configs([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.route53
+    route53([::AWSConfig], "GET", "/2013-04-01/queryloggingconfig", arguments::Dict)
+    route53([::AWSConfig], "GET", "/2013-04-01/queryloggingconfig", <keyword arguments>)
+
+# ListQueryLoggingConfigs Operation
+
+Lists the configurations for DNS query logging that are associated with the current AWS account or the configuration that is associated with a specified hosted zone.
+
+For more information about DNS query logs, see [CreateQueryLoggingConfig](@ref). Additional information, including the format of DNS query logs, appears in [Logging DNS Queries](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html) in the *Amazon Route 53 Developer Guide*.
+
+# Arguments
+
+## `hostedzoneid = ::String`
+(Optional) If you want to list the query logging configuration that is associated with a hosted zone, specify the ID in `HostedZoneId`.
+
+If you don't specify a hosted zone ID, `ListQueryLoggingConfigs` returns all of the configurations that are associated with the current AWS account.
+
+
+## `nexttoken = ::String`
+(Optional) If the current AWS account has more than `MaxResults` query logging configurations, use `NextToken` to get the second and subsequent pages of results.
+
+For the first `ListQueryLoggingConfigs` request, omit this value.
+
+For the second and subsequent requests, get the value of `NextToken` from the previous response and specify that value for `NextToken` in the request.
+
+
+## `maxresults = ::String`
+(Optional) The maximum number of query logging configurations that you want Amazon Route 53 to return in response to the current request. If the current AWS account has more than `MaxResults` configurations, use the value of [ListQueryLoggingConfigsResponse\$NextToken](@ref) in the response to get the next page of results.
+
+If you don't specify a value for `MaxResults`, Amazon Route 53 returns up to 100 configurations.
+
+
+
+
+# Returns
+
+`ListQueryLoggingConfigsResponse`
+
+# Exceptions
+
+`InvalidInput`, `InvalidPaginationToken` or `NoSuchHostedZone`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListQueryLoggingConfigs)
+"""
+
+@inline list_query_logging_configs(aws::AWSConfig=default_aws_config(); args...) = list_query_logging_configs(aws, args)
+
+@inline list_query_logging_configs(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/queryloggingconfig", args)
+
+@inline list_query_logging_configs(args) = list_query_logging_configs(default_aws_config(), args)
 
 
 """
@@ -3317,6 +3597,18 @@ When CloudWatch has insufficient data about the metric to determine the alarm st
 *   `Unhealthy`: Amazon Route 53 considers the health check to be unhealthy.
 
 *   `LastKnownStatus`: Amazon Route 53 uses the status of the health check from the last time CloudWatch had sufficient data to determine the alarm state. For new health checks that have no last known status, the default status for the health check is healthy.
+
+
+## `ResetElements = ["FullyQualifiedDomainName", "Regions", "ResourcePath" or "ChildHealthChecks", ...]`
+A complex type that contains one `ResetElement` element for each element that you want to reset to the default value. Valid values for `ResetElement` include the following:
+
+*   `ChildHealthChecks`: Amazon Route 53 resets [HealthCheckConfig\$ChildHealthChecks](@ref) to null.
+
+*   `FullyQualifiedDomainName`: Amazon Route 53 resets [HealthCheckConfig\$FullyQualifiedDomainName](@ref) to null.
+
+*   `Regions`: Amazon Route 53 resets the [HealthCheckConfig\$Regions](@ref) list to the default set of regions.
+
+*   `ResourcePath`: Amazon Route 53 resets [HealthCheckConfig\$ResourcePath](@ref) to null.
 
 
 

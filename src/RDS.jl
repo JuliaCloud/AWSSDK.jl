@@ -71,7 +71,7 @@ The name of the RDS event notification subscription you want to add a source ide
 
 
 ## `SourceIdentifier = ::String` -- *Required*
-The identifier of the event source to be added. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens.
+The identifier of the event source to be added.
 
 Constraints:
 
@@ -301,7 +301,7 @@ Constraints:
 
 *   Cannot be null, empty, or blank
 
-*   Must contain from 1 to 255 alphanumeric characters or hyphens
+*   Must contain from 1 to 255 letters, numbers, or hyphens
 
 *   First character must be a letter
 
@@ -393,12 +393,6 @@ You cannot copy an encrypted, shared DB cluster snapshot from one AWS Region to 
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens.
-
-*   First character must be a letter.
-
-*   Cannot end with a hyphen or contain two consecutive hyphens.
-
 *   Must specify a valid system snapshot in the "available" state.
 
 *   If the source snapshot is in the same AWS Region as the copy, specify a valid DB snapshot identifier.
@@ -413,7 +407,7 @@ The identifier of the new DB cluster snapshot to create from the source DB clust
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens.
+*   Must contain from 1 to 63 letters, numbers, or hyphens.
 
 *   First character must be a letter.
 
@@ -520,7 +514,7 @@ Constraints:
 
 *   Cannot be null, empty, or blank
 
-*   Must contain from 1 to 255 alphanumeric characters or hyphens
+*   Must contain from 1 to 255 letters, numbers, or hyphens
 
 *   First character must be a letter
 
@@ -610,7 +604,7 @@ Constraints:
 
 *   Cannot be null, empty, or blank
 
-*   Must contain from 1 to 255 alphanumeric characters or hyphens
+*   Must contain from 1 to 255 letters, numbers, or hyphens
 
 *   First character must be a letter
 
@@ -729,7 +723,7 @@ Constraints:
 
 *   Cannot be null, empty, or blank
 
-*   Must contain from 1 to 255 alphanumeric characters or hyphens
+*   Must contain from 1 to 255 letters, numbers, or hyphens
 
 *   First character must be a letter
 
@@ -817,7 +811,7 @@ The DB cluster identifier. This parameter is stored as a lowercase string.
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens.
+*   Must contain from 1 to 63 letters, numbers, or hyphens.
 
 *   First character must be a letter.
 
@@ -831,11 +825,7 @@ The name of the DB cluster parameter group to associate with this DB cluster. If
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   If supplied, must match the name of an existing DBClusterParameterGroup.
 
 
 ## `VpcSecurityGroupIds = [::String, ...]`
@@ -845,7 +835,7 @@ A list of EC2 VPC security groups to associate with this DB cluster.
 ## `DBSubnetGroupName = ::String`
 A DB subnet group to associate with this DB cluster.
 
-Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: Must match the name of an existing DBSubnetGroup. Must not be default.
 
 Example: `mySubnetgroup`
 
@@ -875,7 +865,7 @@ The name of the master user for the DB cluster.
 
 Constraints:
 
-*   Must be 1 to 16 alphanumeric characters.
+*   Must be 1 to 16 letters or numbers.
 
 *   First character must be a letter.
 
@@ -944,7 +934,13 @@ The KMS key identifier for an encrypted DB cluster.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are creating a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB cluster, then you can use the KMS key alias instead of the ARN for the KMS encryption key.
 
-If the `StorageEncrypted` parameter is true, and you do not specify a value for the `KmsKeyId` parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.
+If an encryption key is not specified in `KmsKeyId`:
+
+*   If `ReplicationSourceIdentifier` identifies an encrypted source, then Amazon RDS will use the encryption key used to encrypt the source. Otherwise, Amazon RDS will use your default encryption key.
+
+*   If the `StorageEncrypted` parameter is true and `ReplicationSourceIdentifier` is not specified, then Amazon RDS will use your default encryption key.
+
+AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.
 
 If you create a Read Replica of an encrypted DB cluster in another AWS Region, you must set `KmsKeyId` to a KMS key ID that is valid in the destination AWS Region. This key is used to encrypt the Read Replica in that AWS Region.
 
@@ -1027,11 +1023,7 @@ The name of the DB cluster parameter group.
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   Must match the name of an existing DBClusterParameterGroup.
 
 **Note**
 > This value is stored as a lowercase string.
@@ -1094,7 +1086,7 @@ The identifier of the DB cluster snapshot. This parameter is stored as a lowerca
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens.
+*   Must contain from 1 to 63 letters, numbers, or hyphens.
 
 *   First character must be a letter.
 
@@ -1108,11 +1100,7 @@ The identifier of the DB cluster to create a snapshot for. This parameter is not
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens.
-
-*   First character must be a letter.
-
-*   Cannot end with a hyphen or contain two consecutive hyphens.
+*   Must match the identifier of an existing DBCluster.
 
 Example: `my-cluster1`
 
@@ -1172,7 +1160,7 @@ The name of the database to create when the DB instance is created. If this para
 
 Constraints:
 
-*   Must contain 1 to 64 alphanumeric characters
+*   Must contain 1 to 64 letters or numbers.
 
 *   Cannot be a word reserved by the specified database engine
 
@@ -1182,7 +1170,7 @@ The name of the database to create when the DB instance is created. If this para
 
 Constraints:
 
-*   Must contain 1 to 64 alphanumeric characters
+*   Must contain 1 to 64 letters or numbers.
 
 *   Cannot be a word reserved by the specified database engine
 
@@ -1192,7 +1180,7 @@ The name of the database to create when the DB instance is created. If this para
 
 Constraints:
 
-*   Must contain 1 to 63 alphanumeric characters
+*   Must contain 1 to 63 letters, numbers, or underscores.
 
 *   Must begin with a letter or an underscore. Subsequent characters can be letters, underscores, or digits (0-9).
 
@@ -1218,7 +1206,7 @@ The name of the database to create when the primary instance of the DB cluster i
 
 Constraints:
 
-*   Must contain 1 to 64 alphanumeric characters
+*   Must contain 1 to 64 letters or numbers.
 
 *   Cannot be a word reserved by the specified database engine
 
@@ -1228,7 +1216,7 @@ The DB instance identifier. This parameter is stored as a lowercase string.
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens.
+*   Must contain from 1 to 63 letters, numbers, or hyphens.
 
 *   First character must be a letter.
 
@@ -1248,23 +1236,65 @@ Not applicable. Aurora cluster volumes automatically grow as the amount of data 
 
 **MySQL**
 
-Constraints: Must be an integer from 5 to 6144.
+Constraints to the amount of storage for each storage type are the following:
+
+*   General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+
+*   Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+
+*   Magnetic storage (standard): Must be an integer from 5 to 3072.
 
 **MariaDB**
 
-Constraints: Must be an integer from 5 to 6144.
+Constraints to the amount of storage for each storage type are the following:
+
+*   General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+
+*   Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+
+*   Magnetic storage (standard): Must be an integer from 5 to 3072.
 
 **PostgreSQL**
 
-Constraints: Must be an integer from 5 to 6144.
+Constraints to the amount of storage for each storage type are the following:
+
+*   General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+
+*   Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+
+*   Magnetic storage (standard): Must be an integer from 5 to 3072.
 
 **Oracle**
 
-Constraints: Must be an integer from 10 to 6144.
+Constraints to the amount of storage for each storage type are the following:
+
+*   General Purpose (SSD) storage (gp2): Must be an integer from 10 to 6144.
+
+*   Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+
+*   Magnetic storage (standard): Must be an integer from 10 to 3072.
 
 **SQL Server**
 
-Constraints: Must be an integer from 200 to 4096 (Standard Edition and Enterprise Edition) or from 20 to 4096 (Express Edition and Web Edition)
+Constraints to the amount of storage for each storage type are the following:
+
+*   General Purpose (SSD) storage (gp2):
+
+    *   Enterprise and Standard editions: Must be an integer from 200 to 16384.
+
+    *   Web and Express editions: Must be an integer from 20 to 16384.
+
+*   Provisioned IOPS storage (io1):
+
+    *   Enterprise and Standard editions: Must be an integer from 200 to 16384.
+
+    *   Web and Express editions: Must be an integer from 100 to 16384.
+
+*   Magnetic storage (standard):
+
+    *   Enterprise and Standard editions: Must be an integer from 200 to 1024.
+
+    *   Web and Express editions: Must be an integer from 20 to 1024.
 
 
 ## `DBInstanceClass = ::String` -- *Required*
@@ -1316,7 +1346,9 @@ Not applicable. The name for the master user is managed by the DB cluster. For m
 
 Constraints:
 
-*   Must be 1 to 16 alphanumeric characters.
+*   Required for MariaDB.
+
+*   Must be 1 to 16 letters or numbers.
 
 *   Cannot be a reserved word for the chosen database engine.
 
@@ -1324,9 +1356,11 @@ Constraints:
 
 Constraints:
 
-*   Must be 1 to 128 alphanumeric characters.
+*   Required for SQL Server.
 
-*   First character must be a letter.
+*   Must be 1 to 128 letters or numbers.
+
+*   The first character must be a letter.
 
 *   Cannot be a reserved word for the chosen database engine.
 
@@ -1334,7 +1368,9 @@ Constraints:
 
 Constraints:
 
-*   Must be 1 to 16 alphanumeric characters.
+*   Required for MySQL.
+
+*   Must be 1 to 16 letters or numbers.
 
 *   First character must be a letter.
 
@@ -1344,7 +1380,9 @@ Constraints:
 
 Constraints:
 
-*   Must be 1 to 30 alphanumeric characters.
+*   Required for Oracle.
+
+*   Must be 1 to 30 letters or numbers.
 
 *   First character must be a letter.
 
@@ -1354,7 +1392,9 @@ Constraints:
 
 Constraints:
 
-*   Must be 1 to 63 alphanumeric characters.
+*   Required for PostgreSQL.
+
+*   Must be 1 to 63 letters or numbers.
 
 *   First character must be a letter.
 
@@ -1438,7 +1478,7 @@ The name of the DB parameter group to associate with this DB instance. If this a
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
+*   Must be 1 to 255 letters, numbers, or hyphens.
 
 *   First character must be a letter
 
@@ -1544,9 +1584,13 @@ Not applicable. The version number of the database engine to be used by the DB i
 
 **MariaDB**
 
+*   `10.1.23` (supported in all AWS regions)
+
 *   `10.1.19` (supported in all AWS regions)
 
 *   `10.1.14` (supported in all regions except us-east-2)
+
+*   `10.0.31` (supported in all AWS regions)
 
 *   `10.0.28` (supported in all AWS regions)
 
@@ -1652,7 +1696,7 @@ Not applicable. The version number of the database engine to be used by the DB i
 
 **PostgreSQL**
 
-*   **Version 9.6.x:** `9.6.1 | 9.6.2`
+*   **Version 9.6.x:** `9.6.1 | 9.6.2 | 9.6.3`
 
 *   **Version 9.5.x:** `9.5.6 | 9.5.4 | 9.5.2`
 
@@ -1818,6 +1862,14 @@ Not applicable. Mapping AWS IAM accounts to database accounts is managed by the 
 Default: `false`
 
 
+## `EnablePerformanceInsights = ::Bool`
+
+
+
+## `PerformanceInsightsKMSKeyId = ::String`
+
+
+
 
 
 # Returns
@@ -1876,7 +1928,7 @@ Constraints:
 
 *   Can specify a DB instance that is a MySQL Read Replica only if the source is running MySQL 5.6.
 
-*   Can specify a DB instance that is a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or later.
+*   Can specify a DB instance that is a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or later (9.4.7 and higher for cross region replication).
 
 *   The specified DB instance must have automatic backups enabled, its backup retention period must be greater than 0.
 
@@ -1951,6 +2003,8 @@ Constraints:
 
 *   Can only be specified if the source DB instance identifier specifies a DB instance in another AWS Region.
 
+*   If supplied, must match the name of an existing DBSubnetGroup.
+
 *   The specified DB subnet group must be in the same AWS Region in which the operation is running.
 
 *   All Read Replicas in one AWS Region that are created from the same source DB instance must either:>
@@ -1958,8 +2012,6 @@ Constraints:
     *   Specify DB subnet groups from the same VPC. All these Read Replicas will be created in the same VPC.
 
     *   Not specify a DB subnet group. All these Read Replicas will be created outside of any VPC.
-
-Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.
 
 Example: `mySubnetgroup`
 
@@ -2037,6 +2089,14 @@ You can enable IAM database authentication for the following database engines
 Default: `false`
 
 
+## `EnablePerformanceInsights = ::Bool`
+
+
+
+## `PerformanceInsightsKMSKeyId = ::String`
+
+
+
 ## `SourceRegion = ::String`
 The ID of the region that contains the source for the read replica.
 
@@ -2086,7 +2146,7 @@ The name of the DB parameter group.
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
+*   Must be 1 to 255 letters, numbers, or hyphens.
 
 *   First character must be a letter
 
@@ -2153,7 +2213,7 @@ The name for the DB security group. This value is stored as a lowercase string.
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
+*   Must be 1 to 255 letters, numbers, or hyphens.
 
 *   First character must be a letter
 
@@ -2219,7 +2279,7 @@ Constraints:
 
 *   Cannot be null, empty, or blank
 
-*   Must contain from 1 to 255 alphanumeric characters or hyphens
+*   Must contain from 1 to 255 letters, numbers, or hyphens
 
 *   First character must be a letter
 
@@ -2229,15 +2289,11 @@ Example: `my-snapshot-id`
 
 
 ## `DBInstanceIdentifier = ::String` -- *Required*
-The DB instance identifier. This is the unique key that identifies a DB instance.
+The identifier of the DB instance that you want to create the snapshot of.
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   Must match the identifier of an existing DBInstance.
 
 
 ## `Tags = [[ ... ], ...]`
@@ -2287,7 +2343,7 @@ Creates a new DB subnet group. DB subnet groups must contain at least one subnet
 ## `DBSubnetGroupName = ::String` -- *Required*
 The name for the DB subnet group. This value is stored as a lowercase string.
 
-Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: Must contain no more than 255 letters, numbers, periods, underscores, spaces, or hyphens. Must not be default.
 
 Example: `mySubnetgroup`
 
@@ -2437,7 +2493,7 @@ Specifies the name of the option group to be created.
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters or hyphens
+*   Must be 1 to 255 letters, numbers, or hyphens
 
 *   First character must be a letter
 
@@ -2509,11 +2565,7 @@ The DB cluster identifier for the DB cluster to be deleted. This parameter isn't
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   Must match an existing DBClusterIdentifier.
 
 
 ## `SkipFinalSnapshot = ::Bool`
@@ -2533,7 +2585,7 @@ The DB cluster snapshot identifier of the new DB cluster snapshot created when `
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
+*   Must be 1 to 255 letters, numbers, or hyphens.
 
 *   First character must be a letter
 
@@ -2668,7 +2720,7 @@ If you request a final DB snapshot the status of the Amazon RDS DB instance is `
 
 Note that when a DB instance is in a failure state and has a status of `failed`, `incompatible-restore`, or `incompatible-network`, you can only delete it when the `SkipFinalSnapshot` parameter is set to `true`.
 
-If the specified DB instance is part of an Amazon Aurora DB cluster, you cannot delete the DB instance if the following are true:
+If the specified DB instance is part of an Amazon Aurora DB cluster, you cannot delete the DB instance if both of the following conditions are true:
 
 *   The DB cluster is a Read Replica of another Amazon Aurora DB cluster.
 
@@ -2683,11 +2735,7 @@ The DB instance identifier for the DB instance to be deleted. This parameter isn
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   Must match the name of an existing DB instance.
 
 
 ## `SkipFinalSnapshot = ::Bool`
@@ -2711,7 +2759,7 @@ The DBSnapshotIdentifier of the new DBSnapshot created when SkipFinalSnapshot is
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
+*   Must be 1 to 255 letters or numbers.
 
 *   First character must be a letter
 
@@ -2809,7 +2857,7 @@ The name of the DB security group to delete.
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
+*   Must be 1 to 255 letters, numbers, or hyphens.
 
 *   First character must be a letter
 
@@ -2904,7 +2952,7 @@ The name of the database subnet group to delete.
 
 Constraints:
 
-Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: Must match the name of an existing DBSubnetGroup. Must not be default.
 
 Example: `mySubnetgroup`
 
@@ -3055,11 +3103,7 @@ The user-supplied certificate identifier. If this parameter is specified, inform
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   Must match an existing CertificateIdentifier.
 
 
 ## `Filters = [[ ... ], ...]`
@@ -3125,11 +3169,7 @@ The name of a specific DB cluster parameter group to return details for.
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   If supplied, must match the name of an existing DBClusterParameterGroup.
 
 
 ## `Filters = [[ ... ], ...]`
@@ -3195,11 +3235,7 @@ The name of a specific DB cluster parameter group to return parameter details fo
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   If supplied, must match the name of an existing DBClusterParameterGroup.
 
 
 ## `Source = ::String`
@@ -3312,11 +3348,7 @@ The ID of the DB cluster to retrieve the list of DB cluster snapshots for. This 
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   If supplied, must match the identifier of an existing DBCluster.
 
 
 ## `DBClusterSnapshotIdentifier = ::String`
@@ -3324,11 +3356,7 @@ A specific DB cluster snapshot identifier to describe. This parameter cannot be 
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   If supplied, must match the identifier of an existing DBClusterSnapshot.
 
 *   If this identifier is for an automated snapshot, the `SnapshotType` parameter must also be specified.
 
@@ -3424,11 +3452,7 @@ The user-supplied DB cluster identifier. If this parameter is specified, informa
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   If supplied, must match an existing DBClusterIdentifier.
 
 
 ## `Filters = [[ ... ], ...]`
@@ -3506,11 +3530,7 @@ The name of a specific DB parameter group family to return details for.
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   If supplied, must match an existing DBParameterGroupFamily.
 
 
 ## `Filters = [[ ... ], ...]`
@@ -3582,11 +3602,7 @@ The user-supplied instance identifier. If this parameter is specified, informati
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   If supplied, must match the identifier of an existing DBInstance.
 
 
 ## `Filters = [[ ... ], ...]`
@@ -3656,11 +3672,7 @@ The customer-assigned name of the DB instance that contains the log files you wa
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   Must match the identifier of an existing DBInstance.
 
 
 ## `FilenameContains = ::String`
@@ -3732,11 +3744,7 @@ The name of a specific DB parameter group to return details for.
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   If supplied, must match the name of an existing DBClusterParameterGroup.
 
 
 ## `Filters = [[ ... ], ...]`
@@ -3800,11 +3808,7 @@ The name of a specific DB parameter group to return details for.
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   If supplied, must match the name of an existing DBParameterGroup.
 
 
 ## `Source = ::String`
@@ -3979,11 +3983,7 @@ The ID of the DB instance to retrieve the list of DB snapshots for. This paramet
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   If supplied, must match the identifier of an existing DBInstance.
 
 
 ## `DBSnapshotIdentifier = ::String`
@@ -3991,11 +3991,7 @@ A specific DB snapshot identifier to describe. This parameter cannot be used in 
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters.
-
-*   First character must be a letter.
-
-*   Cannot end with a hyphen or contain two consecutive hyphens.
+*   If supplied, must match the identifier of an existing DBSnapshot.
 
 *   If this identifier is for an automated snapshot, the `SnapshotType` parameter must also be specified.
 
@@ -4950,6 +4946,45 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 
 """
+    using AWSSDK.RDS.describe_valid_dbinstance_modifications
+    describe_valid_dbinstance_modifications([::AWSConfig], arguments::Dict)
+    describe_valid_dbinstance_modifications([::AWSConfig]; DBInstanceIdentifier=)
+
+    using AWSCore.Services.rds
+    rds([::AWSConfig], "DescribeValidDBInstanceModifications", arguments::Dict)
+    rds([::AWSConfig], "DescribeValidDBInstanceModifications", DBInstanceIdentifier=)
+
+# DescribeValidDBInstanceModifications Operation
+
+You can call [DescribeValidDBInstanceModifications](@ref) to learn what modifications you can make to your DB instance. You can use this information when you call [ModifyDBInstance](@ref).
+
+# Arguments
+
+## `DBInstanceIdentifier = ::String` -- *Required*
+The customer identifier or the ARN of your DB instance.
+
+
+
+
+# Returns
+
+`DescribeValidDBInstanceModificationsResult`
+
+# Exceptions
+
+`DBInstanceNotFoundFault` or `InvalidDBInstanceStateFault`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeValidDBInstanceModifications)
+"""
+
+@inline describe_valid_dbinstance_modifications(aws::AWSConfig=default_aws_config(); args...) = describe_valid_dbinstance_modifications(aws, args)
+
+@inline describe_valid_dbinstance_modifications(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeValidDBInstanceModifications", args)
+
+@inline describe_valid_dbinstance_modifications(args) = describe_valid_dbinstance_modifications(default_aws_config(), args)
+
+
+"""
     using AWSSDK.RDS.download_dblog_file_portion
     download_dblog_file_portion([::AWSConfig], arguments::Dict)
     download_dblog_file_portion([::AWSConfig]; DBInstanceIdentifier=, LogFileName=, <keyword arguments>)
@@ -4969,11 +5004,7 @@ The customer-assigned name of the DB instance that contains the log files you wa
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   Must match the identifier of an existing DBInstance.
 
 
 ## `LogFileName = ::String` -- *Required*
@@ -5044,11 +5075,7 @@ A DB cluster identifier to force a failover for. This parameter is not case-sens
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   Must match the identifier of an existing DBCluster.
 
 
 ## `TargetDBInstanceIdentifier = ::String`
@@ -5147,13 +5174,7 @@ The DB cluster identifier for the cluster being modified. This parameter is not 
 
 Constraints:
 
-*   Must be the identifier for an existing DB cluster.
-
-*   Must contain from 1 to 63 alphanumeric characters or hyphens.
-
-*   First character must be a letter.
-
-*   Cannot end with a hyphen or contain two consecutive hyphens.
+*   Must match the identifier of an existing DBCluster.
 
 
 ## `NewDBClusterIdentifier = ::String`
@@ -5161,9 +5182,9 @@ The new DB cluster identifier for the DB cluster when renaming a DB cluster. Thi
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
+*   Must contain from 1 to 63 letters, numbers, or hyphens
 
-*   First character must be a letter
+*   The first character must be a letter
 
 *   Cannot end with a hyphen or contain two consecutive hyphens
 
@@ -5406,7 +5427,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 # ModifyDBInstance Operation
 
-Modifies settings for a DB instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.
+Modifies settings for a DB instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. To learn what modifications you can make to your DB instance, call [DescribeValidDBInstanceModifications](@ref) before you call [ModifyDBInstance](@ref).
 
 # Arguments
 
@@ -5415,13 +5436,7 @@ The DB instance identifier. This value is stored as a lowercase string.
 
 Constraints:
 
-*   Must be the identifier for an existing DB instance
-
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   Must match the identifier of an existing DBInstance.
 
 
 ## `AllocatedStorage = ::Int`
@@ -5487,7 +5502,7 @@ The new DB subnet group for the DB instance. You can use this parameter to move 
 
 Changing the subnet group causes an outage during the change. The change is applied during the next maintenance window, unless you specify `true` for the `ApplyImmediately` parameter.
 
-Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens.
+Constraints: If supplied, must match the name of an existing DBSubnetGroup.
 
 Example: `mySubnetGroup`
 
@@ -5497,11 +5512,7 @@ A list of DB security groups to authorize on this DB instance. Changing this set
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   If supplied, must match existing DBSecurityGroups.
 
 
 ## `VpcSecurityGroupIds = [::String, ...]`
@@ -5513,11 +5524,7 @@ Not applicable. The associated list of EC2 VPC security groups is managed by the
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   If supplied, must match existing VpcSecurityGroupIds.
 
 
 ## `ApplyImmediately = ::Bool`
@@ -5539,7 +5546,25 @@ Not applicable. The password for the master user is managed by the DB cluster. F
 
 Default: Uses existing setting
 
-Constraints: Must be 8 to 41 alphanumeric characters (MySQL, MariaDB, and Amazon Aurora), 8 to 30 alphanumeric characters (Oracle), or 8 to 128 alphanumeric characters (SQL Server).
+**MariaDB**
+
+Constraints: Must contain from 8 to 41 characters.
+
+**Microsoft SQL Server**
+
+Constraints: Must contain from 8 to 128 characters.
+
+**MySQL**
+
+Constraints: Must contain from 8 to 41 characters.
+
+**Oracle**
+
+Constraints: Must contain from 8 to 30 characters.
+
+**PostgreSQL**
+
+Constraints: Must contain from 8 to 128 characters.
 
 **Note**
 > Amazon RDS API actions never return the password, so this action provides a way to regain access to a primary instance user if the password is lost. This includes restoring privileges that might have been accidentally revoked.
@@ -5662,11 +5687,13 @@ The new DB instance identifier for the DB instance when renaming a DB instance. 
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
+*   Must contain from 1 to 63 letters, numbers, or hyphens.
 
-*   First character must be a letter
+*   The first character must be a letter.
 
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   Cannot end with a hyphen or contain two consecutive hyphens.
+
+Example: `mydbinstance`
 
 
 ## `StorageType = ::String`
@@ -5799,6 +5826,14 @@ Not applicable. Mapping AWS IAM accounts to database accounts is managed by the 
 Default: `false`
 
 
+## `EnablePerformanceInsights = ::Bool`
+
+
+
+## `PerformanceInsightsKMSKeyId = ::String`
+
+
+
 
 
 # Returns
@@ -5845,13 +5880,7 @@ The name of the DB parameter group.
 
 Constraints:
 
-*   Must be the name of an existing DB parameter group
-
-*   Must be 1 to 255 alphanumeric characters
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   If supplied, must match the name of an existing DBParameterGroup.
 
 
 ## `Parameters = [[ ... ], ...]` -- *Required*
@@ -5907,9 +5936,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 # ModifyDBSnapshot Operation
 
-Updates a manual DB snapshot, which can be encrypted or not encrypted, with a new engine version. You can update the engine version to either a new major or minor engine version.
+Updates a manual DB snapshot, which can be encrypted or not encrypted, with a new engine version.
 
-Amazon RDS supports upgrading a MySQL DB snapshot from MySQL 5.1 to MySQL 5.5.
+Amazon RDS supports upgrading DB snapshots for MySQL and Oracle.
 
 # Arguments
 
@@ -5918,7 +5947,27 @@ The identifier of the DB snapshot to modify.
 
 
 ## `EngineVersion = ::String`
-The engine version to update the DB snapshot to.
+The engine version to upgrade the DB snapshot to.
+
+The following are the database engines and engine versions that are available when you upgrade a DB snapshot.
+
+**MySQL**
+
+*   `5.5.46` (supported for 5.1 DB snapshots)
+
+**Oracle**
+
+*   `12.1.0.2.v8` (supported for 12.1.0.1 DB snapshots)
+
+*   `11.2.0.4.v12` (supported for 11.2.0.2 DB snapshots)
+
+*   `11.2.0.4.v11` (supported for 11.2.0.3 DB snapshots)
+
+
+## `OptionGroupName = ::String`
+The option group to identify with the upgraded DB snapshot.
+
+You can specify this parameter when you upgrade an Oracle DB snapshot. The same option group considerations apply when upgrading a DB snapshot as when upgrading a DB instance. For more information, see [Option Group Considerations](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Oracle.html#USER_UpgradeDBInstance.Oracle.OGPG.OG).
 
 
 
@@ -6018,9 +6067,9 @@ Modifies an existing DB subnet group. DB subnet groups must contain at least one
 # Arguments
 
 ## `DBSubnetGroupName = ::String` -- *Required*
-The name for the DB subnet group. This value is stored as a lowercase string.
+The name for the DB subnet group. This value is stored as a lowercase string. You can't modify the default subnet group.
 
-Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: Must match the name of an existing DBSubnetGroup. Must not be default.
 
 Example: `mySubnetgroup`
 
@@ -6207,13 +6256,7 @@ The DB instance identifier. This value is stored as a lowercase string.
 
 Constraints:
 
-*   Must be the identifier for an existing Read Replica DB instance
-
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   Must match the identifier of an existing Read Replica DB instance.
 
 Example: `mydbinstance`
 
@@ -6284,11 +6327,7 @@ The identifier of the DB cluster Read Replica to promote. This parameter is not 
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens.
-
-*   First character must be a letter.
-
-*   Cannot end with a hyphen or contain two consecutive hyphens.
+*   Must match the identifier of an existing DBCluster Read Replica.
 
 Example: `my-cluster-replica1`
 
@@ -6399,11 +6438,7 @@ The DB instance identifier. This parameter is stored as a lowercase string.
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   Must match the identifier of an existing DBInstance.
 
 
 ## `ForceFailover = ::Bool`
@@ -6639,11 +6674,7 @@ The name of the DB parameter group.
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   Must match the name of an existing DBParameterGroup.
 
 
 ## `ResetAllParameters = ::Bool`
@@ -6747,7 +6778,7 @@ The name of the DB cluster to create from the source data in the S3 bucket. This
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens.
+*   Must contain from 1 to 63 letters, numbers, or hyphens.
 
 *   First character must be a letter.
 
@@ -6761,11 +6792,7 @@ The name of the DB cluster parameter group to associate with the restored DB clu
 
 Constraints:
 
-*   Must be 1 to 255 alphanumeric characters
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   If supplied, must match the name of an existing DBClusterParameterGroup.
 
 
 ## `VpcSecurityGroupIds = [::String, ...]`
@@ -6775,7 +6802,7 @@ A list of EC2 VPC security groups to associate with the restored DB cluster.
 ## `DBSubnetGroupName = ::String`
 A DB subnet group to associate with the restored DB cluster.
 
-Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: If supplied, must match the name of an existing DBSubnetGroup.
 
 Example: `mySubnetgroup`
 
@@ -6805,7 +6832,7 @@ The name of the master user for the restored DB cluster.
 
 Constraints:
 
-*   Must be 1 to 16 alphanumeric characters.
+*   Must be 1 to 16 letters or numbers.
 
 *   First character must be a letter.
 
@@ -6936,7 +6963,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 # RestoreDBClusterFromSnapshot Operation
 
-Creates a new DB cluster from a DB cluster snapshot. The target DB cluster is created from the source DB cluster restore point with the same configuration as the original source DB cluster, except that the new DB cluster is created with the default security group.
+Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
+
+If a DB snapshot is specified, the target DB cluster is created from the source DB snapshot with a default configuration and default security group.
+
+If a DB cluster snapshot is specified, the target DB cluster is created from the source DB cluster restore point with the same configuration as the original source DB cluster, except that the new DB cluster is created with the default security group.
 
 For more information on Amazon Aurora, see [Aurora on Amazon RDS](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html) in the *Amazon RDS User Guide.*
 
@@ -6947,11 +6978,11 @@ Provides the list of EC2 Availability Zones that instances in the restored DB cl
 
 
 ## `DBClusterIdentifier = ::String` -- *Required*
-The name of the DB cluster to create from the DB cluster snapshot. This parameter isn't case-sensitive.
+The name of the DB cluster to create from the DB snapshot or DB cluster snapshot. This parameter isn't case-sensitive.
 
 Constraints:
 
-*   Must contain from 1 to 255 alphanumeric characters or hyphens
+*   Must contain from 1 to 255 letters, numbers, or hyphens
 
 *   First character must be a letter
 
@@ -6961,15 +6992,13 @@ Example: `my-snapshot-id`
 
 
 ## `SnapshotIdentifier = ::String` -- *Required*
-The identifier for the DB cluster snapshot to restore from.
+The identifier for the DB snapshot or DB cluster snapshot to restore from.
+
+You can use either the name or the Amazon Resource Name (ARN) to specify a DB cluster snapshot. However, you can use only the ARN to specify a DB snapshot.
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   Must match the identifier of an existing Snapshot.
 
 
 ## `Engine = ::String` -- *Required*
@@ -6995,7 +7024,7 @@ Default: The same port as the original DB cluster.
 ## `DBSubnetGroupName = ::String`
 The name of the DB subnet group to use for the new DB cluster.
 
-Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: If supplied, must match the name of an existing DBSubnetGroup.
 
 Example: `mySubnetgroup`
 
@@ -7022,15 +7051,15 @@ The tags to be assigned to the restored DB cluster.
 ```
 
 ## `KmsKeyId = ::String`
-The KMS key identifier to use when restoring an encrypted DB cluster from a DB cluster snapshot.
+The KMS key identifier to use when restoring an encrypted DB cluster from a DB snapshot or DB cluster snapshot.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB cluster, then you can use the KMS key alias instead of the ARN for the KMS encryption key.
 
 If you do not specify a value for the `KmsKeyId` parameter, then the following will occur:
 
-*   If the DB cluster snapshot is encrypted, then the restored DB cluster is encrypted using the KMS key that was used to encrypt the DB cluster snapshot.
+*   If the DB snapshot or DB cluster snapshot in `SnapshotIdentifier` is encrypted, then the restored DB cluster is encrypted using the KMS key that was used to encrypt the DB snapshot or DB cluster snapshot.
 
-*   If the DB cluster snapshot is not encrypted, then the restored DB cluster is encrypted using the specified encryption key.
+*   If the DB snapshot or DB cluster snapshot in `SnapshotIdentifier` is not encrypted, then the restored DB cluster is not encrypted.
 
 
 ## `EnableIAMDatabaseAuthentication = ::Bool`
@@ -7084,7 +7113,7 @@ The name of the new DB cluster to be created.
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
+*   Must contain from 1 to 63 letters, numbers, or hyphens
 
 *   First character must be a letter
 
@@ -7108,13 +7137,7 @@ The identifier of the source DB cluster from which to restore.
 
 Constraints:
 
-*   Must be the identifier of an existing database instance
-
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   Must match the identifier of an existing DBCluster.
 
 
 ## `RestoreToTime = timestamp`
@@ -7154,7 +7177,7 @@ Default: The same port as the original DB cluster.
 ## `DBSubnetGroupName = ::String`
 The DB subnet group name to use for the new DB cluster.
 
-Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: If supplied, must match the name of an existing DBSubnetGroup.
 
 Example: `mySubnetgroup`
 
@@ -7242,7 +7265,7 @@ Name of the DB instance to create from the DB snapshot. This parameter isn't cas
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
+*   Must contain from 1 to 63 numbers, letters, or hyphens
 
 *   First character must be a letter
 
@@ -7256,13 +7279,9 @@ The identifier for the DB snapshot to restore from.
 
 Constraints:
 
-*   Must contain from 1 to 255 alphanumeric characters or hyphens
+*   Must match the identifier of an existing DBSnapshot.
 
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
-
-If you are restoring from a shared manual DB snapshot, the `DBSnapshotIdentifier` must be the ARN of the shared DB snapshot.
+*   If you are restoring from a shared manual DB snapshot, the `DBSnapshotIdentifier` must be the ARN of the shared DB snapshot.
 
 
 ## `DBInstanceClass = ::String`
@@ -7292,7 +7311,7 @@ Example: `us-east-1a`
 ## `DBSubnetGroupName = ::String`
 The DB subnet group name to use for the new instance.
 
-Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: If supplied, must match the name of an existing DBSubnetGroup.
 
 Example: `mySubnetgroup`
 
@@ -7341,7 +7360,31 @@ Default: The same as source
 
 Constraint: Must be compatible with the engine of the source. You can restore a MariaDB 10.1 DB instance from a MySQL 5.6 snapshot.
 
-Valid Values: `MySQL` | `mariadb` | `oracle-se1` | `oracle-se` | `oracle-ee` | `sqlserver-ee` | `sqlserver-se` | `sqlserver-ex` | `sqlserver-web` | `postgres` | `aurora`
+Valid Values:
+
+*   `aurora`
+
+*   `mariadb`
+
+*   `mysql`
+
+*   `oracle-ee`
+
+*   `oracle-se2`
+
+*   `oracle-se1`
+
+*   `oracle-se`
+
+*   `postgres`
+
+*   `sqlserver-ee`
+
+*   `sqlserver-se`
+
+*   `sqlserver-ex`
+
+*   `sqlserver-web`
 
 
 ## `Iops = ::Int`
@@ -7455,13 +7498,7 @@ The identifier of the source DB instance from which to restore.
 
 Constraints:
 
-*   Must be the identifier of an existing database instance
-
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
-
-*   First character must be a letter
-
-*   Cannot end with a hyphen or contain two consecutive hyphens
+*   Must match the identifier of an existing DBInstance.
 
 
 ## `TargetDBInstanceIdentifier = ::String` -- *Required*
@@ -7469,7 +7506,7 @@ The name of the new database instance to be created.
 
 Constraints:
 
-*   Must contain from 1 to 63 alphanumeric characters or hyphens
+*   Must contain from 1 to 63 letters, numbers, or hyphens
 
 *   First character must be a letter
 
@@ -7527,7 +7564,7 @@ Example: `us-east-1a`
 ## `DBSubnetGroupName = ::String`
 The DB subnet group name to use for the new instance.
 
-Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: If supplied, must match the name of an existing DBSubnetGroup.
 
 Example: `mySubnetgroup`
 
@@ -7576,7 +7613,31 @@ Default: The same as source
 
 Constraint: Must be compatible with the engine of the source
 
-Valid Values: `MySQL` | `mariadb` | `oracle-se1` | `oracle-se` | `oracle-ee` | `sqlserver-ee` | `sqlserver-se` | `sqlserver-ex` | `sqlserver-web` | `postgres` | `aurora`
+Valid Values:
+
+*   `aurora`
+
+*   `mariadb`
+
+*   `mysql`
+
+*   `oracle-ee`
+
+*   `oracle-se2`
+
+*   `oracle-se1`
+
+*   `oracle-se`
+
+*   `postgres`
+
+*   `sqlserver-ee`
+
+*   `sqlserver-se`
+
+*   `sqlserver-ex`
+
+*   `sqlserver-web`
 
 
 ## `Iops = ::Int`

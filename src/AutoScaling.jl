@@ -322,7 +322,7 @@ The maximum size of the group.
 
 
 ## `DesiredCapacity = ::Int`
-The number of EC2 instances that should be running in the group. This number must be greater than or equal to the minimum size of the group and less than or equal to the maximum size of the group.
+The number of EC2 instances that should be running in the group. This number must be greater than or equal to the minimum size of the group and less than or equal to the maximum size of the group. If you do not specify a desired capacity, the default is the minimum size of the group.
 
 
 ## `DefaultCooldown = ::Int`
@@ -380,6 +380,20 @@ For more information, see [Controlling Which Instances Auto Scaling Terminates D
 ## `NewInstancesProtectedFromScaleIn = ::Bool`
 Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.
 
+
+## `LifecycleHookSpecificationList = [[ ... ], ...]`
+One or more lifecycle hooks.
+```
+ LifecycleHookSpecificationList = [[
+        "LifecycleHookName" => <required> ::String,
+        "LifecycleTransition" =>  ::String,
+        "NotificationMetadata" =>  ::String,
+        "HeartbeatTimeout" =>  ::Int,
+        "DefaultResult" =>  ::String,
+        "NotificationTargetARN" =>  ::String,
+        "RoleARN" =>  ::String
+    ], ...]
+```
 
 ## `Tags = [[ ... ], ...]`
 One or more tags.
@@ -492,7 +506,11 @@ The name of the launch configuration. This name must be unique within the scope 
 
 
 ## `ImageId = ::String`
-The ID of the Amazon Machine Image (AMI) to use to launch your EC2 instances. For more information, see [Finding an AMI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) in the *Amazon Elastic Compute Cloud User Guide*.
+The ID of the Amazon Machine Image (AMI) to use to launch your EC2 instances.
+
+If you do not specify `InstanceId`, you must specify `ImageId`.
+
+For more information, see [Finding an AMI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 
 ## `KeyName = ::String`
@@ -520,9 +538,9 @@ The user data to make available to the launched EC2 instances. For more informat
 
 
 ## `InstanceId = ::String`
-The ID of the instance to use to create the launch configuration.
+The ID of the instance to use to create the launch configuration. The new launch configuration derives attributes from the instance, with the exception of the block device mapping.
 
-The new launch configuration derives attributes from the instance, with the exception of the block device mapping.
+If you do not specify `InstanceId`, you must specify both `ImageId` and `InstanceType`.
 
 To create a launch configuration with a block device mapping or override any other instance attributes, specify them as part of the same request.
 
@@ -530,7 +548,11 @@ For more information, see [Create a Launch Configuration Using an EC2 Instance](
 
 
 ## `InstanceType = ::String`
-The instance type of the EC2 instance. For information about available instance types, see [Available Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes) in the *Amazon Elastic Compute Cloud User Guide.*
+The instance type of the EC2 instance.
+
+If you do not specify `InstanceId`, you must specify `InstanceType`.
+
+For information about available instance types, see [Available Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes) in the *Amazon Elastic Compute Cloud User Guide.*
 
 
 ## `KernelId = ::String`
@@ -560,7 +582,7 @@ One or more mappings that specify how block devices are exposed to the instance.
 ```
 
 ## `InstanceMonitoring = ["Enabled" =>  ::Bool]`
-Enables detailed monitoring (`true`) or basic monitoring (`false`) for the Auto Scaling instances.
+Enables detailed monitoring (`true`) or basic monitoring (`false`) for the Auto Scaling instances. The default is `true`.
 
 
 ## `SpotPrice = ::String`
@@ -2417,7 +2439,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 Removes one or more instances from the specified Auto Scaling group.
 
-After the instances are detached, you can manage them independently from the rest of the Auto Scaling group.
+After the instances are detached, you can manage them independent of the Auto Scaling group.
 
 If you do not specify the option to decrement the desired capacity, Auto Scaling launches instances to replace the ones that are detached.
 
@@ -2761,9 +2783,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 # EnterStandby Operation
 
-Moves the specified instances into `Standby` mode.
+Moves the specified instances into the standby state.
 
-For more information, see [Auto Scaling Lifecycle](http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html) in the *Auto Scaling User Guide*.
+For more information, see [Temporarily Removing Instances from Your Auto Scaling Group](http://docs.aws.amazon.com/autoscaling/latest/userguide/as-enter-exit-standby.html) in the *Auto Scaling User Guide*.
 
 # Arguments
 
@@ -2917,9 +2939,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 # ExitStandby Operation
 
-Moves the specified instances out of `Standby` mode.
+Moves the specified instances out of the standby state.
 
-For more information, see [Auto Scaling Lifecycle](http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html) in the *Auto Scaling User Guide*.
+For more information, see [Temporarily Removing Instances from Your Auto Scaling Group](http://docs.aws.amazon.com/autoscaling/latest/userguide/as-enter-exit-standby.html) in the *Auto Scaling User Guide*.
 
 # Arguments
 
@@ -3049,7 +3071,9 @@ Contains additional information that you want to include any time Auto Scaling s
 
 
 ## `HeartbeatTimeout = ::Int`
-The amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling [RecordLifecycleActionHeartbeat](@ref). The default is 3600 seconds (1 hour).
+The maximum time, in seconds, that can elapse before the lifecycle hook times out. The range is from 30 to 7200 seconds. The default is 3600 seconds (1 hour).
+
+If the lifecycle hook times out, Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling [RecordLifecycleActionHeartbeat](@ref).
 
 
 ## `DefaultResult = ::String`
@@ -3239,7 +3263,7 @@ This parameter is supported if the policy type is `StepScaling` or `TargetTracki
 
 
 ## `TargetTrackingConfiguration = [ ... ]`
-The configuration of a target tracking policy.
+A target tracking policy.
 
 This parameter is required if the policy type is `TargetTrackingScaling` and not supported otherwise.
 ```
@@ -3884,9 +3908,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 Updates the configuration for the specified Auto Scaling group.
 
-To update an Auto Scaling group with a launch configuration with `InstanceMonitoring` set to `False`, you must first disable the collection of group metrics. Otherwise, you will get an error. If you have previously enabled the collection of group metrics, you can disable it using [DisableMetricsCollection](@ref).
+The new settings take effect on any scaling activities after this call returns. Scaling activities that are currently in progress aren't affected.
 
-The new settings are registered upon the completion of this call. Any launch configuration settings take effect on any triggers after this call returns. Scaling activities that are currently in progress aren't affected.
+To update an Auto Scaling group with a launch configuration with `InstanceMonitoring` set to `false`, you must first disable the collection of group metrics. Otherwise, you will get an error. If you have previously enabled the collection of group metrics, you can disable it using [DisableMetricsCollection](@ref).
 
 Note the following:
 

@@ -150,6 +150,49 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codeco
 
 
 """
+    using AWSSDK.CodeCommit.delete_branch
+    delete_branch([::AWSConfig], arguments::Dict)
+    delete_branch([::AWSConfig]; repositoryName=, branchName=)
+
+    using AWSCore.Services.codecommit
+    codecommit([::AWSConfig], "DeleteBranch", arguments::Dict)
+    codecommit([::AWSConfig], "DeleteBranch", repositoryName=, branchName=)
+
+# DeleteBranch Operation
+
+Deletes a branch from a repository, unless that branch is the default branch for the repository.
+
+# Arguments
+
+## `repositoryName = ::String` -- *Required*
+The name of the repository that contains the branch to be deleted.
+
+
+## `branchName = ::String` -- *Required*
+The name of the branch to delete.
+
+
+
+
+# Returns
+
+`DeleteBranchOutput`
+
+# Exceptions
+
+`RepositoryNameRequiredException`, `RepositoryDoesNotExistException`, `InvalidRepositoryNameException`, `BranchNameRequiredException`, `InvalidBranchNameException`, `DefaultBranchCannotBeDeletedException`, `EncryptionIntegrityChecksFailedException`, `EncryptionKeyAccessDeniedException`, `EncryptionKeyDisabledException`, `EncryptionKeyNotFoundException` or `EncryptionKeyUnavailableException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/DeleteBranch)
+"""
+
+@inline delete_branch(aws::AWSConfig=default_aws_config(); args...) = delete_branch(aws, args)
+
+@inline delete_branch(aws::AWSConfig, args) = AWSCore.Services.codecommit(aws, "DeleteBranch", args)
+
+@inline delete_branch(args) = delete_branch(default_aws_config(), args)
+
+
+"""
     using AWSSDK.CodeCommit.delete_repository
     delete_repository([::AWSConfig], arguments::Dict)
     delete_repository([::AWSConfig]; repositoryName=)
@@ -297,7 +340,7 @@ The name of the repository to which the commit was made.
 
 
 ## `commitId = ::String` -- *Required*
-The commit ID.
+The commit ID. Commit IDs are the full SHA of the commit.
 
 
 

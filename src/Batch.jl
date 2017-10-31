@@ -87,7 +87,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 Creates an AWS Batch compute environment. You can create `MANAGED` or `UNMANAGED` compute environments.
 
-In a managed compute environment, AWS Batch manages the compute resources within the environment, based on the compute resources that you specify. Instances launched into a managed compute environment use the latest Amazon ECS-optimized AMI. You can choose to use Amazon EC2 On-Demand instances in your managed compute environment, or you can use Amazon EC2 Spot instances that only launch when the Spot bid price is below a specified percentage of the On-Demand price.
+In a managed compute environment, AWS Batch manages the compute resources within the environment, based on the compute resources that you specify. Instances launched into a managed compute environment use a recent, approved version of the Amazon ECS-optimized AMI. You can choose to use Amazon EC2 On-Demand instances in your managed compute environment, or you can use Amazon EC2 Spot instances that only launch when the Spot bid price is below a specified percentage of the On-Demand price.
 
 In an unmanaged compute environment, you can manage your own compute resources. This provides more compute resource configuration options, such as using a custom AMI, but you must ensure that your AMI meets the Amazon ECS container instance AMI specification. For more information, see [Container Instance AMIs](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html) in the *Amazon EC2 Container Service Developer Guide*. After you have created your unmanaged compute environment, you can use the [DescribeComputeEnvironments](@ref) operation to find the Amazon ECS cluster that is associated with it and then manually launch your container instances into that Amazon ECS cluster. For more information, see [Launching an Amazon ECS Container Instance](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html) in the *Amazon EC2 Container Service Developer Guide*.
 
@@ -127,6 +127,11 @@ Details of the compute resources managed by the compute environment. This parame
 
 ## `serviceRole = ::String` -- *Required*
 The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
+
+If your specified role has a path other than `/`, then you must either specify the full role ARN (this is recommended) or prefix the role name with the path.
+
+**Note**
+> Depending on how you created your AWS Batch service role, its ARN may contain the `service-role` path prefix. When you only specify the name of the service role, AWS Batch assumes that your ARN does not use the `service-role` path prefix. Because of this, we recommend that you specify the full ARN of your service role when you create compute environments.
 
 
 
@@ -269,7 +274,7 @@ The state of the job queue. If the job queue state is `ENABLED`, it is able to a
 
 
 ## `priority = ::Int` -- *Required*
-The priority of the job queue. Job queues with a higher priority (or a lower integer value for the `priority` parameter) are evaluated first when associated with same compute environment. Priority is determined in ascending order, for example, a job queue with a priority value of `1` is given scheduling preference over a job queue with a priority value of `10`.
+The priority of the job queue. Job queues with a higher priority (or a higher integer value for the `priority` parameter) are evaluated first when associated with same compute environment. Priority is determined in descending order, for example, a job queue with a priority value of `10` is given scheduling preference over a job queue with a priority value of `1`.
 
 
 ## `computeEnvironmentOrder = [[ ... ], ...]` -- *Required*
@@ -305,7 +310,7 @@ Input:
         ]
     ],
     "jobQueueName" => "LowPriority",
-    "priority" => 10,
+    "priority" => 1,
     "state" => "ENABLED"
 ]
 ```
@@ -336,7 +341,7 @@ Input:
         ]
     ],
     "jobQueueName" => "HighPriority",
-    "priority" => 1,
+    "priority" => 10,
     "state" => "ENABLED"
 ]
 ```
@@ -429,7 +434,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 # DeleteJobQueue Operation
 
-Deletes the specified job queue. You must first disable submissions for a queue with the [UpdateJobQueue](@ref) operation and terminate any jobs that have not completed with the [TerminateJob](@ref).
+Deletes the specified job queue. You must first disable submissions for a queue with the [UpdateJobQueue](@ref) operation. All jobs in the queue are terminated when you delete a job queue.
 
 It is not necessary to disassociate compute environments from a queue before submitting a `DeleteJobQueue` request.
 
@@ -939,7 +944,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 # ListJobs Operation
 
-Returns a list of task jobs for a specified job queue. You can filter the results by job status with the `jobStatus` parameter.
+Returns a list of task jobs for a specified job queue. You can filter the results by job status with the `jobStatus` parameter. If you do not specify a status, only `RUNNING` jobs are returned.
 
 # Arguments
 
@@ -948,7 +953,7 @@ The name or full Amazon Resource Name (ARN) of the job queue with which to list 
 
 
 ## `jobStatus = "SUBMITTED", "PENDING", "RUNNABLE", "STARTING", "RUNNING", "SUCCEEDED" or "FAILED"`
-The job status with which to filter jobs in the specified queue.
+The job status with which to filter jobs in the specified queue. If you do not specify a status, only `RUNNING` jobs are returned.
 
 
 ## `maxResults = ::Int`
@@ -1045,7 +1050,7 @@ Registers an AWS Batch job definition.
 # Arguments
 
 ## `jobDefinitionName = ::String` -- *Required*
-The name of the job definition to register.
+The name of the job definition to register. Up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
 
 
 ## `type = "container"` -- *Required*
@@ -1159,9 +1164,7 @@ Submits an AWS Batch job from a job definition. Parameters specified during [Sub
 # Arguments
 
 ## `jobName = ::String` -- *Required*
-The name of the job. A name must be 1 to 128 characters in length.
-
-Pattern: ^[a-zA-Z0-9_]+\$
+The name of the job. The first character must be alphanumeric, and up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
 
 
 ## `jobQueue = ::String` -- *Required*
@@ -1169,7 +1172,7 @@ The job queue into which the job will be submitted. You can specify either the n
 
 
 ## `dependsOn = [["jobId" =>  ::String], ...]`
-A list of job IDs on which this job depends. A job can depend upon a maximum of 100 jobs.
+A list of job IDs on which this job depends. A job can depend upon a maximum of 20 jobs.
 
 
 ## `jobDefinition = ::String` -- *Required*
@@ -1335,7 +1338,12 @@ Details of the compute resources managed by the compute environment. Required fo
 ```
 
 ## `serviceRole = ::String`
-The name or full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to ECS, Auto Scaling, and EC2 on your behalf.
+The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
+
+If your specified role has a path other than `/`, then you must either specify the full role ARN (this is recommended) or prefix the role name with the path.
+
+**Note**
+> Depending on how you created your AWS Batch service role, its ARN may contain the `service-role` path prefix. When you only specify the name of the service role, AWS Batch assumes that your ARN does not use the `service-role` path prefix. Because of this, we recommend that you specify the full ARN of your service role when you create compute environments.
 
 
 
@@ -1402,7 +1410,7 @@ Describes the queue's ability to accept new jobs.
 
 
 ## `priority = ::Int`
-The priority of the job queue. Job queues with a higher priority (or a lower integer value for the `priority` parameter) are evaluated first when associated with same compute environment. Priority is determined in ascending order, for example, a job queue with a priority value of `1` is given scheduling preference over a job queue with a priority value of `10`.
+The priority of the job queue. Job queues with a higher priority (or a higher integer value for the `priority` parameter) are evaluated first when associated with same compute environment. Priority is determined in descending order, for example, a job queue with a priority value of `10` is given scheduling preference over a job queue with a priority value of `1`.
 
 
 ## `computeEnvironmentOrder = [[ ... ], ...]`

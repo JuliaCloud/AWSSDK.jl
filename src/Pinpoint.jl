@@ -23,7 +23,7 @@ using AWSCore
 
 # CreateApp Operation
 
-Used to create an app.
+Creates or updates an app.
 
 # Arguments
 
@@ -76,7 +76,33 @@ Creates or updates a campaign.
  WriteCampaignRequest = [
         "AdditionalTreatments" =>  [[
             "MessageConfiguration" =>  [
+                "ADMMessage" =>  [
+                    "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
+                    "Body" =>  ::String,
+                    "ImageIconUrl" =>  ::String,
+                    "ImageSmallIconUrl" =>  ::String,
+                    "ImageUrl" =>  ::String,
+                    "JsonBody" =>  ::String,
+                    "MediaUrl" =>  ::String,
+                    "RawContent" =>  ::String,
+                    "SilentPush" =>  ::Bool,
+                    "Title" =>  ::String,
+                    "Url" =>  ::String
+                ],
                 "APNSMessage" =>  [
+                    "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
+                    "Body" =>  ::String,
+                    "ImageIconUrl" =>  ::String,
+                    "ImageSmallIconUrl" =>  ::String,
+                    "ImageUrl" =>  ::String,
+                    "JsonBody" =>  ::String,
+                    "MediaUrl" =>  ::String,
+                    "RawContent" =>  ::String,
+                    "SilentPush" =>  ::Bool,
+                    "Title" =>  ::String,
+                    "Url" =>  ::String
+                ],
+                "BaiduMessage" =>  [
                     "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
                     "Body" =>  ::String,
                     "ImageIconUrl" =>  ::String,
@@ -147,10 +173,38 @@ Creates or updates a campaign.
         "IsPaused" =>  ::Bool,
         "Limits" =>  [
             "Daily" =>  ::Int,
+            "MaximumDuration" =>  ::Int,
+            "MessagesPerSecond" =>  ::Int,
             "Total" =>  ::Int
         ],
         "MessageConfiguration" =>  [
+            "ADMMessage" =>  [
+                "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
+                "Body" =>  ::String,
+                "ImageIconUrl" =>  ::String,
+                "ImageSmallIconUrl" =>  ::String,
+                "ImageUrl" =>  ::String,
+                "JsonBody" =>  ::String,
+                "MediaUrl" =>  ::String,
+                "RawContent" =>  ::String,
+                "SilentPush" =>  ::Bool,
+                "Title" =>  ::String,
+                "Url" =>  ::String
+            ],
             "APNSMessage" =>  [
+                "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
+                "Body" =>  ::String,
+                "ImageIconUrl" =>  ::String,
+                "ImageSmallIconUrl" =>  ::String,
+                "ImageUrl" =>  ::String,
+                "JsonBody" =>  ::String,
+                "MediaUrl" =>  ::String,
+                "RawContent" =>  ::String,
+                "SilentPush" =>  ::Bool,
+                "Title" =>  ::String,
+                "Url" =>  ::String
+            ],
+            "BaiduMessage" =>  [
                 "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
                 "Body" =>  ::String,
                 "ImageIconUrl" =>  ::String,
@@ -380,6 +434,45 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
+    using AWSSDK.Pinpoint.delete_adm_channel
+    delete_adm_channel([::AWSConfig], arguments::Dict)
+    delete_adm_channel([::AWSConfig]; application-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/channels/adm", arguments::Dict)
+    pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/channels/adm", application-id=)
+
+# DeleteAdmChannel Operation
+
+Delete an ADM channel
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`DeleteAdmChannelResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteAdmChannel)
+"""
+
+@inline delete_adm_channel(aws::AWSConfig=default_aws_config(); args...) = delete_adm_channel(aws, args)
+
+@inline delete_adm_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/channels/adm", args)
+
+@inline delete_adm_channel(args) = delete_adm_channel(default_aws_config(), args)
+
+
+"""
     using AWSSDK.Pinpoint.delete_apns_channel
     delete_apns_channel([::AWSConfig], arguments::Dict)
     delete_apns_channel([::AWSConfig]; application-id=)
@@ -458,6 +551,84 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
+    using AWSSDK.Pinpoint.delete_apns_voip_channel
+    delete_apns_voip_channel([::AWSConfig], arguments::Dict)
+    delete_apns_voip_channel([::AWSConfig]; application-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/channels/apns_voip", arguments::Dict)
+    pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/channels/apns_voip", application-id=)
+
+# DeleteApnsVoipChannel Operation
+
+Delete an APNS VoIP channel
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`DeleteApnsVoipChannelResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteApnsVoipChannel)
+"""
+
+@inline delete_apns_voip_channel(aws::AWSConfig=default_aws_config(); args...) = delete_apns_voip_channel(aws, args)
+
+@inline delete_apns_voip_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/channels/apns_voip", args)
+
+@inline delete_apns_voip_channel(args) = delete_apns_voip_channel(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.delete_apns_voip_sandbox_channel
+    delete_apns_voip_sandbox_channel([::AWSConfig], arguments::Dict)
+    delete_apns_voip_sandbox_channel([::AWSConfig]; application-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/channels/apns_voip_sandbox", arguments::Dict)
+    pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/channels/apns_voip_sandbox", application-id=)
+
+# DeleteApnsVoipSandboxChannel Operation
+
+Delete an APNS VoIP sandbox channel
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`DeleteApnsVoipSandboxChannelResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteApnsVoipSandboxChannel)
+"""
+
+@inline delete_apns_voip_sandbox_channel(aws::AWSConfig=default_aws_config(); args...) = delete_apns_voip_sandbox_channel(aws, args)
+
+@inline delete_apns_voip_sandbox_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/channels/apns_voip_sandbox", args)
+
+@inline delete_apns_voip_sandbox_channel(args) = delete_apns_voip_sandbox_channel(default_aws_config(), args)
+
+
+"""
     using AWSSDK.Pinpoint.delete_app
     delete_app([::AWSConfig], arguments::Dict)
     delete_app([::AWSConfig]; application-id=)
@@ -494,6 +665,45 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 @inline delete_app(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}", args)
 
 @inline delete_app(args) = delete_app(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.delete_baidu_channel
+    delete_baidu_channel([::AWSConfig], arguments::Dict)
+    delete_baidu_channel([::AWSConfig]; application-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/channels/baidu", arguments::Dict)
+    pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/channels/baidu", application-id=)
+
+# DeleteBaiduChannel Operation
+
+Delete a BAIDU GCM channel
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`DeleteBaiduChannelResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteBaiduChannel)
+"""
+
+@inline delete_baidu_channel(aws::AWSConfig=default_aws_config(); args...) = delete_baidu_channel(aws, args)
+
+@inline delete_baidu_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/channels/baidu", args)
+
+@inline delete_baidu_channel(args) = delete_baidu_channel(default_aws_config(), args)
 
 
 """
@@ -739,6 +949,45 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
+    using AWSSDK.Pinpoint.get_adm_channel
+    get_adm_channel([::AWSConfig], arguments::Dict)
+    get_adm_channel([::AWSConfig]; application-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/channels/adm", arguments::Dict)
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/channels/adm", application-id=)
+
+# GetAdmChannel Operation
+
+Get an ADM channel
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`GetAdmChannelResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetAdmChannel)
+"""
+
+@inline get_adm_channel(aws::AWSConfig=default_aws_config(); args...) = get_adm_channel(aws, args)
+
+@inline get_adm_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/channels/adm", args)
+
+@inline get_adm_channel(args) = get_adm_channel(default_aws_config(), args)
+
+
+"""
     using AWSSDK.Pinpoint.get_apns_channel
     get_apns_channel([::AWSConfig], arguments::Dict)
     get_apns_channel([::AWSConfig]; application-id=)
@@ -814,6 +1063,84 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 @inline get_apns_sandbox_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/channels/apns_sandbox", args)
 
 @inline get_apns_sandbox_channel(args) = get_apns_sandbox_channel(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.get_apns_voip_channel
+    get_apns_voip_channel([::AWSConfig], arguments::Dict)
+    get_apns_voip_channel([::AWSConfig]; application-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/channels/apns_voip", arguments::Dict)
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/channels/apns_voip", application-id=)
+
+# GetApnsVoipChannel Operation
+
+Get an APNS VoIP channel
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`GetApnsVoipChannelResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApnsVoipChannel)
+"""
+
+@inline get_apns_voip_channel(aws::AWSConfig=default_aws_config(); args...) = get_apns_voip_channel(aws, args)
+
+@inline get_apns_voip_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/channels/apns_voip", args)
+
+@inline get_apns_voip_channel(args) = get_apns_voip_channel(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.get_apns_voip_sandbox_channel
+    get_apns_voip_sandbox_channel([::AWSConfig], arguments::Dict)
+    get_apns_voip_sandbox_channel([::AWSConfig]; application-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/channels/apns_voip_sandbox", arguments::Dict)
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/channels/apns_voip_sandbox", application-id=)
+
+# GetApnsVoipSandboxChannel Operation
+
+Get an APNS VoipSandbox channel
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`GetApnsVoipSandboxChannelResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApnsVoipSandboxChannel)
+"""
+
+@inline get_apns_voip_sandbox_channel(aws::AWSConfig=default_aws_config(); args...) = get_apns_voip_sandbox_channel(aws, args)
+
+@inline get_apns_voip_sandbox_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/channels/apns_voip_sandbox", args)
+
+@inline get_apns_voip_sandbox_channel(args) = get_apns_voip_sandbox_channel(default_aws_config(), args)
 
 
 """
@@ -935,6 +1262,45 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 @inline get_apps(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps", args)
 
 @inline get_apps(args) = get_apps(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.get_baidu_channel
+    get_baidu_channel([::AWSConfig], arguments::Dict)
+    get_baidu_channel([::AWSConfig]; application-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/channels/baidu", arguments::Dict)
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/channels/baidu", application-id=)
+
+# GetBaiduChannel Operation
+
+Get a BAIDU GCM channel
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`GetBaiduChannelResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetBaiduChannel)
+"""
+
+@inline get_baidu_channel(aws::AWSConfig=default_aws_config(); args...) = get_baidu_channel(aws, args)
+
+@inline get_baidu_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/channels/baidu", args)
+
+@inline get_baidu_channel(args) = get_baidu_channel(default_aws_config(), args)
 
 
 """
@@ -1728,7 +2094,6 @@ EventStream to write.
 ```
  WriteEventStream = [
         "DestinationStreamArn" =>  ::String,
-        "ExternalId" =>  ::String,
         "RoleArn" =>  ::String
     ]
 ```
@@ -1778,19 +2143,57 @@ Send a batch of messages
  MessageRequest = [
         "Addresses" =>  ::Dict{String,String},
         "Context" =>  ::Dict{String,String},
+        "Endpoints" =>  ::Dict{String,String},
         "MessageConfiguration" =>  [
+            "ADMMessage" =>  [
+                "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
+                "Body" =>  ::String,
+                "ConsolidationKey" =>  ::String,
+                "Data" =>  ::Dict{String,String},
+                "ExpiresAfter" =>  ::String,
+                "IconReference" =>  ::String,
+                "ImageIconUrl" =>  ::String,
+                "ImageUrl" =>  ::String,
+                "MD5" =>  ::String,
+                "RawContent" =>  ::String,
+                "SilentPush" =>  ::Bool,
+                "SmallImageIconUrl" =>  ::String,
+                "Sound" =>  ::String,
+                "Substitutions" =>  ::Dict{String,String},
+                "Title" =>  ::String,
+                "Url" =>  ::String
+            ],
             "APNSMessage" =>  [
                 "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
                 "Badge" =>  ::Int,
                 "Body" =>  ::String,
                 "Category" =>  ::String,
+                "CollapseId" =>  ::String,
                 "Data" =>  ::Dict{String,String},
                 "MediaUrl" =>  ::String,
+                "PreferredAuthenticationMethod" =>  ::String,
+                "Priority" =>  ::String,
                 "RawContent" =>  ::String,
                 "SilentPush" =>  ::Bool,
                 "Sound" =>  ::String,
                 "Substitutions" =>  ::Dict{String,String},
                 "ThreadId" =>  ::String,
+                "TimeToLive" =>  ::Int,
+                "Title" =>  ::String,
+                "Url" =>  ::String
+            ],
+            "BaiduMessage" =>  [
+                "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
+                "Body" =>  ::String,
+                "Data" =>  ::Dict{String,String},
+                "IconReference" =>  ::String,
+                "ImageIconUrl" =>  ::String,
+                "ImageUrl" =>  ::String,
+                "RawContent" =>  ::String,
+                "SilentPush" =>  ::Bool,
+                "SmallImageIconUrl" =>  ::String,
+                "Sound" =>  ::String,
+                "Substitutions" =>  ::Dict{String,String},
                 "Title" =>  ::String,
                 "Url" =>  ::String
             ],
@@ -1815,12 +2218,14 @@ Send a batch of messages
                 "IconReference" =>  ::String,
                 "ImageIconUrl" =>  ::String,
                 "ImageUrl" =>  ::String,
+                "Priority" =>  ::String,
                 "RawContent" =>  ::String,
                 "RestrictedPackageName" =>  ::String,
                 "SilentPush" =>  ::Bool,
                 "SmallImageIconUrl" =>  ::String,
                 "Sound" =>  ::String,
                 "Substitutions" =>  ::Dict{String,String},
+                "TimeToLive" =>  ::Int,
                 "Title" =>  ::String,
                 "Url" =>  ::String
             ],
@@ -1855,6 +2260,195 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
+    using AWSSDK.Pinpoint.send_users_messages
+    send_users_messages([::AWSConfig], arguments::Dict)
+    send_users_messages([::AWSConfig]; application-id=, SendUsersMessageRequest=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "POST", "/v1/apps/{application-id}/users-messages", arguments::Dict)
+    pinpoint([::AWSConfig], "POST", "/v1/apps/{application-id}/users-messages", application-id=, SendUsersMessageRequest=)
+
+# SendUsersMessages Operation
+
+Send a batch of messages to users
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+
+
+
+## `SendUsersMessageRequest = [ ... ]` -- *Required*
+
+```
+ SendUsersMessageRequest = [
+        "Context" =>  ::Dict{String,String},
+        "MessageConfiguration" =>  [
+            "ADMMessage" =>  [
+                "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
+                "Body" =>  ::String,
+                "ConsolidationKey" =>  ::String,
+                "Data" =>  ::Dict{String,String},
+                "ExpiresAfter" =>  ::String,
+                "IconReference" =>  ::String,
+                "ImageIconUrl" =>  ::String,
+                "ImageUrl" =>  ::String,
+                "MD5" =>  ::String,
+                "RawContent" =>  ::String,
+                "SilentPush" =>  ::Bool,
+                "SmallImageIconUrl" =>  ::String,
+                "Sound" =>  ::String,
+                "Substitutions" =>  ::Dict{String,String},
+                "Title" =>  ::String,
+                "Url" =>  ::String
+            ],
+            "APNSMessage" =>  [
+                "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
+                "Badge" =>  ::Int,
+                "Body" =>  ::String,
+                "Category" =>  ::String,
+                "CollapseId" =>  ::String,
+                "Data" =>  ::Dict{String,String},
+                "MediaUrl" =>  ::String,
+                "PreferredAuthenticationMethod" =>  ::String,
+                "Priority" =>  ::String,
+                "RawContent" =>  ::String,
+                "SilentPush" =>  ::Bool,
+                "Sound" =>  ::String,
+                "Substitutions" =>  ::Dict{String,String},
+                "ThreadId" =>  ::String,
+                "TimeToLive" =>  ::Int,
+                "Title" =>  ::String,
+                "Url" =>  ::String
+            ],
+            "BaiduMessage" =>  [
+                "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
+                "Body" =>  ::String,
+                "Data" =>  ::Dict{String,String},
+                "IconReference" =>  ::String,
+                "ImageIconUrl" =>  ::String,
+                "ImageUrl" =>  ::String,
+                "RawContent" =>  ::String,
+                "SilentPush" =>  ::Bool,
+                "SmallImageIconUrl" =>  ::String,
+                "Sound" =>  ::String,
+                "Substitutions" =>  ::Dict{String,String},
+                "Title" =>  ::String,
+                "Url" =>  ::String
+            ],
+            "DefaultMessage" =>  [
+                "Body" =>  ::String,
+                "Substitutions" =>  ::Dict{String,String}
+            ],
+            "DefaultPushNotificationMessage" =>  [
+                "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
+                "Body" =>  ::String,
+                "Data" =>  ::Dict{String,String},
+                "SilentPush" =>  ::Bool,
+                "Substitutions" =>  ::Dict{String,String},
+                "Title" =>  ::String,
+                "Url" =>  ::String
+            ],
+            "GCMMessage" =>  [
+                "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
+                "Body" =>  ::String,
+                "CollapseKey" =>  ::String,
+                "Data" =>  ::Dict{String,String},
+                "IconReference" =>  ::String,
+                "ImageIconUrl" =>  ::String,
+                "ImageUrl" =>  ::String,
+                "Priority" =>  ::String,
+                "RawContent" =>  ::String,
+                "RestrictedPackageName" =>  ::String,
+                "SilentPush" =>  ::Bool,
+                "SmallImageIconUrl" =>  ::String,
+                "Sound" =>  ::String,
+                "Substitutions" =>  ::Dict{String,String},
+                "TimeToLive" =>  ::Int,
+                "Title" =>  ::String,
+                "Url" =>  ::String
+            ],
+            "SMSMessage" =>  [
+                "Body" =>  ::String,
+                "MessageType" =>  "TRANSACTIONAL" or "PROMOTIONAL",
+                "SenderId" =>  ::String,
+                "Substitutions" =>  ::Dict{String,String}
+            ]
+        ],
+        "Users" =>  ::Dict{String,String}
+    ]
+```
+
+
+
+# Returns
+
+`SendUsersMessagesResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/SendUsersMessages)
+"""
+
+@inline send_users_messages(aws::AWSConfig=default_aws_config(); args...) = send_users_messages(aws, args)
+
+@inline send_users_messages(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "POST", "/v1/apps/{application-id}/users-messages", args)
+
+@inline send_users_messages(args) = send_users_messages(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.update_adm_channel
+    update_adm_channel([::AWSConfig], arguments::Dict)
+    update_adm_channel([::AWSConfig]; ADMChannelRequest=, application-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/channels/adm", arguments::Dict)
+    pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/channels/adm", ADMChannelRequest=, application-id=)
+
+# UpdateAdmChannel Operation
+
+Update an ADM channel
+
+# Arguments
+
+## `ADMChannelRequest = [ ... ]` -- *Required*
+
+```
+ ADMChannelRequest = [
+        "ClientId" =>  ::String,
+        "ClientSecret" =>  ::String,
+        "Enabled" =>  ::Bool
+    ]
+```
+
+## `application-id = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`UpdateAdmChannelResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateAdmChannel)
+"""
+
+@inline update_adm_channel(aws::AWSConfig=default_aws_config(); args...) = update_adm_channel(aws, args)
+
+@inline update_adm_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/channels/adm", args)
+
+@inline update_adm_channel(args) = update_adm_channel(default_aws_config(), args)
+
+
+"""
     using AWSSDK.Pinpoint.update_apns_channel
     update_apns_channel([::AWSConfig], arguments::Dict)
     update_apns_channel([::AWSConfig]; APNSChannelRequest=, application-id=)
@@ -1873,9 +2467,14 @@ Use to update the APNs channel for an app.
 
 ```
  APNSChannelRequest = [
+        "BundleId" =>  ::String,
         "Certificate" =>  ::String,
+        "DefaultAuthenticationMethod" =>  ::String,
         "Enabled" =>  ::Bool,
-        "PrivateKey" =>  ::String
+        "PrivateKey" =>  ::String,
+        "TeamId" =>  ::String,
+        "TokenKey" =>  ::String,
+        "TokenKeyId" =>  ::String
     ]
 ```
 
@@ -1922,9 +2521,14 @@ Update an APNS sandbox channel
 
 ```
  APNSSandboxChannelRequest = [
+        "BundleId" =>  ::String,
         "Certificate" =>  ::String,
+        "DefaultAuthenticationMethod" =>  ::String,
         "Enabled" =>  ::Bool,
-        "PrivateKey" =>  ::String
+        "PrivateKey" =>  ::String,
+        "TeamId" =>  ::String,
+        "TokenKey" =>  ::String,
+        "TokenKeyId" =>  ::String
     ]
 ```
 
@@ -1953,6 +2557,114 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 
 """
+    using AWSSDK.Pinpoint.update_apns_voip_channel
+    update_apns_voip_channel([::AWSConfig], arguments::Dict)
+    update_apns_voip_channel([::AWSConfig]; APNSVoipChannelRequest=, application-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/channels/apns_voip", arguments::Dict)
+    pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/channels/apns_voip", APNSVoipChannelRequest=, application-id=)
+
+# UpdateApnsVoipChannel Operation
+
+Update an APNS VoIP channel
+
+# Arguments
+
+## `APNSVoipChannelRequest = [ ... ]` -- *Required*
+
+```
+ APNSVoipChannelRequest = [
+        "BundleId" =>  ::String,
+        "Certificate" =>  ::String,
+        "DefaultAuthenticationMethod" =>  ::String,
+        "Enabled" =>  ::Bool,
+        "PrivateKey" =>  ::String,
+        "TeamId" =>  ::String,
+        "TokenKey" =>  ::String,
+        "TokenKeyId" =>  ::String
+    ]
+```
+
+## `application-id = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`UpdateApnsVoipChannelResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateApnsVoipChannel)
+"""
+
+@inline update_apns_voip_channel(aws::AWSConfig=default_aws_config(); args...) = update_apns_voip_channel(aws, args)
+
+@inline update_apns_voip_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/channels/apns_voip", args)
+
+@inline update_apns_voip_channel(args) = update_apns_voip_channel(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.update_apns_voip_sandbox_channel
+    update_apns_voip_sandbox_channel([::AWSConfig], arguments::Dict)
+    update_apns_voip_sandbox_channel([::AWSConfig]; APNSVoipSandboxChannelRequest=, application-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/channels/apns_voip_sandbox", arguments::Dict)
+    pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/channels/apns_voip_sandbox", APNSVoipSandboxChannelRequest=, application-id=)
+
+# UpdateApnsVoipSandboxChannel Operation
+
+Update an APNS VoIP sandbox channel
+
+# Arguments
+
+## `APNSVoipSandboxChannelRequest = [ ... ]` -- *Required*
+
+```
+ APNSVoipSandboxChannelRequest = [
+        "BundleId" =>  ::String,
+        "Certificate" =>  ::String,
+        "DefaultAuthenticationMethod" =>  ::String,
+        "Enabled" =>  ::Bool,
+        "PrivateKey" =>  ::String,
+        "TeamId" =>  ::String,
+        "TokenKey" =>  ::String,
+        "TokenKeyId" =>  ::String
+    ]
+```
+
+## `application-id = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`UpdateApnsVoipSandboxChannelResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateApnsVoipSandboxChannel)
+"""
+
+@inline update_apns_voip_sandbox_channel(aws::AWSConfig=default_aws_config(); args...) = update_apns_voip_sandbox_channel(aws, args)
+
+@inline update_apns_voip_sandbox_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/channels/apns_voip_sandbox", args)
+
+@inline update_apns_voip_sandbox_channel(args) = update_apns_voip_sandbox_channel(default_aws_config(), args)
+
+
+"""
     using AWSSDK.Pinpoint.update_application_settings
     update_application_settings([::AWSConfig], arguments::Dict)
     update_application_settings([::AWSConfig]; application-id=, WriteApplicationSettingsRequest=)
@@ -1977,6 +2689,8 @@ Used to update the settings for an app.
  WriteApplicationSettingsRequest = [
         "Limits" =>  [
             "Daily" =>  ::Int,
+            "MaximumDuration" =>  ::Int,
+            "MessagesPerSecond" =>  ::Int,
             "Total" =>  ::Int
         ],
         "QuietTime" =>  [
@@ -2004,6 +2718,55 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 @inline update_application_settings(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/settings", args)
 
 @inline update_application_settings(args) = update_application_settings(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.update_baidu_channel
+    update_baidu_channel([::AWSConfig], arguments::Dict)
+    update_baidu_channel([::AWSConfig]; application-id=, BaiduChannelRequest=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/channels/baidu", arguments::Dict)
+    pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/channels/baidu", application-id=, BaiduChannelRequest=)
+
+# UpdateBaiduChannel Operation
+
+Update a BAIDU GCM channel
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+
+
+
+## `BaiduChannelRequest = [ ... ]` -- *Required*
+
+```
+ BaiduChannelRequest = [
+        "ApiKey" =>  ::String,
+        "Enabled" =>  ::Bool,
+        "SecretKey" =>  ::String
+    ]
+```
+
+
+
+# Returns
+
+`UpdateBaiduChannelResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateBaiduChannel)
+"""
+
+@inline update_baidu_channel(aws::AWSConfig=default_aws_config(); args...) = update_baidu_channel(aws, args)
+
+@inline update_baidu_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/channels/baidu", args)
+
+@inline update_baidu_channel(args) = update_baidu_channel(default_aws_config(), args)
 
 
 """
@@ -2035,7 +2798,33 @@ Use to update a campaign.
  WriteCampaignRequest = [
         "AdditionalTreatments" =>  [[
             "MessageConfiguration" =>  [
+                "ADMMessage" =>  [
+                    "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
+                    "Body" =>  ::String,
+                    "ImageIconUrl" =>  ::String,
+                    "ImageSmallIconUrl" =>  ::String,
+                    "ImageUrl" =>  ::String,
+                    "JsonBody" =>  ::String,
+                    "MediaUrl" =>  ::String,
+                    "RawContent" =>  ::String,
+                    "SilentPush" =>  ::Bool,
+                    "Title" =>  ::String,
+                    "Url" =>  ::String
+                ],
                 "APNSMessage" =>  [
+                    "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
+                    "Body" =>  ::String,
+                    "ImageIconUrl" =>  ::String,
+                    "ImageSmallIconUrl" =>  ::String,
+                    "ImageUrl" =>  ::String,
+                    "JsonBody" =>  ::String,
+                    "MediaUrl" =>  ::String,
+                    "RawContent" =>  ::String,
+                    "SilentPush" =>  ::Bool,
+                    "Title" =>  ::String,
+                    "Url" =>  ::String
+                ],
+                "BaiduMessage" =>  [
                     "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
                     "Body" =>  ::String,
                     "ImageIconUrl" =>  ::String,
@@ -2106,10 +2895,38 @@ Use to update a campaign.
         "IsPaused" =>  ::Bool,
         "Limits" =>  [
             "Daily" =>  ::Int,
+            "MaximumDuration" =>  ::Int,
+            "MessagesPerSecond" =>  ::Int,
             "Total" =>  ::Int
         ],
         "MessageConfiguration" =>  [
+            "ADMMessage" =>  [
+                "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
+                "Body" =>  ::String,
+                "ImageIconUrl" =>  ::String,
+                "ImageSmallIconUrl" =>  ::String,
+                "ImageUrl" =>  ::String,
+                "JsonBody" =>  ::String,
+                "MediaUrl" =>  ::String,
+                "RawContent" =>  ::String,
+                "SilentPush" =>  ::Bool,
+                "Title" =>  ::String,
+                "Url" =>  ::String
+            ],
             "APNSMessage" =>  [
+                "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
+                "Body" =>  ::String,
+                "ImageIconUrl" =>  ::String,
+                "ImageSmallIconUrl" =>  ::String,
+                "ImageUrl" =>  ::String,
+                "JsonBody" =>  ::String,
+                "MediaUrl" =>  ::String,
+                "RawContent" =>  ::String,
+                "SilentPush" =>  ::Bool,
+                "Title" =>  ::String,
+                "Url" =>  ::String
+            ],
+            "BaiduMessage" =>  [
                 "Action" =>  "OPEN_APP", "DEEP_LINK" or "URL",
                 "Body" =>  ::String,
                 "ImageIconUrl" =>  ::String,
@@ -2278,7 +3095,7 @@ Use to update an endpoint.
  EndpointRequest = [
         "Address" =>  ::String,
         "Attributes" =>  ::Dict{String,String},
-        "ChannelType" =>  "GCM", "APNS", "APNS_SANDBOX", "ADM", "SMS" or "EMAIL",
+        "ChannelType" =>  "GCM", "APNS", "APNS_SANDBOX", "APNS_VOIP", "APNS_VOIP_SANDBOX", "ADM", "SMS", "EMAIL" or "BAIDU",
         "Demographic" =>  [
             "AppVersion" =>  ::String,
             "Locale" =>  ::String,
@@ -2354,7 +3171,7 @@ Use to update a batch of endpoints.
  EndpointBatchRequest = ["Item" =>  [[
             "Address" =>  ::String,
             "Attributes" =>  ::Dict{String,String},
-            "ChannelType" =>  "GCM", "APNS", "APNS_SANDBOX", "ADM", "SMS" or "EMAIL",
+            "ChannelType" =>  "GCM", "APNS", "APNS_SANDBOX", "APNS_VOIP", "APNS_VOIP_SANDBOX", "ADM", "SMS", "EMAIL" or "BAIDU",
             "Demographic" =>  [
                 "AppVersion" =>  ::String,
                 "Locale" =>  ::String,
@@ -2567,7 +3384,8 @@ Update an SMS channel
 ```
  SMSChannelRequest = [
         "Enabled" =>  ::Bool,
-        "SenderId" =>  ::String
+        "SenderId" =>  ::String,
+        "ShortCode" =>  ::String
     ]
 ```
 

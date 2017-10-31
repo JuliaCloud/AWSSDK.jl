@@ -43,7 +43,7 @@ The device pool's description.
 The device pool's rules.
 ```
  rules = [[
-        "attribute" =>  "ARN", "PLATFORM", "FORM_FACTOR", "MANUFACTURER", "REMOTE_ACCESS_ENABLED" or "APPIUM_VERSION",
+        "attribute" =>  "ARN", "PLATFORM", "FORM_FACTOR", "MANUFACTURER", "REMOTE_ACCESS_ENABLED", "REMOTE_DEBUG_ENABLED" or "APPIUM_VERSION",
         "operator" =>  "EQUALS", "LESS_THAN", "GREATER_THAN", "IN", "NOT_IN" or "CONTAINS",
         "value" =>  ::String
     ], ...]
@@ -265,8 +265,20 @@ The Amazon Resource Name (ARN) of the project for which you want to create a rem
 The Amazon Resource Name (ARN) of the device for which you want to create a remote access session.
 
 
+## `sshPublicKey = ::String`
+The public key of the `ssh` key pair you want to use for connecting to remote devices in your remote debugging session. This is only required if `remoteDebugEnabled` is set to `true`.
+
+
+## `remoteDebugEnabled = ::Bool`
+Set to `true` if you want to access devices remotely for debugging in your remote access session.
+
+
 ## `name = ::String`
 The name of the remote access session that you wish to create.
+
+
+## `clientId = ::String`
+Unique identifier for the client. If you want access to multiple devices on the same client, you should pass the same `clientId` value in each call to `CreateRemoteAccessSession`. This is required only if `remoteDebugEnabled` is set to true `true`.
 
 
 ## `configuration = ["billingMethod" =>  "METERED" or "UNMETERED"]`
@@ -3068,6 +3080,11 @@ Information about the settings for the run to be scheduled.
             "latitude" => <required> double,
             "longitude" => <required> double
         ],
+        "customerArtifactPaths" =>  [
+            "iosPaths" =>  [::String, ...],
+            "androidPaths" =>  [::String, ...],
+            "deviceHostPaths" =>  [::String, ...]
+        ],
         "radios" =>  [
             "wifi" =>  ::Bool,
             "bluetooth" =>  ::Bool,
@@ -3264,7 +3281,7 @@ A description of the device pool you wish to update.
 Represents the rules you wish to modify for the device pool. Updating rules is optional; however, if you choose to update rules for your request, the update will replace the existing rules.
 ```
  rules = [[
-        "attribute" =>  "ARN", "PLATFORM", "FORM_FACTOR", "MANUFACTURER", "REMOTE_ACCESS_ENABLED" or "APPIUM_VERSION",
+        "attribute" =>  "ARN", "PLATFORM", "FORM_FACTOR", "MANUFACTURER", "REMOTE_ACCESS_ENABLED", "REMOTE_DEBUG_ENABLED" or "APPIUM_VERSION",
         "operator" =>  "EQUALS", "LESS_THAN", "GREATER_THAN", "IN", "NOT_IN" or "CONTAINS",
         "value" =>  ::String
     ], ...]

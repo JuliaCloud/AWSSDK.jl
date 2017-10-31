@@ -427,27 +427,27 @@ Dict(
             "Confidence" => 100,
             "Landmarks" => [
                 Dict(
-                    "Type" => "EYE_LEFT",
+                    "Type" => "eyeLeft",
                     "X" => 0.6394737362861633,
                     "Y" => 0.40819624066352844
                 ),
                 Dict(
-                    "Type" => "EYE_RIGHT",
+                    "Type" => "eyeRight",
                     "X" => 0.7266660928726196,
                     "Y" => 0.41039225459098816
                 ),
                 Dict(
-                    "Type" => "NOSE_LEFT",
+                    "Type" => "eyeRight",
                     "X" => 0.6912462115287781,
                     "Y" => 0.44240960478782654
                 ),
                 Dict(
-                    "Type" => "MOUTH_DOWN",
+                    "Type" => "mouthDown",
                     "X" => 0.6306198239326477,
                     "Y" => 0.46700039505958557
                 ),
                 Dict(
-                    "Type" => "MOUTH_UP",
+                    "Type" => "mouthUp",
                     "X" => 0.7215608954429626,
                     "Y" => 0.47114261984825134
                 )
@@ -802,27 +802,27 @@ Dict(
                 "Confidence" => 99.9991226196289,
                 "Landmarks" => [
                     Dict(
-                        "Type" => "EYE_LEFT",
+                        "Type" => "eyeLeft",
                         "X" => 0.3976764678955078,
                         "Y" => 0.6248345971107483
                     ),
                     Dict(
-                        "Type" => "EYE_RIGHT",
+                        "Type" => "eyeRight",
                         "X" => 0.4810936450958252,
                         "Y" => 0.6317117214202881
                     ),
                     Dict(
-                        "Type" => "NOSE_LEFT",
+                        "Type" => "noseLeft",
                         "X" => 0.41986238956451416,
                         "Y" => 0.7111940383911133
                     ),
                     Dict(
-                        "Type" => "MOUTH_DOWN",
+                        "Type" => "mouthDown",
                         "X" => 0.40525302290916443,
                         "Y" => 0.7497701048851013
                     ),
                     Dict(
-                        "Type" => "MOUTH_UP",
+                        "Type" => "mouthUp",
                         "X" => 0.4753248989582062,
                         "Y" => 0.7558549642562866
                     )
@@ -860,27 +860,27 @@ Dict(
                 "Confidence" => 99.99950408935547,
                 "Landmarks" => [
                     Dict(
-                        "Type" => "EYE_LEFT",
+                        "Type" => "eyeLeft",
                         "X" => 0.6006892323493958,
                         "Y" => 0.290842205286026
                     ),
                     Dict(
-                        "Type" => "EYE_RIGHT",
+                        "Type" => "eyeRight",
                         "X" => 0.6808141469955444,
                         "Y" => 0.29609042406082153
                     ),
                     Dict(
-                        "Type" => "NOSE_LEFT",
+                        "Type" => "noseLeft",
                         "X" => 0.6395332217216492,
                         "Y" => 0.3522595763206482
                     ),
                     Dict(
-                        "Type" => "MOUTH_DOWN",
+                        "Type" => "mouthDown",
                         "X" => 0.5892083048820496,
                         "Y" => 0.38689887523651123
                     ),
                     Dict(
-                        "Type" => "MOUTH_UP",
+                        "Type" => "mouthUp",
                         "X" => 0.674560010433197,
                         "Y" => 0.394125759601593
                     )

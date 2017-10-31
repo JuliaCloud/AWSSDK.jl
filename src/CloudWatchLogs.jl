@@ -13,6 +13,51 @@ using AWSCore
 
 
 """
+    using AWSSDK.CloudWatchLogs.associate_kms_key
+    associate_kms_key([::AWSConfig], arguments::Dict)
+    associate_kms_key([::AWSConfig]; logGroupName=, kmsKeyId=)
+
+    using AWSCore.Services.logs
+    logs([::AWSConfig], "AssociateKmsKey", arguments::Dict)
+    logs([::AWSConfig], "AssociateKmsKey", logGroupName=, kmsKeyId=)
+
+# AssociateKmsKey Operation
+
+Associates the specified AWS Key Management Service (AWS KMS) customer master key (CMK) with the specified log group.
+
+Associating an AWS KMS CMK with a log group overrides any existing associations between the log group and a CMK. After a CMK is associated with a log group, all newly ingested data for the log group is encrypted using the CMK. This association is stored as long as the data encrypted with the CMK is still within Amazon CloudWatch Logs. This enables Amazon CloudWatch Logs to decrypt this data whenever it is requested.
+
+Note that it can take up to 5 minutes for this operation to take effect.
+
+If you attempt to associate a CMK with a log group but the CMK does not exist or the CMK is disabled, you will receive an `InvalidParameterException` error.
+
+# Arguments
+
+## `logGroupName = ::String` -- *Required*
+The name of the log group.
+
+
+## `kmsKeyId = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the CMK to use when encrypting log data. For more information, see [Amazon Resource Names - AWS Key Management Service (AWS KMS)](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms).
+
+
+
+
+# Exceptions
+
+`InvalidParameterException`, `ResourceNotFoundException`, `OperationAbortedException` or `ServiceUnavailableException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/AssociateKmsKey)
+"""
+
+@inline associate_kms_key(aws::AWSConfig=default_aws_config(); args...) = associate_kms_key(aws, args)
+
+@inline associate_kms_key(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "AssociateKmsKey", args)
+
+@inline associate_kms_key(args) = associate_kms_key(default_aws_config(), args)
+
+
+"""
     using AWSSDK.CloudWatchLogs.cancel_export_task
     cancel_export_task([::AWSConfig], arguments::Dict)
     cancel_export_task([::AWSConfig]; taskId=)
@@ -64,7 +109,7 @@ Creates an export task, which allows you to efficiently export data from a log g
 
 This is an asynchronous call. If all the required information is provided, this operation initiates an export task and responds with the ID of the task. After the task has started, you can use [DescribeExportTasks](@ref) to get the status of the export task. Each account can only have one active (`RUNNING` or `PENDING`) export task at a time. To cancel an export task, use [CancelExportTask](@ref).
 
-You can export logs from multiple log groups or multiple time ranges to the same S3 bucket. To separate out log data for each export task, you can specify a prefix that will be used as the Amazon S3 key prefix for all exported objects.
+You can export logs from multiple log groups or multiple time ranges to the same S3 bucket. To separate out log data for each export task, you can specify a prefix to be used as the Amazon S3 key prefix for all exported objects.
 
 # Arguments
 
@@ -81,11 +126,11 @@ Export only log streams that match the provided prefix. If you don't specify a v
 
 
 ## `from = ::Int` -- *Required*
-The start time of the range for the request, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp earlier than this time are not exported.
+The start time of the range for the request, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp earlier than this time are not exported.
 
 
 ## `to = ::Int` -- *Required*
-The end time of the range for the request, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not exported.
+The end time of the range for the request, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp later than this time are not exported.
 
 
 ## `destination = ::String` -- *Required*
@@ -139,10 +184,18 @@ You must use the following guidelines when naming a log group:
 
 *   Log group names consist of the following characters: a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), '/' (forward slash), and '.' (period).
 
+If you associate a AWS Key Management Service (AWS KMS) customer master key (CMK) with the log group, ingested data is encrypted using the CMK. This association is stored as long as the data encrypted with the CMK is still within Amazon CloudWatch Logs. This enables Amazon CloudWatch Logs to decrypt this data whenever it is requested.
+
+If you attempt to associate a CMK with the log group but the CMK does not exist or the CMK is disabled, you will receive an `InvalidParameterException` error.
+
 # Arguments
 
 ## `logGroupName = ::String` -- *Required*
 The name of the log group.
+
+
+## `kmsKeyId = ::String`
+The Amazon Resource Name (ARN) of the CMK to use when encrypting log data. For more information, see [Amazon Resource Names - AWS Key Management Service (AWS KMS)](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms).
 
 
 ## `tags = ::Dict{String,String}`
@@ -360,6 +413,41 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 @inline delete_metric_filter(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DeleteMetricFilter", args)
 
 @inline delete_metric_filter(args) = delete_metric_filter(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudWatchLogs.delete_resource_policy
+    delete_resource_policy([::AWSConfig], arguments::Dict)
+    delete_resource_policy([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.logs
+    logs([::AWSConfig], "DeleteResourcePolicy", arguments::Dict)
+    logs([::AWSConfig], "DeleteResourcePolicy", <keyword arguments>)
+
+# DeleteResourcePolicy Operation
+
+Deletes a resource policy from this account. This revokes the access of the identities in that policy to put log events to this account.
+
+# Arguments
+
+## `policyName = ::String`
+The name of the policy to be revoked. This parameter is required.
+
+
+
+
+# Exceptions
+
+`InvalidParameterException`, `ResourceNotFoundException` or `ServiceUnavailableException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteResourcePolicy)
+"""
+
+@inline delete_resource_policy(aws::AWSConfig=default_aws_config(); args...) = delete_resource_policy(aws, args)
+
+@inline delete_resource_policy(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DeleteResourcePolicy", args)
+
+@inline delete_resource_policy(args) = delete_resource_policy(default_aws_config(), args)
 
 
 """
@@ -607,7 +695,7 @@ The name of the log group.
 ## `logStreamNamePrefix = ::String`
 The prefix to match.
 
-You cannot specify this parameter if `orderBy` is `LastEventTime`.
+iIf `orderBy` is `LastEventTime`,you cannot specify this parameter.
 
 
 ## `orderBy = "LogStreamName" or "LastEventTime"`
@@ -615,7 +703,7 @@ If the value is `LogStreamName`, the results are ordered by log stream name. If 
 
 If you order the results by event time, you cannot specify the `logStreamNamePrefix` parameter.
 
-lastEventTimestamp represents the time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. lastEventTimeStamp updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.
+lastEventTimestamp represents the time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. lastEventTimeStamp updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.
 
 
 ## `descending = ::Bool`
@@ -661,7 +749,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 # DescribeMetricFilters Operation
 
-Lists the specified metric filters. You can list all the metric filters or filter the results by log name, prefix, metric name, and metric namespace. The results are ASCII-sorted by filter name.
+Lists the specified metric filters. You can list all the metric filters or filter the results by log name, prefix, metric name, or metric namespace. The results are ASCII-sorted by filter name.
 
 # Arguments
 
@@ -682,7 +770,7 @@ The maximum number of items returned. If you don't specify a value, the default 
 
 
 ## `metricName = ::String`
-The name of the CloudWatch metric.
+
 
 
 ## `metricNamespace = ::String`
@@ -707,6 +795,49 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 @inline describe_metric_filters(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DescribeMetricFilters", args)
 
 @inline describe_metric_filters(args) = describe_metric_filters(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudWatchLogs.describe_resource_policies
+    describe_resource_policies([::AWSConfig], arguments::Dict)
+    describe_resource_policies([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.logs
+    logs([::AWSConfig], "DescribeResourcePolicies", arguments::Dict)
+    logs([::AWSConfig], "DescribeResourcePolicies", <keyword arguments>)
+
+# DescribeResourcePolicies Operation
+
+Lists the resource policies in this account.
+
+# Arguments
+
+## `nextToken = ::String`
+
+
+
+## `limit = ::Int`
+The maximum number of resource policies to be displayed with one call of this API.
+
+
+
+
+# Returns
+
+`DescribeResourcePoliciesResponse`
+
+# Exceptions
+
+`InvalidParameterException` or `ServiceUnavailableException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeResourcePolicies)
+"""
+
+@inline describe_resource_policies(aws::AWSConfig=default_aws_config(); args...) = describe_resource_policies(aws, args)
+
+@inline describe_resource_policies(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DescribeResourcePolicies", args)
+
+@inline describe_resource_policies(args) = describe_resource_policies(default_aws_config(), args)
 
 
 """
@@ -761,6 +892,45 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
+    using AWSSDK.CloudWatchLogs.disassociate_kms_key
+    disassociate_kms_key([::AWSConfig], arguments::Dict)
+    disassociate_kms_key([::AWSConfig]; logGroupName=)
+
+    using AWSCore.Services.logs
+    logs([::AWSConfig], "DisassociateKmsKey", arguments::Dict)
+    logs([::AWSConfig], "DisassociateKmsKey", logGroupName=)
+
+# DisassociateKmsKey Operation
+
+Disassociates the associated AWS Key Management Service (AWS KMS) customer master key (CMK) from the specified log group.
+
+After the AWS KMS CMK is disassociated from the log group, AWS CloudWatch Logs stops encrypting newly ingested data for the log group. All previously ingested data remains encrypted, and AWS CloudWatch Logs requires permissions for the CMK whenever the encrypted data is requested.
+
+Note that it can take up to 5 minutes for this operation to take effect.
+
+# Arguments
+
+## `logGroupName = ::String` -- *Required*
+The name of the log group.
+
+
+
+
+# Exceptions
+
+`InvalidParameterException`, `ResourceNotFoundException`, `OperationAbortedException` or `ServiceUnavailableException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DisassociateKmsKey)
+"""
+
+@inline disassociate_kms_key(aws::AWSConfig=default_aws_config(); args...) = disassociate_kms_key(aws, args)
+
+@inline disassociate_kms_key(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DisassociateKmsKey", args)
+
+@inline disassociate_kms_key(args) = disassociate_kms_key(default_aws_config(), args)
+
+
+"""
     using AWSSDK.CloudWatchLogs.filter_log_events
     filter_log_events([::AWSConfig], arguments::Dict)
     filter_log_events([::AWSConfig]; logGroupName=, <keyword arguments>)
@@ -773,7 +943,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 Lists log events from the specified log group. You can list all the log events or filter the results using a filter pattern, a time range, and the name of the log stream.
 
-By default, this operation returns as many log events as can fit in 1MB (up to 10,000 log events), or all the events found within the time range that you specify. If the results include a token, then there are more log events available, and you can get additional results by specifying the token in a subsequent call.
+By default, this operation returns as many log events as can fit in 1 MB (up to 10,000 log events), or all the events found within the time range that you specify. If the results include a token, then there are more log events available, and you can get additional results by specifying the token in a subsequent call.
 
 # Arguments
 
@@ -786,11 +956,11 @@ Optional list of log stream names.
 
 
 ## `startTime = ::Int`
-The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp prior to this time are not returned.
+The start of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp before this time are not returned.
 
 
 ## `endTime = ::Int`
-The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not returned.
+The end of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp later than this time are not returned.
 
 
 ## `filterPattern = ::String`
@@ -806,7 +976,7 @@ The maximum number of events to return. The default is 10,000 events.
 
 
 ## `interleaved = ::Bool`
-If the value is true, the operation makes a best effort to provide responses that contain events from multiple log streams within the log group interleaved in a single response. If the value is false all the matched log events in the first log stream are searched first, then those in the next log stream, and so on. The default is false.
+If the value is true, the operation makes a best effort to provide responses that contain events from multiple log streams within the log group, interleaved in a single response. If the value is false, all the matched log events in the first log stream are searched first, then those in the next log stream, and so on. The default is false.
 
 
 
@@ -842,7 +1012,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 Lists log events from the specified log stream. You can list all the log events or filter using a time range.
 
-By default, this operation returns as many log events as can fit in a response size of 1MB (up to 10,000 log events). If the results include tokens, there are more log events available. You can get additional log events by specifying one of the tokens in a subsequent call.
+By default, this operation returns as many log events as can fit in a response size of 1MB (up to 10,000 log events). You can get additional log events by specifying one of the tokens in a subsequent call.
 
 # Arguments
 
@@ -855,11 +1025,11 @@ The name of the log stream.
 
 
 ## `startTime = ::Int`
-The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp earlier than this time are not included.
+The start of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp earlier than this time are not included.
 
 
 ## `endTime = ::Int`
-The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not included.
+The end of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp later than this time are not included.
 
 
 ## `nextToken = ::String`
@@ -867,7 +1037,7 @@ The token for the next set of items to return. (You received this token from a p
 
 
 ## `limit = ::Int`
-The maximum number of log events returned. If you don't specify a value, the maximum is as many log events as can fit in a response size of 1MB, up to 10,000 log events.
+The maximum number of log events returned. If you don't specify a value, the maximum is as many log events as can fit in a response size of 1 MB, up to 10,000 log events.
 
 
 ## `startFromHead = ::Bool`
@@ -907,8 +1077,6 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 Lists the tags for the specified log group.
 
-To add tags, use [TagLogGroup](@ref). To remove tags, use [UntagLogGroup](@ref).
-
 # Arguments
 
 ## `logGroupName = ::String` -- *Required*
@@ -946,9 +1114,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 # PutDestination Operation
 
-Creates or updates a destination. A destination encapsulates a physical resource (such as a Kinesis stream) and enables you to subscribe to a real-time stream of log events of a different account, ingested using [PutLogEvents](@ref). Currently, the only supported physical resource is a Amazon Kinesis stream belonging to the same account as the destination.
+Creates or updates a destination. A destination encapsulates a physical resource (such as an Amazon Kinesis stream) and enables you to subscribe to a real-time stream of log events for a different account, ingested using [PutLogEvents](@ref). Currently, the only supported physical resource is a Kinesis stream belonging to the same account as the destination.
 
-A destination controls what is written to its Amazon Kinesis stream through an access policy. By default, `PutDestination` does not set any access policy with the destination, which means a cross-account user cannot call [PutSubscriptionFilter](@ref) against this destination. To enable this, the destination owner must call [PutDestinationPolicy](@ref) after `PutDestination`.
+Through an access policy, a destination controls what is written to its Kinesis stream. By default, `PutDestination` does not set any access policy with the destination, which means a cross-account user cannot call [PutSubscriptionFilter](@ref) against this destination. To enable this, the destination owner must call [PutDestinationPolicy](@ref) after `PutDestination`.
 
 # Arguments
 
@@ -957,11 +1125,11 @@ A name for the destination.
 
 
 ## `targetArn = ::String` -- *Required*
-The ARN of an Amazon Kinesis stream to deliver matching log events to.
+The ARN of an Amazon Kinesis stream to which to deliver matching log events.
 
 
 ## `roleArn = ::String` -- *Required*
-The ARN of an IAM role that grants CloudWatch Logs permissions to call Amazon Kinesis PutRecord on the destination stream.
+The ARN of an IAM role that grants CloudWatch Logs permissions to call the Amazon Kinesis PutRecord operation on the destination stream.
 
 
 
@@ -1036,7 +1204,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 Uploads a batch of log events to the specified log stream.
 
-You must include the sequence token obtained from the response of the previous call. An upload in a newly created log stream does not require a sequence token. You can also get the sequence token using [DescribeLogStreams](@ref).
+You must include the sequence token obtained from the response of the previous call. An upload in a newly created log stream does not require a sequence token. You can also get the sequence token using [DescribeLogStreams](@ref). If you call `PutLogEvents` twice within a narrow time period using the same value for `sequenceToken`, both calls may be successful, or one may be rejected.
 
 The batch of events must satisfy the following constraints:
 
@@ -1046,7 +1214,7 @@ The batch of events must satisfy the following constraints:
 
 *   None of the log events in the batch can be older than 14 days or the retention period of the log group.
 
-*   The log events in the batch must be in chronological ordered by their timestamp (the time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC).
+*   The log events in the batch must be in chronological ordered by their time stamp (the time the event occurred, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC).
 
 *   The maximum number of log events in a batch is 10,000.
 
@@ -1072,7 +1240,7 @@ The log events.
 ```
 
 ## `sequenceToken = ::String`
-The sequence token.
+The sequence token obtained from the response of the previous `PutLogEvents` call. An upload in a newly created log stream does not require a sequence token. You can also get the sequence token using [DescribeLogStreams](@ref). If you call `PutLogEvents` twice within a narrow time period using the same value for `sequenceToken`, both calls may be successful, or one may be rejected.
 
 
 
@@ -1125,7 +1293,7 @@ A filter pattern for extracting metric data out of ingested log events.
 
 
 ## `metricTransformations = [[ ... ], ...]` -- *Required*
-A collection of information needed to define how metric data gets emitted.
+A collection of information that defines how metric data gets emitted.
 ```
  metricTransformations = [[
         "metricName" => <required> ::String,
@@ -1152,6 +1320,53 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 
 """
+    using AWSSDK.CloudWatchLogs.put_resource_policy
+    put_resource_policy([::AWSConfig], arguments::Dict)
+    put_resource_policy([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.logs
+    logs([::AWSConfig], "PutResourcePolicy", arguments::Dict)
+    logs([::AWSConfig], "PutResourcePolicy", <keyword arguments>)
+
+# PutResourcePolicy Operation
+
+Creates or updates a resource policy allowing other AWS services to put log events to this account, such as Amazon Route 53. An account can have up to 50 resource policies per region.
+
+# Arguments
+
+## `policyName = ::String`
+Name of the new policy. This parameter is required.
+
+
+## `policyDocument = ::String`
+Details of the new policy, including the identity of the principal that is enabled to put logs to this account. This is formatted as a JSON string.
+
+The following example creates a resource policy enabling the Route 53 service to put DNS query logs in to the specified log group. Replace "logArn" with the ARN of your CloudWatch Logs resource, such as a log group or log stream.
+
+{ "Version": "2012-10-17" "Statement": [ { "Sid": "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": { "Service": [ "route53.amazonaws.com" ] }, "Action":"logs:PutLogEvents", "Resource": logArn } ] }
+
+
+
+
+# Returns
+
+`PutResourcePolicyResponse`
+
+# Exceptions
+
+`InvalidParameterException`, `LimitExceededException` or `ServiceUnavailableException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutResourcePolicy)
+"""
+
+@inline put_resource_policy(aws::AWSConfig=default_aws_config(); args...) = put_resource_policy(aws, args)
+
+@inline put_resource_policy(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "PutResourcePolicy", args)
+
+@inline put_resource_policy(args) = put_resource_policy(default_aws_config(), args)
+
+
+"""
     using AWSSDK.CloudWatchLogs.put_retention_policy
     put_retention_policy([::AWSConfig], arguments::Dict)
     put_retention_policy([::AWSConfig]; logGroupName=, retentionInDays=)
@@ -1162,7 +1377,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2
 
 # PutRetentionPolicy Operation
 
-Sets the retention of the specified log group. A retention policy allows you to configure the number of days you want to retain log events in the specified log group.
+Sets the retention of the specified log group. A retention policy allows you to configure the number of days for which to retain log events in the specified log group.
 
 # Arguments
 
@@ -1207,11 +1422,11 @@ Creates or updates a subscription filter and associates it with the specified lo
 
 *   A logical destination that belongs to a different account, for cross-account delivery.
 
-*   An Amazon Kinesis Firehose stream that belongs to the same account as the subscription filter, for same-account delivery.
+*   An Amazon Kinesis Firehose delivery stream that belongs to the same account as the subscription filter, for same-account delivery.
 
 *   An AWS Lambda function that belongs to the same account as the subscription filter, for same-account delivery.
 
-There can only be one subscription filter associated with a log group. If you are updating an existing filter, you must specify the correct name in `filterName`. Otherwise, the call will fail because you cannot associate a second filter with a log group.
+There can only be one subscription filter associated with a log group. If you are updating an existing filter, you must specify the correct name in `filterName`. Otherwise, the call fails because you cannot associate a second filter with a log group.
 
 # Arguments
 
@@ -1220,7 +1435,7 @@ The name of the log group.
 
 
 ## `filterName = ::String` -- *Required*
-A name for the subscription filter. If you are updating an existing filter, you must specify the correct name in `filterName`. Otherwise, the call will fail because you cannot associate a second filter with a log group. To find the name of the filter currently associated with a log group, use [DescribeSubscriptionFilters](@ref).
+A name for the subscription filter. If you are updating an existing filter, you must specify the correct name in `filterName`. Otherwise, the call fails because you cannot associate a second filter with a log group. To find the name of the filter currently associated with a log group, use [DescribeSubscriptionFilters](@ref).
 
 
 ## `filterPattern = ::String` -- *Required*
@@ -1234,7 +1449,7 @@ The ARN of the destination to deliver matching log events to. Currently, the sup
 
 *   A logical destination (specified using an ARN) belonging to a different account, for cross-account delivery.
 
-*   An Amazon Kinesis Firehose stream belonging to the same account as the subscription filter, for same-account delivery.
+*   An Amazon Kinesis Firehose delivery stream belonging to the same account as the subscription filter, for same-account delivery.
 
 *   An AWS Lambda function belonging to the same account as the subscription filter, for same-account delivery.
 
@@ -1244,7 +1459,7 @@ The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingest
 
 
 ## `distribution = "Random" or "ByLogStream"`
-The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream. By default, log data is grouped by log stream. For a more even distribution, you can group log data randomly.
+The method used to distribute log data to the destination. By default log data is grouped by log stream, but the grouping can be set to random for a more even distribution. This property is only applicable when the destination is an Amazon Kinesis stream.
 
 
 

@@ -723,7 +723,7 @@ The maximum number of results to return in a single call. To retrieve the remain
 
 
 ## `nextToken = ::String`
-The token that was returned from the previous list pipeline executions call, which can be used to return the next set of pipeline executions in the list.
+The token that was returned from the previous ListPipelineExecutions call, which can be used to return the next set of pipeline executions in the list.
 
 
 

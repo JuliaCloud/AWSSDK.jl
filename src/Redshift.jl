@@ -2065,7 +2065,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 # DescribeEventSubscriptions Operation
 
-Lists descriptions of all the Amazon Redshift event notifications subscription for a customer account. If you specify a subscription name, lists the description for that subscription.
+Lists descriptions of all the Amazon Redshift event notification subscriptions for a customer account. If you specify a subscription name, lists the description for that subscription.
+
+If you specify both tag keys and tag values in the same request, Amazon Redshift returns all event notification subscriptions that match any combination of the specified keys and values. For example, if you have `owner` and `environment` for tag keys, and `admin` and `test` for tag values, all subscriptions that have any combination of those values are returned.
+
+If both tag keys and values are omitted from the request, subscriptions are returned regardless of whether they have tag keys or values associated with them.
 
 # Arguments
 
@@ -2082,7 +2086,15 @@ Constraints: minimum 20, maximum 100.
 
 
 ## `Marker = ::String`
-An optional parameter that specifies the starting point to return a set of response records. When the results of a [DescribeEventSubscriptions](@ref) request exceed the value specified in `MaxRecords`, AWS returns a value in the `Marker` field of the response. You can retrieve the next set of response records by providing the returned marker value in the `Marker` parameter and retrying the request.
+An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeEventSubscriptions request exceed the value specified in `MaxRecords`, AWS returns a value in the `Marker` field of the response. You can retrieve the next set of response records by providing the returned marker value in the `Marker` parameter and retrying the request.
+
+
+## `TagKeys = [::String, ...]`
+A tag key or keys for which you want to return all matching event notification subscriptions that are associated with the specified key or keys. For example, suppose that you have subscriptions that are tagged with keys called `owner` and `environment`. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the subscriptions that have either or both of these tag keys associated with them.
+
+
+## `TagValues = [::String, ...]`
+A tag value or values for which you want to return all matching event notification subscriptions that are associated with the specified tag value or values. For example, suppose that you have subscriptions that are tagged with values called `admin` and `test`. If you specify both of these tag values in the request, Amazon Redshift returns a response with the subscriptions that have either or both of these tag values associated with them.
 
 
 
@@ -2093,7 +2105,7 @@ An optional parameter that specifies the starting point to return a set of respo
 
 # Exceptions
 
-`SubscriptionNotFoundFault`.
+`SubscriptionNotFoundFault` or `InvalidTagFault`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeEventSubscriptions)
 """
@@ -2735,7 +2747,7 @@ The type of resource with which you want to view tags. Valid resource types are:
 
 *   Snapshot copy grant
 
-For more information about Amazon Redshift resource types and constructing ARNs, go to [Constructing an Amazon Redshift Amazon Resource Name (ARN)](http://docs.aws.amazon.com/redshift/latest/mgmt/constructing-redshift-arn.html) in the Amazon Redshift Cluster Management Guide.
+For more information about Amazon Redshift resource types and constructing ARNs, go to [Specifying Policy Elements: Actions, Effects, Resources, and Principals](http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions) in the Amazon Redshift Cluster Management Guide.
 
 
 ## `MaxRecords = ::Int`
@@ -2999,9 +3011,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 # GetClusterCredentials Operation
 
-Returns a database user name and temporary password with temporary authorization to log in to an Amazon Redshift database. The action returns the database user name prefixed with `IAM:` if `AutoCreate` is `False` or `IAMA:` if `AutoCreate` is `True`. You can optionally specify one or more database user groups that the user will join at log in. By default, the temporary credentials expire in 900 seconds. You can optionally specify a duration between 900 seconds (15 minutes) and 3600 seconds (60 minutes). For more information, see Generating IAM Database User Credentials in the Amazon Redshift Cluster Management Guide.
+Returns a database user name and temporary password with temporary authorization to log on to an Amazon Redshift database. The action returns the database user name prefixed with `IAM:` if `AutoCreate` is `False` or `IAMA:` if `AutoCreate` is `True`. You can optionally specify one or more database user groups that the user will join at log on. By default, the temporary credentials expire in 900 seconds. You can optionally specify a duration between 900 seconds (15 minutes) and 3600 seconds (60 minutes). For more information, see [Using IAM Authentication to Generate Database User Credentials](http://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html) in the Amazon Redshift Cluster Management Guide.
 
-The IAM user or role that executes GetClusterCredentials must have an IAM policy attached that allows the `redshift:GetClusterCredentials` action with access to the `dbuser` resource on the cluster. The user name specified for `dbuser` in the IAM policy and the user name specified for the `DbUser` parameter must match.
+The AWS Identity and Access Management (IAM)user or role that executes GetClusterCredentials must have an IAM policy attached that allows access to all necessary actions and resources. For more information about permissions, see [Resource Policies for GetClusterCredentials](http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html#redshift-policy-resources.getclustercredentials-resources) in the Amazon Redshift Cluster Management Guide.
 
 If the `DbGroups` parameter is specified, the IAM policy must allow the `redshift:JoinGroup` action with access to the listed `dbgroups`.
 
@@ -3014,13 +3026,13 @@ If the `DbName` parameter is specified, the IAM policy must allow access to the 
 ## `DbUser = ::String` -- *Required*
 The name of a database user. If a user name matching `DbUser` exists in the database, the temporary user credentials have the same permissions as the existing user. If `DbUser` doesn't exist in the database and `Autocreate` is `True`, a new user is created using the value for `DbUser` with PUBLIC permissions. If a database user matching the value for `DbUser` doesn't exist and `Autocreate` is `False`, then the command succeeds but the connection attempt will fail because the user doesn't exist in the database.
 
-For more information, see [CREATE USER](http://docs.aws.amazon.com/http:/docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html) in the Amazon Redshift Database Developer Guide.
+For more information, see [CREATE USER](http://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html) in the Amazon Redshift Database Developer Guide.
 
 Constraints:
 
-*   Must be 1 to 128 alphanumeric characters or hyphens
+*   Must be 1 to 64 alphanumeric characters or hyphens
 
-*   Must contain only lowercase letters.
+*   Must contain only lowercase letters, numbers, underscore, plus sign, period (dot), at symbol (@), or hyphen.
 
 *   First character must be a letter.
 
@@ -3030,13 +3042,17 @@ Constraints:
 
 
 ## `DbName = ::String`
-The name of a database that `DbUser` is authorized to log on to. If `DbName` is not specified, `DbUser` can log in to any existing database.
+The name of a database that `DbUser` is authorized to log on to. If `DbName` is not specified, `DbUser` can log on to any existing database.
 
 Constraints:
 
 *   Must be 1 to 64 alphanumeric characters or hyphens
 
-*   Must contain only lowercase letters.
+*   Must contain only lowercase letters, numbers, underscore, plus sign, period (dot), at symbol (@), or hyphen.
+
+*   First character must be a letter.
+
+*   Must not contain a colon ( : ) or slash ( / ).
 
 *   Cannot be a reserved word. A list of reserved words can be found in [Reserved Words](http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html) in the Amazon Redshift Database Developer Guide.
 
@@ -3054,11 +3070,23 @@ Default: 900
 
 
 ## `AutoCreate = ::Bool`
-Create a database user with the name specified for `DbUser` if one does not exist.
+Create a database user with the name specified for the user named in `DbUser` if one does not exist.
 
 
 ## `DbGroups = [::String, ...]`
-A list of the names of existing database groups that `DbUser` will join for the current session. If not specified, the new user is added only to PUBLIC.
+A list of the names of existing database groups that the user named in `DbUser` will join for the current session, in addition to any group memberships for an existing user. If not specified, a new user is added only to PUBLIC.
+
+Database group name constraints
+
+*   Must be 1 to 64 alphanumeric characters or hyphens
+
+*   Must contain only lowercase letters, numbers, underscore, plus sign, period (dot), at symbol (@), or hyphen.
+
+*   First character must be a letter.
+
+*   Must not contain a colon ( : ) or slash ( / ).
+
+*   Cannot be a reserved word. A list of reserved words can be found in [Reserved Words](http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html) in the Amazon Redshift Database Developer Guide.
 
 
 

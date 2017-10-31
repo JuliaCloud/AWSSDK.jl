@@ -23,7 +23,7 @@ using AWSCore
 
 # AddTagsToResource Operation
 
-Adds or overwrites one or more tags for the specified resource. Tags are metadata that you assign to your managed instances, Maintenance Windows, or Parameter Store parameters. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment. Each tag consists of a key and an optional value, both of which you define. For example, you could define a set of tags for your account's managed instances that helps you track each instance's owner and stack level. For example: Key=Owner and Value=DbAdmin, SysAdmin, or Dev. Or Key=Stack and Value=Production, Pre-Production, or Test.
+Adds or overwrites one or more tags for the specified resource. Tags are metadata that you can assign to your documents, managed instances, Maintenance Windows, Parameter Store parameters, and patch baselines. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment. Each tag consists of a key and an optional value, both of which you define. For example, you could define a set of tags for your account's managed instances that helps you track each instance's owner and stack level. For example: Key=Owner and Value=DbAdmin, SysAdmin, or Dev. Or Key=Stack and Value=Production, Pre-Production, or Test.
 
 Each resource can have a maximum of 10 tags.
 
@@ -33,12 +33,16 @@ For more information about tags, see [Tagging Your Amazon EC2 Resources](http://
 
 # Arguments
 
-## `ResourceType = "ManagedInstance", "MaintenanceWindow" or "Parameter"` -- *Required*
+## `ResourceType = "Document", "ManagedInstance", "MaintenanceWindow", "Parameter" or "PatchBaseline"` -- *Required*
 Specifies the type of resource you are tagging.
 
 
 ## `ResourceId = ::String` -- *Required*
 The resource ID you want to tag.
+
+For the ManagedInstance, MaintenanceWindow, and PatchBaseline values, use the ID of the resource, such as mw-01234361858c9b57b for a Maintenance Window.
+
+For the Document and Parameter values, use the name of the resource.
 
 
 ## `Tags = [[ ... ], ...]` -- *Required*
@@ -538,7 +542,8 @@ Amazon S3 configuration details for the sync.
         "BucketName" => <required> ::String,
         "Prefix" =>  ::String,
         "SyncFormat" => <required> "JsonSerDe",
-        "Region" => <required> ::String
+        "Region" => <required> ::String,
+        "AWSKMSKeyARN" =>  ::String
     ]
 ```
 
@@ -589,7 +594,7 @@ The ID of the activation that you want to delete.
 
 # Exceptions
 
-`InvalidActivationId`, `InvalidActivation` or `InternalServerError`.
+`InvalidActivationId`, `InvalidActivation`, `InternalServerError` or `TooManyUpdates`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeleteActivation)
 """
@@ -1126,7 +1131,7 @@ Describes the associations for the specified Systems Manager document or instanc
 # Arguments
 
 ## `Name = ::String`
-The name of the SSM document.
+The name of the Systems Manager document.
 
 
 ## `InstanceId = ::String`
@@ -1276,12 +1281,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # DescribeDocument Operation
 
-Describes the specified SSM document.
+Describes the specified Systems Manager document.
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-The name of the SSM document.
+The name of the Systems Manager document.
 
 
 ## `DocumentVersion = ::String`
@@ -2455,12 +2460,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # GetDocument Operation
 
-Gets the contents of the specified SSM document.
+Gets the contents of the specified Systems Manager document.
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-The name of the SSM document.
+The name of the Systems Manager document.
 
 
 ## `DocumentVersion = ::String`
@@ -2837,7 +2842,7 @@ Return decrypted values for secure string parameters. This flag is ignored for S
 
 # Exceptions
 
-`InternalServerError`, `InvalidKeyId` or `ParameterNotFound`.
+`InternalServerError`, `InvalidKeyId`, `ParameterNotFound` or `ParameterVersionNotFound`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetParameter)
 """
@@ -3489,7 +3494,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # ListDocuments Operation
 
-Describes one or more of your SSM documents.
+Describes one or more of your Systems Manager documents.
 
 # Arguments
 
@@ -3499,6 +3504,15 @@ One or more filters. Use a filter to return a more specific list of results.
  DocumentFilterList = [[
         "key" => <required> "Name", "Owner", "PlatformTypes" or "DocumentType",
         "value" => <required> ::String
+    ], ...]
+```
+
+## `Filters = [[ ... ], ...]`
+One or more filters. Use a filter to return a more specific list of results.
+```
+ Filters = [[
+        "Key" =>  ::String,
+        "Values" =>  [::String, ...]
     ], ...]
 ```
 
@@ -3704,7 +3718,7 @@ Returns a list of the tags assigned to the specified resource.
 
 # Arguments
 
-## `ResourceType = "ManagedInstance", "MaintenanceWindow" or "Parameter"` -- *Required*
+## `ResourceType = "Document", "ManagedInstance", "MaintenanceWindow", "Parameter" or "PatchBaseline"` -- *Required*
 Returns a list of tags for a specific resource type.
 
 
@@ -3959,7 +3973,7 @@ A regular expression used to validate the parameter value. For example, for Stri
 
 # Exceptions
 
-`InternalServerError`, `InvalidKeyId`, `ParameterLimitExceeded`, `TooManyUpdates`, `ParameterAlreadyExists`, `HierarchyLevelLimitExceededException`, `HierarchyTypeMismatchException`, `InvalidAllowedPatternException`, `ParameterPatternMismatchException` or `UnsupportedParameterType`.
+`InternalServerError`, `InvalidKeyId`, `ParameterLimitExceeded`, `TooManyUpdates`, `ParameterAlreadyExists`, `HierarchyLevelLimitExceededException`, `HierarchyTypeMismatchException`, `InvalidAllowedPatternException`, `ParameterMaxVersionLimitExceeded`, `ParameterPatternMismatchException` or `UnsupportedParameterType`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/PutParameter)
 """
@@ -4269,7 +4283,7 @@ Removes all tags from the specified resource.
 
 # Arguments
 
-## `ResourceType = "ManagedInstance", "MaintenanceWindow" or "Parameter"` -- *Required*
+## `ResourceType = "Document", "ManagedInstance", "MaintenanceWindow", "Parameter" or "PatchBaseline"` -- *Required*
 The type of resource of which you want to remove a tag.
 
 
@@ -4487,6 +4501,10 @@ The version of the Automation document to use for this execution.
 A key-value map of execution parameters, which match the declared parameters in the Automation document.
 
 
+## `ClientToken = ::String`
+User-provided idempotency token. The token must be unique, is case insensitive, enforces the UUID format, and can't be reused.
+
+
 
 
 # Returns
@@ -4495,7 +4513,7 @@ A key-value map of execution parameters, which match the declared parameters in 
 
 # Exceptions
 
-`AutomationDefinitionNotFoundException`, `InvalidAutomationExecutionParametersException`, `AutomationExecutionLimitExceededException`, `AutomationDefinitionVersionNotFoundException` or `InternalServerError`.
+`AutomationDefinitionNotFoundException`, `InvalidAutomationExecutionParametersException`, `AutomationExecutionLimitExceededException`, `AutomationDefinitionVersionNotFoundException`, `IdempotentParameterMismatch` or `InternalServerError`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/StartAutomationExecution)
 """
@@ -4644,7 +4662,7 @@ Updates the status of the Systems Manager document associated with the specified
 # Arguments
 
 ## `Name = ::String` -- *Required*
-The name of the SSM document.
+The name of the Systems Manager document.
 
 
 ## `InstanceId = ::String` -- *Required*

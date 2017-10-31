@@ -13,6 +13,45 @@ using AWSCore
 
 
 """
+    using AWSSDK.CodeBuild.batch_delete_builds
+    batch_delete_builds([::AWSConfig], arguments::Dict)
+    batch_delete_builds([::AWSConfig]; ids=)
+
+    using AWSCore.Services.codebuild
+    codebuild([::AWSConfig], "BatchDeleteBuilds", arguments::Dict)
+    codebuild([::AWSConfig], "BatchDeleteBuilds", ids=)
+
+# BatchDeleteBuilds Operation
+
+Deletes one or more builds.
+
+# Arguments
+
+## `ids = [::String, ...]` -- *Required*
+The IDs of the builds to delete.
+
+
+
+
+# Returns
+
+`BatchDeleteBuildsOutput`
+
+# Exceptions
+
+`InvalidInputException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/BatchDeleteBuilds)
+"""
+
+@inline batch_delete_builds(aws::AWSConfig=default_aws_config(); args...) = batch_delete_builds(aws, args)
+
+@inline batch_delete_builds(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "BatchDeleteBuilds", args)
+
+@inline batch_delete_builds(args) = batch_delete_builds(default_aws_config(), args)
+
+
+"""
     using AWSSDK.CodeBuild.batch_get_builds
     batch_get_builds([::AWSConfig], arguments::Dict)
     batch_get_builds([::AWSConfig]; ids=)
@@ -40,6 +79,281 @@ The IDs of the builds.
 # Exceptions
 
 `InvalidInputException`.
+
+# Example: To get information about builds
+
+The following example gets information about builds with the specified build IDs.
+
+Input:
+```
+[
+    "ids" => [
+        "codebuild-demo-project:9b0ac37f-d19e-4254-9079-f47e9a389eEX",
+        "codebuild-demo-project:b79a46f7-1473-4636-a23f-da9c45c208EX"
+    ]
+]
+```
+
+Output:
+```
+Dict(
+    "builds" => [
+        Dict(
+            "arn" => "arn:aws:codebuild:us-east-1:123456789012:build/codebuild-demo-project:9b0ac37f-d19e-4254-9079-f47e9a389eEX",
+            "artifacts" => Dict(
+                "location" => "arn:aws:s3:::codebuild-123456789012-output-bucket/codebuild-demo-project"
+            ),
+            "buildComplete" => true,
+            "buildStatus" => "SUCCEEDED",
+            "currentPhase" => "COMPLETED",
+            "endTime" => 1.479832474764e9,
+            "environment" => Dict(
+                "type" => "LINUX_CONTAINER",
+                "computeType" => "BUILD_GENERAL1_SMALL",
+                "environmentVariables" => [
+
+                ],
+                "image" => "aws/codebuild/java:openjdk-8",
+                "privilegedMode" => false
+            ),
+            "id" => "codebuild-demo-project:9b0ac37f-d19e-4254-9079-f47e9a389eEX",
+            "initiator" => "MyDemoUser",
+            "logs" => Dict(
+                "deepLink" => "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logEvent:group=/aws/codebuild/codebuild-demo-project;stream=9b0ac37f-d19e-4254-9079-f47e9a389eEX",
+                "groupName" => "/aws/codebuild/codebuild-demo-project",
+                "streamName" => "9b0ac37f-d19e-4254-9079-f47e9a389eEX"
+            ),
+            "phases" => [
+                Dict(
+                    "durationInSeconds" => 0,
+                    "endTime" => 1.47983234223e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "SUBMITTED",
+                    "startTime" => 1.479832341854e9
+                ),
+                Dict(
+                    "contexts" => [
+
+                    ],
+                    "durationInSeconds" => 72,
+                    "endTime" => 1.479832415064e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "PROVISIONING",
+                    "startTime" => 1.47983234223e9
+                ),
+                Dict(
+                    "contexts" => [
+
+                    ],
+                    "durationInSeconds" => 46,
+                    "endTime" => 1.479832461261e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "DOWNLOAD_SOURCE",
+                    "startTime" => 1.479832415064e9
+                ),
+                Dict(
+                    "contexts" => [
+
+                    ],
+                    "durationInSeconds" => 0,
+                    "endTime" => 1.479832461354e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "INSTALL",
+                    "startTime" => 1.479832461261e9
+                ),
+                Dict(
+                    "contexts" => [
+
+                    ],
+                    "durationInSeconds" => 0,
+                    "endTime" => 1.479832461448e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "PRE_BUILD",
+                    "startTime" => 1.479832461354e9
+                ),
+                Dict(
+                    "contexts" => [
+
+                    ],
+                    "durationInSeconds" => 9,
+                    "endTime" => 1.479832471115e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "BUILD",
+                    "startTime" => 1.479832461448e9
+                ),
+                Dict(
+                    "contexts" => [
+
+                    ],
+                    "durationInSeconds" => 0,
+                    "endTime" => 1.479832471224e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "POST_BUILD",
+                    "startTime" => 1.479832471115e9
+                ),
+                Dict(
+                    "contexts" => [
+
+                    ],
+                    "durationInSeconds" => 0,
+                    "endTime" => 1.479832471791e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "UPLOAD_ARTIFACTS",
+                    "startTime" => 1.479832471224e9
+                ),
+                Dict(
+                    "contexts" => [
+
+                    ],
+                    "durationInSeconds" => 2,
+                    "endTime" => 1.479832474764e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "FINALIZING",
+                    "startTime" => 1.479832471791e9
+                ),
+                Dict(
+                    "phaseType" => "COMPLETED",
+                    "startTime" => 1.479832474764e9
+                )
+            ],
+            "projectName" => "codebuild-demo-project",
+            "source" => Dict(
+                "type" => "S3",
+                "buildspec" => "",
+                "location" => "arn:aws:s3:::codebuild-123456789012-input-bucket/MessageUtil.zip"
+            ),
+            "startTime" => 1.479832341854e9,
+            "timeoutInMinutes" => 60
+        ),
+        Dict(
+            "arn" => "arn:aws:codebuild:us-east-1:123456789012:build/codebuild-demo-project:b79a46f7-1473-4636-a23f-da9c45c208EX",
+            "artifacts" => Dict(
+                "location" => "arn:aws:s3:::codebuild-123456789012-output-bucket/codebuild-demo-project"
+            ),
+            "buildComplete" => true,
+            "buildStatus" => "SUCCEEDED",
+            "currentPhase" => "COMPLETED",
+            "endTime" => 1.479401214239e9,
+            "environment" => Dict(
+                "type" => "LINUX_CONTAINER",
+                "computeType" => "BUILD_GENERAL1_SMALL",
+                "environmentVariables" => [
+
+                ],
+                "image" => "aws/codebuild/java:openjdk-8",
+                "privilegedMode" => false
+            ),
+            "id" => "codebuild-demo-project:b79a46f7-1473-4636-a23f-da9c45c208EX",
+            "initiator" => "MyDemoUser",
+            "logs" => Dict(
+                "deepLink" => "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logEvent:group=/aws/codebuild/codebuild-demo-project;stream=b79a46f7-1473-4636-a23f-da9c45c208EX",
+                "groupName" => "/aws/codebuild/codebuild-demo-project",
+                "streamName" => "b79a46f7-1473-4636-a23f-da9c45c208EX"
+            ),
+            "phases" => [
+                Dict(
+                    "durationInSeconds" => 0,
+                    "endTime" => 1.479401082342e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "SUBMITTED",
+                    "startTime" => 1.479401081869e9
+                ),
+                Dict(
+                    "contexts" => [
+
+                    ],
+                    "durationInSeconds" => 71,
+                    "endTime" => 1.479401154129e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "PROVISIONING",
+                    "startTime" => 1.479401082342e9
+                ),
+                Dict(
+                    "contexts" => [
+
+                    ],
+                    "durationInSeconds" => 45,
+                    "endTime" => 1.479401199136e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "DOWNLOAD_SOURCE",
+                    "startTime" => 1.479401154129e9
+                ),
+                Dict(
+                    "contexts" => [
+
+                    ],
+                    "durationInSeconds" => 0,
+                    "endTime" => 1.479401199236e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "INSTALL",
+                    "startTime" => 1.479401199136e9
+                ),
+                Dict(
+                    "contexts" => [
+
+                    ],
+                    "durationInSeconds" => 0,
+                    "endTime" => 1.479401199345e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "PRE_BUILD",
+                    "startTime" => 1.479401199236e9
+                ),
+                Dict(
+                    "contexts" => [
+
+                    ],
+                    "durationInSeconds" => 9,
+                    "endTime" => 1.47940120868e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "BUILD",
+                    "startTime" => 1.479401199345e9
+                ),
+                Dict(
+                    "contexts" => [
+
+                    ],
+                    "durationInSeconds" => 0,
+                    "endTime" => 1.479401208783e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "POST_BUILD",
+                    "startTime" => 1.47940120868e9
+                ),
+                Dict(
+                    "contexts" => [
+
+                    ],
+                    "durationInSeconds" => 0,
+                    "endTime" => 1.479401209463e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "UPLOAD_ARTIFACTS",
+                    "startTime" => 1.479401208783e9
+                ),
+                Dict(
+                    "contexts" => [
+
+                    ],
+                    "durationInSeconds" => 4,
+                    "endTime" => 1.479401214239e9,
+                    "phaseStatus" => "SUCCEEDED",
+                    "phaseType" => "FINALIZING",
+                    "startTime" => 1.479401209463e9
+                ),
+                Dict(
+                    "phaseType" => "COMPLETED",
+                    "startTime" => 1.479401214239e9
+                )
+            ],
+            "projectName" => "codebuild-demo-project",
+            "source" => Dict(
+                "type" => "S3",
+                "location" => "arn:aws:s3:::codebuild-123456789012-input-bucket/MessageUtil.zip"
+            ),
+            "startTime" => 1.479401081869e9,
+            "timeoutInMinutes" => 60
+        )
+    ]
+)
+```
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/BatchGetBuilds)
 """
@@ -149,7 +463,8 @@ Information about the build environment for the build project.
         "computeType" => <required> "BUILD_GENERAL1_SMALL", "BUILD_GENERAL1_MEDIUM" or "BUILD_GENERAL1_LARGE",
         "environmentVariables" =>  [[
             "name" => <required> ::String,
-            "value" => <required> ::String
+            "value" => <required> ::String,
+            "type" =>  "PLAINTEXT" or "PARAMETER_STORE"
         ], ...],
         "privilegedMode" =>  ::Bool
     ]
@@ -201,6 +516,48 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebu
 
 
 """
+    using AWSSDK.CodeBuild.create_webhook
+    create_webhook([::AWSConfig], arguments::Dict)
+    create_webhook([::AWSConfig]; projectName=)
+
+    using AWSCore.Services.codebuild
+    codebuild([::AWSConfig], "CreateWebhook", arguments::Dict)
+    codebuild([::AWSConfig], "CreateWebhook", projectName=)
+
+# CreateWebhook Operation
+
+For an existing AWS CodeBuild build project that has its source code stored in a GitHub repository, enables AWS CodeBuild to begin automatically rebuilding the source code every time a code change is pushed to the repository.
+
+**Important**
+> If you enable webhooks for an AWS CodeBuild project, and the project is used as a build step in AWS CodePipeline, then two identical builds will be created for each commit. One build is triggered through webhooks, and one through AWS CodePipeline. Because billing is on a per-build basis, you will be billed for both builds. Therefore, if you are using AWS CodePipeline, we recommend that you disable webhooks in CodeBuild. In the AWS CodeBuild console, clear the Webhook box. For more information, see step 9 in [Change a Build Project’s Settings](http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
+
+# Arguments
+
+## `projectName = ::String` -- *Required*
+The name of the build project.
+
+
+
+
+# Returns
+
+`CreateWebhookOutput`
+
+# Exceptions
+
+`InvalidInputException`, `OAuthProviderException`, `ResourceAlreadyExistsException` or `ResourceNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/CreateWebhook)
+"""
+
+@inline create_webhook(aws::AWSConfig=default_aws_config(); args...) = create_webhook(aws, args)
+
+@inline create_webhook(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "CreateWebhook", args)
+
+@inline create_webhook(args) = create_webhook(default_aws_config(), args)
+
+
+"""
     using AWSSDK.CodeBuild.delete_project
     delete_project([::AWSConfig], arguments::Dict)
     delete_project([::AWSConfig]; name=)
@@ -237,6 +594,45 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebu
 @inline delete_project(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "DeleteProject", args)
 
 @inline delete_project(args) = delete_project(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CodeBuild.delete_webhook
+    delete_webhook([::AWSConfig], arguments::Dict)
+    delete_webhook([::AWSConfig]; projectName=)
+
+    using AWSCore.Services.codebuild
+    codebuild([::AWSConfig], "DeleteWebhook", arguments::Dict)
+    codebuild([::AWSConfig], "DeleteWebhook", projectName=)
+
+# DeleteWebhook Operation
+
+For an existing AWS CodeBuild build project that has its source code stored in a GitHub repository, stops AWS CodeBuild from automatically rebuilding the source code every time a code change is pushed to the repository.
+
+# Arguments
+
+## `projectName = ::String` -- *Required*
+The name of the build project.
+
+
+
+
+# Returns
+
+`DeleteWebhookOutput`
+
+# Exceptions
+
+`InvalidInputException`, `ResourceNotFoundException` or `OAuthProviderException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/DeleteWebhook)
+"""
+
+@inline delete_webhook(aws::AWSConfig=default_aws_config(); args...) = delete_webhook(aws, args)
+
+@inline delete_webhook(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "DeleteWebhook", args)
+
+@inline delete_webhook(args) = delete_webhook(default_aws_config(), args)
 
 
 """
@@ -451,7 +847,11 @@ The name of the build project to start running a build.
 ## `sourceVersion = ::String`
 A version of the build input to be built, for this build only. If not specified, the latest version will be used. If specified, must be one of:
 
-*   For AWS CodeCommit or GitHub: the commit ID to use.
+*   For AWS CodeCommit: the commit ID to use.
+
+*   For GitHub: the commit ID, pull request ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a pull request ID is specified, it must use the format `pr/pull-request-ID` (for example `pr/25`). If a branch name is specified, the branch's HEAD commit ID will be used. If not specified, the default branch's HEAD commit ID will be used.
+
+*   For Bitbucket: the commit ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a branch name is specified, the branch's HEAD commit ID will be used. If not specified, the default branch's HEAD commit ID will be used.
 
 *   For Amazon Simple Storage Service (Amazon S3): the version ID of the object representing the build input ZIP file to use.
 
@@ -474,7 +874,8 @@ A set of environment variables that overrides, for this build only, the latest o
 ```
  environmentVariablesOverride = [[
         "name" => <required> ::String,
-        "value" => <required> ::String
+        "value" => <required> ::String,
+        "type" =>  "PLAINTEXT" or "PARAMETER_STORE"
     ], ...]
 ```
 
@@ -607,7 +1008,8 @@ Information to be changed about the build environment for the build project.
         "computeType" => <required> "BUILD_GENERAL1_SMALL", "BUILD_GENERAL1_MEDIUM" or "BUILD_GENERAL1_LARGE",
         "environmentVariables" =>  [[
             "name" => <required> ::String,
-            "value" => <required> ::String
+            "value" => <required> ::String,
+            "type" =>  "PLAINTEXT" or "PARAMETER_STORE"
         ], ...],
         "privilegedMode" =>  ::Bool
     ]

@@ -321,7 +321,7 @@ The bundle of specification information for your virtual private server (or *ins
 A launch script you can create that configures a server with additional user data. For example, you might want to run `apt-get –y update`.
 
 **Note**
-> Depending on the machine image you choose, the command to get software on your instance varies. Amazon Linux and CentOS use `yum`, Debian and Ubuntu use `apt-get`, and FreeBSD uses `pkg`. For a complete list, see the [Dev Guide](http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps).
+> Depending on the machine image you choose, the command to get software on your instance varies. Amazon Linux and CentOS use `yum`, Debian and Ubuntu use `apt-get`, and FreeBSD uses `pkg`. For a complete list, see the [Dev Guide](https://lightsail.aws.amazon.com/ls/docs/getting-started/article/compare-options-choose-lightsail-instance-image).
 
 
 ## `keyPairName = ::String`

@@ -228,7 +228,7 @@ If you do not specify this parameter, AWS OpsWorks for Chef Automate creates one
 
 
 ## `ServiceRoleArn = ::String` -- *Required*
-The service role that the AWS OpsWorks for Chef Automate service backend uses to work with your account. Although the AWS OpsWorks management console typically creates the service role for you, if you are using the AWS CLI or API commands, run the service-role-creation.yaml AWS CloudFormation template, located at https://s3.amazonaws.com/opsworks-stuff/latest/service-role-creation.yaml. This template creates a CloudFormation stack that includes the service role that you need.
+The service role that the AWS OpsWorks for Chef Automate service backend uses to work with your account. Although the AWS OpsWorks management console typically creates the service role for you, if you are using the AWS CLI or API commands, run the service-role-creation.yaml AWS CloudFormation template, located at https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml. This template creates a CloudFormation stack that includes the service role that you need.
 
 
 ## `SubnetIds = [::String, ...]`
@@ -238,7 +238,7 @@ Amazon EC2-Classic customers: This field is required. All servers must run withi
 
 EC2-VPC customers: This field is optional. If you do not specify subnet IDs, your EC2 instances are created in a default subnet that is selected by Amazon EC2. If you specify subnet IDs, the VPC must have "Auto Assign Public IP" enabled.
 
-For more information about supported Amazon EC2 platforms, see [Supported Platforms](http://docs.aws.amazon.com/https:/docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
+For more information about supported Amazon EC2 platforms, see [Supported Platforms](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
 
 
 ## `BackupId = ::String`
@@ -506,7 +506,7 @@ A `ResourceNotFoundException` is thrown when no recent association or disassocia
 # Arguments
 
 ## `NodeAssociationStatusToken = ::String` -- *Required*
-
+The token returned in either the AssociateNodeResponse or the DisassociateNodeResponse.
 
 
 ## `ServerName = ::String` -- *Required*
@@ -700,11 +700,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 """
     using AWSSDK.OpsWorksCM.start_maintenance
     start_maintenance([::AWSConfig], arguments::Dict)
-    start_maintenance([::AWSConfig]; ServerName=)
+    start_maintenance([::AWSConfig]; ServerName=, <keyword arguments>)
 
     using AWSCore.Services.opsworkscm
     opsworkscm([::AWSConfig], "StartMaintenance", arguments::Dict)
-    opsworkscm([::AWSConfig], "StartMaintenance", ServerName=)
+    opsworkscm([::AWSConfig], "StartMaintenance", ServerName=, <keyword arguments>)
 
 # StartMaintenance Operation
 
@@ -717,6 +717,15 @@ Maintenance can only be started on servers in `HEALTHY` and `UNHEALTHY` states. 
 ## `ServerName = ::String` -- *Required*
 The name of the server on which to run maintenance.
 
+
+## `EngineAttributes = [[ ... ], ...]`
+Engine attributes that are specific to the server on which you want to run maintenance.
+```
+ EngineAttributes = [[
+        "Name" =>  ::String,
+        "Value" =>  ::String
+    ], ...]
+```
 
 
 

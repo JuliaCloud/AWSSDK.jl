@@ -23,16 +23,16 @@ using AWSCore
 
 # AssociateFleet Operation
 
-Associate a fleet to a stack.
+Associates the specified fleet with the specified stack.
 
 # Arguments
 
 ## `FleetName = ::String` -- *Required*
-The name of the fleet to associate.
+The name of the fleet.
 
 
 ## `StackName = ::String` -- *Required*
-The name of the stack to which the fleet is associated.
+The name of the stack.
 
 
 
@@ -66,20 +66,20 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # CreateDirectoryConfig Operation
 
-Creates a directory configuration with the given parameters.
+Creates a directory configuration.
 
 # Arguments
 
 ## `DirectoryName = ::String` -- *Required*
-The fully qualified name of the directory, such as corp.example.com
+The fully qualified name of the directory (for example, corp.example.com).
 
 
 ## `OrganizationalUnitDistinguishedNames = [::String, ...]` -- *Required*
-The list of the distinguished names of organizational units to place computer accounts in.
+The distinguished names of the organizational units for computer accounts.
 
 
 ## `ServiceAccountCredentials = [ ... ]` -- *Required*
-The *AccountName* and *AccountPassword* values for the service account, which are used by the streaming instance to connect to the directory.
+The credentials for the service account used by the streaming instance to connect to the directory.
 ```
  ServiceAccountCredentials = [
         "AccountName" => <required> ::String,
@@ -118,20 +118,20 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # CreateFleet Operation
 
-Creates a new fleet.
+Creates a fleet.
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-A unique identifier for the fleet.
+A unique name for the fleet.
 
 
 ## `ImageName = ::String` -- *Required*
-Unique name of the image used by the fleet.
+The name of the image used by the fleet.
 
 
 ## `InstanceType = ::String` -- *Required*
-The instance type of compute resources for the fleet. Fleet instances are launched from this instance type. Available instance types are:
+The instance type to use when launching fleet instances. The following instance types are available:
 
 *   stream.standard.medium
 
@@ -157,17 +157,29 @@ The instance type of compute resources for the fleet. Fleet instances are launch
 
 *   stream.memory.8xlarge
 
+*   stream.graphics-design.large
+
+*   stream.graphics-design.xlarge
+
+*   stream.graphics-design.2xlarge
+
+*   stream.graphics-design.4xlarge
+
+*   stream.graphics-desktop.2xlarge
+
 *   stream.graphics-pro.4xlarge
 
 *   stream.graphics-pro.8xlarge
 
 *   stream.graphics-pro.16xlarge
 
-*   stream.graphics-desktop.2xlarge
+
+## `FleetType = "ALWAYS_ON" or "ON_DEMAND"`
+
 
 
 ## `ComputeCapacity = ["DesiredInstances" => <required> ::Int]` -- *Required*
-The parameters for the capacity allocated to the fleet.
+The desired capacity for the fleet.
 
 
 ## `VpcConfig = [ ... ]`
@@ -180,19 +192,19 @@ The VPC configuration for the fleet.
 ```
 
 ## `MaxUserDurationInSeconds = ::Int`
-The maximum time for which a streaming session can run. The input can be any numeric value in seconds between 600 and 57600.
+The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
 
 
 ## `DisconnectTimeoutInSeconds = ::Int`
-The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600.
+The time after disconnection when a session is considered to have ended, in seconds. If a user who was disconnected reconnects within this time interval, the user is connected to their previous session. Specify a value between 60 and 57600.
 
 
 ## `Description = ::String`
-The description of the fleet.
+The description displayed to end users.
 
 
 ## `DisplayName = ::String`
-The display name of the fleet.
+The fleet name displayed to end users.
 
 
 ## `EnableDefaultInternetAccess = ::Bool`
@@ -200,7 +212,7 @@ Enables or disables default internet access for the fleet.
 
 
 ## `DomainJoinInfo = [ ... ]`
-The *DirectoryName* and *OrganizationalUnitDistinguishedName* values, which are used to join domains for the AppStream 2.0 streaming instances.
+The information needed for streaming instances to join a domain.
 ```
  DomainJoinInfo = [
         "DirectoryName" =>  ::String,
@@ -229,6 +241,126 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
+    using AWSSDK.AppStream.create_image_builder
+    create_image_builder([::AWSConfig], arguments::Dict)
+    create_image_builder([::AWSConfig]; Name=, ImageName=, InstanceType=, <keyword arguments>)
+
+    using AWSCore.Services.appstream
+    appstream([::AWSConfig], "CreateImageBuilder", arguments::Dict)
+    appstream([::AWSConfig], "CreateImageBuilder", Name=, ImageName=, InstanceType=, <keyword arguments>)
+
+# CreateImageBuilder Operation
+
+
+
+# Arguments
+
+## `Name = ::String` -- *Required*
+
+
+
+## `ImageName = ::String` -- *Required*
+
+
+
+## `InstanceType = ::String` -- *Required*
+
+
+
+## `Description = ::String`
+
+
+
+## `DisplayName = ::String`
+
+
+
+## `VpcConfig = [ ... ]`
+
+```
+ VpcConfig = [
+        "SubnetIds" =>  [::String, ...],
+        "SecurityGroupIds" =>  [::String, ...]
+    ]
+```
+
+## `EnableDefaultInternetAccess = ::Bool`
+
+
+
+## `DomainJoinInfo = [ ... ]`
+
+```
+ DomainJoinInfo = [
+        "DirectoryName" =>  ::String,
+        "OrganizationalUnitDistinguishedName" =>  ::String
+    ]
+```
+
+
+
+# Returns
+
+`CreateImageBuilderResult`
+
+# Exceptions
+
+`LimitExceededException`, `ResourceAlreadyExistsException`, `ResourceNotAvailableException`, `ResourceNotFoundException`, `InvalidRoleException`, `ConcurrentModificationException`, `InvalidParameterCombinationException` or `IncompatibleImageException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/CreateImageBuilder)
+"""
+
+@inline create_image_builder(aws::AWSConfig=default_aws_config(); args...) = create_image_builder(aws, args)
+
+@inline create_image_builder(aws::AWSConfig, args) = AWSCore.Services.appstream(aws, "CreateImageBuilder", args)
+
+@inline create_image_builder(args) = create_image_builder(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.AppStream.create_image_builder_streaming_url
+    create_image_builder_streaming_url([::AWSConfig], arguments::Dict)
+    create_image_builder_streaming_url([::AWSConfig]; Name=, <keyword arguments>)
+
+    using AWSCore.Services.appstream
+    appstream([::AWSConfig], "CreateImageBuilderStreamingURL", arguments::Dict)
+    appstream([::AWSConfig], "CreateImageBuilderStreamingURL", Name=, <keyword arguments>)
+
+# CreateImageBuilderStreamingURL Operation
+
+
+
+# Arguments
+
+## `Name = ::String` -- *Required*
+
+
+
+## `Validity = ::Int`
+
+
+
+
+
+# Returns
+
+`CreateImageBuilderStreamingURLResult`
+
+# Exceptions
+
+`OperationNotPermittedException` or `ResourceNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/CreateImageBuilderStreamingURL)
+"""
+
+@inline create_image_builder_streaming_url(aws::AWSConfig=default_aws_config(); args...) = create_image_builder_streaming_url(aws, args)
+
+@inline create_image_builder_streaming_url(aws::AWSConfig, args) = AWSCore.Services.appstream(aws, "CreateImageBuilderStreamingURL", args)
+
+@inline create_image_builder_streaming_url(args) = create_image_builder_streaming_url(default_aws_config(), args)
+
+
+"""
     using AWSSDK.AppStream.create_stack
     create_stack([::AWSConfig], arguments::Dict)
     create_stack([::AWSConfig]; Name=, <keyword arguments>)
@@ -239,24 +371,24 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # CreateStack Operation
 
-Create a new stack.
+Creates a stack.
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-The unique identifier for this stack.
+The name of the stack.
 
 
 ## `Description = ::String`
-The description displayed to end users on the AppStream 2.0 portal.
+The description displayed to end users.
 
 
 ## `DisplayName = ::String`
-The name displayed to end users on the AppStream 2.0 portal.
+The stack name displayed to end users.
 
 
 ## `StorageConnectors = [[ ... ], ...]`
-The storage connectors to be enabled for the stack.
+The storage connectors to enable.
 ```
  StorageConnectors = [[
         "ConnectorType" => <required> "HOMEFOLDERS",
@@ -295,20 +427,22 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # CreateStreamingURL Operation
 
-Creates a URL to start an AppStream 2.0 streaming session for a user. By default, the URL is valid only for 1 minute from the time that it is generated.
+Creates a URL to start a streaming session for the specified user.
+
+By default, the URL is valid only for one minute from the time that it is generated.
 
 # Arguments
 
 ## `StackName = ::String` -- *Required*
-The stack for which the URL is generated.
+The name of the stack.
 
 
 ## `FleetName = ::String` -- *Required*
-The fleet for which the URL is generated.
+The name of the fleet.
 
 
 ## `UserId = ::String` -- *Required*
-A unique user ID for whom the URL is generated.
+The ID of the user.
 
 
 ## `ApplicationId = ::String`
@@ -316,11 +450,11 @@ The ID of the application that must be launched after the session starts.
 
 
 ## `Validity = ::Int`
-The duration up to which the URL returned by this action is valid. The input can be any numeric value in seconds between 1 and 604800 seconds.
+The time that the streaming URL will be valid, in seconds. Specify a value between 1 and 604800 seconds.
 
 
 ## `SessionContext = ::String`
-The sessionContext of the streaming URL.
+The session context of the streaming URL.
 
 
 
@@ -354,12 +488,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # DeleteDirectoryConfig Operation
 
-Deletes the directory configuration with the given parameters.
+Deletes the specified directory configuration.
 
 # Arguments
 
 ## `DirectoryName = ::String` -- *Required*
-The name of the directory configuration to be deleted.
+The name of the directory configuration.
 
 
 
@@ -393,12 +527,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # DeleteFleet Operation
 
-Deletes a fleet.
+Deletes the specified fleet.
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-The name of the fleet to be deleted.
+The name of the fleet.
 
 
 
@@ -422,6 +556,84 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
+    using AWSSDK.AppStream.delete_image
+    delete_image([::AWSConfig], arguments::Dict)
+    delete_image([::AWSConfig]; Name=)
+
+    using AWSCore.Services.appstream
+    appstream([::AWSConfig], "DeleteImage", arguments::Dict)
+    appstream([::AWSConfig], "DeleteImage", Name=)
+
+# DeleteImage Operation
+
+
+
+# Arguments
+
+## `Name = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`DeleteImageResult`
+
+# Exceptions
+
+`ResourceInUseException`, `ResourceNotFoundException`, `OperationNotPermittedException` or `ConcurrentModificationException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/DeleteImage)
+"""
+
+@inline delete_image(aws::AWSConfig=default_aws_config(); args...) = delete_image(aws, args)
+
+@inline delete_image(aws::AWSConfig, args) = AWSCore.Services.appstream(aws, "DeleteImage", args)
+
+@inline delete_image(args) = delete_image(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.AppStream.delete_image_builder
+    delete_image_builder([::AWSConfig], arguments::Dict)
+    delete_image_builder([::AWSConfig]; Name=)
+
+    using AWSCore.Services.appstream
+    appstream([::AWSConfig], "DeleteImageBuilder", arguments::Dict)
+    appstream([::AWSConfig], "DeleteImageBuilder", Name=)
+
+# DeleteImageBuilder Operation
+
+
+
+# Arguments
+
+## `Name = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`DeleteImageBuilderResult`
+
+# Exceptions
+
+`ResourceNotFoundException`, `OperationNotPermittedException` or `ConcurrentModificationException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/DeleteImageBuilder)
+"""
+
+@inline delete_image_builder(aws::AWSConfig=default_aws_config(); args...) = delete_image_builder(aws, args)
+
+@inline delete_image_builder(aws::AWSConfig, args) = AWSCore.Services.appstream(aws, "DeleteImageBuilder", args)
+
+@inline delete_image_builder(args) = delete_image_builder(default_aws_config(), args)
+
+
+"""
     using AWSSDK.AppStream.delete_stack
     delete_stack([::AWSConfig], arguments::Dict)
     delete_stack([::AWSConfig]; Name=)
@@ -432,12 +644,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # DeleteStack Operation
 
-Deletes the stack. After this operation completes, the environment can no longer be activated, and any reservations made for the stack are released.
+Deletes the specified stack. After this operation completes, the environment can no longer be activated and any reservations made for the stack are released.
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-The name of the stack to delete.
+The name of the stack.
 
 
 
@@ -471,20 +683,20 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # DescribeDirectoryConfigs Operation
 
-Returns a list describing the specified directory configurations.
+Describes the specified directory configurations.
 
 # Arguments
 
 ## `DirectoryNames = [::String, ...]`
-A specific list of directory names.
+The directory names.
 
 
 ## `MaxResults = ::Int`
-The size of each page of results.
+The maximum size of each page of results.
 
 
 ## `NextToken = ::String`
-The DescribeDirectoryConfigsResult.NextToken from a previous call to DescribeDirectoryConfigs. If this is the first call, pass null.
+The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
 
 
 
@@ -518,12 +730,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # DescribeFleets Operation
 
-If fleet names are provided, this operation describes the specified fleets; otherwise, all the fleets in the account are described.
+Describes the specified fleets or all fleets in the account.
 
 # Arguments
 
 ## `Names = [::String, ...]`
-The fleet names to describe. Use null to describe all the fleets for the AWS account.
+The names of the fleets to describe.
 
 
 ## `NextToken = ::String`
@@ -551,6 +763,53 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
+    using AWSSDK.AppStream.describe_image_builders
+    describe_image_builders([::AWSConfig], arguments::Dict)
+    describe_image_builders([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.appstream
+    appstream([::AWSConfig], "DescribeImageBuilders", arguments::Dict)
+    appstream([::AWSConfig], "DescribeImageBuilders", <keyword arguments>)
+
+# DescribeImageBuilders Operation
+
+
+
+# Arguments
+
+## `Names = [::String, ...]`
+
+
+
+## `MaxResults = ::Int`
+
+
+
+## `NextToken = ::String`
+
+
+
+
+
+# Returns
+
+`DescribeImageBuildersResult`
+
+# Exceptions
+
+`ResourceNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/DescribeImageBuilders)
+"""
+
+@inline describe_image_builders(aws::AWSConfig=default_aws_config(); args...) = describe_image_builders(aws, args)
+
+@inline describe_image_builders(aws::AWSConfig, args) = AWSCore.Services.appstream(aws, "DescribeImageBuilders", args)
+
+@inline describe_image_builders(args) = describe_image_builders(default_aws_config(), args)
+
+
+"""
     using AWSSDK.AppStream.describe_images
     describe_images([::AWSConfig], arguments::Dict)
     describe_images([::AWSConfig]; <keyword arguments>)
@@ -561,12 +820,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # DescribeImages Operation
 
-Describes the images. If a list of names is not provided, all images in your account are returned. This operation does not return a paginated result.
+Describes the specified images or all images in the account.
 
 # Arguments
 
 ## `Names = [::String, ...]`
-A specific list of images to describe.
+The names of the images to describe.
 
 
 
@@ -600,20 +859,20 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # DescribeSessions Operation
 
-Describes the streaming sessions for a stack and a fleet. If a user ID is provided, this operation returns streaming sessions for only that user. To retrieve the next set of items, pass this value for the `nextToken` parameter in a subsequent call to this operation. If an authentication type is not provided, the operation defaults to users authenticated using a streaming URL.
+Describes the streaming sessions for the specified stack and fleet. If a user ID is provided, only the streaming sessions for only that user are returned. If an authentication type is not provided, the default is to authenticate users using a streaming URL.
 
 # Arguments
 
 ## `StackName = ::String` -- *Required*
-The name of the stack for which to list sessions.
+The name of the stack.
 
 
 ## `FleetName = ::String` -- *Required*
-The name of the fleet for which to list sessions.
+The name of the fleet.
 
 
 ## `UserId = ::String`
-The user for whom to list sessions. Use null to describe all the sessions for the stack and fleet.
+The user ID.
 
 
 ## `NextToken = ::String`
@@ -621,11 +880,11 @@ The pagination token to use to retrieve the next page of results for this operat
 
 
 ## `Limit = ::Int`
-The size of each page of results. The default value is 20 and the maximum supported value is 50.
+The size of each page of results. The default value is 20 and the maximum value is 50.
 
 
 ## `AuthenticationType = "API", "SAML" or "USERPOOL"`
-The authentication method of the user. It can be `API` for a user authenticated using a streaming URL, or `SAML` for a SAML federated user. If an authentication type is not provided, the operation defaults to users authenticated using a streaming URL.
+The authentication method. Specify `API` for a user authenticated using a streaming URL or `SAML` for a SAML federated user. The default is to authenticate users using a streaming URL.
 
 
 
@@ -659,12 +918,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # DescribeStacks Operation
 
-If stack names are not provided, this operation describes the specified stacks; otherwise, all stacks in the account are described. To retrieve the next set of items, pass the `nextToken` value in a subsequent call to this operation.
+Describes the specified stacks or all stacks in the account.
 
 # Arguments
 
 ## `Names = [::String, ...]`
-The stack names to describe. Use null to describe all the stacks for the AWS account.
+The names of the stacks to describe.
 
 
 ## `NextToken = ::String`
@@ -702,16 +961,16 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # DisassociateFleet Operation
 
-Disassociates a fleet from a stack.
+Disassociates the specified fleet from the specified stack.
 
 # Arguments
 
 ## `FleetName = ::String` -- *Required*
-The name of the fleet to disassociate.
+The name of the fleet.
 
 
 ## `StackName = ::String` -- *Required*
-The name of the stack with which the fleet is associated.
+The name of the stack.
 
 
 
@@ -745,12 +1004,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # ExpireSession Operation
 
-This operation immediately stops a streaming session.
+Stops the specified streaming session.
 
 # Arguments
 
 ## `SessionId = ::String` -- *Required*
-The unique identifier of the streaming session to be stopped.
+The ID of the streaming session.
 
 
 
@@ -780,12 +1039,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # ListAssociatedFleets Operation
 
-Lists all fleets associated with the stack.
+Lists the fleets associated with the specified stack.
 
 # Arguments
 
 ## `StackName = ::String` -- *Required*
-The name of the stack whose associated fleets are listed.
+The name of the stack.
 
 
 ## `NextToken = ::String`
@@ -819,12 +1078,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # ListAssociatedStacks Operation
 
-Lists all stacks to which the specified fleet is associated.
+Lists the stacks associated with the specified fleet.
 
 # Arguments
 
 ## `FleetName = ::String` -- *Required*
-The name of the fleet whose associated stacks are listed.
+The name of the fleet.
 
 
 ## `NextToken = ::String`
@@ -858,12 +1117,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # StartFleet Operation
 
-Starts a fleet.
+Starts the specified fleet.
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-The name of the fleet to start.
+The name of the fleet.
 
 
 
@@ -887,6 +1146,45 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
+    using AWSSDK.AppStream.start_image_builder
+    start_image_builder([::AWSConfig], arguments::Dict)
+    start_image_builder([::AWSConfig]; Name=)
+
+    using AWSCore.Services.appstream
+    appstream([::AWSConfig], "StartImageBuilder", arguments::Dict)
+    appstream([::AWSConfig], "StartImageBuilder", Name=)
+
+# StartImageBuilder Operation
+
+
+
+# Arguments
+
+## `Name = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`StartImageBuilderResult`
+
+# Exceptions
+
+`ResourceNotAvailableException`, `ResourceNotFoundException` or `ConcurrentModificationException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/StartImageBuilder)
+"""
+
+@inline start_image_builder(aws::AWSConfig=default_aws_config(); args...) = start_image_builder(aws, args)
+
+@inline start_image_builder(aws::AWSConfig, args) = AWSCore.Services.appstream(aws, "StartImageBuilder", args)
+
+@inline start_image_builder(args) = start_image_builder(default_aws_config(), args)
+
+
+"""
     using AWSSDK.AppStream.stop_fleet
     stop_fleet([::AWSConfig], arguments::Dict)
     stop_fleet([::AWSConfig]; Name=)
@@ -897,12 +1195,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # StopFleet Operation
 
-Stops a fleet.
+Stops the specified fleet.
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-The name of the fleet to stop.
+The name of the fleet.
 
 
 
@@ -926,6 +1224,45 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 
 """
+    using AWSSDK.AppStream.stop_image_builder
+    stop_image_builder([::AWSConfig], arguments::Dict)
+    stop_image_builder([::AWSConfig]; Name=)
+
+    using AWSCore.Services.appstream
+    appstream([::AWSConfig], "StopImageBuilder", arguments::Dict)
+    appstream([::AWSConfig], "StopImageBuilder", Name=)
+
+# StopImageBuilder Operation
+
+
+
+# Arguments
+
+## `Name = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`StopImageBuilderResult`
+
+# Exceptions
+
+`ResourceNotFoundException`, `OperationNotPermittedException` or `ConcurrentModificationException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/StopImageBuilder)
+"""
+
+@inline stop_image_builder(aws::AWSConfig=default_aws_config(); args...) = stop_image_builder(aws, args)
+
+@inline stop_image_builder(aws::AWSConfig, args) = AWSCore.Services.appstream(aws, "StopImageBuilder", args)
+
+@inline stop_image_builder(args) = stop_image_builder(default_aws_config(), args)
+
+
+"""
     using AWSSDK.AppStream.update_directory_config
     update_directory_config([::AWSConfig], arguments::Dict)
     update_directory_config([::AWSConfig]; DirectoryName=, <keyword arguments>)
@@ -936,20 +1273,20 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # UpdateDirectoryConfig Operation
 
-Updates the directory configuration with the given parameters.
+Updates the specified directory configuration.
 
 # Arguments
 
 ## `DirectoryName = ::String` -- *Required*
-The name of the existing directory configuration to be updated.
+The name of the directory configuration.
 
 
 ## `OrganizationalUnitDistinguishedNames = [::String, ...]`
-The list of the distinguished names of organizational units to place computer accounts in.
+The distinguished names of the organizational units for computer accounts.
 
 
 ## `ServiceAccountCredentials = [ ... ]`
-The *AccountName* and *AccountPassword* values for the service account, which are used by the streaming instance to connect to the directory
+The credentials for the service account used by the streaming instance to connect to the directory.
 ```
  ServiceAccountCredentials = [
         "AccountName" => <required> ::String,
@@ -988,20 +1325,22 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # UpdateFleet Operation
 
-Updates an existing fleet. All the attributes except the fleet name can be updated in the **STOPPED** state. When a fleet is in the **RUNNING** state, only `DisplayName` and `ComputeCapacity` can be updated. A fleet cannot be updated in a status of **STARTING** or **STOPPING**.
+Updates the specified fleet.
+
+If the fleet is in the `STOPPED` state, you can update any attribute except the fleet name. If the fleet is in the `RUNNING` state, you can update the `DisplayName` and `ComputeCapacity` attributes. If the fleet is in the `STARTING` or `STOPPING` state, you can't update it.
 
 # Arguments
 
 ## `ImageName = ::String`
-The image name from which a fleet is created.
+The name of the image used by the fleet.
 
 
 ## `Name = ::String` -- *Required*
-The name of the fleet.
+A unique name for the fleet.
 
 
 ## `InstanceType = ::String`
-The instance type of compute resources for the fleet. Fleet instances are launched from this instance type. Available instance types are:
+The instance type to use when launching fleet instances. The following instance types are available:
 
 *   stream.standard.medium
 
@@ -1027,17 +1366,25 @@ The instance type of compute resources for the fleet. Fleet instances are launch
 
 *   stream.memory.8xlarge
 
+*   stream.graphics-design.large
+
+*   stream.graphics-design.xlarge
+
+*   stream.graphics-design.2xlarge
+
+*   stream.graphics-design.4xlarge
+
+*   stream.graphics-desktop.2xlarge
+
 *   stream.graphics-pro.4xlarge
 
 *   stream.graphics-pro.8xlarge
 
 *   stream.graphics-pro.16xlarge
 
-*   stream.graphics-desktop.2xlarge
-
 
 ## `ComputeCapacity = ["DesiredInstances" => <required> ::Int]`
-The parameters for the capacity allocated to the fleet.
+The desired capacity for the fleet.
 
 
 ## `VpcConfig = [ ... ]`
@@ -1050,23 +1397,23 @@ The VPC configuration for the fleet.
 ```
 
 ## `MaxUserDurationInSeconds = ::Int`
-The maximum time for which a streaming session can run. The input can be any numeric value in seconds between 600 and 57600.
+The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
 
 
 ## `DisconnectTimeoutInSeconds = ::Int`
-The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600.
+The time after disconnection when a session is considered to have ended, in seconds. If a user who was disconnected reconnects within this time interval, the user is connected to their previous session. Specify a value between 60 and 57600.
 
 
 ## `DeleteVpcConfig = ::Bool`
-Delete the VPC association for the specified fleet.
+Deletes the VPC association for the specified fleet.
 
 
 ## `Description = ::String`
-The description displayed to end users on the AppStream 2.0 portal.
+The description displayed to end users.
 
 
 ## `DisplayName = ::String`
-The name displayed to end users on the AppStream 2.0 portal.
+The fleet name displayed to end users.
 
 
 ## `EnableDefaultInternetAccess = ::Bool`
@@ -1074,7 +1421,7 @@ Enables or disables default internet access for the fleet.
 
 
 ## `DomainJoinInfo = [ ... ]`
-The *DirectoryName* and *OrganizationalUnitDistinguishedName* values, which are used to join domains for the AppStream 2.0 streaming instances.
+The information needed for streaming instances to join a domain.
 ```
  DomainJoinInfo = [
         "DirectoryName" =>  ::String,
@@ -1083,7 +1430,7 @@ The *DirectoryName* and *OrganizationalUnitDistinguishedName* values, which are 
 ```
 
 ## `AttributesToDelete = ["VPC_CONFIGURATION", "VPC_CONFIGURATION_SECURITY_GROUP_IDS" or "DOMAIN_JOIN_INFO", ...]`
-Fleet attributes to be deleted.
+The fleet attributes to delete.
 
 
 
@@ -1117,24 +1464,24 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/appstr
 
 # UpdateStack Operation
 
-Updates the specified fields in the stack with the specified name.
+Updates the specified stack.
 
 # Arguments
 
 ## `DisplayName = ::String`
-The name displayed to end users on the AppStream 2.0 portal.
+The stack name displayed to end users.
 
 
 ## `Description = ::String`
-The description displayed to end users on the AppStream 2.0 portal.
+The description displayed to end users.
 
 
 ## `Name = ::String` -- *Required*
-The name of the stack to update.
+The name of the stack.
 
 
 ## `StorageConnectors = [[ ... ], ...]`
-The storage connectors to be enabled for the stack.
+The storage connectors to enable.
 ```
  StorageConnectors = [[
         "ConnectorType" => <required> "HOMEFOLDERS",
@@ -1143,7 +1490,7 @@ The storage connectors to be enabled for the stack.
 ```
 
 ## `DeleteStorageConnectors = ::Bool`
-Remove all the storage connectors currently enabled for the stack.
+Deletes the storage connectors currently enabled for the stack.
 
 
 

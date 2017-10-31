@@ -258,7 +258,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 # CompleteLayerUpload Operation
 
-Inform Amazon ECR that the image layer upload for a specified registry, repository name, and upload ID, has completed. You can optionally provide a `sha256` digest of the image layer for data validation purposes.
+Informs Amazon ECR that the image layer upload has completed for a specified registry, repository name, and upload ID. You can optionally provide a `sha256` digest of the image layer for data validation purposes.
 
 **Note**
 > This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling and pushing images. In most cases, you should use the `docker` CLI to pull, tag, and push images.
@@ -363,6 +363,49 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
+    using AWSSDK.ECR.delete_lifecycle_policy
+    delete_lifecycle_policy([::AWSConfig], arguments::Dict)
+    delete_lifecycle_policy([::AWSConfig]; repositoryName=, <keyword arguments>)
+
+    using AWSCore.Services.ecr
+    ecr([::AWSConfig], "DeleteLifecyclePolicy", arguments::Dict)
+    ecr([::AWSConfig], "DeleteLifecyclePolicy", repositoryName=, <keyword arguments>)
+
+# DeleteLifecyclePolicy Operation
+
+Deletes the specified lifecycle policy.
+
+# Arguments
+
+## `registryId = ::String`
+The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.
+
+
+## `repositoryName = ::String` -- *Required*
+The name of the repository that is associated with the repository policy to  delete.
+
+
+
+
+# Returns
+
+`DeleteLifecyclePolicyResponse`
+
+# Exceptions
+
+`ServerException`, `InvalidParameterException`, `RepositoryNotFoundException` or `LifecyclePolicyNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/DeleteLifecyclePolicy)
+"""
+
+@inline delete_lifecycle_policy(aws::AWSConfig=default_aws_config(); args...) = delete_lifecycle_policy(aws, args)
+
+@inline delete_lifecycle_policy(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "DeleteLifecyclePolicy", args)
+
+@inline delete_lifecycle_policy(args) = delete_lifecycle_policy(default_aws_config(), args)
+
+
+"""
     using AWSSDK.ECR.delete_repository
     delete_repository([::AWSConfig], arguments::Dict)
     delete_repository([::AWSConfig]; repositoryName=, <keyword arguments>)
@@ -386,7 +429,7 @@ The name of the repository to delete.
 
 
 ## `force = ::Bool`
-Force the deletion of the repository if it contains images.
+If a repository contains images, forces the deletion.
 
 
 
@@ -761,6 +804,113 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
+    using AWSSDK.ECR.get_lifecycle_policy
+    get_lifecycle_policy([::AWSConfig], arguments::Dict)
+    get_lifecycle_policy([::AWSConfig]; repositoryName=, <keyword arguments>)
+
+    using AWSCore.Services.ecr
+    ecr([::AWSConfig], "GetLifecyclePolicy", arguments::Dict)
+    ecr([::AWSConfig], "GetLifecyclePolicy", repositoryName=, <keyword arguments>)
+
+# GetLifecyclePolicy Operation
+
+Retrieves the specified lifecycle policy.
+
+# Arguments
+
+## `registryId = ::String`
+The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.
+
+
+## `repositoryName = ::String` -- *Required*
+The name of the repository with the policy to retrieve.
+
+
+
+
+# Returns
+
+`GetLifecyclePolicyResponse`
+
+# Exceptions
+
+`ServerException`, `InvalidParameterException`, `RepositoryNotFoundException` or `LifecyclePolicyNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/GetLifecyclePolicy)
+"""
+
+@inline get_lifecycle_policy(aws::AWSConfig=default_aws_config(); args...) = get_lifecycle_policy(aws, args)
+
+@inline get_lifecycle_policy(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "GetLifecyclePolicy", args)
+
+@inline get_lifecycle_policy(args) = get_lifecycle_policy(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.ECR.get_lifecycle_policy_preview
+    get_lifecycle_policy_preview([::AWSConfig], arguments::Dict)
+    get_lifecycle_policy_preview([::AWSConfig]; repositoryName=, <keyword arguments>)
+
+    using AWSCore.Services.ecr
+    ecr([::AWSConfig], "GetLifecyclePolicyPreview", arguments::Dict)
+    ecr([::AWSConfig], "GetLifecyclePolicyPreview", repositoryName=, <keyword arguments>)
+
+# GetLifecyclePolicyPreview Operation
+
+Retrieves the results of the specified lifecycle policy preview request.
+
+# Arguments
+
+## `registryId = ::String`
+The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.
+
+
+## `repositoryName = ::String` -- *Required*
+The name of the repository with the policy to retrieve.
+
+
+## `imageIds = [[ ... ], ...]`
+The list of imageIDs to be included.
+```
+ imageIds = [[
+        "imageDigest" =>  ::String,
+        "imageTag" =>  ::String
+    ], ...]
+```
+
+## `nextToken = ::String`
+The `nextToken` value returned from a previous paginated  `GetLifecyclePolicyPreviewRequest` request where `maxResults` was used and the  results exceeded the value of that parameter. Pagination continues from the end of the  previous results that returned the `nextToken` value. This value is  `null` when there are no more results to return.
+
+
+## `maxResults = ::Int`
+The maximum number of repository results returned by `GetLifecyclePolicyPreviewRequest` in  paginated output. When this parameter is used, `GetLifecyclePolicyPreviewRequest` only returns  `maxResults` results in a single page along with a `nextToken`  response element. The remaining results of the initial request can be seen by sending  another `GetLifecyclePolicyPreviewRequest` request with the returned `nextToken`  value. This value can be between 1 and 100. If this  parameter is not used, then `GetLifecyclePolicyPreviewRequest` returns up to  100 results and a `nextToken` value, if  applicable.
+
+
+## `filter = ["tagStatus" =>  "TAGGED" or "UNTAGGED"]`
+An optional parameter that filters results based on image tag status and all tags, if tagged.
+
+
+
+
+# Returns
+
+`GetLifecyclePolicyPreviewResponse`
+
+# Exceptions
+
+`ServerException`, `InvalidParameterException`, `RepositoryNotFoundException` or `LifecyclePolicyPreviewNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/GetLifecyclePolicyPreview)
+"""
+
+@inline get_lifecycle_policy_preview(aws::AWSConfig=default_aws_config(); args...) = get_lifecycle_policy_preview(aws, args)
+
+@inline get_lifecycle_policy_preview(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "GetLifecyclePolicyPreview", args)
+
+@inline get_lifecycle_policy_preview(args) = get_lifecycle_policy_preview(default_aws_config(), args)
+
+
+"""
     using AWSSDK.ECR.get_repository_policy
     get_repository_policy([::AWSConfig], arguments::Dict)
     get_repository_policy([::AWSConfig]; repositoryName=, <keyword arguments>)
@@ -780,7 +930,7 @@ The AWS account ID associated with the registry that contains the repository. If
 
 
 ## `repositoryName = ::String` -- *Required*
-The name of the repository whose policy you want to retrieve.
+The name of the repository with the policy to retrieve.
 
 
 
@@ -852,11 +1002,11 @@ Notify Amazon ECR that you intend to upload an image layer.
 # Arguments
 
 ## `registryId = ::String`
-The AWS account ID associated with the registry that you intend to upload layers to. If you do not specify a registry, the default registry is assumed.
+The AWS account ID associated with the registry to which you intend to upload layers. If you do not specify a registry, the default registry is assumed.
 
 
 ## `repositoryName = ::String` -- *Required*
-The name of the repository that you intend to upload layers to.
+The name of the repository to which you intend to upload layers.
 
 
 
@@ -897,11 +1047,11 @@ You can filter images based on whether or not they are tagged by setting the `ta
 # Arguments
 
 ## `registryId = ::String`
-The AWS account ID associated with the registry that contains the repository to list images in. If you do not specify a registry, the default registry is assumed.
+The AWS account ID associated with the registry that contains the repository in which to list images. If you do not specify a registry, the default registry is assumed.
 
 
 ## `repositoryName = ::String` -- *Required*
-The repository whose image IDs are to be listed.
+The repository with image IDs to be listed.
 
 
 ## `nextToken = ::String`
@@ -1017,6 +1167,53 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
+    using AWSSDK.ECR.put_lifecycle_policy
+    put_lifecycle_policy([::AWSConfig], arguments::Dict)
+    put_lifecycle_policy([::AWSConfig]; repositoryName=, lifecyclePolicyText=, <keyword arguments>)
+
+    using AWSCore.Services.ecr
+    ecr([::AWSConfig], "PutLifecyclePolicy", arguments::Dict)
+    ecr([::AWSConfig], "PutLifecyclePolicy", repositoryName=, lifecyclePolicyText=, <keyword arguments>)
+
+# PutLifecyclePolicy Operation
+
+Creates or updates a lifecycle policy.
+
+# Arguments
+
+## `registryId = ::String`
+The AWS account ID associated with the registry that contains the repository. If you do  not specify a registry, the default registry is assumed.
+
+
+## `repositoryName = ::String` -- *Required*
+The name of the repository to receive the policy.
+
+
+## `lifecyclePolicyText = ::String` -- *Required*
+The JSON repository policy text to apply to the repository.
+
+
+
+
+# Returns
+
+`PutLifecyclePolicyResponse`
+
+# Exceptions
+
+`ServerException`, `InvalidParameterException` or `RepositoryNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/PutLifecyclePolicy)
+"""
+
+@inline put_lifecycle_policy(aws::AWSConfig=default_aws_config(); args...) = put_lifecycle_policy(aws, args)
+
+@inline put_lifecycle_policy(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "PutLifecyclePolicy", args)
+
+@inline put_lifecycle_policy(args) = put_lifecycle_policy(default_aws_config(), args)
+
+
+"""
     using AWSSDK.ECR.set_repository_policy
     set_repository_policy([::AWSConfig], arguments::Dict)
     set_repository_policy([::AWSConfig]; repositoryName=, policyText=, <keyword arguments>)
@@ -1068,6 +1265,53 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 
 """
+    using AWSSDK.ECR.start_lifecycle_policy_preview
+    start_lifecycle_policy_preview([::AWSConfig], arguments::Dict)
+    start_lifecycle_policy_preview([::AWSConfig]; repositoryName=, <keyword arguments>)
+
+    using AWSCore.Services.ecr
+    ecr([::AWSConfig], "StartLifecyclePolicyPreview", arguments::Dict)
+    ecr([::AWSConfig], "StartLifecyclePolicyPreview", repositoryName=, <keyword arguments>)
+
+# StartLifecyclePolicyPreview Operation
+
+Starts a preview of the specified lifecycle policy. This allows you to see the results before creating the lifecycle policy.
+
+# Arguments
+
+## `registryId = ::String`
+The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.
+
+
+## `repositoryName = ::String` -- *Required*
+The name of the repository to be evaluated.
+
+
+## `lifecyclePolicyText = ::String`
+The policy to be evaluated against. If you do not specify a policy, the current policy for the repository is used.
+
+
+
+
+# Returns
+
+`StartLifecyclePolicyPreviewResponse`
+
+# Exceptions
+
+`ServerException`, `InvalidParameterException`, `RepositoryNotFoundException`, `LifecyclePolicyNotFoundException` or `LifecyclePolicyPreviewInProgressException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/StartLifecyclePolicyPreview)
+"""
+
+@inline start_lifecycle_policy_preview(aws::AWSConfig=default_aws_config(); args...) = start_lifecycle_policy_preview(aws, args)
+
+@inline start_lifecycle_policy_preview(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "StartLifecyclePolicyPreview", args)
+
+@inline start_lifecycle_policy_preview(args) = start_lifecycle_policy_preview(default_aws_config(), args)
+
+
+"""
     using AWSSDK.ECR.upload_layer_part
     upload_layer_part([::AWSConfig], arguments::Dict)
     upload_layer_part([::AWSConfig]; repositoryName=, uploadId=, partFirstByte=, partLastByte=, layerPartBlob=, <keyword arguments>)
@@ -1086,11 +1330,11 @@ Uploads an image layer part to Amazon ECR.
 # Arguments
 
 ## `registryId = ::String`
-The AWS account ID associated with the registry that you are uploading layer parts to. If you do not specify a registry, the default registry is assumed.
+The AWS account ID associated with the registry to which you are uploading layer parts. If you do not specify a registry, the default registry is assumed.
 
 
 ## `repositoryName = ::String` -- *Required*
-The name of the repository that you are uploading layer parts to.
+The name of the repository to which you are uploading layer parts.
 
 
 ## `uploadId = ::String` -- *Required*

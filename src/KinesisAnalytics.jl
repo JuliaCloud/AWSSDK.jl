@@ -94,10 +94,14 @@ Current version of your Amazon Kinesis Analytics application. You can use the [D
 
 
 ## `Input = [ ... ]` -- *Required*
-
+The [Input](@ref) to add.
 ```
  Input = [
         "NamePrefix" => <required> ::String,
+        "InputProcessingConfiguration" =>  ["InputLambdaProcessor" => <required> [
+                "ResourceARN" => <required> ::String,
+                "RoleARN" => <required> ::String
+            ]],
         "KinesisStreamsInput" =>  [
             "ResourceARN" => <required> ::String,
             "RoleARN" => <required> ::String
@@ -146,6 +150,62 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 @inline add_application_input(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "AddApplicationInput", args)
 
 @inline add_application_input(args) = add_application_input(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.KinesisAnalytics.add_application_input_processing_configuration
+    add_application_input_processing_configuration([::AWSConfig], arguments::Dict)
+    add_application_input_processing_configuration([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, InputId=, InputProcessingConfiguration=)
+
+    using AWSCore.Services.kinesisanalytics
+    kinesisanalytics([::AWSConfig], "AddApplicationInputProcessingConfiguration", arguments::Dict)
+    kinesisanalytics([::AWSConfig], "AddApplicationInputProcessingConfiguration", ApplicationName=, CurrentApplicationVersionId=, InputId=, InputProcessingConfiguration=)
+
+# AddApplicationInputProcessingConfiguration Operation
+
+Adds an [InputProcessingConfiguration](@ref) to an application. An input processor preprocesses records on the input stream before the application's SQL code executes. Currently, the only input processor available is [AWS Lambda](https://aws.amazon.com/documentation/lambda/).
+
+# Arguments
+
+## `ApplicationName = ::String` -- *Required*
+Name of the application to which you want to add the input processing configuration.
+
+
+## `CurrentApplicationVersionId = ::Int` -- *Required*
+Version of the application to which you want to add the input processing configuration. You can use the [DescribeApplication](@ref) operation to get the current application version. If the version specified is not the current version, the `ConcurrentModificationException` is returned.
+
+
+## `InputId = ::String` -- *Required*
+The ID of the input configuration to which to add the input configuration. You can get a list of the input IDs for an application using the [DescribeApplication](@ref) operation.
+
+
+## `InputProcessingConfiguration = ["InputLambdaProcessor" => <required> [ ... ]]` -- *Required*
+The [InputProcessingConfiguration](@ref) to add to the application.
+```
+ InputProcessingConfiguration = ["InputLambdaProcessor" => <required> [
+            "ResourceARN" => <required> ::String,
+            "RoleARN" => <required> ::String
+        ]]
+```
+
+
+
+# Returns
+
+`AddApplicationInputProcessingConfigurationResponse`
+
+# Exceptions
+
+`ResourceNotFoundException`, `ResourceInUseException`, `InvalidArgumentException` or `ConcurrentModificationException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/AddApplicationInputProcessingConfiguration)
+"""
+
+@inline add_application_input_processing_configuration(aws::AWSConfig=default_aws_config(); args...) = add_application_input_processing_configuration(aws, args)
+
+@inline add_application_input_processing_configuration(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "AddApplicationInputProcessingConfiguration", args)
+
+@inline add_application_input_processing_configuration(args) = add_application_input_processing_configuration(default_aws_config(), args)
 
 
 """
@@ -342,6 +402,10 @@ To create the in-application stream, you need to specify a schema to transform y
 ```
  Inputs = [[
         "NamePrefix" => <required> ::String,
+        "InputProcessingConfiguration" =>  ["InputLambdaProcessor" => <required> [
+                "ResourceARN" => <required> ::String,
+                "RoleARN" => <required> ::String
+            ]],
         "KinesisStreamsInput" =>  [
             "ResourceARN" => <required> ::String,
             "RoleARN" => <required> ::String
@@ -525,6 +589,53 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 
 """
+    using AWSSDK.KinesisAnalytics.delete_application_input_processing_configuration
+    delete_application_input_processing_configuration([::AWSConfig], arguments::Dict)
+    delete_application_input_processing_configuration([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, InputId=)
+
+    using AWSCore.Services.kinesisanalytics
+    kinesisanalytics([::AWSConfig], "DeleteApplicationInputProcessingConfiguration", arguments::Dict)
+    kinesisanalytics([::AWSConfig], "DeleteApplicationInputProcessingConfiguration", ApplicationName=, CurrentApplicationVersionId=, InputId=)
+
+# DeleteApplicationInputProcessingConfiguration Operation
+
+Deletes an [InputProcessingConfiguration](@ref) from an input.
+
+# Arguments
+
+## `ApplicationName = ::String` -- *Required*
+The Kinesis Analytics application name.
+
+
+## `CurrentApplicationVersionId = ::Int` -- *Required*
+The version ID of the Kinesis Analytics application.
+
+
+## `InputId = ::String` -- *Required*
+The ID of the input configuration from which to delete the input configuration. You can get a list of the input IDs for an application using the [DescribeApplication](@ref) operation.
+
+
+
+
+# Returns
+
+`DeleteApplicationInputProcessingConfigurationResponse`
+
+# Exceptions
+
+`ResourceNotFoundException`, `ResourceInUseException`, `InvalidArgumentException` or `ConcurrentModificationException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/DeleteApplicationInputProcessingConfiguration)
+"""
+
+@inline delete_application_input_processing_configuration(aws::AWSConfig=default_aws_config(); args...) = delete_application_input_processing_configuration(aws, args)
+
+@inline delete_application_input_processing_configuration(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "DeleteApplicationInputProcessingConfiguration", args)
+
+@inline delete_application_input_processing_configuration(args) = delete_application_input_processing_configuration(default_aws_config(), args)
+
+
+"""
     using AWSSDK.KinesisAnalytics.delete_application_output
     delete_application_output([::AWSConfig], arguments::Dict)
     delete_application_output([::AWSConfig]; ApplicationName=, CurrentApplicationVersionId=, OutputId=)
@@ -670,11 +781,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 """
     using AWSSDK.KinesisAnalytics.discover_input_schema
     discover_input_schema([::AWSConfig], arguments::Dict)
-    discover_input_schema([::AWSConfig]; ResourceARN=, RoleARN=, InputStartingPositionConfiguration=)
+    discover_input_schema([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.kinesisanalytics
     kinesisanalytics([::AWSConfig], "DiscoverInputSchema", arguments::Dict)
-    kinesisanalytics([::AWSConfig], "DiscoverInputSchema", ResourceARN=, RoleARN=, InputStartingPositionConfiguration=)
+    kinesisanalytics([::AWSConfig], "DiscoverInputSchema", <keyword arguments>)
 
 # DiscoverInputSchema Operation
 
@@ -686,17 +797,36 @@ This operation requires permissions to perform the `kinesisanalytics:DiscoverInp
 
 # Arguments
 
-## `ResourceARN = ::String` -- *Required*
+## `ResourceARN = ::String`
 Amazon Resource Name (ARN) of the streaming source.
 
 
-## `RoleARN = ::String` -- *Required*
+## `RoleARN = ::String`
 ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf.
 
 
-## `InputStartingPositionConfiguration = ["InputStartingPosition" =>  "NOW", "TRIM_HORIZON" or "LAST_STOPPED_POINT"]` -- *Required*
+## `InputStartingPositionConfiguration = ["InputStartingPosition" =>  "NOW", "TRIM_HORIZON" or "LAST_STOPPED_POINT"]`
 Point at which you want Amazon Kinesis Analytics to start reading records from the specified streaming source discovery purposes.
 
+
+## `S3Configuration = [ ... ]`
+
+```
+ S3Configuration = [
+        "RoleARN" => <required> ::String,
+        "BucketARN" => <required> ::String,
+        "FileKey" => <required> ::String
+    ]
+```
+
+## `InputProcessingConfiguration = ["InputLambdaProcessor" => <required> [ ... ]]`
+The [InputProcessingConfiguration](@ref) to use to preprocess the records before discovering the schema of the records.
+```
+ InputProcessingConfiguration = ["InputLambdaProcessor" => <required> [
+            "ResourceARN" => <required> ::String,
+            "RoleARN" => <required> ::String
+        ]]
+```
 
 
 
@@ -892,6 +1022,10 @@ Describes application updates.
         "InputUpdates" =>  [[
             "InputId" => <required> ::String,
             "NamePrefixUpdate" =>  ::String,
+            "InputProcessingConfigurationUpdate" =>  ["InputLambdaProcessorUpdate" => <required> [
+                    "ResourceARNUpdate" =>  ::String,
+                    "RoleARNUpdate" =>  ::String
+                ]],
             "KinesisStreamsInputUpdate" =>  [
                 "ResourceARNUpdate" =>  ::String,
                 "RoleARNUpdate" =>  ::String

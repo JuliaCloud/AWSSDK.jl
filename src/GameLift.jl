@@ -247,6 +247,8 @@ You can also configure the new fleet with the following settings:
 
 If you use Amazon CloudWatch for metrics, you can add the new fleet to a metric group. This allows you to view aggregated metrics for a set of fleets. Once you specify a metric group, the new fleet's metrics are included in the metric group's data.
 
+You have the option of creating a VPC peering connection with the new fleet. For more information, see [VPC Peering with Amazon GameLift Fleets](http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
+
 If the CreateFleet call is successful, Amazon GameLift performs the following tasks:
 
 *   Creates a fleet record and sets the status to `NEW` (followed by other statuses as the fleet is activated).
@@ -329,7 +331,7 @@ This parameter is no longer used. Instead, specify server launch parameters in t
 This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a server process shuts down, use the Amazon GameLift server API `ProcessReady()` and specify one or more directory paths in `logParameters`. See more information in the [Server API Reference](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process).
 
 
-## `EC2InstanceType = "t2.micro", "t2.small", "t2.medium", "t2.large", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge" or "m4.10xlarge"` -- *Required*
+## `EC2InstanceType = "t2.micro", "t2.small", "t2.medium", "t2.large", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge" or "m4.10xlarge"` -- *Required*
 Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See [Amazon EC2 Instance Types](http://aws.amazon.com/ec2/instance-types/) for detailed descriptions.
 
 
@@ -347,9 +349,9 @@ Range of IP addresses and port settings that permit inbound traffic to access se
 ## `NewGameSessionProtectionPolicy = "NoProtection" or "FullProtection"`
 Game session protection policy to apply to all instances in this fleet. If this parameter is not set, instances in this fleet default to no protection. You can change a fleet's protection policy using UpdateFleetAttributes, but this change will only affect sessions created after the policy change. You can also set protection for individual instances using [UpdateGameSession](@ref).
 
-*   **NoProtection** – The game session can be terminated during a scale-down event.
+*   **NoProtection** -- The game session can be terminated during a scale-down event.
 
-*   **FullProtection** – If the game session is in an `ACTIVE` status, it cannot be terminated during a scale-down event.
+*   **FullProtection** -- If the game session is in an `ACTIVE` status, it cannot be terminated during a scale-down event.
 
 
 ## `RuntimeConfiguration = [ ... ]`
@@ -377,6 +379,14 @@ Policy that limits the number of game sessions an individual player can create o
 
 ## `MetricGroups = [::String, ...]`
 Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the group. Or use a new name to create a new metric group. A fleet can only be included in one metric group at a time.
+
+
+## `PeerVpcAwsAccountId = ::String`
+Unique identifier for the AWS account with the VPC that you want to peer your Amazon GameLift fleet with. You can find your Account ID in the AWS Management Console under account settings.
+
+
+## `PeerVpcId = ::String`
+Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud service tools, including the VPC Dashboard in the AWS Management Console.
 
 
 
@@ -478,11 +488,11 @@ Unique identifier for a player or entity creating the game session. This ID is u
 
 
 ## `GameSessionId = ::String`
-*This parameter is no longer preferred. Please use `IdempotencyToken` instead.* Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ID has the following format: `arn:aws:gamelift:<region>::gamesession/<fleet ID>/<custom ID string or idempotency token>`.)
+*This parameter is no longer preferred. Please use `IdempotencyToken` instead.* Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ARN has the following format: `arn:aws:gamelift:<region>::gamesession/<fleet ID>/<custom ID string or idempotency token>`.)
 
 
 ## `IdempotencyToken = ::String`
-Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ID has the following format: `arn:aws:gamelift:<region>::gamesession/<fleet ID>/<custom ID string or idempotency token>`.) Idempotency tokens remain in use for 30 days after a game session has ended; game session objects are retained for this time period and then deleted.
+Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ARN has the following format: `arn:aws:gamelift:<region>::gamesession/<fleet ID>/<custom ID string or idempotency token>`.) Idempotency tokens remain in use for 30 days after a game session has ended; game session objects are retained for this time period and then deleted.
 
 
 ## `GameSessionData = ::String`
@@ -889,6 +899,136 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
+    using AWSSDK.GameLift.create_vpc_peering_authorization
+    create_vpc_peering_authorization([::AWSConfig], arguments::Dict)
+    create_vpc_peering_authorization([::AWSConfig]; GameLiftAwsAccountId=, PeerVpcId=)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "CreateVpcPeeringAuthorization", arguments::Dict)
+    gamelift([::AWSConfig], "CreateVpcPeeringAuthorization", GameLiftAwsAccountId=, PeerVpcId=)
+
+# CreateVpcPeeringAuthorization Operation
+
+Requests authorization to create or delete a peer connection between the VPC for your Amazon GameLift fleet and a virtual private cloud (VPC) in your AWS account. VPC peering enables the game servers on your fleet to communicate directly with other AWS resources. Once you've received authorization, call [CreateVpcPeeringConnection](@ref) to establish the peering connection. For more information, see [VPC Peering with Amazon GameLift Fleets](http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
+
+You can peer with VPCs that are owned by any AWS account you have access to, including the account that you use to manage your Amazon GameLift fleets. You cannot peer with VPCs that are in different regions.
+
+To request authorization to create a connection, call this operation from the AWS account with the VPC that you want to peer to your Amazon GameLift fleet. For example, to enable your game servers to retrieve data from a DynamoDB table, use the account that manages that DynamoDB resource. Identify the following values: (1) The ID of the VPC that you want to peer with, and (2) the ID of the AWS account that you use to manage Amazon GameLift. If successful, VPC peering is authorized for the specified VPC.
+
+To request authorization to delete a connection, call this operation from the AWS account with the VPC that is peered with your Amazon GameLift fleet. Identify the following values: (1) VPC ID that you want to delete the peering connection for, and (2) ID of the AWS account that you use to manage Amazon GameLift.
+
+The authorization remains valid for 24 hours unless it is canceled by a call to [DeleteVpcPeeringAuthorization](@ref). You must create or delete the peering connection while the authorization is valid.
+
+VPC peering connection operations include:
+
+*   [CreateVpcPeeringAuthorization](@ref)
+
+*   [DescribeVpcPeeringAuthorizations](@ref)
+
+*   [DeleteVpcPeeringAuthorization](@ref)
+
+*   [CreateVpcPeeringConnection](@ref)
+
+*   [DescribeVpcPeeringConnections](@ref)
+
+*   [DeleteVpcPeeringConnection](@ref)
+
+# Arguments
+
+## `GameLiftAwsAccountId = ::String` -- *Required*
+Unique identifier for the AWS account that you use to manage your Amazon GameLift fleet. You can find your Account ID in the AWS Management Console under account settings.
+
+
+## `PeerVpcId = ::String` -- *Required*
+Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud service tools, including the VPC Dashboard in the AWS Management Console.
+
+
+
+
+# Returns
+
+`CreateVpcPeeringAuthorizationOutput`
+
+# Exceptions
+
+`UnauthorizedException`, `InvalidRequestException`, `NotFoundException` or `InternalServiceException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateVpcPeeringAuthorization)
+"""
+
+@inline create_vpc_peering_authorization(aws::AWSConfig=default_aws_config(); args...) = create_vpc_peering_authorization(aws, args)
+
+@inline create_vpc_peering_authorization(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "CreateVpcPeeringAuthorization", args)
+
+@inline create_vpc_peering_authorization(args) = create_vpc_peering_authorization(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.GameLift.create_vpc_peering_connection
+    create_vpc_peering_connection([::AWSConfig], arguments::Dict)
+    create_vpc_peering_connection([::AWSConfig]; FleetId=, PeerVpcAwsAccountId=, PeerVpcId=)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "CreateVpcPeeringConnection", arguments::Dict)
+    gamelift([::AWSConfig], "CreateVpcPeeringConnection", FleetId=, PeerVpcAwsAccountId=, PeerVpcId=)
+
+# CreateVpcPeeringConnection Operation
+
+Establishes a VPC peering connection between a virtual private cloud (VPC) in an AWS account with the VPC for your Amazon GameLift fleet. VPC peering enables the game servers on your fleet to communicate directly with other AWS resources. You can peer with VPCs in any AWS account that you have access to, including the account that you use to manage your Amazon GameLift fleets. You cannot peer with VPCs that are in different regions. For more information, see [VPC Peering with Amazon GameLift Fleets](http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
+
+Before calling this operation to establish the peering connection, you first need to call [CreateVpcPeeringAuthorization](@ref) and identify the VPC you want to peer with. Once the authorization for the specified VPC is issued, you have 24 hours to establish the connection. These two operations handle all tasks necessary to peer the two VPCs, including acceptance, updating routing tables, etc.
+
+To establish the connection, call this operation from the AWS account that is used to manage the Amazon GameLift fleets. Identify the following values: (1) The ID of the fleet you want to be enable a VPC peering connection for; (2) The AWS account with the VPC that you want to peer with; and (3) The ID of the VPC you want to peer with. This operation is asynchronous. If successful, a [VpcPeeringConnection](@ref) request is created. You can use continuous polling to track the request's status using [DescribeVpcPeeringConnections](@ref), or by monitoring fleet events for success or failure using [DescribeFleetEvents](@ref).
+
+VPC peering connection operations include:
+
+*   [CreateVpcPeeringAuthorization](@ref)
+
+*   [DescribeVpcPeeringAuthorizations](@ref)
+
+*   [DeleteVpcPeeringAuthorization](@ref)
+
+*   [CreateVpcPeeringConnection](@ref)
+
+*   [DescribeVpcPeeringConnections](@ref)
+
+*   [DeleteVpcPeeringConnection](@ref)
+
+# Arguments
+
+## `FleetId = ::String` -- *Required*
+Unique identifier for a fleet. This tells Amazon GameLift which GameLift VPC to peer with.
+
+
+## `PeerVpcAwsAccountId = ::String` -- *Required*
+Unique identifier for the AWS account with the VPC that you want to peer your Amazon GameLift fleet with. You can find your Account ID in the AWS Management Console under account settings.
+
+
+## `PeerVpcId = ::String` -- *Required*
+Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud service tools, including the VPC Dashboard in the AWS Management Console.
+
+
+
+
+# Returns
+
+`CreateVpcPeeringConnectionOutput`
+
+# Exceptions
+
+`UnauthorizedException`, `InvalidRequestException`, `NotFoundException` or `InternalServiceException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateVpcPeeringConnection)
+"""
+
+@inline create_vpc_peering_connection(aws::AWSConfig=default_aws_config(); args...) = create_vpc_peering_connection(aws, args)
+
+@inline create_vpc_peering_connection(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "CreateVpcPeeringConnection", args)
+
+@inline create_vpc_peering_connection(args) = create_vpc_peering_connection(default_aws_config(), args)
+
+
+"""
     using AWSSDK.GameLift.delete_alias
     delete_alias([::AWSConfig], arguments::Dict)
     delete_alias([::AWSConfig]; AliasId=)
@@ -1255,6 +1395,122 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 
 """
+    using AWSSDK.GameLift.delete_vpc_peering_authorization
+    delete_vpc_peering_authorization([::AWSConfig], arguments::Dict)
+    delete_vpc_peering_authorization([::AWSConfig]; GameLiftAwsAccountId=, PeerVpcId=)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "DeleteVpcPeeringAuthorization", arguments::Dict)
+    gamelift([::AWSConfig], "DeleteVpcPeeringAuthorization", GameLiftAwsAccountId=, PeerVpcId=)
+
+# DeleteVpcPeeringAuthorization Operation
+
+Cancels a pending VPC peering authorization for the specified VPC. If the authorization has already been used to create a peering connection, call [DeleteVpcPeeringConnection](@ref) to remove the connection.
+
+VPC peering connection operations include:
+
+*   [CreateVpcPeeringAuthorization](@ref)
+
+*   [DescribeVpcPeeringAuthorizations](@ref)
+
+*   [DeleteVpcPeeringAuthorization](@ref)
+
+*   [CreateVpcPeeringConnection](@ref)
+
+*   [DescribeVpcPeeringConnections](@ref)
+
+*   [DeleteVpcPeeringConnection](@ref)
+
+# Arguments
+
+## `GameLiftAwsAccountId = ::String` -- *Required*
+Unique identifier for the AWS account that you use to manage your Amazon GameLift fleet. You can find your Account ID in the AWS Management Console under account settings.
+
+
+## `PeerVpcId = ::String` -- *Required*
+Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud service tools, including the VPC Dashboard in the AWS Management Console.
+
+
+
+
+# Returns
+
+`DeleteVpcPeeringAuthorizationOutput`
+
+# Exceptions
+
+`UnauthorizedException`, `InvalidRequestException`, `NotFoundException` or `InternalServiceException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DeleteVpcPeeringAuthorization)
+"""
+
+@inline delete_vpc_peering_authorization(aws::AWSConfig=default_aws_config(); args...) = delete_vpc_peering_authorization(aws, args)
+
+@inline delete_vpc_peering_authorization(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DeleteVpcPeeringAuthorization", args)
+
+@inline delete_vpc_peering_authorization(args) = delete_vpc_peering_authorization(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.GameLift.delete_vpc_peering_connection
+    delete_vpc_peering_connection([::AWSConfig], arguments::Dict)
+    delete_vpc_peering_connection([::AWSConfig]; FleetId=, VpcPeeringConnectionId=)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "DeleteVpcPeeringConnection", arguments::Dict)
+    gamelift([::AWSConfig], "DeleteVpcPeeringConnection", FleetId=, VpcPeeringConnectionId=)
+
+# DeleteVpcPeeringConnection Operation
+
+Removes a VPC peering connection. To delete the connection, you must have a valid authorization for the VPC peering connection that you want to delete. You can check for an authorization by calling [DescribeVpcPeeringAuthorizations](@ref) or request a new one using [CreateVpcPeeringAuthorization](@ref).
+
+Once a valid authorization exists, call this operation from the AWS account that is used to manage the Amazon GameLift fleets. Identify the connection to delete by the connection ID and fleet ID. If successful, the connection is removed.
+
+VPC peering connection operations include:
+
+*   [CreateVpcPeeringAuthorization](@ref)
+
+*   [DescribeVpcPeeringAuthorizations](@ref)
+
+*   [DeleteVpcPeeringAuthorization](@ref)
+
+*   [CreateVpcPeeringConnection](@ref)
+
+*   [DescribeVpcPeeringConnections](@ref)
+
+*   [DeleteVpcPeeringConnection](@ref)
+
+# Arguments
+
+## `FleetId = ::String` -- *Required*
+Unique identifier for a fleet. This value must match the fleet ID referenced in the VPC peering connection record.
+
+
+## `VpcPeeringConnectionId = ::String` -- *Required*
+Unique identifier for a VPC peering connection. This value is included in the [VpcPeeringConnection](@ref) object, which can be retrieved by calling [DescribeVpcPeeringConnections](@ref).
+
+
+
+
+# Returns
+
+`DeleteVpcPeeringConnectionOutput`
+
+# Exceptions
+
+`UnauthorizedException`, `InvalidRequestException`, `NotFoundException` or `InternalServiceException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DeleteVpcPeeringConnection)
+"""
+
+@inline delete_vpc_peering_connection(aws::AWSConfig=default_aws_config(); args...) = delete_vpc_peering_connection(aws, args)
+
+@inline delete_vpc_peering_connection(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DeleteVpcPeeringConnection", args)
+
+@inline delete_vpc_peering_connection(args) = delete_vpc_peering_connection(default_aws_config(), args)
+
+
+"""
     using AWSSDK.GameLift.describe_alias
     describe_alias([::AWSConfig], arguments::Dict)
     describe_alias([::AWSConfig]; AliasId=)
@@ -1425,7 +1681,7 @@ Fleet-related operations include:
 
 # Arguments
 
-## `EC2InstanceType = "t2.micro", "t2.small", "t2.medium", "t2.large", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge" or "m4.10xlarge"`
+## `EC2InstanceType = "t2.micro", "t2.small", "t2.medium", "t2.large", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge" or "m4.10xlarge"`
 Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See [Amazon EC2 Instance Types](http://aws.amazon.com/ec2/instance-types/) for detailed descriptions. Leave this parameter blank to retrieve limits for all types.
 
 
@@ -2487,13 +2743,13 @@ Player session status to filter results on.
 
 Possible player session statuses include the following:
 
-*   **RESERVED** – The player session request has been received, but the player has not yet connected to the server process and/or been validated.
+*   **RESERVED** -- The player session request has been received, but the player has not yet connected to the server process and/or been validated.
 
-*   **ACTIVE** – The player has been validated by the server process and is currently connected.
+*   **ACTIVE** -- The player has been validated by the server process and is currently connected.
 
-*   **COMPLETED** – The player connection has been dropped.
+*   **COMPLETED** -- The player connection has been dropped.
 
-*   **TIMEDOUT** – A player session request was received, but the player did not connect and/or was not validated within the time-out limit (60 seconds).
+*   **TIMEDOUT** -- A player session request was received, but the player did not connect and/or was not validated within the timeout limit (60 seconds).
 
 
 ## `Limit = ::Int`
@@ -2675,19 +2931,19 @@ Unique identifier for a fleet to retrieve scaling policies for.
 ## `StatusFilter = "ACTIVE", "UPDATE_REQUESTED", "UPDATING", "DELETE_REQUESTED", "DELETING", "DELETED" or "ERROR"`
 Scaling policy status to filter results on. A scaling policy is only in force when in an `ACTIVE` status.
 
-*   **ACTIVE** – The scaling policy is currently in force.
+*   **ACTIVE** -- The scaling policy is currently in force.
 
-*   **UPDATEREQUESTED** – A request to update the scaling policy has been received.
+*   **UPDATEREQUESTED** -- A request to update the scaling policy has been received.
 
-*   **UPDATING** – A change is being made to the scaling policy.
+*   **UPDATING** -- A change is being made to the scaling policy.
 
-*   **DELETEREQUESTED** – A request to delete the scaling policy has been received.
+*   **DELETEREQUESTED** -- A request to delete the scaling policy has been received.
 
-*   **DELETING** – The scaling policy is being deleted.
+*   **DELETING** -- The scaling policy is being deleted.
 
-*   **DELETED** – The scaling policy has been deleted.
+*   **DELETED** -- The scaling policy has been deleted.
 
-*   **ERROR** – An error occurred in creating the policy. It should be removed and recreated.
+*   **ERROR** -- An error occurred in creating the policy. It should be removed and recreated.
 
 
 ## `Limit = ::Int`
@@ -2716,6 +2972,110 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 @inline describe_scaling_policies(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeScalingPolicies", args)
 
 @inline describe_scaling_policies(args) = describe_scaling_policies(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.GameLift.describe_vpc_peering_authorizations
+    describe_vpc_peering_authorizations([::AWSConfig], arguments::Dict)
+    describe_vpc_peering_authorizations([::AWSConfig]; )
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "DescribeVpcPeeringAuthorizations", arguments::Dict)
+    gamelift([::AWSConfig], "DescribeVpcPeeringAuthorizations", )
+
+# DescribeVpcPeeringAuthorizations Operation
+
+Retrieves valid VPC peering authorizations that are pending for the AWS account. This operation returns all VPC peering authorizations and requests for peering. This includes those initiated and received by this account.
+
+VPC peering connection operations include:
+
+*   [CreateVpcPeeringAuthorization](@ref)
+
+*   [DescribeVpcPeeringAuthorizations](@ref)
+
+*   [DeleteVpcPeeringAuthorization](@ref)
+
+*   [CreateVpcPeeringConnection](@ref)
+
+*   [DescribeVpcPeeringConnections](@ref)
+
+*   [DeleteVpcPeeringConnection](@ref)
+
+# Arguments
+
+
+
+# Returns
+
+`DescribeVpcPeeringAuthorizationsOutput`
+
+# Exceptions
+
+`UnauthorizedException`, `InvalidRequestException` or `InternalServiceException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeVpcPeeringAuthorizations)
+"""
+
+@inline describe_vpc_peering_authorizations(aws::AWSConfig=default_aws_config(); args...) = describe_vpc_peering_authorizations(aws, args)
+
+@inline describe_vpc_peering_authorizations(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeVpcPeeringAuthorizations", args)
+
+@inline describe_vpc_peering_authorizations(args) = describe_vpc_peering_authorizations(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.GameLift.describe_vpc_peering_connections
+    describe_vpc_peering_connections([::AWSConfig], arguments::Dict)
+    describe_vpc_peering_connections([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "DescribeVpcPeeringConnections", arguments::Dict)
+    gamelift([::AWSConfig], "DescribeVpcPeeringConnections", <keyword arguments>)
+
+# DescribeVpcPeeringConnections Operation
+
+Retrieves information on VPC peering connections. Use this operation to get peering information for all fleets or for one specific fleet ID.
+
+To retrieve connection information, call this operation from the AWS account that is used to manage the Amazon GameLift fleets. Specify a fleet ID or leave the parameter empty to retrieve all connection records. If successful, the retrieved information includes both active and pending connections. Active connections identify the IpV4 CIDR block that the VPC uses to connect.
+
+VPC peering connection operations include:
+
+*   [CreateVpcPeeringAuthorization](@ref)
+
+*   [DescribeVpcPeeringAuthorizations](@ref)
+
+*   [DeleteVpcPeeringAuthorization](@ref)
+
+*   [CreateVpcPeeringConnection](@ref)
+
+*   [DescribeVpcPeeringConnections](@ref)
+
+*   [DeleteVpcPeeringConnection](@ref)
+
+# Arguments
+
+## `FleetId = ::String`
+Unique identifier for a fleet.
+
+
+
+
+# Returns
+
+`DescribeVpcPeeringConnectionsOutput`
+
+# Exceptions
+
+`UnauthorizedException`, `InvalidRequestException`, `NotFoundException` or `InternalServiceException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeVpcPeeringConnections)
+"""
+
+@inline describe_vpc_peering_connections(aws::AWSConfig=default_aws_config(); args...) = describe_vpc_peering_connections(aws, args)
+
+@inline describe_vpc_peering_connections(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeVpcPeeringConnections", args)
+
+@inline describe_vpc_peering_connections(args) = describe_vpc_peering_connections(default_aws_config(), args)
 
 
 """
@@ -2866,9 +3226,9 @@ Type of routing to filter results on. Use this parameter to retrieve only aliase
 
 Possible routing types include the following:
 
-*   **SIMPLE** – The alias resolves to one specific fleet. Use this type when routing to active fleets.
+*   **SIMPLE** -- The alias resolves to one specific fleet. Use this type when routing to active fleets.
 
-*   **TERMINAL** – The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the [RoutingStrategy](@ref) message embedded.
+*   **TERMINAL** -- The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the [RoutingStrategy](@ref) message embedded.
 
 
 ## `Name = ::String`
@@ -2938,11 +3298,11 @@ Build status to filter results by. To retrieve all builds, leave this parameter 
 
 Possible build statuses include the following:
 
-*   **INITIALIZED** – A new build has been defined, but no files have been uploaded. You cannot create fleets for builds that are in this status. When a build is successfully created, the build status is set to this value.
+*   **INITIALIZED** -- A new build has been defined, but no files have been uploaded. You cannot create fleets for builds that are in this status. When a build is successfully created, the build status is set to this value.
 
-*   **READY** – The game build has been successfully uploaded. You can now create new fleets for this build.
+*   **READY** -- The game build has been successfully uploaded. You can now create new fleets for this build.
 
-*   **FAILED** – The game build upload failed. You cannot create new fleets for this build.
+*   **FAILED** -- The game build upload failed. You cannot create new fleets for this build.
 
 
 ## `Limit = ::Int`
@@ -3151,11 +3511,11 @@ Amount of adjustment to make, based on the scaling adjustment type.
 ## `ScalingAdjustmentType = "ChangeInCapacity", "ExactCapacity" or "PercentChangeInCapacity"` -- *Required*
 Type of adjustment to make to a fleet's instance count (see [FleetCapacity](@ref)):
 
-*   **ChangeInCapacity** – add (or subtract) the scaling adjustment value from the current instance count. Positive values scale up while negative values scale down.
+*   **ChangeInCapacity** -- add (or subtract) the scaling adjustment value from the current instance count. Positive values scale up while negative values scale down.
 
-*   **ExactCapacity** – set the instance count to the scaling adjustment value.
+*   **ExactCapacity** -- set the instance count to the scaling adjustment value.
 
-*   **PercentChangeInCapacity** – increase or reduce the current instance count by the scaling adjustment, read as a percentage. Positive values scale up while negative values scale down; for example, a value of "-10" scales the fleet down by 10%.
+*   **PercentChangeInCapacity** -- increase or reduce the current instance count by the scaling adjustment, read as a percentage. Positive values scale up while negative values scale down; for example, a value of "-10" scales the fleet down by 10%.
 
 
 ## `Threshold = double` -- *Required*
@@ -3173,17 +3533,17 @@ Length of time (in minutes) the metric must be at or beyond the threshold before
 ## `MetricName = "ActivatingGameSessions", "ActiveGameSessions", "ActiveInstances", "AvailableGameSessions", "AvailablePlayerSessions", "CurrentPlayerSessions", "IdleInstances", "PercentAvailableGameSessions", "PercentIdleInstances", "QueueDepth" or "WaitTime"` -- *Required*
 Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.
 
-*   **ActivatingGameSessions** – number of game sessions in the process of being created (game session status = `ACTIVATING`).
+*   **ActivatingGameSessions** -- number of game sessions in the process of being created (game session status = `ACTIVATING`).
 
-*   **ActiveGameSessions** – number of game sessions currently running (game session status = `ACTIVE`).
+*   **ActiveGameSessions** -- number of game sessions currently running (game session status = `ACTIVE`).
 
-*   **CurrentPlayerSessions** – number of active or reserved player sessions (player session status = `ACTIVE` or `RESERVED`).
+*   **CurrentPlayerSessions** -- number of active or reserved player sessions (player session status = `ACTIVE` or `RESERVED`).
 
-*   **AvailablePlayerSessions** – number of player session slots currently available in active game sessions across the fleet, calculated by subtracting a game session's current player session count from its maximum player session count. This number includes game sessions that are not currently accepting players (game session `PlayerSessionCreationPolicy` = `DENY_ALL`).
+*   **AvailablePlayerSessions** -- number of player session slots currently available in active game sessions across the fleet, calculated by subtracting a game session's current player session count from its maximum player session count. This number includes game sessions that are not currently accepting players (game session `PlayerSessionCreationPolicy` = `DENY_ALL`).
 
-*   **ActiveInstances** – number of instances currently running a game session.
+*   **ActiveInstances** -- number of instances currently running a game session.
 
-*   **IdleInstances** – number of instances not currently running a game session.
+*   **IdleInstances** -- number of instances not currently running a game session.
 
 
 
@@ -3566,7 +3926,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 Uses FlexMatch to create a game match for a group of players based on custom matchmaking rules, and starts a new game for the matched players. Each matchmaking request specifies the type of match to build (team configuration, rules for an acceptable match, etc.). The request also specifies the players to find a match for and where to host the new game session for optimal performance. A matchmaking request might start with a single player or a group of players who want to play together. FlexMatch finds additional players as needed to fill the match. Match type, rules, and the queue used to place a new game session are defined in a `MatchmakingConfiguration`. For complete information on setting up and using FlexMatch, see the topic [Adding FlexMatch to Your Game](http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
 
-To start matchmaking, provide a unique ticket ID, specify a matchmaking configuration, and include the players to be matched. You must also include a set of player attributes relevant for the matchmaking configuration. If successful, a matchmaking ticket is returned with status set to `QUEUED`. Track the status of the ticket to respond as needed and acquire game session connection information for sucessfully completed matches.
+To start matchmaking, provide a unique ticket ID, specify a matchmaking configuration, and include the players to be matched. You must also include a set of player attributes relevant for the matchmaking configuration. If successful, a matchmaking ticket is returned with status set to `QUEUED`. Track the status of the ticket to respond as needed and acquire game session connection information for successfully completed matches.
 
 **Tracking ticket status** -- A couple of options are available for tracking the status of matchmaking requests:
 
@@ -3951,9 +4311,9 @@ Human-readable description of a fleet.
 ## `NewGameSessionProtectionPolicy = "NoProtection" or "FullProtection"`
 Game session protection policy to apply to all new instances created in this fleet. Instances that already exist are not affected. You can set protection for individual instances using [UpdateGameSession](@ref).
 
-*   **NoProtection** – The game session can be terminated during a scale-down event.
+*   **NoProtection** -- The game session can be terminated during a scale-down event.
 
-*   **FullProtection** – If the game session is in an `ACTIVE` status, it cannot be terminated during a scale-down event.
+*   **FullProtection** -- If the game session is in an `ACTIVE` status, it cannot be terminated during a scale-down event.
 
 
 ## `ResourceCreationLimitPolicy = [ ... ]`
@@ -4249,9 +4609,9 @@ Policy determining whether or not the game session accepts new players.
 ## `ProtectionPolicy = "NoProtection" or "FullProtection"`
 Game session protection policy to apply to this game session only.
 
-*   **NoProtection** – The game session can be terminated during a scale-down event.
+*   **NoProtection** -- The game session can be terminated during a scale-down event.
 
-*   **FullProtection** – If the game session is in an `ACTIVE` status, it cannot be terminated during a scale-down event.
+*   **FullProtection** -- If the game session is in an `ACTIVE` status, it cannot be terminated during a scale-down event.
 
 
 

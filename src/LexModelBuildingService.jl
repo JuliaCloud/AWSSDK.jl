@@ -552,7 +552,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 Returns metadata information for a specific bot. You must provide the bot name and the bot version or alias.
 
-The GetBot operation requires permissions for the `lex:GetBot` action.
+This operation requires permissions for the `lex:GetBot` action.
 
 # Arguments
 
@@ -1128,6 +1128,57 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 @inline get_builtin_slot_types(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/builtins/slottypes/", args)
 
 @inline get_builtin_slot_types(args) = get_builtin_slot_types(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.LexModelBuildingService.get_export
+    get_export([::AWSConfig], arguments::Dict)
+    get_export([::AWSConfig]; name=, version=, resourceType=, exportType=)
+
+    using AWSCore.Services.lex_models
+    lex_models([::AWSConfig], "GET", "/exports/", arguments::Dict)
+    lex_models([::AWSConfig], "GET", "/exports/", name=, version=, resourceType=, exportType=)
+
+# GetExport Operation
+
+Exports the contents of a Amazon Lex resource in a specified format.
+
+# Arguments
+
+## `name = ::String` -- *Required*
+The name of the bot to export.
+
+
+## `version = ::String` -- *Required*
+The version of the bot to export.
+
+
+## `resourceType = "BOT"` -- *Required*
+The type of resource to export.
+
+
+## `exportType = "ALEXA_SKILLS_KIT"` -- *Required*
+The format of the exported data.
+
+
+
+
+# Returns
+
+`GetExportResponse`
+
+# Exceptions
+
+`NotFoundException`, `LimitExceededException`, `InternalFailureException` or `BadRequestException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetExport)
+"""
+
+@inline get_export(aws::AWSConfig=default_aws_config(); args...) = get_export(aws, args)
+
+@inline get_export(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/exports/", args)
+
+@inline get_export(args) = get_export(default_aws_config(), args)
 
 
 """
@@ -2076,7 +2127,7 @@ A description of the intent.
 
 
 ## `slots = [[ ... ], ...]`
-An array of intent slots. At runtime, Amazon Lex elicits required slot values from the user using prompts defined in the slots. For more information, see <xref linkend="how-it-works"/>.
+An array of intent slots. At runtime, Amazon Lex elicits required slot values from the user using prompts defined in the slots. For more information, see [how-it-works](@ref).
 ```
  slots = [[
         "name" => <required> ::String,
@@ -2200,7 +2251,7 @@ For example, suppose your bot determines that the user is John. Your Lambda func
 ```
 
 ## `fulfillmentActivity = [ ... ]`
-Describes how the intent is fulfilled. For example, after a user provides all of the information for a pizza order, `fulfillmentActivity` defines how the bot places an order with a local pizza store.
+Required. Describes how the intent is fulfilled. For example, after a user provides all of the information for a pizza order, `fulfillmentActivity` defines how the bot places an order with a local pizza store.
 
 You might configure Amazon Lex to return all of the intent information to the client application, or direct it to invoke a Lambda function that can process the intent (for example, place an order with a pizzeria).
 ```
@@ -2552,9 +2603,16 @@ For a list of built-in slot types, see [Slot Type Reference](https://developer.a
 A description of the slot type.
 
 
-## `enumerationValues = [["value" => <required> ::String], ...]`
-A list of `EnumerationValue` objects that defines the values that the slot type can take.
+## `enumerationValues = [[ ... ], ...]`
+A list of `EnumerationValue` objects that defines the values that the slot type can take. Each value can have a list of `synonyms`, which are additional values that help train the machine learning model about the values that it resolves for a slot.
 
+When Amazon Lex resolves a slot value, it generates a resolution list that contains up to five possible values for the slot. If you are using a Lambda function, this resolution list is passed to the function. If you are not using a Lambda function you can choose to return the value that the user entered or the first value in the resolution list as the slot value. The `valueSelectionStrategy` field indicates the option to use.
+```
+ enumerationValues = [[
+        "value" => <required> ::String,
+        "synonyms" =>  [::String, ...]
+    ], ...]
+```
 
 ## `checksum = ::String`
 Identifies a specific revision of the `\$LATEST` version.
@@ -2562,6 +2620,16 @@ Identifies a specific revision of the `\$LATEST` version.
 When you create a new slot type, leave the `checksum` field blank. If you specify a checksum you get a `BadRequestException` exception.
 
 When you want to update a slot type, set the `checksum` field to the checksum of the most recent revision of the `\$LATEST` version. If you don't specify the `checksum` field, or if the checksum does not match the `\$LATEST` version, you get a `PreconditionFailedException` exception.
+
+
+## `valueSelectionStrategy = "ORIGINAL_VALUE" or "TOP_RESOLUTION"`
+Determines the slot resolution strategy that Amazon Lex uses to return slot type values. The field can be set to one of the following values:
+
+*   `ORIGINAL_VALUE` - Returns the value entered by the user, if the user value is similar to the slot value.
+
+*   `TOP_RESOLUTION` - If there is a resolution list for the slot, return the first value in the resolution list as the slot type value. If there is no resolution list, null is returned.
+
+If you don't specify the `valueSelectionStrategy`, the default is `ORIGINAL_VALUE`.
 
 
 

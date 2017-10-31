@@ -229,7 +229,7 @@ The distribution's configuration information.
             "IAMCertificateId" =>  ::String,
             "ACMCertificateArn" =>  ::String,
             "SSLSupportMethod" =>  "sni-only" or "vip",
-            "MinimumProtocolVersion" =>  "SSLv3" or "TLSv1",
+            "MinimumProtocolVersion" =>  "SSLv3", "TLSv1", "TLSv1_2016", "TLSv1.1_2016" or "TLSv1.2_2018",
             "Certificate" =>  ::String,
             "CertificateSource" =>  "cloudfront", "iam" or "acm"
         ],
@@ -438,7 +438,7 @@ The distribution's configuration information.
                 "IAMCertificateId" =>  ::String,
                 "ACMCertificateArn" =>  ::String,
                 "SSLSupportMethod" =>  "sni-only" or "vip",
-                "MinimumProtocolVersion" =>  "SSLv3" or "TLSv1",
+                "MinimumProtocolVersion" =>  "SSLv3", "TLSv1", "TLSv1_2016", "TLSv1.1_2016" or "TLSv1.2_2018",
                 "Certificate" =>  ::String,
                 "CertificateSource" =>  "cloudfront", "iam" or "acm"
             ],
@@ -748,6 +748,41 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 @inline delete_distribution(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "DELETE", "/2017-03-25/distribution/{Id}", args)
 
 @inline delete_distribution(args) = delete_distribution(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFront.delete_service_linked_role
+    delete_service_linked_role([::AWSConfig], arguments::Dict)
+    delete_service_linked_role([::AWSConfig]; RoleName=)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "DELETE", "/2017-03-25/service-linked-role/{RoleName}", arguments::Dict)
+    cloudfront([::AWSConfig], "DELETE", "/2017-03-25/service-linked-role/{RoleName}", RoleName=)
+
+# DeleteServiceLinkedRole Operation
+
+
+
+# Arguments
+
+## `RoleName = ::String` -- *Required*
+
+
+
+
+
+# Exceptions
+
+`InvalidArgument`, `AccessDenied`, `ResourceInUse` or `NoSuchResource`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/DeleteServiceLinkedRole)
+"""
+
+@inline delete_service_linked_role(aws::AWSConfig=default_aws_config(); args...) = delete_service_linked_role(aws, args)
+
+@inline delete_service_linked_role(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "DELETE", "/2017-03-25/service-linked-role/{RoleName}", args)
+
+@inline delete_service_linked_role(args) = delete_service_linked_role(default_aws_config(), args)
 
 
 """
@@ -1683,7 +1718,7 @@ The distribution's configuration information.
             "IAMCertificateId" =>  ::String,
             "ACMCertificateArn" =>  ::String,
             "SSLSupportMethod" =>  "sni-only" or "vip",
-            "MinimumProtocolVersion" =>  "SSLv3" or "TLSv1",
+            "MinimumProtocolVersion" =>  "SSLv3", "TLSv1", "TLSv1_2016", "TLSv1.1_2016" or "TLSv1.2_2018",
             "Certificate" =>  ::String,
             "CertificateSource" =>  "cloudfront", "iam" or "acm"
         ],

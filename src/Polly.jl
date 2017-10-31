@@ -418,7 +418,7 @@ Input text to synthesize. If you specify `ssml` as the `TextType`, follow the SS
 Specifies whether the input text is plain text or SSML. The default value is plain text. For more information, see [Using SSML](http://docs.aws.amazon.com/polly/latest/dg/ssml.html).
 
 
-## `VoiceId = "Geraint", "Gwyneth", "Mads", "Naja", "Hans", "Marlene", "Nicole", "Russell", "Amy", "Brian", "Emma", "Raveena", "Ivy", "Joanna", "Joey", "Justin", "Kendra", "Kimberly", "Salli", "Conchita", "Enrique", "Miguel", "Penelope", "Chantal", "Celine", "Mathieu", "Dora", "Karl", "Carla", "Giorgio", "Mizuki", "Liv", "Lotte", "Ruben", "Ewa", "Jacek", "Jan", "Maja", "Ricardo", "Vitoria", "Cristiano", "Ines", "Carmen", "Maxim", "Tatyana", "Astrid", "Filiz" or "Vicki"` -- *Required*
+## `VoiceId = "Geraint", "Gwyneth", "Mads", "Naja", "Hans", "Marlene", "Nicole", "Russell", "Amy", "Brian", "Emma", "Raveena", "Ivy", "Joanna", "Joey", "Justin", "Kendra", "Kimberly", "Matthew", "Salli", "Conchita", "Enrique", "Miguel", "Penelope", "Chantal", "Celine", "Mathieu", "Dora", "Karl", "Carla", "Giorgio", "Mizuki", "Liv", "Lotte", "Ruben", "Ewa", "Jacek", "Jan", "Maja", "Ricardo", "Vitoria", "Cristiano", "Ines", "Carmen", "Maxim", "Tatyana", "Astrid", "Filiz", "Vicki" or "Takumi"` -- *Required*
 Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the [DescribeVoices](http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html) operation.
 
 

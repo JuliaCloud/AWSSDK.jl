@@ -125,9 +125,9 @@ The `family` and `revision` (`family:revision`) or full Amazon Resource Name (AR
 ## `loadBalancers = [[ ... ], ...]`
 A load balancer object representing the load balancer to use with your service. Currently, you are limited to one load balancer or target group per service. After you create a service, the load balancer name or target group ARN, container name, and container port specified in the service definition are immutable.
 
-For Elastic Load Balancing Classic load balancers, this object must contain the load balancer name, the container name (as it appears in a container definition), and the container port to access from the load balancer. When a task from this service is placed on a container instance, the container instance is registered with the load balancer specified here.
+For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in a container definition), and the container port to access from the load balancer. When a task from this service is placed on a container instance, the container instance is registered with the load balancer specified here.
 
-For Elastic Load Balancing Application load balancers, this object must contain the load balancer target group ARN, the container name (as it appears in a container definition), and the container port to access from the load balancer. When a task from this service is placed on a container instance, the container instance and port combination is registered as a target in the target group specified here.
+For Application Load Balancers and Network Load Balancers, this object must contain the load balancer target group ARN, the container name (as it appears in a container definition), and the container port to access from the load balancer. When a task from this service is placed on a container instance, the container instance and port combination is registered as a target in the target group specified here.
 ```
  loadBalancers = [[
         "targetGroupArn" =>  ::String,
@@ -537,7 +537,7 @@ The container instance ID or full Amazon Resource Name (ARN) of the container in
 ## `force = ::Bool`
 Forces the deregistration of the container instance. If you have tasks running on the container instance when you deregister it with the `force` option, these tasks remain running until you terminate the instance or the tasks stop through some other means, but they are orphaned (no longer monitored or accounted for by Amazon ECS). If an orphaned task on your container instance is part of an Amazon ECS service, then the service scheduler starts another copy of that task, on a different container instance if possible.
 
-Any containers in orphaned service tasks that are registered with a Classic load balancer or an Application load balancer target group are deregistered, and they will begin connection draining according to the settings on the load balancer or target group.
+Any containers in orphaned service tasks that are registered with a Classic Load Balancer or an Application Load Balancer target group are deregistered, and they will begin connection draining according to the settings on the load balancer or target group.
 
 
 
@@ -1998,6 +1998,10 @@ A list of container definitions in JSON format that describe the different conta
             "sourceContainer" =>  ::String,
             "readOnly" =>  ::Bool
         ], ...],
+        "linuxParameters" =>  ["capabilities" =>  [
+                "add" =>  [::String, ...],
+                "drop" =>  [::String, ...]
+            ]],
         "hostname" =>  ::String,
         "user" =>  ::String,
         "workingDirectory" =>  ::String,

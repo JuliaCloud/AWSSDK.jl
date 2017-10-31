@@ -111,6 +111,61 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
+    using AWSSDK.WAFRegional.create_geo_match_set
+    create_geo_match_set([::AWSConfig], arguments::Dict)
+    create_geo_match_set([::AWSConfig]; Name=, ChangeToken=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "CreateGeoMatchSet", arguments::Dict)
+    waf_regional([::AWSConfig], "CreateGeoMatchSet", Name=, ChangeToken=)
+
+# CreateGeoMatchSet Operation
+
+Creates an [GeoMatchSet](@ref), which you use to specify which web requests you want to allow or block based on the country that the requests originate from. For example, if you're receiving a lot of requests from one or more countries and you want to block the requests, you can create an `GeoMatchSet` that contains those countries and then configure AWS WAF to block the requests.
+
+To create and configure a `GeoMatchSet`, perform the following steps:
+
+1.  Use [GetChangeToken](@ref) to get the change token that you provide in the `ChangeToken` parameter of a `CreateGeoMatchSet` request.
+
+2.  Submit a `CreateGeoMatchSet` request.
+
+3.  Use `GetChangeToken` to get the change token that you provide in the `ChangeToken` parameter of an [UpdateGeoMatchSet](@ref) request.
+
+4.  Submit an `UpdateGeoMatchSetSet` request to specify the countries that you want AWS WAF to watch for.
+
+For more information about how to use the AWS WAF API to allow or block HTTP requests, see the [AWS WAF Developer Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+# Arguments
+
+## `Name = ::String` -- *Required*
+A friendly name or description of the [GeoMatchSet](@ref). You can't change `Name` after you create the `GeoMatchSet`.
+
+
+## `ChangeToken = ::String` -- *Required*
+The value returned by the most recent call to [GetChangeToken](@ref).
+
+
+
+
+# Returns
+
+`CreateGeoMatchSetResponse`
+
+# Exceptions
+
+`WAFStaleDataException`, `WAFInternalErrorException`, `WAFInvalidAccountException`, `WAFDisallowedNameException`, `WAFInvalidParameterException` or `WAFLimitsExceededException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateGeoMatchSet)
+"""
+
+@inline create_geo_match_set(aws::AWSConfig=default_aws_config(); args...) = create_geo_match_set(aws, args)
+
+@inline create_geo_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "CreateGeoMatchSet", args)
+
+@inline create_geo_match_set(args) = create_geo_match_set(default_aws_config(), args)
+
+
+"""
     using AWSSDK.WAFRegional.create_ipset
     create_ipset([::AWSConfig], arguments::Dict)
     create_ipset([::AWSConfig]; Name=, ChangeToken=)
@@ -285,6 +340,116 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 @inline create_rate_based_rule(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "CreateRateBasedRule", args)
 
 @inline create_rate_based_rule(args) = create_rate_based_rule(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.create_regex_match_set
+    create_regex_match_set([::AWSConfig], arguments::Dict)
+    create_regex_match_set([::AWSConfig]; Name=, ChangeToken=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "CreateRegexMatchSet", arguments::Dict)
+    waf_regional([::AWSConfig], "CreateRegexMatchSet", Name=, ChangeToken=)
+
+# CreateRegexMatchSet Operation
+
+Creates a [RegexMatchSet](@ref). You then use [UpdateRegexMatchSet](@ref) to identify the part of a web request that you want AWS WAF to inspect, such as the values of the `User-Agent` header or the query string. For example, you can create a `RegexMatchSet` that contains a `RegexMatchTuple` that looks for any requests with `User-Agent` headers that match a `RegexPatternSet` with pattern `B[a@]dB[o0]t`. You can then configure AWS WAF to reject those requests.
+
+To create and configure a `RegexMatchSet`, perform the following steps:
+
+1.  Use [GetChangeToken](@ref) to get the change token that you provide in the `ChangeToken` parameter of a `CreateRegexMatchSet` request.
+
+2.  Submit a `CreateRegexMatchSet` request.
+
+3.  Use `GetChangeToken` to get the change token that you provide in the `ChangeToken` parameter of an `UpdateRegexMatchSet` request.
+
+4.  Submit an [UpdateRegexMatchSet](@ref) request to specify the part of the request that you want AWS WAF to inspect (for example, the header or the URI) and the value, using a `RegexPatternSet`, that you want AWS WAF to watch for.
+
+For more information about how to use the AWS WAF API to allow or block HTTP requests, see the [AWS WAF Developer Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+# Arguments
+
+## `Name = ::String` -- *Required*
+A friendly name or description of the [RegexMatchSet](@ref). You can't change `Name` after you create a `RegexMatchSet`.
+
+
+## `ChangeToken = ::String` -- *Required*
+The value returned by the most recent call to [GetChangeToken](@ref).
+
+
+
+
+# Returns
+
+`CreateRegexMatchSetResponse`
+
+# Exceptions
+
+`WAFStaleDataException`, `WAFInternalErrorException`, `WAFDisallowedNameException` or `WAFLimitsExceededException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateRegexMatchSet)
+"""
+
+@inline create_regex_match_set(aws::AWSConfig=default_aws_config(); args...) = create_regex_match_set(aws, args)
+
+@inline create_regex_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "CreateRegexMatchSet", args)
+
+@inline create_regex_match_set(args) = create_regex_match_set(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.create_regex_pattern_set
+    create_regex_pattern_set([::AWSConfig], arguments::Dict)
+    create_regex_pattern_set([::AWSConfig]; Name=, ChangeToken=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "CreateRegexPatternSet", arguments::Dict)
+    waf_regional([::AWSConfig], "CreateRegexPatternSet", Name=, ChangeToken=)
+
+# CreateRegexPatternSet Operation
+
+Creates a `RegexPatternSet`. You then use [UpdateRegexPatternSet](@ref) to specify the regular expression (regex) pattern that you want AWS WAF to search for, such as `B[a@]dB[o0]t`. You can then configure AWS WAF to reject those requests.
+
+To create and configure a `RegexPatternSet`, perform the following steps:
+
+1.  Use [GetChangeToken](@ref) to get the change token that you provide in the `ChangeToken` parameter of a `CreateRegexPatternSet` request.
+
+2.  Submit a `CreateRegexPatternSet` request.
+
+3.  Use `GetChangeToken` to get the change token that you provide in the `ChangeToken` parameter of an `UpdateRegexPatternSet` request.
+
+4.  Submit an [UpdateRegexPatternSet](@ref) request to specify the string that you want AWS WAF to watch for.
+
+For more information about how to use the AWS WAF API to allow or block HTTP requests, see the [AWS WAF Developer Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+# Arguments
+
+## `Name = ::String` -- *Required*
+A friendly name or description of the [RegexPatternSet](@ref). You can't change `Name` after you create a `RegexPatternSet`.
+
+
+## `ChangeToken = ::String` -- *Required*
+The value returned by the most recent call to [GetChangeToken](@ref).
+
+
+
+
+# Returns
+
+`CreateRegexPatternSetResponse`
+
+# Exceptions
+
+`WAFStaleDataException`, `WAFInternalErrorException`, `WAFDisallowedNameException` or `WAFLimitsExceededException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateRegexPatternSet)
+"""
+
+@inline create_regex_pattern_set(aws::AWSConfig=default_aws_config(); args...) = create_regex_pattern_set(aws, args)
+
+@inline create_regex_pattern_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "CreateRegexPatternSet", args)
+
+@inline create_regex_pattern_set(args) = create_regex_pattern_set(default_aws_config(), args)
 
 
 """
@@ -830,6 +995,59 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
+    using AWSSDK.WAFRegional.delete_geo_match_set
+    delete_geo_match_set([::AWSConfig], arguments::Dict)
+    delete_geo_match_set([::AWSConfig]; GeoMatchSetId=, ChangeToken=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "DeleteGeoMatchSet", arguments::Dict)
+    waf_regional([::AWSConfig], "DeleteGeoMatchSet", GeoMatchSetId=, ChangeToken=)
+
+# DeleteGeoMatchSet Operation
+
+Permanently deletes a [GeoMatchSet](@ref). You can't delete a `GeoMatchSet` if it's still used in any `Rules` or if it still includes any countries.
+
+If you just want to remove a `GeoMatchSet` from a `Rule`, use [UpdateRule](@ref).
+
+To permanently delete a `GeoMatchSet` from AWS WAF, perform the following steps:
+
+1.  Update the `GeoMatchSet` to remove any countries. For more information, see [UpdateGeoMatchSet](@ref).
+
+2.  Use [GetChangeToken](@ref) to get the change token that you provide in the `ChangeToken` parameter of a `DeleteGeoMatchSet` request.
+
+3.  Submit a `DeleteGeoMatchSet` request.
+
+# Arguments
+
+## `GeoMatchSetId = ::String` -- *Required*
+The `GeoMatchSetID` of the [GeoMatchSet](@ref) that you want to delete. `GeoMatchSetId` is returned by [CreateGeoMatchSet](@ref) and by [ListGeoMatchSets](@ref).
+
+
+## `ChangeToken = ::String` -- *Required*
+The value returned by the most recent call to [GetChangeToken](@ref).
+
+
+
+
+# Returns
+
+`DeleteGeoMatchSetResponse`
+
+# Exceptions
+
+`WAFStaleDataException`, `WAFInternalErrorException`, `WAFInvalidAccountException`, `WAFNonexistentItemException`, `WAFReferencedItemException` or `WAFNonEmptyEntityException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteGeoMatchSet)
+"""
+
+@inline delete_geo_match_set(aws::AWSConfig=default_aws_config(); args...) = delete_geo_match_set(aws, args)
+
+@inline delete_geo_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DeleteGeoMatchSet", args)
+
+@inline delete_geo_match_set(args) = delete_geo_match_set(default_aws_config(), args)
+
+
+"""
     using AWSSDK.WAFRegional.delete_ipset
     delete_ipset([::AWSConfig], arguments::Dict)
     delete_ipset([::AWSConfig]; IPSetId=, ChangeToken=)
@@ -952,6 +1170,102 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 @inline delete_rate_based_rule(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DeleteRateBasedRule", args)
 
 @inline delete_rate_based_rule(args) = delete_rate_based_rule(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.delete_regex_match_set
+    delete_regex_match_set([::AWSConfig], arguments::Dict)
+    delete_regex_match_set([::AWSConfig]; RegexMatchSetId=, ChangeToken=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "DeleteRegexMatchSet", arguments::Dict)
+    waf_regional([::AWSConfig], "DeleteRegexMatchSet", RegexMatchSetId=, ChangeToken=)
+
+# DeleteRegexMatchSet Operation
+
+Permanently deletes a [RegexMatchSet](@ref). You can't delete a `RegexMatchSet` if it's still used in any `Rules` or if it still includes any `RegexMatchTuples` objects (any filters).
+
+If you just want to remove a `RegexMatchSet` from a `Rule`, use [UpdateRule](@ref).
+
+To permanently delete a `RegexMatchSet`, perform the following steps:
+
+1.  Update the `RegexMatchSet` to remove filters, if any. For more information, see [UpdateRegexMatchSet](@ref).
+
+2.  Use [GetChangeToken](@ref) to get the change token that you provide in the `ChangeToken` parameter of a `DeleteRegexMatchSet` request.
+
+3.  Submit a `DeleteRegexMatchSet` request.
+
+# Arguments
+
+## `RegexMatchSetId = ::String` -- *Required*
+The `RegexMatchSetId` of the [RegexMatchSet](@ref) that you want to delete. `RegexMatchSetId` is returned by [CreateRegexMatchSet](@ref) and by [ListRegexMatchSets](@ref).
+
+
+## `ChangeToken = ::String` -- *Required*
+The value returned by the most recent call to [GetChangeToken](@ref).
+
+
+
+
+# Returns
+
+`DeleteRegexMatchSetResponse`
+
+# Exceptions
+
+`WAFInternalErrorException`, `WAFInvalidAccountException`, `WAFNonexistentItemException`, `WAFReferencedItemException`, `WAFStaleDataException` or `WAFNonEmptyEntityException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteRegexMatchSet)
+"""
+
+@inline delete_regex_match_set(aws::AWSConfig=default_aws_config(); args...) = delete_regex_match_set(aws, args)
+
+@inline delete_regex_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DeleteRegexMatchSet", args)
+
+@inline delete_regex_match_set(args) = delete_regex_match_set(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.delete_regex_pattern_set
+    delete_regex_pattern_set([::AWSConfig], arguments::Dict)
+    delete_regex_pattern_set([::AWSConfig]; RegexPatternSetId=, ChangeToken=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "DeleteRegexPatternSet", arguments::Dict)
+    waf_regional([::AWSConfig], "DeleteRegexPatternSet", RegexPatternSetId=, ChangeToken=)
+
+# DeleteRegexPatternSet Operation
+
+Permanently deletes a [RegexPatternSet](@ref). You can't delete a `RegexPatternSet` if it's still used in any `RegexMatchSet` or if the `RegexPatternSet` is not empty.
+
+# Arguments
+
+## `RegexPatternSetId = ::String` -- *Required*
+The `RegexPatternSetId` of the [RegexPatternSet](@ref) that you want to delete. `RegexPatternSetId` is returned by [CreateRegexPatternSet](@ref) and by [ListRegexPatternSets](@ref).
+
+
+## `ChangeToken = ::String` -- *Required*
+The value returned by the most recent call to [GetChangeToken](@ref).
+
+
+
+
+# Returns
+
+`DeleteRegexPatternSetResponse`
+
+# Exceptions
+
+`WAFInternalErrorException`, `WAFInvalidAccountException`, `WAFNonexistentItemException`, `WAFReferencedItemException`, `WAFStaleDataException` or `WAFNonEmptyEntityException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteRegexPatternSet)
+"""
+
+@inline delete_regex_pattern_set(aws::AWSConfig=default_aws_config(); args...) = delete_regex_pattern_set(aws, args)
+
+@inline delete_regex_pattern_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DeleteRegexPatternSet", args)
+
+@inline delete_regex_pattern_set(args) = delete_regex_pattern_set(default_aws_config(), args)
 
 
 """
@@ -1543,6 +1857,45 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
+    using AWSSDK.WAFRegional.get_geo_match_set
+    get_geo_match_set([::AWSConfig], arguments::Dict)
+    get_geo_match_set([::AWSConfig]; GeoMatchSetId=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "GetGeoMatchSet", arguments::Dict)
+    waf_regional([::AWSConfig], "GetGeoMatchSet", GeoMatchSetId=)
+
+# GetGeoMatchSet Operation
+
+Returns the [GeoMatchSet](@ref) that is specified by `GeoMatchSetId`.
+
+# Arguments
+
+## `GeoMatchSetId = ::String` -- *Required*
+The `GeoMatchSetId` of the [GeoMatchSet](@ref) that you want to get. `GeoMatchSetId` is returned by [CreateGeoMatchSet](@ref) and by [ListGeoMatchSets](@ref).
+
+
+
+
+# Returns
+
+`GetGeoMatchSetResponse`
+
+# Exceptions
+
+`WAFInternalErrorException`, `WAFInvalidAccountException` or `WAFNonexistentItemException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetGeoMatchSet)
+"""
+
+@inline get_geo_match_set(aws::AWSConfig=default_aws_config(); args...) = get_geo_match_set(aws, args)
+
+@inline get_geo_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetGeoMatchSet", args)
+
+@inline get_geo_match_set(args) = get_geo_match_set(default_aws_config(), args)
+
+
+"""
     using AWSSDK.WAFRegional.get_ipset
     get_ipset([::AWSConfig], arguments::Dict)
     get_ipset([::AWSConfig]; IPSetId=)
@@ -1688,6 +2041,84 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 @inline get_rate_based_rule_managed_keys(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetRateBasedRuleManagedKeys", args)
 
 @inline get_rate_based_rule_managed_keys(args) = get_rate_based_rule_managed_keys(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.get_regex_match_set
+    get_regex_match_set([::AWSConfig], arguments::Dict)
+    get_regex_match_set([::AWSConfig]; RegexMatchSetId=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "GetRegexMatchSet", arguments::Dict)
+    waf_regional([::AWSConfig], "GetRegexMatchSet", RegexMatchSetId=)
+
+# GetRegexMatchSet Operation
+
+Returns the [RegexMatchSet](@ref) specified by `RegexMatchSetId`.
+
+# Arguments
+
+## `RegexMatchSetId = ::String` -- *Required*
+The `RegexMatchSetId` of the [RegexMatchSet](@ref) that you want to get. `RegexMatchSetId` is returned by [CreateRegexMatchSet](@ref) and by [ListRegexMatchSets](@ref).
+
+
+
+
+# Returns
+
+`GetRegexMatchSetResponse`
+
+# Exceptions
+
+`WAFInternalErrorException`, `WAFInvalidAccountException` or `WAFNonexistentItemException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetRegexMatchSet)
+"""
+
+@inline get_regex_match_set(aws::AWSConfig=default_aws_config(); args...) = get_regex_match_set(aws, args)
+
+@inline get_regex_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetRegexMatchSet", args)
+
+@inline get_regex_match_set(args) = get_regex_match_set(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.get_regex_pattern_set
+    get_regex_pattern_set([::AWSConfig], arguments::Dict)
+    get_regex_pattern_set([::AWSConfig]; RegexPatternSetId=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "GetRegexPatternSet", arguments::Dict)
+    waf_regional([::AWSConfig], "GetRegexPatternSet", RegexPatternSetId=)
+
+# GetRegexPatternSet Operation
+
+Returns the [RegexPatternSet](@ref) specified by `RegexPatternSetId`.
+
+# Arguments
+
+## `RegexPatternSetId = ::String` -- *Required*
+The `RegexPatternSetId` of the [RegexPatternSet](@ref) that you want to get. `RegexPatternSetId` is returned by [CreateRegexPatternSet](@ref) and by [ListRegexPatternSets](@ref).
+
+
+
+
+# Returns
+
+`GetRegexPatternSetResponse`
+
+# Exceptions
+
+`WAFInternalErrorException`, `WAFInvalidAccountException` or `WAFNonexistentItemException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetRegexPatternSet)
+"""
+
+@inline get_regex_pattern_set(aws::AWSConfig=default_aws_config(); args...) = get_regex_pattern_set(aws, args)
+
+@inline get_regex_pattern_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetRegexPatternSet", args)
+
+@inline get_regex_pattern_set(args) = get_regex_pattern_set(default_aws_config(), args)
 
 
 """
@@ -2229,6 +2660,49 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
+    using AWSSDK.WAFRegional.list_geo_match_sets
+    list_geo_match_sets([::AWSConfig], arguments::Dict)
+    list_geo_match_sets([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "ListGeoMatchSets", arguments::Dict)
+    waf_regional([::AWSConfig], "ListGeoMatchSets", <keyword arguments>)
+
+# ListGeoMatchSets Operation
+
+Returns an array of [GeoMatchSetSummary](@ref) objects in the response.
+
+# Arguments
+
+## `NextMarker = ::String`
+If you specify a value for `Limit` and you have more `GeoMatchSet`s than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `GeoMatchSet` objects. For the second and subsequent `ListGeoMatchSets` requests, specify the value of `NextMarker` from the previous response to get information about another batch of `GeoMatchSet` objects.
+
+
+## `Limit = ::Int`
+Specifies the number of `GeoMatchSet` objects that you want AWS WAF to return for this request. If you have more `GeoMatchSet` objects than the number you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `GeoMatchSet` objects.
+
+
+
+
+# Returns
+
+`ListGeoMatchSetsResponse`
+
+# Exceptions
+
+`WAFInternalErrorException` or `WAFInvalidAccountException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListGeoMatchSets)
+"""
+
+@inline list_geo_match_sets(aws::AWSConfig=default_aws_config(); args...) = list_geo_match_sets(aws, args)
+
+@inline list_geo_match_sets(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListGeoMatchSets", args)
+
+@inline list_geo_match_sets(args) = list_geo_match_sets(default_aws_config(), args)
+
+
+"""
     using AWSSDK.WAFRegional.list_ipsets
     list_ipsets([::AWSConfig], arguments::Dict)
     list_ipsets([::AWSConfig]; <keyword arguments>)
@@ -2244,7 +2718,7 @@ Returns an array of [IPSetSummary](@ref) objects in the response.
 # Arguments
 
 ## `NextMarker = ::String`
-If you specify a value for `Limit` and you have more `IPSets` than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `IPSets`. For the second and subsequent `ListIPSets` requests, specify the value of `NextMarker` from the previous response to get information about another batch of `ByteMatchSets`.
+If you specify a value for `Limit` and you have more `IPSets` than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `IPSets`. For the second and subsequent `ListIPSets` requests, specify the value of `NextMarker` from the previous response to get information about another batch of `IPSets`.
 
 
 ## `Limit = ::Int`
@@ -2335,6 +2809,92 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 @inline list_rate_based_rules(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListRateBasedRules", args)
 
 @inline list_rate_based_rules(args) = list_rate_based_rules(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.list_regex_match_sets
+    list_regex_match_sets([::AWSConfig], arguments::Dict)
+    list_regex_match_sets([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "ListRegexMatchSets", arguments::Dict)
+    waf_regional([::AWSConfig], "ListRegexMatchSets", <keyword arguments>)
+
+# ListRegexMatchSets Operation
+
+Returns an array of [RegexMatchSetSummary](@ref) objects.
+
+# Arguments
+
+## `NextMarker = ::String`
+If you specify a value for `Limit` and you have more `RegexMatchSet` objects than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `ByteMatchSets`. For the second and subsequent `ListRegexMatchSets` requests, specify the value of `NextMarker` from the previous response to get information about another batch of `RegexMatchSet` objects.
+
+
+## `Limit = ::Int`
+Specifies the number of `RegexMatchSet` objects that you want AWS WAF to return for this request. If you have more `RegexMatchSet` objects than the number you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `RegexMatchSet` objects.
+
+
+
+
+# Returns
+
+`ListRegexMatchSetsResponse`
+
+# Exceptions
+
+`WAFInternalErrorException` or `WAFInvalidAccountException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListRegexMatchSets)
+"""
+
+@inline list_regex_match_sets(aws::AWSConfig=default_aws_config(); args...) = list_regex_match_sets(aws, args)
+
+@inline list_regex_match_sets(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListRegexMatchSets", args)
+
+@inline list_regex_match_sets(args) = list_regex_match_sets(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.list_regex_pattern_sets
+    list_regex_pattern_sets([::AWSConfig], arguments::Dict)
+    list_regex_pattern_sets([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "ListRegexPatternSets", arguments::Dict)
+    waf_regional([::AWSConfig], "ListRegexPatternSets", <keyword arguments>)
+
+# ListRegexPatternSets Operation
+
+Returns an array of [RegexPatternSetSummary](@ref) objects.
+
+# Arguments
+
+## `NextMarker = ::String`
+If you specify a value for `Limit` and you have more `RegexPatternSet` objects than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `RegexPatternSet` objects. For the second and subsequent `ListRegexPatternSets` requests, specify the value of `NextMarker` from the previous response to get information about another batch of `RegexPatternSet` objects.
+
+
+## `Limit = ::Int`
+Specifies the number of `RegexPatternSet` objects that you want AWS WAF to return for this request. If you have more `RegexPatternSet` objects than the number you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `RegexPatternSet` objects.
+
+
+
+
+# Returns
+
+`ListRegexPatternSetsResponse`
+
+# Exceptions
+
+`WAFInternalErrorException` or `WAFInvalidAccountException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListRegexPatternSets)
+"""
+
+@inline list_regex_pattern_sets(aws::AWSConfig=default_aws_config(); args...) = list_regex_pattern_sets(aws, args)
+
+@inline list_regex_pattern_sets(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListRegexPatternSets", args)
+
+@inline list_regex_pattern_sets(args) = list_regex_pattern_sets(default_aws_config(), args)
 
 
 """
@@ -2828,6 +3388,85 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 
 """
+    using AWSSDK.WAFRegional.update_geo_match_set
+    update_geo_match_set([::AWSConfig], arguments::Dict)
+    update_geo_match_set([::AWSConfig]; GeoMatchSetId=, ChangeToken=, Updates=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "UpdateGeoMatchSet", arguments::Dict)
+    waf_regional([::AWSConfig], "UpdateGeoMatchSet", GeoMatchSetId=, ChangeToken=, Updates=)
+
+# UpdateGeoMatchSet Operation
+
+Inserts or deletes [GeoMatchConstraint](@ref) objects in an `GeoMatchSet`. For each `GeoMatchConstraint` object, you specify the following values:
+
+*   Whether to insert or delete the object from the array. If you want to change an `GeoMatchConstraint` object, you delete the existing object and add a new one.
+
+*   The `Type`. The only valid value for `Type` is `Country`.
+
+*   The `Value`, which is a two character code for the country to add to the `GeoMatchConstraint` object. Valid codes are listed in [GeoMatchConstraint\$Value](@ref).
+
+To create and configure an `GeoMatchSet`, perform the following steps:
+
+1.  Submit a [CreateGeoMatchSet](@ref) request.
+
+2.  Use [GetChangeToken](@ref) to get the change token that you provide in the `ChangeToken` parameter of an [UpdateGeoMatchSet](@ref) request.
+
+3.  Submit an `UpdateGeoMatchSet` request to specify the country that you want AWS WAF to watch for.
+
+When you update an `GeoMatchSet`, you specify the country that you want to add and/or the country that you want to delete. If you want to change a country, you delete the existing country and add the new one.
+
+For more information about how to use the AWS WAF API to allow or block HTTP requests, see the [AWS WAF Developer Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+# Arguments
+
+## `GeoMatchSetId = ::String` -- *Required*
+The `GeoMatchSetId` of the [GeoMatchSet](@ref) that you want to update. `GeoMatchSetId` is returned by [CreateGeoMatchSet](@ref) and by [ListGeoMatchSets](@ref).
+
+
+## `ChangeToken = ::String` -- *Required*
+The value returned by the most recent call to [GetChangeToken](@ref).
+
+
+## `Updates = [[ ... ], ...]` -- *Required*
+An array of `GeoMatchSetUpdate` objects that you want to insert into or delete from an [GeoMatchSet](@ref). For more information, see the applicable data types:
+
+*   [GeoMatchSetUpdate](@ref): Contains `Action` and `GeoMatchConstraint`
+
+*   [GeoMatchConstraint](@ref): Contains `Type` and `Value`
+
+    You can have only one `Type` and `Value` per `GeoMatchConstraint`. To add multiple countries, include multiple `GeoMatchSetUpdate` objects in your request.
+```
+ Updates = [[
+        "Action" => <required> "INSERT" or "DELETE",
+        "GeoMatchConstraint" => <required> [
+            "Type" => <required> "Country",
+            "Value" => <required> "AF", "AX", "AL", "DZ", "AS", "AD", "AO", "AI", "AQ", "AG", "AR", "AM", "AW", "AU", "AT", "AZ", "BS", "BH", "BD", "BB", "BY", "BE", "BZ", "BJ", "BM", "BT", "BO", "BQ", "BA", "BW", "BV", "BR", "IO", "BN", "BG", "BF", "BI", "KH", "CM", "CA", "CV", "KY", "CF", "TD", "CL", "CN", "CX", "CC", "CO", "KM", "CG", "CD", "CK", "CR", "CI", "HR", "CU", "CW", "CY", "CZ", "DK", "DJ", "DM", "DO", "EC", "EG", "SV", "GQ", "ER", "EE", "ET", "FK", "FO", "FJ", "FI", "FR", "GF", "PF", "TF", "GA", "GM", "GE", "DE", "GH", "GI", "GR", "GL", "GD", "GP", "GU", "GT", "GG", "GN", "GW", "GY", "HT", "HM", "VA", "HN", "HK", "HU", "IS", "IN", "ID", "IR", "IQ", "IE", "IM", "IL", "IT", "JM", "JP", "JE", "JO", "KZ", "KE", "KI", "KP", "KR", "KW", "KG", "LA", "LV", "LB", "LS", "LR", "LY", "LI", "LT", "LU", "MO", "MK", "MG", "MW", "MY", "MV", "ML", "MT", "MH", "MQ", "MR", "MU", "YT", "MX", "FM", "MD", "MC", "MN", "ME", "MS", "MA", "MZ", "MM", "NA", "NR", "NP", "NL", "NC", "NZ", "NI", "NE", "NG", "NU", "NF", "MP", "NO", "OM", "PK", "PW", "PS", "PA", "PG", "PY", "PE", "PH", "PN", "PL", "PT", "PR", "QA", "RE", "RO", "RU", "RW", "BL", "SH", "KN", "LC", "MF", "PM", "VC", "WS", "SM", "ST", "SA", "SN", "RS", "SC", "SL", "SG", "SX", "SK", "SI", "SB", "SO", "ZA", "GS", "SS", "ES", "LK", "SD", "SR", "SJ", "SZ", "SE", "CH", "SY", "TW", "TJ", "TZ", "TH", "TL", "TG", "TK", "TO", "TT", "TN", "TR", "TM", "TC", "TV", "UG", "UA", "AE", "GB", "US", "UM", "UY", "UZ", "VU", "VE", "VN", "VG", "VI", "WF", "EH", "YE", "ZM" or "ZW"
+        ]
+    ], ...]
+```
+
+
+
+# Returns
+
+`UpdateGeoMatchSetResponse`
+
+# Exceptions
+
+`WAFStaleDataException`, `WAFInternalErrorException`, `WAFInvalidAccountException`, `WAFInvalidOperationException`, `WAFInvalidParameterException`, `WAFNonexistentContainerException`, `WAFNonexistentItemException`, `WAFReferencedItemException` or `WAFLimitsExceededException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/UpdateGeoMatchSet)
+"""
+
+@inline update_geo_match_set(aws::AWSConfig=default_aws_config(); args...) = update_geo_match_set(aws, args)
+
+@inline update_geo_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "UpdateGeoMatchSet", args)
+
+@inline update_geo_match_set(args) = update_geo_match_set(default_aws_config(), args)
+
+
+"""
     using AWSSDK.WAFRegional.update_ipset
     update_ipset([::AWSConfig], arguments::Dict)
     update_ipset([::AWSConfig]; IPSetId=, ChangeToken=, Updates=)
@@ -3000,7 +3639,7 @@ An array of `RuleUpdate` objects that you want to insert into or delete from a [
         "Action" => <required> "INSERT" or "DELETE",
         "Predicate" => <required> [
             "Negated" => <required> ::Bool,
-            "Type" => <required> "IPMatch", "ByteMatch", "SqlInjectionMatch", "SizeConstraint" or "XssMatch",
+            "Type" => <required> "IPMatch", "ByteMatch", "SqlInjectionMatch", "GeoMatch", "SizeConstraint", "XssMatch" or "RegexMatch",
             "DataId" => <required> ::String
         ]
     ], ...]
@@ -3028,6 +3667,161 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 @inline update_rate_based_rule(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "UpdateRateBasedRule", args)
 
 @inline update_rate_based_rule(args) = update_rate_based_rule(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.update_regex_match_set
+    update_regex_match_set([::AWSConfig], arguments::Dict)
+    update_regex_match_set([::AWSConfig]; RegexMatchSetId=, Updates=, ChangeToken=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "UpdateRegexMatchSet", arguments::Dict)
+    waf_regional([::AWSConfig], "UpdateRegexMatchSet", RegexMatchSetId=, Updates=, ChangeToken=)
+
+# UpdateRegexMatchSet Operation
+
+Inserts or deletes [RegexMatchSetUpdate](@ref) objects (filters) in a [RegexMatchSet](@ref). For each `RegexMatchSetUpdate` object, you specify the following values:
+
+*   Whether to insert or delete the object from the array. If you want to change a `RegexMatchSetUpdate` object, you delete the existing object and add a new one.
+
+*   The part of a web request that you want AWS WAF to inspect, such as a query string or the value of the `User-Agent` header.
+
+*   The identifier of the pattern (a regular expression) that you want AWS WAF to look for. For more information, see [RegexPatternSet](@ref).
+
+*   Whether to perform any conversions on the request, such as converting it to lowercase, before inspecting it for the specified string.
+
+For example, you can create a `RegexPatternSet` that matches any requests with `User-Agent` headers that contain the string `B[a@]dB[o0]t`. You can then configure AWS WAF to reject those requests.
+
+To create and configure a `RegexMatchSet`, perform the following steps:
+
+1.  Create a `RegexMatchSet.` For more information, see [CreateRegexMatchSet](@ref).
+
+2.  Use [GetChangeToken](@ref) to get the change token that you provide in the `ChangeToken` parameter of an `UpdateRegexMatchSet` request.
+
+3.  Submit an `UpdateRegexMatchSet` request to specify the part of the request that you want AWS WAF to inspect (for example, the header or the URI) and the identifier of the `RegexPatternSet` that contain the regular expression patters you want AWS WAF to watch for.
+
+For more information about how to use the AWS WAF API to allow or block HTTP requests, see the [AWS WAF Developer Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+# Arguments
+
+## `RegexMatchSetId = ::String` -- *Required*
+The `RegexMatchSetId` of the [RegexMatchSet](@ref) that you want to update. `RegexMatchSetId` is returned by [CreateRegexMatchSet](@ref) and by [ListRegexMatchSets](@ref).
+
+
+## `Updates = [[ ... ], ...]` -- *Required*
+An array of `RegexMatchSetUpdate` objects that you want to insert into or delete from a [RegexMatchSet](@ref). For more information, see [RegexMatchTuple](@ref).
+```
+ Updates = [[
+        "Action" => <required> "INSERT" or "DELETE",
+        "RegexMatchTuple" => <required> [
+            "FieldToMatch" => <required> [
+                "Type" => <required> "URI", "QUERY_STRING", "HEADER", "METHOD" or "BODY",
+                "Data" =>  ::String
+            ],
+            "TextTransformation" => <required> "NONE", "COMPRESS_WHITE_SPACE", "HTML_ENTITY_DECODE", "LOWERCASE", "CMD_LINE" or "URL_DECODE",
+            "RegexPatternSetId" => <required> ::String
+        ]
+    ], ...]
+```
+
+## `ChangeToken = ::String` -- *Required*
+The value returned by the most recent call to [GetChangeToken](@ref).
+
+
+
+
+# Returns
+
+`UpdateRegexMatchSetResponse`
+
+# Exceptions
+
+`WAFStaleDataException`, `WAFInternalErrorException`, `WAFDisallowedNameException`, `WAFLimitsExceededException`, `WAFNonexistentItemException`, `WAFNonexistentContainerException`, `WAFInvalidOperationException` or `WAFInvalidAccountException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/UpdateRegexMatchSet)
+"""
+
+@inline update_regex_match_set(aws::AWSConfig=default_aws_config(); args...) = update_regex_match_set(aws, args)
+
+@inline update_regex_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "UpdateRegexMatchSet", args)
+
+@inline update_regex_match_set(args) = update_regex_match_set(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.update_regex_pattern_set
+    update_regex_pattern_set([::AWSConfig], arguments::Dict)
+    update_regex_pattern_set([::AWSConfig]; RegexPatternSetId=, Updates=, ChangeToken=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "UpdateRegexPatternSet", arguments::Dict)
+    waf_regional([::AWSConfig], "UpdateRegexPatternSet", RegexPatternSetId=, Updates=, ChangeToken=)
+
+# UpdateRegexPatternSet Operation
+
+Inserts or deletes [RegexMatchSetUpdate](@ref) objects (filters) in a [RegexPatternSet](@ref). For each `RegexPatternSet` object, you specify the following values:
+
+*   Whether to insert or delete the object from the array. If you want to change a `RegexPatternSet` object, you delete the existing object and add a new one.
+
+*   The regular expression pattern that you want AWS WAF to look for. For more information, see [RegexPatternSet](@ref).
+
+For example, you can create a `RegexPatternString` such as `B[a@]dB[o0]t`. AWS WAF will match this `RegexPatternString` to:
+
+*   BadBot
+
+*   BadB0t
+
+*   B@dBot
+
+*   B@dB0t
+
+To create and configure a `RegexPatternSet`, perform the following steps:
+
+1.  Create a `RegexPatternSet.` For more information, see [CreateRegexPatternSet](@ref).
+
+2.  Use [GetChangeToken](@ref) to get the change token that you provide in the `ChangeToken` parameter of an `UpdateRegexPatternSet` request.
+
+3.  Submit an `UpdateRegexPatternSet` request to specify the regular expression pattern that you want AWS WAF to watch for.
+
+For more information about how to use the AWS WAF API to allow or block HTTP requests, see the [AWS WAF Developer Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+# Arguments
+
+## `RegexPatternSetId = ::String` -- *Required*
+The `RegexPatternSetId` of the [RegexPatternSet](@ref) that you want to update. `RegexPatternSetId` is returned by [CreateRegexPatternSet](@ref) and by [ListRegexPatternSets](@ref).
+
+
+## `Updates = [[ ... ], ...]` -- *Required*
+An array of `RegexPatternSetUpdate` objects that you want to insert into or delete from a [RegexPatternSet](@ref).
+```
+ Updates = [[
+        "Action" => <required> "INSERT" or "DELETE",
+        "RegexPatternString" => <required> ::String
+    ], ...]
+```
+
+## `ChangeToken = ::String` -- *Required*
+The value returned by the most recent call to [GetChangeToken](@ref).
+
+
+
+
+# Returns
+
+`UpdateRegexPatternSetResponse`
+
+# Exceptions
+
+`WAFStaleDataException`, `WAFInternalErrorException`, `WAFLimitsExceededException`, `WAFNonexistentContainerException`, `WAFInvalidOperationException`, `WAFInvalidAccountException` or `WAFInvalidRegexPatternException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/UpdateRegexPatternSet)
+"""
+
+@inline update_regex_pattern_set(aws::AWSConfig=default_aws_config(); args...) = update_regex_pattern_set(aws, args)
+
+@inline update_regex_pattern_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "UpdateRegexPatternSet", args)
+
+@inline update_regex_pattern_set(args) = update_regex_pattern_set(default_aws_config(), args)
 
 
 """
@@ -3088,7 +3882,7 @@ An array of `RuleUpdate` objects that you want to insert into or delete from a [
         "Action" => <required> "INSERT" or "DELETE",
         "Predicate" => <required> [
             "Negated" => <required> ::Bool,
-            "Type" => <required> "IPMatch", "ByteMatch", "SqlInjectionMatch", "SizeConstraint" or "XssMatch",
+            "Type" => <required> "IPMatch", "ByteMatch", "SqlInjectionMatch", "GeoMatch", "SizeConstraint", "XssMatch" or "RegexMatch",
             "DataId" => <required> ::String
         ]
     ], ...]

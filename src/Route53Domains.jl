@@ -58,6 +58,51 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 
 """
+    using AWSSDK.Route53Domains.check_domain_transferability
+    check_domain_transferability([::AWSConfig], arguments::Dict)
+    check_domain_transferability([::AWSConfig]; DomainName=, <keyword arguments>)
+
+    using AWSCore.Services.route53domains
+    route53domains([::AWSConfig], "CheckDomainTransferability", arguments::Dict)
+    route53domains([::AWSConfig], "CheckDomainTransferability", DomainName=, <keyword arguments>)
+
+# CheckDomainTransferability Operation
+
+Checks whether a domain name can be transferred to Amazon Route 53.
+
+# Arguments
+
+## `DomainName = ::String` -- *Required*
+The name of the domain that you want to transfer to Amazon Route 53.
+
+Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.
+
+
+## `AuthCode = ::String`
+If the registrar for the top-level domain (TLD) requires an authorization code to transfer the domain, the code that you got from the current registrar for the domain.
+
+
+
+
+# Returns
+
+`CheckDomainTransferabilityResponse`
+
+# Exceptions
+
+`InvalidInput` or `UnsupportedTLD`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/CheckDomainTransferability)
+"""
+
+@inline check_domain_transferability(aws::AWSConfig=default_aws_config(); args...) = check_domain_transferability(aws, args)
+
+@inline check_domain_transferability(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "CheckDomainTransferability", args)
+
+@inline check_domain_transferability(args) = check_domain_transferability(default_aws_config(), args)
+
+
+"""
     using AWSSDK.Route53Domains.delete_tags_for_domain
     delete_tags_for_domain([::AWSConfig], arguments::Dict)
     delete_tags_for_domain([::AWSConfig]; DomainName=, TagsToDelete=)
@@ -70,7 +115,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 This operation deletes the specified tags for a domain.
 
-All tag operations are eventually consistent; subsequent operations may not immediately represent all issued operations.
+All tag operations are eventually consistent; subsequent operations might not immediately represent all issued operations.
 
 # Arguments
 
@@ -531,7 +576,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 This operation returns all of the tags that are associated with the specified domain.
 
-All tag operations are eventually consistent; subsequent operations may not immediately represent all issued operations.
+All tag operations are eventually consistent; subsequent operations might not immediately represent all issued operations.
 
 # Arguments
 
@@ -626,7 +671,7 @@ Provides detailed contact information.
         "Email" =>  ::String,
         "Fax" =>  ::String,
         "ExtraParams" =>  [[
-            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "IT_PIN", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER" or "VAT_NUMBER",
+            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "FI_NATIONALITY", "FI_ORGANIZATION_TYPE", "IT_PIN", "IT_REGISTRANT_ENTITY_TYPE", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER", "VAT_NUMBER", "UK_CONTACT_TYPE" or "UK_COMPANY_NUMBER",
             "Value" => <required> ::String
         ], ...]
     ]
@@ -650,7 +695,7 @@ Provides detailed contact information.
         "Email" =>  ::String,
         "Fax" =>  ::String,
         "ExtraParams" =>  [[
-            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "IT_PIN", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER" or "VAT_NUMBER",
+            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "FI_NATIONALITY", "FI_ORGANIZATION_TYPE", "IT_PIN", "IT_REGISTRANT_ENTITY_TYPE", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER", "VAT_NUMBER", "UK_CONTACT_TYPE" or "UK_COMPANY_NUMBER",
             "Value" => <required> ::String
         ], ...]
     ]
@@ -674,7 +719,7 @@ Provides detailed contact information.
         "Email" =>  ::String,
         "Fax" =>  ::String,
         "ExtraParams" =>  [[
-            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "IT_PIN", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER" or "VAT_NUMBER",
+            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "FI_NATIONALITY", "FI_ORGANIZATION_TYPE", "IT_PIN", "IT_REGISTRANT_ENTITY_TYPE", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER", "VAT_NUMBER", "UK_CONTACT_TYPE" or "UK_COMPANY_NUMBER",
             "Value" => <required> ::String
         ], ...]
     ]
@@ -924,7 +969,7 @@ Provides detailed contact information.
         "Email" =>  ::String,
         "Fax" =>  ::String,
         "ExtraParams" =>  [[
-            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "IT_PIN", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER" or "VAT_NUMBER",
+            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "FI_NATIONALITY", "FI_ORGANIZATION_TYPE", "IT_PIN", "IT_REGISTRANT_ENTITY_TYPE", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER", "VAT_NUMBER", "UK_CONTACT_TYPE" or "UK_COMPANY_NUMBER",
             "Value" => <required> ::String
         ], ...]
     ]
@@ -948,7 +993,7 @@ Provides detailed contact information.
         "Email" =>  ::String,
         "Fax" =>  ::String,
         "ExtraParams" =>  [[
-            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "IT_PIN", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER" or "VAT_NUMBER",
+            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "FI_NATIONALITY", "FI_ORGANIZATION_TYPE", "IT_PIN", "IT_REGISTRANT_ENTITY_TYPE", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER", "VAT_NUMBER", "UK_CONTACT_TYPE" or "UK_COMPANY_NUMBER",
             "Value" => <required> ::String
         ], ...]
     ]
@@ -972,7 +1017,7 @@ Provides detailed contact information.
         "Email" =>  ::String,
         "Fax" =>  ::String,
         "ExtraParams" =>  [[
-            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "IT_PIN", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER" or "VAT_NUMBER",
+            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "FI_NATIONALITY", "FI_ORGANIZATION_TYPE", "IT_PIN", "IT_REGISTRANT_ENTITY_TYPE", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER", "VAT_NUMBER", "UK_CONTACT_TYPE" or "UK_COMPANY_NUMBER",
             "Value" => <required> ::String
         ], ...]
     ]
@@ -1055,7 +1100,7 @@ Provides detailed contact information.
         "Email" =>  ::String,
         "Fax" =>  ::String,
         "ExtraParams" =>  [[
-            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "IT_PIN", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER" or "VAT_NUMBER",
+            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "FI_NATIONALITY", "FI_ORGANIZATION_TYPE", "IT_PIN", "IT_REGISTRANT_ENTITY_TYPE", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER", "VAT_NUMBER", "UK_CONTACT_TYPE" or "UK_COMPANY_NUMBER",
             "Value" => <required> ::String
         ], ...]
     ]
@@ -1079,7 +1124,7 @@ Provides detailed contact information.
         "Email" =>  ::String,
         "Fax" =>  ::String,
         "ExtraParams" =>  [[
-            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "IT_PIN", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER" or "VAT_NUMBER",
+            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "FI_NATIONALITY", "FI_ORGANIZATION_TYPE", "IT_PIN", "IT_REGISTRANT_ENTITY_TYPE", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER", "VAT_NUMBER", "UK_CONTACT_TYPE" or "UK_COMPANY_NUMBER",
             "Value" => <required> ::String
         ], ...]
     ]
@@ -1103,7 +1148,7 @@ Provides detailed contact information.
         "Email" =>  ::String,
         "Fax" =>  ::String,
         "ExtraParams" =>  [[
-            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "IT_PIN", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER" or "VAT_NUMBER",
+            "Name" => <required> "DUNS_NUMBER", "BRAND_NUMBER", "BIRTH_DEPARTMENT", "BIRTH_DATE_IN_YYYY_MM_DD", "BIRTH_COUNTRY", "BIRTH_CITY", "DOCUMENT_NUMBER", "AU_ID_NUMBER", "AU_ID_TYPE", "CA_LEGAL_TYPE", "CA_BUSINESS_ENTITY_TYPE", "ES_IDENTIFICATION", "ES_IDENTIFICATION_TYPE", "ES_LEGAL_FORM", "FI_BUSINESS_NUMBER", "FI_ID_NUMBER", "FI_NATIONALITY", "FI_ORGANIZATION_TYPE", "IT_PIN", "IT_REGISTRANT_ENTITY_TYPE", "RU_PASSPORT_DATA", "SE_ID_NUMBER", "SG_ID_NUMBER", "VAT_NUMBER", "UK_CONTACT_TYPE" or "UK_COMPANY_NUMBER",
             "Value" => <required> ::String
         ], ...]
     ]
@@ -1249,7 +1294,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 This operation adds or updates tags for a specified domain.
 
-All tag operations are eventually consistent; subsequent operations may not immediately represent all issued operations.
+All tag operations are eventually consistent; subsequent operations might not immediately represent all issued operations.
 
 # Arguments
 

@@ -225,8 +225,8 @@ The client token used to request idempotent operations.
 Id of the deployment if you wish to redeploy a previous deployment.
 
 
-## `DeploymentType = "NewDeployment" or "Redeployment"`
-Type of deployment
+## `DeploymentType = "NewDeployment", "Redeployment", "ResetDeployment" or "ForceResetDeployment"`
+Type of deployment. When used in CreateDeployment, only NewDeployment and Redeployment are valid.
 
 
 ## `GroupId = ::String` -- *Required*
@@ -2529,6 +2529,53 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greeng
 
 
 """
+    using AWSSDK.Greengrass.reset_deployments
+    reset_deployments([::AWSConfig], arguments::Dict)
+    reset_deployments([::AWSConfig]; GroupId=, <keyword arguments>)
+
+    using AWSCore.Services.greengrass
+    greengrass([::AWSConfig], "POST", "/greengrass/groups/{GroupId}/deployments/\$reset", arguments::Dict)
+    greengrass([::AWSConfig], "POST", "/greengrass/groups/{GroupId}/deployments/\$reset", GroupId=, <keyword arguments>)
+
+# ResetDeployments Operation
+
+Resets a group's deployments.
+
+# Arguments
+
+## `X-Amzn-Client-Token = ::String`
+The client token used to request idempotent operations.
+
+
+## `Force = ::Bool`
+When set to true, perform a best-effort only core reset.
+
+
+## `GroupId = ::String` -- *Required*
+The unique Id of the AWS Greengrass Group
+
+
+
+
+# Returns
+
+`ResetDeploymentsResponse`
+
+# Exceptions
+
+`BadRequestException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/greengrass-2017-06-07/ResetDeployments)
+"""
+
+@inline reset_deployments(aws::AWSConfig=default_aws_config(); args...) = reset_deployments(aws, args)
+
+@inline reset_deployments(aws::AWSConfig, args) = AWSCore.Services.greengrass(aws, "POST", "/greengrass/groups/{GroupId}/deployments/\$reset", args)
+
+@inline reset_deployments(args) = reset_deployments(default_aws_config(), args)
+
+
+"""
     using AWSSDK.Greengrass.update_connectivity_info
     update_connectivity_info([::AWSConfig], arguments::Dict)
     update_connectivity_info([::AWSConfig]; ThingName=, <keyword arguments>)
@@ -2544,7 +2591,7 @@ Updates the connectivity information for the core. Any devices that belong to th
 # Arguments
 
 ## `ConnectivityInfo = [[ ... ], ...]`
-Connectivity info array
+Connectivity info list
 ```
  ConnectivityInfo = [[
         "HostAddress" =>  ::String,

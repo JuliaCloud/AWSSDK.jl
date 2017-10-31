@@ -28,15 +28,13 @@ Accepts an offer to share a portfolio.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `PortfolioId = ::String` -- *Required*
@@ -79,15 +77,13 @@ Associates the specified principal ARN with the specified portfolio.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `PortfolioId = ::String` -- *Required*
@@ -138,15 +134,13 @@ Associates a product with a portfolio.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `ProductId = ::String` -- *Required*
@@ -225,6 +219,79 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
+    using AWSSDK.ServiceCatalog.copy_product
+    copy_product([::AWSConfig], arguments::Dict)
+    copy_product([::AWSConfig]; SourceProductArn=, IdempotencyToken=, <keyword arguments>)
+
+    using AWSCore.Services.servicecatalog
+    servicecatalog([::AWSConfig], "CopyProduct", arguments::Dict)
+    servicecatalog([::AWSConfig], "CopyProduct", SourceProductArn=, IdempotencyToken=, <keyword arguments>)
+
+# CopyProduct Operation
+
+Copies the specified source product to the specified target product or a new product.
+
+You can copy the product to the same account or another account. You can copy the product to the same region or another region.
+
+This operation is performed asynchronously. To track the progress of the operation, use [DescribeCopyProductStatus](@ref).
+
+# Arguments
+
+## `AcceptLanguage = ::String`
+The language code.
+
+*   `en` - English (default)
+
+*   `jp` - Japanese
+
+*   `zh` - Chinese
+
+
+## `SourceProductArn = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the source product.
+
+
+## `TargetProductId = ::String`
+The ID of the target product. By default, a new product is created.
+
+
+## `TargetProductName = ::String`
+A name for the target product. The default is the name of the source product.
+
+
+## `SourceProvisioningArtifactIdentifiers = [::Dict{String,String}, ...]`
+The IDs of the product versions to copy. By default, all provisioning artifacts are copied.
+
+
+## `CopyOptions = ["CopyTags", ...]`
+The copy options. If the value is `CopyTags`, the tags from the source product are copied to the target product.
+
+
+## `IdempotencyToken = ::String` -- *Required*
+A token to disambiguate duplicate requests. You can use the same input in multiple requests, provided that you also specify a different idempotency token for each request.
+
+
+
+
+# Returns
+
+`CopyProductOutput`
+
+# Exceptions
+
+`ResourceNotFoundException` or `InvalidParametersException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/CopyProduct)
+"""
+
+@inline copy_product(aws::AWSConfig=default_aws_config(); args...) = copy_product(aws, args)
+
+@inline copy_product(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "CopyProduct", args)
+
+@inline copy_product(args) = copy_product(default_aws_config(), args)
+
+
+"""
     using AWSSDK.ServiceCatalog.create_constraint
     create_constraint([::AWSConfig], arguments::Dict)
     create_constraint([::AWSConfig]; PortfolioId=, ProductId=, Parameters=, Type=, IdempotencyToken=, <keyword arguments>)
@@ -240,15 +307,13 @@ Creates a new constraint. For more information, see [Using Constraints](http://d
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `PortfolioId = ::String` -- *Required*
@@ -260,7 +325,7 @@ The product identifier.
 
 
 ## `Parameters = ::String` -- *Required*
-The constraint parameters. Expected values vary depending on which **Type** is specified. For examples, see the bottom of this topic.
+The constraint parameters. Expected values vary depending on which **Type** is specified. For more information, see the Examples section.
 
 For Type `LAUNCH`, the `RoleArn` property is required.
 
@@ -278,7 +343,7 @@ The text description of the constraint.
 
 
 ## `IdempotencyToken = ::String` -- *Required*
-A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.
+A token to disambiguate duplicate requests. You can use the same input in multiple requests, provided that you also specify a different idempotency token for each request.
 
 
 
@@ -317,15 +382,13 @@ Creates a new portfolio.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `DisplayName = ::String` -- *Required*
@@ -350,7 +413,7 @@ Tags to associate with the new portfolio.
 ```
 
 ## `IdempotencyToken = ::String` -- *Required*
-A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.
+A token to disambiguate duplicate requests. You can use the same input in multiple requests, provided that you also specify a different idempotency token for each request.
 
 
 
@@ -389,15 +452,13 @@ Creates a new portfolio share.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `PortfolioId = ::String` -- *Required*
@@ -444,15 +505,13 @@ Creates a new product.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `Name = ::String` -- *Required*
@@ -508,7 +567,7 @@ Parameters for the provisioning artifact.
 ```
 
 ## `IdempotencyToken = ::String` -- *Required*
-A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.
+A token to disambiguate duplicate requests. You can use the same input in multiple requests, provided that you also specify a different idempotency token for each request.
 
 
 
@@ -544,20 +603,16 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 Create a new provisioning artifact for the specified product. This operation does not work with a product that has been shared with you.
 
-See the bottom of this topic for an example JSON request.
-
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `ProductId = ::String` -- *Required*
@@ -576,7 +631,7 @@ The parameters to use when creating the new provisioning artifact.
 ```
 
 ## `IdempotencyToken = ::String` -- *Required*
-A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.
+A token to disambiguate duplicate requests. You can use the same input in multiple requests, provided that you also specify a different idempotency token for each request.
 
 
 
@@ -658,15 +713,13 @@ Deletes the specified constraint.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `Id = ::String` -- *Required*
@@ -709,15 +762,13 @@ Deletes the specified portfolio. This operation does not work with a portfolio t
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `Id = ::String` -- *Required*
@@ -760,15 +811,13 @@ Deletes the specified portfolio share.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `PortfolioId = ::String` -- *Required*
@@ -815,15 +864,13 @@ Deletes the specified product. This operation does not work with a product that 
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `Id = ::String` -- *Required*
@@ -866,15 +913,13 @@ Deletes the specified provisioning artifact. This operation does not work on a p
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `ProductId = ::String` -- *Required*
@@ -921,15 +966,13 @@ Retrieves detailed information for a specified constraint.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `Id = ::String` -- *Required*
@@ -957,6 +1000,55 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 
 """
+    using AWSSDK.ServiceCatalog.describe_copy_product_status
+    describe_copy_product_status([::AWSConfig], arguments::Dict)
+    describe_copy_product_status([::AWSConfig]; CopyProductToken=, <keyword arguments>)
+
+    using AWSCore.Services.servicecatalog
+    servicecatalog([::AWSConfig], "DescribeCopyProductStatus", arguments::Dict)
+    servicecatalog([::AWSConfig], "DescribeCopyProductStatus", CopyProductToken=, <keyword arguments>)
+
+# DescribeCopyProductStatus Operation
+
+Describes the status of the specified copy product operation.
+
+# Arguments
+
+## `AcceptLanguage = ::String`
+The language code.
+
+*   `en` - English (default)
+
+*   `jp` - Japanese
+
+*   `zh` - Chinese
+
+
+## `CopyProductToken = ::String` -- *Required*
+The token returned from the call to `CopyProduct` that initiated the operation.
+
+
+
+
+# Returns
+
+`DescribeCopyProductStatusOutput`
+
+# Exceptions
+
+`ResourceNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DescribeCopyProductStatus)
+"""
+
+@inline describe_copy_product_status(aws::AWSConfig=default_aws_config(); args...) = describe_copy_product_status(aws, args)
+
+@inline describe_copy_product_status(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DescribeCopyProductStatus", args)
+
+@inline describe_copy_product_status(args) = describe_copy_product_status(default_aws_config(), args)
+
+
+"""
     using AWSSDK.ServiceCatalog.describe_portfolio
     describe_portfolio([::AWSConfig], arguments::Dict)
     describe_portfolio([::AWSConfig]; Id=, <keyword arguments>)
@@ -972,15 +1064,13 @@ Retrieves detailed information and any tags associated with the specified portfo
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `Id = ::String` -- *Required*
@@ -1025,15 +1115,13 @@ This operation is functionally identical to [DescribeProductView](@ref) except t
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `Id = ::String` -- *Required*
@@ -1076,15 +1164,13 @@ Retrieves information about a specified product, run with administrator access.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `Id = ::String` -- *Required*
@@ -1129,15 +1215,13 @@ This operation is functionally identical to [DescribeProduct](@ref) except that 
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `Id = ::String` -- *Required*
@@ -1180,15 +1264,13 @@ Retrieve detailed information about the provisioned product.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `Id = ::String` -- *Required*
@@ -1231,15 +1313,13 @@ Retrieves detailed information about the specified provisioning artifact.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `ProvisioningArtifactId = ::String` -- *Required*
@@ -1292,15 +1372,13 @@ If the output contains a TagOption key with an empty list of values, there is a 
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `ProductId = ::String` -- *Required*
@@ -1351,15 +1429,13 @@ Retrieves a paginated list of the full details of a specific request. Use this o
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `Id = ::String` -- *Required*
@@ -1449,15 +1525,13 @@ Disassociates a previously associated principal ARN from a specified portfolio.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `PortfolioId = ::String` -- *Required*
@@ -1504,15 +1578,13 @@ Disassociates the specified product from the specified portfolio.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `ProductId = ::String` -- *Required*
@@ -1602,15 +1674,13 @@ Lists details of all portfolios for which sharing was accepted by this account.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `PageToken = ::String`
@@ -1657,15 +1727,13 @@ Retrieves detailed constraint information for the specified portfolio and produc
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `PortfolioId = ::String` -- *Required*
@@ -1720,15 +1788,13 @@ Returns a paginated list of all paths to a specified product. A path is how the 
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `ProductId = ::String` -- *Required*
@@ -1779,15 +1845,13 @@ Lists the account IDs that have been authorized sharing of the specified portfol
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `PortfolioId = ::String` -- *Required*
@@ -1830,15 +1894,13 @@ Lists all portfolios in the catalog.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `PageToken = ::String`
@@ -1885,15 +1947,13 @@ Lists all portfolios that the specified product is associated with.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `ProductId = ::String` -- *Required*
@@ -1944,15 +2004,13 @@ Lists all principal ARNs associated with the specified portfolio.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `PortfolioId = ::String` -- *Required*
@@ -2003,15 +2061,13 @@ Lists all provisioning artifacts associated with the specified product.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `ProductId = ::String` -- *Required*
@@ -2054,15 +2110,13 @@ Returns a paginated list of all performed requests, in the form of RecordDetails
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `AccessLevelFilter = [ ... ]`
@@ -2233,15 +2287,13 @@ You can check the status of this request using the [DescribeRecord](@ref) operat
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `ProductId = ::String` -- *Required*
@@ -2322,15 +2374,13 @@ Rejects an offer to share a portfolio.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `PortfolioId = ::String` -- *Required*
@@ -2373,15 +2423,13 @@ Returns a paginated list of all the ProvisionedProduct objects that are currentl
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `AccessLevelFilter = [ ... ]`
@@ -2439,15 +2487,13 @@ The output of this operation can be used as input for other operations, such as 
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `Filters = ::Dict{String,String}`
@@ -2506,15 +2552,13 @@ Retrieves summary and status information about all products created within the c
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `PortfolioId = ::String`
@@ -2601,15 +2645,13 @@ If set to true, AWS Service Catalog stops managing the specified ProvisionedProd
 
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 
@@ -2648,15 +2690,13 @@ Updates an existing constraint.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `Id = ::String` -- *Required*
@@ -2703,15 +2743,13 @@ Updates the specified portfolio's details. This operation does not work with a p
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `Id = ::String` -- *Required*
@@ -2779,15 +2817,13 @@ Updates an existing product.
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `Id = ::String` -- *Required*
@@ -2873,15 +2909,13 @@ You can check the status of this request using the [DescribeRecord](@ref) operat
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `ProvisionedProductName = ::String`
@@ -2954,15 +2988,13 @@ Updates an existing provisioning artifact's information. This operation does not
 # Arguments
 
 ## `AcceptLanguage = ::String`
-The language code to use for this operation. Supported language codes are as follows:
+The language code.
 
-"en" (English)
+*   `en` - English (default)
 
-"jp" (Japanese)
+*   `jp` - Japanese
 
-"zh" (Chinese)
-
-If no code is specified, "en" is used as the default.
+*   `zh` - Chinese
 
 
 ## `ProductId = ::String` -- *Required*

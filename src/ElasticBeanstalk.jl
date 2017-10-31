@@ -2320,6 +2320,49 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 
 """
+    using AWSSDK.ElasticBeanstalk.list_tags_for_resource
+    list_tags_for_resource([::AWSConfig], arguments::Dict)
+    list_tags_for_resource([::AWSConfig]; ResourceArn=)
+
+    using AWSCore.Services.elasticbeanstalk
+    elasticbeanstalk([::AWSConfig], "ListTagsForResource", arguments::Dict)
+    elasticbeanstalk([::AWSConfig], "ListTagsForResource", ResourceArn=)
+
+# ListTagsForResource Operation
+
+Returns the tags applied to an AWS Elastic Beanstalk resource. The response contains a list of tag key-value pairs.
+
+Currently, Elastic Beanstalk only supports tagging Elastic Beanstalk environments.
+
+# Arguments
+
+## `ResourceArn = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the resouce for which a tag list is requested.
+
+Must be the ARN of an Elastic Beanstalk environment.
+
+
+
+
+# Returns
+
+`ResourceTagsDescriptionMessage`
+
+# Exceptions
+
+`InsufficientPrivilegesException`, `ResourceNotFoundException` or `ResourceTypeNotSupportedException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ListTagsForResource)
+"""
+
+@inline list_tags_for_resource(aws::AWSConfig=default_aws_config(); args...) = list_tags_for_resource(aws, args)
+
+@inline list_tags_for_resource(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "ListTagsForResource", args)
+
+@inline list_tags_for_resource(args) = list_tags_for_resource(default_aws_config(), args)
+
+
+"""
     using AWSSDK.ElasticBeanstalk.rebuild_environment
     rebuild_environment([::AWSConfig], arguments::Dict)
     rebuild_environment([::AWSConfig]; <keyword arguments>)
@@ -3263,6 +3306,62 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 @inline update_environment(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "UpdateEnvironment", args)
 
 @inline update_environment(args) = update_environment(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.ElasticBeanstalk.update_tags_for_resource
+    update_tags_for_resource([::AWSConfig], arguments::Dict)
+    update_tags_for_resource([::AWSConfig]; ResourceArn=, <keyword arguments>)
+
+    using AWSCore.Services.elasticbeanstalk
+    elasticbeanstalk([::AWSConfig], "UpdateTagsForResource", arguments::Dict)
+    elasticbeanstalk([::AWSConfig], "UpdateTagsForResource", ResourceArn=, <keyword arguments>)
+
+# UpdateTagsForResource Operation
+
+Update the list of tags applied to an AWS Elastic Beanstalk resource. Two lists can be passed: `TagsToAdd` for tags to add or update, and `TagsToRemove`.
+
+Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk environments.
+
+# Arguments
+
+## `ResourceArn = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the resouce to be updated.
+
+Must be the ARN of an Elastic Beanstalk environment.
+
+
+## `TagsToAdd = [[ ... ], ...]`
+A list of tags to add or update.
+
+If a key of an existing tag is added, the tag's value is updated.
+```
+ TagsToAdd = [[
+        "Key" =>  ::String,
+        "Value" =>  ::String
+    ], ...]
+```
+
+## `TagsToRemove = [::String, ...]`
+A list of tag keys to remove.
+
+If a tag key doesn't exist, it is silently ignored.
+
+
+
+
+# Exceptions
+
+`InsufficientPrivilegesException`, `OperationInProgressException`, `TooManyTagsException`, `ResourceNotFoundException` or `ResourceTypeNotSupportedException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/UpdateTagsForResource)
+"""
+
+@inline update_tags_for_resource(aws::AWSConfig=default_aws_config(); args...) = update_tags_for_resource(aws, args)
+
+@inline update_tags_for_resource(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "UpdateTagsForResource", args)
+
+@inline update_tags_for_resource(args) = update_tags_for_resource(default_aws_config(), args)
 
 
 """

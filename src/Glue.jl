@@ -292,6 +292,49 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 
 """
+    using AWSSDK.Glue.batch_stop_job_run
+    batch_stop_job_run([::AWSConfig], arguments::Dict)
+    batch_stop_job_run([::AWSConfig]; JobName=, JobRunIds=)
+
+    using AWSCore.Services.glue
+    glue([::AWSConfig], "BatchStopJobRun", arguments::Dict)
+    glue([::AWSConfig], "BatchStopJobRun", JobName=, JobRunIds=)
+
+# BatchStopJobRun Operation
+
+Stops a batch of job runs for a given job.
+
+# Arguments
+
+## `JobName = ::String` -- *Required*
+The name of the job whose job runs are to be stopped.
+
+
+## `JobRunIds = [::String, ...]` -- *Required*
+A list of job run Ids of the given job to be stopped.
+
+
+
+
+# Returns
+
+`BatchStopJobRunResponse`
+
+# Exceptions
+
+`InvalidInputException`, `InternalServiceException` or `OperationTimeoutException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchStopJobRun)
+"""
+
+@inline batch_stop_job_run(aws::AWSConfig=default_aws_config(); args...) = batch_stop_job_run(aws, args)
+
+@inline batch_stop_job_run(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "BatchStopJobRun", args)
+
+@inline batch_stop_job_run(args) = batch_stop_job_run(default_aws_config(), args)
+
+
+"""
     using AWSSDK.Glue.create_classifier
     create_classifier([::AWSConfig], arguments::Dict)
     create_classifier([::AWSConfig]; <keyword arguments>)
@@ -413,7 +456,7 @@ Name of the new `Crawler`.
 
 
 ## `Role = ::String` -- *Required*
-The AWS ARN of the IAM role used by the new `Crawler` to access customer resources.
+The IAM role (or ARN of an IAM role) used by the new `Crawler` to access customer resources.
 
 
 ## `DatabaseName = ::String` -- *Required*
@@ -441,7 +484,7 @@ A list of collection of targets to crawl.
 ```
 
 ## `Schedule = ::String`
-A cron expression that can be used as a Cloudwatch event (see [CloudWatch Schedule Expression Syntax](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html). For example, to run every day at 12:15 UTC, specify: `cron(15 12 * * ? *)`.
+A `cron` expression used to specify the schedule (see [Time-Based Schedules for Jobs and Crawlers](http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
 
 
 ## `Classifiers = [::String, ...]`
@@ -534,11 +577,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 """
     using AWSSDK.Glue.create_dev_endpoint
     create_dev_endpoint([::AWSConfig], arguments::Dict)
-    create_dev_endpoint([::AWSConfig]; EndpointName=, RoleArn=, SecurityGroupIds=, SubnetId=, <keyword arguments>)
+    create_dev_endpoint([::AWSConfig]; EndpointName=, RoleArn=, PublicKey=, <keyword arguments>)
 
     using AWSCore.Services.glue
     glue([::AWSConfig], "CreateDevEndpoint", arguments::Dict)
-    glue([::AWSConfig], "CreateDevEndpoint", EndpointName=, RoleArn=, SecurityGroupIds=, SubnetId=, <keyword arguments>)
+    glue([::AWSConfig], "CreateDevEndpoint", EndpointName=, RoleArn=, PublicKey=, <keyword arguments>)
 
 # CreateDevEndpoint Operation
 
@@ -554,24 +597,26 @@ The name to be assigned to the new DevEndpoint.
 The IAM role for the DevEndpoint.
 
 
-## `SecurityGroupIds = [::String, ...]` -- *Required*
+## `SecurityGroupIds = [::String, ...]`
 Security group IDs for the security groups to be used by the new DevEndpoint.
 
 
-## `SubnetId = ::String` -- *Required*
+## `SubnetId = ::String`
 The subnet ID for the new DevEndpoint to use.
 
 
-## `PublicKey = ::String`
+## `PublicKey = ::String` -- *Required*
 The public key to use for authentication.
 
 
 ## `NumberOfNodes = ::Int`
-The number of nodes to use.
+The number of AWS Glue Data Processing Units (DPUs) to allocate to this DevEndpoint.
 
 
 ## `ExtraPythonLibsS3Path = ::String`
-Path to one or more Python libraries in an S3 bucket that should be loaded in your DevEndpoint.
+Path(s) to one or more Python libraries in an S3 bucket that should be loaded in your DevEndpoint. Multiple values must be complete paths separated by a comma.
+
+Please note that only pure Python libraries can currently be used on a DevEndpoint. Libraries that rely on C extensions, such as the [pandas](http://pandas.pydata.org/) Python data analysis library, are not yet supported.
 
 
 ## `ExtraJarsS3Path = ::String`
@@ -622,7 +667,7 @@ Description of the job.
 
 
 ## `LogUri = ::String`
-Location of the logs for this job.
+This field is reserved for future use.
 
 
 ## `Role = ::String` -- *Required*
@@ -943,7 +988,7 @@ The type of the new trigger.
 
 
 ## `Schedule = ::String`
-A cron schedule expression for the new trigger.
+A `cron` expression used to specify the schedule (see [Time-Based Schedules for Jobs and Crawlers](http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
 
 
 ## `Predicate = [ ... ]`
@@ -3318,7 +3363,7 @@ Name of the new `Crawler`.
 
 
 ## `Role = ::String`
-The AWS ARN of the IAM role used by the new `Crawler` to access customer resources.
+The IAM role (or ARN of an IAM role) used by the new `Crawler` to access customer resources.
 
 
 ## `DatabaseName = ::String`
@@ -3346,7 +3391,7 @@ A list of collection of targets to crawl.
 ```
 
 ## `Schedule = ::String`
-A cron expression that can be used as a Cloudwatch event (see [CloudWatch Schedule Expression Syntax](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html). For example, to run every day at 12:15 UTC, specify: `cron(15 12 * * ? *)`.
+A `cron` expression used to specify the schedule (see [Time-Based Schedules for Jobs and Crawlers](http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
 
 
 ## `Classifiers = [::String, ...]`
@@ -3406,7 +3451,7 @@ Name of the crawler whose schedule to update.
 
 
 ## `Schedule = ::String`
-Cron expression of the updated schedule.
+The updated `cron` expression used to specify the schedule (see [Time-Based Schedules for Jobs and Crawlers](http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
 
 
 
@@ -3507,13 +3552,17 @@ The public key for the DevEndpoint to use.
 
 
 ## `CustomLibraries = [ ... ]`
-Custom Python or Java custom libraries to be loaded in the DevEndpoint.
+Custom Python or Java libraries to be loaded in the DevEndpoint.
 ```
  CustomLibraries = [
         "ExtraPythonLibsS3Path" =>  ::String,
         "ExtraJarsS3Path" =>  ::String
     ]
 ```
+
+## `UpdateEtlLibraries = ::Bool`
+True if the list of custom libraries to be loaded in the development endpoint needs to be updated, or False otherwise.
+
 
 
 

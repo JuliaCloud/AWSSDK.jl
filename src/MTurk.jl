@@ -175,11 +175,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 """
     using AWSSDK.MTurk.create_additional_assignments_for_hit
     create_additional_assignments_for_hit([::AWSConfig], arguments::Dict)
-    create_additional_assignments_for_hit([::AWSConfig]; HITId=, <keyword arguments>)
+    create_additional_assignments_for_hit([::AWSConfig]; HITId=, NumberOfAdditionalAssignments=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "CreateAdditionalAssignmentsForHIT", arguments::Dict)
-    mturk_requester([::AWSConfig], "CreateAdditionalAssignmentsForHIT", HITId=, <keyword arguments>)
+    mturk_requester([::AWSConfig], "CreateAdditionalAssignmentsForHIT", HITId=, NumberOfAdditionalAssignments=, <keyword arguments>)
 
 # CreateAdditionalAssignmentsForHIT Operation
 
@@ -198,7 +198,7 @@ To extend the maximum number of assignments, specify the number of additional as
 The ID of the HIT to extend.
 
 
-## `NumberOfAdditionalAssignments = ::Int`
+## `NumberOfAdditionalAssignments = ::Int` -- *Required*
 The number of additional assignments to request for this HIT.
 
 
@@ -324,7 +324,7 @@ A unique identifier for this request which allows you to retry the call on error
 The Assignment-level Review Policy applies to the assignments under the HIT. You can specify for Mechanical Turk to take various actions based on the policy.
 ```
  AssignmentReviewPolicy = [
-        "PolicyName" =>  ::String,
+        "PolicyName" => <required> ::String,
         "Parameters" =>  [[
             "Key" =>  ::String,
             "Values" =>  [::String, ...],
@@ -340,7 +340,7 @@ The Assignment-level Review Policy applies to the assignments under the HIT. You
 The HIT-level Review Policy applies to the HIT. You can specify for Mechanical Turk to take various actions based on the policy.
 ```
  HITReviewPolicy = [
-        "PolicyName" =>  ::String,
+        "PolicyName" => <required> ::String,
         "Parameters" =>  [[
             "Key" =>  ::String,
             "Values" =>  [::String, ...],
@@ -362,8 +362,8 @@ Constraints: Either a Question parameter or a HITLayoutId parameter must be prov
 If the HITLayoutId is provided, any placeholder values must be filled in with values using the HITLayoutParameter structure. For more information, see HITLayout.
 ```
  HITLayoutParameters = [[
-        "Name" =>  ::String,
-        "Value" =>  ::String
+        "Name" => <required> ::String,
+        "Value" => <required> ::String
     ], ...]
 ```
 
@@ -522,7 +522,7 @@ A unique identifier for this request which allows you to retry the call on error
 The Assignment-level Review Policy applies to the assignments under the HIT. You can specify for Mechanical Turk to take various actions based on the policy.
 ```
  AssignmentReviewPolicy = [
-        "PolicyName" =>  ::String,
+        "PolicyName" => <required> ::String,
         "Parameters" =>  [[
             "Key" =>  ::String,
             "Values" =>  [::String, ...],
@@ -538,7 +538,7 @@ The Assignment-level Review Policy applies to the assignments under the HIT. You
 The HIT-level Review Policy applies to the HIT. You can specify for Mechanical Turk to take various actions based on the policy.
 ```
  HITReviewPolicy = [
-        "PolicyName" =>  ::String,
+        "PolicyName" => <required> ::String,
         "Parameters" =>  [[
             "Key" =>  ::String,
             "Values" =>  [::String, ...],
@@ -560,8 +560,8 @@ Constraints: Either a Question parameter or a HITLayoutId parameter must be prov
 If the HITLayoutId is provided, any placeholder values must be filled in with values using the HITLayoutParameter structure. For more information, see HITLayout.
 ```
  HITLayoutParameters = [[
-        "Name" =>  ::String,
-        "Value" =>  ::String
+        "Name" => <required> ::String,
+        "Value" => <required> ::String
     ], ...]
 ```
 
@@ -1701,11 +1701,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 """
     using AWSSDK.MTurk.reject_assignment
     reject_assignment([::AWSConfig], arguments::Dict)
-    reject_assignment([::AWSConfig]; AssignmentId=, <keyword arguments>)
+    reject_assignment([::AWSConfig]; AssignmentId=, RequesterFeedback=)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "RejectAssignment", arguments::Dict)
-    mturk_requester([::AWSConfig], "RejectAssignment", AssignmentId=, <keyword arguments>)
+    mturk_requester([::AWSConfig], "RejectAssignment", AssignmentId=, RequesterFeedback=)
 
 # RejectAssignment Operation
 
@@ -1721,7 +1721,7 @@ Only the Requester who created the HIT can reject an assignment for the HIT.
 The ID of the assignment. The assignment must correspond to a HIT created by the Requester.
 
 
-## `RequesterFeedback = ::String`
+## `RequesterFeedback = ::String` -- *Required*
 A message for the Worker, which the Worker can see in the Status section of the web site.
 
 
@@ -1793,11 +1793,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 """
     using AWSSDK.MTurk.send_bonus
     send_bonus([::AWSConfig], arguments::Dict)
-    send_bonus([::AWSConfig]; WorkerId=, BonusAmount=, AssignmentId=, <keyword arguments>)
+    send_bonus([::AWSConfig]; WorkerId=, BonusAmount=, AssignmentId=, Reason=, <keyword arguments>)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "SendBonus", arguments::Dict)
-    mturk_requester([::AWSConfig], "SendBonus", WorkerId=, BonusAmount=, AssignmentId=, <keyword arguments>)
+    mturk_requester([::AWSConfig], "SendBonus", WorkerId=, BonusAmount=, AssignmentId=, Reason=, <keyword arguments>)
 
 # SendBonus Operation
 
@@ -1817,7 +1817,7 @@ The Bonus amount is a US Dollar amount specified using a string (for example, "5
 The ID of the assignment for which this bonus is paid.
 
 
-## `Reason = ::String`
+## `Reason = ::String` -- *Required*
 A message that explains the reason for the bonus payment. The Worker receiving the bonus can see this message.
 
 
@@ -1865,9 +1865,9 @@ The notification specification to test. This value is identical to the value you
 ```
  Notification = [
         "Destination" => <required> ::String,
-        "Transport" => <required> "Email" or "SQS",
-        "Version" =>  ::String,
-        "EventTypes" =>  ["AssignmentAccepted", "AssignmentAbandoned", "AssignmentReturned", "AssignmentSubmitted", "AssignmentRejected", "AssignmentApproved", "HITCreated", "HITExpired", "HITReviewable", "HITExtended", "HITDisposed" or "Ping", ...]
+        "Transport" => <required> "Email", "SQS" or "SNS",
+        "Version" => <required> ::String,
+        "EventTypes" => <required> ["AssignmentAccepted", "AssignmentAbandoned", "AssignmentReturned", "AssignmentSubmitted", "AssignmentRejected", "AssignmentApproved", "HITCreated", "HITExpired", "HITReviewable", "HITExtended", "HITDisposed" or "Ping", ...]
     ]
 ```
 
@@ -1898,11 +1898,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 """
     using AWSSDK.MTurk.update_expiration_for_hit
     update_expiration_for_hit([::AWSConfig], arguments::Dict)
-    update_expiration_for_hit([::AWSConfig]; HITId=, <keyword arguments>)
+    update_expiration_for_hit([::AWSConfig]; HITId=, ExpireAt=)
 
     using AWSCore.Services.mturk_requester
     mturk_requester([::AWSConfig], "UpdateExpirationForHIT", arguments::Dict)
-    mturk_requester([::AWSConfig], "UpdateExpirationForHIT", HITId=, <keyword arguments>)
+    mturk_requester([::AWSConfig], "UpdateExpirationForHIT", HITId=, ExpireAt=)
 
 # UpdateExpirationForHIT Operation
 
@@ -1914,7 +1914,7 @@ The `UpdateExpirationForHIT` operation allows you update the expiration time of 
 The HIT to update.
 
 
-## `ExpireAt = timestamp`
+## `ExpireAt = timestamp` -- *Required*
 The date and time at which you want the HIT to expire
 
 
@@ -2052,9 +2052,9 @@ The notification specification for the HIT type.
 ```
  Notification = [
         "Destination" => <required> ::String,
-        "Transport" => <required> "Email" or "SQS",
-        "Version" =>  ::String,
-        "EventTypes" =>  ["AssignmentAccepted", "AssignmentAbandoned", "AssignmentReturned", "AssignmentSubmitted", "AssignmentRejected", "AssignmentApproved", "HITCreated", "HITExpired", "HITReviewable", "HITExtended", "HITDisposed" or "Ping", ...]
+        "Transport" => <required> "Email", "SQS" or "SNS",
+        "Version" => <required> ::String,
+        "EventTypes" => <required> ["AssignmentAccepted", "AssignmentAbandoned", "AssignmentReturned", "AssignmentSubmitted", "AssignmentRejected", "AssignmentApproved", "HITCreated", "HITExpired", "HITReviewable", "HITExtended", "HITDisposed" or "Ping", ...]
     ]
 ```
 

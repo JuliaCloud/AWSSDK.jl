@@ -29,6 +29,8 @@ This operation can be called only by the following principals when they also hav
 
 *   **Invitation to join** or **Approve all features request** handshakes: only a principal from the member account.
 
+    The user who calls the API for an invitation to join must have the `organizations:AcceptHandshake` permission. If you enabled all features in the organization, then the user must also have the `iam:CreateServiceLinkedRole` permission so that Organizations can create the required service-linked role named *OrgsServiceLinkedRoleName*. For more information, see [AWS Organizations and Service-Linked Roles](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integration_services.html#orgs_integration_service-linked-roles) in the *AWS Organizations User Guide*.
+
 *   **Enable all features final confirmation** handshake: only a principal from the master account.
 
     For more information about invitations, see [Inviting an AWS Account to Join Your Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html) in the *AWS Organizations User Guide*. For more information about requests to enable all features in the organization, see [Enabling All Features in Your Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html) in the *AWS Organizations User Guide*.
@@ -51,7 +53,7 @@ The [regex pattern](http://wikipedia.org/wiki/regex) for handshake ID string req
 
 # Exceptions
 
-`AccessDeniedException`, `AWSOrganizationsNotInUseException`, `HandshakeConstraintViolationException`, `HandshakeNotFoundException`, `InvalidHandshakeTransitionException`, `HandshakeAlreadyInStateException`, `InvalidInputException`, `ConcurrentModificationException`, `ServiceException` or `TooManyRequestsException`.
+`AccessDeniedException`, `AWSOrganizationsNotInUseException`, `HandshakeConstraintViolationException`, `HandshakeNotFoundException`, `InvalidHandshakeTransitionException`, `HandshakeAlreadyInStateException`, `InvalidInputException`, `ConcurrentModificationException`, `ServiceException`, `TooManyRequestsException` or `AccessDeniedForDependencyException`.
 
 # Example: To accept a handshake from another account
 
@@ -335,22 +337,27 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 Creates an AWS account that is automatically a member of the organization whose credentials made the request. This is an asynchronous request that AWS performs in the background. If you want to check the status of the request later, you need the `OperationId` response element from this operation to provide as a parameter to the [DescribeCreateAccountStatus](@ref) operation.
 
-AWS Organizations preconfigures the new member account with a role (named `OrganizationAccountAccessRole` by default) that grants administrator permissions to the new account. Principals in the master account can assume the role. AWS Organizations clones the company name and address information for the new account from the organization's master account.
+The user who calls the API for an invitation to join must have the `organizations:CreateAccount` permission. If you enabled all features in the organization, then the user must also have the `iam:CreateServiceLinkedRole` permission so that Organizations can create the required service-linked role named *OrgsServiceLinkedRoleName*. For more information, see [AWS Organizations and Service-Linked Roles](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integration_services.html#orgs_integration_service-linked-roles) in the *AWS Organizations User Guide*.
+
+The user in the master account who calls this API must also have the `iam:CreateRole` permission because AWS Organizations preconfigures the new member account with a role (named `OrganizationAccountAccessRole` by default) that grants users in the master account administrator permissions in the new member account. Principals in the master account can assume the role. AWS Organizations clones the company name and address information for the new account from the organization's master account.
 
 For more information about creating accounts, see [Creating an AWS Account in Your Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html) in the *AWS Organizations User Guide*.
 
 **Important**
-> You cannot remove accounts that are created with this operation from an organization. That also means that you cannot delete an organization that contains an account that is created with this operation.
+> When you create an account in an organization using the AWS Organizations console, API, or CLI commands, the information required for the account to operate as a standalone account, such as a payment method and signing the End User Licence Agreement (EULA) is *not* automatically collected. If you must remove an account from your organization later, you can do so only after you provide the missing information. Follow the steps at [To leave an organization when all required account information has not yet been provided](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info) in the *AWS Organizations User Guide*.
 
 **Note**
 > When you create a member account with this operation, you can choose whether to create the account with the **IAM User and Role Access to Billing Information** switch enabled. If you enable it, IAM users and roles that have appropriate permissions can view billing information for the account. If you disable this, then only the account root user can access billing information. For information about how to disable this for an account, see [Granting Access to Your Billing Information and Tools](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html).
 
 This operation can be called only from the organization's master account.
 
+**Important**
+> If you get an exception that indicates that you exceeded your account limits for the organization or that you can"t add an account because your organization is still initializing, please contact [AWS Customer Support](https://console.aws.amazon.com/support/home#/).
+
 # Arguments
 
 ## `Email = ::String` -- *Required*
-The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account.
+The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account. You must use a valid email address to complete account creation. You cannot access the root user of the account or remove an account that was created with an invalid email address.
 
 
 ## `AccountName = ::String` -- *Required*
@@ -454,7 +461,7 @@ Specifies the feature set supported by the new organization. Each feature set su
 
 # Exceptions
 
-`AccessDeniedException`, `AlreadyInOrganizationException`, `ConcurrentModificationException`, `ConstraintViolationException`, `InvalidInputException`, `ServiceException` or `TooManyRequestsException`.
+`AccessDeniedException`, `AlreadyInOrganizationException`, `ConcurrentModificationException`, `ConstraintViolationException`, `InvalidInputException`, `ServiceException`, `TooManyRequestsException` or `AccessDeniedForDependencyException`.
 
 # Example: To create a new organization with all features enabled
 
@@ -814,9 +821,6 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 # DeleteOrganization Operation
 
 Deletes the organization. You can delete an organization only by using credentials from the master account. The organization must be empty of member accounts, OUs, and policies.
-
-**Important**
-> If you create any accounts using Organizations operations or the Organizations console, you can't remove those accounts from the organization, which means that you can't delete the organization.
 
 # Exceptions
 
@@ -1435,14 +1439,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 # DisablePolicyType Operation
 
-Disables an organizational control policy type in a root. A poicy of a certain type can be attached to entities in a root only if that type is enabled in the root. After you perform this operation, you no longer can attach policies of the specified type to that root or to any OU or account in that root. You can undo this by using the [EnablePolicyType](@ref) operation.
+Disables an organizational control policy type in a root. A policy of a certain type can be attached to entities in a root only if that type is enabled in the root. After you perform this operation, you no longer can attach policies of the specified type to that root or to any OU or account in that root. You can undo this by using the [EnablePolicyType](@ref) operation.
 
 This operation can be called only from the organization's master account.
 
 # Arguments
 
 ## `RootId = ::String` -- *Required*
-The unique identifier (ID) of the root in which you want to disable a policy type. You can get the ID from the [ListPolicies](@ref) operation.
+The unique identifier (ID) of the root in which you want to disable a policy type. You can get the ID from the [ListRoots](@ref) operation.
 
 The [regex pattern](http://wikipedia.org/wiki/regex) for a root ID string requires "r-" followed by from 4 to 32 lower-case letters or digits.
 
@@ -1668,9 +1672,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 Sends an invitation to another account to join your organization as a member account. Organizations sends email on your behalf to the email address that is associated with the other account's owner. The invitation is implemented as a [Handshake](@ref) whose details are in the response.
 
 **Important**
-> You can invite AWS accounts only from the same reseller as the master account. For example, if your organization's master account was created by Amazon Internet Services Pvt. Ltd (AISPL), an AWS reseller in India, then you can only invite other AISPL accounts to your organization. You can't combine accounts from AISPL and AWS. For more information, see [Consolidated Billing in India](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilliing-India.html).
+> You can invite AWS accounts only from the same seller as the master account. For example, if your organization's master account was created by Amazon Internet Services Pvt. Ltd (AISPL), an AWS seller in India, then you can only invite other AISPL accounts to your organization. You can't combine accounts from AISPL and AWS, or any other AWS seller. For more information, see [Consolidated Billing in India](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilliing-India.html).
 
 This operation can be called only from the organization's master account.
+
+**Important**
+> If you get an exception that indicates that you exceeded your account limits for the organization or that you can"t add an account because your organization is still initializing, please contact [AWS Customer Support](https://console.aws.amazon.com/support/home#/).
 
 # Arguments
 
@@ -1681,15 +1688,15 @@ The identifier (ID) of the AWS account that you want to invite to join your orga
 
 If you use the AWS CLI, you can submit this as a single string, similar to the following example:
 
-`--target id=123456789012,type=ACCOUNT`
+`--target Id=123456789012,Type=ACCOUNT`
 
 If you specify `"Type": "ACCOUNT"`, then you must provide the AWS account ID number as the `Id`. If you specify `"Type": "EMAIL"`, then you must specify the email address that is associated with the account.
 
-`--target id=bill@example.com,type=EMAIL`
+`--target Id=bill@example.com,Type=EMAIL`
 ```
  Target = [
-        "Id" =>  ::String,
-        "Type" =>  "ACCOUNT", "ORGANIZATION" or "EMAIL"
+        "Id" => <required> ::String,
+        "Type" => <required> "ACCOUNT", "ORGANIZATION" or "EMAIL"
     ]
 ```
 
@@ -1798,7 +1805,7 @@ This operation can be called only from a member account in the organization.
 **Important**
 > *   The master account in an organization with all features enabled can set service control policies (SCPs) that can restrict what administrators of member accounts can do, including preventing them from successfully calling `LeaveOrganization` and leaving the organization.
 
-*   If you created the account using the AWS Organizations console, the Organizations API, or the Organizations CLI commands, then you cannot remove the account.
+*   You can leave an organization as a member account only if the account is configured with the information required to operate as a standalone account. When you create an account in an organization using the AWS Organizations console, API, or CLI commands, the information required of standalone accounts is *not* automatically collected. For each account that you want to make standalone, you must accept the End User License Agreement (EULA), choose a support plan, provide and verify the required contact information, and provide a current payment method. AWS uses the payment method to charge for any billable (not free tier) AWS activity that occurs while the account is not attached to an organization. Follow the steps at [To leave an organization when all required account information has not yet been provided](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info) in the *AWS Organizations User Guide*.
 
 *   You can leave an organization only after you enable IAM user access to billing in your account. For more information, see [Activating Access to the Billing and Cost Management Console](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate) in the *AWS Billing and Cost Management User Guide*.
 
@@ -2217,7 +2224,7 @@ This operation can be called from any account in the organization.
 Filters the handshakes that you want included in the response. The default is all types. Use the `ActionType` element to limit the output to only a specified type, such as `INVITE`, `ENABLE-FULL-CONTROL`, or `APPROVE-FULL-CONTROL`. Alternatively, for the `ENABLE-FULL-CONTROL` handshake that generates a separate child handshake for each member account, you can specify `ParentHandshakeId` to see only the handshakes that were generated by that parent request.
 ```
  Filter = [
-        "ActionType" =>  "INVITE", "ENABLE_ALL_FEATURES" or "APPROVE_ALL_FEATURES",
+        "ActionType" =>  "INVITE", "ENABLE_ALL_FEATURES", "APPROVE_ALL_FEATURES" or "ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
         "ParentHandshakeId" =>  ::String
     ]
 ```
@@ -2327,7 +2334,7 @@ This operation can be called only from the organization's master account.
 A filter of the handshakes that you want included in the response. The default is all types. Use the `ActionType` element to limit the output to only a specified type, such as `INVITE`, `ENABLE-ALL-FEATURES`, or `APPROVE-ALL-FEATURES`. Alternatively, for the `ENABLE-ALL-FEATURES` handshake that generates a separate child handshake for each member account, you can specify the `ParentHandshakeId` to see only the handshakes that were generated by that parent request.
 ```
  Filter = [
-        "ActionType" =>  "INVITE", "ENABLE_ALL_FEATURES" or "APPROVE_ALL_FEATURES",
+        "ActionType" =>  "INVITE", "ENABLE_ALL_FEATURES", "APPROVE_ALL_FEATURES" or "ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
         "ParentHandshakeId" =>  ::String
     ]
 ```
@@ -3055,7 +3062,7 @@ The removed account becomes a stand-alone account that is not a member of any or
 This operation can be called only from the organization's master account. Member accounts can remove themselves with [LeaveOrganization](@ref) instead.
 
 **Important**
-> *   You can remove only accounts that were created outside your organization and invited to join. If you created the account using the AWS Organizations console, the Organizations API, or the Organizations CLI commands, then you cannot remove the account.
+> *   You can remove an account from your organization only if the account is configured with the information required to operate as a standalone account. When you create an account in an organization using the AWS Organizations console, API, or CLI commands, the information required of standalone accounts is *not* automatically collected. For an account that you want to make standalone, you must accept the End User License Agreement (EULA), choose a support plan, provide and verify the required contact information, and provide a current payment method. AWS uses the payment method to charge for any billable (not free tier) AWS activity that occurs while the account is not attached to an organization. To remove an account that does not yet have this information, you must sign in as the member account and follow the steps at [To leave an organization when all required account information has not yet been provided](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info) in the *AWS Organizations User Guide*.
 
 *   You can remove a member account only after you enable IAM user access to billing in the member account. For more information, see [Activating Access to the Billing and Cost Management Console](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate) in the *AWS Billing and Cost Management User Guide*.
 

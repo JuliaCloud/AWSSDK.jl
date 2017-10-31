@@ -27,7 +27,7 @@ Creates a receipt rule set by cloning an existing one. All receipt rules and con
 
 For information about setting up rule sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -92,7 +92,7 @@ Creates a configuration set.
 
 Configuration sets enable you to publish email sending events. For information about using configuration sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -138,21 +138,21 @@ Creates a configuration set event destination.
 
 An event destination is the AWS service to which Amazon SES publishes the email sending events associated with a configuration set. For information about using configuration sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
 ## `ConfigurationSetName = ::String` -- *Required*
-The name of the configuration set to which to apply the event destination.
+The name of the configuration set that the event destination should be associated with.
 
 
 ## `EventDestination = [ ... ]` -- *Required*
-An object that describes the AWS service to which Amazon SES will publish the email sending events associated with the specified configuration set.
+An object that describes the AWS service that email sending event information will be published to.
 ```
  EventDestination = [
         "Name" => <required> ::String,
         "Enabled" =>  ::Bool,
-        "MatchingEventTypes" => <required> ["send", "reject", "bounce", "complaint", "delivery", "open" or "click", ...],
+        "MatchingEventTypes" => <required> ["send", "reject", "bounce", "complaint", "delivery", "open", "click" or "renderingFailure", ...],
         "KinesisFirehoseDestination" =>  [
             "IAMRoleARN" => <required> ::String,
             "DeliveryStreamARN" => <required> ::String
@@ -187,6 +187,51 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
+    using AWSSDK.SES.create_configuration_set_tracking_options
+    create_configuration_set_tracking_options([::AWSConfig], arguments::Dict)
+    create_configuration_set_tracking_options([::AWSConfig]; ConfigurationSetName=, TrackingOptions=)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "CreateConfigurationSetTrackingOptions", arguments::Dict)
+    email([::AWSConfig], "CreateConfigurationSetTrackingOptions", ConfigurationSetName=, TrackingOptions=)
+
+# CreateConfigurationSetTrackingOptions Operation
+
+Creates an association between a configuration set and a custom domain for open and click event tracking.
+
+By default, images and links used for tracking open and click events are hosted on domains operated by Amazon SES. You can configure a subdomain of your own to handle these events. For information about using configuration sets, see [Configuring Custom Domains to Handle Open and Click Tracking](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html) in the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
+
+# Arguments
+
+## `ConfigurationSetName = ::String` -- *Required*
+The name of the configuration set that the tracking options should be associated with.
+
+
+## `TrackingOptions = ["CustomRedirectDomain" =>  ::String]` -- *Required*
+
+
+
+
+
+# Returns
+
+`CreateConfigurationSetTrackingOptionsResponse`
+
+# Exceptions
+
+`ConfigurationSetDoesNotExistException`, `TrackingOptionsAlreadyExistsException` or `InvalidTrackingOptionsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateConfigurationSetTrackingOptions)
+"""
+
+@inline create_configuration_set_tracking_options(aws::AWSConfig=default_aws_config(); args...) = create_configuration_set_tracking_options(aws, args)
+
+@inline create_configuration_set_tracking_options(aws::AWSConfig, args) = AWSCore.Services.email(aws, "CreateConfigurationSetTrackingOptions", args)
+
+@inline create_configuration_set_tracking_options(args) = create_configuration_set_tracking_options(default_aws_config(), args)
+
+
+"""
     using AWSSDK.SES.create_receipt_filter
     create_receipt_filter([::AWSConfig], arguments::Dict)
     create_receipt_filter([::AWSConfig]; Filter=)
@@ -201,7 +246,7 @@ Creates a new IP address filter.
 
 For information about setting up IP address filters, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -269,12 +314,12 @@ Creates a receipt rule.
 
 For information about setting up receipt rules, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
 ## `RuleSetName = ::String` -- *Required*
-The name of the rule set to which to add the rule.
+The name of the rule set that the receipt rule will be added to.
 
 
 ## `After = ::String`
@@ -390,7 +435,7 @@ Creates an empty receipt rule set.
 
 For information about setting up receipt rule sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -436,6 +481,54 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
+    using AWSSDK.SES.create_template
+    create_template([::AWSConfig], arguments::Dict)
+    create_template([::AWSConfig]; Template=)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "CreateTemplate", arguments::Dict)
+    email([::AWSConfig], "CreateTemplate", Template=)
+
+# CreateTemplate Operation
+
+Creates an email template. Email templates enable you to send personalized email to one or more destinations in a single API operation. For more information, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html).
+
+You can execute this operation no more than once per second.
+
+# Arguments
+
+## `Template = [ ... ]` -- *Required*
+The content of the email, composed of a subject line, an HTML part, and a text-only part.
+```
+ Template = [
+        "TemplateName" => <required> ::String,
+        "SubjectPart" =>  ::String,
+        "TextPart" =>  ::String,
+        "HtmlPart" =>  ::String
+    ]
+```
+
+
+
+# Returns
+
+`CreateTemplateResponse`
+
+# Exceptions
+
+`AlreadyExistsException`, `InvalidTemplateException` or `LimitExceededException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateTemplate)
+"""
+
+@inline create_template(aws::AWSConfig=default_aws_config(); args...) = create_template(aws, args)
+
+@inline create_template(aws::AWSConfig, args) = AWSCore.Services.email(aws, "CreateTemplate", args)
+
+@inline create_template(args) = create_template(default_aws_config(), args)
+
+
+"""
     using AWSSDK.SES.delete_configuration_set
     delete_configuration_set([::AWSConfig], arguments::Dict)
     delete_configuration_set([::AWSConfig]; ConfigurationSetName=)
@@ -446,11 +539,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # DeleteConfigurationSet Operation
 
-Deletes a configuration set.
+Deletes a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
-Configuration sets enable you to publish email sending events. For information about using configuration sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
-
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -489,11 +580,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # DeleteConfigurationSetEventDestination Operation
 
-Deletes a configuration set event destination.
+Deletes a configuration set event destination. Configuration set event destinations are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
-Configuration set event destinations are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
-
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -526,6 +615,50 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
+    using AWSSDK.SES.delete_configuration_set_tracking_options
+    delete_configuration_set_tracking_options([::AWSConfig], arguments::Dict)
+    delete_configuration_set_tracking_options([::AWSConfig]; ConfigurationSetName=)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "DeleteConfigurationSetTrackingOptions", arguments::Dict)
+    email([::AWSConfig], "DeleteConfigurationSetTrackingOptions", ConfigurationSetName=)
+
+# DeleteConfigurationSetTrackingOptions Operation
+
+Deletes an association between a configuration set and a custom domain for open and click event tracking.
+
+By default, images and links used for tracking open and click events are hosted on domains operated by Amazon SES. You can configure a subdomain of your own to handle these events. For information about using configuration sets, see [Configuring Custom Domains to Handle Open and Click Tracking](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html) in the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
+
+**Note**
+> Deleting this kind of association will result in emails sent using the specified configuration set to capture open and click events using the standard, Amazon SES-operated domains.
+
+# Arguments
+
+## `ConfigurationSetName = ::String` -- *Required*
+The name of the configuration set from which you want to delete the tracking options.
+
+
+
+
+# Returns
+
+`DeleteConfigurationSetTrackingOptionsResponse`
+
+# Exceptions
+
+`ConfigurationSetDoesNotExistException` or `TrackingOptionsDoesNotExistException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteConfigurationSetTrackingOptions)
+"""
+
+@inline delete_configuration_set_tracking_options(aws::AWSConfig=default_aws_config(); args...) = delete_configuration_set_tracking_options(aws, args)
+
+@inline delete_configuration_set_tracking_options(aws::AWSConfig, args) = AWSCore.Services.email(aws, "DeleteConfigurationSetTrackingOptions", args)
+
+@inline delete_configuration_set_tracking_options(args) = delete_configuration_set_tracking_options(default_aws_config(), args)
+
+
+"""
     using AWSSDK.SES.delete_identity
     delete_identity([::AWSConfig], arguments::Dict)
     delete_identity([::AWSConfig]; Identity=)
@@ -538,7 +671,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 Deletes the specified identity (an email address or a domain) from the list of verified identities.
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -591,7 +724,7 @@ Deletes the specified sending authorization policy for the given identity (an em
 
 Sending authorization is a feature that enables an identity owner to authorize other senders to use its identities. For information about using sending authorization, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -648,7 +781,7 @@ Deletes the specified IP address filter.
 
 For information about managing IP address filters, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -698,7 +831,7 @@ Deletes the specified receipt rule.
 
 For information about managing receipt rules, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -760,7 +893,7 @@ Deletes the specified receipt rule set and all of the receipt rules it contains.
 
 For information about managing receipt rule sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -800,6 +933,43 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
+    using AWSSDK.SES.delete_template
+    delete_template([::AWSConfig], arguments::Dict)
+    delete_template([::AWSConfig]; TemplateName=)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "DeleteTemplate", arguments::Dict)
+    email([::AWSConfig], "DeleteTemplate", TemplateName=)
+
+# DeleteTemplate Operation
+
+Deletes an email template.
+
+You can execute this operation no more than once per second.
+
+# Arguments
+
+## `TemplateName = ::String` -- *Required*
+The name of the template to be deleted.
+
+
+
+
+# Returns
+
+`DeleteTemplateResponse`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteTemplate)
+"""
+
+@inline delete_template(aws::AWSConfig=default_aws_config(); args...) = delete_template(aws, args)
+
+@inline delete_template(aws::AWSConfig, args) = AWSCore.Services.email(aws, "DeleteTemplate", args)
+
+@inline delete_template(args) = delete_template(default_aws_config(), args)
+
+
+"""
     using AWSSDK.SES.delete_verified_email_address
     delete_verified_email_address([::AWSConfig], arguments::Dict)
     delete_verified_email_address([::AWSConfig]; EmailAddress=)
@@ -810,12 +980,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # DeleteVerifiedEmailAddress Operation
 
-Deletes the specified email address from the list of verified addresses.
-
-**Important**
-> The DeleteVerifiedEmailAddress action is deprecated as of the May 15, 2012 release of Domain Verification. The DeleteIdentity action is now preferred.
-
-This action is throttled at one request per second.
+Deprecated. Use the `DeleteIdentity` operation to delete email addresses and domains.
 
 # Arguments
 
@@ -861,7 +1026,7 @@ Returns the metadata and receipt rules for the receipt rule set that is currentl
 
 For information about setting up receipt rule sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -929,11 +1094,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # DescribeConfigurationSet Operation
 
-Returns the details of the specified configuration set.
+Returns the details of the specified configuration set. For information about using configuration sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
-Configuration sets enable you to publish email sending events. For information about using configuration sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
-
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -941,7 +1104,7 @@ This action is throttled at one request per second.
 The name of the configuration set to describe.
 
 
-## `ConfigurationSetAttributeNames = ["eventDestinations", ...]`
+## `ConfigurationSetAttributeNames = ["eventDestinations" or "trackingOptions", ...]`
 A list of configuration set attributes to return.
 
 
@@ -980,12 +1143,12 @@ Returns the details of the specified receipt rule.
 
 For information about setting up receipt rules, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
 ## `RuleSetName = ::String` -- *Required*
-The name of the receipt rule set to which the receipt rule belongs.
+The name of the receipt rule set that the receipt rule belongs to.
 
 
 ## `RuleName = ::String` -- *Required*
@@ -1059,7 +1222,7 @@ Returns the details of the specified receipt rule set.
 
 For information about managing receipt rule sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -1135,9 +1298,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # GetIdentityDkimAttributes Operation
 
-Returns the current status of Easy DKIM signing for an entity. For domain name identities, this action also returns the DKIM tokens that are required for Easy DKIM signing, and whether Amazon SES has successfully verified that these tokens have been published.
+Returns the current status of Easy DKIM signing for an entity. For domain name identities, this operation also returns the DKIM tokens that are required for Easy DKIM signing, and whether Amazon SES has successfully verified that these tokens have been published.
 
-This action takes a list of identities as input and returns the following information for each:
+This operation takes a list of identities as input and returns the following information for each:
 
 *   Whether Easy DKIM signing is enabled or disabled.
 
@@ -1145,7 +1308,7 @@ This action takes a list of identities as input and returns the following inform
 
 *   Whether Amazon SES has successfully verified the DKIM tokens published in the domain's DNS. This information is only returned for domain name identities, not for email addresses.
 
-This action is throttled at one request per second and can only get DKIM attributes for up to 100 identities at a time.
+This operation is throttled at one request per second and can only get DKIM attributes for up to 100 identities at a time.
 
 For more information about creating DNS records using DKIM tokens, go to the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html).
 
@@ -1217,9 +1380,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # GetIdentityMailFromDomainAttributes Operation
 
-Returns the custom MAIL FROM attributes for a list of identities (email addresses and/or domains).
+Returns the custom MAIL FROM attributes for a list of identities (email addresses : domains).
 
-This action is throttled at one request per second and can only get custom MAIL FROM attributes for up to 100 identities at a time.
+This operation is throttled at one request per second and can only get custom MAIL FROM attributes for up to 100 identities at a time.
 
 # Arguments
 
@@ -1282,7 +1445,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 Given a list of verified identities (email addresses and/or domains), returns a structure describing identity notification attributes.
 
-This action is throttled at one request per second and can only get notification attributes for up to 100 identities at a time.
+This operation is throttled at one request per second and can only get notification attributes for up to 100 identities at a time.
 
 For more information about using notifications with Amazon SES, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
 
@@ -1356,7 +1519,7 @@ Returns the requested sending authorization policies for the given identity (an 
 
 Sending authorization is a feature that enables an identity owner to authorize other senders to use its identities. For information about using sending authorization, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -1426,7 +1589,7 @@ The verification status of an email address is "Pending" until the email address
 
 For domain identities, the domain's verification status is "Pending" as Amazon SES searches for the required TXT record in the DNS settings of the domain. When Amazon SES detects the record, the domain's verification status changes to "Success". If Amazon SES is unable to detect the record within 72 hours, the domain's verification status changes to "Failed." In that case, if you still want to verify the domain, you must restart the verification process from the beginning.
 
-This action is throttled at one request per second and can only get verification attributes for up to 100 identities at a time.
+This operation is throttled at one request per second and can only get verification attributes for up to 100 identities at a time.
 
 # Arguments
 
@@ -1486,9 +1649,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # GetSendQuota Operation
 
-Returns the user's current sending limits.
+Provides the sending limits for the Amazon SES account.
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Returns
 
@@ -1528,11 +1691,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # GetSendStatistics Operation
 
-Returns the user's sending statistics. The result is a list of data points, representing the last two weeks of sending activity.
+Provides sending statistics for the Amazon SES account. The result is a list of data points, representing the last two weeks of sending activity. Each data point in the list contains statistics for a 15-minute period of time.
 
-Each data point in the list contains statistics for a 15-minute interval.
-
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Returns
 
@@ -1582,6 +1743,47 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
+    using AWSSDK.SES.get_template
+    get_template([::AWSConfig], arguments::Dict)
+    get_template([::AWSConfig]; TemplateName=)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "GetTemplate", arguments::Dict)
+    email([::AWSConfig], "GetTemplate", TemplateName=)
+
+# GetTemplate Operation
+
+Displays the template object (which includes the Subject line, HTML part and text part) for the template you specify.
+
+You can execute this operation no more than once per second.
+
+# Arguments
+
+## `TemplateName = ::String` -- *Required*
+The name of the template you want to retrieve.
+
+
+
+
+# Returns
+
+`GetTemplateResponse`
+
+# Exceptions
+
+`TemplateDoesNotExistException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetTemplate)
+"""
+
+@inline get_template(aws::AWSConfig=default_aws_config(); args...) = get_template(aws, args)
+
+@inline get_template(aws::AWSConfig, args) = AWSCore.Services.email(aws, "GetTemplate", args)
+
+@inline get_template(args) = get_template(default_aws_config(), args)
+
+
+"""
     using AWSSDK.SES.list_configuration_sets
     list_configuration_sets([::AWSConfig], arguments::Dict)
     list_configuration_sets([::AWSConfig]; <keyword arguments>)
@@ -1592,11 +1794,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # ListConfigurationSets Operation
 
-Lists the configuration sets associated with your AWS account.
+Provides a list of the configuration sets associated with your Amazon SES account. For information about using configuration sets, see [Monitoring Your Amazon SES Sending Activity](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html) in the *Amazon SES Developer Guide.*
 
-Configuration sets enable you to publish email sending events. For information about using configuration sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
-
-This action is throttled at one request per second and can return up to 50 configuration sets at a time.
+You can execute this operation no more than once per second. This operation will return up to 1,000 configuration sets each time it is run. If your Amazon SES account has more than 1,000 configuration sets, this operation will also return a NextToken element. You can then execute the `ListConfigurationSets` operation again, passing the `NextToken` parameter and the value of the NextToken element to retrieve additional results.
 
 # Arguments
 
@@ -1637,7 +1837,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 Returns a list containing all of the identities (email addresses and domains) for your AWS account, regardless of verification status.
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -1710,7 +1910,7 @@ Returns a list of sending authorization policies that are attached to the given 
 
 Sending authorization is a feature that enables an identity owner to authorize other senders to use its identities. For information about using sending authorization, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -1771,7 +1971,7 @@ Lists the IP address filters associated with your AWS account.
 
 For information about managing IP address filters, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -1825,7 +2025,7 @@ Lists the receipt rule sets that exist under your AWS account. If there are addi
 
 For information about managing receipt rule sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -1874,6 +2074,47 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
+    using AWSSDK.SES.list_templates
+    list_templates([::AWSConfig], arguments::Dict)
+    list_templates([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "ListTemplates", arguments::Dict)
+    email([::AWSConfig], "ListTemplates", <keyword arguments>)
+
+# ListTemplates Operation
+
+Lists the email templates present in your Amazon SES account.
+
+You can execute this operation no more than once per second.
+
+# Arguments
+
+## `NextToken = ::String`
+The token to use for pagination.
+
+
+## `MaxItems = ::Int`
+The maximum number of templates to return. This value must be at least 1 and less than or equal to 10. If you do not specify a value, or if you specify a value less than 1 or greater than 10, the operation will return up to 10 results.
+
+
+
+
+# Returns
+
+`ListTemplatesResponse`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListTemplates)
+"""
+
+@inline list_templates(aws::AWSConfig=default_aws_config(); args...) = list_templates(aws, args)
+
+@inline list_templates(aws::AWSConfig, args) = AWSCore.Services.email(aws, "ListTemplates", args)
+
+@inline list_templates(args) = list_templates(default_aws_config(), args)
+
+
+"""
     using AWSSDK.SES.list_verified_email_addresses
     list_verified_email_addresses([::AWSConfig])
     
@@ -1884,12 +2125,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # ListVerifiedEmailAddresses Operation
 
-Returns a list containing all of the email addresses that have been verified.
-
-**Important**
-> The ListVerifiedEmailAddresses action is deprecated as of the May 15, 2012 release of Domain Verification. The ListIdentities action is now preferred.
-
-This action is throttled at one request per second.
+Deprecated. Use the `ListIdentities` operation to list the email addresses and domains associated with your account.
 
 # Returns
 
@@ -1937,12 +2173,12 @@ Adds or updates a sending authorization policy for the specified identity (an em
 
 Sending authorization is a feature that enables an identity owner to authorize other senders to use its identities. For information about using sending authorization, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
 ## `Identity = ::String` -- *Required*
-The identity to which the policy will apply. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: `user@example.com`, `example.com`, `arn:aws:ses:us-east-1:123456789012:identity/example.com`.
+The identity that the policy will apply to. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: `user@example.com`, `example.com`, `arn:aws:ses:us-east-1:123456789012:identity/example.com`.
 
 To successfully call this API, you must own the identity.
 
@@ -2010,7 +2246,7 @@ Reorders the receipt rules within a receipt rule set.
 
 For information about managing receipt rule sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -2075,7 +2311,7 @@ Generates and sends a bounce message to the sender of an email you received thro
 
 For information about receiving email through Amazon SES, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -2151,6 +2387,129 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
+    using AWSSDK.SES.send_bulk_templated_email
+    send_bulk_templated_email([::AWSConfig], arguments::Dict)
+    send_bulk_templated_email([::AWSConfig]; Source=, Template=, Destinations=, <keyword arguments>)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "SendBulkTemplatedEmail", arguments::Dict)
+    email([::AWSConfig], "SendBulkTemplatedEmail", Source=, Template=, Destinations=, <keyword arguments>)
+
+# SendBulkTemplatedEmail Operation
+
+Composes an email message to multiple destinations. The message body is created using an email template.
+
+In order to send email using the `SendBulkTemplatedEmail` operation, your call to the API must meet the following requirements:
+
+*   The call must refer to an existing email template. You can create email templates using the [CreateTemplate](@ref) operation.
+
+*   The message must be sent from a verified email address or domain.
+
+*   If your account is still in the Amazon SES sandbox, you may only send to verified addresses or domains, or to email addresses associated with the Amazon SES Mailbox Simulator. For more information, see [Verifying Email Addresses and Domains](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html) in the *Amazon SES Developer Guide.*
+
+*   The total size of the message, including attachments, must be less than 10 MB.
+
+*   Each `Destination` parameter must include at least one recipient email address. The recipient address can be a To: address, a CC: address, or a BCC: address. If a recipient email address is invalid (that is, it is not in the format *UserName@[SubDomain.]Domain.TopLevelDomain*), the entire message will be rejected, even if the message contains other recipients that are valid.
+
+# Arguments
+
+## `Source = ::String` -- *Required*
+The email address that is sending the email. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. For information about verifying identities, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
+
+If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the `SourceArn` parameter. For more information about sending authorization, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+
+In all cases, the email address must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: `=?charset?encoding?encoded-text?=`. For more information, see [RFC 2047](https://tools.ietf.org/html/rfc2047).
+
+
+## `SourceArn = ::String`
+This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to send for the email address specified in the `Source` parameter.
+
+For example, if the owner of `example.com` (which has ARN `arn:aws:ses:us-east-1:123456789012:identity/example.com`) attaches a policy to it that authorizes you to send from `user@example.com`, then you would specify the `SourceArn` to be `arn:aws:ses:us-east-1:123456789012:identity/example.com`, and the `Source` to be `user@example.com`.
+
+For more information about sending authorization, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+
+
+## `ReplyToAddresses = [::String, ...]`
+The reply-to email address(es) for the message. If the recipient replies to the message, each reply-to address will receive the reply.
+
+
+## `ReturnPath = ::String`
+The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the `ReturnPath` parameter. The `ReturnPath` parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES.
+
+
+## `ReturnPathArn = ::String`
+This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the email address specified in the `ReturnPath` parameter.
+
+For example, if the owner of `example.com` (which has ARN `arn:aws:ses:us-east-1:123456789012:identity/example.com`) attaches a policy to it that authorizes you to use `feedback@example.com`, then you would specify the `ReturnPathArn` to be `arn:aws:ses:us-east-1:123456789012:identity/example.com`, and the `ReturnPath` to be `feedback@example.com`.
+
+For more information about sending authorization, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+
+
+## `ConfigurationSetName = ::String`
+The name of the configuration set to use when you send an email using `SendBulkTemplatedEmail`.
+
+
+## `DefaultTags = [[ ... ], ...]`
+A list of tags, in the form of name/value pairs, to apply to an email that you send to a destination using `SendBulkTemplatedEmail`.
+```
+ DefaultTags = [[
+        "Name" => <required> ::String,
+        "Value" => <required> ::String
+    ], ...]
+```
+
+## `Template = ::String` -- *Required*
+The template to use when sending this email.
+
+
+## `TemplateArn = ::String`
+The ARN of the template to use when sending this email.
+
+
+## `DefaultTemplateData = ::String`
+A list of replacement values to apply to the template when replacement data is not specified in a Destination object. These values act as a default or fallback option when no other data is available.
+
+The template data is a JSON object, typically consisting of key-value pairs in which the keys correspond to replacement tags in the email template.
+
+
+## `Destinations = [[ ... ], ...]` -- *Required*
+One or more `Destination` objects. All of the recipients in a `Destination` will receive the same version of the email. You can specify up to 50 `Destination` objects within a `Destinations` array.
+```
+ Destinations = [[
+        "Destination" => <required> [
+            "ToAddresses" =>  [::String, ...],
+            "CcAddresses" =>  [::String, ...],
+            "BccAddresses" =>  [::String, ...]
+        ],
+        "ReplacementTags" =>  [[
+            "Name" => <required> ::String,
+            "Value" => <required> ::String
+        ], ...],
+        "ReplacementTemplateData" =>  ::String
+    ], ...]
+```
+
+
+
+# Returns
+
+`SendBulkTemplatedEmailResponse`
+
+# Exceptions
+
+`MessageRejected`, `MailFromDomainNotVerifiedException`, `ConfigurationSetDoesNotExistException` or `TemplateDoesNotExistException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SendBulkTemplatedEmail)
+"""
+
+@inline send_bulk_templated_email(aws::AWSConfig=default_aws_config(); args...) = send_bulk_templated_email(aws, args)
+
+@inline send_bulk_templated_email(aws::AWSConfig, args) = AWSCore.Services.email(aws, "SendBulkTemplatedEmail", args)
+
+@inline send_bulk_templated_email(args) = send_bulk_templated_email(default_aws_config(), args)
+
+
+"""
     using AWSSDK.SES.send_email
     send_email([::AWSConfig], arguments::Dict)
     send_email([::AWSConfig]; Source=, Destination=, Message=, <keyword arguments>)
@@ -2161,19 +2520,20 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # SendEmail Operation
 
-Composes an email message based on input data, and then immediately queues the message for sending.
+Composes an email message and immediately queues it for sending. In order to send email using the `SendEmail` operation, your message must meet the following requirements:
 
-There are several important points to know about `SendEmail`:
+*   The message must be sent from a verified email address or domain. If you attempt to send email using a non-verified address or domain, the operation will result in an "Email address not verified" error.
 
-*   You can only send email from verified email addresses and domains; otherwise, you will get an "Email address not verified" error. If your account is still in the Amazon SES sandbox, you must also verify every recipient email address except for the recipients provided by the Amazon SES mailbox simulator. For more information, go to the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
+*   If your account is still in the Amazon SES sandbox, you may only send to verified addresses or domains, or to email addresses associated with the Amazon SES Mailbox Simulator. For more information, see [Verifying Email Addresses and Domains](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html) in the *Amazon SES Developer Guide.*
 
-*   The total size of the message cannot exceed 10 MB. This includes any attachments that are part of the message.
+*   The total size of the message, including attachments, must be smaller than 10 MB.
 
-*   You must provide at least one recipient email address. The recipient address can be a To: address, a CC: address, or a BCC: address. If any email address you provide is invalid, Amazon SES rejects the entire email.
+*   The message must include at least one recipient email address. The recipient address can be a To: address, a CC: address, or a BCC: address. If a recipient email address is invalid (that is, it is not in the format *UserName@[SubDomain.]Domain.TopLevelDomain*), the entire message will be rejected, even if the message contains other recipients that are valid.
 
-*   Amazon SES has a limit on the total number of recipients per message. The combined number of To:, CC: and BCC: email addresses cannot exceed 50. If you need to send an email message to a larger audience, you can divide your recipient list into groups of 50 or fewer, and then call Amazon SES repeatedly to send the message to each group.
+*   The message may not include more than 50 recipients, across the To:, CC: and BCC: fields. If you need to send an email message to a larger audience, you can divide your recipient list into groups of 50 or fewer, and then call the `SendEmail` operation several times to send the message to each group.
 
-*   For every message that you send, the total number of recipients (To:, CC: and BCC:) is counted against your sending quota - the maximum number of emails you can send in a 24-hour period. For information about your sending quota, go to the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html).
+**Important**
+> For every message that you send, the total number of recipients (including each recipient in the To:, CC: and BCC: fields) is counted against the maximum number of emails you can send in a 24-hour period (your *sending quota*). For more information about sending quotas in Amazon SES, see [Managing Your Amazon SES Sending Limits](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html) in the *Amazon SES Developer Guide.*
 
 # Arguments
 
@@ -2182,7 +2542,7 @@ The email address that is sending the email. This email address must be either i
 
 If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the `SourceArn` parameter. For more information about sending authorization, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
-In all cases, the email address must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: `=?charset?encoding?encoded-text?=`. For more information, see [RFC 2047](http://tools.ietf.org/html/rfc2047).
+In all cases, the email address must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: `=?charset?encoding?encoded-text?=`. For more information, see [RFC 2047](https://tools.ietf.org/html/rfc2047).
 
 
 ## `Destination = [ ... ]` -- *Required*
@@ -2221,7 +2581,7 @@ The reply-to email address(es) for the message. If the recipient replies to the 
 
 
 ## `ReturnPath = ::String`
-The email address to which bounces and complaints are to be forwarded when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the `ReturnPath` parameter. The `ReturnPath` parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES.
+The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the `ReturnPath` parameter. The `ReturnPath` parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES.
 
 
 ## `SourceArn = ::String`
@@ -2336,25 +2696,28 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # SendRawEmail Operation
 
-Sends an email message, with header and content specified by the client. The `SendRawEmail` action is useful for sending multipart MIME emails. The raw text of the message must comply with Internet email standards; otherwise, the message cannot be sent.
+Composes an email message and immediately queues it for sending. When calling this operation, you may specify the message headers as well as the content. The `SendRawEmail` operation is particularly useful for sending multipart MIME emails (such as those that contain both a plain-text and an HTML version).
 
-There are several important points to know about `SendRawEmail`:
+In order to send email using the `SendRawEmail` operation, your message must meet the following requirements:
 
-*   You can only send email from verified email addresses and domains; otherwise, you will get an "Email address not verified" error. If your account is still in the Amazon SES sandbox, you must also verify every recipient email address except for the recipients provided by the Amazon SES mailbox simulator. For more information, go to the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
+*   The message must be sent from a verified email address or domain. If you attempt to send email using a non-verified address or domain, the operation will result in an "Email address not verified" error.
 
-*   The total size of the message cannot exceed 10 MB. This includes any attachments that are part of the message.
+*   If your account is still in the Amazon SES sandbox, you may only send to verified addresses or domains, or to email addresses associated with the Amazon SES Mailbox Simulator. For more information, see [Verifying Email Addresses and Domains](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html) in the *Amazon SES Developer Guide.*
 
-*   You must provide at least one recipient email address. The recipient address can be a To: address, a CC: address, or a BCC: address. If any email address you provide is invalid, Amazon SES rejects the entire email.
+*   The total size of the message, including attachments, must be smaller than 10 MB.
 
-*   Amazon SES has a limit on the total number of recipients per message. The combined number of To:, CC: and BCC: email addresses cannot exceed 50. If you need to send an email message to a larger audience, you can divide your recipient list into groups of 50 or fewer, and then call Amazon SES repeatedly to send the message to each group.
+*   The message must include at least one recipient email address. The recipient address can be a To: address, a CC: address, or a BCC: address. If a recipient email address is invalid (that is, it is not in the format *UserName@[SubDomain.]Domain.TopLevelDomain*), the entire message will be rejected, even if the message contains other recipients that are valid.
 
-*   The To:, CC:, and BCC: headers in the raw message can contain a group list. Note that each recipient in a group list counts towards the 50-recipient limit.
+*   The message may not include more than 50 recipients, across the To:, CC: and BCC: fields. If you need to send an email message to a larger audience, you can divide your recipient list into groups of 50 or fewer, and then call the `SendRawEmail` operation several times to send the message to each group.
 
-*   Amazon SES overrides any Message-ID and Date headers you provide.
+**Important**
+> For every message that you send, the total number of recipients (including each recipient in the To:, CC: and BCC: fields) is counted against the maximum number of emails you can send in a 24-hour period (your *sending quota*). For more information about sending quotas in Amazon SES, see [Managing Your Amazon SES Sending Limits](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html) in the *Amazon SES Developer Guide.*
 
-*   For every message that you send, the total number of recipients (To:, CC: and BCC:) is counted against your sending quota - the maximum number of emails you can send in a 24-hour period. For information about your sending quota, go to the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html).
+Additionally, keep the following considerations in mind when using the `SendRawEmail` operation:
 
-*   If you are using sending authorization to send on behalf of another user, `SendRawEmail` enables you to specify the cross-account identity for the email's "Source," "From," and "Return-Path" parameters in one of two ways: you can pass optional parameters `SourceArn`, `FromArn`, and/or `ReturnPathArn` to the API, or you can include the following X-headers in the header of your raw email:
+*   Although you can customize the message headers when using the `SendRawEmail` operation, Amazon SES will automatically apply its own `Message-ID` and `Date` headers; if you passed these headers when creating the message, they will be overwritten by the values that Amazon SES provides.
+
+*   If you are using sending authorization to send on behalf of another user, `SendRawEmail` enables you to specify the cross-account identity for the email's Source, From, and Return-Path parameters in one of two ways: you can pass optional parameters `SourceArn`, `FromArn`, and/or `ReturnPathArn` to the API, or you can include the following X-headers in the header of your raw email:
 
     *   `X-SES-SOURCE-ARN`
 
@@ -2363,19 +2726,19 @@ There are several important points to know about `SendRawEmail`:
     *   `X-SES-RETURN-PATH-ARN`
 
     **Important**
-    > Do not include these X-headers in the DKIM signature, because they are removed by Amazon SES before sending the email.
+    > Do not include these X-headers in the DKIM signature; Amazon SES will remove them before sending the email.
 
-    For the most common sending authorization use case, we recommend that you specify the `SourceIdentityArn` and do not specify either the `FromIdentityArn` or `ReturnPathIdentityArn`. (The same note applies to the corresponding X-headers.) If you only specify the `SourceIdentityArn`, Amazon SES will simply set the "From" address and the "Return Path" address to the identity specified in `SourceIdentityArn`. For more information about sending authorization, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+    For most common sending authorization scenarios, we recommend that you specify the `SourceIdentityArn` parameter and not the `FromIdentityArn` or `ReturnPathIdentityArn` parameters. If you only specify the `SourceIdentityArn` parameter, Amazon SES will set the From and Return Path addresses to the identity specified in `SourceIdentityArn`. For more information about sending authorization, see the [Using Sending Authorization with Amazon SES](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html) in the *Amazon SES Developer Guide.*
 
 # Arguments
 
 ## `Source = ::String`
 The identity's email address. If you do not provide a value for this parameter, you must specify a "From" address in the raw text of the message. (You can also specify both.)
 
-By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: `=?charset?encoding?encoded-text?=`. For more information, see [RFC 2047](http://tools.ietf.org/html/rfc2047).
+By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: `=?charset?encoding?encoded-text?=`. For more information, see [RFC 2047](https://tools.ietf.org/html/rfc2047).
 
 **Note**
-> If you specify the `Source` parameter and have feedback forwarding enabled, then bounces and complaints will be sent to this email address. This takes precedence over any *Return-Path* header that you might include in the raw text of the message.
+> If you specify the `Source` parameter and have feedback forwarding enabled, then bounces and complaints will be sent to this email address. This takes precedence over any Return-Path header that you might include in the raw text of the message.
 
 
 ## `Destinations = [::String, ...]`
@@ -2490,6 +2853,122 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
+    using AWSSDK.SES.send_templated_email
+    send_templated_email([::AWSConfig], arguments::Dict)
+    send_templated_email([::AWSConfig]; Source=, Destination=, Template=, TemplateData=, <keyword arguments>)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "SendTemplatedEmail", arguments::Dict)
+    email([::AWSConfig], "SendTemplatedEmail", Source=, Destination=, Template=, TemplateData=, <keyword arguments>)
+
+# SendTemplatedEmail Operation
+
+Composes an email message using an email template and immediately queues it for sending.
+
+In order to send email using the `SendTemplatedEmail` operation, your call to the API must meet the following requirements:
+
+*   The call must refer to an existing email template. You can create email templates using the [CreateTemplate](@ref) operation.
+
+*   The message must be sent from a verified email address or domain.
+
+*   If your account is still in the Amazon SES sandbox, you may only send to verified addresses or domains, or to email addresses associated with the Amazon SES Mailbox Simulator. For more information, see [Verifying Email Addresses and Domains](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html) in the *Amazon SES Developer Guide.*
+
+*   The total size of the message, including attachments, must be less than 10 MB.
+
+*   Calls to the `SendTemplatedEmail` operation may only include one `Destination` parameter. A destination is a set of recipients who will receive the same version of the email. The `Destination` parameter can include up to 50 recipients, across the To:, CC: and BCC: fields.
+
+*   The `Destination` parameter must include at least one recipient email address. The recipient address can be a To: address, a CC: address, or a BCC: address. If a recipient email address is invalid (that is, it is not in the format *UserName@[SubDomain.]Domain.TopLevelDomain*), the entire message will be rejected, even if the message contains other recipients that are valid.
+
+# Arguments
+
+## `Source = ::String` -- *Required*
+The email address that is sending the email. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. For information about verifying identities, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
+
+If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the `SourceArn` parameter. For more information about sending authorization, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+
+In all cases, the email address must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: `=?charset?encoding?encoded-text?=`. For more information, see [RFC 2047](https://tools.ietf.org/html/rfc2047).
+
+
+## `Destination = [ ... ]` -- *Required*
+The destination for this email, composed of To:, CC:, and BCC: fields. A Destination can include up to 50 recipients across these three fields.
+```
+ Destination = [
+        "ToAddresses" =>  [::String, ...],
+        "CcAddresses" =>  [::String, ...],
+        "BccAddresses" =>  [::String, ...]
+    ]
+```
+
+## `ReplyToAddresses = [::String, ...]`
+The reply-to email address(es) for the message. If the recipient replies to the message, each reply-to address will receive the reply.
+
+
+## `ReturnPath = ::String`
+The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the `ReturnPath` parameter. The `ReturnPath` parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES.
+
+
+## `SourceArn = ::String`
+This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to send for the email address specified in the `Source` parameter.
+
+For example, if the owner of `example.com` (which has ARN `arn:aws:ses:us-east-1:123456789012:identity/example.com`) attaches a policy to it that authorizes you to send from `user@example.com`, then you would specify the `SourceArn` to be `arn:aws:ses:us-east-1:123456789012:identity/example.com`, and the `Source` to be `user@example.com`.
+
+For more information about sending authorization, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+
+
+## `ReturnPathArn = ::String`
+This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the email address specified in the `ReturnPath` parameter.
+
+For example, if the owner of `example.com` (which has ARN `arn:aws:ses:us-east-1:123456789012:identity/example.com`) attaches a policy to it that authorizes you to use `feedback@example.com`, then you would specify the `ReturnPathArn` to be `arn:aws:ses:us-east-1:123456789012:identity/example.com`, and the `ReturnPath` to be `feedback@example.com`.
+
+For more information about sending authorization, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+
+
+## `Tags = [[ ... ], ...]`
+A list of tags, in the form of name/value pairs, to apply to an email that you send using `SendTemplatedEmail`. Tags correspond to characteristics of the email that you define, so that you can publish email sending events.
+```
+ Tags = [[
+        "Name" => <required> ::String,
+        "Value" => <required> ::String
+    ], ...]
+```
+
+## `ConfigurationSetName = ::String`
+The name of the configuration set to use when you send an email using `SendTemplatedEmail`.
+
+
+## `Template = ::String` -- *Required*
+The template to use when sending this email.
+
+
+## `TemplateArn = ::String`
+The ARN of the template to use when sending this email.
+
+
+## `TemplateData = ::String` -- *Required*
+A list of replacement values to apply to the template. This parameter is a JSON object, typically consisting of key-value pairs in which the keys correspond to replacement tags in the email template.
+
+
+
+
+# Returns
+
+`SendTemplatedEmailResponse`
+
+# Exceptions
+
+`MessageRejected`, `MailFromDomainNotVerifiedException`, `ConfigurationSetDoesNotExistException` or `TemplateDoesNotExistException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SendTemplatedEmail)
+"""
+
+@inline send_templated_email(aws::AWSConfig=default_aws_config(); args...) = send_templated_email(aws, args)
+
+@inline send_templated_email(aws::AWSConfig, args) = AWSCore.Services.email(aws, "SendTemplatedEmail", args)
+
+@inline send_templated_email(args) = send_templated_email(default_aws_config(), args)
+
+
+"""
     using AWSSDK.SES.set_active_receipt_rule_set
     set_active_receipt_rule_set([::AWSConfig], arguments::Dict)
     set_active_receipt_rule_set([::AWSConfig]; <keyword arguments>)
@@ -2507,7 +2986,7 @@ Sets the specified receipt rule set as the active receipt rule set.
 
 For information about managing receipt rule sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -2559,13 +3038,13 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 Enables or disables Easy DKIM signing of email sent from an identity:
 
-*   If Easy DKIM signing is enabled for a domain name identity (e.g., `example.com`), then Amazon SES will DKIM-sign all email sent by addresses under that domain name (e.g., `user@example.com`).
+*   If Easy DKIM signing is enabled for a domain name identity (such as `example.com`), then Amazon SES will DKIM-sign all email sent by addresses under that domain name (for example, `user@example.com`).
 
 *   If Easy DKIM signing is enabled for an email address, then Amazon SES will DKIM-sign all email sent by that email address.
 
-For email addresses (e.g., `user@example.com`), you can only enable Easy DKIM signing if the corresponding domain (e.g., `example.com`) has been set up for Easy DKIM using the AWS Console or the `VerifyDomainDkim` action.
+For email addresses (for example, `user@example.com`), you can only enable Easy DKIM signing if the corresponding domain (in this case, `example.com`) has been set up for Easy DKIM using the AWS Console or the `VerifyDomainDkim` operation.
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 For more information about Easy DKIM signing, go to the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).
 
@@ -2623,7 +3102,7 @@ Given an identity (an email address or a domain), enables or disables whether Am
 **Note**
 > Feedback forwarding does not apply to delivery notifications. Delivery notifications are only available through Amazon SNS.
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 For more information about using notifications with Amazon SES, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
 
@@ -2678,7 +3157,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 Given an identity (an email address or a domain), sets whether Amazon SES includes the original email headers in the Amazon Simple Notification Service (Amazon SNS) notifications of a specified type.
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 For more information about using notifications with Amazon SES, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
 
@@ -2743,7 +3222,7 @@ Enables or disables the custom MAIL FROM domain setup for a verified identity (a
 **Important**
 > To send emails using the specified MAIL FROM domain, you must add an MX record to your MAIL FROM domain's DNS settings. If you want your emails to pass Sender Policy Framework (SPF) checks, you must also add or update an SPF record. For more information, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-set.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -2806,7 +3285,7 @@ Given an identity (an email address or a domain), sets the Amazon Simple Notific
 **Note**
 > Unless feedback forwarding is enabled, you must specify Amazon SNS topics for bounce and complaint notifications. For more information, see `SetIdentityFeedbackForwardingEnabled`.
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 For more information about feedback notification, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
 
@@ -2868,7 +3347,7 @@ Sets the position of the specified receipt rule in the receipt rule set.
 
 For information about managing receipt rules, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -2918,6 +3397,51 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
+    using AWSSDK.SES.test_render_template
+    test_render_template([::AWSConfig], arguments::Dict)
+    test_render_template([::AWSConfig]; TemplateName=, TemplateData=)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "TestRenderTemplate", arguments::Dict)
+    email([::AWSConfig], "TestRenderTemplate", TemplateName=, TemplateData=)
+
+# TestRenderTemplate Operation
+
+Creates a preview of the MIME content of an email when provided with a template and a set of replacement data.
+
+You can execute this operation no more than once per second.
+
+# Arguments
+
+## `TemplateName = ::String` -- *Required*
+The name of the template that you want to render.
+
+
+## `TemplateData = ::String` -- *Required*
+A list of replacement values to apply to the template. This parameter is a JSON object, typically consisting of key-value pairs in which the keys correspond to replacement tags in the email template.
+
+
+
+
+# Returns
+
+`TestRenderTemplateResponse`
+
+# Exceptions
+
+`TemplateDoesNotExistException`, `InvalidRenderingParameterException` or `MissingRenderingAttributeException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/TestRenderTemplate)
+"""
+
+@inline test_render_template(aws::AWSConfig=default_aws_config(); args...) = test_render_template(aws, args)
+
+@inline test_render_template(aws::AWSConfig, args) = AWSCore.Services.email(aws, "TestRenderTemplate", args)
+
+@inline test_render_template(args) = test_render_template(default_aws_config(), args)
+
+
+"""
     using AWSSDK.SES.update_configuration_set_event_destination
     update_configuration_set_event_destination([::AWSConfig], arguments::Dict)
     update_configuration_set_event_destination([::AWSConfig]; ConfigurationSetName=, EventDestination=)
@@ -2928,19 +3452,17 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # UpdateConfigurationSetEventDestination Operation
 
-Updates the event destination of a configuration set.
+Updates the event destination of a configuration set. Event destinations are associated with configuration sets, which enable you to publish email sending events to Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS). For information about using configuration sets, see [Monitoring Your Amazon SES Sending Activity](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html) in the *Amazon SES Developer Guide.*
 
 **Note**
 > When you create or update an event destination, you must provide one, and only one, destination. The destination can be Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS).
 
-Event destinations are associated with configuration sets, which enable you to publish email sending events to Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS). For information about using configuration sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
-
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
 ## `ConfigurationSetName = ::String` -- *Required*
-The name of the configuration set that you want to update.
+The name of the configuration set that contains the event destination that you want to update.
 
 
 ## `EventDestination = [ ... ]` -- *Required*
@@ -2949,7 +3471,7 @@ The event destination object that you want to apply to the specified configurati
  EventDestination = [
         "Name" => <required> ::String,
         "Enabled" =>  ::Bool,
-        "MatchingEventTypes" => <required> ["send", "reject", "bounce", "complaint", "delivery", "open" or "click", ...],
+        "MatchingEventTypes" => <required> ["send", "reject", "bounce", "complaint", "delivery", "open", "click" or "renderingFailure", ...],
         "KinesisFirehoseDestination" =>  [
             "IAMRoleARN" => <required> ::String,
             "DeliveryStreamARN" => <required> ::String
@@ -2984,6 +3506,51 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
+    using AWSSDK.SES.update_configuration_set_tracking_options
+    update_configuration_set_tracking_options([::AWSConfig], arguments::Dict)
+    update_configuration_set_tracking_options([::AWSConfig]; ConfigurationSetName=, TrackingOptions=)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "UpdateConfigurationSetTrackingOptions", arguments::Dict)
+    email([::AWSConfig], "UpdateConfigurationSetTrackingOptions", ConfigurationSetName=, TrackingOptions=)
+
+# UpdateConfigurationSetTrackingOptions Operation
+
+Modifies an association between a configuration set and a custom domain for open and click event tracking.
+
+By default, images and links used for tracking open and click events are hosted on domains operated by Amazon SES. You can configure a subdomain of your own to handle these events. For information about using configuration sets, see [Configuring Custom Domains to Handle Open and Click Tracking](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html) in the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
+
+# Arguments
+
+## `ConfigurationSetName = ::String` -- *Required*
+The name of the configuration set for which you want to update the custom tracking domain.
+
+
+## `TrackingOptions = ["CustomRedirectDomain" =>  ::String]` -- *Required*
+
+
+
+
+
+# Returns
+
+`UpdateConfigurationSetTrackingOptionsResponse`
+
+# Exceptions
+
+`ConfigurationSetDoesNotExistException`, `TrackingOptionsDoesNotExistException` or `InvalidTrackingOptionsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/UpdateConfigurationSetTrackingOptions)
+"""
+
+@inline update_configuration_set_tracking_options(aws::AWSConfig=default_aws_config(); args...) = update_configuration_set_tracking_options(aws, args)
+
+@inline update_configuration_set_tracking_options(aws::AWSConfig, args) = AWSCore.Services.email(aws, "UpdateConfigurationSetTrackingOptions", args)
+
+@inline update_configuration_set_tracking_options(args) = update_configuration_set_tracking_options(default_aws_config(), args)
+
+
+"""
     using AWSSDK.SES.update_receipt_rule
     update_receipt_rule([::AWSConfig], arguments::Dict)
     update_receipt_rule([::AWSConfig]; RuleSetName=, Rule=)
@@ -2998,12 +3565,12 @@ Updates a receipt rule.
 
 For information about managing receipt rules, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
 ## `RuleSetName = ::String` -- *Required*
-The name of the receipt rule set to which the receipt rule belongs.
+The name of the receipt rule set that the receipt rule belongs to.
 
 
 ## `Rule = [ ... ]` -- *Required*
@@ -3100,6 +3667,54 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 
 """
+    using AWSSDK.SES.update_template
+    update_template([::AWSConfig], arguments::Dict)
+    update_template([::AWSConfig]; Template=)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "UpdateTemplate", arguments::Dict)
+    email([::AWSConfig], "UpdateTemplate", Template=)
+
+# UpdateTemplate Operation
+
+Updates an email template. Email templates enable you to send personalized email to one or more destinations in a single API operation. For more information, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html).
+
+You can execute this operation no more than once per second.
+
+# Arguments
+
+## `Template = [ ... ]` -- *Required*
+
+```
+ Template = [
+        "TemplateName" => <required> ::String,
+        "SubjectPart" =>  ::String,
+        "TextPart" =>  ::String,
+        "HtmlPart" =>  ::String
+    ]
+```
+
+
+
+# Returns
+
+`UpdateTemplateResponse`
+
+# Exceptions
+
+`TemplateDoesNotExistException` or `InvalidTemplateException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/UpdateTemplate)
+"""
+
+@inline update_template(aws::AWSConfig=default_aws_config(); args...) = update_template(aws, args)
+
+@inline update_template(aws::AWSConfig, args) = AWSCore.Services.email(aws, "UpdateTemplate", args)
+
+@inline update_template(args) = update_template(default_aws_config(), args)
+
+
+"""
     using AWSSDK.SES.verify_domain_dkim
     verify_domain_dkim([::AWSConfig], arguments::Dict)
     verify_domain_dkim([::AWSConfig]; Domain=)
@@ -3112,9 +3727,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 Returns a set of DKIM tokens for a domain. DKIM *tokens* are character strings that represent your domain's identity. Using these tokens, you will need to create DNS CNAME records that point to DKIM public keys hosted by Amazon SES. Amazon Web Services will eventually detect that you have updated your DNS records; this detection process may take up to 72 hours. Upon successful detection, Amazon SES will be able to DKIM-sign email originating from that domain.
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
-To enable or disable Easy DKIM signing for a domain, use the `SetIdentityDkimEnabled` action.
+To enable or disable Easy DKIM signing for a domain, use the `SetIdentityDkimEnabled` operation.
 
 For more information about creating DNS records using DKIM tokens, go to the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html).
 
@@ -3173,9 +3788,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # VerifyDomainIdentity Operation
 
-Verifies a domain.
+Adds a domain to the list of identities for your Amazon SES account and attempts to verify it. For more information about verifying domains, see [Verifying Email Addresses and Domains](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html) in the *Amazon SES Developer Guide.*
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 
@@ -3228,12 +3843,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # VerifyEmailAddress Operation
 
-Verifies an email address. This action causes a confirmation email message to be sent to the specified address.
-
-**Important**
-> The VerifyEmailAddress action is deprecated as of the May 15, 2012 release of Domain Verification. The VerifyEmailIdentity action is now preferred.
-
-This action is throttled at one request per second.
+Deprecated. Use the `VerifyEmailIdentity` operation to verify a new email address.
 
 # Arguments
 
@@ -3275,9 +3885,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # VerifyEmailIdentity Operation
 
-Verifies an email address. This action causes a confirmation email message to be sent to the specified address.
+Adds an email address to the list of identities for your Amazon SES account and attempts to verify it. This operation causes a confirmation email message to be sent to the specified address.
 
-This action is throttled at one request per second.
+You can execute this operation no more than once per second.
 
 # Arguments
 

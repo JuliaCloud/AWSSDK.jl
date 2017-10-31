@@ -404,6 +404,8 @@ For another account to send events to your account, that external account must h
 
 To enable multiple AWS accounts to put events to your default event bus, run `PutPermission` once for each of these accounts.
 
+The permission policy on the default event bus cannot exceed 10KB in size.
+
 # Arguments
 
 ## `Action = ::String` -- *Required*
@@ -424,7 +426,7 @@ An identifier string for the external account that you are granting permissions 
 
 # Exceptions
 
-`ResourceNotFoundException`, `PolicyLengthExceededException` or `InternalException`.
+`ResourceNotFoundException`, `PolicyLengthExceededException`, `InternalException` or `ConcurrentModificationException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/PutPermission)
 """
@@ -530,9 +532,15 @@ You can configure the following as targets for CloudWatch Events:
 
 *   AWS Step Functions state machines
 
+*   Pipelines in Amazon Code Pipeline
+
+*   Amazon Inspector assessment templates
+
 *   Amazon SNS topics
 
 *   Amazon SQS queues
+
+*   The default event bus of another AWS account
 
 Note that creating rules with built-in targets is supported only in the AWS Management Console.
 
@@ -540,7 +548,9 @@ For some target types, `PutTargets` provides target-specific parameters. If the 
 
 To be able to make API calls against the resources that you own, Amazon CloudWatch Events needs the appropriate permissions. For AWS Lambda and Amazon SNS resources, CloudWatch Events relies on resource-based policies. For EC2 instances, Amazon Kinesis streams, and AWS Step Functions state machines, CloudWatch Events relies on IAM roles that you specify in the `RoleARN` argument in `PutTargets`. For more information, see [Authentication and Access Control](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/auth-and-access-control-cwe.html) in the *Amazon CloudWatch Events User Guide*.
 
-If another AWS account is in the same region and has granted you permission (using `PutPermission`), you can set that account's event bus as a target of the rules in your account. To send the matched events to the other account, specify that account's event bus as the `Arn` when you run `PutTargets`. For more information about enabling cross-account events, see [PutPermission](@ref).
+If another AWS account is in the same region and has granted you permission (using `PutPermission`), you can send events to that account by setting that account's event bus as a target of the rules in your account. To send the matched events to the other account, specify that account's event bus as the `Arn` when you run `PutTargets`. If your account sends events to another account, your account is charged for each sent event. Each event sent to antoher account is charged as a custom event. The account receiving the event is not charged. For more information on pricing, see [Amazon CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
+
+For more information about enabling cross-account events, see [PutPermission](@ref).
 
 **Input**, **InputPath** and **InputTransformer** are mutually exclusive and optional parameters of a target. When a rule is triggered due to a matched event:
 
@@ -632,7 +642,7 @@ The statement ID corresponding to the account that is no longer allowed to put e
 
 # Exceptions
 
-`ResourceNotFoundException` or `InternalException`.
+`ResourceNotFoundException`, `InternalException` or `ConcurrentModificationException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/RemovePermission)
 """

@@ -72,7 +72,8 @@ Create a new budget
         "Notification" => <required> [
             "NotificationType" => <required> "ACTUAL" or "FORECASTED",
             "ComparisonOperator" => <required> "GREATER_THAN", "LESS_THAN" or "EQUAL_TO",
-            "Threshold" => <required> double
+            "Threshold" => <required> double,
+            "ThresholdType" =>  "PERCENTAGE" or "ABSOLUTE_VALUE"
         ],
         "Subscribers" => <required> [[
             "SubscriptionType" => <required> "SNS" or "EMAIL",
@@ -130,7 +131,8 @@ Create a new Notification with subscribers for a budget
  Notification = [
         "NotificationType" => <required> "ACTUAL" or "FORECASTED",
         "ComparisonOperator" => <required> "GREATER_THAN", "LESS_THAN" or "EQUAL_TO",
-        "Threshold" => <required> double
+        "Threshold" => <required> double,
+        "ThresholdType" =>  "PERCENTAGE" or "ABSOLUTE_VALUE"
     ]
 ```
 
@@ -192,7 +194,8 @@ Create a new Subscriber for a notification
  Notification = [
         "NotificationType" => <required> "ACTUAL" or "FORECASTED",
         "ComparisonOperator" => <required> "GREATER_THAN", "LESS_THAN" or "EQUAL_TO",
-        "Threshold" => <required> double
+        "Threshold" => <required> double,
+        "ThresholdType" =>  "PERCENTAGE" or "ABSOLUTE_VALUE"
     ]
 ```
 
@@ -297,7 +300,8 @@ Delete a notification and related subscribers
  Notification = [
         "NotificationType" => <required> "ACTUAL" or "FORECASTED",
         "ComparisonOperator" => <required> "GREATER_THAN", "LESS_THAN" or "EQUAL_TO",
-        "Threshold" => <required> double
+        "Threshold" => <required> double,
+        "ThresholdType" =>  "PERCENTAGE" or "ABSOLUTE_VALUE"
     ]
 ```
 
@@ -350,7 +354,8 @@ Delete a Subscriber for a notification
  Notification = [
         "NotificationType" => <required> "ACTUAL" or "FORECASTED",
         "ComparisonOperator" => <required> "GREATER_THAN", "LESS_THAN" or "EQUAL_TO",
-        "Threshold" => <required> double
+        "Threshold" => <required> double,
+        "ThresholdType" =>  "PERCENTAGE" or "ABSOLUTE_VALUE"
     ]
 ```
 
@@ -553,7 +558,8 @@ Get subscribers of a notification
  Notification = [
         "NotificationType" => <required> "ACTUAL" or "FORECASTED",
         "ComparisonOperator" => <required> "GREATER_THAN", "LESS_THAN" or "EQUAL_TO",
-        "Threshold" => <required> double
+        "Threshold" => <required> double,
+        "ThresholdType" =>  "PERCENTAGE" or "ABSOLUTE_VALUE"
     ]
 ```
 
@@ -687,7 +693,8 @@ Update the information about a notification already created
  OldNotification = [
         "NotificationType" => <required> "ACTUAL" or "FORECASTED",
         "ComparisonOperator" => <required> "GREATER_THAN", "LESS_THAN" or "EQUAL_TO",
-        "Threshold" => <required> double
+        "Threshold" => <required> double,
+        "ThresholdType" =>  "PERCENTAGE" or "ABSOLUTE_VALUE"
     ]
 ```
 
@@ -697,7 +704,8 @@ Update the information about a notification already created
  NewNotification = [
         "NotificationType" => <required> "ACTUAL" or "FORECASTED",
         "ComparisonOperator" => <required> "GREATER_THAN", "LESS_THAN" or "EQUAL_TO",
-        "Threshold" => <required> double
+        "Threshold" => <required> double,
+        "ThresholdType" =>  "PERCENTAGE" or "ABSOLUTE_VALUE"
     ]
 ```
 
@@ -709,7 +717,7 @@ Update the information about a notification already created
 
 # Exceptions
 
-`InternalErrorException`, `InvalidParameterException` or `NotFoundException`.
+`InternalErrorException`, `InvalidParameterException`, `NotFoundException` or `DuplicateRecordException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/budgets-2016-10-20/UpdateNotification)
 """
@@ -750,7 +758,8 @@ Update a subscriber
  Notification = [
         "NotificationType" => <required> "ACTUAL" or "FORECASTED",
         "ComparisonOperator" => <required> "GREATER_THAN", "LESS_THAN" or "EQUAL_TO",
-        "Threshold" => <required> double
+        "Threshold" => <required> double,
+        "ThresholdType" =>  "PERCENTAGE" or "ABSOLUTE_VALUE"
     ]
 ```
 
@@ -780,7 +789,7 @@ Update a subscriber
 
 # Exceptions
 
-`InternalErrorException`, `InvalidParameterException` or `NotFoundException`.
+`InternalErrorException`, `InvalidParameterException`, `NotFoundException` or `DuplicateRecordException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/budgets-2016-10-20/UpdateSubscriber)
 """

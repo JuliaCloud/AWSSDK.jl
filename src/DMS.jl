@@ -2250,6 +2250,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 
 Returns table statistics on the database migration task, including table name, rows inserted, rows updated, and rows deleted.
 
+Note that the "last updated" column the DMS console only indicates the time that AWS DMS last updated the table statistics record for a table. It does not indicate the time of the last update to the table.
+
 # Arguments
 
 ## `ReplicationTaskArn = ::String` -- *Required*
@@ -2261,12 +2263,25 @@ The maximum number of records to include in the response. If more records exist 
 
 Default: 100
 
-Constraints: Minimum 20, maximum 100.
+Constraints: Minimum 20, maximum 500.
 
 
 ## `Marker = ::String`
 An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by `MaxRecords`.
 
+
+## `Filters = [[ ... ], ...]`
+Filters applied to the describe table statistics action.
+
+Valid filter names: schema-name | table-name | table-state
+
+A combination of filters creates an AND condition where each record matches all specified filters.
+```
+ Filters = [[
+        "Name" => <required> ::String,
+        "Values" => <required> [::String, ...]
+    ], ...]
+```
 
 
 
@@ -2500,7 +2515,7 @@ The name of the endpoint database.
 
 
 ## `ExtraConnectionAttributes = ::String`
-Additional attributes associated with the connection.
+Additional attributes associated with the connection. To reset this parameter, pass the empty string ("") as an argument.
 
 
 ## `CertificateArn = ::String`

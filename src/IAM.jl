@@ -215,7 +215,7 @@ For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Servi
 
 # Exceptions
 
-`NoSuchEntityException`, `LimitExceededException`, `InvalidInputException` or `ServiceFailureException`.
+`NoSuchEntityException`, `LimitExceededException`, `InvalidInputException`, `PolicyNotAttachableException` or `ServiceFailureException`.
 
 # Example: To attach a managed policy to an IAM group
 
@@ -275,7 +275,7 @@ For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Servi
 
 # Exceptions
 
-`NoSuchEntityException`, `LimitExceededException`, `InvalidInputException`, `UnmodifiableEntityException` or `ServiceFailureException`.
+`NoSuchEntityException`, `LimitExceededException`, `InvalidInputException`, `UnmodifiableEntityException`, `PolicyNotAttachableException` or `ServiceFailureException`.
 
 # Example: To attach a managed policy to an IAM role
 
@@ -334,7 +334,7 @@ For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Servi
 
 # Exceptions
 
-`NoSuchEntityException`, `LimitExceededException`, `InvalidInputException` or `ServiceFailureException`.
+`NoSuchEntityException`, `LimitExceededException`, `InvalidInputException`, `PolicyNotAttachableException` or `ServiceFailureException`.
 
 # Example: To attach a managed policy to an IAM user
 
@@ -873,7 +873,7 @@ For more information about managed policies in general, see [Managed Policies an
 ## `PolicyName = ::String` -- *Required*
 The friendly name of the policy.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
 
 
 ## `Path = ::String`
@@ -1600,7 +1600,7 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 ## `PolicyName = ::String` -- *Required*
 The name identifying the policy document to delete.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
 
 
 
@@ -1947,7 +1947,7 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 ## `PolicyName = ::String` -- *Required*
 The name of the inline policy to delete from the specified IAM role.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
 
 
 
@@ -2103,6 +2103,49 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 @inline delete_server_certificate(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteServerCertificate", args)
 
 @inline delete_server_certificate(args) = delete_server_certificate(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.IAM.delete_service_linked_role
+    delete_service_linked_role([::AWSConfig], arguments::Dict)
+    delete_service_linked_role([::AWSConfig]; RoleName=)
+
+    using AWSCore.Services.iam
+    iam([::AWSConfig], "DeleteServiceLinkedRole", arguments::Dict)
+    iam([::AWSConfig], "DeleteServiceLinkedRole", RoleName=)
+
+# DeleteServiceLinkedRole Operation
+
+Submits a service-linked role deletion request and returns a `DeletionTaskId`, which you can use to check the status of the deletion. Before you call this operation, confirm that the role has no active sessions and that any resources used by the role in the linked service are deleted. If you call this operation more than once for the same service-linked role and an earlier deletion task is not complete, then the `DeletionTaskId` of the earlier request is returned.
+
+If you submit a deletion request for a service-linked role whose linked service is still accessing a resource, then the deletion task fails. If it fails, the [GetServiceLinkedRoleDeletionStatus](@ref) API operation returns the reason for the failure, including the resources that must be deleted. To delete the service-linked role, you must first remove those resources from the linked service and then submit the deletion request again. Resources are specific to the service that is linked to the role. For more information about removing resources from a service, see the [AWS documentation](http://docs.aws.amazon.com/) for your service.
+
+For more information about service-linked roles, see [Roles Terms and Concepts: AWS Service-Linked Role](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role) in the *IAM User Guide*.
+
+# Arguments
+
+## `RoleName = ::String` -- *Required*
+The name of the service-linked role to be deleted.
+
+
+
+
+# Returns
+
+`DeleteServiceLinkedRoleResponse`
+
+# Exceptions
+
+`NoSuchEntityException`, `LimitExceededException` or `ServiceFailureException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteServiceLinkedRole)
+"""
+
+@inline delete_service_linked_role(aws::AWSConfig=default_aws_config(); args...) = delete_service_linked_role(aws, args)
+
+@inline delete_service_linked_role(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteServiceLinkedRole", args)
+
+@inline delete_service_linked_role(args) = delete_service_linked_role(default_aws_config(), args)
 
 
 """
@@ -2279,7 +2322,7 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 ## `PolicyName = ::String` -- *Required*
 The name identifying the policy document to delete.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
 
 
 
@@ -3014,7 +3057,7 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 ## `PolicyName = ::String` -- *Required*
 The name of the policy document to get.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
 
 
 
@@ -3420,7 +3463,7 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 ## `PolicyName = ::String` -- *Required*
 The name of the policy document to get.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
 
 
 
@@ -3584,6 +3627,45 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 
 """
+    using AWSSDK.IAM.get_service_linked_role_deletion_status
+    get_service_linked_role_deletion_status([::AWSConfig], arguments::Dict)
+    get_service_linked_role_deletion_status([::AWSConfig]; DeletionTaskId=)
+
+    using AWSCore.Services.iam
+    iam([::AWSConfig], "GetServiceLinkedRoleDeletionStatus", arguments::Dict)
+    iam([::AWSConfig], "GetServiceLinkedRoleDeletionStatus", DeletionTaskId=)
+
+# GetServiceLinkedRoleDeletionStatus Operation
+
+Retrieves the status of your service-linked role deletion. After you use the [DeleteServiceLinkedRole](@ref) API operation to submit a service-linked role for deletion, you can use the `DeletionTaskId` parameter in `GetServiceLinkedRoleDeletionStatus` to check the status of the deletion. If the deletion fails, this operation returns the reason that it failed.
+
+# Arguments
+
+## `DeletionTaskId = ::String` -- *Required*
+The deletion task identifier. This identifier is returned by the [DeleteServiceLinkedRole](@ref) operation in the format `task/aws-service-role/<service-principal-name>/<role-name>/<task-uuid>`.
+
+
+
+
+# Returns
+
+`GetServiceLinkedRoleDeletionStatusResponse`
+
+# Exceptions
+
+`NoSuchEntityException`, `InvalidInputException` or `ServiceFailureException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetServiceLinkedRoleDeletionStatus)
+"""
+
+@inline get_service_linked_role_deletion_status(aws::AWSConfig=default_aws_config(); args...) = get_service_linked_role_deletion_status(aws, args)
+
+@inline get_service_linked_role_deletion_status(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetServiceLinkedRoleDeletionStatus", args)
+
+@inline get_service_linked_role_deletion_status(args) = get_service_linked_role_deletion_status(default_aws_config(), args)
+
+
+"""
     using AWSSDK.IAM.get_user
     get_user([::AWSConfig], arguments::Dict)
     get_user([::AWSConfig]; <keyword arguments>)
@@ -3681,7 +3763,7 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 ## `PolicyName = ::String` -- *Required*
 The name of the policy document to get.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
 
 
 
@@ -5307,7 +5389,7 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 ## `PolicyName = ::String` -- *Required*
 The name of the policy document.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
 
 
 ## `PolicyDocument = ::String` -- *Required*
@@ -5378,7 +5460,7 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 ## `PolicyName = ::String` -- *Required*
 The name of the policy document.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
 
 
 ## `PolicyDocument = ::String` -- *Required*
@@ -5447,7 +5529,7 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 ## `PolicyName = ::String` -- *Required*
 The name of the policy document.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
 
 
 ## `PolicyDocument = ::String` -- *Required*

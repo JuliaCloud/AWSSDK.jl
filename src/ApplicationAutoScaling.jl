@@ -703,7 +703,8 @@ This parameter is required if you are creating a new policy and the policy type 
             "Unit" =>  ::String
         ],
         "ScaleOutCooldown" =>  ::Int,
-        "ScaleInCooldown" =>  ::Int
+        "ScaleInCooldown" =>  ::Int,
+        "DisableScaleIn" =>  ::Bool
     ]
 ```
 

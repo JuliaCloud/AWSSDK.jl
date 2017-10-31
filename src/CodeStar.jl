@@ -443,7 +443,7 @@ The continuation token for the next set of results, if the results cannot be ret
 
 
 ## `maxResults = ::Int`
-he maximum amount of data that can be contained in a single set of results.
+The maximum amount of data that can be contained in a single set of results.
 
 
 
@@ -464,6 +464,53 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codest
 @inline list_resources(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "ListResources", args)
 
 @inline list_resources(args) = list_resources(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CodeStar.list_tags_for_project
+    list_tags_for_project([::AWSConfig], arguments::Dict)
+    list_tags_for_project([::AWSConfig]; id=, <keyword arguments>)
+
+    using AWSCore.Services.codestar
+    codestar([::AWSConfig], "ListTagsForProject", arguments::Dict)
+    codestar([::AWSConfig], "ListTagsForProject", id=, <keyword arguments>)
+
+# ListTagsForProject Operation
+
+Gets the tags for a project.
+
+# Arguments
+
+## `id = ::String` -- *Required*
+The ID of the project to get tags for.
+
+
+## `nextToken = ::String`
+Reserved for future use.
+
+
+## `maxResults = ::Int`
+Reserved for future use.
+
+
+
+
+# Returns
+
+`ListTagsForProjectResult`
+
+# Exceptions
+
+`ProjectNotFoundException`, `ValidationException` or `InvalidNextTokenException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/ListTagsForProject)
+"""
+
+@inline list_tags_for_project(aws::AWSConfig=default_aws_config(); args...) = list_tags_for_project(aws, args)
+
+@inline list_tags_for_project(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "ListTagsForProject", args)
+
+@inline list_tags_for_project(args) = list_tags_for_project(default_aws_config(), args)
 
 
 """
@@ -557,6 +604,92 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codest
 
 
 """
+    using AWSSDK.CodeStar.tag_project
+    tag_project([::AWSConfig], arguments::Dict)
+    tag_project([::AWSConfig]; id=, tags=)
+
+    using AWSCore.Services.codestar
+    codestar([::AWSConfig], "TagProject", arguments::Dict)
+    codestar([::AWSConfig], "TagProject", id=, tags=)
+
+# TagProject Operation
+
+Adds tags to a project.
+
+# Arguments
+
+## `id = ::String` -- *Required*
+The ID of the project you want to add a tag to.
+
+
+## `tags = ::Dict{String,String}` -- *Required*
+The tags you want to add to the project.
+
+
+
+
+# Returns
+
+`TagProjectResult`
+
+# Exceptions
+
+`ProjectNotFoundException`, `ValidationException`, `LimitExceededException` or `ConcurrentModificationException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/TagProject)
+"""
+
+@inline tag_project(aws::AWSConfig=default_aws_config(); args...) = tag_project(aws, args)
+
+@inline tag_project(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "TagProject", args)
+
+@inline tag_project(args) = tag_project(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CodeStar.untag_project
+    untag_project([::AWSConfig], arguments::Dict)
+    untag_project([::AWSConfig]; id=, tags=)
+
+    using AWSCore.Services.codestar
+    codestar([::AWSConfig], "UntagProject", arguments::Dict)
+    codestar([::AWSConfig], "UntagProject", id=, tags=)
+
+# UntagProject Operation
+
+Removes tags from a project.
+
+# Arguments
+
+## `id = ::String` -- *Required*
+The ID of the project to remove tags from.
+
+
+## `tags = [::String, ...]` -- *Required*
+The tags to remove from the project.
+
+
+
+
+# Returns
+
+`UntagProjectResult`
+
+# Exceptions
+
+`ProjectNotFoundException`, `ValidationException`, `LimitExceededException` or `ConcurrentModificationException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/UntagProject)
+"""
+
+@inline untag_project(aws::AWSConfig=default_aws_config(); args...) = untag_project(aws, args)
+
+@inline untag_project(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "UntagProject", args)
+
+@inline untag_project(args) = untag_project(default_aws_config(), args)
+
+
+"""
     using AWSSDK.CodeStar.update_project
     update_project([::AWSConfig], arguments::Dict)
     update_project([::AWSConfig]; id=, <keyword arguments>)
@@ -627,7 +760,7 @@ The Amazon Resource Name (ARN) of the user for whom you want to change team memb
 
 
 ## `projectRole = ::String`
-The role assigned to the user in the project. Project roles have different levels of access. For more information, see [Working with Teams](http://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html) in the AWS CodeStar User Guide.
+The role assigned to the user in the project. Project roles have different levels of access. For more information, see [Working with Teams](http://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html) in the *AWS CodeStar User Guide*.
 
 
 ## `remoteAccessAllowed = ::Bool`
