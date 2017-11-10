@@ -122,7 +122,7 @@ For an overview on tagging Amazon RDS resources, see [Tagging Amazon RDS Resourc
 # Arguments
 
 ## `ResourceName = ::String` -- *Required*
-The Amazon RDS resource the tags will be added to. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see [Constructing an RDS Amazon Resource Name (ARN)](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
+The Amazon RDS resource that the tags are added to. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see [Constructing an RDS Amazon Resource Name (ARN)](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
 
 
 ## `Tags = [[ ... ], ...]` -- *Required*
@@ -362,7 +362,7 @@ You can copy an encrypted DB cluster snapshot from another AWS Region. In that c
 
 *   `KmsKeyId` - The AWS Key Management System (KMS) key identifier for the key to use to encrypt the copy of the DB cluster snapshot in the destination AWS Region.
 
-*   `PreSignedUrl` - A URL that contains a Signature Version 4 signed request for the `CopyDBClusterSnapshot` action to be called in the source AWS Region where the DB cluster snapshot will be copied from. The pre-signed URL must be a valid request for the `CopyDBClusterSnapshot` API action that can be executed in the source AWS Region that contains the encrypted DB cluster snapshot to be copied.
+*   `PreSignedUrl` - A URL that contains a Signature Version 4 signed request for the `CopyDBClusterSnapshot` action to be called in the source AWS Region where the DB cluster snapshot is copied from. The pre-signed URL must be a valid request for the `CopyDBClusterSnapshot` API action that can be executed in the source AWS Region that contains the encrypted DB cluster snapshot to be copied.
 
     The pre-signed URL request must contain the following parameter values:
 
@@ -645,7 +645,7 @@ You must specify this parameter when you copy an encrypted DB snapshot from anot
 
 The presigned URL must be a valid request for the `CopyDBSnapshot` API action that can be executed in the source AWS Region that contains the encrypted DB snapshot to be copied. The presigned URL request must contain the following parameter values:
 
-*   `DestinationRegion` - The AWS Region that the encrypted DB snapshot will be copied to. This AWS Region is the same one where the `CopyDBSnapshot` action is called that contains this presigned URL.
+*   `DestinationRegion` - The AWS Region that the encrypted DB snapshot is copied to. This AWS Region is the same one where the `CopyDBSnapshot` action is called that contains this presigned URL.
 
     For example, if you copy an encrypted DB snapshot from the us-west-2 region to the us-east-1 region, then you call the `CopyDBSnapshot` action in the us-east-1 region and provide a presigned URL that contains a call to the `CopyDBSnapshot` action in the us-west-2 region. For this example, the `DestinationRegion` in the presigned URL must be set to the us-east-1 region.
 
@@ -821,7 +821,7 @@ Example: `my-cluster1`
 
 
 ## `DBClusterParameterGroupName = ::String`
-The name of the DB cluster parameter group to associate with this DB cluster. If this argument is omitted, `default.aurora5.6` will be used.
+The name of the DB cluster parameter group to associate with this DB cluster. If this argument is omitted, `default.aurora5.6` is used.
 
 Constraints:
 
@@ -946,7 +946,7 @@ If you create a Read Replica of an encrypted DB cluster in another AWS Region, y
 
 
 ## `PreSignedUrl = ::String`
-A URL that contains a Signature Version 4 signed request for the `CreateDBCluster` action to be called in the source AWS Region where the DB cluster will be replicated from. You only need to specify `PreSignedUrl` when you are performing cross-region replication from an encrypted DB cluster.
+A URL that contains a Signature Version 4 signed request for the `CreateDBCluster` action to be called in the source AWS Region where the DB cluster is replicated from. You only need to specify `PreSignedUrl` when you are performing cross-region replication from an encrypted DB cluster.
 
 The pre-signed URL must be a valid request for the `CreateDBCluster` API action that can be executed in the source AWS Region that contains the encrypted DB cluster to be copied.
 
@@ -1298,9 +1298,7 @@ Constraints to the amount of storage for each storage type are the following:
 
 
 ## `DBInstanceClass = ::String` -- *Required*
-The compute and memory capacity of the DB instance. Note that not all instance classes are available in all regions for all DB engines.
-
-Valid Values: `db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.xlarge |db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large`
+The compute and memory capacity of the DB instance, for example, `db.m4.large`. Not all DB instance classes are available in all regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see [DB Instance Class](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html) in the Amazon RDS User Guide.
 
 
 ## `Engine = ::String` -- *Required*
@@ -1446,7 +1444,7 @@ Default: The default EC2 VPC security group for the DB subnet group's VPC.
 
 
 ## `AvailabilityZone = ::String`
-The EC2 Availability Zone that the database instance will be created in. For information on regions and Availability Zones, see [Regions and Availability Zones](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+The EC2 Availability Zone that the database instance is created in. For information on regions and Availability Zones, see [Regions and Availability Zones](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 
 Default: A random, system-chosen Availability Zone in the endpoint's AWS Region.
 
@@ -1474,7 +1472,7 @@ Constraints: Minimum 30-minute window.
 
 
 ## `DBParameterGroupName = ::String`
-The name of the DB parameter group to associate with this DB instance. If this argument is omitted, the default DBParameterGroup for the specified engine will be used.
+The name of the DB parameter group to associate with this DB instance. If this argument is omitted, the default DBParameterGroup for the specified engine is used.
 
 Constraints:
 
@@ -1632,11 +1630,15 @@ Not applicable. The version number of the database engine to be used by the DB i
 
 **MySQL**
 
+*   `5.7.19` (supported in all AWS regions)
+
 *   `5.7.17` (supported in all AWS regions)
 
 *   `5.7.16` (supported in all AWS regions)
 
 *   `5.7.11` (supported in all AWS regions)
+
+*   `5.6.37` (supported in all AWS regions)
 
 *   `5.6.35` (supported in all AWS regions)
 
@@ -1646,6 +1648,8 @@ Not applicable. The version number of the database engine to be used by the DB i
 
 *   `5.6.27` (supported in all regions except us-east-2, ca-central-1, eu-west-2)
 
+*   `5.5.57` (supported in all AWS regions)
+
 *   `5.5.54` (supported in all AWS regions)
 
 *   `5.5.53` (supported in all AWS regions)
@@ -1653,6 +1657,8 @@ Not applicable. The version number of the database engine to be used by the DB i
 *   `5.5.46` (supported in all AWS regions)
 
 **Oracle 12c**
+
+*   `12.1.0.2.v9` (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)
 
 *   `12.1.0.2.v8` (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)
 
@@ -1671,6 +1677,8 @@ Not applicable. The version number of the database engine to be used by the DB i
 *   `12.1.0.2.v1` (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)
 
 **Oracle 11g**
+
+*   `11.2.0.4.v13` (supported for EE, SE1, and SE, in all AWS regions)
 
 *   `11.2.0.4.v12` (supported for EE, SE1, and SE, in all AWS regions)
 
@@ -1696,17 +1704,17 @@ Not applicable. The version number of the database engine to be used by the DB i
 
 **PostgreSQL**
 
-*   **Version 9.6.x:** `9.6.1 | 9.6.2 | 9.6.3`
+*   **Version 9.6.x:** `9.6.5 | 9.6.3 | 9.6.2 | 9.6.1`
 
-*   **Version 9.5.x:** `9.5.6 | 9.5.4 | 9.5.2`
+*   **Version 9.5.x:** `9.5.9 | 9.5.7 | 9.5.6 | 9.5.4 | 9.5.2`
 
-*   **Version 9.4.x:** `9.4.11 | 9.4.9 | 9.4.7`
+*   **Version 9.4.x:** `9.4.14 | 9.4.12 | 9.4.11 | 9.4.9 | 9.4.7`
 
-*   **Version 9.3.x:** `9.3.16 | 9.3.14 | 9.3.12`
+*   **Version 9.3.x:** `9.3.19 | 9.3.17 | 9.3.16 | 9.3.14 | 9.3.12`
 
 
 ## `AutoMinorVersionUpgrade = ::Bool`
-Indicates that minor engine upgrades will be applied automatically to the DB instance during the maintenance window.
+Indicates that minor engine upgrades are applied automatically to the DB instance during the maintenance window.
 
 Default: `true`
 
@@ -1746,7 +1754,7 @@ Default: The default behavior varies depending on whether a VPC has been request
 
 *   **VPC:** false
 
-If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.
+If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance is publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance is private.
 
 
 ## `Tags = [[ ... ], ...]`
@@ -1863,11 +1871,11 @@ Default: `false`
 
 
 ## `EnablePerformanceInsights = ::Bool`
-
+True to enable Performance Insights for the DB instance; otherwise false.
 
 
 ## `PerformanceInsightsKMSKeyId = ::String`
-
+The KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
 
 
 
@@ -1938,15 +1946,13 @@ Constraints:
 
 
 ## `DBInstanceClass = ::String`
-The compute and memory capacity of the Read Replica. Note that not all instance classes are available in all regions for all DB engines.
-
-Valid Values: `db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.xlarge |db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large`
+The compute and memory capacity of the Read Replica, for example, `db.m4.large`. Not all DB instance classes are available in all regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see [DB Instance Class](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html) in the Amazon RDS User Guide.
 
 Default: Inherits from the source DB instance.
 
 
 ## `AvailabilityZone = ::String`
-The Amazon EC2 Availability Zone that the Read Replica will be created in.
+The Amazon EC2 Availability Zone that the Read Replica is created in.
 
 Default: A random, system-chosen Availability Zone in the endpoint's AWS Region.
 
@@ -1962,7 +1968,7 @@ Valid Values: `1150-65535`
 
 
 ## `AutoMinorVersionUpgrade = ::Bool`
-Indicates that minor engine upgrades will be applied automatically to the Read Replica during the maintenance window.
+Indicates that minor engine upgrades are applied automatically to the Read Replica during the maintenance window.
 
 Default: Inherits from the source DB instance
 
@@ -1972,7 +1978,7 @@ The amount of Provisioned IOPS (input/output operations per second) to be initia
 
 
 ## `OptionGroupName = ::String`
-The option group the DB instance will be associated with. If omitted, the default option group for the engine specified will be used.
+The option group the DB instance is associated with. If omitted, the default option group for the engine specified is used.
 
 
 ## `PubliclyAccessible = ::Bool`
@@ -1984,7 +1990,7 @@ Default: The default behavior varies depending on whether a VPC has been request
 
 *   **VPC:**false
 
-If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.
+If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance is publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance is private.
 
 
 ## `Tags = [[ ... ], ...]`
@@ -1997,7 +2003,7 @@ If no DB subnet group has been specified as part of the request and the Publicly
 ```
 
 ## `DBSubnetGroupName = ::String`
-Specifies a DB subnet group for the DB instance. The new DB instance will be created in the VPC associated with the DB subnet group. If no DB subnet group is specified, then the new DB instance is not created in a VPC.
+Specifies a DB subnet group for the DB instance. The new DB instance is created in the VPC associated with the DB subnet group. If no DB subnet group is specified, then the new DB instance is not created in a VPC.
 
 Constraints:
 
@@ -2009,9 +2015,9 @@ Constraints:
 
 *   All Read Replicas in one AWS Region that are created from the same source DB instance must either:>
 
-    *   Specify DB subnet groups from the same VPC. All these Read Replicas will be created in the same VPC.
+    *   Specify DB subnet groups from the same VPC. All these Read Replicas are created in the same VPC.
 
-    *   Not specify a DB subnet group. All these Read Replicas will be created outside of any VPC.
+    *   Not specify a DB subnet group. All these Read Replicas are created outside of any VPC.
 
 Example: `mySubnetgroup`
 
@@ -2061,7 +2067,7 @@ You must specify this parameter when you create an encrypted Read Replica from a
 
 The presigned URL must be a valid request for the `CreateDBInstanceReadReplica` API action that can be executed in the source AWS Region that contains the encrypted source DB instance. The presigned URL request must contain the following parameter values:
 
-*   `DestinationRegion` - The AWS Region that the encrypted Read Replica will be created in. This AWS Region is the same one where the `CreateDBInstanceReadReplica` action is called that contains this presigned URL.
+*   `DestinationRegion` - The AWS Region that the encrypted Read Replica is created in. This AWS Region is the same one where the `CreateDBInstanceReadReplica` action is called that contains this presigned URL.
 
     For example, if you create an encrypted DB instance in the us-west-1 region, from a source DB instance in the us-east-2 region, then you call the `CreateDBInstanceReadReplica` action in the us-east-1 region and provide a presigned URL that contains a call to the `CreateDBInstanceReadReplica` action in the us-west-2 region. For this example, the `DestinationRegion` in the presigned URL must be set to the us-east-1 region.
 
@@ -2090,11 +2096,11 @@ Default: `false`
 
 
 ## `EnablePerformanceInsights = ::Bool`
-
+True to enable Performance Insights for the read replica; otherwise false.
 
 
 ## `PerformanceInsightsKMSKeyId = ::String`
-
+The KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
 
 
 ## `SourceRegion = ::String`
@@ -2400,7 +2406,7 @@ Creates an RDS event notification subscription. This action requires a topic ARN
 
 You can specify the type of source (SourceType) you want to be notified of, provide a list of RDS sources (SourceIds) that triggers the events, and provide a list of event categories (EventCategories) for events you want to be notified of. For example, you can specify SourceType = db-instance, SourceIds = mydbinstance1, mydbinstance2 and EventCategories = Availability, Backup.
 
-If you specify both the SourceType and SourceIds, such as SourceType = db-instance and SourceIdentifier = myDBInstance1, you will be notified of all the db-instance events for the specified source. If you specify a SourceType but do not specify a SourceIdentifier, you will receive notice of the events for that source type for all your RDS sources. If you do not specify either the SourceType nor the SourceIdentifier, you will be notified of events generated from all RDS sources belonging to your customer account.
+If you specify both the SourceType and SourceIds, such as SourceType = db-instance and SourceIdentifier = myDBInstance1, you are notified of all the db-instance events for the specified source. If you specify a SourceType but do not specify a SourceIdentifier, you receive notice of the events for that source type for all your RDS sources. If you do not specify either the SourceType nor the SourceIdentifier, you are notified of events generated from all RDS sources belonging to your customer account.
 
 # Arguments
 
@@ -2415,7 +2421,7 @@ The Amazon Resource Name (ARN) of the SNS topic created for event notification. 
 
 
 ## `SourceType = ::String`
-The type of source that will be generating the events. For example, if you want to be notified of events generated by a DB instance, you would set this parameter to db-instance. if this value is not specified, all events are returned.
+The type of source that is generating the events. For example, if you want to be notified of events generated by a DB instance, you would set this parameter to db-instance. if this value is not specified, all events are returned.
 
 Valid values: `db-instance` | `db-cluster` | `db-parameter-group` | `db-security-group` | `db-snapshot` | `db-cluster-snapshot`
 
@@ -2425,7 +2431,7 @@ A list of event categories for a SourceType that you want to subscribe to. You c
 
 
 ## `SourceIds = [::String, ...]`
-The list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens.
+The list of identifiers of the event sources for which events are returned. If not specified, then all sources are included in the response. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens.
 
 Constraints:
 
@@ -4257,7 +4263,7 @@ Displays a list of categories for all event source types, or, if specified, for 
 # Arguments
 
 ## `SourceType = ::String`
-The type of source that will be generating the events.
+The type of source that is generating the events.
 
 Valid values: db-instance | db-parameter-group | db-security-group | db-snapshot
 
@@ -4365,7 +4371,7 @@ Returns events related to DB instances, DB security groups, DB snapshots, and DB
 # Arguments
 
 ## `SourceIdentifier = ::String`
-The identifier of the event source for which events will be returned. If not specified, then all sources are included in the response.
+The identifier of the event source for which events are returned. If not specified, then all sources are included in the response.
 
 Constraints:
 
@@ -4461,7 +4467,7 @@ Describes all available options.
 # Arguments
 
 ## `EngineName = ::String` -- *Required*
-A required parameter. Options available for the given engine name will be described.
+A required parameter. Options available for the given engine name are described.
 
 
 ## `MajorEngineVersion = ::String`
@@ -5016,7 +5022,7 @@ The pagination token provided in the previous request or "0". If the Marker para
 
 
 ## `NumberOfLines = ::Int`
-The number of lines to download. If the number of lines specified results in a file over 1 MB in size, the file will be truncated at 1 MB in size.
+The number of lines to download. If the number of lines specified results in a file over 1 MB in size, the file is truncated at 1 MB in size.
 
 If the NumberOfLines parameter is specified, then the block of lines returned can be from the beginning or the end of the log file, depending on the value of the Marker parameter.
 
@@ -5484,17 +5490,15 @@ Constraints: Value supplied must be at least 10% greater than the current value.
 
 Cannot be modified.
 
-If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24 hours, but the process can take up to several days in some cases. During the migration, the DB instance will be available for use, but might experience performance degradation. While the migration takes place, nightly backups for the instance will be suspended. No other Amazon RDS operations can take place for the instance, including modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.
+If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24 hours, but the process can take up to several days in some cases. During the migration, the DB instance is available for use, but might experience performance degradation. While the migration takes place, nightly backups for the instance are suspended. No other Amazon RDS operations can take place for the instance, including modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.
 
 
 ## `DBInstanceClass = ::String`
-The new compute and memory capacity of the DB instance. To determine the instance classes that are available for a particular DB engine, use the [DescribeOrderableDBInstanceOptions](@ref) action. Note that not all instance classes are available in all regions for all DB engines.
+The new compute and memory capacity of the DB instance, for example, `db.m4.large`. Not all DB instance classes are available in all regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see [DB Instance Class](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html) in the Amazon RDS User Guide.
 
-Passing a value for this setting causes an outage during the change and is applied during the next maintenance window, unless `ApplyImmediately` is specified as `true` for this request.
+If you modify the DB instance class, an outage occurs during the change. The change is applied during the next maintenance window, unless `ApplyImmediately` is specified as `true` for this request.
 
 Default: Uses existing setting
-
-Valid Values: `db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large`
 
 
 ## `DBSubnetGroupName = ::String`
@@ -5530,7 +5534,7 @@ Constraints:
 ## `ApplyImmediately = ::Bool`
 Specifies whether the modifications in this request and any pending modifications are asynchronously applied as soon as possible, regardless of the `PreferredMaintenanceWindow` setting for the DB instance.
 
-If this parameter is set to `false`, changes to the DB instance are applied during the next maintenance window. Some parameter changes can cause an outage and will be applied on the next call to [RebootDBInstance](@ref), or the next failure reboot. Review the table of parameters in [Modifying a DB Instance and Using the Apply Immediately Parameter](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html) to see the impact that setting `ApplyImmediately` to `true` or `false` has for each modified parameter and to determine when the changes will be applied.
+If this parameter is set to `false`, changes to the DB instance are applied during the next maintenance window. Some parameter changes can cause an outage and are applied on the next call to [RebootDBInstance](@ref), or the next failure reboot. Review the table of parameters in [Modifying a DB Instance and Using the Apply Immediately Parameter](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html) to see the impact that setting `ApplyImmediately` to `true` or `false` has for each modified parameter and to determine when the changes are applied.
 
 Default: `false`
 
@@ -5651,7 +5655,7 @@ Constraints: This parameter must be set to true when specifying a value for the 
 
 
 ## `AutoMinorVersionUpgrade = ::Bool`
-Indicates that minor version upgrades will be applied automatically to the DB instance during the maintenance window. Changing this parameter does not result in an outage except in the following case and the change is asynchronously applied as soon as possible. An outage will result if this parameter is set to `true` during the maintenance window, and a newer minor version is available, and RDS has enabled auto patching for that engine version.
+Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance window. Changing this parameter does not result in an outage except in the following case and the change is asynchronously applied as soon as possible. An outage will result if this parameter is set to `true` during the maintenance window, and a newer minor version is available, and RDS has enabled auto patching for that engine version.
 
 
 ## `LicenseModel = ::String`
@@ -5673,7 +5677,7 @@ Setting the IOPS value for the SQL Server database engine is not supported.
 
 Type: Integer
 
-If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24 hours, but the process can take up to several days in some cases. During the migration, the DB instance will be available for use, but might experience performance degradation. While the migration takes place, nightly backups for the instance will be suspended. No other Amazon RDS operations can take place for the instance, including modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.
+If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24 hours, but the process can take up to several days in some cases. During the migration, the DB instance is available for use, but might experience performance degradation. While the migration takes place, nightly backups for the instance are suspended. No other Amazon RDS operations can take place for the instance, including modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.
 
 
 ## `OptionGroupName = ::String`
@@ -5827,11 +5831,11 @@ Default: `false`
 
 
 ## `EnablePerformanceInsights = ::Bool`
-
+True to enable Performance Insights for the DB instance; otherwise false.
 
 
 ## `PerformanceInsightsKMSKeyId = ::String`
-
+The KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
 
 
 
@@ -6128,7 +6132,7 @@ The Amazon Resource Name (ARN) of the SNS topic created for event notification. 
 
 
 ## `SourceType = ::String`
-The type of source that will be generating the events. For example, if you want to be notified of events generated by a DB instance, you would set this parameter to db-instance. if this value is not specified, all events are returned.
+The type of source that is generating the events. For example, if you want to be notified of events generated by a DB instance, you would set this parameter to db-instance. if this value is not specified, all events are returned.
 
 Valid values: db-instance | db-parameter-group | db-security-group | db-snapshot
 
@@ -6425,7 +6429,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 # RebootDBInstance Operation
 
-Rebooting a DB instance restarts the database engine service. A reboot also applies to the DB instance any modifications to the associated DB parameter group that were pending. Rebooting a DB instance results in a momentary outage of the instance, during which the DB instance status is set to rebooting. If the RDS instance is configured for MultiAZ, it is possible that the reboot will be conducted through a failover. An Amazon RDS event is created when the reboot is completed.
+Rebooting a DB instance restarts the database engine service. A reboot also applies to the DB instance any modifications to the associated DB parameter group that were pending. Rebooting a DB instance results in a momentary outage of the instance, during which the DB instance status is set to rebooting. If the RDS instance is configured for MultiAZ, it is possible that the reboot is conducted through a failover. An Amazon RDS event is created when the reboot is completed.
 
 If your DB instance is deployed in multiple Availability Zones, you can force a failover from one AZ to the other during the reboot. You might force a failover to test the availability of your DB instance deployment or to restore operations to the original AZ after a failover occurs.
 
@@ -6442,7 +6446,7 @@ Constraints:
 
 
 ## `ForceFailover = ::Bool`
-When `true`, the reboot will be conducted through a MultiAZ failover.
+When `true`, the reboot is conducted through a MultiAZ failover.
 
 Constraint: You cannot specify `true` if the instance is not configured for MultiAZ.
 
@@ -6567,7 +6571,7 @@ For an overview on tagging an Amazon RDS resource, see [Tagging Amazon RDS Resou
 # Arguments
 
 ## `ResourceName = ::String` -- *Required*
-The Amazon RDS resource the tags will be removed from. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see [Constructing an RDS Amazon Resource Name (ARN)](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
+The Amazon RDS resource that the tags are removed from. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see [Constructing an RDS Amazon Resource Name (ARN)](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
 
 
 ## `TagKeys = [::String, ...]` -- *Required*
@@ -6788,7 +6792,7 @@ Example: `my-cluster1`
 
 
 ## `DBClusterParameterGroupName = ::String`
-The name of the DB cluster parameter group to associate with the restored DB cluster. If this argument is omitted, `default.aurora5.6` will be used.
+The name of the DB cluster parameter group to associate with the restored DB cluster. If this argument is omitted, `default.aurora5.6` is used.
 
 Constraints:
 
@@ -7204,7 +7208,7 @@ The KMS key identifier to use when restoring an encrypted DB cluster from an enc
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB cluster, then you can use the KMS key alias instead of the ARN for the KMS encryption key.
 
-You can restore to a new DB cluster and encrypt the new DB cluster with a KMS key that is different than the KMS key used to encrypt the source DB cluster. The new DB cluster will be encrypted with the KMS key identified by the `KmsKeyId` parameter.
+You can restore to a new DB cluster and encrypt the new DB cluster with a KMS key that is different than the KMS key used to encrypt the source DB cluster. The new DB cluster is encrypted with the KMS key identified by the `KmsKeyId` parameter.
 
 If you do not specify a value for the `KmsKeyId` parameter, then the following will occur:
 
@@ -7285,9 +7289,9 @@ Constraints:
 
 
 ## `DBInstanceClass = ::String`
-The compute and memory capacity of the Amazon RDS DB instance.
+The compute and memory capacity of the Amazon RDS DB instance, for example, `db.m4.large`. Not all DB instance classes are available in all regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see [DB Instance Class](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html) in the Amazon RDS User Guide.
 
-Valid Values: `db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large`
+Default: The same DBInstanceClass as the original DB instance.
 
 
 ## `Port = ::Int`
@@ -7299,7 +7303,7 @@ Constraints: Value must be `1150-65535`
 
 
 ## `AvailabilityZone = ::String`
-The EC2 Availability Zone that the database instance will be created in.
+The EC2 Availability Zone that the database instance is created in.
 
 Default: A random, system-chosen Availability Zone.
 
@@ -7331,11 +7335,11 @@ Default: The default behavior varies depending on whether a VPC has been request
 
 *   **VPC:** false
 
-If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.
+If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance is publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance is private.
 
 
 ## `AutoMinorVersionUpgrade = ::Bool`
-Indicates that minor version upgrades will be applied automatically to the DB instance during the maintenance window.
+Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance window.
 
 
 ## `LicenseModel = ::String`
@@ -7388,13 +7392,11 @@ Valid Values:
 
 
 ## `Iops = ::Int`
-Specifies the amount of provisioned IOPS for the DB instance, expressed in I/O operations per second. If this parameter is not specified, the IOPS value will be taken from the backup. If this parameter is set to 0, the new instance will be converted to a non-PIOPS instance, which will take additional time, though your DB instance will be available for connections before the conversion starts.
+Specifies the amount of provisioned IOPS for the DB instance, expressed in I/O operations per second. If this parameter is not specified, the IOPS value is taken from the backup. If this parameter is set to 0, the new instance is converted to a non-PIOPS instance. The conversion takes additional time, though your DB instance is available for connections before the conversion starts.
+
+The provisioned IOPS value must follow the requirements for your database engine. For more information, see [Amazon RDS Provisioned IOPS Storage to Improve Performance](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS).
 
 Constraints: Must be an integer greater than 1000.
-
-**SQL Server**
-
-Setting the IOPS value for the SQL Server database engine is not supported.
 
 
 ## `OptionGroupName = ::String`
@@ -7536,9 +7538,7 @@ Constraints: Cannot be specified if RestoreTime parameter is provided.
 
 
 ## `DBInstanceClass = ::String`
-The compute and memory capacity of the Amazon RDS DB instance.
-
-Valid Values: `db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large`
+The compute and memory capacity of the Amazon RDS DB instance, for example, `db.m4.large`. Not all DB instance classes are available in all regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see [DB Instance Class](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html) in the Amazon RDS User Guide.
 
 Default: The same DBInstanceClass as the original DB instance.
 
@@ -7552,7 +7552,7 @@ Default: The same port as the original DB instance.
 
 
 ## `AvailabilityZone = ::String`
-The EC2 Availability Zone that the database instance will be created in.
+The EC2 Availability Zone that the database instance is created in.
 
 Default: A random, system-chosen Availability Zone.
 
@@ -7584,11 +7584,11 @@ Default: The default behavior varies depending on whether a VPC has been request
 
 *   **VPC:**false
 
-If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.
+If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance is publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance is private.
 
 
 ## `AutoMinorVersionUpgrade = ::Bool`
-Indicates that minor version upgrades will be applied automatically to the DB instance during the maintenance window.
+Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance window.
 
 
 ## `LicenseModel = ::String`

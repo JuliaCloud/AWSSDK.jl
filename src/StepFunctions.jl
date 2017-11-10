@@ -23,12 +23,24 @@ using AWSCore
 
 # CreateActivity Operation
 
-Creates an activity.
+Creates an activity. An Activity is a task which you write, in any language and hosted on any machine which has access to AWS Step Functions. Activities must poll Step Functions using the `GetActivityTask` and respond using `SendTask*` API calls. This function lets Step Functions know the existence of your activity and returns an identifier for use in a state machine and when polling from the activity.
 
 # Arguments
 
 ## `name = ::String` -- *Required*
-The name of the activity to create. This name must be unique for your AWS account and region.
+The name of the activity to create. This name must be unique for your AWS account and region for 90 days. For more information, see [Limits Related to State Machine Executions](http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions) in the *AWS Step Functions Developer Guide*.
+
+A name must *not* contain:
+
+*   whitespace
+
+*   brackets `< > { } [ ]`
+
+*   wildcard characters `? *`
+
+*   special characters `" # % \\ ^ | ~ ` \$ & , ; : /`
+
+*   control characters (`U+0000-001F`, `U+007F-009F`)
 
 
 
@@ -62,12 +74,24 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 # CreateStateMachine Operation
 
-Creates a state machine.
+Creates a state machine. A state machine consists of a collection of states that can do work (`Task` states), determine which states to transition to next (`Choice` states), stop an execution with an error (`Fail` states), and so on. State machines are specified using a JSON-based, structured language.
 
 # Arguments
 
 ## `name = ::String` -- *Required*
-The name of the state machine. This name must be unique for your AWS account and region.
+The name of the state machine. This name must be unique for your AWS account and region for 90 days. For more information, see [Limits Related to State Machine Executions](http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions) in the *AWS Step Functions Developer Guide*.
+
+A name must *not* contain:
+
+*   whitespace
+
+*   brackets `< > { } [ ]`
+
+*   wildcard characters `? *`
+
+*   special characters `" # % \\ ^ | ~ ` \$ & , ; : /`
+
+*   control characters (`U+0000-001F`, `U+007F-009F`)
 
 
 ## `definition = ::String` -- *Required*
@@ -148,7 +172,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 # DeleteStateMachine Operation
 
-Deletes a state machine. This is an asynchronous operation-- it sets the state machine's status to "DELETING" and begins the delete process.
+Deletes a state machine. This is an asynchronous operation-- it sets the state machine's status to "DELETING" and begins the delete process. Each state machine execution will be deleted the next time it makes a state transition. After all executions have completed or been deleted, the state machine itself will be deleted.
 
 # Arguments
 
@@ -304,7 +328,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/states
 
 # GetActivityTask Operation
 
-Used by workers to retrieve a task (with the specified activity ARN) scheduled for execution by a running state machine. This initiates a long poll, where the service holds the HTTP connection open and responds as soon as a task becomes available (i.e. an execution of a task of this type is needed.) The maximum time the service holds on to the request before responding is 60 seconds. If no task is available within 60 seconds, the poll will return an empty result, that is, the `taskToken` returned is an empty string.
+Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine. This initiates a long poll, where the service holds the HTTP connection open and responds as soon as a task becomes available (i.e. an execution of a task of this type is needed.) The maximum time the service holds on to the request before responding is 60 seconds. If no task is available within 60 seconds, the poll will return a `taskToken` with a null string.
 
 **Important**
 > Workers should set their client side socket timeout to at least 65 seconds (5 seconds higher than the maximum time the service may hold the poll request).
@@ -312,11 +336,11 @@ Used by workers to retrieve a task (with the specified activity ARN) scheduled f
 # Arguments
 
 ## `activityArn = ::String` -- *Required*
-The Amazon Resource Name (ARN) of the activity to retrieve tasks from.
+The Amazon Resource Name (ARN) of the activity to retrieve tasks from (assigned when you create the task using [CreateActivity](@ref).)
 
 
 ## `workerName = ::String`
-An arbitrary name may be provided in order to identify the worker that the task is assigned to. This name will be used when it is logged in the execution history.
+You can provide an arbitrary name in order to identify the worker that the task is assigned to. This name will be used when it is logged in the execution history.
 
 
 
@@ -359,7 +383,7 @@ The Amazon Resource Name (ARN) of the execution.
 
 
 ## `maxResults = ::Int`
-The maximum number of results that will be returned per call. `nextToken` can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.
+The maximum number of results that will be returned per call. `nextToken` can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 100. A value of 0 means to use the default.
 
 This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.
 
@@ -410,7 +434,7 @@ Lists the existing activities. The results may be split into multiple pages. To 
 # Arguments
 
 ## `maxResults = ::Int`
-The maximum number of results that will be returned per call. `nextToken` can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.
+The maximum number of results that will be returned per call. `nextToken` can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 100. A value of 0 means to use the default.
 
 This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.
 
@@ -465,7 +489,7 @@ If specified, only list the executions whose current execution status matches th
 
 
 ## `maxResults = ::Int`
-The maximum number of results that will be returned per call. `nextToken` can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.
+The maximum number of results that will be returned per call. `nextToken` can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 100. A value of 0 means to use the default.
 
 This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.
 
@@ -512,7 +536,7 @@ Lists the existing state machines. The results may be split into multiple pages.
 # Arguments
 
 ## `maxResults = ::Int`
-The maximum number of results that will be returned per call. `nextToken` can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.
+The maximum number of results that will be returned per call. `nextToken` can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 100. A value of 0 means to use the default.
 
 This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.
 
@@ -698,11 +722,28 @@ The Amazon Resource Name (ARN) of the state machine to execute.
 
 
 ## `name = ::String`
-The name of the execution. This name must be unique for your AWS account and region.
+The name of the execution. This name must be unique for your AWS account and region for 90 days. For more information, see [Limits Related to State Machine Executions](http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions) in the *AWS Step Functions Developer Guide*.
+
+A name must *not* contain:
+
+*   whitespace
+
+*   brackets `< > { } [ ]`
+
+*   wildcard characters `? *`
+
+*   special characters `" # % \\ ^ | ~ ` \$ & , ; : /`
+
+*   control characters (`U+0000-001F`, `U+007F-009F`)
 
 
 ## `input = ::String`
-The JSON input data for the execution.
+The string that contains the JSON input data for the execution, for example:
+
+`"input": "{\\"first_name\\" : \\"test\\"}"`
+
+**Note**
+> If you don't include any JSON input data, you still must include the two braces, for example: `"input": "{}"`
 
 
 

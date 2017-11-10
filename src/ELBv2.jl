@@ -152,9 +152,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 Creates a listener for the specified Application Load Balancer or Network Load Balancer.
 
-You can create up to 10 listeners per load balancer.
-
 To update a listener, use [ModifyListener](@ref). When you are finished with a listener, you can delete it using [DeleteListener](@ref). If you are finished with both the listener and the load balancer, you can delete them both using [DeleteLoadBalancer](@ref).
+
+This operation is idempotent, which means that it completes at most one time. If you attempt to create multiple listeners with the same settings, each call succeeds.
 
 For more information, see [Listeners for Your Application Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html) in the *Application Load Balancers Guide* and [Listeners for Your Network Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html) in the *Network Load Balancers Guide*.
 
@@ -321,7 +321,9 @@ When you create a load balancer, you can specify security groups, subnets, IP ad
 
 To create listeners for your load balancer, use [CreateListener](@ref). To describe your current load balancers, see [DescribeLoadBalancers](@ref). When you are finished with a load balancer, you can delete it using [DeleteLoadBalancer](@ref).
 
-You can create up to 20 load balancers per region per account. You can request an increase for the number of load balancers for your account. For more information, see [Limits for Your Application Load Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html) in the *Application Load Balancers Guide* and [Limits for Your Network Load Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html) in the *Network Load Balancers Guide*.
+For limit information, see [Limits for Your Application Load Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html) in the *Application Load Balancers Guide* and [Limits for Your Network Load Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html) in the *Network Load Balancers Guide*.
+
+This operation is idempotent, which means that it completes at most one time. If you attempt to create multiple load balancers with the same settings, each call succeeds.
 
 For more information, see [Application Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html) in the *Application Load Balancers Guide* and [Network Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html) in the *Network Load Balancers Guide*.
 
@@ -338,13 +340,15 @@ The IDs of the subnets to attach to the load balancer. You can specify only one 
 
 [Application Load Balancers] You must specify subnets from at least two Availability Zones.
 
+[Network Load Balancers] You can specify subnets from one or more Availability Zones.
+
 
 ## `SubnetMappings = [[ ... ], ...]`
 The IDs of the subnets to attach to the load balancer. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.
 
-[Network Load Balancers] You can specify one Elastic IP address per subnet.
+[Application Load Balancers] You must specify subnets from at least two Availability Zones. You cannot specify Elastic IP addresses for your subnets.
 
-[Application Load Balancers] You cannot specify Elastic IP addresses for your subnets.
+[Network Load Balancers] You can specify subnets from one or more Availability Zones. You can specify one Elastic IP address per subnet.
 ```
  SubnetMappings = [[
         "SubnetId" =>  ::String,
@@ -661,6 +665,8 @@ To register targets with the target group, use [RegisterTargets](@ref). To updat
 To route traffic to the targets in a target group, specify the target group in an action using [CreateListener](@ref) or [CreateRule](@ref).
 
 To delete a target group, use [DeleteTargetGroup](@ref).
+
+This operation is idempotent, which means that it completes at most one time. If you attempt to create multiple target groups with the same settings, each call succeeds.
 
 For more information, see [Target Groups for Your Application Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html) in the *Application Load Balancers Guide* or [Target Groups for Your Network Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html) in the *Network Load Balancers Guide*.
 
@@ -3113,7 +3119,7 @@ The IDs of the subnets. You must specify subnets from at least two Availability 
 ## `SubnetMappings = [[ ... ], ...]`
 The IDs of the subnets. You must specify subnets from at least two Availability Zones. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.
 
-The load balancer is allocated one static IP address per subnet. You cannot specify your own Elastic IP addresses.
+You cannot specify Elastic IP addresses for your subnets.
 ```
  SubnetMappings = [[
         "SubnetId" =>  ::String,

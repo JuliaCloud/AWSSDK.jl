@@ -1427,7 +1427,7 @@ The `nextToken` value returned from a previous paginated `ListServices` request 
 
 
 ## `maxResults = ::Int`
-The maximum number of container instance results returned by `ListServices` in paginated output. When this parameter is used, `ListServices` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `ListServices` request with the returned `nextToken` value. This value can be between 1 and 10. If this parameter is not used, then `ListServices` returns up to 10 results and a `nextToken` value if applicable.
+The maximum number of service results returned by `ListServices` in paginated output. When this parameter is used, `ListServices` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `ListServices` request with the returned `nextToken` value. This value can be between 1 and 10. If this parameter is not used, then `ListServices` returns up to 10 results and a `nextToken` value if applicable.
 
 
 
@@ -1998,10 +1998,18 @@ A list of container definitions in JSON format that describe the different conta
             "sourceContainer" =>  ::String,
             "readOnly" =>  ::Bool
         ], ...],
-        "linuxParameters" =>  ["capabilities" =>  [
+        "linuxParameters" =>  [
+            "capabilities" =>  [
                 "add" =>  [::String, ...],
                 "drop" =>  [::String, ...]
-            ]],
+            ],
+            "devices" =>  [[
+                "hostPath" => <required> ::String,
+                "containerPath" =>  ::String,
+                "permissions" =>  ["read", "write" or "mknod", ...]
+            ], ...],
+            "initProcessEnabled" =>  ::Bool
+        ],
         "hostname" =>  ::String,
         "user" =>  ::String,
         "workingDirectory" =>  ::String,

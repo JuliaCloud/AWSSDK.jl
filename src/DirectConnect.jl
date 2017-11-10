@@ -437,7 +437,7 @@ Associates a virtual interface with a specified link aggregation group (LAG) or 
 
 Virtual interfaces associated with a hosted connection cannot be associated with a LAG; hosted connections must be migrated along with their virtual interfaces using [AssociateHostedConnection](@ref).
 
-Hosted virtual interfaces (an interface for which the owner of the connection is not the owner of physical connection) can only be reassociated by the owner of the physical connection.
+In order to reassociate a virtual interface to a new connection or LAG, the requester must own either the virtual interface itself or the connection to which the virtual interface is currently associated. Additionally, the requester must own the connection or LAG to which the virtual interface will be newly associated.
 
 # Arguments
 
@@ -521,17 +521,17 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 """
     using AWSSDK.DirectConnect.confirm_private_virtual_interface
     confirm_private_virtual_interface([::AWSConfig], arguments::Dict)
-    confirm_private_virtual_interface([::AWSConfig]; virtualInterfaceId=, virtualGatewayId=)
+    confirm_private_virtual_interface([::AWSConfig]; virtualInterfaceId=, <keyword arguments>)
 
     using AWSCore.Services.directconnect
     directconnect([::AWSConfig], "ConfirmPrivateVirtualInterface", arguments::Dict)
-    directconnect([::AWSConfig], "ConfirmPrivateVirtualInterface", virtualInterfaceId=, virtualGatewayId=)
+    directconnect([::AWSConfig], "ConfirmPrivateVirtualInterface", virtualInterfaceId=, <keyword arguments>)
 
 # ConfirmPrivateVirtualInterface Operation
 
 Accept ownership of a private virtual interface created by another customer.
 
-After the virtual interface owner calls this function, the virtual interface will be created and attached to the given virtual private gateway, and will be available for handling traffic.
+After the virtual interface owner calls this function, the virtual interface will be created and attached to the given virtual private gateway or direct connect gateway, and will be available for handling traffic.
 
 # Arguments
 
@@ -539,10 +539,18 @@ After the virtual interface owner calls this function, the virtual interface wil
 
 
 
-## `virtualGatewayId = ::String` -- *Required*
+## `virtualGatewayId = ::String`
 ID of the virtual private gateway that will be attached to the virtual interface.
 
 A virtual private gateway can be managed via the Amazon Virtual Private Cloud (VPC) console or the [EC2 CreateVpnGateway](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html) action.
+
+Default: None
+
+
+## `directConnectGatewayId = ::String`
+ID of the direct connect gateway that will be attached to the virtual interface.
+
+A direct connect gateway can be managed via the AWS Direct Connect console or the [CreateDirectConnectGateway](@ref) action.
 
 Default: None
 
@@ -686,6 +694,8 @@ Creates a new connection between the customer network and a specific AWS Direct 
 
 A connection links your internal network to an AWS Direct Connect location over a standard 1 gigabit or 10 gigabit Ethernet fiber-optic cable. One end of the cable is connected to your router, the other to an AWS Direct Connect router. An AWS Direct Connect location provides access to Amazon Web Services in the region it is associated with. You can establish connections with AWS Direct Connect locations in multiple regions, but a connection in one region does not provide connectivity to other regions.
 
+To find the locations for your region, use [DescribeLocations](@ref).
+
 You can automatically add the new connection to a link aggregation group (LAG) by specifying a LAG ID in the request. This ensures that the new connection is allocated on the same AWS Direct Connect endpoint that hosts the specified LAG. If there are no available ports on the endpoint, the request fails and no connection will be created.
 
 # Arguments
@@ -724,6 +734,108 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 @inline create_connection(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "CreateConnection", args)
 
 @inline create_connection(args) = create_connection(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DirectConnect.create_direct_connect_gateway
+    create_direct_connect_gateway([::AWSConfig], arguments::Dict)
+    create_direct_connect_gateway([::AWSConfig]; directConnectGatewayName=, <keyword arguments>)
+
+    using AWSCore.Services.directconnect
+    directconnect([::AWSConfig], "CreateDirectConnectGateway", arguments::Dict)
+    directconnect([::AWSConfig], "CreateDirectConnectGateway", directConnectGatewayName=, <keyword arguments>)
+
+# CreateDirectConnectGateway Operation
+
+Creates a new direct connect gateway. A direct connect gateway is an intermediate object that enables you to connect a set of virtual interfaces and virtual private gateways. direct connect gateways are global and visible in any AWS region after they are created. The virtual interfaces and virtual private gateways that are connected through a direct connect gateway can be in different regions. This enables you to connect to a VPC in any region, regardless of the region in which the virtual interfaces are located, and pass traffic between them.
+
+# Arguments
+
+## `directConnectGatewayName = ::String` -- *Required*
+The name of the direct connect gateway.
+
+Example: "My direct connect gateway"
+
+Default: None
+
+
+## `amazonSideAsn = ::Int`
+The autonomous system number (ASN) for Border Gateway Protocol (BGP) to be configured on the Amazon side of the connection. The ASN must be in the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294
+
+Example: 65200
+
+Default: 64512
+
+
+
+
+# Returns
+
+`CreateDirectConnectGatewayResult`
+
+# Exceptions
+
+`DirectConnectServerException` or `DirectConnectClientException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/CreateDirectConnectGateway)
+"""
+
+@inline create_direct_connect_gateway(aws::AWSConfig=default_aws_config(); args...) = create_direct_connect_gateway(aws, args)
+
+@inline create_direct_connect_gateway(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "CreateDirectConnectGateway", args)
+
+@inline create_direct_connect_gateway(args) = create_direct_connect_gateway(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DirectConnect.create_direct_connect_gateway_association
+    create_direct_connect_gateway_association([::AWSConfig], arguments::Dict)
+    create_direct_connect_gateway_association([::AWSConfig]; directConnectGatewayId=, virtualGatewayId=)
+
+    using AWSCore.Services.directconnect
+    directconnect([::AWSConfig], "CreateDirectConnectGatewayAssociation", arguments::Dict)
+    directconnect([::AWSConfig], "CreateDirectConnectGatewayAssociation", directConnectGatewayId=, virtualGatewayId=)
+
+# CreateDirectConnectGatewayAssociation Operation
+
+Creates an association between a direct connect gateway and a virtual private gateway (VGW). The VGW must be attached to a VPC and must not be associated with another direct connect gateway.
+
+# Arguments
+
+## `directConnectGatewayId = ::String` -- *Required*
+The ID of the direct connect gateway.
+
+Example: "abcd1234-dcba-5678-be23-cdef9876ab45"
+
+Default: None
+
+
+## `virtualGatewayId = ::String` -- *Required*
+The ID of the virtual private gateway.
+
+Example: "vgw-abc123ef"
+
+Default: None
+
+
+
+
+# Returns
+
+`CreateDirectConnectGatewayAssociationResult`
+
+# Exceptions
+
+`DirectConnectServerException` or `DirectConnectClientException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/CreateDirectConnectGatewayAssociation)
+"""
+
+@inline create_direct_connect_gateway_association(aws::AWSConfig=default_aws_config(); args...) = create_direct_connect_gateway_association(aws, args)
+
+@inline create_direct_connect_gateway_association(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "CreateDirectConnectGatewayAssociation", args)
+
+@inline create_direct_connect_gateway_association(args) = create_direct_connect_gateway_association(default_aws_config(), args)
 
 
 """
@@ -911,7 +1023,8 @@ Default: None
         "amazonAddress" =>  ::String,
         "customerAddress" =>  ::String,
         "addressFamily" =>  "ipv4" or "ipv6",
-        "virtualGatewayId" => <required> ::String
+        "virtualGatewayId" =>  ::String,
+        "directConnectGatewayId" =>  ::String
     ]
 ```
 
@@ -1083,6 +1196,100 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 @inline delete_connection(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DeleteConnection", args)
 
 @inline delete_connection(args) = delete_connection(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DirectConnect.delete_direct_connect_gateway
+    delete_direct_connect_gateway([::AWSConfig], arguments::Dict)
+    delete_direct_connect_gateway([::AWSConfig]; directConnectGatewayId=)
+
+    using AWSCore.Services.directconnect
+    directconnect([::AWSConfig], "DeleteDirectConnectGateway", arguments::Dict)
+    directconnect([::AWSConfig], "DeleteDirectConnectGateway", directConnectGatewayId=)
+
+# DeleteDirectConnectGateway Operation
+
+Deletes a direct connect gateway. You must first delete all virtual interfaces that are attached to the direct connect gateway and disassociate all virtual private gateways that are associated with the direct connect gateway.
+
+# Arguments
+
+## `directConnectGatewayId = ::String` -- *Required*
+The ID of the direct connect gateway.
+
+Example: "abcd1234-dcba-5678-be23-cdef9876ab45"
+
+Default: None
+
+
+
+
+# Returns
+
+`DeleteDirectConnectGatewayResult`
+
+# Exceptions
+
+`DirectConnectServerException` or `DirectConnectClientException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DeleteDirectConnectGateway)
+"""
+
+@inline delete_direct_connect_gateway(aws::AWSConfig=default_aws_config(); args...) = delete_direct_connect_gateway(aws, args)
+
+@inline delete_direct_connect_gateway(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DeleteDirectConnectGateway", args)
+
+@inline delete_direct_connect_gateway(args) = delete_direct_connect_gateway(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DirectConnect.delete_direct_connect_gateway_association
+    delete_direct_connect_gateway_association([::AWSConfig], arguments::Dict)
+    delete_direct_connect_gateway_association([::AWSConfig]; directConnectGatewayId=, virtualGatewayId=)
+
+    using AWSCore.Services.directconnect
+    directconnect([::AWSConfig], "DeleteDirectConnectGatewayAssociation", arguments::Dict)
+    directconnect([::AWSConfig], "DeleteDirectConnectGatewayAssociation", directConnectGatewayId=, virtualGatewayId=)
+
+# DeleteDirectConnectGatewayAssociation Operation
+
+Deletes the association between a direct connect gateway and a virtual private gateway.
+
+# Arguments
+
+## `directConnectGatewayId = ::String` -- *Required*
+The ID of the direct connect gateway.
+
+Example: "abcd1234-dcba-5678-be23-cdef9876ab45"
+
+Default: None
+
+
+## `virtualGatewayId = ::String` -- *Required*
+The ID of the virtual private gateway.
+
+Example: "vgw-abc123ef"
+
+Default: None
+
+
+
+
+# Returns
+
+`DeleteDirectConnectGatewayAssociationResult`
+
+# Exceptions
+
+`DirectConnectServerException` or `DirectConnectClientException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DeleteDirectConnectGatewayAssociation)
+"""
+
+@inline delete_direct_connect_gateway_association(aws::AWSConfig=default_aws_config(); args...) = delete_direct_connect_gateway_association(aws, args)
+
+@inline delete_direct_connect_gateway_association(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DeleteDirectConnectGatewayAssociation", args)
+
+@inline delete_direct_connect_gateway_association(args) = delete_direct_connect_gateway_association(default_aws_config(), args)
 
 
 """
@@ -1352,6 +1559,193 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 
 """
+    using AWSSDK.DirectConnect.describe_direct_connect_gateway_associations
+    describe_direct_connect_gateway_associations([::AWSConfig], arguments::Dict)
+    describe_direct_connect_gateway_associations([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.directconnect
+    directconnect([::AWSConfig], "DescribeDirectConnectGatewayAssociations", arguments::Dict)
+    directconnect([::AWSConfig], "DescribeDirectConnectGatewayAssociations", <keyword arguments>)
+
+# DescribeDirectConnectGatewayAssociations Operation
+
+Returns a list of all direct connect gateway and virtual private gateway (VGW) associations. Either a direct connect gateway ID or a VGW ID must be provided in the request. If a direct connect gateway ID is provided, the response returns all VGWs associated with the direct connect gateway. If a VGW ID is provided, the response returns all direct connect gateways associated with the VGW. If both are provided, the response only returns the association that matches both the direct connect gateway and the VGW.
+
+# Arguments
+
+## `directConnectGatewayId = ::String`
+The ID of the direct connect gateway.
+
+Example: "abcd1234-dcba-5678-be23-cdef9876ab45"
+
+Default: None
+
+
+## `virtualGatewayId = ::String`
+The ID of the virtual private gateway.
+
+Example: "vgw-abc123ef"
+
+Default: None
+
+
+## `maxResults = ::Int`
+The maximum number of direct connect gateway associations to return per page.
+
+Example: 15
+
+Default: None
+
+
+## `nextToken = ::String`
+The token provided in the previous describe result to retrieve the next page of the result.
+
+Default: None
+
+
+
+
+# Returns
+
+`DescribeDirectConnectGatewayAssociationsResult`
+
+# Exceptions
+
+`DirectConnectServerException` or `DirectConnectClientException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeDirectConnectGatewayAssociations)
+"""
+
+@inline describe_direct_connect_gateway_associations(aws::AWSConfig=default_aws_config(); args...) = describe_direct_connect_gateway_associations(aws, args)
+
+@inline describe_direct_connect_gateway_associations(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeDirectConnectGatewayAssociations", args)
+
+@inline describe_direct_connect_gateway_associations(args) = describe_direct_connect_gateway_associations(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DirectConnect.describe_direct_connect_gateway_attachments
+    describe_direct_connect_gateway_attachments([::AWSConfig], arguments::Dict)
+    describe_direct_connect_gateway_attachments([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.directconnect
+    directconnect([::AWSConfig], "DescribeDirectConnectGatewayAttachments", arguments::Dict)
+    directconnect([::AWSConfig], "DescribeDirectConnectGatewayAttachments", <keyword arguments>)
+
+# DescribeDirectConnectGatewayAttachments Operation
+
+Returns a list of all direct connect gateway and virtual interface (VIF) attachments. Either a direct connect gateway ID or a VIF ID must be provided in the request. If a direct connect gateway ID is provided, the response returns all VIFs attached to the direct connect gateway. If a VIF ID is provided, the response returns all direct connect gateways attached to the VIF. If both are provided, the response only returns the attachment that matches both the direct connect gateway and the VIF.
+
+# Arguments
+
+## `directConnectGatewayId = ::String`
+The ID of the direct connect gateway.
+
+Example: "abcd1234-dcba-5678-be23-cdef9876ab45"
+
+Default: None
+
+
+## `virtualInterfaceId = ::String`
+The ID of the virtual interface.
+
+Example: "dxvif-abc123ef"
+
+Default: None
+
+
+## `maxResults = ::Int`
+The maximum number of direct connect gateway attachments to return per page.
+
+Example: 15
+
+Default: None
+
+
+## `nextToken = ::String`
+The token provided in the previous describe result to retrieve the next page of the result.
+
+Default: None
+
+
+
+
+# Returns
+
+`DescribeDirectConnectGatewayAttachmentsResult`
+
+# Exceptions
+
+`DirectConnectServerException` or `DirectConnectClientException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeDirectConnectGatewayAttachments)
+"""
+
+@inline describe_direct_connect_gateway_attachments(aws::AWSConfig=default_aws_config(); args...) = describe_direct_connect_gateway_attachments(aws, args)
+
+@inline describe_direct_connect_gateway_attachments(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeDirectConnectGatewayAttachments", args)
+
+@inline describe_direct_connect_gateway_attachments(args) = describe_direct_connect_gateway_attachments(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DirectConnect.describe_direct_connect_gateways
+    describe_direct_connect_gateways([::AWSConfig], arguments::Dict)
+    describe_direct_connect_gateways([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.directconnect
+    directconnect([::AWSConfig], "DescribeDirectConnectGateways", arguments::Dict)
+    directconnect([::AWSConfig], "DescribeDirectConnectGateways", <keyword arguments>)
+
+# DescribeDirectConnectGateways Operation
+
+Returns a list of direct connect gateways in your account. Deleted direct connect gateways are not returned. You can provide a direct connect gateway ID in the request to return information about the specific direct connect gateway only. Otherwise, if a direct connect gateway ID is not provided, information about all of your direct connect gateways is returned.
+
+# Arguments
+
+## `directConnectGatewayId = ::String`
+The ID of the direct connect gateway.
+
+Example: "abcd1234-dcba-5678-be23-cdef9876ab45"
+
+Default: None
+
+
+## `maxResults = ::Int`
+The maximum number of direct connect gateways to return per page.
+
+Example: 15
+
+Default: None
+
+
+## `nextToken = ::String`
+The token provided in the previous describe result to retrieve the next page of the result.
+
+Default: None
+
+
+
+
+# Returns
+
+`DescribeDirectConnectGatewaysResult`
+
+# Exceptions
+
+`DirectConnectServerException` or `DirectConnectClientException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeDirectConnectGateways)
+"""
+
+@inline describe_direct_connect_gateways(aws::AWSConfig=default_aws_config(); args...) = describe_direct_connect_gateways(aws, args)
+
+@inline describe_direct_connect_gateways(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeDirectConnectGateways", args)
+
+@inline describe_direct_connect_gateways(args) = describe_direct_connect_gateways(default_aws_config(), args)
+
+
+"""
     using AWSSDK.DirectConnect.describe_hosted_connections
     describe_hosted_connections([::AWSConfig], arguments::Dict)
     describe_hosted_connections([::AWSConfig]; connectionId=)
@@ -1604,7 +1998,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/direct
 
 # DescribeLocations Operation
 
-Returns the list of AWS Direct Connect locations in the current AWS region. These are the locations that may be selected when calling CreateConnection or CreateInterconnect.
+Returns the list of AWS Direct Connect locations in the current AWS region. These are the locations that may be selected when calling [CreateConnection](@ref) or [CreateInterconnect](@ref).
 
 # Returns
 

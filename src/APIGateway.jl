@@ -403,23 +403,35 @@ Creates a new domain name.
 
 
 ## `certificateName = ::String`
-The user-friendly name of the certificate.
+The user-friendly name of the certificate that will be used by edge-optimized endpoint for this domain name.
 
 
 ## `certificateBody = ::String`
-[Deprecated] The body of the server certificate provided by your certificate authority.
+[Deprecated] The body of the server certificate that will be used by edge-optimized endpoint for this domain name provided by your certificate authority.
 
 
 ## `certificatePrivateKey = ::String`
-[Deprecated] Your certificate's private key.
+[Deprecated] Your edge-optimized endpoint's domain name certificate's private key.
 
 
 ## `certificateChain = ::String`
-[Deprecated] The intermediate certificates and optionally the root certificate, one after the other without any blank lines. If you include the root certificate, your certificate chain must start with intermediate certificates and end with the root certificate. Use the intermediate certificates that were provided by your certificate authority. Do not include any intermediaries that are not in the chain of trust path.
+[Deprecated] The intermediate certificates and optionally the root certificate, one after the other without any blank lines, used by an edge-optimized endpoint for this domain name. If you include the root certificate, your certificate chain must start with intermediate certificates and end with the root certificate. Use the intermediate certificates that were provided by your certificate authority. Do not include any intermediaries that are not in the chain of trust path.
 
 
 ## `certificateArn = ::String`
-The reference to an AWS-managed certificate. AWS Certificate Manager is the only supported source.
+The reference to an AWS-managed certificate that will be used by edge-optimized endpoint for this domain name. AWS Certificate Manager is the only supported source.
+
+
+## `regionalCertificateName = ::String`
+The user-friendly name of the certificate that will be used by regional endpoint for this domain name.
+
+
+## `regionalCertificateArn = ::String`
+The reference to an AWS-managed certificate that will be used by regional endpoint for this domain name. AWS Certificate Manager is the only supported source.
+
+
+## `endpointConfiguration = ["types" =>  ["REGIONAL" or "EDGE", ...]]`
+The endpoint configuration of this [DomainName](@ref) showing the endpoint types of the domain name.
 
 
 
@@ -628,6 +640,10 @@ The ID of the [RestApi](@ref) that you want to clone from.
 
 ## `binaryMediaTypes = [::String, ...]`
 The list of binary media types supported by the [RestApi](@ref). By default, the [RestApi](@ref) supports only UTF-8-encoded text payloads.
+
+
+## `endpointConfiguration = ["types" =>  ["REGIONAL" or "EDGE", ...]]`
+The endpoint configuration of this [RestApi](@ref) showing the endpoint types of the API.
 
 
 

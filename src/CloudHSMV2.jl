@@ -330,11 +330,11 @@ The identifier (ID) of the cluster that you are claiming. To find the cluster ID
 
 
 ## `SignedCert = ::String` -- *Required*
-The cluster certificate issued (signed) by your issuing certificate authority (CA). The certificate must be in PEM format.
+The cluster certificate issued (signed) by your issuing certificate authority (CA). The certificate must be in PEM format and can contain a maximum of 5000 characters.
 
 
 ## `TrustAnchor = ::String` -- *Required*
-The issuing certificate of the issuing certificate authority (CA) that issued (signed) the cluster certificate. This can be a root (self-signed) certificate or a certificate chain that begins with the certificate that issued the cluster certificate and ends with a root certificate. The certificate or certificate chain must be in PEM format.
+The issuing certificate of the issuing certificate authority (CA) that issued (signed) the cluster certificate. This can be a root (self-signed) certificate or a certificate chain that begins with the certificate that issued the cluster certificate and ends with a root certificate. The certificate or certificate chain must be in PEM format and can contain a maximum of 5000 characters.
 
 
 

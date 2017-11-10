@@ -339,7 +339,9 @@ Creates an AWS account that is automatically a member of the organization whose 
 
 The user who calls the API for an invitation to join must have the `organizations:CreateAccount` permission. If you enabled all features in the organization, then the user must also have the `iam:CreateServiceLinkedRole` permission so that Organizations can create the required service-linked role named *OrgsServiceLinkedRoleName*. For more information, see [AWS Organizations and Service-Linked Roles](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integration_services.html#orgs_integration_service-linked-roles) in the *AWS Organizations User Guide*.
 
-The user in the master account who calls this API must also have the `iam:CreateRole` permission because AWS Organizations preconfigures the new member account with a role (named `OrganizationAccountAccessRole` by default) that grants users in the master account administrator permissions in the new member account. Principals in the master account can assume the role. AWS Organizations clones the company name and address information for the new account from the organization's master account.
+The user in the master account who calls this API must also have the `iam:CreateRole` permission because AWS Organizations preconfigures the new member account with a role (named `OrganizationAccountAccessRole`) that grants users in the master account administrator permissions in the new member account. Principals in the master account can assume the role. AWS Organizations clones the company name and address information for the new account from the organization's master account.
+
+This operation can be called only from the organization's master account.
 
 For more information about creating accounts, see [Creating an AWS Account in Your Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html) in the *AWS Organizations User Guide*.
 
@@ -348,8 +350,6 @@ For more information about creating accounts, see [Creating an AWS Account in Yo
 
 **Note**
 > When you create a member account with this operation, you can choose whether to create the account with the **IAM User and Role Access to Billing Information** switch enabled. If you enable it, IAM users and roles that have appropriate permissions can view billing information for the account. If you disable this, then only the account root user can access billing information. For information about how to disable this for an account, see [Granting Access to Your Billing Information and Tools](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html).
-
-This operation can be called only from the organization's master account.
 
 **Important**
 > If you get an exception that indicates that you exceeded your account limits for the organization or that you can"t add an account because your organization is still initializing, please contact [AWS Customer Support](https://console.aws.amazon.com/support/home#/).
@@ -1940,6 +1940,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 Lists the accounts in an organization that are contained by the specified target root or organizational unit (OU). If you specify the root, you get a list of all the accounts that are not in any OU. If you specify an OU, you get a list of all the accounts in only that OU, and not in any child OUs. To get a list of all accounts in the organization, use the [ListAccounts](@ref) operation.
 
+This operation can be called only from the organization's master account.
+
 # Arguments
 
 ## `ParentId = ::String` -- *Required*
@@ -2023,6 +2025,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 # ListChildren Operation
 
 Lists all of the OUs or accounts that are contained in the specified parent OU or root. This operation, along with [ListParents](@ref) enables you to traverse the tree structure that makes up this root.
+
+This operation can be called only from the organization's master account.
 
 # Arguments
 

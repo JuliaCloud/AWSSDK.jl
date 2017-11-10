@@ -738,6 +738,37 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
+    using AWSSDK.S3.delete_bucket_encryption
+    delete_bucket_encryption([::AWSConfig], arguments::Dict)
+    delete_bucket_encryption([::AWSConfig]; Bucket=)
+
+    using AWSCore.Services.s3
+    s3([::AWSConfig], "DELETE", "/{Bucket}?encryption", arguments::Dict)
+    s3([::AWSConfig], "DELETE", "/{Bucket}?encryption", Bucket=)
+
+# DeleteBucketEncryption Operation
+
+Deletes the server-side encryption configuration from the bucket.
+
+# Arguments
+
+## `Bucket = ::String` -- *Required*
+The name of the bucket containing the server-side encryption configuration to delete.
+
+
+
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketEncryption)
+"""
+
+@inline delete_bucket_encryption(aws::AWSConfig=default_aws_config(); args...) = delete_bucket_encryption(aws, args)
+
+@inline delete_bucket_encryption(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "DELETE", "/{Bucket}?encryption", args)
+
+@inline delete_bucket_encryption(args) = delete_bucket_encryption(default_aws_config(), args)
+
+
+"""
     using AWSSDK.S3.delete_bucket_inventory_configuration
     delete_bucket_inventory_configuration([::AWSConfig], arguments::Dict)
     delete_bucket_inventory_configuration([::AWSConfig]; Bucket=, id=)
@@ -1489,6 +1520,41 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 @inline get_bucket_cors(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?cors", args)
 
 @inline get_bucket_cors(args) = get_bucket_cors(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.S3.get_bucket_encryption
+    get_bucket_encryption([::AWSConfig], arguments::Dict)
+    get_bucket_encryption([::AWSConfig]; Bucket=)
+
+    using AWSCore.Services.s3
+    s3([::AWSConfig], "GET", "/{Bucket}?encryption", arguments::Dict)
+    s3([::AWSConfig], "GET", "/{Bucket}?encryption", Bucket=)
+
+# GetBucketEncryption Operation
+
+Returns the server-side encryption configuration of a bucket.
+
+# Arguments
+
+## `Bucket = ::String` -- *Required*
+The name of the bucket from which the server-side encryption configuration is retrieved.
+
+
+
+
+# Returns
+
+`GetBucketEncryptionOutput`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketEncryption)
+"""
+
+@inline get_bucket_encryption(aws::AWSConfig=default_aws_config(); args...) = get_bucket_encryption(aws, args)
+
+@inline get_bucket_encryption(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?encryption", args)
+
+@inline get_bucket_encryption(args) = get_bucket_encryption(default_aws_config(), args)
 
 
 """
@@ -3901,6 +3967,50 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 
 
 """
+    using AWSSDK.S3.put_bucket_encryption
+    put_bucket_encryption([::AWSConfig], arguments::Dict)
+    put_bucket_encryption([::AWSConfig]; Bucket=, ServerSideEncryptionConfiguration=, <keyword arguments>)
+
+    using AWSCore.Services.s3
+    s3([::AWSConfig], "PUT", "/{Bucket}?encryption", arguments::Dict)
+    s3([::AWSConfig], "PUT", "/{Bucket}?encryption", Bucket=, ServerSideEncryptionConfiguration=, <keyword arguments>)
+
+# PutBucketEncryption Operation
+
+Creates a new server-side encryption configuration (or replaces an existing one, if present).
+
+# Arguments
+
+## `Bucket = ::String` -- *Required*
+The name of the bucket for which the server-side encryption configuration is set.
+
+
+## `Content-MD5 = ::String`
+The base64-encoded 128-bit MD5 digest of the server-side encryption configuration.
+
+
+## `ServerSideEncryptionConfiguration = ["Rule" => <required> [["ApplyServerSideEncryptionByDefault" =>  [ ... ]], ...]]` -- *Required*
+
+```
+ ServerSideEncryptionConfiguration = ["Rule" => <required> [["ApplyServerSideEncryptionByDefault" =>  [
+                "SSEAlgorithm" => <required> "AES256" or "aws:kms",
+                "KMSMasterKeyID" =>  ::String
+            ]], ...]]
+```
+
+
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketEncryption)
+"""
+
+@inline put_bucket_encryption(aws::AWSConfig=default_aws_config(); args...) = put_bucket_encryption(aws, args)
+
+@inline put_bucket_encryption(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?encryption", args)
+
+@inline put_bucket_encryption(args) = put_bucket_encryption(default_aws_config(), args)
+
+
+"""
     using AWSSDK.S3.put_bucket_inventory_configuration
     put_bucket_inventory_configuration([::AWSConfig], arguments::Dict)
     put_bucket_inventory_configuration([::AWSConfig]; Bucket=, id=, InventoryConfiguration=)
@@ -3931,13 +4041,19 @@ Specifies the inventory configuration.
                 "AccountId" =>  ::String,
                 "Bucket" => <required> ::String,
                 "Format" => <required> "CSV",
-                "Prefix" =>  ::String
+                "Prefix" =>  ::String,
+                "Encryption" =>  [
+                    "SSE-S3" =>  [
+                        
+                    ],
+                    "SSE-KMS" =>  ["KeyId" => <required> ::String]
+                ]
             ]],
         "IsEnabled" => <required> ::Bool,
         "Filter" =>  ["Prefix" => <required> ::String],
         "Id" => <required> ::String,
         "IncludedObjectVersions" => <required> "All" or "Current",
-        "OptionalFields" =>  ["Size", "LastModifiedDate", "StorageClass", "ETag", "IsMultipartUploaded" or "ReplicationStatus", ...],
+        "OptionalFields" =>  ["Size", "LastModifiedDate", "StorageClass", "ETag", "IsMultipartUploaded", "ReplicationStatus" or "EncryptionStatus", ...],
         "Schedule" => <required> ["Frequency" => <required> "Daily" or "Weekly"]
     ]
 ```
@@ -4424,6 +4540,10 @@ Replaces a policy on a bucket. If the bucket already has a policy, the one in th
 
 
 
+## `x-amz-confirm-remove-self-bucket-access = ::Bool`
+Set this parameter to true to confirm that you want to remove your permissions to change this bucket policy in the future.
+
+
 ## `Policy = ::String` -- *Required*
 The bucket policy as a JSON document.
 
@@ -4484,9 +4604,13 @@ Creates a new replication configuration (or replaces an existing one, if present
             "ID" =>  ::String,
             "Prefix" => <required> ::String,
             "Status" => <required> "Enabled" or "Disabled",
+            "SourceSelectionCriteria" =>  ["SseKmsEncryptedObjects" =>  ["Status" => <required> "Enabled" or "Disabled"]],
             "Destination" => <required> [
                 "Bucket" => <required> ::String,
-                "StorageClass" =>  "STANDARD", "REDUCED_REDUNDANCY" or "STANDARD_IA"
+                "Account" =>  ::String,
+                "StorageClass" =>  "STANDARD", "REDUCED_REDUNDANCY" or "STANDARD_IA",
+                "AccessControlTranslation" =>  ["Owner" => <required> "Destination"],
+                "EncryptionConfiguration" =>  ["ReplicaKmsKeyID" =>  ::String]
             ]
         ], ...]
     ]
@@ -5604,7 +5728,7 @@ Input:
 ```
 [
     "Bucket" => "examplebucket",
-    "CopySource" => "bucketname/sourceobjectkey",
+    "CopySource" => "/bucketname/sourceobjectkey",
     "Key" => "examplelargeobject",
     "PartNumber" => "1",
     "UploadId" => "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP91We7Nrw--"

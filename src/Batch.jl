@@ -23,12 +23,12 @@ using AWSCore
 
 # CancelJob Operation
 
-Cancels jobs in an AWS Batch job queue. Jobs that are in the `SUBMITTED`, `PENDING`, or `RUNNABLE` state are cancelled. Jobs that have progressed to `STARTING` or `RUNNING` are not cancelled (but the API operation still succeeds, even if no jobs are cancelled); these jobs must be terminated with the [TerminateJob](@ref) operation.
+Cancels a job in an AWS Batch job queue. Jobs that are in the `SUBMITTED`, `PENDING`, or `RUNNABLE` state are cancelled. Jobs that have progressed to `STARTING` or `RUNNING` are not cancelled (but the API operation still succeeds, even if no job is cancelled); these jobs must be terminated with the [TerminateJob](@ref) operation.
 
 # Arguments
 
 ## `jobId = ::String` -- *Required*
-A list of up to 100 job IDs to cancel.
+The AWS Batch job ID of the job to cancel.
 
 
 ## `reason = ::String` -- *Required*
@@ -94,7 +94,7 @@ In an unmanaged compute environment, you can manage your own compute resources. 
 # Arguments
 
 ## `computeEnvironmentName = ::String` -- *Required*
-The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed.
+The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
 
 
 ## `type = "MANAGED" or "UNMANAGED"` -- *Required*
@@ -1253,12 +1253,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 # TerminateJob Operation
 
-Terminates jobs in a job queue. Jobs that are in the `STARTING` or `RUNNING` state are terminated, which causes them to transition to `FAILED`. Jobs that have not progressed to the `STARTING` state are cancelled.
+Terminates a job in a job queue. Jobs that are in the `STARTING` or `RUNNING` state are terminated, which causes them to transition to `FAILED`. Jobs that have not progressed to the `STARTING` state are cancelled.
 
 # Arguments
 
 ## `jobId = ::String` -- *Required*
-Job IDs to be terminated. Up to 100 jobs can be specified.
+The AWS Batch job ID of the job to terminate.
 
 
 ## `reason = ::String` -- *Required*

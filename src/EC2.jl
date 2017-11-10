@@ -931,7 +931,7 @@ For more information about EBS volumes, see [Attaching Amazon EBS Volumes](http:
 # Arguments
 
 ## `Device = ::String` -- *Required*
-The device name to expose to the instance (for example, `/dev/sdh` or `xvdh`).
+The device name (for example, `/dev/sdh` or `xvdh`).
 
 
 ## `InstanceId = ::String` -- *Required*
@@ -2010,6 +2010,45 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 @inline create_customer_gateway(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateCustomerGateway", args)
 
 @inline create_customer_gateway(args) = create_customer_gateway(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.create_default_subnet
+    create_default_subnet([::AWSConfig], arguments::Dict)
+    create_default_subnet([::AWSConfig]; AvailabilityZone=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "CreateDefaultSubnet", arguments::Dict)
+    ec2([::AWSConfig], "CreateDefaultSubnet", AvailabilityZone=, <keyword arguments>)
+
+# CreateDefaultSubnet Operation
+
+Creates a default subnet with a size `/20` IPv4 CIDR block in the specified Availability Zone in your default VPC. You can have only one default subnet per Availability Zone. For more information, see [Creating a Default Subnet](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html#create-default-subnet) in the *Amazon Virtual Private Cloud User Guide*.
+
+# Arguments
+
+## `AvailabilityZone = ::String` -- *Required*
+The Availability Zone in which to create the default subnet.
+
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+
+
+# Returns
+
+`CreateDefaultSubnetResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateDefaultSubnet)
+"""
+
+@inline create_default_subnet(aws::AWSConfig=default_aws_config(); args...) = create_default_subnet(aws, args)
+
+@inline create_default_subnet(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateDefaultSubnet", args)
+
+@inline create_default_subnet(args) = create_default_subnet(default_aws_config(), args)
 
 
 """
@@ -3920,42 +3959,64 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 """
     using AWSSDK.EC2.create_vpc_endpoint
     create_vpc_endpoint([::AWSConfig], arguments::Dict)
-    create_vpc_endpoint([::AWSConfig]; ServiceName=, VpcId=, <keyword arguments>)
+    create_vpc_endpoint([::AWSConfig]; VpcId=, ServiceName=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "CreateVpcEndpoint", arguments::Dict)
-    ec2([::AWSConfig], "CreateVpcEndpoint", ServiceName=, VpcId=, <keyword arguments>)
+    ec2([::AWSConfig], "CreateVpcEndpoint", VpcId=, ServiceName=, <keyword arguments>)
 
 # CreateVpcEndpoint Operation
 
-Creates a VPC endpoint for a specified AWS service. An endpoint enables you to create a private connection between your VPC and another AWS service in your account. You can specify an endpoint policy to attach to the endpoint that will control access to the service from your VPC. You can also specify the VPC route tables that use the endpoint.
+Creates a VPC endpoint for a specified AWS service. An endpoint enables you to create a private connection between your VPC and another AWS service in your account. You can create a gateway endpoint or an interface endpoint.
 
-Use [DescribeVpcEndpointServices](@ref) to get a list of supported AWS services.
+A gateway endpoint serves as a target for a route in your route table for traffic destined for the AWS service. You can specify the VPC route tables that use the endpoint, and you can optionally specify an endpoint policy to attach to the endpoint that will control access to the service from your VPC.
+
+An interface endpoint is a network interface in your subnet with a private IP address that serves as an entry point for traffic destined to the AWS service. You can specify the subnets in which to create an endpoint, and the security groups to associate with the network interface.
 
 # Arguments
-
-## `ClientToken = ::String`
-Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
-
 
 ## `DryRun = ::Bool`
 Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 
 
-## `PolicyDocument = ::String`
-A policy to attach to the endpoint that controls access to the service. The policy must be in valid JSON format. If this parameter is not specified, we attach a default policy that allows full access to the service.
+## `VpcEndpointType = "Interface" or "Gateway"`
+The type of endpoint. If not specified, the default is a gateway endpoint.
 
 
-## `RouteTableId = [::String, ...]`
-One or more route table IDs.
+## `VpcId = ::String` -- *Required*
+The ID of the VPC in which the endpoint will be used.
 
 
 ## `ServiceName = ::String` -- *Required*
 The AWS service name, in the form `com.amazonaws.*region*.*service*` . To get a list of available services, use the [DescribeVpcEndpointServices](@ref) request.
 
 
-## `VpcId = ::String` -- *Required*
-The ID of the VPC in which the endpoint will be used.
+## `PolicyDocument = ::String`
+(Gateway endpoint) A policy to attach to the endpoint that controls access to the service. The policy must be in valid JSON format. If this parameter is not specified, we attach a default policy that allows full access to the service.
+
+
+## `RouteTableId = [::String, ...]`
+(Gateway endpoint) One or more route table IDs.
+
+
+## `SubnetId = [::String, ...]`
+(Interface endpoint) The ID of one or more subnets in which to create a network interface for the endpoint.
+
+
+## `SecurityGroupId = [::String, ...]`
+(Interface endpoint) The ID of one or more security groups to associate with the network interface.
+
+
+## `ClientToken = ::String`
+Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+
+
+## `PrivateDnsEnabled = ::Bool`
+(Interface endpoint) Indicate whether to associate a private hosted zone with the specified VPC. The private hosted zone contains a record set for the default public DNS name for the service for the region (for example, `kinesis.us-east-1.amazonaws.com`) which resolves to the private IP addresses of the endpoint network interfaces in the VPC. This enables you to make requests to the default public DNS name for the service instead of the public DNS names that are automatically generated by the VPC endpoint service.
+
+To use a private hosted zone, you must set the following VPC attributes to `true`: `enableDnsHostnames` and `enableDnsSupport`. Use [ModifyVpcAttribute](@ref) to set the VPC attributes.
+
+Default: `true`
 
 
 
@@ -5242,7 +5303,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DeleteVpcEndpoints Operation
 
-Deletes one or more specified VPC endpoints. Deleting the endpoint also deletes the endpoint routes in the route tables that were associated with the endpoint.
+Deletes one or more specified VPC endpoints. Deleting a gateway endpoint also deletes the endpoint routes in the route tables that were associated with the endpoint. Deleting an interface endpoint deletes the endpoint network interfaces.
 
 # Arguments
 
@@ -6308,7 +6369,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DescribeElasticGpus Operation
 
-Describes the Elastic GPUs associated with your instances. For more information about Elastic GPUs, see [Amazon EC2 Elastic GPUs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-gpus.html).
+Describes the Elastic GPUs associated with your instances. For more information about Elastic GPUs, see [Amazon EC2 Elastic GPUs](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-gpus.html).
 
 # Arguments
 
@@ -6989,7 +7050,7 @@ One or more filters.
 
 *   `block-device-mapping.delete-on-termination` - A Boolean value that indicates whether the Amazon EBS volume is deleted on instance termination.
 
-*   `block-device-mapping.device-name` - The device name for the EBS volume (for example, `/dev/sdh`).
+*   `block-device-mapping.device-name` - The device name specified in the block device mapping (for example, `/dev/sdh` or `xvdh`).
 
 *   `block-device-mapping.snapshot-id` - The ID of the snapshot used for the EBS volume.
 
@@ -7027,7 +7088,7 @@ One or more filters.
 
 *   `ramdisk-id` - The RAM disk ID.
 
-*   `root-device-name` - The name of the root device volume (for example, `/dev/sda1`).
+*   `root-device-name` - The device name of the root device volume (for example, `/dev/sda1`).
 
 *   `root-device-type` - The type of the root device volume (`ebs` | `instance-store`).
 
@@ -7036,6 +7097,8 @@ One or more filters.
 *   `state-reason-code` - The reason code for the state change.
 
 *   `state-reason-message` - The message for the state change.
+
+*   `sriov-net-support` - A value of `simple` indicates that enhanced networking with the Intel 82599 VF interface is enabled.
 
 *   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
 
@@ -7454,7 +7517,7 @@ One or more filters.
 
 *   `block-device-mapping.delete-on-termination` - A Boolean that indicates whether the EBS volume is deleted on instance termination.
 
-*   `block-device-mapping.device-name` - The device name for the EBS volume (for example, `/dev/sdh` or `xvdh`).
+*   `block-device-mapping.device-name` - The device name specified in the block device mapping (for example, `/dev/sdh` or `xvdh`).
 
 *   `block-device-mapping.status` - The status for the EBS volume (`attaching` | `attached` | `detaching` | `detached`).
 
@@ -7584,9 +7647,9 @@ One or more filters.
 
 *   `reservation-id` - The ID of the instance's reservation. A reservation ID is created any time you launch an instance. A reservation ID has a one-to-one relationship with an instance launch request, but can be associated with more than one instance if you launch multiple instances using the same launch request. For example, if you launch one instance, you get one reservation ID. If you launch ten instances using the same launch request, you also get one reservation ID.
 
-*   `root-device-name` - The name of the root device for the instance (for example, `/dev/sda1` or `/dev/xvda`).
+*   `root-device-name` - The device name of the root device volume (for example, `/dev/sda1`).
 
-*   `root-device-type` - The type of root device that the instance uses (`ebs` | `instance-store`).
+*   `root-device-type` - The type of the root device volume (`ebs` | `instance-store`).
 
 *   `source-dest-check` - Indicates whether the instance performs source/destination checking. A value of `true` means that checking is enabled, and `false` means that checking is disabled. The value must be `false` for the instance to perform network address translation (NAT) in your VPC.
 
@@ -9064,7 +9127,7 @@ One or more filters.
 Include Reserved Instance Marketplace offerings in the response.
 
 
-## `InstanceType = "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge"`
+## `InstanceType = "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge"`
 The instance type that the reservation will cover (for example, `m1.small`). For more information, see [Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 
@@ -9600,27 +9663,45 @@ One or more filters. If using multiple filters for rules, the results include se
 
 *   `description` - The description of the security group.
 
-*   `egress.ip-permission.prefix-list-id` - The ID (prefix) of the AWS service to which the security group allows access.
+*   `egress.ip-permission.cidr` - An IPv4 CIDR block for an outbound security group rule.
+
+*   `egress.ip-permission.from-port` - For an outbound rule, the start of port range for the TCP and UDP protocols, or an ICMP type number.
+
+*   `egress.ip-permission.group-id` - The ID of a security group that has been referenced in an outbound security group rule.
+
+*   `egress.ip-permission.group-name` - The name of a security group that has been referenced in an outbound security group rule.
+
+*   `egress.ip-permission.ipv6-cidr` - An IPv6 CIDR block for an outbound security group rule.
+
+*   `egress.ip-permission.prefix-list-id` - The ID (prefix) of the AWS service to which a security group rule allows outbound access.
+
+*   `egress.ip-permission.protocol` - The IP protocol for an outbound security group rule (`tcp` | `udp` | `icmp` or a protocol number).
+
+*   `egress.ip-permission.to-port` - For an outbound rule, the end of port range for the TCP and UDP protocols, or an ICMP code.
+
+*   `egress.ip-permission.user-id` - The ID of an AWS account that has been referenced in an outbound security group rule.
 
 *   `group-id` - The ID of the security group.
 
 *   `group-name` - The name of the security group.
 
-*   `ip-permission.cidr` - An IPv4 CIDR range that has been granted permission in a security group rule.
+*   `ip-permission.cidr` - An IPv4 CIDR block for an inbound security group rule.
 
-*   `ip-permission.from-port` - The start of port range for the TCP and UDP protocols, or an ICMP type number.
+*   `ip-permission.from-port` - For an inbound rule, the start of port range for the TCP and UDP protocols, or an ICMP type number.
 
-*   `ip-permission.group-id` - The ID of a security group that has been granted permission.
+*   `ip-permission.group-id` - The ID of a security group that has been referenced in an inbound security group rule.
 
-*   `ip-permission.group-name` - The name of a security group that has been granted permission.
+*   `ip-permission.group-name` - The name of a security group that has been referenced in an inbound security group rule.
 
-*   `ip-permission.ipv6-cidr` - An IPv6 CIDR range that has been granted permission in a security group rule.
+*   `ip-permission.ipv6-cidr` - An IPv6 CIDR block for an inbound security group rule.
 
-*   `ip-permission.protocol` - The IP protocol for the permission (`tcp` | `udp` | `icmp` or a protocol number).
+*   `ip-permission.prefix-list-id` - The ID (prefix) of the AWS service from which a security group rule allows inbound access.
 
-*   `ip-permission.to-port` - The end of port range for the TCP and UDP protocols, or an ICMP code.
+*   `ip-permission.protocol` - The IP protocol for an inbound security group rule (`tcp` | `udp` | `icmp` or a protocol number).
 
-*   `ip-permission.user-id` - The ID of an AWS account that has been granted permission.
+*   `ip-permission.to-port` - For an inbound rule, the end of port range for the TCP and UDP protocols, or an ICMP code.
+
+*   `ip-permission.user-id` - The ID of an AWS account that has been referenced in an inbound security group rule.
 
 *   `owner-id` - The AWS account ID of the owner of the security group.
 
@@ -10301,15 +10382,15 @@ One or more filters.
 
 *   `launch-group` - The Spot instance launch group.
 
-*   `launch.block-device-mapping.delete-on-termination` - Indicates whether the Amazon EBS volume is deleted on instance termination.
+*   `launch.block-device-mapping.delete-on-termination` - Indicates whether the EBS volume is deleted on instance termination.
 
-*   `launch.block-device-mapping.device-name` - The device name for the Amazon EBS volume (for example, `/dev/sdh`).
+*   `launch.block-device-mapping.device-name` - The device name for the volume in the block device mapping (for example, `/dev/sdh` or `xvdh`).
 
-*   `launch.block-device-mapping.snapshot-id` - The ID of the snapshot used for the Amazon EBS volume.
+*   `launch.block-device-mapping.snapshot-id` - The ID of the snapshot for the EBS volume.
 
-*   `launch.block-device-mapping.volume-size` - The size of the Amazon EBS volume, in GiB.
+*   `launch.block-device-mapping.volume-size` - The size of the EBS volume, in GiB.
 
-*   `launch.block-device-mapping.volume-type` - The type of the Amazon EBS volume: `gp2` for General Purpose SSD, `io1` for Provisioned IOPS SSD, `st1` for Throughput Optimized HDD, `sc1`for Cold HDD, or `standard` for Magnetic.
+*   `launch.block-device-mapping.volume-type` - The type of EBS volume: `gp2` for General Purpose SSD, `io1` for Provisioned IOPS SSD, `st1` for Throughput Optimized HDD, `sc1`for Cold HDD, or `standard` for Magnetic.
 
 *   `launch.group-id` - The security group for the instance.
 
@@ -10503,7 +10584,7 @@ Checks whether you have the required permissions for the action, without actuall
 The date and time, up to the current date, from which to stop retrieving the price history data, in UTC format (for example, *YYYY*-*MM*-*DD*T*HH*:*MM*:*SS*Z).
 
 
-## `InstanceType = ["t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge", ...]`
+## `InstanceType = ["t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge", ...]`
 Filters the results by the specified instance types. Note that T2 and HS1 instance types are not supported.
 
 
@@ -11097,7 +11178,7 @@ One or more filters.
 
 *   `attachment.delete-on-termination` - Whether the volume is deleted on instance termination.
 
-*   `attachment.device` - The device name that is exposed to the instance (for example, `/dev/sda1`).
+*   `attachment.device` - The device name specified in the block device mapping (for example, `/dev/sda1`).
 
 *   `attachment.instance-id` - The ID of the instance the volume is attached to.
 
@@ -11518,6 +11599,21 @@ Describes all supported AWS services that can be specified when creating a VPC e
 Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 
 
+## `ServiceName = [::String, ...]`
+One or more service names.
+
+
+## `Filter = [[ ... ], ...]`
+One or more filters.
+
+*   `service-name`: The name of the service.
+```
+ Filter = [[
+        "Name" =>  ::String,
+        "Value" =>  [::String, ...]
+    ], ...]
+```
+
 ## `MaxResults = ::Int`
 The maximum number of items to return for this request. The request returns a token that you can specify in a subsequent call to get the next set of results.
 
@@ -11563,6 +11659,10 @@ Describes one or more of your VPC endpoints.
 Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 
 
+## `VpcEndpointId = [::String, ...]`
+One or more endpoint IDs.
+
+
 ## `Filter = [[ ... ], ...]`
 One or more filters.
 
@@ -11588,10 +11688,6 @@ Constraint: If the value is greater than 1000, we return only 1000 items.
 
 ## `NextToken = ::String`
 The token for the next set of items to return. (You received this token from a prior call.)
-
-
-## `VpcEndpointId = [::String, ...]`
-One or more endpoint IDs.
 
 
 
@@ -13095,7 +13191,7 @@ The launch specification.
         "GroupId" =>  [::String, ...],
         "GroupName" =>  [::String, ...],
         "InstanceInitiatedShutdownBehavior" =>  "stop" or "terminate",
-        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
+        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
         "Monitoring" =>  ::Bool,
         "Placement" =>  [
             "AvailabilityZone" =>  ::String,
@@ -13905,7 +14001,7 @@ The configuration settings for the Reserved Instances to modify.
  ReservedInstancesConfigurationSetItemType = [[
         "AvailabilityZone" =>  ::String,
         "InstanceCount" =>  ::Int,
-        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
+        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
         "Platform" =>  ::String,
         "Scope" =>  "Availability Zone" or "Region"
     ], ...]
@@ -14408,32 +14504,52 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # ModifyVpcEndpoint Operation
 
-Modifies attributes of a specified VPC endpoint. You can modify the policy associated with the endpoint, and you can add and remove route tables associated with the endpoint.
+Modifies attributes of a specified VPC endpoint. The attributes that you can modify depend on the type of VPC endpoint (interface or gateway). For more information, see [VPC Endpoints](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html) in the *Amazon Virtual Private Cloud User Guide*.
 
 # Arguments
-
-## `AddRouteTableId = [::String, ...]`
-One or more route tables IDs to associate with the endpoint.
-
 
 ## `DryRun = ::Bool`
 Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 
 
-## `PolicyDocument = ::String`
-A policy document to attach to the endpoint. The policy must be in valid JSON format.
-
-
-## `RemoveRouteTableId = [::String, ...]`
-One or more route table IDs to disassociate from the endpoint.
+## `VpcEndpointId = ::String` -- *Required*
+The ID of the endpoint.
 
 
 ## `ResetPolicy = ::Bool`
-Specify `true` to reset the policy document to the default policy. The default policy allows access to the service.
+(Gateway endpoint) Specify `true` to reset the policy document to the default policy. The default policy allows full access to the service.
 
 
-## `VpcEndpointId = ::String` -- *Required*
-The ID of the endpoint.
+## `PolicyDocument = ::String`
+(Gateway endpoint) A policy document to attach to the endpoint. The policy must be in valid JSON format.
+
+
+## `AddRouteTableId = [::String, ...]`
+(Gateway endpoint) One or more route tables IDs to associate with the endpoint.
+
+
+## `RemoveRouteTableId = [::String, ...]`
+(Gateway endpoint) One or more route table IDs to disassociate from the endpoint.
+
+
+## `AddSubnetId = [::String, ...]`
+(Interface endpoint) One or more subnet IDs in which to serve the endpoint.
+
+
+## `RemoveSubnetId = [::String, ...]`
+(Interface endpoint) One or more subnets IDs in which to remove the endpoint.
+
+
+## `AddSecurityGroupId = [::String, ...]`
+(Interface endpoint) One or more security group IDs to associate with the network interface.
+
+
+## `RemoveSecurityGroupId = [::String, ...]`
+(Interface endpoint) One or more security group IDs to disassociate from the network interface.
+
+
+## `PrivateDnsEnabled = ::Bool`
+(Interface endpoint) Indicate whether a private hosted zone is associated with the VPC.
 
 
 
@@ -14997,7 +15113,7 @@ The ID of the RAM disk.
 
 
 ## `RootDeviceName = ::String`
-The name of the root device (for example, `/dev/sda1`, or `/dev/xvda`).
+The device name of the root device volume (for example, `/dev/sda1`).
 
 
 ## `SriovNetSupport = ::String`
@@ -15666,7 +15782,7 @@ The configuration for the Spot fleet request.
                 "Name" =>  ::String
             ],
             "ImageId" =>  ::String,
-            "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
+            "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
             "KernelId" =>  ::String,
             "KeyName" =>  ::String,
             "Monitoring" =>  ["Enabled" =>  ::Bool],
@@ -15712,7 +15828,11 @@ The configuration for the Spot fleet request.
         "ValidFrom" =>  timestamp,
         "ValidUntil" =>  timestamp,
         "ReplaceUnhealthyInstances" =>  ::Bool,
-        "InstanceInterruptionBehavior" =>  "stop" or "terminate"
+        "InstanceInterruptionBehavior" =>  "stop" or "terminate",
+        "LoadBalancersConfig" =>  [
+            "ClassicLoadBalancersConfig" =>  ["ClassicLoadBalancers" => <required> [["Name" => <required> ::String], ...]],
+            "TargetGroupsConfig" =>  ["TargetGroups" => <required> [["Arn" => <required> ::String], ...]]
+        ]
     ]
 ```
 
@@ -15971,7 +16091,7 @@ The launch specification.
             "Name" =>  ::String
         ],
         "ImageId" =>  ::String,
-        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
+        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
         "KernelId" =>  ::String,
         "KeyName" =>  ::String,
         "Monitoring" =>  ["Enabled" => <required> ::Bool],
@@ -16617,10 +16737,7 @@ For troubleshooting, see [What To Do If An Instance Immediately Terminates](http
 # Arguments
 
 ## `BlockDeviceMapping = [[ ... ], ...]`
-The block device mapping.
-
-**Important**
-> Supplying both a snapshot ID and an encryption value as arguments for block-device mapping results in an error. This is because only blank volumes can be encrypted on start, and these are not created from a snapshot. If a snapshot is the basis for the volume, it contains data by definition and its encryption status cannot be changed using this action.
+One or more block device mapping entries. You can't specify both a snapshot ID and an encryption value. This is because only blank volumes can be encrypted on creation. If a snapshot is the basis for a volume, it is not blank and its encryption status is used for the volume encryption status.
 ```
  BlockDeviceMapping = [[
         "DeviceName" =>  ::String,
@@ -16641,7 +16758,7 @@ The block device mapping.
 The ID of the AMI, which you can get by calling [DescribeImages](@ref).
 
 
-## `InstanceType = "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge"`
+## `InstanceType = "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge"`
 The instance type. For more information, see [Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 Default: `m1.small`
