@@ -15,11 +15,11 @@ using AWSCore
 """
     using AWSSDK.SimpleDB.batch_delete_attributes
     batch_delete_attributes([::AWSConfig], arguments::Dict)
-    batch_delete_attributes([::AWSConfig]; DomainName=, Items=)
+    batch_delete_attributes([::AWSConfig]; DomainName=, Item=)
 
     using AWSCore.Services.sdb
     sdb([::AWSConfig], "BatchDeleteAttributes", arguments::Dict)
-    sdb([::AWSConfig], "BatchDeleteAttributes", DomainName=, Items=)
+    sdb([::AWSConfig], "BatchDeleteAttributes", DomainName=, Item=)
 
 # BatchDeleteAttributes Operation
 
@@ -47,12 +47,12 @@ The following limitations are enforced for this operation:
 The name of the domain in which the attributes are being deleted.
 
 
-## `Items = [[ ... ], ...]` -- *Required*
+## `Item = [[ ... ], ...]` -- *Required*
 A list of items on which to perform the operation.
 ```
- Items = [[
+ Item = [[
         "ItemName" => <required> ::String,
-        "Attributes" =>  [[
+        "Attribute" =>  [[
             "Name" => <required> ::String,
             "Value" =>  ::String
         ], ...]
@@ -74,11 +74,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-20
 """
     using AWSSDK.SimpleDB.batch_put_attributes
     batch_put_attributes([::AWSConfig], arguments::Dict)
-    batch_put_attributes([::AWSConfig]; DomainName=, Items=)
+    batch_put_attributes([::AWSConfig]; DomainName=, Item=)
 
     using AWSCore.Services.sdb
     sdb([::AWSConfig], "BatchPutAttributes", arguments::Dict)
-    sdb([::AWSConfig], "BatchPutAttributes", DomainName=, Items=)
+    sdb([::AWSConfig], "BatchPutAttributes", DomainName=, Item=)
 
 # BatchPutAttributes Operation
 
@@ -112,12 +112,12 @@ The following limitations are enforced for this operation:
 The name of the domain in which the attributes are being stored.
 
 
-## `Items = [[ ... ], ...]` -- *Required*
+## `Item = [[ ... ], ...]` -- *Required*
 A list of items on which to perform the operation.
 ```
- Items = [[
+ Item = [[
         "ItemName" => <required> ::String,
-        "Attributes" => <required> [[
+        "Attribute" => <required> [[
             "Name" => <required> ::String,
             "Value" => <required> ::String,
             "Replace" =>  ::Bool
@@ -213,10 +213,10 @@ The name of the domain in which to perform the operation.
 The name of the item. Similar to rows on a spreadsheet, items represent individual objects that contain one or more value-attribute pairs.
 
 
-## `Attributes = [[ ... ], ...]`
+## `Attribute = [[ ... ], ...]`
 A list of Attributes. Similar to columns on a spreadsheet, attributes represent categories of data that can be assigned to items.
 ```
- Attributes = [[
+ Attribute = [[
         "Name" => <required> ::String,
         "Value" =>  ::String
     ], ...]
@@ -353,7 +353,7 @@ The name of the domain in which to perform the operation.
 The name of the item.
 
 
-## `AttributeNames = [::String, ...]`
+## `AttributeName = [::String, ...]`
 The names of the attributes.
 
 
@@ -427,11 +427,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-20
 """
     using AWSSDK.SimpleDB.put_attributes
     put_attributes([::AWSConfig], arguments::Dict)
-    put_attributes([::AWSConfig]; DomainName=, ItemName=, Attributes=, <keyword arguments>)
+    put_attributes([::AWSConfig]; DomainName=, ItemName=, Attribute=, <keyword arguments>)
 
     using AWSCore.Services.sdb
     sdb([::AWSConfig], "PutAttributes", arguments::Dict)
-    sdb([::AWSConfig], "PutAttributes", DomainName=, ItemName=, Attributes=, <keyword arguments>)
+    sdb([::AWSConfig], "PutAttributes", DomainName=, ItemName=, Attribute=, <keyword arguments>)
 
 # PutAttributes Operation
 
@@ -464,10 +464,10 @@ The name of the domain in which to perform the operation.
 The name of the item.
 
 
-## `Attributes = [[ ... ], ...]` -- *Required*
+## `Attribute = [[ ... ], ...]` -- *Required*
 The list of attributes.
 ```
- Attributes = [[
+ Attribute = [[
         "Name" => <required> ::String,
         "Value" => <required> ::String,
         "Replace" =>  ::Bool

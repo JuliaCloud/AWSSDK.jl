@@ -15,11 +15,11 @@ using AWSCore
 """
     using AWSSDK.SQS.add_permission
     add_permission([::AWSConfig], arguments::Dict)
-    add_permission([::AWSConfig]; QueueUrl=, Label=, AWSAccountIds=, Actions=)
+    add_permission([::AWSConfig]; QueueUrl=, Label=, AWSAccountId=, ActionName=)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "AddPermission", arguments::Dict)
-    sqs([::AWSConfig], "AddPermission", QueueUrl=, Label=, AWSAccountIds=, Actions=)
+    sqs([::AWSConfig], "AddPermission", QueueUrl=, Label=, AWSAccountId=, ActionName=)
 
 # AddPermission Operation
 
@@ -48,11 +48,11 @@ Queue URLs are case-sensitive.
 The unique identification of the permission you're setting (for example, `AliceSendMessage`). Maximum 80 characters. Allowed characters include alphanumeric characters, hyphens (`-`), and underscores (`_`).
 
 
-## `AWSAccountIds = [::String, ...]` -- *Required*
+## `AWSAccountId = [::String, ...]` -- *Required*
 The AWS account number of the [principal](http://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P) who is given permission. The principal must have an AWS account, but does not need to be signed up for Amazon SQS. For information about locating the AWS account identification, see [Your AWS Identifiers](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AWSCredentials.html) in the *Amazon Simple Queue Service Developer Guide*.
 
 
-## `Actions = [::String, ...]` -- *Required*
+## `ActionName = [::String, ...]` -- *Required*
 The action the client wants to allow for the specified principal. The following values are valid:
 
 *   `*`
@@ -151,11 +151,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 """
     using AWSSDK.SQS.change_message_visibility_batch
     change_message_visibility_batch([::AWSConfig], arguments::Dict)
-    change_message_visibility_batch([::AWSConfig]; QueueUrl=, Entries=)
+    change_message_visibility_batch([::AWSConfig]; QueueUrl=, ChangeMessageVisibilityBatchRequestEntry=)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "ChangeMessageVisibilityBatch", arguments::Dict)
-    sqs([::AWSConfig], "ChangeMessageVisibilityBatch", QueueUrl=, Entries=)
+    sqs([::AWSConfig], "ChangeMessageVisibilityBatch", QueueUrl=, ChangeMessageVisibilityBatchRequestEntry=)
 
 # ChangeMessageVisibilityBatch Operation
 
@@ -179,10 +179,10 @@ The URL of the Amazon SQS queue whose messages' visibility is changed.
 Queue URLs are case-sensitive.
 
 
-## `Entries = [[ ... ], ...]` -- *Required*
+## `ChangeMessageVisibilityBatchRequestEntry = [[ ... ], ...]` -- *Required*
 A list of receipt handles of the messages for which the visibility timeout must be changed.
 ```
- Entries = [[
+ ChangeMessageVisibilityBatchRequestEntry = [[
         "Id" => <required> ::String,
         "ReceiptHandle" => <required> ::String,
         "VisibilityTimeout" =>  ::Int
@@ -398,11 +398,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 """
     using AWSSDK.SQS.delete_message_batch
     delete_message_batch([::AWSConfig], arguments::Dict)
-    delete_message_batch([::AWSConfig]; QueueUrl=, Entries=)
+    delete_message_batch([::AWSConfig]; QueueUrl=, DeleteMessageBatchRequestEntry=)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "DeleteMessageBatch", arguments::Dict)
-    sqs([::AWSConfig], "DeleteMessageBatch", QueueUrl=, Entries=)
+    sqs([::AWSConfig], "DeleteMessageBatch", QueueUrl=, DeleteMessageBatchRequestEntry=)
 
 # DeleteMessageBatch Operation
 
@@ -426,10 +426,10 @@ The URL of the Amazon SQS queue from which messages are deleted.
 Queue URLs are case-sensitive.
 
 
-## `Entries = [[ ... ], ...]` -- *Required*
+## `DeleteMessageBatchRequestEntry = [[ ... ], ...]` -- *Required*
 A list of receipt handles for the messages to be deleted.
 ```
- Entries = [[
+ DeleteMessageBatchRequestEntry = [[
         "Id" => <required> ::String,
         "ReceiptHandle" => <required> ::String
     ], ...]
@@ -526,7 +526,7 @@ The URL of the Amazon SQS queue whose attribute information is retrieved.
 Queue URLs are case-sensitive.
 
 
-## `AttributeNames = ["All", "Policy", "VisibilityTimeout", "MaximumMessageSize", "MessageRetentionPeriod", "ApproximateNumberOfMessages", "ApproximateNumberOfMessagesNotVisible", "CreatedTimestamp", "LastModifiedTimestamp", "QueueArn", "ApproximateNumberOfMessagesDelayed", "DelaySeconds", "ReceiveMessageWaitTimeSeconds", "RedrivePolicy", "FifoQueue", "ContentBasedDeduplication", "KmsMasterKeyId" or "KmsDataKeyReusePeriodSeconds", ...]`
+## `AttributeName = ["All", "Policy", "VisibilityTimeout", "MaximumMessageSize", "MessageRetentionPeriod", "ApproximateNumberOfMessages", "ApproximateNumberOfMessagesNotVisible", "CreatedTimestamp", "LastModifiedTimestamp", "QueueArn", "ApproximateNumberOfMessagesDelayed", "DelaySeconds", "ReceiveMessageWaitTimeSeconds", "RedrivePolicy", "FifoQueue", "ContentBasedDeduplication", "KmsMasterKeyId" or "KmsDataKeyReusePeriodSeconds", ...]`
 A list of attributes for which to retrieve information.
 
 **Note**
@@ -866,7 +866,7 @@ The URL of the Amazon SQS queue from which messages are received.
 Queue URLs are case-sensitive.
 
 
-## `AttributeNames = ["All", "Policy", "VisibilityTimeout", "MaximumMessageSize", "MessageRetentionPeriod", "ApproximateNumberOfMessages", "ApproximateNumberOfMessagesNotVisible", "CreatedTimestamp", "LastModifiedTimestamp", "QueueArn", "ApproximateNumberOfMessagesDelayed", "DelaySeconds", "ReceiveMessageWaitTimeSeconds", "RedrivePolicy", "FifoQueue", "ContentBasedDeduplication", "KmsMasterKeyId" or "KmsDataKeyReusePeriodSeconds", ...]`
+## `AttributeName = ["All", "Policy", "VisibilityTimeout", "MaximumMessageSize", "MessageRetentionPeriod", "ApproximateNumberOfMessages", "ApproximateNumberOfMessagesNotVisible", "CreatedTimestamp", "LastModifiedTimestamp", "QueueArn", "ApproximateNumberOfMessagesDelayed", "DelaySeconds", "ReceiveMessageWaitTimeSeconds", "RedrivePolicy", "FifoQueue", "ContentBasedDeduplication", "KmsMasterKeyId" or "KmsDataKeyReusePeriodSeconds", ...]`
 A list of attributes that need to be returned along with each message. These attributes include:
 
 *   `All` - Returns all values.
@@ -922,7 +922,7 @@ Any other valid special request parameters (such as the following) are ignored:
 *   `VisibilityTimeout`
 
 
-## `MessageAttributeNames = [::String, ...]`
+## `MessageAttributeName = [::String, ...]`
 The name of the message attribute, where *N* is the index.
 
 *   The name can contain alphanumeric characters and the underscore (`_`), hyphen (`-`), and period (`.`).
@@ -1155,11 +1155,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 """
     using AWSSDK.SQS.send_message_batch
     send_message_batch([::AWSConfig], arguments::Dict)
-    send_message_batch([::AWSConfig]; QueueUrl=, Entries=)
+    send_message_batch([::AWSConfig]; QueueUrl=, SendMessageBatchRequestEntry=)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "SendMessageBatch", arguments::Dict)
-    sqs([::AWSConfig], "SendMessageBatch", QueueUrl=, Entries=)
+    sqs([::AWSConfig], "SendMessageBatch", QueueUrl=, SendMessageBatchRequestEntry=)
 
 # SendMessageBatch Operation
 
@@ -1193,10 +1193,10 @@ The URL of the Amazon SQS queue to which batched messages are sent.
 Queue URLs are case-sensitive.
 
 
-## `Entries = [[ ... ], ...]` -- *Required*
+## `SendMessageBatchRequestEntry = [[ ... ], ...]` -- *Required*
 A list of `[SendMessageBatchRequestEntry](@ref)` items.
 ```
- Entries = [[
+ SendMessageBatchRequestEntry = [[
         "Id" => <required> ::String,
         "MessageBody" => <required> ::String,
         "DelaySeconds" =>  ::Int,
@@ -1383,11 +1383,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-20
 """
     using AWSSDK.SQS.untag_queue
     untag_queue([::AWSConfig], arguments::Dict)
-    untag_queue([::AWSConfig]; QueueUrl=, TagKeys=)
+    untag_queue([::AWSConfig]; QueueUrl=, TagKey=)
 
     using AWSCore.Services.sqs
     sqs([::AWSConfig], "UntagQueue", arguments::Dict)
-    sqs([::AWSConfig], "UntagQueue", QueueUrl=, TagKeys=)
+    sqs([::AWSConfig], "UntagQueue", QueueUrl=, TagKey=)
 
 # UntagQueue Operation
 
@@ -1413,7 +1413,7 @@ For a full list of tag restrictions, see [Limits Related to Queues](http://docs.
 The URL of the queue.
 
 
-## `TagKeys = [::String, ...]` -- *Required*
+## `TagKey = [::String, ...]` -- *Required*
 The list of tags to be removed from the specified queue.
 
 
