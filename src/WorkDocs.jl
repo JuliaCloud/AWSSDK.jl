@@ -27,7 +27,7 @@ Aborts the upload of the specified document version that was previously initiate
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -74,7 +74,7 @@ Activates the specified user. Only active users can access Amazon WorkDocs.
 The ID of the user.
 
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -113,7 +113,7 @@ Creates a set of permissions for the specified folder or document. The resource 
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -166,7 +166,7 @@ Adds a new comment to the specified document version.
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -233,7 +233,7 @@ Adds one or more custom properties to the specified resource (a folder, document
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -284,7 +284,7 @@ Creates a folder with the specified name and parent folder.
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -339,7 +339,7 @@ The ID of the resource.
 List of labels to add to the resource.
 
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -468,7 +468,7 @@ The amount of storage for the user.
     ]
 ```
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -511,7 +511,7 @@ Deactivates the specified user, which revokes the user's access to Amazon WorkDo
 The ID of the user.
 
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -546,7 +546,7 @@ Deletes the specified comment from the document version.
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -593,7 +593,7 @@ Deletes custom metadata from the specified resource.
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -648,7 +648,7 @@ Permanently deletes the specified document and its associated metadata.
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -687,7 +687,7 @@ Permanently deletes the specified folder and its contents.
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -726,7 +726,7 @@ Deletes the contents of the specified folder.
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -769,7 +769,7 @@ Deletes the specified list of labels from a resource.
 The ID of the resource.
 
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -855,7 +855,7 @@ Deletes the specified user from a Simple AD or Microsoft AD directory.
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -894,7 +894,7 @@ Describes the user activities in a specified time period.
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -957,7 +957,7 @@ List all the comments for the specified document version.
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -1014,7 +1014,7 @@ By default, only active versions are returned.
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -1075,7 +1075,7 @@ By default, Amazon WorkDocs returns the first 100 active document and folder met
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -1189,7 +1189,7 @@ Describes the permissions of a specified resource.
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -1228,11 +1228,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 """
     using AWSSDK.WorkDocs.describe_root_folders
     describe_root_folders([::AWSConfig], arguments::Dict)
-    describe_root_folders([::AWSConfig]; Authentication=, <keyword arguments>)
+    describe_root_folders([::AWSConfig]; *header:* Authentication=, <keyword arguments>)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "GET", "/api/v1/me/root", arguments::Dict)
-    workdocs([::AWSConfig], "GET", "/api/v1/me/root", Authentication=, <keyword arguments>)
+    workdocs([::AWSConfig], "GET", "/api/v1/me/root", *header:* Authentication=, <keyword arguments>)
 
 # DescribeRootFolders Operation
 
@@ -1240,7 +1240,7 @@ Describes the current user's special folders; the `RootFolder` and the `RecyleBi
 
 # Arguments
 
-## `Authentication = ::String` -- *Required*
+## `*header:* Authentication = ::String` -- *Required*
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -1289,7 +1289,7 @@ By default, Amazon WorkDocs returns the first 24 active or pending users. If the
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -1352,11 +1352,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 """
     using AWSSDK.WorkDocs.get_current_user
     get_current_user([::AWSConfig], arguments::Dict)
-    get_current_user([::AWSConfig]; Authentication=)
+    get_current_user([::AWSConfig]; *header:* Authentication=)
 
     using AWSCore.Services.workdocs
     workdocs([::AWSConfig], "GET", "/api/v1/me", arguments::Dict)
-    workdocs([::AWSConfig], "GET", "/api/v1/me", Authentication=)
+    workdocs([::AWSConfig], "GET", "/api/v1/me", *header:* Authentication=)
 
 # GetCurrentUser Operation
 
@@ -1364,7 +1364,7 @@ Retrieves details of the current user for whom the authentication token was gene
 
 # Arguments
 
-## `Authentication = ::String` -- *Required*
+## `*header:* Authentication = ::String` -- *Required*
 Amazon WorkDocs authentication token.
 
 
@@ -1403,7 +1403,7 @@ Retrieves details of a document.
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -1452,7 +1452,7 @@ By default, Amazon WorkDocs returns a maximum of 100 levels upwards from the req
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -1507,7 +1507,7 @@ Retrieves version metadata for the specified document.
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -1562,7 +1562,7 @@ Retrieves the metadata of the specified folder.
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -1611,7 +1611,7 @@ By default, Amazon WorkDocs returns a maximum of 100 levels upwards from the req
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -1670,7 +1670,7 @@ To cancel the document upload, call [AbortDocumentVersionUpload](@ref).
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -1737,7 +1737,7 @@ Removes all the permissions from the specified resource.
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -1776,7 +1776,7 @@ Removes the permission for the specified principal from the specified resource.
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -1823,7 +1823,7 @@ Updates the specified attributes of a document. The user must have access to bot
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -1876,7 +1876,7 @@ Amazon WorkDocs also sets its document container to ACTIVE. This is the last ste
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -1923,7 +1923,7 @@ Updates the specified attributes of the specified folder. The user must have acc
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 
@@ -1974,7 +1974,7 @@ Updates the specified attributes of the specified user, and grants or revokes ad
 
 # Arguments
 
-## `Authentication = ::String`
+## `*header:* Authentication = ::String`
 Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
 
 

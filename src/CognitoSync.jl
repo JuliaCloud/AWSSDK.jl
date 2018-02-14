@@ -836,7 +836,7 @@ A list of patch operations.
 The SyncSessionToken returned by a previous call to ListRecords for this dataset and identity.
 
 
-## `x-amz-Client-Context = ::String`
+## `*header:* x-amz-Client-Context = ::String`
 Intended to supply a device ID that will populate the lastModifiedBy field referenced in other methods. The ClientContext field is not yet implemented.
 
 

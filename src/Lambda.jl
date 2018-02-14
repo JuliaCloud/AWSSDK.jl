@@ -1074,15 +1074,15 @@ The Lambda function name.
 You can specify a function name (for example, `Thumbnail`) or you can specify Amazon Resource Name (ARN) of the function (for example, `arn:aws:lambda:us-west-2:account-id:function:ThumbNail`). AWS Lambda also allows you to specify a partial ARN (for example, `account-id:Thumbnail`). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.
 
 
-## `X-Amz-Invocation-Type = "Event", "RequestResponse" or "DryRun"`
+## `*header:* X-Amz-Invocation-Type = "Event", "RequestResponse" or "DryRun"`
 By default, the `Invoke` API assumes `RequestResponse` invocation type. You can optionally request asynchronous execution by specifying `Event` as the `InvocationType`. You can also use this parameter to request AWS Lambda to not execute the function but do some verification, such as if the caller is authorized to invoke the function and if the inputs are valid. You request this by specifying `DryRun` as the `InvocationType`. This is useful in a cross-account scenario when you want to verify access to a function without running it.
 
 
-## `X-Amz-Log-Type = "None" or "Tail"`
+## `*header:* X-Amz-Log-Type = "None" or "Tail"`
 You can set this optional parameter to `Tail` in the request only if you specify the `InvocationType` parameter with value `RequestResponse`. In this case, AWS Lambda returns the base64-encoded last 4 KB of log data produced by your Lambda function in the `x-amz-log-result` header.
 
 
-## `X-Amz-Client-Context = ::String`
+## `*header:* X-Amz-Client-Context = ::String`
 Using the `ClientContext` you can pass client-specific information to the Lambda function you are invoking. You can then process the client information in your Lambda function as you choose through the context variable. For an example of a `ClientContext` JSON, see [PutEvents](http://docs.aws.amazon.com/mobileanalytics/latest/ug/PutEvents.html) in the *Amazon Mobile Analytics API Reference and User Guide*.
 
 The ClientContext JSON must be base64-encoded.

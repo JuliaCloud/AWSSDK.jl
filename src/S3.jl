@@ -41,7 +41,7 @@ To verify that all parts have been removed, so you don't get charged for the par
 
 
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 
 
 
@@ -121,7 +121,7 @@ Completes a multipart upload by assembling previously uploaded parts.
 
 
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 
 
 
@@ -179,11 +179,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 """
     using AWSSDK.S3.copy_object
     copy_object([::AWSConfig], arguments::Dict)
-    copy_object([::AWSConfig]; Bucket=, x-amz-copy-source=, Key=, <keyword arguments>)
+    copy_object([::AWSConfig]; Bucket=, *header:* x-amz-copy-source=, Key=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}/{Key+}", arguments::Dict)
-    s3([::AWSConfig], "PUT", "/{Bucket}/{Key+}", Bucket=, x-amz-copy-source=, Key=, <keyword arguments>)
+    s3([::AWSConfig], "PUT", "/{Bucket}/{Key+}", Bucket=, *header:* x-amz-copy-source=, Key=, <keyword arguments>)
 
 # CopyObject Operation
 
@@ -191,7 +191,7 @@ Creates a copy of an object that is already stored in Amazon S3.
 
 # Arguments
 
-## `x-amz-acl = "private", "public-read", "public-read-write", "authenticated-read", "aws-exec-read", "bucket-owner-read" or "bucket-owner-full-control"`
+## `*header:* x-amz-acl = "private", "public-read", "public-read-write", "authenticated-read", "aws-exec-read", "bucket-owner-read" or "bucket-owner-full-control"`
 The canned ACL to apply to the object.
 
 
@@ -199,63 +199,63 @@ The canned ACL to apply to the object.
 
 
 
-## `Cache-Control = ::String`
+## `*header:* Cache-Control = ::String`
 Specifies caching behavior along the request/reply chain.
 
 
-## `Content-Disposition = ::String`
+## `*header:* Content-Disposition = ::String`
 Specifies presentational information for the object.
 
 
-## `Content-Encoding = ::String`
+## `*header:* Content-Encoding = ::String`
 Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
 
 
-## `Content-Language = ::String`
+## `*header:* Content-Language = ::String`
 The language the content is in.
 
 
-## `Content-Type = ::String`
+## `*header:* Content-Type = ::String`
 A standard MIME type describing the format of the object data.
 
 
-## `x-amz-copy-source = ::String` -- *Required*
+## `*header:* x-amz-copy-source = ::String` -- *Required*
 The name of the source bucket and key name of the source object, separated by a slash (/). Must be URL-encoded.
 
 
-## `x-amz-copy-source-if-match = ::String`
+## `*header:* x-amz-copy-source-if-match = ::String`
 Copies the object if its entity tag (ETag) matches the specified tag.
 
 
-## `x-amz-copy-source-if-modified-since = timestamp`
+## `*header:* x-amz-copy-source-if-modified-since = timestamp`
 Copies the object if it has been modified since the specified time.
 
 
-## `x-amz-copy-source-if-none-match = ::String`
+## `*header:* x-amz-copy-source-if-none-match = ::String`
 Copies the object if its entity tag (ETag) is different than the specified ETag.
 
 
-## `x-amz-copy-source-if-unmodified-since = timestamp`
+## `*header:* x-amz-copy-source-if-unmodified-since = timestamp`
 Copies the object if it hasn't been modified since the specified time.
 
 
-## `Expires = timestamp`
+## `*header:* Expires = timestamp`
 The date and time at which the object is no longer cacheable.
 
 
-## `x-amz-grant-full-control = ::String`
+## `*header:* x-amz-grant-full-control = ::String`
 Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the object.
 
 
-## `x-amz-grant-read = ::String`
+## `*header:* x-amz-grant-read = ::String`
 Allows grantee to read the object data and its metadata.
 
 
-## `x-amz-grant-read-acp = ::String`
+## `*header:* x-amz-grant-read-acp = ::String`
 Allows grantee to read the object ACL.
 
 
-## `x-amz-grant-write-acp = ::String`
+## `*header:* x-amz-grant-write-acp = ::String`
 Allows grantee to write the ACL for the applicable object.
 
 
@@ -263,63 +263,63 @@ Allows grantee to write the ACL for the applicable object.
 
 
 
-## `x-amz-meta- = ::Dict{String,String}`
+## `*header:* x-amz-meta- = ::Dict{String,String}`
 A map of metadata to store with the object in S3.
 
 
-## `x-amz-metadata-directive = "COPY" or "REPLACE"`
+## `*header:* x-amz-metadata-directive = "COPY" or "REPLACE"`
 Specifies whether the metadata is copied from the source object or replaced with metadata provided in the request.
 
 
-## `x-amz-tagging-directive = "COPY" or "REPLACE"`
+## `*header:* x-amz-tagging-directive = "COPY" or "REPLACE"`
 Specifies whether the object tag-set are copied from the source object or replaced with tag-set provided in the request.
 
 
-## `x-amz-server-side-encryption = "AES256" or "aws:kms"`
+## `*header:* x-amz-server-side-encryption = "AES256" or "aws:kms"`
 The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
 
 
-## `x-amz-storage-class = "STANDARD", "REDUCED_REDUNDANCY" or "STANDARD_IA"`
+## `*header:* x-amz-storage-class = "STANDARD", "REDUCED_REDUNDANCY" or "STANDARD_IA"`
 The type of storage to use for the object. Defaults to 'STANDARD'.
 
 
-## `x-amz-website-redirect-location = ::String`
+## `*header:* x-amz-website-redirect-location = ::String`
 If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Amazon S3 stores the value of this header in the object metadata.
 
 
-## `x-amz-server-side-encryption-customer-algorithm = ::String`
+## `*header:* x-amz-server-side-encryption-customer-algorithm = ::String`
 Specifies the algorithm to use to when encrypting the object (e.g., AES256).
 
 
-## `x-amz-server-side-encryption-customer-key = blob`
+## `*header:* x-amz-server-side-encryption-customer-key = blob`
 Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.
 
 
-## `x-amz-server-side-encryption-customer-key-MD5 = ::String`
+## `*header:* x-amz-server-side-encryption-customer-key-MD5 = ::String`
 Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
-## `x-amz-server-side-encryption-aws-kms-key-id = ::String`
+## `*header:* x-amz-server-side-encryption-aws-kms-key-id = ::String`
 Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not made via SSL or using SigV4. Documentation on configuring any of the officially supported AWS SDKs and CLI can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
 
 
-## `x-amz-copy-source-server-side-encryption-customer-algorithm = ::String`
+## `*header:* x-amz-copy-source-server-side-encryption-customer-algorithm = ::String`
 Specifies the algorithm to use when decrypting the source object (e.g., AES256).
 
 
-## `x-amz-copy-source-server-side-encryption-customer-key = blob`
+## `*header:* x-amz-copy-source-server-side-encryption-customer-key = blob`
 Specifies the customer-provided encryption key for Amazon S3 to use to decrypt the source object. The encryption key provided in this header must be one that was used when the source object was created.
 
 
-## `x-amz-copy-source-server-side-encryption-customer-key-MD5 = ::String`
+## `*header:* x-amz-copy-source-server-side-encryption-customer-key-MD5 = ::String`
 Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 
 
 
-## `x-amz-tagging = ::String`
+## `*header:* x-amz-tagging = ::String`
 The tag-set for the object destination object this value must be used in conjunction with the TaggingDirective. The tag-set must be encoded as URL Query parameters
 
 
@@ -381,7 +381,7 @@ Creates a new bucket.
 
 # Arguments
 
-## `x-amz-acl = "private", "public-read", "public-read-write" or "authenticated-read"`
+## `*header:* x-amz-acl = "private", "public-read", "public-read-write" or "authenticated-read"`
 The canned ACL to apply to the bucket.
 
 
@@ -393,23 +393,23 @@ The canned ACL to apply to the bucket.
 
 
 
-## `x-amz-grant-full-control = ::String`
+## `*header:* x-amz-grant-full-control = ::String`
 Allows grantee the read, write, read ACP, and write ACP permissions on the bucket.
 
 
-## `x-amz-grant-read = ::String`
+## `*header:* x-amz-grant-read = ::String`
 Allows grantee to list the objects in the bucket.
 
 
-## `x-amz-grant-read-acp = ::String`
+## `*header:* x-amz-grant-read-acp = ::String`
 Allows grantee to read the bucket ACL.
 
 
-## `x-amz-grant-write = ::String`
+## `*header:* x-amz-grant-write = ::String`
 Allows grantee to create, overwrite, and delete any object in the bucket.
 
 
-## `x-amz-grant-write-acp = ::String`
+## `*header:* x-amz-grant-write-acp = ::String`
 Allows grantee to write the ACL for the applicable bucket.
 
 
@@ -489,7 +489,7 @@ Initiates a multipart upload and returns an upload ID.
 
 # Arguments
 
-## `x-amz-acl = "private", "public-read", "public-read-write", "authenticated-read", "aws-exec-read", "bucket-owner-read" or "bucket-owner-full-control"`
+## `*header:* x-amz-acl = "private", "public-read", "public-read-write", "authenticated-read", "aws-exec-read", "bucket-owner-read" or "bucket-owner-full-control"`
 The canned ACL to apply to the object.
 
 
@@ -497,43 +497,43 @@ The canned ACL to apply to the object.
 
 
 
-## `Cache-Control = ::String`
+## `*header:* Cache-Control = ::String`
 Specifies caching behavior along the request/reply chain.
 
 
-## `Content-Disposition = ::String`
+## `*header:* Content-Disposition = ::String`
 Specifies presentational information for the object.
 
 
-## `Content-Encoding = ::String`
+## `*header:* Content-Encoding = ::String`
 Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
 
 
-## `Content-Language = ::String`
+## `*header:* Content-Language = ::String`
 The language the content is in.
 
 
-## `Content-Type = ::String`
+## `*header:* Content-Type = ::String`
 A standard MIME type describing the format of the object data.
 
 
-## `Expires = timestamp`
+## `*header:* Expires = timestamp`
 The date and time at which the object is no longer cacheable.
 
 
-## `x-amz-grant-full-control = ::String`
+## `*header:* x-amz-grant-full-control = ::String`
 Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the object.
 
 
-## `x-amz-grant-read = ::String`
+## `*header:* x-amz-grant-read = ::String`
 Allows grantee to read the object data and its metadata.
 
 
-## `x-amz-grant-read-acp = ::String`
+## `*header:* x-amz-grant-read-acp = ::String`
 Allows grantee to read the object ACL.
 
 
-## `x-amz-grant-write-acp = ::String`
+## `*header:* x-amz-grant-write-acp = ::String`
 Allows grantee to write the ACL for the applicable object.
 
 
@@ -541,43 +541,43 @@ Allows grantee to write the ACL for the applicable object.
 
 
 
-## `x-amz-meta- = ::Dict{String,String}`
+## `*header:* x-amz-meta- = ::Dict{String,String}`
 A map of metadata to store with the object in S3.
 
 
-## `x-amz-server-side-encryption = "AES256" or "aws:kms"`
+## `*header:* x-amz-server-side-encryption = "AES256" or "aws:kms"`
 The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
 
 
-## `x-amz-storage-class = "STANDARD", "REDUCED_REDUNDANCY" or "STANDARD_IA"`
+## `*header:* x-amz-storage-class = "STANDARD", "REDUCED_REDUNDANCY" or "STANDARD_IA"`
 The type of storage to use for the object. Defaults to 'STANDARD'.
 
 
-## `x-amz-website-redirect-location = ::String`
+## `*header:* x-amz-website-redirect-location = ::String`
 If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Amazon S3 stores the value of this header in the object metadata.
 
 
-## `x-amz-server-side-encryption-customer-algorithm = ::String`
+## `*header:* x-amz-server-side-encryption-customer-algorithm = ::String`
 Specifies the algorithm to use to when encrypting the object (e.g., AES256).
 
 
-## `x-amz-server-side-encryption-customer-key = blob`
+## `*header:* x-amz-server-side-encryption-customer-key = blob`
 Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.
 
 
-## `x-amz-server-side-encryption-customer-key-MD5 = ::String`
+## `*header:* x-amz-server-side-encryption-customer-key-MD5 = ::String`
 Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
-## `x-amz-server-side-encryption-aws-kms-key-id = ::String`
+## `*header:* x-amz-server-side-encryption-aws-kms-key-id = ::String`
 Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not made via SSL or using SigV4. Documentation on configuring any of the officially supported AWS SDKs and CLI can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
 
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 
 
 
-## `x-amz-tagging = ::String`
+## `*header:* x-amz-tagging = ::String`
 The tag-set for the object. The tag-set must be encoded as URL Query parameters
 
 
@@ -1071,7 +1071,7 @@ Removes the null version (if there is one) of an object and inserts a delete mar
 
 
 
-## `x-amz-mfa = ::String`
+## `*header:* x-amz-mfa = ::String`
 The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.
 
 
@@ -1079,7 +1079,7 @@ The concatenation of the authentication device's serial number, a space, and the
 VersionId used to reference a specific version of the object.
 
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 
 
 
@@ -1243,11 +1243,11 @@ This operation enables you to delete multiple objects from a bucket using a sing
     ]
 ```
 
-## `x-amz-mfa = ::String`
+## `*header:* x-amz-mfa = ::String`
 The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.
 
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 
 
 
@@ -2350,19 +2350,19 @@ Retrieves objects from Amazon S3.
 
 
 
-## `If-Match = ::String`
+## `*header:* If-Match = ::String`
 Return the object only if its entity tag (ETag) is the same as the one specified, otherwise return a 412 (precondition failed).
 
 
-## `If-Modified-Since = timestamp`
+## `*header:* If-Modified-Since = timestamp`
 Return the object only if it has been modified since the specified time, otherwise return a 304 (not modified).
 
 
-## `If-None-Match = ::String`
+## `*header:* If-None-Match = ::String`
 Return the object only if its entity tag (ETag) is different from the one specified, otherwise return a 304 (not modified).
 
 
-## `If-Unmodified-Since = timestamp`
+## `*header:* If-Unmodified-Since = timestamp`
 Return the object only if it has not been modified since the specified time, otherwise return a 412 (precondition failed).
 
 
@@ -2370,7 +2370,7 @@ Return the object only if it has not been modified since the specified time, oth
 
 
 
-## `Range = ::String`
+## `*header:* Range = ::String`
 Downloads the specified range bytes of an object. For more information about the HTTP Range header, go to http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.
 
 
@@ -2402,19 +2402,19 @@ Sets the Expires header of the response.
 VersionId used to reference a specific version of the object.
 
 
-## `x-amz-server-side-encryption-customer-algorithm = ::String`
+## `*header:* x-amz-server-side-encryption-customer-algorithm = ::String`
 Specifies the algorithm to use to when encrypting the object (e.g., AES256).
 
 
-## `x-amz-server-side-encryption-customer-key = blob`
+## `*header:* x-amz-server-side-encryption-customer-key = blob`
 Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.
 
 
-## `x-amz-server-side-encryption-customer-key-MD5 = ::String`
+## `*header:* x-amz-server-side-encryption-customer-key-MD5 = ::String`
 Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 
 
 
@@ -2526,7 +2526,7 @@ Returns the access control list (ACL) of an object.
 VersionId used to reference a specific version of the object.
 
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 
 
 
@@ -2727,7 +2727,7 @@ Return torrent files from a bucket.
 
 
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 
 
 
@@ -2831,19 +2831,19 @@ The HEAD operation retrieves metadata from an object without returning the objec
 
 
 
-## `If-Match = ::String`
+## `*header:* If-Match = ::String`
 Return the object only if its entity tag (ETag) is the same as the one specified, otherwise return a 412 (precondition failed).
 
 
-## `If-Modified-Since = timestamp`
+## `*header:* If-Modified-Since = timestamp`
 Return the object only if it has been modified since the specified time, otherwise return a 304 (not modified).
 
 
-## `If-None-Match = ::String`
+## `*header:* If-None-Match = ::String`
 Return the object only if its entity tag (ETag) is different from the one specified, otherwise return a 304 (not modified).
 
 
-## `If-Unmodified-Since = timestamp`
+## `*header:* If-Unmodified-Since = timestamp`
 Return the object only if it has not been modified since the specified time, otherwise return a 412 (precondition failed).
 
 
@@ -2851,7 +2851,7 @@ Return the object only if it has not been modified since the specified time, oth
 
 
 
-## `Range = ::String`
+## `*header:* Range = ::String`
 Downloads the specified range bytes of an object. For more information about the HTTP Range header, go to http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.
 
 
@@ -2859,19 +2859,19 @@ Downloads the specified range bytes of an object. For more information about the
 VersionId used to reference a specific version of the object.
 
 
-## `x-amz-server-side-encryption-customer-algorithm = ::String`
+## `*header:* x-amz-server-side-encryption-customer-algorithm = ::String`
 Specifies the algorithm to use to when encrypting the object (e.g., AES256).
 
 
-## `x-amz-server-side-encryption-customer-key = blob`
+## `*header:* x-amz-server-side-encryption-customer-key = blob`
 Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.
 
 
-## `x-amz-server-side-encryption-customer-key-MD5 = ::String`
+## `*header:* x-amz-server-side-encryption-customer-key-MD5 = ::String`
 Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 
 
 
@@ -3405,7 +3405,7 @@ Sets the maximum number of keys returned in the response. The response might con
 Limits the response to keys that begin with the specified prefix.
 
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 Confirms that the requester knows that she or he will be charged for the list objects request. Bucket owners need not specify this parameter in their requests.
 
 
@@ -3519,7 +3519,7 @@ The owner field is not present in listV2 by default, if you want to return owner
 StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts listing after this specified key. StartAfter can be any key in the bucket
 
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 Confirms that the requester knows that she or he will be charged for the list objects request in V2 style. Bucket owners need not specify this parameter in their requests.
 
 
@@ -3618,7 +3618,7 @@ Specifies the part after which listing should begin. Only parts with higher part
 Upload ID identifying the multipart upload whose parts are being listed.
 
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 
 
 
@@ -3730,7 +3730,7 @@ Sets the permissions on a bucket using access control lists (ACL).
 
 # Arguments
 
-## `x-amz-acl = "private", "public-read", "public-read-write" or "authenticated-read"`
+## `*header:* x-amz-acl = "private", "public-read", "public-read-write" or "authenticated-read"`
 The canned ACL to apply to the bucket.
 
 
@@ -3759,27 +3759,27 @@ The canned ACL to apply to the bucket.
 
 
 
-## `Content-MD5 = ::String`
+## `*header:* Content-MD5 = ::String`
 
 
 
-## `x-amz-grant-full-control = ::String`
+## `*header:* x-amz-grant-full-control = ::String`
 Allows grantee the read, write, read ACP, and write ACP permissions on the bucket.
 
 
-## `x-amz-grant-read = ::String`
+## `*header:* x-amz-grant-read = ::String`
 Allows grantee to list the objects in the bucket.
 
 
-## `x-amz-grant-read-acp = ::String`
+## `*header:* x-amz-grant-read-acp = ::String`
 Allows grantee to read the bucket ACL.
 
 
-## `x-amz-grant-write = ::String`
+## `*header:* x-amz-grant-write = ::String`
 Allows grantee to create, overwrite, and delete any object in the bucket.
 
 
-## `x-amz-grant-write-acp = ::String`
+## `*header:* x-amz-grant-write-acp = ::String`
 Allows grantee to write the ACL for the applicable bucket.
 
 
@@ -3905,7 +3905,7 @@ Sets the cors configuration for a bucket.
         ], ...]]
 ```
 
-## `Content-MD5 = ::String`
+## `*header:* Content-MD5 = ::String`
 
 
 
@@ -3985,7 +3985,7 @@ Creates a new server-side encryption configuration (or replaces an existing one,
 The name of the bucket for which the server-side encryption configuration is set.
 
 
-## `Content-MD5 = ::String`
+## `*header:* Content-MD5 = ::String`
 The base64-encoded 128-bit MD5 digest of the server-side encryption configuration.
 
 
@@ -4089,7 +4089,7 @@ Deprecated, see the PutBucketLifecycleConfiguration operation.
 
 
 
-## `Content-MD5 = ::String`
+## `*header:* Content-MD5 = ::String`
 
 
 
@@ -4271,7 +4271,7 @@ Set the logging parameters for a bucket and to specify permissions for who can v
         ]]
 ```
 
-## `Content-MD5 = ::String`
+## `*header:* Content-MD5 = ::String`
 
 
 
@@ -4389,7 +4389,7 @@ Deprecated, see the PutBucketNotificationConfiguraiton operation.
 
 
 
-## `Content-MD5 = ::String`
+## `*header:* Content-MD5 = ::String`
 
 
 
@@ -4536,11 +4536,11 @@ Replaces a policy on a bucket. If the bucket already has a policy, the one in th
 
 
 
-## `Content-MD5 = ::String`
+## `*header:* Content-MD5 = ::String`
 
 
 
-## `x-amz-confirm-remove-self-bucket-access = ::Bool`
+## `*header:* x-amz-confirm-remove-self-bucket-access = ::Bool`
 Set this parameter to true to confirm that you want to remove your permissions to change this bucket policy in the future.
 
 
@@ -4591,7 +4591,7 @@ Creates a new replication configuration (or replaces an existing one, if present
 
 
 
-## `Content-MD5 = ::String`
+## `*header:* Content-MD5 = ::String`
 
 
 
@@ -4671,7 +4671,7 @@ Sets the request payment configuration for a bucket. By default, the bucket owne
 
 
 
-## `Content-MD5 = ::String`
+## `*header:* Content-MD5 = ::String`
 
 
 
@@ -4724,7 +4724,7 @@ Sets the tags for a bucket.
 
 
 
-## `Content-MD5 = ::String`
+## `*header:* Content-MD5 = ::String`
 
 
 
@@ -4791,11 +4791,11 @@ Sets the versioning state of an existing bucket. To set the versioning state, yo
 
 
 
-## `Content-MD5 = ::String`
+## `*header:* Content-MD5 = ::String`
 
 
 
-## `x-amz-mfa = ::String`
+## `*header:* x-amz-mfa = ::String`
 The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.
 
 
@@ -4854,7 +4854,7 @@ Set the website configuration for a bucket.
 
 
 
-## `Content-MD5 = ::String`
+## `*header:* Content-MD5 = ::String`
 
 
 
@@ -4931,7 +4931,7 @@ Adds an object to a bucket.
 
 # Arguments
 
-## `x-amz-acl = "private", "public-read", "public-read-write", "authenticated-read", "aws-exec-read", "bucket-owner-read" or "bucket-owner-full-control"`
+## `*header:* x-amz-acl = "private", "public-read", "public-read-write", "authenticated-read", "aws-exec-read", "bucket-owner-read" or "bucket-owner-full-control"`
 The canned ACL to apply to the object.
 
 
@@ -4943,51 +4943,51 @@ Object data.
 Name of the bucket to which the PUT operation was initiated.
 
 
-## `Cache-Control = ::String`
+## `*header:* Cache-Control = ::String`
 Specifies caching behavior along the request/reply chain.
 
 
-## `Content-Disposition = ::String`
+## `*header:* Content-Disposition = ::String`
 Specifies presentational information for the object.
 
 
-## `Content-Encoding = ::String`
+## `*header:* Content-Encoding = ::String`
 Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
 
 
-## `Content-Language = ::String`
+## `*header:* Content-Language = ::String`
 The language the content is in.
 
 
-## `Content-Length = ::Int`
+## `*header:* Content-Length = ::Int`
 Size of the body in bytes. This parameter is useful when the size of the body cannot be determined automatically.
 
 
-## `Content-MD5 = ::String`
+## `*header:* Content-MD5 = ::String`
 The base64-encoded 128-bit MD5 digest of the part data.
 
 
-## `Content-Type = ::String`
+## `*header:* Content-Type = ::String`
 A standard MIME type describing the format of the object data.
 
 
-## `Expires = timestamp`
+## `*header:* Expires = timestamp`
 The date and time at which the object is no longer cacheable.
 
 
-## `x-amz-grant-full-control = ::String`
+## `*header:* x-amz-grant-full-control = ::String`
 Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the object.
 
 
-## `x-amz-grant-read = ::String`
+## `*header:* x-amz-grant-read = ::String`
 Allows grantee to read the object data and its metadata.
 
 
-## `x-amz-grant-read-acp = ::String`
+## `*header:* x-amz-grant-read-acp = ::String`
 Allows grantee to read the object ACL.
 
 
-## `x-amz-grant-write-acp = ::String`
+## `*header:* x-amz-grant-write-acp = ::String`
 Allows grantee to write the ACL for the applicable object.
 
 
@@ -4995,43 +4995,43 @@ Allows grantee to write the ACL for the applicable object.
 Object key for which the PUT operation was initiated.
 
 
-## `x-amz-meta- = ::Dict{String,String}`
+## `*header:* x-amz-meta- = ::Dict{String,String}`
 A map of metadata to store with the object in S3.
 
 
-## `x-amz-server-side-encryption = "AES256" or "aws:kms"`
+## `*header:* x-amz-server-side-encryption = "AES256" or "aws:kms"`
 The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
 
 
-## `x-amz-storage-class = "STANDARD", "REDUCED_REDUNDANCY" or "STANDARD_IA"`
+## `*header:* x-amz-storage-class = "STANDARD", "REDUCED_REDUNDANCY" or "STANDARD_IA"`
 The type of storage to use for the object. Defaults to 'STANDARD'.
 
 
-## `x-amz-website-redirect-location = ::String`
+## `*header:* x-amz-website-redirect-location = ::String`
 If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Amazon S3 stores the value of this header in the object metadata.
 
 
-## `x-amz-server-side-encryption-customer-algorithm = ::String`
+## `*header:* x-amz-server-side-encryption-customer-algorithm = ::String`
 Specifies the algorithm to use to when encrypting the object (e.g., AES256).
 
 
-## `x-amz-server-side-encryption-customer-key = blob`
+## `*header:* x-amz-server-side-encryption-customer-key = blob`
 Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.
 
 
-## `x-amz-server-side-encryption-customer-key-MD5 = ::String`
+## `*header:* x-amz-server-side-encryption-customer-key-MD5 = ::String`
 Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
-## `x-amz-server-side-encryption-aws-kms-key-id = ::String`
+## `*header:* x-amz-server-side-encryption-aws-kms-key-id = ::String`
 Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not made via SSL or using SigV4. Documentation on configuring any of the officially supported AWS SDKs and CLI can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
 
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 
 
 
-## `x-amz-tagging = ::String`
+## `*header:* x-amz-tagging = ::String`
 The tag-set for the object. The tag-set must be encoded as URL Query parameters
 
 
@@ -5225,7 +5225,7 @@ uses the acl subresource to set the access control list (ACL) permissions for an
 
 # Arguments
 
-## `x-amz-acl = "private", "public-read", "public-read-write", "authenticated-read", "aws-exec-read", "bucket-owner-read" or "bucket-owner-full-control"`
+## `*header:* x-amz-acl = "private", "public-read", "public-read-write", "authenticated-read", "aws-exec-read", "bucket-owner-read" or "bucket-owner-full-control"`
 The canned ACL to apply to the object.
 
 
@@ -5254,27 +5254,27 @@ The canned ACL to apply to the object.
 
 
 
-## `Content-MD5 = ::String`
+## `*header:* Content-MD5 = ::String`
 
 
 
-## `x-amz-grant-full-control = ::String`
+## `*header:* x-amz-grant-full-control = ::String`
 Allows grantee the read, write, read ACP, and write ACP permissions on the bucket.
 
 
-## `x-amz-grant-read = ::String`
+## `*header:* x-amz-grant-read = ::String`
 Allows grantee to list the objects in the bucket.
 
 
-## `x-amz-grant-read-acp = ::String`
+## `*header:* x-amz-grant-read-acp = ::String`
 Allows grantee to read the bucket ACL.
 
 
-## `x-amz-grant-write = ::String`
+## `*header:* x-amz-grant-write = ::String`
 Allows grantee to create, overwrite, and delete any object in the bucket.
 
 
-## `x-amz-grant-write-acp = ::String`
+## `*header:* x-amz-grant-write-acp = ::String`
 Allows grantee to write the ACL for the applicable bucket.
 
 
@@ -5282,7 +5282,7 @@ Allows grantee to write the ACL for the applicable bucket.
 
 
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 
 
 
@@ -5361,7 +5361,7 @@ Sets the supplied tag-set to an object that already exists in a bucket
 
 
 
-## `Content-MD5 = ::String`
+## `*header:* Content-MD5 = ::String`
 
 
 
@@ -5457,7 +5457,7 @@ Restores an archived copy of an object back into Amazon S3
     ]
 ```
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 
 
 
@@ -5531,11 +5531,11 @@ Object data.
 Name of the bucket to which the multipart upload was initiated.
 
 
-## `Content-Length = ::Int`
+## `*header:* Content-Length = ::Int`
 Size of the body in bytes. This parameter is useful when the size of the body cannot be determined automatically.
 
 
-## `Content-MD5 = ::String`
+## `*header:* Content-MD5 = ::String`
 The base64-encoded 128-bit MD5 digest of the part data.
 
 
@@ -5551,19 +5551,19 @@ Part number of part being uploaded. This is a positive integer between 1 and 10,
 Upload ID identifying the multipart upload whose part is being uploaded.
 
 
-## `x-amz-server-side-encryption-customer-algorithm = ::String`
+## `*header:* x-amz-server-side-encryption-customer-algorithm = ::String`
 Specifies the algorithm to use to when encrypting the object (e.g., AES256).
 
 
-## `x-amz-server-side-encryption-customer-key = blob`
+## `*header:* x-amz-server-side-encryption-customer-key = blob`
 Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header. This must be the same encryption key specified in the initiate multipart upload request.
 
 
-## `x-amz-server-side-encryption-customer-key-MD5 = ::String`
+## `*header:* x-amz-server-side-encryption-customer-key-MD5 = ::String`
 Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 
 
 
@@ -5608,11 +5608,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-200
 """
     using AWSSDK.S3.upload_part_copy
     upload_part_copy([::AWSConfig], arguments::Dict)
-    upload_part_copy([::AWSConfig]; Bucket=, x-amz-copy-source=, Key=, partNumber=, uploadId=, <keyword arguments>)
+    upload_part_copy([::AWSConfig]; Bucket=, *header:* x-amz-copy-source=, Key=, partNumber=, uploadId=, <keyword arguments>)
 
     using AWSCore.Services.s3
     s3([::AWSConfig], "PUT", "/{Bucket}/{Key+}", arguments::Dict)
-    s3([::AWSConfig], "PUT", "/{Bucket}/{Key+}", Bucket=, x-amz-copy-source=, Key=, partNumber=, uploadId=, <keyword arguments>)
+    s3([::AWSConfig], "PUT", "/{Bucket}/{Key+}", Bucket=, *header:* x-amz-copy-source=, Key=, partNumber=, uploadId=, <keyword arguments>)
 
 # UploadPartCopy Operation
 
@@ -5624,27 +5624,27 @@ Uploads a part by copying data from an existing object as data source.
 
 
 
-## `x-amz-copy-source = ::String` -- *Required*
+## `*header:* x-amz-copy-source = ::String` -- *Required*
 The name of the source bucket and key name of the source object, separated by a slash (/). Must be URL-encoded.
 
 
-## `x-amz-copy-source-if-match = ::String`
+## `*header:* x-amz-copy-source-if-match = ::String`
 Copies the object if its entity tag (ETag) matches the specified tag.
 
 
-## `x-amz-copy-source-if-modified-since = timestamp`
+## `*header:* x-amz-copy-source-if-modified-since = timestamp`
 Copies the object if it has been modified since the specified time.
 
 
-## `x-amz-copy-source-if-none-match = ::String`
+## `*header:* x-amz-copy-source-if-none-match = ::String`
 Copies the object if its entity tag (ETag) is different than the specified ETag.
 
 
-## `x-amz-copy-source-if-unmodified-since = timestamp`
+## `*header:* x-amz-copy-source-if-unmodified-since = timestamp`
 Copies the object if it hasn't been modified since the specified time.
 
 
-## `x-amz-copy-source-range = ::String`
+## `*header:* x-amz-copy-source-range = ::String`
 The range of bytes to copy from the source object. The range value must use the form bytes=first-last, where the first and last are the zero-based byte offsets to copy. For example, bytes=0-9 indicates that you want to copy the first ten bytes of the source. You can copy a range only if the source object is greater than 5 GB.
 
 
@@ -5660,31 +5660,31 @@ Part number of part being copied. This is a positive integer between 1 and 10,00
 Upload ID identifying the multipart upload whose part is being copied.
 
 
-## `x-amz-server-side-encryption-customer-algorithm = ::String`
+## `*header:* x-amz-server-side-encryption-customer-algorithm = ::String`
 Specifies the algorithm to use to when encrypting the object (e.g., AES256).
 
 
-## `x-amz-server-side-encryption-customer-key = blob`
+## `*header:* x-amz-server-side-encryption-customer-key = blob`
 Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header. This must be the same encryption key specified in the initiate multipart upload request.
 
 
-## `x-amz-server-side-encryption-customer-key-MD5 = ::String`
+## `*header:* x-amz-server-side-encryption-customer-key-MD5 = ::String`
 Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
-## `x-amz-copy-source-server-side-encryption-customer-algorithm = ::String`
+## `*header:* x-amz-copy-source-server-side-encryption-customer-algorithm = ::String`
 Specifies the algorithm to use when decrypting the source object (e.g., AES256).
 
 
-## `x-amz-copy-source-server-side-encryption-customer-key = blob`
+## `*header:* x-amz-copy-source-server-side-encryption-customer-key = blob`
 Specifies the customer-provided encryption key for Amazon S3 to use to decrypt the source object. The encryption key provided in this header must be one that was used when the source object was created.
 
 
-## `x-amz-copy-source-server-side-encryption-customer-key-MD5 = ::String`
+## `*header:* x-amz-copy-source-server-side-encryption-customer-key-MD5 = ::String`
 Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
 
 
-## `x-amz-request-payer = "requester"`
+## `*header:* x-amz-request-payer = "requester"`
 
 
 

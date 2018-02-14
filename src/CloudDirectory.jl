@@ -15,11 +15,11 @@ using AWSCore
 """
     using AWSSDK.CloudDirectory.add_facet_to_object
     add_facet_to_object([::AWSConfig], arguments::Dict)
-    add_facet_to_object([::AWSConfig]; x-amz-data-partition=, SchemaFacet=, ObjectReference=, <keyword arguments>)
+    add_facet_to_object([::AWSConfig]; *header:* x-amz-data-partition=, SchemaFacet=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/facets", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/facets", x-amz-data-partition=, SchemaFacet=, ObjectReference=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/facets", *header:* x-amz-data-partition=, SchemaFacet=, ObjectReference=, <keyword arguments>)
 
 # AddFacetToObject Operation
 
@@ -27,7 +27,7 @@ Adds a new [Facet](@ref) to an object.
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) where the object resides. For more information, see [arns](@ref).
 
 
@@ -86,11 +86,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.apply_schema
     apply_schema([::AWSConfig], arguments::Dict)
-    apply_schema([::AWSConfig]; PublishedSchemaArn=, x-amz-data-partition=)
+    apply_schema([::AWSConfig]; PublishedSchemaArn=, *header:* x-amz-data-partition=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/apply", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/apply", PublishedSchemaArn=, x-amz-data-partition=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/apply", PublishedSchemaArn=, *header:* x-amz-data-partition=)
 
 # ApplySchema Operation
 
@@ -102,7 +102,7 @@ Copies the input published schema into the [Directory](@ref) with the same name 
 Published schema Amazon Resource Name (ARN) that needs to be copied. For more information, see [arns](@ref).
 
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) into which the schema is copied. For more information, see [arns](@ref).
 
 
@@ -129,11 +129,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.attach_object
     attach_object([::AWSConfig], arguments::Dict)
-    attach_object([::AWSConfig]; x-amz-data-partition=, ParentReference=, ChildReference=, LinkName=)
+    attach_object([::AWSConfig]; *header:* x-amz-data-partition=, ParentReference=, ChildReference=, LinkName=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/attach", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/attach", x-amz-data-partition=, ParentReference=, ChildReference=, LinkName=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/attach", *header:* x-amz-data-partition=, ParentReference=, ChildReference=, LinkName=)
 
 # AttachObject Operation
 
@@ -145,7 +145,7 @@ Attaches an existing object to another object. An object can be accessed in two 
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 Amazon Resource Name (ARN) that is associated with the [Directory](@ref) where both objects reside. For more information, see [arns](@ref).
 
 
@@ -196,7 +196,7 @@ Attaches a policy object to a regular object. An object can have a limited numbe
 
 # Arguments
 
-## `x-amz-data-partition = ::String`
+## `*header:* x-amz-data-partition = ::String`
 The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) where both objects reside. For more information, see [arns](@ref).
 
 
@@ -231,11 +231,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.attach_to_index
     attach_to_index([::AWSConfig], arguments::Dict)
-    attach_to_index([::AWSConfig]; x-amz-data-partition=, IndexReference=, TargetReference=)
+    attach_to_index([::AWSConfig]; *header:* x-amz-data-partition=, IndexReference=, TargetReference=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/index/attach", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/index/attach", x-amz-data-partition=, IndexReference=, TargetReference=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/index/attach", *header:* x-amz-data-partition=, IndexReference=, TargetReference=)
 
 # AttachToIndex Operation
 
@@ -243,7 +243,7 @@ Attaches the specified object to the specified index.
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) of the directory where the object and index exist.
 
 
@@ -278,11 +278,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.attach_typed_link
     attach_typed_link([::AWSConfig], arguments::Dict)
-    attach_typed_link([::AWSConfig]; x-amz-data-partition=, SourceObjectReference=, TargetObjectReference=, TypedLinkFacet=, Attributes=)
+    attach_typed_link([::AWSConfig]; *header:* x-amz-data-partition=, SourceObjectReference=, TargetObjectReference=, TypedLinkFacet=, Attributes=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/attach", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/attach", x-amz-data-partition=, SourceObjectReference=, TargetObjectReference=, TypedLinkFacet=, Attributes=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/attach", *header:* x-amz-data-partition=, SourceObjectReference=, TargetObjectReference=, TypedLinkFacet=, Attributes=)
 
 # AttachTypedLink Operation
 
@@ -290,7 +290,7 @@ Attaches a typed link to a specified source and target object. For more informat
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) of the directory where you want to attach the typed link.
 
 
@@ -349,11 +349,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.batch_read
     batch_read([::AWSConfig], arguments::Dict)
-    batch_read([::AWSConfig]; x-amz-data-partition=, Operations=, <keyword arguments>)
+    batch_read([::AWSConfig]; *header:* x-amz-data-partition=, Operations=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/batchread", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/batchread", x-amz-data-partition=, Operations=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/batchread", *header:* x-amz-data-partition=, Operations=, <keyword arguments>)
 
 # BatchRead Operation
 
@@ -361,7 +361,7 @@ Performs all the read operations in a batch.
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Directory](@ref). For more information, see [arns](@ref).
 
 
@@ -502,7 +502,7 @@ A list of operations that are part of the batch.
     ], ...]
 ```
 
-## `x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
+## `*header:* x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
 Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.
 
 
@@ -529,11 +529,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.batch_write
     batch_write([::AWSConfig], arguments::Dict)
-    batch_write([::AWSConfig]; x-amz-data-partition=, Operations=)
+    batch_write([::AWSConfig]; *header:* x-amz-data-partition=, Operations=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/batchwrite", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/batchwrite", x-amz-data-partition=, Operations=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/batchwrite", *header:* x-amz-data-partition=, Operations=)
 
 # BatchWrite Operation
 
@@ -541,7 +541,7 @@ Performs all the write operations in a batch. Either all the operations succeed 
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Directory](@ref). For more information, see [arns](@ref).
 
 
@@ -720,11 +720,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.create_directory
     create_directory([::AWSConfig], arguments::Dict)
-    create_directory([::AWSConfig]; Name=, x-amz-data-partition=)
+    create_directory([::AWSConfig]; Name=, *header:* x-amz-data-partition=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/directory/create", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/directory/create", Name=, x-amz-data-partition=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/directory/create", Name=, *header:* x-amz-data-partition=)
 
 # CreateDirectory Operation
 
@@ -736,7 +736,7 @@ Creates a [Directory](@ref) by copying the published schema into the directory. 
 The name of the [Directory](@ref). Should be unique per account, per region.
 
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) of the published schema that will be copied into the data [Directory](@ref). For more information, see [arns](@ref).
 
 
@@ -763,11 +763,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.create_facet
     create_facet([::AWSConfig], arguments::Dict)
-    create_facet([::AWSConfig]; x-amz-data-partition=, Name=, ObjectType=, <keyword arguments>)
+    create_facet([::AWSConfig]; *header:* x-amz-data-partition=, Name=, ObjectType=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/facet/create", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/facet/create", x-amz-data-partition=, Name=, ObjectType=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/facet/create", *header:* x-amz-data-partition=, Name=, ObjectType=, <keyword arguments>)
 
 # CreateFacet Operation
 
@@ -775,7 +775,7 @@ Creates a new [Facet](@ref) in a schema. Facet creation is allowed only in devel
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The schema ARN in which the new [Facet](@ref) will be created. For more information, see [arns](@ref).
 
 
@@ -843,11 +843,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.create_index
     create_index([::AWSConfig], arguments::Dict)
-    create_index([::AWSConfig]; x-amz-data-partition=, OrderedIndexedAttributeList=, IsUnique=, <keyword arguments>)
+    create_index([::AWSConfig]; *header:* x-amz-data-partition=, OrderedIndexedAttributeList=, IsUnique=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/index", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/index", x-amz-data-partition=, OrderedIndexedAttributeList=, IsUnique=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/index", *header:* x-amz-data-partition=, OrderedIndexedAttributeList=, IsUnique=, <keyword arguments>)
 
 # CreateIndex Operation
 
@@ -855,7 +855,7 @@ Creates an index object. See [Indexing](http://docs.aws.amazon.com/directoryserv
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The ARN of the directory where the index should be created.
 
 
@@ -904,11 +904,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.create_object
     create_object([::AWSConfig], arguments::Dict)
-    create_object([::AWSConfig]; x-amz-data-partition=, SchemaFacets=, <keyword arguments>)
+    create_object([::AWSConfig]; *header:* x-amz-data-partition=, SchemaFacets=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object", x-amz-data-partition=, SchemaFacets=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object", *header:* x-amz-data-partition=, SchemaFacets=, <keyword arguments>)
 
 # CreateObject Operation
 
@@ -916,7 +916,7 @@ Creates an object in a [Directory](@ref). Additionally attaches the object to a 
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) in which the object will be created. For more information, see [arns](@ref).
 
 
@@ -1024,11 +1024,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.create_typed_link_facet
     create_typed_link_facet([::AWSConfig], arguments::Dict)
-    create_typed_link_facet([::AWSConfig]; x-amz-data-partition=, Facet=)
+    create_typed_link_facet([::AWSConfig]; *header:* x-amz-data-partition=, Facet=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/facet/create", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/facet/create", x-amz-data-partition=, Facet=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/facet/create", *header:* x-amz-data-partition=, Facet=)
 
 # CreateTypedLinkFacet Operation
 
@@ -1036,7 +1036,7 @@ Creates a [TypedLinkFacet](@ref). For more information, see [Typed link](http://
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the schema. For more information, see [arns](@ref).
 
 
@@ -1086,11 +1086,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.delete_directory
     delete_directory([::AWSConfig], arguments::Dict)
-    delete_directory([::AWSConfig]; x-amz-data-partition=)
+    delete_directory([::AWSConfig]; *header:* x-amz-data-partition=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/directory", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/directory", x-amz-data-partition=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/directory", *header:* x-amz-data-partition=)
 
 # DeleteDirectory Operation
 
@@ -1098,7 +1098,7 @@ Deletes a directory. Only disabled directories can be deleted. A deleted directo
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The ARN of the directory to delete.
 
 
@@ -1125,11 +1125,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.delete_facet
     delete_facet([::AWSConfig], arguments::Dict)
-    delete_facet([::AWSConfig]; x-amz-data-partition=, Name=)
+    delete_facet([::AWSConfig]; *header:* x-amz-data-partition=, Name=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/facet/delete", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/facet/delete", x-amz-data-partition=, Name=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/facet/delete", *header:* x-amz-data-partition=, Name=)
 
 # DeleteFacet Operation
 
@@ -1137,7 +1137,7 @@ Deletes a given [Facet](@ref). All attributes and [Rule](@ref)s that are associa
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Facet](@ref). For more information, see [arns](@ref).
 
 
@@ -1168,11 +1168,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.delete_object
     delete_object([::AWSConfig], arguments::Dict)
-    delete_object([::AWSConfig]; x-amz-data-partition=, ObjectReference=)
+    delete_object([::AWSConfig]; *header:* x-amz-data-partition=, ObjectReference=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/delete", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/delete", x-amz-data-partition=, ObjectReference=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/delete", *header:* x-amz-data-partition=, ObjectReference=)
 
 # DeleteObject Operation
 
@@ -1180,7 +1180,7 @@ Deletes an object and its associated attributes. Only objects with no children a
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) where the object resides. For more information, see [arns](@ref).
 
 
@@ -1211,11 +1211,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.delete_schema
     delete_schema([::AWSConfig], arguments::Dict)
-    delete_schema([::AWSConfig]; x-amz-data-partition=)
+    delete_schema([::AWSConfig]; *header:* x-amz-data-partition=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema", x-amz-data-partition=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema", *header:* x-amz-data-partition=)
 
 # DeleteSchema Operation
 
@@ -1223,7 +1223,7 @@ Deletes a given schema. Schemas in a development and published state can only be
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) of the development schema. For more information, see [arns](@ref).
 
 
@@ -1250,11 +1250,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.delete_typed_link_facet
     delete_typed_link_facet([::AWSConfig], arguments::Dict)
-    delete_typed_link_facet([::AWSConfig]; x-amz-data-partition=, Name=)
+    delete_typed_link_facet([::AWSConfig]; *header:* x-amz-data-partition=, Name=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/facet/delete", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/facet/delete", x-amz-data-partition=, Name=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/facet/delete", *header:* x-amz-data-partition=, Name=)
 
 # DeleteTypedLinkFacet Operation
 
@@ -1262,7 +1262,7 @@ Deletes a [TypedLinkFacet](@ref). For more information, see [Typed link](http://
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the schema. For more information, see [arns](@ref).
 
 
@@ -1293,11 +1293,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.detach_from_index
     detach_from_index([::AWSConfig], arguments::Dict)
-    detach_from_index([::AWSConfig]; x-amz-data-partition=, IndexReference=, TargetReference=)
+    detach_from_index([::AWSConfig]; *header:* x-amz-data-partition=, IndexReference=, TargetReference=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/index/detach", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/index/detach", x-amz-data-partition=, IndexReference=, TargetReference=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/index/detach", *header:* x-amz-data-partition=, IndexReference=, TargetReference=)
 
 # DetachFromIndex Operation
 
@@ -1305,7 +1305,7 @@ Detaches the specified object from the specified index.
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) of the directory the index and object exist in.
 
 
@@ -1340,11 +1340,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.detach_object
     detach_object([::AWSConfig], arguments::Dict)
-    detach_object([::AWSConfig]; x-amz-data-partition=, ParentReference=, LinkName=)
+    detach_object([::AWSConfig]; *header:* x-amz-data-partition=, ParentReference=, LinkName=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/detach", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/detach", x-amz-data-partition=, ParentReference=, LinkName=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/detach", *header:* x-amz-data-partition=, ParentReference=, LinkName=)
 
 # DetachObject Operation
 
@@ -1352,7 +1352,7 @@ Detaches a given object from the parent object. The object that is to be detache
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) where objects reside. For more information, see [arns](@ref).
 
 
@@ -1387,11 +1387,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.detach_policy
     detach_policy([::AWSConfig], arguments::Dict)
-    detach_policy([::AWSConfig]; x-amz-data-partition=, PolicyReference=, ObjectReference=)
+    detach_policy([::AWSConfig]; *header:* x-amz-data-partition=, PolicyReference=, ObjectReference=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/policy/detach", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/policy/detach", x-amz-data-partition=, PolicyReference=, ObjectReference=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/policy/detach", *header:* x-amz-data-partition=, PolicyReference=, ObjectReference=)
 
 # DetachPolicy Operation
 
@@ -1399,7 +1399,7 @@ Detaches a policy from an object.
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) where both objects reside. For more information, see [arns](@ref).
 
 
@@ -1434,11 +1434,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.detach_typed_link
     detach_typed_link([::AWSConfig], arguments::Dict)
-    detach_typed_link([::AWSConfig]; x-amz-data-partition=, TypedLinkSpecifier=)
+    detach_typed_link([::AWSConfig]; *header:* x-amz-data-partition=, TypedLinkSpecifier=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/detach", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/detach", x-amz-data-partition=, TypedLinkSpecifier=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/detach", *header:* x-amz-data-partition=, TypedLinkSpecifier=)
 
 # DetachTypedLink Operation
 
@@ -1446,7 +1446,7 @@ Detaches a typed link from a specified source and target object. For more inform
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) of the directory where you want to detach the typed link.
 
 
@@ -1492,11 +1492,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.disable_directory
     disable_directory([::AWSConfig], arguments::Dict)
-    disable_directory([::AWSConfig]; x-amz-data-partition=)
+    disable_directory([::AWSConfig]; *header:* x-amz-data-partition=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/directory/disable", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/directory/disable", x-amz-data-partition=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/directory/disable", *header:* x-amz-data-partition=)
 
 # DisableDirectory Operation
 
@@ -1504,7 +1504,7 @@ Disables the specified directory. Disabled directories cannot be read or written
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The ARN of the directory to disable.
 
 
@@ -1531,11 +1531,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.enable_directory
     enable_directory([::AWSConfig], arguments::Dict)
-    enable_directory([::AWSConfig]; x-amz-data-partition=)
+    enable_directory([::AWSConfig]; *header:* x-amz-data-partition=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/directory/enable", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/directory/enable", x-amz-data-partition=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/directory/enable", *header:* x-amz-data-partition=)
 
 # EnableDirectory Operation
 
@@ -1543,7 +1543,7 @@ Enables the specified directory. Only disabled directories can be enabled. Once 
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The ARN of the directory to enable.
 
 
@@ -1570,11 +1570,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.get_directory
     get_directory([::AWSConfig], arguments::Dict)
-    get_directory([::AWSConfig]; x-amz-data-partition=)
+    get_directory([::AWSConfig]; *header:* x-amz-data-partition=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/directory/get", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/directory/get", x-amz-data-partition=)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/directory/get", *header:* x-amz-data-partition=)
 
 # GetDirectory Operation
 
@@ -1582,7 +1582,7 @@ Retrieves metadata about a directory.
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The ARN of the directory.
 
 
@@ -1609,11 +1609,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.get_facet
     get_facet([::AWSConfig], arguments::Dict)
-    get_facet([::AWSConfig]; x-amz-data-partition=, Name=)
+    get_facet([::AWSConfig]; *header:* x-amz-data-partition=, Name=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/facet", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/facet", x-amz-data-partition=, Name=)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/facet", *header:* x-amz-data-partition=, Name=)
 
 # GetFacet Operation
 
@@ -1621,7 +1621,7 @@ Gets details of the [Facet](@ref), such as facet name, attributes, [Rule](@ref)s
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Facet](@ref). For more information, see [arns](@ref).
 
 
@@ -1652,11 +1652,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.get_object_information
     get_object_information([::AWSConfig], arguments::Dict)
-    get_object_information([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    get_object_information([::AWSConfig]; *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/information", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/information", x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/information", *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
 # GetObjectInformation Operation
 
@@ -1664,7 +1664,7 @@ Retrieves metadata about an object.
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The ARN of the directory being retrieved.
 
 
@@ -1672,7 +1672,7 @@ The ARN of the directory being retrieved.
 A reference to the object.
 
 
-## `x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
+## `*header:* x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
 The consistency level at which to retrieve the object information.
 
 
@@ -1699,11 +1699,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.get_schema_as_json
     get_schema_as_json([::AWSConfig], arguments::Dict)
-    get_schema_as_json([::AWSConfig]; x-amz-data-partition=)
+    get_schema_as_json([::AWSConfig]; *header:* x-amz-data-partition=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/schema/json", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/schema/json", x-amz-data-partition=)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/schema/json", *header:* x-amz-data-partition=)
 
 # GetSchemaAsJson Operation
 
@@ -1711,7 +1711,7 @@ Retrieves a JSON representation of the schema. See [JSON Schema Format](http://d
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The ARN of the schema to retrieve.
 
 
@@ -1738,11 +1738,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.get_typed_link_facet_information
     get_typed_link_facet_information([::AWSConfig], arguments::Dict)
-    get_typed_link_facet_information([::AWSConfig]; x-amz-data-partition=, Name=)
+    get_typed_link_facet_information([::AWSConfig]; *header:* x-amz-data-partition=, Name=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/facet/get", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/facet/get", x-amz-data-partition=, Name=)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/facet/get", *header:* x-amz-data-partition=, Name=)
 
 # GetTypedLinkFacetInformation Operation
 
@@ -1750,7 +1750,7 @@ Returns the identity attribute order for a specific [TypedLinkFacet](@ref). For 
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the schema. For more information, see [arns](@ref).
 
 
@@ -1828,11 +1828,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.list_attached_indices
     list_attached_indices([::AWSConfig], arguments::Dict)
-    list_attached_indices([::AWSConfig]; x-amz-data-partition=, TargetReference=, <keyword arguments>)
+    list_attached_indices([::AWSConfig]; *header:* x-amz-data-partition=, TargetReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/indices", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/indices", x-amz-data-partition=, TargetReference=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/indices", *header:* x-amz-data-partition=, TargetReference=, <keyword arguments>)
 
 # ListAttachedIndices Operation
 
@@ -1840,7 +1840,7 @@ Lists indices attached to an object.
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The ARN of the directory.
 
 
@@ -1856,7 +1856,7 @@ The pagination token.
 The maximum number of results to retrieve.
 
 
-## `x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
+## `*header:* x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
 The consistency level to use for this operation.
 
 
@@ -1973,11 +1973,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.list_facet_attributes
     list_facet_attributes([::AWSConfig], arguments::Dict)
-    list_facet_attributes([::AWSConfig]; x-amz-data-partition=, Name=, <keyword arguments>)
+    list_facet_attributes([::AWSConfig]; *header:* x-amz-data-partition=, Name=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/facet/attributes", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/facet/attributes", x-amz-data-partition=, Name=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/facet/attributes", *header:* x-amz-data-partition=, Name=, <keyword arguments>)
 
 # ListFacetAttributes Operation
 
@@ -1985,7 +1985,7 @@ Retrieves attributes attached to the facet.
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The ARN of the schema where the facet resides.
 
 
@@ -2024,11 +2024,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.list_facet_names
     list_facet_names([::AWSConfig], arguments::Dict)
-    list_facet_names([::AWSConfig]; x-amz-data-partition=, <keyword arguments>)
+    list_facet_names([::AWSConfig]; *header:* x-amz-data-partition=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/facet/list", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/facet/list", x-amz-data-partition=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/facet/list", *header:* x-amz-data-partition=, <keyword arguments>)
 
 # ListFacetNames Operation
 
@@ -2036,7 +2036,7 @@ Retrieves the names of facets that exist in a schema.
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) to retrieve facet names from.
 
 
@@ -2071,11 +2071,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.list_incoming_typed_links
     list_incoming_typed_links([::AWSConfig], arguments::Dict)
-    list_incoming_typed_links([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    list_incoming_typed_links([::AWSConfig]; *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/incoming", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/incoming", x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/incoming", *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
 # ListIncomingTypedLinks Operation
 
@@ -2083,7 +2083,7 @@ Returns a paginated list of all the incoming [TypedLinkSpecifier](@ref) informat
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) of the directory where you want to list the typed links.
 
 
@@ -2161,11 +2161,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.list_index
     list_index([::AWSConfig], arguments::Dict)
-    list_index([::AWSConfig]; x-amz-data-partition=, IndexReference=, <keyword arguments>)
+    list_index([::AWSConfig]; *header:* x-amz-data-partition=, IndexReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/index/targets", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/index/targets", x-amz-data-partition=, IndexReference=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/index/targets", *header:* x-amz-data-partition=, IndexReference=, <keyword arguments>)
 
 # ListIndex Operation
 
@@ -2173,7 +2173,7 @@ Lists objects attached to the specified index.
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The ARN of the directory that the index exists in.
 
 
@@ -2219,7 +2219,7 @@ The maximum number of results to retrieve from the index.
 The pagination token.
 
 
-## `x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
+## `*header:* x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
 The consistency level to execute the request at.
 
 
@@ -2246,11 +2246,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.list_object_attributes
     list_object_attributes([::AWSConfig], arguments::Dict)
-    list_object_attributes([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    list_object_attributes([::AWSConfig]; *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/attributes", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/attributes", x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/attributes", *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
 # ListObjectAttributes Operation
 
@@ -2258,7 +2258,7 @@ Lists all attributes that are associated with an object.
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) where the object resides. For more information, see [arns](@ref).
 
 
@@ -2274,7 +2274,7 @@ The pagination token.
 The maximum number of items to be retrieved in a single call. This is an approximate number.
 
 
-## `x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
+## `*header:* x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
 Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.
 
 
@@ -2310,11 +2310,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.list_object_children
     list_object_children([::AWSConfig], arguments::Dict)
-    list_object_children([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    list_object_children([::AWSConfig]; *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/children", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/children", x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/children", *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
 # ListObjectChildren Operation
 
@@ -2322,7 +2322,7 @@ Returns a paginated list of child objects that are associated with a given objec
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) where the object resides. For more information, see [arns](@ref).
 
 
@@ -2338,7 +2338,7 @@ The pagination token.
 The maximum number of items to be retrieved in a single call. This is an approximate number.
 
 
-## `x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
+## `*header:* x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
 Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.
 
 
@@ -2365,11 +2365,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.list_object_parent_paths
     list_object_parent_paths([::AWSConfig], arguments::Dict)
-    list_object_parent_paths([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    list_object_parent_paths([::AWSConfig]; *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/parentpaths", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/parentpaths", x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/parentpaths", *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
 # ListObjectParentPaths Operation
 
@@ -2379,7 +2379,7 @@ Use this API to evaluate all parents for an object. The call returns all objects
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The ARN of the directory to which the parent path applies.
 
 
@@ -2418,11 +2418,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.list_object_parents
     list_object_parents([::AWSConfig], arguments::Dict)
-    list_object_parents([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    list_object_parents([::AWSConfig]; *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/parent", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/parent", x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/parent", *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
 # ListObjectParents Operation
 
@@ -2430,7 +2430,7 @@ Lists parent objects that are associated with a given object in pagination fashi
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) where the object resides. For more information, see [arns](@ref).
 
 
@@ -2446,7 +2446,7 @@ The pagination token.
 The maximum number of items to be retrieved in a single call. This is an approximate number.
 
 
-## `x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
+## `*header:* x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
 Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.
 
 
@@ -2473,11 +2473,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.list_object_policies
     list_object_policies([::AWSConfig], arguments::Dict)
-    list_object_policies([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    list_object_policies([::AWSConfig]; *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/policy", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/policy", x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/policy", *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
 # ListObjectPolicies Operation
 
@@ -2485,7 +2485,7 @@ Returns policies attached to an object in pagination fashion.
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) where objects reside. For more information, see [arns](@ref).
 
 
@@ -2501,7 +2501,7 @@ The pagination token.
 The maximum number of items to be retrieved in a single call. This is an approximate number.
 
 
-## `x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
+## `*header:* x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
 Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.
 
 
@@ -2528,11 +2528,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.list_outgoing_typed_links
     list_outgoing_typed_links([::AWSConfig], arguments::Dict)
-    list_outgoing_typed_links([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    list_outgoing_typed_links([::AWSConfig]; *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/outgoing", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/outgoing", x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/outgoing", *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
 # ListOutgoingTypedLinks Operation
 
@@ -2540,7 +2540,7 @@ Returns a paginated list of all the outgoing [TypedLinkSpecifier](@ref) informat
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) of the directory where you want to list the typed links.
 
 
@@ -2618,11 +2618,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.list_policy_attachments
     list_policy_attachments([::AWSConfig], arguments::Dict)
-    list_policy_attachments([::AWSConfig]; x-amz-data-partition=, PolicyReference=, <keyword arguments>)
+    list_policy_attachments([::AWSConfig]; *header:* x-amz-data-partition=, PolicyReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/policy/attachment", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/policy/attachment", x-amz-data-partition=, PolicyReference=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/policy/attachment", *header:* x-amz-data-partition=, PolicyReference=, <keyword arguments>)
 
 # ListPolicyAttachments Operation
 
@@ -2630,7 +2630,7 @@ Returns all of the `ObjectIdentifiers` to which a given policy is attached.
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) where objects reside. For more information, see [arns](@ref).
 
 
@@ -2646,7 +2646,7 @@ The pagination token.
 The maximum number of items to be retrieved in a single call. This is an approximate number.
 
 
-## `x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
+## `*header:* x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
 Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.
 
 
@@ -2763,11 +2763,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.list_typed_link_facet_attributes
     list_typed_link_facet_attributes([::AWSConfig], arguments::Dict)
-    list_typed_link_facet_attributes([::AWSConfig]; x-amz-data-partition=, Name=, <keyword arguments>)
+    list_typed_link_facet_attributes([::AWSConfig]; *header:* x-amz-data-partition=, Name=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes", x-amz-data-partition=, Name=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes", *header:* x-amz-data-partition=, Name=, <keyword arguments>)
 
 # ListTypedLinkFacetAttributes Operation
 
@@ -2775,7 +2775,7 @@ Returns a paginated list of all attribute definitions for a particular [TypedLin
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the schema. For more information, see [arns](@ref).
 
 
@@ -2814,11 +2814,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.list_typed_link_facet_names
     list_typed_link_facet_names([::AWSConfig], arguments::Dict)
-    list_typed_link_facet_names([::AWSConfig]; x-amz-data-partition=, <keyword arguments>)
+    list_typed_link_facet_names([::AWSConfig]; *header:* x-amz-data-partition=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/facet/list", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/facet/list", x-amz-data-partition=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/facet/list", *header:* x-amz-data-partition=, <keyword arguments>)
 
 # ListTypedLinkFacetNames Operation
 
@@ -2826,7 +2826,7 @@ Returns a paginated list of `TypedLink` facet names for a particular schema. For
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the schema. For more information, see [arns](@ref).
 
 
@@ -2861,11 +2861,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.lookup_policy
     lookup_policy([::AWSConfig], arguments::Dict)
-    lookup_policy([::AWSConfig]; x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    lookup_policy([::AWSConfig]; *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/policy/lookup", arguments::Dict)
-    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/policy/lookup", x-amz-data-partition=, ObjectReference=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/policy/lookup", *header:* x-amz-data-partition=, ObjectReference=, <keyword arguments>)
 
 # LookupPolicy Operation
 
@@ -2873,7 +2873,7 @@ Lists all policies from the root of the [Directory](@ref) to the object specifie
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Directory](@ref). For more information, see [arns](@ref).
 
 
@@ -2912,11 +2912,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.publish_schema
     publish_schema([::AWSConfig], arguments::Dict)
-    publish_schema([::AWSConfig]; x-amz-data-partition=, Version=, <keyword arguments>)
+    publish_schema([::AWSConfig]; *header:* x-amz-data-partition=, Version=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/publish", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/publish", x-amz-data-partition=, Version=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/publish", *header:* x-amz-data-partition=, Version=, <keyword arguments>)
 
 # PublishSchema Operation
 
@@ -2924,7 +2924,7 @@ Publishes a development schema with a version. If description and attributes are
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the development schema. For more information, see [arns](@ref).
 
 
@@ -2959,11 +2959,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.put_schema_from_json
     put_schema_from_json([::AWSConfig], arguments::Dict)
-    put_schema_from_json([::AWSConfig]; x-amz-data-partition=, Document=)
+    put_schema_from_json([::AWSConfig]; *header:* x-amz-data-partition=, Document=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/json", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/json", x-amz-data-partition=, Document=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/json", *header:* x-amz-data-partition=, Document=)
 
 # PutSchemaFromJson Operation
 
@@ -2971,7 +2971,7 @@ Allows a schema to be updated using JSON upload. Only available for development 
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The ARN of the schema to update.
 
 
@@ -3002,11 +3002,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.remove_facet_from_object
     remove_facet_from_object([::AWSConfig], arguments::Dict)
-    remove_facet_from_object([::AWSConfig]; x-amz-data-partition=, SchemaFacet=, ObjectReference=)
+    remove_facet_from_object([::AWSConfig]; *header:* x-amz-data-partition=, SchemaFacet=, ObjectReference=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/facets/delete", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/facets/delete", x-amz-data-partition=, SchemaFacet=, ObjectReference=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/facets/delete", *header:* x-amz-data-partition=, SchemaFacet=, ObjectReference=)
 
 # RemoveFacetFromObject Operation
 
@@ -3014,7 +3014,7 @@ Removes the specified facet from the specified object.
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The ARN of the directory in which the object resides.
 
 
@@ -3145,11 +3145,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.update_facet
     update_facet([::AWSConfig], arguments::Dict)
-    update_facet([::AWSConfig]; x-amz-data-partition=, Name=, <keyword arguments>)
+    update_facet([::AWSConfig]; *header:* x-amz-data-partition=, Name=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/facet", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/facet", x-amz-data-partition=, Name=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/facet", *header:* x-amz-data-partition=, Name=, <keyword arguments>)
 
 # UpdateFacet Operation
 
@@ -3163,7 +3163,7 @@ Does the following:
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Facet](@ref). For more information, see [arns](@ref).
 
 
@@ -3226,11 +3226,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.update_object_attributes
     update_object_attributes([::AWSConfig], arguments::Dict)
-    update_object_attributes([::AWSConfig]; x-amz-data-partition=, ObjectReference=, AttributeUpdates=)
+    update_object_attributes([::AWSConfig]; *header:* x-amz-data-partition=, ObjectReference=, AttributeUpdates=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/update", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/update", x-amz-data-partition=, ObjectReference=, AttributeUpdates=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/object/update", *header:* x-amz-data-partition=, ObjectReference=, AttributeUpdates=)
 
 # UpdateObjectAttributes Operation
 
@@ -3238,7 +3238,7 @@ Updates a given object's attributes.
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) where the object resides. For more information, see [arns](@ref).
 
 
@@ -3291,11 +3291,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.update_schema
     update_schema([::AWSConfig], arguments::Dict)
-    update_schema([::AWSConfig]; x-amz-data-partition=, Name=)
+    update_schema([::AWSConfig]; *header:* x-amz-data-partition=, Name=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/update", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/update", x-amz-data-partition=, Name=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/update", *header:* x-amz-data-partition=, Name=)
 
 # UpdateSchema Operation
 
@@ -3303,7 +3303,7 @@ Updates the schema name with a new name. Only development schema names can be up
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) of the development schema. For more information, see [arns](@ref).
 
 
@@ -3334,11 +3334,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.update_typed_link_facet
     update_typed_link_facet([::AWSConfig], arguments::Dict)
-    update_typed_link_facet([::AWSConfig]; x-amz-data-partition=, Name=, AttributeUpdates=, IdentityAttributeOrder=)
+    update_typed_link_facet([::AWSConfig]; *header:* x-amz-data-partition=, Name=, AttributeUpdates=, IdentityAttributeOrder=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/facet", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/facet", x-amz-data-partition=, Name=, AttributeUpdates=, IdentityAttributeOrder=)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/typedlink/facet", *header:* x-amz-data-partition=, Name=, AttributeUpdates=, IdentityAttributeOrder=)
 
 # UpdateTypedLinkFacet Operation
 
@@ -3346,7 +3346,7 @@ Updates a [TypedLinkFacet](@ref). For more information, see [Typed link](http://
 
 # Arguments
 
-## `x-amz-data-partition = ::String` -- *Required*
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the schema. For more information, see [arns](@ref).
 
 

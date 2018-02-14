@@ -227,11 +227,11 @@ The name of the vault.
 The upload ID of the multipart upload.
 
 
-## `x-amz-archive-size = ::String`
+## `*header:* x-amz-archive-size = ::String`
 The total size, in bytes, of the entire archive. This value should be the sum of all the sizes of the individual parts that you uploaded.
 
 
-## `x-amz-sha256-tree-hash = ::String`
+## `*header:* x-amz-sha256-tree-hash = ::String`
 The SHA256 tree hash of the entire archive. It is the tree hash of SHA256 tree hash of the individual parts. If the value you specify in the request does not match the SHA256 tree hash of the final assembled archive as computed by Amazon Glacier, Amazon Glacier returns an error and the request fails.
 
 
@@ -903,7 +903,7 @@ The name of the vault.
 The job ID whose data is downloaded.
 
 
-## `Range = ::String`
+## `*header:* Range = ::String`
 The range of bytes to retrieve from the output. For example, if you want to download the first 1,048,576 bytes, specify the range as `bytes=0-1048575`. By default, this operation downloads the entire output.
 
 If the job output is large, then you can use a range to retrieve a portion of the output. This allows you to download the entire output in smaller chunks of bytes. For example, suppose you have 1 GB of job output you want to download and you decide to download 128 MB chunks of data at a time, which is a total of eight Get Job Output requests. You use the following process to download the job output:
@@ -1363,13 +1363,13 @@ The `AccountId` value is the AWS account ID of the account that owns the vault. 
 The name of the vault.
 
 
-## `x-amz-archive-description = ::String`
+## `*header:* x-amz-archive-description = ::String`
 The archive description that you are uploading in parts.
 
 The part size must be a megabyte (1024 KB) multiplied by a power of 2, for example 1048576 (1 MB), 2097152 (2 MB), 4194304 (4 MB), 8388608 (8 MB), and so on. The minimum allowable part size is 1 MB, and the maximum is 4 GB (4096 MB).
 
 
-## `x-amz-part-size = ::String`
+## `*header:* x-amz-part-size = ::String`
 The size of each part except the last, in bytes. The last part can be smaller than this part size.
 
 
@@ -2382,11 +2382,11 @@ The name of the vault.
 The `AccountId` value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '`-`' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
 
 
-## `x-amz-archive-description = ::String`
+## `*header:* x-amz-archive-description = ::String`
 The optional description of the archive you are uploading.
 
 
-## `x-amz-sha256-tree-hash = ::String`
+## `*header:* x-amz-sha256-tree-hash = ::String`
 The SHA256 tree hash of the data being uploaded.
 
 
@@ -2482,11 +2482,11 @@ The name of the vault.
 The upload ID of the multipart upload.
 
 
-## `x-amz-sha256-tree-hash = ::String`
+## `*header:* x-amz-sha256-tree-hash = ::String`
 The SHA256 tree hash of the data being uploaded.
 
 
-## `Content-Range = ::String`
+## `*header:* Content-Range = ::String`
 Identifies the range of bytes in the assembled archive that will be uploaded in this part. Amazon Glacier uses this information to assemble the archive in the proper sequence. The format of this header follows RFC 2616. An example header is Content-Range:bytes 0-4194303/*.
 
 

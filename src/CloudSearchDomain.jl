@@ -240,11 +240,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouds
 """
     using AWSSDK.CloudSearchDomain.upload_documents
     upload_documents([::AWSConfig], arguments::Dict)
-    upload_documents([::AWSConfig]; documents=, Content-Type=)
+    upload_documents([::AWSConfig]; documents=, *header:* Content-Type=)
 
     using AWSCore.Services.cloudsearchdomain
     cloudsearchdomain([::AWSConfig], "POST", "/2013-01-01/documents/batch?format=sdk", arguments::Dict)
-    cloudsearchdomain([::AWSConfig], "POST", "/2013-01-01/documents/batch?format=sdk", documents=, Content-Type=)
+    cloudsearchdomain([::AWSConfig], "POST", "/2013-01-01/documents/batch?format=sdk", documents=, *header:* Content-Type=)
 
 # UploadDocuments Operation
 
@@ -260,7 +260,7 @@ For more information about formatting your data for Amazon CloudSearch, see [Pre
 A batch of documents formatted in JSON or HTML.
 
 
-## `Content-Type = "application/json" or "application/xml"` -- *Required*
+## `*header:* Content-Type = "application/json" or "application/xml"` -- *Required*
 The format of the batch you are uploading. Amazon CloudSearch supports two document batch formats:
 
 *   application/json

@@ -691,7 +691,7 @@ Delete an origin access identity.
 The origin access identity's ID.
 
 
-## `If-Match = ::String`
+## `*header:* If-Match = ::String`
 The value of the `ETag` header you received from a previous `GET` or `PUT` request. For example: `E2QWRUHAPOMQZL`.
 
 
@@ -730,7 +730,7 @@ Delete a distribution.
 The distribution ID.
 
 
-## `If-Match = ::String`
+## `*header:* If-Match = ::String`
 The value of the `ETag` header that you received when you disabled the distribution. For example: `E2QWRUHAPOMQZL`.
 
 
@@ -824,7 +824,7 @@ For information about deleting a distribution using the CloudFront console, see 
 The distribution ID.
 
 
-## `If-Match = ::String`
+## `*header:* If-Match = ::String`
 The value of the `ETag` header that you received when you disabled the streaming distribution. For example: `E2QWRUHAPOMQZL`.
 
 
@@ -1494,7 +1494,7 @@ The identity's configuration information.
 The identity's id.
 
 
-## `If-Match = ::String`
+## `*header:* If-Match = ::String`
 The value of the `ETag` header that you received when retrieving the identity's configuration. For example: `E2QWRUHAPOMQZL`.
 
 
@@ -1737,7 +1737,7 @@ The distribution's configuration information.
 The distribution's id.
 
 
-## `If-Match = ::String`
+## `*header:* If-Match = ::String`
 The value of the `ETag` header that you received when retrieving the distribution's configuration. For example: `E2QWRUHAPOMQZL`.
 
 
@@ -1809,7 +1809,7 @@ The streaming distribution's configuration information.
 The streaming distribution's id.
 
 
-## `If-Match = ::String`
+## `*header:* If-Match = ::String`
 The value of the `ETag` header that you received when retrieving the streaming distribution's configuration. For example: `E2QWRUHAPOMQZL`.
 
 

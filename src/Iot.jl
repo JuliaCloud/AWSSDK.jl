@@ -56,11 +56,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 """
     using AWSSDK.Iot.attach_principal_policy
     attach_principal_policy([::AWSConfig], arguments::Dict)
-    attach_principal_policy([::AWSConfig]; policyName=, x-amzn-iot-principal=)
+    attach_principal_policy([::AWSConfig]; policyName=, *header:* x-amzn-iot-principal=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "PUT", "/principal-policies/{policyName}", arguments::Dict)
-    iot([::AWSConfig], "PUT", "/principal-policies/{policyName}", policyName=, x-amzn-iot-principal=)
+    iot([::AWSConfig], "PUT", "/principal-policies/{policyName}", policyName=, *header:* x-amzn-iot-principal=)
 
 # AttachPrincipalPolicy Operation
 
@@ -72,7 +72,7 @@ Attaches the specified policy to the specified principal (certificate or other c
 The policy name.
 
 
-## `x-amzn-iot-principal = ::String` -- *Required*
+## `*header:* x-amzn-iot-principal = ::String` -- *Required*
 The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an Amazon Cognito ID.
 
 
@@ -95,11 +95,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 """
     using AWSSDK.Iot.attach_thing_principal
     attach_thing_principal([::AWSConfig], arguments::Dict)
-    attach_thing_principal([::AWSConfig]; thingName=, x-amzn-principal=)
+    attach_thing_principal([::AWSConfig]; thingName=, *header:* x-amzn-principal=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "PUT", "/things/{thingName}/principals", arguments::Dict)
-    iot([::AWSConfig], "PUT", "/things/{thingName}/principals", thingName=, x-amzn-principal=)
+    iot([::AWSConfig], "PUT", "/things/{thingName}/principals", thingName=, *header:* x-amzn-principal=)
 
 # AttachThingPrincipal Operation
 
@@ -111,7 +111,7 @@ Attaches the specified principal to the specified thing.
 The name of the thing.
 
 
-## `x-amzn-principal = ::String` -- *Required*
+## `*header:* x-amzn-principal = ::String` -- *Required*
 The principal, such as a certificate or other credential.
 
 
@@ -1145,11 +1145,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 """
     using AWSSDK.Iot.detach_principal_policy
     detach_principal_policy([::AWSConfig], arguments::Dict)
-    detach_principal_policy([::AWSConfig]; policyName=, x-amzn-iot-principal=)
+    detach_principal_policy([::AWSConfig]; policyName=, *header:* x-amzn-iot-principal=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "DELETE", "/principal-policies/{policyName}", arguments::Dict)
-    iot([::AWSConfig], "DELETE", "/principal-policies/{policyName}", policyName=, x-amzn-iot-principal=)
+    iot([::AWSConfig], "DELETE", "/principal-policies/{policyName}", policyName=, *header:* x-amzn-iot-principal=)
 
 # DetachPrincipalPolicy Operation
 
@@ -1161,7 +1161,7 @@ Removes the specified policy from the specified certificate.
 The name of the policy to detach.
 
 
-## `x-amzn-iot-principal = ::String` -- *Required*
+## `*header:* x-amzn-iot-principal = ::String` -- *Required*
 The principal.
 
 If the principal is a certificate, specify the certificate ARN. If the principal is an Amazon Cognito identity, specify the identity ID.
@@ -1186,11 +1186,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 """
     using AWSSDK.Iot.detach_thing_principal
     detach_thing_principal([::AWSConfig], arguments::Dict)
-    detach_thing_principal([::AWSConfig]; thingName=, x-amzn-principal=)
+    detach_thing_principal([::AWSConfig]; thingName=, *header:* x-amzn-principal=)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "DELETE", "/things/{thingName}/principals", arguments::Dict)
-    iot([::AWSConfig], "DELETE", "/things/{thingName}/principals", thingName=, x-amzn-principal=)
+    iot([::AWSConfig], "DELETE", "/things/{thingName}/principals", thingName=, *header:* x-amzn-principal=)
 
 # DetachThingPrincipal Operation
 
@@ -1202,7 +1202,7 @@ Detaches the specified principal from the specified thing.
 The name of the thing.
 
 
-## `x-amzn-principal = ::String` -- *Required*
+## `*header:* x-amzn-principal = ::String` -- *Required*
 If the principal is a certificate, this value must be ARN of the certificate. If the principal is an Amazon Cognito identity, this value must be the ID of the Amazon Cognito identity.
 
 
@@ -1733,11 +1733,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 """
     using AWSSDK.Iot.list_policy_principals
     list_policy_principals([::AWSConfig], arguments::Dict)
-    list_policy_principals([::AWSConfig]; x-amzn-iot-policy=, <keyword arguments>)
+    list_policy_principals([::AWSConfig]; *header:* x-amzn-iot-policy=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/policy-principals", arguments::Dict)
-    iot([::AWSConfig], "GET", "/policy-principals", x-amzn-iot-policy=, <keyword arguments>)
+    iot([::AWSConfig], "GET", "/policy-principals", *header:* x-amzn-iot-policy=, <keyword arguments>)
 
 # ListPolicyPrincipals Operation
 
@@ -1745,7 +1745,7 @@ Lists the principals associated with the specified policy.
 
 # Arguments
 
-## `x-amzn-iot-policy = ::String` -- *Required*
+## `*header:* x-amzn-iot-policy = ::String` -- *Required*
 The policy name.
 
 
@@ -1823,11 +1823,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 """
     using AWSSDK.Iot.list_principal_policies
     list_principal_policies([::AWSConfig], arguments::Dict)
-    list_principal_policies([::AWSConfig]; x-amzn-iot-principal=, <keyword arguments>)
+    list_principal_policies([::AWSConfig]; *header:* x-amzn-iot-principal=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/principal-policies", arguments::Dict)
-    iot([::AWSConfig], "GET", "/principal-policies", x-amzn-iot-principal=, <keyword arguments>)
+    iot([::AWSConfig], "GET", "/principal-policies", *header:* x-amzn-iot-principal=, <keyword arguments>)
 
 # ListPrincipalPolicies Operation
 
@@ -1835,7 +1835,7 @@ Lists the policies attached to the specified principal. If you use an Cognito id
 
 # Arguments
 
-## `x-amzn-iot-principal = ::String` -- *Required*
+## `*header:* x-amzn-iot-principal = ::String` -- *Required*
 The principal.
 
 
@@ -1874,11 +1874,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-20
 """
     using AWSSDK.Iot.list_principal_things
     list_principal_things([::AWSConfig], arguments::Dict)
-    list_principal_things([::AWSConfig]; x-amzn-principal=, <keyword arguments>)
+    list_principal_things([::AWSConfig]; *header:* x-amzn-principal=, <keyword arguments>)
 
     using AWSCore.Services.iot
     iot([::AWSConfig], "GET", "/principals/things", arguments::Dict)
-    iot([::AWSConfig], "GET", "/principals/things", x-amzn-principal=, <keyword arguments>)
+    iot([::AWSConfig], "GET", "/principals/things", *header:* x-amzn-principal=, <keyword arguments>)
 
 # ListPrincipalThings Operation
 
@@ -1894,7 +1894,7 @@ The token for the next set of results, or **null** if there are no additional re
 The maximum number of results to return in this operation.
 
 
-## `x-amzn-principal = ::String` -- *Required*
+## `*header:* x-amzn-principal = ::String` -- *Required*
 The principal.
 
 

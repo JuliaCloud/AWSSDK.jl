@@ -2573,7 +2573,7 @@ The type of export. Currently only 'swagger' is supported.
 A key-value map of query string parameters that specify properties of the export, depending on the requested `exportType`. For `exportType` `swagger`, any combination of the following parameters are supported: `integrations` will export the API with x-amazon-apigateway-integration extensions. `authorizers` will export the API with x-amazon-apigateway-authorizer extensions. `postman` will export the API with Postman extensions, allowing for import to the Postman tool
 
 
-## `Accept = ::String`
+## `*header:* Accept = ::String`
 The content-type of the export, for example `application/json`. Currently `application/json` and `application/yaml` are supported for `exportType` of `swagger`. This should be specified in the `Accept` header for direct API requests.
 
 

@@ -15,11 +15,11 @@ using AWSCore
 """
     using AWSSDK.MobileAnalytics.put_events
     put_events([::AWSConfig], arguments::Dict)
-    put_events([::AWSConfig]; events=, x-amz-Client-Context=, <keyword arguments>)
+    put_events([::AWSConfig]; events=, *header:* x-amz-Client-Context=, <keyword arguments>)
 
     using AWSCore.Services.mobileanalytics
     mobileanalytics([::AWSConfig], "POST", "/2014-06-05/events", arguments::Dict)
-    mobileanalytics([::AWSConfig], "POST", "/2014-06-05/events", events=, x-amz-Client-Context=, <keyword arguments>)
+    mobileanalytics([::AWSConfig], "POST", "/2014-06-05/events", events=, *header:* x-amz-Client-Context=, <keyword arguments>)
 
 # PutEvents Operation
 
@@ -45,11 +45,11 @@ An array of Event JSON objects
     ], ...]
 ```
 
-## `x-amz-Client-Context = ::String` -- *Required*
+## `*header:* x-amz-Client-Context = ::String` -- *Required*
 The client context including the client ID, app title, app version and package name.
 
 
-## `x-amz-Client-Context-Encoding = ::String`
+## `*header:* x-amz-Client-Context-Encoding = ::String`
 The encoding used for the client context.
 
 

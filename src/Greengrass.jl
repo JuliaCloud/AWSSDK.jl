@@ -109,7 +109,7 @@ Creates a core definition. You may optionally provide the initial version of the
 
 # Arguments
 
-## `X-Amzn-Client-Token = ::String`
+## `*header:* X-Amzn-Client-Token = ::String`
 The client token used to request idempotent operations.
 
 
@@ -163,7 +163,7 @@ Creates a version of a core definition that has already been defined. AWS Greeng
 
 # Arguments
 
-## `X-Amzn-Client-Token = ::String`
+## `*header:* X-Amzn-Client-Token = ::String`
 The client token used to request idempotent operations.
 
 
@@ -217,7 +217,7 @@ Creates a deployment.
 
 # Arguments
 
-## `X-Amzn-Client-Token = ::String`
+## `*header:* X-Amzn-Client-Token = ::String`
 The client token used to request idempotent operations.
 
 
@@ -272,7 +272,7 @@ Creates a device definition. You may optinally provide the initial version of th
 
 # Arguments
 
-## `X-Amzn-Client-Token = ::String`
+## `*header:* X-Amzn-Client-Token = ::String`
 The client token used to request idempotent operations.
 
 
@@ -326,7 +326,7 @@ Creates a version of a device definition that has already been defined.
 
 # Arguments
 
-## `X-Amzn-Client-Token = ::String`
+## `*header:* X-Amzn-Client-Token = ::String`
 The client token used to request idempotent operations.
 
 
@@ -380,7 +380,7 @@ Creates a Lambda function definition which contains a list of Lambda functions a
 
 # Arguments
 
-## `X-Amzn-Client-Token = ::String`
+## `*header:* X-Amzn-Client-Token = ::String`
 The client token used to request idempotent operations.
 
 
@@ -440,7 +440,7 @@ Create a version of a Lambda function definition that has already been defined.
 
 # Arguments
 
-## `X-Amzn-Client-Token = ::String`
+## `*header:* X-Amzn-Client-Token = ::String`
 The client token used to request idempotent operations.
 
 
@@ -500,7 +500,7 @@ Creates a group. You may optionally provide the initial version of the group or 
 
 # Arguments
 
-## `X-Amzn-Client-Token = ::String`
+## `*header:* X-Amzn-Client-Token = ::String`
 The client token used to request idempotent operations.
 
 
@@ -555,7 +555,7 @@ Creates a CA for the group. If a CA already exists, it will rotate the existing 
 
 # Arguments
 
-## `X-Amzn-Client-Token = ::String`
+## `*header:* X-Amzn-Client-Token = ::String`
 The client token used to request idempotent operations.
 
 
@@ -598,7 +598,7 @@ Creates a version of a group which has already been defined.
 
 # Arguments
 
-## `X-Amzn-Client-Token = ::String`
+## `*header:* X-Amzn-Client-Token = ::String`
 The client token used to request idempotent operations.
 
 
@@ -661,7 +661,7 @@ Creates a logger definition. You may optionally provide the initial version of t
 
 # Arguments
 
-## `X-Amzn-Client-Token = ::String`
+## `*header:* X-Amzn-Client-Token = ::String`
 The client token used to request idempotent operations.
 
 
@@ -716,7 +716,7 @@ Creates a version of a logger definition that has already been defined.
 
 # Arguments
 
-## `X-Amzn-Client-Token = ::String`
+## `*header:* X-Amzn-Client-Token = ::String`
 The client token used to request idempotent operations.
 
 
@@ -771,7 +771,7 @@ Creates a subscription definition. You may optionally provide the initial versio
 
 # Arguments
 
-## `X-Amzn-Client-Token = ::String`
+## `*header:* X-Amzn-Client-Token = ::String`
 The client token used to request idempotent operations.
 
 
@@ -825,7 +825,7 @@ Creates a version of a subscription definition which has already been defined.
 
 # Arguments
 
-## `X-Amzn-Client-Token = ::String`
+## `*header:* X-Amzn-Client-Token = ::String`
 The client token used to request idempotent operations.
 
 
@@ -2543,7 +2543,7 @@ Resets a group's deployments.
 
 # Arguments
 
-## `X-Amzn-Client-Token = ::String`
+## `*header:* X-Amzn-Client-Token = ::String`
 The client token used to request idempotent operations.
 
 

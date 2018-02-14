@@ -15,11 +15,11 @@ using AWSCore
 """
     using AWSSDK.LexRuntime.post_content
     post_content([::AWSConfig], arguments::Dict)
-    post_content([::AWSConfig]; botName=, botAlias=, userId=, Content-Type=, inputStream=, <keyword arguments>)
+    post_content([::AWSConfig]; botName=, botAlias=, userId=, *header:* Content-Type=, inputStream=, <keyword arguments>)
 
     using AWSCore.Services.runtime_lex
     runtime_lex([::AWSConfig], "POST", "/bot/{botName}/alias/{botAlias}/user/{userId}/content", arguments::Dict)
-    runtime_lex([::AWSConfig], "POST", "/bot/{botName}/alias/{botAlias}/user/{userId}/content", botName=, botAlias=, userId=, Content-Type=, inputStream=, <keyword arguments>)
+    runtime_lex([::AWSConfig], "POST", "/bot/{botName}/alias/{botAlias}/user/{userId}/content", botName=, botAlias=, userId=, *header:* Content-Type=, inputStream=, <keyword arguments>)
 
 # PostContent Operation
 
@@ -77,7 +77,7 @@ To decide the user ID to use for your application, consider the following factor
 *   A user can't have two independent conversations with two different versions of the same bot. For example, a user can't have a conversation with the PROD and BETA versions of the same bot. If you anticipate that a user will need to have conversation with two different versions, for example, while testing, include the bot alias in the user ID to separate the two conversations.
 
 
-## `x-amz-lex-session-attributes = ::String`
+## `*header:* x-amz-lex-session-attributes = ::String`
 You pass this value as the `x-amz-lex-session-attributes` HTTP header.
 
 Application-specific information passed between Amazon Lex and a client application. The value must be a JSON serialized and base64 encoded map with string keys and values. The total size of the `sessionAttributes` and `requestAttributes` headers is limited to 12 KB.
@@ -85,7 +85,7 @@ Application-specific information passed between Amazon Lex and a client applicat
 For more information, see [Setting Session Attributes](http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs).
 
 
-## `x-amz-lex-request-attributes = ::String`
+## `*header:* x-amz-lex-request-attributes = ::String`
 You pass this value as the `x-amz-lex-request-attributes` HTTP header.
 
 Request-specific information passed between Amazon Lex and a client application. The value must be a JSON serialized and base64 encoded map with string keys and values. The total size of the `requestAttributes` and `sessionAttributes` headers is limited to 12 KB.
@@ -95,7 +95,7 @@ The namespace `x-amz-lex:` is reserved for special attributes. Don't create any 
 For more information, see [Setting Request Attributes](http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs).
 
 
-## `Content-Type = ::String` -- *Required*
+## `*header:* Content-Type = ::String` -- *Required*
 You pass this value as the `Content-Type` HTTP header.
 
 Indicates the audio format or text. The header value must start with one of the following prefixes:
@@ -117,7 +117,7 @@ Indicates the audio format or text. The header value must start with one of the 
     *   text/plain; charset=utf-8
 
 
-## `Accept = ::String`
+## `*header:* Accept = ::String`
 You pass this value as the `Accept` HTTP header.
 
 The message Amazon Lex returns in the response can be either text or speech based on the `Accept` HTTP header value in the request.
