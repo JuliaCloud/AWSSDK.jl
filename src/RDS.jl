@@ -43,7 +43,6 @@ The Amazon Resource Name (ARN) of the IAM role to associate with the Aurora DB c
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/AddRoleToDBCluster)
 """
-
 @inline add_role_to_dbcluster(aws::AWSConfig=default_aws_config(); args...) = add_role_to_dbcluster(aws, args)
 
 @inline add_role_to_dbcluster(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "AddRoleToDBCluster", args)
@@ -96,7 +95,6 @@ Constraints:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/AddSourceIdentifierToSubscription)
 """
-
 @inline add_source_identifier_to_subscription(aws::AWSConfig=default_aws_config(); args...) = add_source_identifier_to_subscription(aws, args)
 
 @inline add_source_identifier_to_subscription(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "AddSourceIdentifierToSubscription", args)
@@ -142,7 +140,6 @@ The tags to be assigned to the Amazon RDS resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/AddTagsToResource)
 """
-
 @inline add_tags_to_resource(aws::AWSConfig=default_aws_config(); args...) = add_tags_to_resource(aws, args)
 
 @inline add_tags_to_resource(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "AddTagsToResource", args)
@@ -176,7 +173,7 @@ Valid values: `system-update`, `db-upgrade`
 
 
 ## `OptInType = ::String` -- *Required*
-A value that specifies the type of opt-in request, or undoes an opt-in request. An opt-in request of type `immediate` cannot be undone.
+A value that specifies the type of opt-in request, or undoes an opt-in request. An opt-in request of type `immediate` can't be undone.
 
 Valid values:
 
@@ -199,7 +196,6 @@ Valid values:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ApplyPendingMaintenanceAction)
 """
-
 @inline apply_pending_maintenance_action(aws::AWSConfig=default_aws_config(); args...) = apply_pending_maintenance_action(aws, args)
 
 @inline apply_pending_maintenance_action(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "ApplyPendingMaintenanceAction", args)
@@ -221,7 +217,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 Enables ingress to a DBSecurityGroup using one of two forms of authorization. First, EC2 or VPC security groups can be added to the DBSecurityGroup if the application using the database is running on EC2 or VPC instances. Second, IP ranges are available if the application accessing your database is running on the Internet. Required parameters for this API are one of CIDR range, EC2SecurityGroupId for VPC, or (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId for non-VPC).
 
 **Note**
-> You cannot authorize ingress from an EC2 security group in one AWS Region to an Amazon RDS DB instance in another. You cannot authorize ingress from a VPC security group in one VPC to an Amazon RDS DB instance in another.
+> You can't authorize ingress from an EC2 security group in one AWS Region to an Amazon RDS DB instance in another. You can't authorize ingress from a VPC security group in one VPC to an Amazon RDS DB instance in another.
 
 For an overview of CIDR ranges, go to the [Wikipedia Tutorial](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
@@ -259,12 +255,84 @@ AWS account number of the owner of the EC2 security group specified in the `EC2S
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/AuthorizeDBSecurityGroupIngress)
 """
-
 @inline authorize_dbsecurity_group_ingress(aws::AWSConfig=default_aws_config(); args...) = authorize_dbsecurity_group_ingress(aws, args)
 
 @inline authorize_dbsecurity_group_ingress(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "AuthorizeDBSecurityGroupIngress", args)
 
 @inline authorize_dbsecurity_group_ingress(args) = authorize_dbsecurity_group_ingress(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.RDS.backtrack_dbcluster
+    backtrack_dbcluster([::AWSConfig], arguments::Dict)
+    backtrack_dbcluster([::AWSConfig]; DBClusterIdentifier=, BacktrackTo=, <keyword arguments>)
+
+    using AWSCore.Services.rds
+    rds([::AWSConfig], "BacktrackDBCluster", arguments::Dict)
+    rds([::AWSConfig], "BacktrackDBCluster", DBClusterIdentifier=, BacktrackTo=, <keyword arguments>)
+
+# BacktrackDBCluster Operation
+
+Backtracks a DB cluster to a specific time, without creating a new DB cluster.
+
+For more information on backtracking, see [Backtracking an Aurora DB Cluster](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AuroraMySQL.Managing.Backtrack.html) in the *Amazon RDS User Guide.*
+
+# Arguments
+
+## `DBClusterIdentifier = ::String` -- *Required*
+The DB cluster identifier of the DB cluster to be backtracked. This parameter is stored as a lowercase string.
+
+Constraints:
+
+*   Must contain from 1 to 63 alphanumeric characters or hyphens.
+
+*   First character must be a letter.
+
+*   Cannot end with a hyphen or contain two consecutive hyphens.
+
+Example: `my-cluster1`
+
+
+## `BacktrackTo = timestamp` -- *Required*
+The timestamp of the time to backtrack the DB cluster to, specified in ISO 8601 format. For more information about ISO 8601, see the [ISO8601 Wikipedia page.](http://en.wikipedia.org/wiki/ISO_8601)
+
+**Note**
+> If the specified time is not a consistent time for the DB cluster, Aurora automatically chooses the nearest possible consistent time for the DB cluster.
+
+Constraints:
+
+*   Must contain a valid ISO 8601 timestamp.
+
+*   Cannot contain a timestamp set in the future.
+
+Example: `2017-07-08T18:00Z`
+
+
+## `Force = ::Bool`
+A value that, if specified, forces the DB cluster to backtrack when binary logging is enabled. Otherwise, an error occurs when binary logging is enabled.
+
+
+## `UseEarliestTimeOnPointInTimeUnavailable = ::Bool`
+If *BacktrackTo* is set to a timestamp earlier than the earliest backtrack time, this value backtracks the DB cluster to the earliest possible backtrack time. Otherwise, an error occurs.
+
+
+
+
+# Returns
+
+`DBClusterBacktrack`
+
+# Exceptions
+
+`DBClusterNotFoundFault` or `InvalidDBClusterStateFault`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/BacktrackDBCluster)
+"""
+@inline backtrack_dbcluster(aws::AWSConfig=default_aws_config(); args...) = backtrack_dbcluster(aws, args)
+
+@inline backtrack_dbcluster(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "BacktrackDBCluster", args)
+
+@inline backtrack_dbcluster(args) = backtrack_dbcluster(default_aws_config(), args)
 
 
 """
@@ -335,7 +403,6 @@ A description for the copied DB cluster parameter group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CopyDBClusterParameterGroup)
 """
-
 @inline copy_dbcluster_parameter_group(aws::AWSConfig=default_aws_config(); args...) = copy_dbcluster_parameter_group(aws, args)
 
 @inline copy_dbcluster_parameter_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "CopyDBClusterParameterGroup", args)
@@ -360,7 +427,7 @@ To copy a DB cluster snapshot from a shared manual DB cluster snapshot, `SourceD
 
 You can copy an encrypted DB cluster snapshot from another AWS Region. In that case, the AWS Region where you call the `CopyDBClusterSnapshot` action is the destination AWS Region for the encrypted DB cluster snapshot to be copied to. To copy an encrypted DB cluster snapshot from another AWS Region, you must provide the following values:
 
-*   `KmsKeyId` - The AWS Key Management System (KMS) key identifier for the key to use to encrypt the copy of the DB cluster snapshot in the destination AWS Region.
+*   `KmsKeyId` - The AWS Key Management System (AWS KMS) key identifier for the key to use to encrypt the copy of the DB cluster snapshot in the destination AWS Region.
 
 *   `PreSignedUrl` - A URL that contains a Signature Version 4 signed request for the `CopyDBClusterSnapshot` action to be called in the source AWS Region where the DB cluster snapshot is copied from. The pre-signed URL must be a valid request for the `CopyDBClusterSnapshot` API action that can be executed in the source AWS Region that contains the encrypted DB cluster snapshot to be copied.
 
@@ -370,7 +437,7 @@ You can copy an encrypted DB cluster snapshot from another AWS Region. In that c
 
     *   `DestinationRegion` - The name of the AWS Region that the DB cluster snapshot will be created in.
 
-    *   `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot identifier for the encrypted DB cluster snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For example, if you are copying an encrypted DB cluster snapshot from the us-west-2 region, then your `SourceDBClusterSnapshotIdentifier` looks like the following example: `arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115`.
+    *   `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot identifier for the encrypted DB cluster snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For example, if you are copying an encrypted DB cluster snapshot from the us-west-2 AWS Region, then your `SourceDBClusterSnapshotIdentifier` looks like the following example: `arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115`.
 
     To learn how to generate a Signature Version 4 signed request, see [Authenticating Requests: Using Query Parameters (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) and [Signature Version 4 Signing Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
@@ -380,7 +447,7 @@ You can copy an encrypted DB cluster snapshot from another AWS Region. In that c
 
 To cancel the copy operation once it is in progress, delete the target DB cluster snapshot identified by `TargetDBClusterSnapshotIdentifier` while that DB cluster snapshot is in "copying" status.
 
-For more information on copying encrypted DB cluster snapshots from one AWS Region to another, see [Copying a DB Cluster Snapshot in the Same Account, Either in the Same Region or Across Regions](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBClusterSnapshot.CrossRegion) in the Amazon RDS User Guide.
+For more information on copying encrypted DB cluster snapshots from one AWS Region to another, see [Copying a DB Cluster Snapshot in the Same Account, Either in the Same Region or Across Regions](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBClusterSnapshot.CrossRegion) in the *Amazon RDS User Guide.*
 
 For more information on Amazon Aurora, see [Aurora on Amazon RDS](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html) in the *Amazon RDS User Guide.*
 
@@ -389,7 +456,7 @@ For more information on Amazon Aurora, see [Aurora on Amazon RDS](http://docs.aw
 ## `SourceDBClusterSnapshotIdentifier = ::String` -- *Required*
 The identifier of the DB cluster snapshot to copy. This parameter is not case-sensitive.
 
-You cannot copy an encrypted, shared DB cluster snapshot from one AWS Region to another.
+You can't copy an encrypted, shared DB cluster snapshot from one AWS Region to another.
 
 Constraints:
 
@@ -417,15 +484,15 @@ Example: `my-cluster-snapshot2`
 
 
 ## `KmsKeyId = ::String`
-The AWS KMS key ID for an encrypted DB cluster snapshot. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
-
-If you copy an unencrypted DB cluster snapshot and specify a value for the `KmsKeyId` parameter, Amazon RDS encrypts the target DB cluster snapshot using the specified KMS encryption key.
+The AWS AWS KMS key ID for an encrypted DB cluster snapshot. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
 
 If you copy an encrypted DB cluster snapshot from your AWS account, you can specify a value for `KmsKeyId` to encrypt the copy with a new KMS encryption key. If you don't specify a value for `KmsKeyId`, then the copy of the DB cluster snapshot is encrypted with the same KMS key as the source DB cluster snapshot.
 
 If you copy an encrypted DB cluster snapshot that is shared from another AWS account, then you must specify a value for `KmsKeyId`.
 
-To copy an encrypted DB cluster snapshot to another AWS Region, you must set `KmsKeyId` to the KMS key ID you want to use to encrypt the copy of the DB cluster snapshot in the destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and you cannot use encryption keys from one AWS Region in another AWS Region.
+To copy an encrypted DB cluster snapshot to another AWS Region, you must set `KmsKeyId` to the KMS key ID you want to use to encrypt the copy of the DB cluster snapshot in the destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and you can't use encryption keys from one AWS Region in another AWS Region.
+
+If you copy an unencrypted DB cluster snapshot and specify a value for the `KmsKeyId` parameter, an error is returned.
 
 
 ## `PreSignedUrl = ::String`
@@ -433,11 +500,11 @@ The URL that contains a Signature Version 4 signed request for the `CopyDBCluste
 
 The pre-signed URL must be a valid request for the `CopyDBSClusterSnapshot` API action that can be executed in the source AWS Region that contains the encrypted DB cluster snapshot to be copied. The pre-signed URL request must contain the following parameter values:
 
-*   `KmsKeyId` - The KMS key identifier for the key to use to encrypt the copy of the DB cluster snapshot in the destination AWS Region. This is the same identifier for both the `CopyDBClusterSnapshot` action that is called in the destination AWS Region, and the action contained in the pre-signed URL.
+*   `KmsKeyId` - The AWS KMS key identifier for the key to use to encrypt the copy of the DB cluster snapshot in the destination AWS Region. This is the same identifier for both the `CopyDBClusterSnapshot` action that is called in the destination AWS Region, and the action contained in the pre-signed URL.
 
 *   `DestinationRegion` - The name of the AWS Region that the DB cluster snapshot will be created in.
 
-*   `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot identifier for the encrypted DB cluster snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For example, if you are copying an encrypted DB cluster snapshot from the us-west-2 region, then your `SourceDBClusterSnapshotIdentifier` looks like the following example: `arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115`.
+*   `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot identifier for the encrypted DB cluster snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For example, if you are copying an encrypted DB cluster snapshot from the us-west-2 AWS Region, then your `SourceDBClusterSnapshotIdentifier` looks like the following example: `arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115`.
 
 To learn how to generate a Signature Version 4 signed request, see [Authenticating Requests: Using Query Parameters (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) and [Signature Version 4 Signing Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
@@ -446,7 +513,7 @@ To learn how to generate a Signature Version 4 signed request, see [Authenticati
 
 
 ## `CopyTags = ::Bool`
-True to copy all tags from the source DB cluster snapshot to the target DB cluster snapshot; otherwise false. The default is false.
+True to copy all tags from the source DB cluster snapshot to the target DB cluster snapshot, and otherwise false. The default is false.
 
 
 ## `Tags = [[ ... ], ...]`
@@ -474,7 +541,6 @@ The ID of the region that contains the snapshot to be copied.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CopyDBClusterSnapshot)
 """
-
 @inline copy_dbcluster_snapshot(aws::AWSConfig=default_aws_config(); args...) = copy_dbcluster_snapshot(aws, args)
 
 @inline copy_dbcluster_snapshot(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "CopyDBClusterSnapshot", args)
@@ -548,7 +614,6 @@ A description for the copied DB parameter group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CopyDBParameterGroup)
 """
-
 @inline copy_dbparameter_group(aws::AWSConfig=default_aws_config(); args...) = copy_dbparameter_group(aws, args)
 
 @inline copy_dbparameter_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "CopyDBParameterGroup", args)
@@ -571,9 +636,7 @@ Copies the specified DB snapshot. The source DB snapshot must be in the "availab
 
 You can copy a snapshot from one AWS Region to another. In that case, the AWS Region where you call the `CopyDBSnapshot` action is the destination AWS Region for the DB snapshot copy.
 
-You cannot copy an encrypted, shared DB snapshot from one AWS Region to another.
-
-For more information about copying snapshots, see [Copying a DB Snapshot](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopyDBSnapshot.html) in the Amazon RDS User Guide.
+For more information about copying snapshots, see [Copying a DB Snapshot](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopyDBSnapshot.html) in the *Amazon RDS User Guide.*
 
 # Arguments
 
@@ -622,7 +685,7 @@ If you copy an encrypted DB snapshot that is shared from another AWS account, th
 
 If you specify this parameter when you copy an unencrypted snapshot, the copy is encrypted.
 
-If you copy an encrypted snapshot to a different AWS Region, then you must specify a KMS key for the destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and you cannot use encryption keys from one AWS Region in another AWS Region.
+If you copy an encrypted snapshot to a different AWS Region, then you must specify a KMS key for the destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and you can't use encryption keys from one AWS Region in another AWS Region.
 
 
 ## `Tags = [[ ... ], ...]`
@@ -635,23 +698,23 @@ If you copy an encrypted snapshot to a different AWS Region, then you must speci
 ```
 
 ## `CopyTags = ::Bool`
-True to copy all tags from the source DB snapshot to the target DB snapshot; otherwise false. The default is false.
+True to copy all tags from the source DB snapshot to the target DB snapshot, and otherwise false. The default is false.
 
 
 ## `PreSignedUrl = ::String`
 The URL that contains a Signature Version 4 signed request for the `CopyDBSnapshot` API action in the source AWS Region that contains the source DB snapshot to copy.
 
-You must specify this parameter when you copy an encrypted DB snapshot from another AWS Region by using the Amazon RDS API. You can specify the source region option instead of this parameter when you copy an encrypted DB snapshot from another AWS Region by using the AWS CLI.
+You must specify this parameter when you copy an encrypted DB snapshot from another AWS Region by using the Amazon RDS API. You can specify the `--source-region` option instead of this parameter when you copy an encrypted DB snapshot from another AWS Region by using the AWS CLI.
 
 The presigned URL must be a valid request for the `CopyDBSnapshot` API action that can be executed in the source AWS Region that contains the encrypted DB snapshot to be copied. The presigned URL request must contain the following parameter values:
 
 *   `DestinationRegion` - The AWS Region that the encrypted DB snapshot is copied to. This AWS Region is the same one where the `CopyDBSnapshot` action is called that contains this presigned URL.
 
-    For example, if you copy an encrypted DB snapshot from the us-west-2 region to the us-east-1 region, then you call the `CopyDBSnapshot` action in the us-east-1 region and provide a presigned URL that contains a call to the `CopyDBSnapshot` action in the us-west-2 region. For this example, the `DestinationRegion` in the presigned URL must be set to the us-east-1 region.
+    For example, if you copy an encrypted DB snapshot from the us-west-2 AWS Region to the us-east-1 AWS Region, then you call the `CopyDBSnapshot` action in the us-east-1 AWS Region and provide a presigned URL that contains a call to the `CopyDBSnapshot` action in the us-west-2 AWS Region. For this example, the `DestinationRegion` in the presigned URL must be set to the us-east-1 AWS Region.
 
-*   `KmsKeyId` - The KMS key identifier for the key to use to encrypt the copy of the DB snapshot in the destination AWS Region. This is the same identifier for both the `CopyDBSnapshot` action that is called in the destination AWS Region, and the action contained in the presigned URL.
+*   `KmsKeyId` - The AWS KMS key identifier for the key to use to encrypt the copy of the DB snapshot in the destination AWS Region. This is the same identifier for both the `CopyDBSnapshot` action that is called in the destination AWS Region, and the action contained in the presigned URL.
 
-*   `SourceDBSnapshotIdentifier` - The DB snapshot identifier for the encrypted snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For example, if you are copying an encrypted DB snapshot from the us-west-2 region, then your `SourceDBSnapshotIdentifier` looks like the following example: `arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20161115`.
+*   `SourceDBSnapshotIdentifier` - The DB snapshot identifier for the encrypted snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For example, if you are copying an encrypted DB snapshot from the us-west-2 AWS Region, then your `SourceDBSnapshotIdentifier` looks like the following example: `arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20161115`.
 
 To learn how to generate a Signature Version 4 signed request, see [Authenticating Requests: Using Query Parameters (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) and [Signature Version 4 Signing Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
@@ -662,7 +725,7 @@ To learn how to generate a Signature Version 4 signed request, see [Authenticati
 ## `OptionGroupName = ::String`
 The name of an option group to associate with the copy of the snapshot.
 
-Specify this option if you are copying a snapshot from one AWS Region to another, and your DB instance uses a nondefault option group. If your source DB instance uses Transparent Data Encryption for Oracle or Microsoft SQL Server, you must specify this option when copying across regions. For more information, see [Option Group Considerations](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopySnapshot.Options).
+Specify this option if you are copying a snapshot from one AWS Region to another, and your DB instance uses a nondefault option group. If your source DB instance uses Transparent Data Encryption for Oracle or Microsoft SQL Server, you must specify this option when copying across AWS Regions. For more information, see [Option Group Considerations](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopySnapshot.Options).
 
 
 ## `SourceRegion = ::String`
@@ -681,7 +744,6 @@ The ID of the region that contains the snapshot to be copied.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CopyDBSnapshot)
 """
-
 @inline copy_dbsnapshot(aws::AWSConfig=default_aws_config(); args...) = copy_dbsnapshot(aws, args)
 
 @inline copy_dbsnapshot(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "CopyDBSnapshot", args)
@@ -757,7 +819,6 @@ The description for the copied option group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CopyOptionGroup)
 """
-
 @inline copy_option_group(aws::AWSConfig=default_aws_config(); args...) = copy_option_group(aws, args)
 
 @inline copy_option_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "CopyOptionGroup", args)
@@ -785,7 +846,7 @@ For more information on Amazon Aurora, see [Aurora on Amazon RDS](http://docs.aw
 # Arguments
 
 ## `AvailabilityZones = [::String, ...]`
-A list of EC2 Availability Zones that instances in the DB cluster can be created in. For information on regions and Availability Zones, see [Regions and Availability Zones](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+A list of EC2 Availability Zones that instances in the DB cluster can be created in. For information on AWS Regions and Availability Zones, see [Regions and Availability Zones](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 
 
 ## `BackupRetentionPeriod = ::Int`
@@ -843,21 +904,25 @@ Example: `mySubnetgroup`
 ## `Engine = ::String` -- *Required*
 The name of the database engine to be used for this DB cluster.
 
-Valid Values: `aurora`
+Valid Values: `aurora` (for MySQL 5.6-compatible Aurora), `aurora-mysql` (for MySQL 5.7-compatible Aurora), and `aurora-postgresql`
 
 
 ## `EngineVersion = ::String`
 The version number of the database engine to use.
 
-**Aurora**
+**Aurora MySQL**
 
-Example: `5.6.10a`
+Example: `5.6.10a`, `5.7.12`
+
+**Aurora PostgreSQL**
+
+Example: `9.6.3`
 
 
 ## `Port = ::Int`
 The port number on which the instances in the DB cluster accept connections.
 
-Default: `3306`
+Default: `3306` if engine is set as aurora or `5432` if set to aurora-postgresql.
 
 
 ## `MasterUsername = ::String`
@@ -881,19 +946,19 @@ Constraints: Must contain from 8 to 41 characters.
 ## `OptionGroupName = ::String`
 A value that indicates that the DB cluster should be associated with the specified option group.
 
-Permanent options cannot be removed from an option group. The option group cannot be removed from a DB cluster once it is associated with a DB cluster.
+Permanent options can't be removed from an option group. The option group can't be removed from a DB cluster once it is associated with a DB cluster.
 
 
 ## `PreferredBackupWindow = ::String`
 The daily time range during which automated backups are created if automated backups are enabled using the `BackupRetentionPeriod` parameter.
 
-Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
+The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
 
 Constraints:
 
 *   Must be in the format `hh24:mi-hh24:mi`.
 
-*   Times should be in Universal Coordinated Time (UTC).
+*   Must be in Universal Coordinated Time (UTC).
 
 *   Must not conflict with the preferred maintenance window.
 
@@ -905,9 +970,9 @@ The weekly time range during which system maintenance can occur, in Universal Co
 
 Format: `ddd:hh24:mi-ddd:hh24:mi`
 
-Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region, occurring on a random day of the week. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
+The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region, occurring on a random day of the week. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
 
-Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
+Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
 Constraints: Minimum 30-minute window.
 
@@ -930,7 +995,7 @@ Specifies whether the DB cluster is encrypted.
 
 
 ## `KmsKeyId = ::String`
-The KMS key identifier for an encrypted DB cluster.
+The AWS KMS key identifier for an encrypted DB cluster.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are creating a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB cluster, then you can use the KMS key alias instead of the ARN for the KMS encryption key.
 
@@ -952,11 +1017,11 @@ The pre-signed URL must be a valid request for the `CreateDBCluster` API action 
 
 The pre-signed URL request must contain the following parameter values:
 
-*   `KmsKeyId` - The KMS key identifier for the key to use to encrypt the copy of the DB cluster in the destination AWS Region. This should refer to the same KMS key for both the `CreateDBCluster` action that is called in the destination AWS Region, and the action contained in the pre-signed URL.
+*   `KmsKeyId` - The AWS KMS key identifier for the key to use to encrypt the copy of the DB cluster in the destination AWS Region. This should refer to the same KMS key for both the `CreateDBCluster` action that is called in the destination AWS Region, and the action contained in the pre-signed URL.
 
 *   `DestinationRegion` - The name of the AWS Region that Aurora Read Replica will be created in.
 
-*   `ReplicationSourceIdentifier` - The DB cluster identifier for the encrypted DB cluster to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For example, if you are copying an encrypted DB cluster from the us-west-2 region, then your `ReplicationSourceIdentifier` would look like Example: `arn:aws:rds:us-west-2:123456789012:cluster:aurora-cluster1`.
+*   `ReplicationSourceIdentifier` - The DB cluster identifier for the encrypted DB cluster to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For example, if you are copying an encrypted DB cluster from the us-west-2 AWS Region, then your `ReplicationSourceIdentifier` would look like Example: `arn:aws:rds:us-west-2:123456789012:cluster:aurora-cluster1`.
 
 To learn how to generate a Signature Version 4 signed request, see [Authenticating Requests: Using Query Parameters (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) and [Signature Version 4 Signing Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
@@ -965,9 +1030,23 @@ To learn how to generate a Signature Version 4 signed request, see [Authenticati
 
 
 ## `EnableIAMDatabaseAuthentication = ::Bool`
-A Boolean value that is true to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.
+True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.
 
 Default: `false`
+
+
+## `BacktrackWindow = ::Int`
+The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+
+Default: 0
+
+Constraints:
+
+*   If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+
+
+## `EnableCloudwatchLogsExports = [::String, ...]`
+The list of log types that need to be enabled for exporting to CloudWatch Logs.
 
 
 ## `SourceRegion = ::String`
@@ -986,7 +1065,6 @@ The ID of the region that contains the source for the read replica.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBCluster)
 """
-
 @inline create_dbcluster(aws::AWSConfig=default_aws_config(); args...) = create_dbcluster(aws, args)
 
 @inline create_dbcluster(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "CreateDBCluster", args)
@@ -1032,6 +1110,14 @@ Constraints:
 ## `DBParameterGroupFamily = ::String` -- *Required*
 The DB cluster parameter group family name. A DB cluster parameter group can be associated with one and only one DB cluster parameter group family, and can be applied only to a DB cluster running a database engine and engine version compatible with that DB cluster parameter group family.
 
+**Aurora MySQL**
+
+Example: `aurora5.6`, `aurora-mysql5.7`
+
+**Aurora PostgreSQL**
+
+Example: `aurora-postgresql9.6`
+
 
 ## `Description = ::String` -- *Required*
 The description for the DB cluster parameter group.
@@ -1058,7 +1144,6 @@ The description for the DB cluster parameter group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBClusterParameterGroup)
 """
-
 @inline create_dbcluster_parameter_group(aws::AWSConfig=default_aws_config(); args...) = create_dbcluster_parameter_group(aws, args)
 
 @inline create_dbcluster_parameter_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "CreateDBClusterParameterGroup", args)
@@ -1126,7 +1211,6 @@ The tags to be assigned to the DB cluster snapshot.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBClusterSnapshot)
 """
-
 @inline create_dbcluster_snapshot(aws::AWSConfig=default_aws_config(); args...) = create_dbcluster_snapshot(aws, args)
 
 @inline create_dbcluster_snapshot(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "CreateDBClusterSnapshot", args)
@@ -1226,7 +1310,7 @@ Example: `mydbinstance`
 
 
 ## `AllocatedStorage = ::Int`
-The amount of storage (in gigabytes) to be initially allocated for the database instance.
+The amount of storage (in gibibytes) to allocate for the DB instance.
 
 Type: Integer
 
@@ -1238,9 +1322,9 @@ Not applicable. Aurora cluster volumes automatically grow as the amount of data 
 
 Constraints to the amount of storage for each storage type are the following:
 
-*   General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+*   General Purpose (SSD) storage (gp2): Must be an integer from 20 to 16384.
 
-*   Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+*   Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
 
 *   Magnetic storage (standard): Must be an integer from 5 to 3072.
 
@@ -1248,9 +1332,9 @@ Constraints to the amount of storage for each storage type are the following:
 
 Constraints to the amount of storage for each storage type are the following:
 
-*   General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+*   General Purpose (SSD) storage (gp2): Must be an integer from 20 to 16384.
 
-*   Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+*   Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
 
 *   Magnetic storage (standard): Must be an integer from 5 to 3072.
 
@@ -1258,9 +1342,9 @@ Constraints to the amount of storage for each storage type are the following:
 
 Constraints to the amount of storage for each storage type are the following:
 
-*   General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+*   General Purpose (SSD) storage (gp2): Must be an integer from 20 to 16384.
 
-*   Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+*   Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
 
 *   Magnetic storage (standard): Must be an integer from 5 to 3072.
 
@@ -1268,9 +1352,9 @@ Constraints to the amount of storage for each storage type are the following:
 
 Constraints to the amount of storage for each storage type are the following:
 
-*   General Purpose (SSD) storage (gp2): Must be an integer from 10 to 6144.
+*   General Purpose (SSD) storage (gp2): Must be an integer from 20 to 16384.
 
-*   Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+*   Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
 
 *   Magnetic storage (standard): Must be an integer from 10 to 3072.
 
@@ -1298,7 +1382,7 @@ Constraints to the amount of storage for each storage type are the following:
 
 
 ## `DBInstanceClass = ::String` -- *Required*
-The compute and memory capacity of the DB instance, for example, `db.m4.large`. Not all DB instance classes are available in all regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see [DB Instance Class](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html) in the Amazon RDS User Guide.
+The compute and memory capacity of the DB instance, for example, `db.m4.large`. Not all DB instance classes are available in all AWS Regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see [DB Instance Class](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html) in the *Amazon RDS User Guide.*
 
 
 ## `Engine = ::String` -- *Required*
@@ -1308,7 +1392,11 @@ Not every database engine is available for every AWS Region.
 
 Valid Values:
 
-*   `aurora`
+*   `aurora` (for MySQL 5.6-compatible Aurora)
+
+*   `aurora-mysql` (for MySQL 5.7-compatible Aurora)
+
+*   `aurora-postgresql`
 
 *   `mariadb`
 
@@ -1400,7 +1488,7 @@ Constraints:
 
 
 ## `MasterUserPassword = ::String`
-The password for the master user. Can be any printable ASCII character except "/", \"\"\", or "@".
+The password for the master user. The password can include any printable ASCII character except "/", \"\"\", or "@".
 
 **Amazon Aurora**
 
@@ -1444,13 +1532,13 @@ Default: The default EC2 VPC security group for the DB subnet group's VPC.
 
 
 ## `AvailabilityZone = ::String`
-The EC2 Availability Zone that the database instance is created in. For information on regions and Availability Zones, see [Regions and Availability Zones](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+The EC2 Availability Zone that the DB instance is created in. For information on AWS Regions and Availability Zones, see [Regions and Availability Zones](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 
 Default: A random, system-chosen Availability Zone in the endpoint's AWS Region.
 
 Example: `us-east-1d`
 
-Constraint: The AvailabilityZone parameter cannot be specified if the MultiAZ parameter is set to `true`. The specified Availability Zone must be in the same AWS Region as the current endpoint.
+Constraint: The AvailabilityZone parameter can't be specified if the MultiAZ parameter is set to `true`. The specified Availability Zone must be in the same AWS Region as the current endpoint.
 
 
 ## `DBSubnetGroupName = ::String`
@@ -1460,13 +1548,13 @@ If there is no DB subnet group, then it is a non-VPC DB instance.
 
 
 ## `PreferredMaintenanceWindow = ::String`
-The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC). For more information, see [DB Instance Maintenance](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBMaintenance.html).
+The time range each week during which system maintenance can occur, in Universal Coordinated Time (UTC). For more information, see [Amazon RDS Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance).
 
 Format: `ddd:hh24:mi-ddd:hh24:mi`
 
-Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region, occurring on a random day of the week. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
+The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region, occurring on a random day of the week.
 
-Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
+Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
 Constraints: Minimum 30-minute window.
 
@@ -1500,19 +1588,19 @@ Constraints:
 
 
 ## `PreferredBackupWindow = ::String`
-The daily time range during which automated backups are created if automated backups are enabled, using the `BackupRetentionPeriod` parameter. For more information, see [DB Instance Backups](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.BackingUpAndRestoringAmazonRDSInstances.html).
+The daily time range during which automated backups are created if automated backups are enabled, using the `BackupRetentionPeriod` parameter. For more information, see [The Backup Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow).
 
 **Amazon Aurora**
 
 Not applicable. The daily time range for creating automated backups is managed by the DB cluster. For more information, see [CreateDBCluster](@ref).
 
-Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region. To see the time blocks available, see [Adjusting the Preferred DB Instance Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow).
+The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region. To see the time blocks available, see [Adjusting the Preferred DB Instance Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow).
 
 Constraints:
 
 *   Must be in the format `hh24:mi-hh24:mi`.
 
-*   Times should be in Universal Coordinated Time (UTC).
+*   Must be in Universal Coordinated Time (UTC).
 
 *   Must not conflict with the preferred maintenance window.
 
@@ -1568,13 +1656,15 @@ Type: Integer
 
 
 ## `MultiAZ = ::Bool`
-Specifies if the DB instance is a Multi-AZ deployment. You cannot set the AvailabilityZone parameter if the MultiAZ parameter is set to true.
+Specifies if the DB instance is a Multi-AZ deployment. You can't set the AvailabilityZone parameter if the MultiAZ parameter is set to true.
 
 
 ## `EngineVersion = ::String`
 The version number of the database engine to use.
 
-The following are the database engines and major and minor versions that are available with Amazon RDS. Not every database engine is available for every AWS Region.
+For a list of valid engine versions, call [DescribeDBEngineVersions](@ref).
+
+The following are the database engines and links to information about the major and minor versions that are available with Amazon RDS. Not every database engine is available for every AWS Region.
 
 **Amazon Aurora**
 
@@ -1582,135 +1672,23 @@ Not applicable. The version number of the database engine to be used by the DB i
 
 **MariaDB**
 
-*   `10.1.23` (supported in all AWS regions)
+See [MariaDB on Amazon RDS Versions](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MariaDB.html#MariaDB.Concepts.VersionMgmt) in the *Amazon RDS User Guide.*
 
-*   `10.1.19` (supported in all AWS regions)
+**Microsoft SQL Server**
 
-*   `10.1.14` (supported in all regions except us-east-2)
-
-*   `10.0.31` (supported in all AWS regions)
-
-*   `10.0.28` (supported in all AWS regions)
-
-*   `10.0.24` (supported in all AWS regions)
-
-*   `10.0.17` (supported in all regions except us-east-2, ca-central-1, eu-west-2)
-
-**Microsoft SQL Server 2016**
-
-*   `13.00.4422.0.v1` (supported for all editions, and all AWS regions)
-
-*   `13.00.2164.0.v1` (supported for all editions, and all AWS regions)
-
-**Microsoft SQL Server 2014**
-
-*   `12.00.5546.0.v1` (supported for all editions, and all AWS regions)
-
-*   `12.00.5000.0.v1` (supported for all editions, and all AWS regions)
-
-*   `12.00.4422.0.v1` (supported for all editions except Enterprise Edition, and all AWS regions except ca-central-1 and eu-west-2)
-
-**Microsoft SQL Server 2012**
-
-*   `11.00.6594.0.v1` (supported for all editions, and all AWS regions)
-
-*   `11.00.6020.0.v1` (supported for all editions, and all AWS regions)
-
-*   `11.00.5058.0.v1` (supported for all editions, and all AWS regions except us-east-2, ca-central-1, and eu-west-2)
-
-*   `11.00.2100.60.v1` (supported for all editions, and all AWS regions except us-east-2, ca-central-1, and eu-west-2)
-
-**Microsoft SQL Server 2008 R2**
-
-*   `10.50.6529.0.v1` (supported for all editions, and all AWS regions except us-east-2, ca-central-1, and eu-west-2)
-
-*   `10.50.6000.34.v1` (supported for all editions, and all AWS regions except us-east-2, ca-central-1, and eu-west-2)
-
-*   `10.50.2789.0.v1` (supported for all editions, and all AWS regions except us-east-2, ca-central-1, and eu-west-2)
+See [Version and Feature Support on Amazon RDS](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.FeatureSupport) in the *Amazon RDS User Guide.*
 
 **MySQL**
 
-*   `5.7.19` (supported in all AWS regions)
+See [MySQL on Amazon RDS Versions](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt) in the *Amazon RDS User Guide.*
 
-*   `5.7.17` (supported in all AWS regions)
+**Oracle**
 
-*   `5.7.16` (supported in all AWS regions)
-
-*   `5.7.11` (supported in all AWS regions)
-
-*   `5.6.37` (supported in all AWS regions)
-
-*   `5.6.35` (supported in all AWS regions)
-
-*   `5.6.34` (supported in all AWS regions)
-
-*   `5.6.29` (supported in all AWS regions)
-
-*   `5.6.27` (supported in all regions except us-east-2, ca-central-1, eu-west-2)
-
-*   `5.5.57` (supported in all AWS regions)
-
-*   `5.5.54` (supported in all AWS regions)
-
-*   `5.5.53` (supported in all AWS regions)
-
-*   `5.5.46` (supported in all AWS regions)
-
-**Oracle 12c**
-
-*   `12.1.0.2.v9` (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)
-
-*   `12.1.0.2.v8` (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)
-
-*   `12.1.0.2.v7` (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)
-
-*   `12.1.0.2.v6` (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)
-
-*   `12.1.0.2.v5` (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)
-
-*   `12.1.0.2.v4` (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)
-
-*   `12.1.0.2.v3` (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)
-
-*   `12.1.0.2.v2` (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)
-
-*   `12.1.0.2.v1` (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)
-
-**Oracle 11g**
-
-*   `11.2.0.4.v13` (supported for EE, SE1, and SE, in all AWS regions)
-
-*   `11.2.0.4.v12` (supported for EE, SE1, and SE, in all AWS regions)
-
-*   `11.2.0.4.v11` (supported for EE, SE1, and SE, in all AWS regions)
-
-*   `11.2.0.4.v10` (supported for EE, SE1, and SE, in all AWS regions)
-
-*   `11.2.0.4.v9` (supported for EE, SE1, and SE, in all AWS regions)
-
-*   `11.2.0.4.v8` (supported for EE, SE1, and SE, in all AWS regions)
-
-*   `11.2.0.4.v7` (supported for EE, SE1, and SE, in all AWS regions)
-
-*   `11.2.0.4.v6` (supported for EE, SE1, and SE, in all AWS regions)
-
-*   `11.2.0.4.v5` (supported for EE, SE1, and SE, in all AWS regions)
-
-*   `11.2.0.4.v4` (supported for EE, SE1, and SE, in all AWS regions)
-
-*   `11.2.0.4.v3` (supported for EE, SE1, and SE, in all AWS regions)
-
-*   `11.2.0.4.v1` (supported for EE, SE1, and SE, in all AWS regions)
+See [Oracle Database Engine Release Notes](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.PatchComposition.html) in the *Amazon RDS User Guide.*
 
 **PostgreSQL**
 
-*   **Version 9.6.x:** `9.6.5 | 9.6.3 | 9.6.2 | 9.6.1`
-
-*   **Version 9.5.x:** `9.5.9 | 9.5.7 | 9.5.6 | 9.5.4 | 9.5.2`
-
-*   **Version 9.4.x:** `9.4.14 | 9.4.12 | 9.4.11 | 9.4.9 | 9.4.7`
-
-*   **Version 9.3.x:** `9.3.19 | 9.3.17 | 9.3.16 | 9.3.14 | 9.3.12`
+See [Supported PostgreSQL Database Versions](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.DBVersions) in the *Amazon RDS User Guide.*
 
 
 ## `AutoMinorVersionUpgrade = ::Bool`
@@ -1726,15 +1704,15 @@ Valid values: `license-included` | `bring-your-own-license` | `general-public-li
 
 
 ## `Iops = ::Int`
-The amount of Provisioned IOPS (input/output operations per second) to be initially allocated for the DB instance.
+The amount of Provisioned IOPS (input/output operations per second) to be initially allocated for the DB instance. For information about valid Iops values, see see [Amazon RDS Provisioned IOPS Storage to Improve Performance](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS).
 
-Constraints: Must be a multiple between 3 and 10 of the storage amount for the DB instance. Must also be an integer multiple of 1000. For example, if the size of your DB instance is 500 GB, then your `Iops` value can be 2000, 3000, 4000, or 5000.
+Constraints: Must be a multiple between 1 and 50 of the storage amount for the DB instance. Must also be an integer multiple of 1000. For example, if the size of your DB instance is 500 GiB, then your `Iops` value can be 2000, 3000, 4000, or 5000.
 
 
 ## `OptionGroupName = ::String`
 Indicates that the DB instance should be associated with the specified option group.
 
-Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option group, and that option group cannot be removed from a DB instance once it is associated with a DB instance
+Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an option group, and that option group can't be removed from a DB instance once it is associated with a DB instance
 
 
 ## `CharacterSetName = ::String`
@@ -1781,15 +1759,15 @@ Valid values: `standard | gp2 | io1`
 
 If you specify `io1`, you must also include a value for the `Iops` parameter.
 
-Default: `io1` if the `Iops` parameter is specified; otherwise `standard`
+Default: `io1` if the `Iops` parameter is specified, otherwise `standard`
 
 
 ## `TdeCredentialArn = ::String`
-The ARN from the Key Store with which to associate the instance for TDE encryption.
+The ARN from the key store with which to associate the instance for TDE encryption.
 
 
 ## `TdeCredentialPassword = ::String`
-The password for the given ARN from the Key Store in order to access the device.
+The password for the given ARN from the key store in order to access the device.
 
 
 ## `StorageEncrypted = ::Bool`
@@ -1803,7 +1781,7 @@ Default: false
 
 
 ## `KmsKeyId = ::String`
-The KMS key identifier for an encrypted DB instance.
+The AWS KMS key identifier for an encrypted DB instance.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are creating a DB instance with the same AWS account that owns the KMS encryption key used to encrypt the new DB instance, then you can use the KMS key alias instead of the ARN for the KM encryption key.
 
@@ -1819,7 +1797,7 @@ Specify the Active Directory Domain to create the instance in.
 
 
 ## `CopyTagsToSnapshot = ::Bool`
-True to copy all tags from the DB instance to snapshots of the DB instance; otherwise false. The default is false.
+True to copy all tags from the DB instance to snapshots of the DB instance, and otherwise false. The default is false.
 
 
 ## `MonitoringInterval = ::Int`
@@ -1831,7 +1809,7 @@ Valid Values: `0, 1, 5, 10, 15, 30, 60`
 
 
 ## `MonitoringRoleArn = ::String`
-The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. For example, `arn:aws:iam:123456789012:role/emaccess`. For information on creating a monitoring role, go to [Setting Up and Enabling Enhanced Monitoring](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling).
+The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to Amazon CloudWatch Logs. For example, `arn:aws:iam:123456789012:role/emaccess`. For information on creating a monitoring role, go to [Setting Up and Enabling Enhanced Monitoring](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling).
 
 If `MonitoringInterval` is set to a value other than 0, then you must supply a `MonitoringRoleArn` value.
 
@@ -1853,7 +1831,7 @@ The time zone of the DB instance. The time zone parameter is currently supported
 
 
 ## `EnableIAMDatabaseAuthentication = ::Bool`
-True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise false.
+True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.
 
 You can enable IAM database authentication for the following database engines:
 
@@ -1871,12 +1849,31 @@ Default: `false`
 
 
 ## `EnablePerformanceInsights = ::Bool`
-True to enable Performance Insights for the DB instance; otherwise false.
+True to enable Performance Insights for the DB instance, and otherwise false.
+
+For more information, see [Using Amazon Performance Insights](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html) in the *Amazon Relational Database Service User Guide*.
 
 
 ## `PerformanceInsightsKMSKeyId = ::String`
-The KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
+The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
 
+
+## `PerformanceInsightsRetentionPeriod = ::Int`
+The amount of time, in days, to retain Performance Insights data. Valid values are 7 or 731 (2 years).
+
+
+## `EnableCloudwatchLogsExports = [::String, ...]`
+The list of log types that need to be enabled for exporting to CloudWatch Logs.
+
+
+## `ProcessorFeatures = [[ ... ], ...]`
+The number of CPU cores and the number of threads per core for the DB instance class of the DB instance.
+```
+ ProcessorFeatures = [[
+        "Name" =>  ::String,
+        "Value" =>  ::String
+    ], ...]
+```
 
 
 
@@ -1890,7 +1887,6 @@ The KMS key identifier for encryption of Performance Insights data. The KMS key 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBInstance)
 """
-
 @inline create_dbinstance(aws::AWSConfig=default_aws_config(); args...) = create_dbinstance(aws, args)
 
 @inline create_dbinstance(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "CreateDBInstance", args)
@@ -1909,17 +1905,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 # CreateDBInstanceReadReplica Operation
 
-Creates a new DB instance that acts as a Read Replica for an existing source DB instance. You can create a Read Replica for a DB instance running MySQL, MariaDB, or PostgreSQL.
+Creates a new DB instance that acts as a Read Replica for an existing source DB instance. You can create a Read Replica for a DB instance running MySQL, MariaDB, or PostgreSQL. For more information, see [Working with PostgreSQL, MySQL, and MariaDB Read Replicas](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html).
 
-**Note**
-> Amazon Aurora does not support this action. You must call the `CreateDBInstance` action to create a DB instance for an Aurora DB cluster.
+Amazon Aurora doesn't support this action. You must call the `CreateDBInstance` action to create a DB instance for an Aurora DB cluster.
 
-All Read Replica DB instances are created as Single-AZ deployments with backups disabled. All other DB instance attributes (including DB security groups and DB parameter groups) are inherited from the source DB instance, except as specified below.
+All Read Replica DB instances are created with backups disabled. All other DB instance attributes (including DB security groups and DB parameter groups) are inherited from the source DB instance, except as specified following.
 
 **Important**
-> The source DB instance must have backup retention enabled.
-
-For more information, see [Working with PostgreSQL, MySQL, and MariaDB Read Replicas](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html).
+> Your source DB instance must have backup retention enabled.
 
 # Arguments
 
@@ -1936,7 +1929,7 @@ Constraints:
 
 *   Can specify a DB instance that is a MySQL Read Replica only if the source is running MySQL 5.6.
 
-*   Can specify a DB instance that is a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or later (9.4.7 and higher for cross region replication).
+*   Can specify a DB instance that is a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or later (9.4.7 and higher for cross-region replication).
 
 *   The specified DB instance must have automatic backups enabled, its backup retention period must be greater than 0.
 
@@ -1946,7 +1939,7 @@ Constraints:
 
 
 ## `DBInstanceClass = ::String`
-The compute and memory capacity of the Read Replica, for example, `db.m4.large`. Not all DB instance classes are available in all regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see [DB Instance Class](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html) in the Amazon RDS User Guide.
+The compute and memory capacity of the Read Replica, for example, `db.m4.large`. Not all DB instance classes are available in all AWS Regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see [DB Instance Class](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html) in the *Amazon RDS User Guide.*
 
 Default: Inherits from the source DB instance.
 
@@ -1965,6 +1958,12 @@ The port number that the DB instance uses for connections.
 Default: Inherits from the source DB instance
 
 Valid Values: `1150-65535`
+
+
+## `MultiAZ = ::Bool`
+Specifies whether the Read Replica is in a Multi-AZ deployment.
+
+You can create a Read Replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another Availability Zone for failover support for the replica. Creating your Read Replica as a Multi-AZ DB instance is independent of whether the source database is a Multi-AZ DB instance.
 
 
 ## `AutoMinorVersionUpgrade = ::Bool`
@@ -2029,11 +2028,11 @@ Valid values: `standard | gp2 | io1`
 
 If you specify `io1`, you must also include a value for the `Iops` parameter.
 
-Default: `io1` if the `Iops` parameter is specified; otherwise `standard`
+Default: `io1` if the `Iops` parameter is specified, otherwise `standard`
 
 
 ## `CopyTagsToSnapshot = ::Bool`
-True to copy all tags from the Read Replica to snapshots of the Read Replica; otherwise false. The default is false.
+True to copy all tags from the Read Replica to snapshots of the Read Replica, and otherwise false. The default is false.
 
 
 ## `MonitoringInterval = ::Int`
@@ -2045,7 +2044,7 @@ Valid Values: `0, 1, 5, 10, 15, 30, 60`
 
 
 ## `MonitoringRoleArn = ::String`
-The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. For example, `arn:aws:iam:123456789012:role/emaccess`. For information on creating a monitoring role, go to [To create an IAM role for Amazon RDS Enhanced Monitoring](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole).
+The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to Amazon CloudWatch Logs. For example, `arn:aws:iam:123456789012:role/emaccess`. For information on creating a monitoring role, go to [To create an IAM role for Amazon RDS Enhanced Monitoring](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole).
 
 If `MonitoringInterval` is set to a value other than 0, then you must supply a `MonitoringRoleArn` value.
 
@@ -2057,23 +2056,23 @@ If you specify this parameter when you create a Read Replica from an unencrypted
 
 If you create an encrypted Read Replica in the same AWS Region as the source DB instance, then you do not have to specify a value for this parameter. The Read Replica is encrypted with the same KMS key as the source DB instance.
 
-If you create an encrypted Read Replica in a different AWS Region, then you must specify a KMS key for the destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and you cannot use encryption keys from one AWS Region in another AWS Region.
+If you create an encrypted Read Replica in a different AWS Region, then you must specify a KMS key for the destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and you can't use encryption keys from one AWS Region in another AWS Region.
 
 
 ## `PreSignedUrl = ::String`
 The URL that contains a Signature Version 4 signed request for the `CreateDBInstanceReadReplica` API action in the source AWS Region that contains the source DB instance.
 
-You must specify this parameter when you create an encrypted Read Replica from another AWS Region by using the Amazon RDS API. You can specify the source region option instead of this parameter when you create an encrypted Read Replica from another AWS Region by using the AWS CLI.
+You must specify this parameter when you create an encrypted Read Replica from another AWS Region by using the Amazon RDS API. You can specify the `--source-region` option instead of this parameter when you create an encrypted Read Replica from another AWS Region by using the AWS CLI.
 
 The presigned URL must be a valid request for the `CreateDBInstanceReadReplica` API action that can be executed in the source AWS Region that contains the encrypted source DB instance. The presigned URL request must contain the following parameter values:
 
 *   `DestinationRegion` - The AWS Region that the encrypted Read Replica is created in. This AWS Region is the same one where the `CreateDBInstanceReadReplica` action is called that contains this presigned URL.
 
-    For example, if you create an encrypted DB instance in the us-west-1 region, from a source DB instance in the us-east-2 region, then you call the `CreateDBInstanceReadReplica` action in the us-east-1 region and provide a presigned URL that contains a call to the `CreateDBInstanceReadReplica` action in the us-west-2 region. For this example, the `DestinationRegion` in the presigned URL must be set to the us-east-1 region.
+    For example, if you create an encrypted DB instance in the us-west-1 AWS Region, from a source DB instance in the us-east-2 AWS Region, then you call the `CreateDBInstanceReadReplica` action in the us-east-1 AWS Region and provide a presigned URL that contains a call to the `CreateDBInstanceReadReplica` action in the us-west-2 AWS Region. For this example, the `DestinationRegion` in the presigned URL must be set to the us-east-1 AWS Region.
 
-*   `KmsKeyId` - The KMS key identifier for the key to use to encrypt the Read Replica in the destination AWS Region. This is the same identifier for both the `CreateDBInstanceReadReplica` action that is called in the destination AWS Region, and the action contained in the presigned URL.
+*   `KmsKeyId` - The AWS KMS key identifier for the key to use to encrypt the Read Replica in the destination AWS Region. This is the same identifier for both the `CreateDBInstanceReadReplica` action that is called in the destination AWS Region, and the action contained in the presigned URL.
 
-*   `SourceDBInstanceIdentifier` - The DB instance identifier for the encrypted DB instance to be replicated. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For example, if you are creating an encrypted Read Replica from a DB instance in the us-west-2 region, then your `SourceDBInstanceIdentifier` looks like the following example: `arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115`.
+*   `SourceDBInstanceIdentifier` - The DB instance identifier for the encrypted DB instance to be replicated. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For example, if you are creating an encrypted Read Replica from a DB instance in the us-west-2 AWS Region, then your `SourceDBInstanceIdentifier` looks like the following example: `arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115`.
 
 To learn how to generate a Signature Version 4 signed request, see [Authenticating Requests: Using Query Parameters (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) and [Signature Version 4 Signing Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
@@ -2082,7 +2081,7 @@ To learn how to generate a Signature Version 4 signed request, see [Authenticati
 
 
 ## `EnableIAMDatabaseAuthentication = ::Bool`
-True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise false.
+True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.
 
 You can enable IAM database authentication for the following database engines
 
@@ -2096,11 +2095,34 @@ Default: `false`
 
 
 ## `EnablePerformanceInsights = ::Bool`
-True to enable Performance Insights for the read replica; otherwise false.
+True to enable Performance Insights for the read replica, and otherwise false.
+
+For more information, see [Using Amazon Performance Insights](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html) in the *Amazon Relational Database Service User Guide*.
 
 
 ## `PerformanceInsightsKMSKeyId = ::String`
-The KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
+The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
+
+
+## `PerformanceInsightsRetentionPeriod = ::Int`
+The amount of time, in days, to retain Performance Insights data. Valid values are 7 or 731 (2 years).
+
+
+## `EnableCloudwatchLogsExports = [::String, ...]`
+The list of logs that the new DB instance is to export to CloudWatch Logs.
+
+
+## `ProcessorFeatures = [[ ... ], ...]`
+The number of CPU cores and the number of threads per core for the DB instance class of the DB instance.
+```
+ ProcessorFeatures = [[
+        "Name" =>  ::String,
+        "Value" =>  ::String
+    ], ...]
+```
+
+## `UseDefaultProcessorFeatures = ::Bool`
+A value that specifies that the DB instance class of the DB instance uses its default processor features.
 
 
 ## `SourceRegion = ::String`
@@ -2119,7 +2141,6 @@ The ID of the region that contains the source for the read replica.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBInstanceReadReplica)
 """
-
 @inline create_dbinstance_read_replica(aws::AWSConfig=default_aws_config(); args...) = create_dbinstance_read_replica(aws, args)
 
 @inline create_dbinstance_read_replica(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "CreateDBInstanceReadReplica", args)
@@ -2165,6 +2186,13 @@ Constraints:
 ## `DBParameterGroupFamily = ::String` -- *Required*
 The DB parameter group family name. A DB parameter group can be associated with one and only one DB parameter group family, and can be applied only to a DB instance running a database engine and engine version compatible with that DB parameter group family.
 
+To list all of the available parameter group families, use the following command:
+
+`aws rds describe-db-engine-versions --query "DBEngineVersions[].DBParameterGroupFamily"`
+
+**Note**
+> The output contains duplicates.
+
 
 ## `Description = ::String` -- *Required*
 The description for the DB parameter group.
@@ -2191,7 +2219,6 @@ The description for the DB parameter group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBParameterGroup)
 """
-
 @inline create_dbparameter_group(aws::AWSConfig=default_aws_config(); args...) = create_dbparameter_group(aws, args)
 
 @inline create_dbparameter_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "CreateDBParameterGroup", args)
@@ -2211,6 +2238,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 # CreateDBSecurityGroup Operation
 
 Creates a new DB security group. DB security groups control access to a DB instance.
+
+**Note**
+> A DB security group controls access to EC2-Classic DB instances that are not in a VPC.
 
 # Arguments
 
@@ -2255,7 +2285,6 @@ The description for the DB security group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBSecurityGroup)
 """
-
 @inline create_dbsecurity_group(aws::AWSConfig=default_aws_config(); args...) = create_dbsecurity_group(aws, args)
 
 @inline create_dbsecurity_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "CreateDBSecurityGroup", args)
@@ -2323,7 +2352,6 @@ Constraints:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBSnapshot)
 """
-
 @inline create_dbsnapshot(aws::AWSConfig=default_aws_config(); args...) = create_dbsnapshot(aws, args)
 
 @inline create_dbsnapshot(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "CreateDBSnapshot", args)
@@ -2383,7 +2411,6 @@ The EC2 Subnet IDs for the DB subnet group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBSubnetGroup)
 """
-
 @inline create_dbsubnet_group(aws::AWSConfig=default_aws_config(); args...) = create_dbsubnet_group(aws, args)
 
 @inline create_dbsubnet_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "CreateDBSubnetGroup", args)
@@ -2431,7 +2458,7 @@ A list of event categories for a SourceType that you want to subscribe to. You c
 
 
 ## `SourceIds = [::String, ...]`
-The list of identifiers of the event sources for which events are returned. If not specified, then all sources are included in the response. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens.
+The list of identifiers of the event sources for which events are returned. If not specified, then all sources are included in the response. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.
 
 Constraints:
 
@@ -2471,7 +2498,6 @@ A Boolean value; set to **true** to activate the subscription, set to **false** 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateEventSubscription)
 """
-
 @inline create_event_subscription(aws::AWSConfig=default_aws_config(); args...) = create_event_subscription(aws, args)
 
 @inline create_event_subscription(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "CreateEventSubscription", args)
@@ -2541,7 +2567,6 @@ The description of the option group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateOptionGroup)
 """
-
 @inline create_option_group(aws::AWSConfig=default_aws_config(); args...) = create_option_group(aws, args)
 
 @inline create_option_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "CreateOptionGroup", args)
@@ -2560,7 +2585,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 # DeleteDBCluster Operation
 
-The DeleteDBCluster action deletes a previously provisioned DB cluster. When you delete a DB cluster, all automated backups for that DB cluster are deleted and cannot be recovered. Manual DB cluster snapshots of the specified DB cluster are not deleted.
+The DeleteDBCluster action deletes a previously provisioned DB cluster. When you delete a DB cluster, all automated backups for that DB cluster are deleted and can't be recovered. Manual DB cluster snapshots of the specified DB cluster are not deleted.
 
 For more information on Amazon Aurora, see [Aurora on Amazon RDS](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html) in the *Amazon RDS User Guide.*
 
@@ -2610,7 +2635,6 @@ Constraints:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBCluster)
 """
-
 @inline delete_dbcluster(aws::AWSConfig=default_aws_config(); args...) = delete_dbcluster(aws, args)
 
 @inline delete_dbcluster(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DeleteDBCluster", args)
@@ -2629,7 +2653,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 # DeleteDBClusterParameterGroup Operation
 
-Deletes a specified DB cluster parameter group. The DB cluster parameter group to be deleted cannot be associated with any DB clusters.
+Deletes a specified DB cluster parameter group. The DB cluster parameter group to be deleted can't be associated with any DB clusters.
 
 For more information on Amazon Aurora, see [Aurora on Amazon RDS](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html) in the *Amazon RDS User Guide.*
 
@@ -2642,7 +2666,7 @@ Constraints:
 
 *   Must be the name of an existing DB cluster parameter group.
 
-*   You cannot delete a default DB cluster parameter group.
+*   You can't delete a default DB cluster parameter group.
 
 *   Cannot be associated with any DB clusters.
 
@@ -2655,7 +2679,6 @@ Constraints:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBClusterParameterGroup)
 """
-
 @inline delete_dbcluster_parameter_group(aws::AWSConfig=default_aws_config(); args...) = delete_dbcluster_parameter_group(aws, args)
 
 @inline delete_dbcluster_parameter_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DeleteDBClusterParameterGroup", args)
@@ -2701,7 +2724,6 @@ Constraints: Must be the name of an existing DB cluster snapshot in the `availab
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBClusterSnapshot)
 """
-
 @inline delete_dbcluster_snapshot(aws::AWSConfig=default_aws_config(); args...) = delete_dbcluster_snapshot(aws, args)
 
 @inline delete_dbcluster_snapshot(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DeleteDBClusterSnapshot", args)
@@ -2720,13 +2742,13 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 # DeleteDBInstance Operation
 
-The DeleteDBInstance action deletes a previously provisioned DB instance. When you delete a DB instance, all automated backups for that instance are deleted and cannot be recovered. Manual DB snapshots of the DB instance to be deleted by `DeleteDBInstance` are not deleted.
+The DeleteDBInstance action deletes a previously provisioned DB instance. When you delete a DB instance, all automated backups for that instance are deleted and can't be recovered. Manual DB snapshots of the DB instance to be deleted by `DeleteDBInstance` are not deleted.
 
-If you request a final DB snapshot the status of the Amazon RDS DB instance is `deleting` until the DB snapshot is created. The API action `DescribeDBInstance` is used to monitor the status of this operation. The action cannot be canceled or reverted once submitted.
+If you request a final DB snapshot the status of the Amazon RDS DB instance is `deleting` until the DB snapshot is created. The API action `DescribeDBInstance` is used to monitor the status of this operation. The action can't be canceled or reverted once submitted.
 
 Note that when a DB instance is in a failure state and has a status of `failed`, `incompatible-restore`, or `incompatible-network`, you can only delete it when the `SkipFinalSnapshot` parameter is set to `true`.
 
-If the specified DB instance is part of an Amazon Aurora DB cluster, you cannot delete the DB instance if both of the following conditions are true:
+If the specified DB instance is part of an Amazon Aurora DB cluster, you can't delete the DB instance if both of the following conditions are true:
 
 *   The DB cluster is a Read Replica of another Amazon Aurora DB cluster.
 
@@ -2786,7 +2808,6 @@ Constraints:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBInstance)
 """
-
 @inline delete_dbinstance(aws::AWSConfig=default_aws_config(); args...) = delete_dbinstance(aws, args)
 
 @inline delete_dbinstance(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DeleteDBInstance", args)
@@ -2805,7 +2826,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 # DeleteDBParameterGroup Operation
 
-Deletes a specified DBParameterGroup. The DBParameterGroup to be deleted cannot be associated with any DB instances.
+Deletes a specified DBParameterGroup. The DBParameterGroup to be deleted can't be associated with any DB instances.
 
 # Arguments
 
@@ -2816,7 +2837,7 @@ Constraints:
 
 *   Must be the name of an existing DB parameter group
 
-*   You cannot delete a default DB parameter group
+*   You can't delete a default DB parameter group
 
 *   Cannot be associated with any DB instances
 
@@ -2829,7 +2850,6 @@ Constraints:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBParameterGroup)
 """
-
 @inline delete_dbparameter_group(aws::AWSConfig=default_aws_config(); args...) = delete_dbparameter_group(aws, args)
 
 @inline delete_dbparameter_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DeleteDBParameterGroup", args)
@@ -2859,7 +2879,7 @@ Deletes a DB security group.
 The name of the DB security group to delete.
 
 **Note**
-> You cannot delete the default DB security group.
+> You can't delete the default DB security group.
 
 Constraints:
 
@@ -2880,7 +2900,6 @@ Constraints:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBSecurityGroup)
 """
-
 @inline delete_dbsecurity_group(aws::AWSConfig=default_aws_config(); args...) = delete_dbsecurity_group(aws, args)
 
 @inline delete_dbsecurity_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DeleteDBSecurityGroup", args)
@@ -2924,7 +2943,6 @@ Constraints: Must be the name of an existing DB snapshot in the `available` stat
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBSnapshot)
 """
-
 @inline delete_dbsnapshot(aws::AWSConfig=default_aws_config(); args...) = delete_dbsnapshot(aws, args)
 
 @inline delete_dbsnapshot(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DeleteDBSnapshot", args)
@@ -2954,7 +2972,7 @@ Deletes a DB subnet group.
 The name of the database subnet group to delete.
 
 **Note**
-> You cannot delete the default subnet group.
+> You can't delete the default subnet group.
 
 Constraints:
 
@@ -2971,7 +2989,6 @@ Example: `mySubnetgroup`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBSubnetGroup)
 """
-
 @inline delete_dbsubnet_group(aws::AWSConfig=default_aws_config(); args...) = delete_dbsubnet_group(aws, args)
 
 @inline delete_dbsubnet_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DeleteDBSubnetGroup", args)
@@ -3010,7 +3027,6 @@ The name of the RDS event notification subscription you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteEventSubscription)
 """
-
 @inline delete_event_subscription(aws::AWSConfig=default_aws_config(); args...) = delete_event_subscription(aws, args)
 
 @inline delete_event_subscription(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DeleteEventSubscription", args)
@@ -3037,7 +3053,7 @@ Deletes an existing option group.
 The name of the option group to be deleted.
 
 **Note**
-> You cannot delete default option groups.
+> You can't delete default option groups.
 
 
 
@@ -3048,7 +3064,6 @@ The name of the option group to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteOptionGroup)
 """
-
 @inline delete_option_group(aws::AWSConfig=default_aws_config(); args...) = delete_option_group(aws, args)
 
 @inline delete_option_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DeleteOptionGroup", args)
@@ -3069,7 +3084,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 Lists all of the attributes for a customer account. The attributes include Amazon RDS quotas for the account, such as the number of DB instances allowed. The description for a quota includes the quota name, current usage toward that quota, and the quota's maximum value.
 
-This command does not take any parameters.
+This command doesn't take any parameters.
 
 # Arguments
 
@@ -3081,7 +3096,6 @@ This command does not take any parameters.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeAccountAttributes)
 """
-
 @inline describe_account_attributes(aws::AWSConfig=default_aws_config(); args...) = describe_account_attributes(aws, args)
 
 @inline describe_account_attributes(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeAccountAttributes", args)
@@ -3145,12 +3159,106 @@ An optional pagination token provided by a previous [DescribeCertificates](@ref)
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeCertificates)
 """
-
 @inline describe_certificates(aws::AWSConfig=default_aws_config(); args...) = describe_certificates(aws, args)
 
 @inline describe_certificates(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeCertificates", args)
 
 @inline describe_certificates(args) = describe_certificates(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.RDS.describe_dbcluster_backtracks
+    describe_dbcluster_backtracks([::AWSConfig], arguments::Dict)
+    describe_dbcluster_backtracks([::AWSConfig]; DBClusterIdentifier=, <keyword arguments>)
+
+    using AWSCore.Services.rds
+    rds([::AWSConfig], "DescribeDBClusterBacktracks", arguments::Dict)
+    rds([::AWSConfig], "DescribeDBClusterBacktracks", DBClusterIdentifier=, <keyword arguments>)
+
+# DescribeDBClusterBacktracks Operation
+
+Returns information about backtracks for a DB cluster.
+
+For more information on Amazon Aurora, see [Aurora on Amazon RDS](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html) in the *Amazon RDS User Guide.*
+
+# Arguments
+
+## `DBClusterIdentifier = ::String` -- *Required*
+The DB cluster identifier of the DB cluster to be described. This parameter is stored as a lowercase string.
+
+Constraints:
+
+*   Must contain from 1 to 63 alphanumeric characters or hyphens.
+
+*   First character must be a letter.
+
+*   Cannot end with a hyphen or contain two consecutive hyphens.
+
+Example: `my-cluster1`
+
+
+## `BacktrackIdentifier = ::String`
+If specified, this value is the backtrack identifier of the backtrack to be described.
+
+Constraints:
+
+*   Must contain a valid universally unique identifier (UUID). For more information about UUIDs, see [A Universally Unique Identifier (UUID) URN Namespace](http://www.ietf.org/rfc/rfc4122.txt).
+
+Example: `123e4567-e89b-12d3-a456-426655440000`
+
+
+## `Filters = [[ ... ], ...]`
+A filter that specifies one or more DB clusters to describe. Supported filters include the following:
+
+*   `db-cluster-backtrack-id` - Accepts backtrack identifiers. The results list includes information about only the backtracks identified by these identifiers.
+
+*   `db-cluster-backtrack-status` - Accepts any of the following backtrack status values:
+
+    *   `applying`
+
+    *   `completed`
+
+    *   `failed`
+
+    *   `pending`
+
+    The results list includes information about only the backtracks identified by these values. For more information about backtrack status values, see [DBClusterBacktrack](@ref).
+```
+ Filters = [[
+        "Name" => <required> ::String,
+        "Values" => <required> [::String, ...]
+    ], ...]
+```
+
+## `MaxRecords = ::Int`
+The maximum number of records to include in the response. If more records exist than the specified `MaxRecords` value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.
+
+Default: 100
+
+Constraints: Minimum 20, maximum 100.
+
+
+## `Marker = ::String`
+An optional pagination token provided by a previous [DescribeDBClusterBacktracks](@ref) request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by `MaxRecords`.
+
+
+
+
+# Returns
+
+`DBClusterBacktrackMessage`
+
+# Exceptions
+
+`DBClusterNotFoundFault` or `DBClusterBacktrackNotFoundFault`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusterBacktracks)
+"""
+@inline describe_dbcluster_backtracks(aws::AWSConfig=default_aws_config(); args...) = describe_dbcluster_backtracks(aws, args)
+
+@inline describe_dbcluster_backtracks(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeDBClusterBacktracks", args)
+
+@inline describe_dbcluster_backtracks(args) = describe_dbcluster_backtracks(default_aws_config(), args)
 
 
 """
@@ -3211,7 +3319,6 @@ An optional pagination token provided by a previous `DescribeDBClusterParameterG
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusterParameterGroups)
 """
-
 @inline describe_dbcluster_parameter_groups(aws::AWSConfig=default_aws_config(); args...) = describe_dbcluster_parameter_groups(aws, args)
 
 @inline describe_dbcluster_parameter_groups(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeDBClusterParameterGroups", args)
@@ -3281,7 +3388,6 @@ An optional pagination token provided by a previous `DescribeDBClusterParameters
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusterParameters)
 """
-
 @inline describe_dbcluster_parameters(aws::AWSConfig=default_aws_config(); args...) = describe_dbcluster_parameters(aws, args)
 
 @inline describe_dbcluster_parameters(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeDBClusterParameters", args)
@@ -3324,7 +3430,6 @@ The identifier for the DB cluster snapshot to describe the attributes for.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusterSnapshotAttributes)
 """
-
 @inline describe_dbcluster_snapshot_attributes(aws::AWSConfig=default_aws_config(); args...) = describe_dbcluster_snapshot_attributes(aws, args)
 
 @inline describe_dbcluster_snapshot_attributes(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeDBClusterSnapshotAttributes", args)
@@ -3350,7 +3455,7 @@ For more information on Amazon Aurora, see [Aurora on Amazon RDS](http://docs.aw
 # Arguments
 
 ## `DBClusterIdentifier = ::String`
-The ID of the DB cluster to retrieve the list of DB cluster snapshots for. This parameter cannot be used in conjunction with the `DBClusterSnapshotIdentifier` parameter. This parameter is not case-sensitive.
+The ID of the DB cluster to retrieve the list of DB cluster snapshots for. This parameter can't be used in conjunction with the `DBClusterSnapshotIdentifier` parameter. This parameter is not case-sensitive.
 
 Constraints:
 
@@ -3358,7 +3463,7 @@ Constraints:
 
 
 ## `DBClusterSnapshotIdentifier = ::String`
-A specific DB cluster snapshot identifier to describe. This parameter cannot be used in conjunction with the `DBClusterIdentifier` parameter. This value is stored as a lowercase string.
+A specific DB cluster snapshot identifier to describe. This parameter can't be used in conjunction with the `DBClusterIdentifier` parameter. This value is stored as a lowercase string.
 
 Constraints:
 
@@ -3405,13 +3510,13 @@ An optional pagination token provided by a previous `DescribeDBClusterSnapshots`
 
 
 ## `IncludeShared = ::Bool`
-Set this value to `true` to include shared manual DB cluster snapshots from other AWS accounts that this AWS account has been given permission to copy or restore, otherwise set this value to `false`. The default is `false`.
+True to include shared manual DB cluster snapshots from other AWS accounts that this AWS account has been given permission to copy or restore, and otherwise false. The default is `false`.
 
 You can give an AWS account permission to restore a manual DB cluster snapshot from another AWS account by the [ModifyDBClusterSnapshotAttribute](@ref) API action.
 
 
 ## `IncludePublic = ::Bool`
-Set this value to `true` to include manual DB cluster snapshots that are public and can be copied or restored by any AWS account, otherwise set this value to `false`. The default is `false`. The default is false.
+True to include manual DB cluster snapshots that are public and can be copied or restored by any AWS account, and otherwise false. The default is `false`. The default is false.
 
 You can share a manual DB cluster snapshot as public by using the [ModifyDBClusterSnapshotAttribute](@ref) API action.
 
@@ -3428,7 +3533,6 @@ You can share a manual DB cluster snapshot as public by using the [ModifyDBClust
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusterSnapshots)
 """
-
 @inline describe_dbcluster_snapshots(aws::AWSConfig=default_aws_config(); args...) = describe_dbcluster_snapshots(aws, args)
 
 @inline describe_dbcluster_snapshots(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeDBClusterSnapshots", args)
@@ -3498,7 +3602,6 @@ An optional pagination token provided by a previous [DescribeDBClusters](@ref) r
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusters)
 """
-
 @inline describe_dbclusters(aws::AWSConfig=default_aws_config(); args...) = describe_dbclusters(aws, args)
 
 @inline describe_dbclusters(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeDBClusters", args)
@@ -3540,7 +3643,7 @@ Constraints:
 
 
 ## `Filters = [[ ... ], ...]`
-Not currently supported.
+This parameter is not currently supported.
 ```
  Filters = [[
         "Name" => <required> ::String,
@@ -3580,7 +3683,6 @@ If this parameter is specified and the requested engine supports the `TimeZone` 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBEngineVersions)
 """
-
 @inline describe_dbengine_versions(aws::AWSConfig=default_aws_config(); args...) = describe_dbengine_versions(aws, args)
 
 @inline describe_dbengine_versions(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeDBEngineVersions", args)
@@ -3616,7 +3718,7 @@ A filter that specifies one or more DB instances to describe.
 
 Supported filters:
 
-*   `db-cluster-id` - Accepts DB cluster identifiers and DB cluster Amazon Resource Names (ARNs). The results list will only include information about the DB instances associated with the DB Clusters identified by these ARNs.
+*   `db-cluster-id` - Accepts DB cluster identifiers and DB cluster Amazon Resource Names (ARNs). The results list will only include information about the DB instances associated with the DB clusters identified by these ARNs.
 
 *   `db-instance-id` - Accepts DB instance identifiers and DB instance Amazon Resource Names (ARNs). The results list will only include information about the DB instances identified by these ARNs.
 ```
@@ -3650,7 +3752,6 @@ An optional pagination token provided by a previous `DescribeDBInstances` reques
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBInstances)
 """
-
 @inline describe_dbinstances(aws::AWSConfig=default_aws_config(); args...) = describe_dbinstances(aws, args)
 
 @inline describe_dbinstances(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeDBInstances", args)
@@ -3722,7 +3823,6 @@ The pagination token provided in the previous request. If this parameter is spec
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBLogFiles)
 """
-
 @inline describe_dblog_files(aws::AWSConfig=default_aws_config(); args...) = describe_dblog_files(aws, args)
 
 @inline describe_dblog_files(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeDBLogFiles", args)
@@ -3786,7 +3886,6 @@ An optional pagination token provided by a previous `DescribeDBParameterGroups` 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBParameterGroups)
 """
-
 @inline describe_dbparameter_groups(aws::AWSConfig=default_aws_config(); args...) = describe_dbparameter_groups(aws, args)
 
 @inline describe_dbparameter_groups(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeDBParameterGroups", args)
@@ -3858,7 +3957,6 @@ An optional pagination token provided by a previous `DescribeDBParameters` reque
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBParameters)
 """
-
 @inline describe_dbparameters(aws::AWSConfig=default_aws_config(); args...) = describe_dbparameters(aws, args)
 
 @inline describe_dbparameters(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeDBParameters", args)
@@ -3918,7 +4016,6 @@ An optional pagination token provided by a previous `DescribeDBSecurityGroups` r
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBSecurityGroups)
 """
-
 @inline describe_dbsecurity_groups(aws::AWSConfig=default_aws_config(); args...) = describe_dbsecurity_groups(aws, args)
 
 @inline describe_dbsecurity_groups(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeDBSecurityGroups", args)
@@ -3961,7 +4058,6 @@ The identifier for the DB snapshot to describe the attributes for.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBSnapshotAttributes)
 """
-
 @inline describe_dbsnapshot_attributes(aws::AWSConfig=default_aws_config(); args...) = describe_dbsnapshot_attributes(aws, args)
 
 @inline describe_dbsnapshot_attributes(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeDBSnapshotAttributes", args)
@@ -3985,7 +4081,7 @@ Returns information about DB snapshots. This API action supports pagination.
 # Arguments
 
 ## `DBInstanceIdentifier = ::String`
-The ID of the DB instance to retrieve the list of DB snapshots for. This parameter cannot be used in conjunction with `DBSnapshotIdentifier`. This parameter is not case-sensitive.
+The ID of the DB instance to retrieve the list of DB snapshots for. This parameter can't be used in conjunction with `DBSnapshotIdentifier`. This parameter is not case-sensitive.
 
 Constraints:
 
@@ -3993,7 +4089,7 @@ Constraints:
 
 
 ## `DBSnapshotIdentifier = ::String`
-A specific DB snapshot identifier to describe. This parameter cannot be used in conjunction with `DBInstanceIdentifier`. This value is stored as a lowercase string.
+A specific DB snapshot identifier to describe. This parameter can't be used in conjunction with `DBInstanceIdentifier`. This value is stored as a lowercase string.
 
 Constraints:
 
@@ -4040,13 +4136,13 @@ An optional pagination token provided by a previous `DescribeDBSnapshots` reques
 
 
 ## `IncludeShared = ::Bool`
-Set this value to `true` to include shared manual DB snapshots from other AWS accounts that this AWS account has been given permission to copy or restore, otherwise set this value to `false`. The default is `false`.
+True to include shared manual DB snapshots from other AWS accounts that this AWS account has been given permission to copy or restore, and otherwise false. The default is `false`.
 
 You can give an AWS account permission to restore a manual DB snapshot from another AWS account by using the [ModifyDBSnapshotAttribute](@ref) API action.
 
 
 ## `IncludePublic = ::Bool`
-Set this value to `true` to include manual DB snapshots that are public and can be copied or restored by any AWS account, otherwise set this value to `false`. The default is `false`.
+True to include manual DB snapshots that are public and can be copied or restored by any AWS account, and otherwise false. The default is false.
 
 You can share a manual DB snapshot as public by using the [ModifyDBSnapshotAttribute](@ref) API.
 
@@ -4063,7 +4159,6 @@ You can share a manual DB snapshot as public by using the [ModifyDBSnapshotAttri
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBSnapshots)
 """
-
 @inline describe_dbsnapshots(aws::AWSConfig=default_aws_config(); args...) = describe_dbsnapshots(aws, args)
 
 @inline describe_dbsnapshots(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeDBSnapshots", args)
@@ -4125,7 +4220,6 @@ An optional pagination token provided by a previous DescribeDBSubnetGroups reque
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBSubnetGroups)
 """
-
 @inline describe_dbsubnet_groups(aws::AWSConfig=default_aws_config(); args...) = describe_dbsubnet_groups(aws, args)
 
 @inline describe_dbsubnet_groups(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeDBSubnetGroups", args)
@@ -4183,7 +4277,6 @@ An optional pagination token provided by a previous `DescribeEngineDefaultCluste
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeEngineDefaultClusterParameters)
 """
-
 @inline describe_engine_default_cluster_parameters(aws::AWSConfig=default_aws_config(); args...) = describe_engine_default_cluster_parameters(aws, args)
 
 @inline describe_engine_default_cluster_parameters(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeEngineDefaultClusterParameters", args)
@@ -4211,7 +4304,7 @@ The name of the DB parameter group family.
 
 
 ## `Filters = [[ ... ], ...]`
-Not currently supported.
+This parameter is not currently supported.
 ```
  Filters = [[
         "Name" => <required> ::String,
@@ -4239,7 +4332,6 @@ An optional pagination token provided by a previous `DescribeEngineDefaultParame
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeEngineDefaultParameters)
 """
-
 @inline describe_engine_default_parameters(aws::AWSConfig=default_aws_config(); args...) = describe_engine_default_parameters(aws, args)
 
 @inline describe_engine_default_parameters(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeEngineDefaultParameters", args)
@@ -4285,7 +4377,6 @@ This parameter is not currently supported.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeEventCategories)
 """
-
 @inline describe_event_categories(aws::AWSConfig=default_aws_config(); args...) = describe_event_categories(aws, args)
 
 @inline describe_event_categories(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeEventCategories", args)
@@ -4347,7 +4438,6 @@ An optional pagination token provided by a previous DescribeOrderableDBInstanceO
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeEventSubscriptions)
 """
-
 @inline describe_event_subscriptions(aws::AWSConfig=default_aws_config(); args...) = describe_event_subscriptions(aws, args)
 
 @inline describe_event_subscriptions(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeEventSubscriptions", args)
@@ -4443,7 +4533,6 @@ An optional pagination token provided by a previous DescribeEvents request. If t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeEvents)
 """
-
 @inline describe_events(aws::AWSConfig=default_aws_config(); args...) = describe_events(aws, args)
 
 @inline describe_events(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeEvents", args)
@@ -4503,7 +4592,6 @@ An optional pagination token provided by a previous request. If this parameter i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeOptionGroupOptions)
 """
-
 @inline describe_option_group_options(aws::AWSConfig=default_aws_config(); args...) = describe_option_group_options(aws, args)
 
 @inline describe_option_group_options(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeOptionGroupOptions", args)
@@ -4571,7 +4659,6 @@ Filters the list of option groups to only include groups associated with a speci
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeOptionGroups)
 """
-
 @inline describe_option_groups(aws::AWSConfig=default_aws_config(); args...) = describe_option_groups(aws, args)
 
 @inline describe_option_groups(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeOptionGroups", args)
@@ -4643,7 +4730,6 @@ An optional pagination token provided by a previous DescribeOrderableDBInstanceO
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeOrderableDBInstanceOptions)
 """
-
 @inline describe_orderable_dbinstance_options(aws::AWSConfig=default_aws_config(); args...) = describe_orderable_dbinstance_options(aws, args)
 
 @inline describe_orderable_dbinstance_options(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeOrderableDBInstanceOptions", args)
@@ -4709,7 +4795,6 @@ Constraints: Minimum 20, maximum 100.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribePendingMaintenanceActions)
 """
-
 @inline describe_pending_maintenance_actions(aws::AWSConfig=default_aws_config(); args...) = describe_pending_maintenance_actions(aws, args)
 
 @inline describe_pending_maintenance_actions(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribePendingMaintenanceActions", args)
@@ -4797,7 +4882,6 @@ An optional pagination token provided by a previous request. If this parameter i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeReservedDBInstances)
 """
-
 @inline describe_reserved_dbinstances(aws::AWSConfig=default_aws_config(); args...) = describe_reserved_dbinstances(aws, args)
 
 @inline describe_reserved_dbinstances(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeReservedDBInstances", args)
@@ -4837,7 +4921,10 @@ Valid Values: `1 | 3 | 31536000 | 94608000`
 
 
 ## `ProductDescription = ::String`
-Product description filter value. Specify this parameter to show only the available offerings matching the specified product description.
+Product description filter value. Specify this parameter to show only the available offerings that contain the specified product description.
+
+**Note**
+> The results show offerings that partially match the filter value.
 
 
 ## `OfferingType = ::String`
@@ -4883,7 +4970,6 @@ An optional pagination token provided by a previous request. If this parameter i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeReservedDBInstancesOfferings)
 """
-
 @inline describe_reserved_dbinstances_offerings(aws::AWSConfig=default_aws_config(); args...) = describe_reserved_dbinstances_offerings(aws, args)
 
 @inline describe_reserved_dbinstances_offerings(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeReservedDBInstancesOfferings", args)
@@ -4902,7 +4988,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 # DescribeSourceRegions Operation
 
-Returns a list of the source AWS regions where the current AWS Region can create a Read Replica or copy a DB snapshot from. This API action supports pagination.
+Returns a list of the source AWS Regions where the current AWS Region can create a Read Replica or copy a DB snapshot from. This API action supports pagination.
 
 # Arguments
 
@@ -4943,7 +5029,6 @@ This parameter is not currently supported.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeSourceRegions)
 """
-
 @inline describe_source_regions(aws::AWSConfig=default_aws_config(); args...) = describe_source_regions(aws, args)
 
 @inline describe_source_regions(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeSourceRegions", args)
@@ -4982,7 +5067,6 @@ The customer identifier or the ARN of your DB instance.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeValidDBInstanceModifications)
 """
-
 @inline describe_valid_dbinstance_modifications(aws::AWSConfig=default_aws_config(); args...) = describe_valid_dbinstance_modifications(aws, args)
 
 @inline describe_valid_dbinstance_modifications(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DescribeValidDBInstanceModifications", args)
@@ -5047,7 +5131,6 @@ If the NumberOfLines parameter is specified, then the block of lines returned ca
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DownloadDBLogFilePortion)
 """
-
 @inline download_dblog_file_portion(aws::AWSConfig=default_aws_config(); args...) = download_dblog_file_portion(aws, args)
 
 @inline download_dblog_file_portion(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "DownloadDBLogFilePortion", args)
@@ -5102,7 +5185,6 @@ You must specify the instance identifier for an Aurora Replica in the DB cluster
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/FailoverDBCluster)
 """
-
 @inline failover_dbcluster(aws::AWSConfig=default_aws_config(); args...) = failover_dbcluster(aws, args)
 
 @inline failover_dbcluster(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "FailoverDBCluster", args)
@@ -5152,7 +5234,6 @@ This parameter is not currently supported.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ListTagsForResource)
 """
-
 @inline list_tags_for_resource(aws::AWSConfig=default_aws_config(); args...) = list_tags_for_resource(aws, args)
 
 @inline list_tags_for_resource(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "ListTagsForResource", args)
@@ -5238,21 +5319,21 @@ Constraints: Must contain from 8 to 41 characters.
 
 
 ## `OptionGroupName = ::String`
-A value that indicates that the DB cluster should be associated with the specified option group. Changing this parameter does not result in an outage except in the following case, and the change is applied during the next maintenance window unless the `ApplyImmediately` parameter is set to `true` for this request. If the parameter change results in an option group that enables OEM, this change can cause a brief (sub-second) period during which new connections are rejected but existing connections are not interrupted.
+A value that indicates that the DB cluster should be associated with the specified option group. Changing this parameter doesn't result in an outage except in the following case, and the change is applied during the next maintenance window unless the `ApplyImmediately` parameter is set to `true` for this request. If the parameter change results in an option group that enables OEM, this change can cause a brief (sub-second) period during which new connections are rejected but existing connections are not interrupted.
 
-Permanent options cannot be removed from an option group. The option group cannot be removed from a DB cluster once it is associated with a DB cluster.
+Permanent options can't be removed from an option group. The option group can't be removed from a DB cluster once it is associated with a DB cluster.
 
 
 ## `PreferredBackupWindow = ::String`
 The daily time range during which automated backups are created if automated backups are enabled, using the `BackupRetentionPeriod` parameter.
 
-Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
+The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
 
 Constraints:
 
 *   Must be in the format `hh24:mi-hh24:mi`.
 
-*   Times should be in Universal Coordinated Time (UTC).
+*   Must be in Universal Coordinated Time (UTC).
 
 *   Must not conflict with the preferred maintenance window.
 
@@ -5264,17 +5345,42 @@ The weekly time range during which system maintenance can occur, in Universal Co
 
 Format: `ddd:hh24:mi-ddd:hh24:mi`
 
-Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region, occurring on a random day of the week. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
+The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region, occurring on a random day of the week. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
 
-Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
+Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
 Constraints: Minimum 30-minute window.
 
 
 ## `EnableIAMDatabaseAuthentication = ::Bool`
-A Boolean value that is true to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.
+True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.
 
 Default: `false`
+
+
+## `BacktrackWindow = ::Int`
+The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+
+Default: 0
+
+Constraints:
+
+*   If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+
+
+## `CloudwatchLogsExportConfiguration = [ ... ]`
+The configuration setting for the log types to be enabled for export to CloudWatch Logs for a specific DB cluster.
+```
+ CloudwatchLogsExportConfiguration = [
+        "EnableLogTypes" =>  [::String, ...],
+        "DisableLogTypes" =>  [::String, ...]
+    ]
+```
+
+## `EngineVersion = ::String`
+The version number of the database engine to which you want to upgrade. Changing this parameter results in an outage. The change is applied during the next maintenance window unless the ApplyImmediately parameter is set to true.
+
+For a list of valid engine versions, see [CreateDBCluster](@ref), or call [DescribeDBEngineVersions](@ref).
 
 
 
@@ -5289,7 +5395,6 @@ Default: `false`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBCluster)
 """
-
 @inline modify_dbcluster(aws::AWSConfig=default_aws_config(); args...) = modify_dbcluster(aws, args)
 
 @inline modify_dbcluster(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "ModifyDBCluster", args)
@@ -5353,7 +5458,6 @@ A list of parameters in the DB cluster parameter group to modify.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBClusterParameterGroup)
 """
-
 @inline modify_dbcluster_parameter_group(aws::AWSConfig=default_aws_config(); args...) = modify_dbcluster_parameter_group(aws, args)
 
 @inline modify_dbcluster_parameter_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "ModifyDBClusterParameterGroup", args)
@@ -5414,7 +5518,6 @@ To remove authorization for other AWS accounts to copy or restore a manual DB cl
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBClusterSnapshotAttribute)
 """
-
 @inline modify_dbcluster_snapshot_attribute(aws::AWSConfig=default_aws_config(); args...) = modify_dbcluster_snapshot_attribute(aws, args)
 
 @inline modify_dbcluster_snapshot_attribute(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "ModifyDBClusterSnapshotAttribute", args)
@@ -5446,55 +5549,15 @@ Constraints:
 
 
 ## `AllocatedStorage = ::Int`
-The new storage capacity of the RDS instance. Changing this setting does not result in an outage and the change is applied during the next maintenance window unless `ApplyImmediately` is set to `true` for this request.
+The new amount of storage (in gibibytes) to allocate for the DB instance.
 
-**MySQL**
+For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value.
 
-Default: Uses existing setting
-
-Valid Values: 5-6144
-
-Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value.
-
-Type: Integer
-
-**MariaDB**
-
-Default: Uses existing setting
-
-Valid Values: 5-6144
-
-Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value.
-
-Type: Integer
-
-**PostgreSQL**
-
-Default: Uses existing setting
-
-Valid Values: 5-6144
-
-Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value.
-
-Type: Integer
-
-**Oracle**
-
-Default: Uses existing setting
-
-Valid Values: 10-6144
-
-Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value.
-
-**SQL Server**
-
-Cannot be modified.
-
-If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24 hours, but the process can take up to several days in some cases. During the migration, the DB instance is available for use, but might experience performance degradation. While the migration takes place, nightly backups for the instance are suspended. No other Amazon RDS operations can take place for the instance, including modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.
+For the valid values for allocated storage for each engine, see [CreateDBInstance](@ref).
 
 
 ## `DBInstanceClass = ::String`
-The new compute and memory capacity of the DB instance, for example, `db.m4.large`. Not all DB instance classes are available in all regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see [DB Instance Class](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html) in the Amazon RDS User Guide.
+The new compute and memory capacity of the DB instance, for example, `db.m4.large`. Not all DB instance classes are available in all AWS Regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see [DB Instance Class](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html) in the *Amazon RDS User Guide.*
 
 If you modify the DB instance class, an outage occurs during the change. The change is applied during the next maintenance window, unless `ApplyImmediately` is specified as `true` for this request.
 
@@ -5512,7 +5575,7 @@ Example: `mySubnetGroup`
 
 
 ## `DBSecurityGroups = [::String, ...]`
-A list of DB security groups to authorize on this DB instance. Changing this setting does not result in an outage and the change is asynchronously applied as soon as possible.
+A list of DB security groups to authorize on this DB instance. Changing this setting doesn't result in an outage and the change is asynchronously applied as soon as possible.
 
 Constraints:
 
@@ -5540,9 +5603,9 @@ Default: `false`
 
 
 ## `MasterUserPassword = ::String`
-The new password for the master user. Can be any printable ASCII character except "/", \"\"\", or "@".
+The new password for the master user. The password can include any printable ASCII character except "/", \"\"\", or "@".
 
-Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible. Between the time of the request and the completion of the request, the `MasterUserPassword` element exists in the `PendingModifiedValues` element of the operation response.
+Changing this parameter doesn't result in an outage and the change is asynchronously applied as soon as possible. Between the time of the request and the completion of the request, the `MasterUserPassword` element exists in the `PendingModifiedValues` element of the operation response.
 
 **Amazon Aurora**
 
@@ -5575,7 +5638,7 @@ Constraints: Must contain from 8 to 128 characters.
 
 
 ## `DBParameterGroupName = ::String`
-The name of the DB parameter group to apply to the DB instance. Changing this setting does not result in an outage. The parameter group name itself is changed immediately, but the actual parameter changes are not applied until you reboot the instance without failover. The db instance will NOT be rebooted automatically and the parameter changes will NOT be applied during the next maintenance window.
+The name of the DB parameter group to apply to the DB instance. Changing this setting doesn't result in an outage. The parameter group name itself is changed immediately, but the actual parameter changes are not applied until you reboot the instance without failover. The db instance will NOT be rebooted automatically and the parameter changes will NOT be applied during the next maintenance window.
 
 Default: Uses existing setting
 
@@ -5605,7 +5668,7 @@ Constraints:
 
 
 ## `PreferredBackupWindow = ::String`
-The daily time range during which automated backups are created if automated backups are enabled, as determined by the `BackupRetentionPeriod` parameter. Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible.
+The daily time range during which automated backups are created if automated backups are enabled, as determined by the `BackupRetentionPeriod` parameter. Changing this parameter doesn't result in an outage and the change is asynchronously applied as soon as possible.
 
 **Amazon Aurora**
 
@@ -5615,7 +5678,7 @@ Constraints:
 
 *   Must be in the format hh24:mi-hh24:mi
 
-*   Times should be in Universal Time Coordinated (UTC)
+*   Must be in Universal Time Coordinated (UTC)
 
 *   Must not conflict with the preferred maintenance window
 
@@ -5623,7 +5686,7 @@ Constraints:
 
 
 ## `PreferredMaintenanceWindow = ::String`
-The weekly time range (in UTC) during which system maintenance can occur, which might result in an outage. Changing this parameter does not result in an outage, except in the following situation, and the change is asynchronously applied as soon as possible. If there are pending actions that cause a reboot, and the maintenance window is changed to include the current time, then changing this parameter will cause a reboot of the DB instance. If moving this window to the current time, there must be at least 30 minutes between the current time and end of the window to ensure pending changes are applied.
+The weekly time range (in UTC) during which system maintenance can occur, which might result in an outage. Changing this parameter doesn't result in an outage, except in the following situation, and the change is asynchronously applied as soon as possible. If there are pending actions that cause a reboot, and the maintenance window is changed to include the current time, then changing this parameter will cause a reboot of the DB instance. If moving this window to the current time, there must be at least 30 minutes between the current time and end of the window to ensure pending changes are applied.
 
 Default: Uses existing setting
 
@@ -5635,9 +5698,7 @@ Constraints: Must be at least 30 minutes
 
 
 ## `MultiAZ = ::Bool`
-Specifies if the DB instance is a Multi-AZ deployment. Changing this parameter does not result in an outage and the change is applied during the next maintenance window unless the `ApplyImmediately` parameter is set to `true` for this request.
-
-Constraints: Cannot be specified if the DB instance is a Read Replica.
+Specifies if the DB instance is a Multi-AZ deployment. Changing this parameter doesn't result in an outage and the change is applied during the next maintenance window unless the `ApplyImmediately` parameter is set to `true` for this request.
 
 
 ## `EngineVersion = ::String`
@@ -5645,17 +5706,17 @@ The version number of the database engine to upgrade to. Changing this parameter
 
 For major version upgrades, if a nondefault DB parameter group is currently in use, a new DB parameter group in the DB parameter group family for the new engine version must be specified. The new DB parameter group can be the default for that DB parameter group family.
 
-For a list of valid engine versions, see [CreateDBInstance](@ref).
+For information about valid engine versions, see [CreateDBInstance](@ref), or call [DescribeDBEngineVersions](@ref).
 
 
 ## `AllowMajorVersionUpgrade = ::Bool`
-Indicates that major version upgrades are allowed. Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible.
+Indicates that major version upgrades are allowed. Changing this parameter doesn't result in an outage and the change is asynchronously applied as soon as possible.
 
 Constraints: This parameter must be set to true when specifying a value for the EngineVersion parameter that is a different major version than the DB instance's current version.
 
 
 ## `AutoMinorVersionUpgrade = ::Bool`
-Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance window. Changing this parameter does not result in an outage except in the following case and the change is asynchronously applied as soon as possible. An outage will result if this parameter is set to `true` during the maintenance window, and a newer minor version is available, and RDS has enabled auto patching for that engine version.
+Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance window. Changing this parameter doesn't result in an outage except in the following case and the change is asynchronously applied as soon as possible. An outage will result if this parameter is set to `true` during the maintenance window, and a newer minor version is available, and RDS has enabled auto patching for that engine version.
 
 
 ## `LicenseModel = ::String`
@@ -5665,25 +5726,21 @@ Valid values: `license-included` | `bring-your-own-license` | `general-public-li
 
 
 ## `Iops = ::Int`
-The new Provisioned IOPS (I/O operations per second) value for the RDS instance. Changing this setting does not result in an outage and the change is applied during the next maintenance window unless the `ApplyImmediately` parameter is set to `true` for this request.
+The new Provisioned IOPS (I/O operations per second) value for the RDS instance.
 
-Default: Uses existing setting
-
-Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value. If you are migrating from Provisioned IOPS to standard storage, set this value to 0. The DB instance will require a reboot for the change in storage type to take effect.
-
-**SQL Server**
-
-Setting the IOPS value for the SQL Server database engine is not supported.
-
-Type: Integer
+Changing this setting doesn't result in an outage and the change is applied during the next maintenance window unless the `ApplyImmediately` parameter is set to `true` for this request. If you are migrating from Provisioned IOPS to standard storage, set this value to 0. The DB instance will require a reboot for the change in storage type to take effect.
 
 If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24 hours, but the process can take up to several days in some cases. During the migration, the DB instance is available for use, but might experience performance degradation. While the migration takes place, nightly backups for the instance are suspended. No other Amazon RDS operations can take place for the instance, including modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.
 
+Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value.
+
+Default: Uses existing setting
+
 
 ## `OptionGroupName = ::String`
-Indicates that the DB instance should be associated with the specified option group. Changing this parameter does not result in an outage except in the following case and the change is applied during the next maintenance window unless the `ApplyImmediately` parameter is set to `true` for this request. If the parameter change results in an option group that enables OEM, this change can cause a brief (sub-second) period during which new connections are rejected but existing connections are not interrupted.
+Indicates that the DB instance should be associated with the specified option group. Changing this parameter doesn't result in an outage except in the following case and the change is applied during the next maintenance window unless the `ApplyImmediately` parameter is set to `true` for this request. If the parameter change results in an option group that enables OEM, this change can cause a brief (sub-second) period during which new connections are rejected but existing connections are not interrupted.
 
-Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option group, and that option group cannot be removed from a DB instance once it is associated with a DB instance
+Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an option group, and that option group can't be removed from a DB instance once it is associated with a DB instance
 
 
 ## `NewDBInstanceIdentifier = ::String`
@@ -5703,19 +5760,21 @@ Example: `mydbinstance`
 ## `StorageType = ::String`
 Specifies the storage type to be associated with the DB instance.
 
+If you specify Provisioned IOPS (`io1`), you must also include a value for the `Iops` parameter.
+
+If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24 hours, but the process can take up to several days in some cases. During the migration, the DB instance is available for use, but might experience performance degradation. While the migration takes place, nightly backups for the instance are suspended. No other Amazon RDS operations can take place for the instance, including modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.
+
 Valid values: `standard | gp2 | io1`
 
-If you specify `io1`, you must also include a value for the `Iops` parameter.
-
-Default: `io1` if the `Iops` parameter is specified; otherwise `standard`
+Default: `io1` if the `Iops` parameter is specified, otherwise `standard`
 
 
 ## `TdeCredentialArn = ::String`
-The ARN from the Key Store with which to associate the instance for TDE encryption.
+The ARN from the key store with which to associate the instance for TDE encryption.
 
 
 ## `TdeCredentialPassword = ::String`
-The password for the given ARN from the Key Store in order to access the device.
+The password for the given ARN from the key store in order to access the device.
 
 
 ## `CACertificateIdentifier = ::String`
@@ -5727,7 +5786,7 @@ The Active Directory Domain to move the instance to. Specify `none` to remove th
 
 
 ## `CopyTagsToSnapshot = ::Bool`
-True to copy all tags from the DB instance to snapshots of the DB instance; otherwise false. The default is false.
+True to copy all tags from the DB instance to snapshots of the DB instance, and otherwise false. The default is false.
 
 
 ## `MonitoringInterval = ::Int`
@@ -5795,7 +5854,7 @@ Default: false
 
 
 ## `MonitoringRoleArn = ::String`
-The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. For example, `arn:aws:iam:123456789012:role/emaccess`. For information on creating a monitoring role, go to [To create an IAM role for Amazon RDS Enhanced Monitoring](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole).
+The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to Amazon CloudWatch Logs. For example, `arn:aws:iam:123456789012:role/emaccess`. For information on creating a monitoring role, go to [To create an IAM role for Amazon RDS Enhanced Monitoring](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole).
 
 If `MonitoringInterval` is set to a value other than 0, then you must supply a `MonitoringRoleArn` value.
 
@@ -5813,7 +5872,7 @@ Valid Values: 0 - 15
 
 
 ## `EnableIAMDatabaseAuthentication = ::Bool`
-True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise false.
+True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.
 
 You can enable IAM database authentication for the following database engines
 
@@ -5831,11 +5890,39 @@ Default: `false`
 
 
 ## `EnablePerformanceInsights = ::Bool`
-True to enable Performance Insights for the DB instance; otherwise false.
+True to enable Performance Insights for the DB instance, and otherwise false.
+
+For more information, see [Using Amazon Performance Insights](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html) in the *Amazon Relational Database Service User Guide*.
 
 
 ## `PerformanceInsightsKMSKeyId = ::String`
-The KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
+The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key.
+
+
+## `PerformanceInsightsRetentionPeriod = ::Int`
+The amount of time, in days, to retain Performance Insights data. Valid values are 7 or 731 (2 years).
+
+
+## `CloudwatchLogsExportConfiguration = [ ... ]`
+The configuration setting for the log types to be enabled for export to CloudWatch Logs for a specific DB instance.
+```
+ CloudwatchLogsExportConfiguration = [
+        "EnableLogTypes" =>  [::String, ...],
+        "DisableLogTypes" =>  [::String, ...]
+    ]
+```
+
+## `ProcessorFeatures = [[ ... ], ...]`
+The number of CPU cores and the number of threads per core for the DB instance class of the DB instance.
+```
+ ProcessorFeatures = [[
+        "Name" =>  ::String,
+        "Value" =>  ::String
+    ], ...]
+```
+
+## `UseDefaultProcessorFeatures = ::Bool`
+A value that specifies that the DB instance class of the DB instance uses its default processor features.
 
 
 
@@ -5850,7 +5937,6 @@ The KMS key identifier for encryption of Performance Insights data. The KMS key 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBInstance)
 """
-
 @inline modify_dbinstance(aws::AWSConfig=default_aws_config(); args...) = modify_dbinstance(aws, args)
 
 @inline modify_dbinstance(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "ModifyDBInstance", args)
@@ -5921,7 +6007,6 @@ Valid Values (for the application method): `immediate | pending-reboot`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBParameterGroup)
 """
-
 @inline modify_dbparameter_group(aws::AWSConfig=default_aws_config(); args...) = modify_dbparameter_group(aws, args)
 
 @inline modify_dbparameter_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "ModifyDBParameterGroup", args)
@@ -5986,7 +6071,6 @@ You can specify this parameter when you upgrade an Oracle DB snapshot. The same 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBSnapshot)
 """
-
 @inline modify_dbsnapshot(aws::AWSConfig=default_aws_config(); args...) = modify_dbsnapshot(aws, args)
 
 @inline modify_dbsnapshot(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "ModifyDBSnapshot", args)
@@ -6047,7 +6131,6 @@ To remove authorization for other AWS accounts to copy or restore a manual snaps
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBSnapshotAttribute)
 """
-
 @inline modify_dbsnapshot_attribute(aws::AWSConfig=default_aws_config(); args...) = modify_dbsnapshot_attribute(aws, args)
 
 @inline modify_dbsnapshot_attribute(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "ModifyDBSnapshotAttribute", args)
@@ -6098,7 +6181,6 @@ The EC2 subnet IDs for the DB subnet group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBSubnetGroup)
 """
-
 @inline modify_dbsubnet_group(aws::AWSConfig=default_aws_config(); args...) = modify_dbsubnet_group(aws, args)
 
 @inline modify_dbsubnet_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "ModifyDBSubnetGroup", args)
@@ -6117,7 +6199,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 # ModifyEventSubscription Operation
 
-Modifies an existing RDS event notification subscription. Note that you cannot modify the source identifiers using this call; to change source identifiers for a subscription, use the [AddSourceIdentifierToSubscription](@ref) and [RemoveSourceIdentifierFromSubscription](@ref) calls.
+Modifies an existing RDS event notification subscription. Note that you can't modify the source identifiers using this call; to change source identifiers for a subscription, use the [AddSourceIdentifierToSubscription](@ref) and [RemoveSourceIdentifierFromSubscription](@ref) calls.
 
 You can see a list of the event categories for a given SourceType in the [Events](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html) topic in the Amazon RDS User Guide or by using the **DescribeEventCategories** action.
 
@@ -6157,7 +6239,6 @@ A Boolean value; set to **true** to activate the subscription.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyEventSubscription)
 """
-
 @inline modify_event_subscription(aws::AWSConfig=default_aws_config(); args...) = modify_event_subscription(aws, args)
 
 @inline modify_event_subscription(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "ModifyEventSubscription", args)
@@ -6183,7 +6264,7 @@ Modifies an existing option group.
 ## `OptionGroupName = ::String` -- *Required*
 The name of the option group to be modified.
 
-Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option group, and that option group cannot be removed from a DB instance once it is associated with a DB instance
+Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an option group, and that option group can't be removed from a DB instance once it is associated with a DB instance
 
 
 ## `OptionsToInclude = [[ ... ], ...]`
@@ -6229,7 +6310,6 @@ Indicates whether the changes should be applied immediately, or during the next 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyOptionGroup)
 """
-
 @inline modify_option_group(aws::AWSConfig=default_aws_config(); args...) = modify_option_group(aws, args)
 
 @inline modify_option_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "ModifyOptionGroup", args)
@@ -6251,7 +6331,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 Promotes a Read Replica DB instance to a standalone DB instance.
 
 **Note**
-> We recommend that you enable automated backups on your Read Replica before promoting the Read Replica. This ensures that no backup is taken during the promotion process. Once the instance is promoted to a primary instance, backups are taken based on your backup settings.
+> *   Backup duration is a function of the amount of changes to the database since the previous backup. If you plan to promote a Read Replica to a standalone instance, we recommend that you enable backups and complete at least one backup prior to promotion. In addition, a Read Replica cannot be promoted to a standalone instance when it is in the `backing-up` status. If you have enabled backups on your Read Replica, configure the automated backup window so that daily backups do not interfere with Read Replica promotion.
+
+*   This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
 
 # Arguments
 
@@ -6278,13 +6360,13 @@ Constraints:
 ## `PreferredBackupWindow = ::String`
 The daily time range during which automated backups are created if automated backups are enabled, using the `BackupRetentionPeriod` parameter.
 
-Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
+The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
 
 Constraints:
 
 *   Must be in the format `hh24:mi-hh24:mi`.
 
-*   Times should be in Universal Coordinated Time (UTC).
+*   Must be in Universal Coordinated Time (UTC).
 
 *   Must not conflict with the preferred maintenance window.
 
@@ -6303,7 +6385,6 @@ Constraints:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/PromoteReadReplica)
 """
-
 @inline promote_read_replica(aws::AWSConfig=default_aws_config(); args...) = promote_read_replica(aws, args)
 
 @inline promote_read_replica(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "PromoteReadReplica", args)
@@ -6348,7 +6429,6 @@ Example: `my-cluster-replica1`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/PromoteReadReplicaDBCluster)
 """
-
 @inline promote_read_replica_dbcluster(aws::AWSConfig=default_aws_config(); args...) = promote_read_replica_dbcluster(aws, args)
 
 @inline promote_read_replica_dbcluster(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "PromoteReadReplicaDBCluster", args)
@@ -6410,7 +6490,6 @@ Default: `1`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/PurchaseReservedDBInstancesOffering)
 """
-
 @inline purchase_reserved_dbinstances_offering(aws::AWSConfig=default_aws_config(); args...) = purchase_reserved_dbinstances_offering(aws, args)
 
 @inline purchase_reserved_dbinstances_offering(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "PurchaseReservedDBInstancesOffering", args)
@@ -6429,11 +6508,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 # RebootDBInstance Operation
 
-Rebooting a DB instance restarts the database engine service. A reboot also applies to the DB instance any modifications to the associated DB parameter group that were pending. Rebooting a DB instance results in a momentary outage of the instance, during which the DB instance status is set to rebooting. If the RDS instance is configured for MultiAZ, it is possible that the reboot is conducted through a failover. An Amazon RDS event is created when the reboot is completed.
+You might need to reboot your DB instance, usually for maintenance reasons. For example, if you make certain modifications, or if you change the DB parameter group associated with the DB instance, you must reboot the instance for the changes to take effect.
 
-If your DB instance is deployed in multiple Availability Zones, you can force a failover from one AZ to the other during the reboot. You might force a failover to test the availability of your DB instance deployment or to restore operations to the original AZ after a failover occurs.
+Rebooting a DB instance restarts the database engine service. Rebooting a DB instance results in a momentary outage, during which the DB instance status is set to rebooting.
 
-The time required to reboot is a function of the specific database engine's crash recovery process. To improve the reboot time, we recommend that you reduce database activities as much as possible during the reboot process to reduce rollback activity for in-transit transactions.
+For more information about rebooting, see [Rebooting a DB Instance](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_RebootInstance.html).
 
 # Arguments
 
@@ -6448,7 +6527,7 @@ Constraints:
 ## `ForceFailover = ::Bool`
 When `true`, the reboot is conducted through a MultiAZ failover.
 
-Constraint: You cannot specify `true` if the instance is not configured for MultiAZ.
+Constraint: You can't specify `true` if the instance is not configured for MultiAZ.
 
 
 
@@ -6463,7 +6542,6 @@ Constraint: You cannot specify `true` if the instance is not configured for Mult
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RebootDBInstance)
 """
-
 @inline reboot_dbinstance(aws::AWSConfig=default_aws_config(); args...) = reboot_dbinstance(aws, args)
 
 @inline reboot_dbinstance(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "RebootDBInstance", args)
@@ -6502,7 +6580,6 @@ The Amazon Resource Name (ARN) of the IAM role to disassociate from the Aurora D
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RemoveRoleFromDBCluster)
 """
-
 @inline remove_role_from_dbcluster(aws::AWSConfig=default_aws_config(); args...) = remove_role_from_dbcluster(aws, args)
 
 @inline remove_role_from_dbcluster(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "RemoveRoleFromDBCluster", args)
@@ -6545,7 +6622,6 @@ The source identifier to be removed from the subscription, such as the **DB inst
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RemoveSourceIdentifierFromSubscription)
 """
-
 @inline remove_source_identifier_from_subscription(aws::AWSConfig=default_aws_config(); args...) = remove_source_identifier_from_subscription(aws, args)
 
 @inline remove_source_identifier_from_subscription(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "RemoveSourceIdentifierFromSubscription", args)
@@ -6586,7 +6662,6 @@ The tag key (name) of the tag to be removed.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RemoveTagsFromResource)
 """
-
 @inline remove_tags_from_resource(aws::AWSConfig=default_aws_config(); args...) = remove_tags_from_resource(aws, args)
 
 @inline remove_tags_from_resource(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "RemoveTagsFromResource", args)
@@ -6618,11 +6693,11 @@ The name of the DB cluster parameter group to reset.
 
 
 ## `ResetAllParameters = ::Bool`
-A value that is set to `true` to reset all parameters in the DB cluster parameter group to their default values, and `false` otherwise. You cannot use this parameter if there is a list of parameter names specified for the `Parameters` parameter.
+A value that is set to `true` to reset all parameters in the DB cluster parameter group to their default values, and `false` otherwise. You can't use this parameter if there is a list of parameter names specified for the `Parameters` parameter.
 
 
 ## `Parameters = [[ ... ], ...]`
-A list of parameter names in the DB cluster parameter group to reset to the default values. You cannot use this parameter if the `ResetAllParameters` parameter is set to `true`.
+A list of parameter names in the DB cluster parameter group to reset to the default values. You can't use this parameter if the `ResetAllParameters` parameter is set to `true`.
 ```
  Parameters = [[
         "ParameterName" =>  ::String,
@@ -6650,7 +6725,6 @@ A list of parameter names in the DB cluster parameter group to reset to the defa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ResetDBClusterParameterGroup)
 """
-
 @inline reset_dbcluster_parameter_group(aws::AWSConfig=default_aws_config(); args...) = reset_dbcluster_parameter_group(aws, args)
 
 @inline reset_dbcluster_parameter_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "ResetDBClusterParameterGroup", args)
@@ -6732,7 +6806,6 @@ Valid Values (for Apply method): `pending-reboot`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ResetDBParameterGroup)
 """
-
 @inline reset_dbparameter_group(aws::AWSConfig=default_aws_config(); args...) = reset_dbparameter_group(aws, args)
 
 @inline reset_dbparameter_group(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "ResetDBParameterGroup", args)
@@ -6778,7 +6851,7 @@ The database name for the restored DB cluster.
 
 
 ## `DBClusterIdentifier = ::String` -- *Required*
-The name of the DB cluster to create from the source data in the S3 bucket. This parameter is isn't case-sensitive.
+The name of the DB cluster to create from the source data in the Amazon S3 bucket. This parameter is isn't case-sensitive.
 
 Constraints:
 
@@ -6814,15 +6887,19 @@ Example: `mySubnetgroup`
 ## `Engine = ::String` -- *Required*
 The name of the database engine to be used for the restored DB cluster.
 
-Valid Values: `aurora`
+Valid Values: `aurora`, `aurora-postgresql`
 
 
 ## `EngineVersion = ::String`
 The version number of the database engine to use.
 
-**Aurora**
+**Aurora MySQL**
 
 Example: `5.6.10a`
+
+**Aurora PostgreSQL**
+
+Example: `9.6.3`
 
 
 ## `Port = ::Int`
@@ -6852,19 +6929,19 @@ Constraints: Must contain from 8 to 41 characters.
 ## `OptionGroupName = ::String`
 A value that indicates that the restored DB cluster should be associated with the specified option group.
 
-Permanent options cannot be removed from an option group. An option group cannot be removed from a DB cluster once it is associated with a DB cluster.
+Permanent options can't be removed from an option group. An option group can't be removed from a DB cluster once it is associated with a DB cluster.
 
 
 ## `PreferredBackupWindow = ::String`
 The daily time range during which automated backups are created if automated backups are enabled using the `BackupRetentionPeriod` parameter.
 
-Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
+The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
 
 Constraints:
 
 *   Must be in the format `hh24:mi-hh24:mi`.
 
-*   Times should be in Universal Coordinated Time (UTC).
+*   Must be in Universal Coordinated Time (UTC).
 
 *   Must not conflict with the preferred maintenance window.
 
@@ -6876,9 +6953,9 @@ The weekly time range during which system maintenance can occur, in Universal Co
 
 Format: `ddd:hh24:mi-ddd:hh24:mi`
 
-Default: A 30-minute window selected at random from an 8-hour block of time per AWS Region, occurring on a random day of the week. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
+The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region, occurring on a random day of the week. To see the time blocks available, see [Adjusting the Preferred Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html) in the *Amazon RDS User Guide.*
 
-Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
+Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
 Constraints: Minimum 30-minute window.
 
@@ -6897,7 +6974,7 @@ Specifies whether the restored DB cluster is encrypted.
 
 
 ## `KmsKeyId = ::String`
-The KMS key identifier for an encrypted DB cluster.
+The AWS KMS key identifier for an encrypted DB cluster.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are creating a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB cluster, then you can use the KMS key alias instead of the ARN for the KM encryption key.
 
@@ -6905,7 +6982,7 @@ If the `StorageEncrypted` parameter is true, and you do not specify a value for 
 
 
 ## `EnableIAMDatabaseAuthentication = ::Bool`
-A Boolean value that is true to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.
+True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.
 
 Default: `false`
 
@@ -6936,6 +7013,20 @@ The prefix for all of the file names that contain the data used to create the Am
 The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that authorizes Amazon RDS to access the Amazon S3 bucket on your behalf.
 
 
+## `BacktrackWindow = ::Int`
+The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+
+Default: 0
+
+Constraints:
+
+*   If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+
+
+## `EnableCloudwatchLogsExports = [::String, ...]`
+The list of logs that the restored DB cluster is to export to CloudWatch Logs.
+
+
 
 
 # Returns
@@ -6948,7 +7039,6 @@ The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) r
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RestoreDBClusterFromS3)
 """
-
 @inline restore_dbcluster_from_s3(aws::AWSConfig=default_aws_config(); args...) = restore_dbcluster_from_s3(aws, args)
 
 @inline restore_dbcluster_from_s3(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "RestoreDBClusterFromS3", args)
@@ -6986,7 +7076,7 @@ The name of the DB cluster to create from the DB snapshot or DB cluster snapshot
 
 Constraints:
 
-*   Must contain from 1 to 255 letters, numbers, or hyphens
+*   Must contain from 1 to 63 letters, numbers, or hyphens
 
 *   First character must be a letter
 
@@ -7055,7 +7145,7 @@ The tags to be assigned to the restored DB cluster.
 ```
 
 ## `KmsKeyId = ::String`
-The KMS key identifier to use when restoring an encrypted DB cluster from a DB snapshot or DB cluster snapshot.
+The AWS KMS key identifier to use when restoring an encrypted DB cluster from a DB snapshot or DB cluster snapshot.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB cluster, then you can use the KMS key alias instead of the ARN for the KMS encryption key.
 
@@ -7067,9 +7157,23 @@ If you do not specify a value for the `KmsKeyId` parameter, then the following w
 
 
 ## `EnableIAMDatabaseAuthentication = ::Bool`
-A Boolean value that is true to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.
+True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.
 
 Default: `false`
+
+
+## `BacktrackWindow = ::Int`
+The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+
+Default: 0
+
+Constraints:
+
+*   If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+
+
+## `EnableCloudwatchLogsExports = [::String, ...]`
+The list of logs that the restored DB cluster is to export to CloudWatch Logs.
 
 
 
@@ -7080,11 +7184,10 @@ Default: `false`
 
 # Exceptions
 
-`DBClusterAlreadyExistsFault`, `DBClusterQuotaExceededFault`, `StorageQuotaExceededFault`, `DBSubnetGroupNotFoundFault`, `DBSnapshotNotFoundFault`, `DBClusterSnapshotNotFoundFault`, `InsufficientDBClusterCapacityFault`, `InsufficientStorageClusterCapacityFault`, `InvalidDBSnapshotStateFault`, `InvalidDBClusterSnapshotStateFault`, `StorageQuotaExceededFault`, `InvalidVPCNetworkStateFault`, `InvalidRestoreFault`, `DBSubnetGroupNotFoundFault`, `InvalidSubnet`, `OptionGroupNotFoundFault` or `KMSKeyNotAccessibleFault`.
+`DBClusterAlreadyExistsFault`, `DBClusterQuotaExceededFault`, `StorageQuotaExceededFault`, `DBSubnetGroupNotFoundFault`, `DBSnapshotNotFoundFault`, `DBClusterSnapshotNotFoundFault`, `InsufficientDBClusterCapacityFault`, `InsufficientStorageClusterCapacityFault`, `InvalidDBSnapshotStateFault`, `InvalidDBClusterSnapshotStateFault`, `StorageQuotaExceededFault`, `InvalidVPCNetworkStateFault`, `InvalidRestoreFault`, `DBSubnetGroupNotFoundFault`, `InvalidSubnet`, `OptionGroupNotFoundFault`, `KMSKeyNotAccessibleFault` or `DBClusterParameterGroupNotFoundFault`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RestoreDBClusterFromSnapshot)
 """
-
 @inline restore_dbcluster_from_snapshot(aws::AWSConfig=default_aws_config(); args...) = restore_dbcluster_from_snapshot(aws, args)
 
 @inline restore_dbcluster_from_snapshot(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "RestoreDBClusterFromSnapshot", args)
@@ -7131,7 +7234,7 @@ The type of restore to be performed. You can specify one of the following values
 
 *   `copy-on-write` - The new DB cluster is restored as a clone of the source DB cluster.
 
-Constraints: You cannot specify `copy-on-write` if the engine version of the source DB cluster is earlier than 1.11.
+Constraints: You can't specify `copy-on-write` if the engine version of the source DB cluster is earlier than 1.11.
 
 If you don't specify a `RestoreType` value, then the new DB cluster is restored as a full copy of the source DB cluster.
 
@@ -7173,9 +7276,9 @@ Constraints: Cannot be specified if `RestoreToTime` parameter is provided.
 ## `Port = ::Int`
 The port number on which the new DB cluster accepts connections.
 
-Constraints: Value must be `1150-65535`
+Constraints: A value from `1150-65535`.
 
-Default: The same port as the original DB cluster.
+Default: The default port for the engine.
 
 
 ## `DBSubnetGroupName = ::String`
@@ -7204,7 +7307,7 @@ A list of VPC security groups that the new DB cluster belongs to.
 ```
 
 ## `KmsKeyId = ::String`
-The KMS key identifier to use when restoring an encrypted DB cluster from an encrypted DB cluster.
+The AWS KMS key identifier to use when restoring an encrypted DB cluster from an encrypted DB cluster.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB cluster, then you can use the KMS key alias instead of the ARN for the KMS encryption key.
 
@@ -7220,9 +7323,23 @@ If `DBClusterIdentifier` refers to a DB cluster that is not encrypted, then the 
 
 
 ## `EnableIAMDatabaseAuthentication = ::Bool`
-A Boolean value that is true to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.
+True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.
 
 Default: `false`
+
+
+## `BacktrackWindow = ::Int`
+The target backtrack window, in seconds. To disable backtracking, set this value to 0.
+
+Default: 0
+
+Constraints:
+
+*   If specified, this value must be set to a number from 0 to 259,200 (72 hours).
+
+
+## `EnableCloudwatchLogsExports = [::String, ...]`
+The list of logs that the restored DB cluster is to export to CloudWatch Logs.
 
 
 
@@ -7233,11 +7350,10 @@ Default: `false`
 
 # Exceptions
 
-`DBClusterAlreadyExistsFault`, `DBClusterNotFoundFault`, `DBClusterQuotaExceededFault`, `DBClusterSnapshotNotFoundFault`, `DBSubnetGroupNotFoundFault`, `InsufficientDBClusterCapacityFault`, `InsufficientStorageClusterCapacityFault`, `InvalidDBClusterSnapshotStateFault`, `InvalidDBClusterStateFault`, `InvalidDBSnapshotStateFault`, `InvalidRestoreFault`, `InvalidSubnet`, `InvalidVPCNetworkStateFault`, `KMSKeyNotAccessibleFault`, `OptionGroupNotFoundFault` or `StorageQuotaExceededFault`.
+`DBClusterAlreadyExistsFault`, `DBClusterNotFoundFault`, `DBClusterQuotaExceededFault`, `DBClusterSnapshotNotFoundFault`, `DBSubnetGroupNotFoundFault`, `InsufficientDBClusterCapacityFault`, `InsufficientStorageClusterCapacityFault`, `InvalidDBClusterSnapshotStateFault`, `InvalidDBClusterStateFault`, `InvalidDBSnapshotStateFault`, `InvalidRestoreFault`, `InvalidSubnet`, `InvalidVPCNetworkStateFault`, `KMSKeyNotAccessibleFault`, `OptionGroupNotFoundFault`, `StorageQuotaExceededFault` or `DBClusterParameterGroupNotFoundFault`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RestoreDBClusterToPointInTime)
 """
-
 @inline restore_dbcluster_to_point_in_time(aws::AWSConfig=default_aws_config(); args...) = restore_dbcluster_to_point_in_time(aws, args)
 
 @inline restore_dbcluster_to_point_in_time(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "RestoreDBClusterToPointInTime", args)
@@ -7258,9 +7374,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 Creates a new DB instance from a DB snapshot. The target database is created from the source database restore point with the most of original configuration with the default security group and the default DB parameter group. By default, the new DB instance is created as a single-AZ deployment except when the instance is a SQL Server instance that has an option group that is associated with mirroring; in this case, the instance becomes a mirrored AZ deployment and not a single-AZ deployment.
 
-If your intent is to replace your original DB instance with the new, restored DB instance, then rename your original DB instance before you call the RestoreDBInstanceFromDBSnapshot action. RDS does not allow two DB instances with the same name. Once you have renamed your original DB instance with a different identifier, then you can pass the original name of the DB instance as the DBInstanceIdentifier in the call to the RestoreDBInstanceFromDBSnapshot action. The result is that you will replace the original DB instance with the DB instance created from the snapshot.
+If your intent is to replace your original DB instance with the new, restored DB instance, then rename your original DB instance before you call the RestoreDBInstanceFromDBSnapshot action. RDS doesn't allow two DB instances with the same name. Once you have renamed your original DB instance with a different identifier, then you can pass the original name of the DB instance as the DBInstanceIdentifier in the call to the RestoreDBInstanceFromDBSnapshot action. The result is that you will replace the original DB instance with the DB instance created from the snapshot.
 
 If you are restoring from a shared manual DB snapshot, the `DBSnapshotIdentifier` must be the ARN of the shared DB snapshot.
+
+**Note**
+> This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For Aurora, use [RestoreDBClusterFromSnapshot](@ref).
 
 # Arguments
 
@@ -7289,7 +7408,7 @@ Constraints:
 
 
 ## `DBInstanceClass = ::String`
-The compute and memory capacity of the Amazon RDS DB instance, for example, `db.m4.large`. Not all DB instance classes are available in all regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see [DB Instance Class](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html) in the Amazon RDS User Guide.
+The compute and memory capacity of the Amazon RDS DB instance, for example, `db.m4.large`. Not all DB instance classes are available in all AWS Regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see [DB Instance Class](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html) in the *Amazon RDS User Guide.*
 
 Default: The same DBInstanceClass as the original DB instance.
 
@@ -7303,11 +7422,11 @@ Constraints: Value must be `1150-65535`
 
 
 ## `AvailabilityZone = ::String`
-The EC2 Availability Zone that the database instance is created in.
+The EC2 Availability Zone that the DB instance is created in.
 
 Default: A random, system-chosen Availability Zone.
 
-Constraint: You cannot specify the AvailabilityZone parameter if the MultiAZ parameter is set to `true`.
+Constraint: You can't specify the AvailabilityZone parameter if the MultiAZ parameter is set to `true`.
 
 Example: `us-east-1a`
 
@@ -7323,7 +7442,7 @@ Example: `mySubnetgroup`
 ## `MultiAZ = ::Bool`
 Specifies if the DB instance is a Multi-AZ deployment.
 
-Constraint: You cannot specify the AvailabilityZone parameter if the MultiAZ parameter is set to `true`.
+Constraint: You can't specify the AvailabilityZone parameter if the MultiAZ parameter is set to `true`.
 
 
 ## `PubliclyAccessible = ::Bool`
@@ -7362,11 +7481,9 @@ The database engine to use for the new instance.
 
 Default: The same as source
 
-Constraint: Must be compatible with the engine of the source. You can restore a MariaDB 10.1 DB instance from a MySQL 5.6 snapshot.
+Constraint: Must be compatible with the engine of the source. For example, you can restore a MariaDB 10.1 DB instance from a MySQL 5.6 snapshot.
 
 Valid Values:
-
-*   `aurora`
 
 *   `mariadb`
 
@@ -7402,7 +7519,7 @@ Constraints: Must be an integer greater than 1000.
 ## `OptionGroupName = ::String`
 The name of the option group to be used for the restored DB instance.
 
-Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option group, and that option group cannot be removed from a DB instance once it is associated with a DB instance
+Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an option group, and that option group can't be removed from a DB instance once it is associated with a DB instance
 
 
 ## `Tags = [[ ... ], ...]`
@@ -7421,15 +7538,15 @@ Valid values: `standard | gp2 | io1`
 
 If you specify `io1`, you must also include a value for the `Iops` parameter.
 
-Default: `io1` if the `Iops` parameter is specified; otherwise `standard`
+Default: `io1` if the `Iops` parameter is specified, otherwise `standard`
 
 
 ## `TdeCredentialArn = ::String`
-The ARN from the Key Store with which to associate the instance for TDE encryption.
+The ARN from the key store with which to associate the instance for TDE encryption.
 
 
 ## `TdeCredentialPassword = ::String`
-The password for the given ARN from the Key Store in order to access the device.
+The password for the given ARN from the key store in order to access the device.
 
 
 ## `Domain = ::String`
@@ -7437,7 +7554,7 @@ Specify the Active Directory Domain to restore the instance in.
 
 
 ## `CopyTagsToSnapshot = ::Bool`
-True to copy all tags from the restored DB instance to snapshots of the DB instance; otherwise false. The default is false.
+True to copy all tags from the restored DB instance to snapshots of the DB instance, and otherwise false. The default is false.
 
 
 ## `DomainIAMRoleName = ::String`
@@ -7445,7 +7562,7 @@ Specify the name of the IAM role to be used when making API calls to the Directo
 
 
 ## `EnableIAMDatabaseAuthentication = ::Bool`
-True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise false.
+True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.
 
 You can enable IAM database authentication for the following database engines
 
@@ -7453,9 +7570,24 @@ You can enable IAM database authentication for the following database engines
 
 *   For MySQL 5.7, minor version 5.7.16 or higher
 
-*   Aurora 5.6 or higher.
-
 Default: `false`
+
+
+## `EnableCloudwatchLogsExports = [::String, ...]`
+The list of logs that the restored DB instance is to export to CloudWatch Logs.
+
+
+## `ProcessorFeatures = [[ ... ], ...]`
+The number of CPU cores and the number of threads per core for the DB instance class of the DB instance.
+```
+ ProcessorFeatures = [[
+        "Name" =>  ::String,
+        "Value" =>  ::String
+    ], ...]
+```
+
+## `UseDefaultProcessorFeatures = ::Bool`
+A value that specifies that the DB instance class of the DB instance uses its default processor features.
 
 
 
@@ -7466,16 +7598,320 @@ Default: `false`
 
 # Exceptions
 
-`DBInstanceAlreadyExistsFault`, `DBSnapshotNotFoundFault`, `InstanceQuotaExceededFault`, `InsufficientDBInstanceCapacityFault`, `InvalidDBSnapshotStateFault`, `StorageQuotaExceededFault`, `InvalidVPCNetworkStateFault`, `InvalidRestoreFault`, `DBSubnetGroupNotFoundFault`, `DBSubnetGroupDoesNotCoverEnoughAZs`, `InvalidSubnet`, `ProvisionedIopsNotAvailableInAZFault`, `OptionGroupNotFoundFault`, `StorageTypeNotSupportedFault`, `AuthorizationNotFoundFault`, `KMSKeyNotAccessibleFault`, `DBSecurityGroupNotFoundFault` or `DomainNotFoundFault`.
+`DBInstanceAlreadyExistsFault`, `DBSnapshotNotFoundFault`, `InstanceQuotaExceededFault`, `InsufficientDBInstanceCapacityFault`, `InvalidDBSnapshotStateFault`, `StorageQuotaExceededFault`, `InvalidVPCNetworkStateFault`, `InvalidRestoreFault`, `DBSubnetGroupNotFoundFault`, `DBSubnetGroupDoesNotCoverEnoughAZs`, `InvalidSubnet`, `ProvisionedIopsNotAvailableInAZFault`, `OptionGroupNotFoundFault`, `StorageTypeNotSupportedFault`, `AuthorizationNotFoundFault`, `KMSKeyNotAccessibleFault`, `DBSecurityGroupNotFoundFault`, `DomainNotFoundFault` or `DBParameterGroupNotFoundFault`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RestoreDBInstanceFromDBSnapshot)
 """
-
 @inline restore_dbinstance_from_dbsnapshot(aws::AWSConfig=default_aws_config(); args...) = restore_dbinstance_from_dbsnapshot(aws, args)
 
 @inline restore_dbinstance_from_dbsnapshot(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "RestoreDBInstanceFromDBSnapshot", args)
 
 @inline restore_dbinstance_from_dbsnapshot(args) = restore_dbinstance_from_dbsnapshot(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.RDS.restore_dbinstance_from_s3
+    restore_dbinstance_from_s3([::AWSConfig], arguments::Dict)
+    restore_dbinstance_from_s3([::AWSConfig]; DBInstanceIdentifier=, DBInstanceClass=, Engine=, SourceEngine=, SourceEngineVersion=, S3BucketName=, S3IngestionRoleArn=, <keyword arguments>)
+
+    using AWSCore.Services.rds
+    rds([::AWSConfig], "RestoreDBInstanceFromS3", arguments::Dict)
+    rds([::AWSConfig], "RestoreDBInstanceFromS3", DBInstanceIdentifier=, DBInstanceClass=, Engine=, SourceEngine=, SourceEngineVersion=, S3BucketName=, S3IngestionRoleArn=, <keyword arguments>)
+
+# RestoreDBInstanceFromS3 Operation
+
+Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files. You can create a backup of your on-premises database, store it on Amazon Simple Storage Service (Amazon S3), and then restore the backup file onto a new Amazon RDS DB instance running MySQL. For more information, see [Importing Data into an Amazon RDS MySQL DB Instance](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html).
+
+# Arguments
+
+## `DBName = ::String`
+The name of the database to create when the DB instance is created. Follow the naming rules specified in [CreateDBInstance](@ref).
+
+
+## `DBInstanceIdentifier = ::String` -- *Required*
+The DB instance identifier. This parameter is stored as a lowercase string.
+
+Constraints:
+
+*   Must contain from 1 to 63 letters, numbers, or hyphens.
+
+*   First character must be a letter.
+
+*   Cannot end with a hyphen or contain two consecutive hyphens.
+
+Example: `mydbinstance`
+
+
+## `AllocatedStorage = ::Int`
+The amount of storage (in gigabytes) to allocate initially for the DB instance. Follow the allocation rules specified in [CreateDBInstance](@ref).
+
+**Note**
+> Be sure to allocate enough memory for your new DB instance so that the restore operation can succeed. You can also allocate additional memory for future growth.
+
+
+## `DBInstanceClass = ::String` -- *Required*
+The compute and memory capacity of the DB instance, for example, `db.m4.large`. Not all DB instance classes are available in all AWS Regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see [DB Instance Class](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html) in the *Amazon RDS User Guide.*
+
+Importing from Amazon S3 is not supported on the db.t2.micro DB instance class.
+
+
+## `Engine = ::String` -- *Required*
+The name of the database engine to be used for this instance.
+
+Valid Values: `mysql`
+
+
+## `MasterUsername = ::String`
+The name for the master user.
+
+Constraints:
+
+*   Must be 1 to 16 letters or numbers.
+
+*   First character must be a letter.
+
+*   Cannot be a reserved word for the chosen database engine.
+
+
+## `MasterUserPassword = ::String`
+The password for the master user. The password can include any printable ASCII character except "/", \"\"\", or "@".
+
+Constraints: Must contain from 8 to 41 characters.
+
+
+## `DBSecurityGroups = [::String, ...]`
+A list of DB security groups to associate with this DB instance.
+
+Default: The default DB security group for the database engine.
+
+
+## `VpcSecurityGroupIds = [::String, ...]`
+A list of VPC security groups to associate with this DB instance.
+
+
+## `AvailabilityZone = ::String`
+The Availability Zone that the DB instance is created in. For information about AWS Regions and Availability Zones, see [Regions and Availability Zones](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+
+Default: A random, system-chosen Availability Zone in the endpoint's AWS Region.
+
+Example: `us-east-1d`
+
+Constraint: The AvailabilityZone parameter can't be specified if the MultiAZ parameter is set to `true`. The specified Availability Zone must be in the same AWS Region as the current endpoint.
+
+
+## `DBSubnetGroupName = ::String`
+A DB subnet group to associate with this DB instance.
+
+
+## `PreferredMaintenanceWindow = ::String`
+The time range each week during which system maintenance can occur, in Universal Coordinated Time (UTC). For more information, see [Amazon RDS Maintenance Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance).
+
+Constraints:
+
+*   Must be in the format `ddd:hh24:mi-ddd:hh24:mi`.
+
+*   Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
+
+*   Must be in Universal Coordinated Time (UTC).
+
+*   Must not conflict with the preferred backup window.
+
+*   Must be at least 30 minutes.
+
+
+## `DBParameterGroupName = ::String`
+The name of the DB parameter group to associate with this DB instance. If this argument is omitted, the default parameter group for the specified engine is used.
+
+
+## `BackupRetentionPeriod = ::Int`
+The number of days for which automated backups are retained. Setting this parameter to a positive number enables backups. For more information, see [CreateDBInstance](@ref).
+
+
+## `PreferredBackupWindow = ::String`
+The time range each day during which automated backups are created if automated backups are enabled. For more information, see [The Backup Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow).
+
+Constraints:
+
+*   Must be in the format `hh24:mi-hh24:mi`.
+
+*   Must be in Universal Coordinated Time (UTC).
+
+*   Must not conflict with the preferred maintenance window.
+
+*   Must be at least 30 minutes.
+
+
+## `Port = ::Int`
+The port number on which the database accepts connections.
+
+Type: Integer
+
+Valid Values: `1150`-`65535`
+
+Default: `3306`
+
+
+## `MultiAZ = ::Bool`
+Specifies whether the DB instance is a Multi-AZ deployment. If MultiAZ is set to `true`, you can't set the AvailabilityZone parameter.
+
+
+## `EngineVersion = ::String`
+The version number of the database engine to use. Choose the latest minor version of your database engine. For information about engine versions, see [CreateDBInstance](@ref), or call [DescribeDBEngineVersions](@ref).
+
+
+## `AutoMinorVersionUpgrade = ::Bool`
+True to indicate that minor engine upgrades are applied automatically to the DB instance during the maintenance window, and otherwise false.
+
+Default: `true`
+
+
+## `LicenseModel = ::String`
+The license model for this DB instance. Use `general-public-license`.
+
+
+## `Iops = ::Int`
+The amount of Provisioned IOPS (input/output operations per second) to allocate initially for the DB instance. For information about valid Iops values, see see [Amazon RDS Provisioned IOPS Storage to Improve Performance](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS).
+
+
+## `OptionGroupName = ::String`
+The name of the option group to associate with this DB instance. If this argument is omitted, the default option group for the specified engine is used.
+
+
+## `PubliclyAccessible = ::Bool`
+Specifies whether the DB instance is publicly accessible or not. For more information, see [CreateDBInstance](@ref).
+
+
+## `Tags = [[ ... ], ...]`
+A list of tags to associate with this DB instance. For more information, see [Tagging Amazon RDS Resources](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html).
+```
+ Tags = [[
+        "Key" =>  ::String,
+        "Value" =>  ::String
+    ], ...]
+```
+
+## `StorageType = ::String`
+Specifies the storage type to be associated with the DB instance.
+
+Valid values: `standard` | `gp2` | `io1`
+
+If you specify `io1`, you must also include a value for the `Iops` parameter.
+
+Default: `io1` if the `Iops` parameter is specified; otherwise `standard`
+
+
+## `StorageEncrypted = ::Bool`
+Specifies whether the new DB instance is encrypted or not.
+
+
+## `KmsKeyId = ::String`
+The AWS KMS key identifier for an encrypted DB instance.
+
+The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are creating a DB instance with the same AWS account that owns the KMS encryption key used to encrypt the new DB instance, then you can use the KMS key alias instead of the ARN for the KM encryption key.
+
+If the `StorageEncrypted` parameter is true, and you do not specify a value for the `KmsKeyId` parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.
+
+
+## `CopyTagsToSnapshot = ::Bool`
+True to copy all tags from the DB instance to snapshots of the DB instance, and otherwise false.
+
+Default: false.
+
+
+## `MonitoringInterval = ::Int`
+The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance. To disable collecting Enhanced Monitoring metrics, specify 0.
+
+If `MonitoringRoleArn` is specified, then you must also set `MonitoringInterval` to a value other than 0.
+
+Valid Values: 0, 1, 5, 10, 15, 30, 60
+
+Default: `0`
+
+
+## `MonitoringRoleArn = ::String`
+The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to Amazon CloudWatch Logs. For example, `arn:aws:iam:123456789012:role/emaccess`. For information on creating a monitoring role, see [Setting Up and Enabling Enhanced Monitoring](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling).
+
+If `MonitoringInterval` is set to a value other than 0, then you must supply a `MonitoringRoleArn` value.
+
+
+## `EnableIAMDatabaseAuthentication = ::Bool`
+True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.
+
+Default: `false`
+
+
+## `SourceEngine = ::String` -- *Required*
+The name of the engine of your source database.
+
+Valid Values: `mysql`
+
+
+## `SourceEngineVersion = ::String` -- *Required*
+The engine version of your source database.
+
+Valid Values: `5.6`
+
+
+## `S3BucketName = ::String` -- *Required*
+The name of your Amazon S3 bucket that contains your database backup file.
+
+
+## `S3Prefix = ::String`
+The prefix of your Amazon S3 bucket.
+
+
+## `S3IngestionRoleArn = ::String` -- *Required*
+An AWS Identity and Access Management (IAM) role to allow Amazon RDS to access your Amazon S3 bucket.
+
+
+## `EnablePerformanceInsights = ::Bool`
+True to enable Performance Insights for the DB instance, and otherwise false.
+
+For more information, see [Using Amazon Performance Insights](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html) in the *Amazon Relational Database Service User Guide*.
+
+
+## `PerformanceInsightsKMSKeyId = ::String`
+The AWS KMS key identifier for encryption of Performance Insights data. The KMS key ID is the Amazon Resource Name (ARN), the KMS key identifier, or the KMS key alias for the KMS encryption key.
+
+
+## `PerformanceInsightsRetentionPeriod = ::Int`
+The amount of time, in days, to retain Performance Insights data. Valid values are 7 or 731 (2 years).
+
+
+## `EnableCloudwatchLogsExports = [::String, ...]`
+The list of logs that the restored DB instance is to export to CloudWatch Logs.
+
+
+## `ProcessorFeatures = [[ ... ], ...]`
+The number of CPU cores and the number of threads per core for the DB instance class of the DB instance.
+```
+ ProcessorFeatures = [[
+        "Name" =>  ::String,
+        "Value" =>  ::String
+    ], ...]
+```
+
+## `UseDefaultProcessorFeatures = ::Bool`
+A value that specifies that the DB instance class of the DB instance uses its default processor features.
+
+
+
+
+# Returns
+
+`RestoreDBInstanceFromS3Result`
+
+# Exceptions
+
+`DBInstanceAlreadyExistsFault`, `InsufficientDBInstanceCapacityFault`, `DBParameterGroupNotFoundFault`, `DBSecurityGroupNotFoundFault`, `InstanceQuotaExceededFault`, `StorageQuotaExceededFault`, `DBSubnetGroupNotFoundFault`, `DBSubnetGroupDoesNotCoverEnoughAZs`, `InvalidSubnet`, `InvalidVPCNetworkStateFault`, `InvalidS3BucketFault`, `ProvisionedIopsNotAvailableInAZFault`, `OptionGroupNotFoundFault`, `StorageTypeNotSupportedFault`, `AuthorizationNotFoundFault` or `KMSKeyNotAccessibleFault`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RestoreDBInstanceFromS3)
+"""
+@inline restore_dbinstance_from_s3(aws::AWSConfig=default_aws_config(); args...) = restore_dbinstance_from_s3(aws, args)
+
+@inline restore_dbinstance_from_s3(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "RestoreDBInstanceFromS3", args)
+
+@inline restore_dbinstance_from_s3(args) = restore_dbinstance_from_s3(default_aws_config(), args)
 
 
 """
@@ -7491,7 +7927,10 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 Restores a DB instance to an arbitrary point in time. You can restore to any point in time before the time identified by the LatestRestorableTime property. You can restore to a point up to the number of days specified by the BackupRetentionPeriod property.
 
-The target database is created with most of the original configuration, but in a system-selected availability zone, with the default security group, the default subnet group, and the default DB parameter group. By default, the new DB instance is created as a single-AZ deployment except when the instance is a SQL Server instance that has an option group that is associated with mirroring; in this case, the instance becomes a mirrored deployment and not a single-AZ deployment.
+The target database is created with most of the original configuration, but in a system-selected Availability Zone, with the default security group, the default subnet group, and the default DB parameter group. By default, the new DB instance is created as a single-AZ deployment except when the instance is a SQL Server instance that has an option group that is associated with mirroring; in this case, the instance becomes a mirrored deployment and not a single-AZ deployment.
+
+**Note**
+> This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For Aurora, use [RestoreDBClusterToPointInTime](@ref).
 
 # Arguments
 
@@ -7500,11 +7939,11 @@ The identifier of the source DB instance from which to restore.
 
 Constraints:
 
-*   Must match the identifier of an existing DBInstance.
+*   Must match the identifier of an existing DB instance.
 
 
 ## `TargetDBInstanceIdentifier = ::String` -- *Required*
-The name of the new database instance to be created.
+The name of the new DB instance to be created.
 
 Constraints:
 
@@ -7538,7 +7977,7 @@ Constraints: Cannot be specified if RestoreTime parameter is provided.
 
 
 ## `DBInstanceClass = ::String`
-The compute and memory capacity of the Amazon RDS DB instance, for example, `db.m4.large`. Not all DB instance classes are available in all regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see [DB Instance Class](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html) in the Amazon RDS User Guide.
+The compute and memory capacity of the Amazon RDS DB instance, for example, `db.m4.large`. Not all DB instance classes are available in all AWS Regions, or for all database engines. For the full list of DB instance classes, and availability for your engine, see [DB Instance Class](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html) in the *Amazon RDS User Guide.*
 
 Default: The same DBInstanceClass as the original DB instance.
 
@@ -7552,11 +7991,11 @@ Default: The same port as the original DB instance.
 
 
 ## `AvailabilityZone = ::String`
-The EC2 Availability Zone that the database instance is created in.
+The EC2 Availability Zone that the DB instance is created in.
 
 Default: A random, system-chosen Availability Zone.
 
-Constraint: You cannot specify the AvailabilityZone parameter if the MultiAZ parameter is set to true.
+Constraint: You can't specify the AvailabilityZone parameter if the MultiAZ parameter is set to true.
 
 Example: `us-east-1a`
 
@@ -7572,7 +8011,7 @@ Example: `mySubnetgroup`
 ## `MultiAZ = ::Bool`
 Specifies if the DB instance is a Multi-AZ deployment.
 
-Constraint: You cannot specify the AvailabilityZone parameter if the MultiAZ parameter is set to `true`.
+Constraint: You can't specify the AvailabilityZone parameter if the MultiAZ parameter is set to `true`.
 
 
 ## `PubliclyAccessible = ::Bool`
@@ -7615,8 +8054,6 @@ Constraint: Must be compatible with the engine of the source
 
 Valid Values:
 
-*   `aurora`
-
 *   `mariadb`
 
 *   `mysql`
@@ -7653,11 +8090,11 @@ Setting the IOPS value for the SQL Server database engine is not supported.
 ## `OptionGroupName = ::String`
 The name of the option group to be used for the restored DB instance.
 
-Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option group, and that option group cannot be removed from a DB instance once it is associated with a DB instance
+Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an option group, and that option group can't be removed from a DB instance once it is associated with a DB instance
 
 
 ## `CopyTagsToSnapshot = ::Bool`
-True to copy all tags from the restored DB instance to snapshots of the DB instance; otherwise false. The default is false.
+True to copy all tags from the restored DB instance to snapshots of the DB instance, and otherwise false. The default is false.
 
 
 ## `Tags = [[ ... ], ...]`
@@ -7676,15 +8113,15 @@ Valid values: `standard | gp2 | io1`
 
 If you specify `io1`, you must also include a value for the `Iops` parameter.
 
-Default: `io1` if the `Iops` parameter is specified; otherwise `standard`
+Default: `io1` if the `Iops` parameter is specified, otherwise `standard`
 
 
 ## `TdeCredentialArn = ::String`
-The ARN from the Key Store with which to associate the instance for TDE encryption.
+The ARN from the key store with which to associate the instance for TDE encryption.
 
 
 ## `TdeCredentialPassword = ::String`
-The password for the given ARN from the Key Store in order to access the device.
+The password for the given ARN from the key store in order to access the device.
 
 
 ## `Domain = ::String`
@@ -7696,7 +8133,7 @@ Specify the name of the IAM role to be used when making API calls to the Directo
 
 
 ## `EnableIAMDatabaseAuthentication = ::Bool`
-True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise false.
+True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.
 
 You can enable IAM database authentication for the following database engines
 
@@ -7704,9 +8141,24 @@ You can enable IAM database authentication for the following database engines
 
 *   For MySQL 5.7, minor version 5.7.16 or higher
 
-*   Aurora 5.6 or higher.
-
 Default: `false`
+
+
+## `EnableCloudwatchLogsExports = [::String, ...]`
+The list of logs that the restored DB instance is to export to CloudWatch Logs.
+
+
+## `ProcessorFeatures = [[ ... ], ...]`
+The number of CPU cores and the number of threads per core for the DB instance class of the DB instance.
+```
+ ProcessorFeatures = [[
+        "Name" =>  ::String,
+        "Value" =>  ::String
+    ], ...]
+```
+
+## `UseDefaultProcessorFeatures = ::Bool`
+A value that specifies that the DB instance class of the DB instance uses its default processor features.
 
 
 
@@ -7717,11 +8169,10 @@ Default: `false`
 
 # Exceptions
 
-`DBInstanceAlreadyExistsFault`, `DBInstanceNotFoundFault`, `InstanceQuotaExceededFault`, `InsufficientDBInstanceCapacityFault`, `InvalidDBInstanceStateFault`, `PointInTimeRestoreNotEnabledFault`, `StorageQuotaExceededFault`, `InvalidVPCNetworkStateFault`, `InvalidRestoreFault`, `DBSubnetGroupNotFoundFault`, `DBSubnetGroupDoesNotCoverEnoughAZs`, `InvalidSubnet`, `ProvisionedIopsNotAvailableInAZFault`, `OptionGroupNotFoundFault`, `StorageTypeNotSupportedFault`, `AuthorizationNotFoundFault`, `KMSKeyNotAccessibleFault`, `DBSecurityGroupNotFoundFault` or `DomainNotFoundFault`.
+`DBInstanceAlreadyExistsFault`, `DBInstanceNotFoundFault`, `InstanceQuotaExceededFault`, `InsufficientDBInstanceCapacityFault`, `InvalidDBInstanceStateFault`, `PointInTimeRestoreNotEnabledFault`, `StorageQuotaExceededFault`, `InvalidVPCNetworkStateFault`, `InvalidRestoreFault`, `DBSubnetGroupNotFoundFault`, `DBSubnetGroupDoesNotCoverEnoughAZs`, `InvalidSubnet`, `ProvisionedIopsNotAvailableInAZFault`, `OptionGroupNotFoundFault`, `StorageTypeNotSupportedFault`, `AuthorizationNotFoundFault`, `KMSKeyNotAccessibleFault`, `DBSecurityGroupNotFoundFault`, `DomainNotFoundFault` or `DBParameterGroupNotFoundFault`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RestoreDBInstanceToPointInTime)
 """
-
 @inline restore_dbinstance_to_point_in_time(aws::AWSConfig=default_aws_config(); args...) = restore_dbinstance_to_point_in_time(aws, args)
 
 @inline restore_dbinstance_to_point_in_time(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "RestoreDBInstanceToPointInTime", args)
@@ -7749,7 +8200,7 @@ The name of the DB security group to revoke ingress from.
 
 
 ## `CIDRIP = ::String`
-The IP range to revoke access from. Must be a valid CIDR range. If `CIDRIP` is specified, `EC2SecurityGroupName`, `EC2SecurityGroupId` and `EC2SecurityGroupOwnerId` cannot be provided.
+The IP range to revoke access from. Must be a valid CIDR range. If `CIDRIP` is specified, `EC2SecurityGroupName`, `EC2SecurityGroupId` and `EC2SecurityGroupOwnerId` can't be provided.
 
 
 ## `EC2SecurityGroupName = ::String`
@@ -7776,7 +8227,6 @@ The AWS Account Number of the owner of the EC2 security group specified in the `
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RevokeDBSecurityGroupIngress)
 """
-
 @inline revoke_dbsecurity_group_ingress(aws::AWSConfig=default_aws_config(); args...) = revoke_dbsecurity_group_ingress(aws, args)
 
 @inline revoke_dbsecurity_group_ingress(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "RevokeDBSecurityGroupIngress", args)
@@ -7797,6 +8247,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 
 Starts a DB instance that was stopped using the AWS console, the stop-db-instance AWS CLI command, or the StopDBInstance action. For more information, see Stopping and Starting a DB instance in the AWS RDS user guide.
 
+**Note**
+> This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
+
 # Arguments
 
 ## `DBInstanceIdentifier = ::String` -- *Required*
@@ -7815,7 +8268,6 @@ The user-supplied instance identifier.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/StartDBInstance)
 """
-
 @inline start_dbinstance(aws::AWSConfig=default_aws_config(); args...) = start_dbinstance(aws, args)
 
 @inline start_dbinstance(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "StartDBInstance", args)
@@ -7835,6 +8287,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-20
 # StopDBInstance Operation
 
 Stops a DB instance. When you stop a DB instance, Amazon RDS retains the DB instance's metadata, including its endpoint, DB parameter group, and option group membership. Amazon RDS also retains the transaction logs so you can do a point-in-time restore if necessary. For more information, see Stopping and Starting a DB instance in the AWS RDS user guide.
+
+**Note**
+> This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
 
 # Arguments
 
@@ -7858,7 +8313,6 @@ The user-supplied instance identifier of the DB Snapshot created immediately bef
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/StopDBInstance)
 """
-
 @inline stop_dbinstance(aws::AWSConfig=default_aws_config(); args...) = stop_dbinstance(aws, args)
 
 @inline stop_dbinstance(aws::AWSConfig, args) = AWSCore.Services.rds(aws, "StopDBInstance", args)

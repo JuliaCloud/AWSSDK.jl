@@ -91,7 +91,6 @@ A list of `PartitionInput` structures that define the partitions to be created.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchCreatePartition)
 """
-
 @inline batch_create_partition(aws::AWSConfig=default_aws_config(); args...) = batch_create_partition(aws, args)
 
 @inline batch_create_partition(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "BatchCreatePartition", args)
@@ -134,7 +133,6 @@ A list of names of the connections to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchDeleteConnection)
 """
-
 @inline batch_delete_connection(aws::AWSConfig=default_aws_config(); args...) = batch_delete_connection(aws, args)
 
 @inline batch_delete_connection(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "BatchDeleteConnection", args)
@@ -185,7 +183,6 @@ A list of `PartitionInput` structures that define the partitions to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchDeletePartition)
 """
-
 @inline batch_delete_partition(aws::AWSConfig=default_aws_config(); args...) = batch_delete_partition(aws, args)
 
 @inline batch_delete_partition(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "BatchDeletePartition", args)
@@ -213,7 +210,7 @@ The ID of the Data Catalog where the table resides. If none is supplied, the AWS
 
 
 ## `DatabaseName = ::String` -- *Required*
-The name of the catalog database where the tables to delete reside.
+The name of the catalog database where the tables to delete reside. For Hive compatibility, this name is entirely lowercase.
 
 
 ## `TablesToDelete = [::String, ...]` -- *Required*
@@ -232,12 +229,61 @@ A list of the table to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchDeleteTable)
 """
-
 @inline batch_delete_table(aws::AWSConfig=default_aws_config(); args...) = batch_delete_table(aws, args)
 
 @inline batch_delete_table(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "BatchDeleteTable", args)
 
 @inline batch_delete_table(args) = batch_delete_table(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Glue.batch_delete_table_version
+    batch_delete_table_version([::AWSConfig], arguments::Dict)
+    batch_delete_table_version([::AWSConfig]; DatabaseName=, TableName=, VersionIds=, <keyword arguments>)
+
+    using AWSCore.Services.glue
+    glue([::AWSConfig], "BatchDeleteTableVersion", arguments::Dict)
+    glue([::AWSConfig], "BatchDeleteTableVersion", DatabaseName=, TableName=, VersionIds=, <keyword arguments>)
+
+# BatchDeleteTableVersion Operation
+
+Deletes a specified batch of versions of a table.
+
+# Arguments
+
+## `CatalogId = ::String`
+The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
+
+
+## `DatabaseName = ::String` -- *Required*
+The database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.
+
+
+## `TableName = ::String` -- *Required*
+The name of the table. For Hive compatibility, this name is entirely lowercase.
+
+
+## `VersionIds = [::String, ...]` -- *Required*
+A list of the IDs of versions to be deleted.
+
+
+
+
+# Returns
+
+`BatchDeleteTableVersionResponse`
+
+# Exceptions
+
+`EntityNotFoundException`, `InvalidInputException`, `InternalServiceException` or `OperationTimeoutException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchDeleteTableVersion)
+"""
+@inline batch_delete_table_version(aws::AWSConfig=default_aws_config(); args...) = batch_delete_table_version(aws, args)
+
+@inline batch_delete_table_version(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "BatchDeleteTableVersion", args)
+
+@inline batch_delete_table_version(args) = batch_delete_table_version(default_aws_config(), args)
 
 
 """
@@ -283,7 +329,6 @@ A list of partition values identifying the partitions to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetPartition)
 """
-
 @inline batch_get_partition(aws::AWSConfig=default_aws_config(); args...) = batch_get_partition(aws, args)
 
 @inline batch_get_partition(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "BatchGetPartition", args)
@@ -302,16 +347,16 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # BatchStopJobRun Operation
 
-Stops a batch of job runs for a given job.
+Stops one or more job runs for a specified job definition.
 
 # Arguments
 
 ## `JobName = ::String` -- *Required*
-The name of the job whose job runs are to be stopped.
+The name of the job definition for which to stop job runs.
 
 
 ## `JobRunIds = [::String, ...]` -- *Required*
-A list of job run Ids of the given job to be stopped.
+A list of the JobRunIds that should be stopped for that job definition.
 
 
 
@@ -326,7 +371,6 @@ A list of job run Ids of the given job to be stopped.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchStopJobRun)
 """
-
 @inline batch_stop_job_run(aws::AWSConfig=default_aws_config(); args...) = batch_stop_job_run(aws, args)
 
 @inline batch_stop_job_run(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "BatchStopJobRun", args)
@@ -345,18 +389,37 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # CreateClassifier Operation
 
-Creates a `Classifier` in the user's account.
+Creates a classifier in the user's account. This may be a `GrokClassifier`, an `XMLClassifier`, or abbrev `JsonClassifier`, depending on which field of the request is present.
 
 # Arguments
 
 ## `GrokClassifier = [ ... ]`
-A grok classifier to create.
+A `GrokClassifier` object specifying the classifier to create.
 ```
  GrokClassifier = [
         "Classification" => <required> ::String,
         "Name" => <required> ::String,
         "GrokPattern" => <required> ::String,
         "CustomPatterns" =>  ::String
+    ]
+```
+
+## `XMLClassifier = [ ... ]`
+An `XMLClassifier` object specifying the classifier to create.
+```
+ XMLClassifier = [
+        "Classification" => <required> ::String,
+        "Name" => <required> ::String,
+        "RowTag" =>  ::String
+    ]
+```
+
+## `JsonClassifier = [ ... ]`
+A `JsonClassifier` object specifying the classifier to create.
+```
+ JsonClassifier = [
+        "Name" => <required> ::String,
+        "JsonPath" => <required> ::String
     ]
 ```
 
@@ -372,7 +435,6 @@ A grok classifier to create.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateClassifier)
 """
-
 @inline create_classifier(aws::AWSConfig=default_aws_config(); args...) = create_classifier(aws, args)
 
 @inline create_classifier(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "CreateClassifier", args)
@@ -403,11 +465,11 @@ The ID of the Data Catalog in which to create the connection. If none is supplie
 A `ConnectionInput` object defining the connection to create.
 ```
  ConnectionInput = [
-        "Name" =>  ::String,
+        "Name" => <required> ::String,
         "Description" =>  ::String,
-        "ConnectionType" =>  "JDBC" or "SFTP",
+        "ConnectionType" => <required> "JDBC" or "SFTP",
         "MatchCriteria" =>  [::String, ...],
-        "ConnectionProperties" =>  ::Dict{String,String},
+        "ConnectionProperties" => <required> ::Dict{String,String},
         "PhysicalConnectionRequirements" =>  [
             "SubnetId" =>  ::String,
             "SecurityGroupIdList" =>  [::String, ...],
@@ -424,11 +486,10 @@ A `ConnectionInput` object defining the connection to create.
 
 # Exceptions
 
-`AlreadyExistsException`, `InvalidInputException` or `OperationTimeoutException`.
+`AlreadyExistsException`, `InvalidInputException`, `OperationTimeoutException` or `ResourceNumberLimitExceededException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateConnection)
 """
-
 @inline create_connection(aws::AWSConfig=default_aws_config(); args...) = create_connection(aws, args)
 
 @inline create_connection(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "CreateConnection", args)
@@ -447,24 +508,24 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # CreateCrawler Operation
 
-Creates a new `Crawler` with specified targets, role, configuration, and optional schedule. At least one crawl target must be specified, in either the *s3Targets* or the *jdbcTargets* field.
+Creates a new crawler with specified targets, role, configuration, and optional schedule. At least one crawl target must be specified, in the *s3Targets* field, the *jdbcTargets* field, or the *DynamoDBTargets* field.
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-Name of the new `Crawler`.
+Name of the new crawler.
 
 
 ## `Role = ::String` -- *Required*
-The IAM role (or ARN of an IAM role) used by the new `Crawler` to access customer resources.
+The IAM role (or ARN of an IAM role) used by the new crawler to access customer resources.
 
 
 ## `DatabaseName = ::String` -- *Required*
-The Glue `Database` where results will be stored, such as: `arn:aws:daylight:us-east-1::database/sometable/*`.
+The AWS Glue database where results are written, such as: `arn:aws:daylight:us-east-1::database/sometable/*`.
 
 
 ## `Description = ::String`
-A description of the new `Crawler`.
+A description of the new crawler.
 
 
 ## `Targets = [ ... ]` -- *Required*
@@ -479,7 +540,8 @@ A list of collection of targets to crawl.
             "ConnectionName" =>  ::String,
             "Path" =>  ::String,
             "Exclusions" =>  [::String, ...]
-        ], ...]
+        ], ...],
+        "DynamoDBTargets" =>  [["Path" =>  ::String], ...]
     ]
 ```
 
@@ -488,11 +550,11 @@ A `cron` expression used to specify the schedule (see [Time-Based Schedules for 
 
 
 ## `Classifiers = [::String, ...]`
-A list of custom `Classifier` names that the user has registered. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
+A list of custom classifiers that the user has registered. By default, all built-in classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
 
 
 ## `TablePrefix = ::String`
-The table prefix used for catalog tables created.
+The table prefix used for catalog tables that are created.
 
 
 ## `SchemaChangePolicy = [ ... ]`
@@ -503,6 +565,10 @@ Policy for the crawler's update and deletion behavior.
         "DeleteBehavior" =>  "LOG", "DELETE_FROM_DATABASE" or "DEPRECATE_IN_DATABASE"
     ]
 ```
+
+## `Configuration = ::String`
+Crawler configuration information. This versioned JSON string allows users to specify aspects of a crawler's behavior. For more information, see [Configuring a Crawler](http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
+
 
 
 
@@ -516,7 +582,6 @@ Policy for the crawler's update and deletion behavior.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateCrawler)
 """
-
 @inline create_crawler(aws::AWSConfig=default_aws_config(); args...) = create_crawler(aws, args)
 
 @inline create_crawler(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "CreateCrawler", args)
@@ -566,7 +631,6 @@ A `DatabaseInput` object defining the metadata database to create in the catalog
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateDatabase)
 """
-
 @inline create_database(aws::AWSConfig=default_aws_config(); args...) = create_database(aws, args)
 
 @inline create_database(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "CreateDatabase", args)
@@ -577,11 +641,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 """
     using AWSSDK.Glue.create_dev_endpoint
     create_dev_endpoint([::AWSConfig], arguments::Dict)
-    create_dev_endpoint([::AWSConfig]; EndpointName=, RoleArn=, PublicKey=, <keyword arguments>)
+    create_dev_endpoint([::AWSConfig]; EndpointName=, RoleArn=, <keyword arguments>)
 
     using AWSCore.Services.glue
     glue([::AWSConfig], "CreateDevEndpoint", arguments::Dict)
-    glue([::AWSConfig], "CreateDevEndpoint", EndpointName=, RoleArn=, PublicKey=, <keyword arguments>)
+    glue([::AWSConfig], "CreateDevEndpoint", EndpointName=, RoleArn=, <keyword arguments>)
 
 # CreateDevEndpoint Operation
 
@@ -605,8 +669,15 @@ Security group IDs for the security groups to be used by the new DevEndpoint.
 The subnet ID for the new DevEndpoint to use.
 
 
-## `PublicKey = ::String` -- *Required*
-The public key to use for authentication.
+## `PublicKey = ::String`
+The public key to be used by this DevEndpoint for authentication. This attribute is provided for backward compatibility, as the recommended attribute to use is public keys.
+
+
+## `PublicKeys = [::String, ...]`
+A list of public keys to be used by the DevEndpoints for authentication. The use of this attribute is preferred over a single public key because the public keys allow you to have a different private key per client.
+
+**Note**
+> If you previously created an endpoint with a public key, you must remove that key to be able to set a list of public keys: call the `UpdateDevEndpoint` API with the public key content in the `deletePublicKeys` attribute, and the list of new keys in the `addPublicKeys` attribute.
 
 
 ## `NumberOfNodes = ::Int`
@@ -635,7 +706,6 @@ Path to one or more Java Jars in an S3 bucket that should be loaded in your DevE
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateDevEndpoint)
 """
-
 @inline create_dev_endpoint(aws::AWSConfig=default_aws_config(); args...) = create_dev_endpoint(aws, args)
 
 @inline create_dev_endpoint(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "CreateDevEndpoint", args)
@@ -654,16 +724,16 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # CreateJob Operation
 
-Creates a new job.
+Creates a new job definition.
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-The name you assign to this job.
+The name you assign to this job definition. It must be unique in your account.
 
 
 ## `Description = ::String`
-Description of the job.
+Description of the job being defined.
 
 
 ## `LogUri = ::String`
@@ -671,7 +741,7 @@ This field is reserved for future use.
 
 
 ## `Role = ::String` -- *Required*
-The role associated with this job.
+The name or ARN of the IAM role associated with this job.
 
 
 ## `ExecutionProperty = ["MaxConcurrentRuns" =>  ::Int]`
@@ -688,7 +758,13 @@ The JobCommand that executes this job.
 ```
 
 ## `DefaultArguments = ::Dict{String,String}`
-The default parameters for this job.
+The default arguments for this job.
+
+You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes.
+
+For information about how to specify and consume your own Job arguments, see the [Calling AWS Glue APIs in Python](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html) topic in the developer guide.
+
+For information about the key-value pairs that AWS Glue consumes to set up your job, see the [Special Parameters Used by AWS Glue](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html) topic in the developer guide.
 
 
 ## `Connections = ["Connections" =>  [::String, ...]]`
@@ -700,7 +776,15 @@ The maximum number of times to retry this job if it fails.
 
 
 ## `AllocatedCapacity = ::Int`
-The number of capacity units allocated to this job.
+The number of AWS Glue data processing units (DPUs) to allocate to this Job. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information, see the [AWS Glue pricing page](https://aws.amazon.com/glue/pricing/).
+
+
+## `Timeout = ::Int`
+The job timeout in minutes. The default is 2880 minutes (48 hours).
+
+
+## `NotificationProperty = ["NotifyDelayAfter" =>  ::Int]`
+Specifies configuration properties of a job notification.
 
 
 
@@ -711,11 +795,10 @@ The number of capacity units allocated to this job.
 
 # Exceptions
 
-`InvalidInputException`, `IdempotentParameterMismatchException`, `AlreadyExistsException`, `InternalServiceException`, `OperationTimeoutException` or `ResourceNumberLimitExceededException`.
+`InvalidInputException`, `IdempotentParameterMismatchException`, `AlreadyExistsException`, `InternalServiceException`, `OperationTimeoutException`, `ResourceNumberLimitExceededException` or `ConcurrentModificationException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateJob)
 """
-
 @inline create_job(aws::AWSConfig=default_aws_config(); args...) = create_job(aws, args)
 
 @inline create_job(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "CreateJob", args)
@@ -802,7 +885,6 @@ A `PartitionInput` structure defining the partition to be created.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreatePartition)
 """
-
 @inline create_partition(aws::AWSConfig=default_aws_config(); args...) = create_partition(aws, args)
 
 @inline create_partition(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "CreatePartition", args)
@@ -821,7 +903,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # CreateScript Operation
 
-Transforms a directed acyclic graph (DAG) into a Python script.
+Transforms a directed acyclic graph (DAG) into code.
 
 # Arguments
 
@@ -850,6 +932,10 @@ A list of the edges in the DAG.
     ], ...]
 ```
 
+## `Language = "PYTHON" or "SCALA"`
+The programming language of the resulting code from the DAG.
+
+
 
 
 # Returns
@@ -862,7 +948,6 @@ A list of the edges in the DAG.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateScript)
 """
-
 @inline create_script(aws::AWSConfig=default_aws_config(); args...) = create_script(aws, args)
 
 @inline create_script(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "CreateScript", args)
@@ -890,7 +975,7 @@ The ID of the Data Catalog in which to create the `Table`. If none is supplied, 
 
 
 ## `DatabaseName = ::String` -- *Required*
-The catalog database in which to create the new table.
+The catalog database in which to create the new table. For Hive compatibility, this name is entirely lowercase.
 
 
 ## `TableInput = [ ... ]` -- *Required*
@@ -956,7 +1041,6 @@ The `TableInput` object that defines the metadata table to create in the catalog
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateTable)
 """
-
 @inline create_table(aws::AWSConfig=default_aws_config(); args...) = create_table(aws, args)
 
 @inline create_table(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "CreateTable", args)
@@ -980,7 +1064,7 @@ Creates a new trigger.
 # Arguments
 
 ## `Name = ::String` -- *Required*
-The name to assign to the new trigger.
+The name of the trigger.
 
 
 ## `Type = "SCHEDULED", "CONDITIONAL" or "ON_DEMAND"` -- *Required*
@@ -990,16 +1074,20 @@ The type of the new trigger.
 ## `Schedule = ::String`
 A `cron` expression used to specify the schedule (see [Time-Based Schedules for Jobs and Crawlers](http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
 
+This field is required when the trigger type is SCHEDULED.
+
 
 ## `Predicate = [ ... ]`
 A predicate to specify when the new trigger should fire.
+
+This field is required when the trigger type is CONDITIONAL.
 ```
  Predicate = [
-        "Logical" =>  "AND",
+        "Logical" =>  "AND" or "ANY",
         "Conditions" =>  [[
             "LogicalOperator" =>  "EQUALS",
             "JobName" =>  ::String,
-            "State" =>  "STARTING", "RUNNING", "STOPPING", "STOPPED", "SUCCEEDED" or "FAILED"
+            "State" =>  "STARTING", "RUNNING", "STOPPING", "STOPPED", "SUCCEEDED", "FAILED" or "TIMEOUT"
         ], ...]
     ]
 ```
@@ -1009,12 +1097,18 @@ The actions initiated by this trigger when it fires.
 ```
  Actions = [[
         "JobName" =>  ::String,
-        "Arguments" =>  ::Dict{String,String}
+        "Arguments" =>  ::Dict{String,String},
+        "Timeout" =>  ::Int,
+        "NotificationProperty" =>  ["NotifyDelayAfter" =>  ::Int]
     ], ...]
 ```
 
 ## `Description = ::String`
 A description of the new trigger.
+
+
+## `StartOnCreation = ::Bool`
+Set to true to start SCHEDULED and CONDITIONAL triggers when created. True not supported for ON_DEMAND triggers.
 
 
 
@@ -1025,11 +1119,10 @@ A description of the new trigger.
 
 # Exceptions
 
-`AlreadyExistsException`, `InvalidInputException`, `InternalServiceException`, `OperationTimeoutException` or `ResourceNumberLimitExceededException`.
+`AlreadyExistsException`, `InvalidInputException`, `IdempotentParameterMismatchException`, `InternalServiceException`, `OperationTimeoutException`, `ResourceNumberLimitExceededException` or `ConcurrentModificationException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateTrigger)
 """
-
 @inline create_trigger(aws::AWSConfig=default_aws_config(); args...) = create_trigger(aws, args)
 
 @inline create_trigger(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "CreateTrigger", args)
@@ -1083,11 +1176,10 @@ A `FunctionInput` object that defines the function to create in the Data Catalog
 
 # Exceptions
 
-`AlreadyExistsException`, `InvalidInputException`, `InternalServiceException`, `EntityNotFoundException` or `OperationTimeoutException`.
+`AlreadyExistsException`, `InvalidInputException`, `InternalServiceException`, `EntityNotFoundException`, `OperationTimeoutException` or `ResourceNumberLimitExceededException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateUserDefinedFunction)
 """
-
 @inline create_user_defined_function(aws::AWSConfig=default_aws_config(); args...) = create_user_defined_function(aws, args)
 
 @inline create_user_defined_function(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "CreateUserDefinedFunction", args)
@@ -1106,12 +1198,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # DeleteClassifier Operation
 
-Removes a `Classifier` from the metadata store.
+Removes a classifier from the Data Catalog.
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-Name of the `Classifier` to remove.
+Name of the classifier to remove.
 
 
 
@@ -1126,7 +1218,6 @@ Name of the `Classifier` to remove.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/DeleteClassifier)
 """
-
 @inline delete_classifier(aws::AWSConfig=default_aws_config(); args...) = delete_classifier(aws, args)
 
 @inline delete_classifier(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "DeleteClassifier", args)
@@ -1169,7 +1260,6 @@ The name of the connection to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/DeleteConnection)
 """
-
 @inline delete_connection(aws::AWSConfig=default_aws_config(); args...) = delete_connection(aws, args)
 
 @inline delete_connection(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "DeleteConnection", args)
@@ -1188,12 +1278,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # DeleteCrawler Operation
 
-Removes a specified `Crawler` from the metadata store, unless the `Crawler` state is `RUNNING`.
+Removes a specified crawler from the Data Catalog, unless the crawler state is `RUNNING`.
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-Name of the `Crawler` to remove.
+Name of the crawler to remove.
 
 
 
@@ -1208,7 +1298,6 @@ Name of the `Crawler` to remove.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/DeleteCrawler)
 """
-
 @inline delete_crawler(aws::AWSConfig=default_aws_config(); args...) = delete_crawler(aws, args)
 
 @inline delete_crawler(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "DeleteCrawler", args)
@@ -1236,7 +1325,7 @@ The ID of the Data Catalog in which the database resides. If none is supplied, t
 
 
 ## `Name = ::String` -- *Required*
-The name of the Database to delete.
+The name of the Database to delete. For Hive compatibility, this must be all lowercase.
 
 
 
@@ -1251,7 +1340,6 @@ The name of the Database to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/DeleteDatabase)
 """
-
 @inline delete_database(aws::AWSConfig=default_aws_config(); args...) = delete_database(aws, args)
 
 @inline delete_database(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "DeleteDatabase", args)
@@ -1290,7 +1378,6 @@ The name of the DevEndpoint.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/DeleteDevEndpoint)
 """
-
 @inline delete_dev_endpoint(aws::AWSConfig=default_aws_config(); args...) = delete_dev_endpoint(aws, args)
 
 @inline delete_dev_endpoint(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "DeleteDevEndpoint", args)
@@ -1309,12 +1396,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # DeleteJob Operation
 
-Deletes a specified job.
+Deletes a specified job definition. If the job definition is not found, no exception is thrown.
 
 # Arguments
 
 ## `JobName = ::String` -- *Required*
-The name of the job to delete.
+The name of the job definition to delete.
 
 
 
@@ -1329,7 +1416,6 @@ The name of the job to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/DeleteJob)
 """
-
 @inline delete_job(aws::AWSConfig=default_aws_config(); args...) = delete_job(aws, args)
 
 @inline delete_job(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "DeleteJob", args)
@@ -1380,7 +1466,6 @@ The values that define the partition.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/DeletePartition)
 """
-
 @inline delete_partition(aws::AWSConfig=default_aws_config(); args...) = delete_partition(aws, args)
 
 @inline delete_partition(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "DeletePartition", args)
@@ -1408,11 +1493,11 @@ The ID of the Data Catalog where the table resides. If none is supplied, the AWS
 
 
 ## `DatabaseName = ::String` -- *Required*
-The name of the catalog database in which the table resides.
+The name of the catalog database in which the table resides. For Hive compatibility, this name is entirely lowercase.
 
 
 ## `Name = ::String` -- *Required*
-The name of the table to be deleted.
+The name of the table to be deleted. For Hive compatibility, this name is entirely lowercase.
 
 
 
@@ -1427,12 +1512,61 @@ The name of the table to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/DeleteTable)
 """
-
 @inline delete_table(aws::AWSConfig=default_aws_config(); args...) = delete_table(aws, args)
 
 @inline delete_table(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "DeleteTable", args)
 
 @inline delete_table(args) = delete_table(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Glue.delete_table_version
+    delete_table_version([::AWSConfig], arguments::Dict)
+    delete_table_version([::AWSConfig]; DatabaseName=, TableName=, VersionId=, <keyword arguments>)
+
+    using AWSCore.Services.glue
+    glue([::AWSConfig], "DeleteTableVersion", arguments::Dict)
+    glue([::AWSConfig], "DeleteTableVersion", DatabaseName=, TableName=, VersionId=, <keyword arguments>)
+
+# DeleteTableVersion Operation
+
+Deletes a specified version of a table.
+
+# Arguments
+
+## `CatalogId = ::String`
+The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
+
+
+## `DatabaseName = ::String` -- *Required*
+The database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.
+
+
+## `TableName = ::String` -- *Required*
+The name of the table. For Hive compatibility, this name is entirely lowercase.
+
+
+## `VersionId = ::String` -- *Required*
+The ID of the table version to be deleted.
+
+
+
+
+# Returns
+
+`DeleteTableVersionResponse`
+
+# Exceptions
+
+`EntityNotFoundException`, `InvalidInputException`, `InternalServiceException` or `OperationTimeoutException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/DeleteTableVersion)
+"""
+@inline delete_table_version(aws::AWSConfig=default_aws_config(); args...) = delete_table_version(aws, args)
+
+@inline delete_table_version(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "DeleteTableVersion", args)
+
+@inline delete_table_version(args) = delete_table_version(default_aws_config(), args)
 
 
 """
@@ -1446,7 +1580,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # DeleteTrigger Operation
 
-Deletes a specified trigger.
+Deletes a specified trigger. If the trigger is not found, no exception is thrown.
 
 # Arguments
 
@@ -1462,11 +1596,10 @@ The name of the trigger to delete.
 
 # Exceptions
 
-`InvalidInputException`, `InternalServiceException` or `OperationTimeoutException`.
+`InvalidInputException`, `InternalServiceException`, `OperationTimeoutException` or `ConcurrentModificationException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/DeleteTrigger)
 """
-
 @inline delete_trigger(aws::AWSConfig=default_aws_config(); args...) = delete_trigger(aws, args)
 
 @inline delete_trigger(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "DeleteTrigger", args)
@@ -1513,7 +1646,6 @@ The name of the function definition to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/DeleteUserDefinedFunction)
 """
-
 @inline delete_user_defined_function(aws::AWSConfig=default_aws_config(); args...) = delete_user_defined_function(aws, args)
 
 @inline delete_user_defined_function(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "DeleteUserDefinedFunction", args)
@@ -1552,7 +1684,6 @@ The ID of the catalog to migrate. Currently, this should be the AWS account ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetCatalogImportStatus)
 """
-
 @inline get_catalog_import_status(aws::AWSConfig=default_aws_config(); args...) = get_catalog_import_status(aws, args)
 
 @inline get_catalog_import_status(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetCatalogImportStatus", args)
@@ -1571,12 +1702,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # GetClassifier Operation
 
-Retrieve a `Classifier` by name.
+Retrieve a classifier by name.
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-Name of the `Classifier` to retrieve.
+Name of the classifier to retrieve.
 
 
 
@@ -1591,7 +1722,6 @@ Name of the `Classifier` to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetClassifier)
 """
-
 @inline get_classifier(aws::AWSConfig=default_aws_config(); args...) = get_classifier(aws, args)
 
 @inline get_classifier(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetClassifier", args)
@@ -1610,7 +1740,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # GetClassifiers Operation
 
-Lists all Classifier objects in the metadata store.
+Lists all classifier objects in the Data Catalog.
 
 # Arguments
 
@@ -1634,7 +1764,6 @@ An optional continuation token.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetClassifiers)
 """
-
 @inline get_classifiers(aws::AWSConfig=default_aws_config(); args...) = get_classifiers(aws, args)
 
 @inline get_classifiers(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetClassifiers", args)
@@ -1677,7 +1806,6 @@ The name of the connection definition to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetConnection)
 """
-
 @inline get_connection(aws::AWSConfig=default_aws_config(); args...) = get_connection(aws, args)
 
 @inline get_connection(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetConnection", args)
@@ -1733,7 +1861,6 @@ The maximum number of connections to return in one response.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetConnections)
 """
-
 @inline get_connections(aws::AWSConfig=default_aws_config(); args...) = get_connections(aws, args)
 
 @inline get_connections(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetConnections", args)
@@ -1752,12 +1879,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # GetCrawler Operation
 
-Retrieves metadata for a specified `Crawler`.
+Retrieves metadata for a specified crawler.
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-Name of the `Crawler` to retrieve metadata for.
+Name of the crawler to retrieve metadata for.
 
 
 
@@ -1772,7 +1899,6 @@ Name of the `Crawler` to retrieve metadata for.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetCrawler)
 """
-
 @inline get_crawler(aws::AWSConfig=default_aws_config(); args...) = get_crawler(aws, args)
 
 @inline get_crawler(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetCrawler", args)
@@ -1819,7 +1945,6 @@ A continuation token, if this is a continuation call.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetCrawlerMetrics)
 """
-
 @inline get_crawler_metrics(aws::AWSConfig=default_aws_config(); args...) = get_crawler_metrics(aws, args)
 
 @inline get_crawler_metrics(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetCrawlerMetrics", args)
@@ -1838,12 +1963,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # GetCrawlers Operation
 
-Retrieves metadata for all `Crawlers` defined in the customer account.
+Retrieves metadata for all crawlers defined in the customer account.
 
 # Arguments
 
 ## `MaxResults = ::Int`
-The number of Crawlers to return on each call.
+The number of crawlers to return on each call.
 
 
 ## `NextToken = ::String`
@@ -1862,7 +1987,6 @@ A continuation token, if this is a continuation request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetCrawlers)
 """
-
 @inline get_crawlers(aws::AWSConfig=default_aws_config(); args...) = get_crawlers(aws, args)
 
 @inline get_crawlers(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetCrawlers", args)
@@ -1890,7 +2014,7 @@ The ID of the Data Catalog in which the database resides. If none is supplied, t
 
 
 ## `Name = ::String` -- *Required*
-The name of the database to retrieve.
+The name of the database to retrieve. For Hive compatibility, this should be all lowercase.
 
 
 
@@ -1905,7 +2029,6 @@ The name of the database to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetDatabase)
 """
-
 @inline get_database(aws::AWSConfig=default_aws_config(); args...) = get_database(aws, args)
 
 @inline get_database(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetDatabase", args)
@@ -1952,7 +2075,6 @@ The maximum number of databases to return in one response.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetDatabases)
 """
-
 @inline get_databases(aws::AWSConfig=default_aws_config(); args...) = get_databases(aws, args)
 
 @inline get_databases(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetDatabases", args)
@@ -1991,7 +2113,6 @@ The Python script to transform.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetDataflowGraph)
 """
-
 @inline get_dataflow_graph(aws::AWSConfig=default_aws_config(); args...) = get_dataflow_graph(aws, args)
 
 @inline get_dataflow_graph(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetDataflowGraph", args)
@@ -2030,7 +2151,6 @@ Name of the DevEndpoint for which to retrieve information.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetDevEndpoint)
 """
-
 @inline get_dev_endpoint(aws::AWSConfig=default_aws_config(); args...) = get_dev_endpoint(aws, args)
 
 @inline get_dev_endpoint(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetDevEndpoint", args)
@@ -2073,7 +2193,6 @@ A continuation token, if this is a continuation call.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetDevEndpoints)
 """
-
 @inline get_dev_endpoints(aws::AWSConfig=default_aws_config(); args...) = get_dev_endpoints(aws, args)
 
 @inline get_dev_endpoints(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetDevEndpoints", args)
@@ -2097,7 +2216,7 @@ Retrieves an existing job definition.
 # Arguments
 
 ## `JobName = ::String` -- *Required*
-The name of the job to retrieve.
+The name of the job definition to retrieve.
 
 
 
@@ -2112,7 +2231,6 @@ The name of the job to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetJob)
 """
-
 @inline get_job(aws::AWSConfig=default_aws_config(); args...) = get_job(aws, args)
 
 @inline get_job(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetJob", args)
@@ -2136,7 +2254,7 @@ Retrieves the metadata for a given job run.
 # Arguments
 
 ## `JobName = ::String` -- *Required*
-Name of the job being run.
+Name of the job definition being run.
 
 
 ## `RunId = ::String` -- *Required*
@@ -2144,7 +2262,7 @@ The ID of the job run.
 
 
 ## `PredecessorsIncluded = ::Bool`
-A list of the predecessor runs to return as well.
+True if a list of predecessor runs should be returned.
 
 
 
@@ -2159,7 +2277,6 @@ A list of the predecessor runs to return as well.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetJobRun)
 """
-
 @inline get_job_run(aws::AWSConfig=default_aws_config(); args...) = get_job_run(aws, args)
 
 @inline get_job_run(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetJobRun", args)
@@ -2178,12 +2295,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # GetJobRuns Operation
 
-Retrieves metadata for all runs of a given job.
+Retrieves metadata for all runs of a given job definition.
 
 # Arguments
 
 ## `JobName = ::String` -- *Required*
-The name of the job for which to retrieve all job runs.
+The name of the job definition for which to retrieve all job runs.
 
 
 ## `NextToken = ::String`
@@ -2206,7 +2323,6 @@ The maximum size of the response.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetJobRuns)
 """
-
 @inline get_job_runs(aws::AWSConfig=default_aws_config(); args...) = get_job_runs(aws, args)
 
 @inline get_job_runs(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetJobRuns", args)
@@ -2225,7 +2341,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # GetJobs Operation
 
-Retrieves all current jobs.
+Retrieves all current job definitions.
 
 # Arguments
 
@@ -2249,7 +2365,6 @@ The maximum size of the response.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetJobs)
 """
-
 @inline get_jobs(aws::AWSConfig=default_aws_config(); args...) = get_jobs(aws, args)
 
 @inline get_jobs(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetJobs", args)
@@ -2303,6 +2418,11 @@ Parameters for the mapping.
             "Name" => <required> ::String,
             "Value" => <required> ::String,
             "Param" =>  ::Bool
+        ], ...],
+        "DynamoDB" =>  [[
+            "Name" => <required> ::String,
+            "Value" => <required> ::String,
+            "Param" =>  ::Bool
         ], ...]
     ]
 ```
@@ -2315,11 +2435,10 @@ Parameters for the mapping.
 
 # Exceptions
 
-`InvalidInputException`, `InternalServiceException` or `OperationTimeoutException`.
+`InvalidInputException`, `InternalServiceException`, `OperationTimeoutException` or `EntityNotFoundException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetMapping)
 """
-
 @inline get_mapping(aws::AWSConfig=default_aws_config(); args...) = get_mapping(aws, args)
 
 @inline get_mapping(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetMapping", args)
@@ -2370,7 +2489,6 @@ The values that define the partition.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetPartition)
 """
-
 @inline get_partition(aws::AWSConfig=default_aws_config(); args...) = get_partition(aws, args)
 
 @inline get_partition(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetPartition", args)
@@ -2438,7 +2556,6 @@ The maximum number of partitions to return in a single response.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetPartitions)
 """
-
 @inline get_partitions(aws::AWSConfig=default_aws_config(); args...) = get_partitions(aws, args)
 
 @inline get_partitions(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetPartitions", args)
@@ -2457,7 +2574,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # GetPlan Operation
 
-Gets a Python script to perform a specified mapping.
+Gets code to perform a specified mapping.
 
 # Arguments
 
@@ -2505,9 +2622,18 @@ Parameters for the mapping.
             "Name" => <required> ::String,
             "Value" => <required> ::String,
             "Param" =>  ::Bool
+        ], ...],
+        "DynamoDB" =>  [[
+            "Name" => <required> ::String,
+            "Value" => <required> ::String,
+            "Param" =>  ::Bool
         ], ...]
     ]
 ```
+
+## `Language = "PYTHON" or "SCALA"`
+The programming language of the code to perform the mapping.
+
 
 
 
@@ -2521,7 +2647,6 @@ Parameters for the mapping.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetPlan)
 """
-
 @inline get_plan(aws::AWSConfig=default_aws_config(); args...) = get_plan(aws, args)
 
 @inline get_plan(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetPlan", args)
@@ -2549,11 +2674,11 @@ The ID of the Data Catalog where the table resides. If none is supplied, the AWS
 
 
 ## `DatabaseName = ::String` -- *Required*
-The name of the database in the catalog in which the table resides.
+The name of the database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.
 
 
 ## `Name = ::String` -- *Required*
-The name of the table for which to retrieve the definition.
+The name of the table for which to retrieve the definition. For Hive compatibility, this name is entirely lowercase.
 
 
 
@@ -2568,12 +2693,61 @@ The name of the table for which to retrieve the definition.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetTable)
 """
-
 @inline get_table(aws::AWSConfig=default_aws_config(); args...) = get_table(aws, args)
 
 @inline get_table(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetTable", args)
 
 @inline get_table(args) = get_table(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Glue.get_table_version
+    get_table_version([::AWSConfig], arguments::Dict)
+    get_table_version([::AWSConfig]; DatabaseName=, TableName=, <keyword arguments>)
+
+    using AWSCore.Services.glue
+    glue([::AWSConfig], "GetTableVersion", arguments::Dict)
+    glue([::AWSConfig], "GetTableVersion", DatabaseName=, TableName=, <keyword arguments>)
+
+# GetTableVersion Operation
+
+Retrieves a specified version of a table.
+
+# Arguments
+
+## `CatalogId = ::String`
+The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
+
+
+## `DatabaseName = ::String` -- *Required*
+The database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.
+
+
+## `TableName = ::String` -- *Required*
+The name of the table. For Hive compatibility, this name is entirely lowercase.
+
+
+## `VersionId = ::String`
+The ID value of the table version to be retrieved.
+
+
+
+
+# Returns
+
+`GetTableVersionResponse`
+
+# Exceptions
+
+`EntityNotFoundException`, `InvalidInputException`, `InternalServiceException` or `OperationTimeoutException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetTableVersion)
+"""
+@inline get_table_version(aws::AWSConfig=default_aws_config(); args...) = get_table_version(aws, args)
+
+@inline get_table_version(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetTableVersion", args)
+
+@inline get_table_version(args) = get_table_version(default_aws_config(), args)
 
 
 """
@@ -2596,11 +2770,11 @@ The ID of the Data Catalog where the tables reside. If none is supplied, the AWS
 
 
 ## `DatabaseName = ::String` -- *Required*
-The database in the catalog in which the table resides.
+The database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.
 
 
 ## `TableName = ::String` -- *Required*
-The name of the table.
+The name of the table. For Hive compatibility, this name is entirely lowercase.
 
 
 ## `NextToken = ::String`
@@ -2623,7 +2797,6 @@ The maximum number of table versions to return in one response.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetTableVersions)
 """
-
 @inline get_table_versions(aws::AWSConfig=default_aws_config(); args...) = get_table_versions(aws, args)
 
 @inline get_table_versions(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetTableVersions", args)
@@ -2651,7 +2824,7 @@ The ID of the Data Catalog where the tables reside. If none is supplied, the AWS
 
 
 ## `DatabaseName = ::String` -- *Required*
-The database in the catalog whose tables to list.
+The database in the catalog whose tables to list. For Hive compatibility, this name is entirely lowercase.
 
 
 ## `Expression = ::String`
@@ -2678,7 +2851,6 @@ The maximum number of tables to return in a single response.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetTables)
 """
-
 @inline get_tables(aws::AWSConfig=default_aws_config(); args...) = get_tables(aws, args)
 
 @inline get_tables(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetTables", args)
@@ -2717,7 +2889,6 @@ The name of the trigger to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetTrigger)
 """
-
 @inline get_trigger(aws::AWSConfig=default_aws_config(); args...) = get_trigger(aws, args)
 
 @inline get_trigger(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetTrigger", args)
@@ -2745,7 +2916,7 @@ A continuation token, if this is a continuation call.
 
 
 ## `DependentJobName = ::String`
-The name of the job for which to retrieve triggers.
+The name of the job for which to retrieve triggers. The trigger that can start this job will be returned, and if there is no such trigger, all triggers will be returned.
 
 
 ## `MaxResults = ::Int`
@@ -2764,7 +2935,6 @@ The maximum size of the response.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetTriggers)
 """
-
 @inline get_triggers(aws::AWSConfig=default_aws_config(); args...) = get_triggers(aws, args)
 
 @inline get_triggers(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetTriggers", args)
@@ -2811,7 +2981,6 @@ The name of the function.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetUserDefinedFunction)
 """
-
 @inline get_user_defined_function(aws::AWSConfig=default_aws_config(); args...) = get_user_defined_function(aws, args)
 
 @inline get_user_defined_function(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetUserDefinedFunction", args)
@@ -2866,7 +3035,6 @@ The maximum number of functions to return in one response.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetUserDefinedFunctions)
 """
-
 @inline get_user_defined_functions(aws::AWSConfig=default_aws_config(); args...) = get_user_defined_functions(aws, args)
 
 @inline get_user_defined_functions(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "GetUserDefinedFunctions", args)
@@ -2905,7 +3073,6 @@ The ID of the catalog to import. Currently, this should be the AWS account ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ImportCatalogToGlue)
 """
-
 @inline import_catalog_to_glue(aws::AWSConfig=default_aws_config(); args...) = import_catalog_to_glue(aws, args)
 
 @inline import_catalog_to_glue(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "ImportCatalogToGlue", args)
@@ -2944,7 +3111,6 @@ The name of the job in question.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ResetJobBookmark)
 """
-
 @inline reset_job_bookmark(aws::AWSConfig=default_aws_config(); args...) = reset_job_bookmark(aws, args)
 
 @inline reset_job_bookmark(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "ResetJobBookmark", args)
@@ -2963,12 +3129,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # StartCrawler Operation
 
-Starts a crawl using the specified `Crawler`, regardless of what is scheduled. If the `Crawler` is already running, does nothing.
+Starts a crawl using the specified crawler, regardless of what is scheduled. If the crawler is already running, returns a [CrawlerRunningException](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-exceptions.html#aws-glue-api-exceptions-CrawlerRunningException).
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-Name of the `Crawler` to start.
+Name of the crawler to start.
 
 
 
@@ -2983,7 +3149,6 @@ Name of the `Crawler` to start.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/StartCrawler)
 """
-
 @inline start_crawler(aws::AWSConfig=default_aws_config(); args...) = start_crawler(aws, args)
 
 @inline start_crawler(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "StartCrawler", args)
@@ -3022,7 +3187,6 @@ Name of the crawler to schedule.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/StartCrawlerSchedule)
 """
-
 @inline start_crawler_schedule(aws::AWSConfig=default_aws_config(); args...) = start_crawler_schedule(aws, args)
 
 @inline start_crawler_schedule(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "StartCrawlerSchedule", args)
@@ -3041,24 +3205,38 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # StartJobRun Operation
 
-Runs a job.
+Starts a job run using a job definition.
 
 # Arguments
 
 ## `JobName = ::String` -- *Required*
-The name of the job to start.
+The name of the job definition to use.
 
 
 ## `JobRunId = ::String`
-The ID of the job run to start.
+The ID of a previous JobRun to retry.
 
 
 ## `Arguments = ::Dict{String,String}`
-Specific arguments for this job run.
+The job arguments specifically for this run. They override the equivalent default arguments set for in the job definition itself.
+
+You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes.
+
+For information about how to specify and consume your own Job arguments, see the [Calling AWS Glue APIs in Python](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html) topic in the developer guide.
+
+For information about the key-value pairs that AWS Glue consumes to set up your job, see the [Special Parameters Used by AWS Glue](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html) topic in the developer guide.
 
 
 ## `AllocatedCapacity = ::Int`
-The infrastructure capacity to allocate to this job.
+The number of AWS Glue data processing units (DPUs) to allocate to this JobRun. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information, see the [AWS Glue pricing page](https://aws.amazon.com/glue/pricing/).
+
+
+## `Timeout = ::Int`
+The job run timeout in minutes. It overrides the timeout value of the job.
+
+
+## `NotificationProperty = ["NotifyDelayAfter" =>  ::Int]`
+Specifies configuration properties of a job run notification.
 
 
 
@@ -3073,7 +3251,6 @@ The infrastructure capacity to allocate to this job.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/StartJobRun)
 """
-
 @inline start_job_run(aws::AWSConfig=default_aws_config(); args...) = start_job_run(aws, args)
 
 @inline start_job_run(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "StartJobRun", args)
@@ -3092,7 +3269,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # StartTrigger Operation
 
-Starts an existing trigger.
+Starts an existing trigger. See [Triggering Jobs](http://docs.aws.amazon.com/glue/latest/dg/trigger-job.html) for information about how different types of trigger are started.
 
 # Arguments
 
@@ -3112,7 +3289,6 @@ The name of the trigger to start.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/StartTrigger)
 """
-
 @inline start_trigger(aws::AWSConfig=default_aws_config(); args...) = start_trigger(aws, args)
 
 @inline start_trigger(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "StartTrigger", args)
@@ -3131,12 +3307,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # StopCrawler Operation
 
-If the specified `Crawler` is running, stops the crawl.
+If the specified crawler is running, stops the crawl.
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-Name of the `Crawler` to stop.
+Name of the crawler to stop.
 
 
 
@@ -3151,7 +3327,6 @@ Name of the `Crawler` to stop.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/StopCrawler)
 """
-
 @inline stop_crawler(aws::AWSConfig=default_aws_config(); args...) = stop_crawler(aws, args)
 
 @inline stop_crawler(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "StopCrawler", args)
@@ -3190,7 +3365,6 @@ Name of the crawler whose schedule state to set.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/StopCrawlerSchedule)
 """
-
 @inline stop_crawler_schedule(aws::AWSConfig=default_aws_config(); args...) = stop_crawler_schedule(aws, args)
 
 @inline stop_crawler_schedule(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "StopCrawlerSchedule", args)
@@ -3225,11 +3399,10 @@ The name of the trigger to stop.
 
 # Exceptions
 
-`InvalidInputException`, `InternalServiceException`, `EntityNotFoundException` or `OperationTimeoutException`.
+`InvalidInputException`, `InternalServiceException`, `EntityNotFoundException`, `OperationTimeoutException` or `ConcurrentModificationException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/StopTrigger)
 """
-
 @inline stop_trigger(aws::AWSConfig=default_aws_config(); args...) = stop_trigger(aws, args)
 
 @inline stop_trigger(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "StopTrigger", args)
@@ -3248,7 +3421,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # UpdateClassifier Operation
 
-Modifies an existing `Classifier`.
+Modifies an existing classifier (a `GrokClassifier`, `XMLClassifier`, or `JsonClassifier`, depending on which field is present).
 
 # Arguments
 
@@ -3260,6 +3433,25 @@ A `GrokClassifier` object with updated fields.
         "Classification" =>  ::String,
         "GrokPattern" =>  ::String,
         "CustomPatterns" =>  ::String
+    ]
+```
+
+## `XMLClassifier = [ ... ]`
+An `XMLClassifier` object with updated fields.
+```
+ XMLClassifier = [
+        "Name" => <required> ::String,
+        "Classification" =>  ::String,
+        "RowTag" =>  ::String
+    ]
+```
+
+## `JsonClassifier = [ ... ]`
+A `JsonClassifier` object with updated fields.
+```
+ JsonClassifier = [
+        "Name" => <required> ::String,
+        "JsonPath" =>  ::String
     ]
 ```
 
@@ -3275,7 +3467,6 @@ A `GrokClassifier` object with updated fields.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateClassifier)
 """
-
 @inline update_classifier(aws::AWSConfig=default_aws_config(); args...) = update_classifier(aws, args)
 
 @inline update_classifier(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "UpdateClassifier", args)
@@ -3310,11 +3501,11 @@ The name of the connection definition to update.
 A `ConnectionInput` object that redefines the connection in question.
 ```
  ConnectionInput = [
-        "Name" =>  ::String,
+        "Name" => <required> ::String,
         "Description" =>  ::String,
-        "ConnectionType" =>  "JDBC" or "SFTP",
+        "ConnectionType" => <required> "JDBC" or "SFTP",
         "MatchCriteria" =>  [::String, ...],
-        "ConnectionProperties" =>  ::Dict{String,String},
+        "ConnectionProperties" => <required> ::Dict{String,String},
         "PhysicalConnectionRequirements" =>  [
             "SubnetId" =>  ::String,
             "SecurityGroupIdList" =>  [::String, ...],
@@ -3335,7 +3526,6 @@ A `ConnectionInput` object that redefines the connection in question.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateConnection)
 """
-
 @inline update_connection(aws::AWSConfig=default_aws_config(); args...) = update_connection(aws, args)
 
 @inline update_connection(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "UpdateConnection", args)
@@ -3354,28 +3544,28 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # UpdateCrawler Operation
 
-Updates a `Crawler`. If a `Crawler` is running, you must stop it using `StopCrawler` before updating it.
+Updates a crawler. If a crawler is running, you must stop it using `StopCrawler` before updating it.
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-Name of the new `Crawler`.
+Name of the new crawler.
 
 
 ## `Role = ::String`
-The IAM role (or ARN of an IAM role) used by the new `Crawler` to access customer resources.
+The IAM role (or ARN of an IAM role) used by the new crawler to access customer resources.
 
 
 ## `DatabaseName = ::String`
-The Glue `Database` where results will be stored, such as: `arn:aws:daylight:us-east-1::database/sometable/*`.
+The AWS Glue database where results are stored, such as: `arn:aws:daylight:us-east-1::database/sometable/*`.
 
 
 ## `Description = ::String`
-A description of the new `Crawler`.
+A description of the new crawler.
 
 
 ## `Targets = [ ... ]`
-A list of collection of targets to crawl.
+A list of targets to crawl.
 ```
  Targets = [
         "S3Targets" =>  [[
@@ -3386,7 +3576,8 @@ A list of collection of targets to crawl.
             "ConnectionName" =>  ::String,
             "Path" =>  ::String,
             "Exclusions" =>  [::String, ...]
-        ], ...]
+        ], ...],
+        "DynamoDBTargets" =>  [["Path" =>  ::String], ...]
     ]
 ```
 
@@ -3395,11 +3586,11 @@ A `cron` expression used to specify the schedule (see [Time-Based Schedules for 
 
 
 ## `Classifiers = [::String, ...]`
-A list of custom `Classifier` names that the user has registered. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
+A list of custom classifiers that the user has registered. By default, all built-in classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
 
 
 ## `TablePrefix = ::String`
-The table prefix used for catalog tables created.
+The table prefix used for catalog tables that are created.
 
 
 ## `SchemaChangePolicy = [ ... ]`
@@ -3410,6 +3601,10 @@ Policy for the crawler's update and deletion behavior.
         "DeleteBehavior" =>  "LOG", "DELETE_FROM_DATABASE" or "DEPRECATE_IN_DATABASE"
     ]
 ```
+
+## `Configuration = ::String`
+Crawler configuration information. This versioned JSON string allows users to specify aspects of a crawler's behavior. For more information, see [Configuring a Crawler](http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
+
 
 
 
@@ -3423,7 +3618,6 @@ Policy for the crawler's update and deletion behavior.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateCrawler)
 """
-
 @inline update_crawler(aws::AWSConfig=default_aws_config(); args...) = update_crawler(aws, args)
 
 @inline update_crawler(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "UpdateCrawler", args)
@@ -3442,7 +3636,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2
 
 # UpdateCrawlerSchedule Operation
 
-Updates the schedule of a crawler using a Cron expression.
+Updates the schedule of a crawler using a `cron` expression.
 
 # Arguments
 
@@ -3466,7 +3660,6 @@ The updated `cron` expression used to specify the schedule (see [Time-Based Sche
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateCrawlerSchedule)
 """
-
 @inline update_crawler_schedule(aws::AWSConfig=default_aws_config(); args...) = update_crawler_schedule(aws, args)
 
 @inline update_crawler_schedule(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "UpdateCrawlerSchedule", args)
@@ -3494,7 +3687,7 @@ The ID of the Data Catalog in which the metadata database resides. If none is su
 
 
 ## `Name = ::String` -- *Required*
-The name of the metadata database to update in the catalog.
+The name of the database to update in the catalog. For Hive compatibility, this is folded to lowercase.
 
 
 ## `DatabaseInput = [ ... ]` -- *Required*
@@ -3520,7 +3713,6 @@ A `DatabaseInput` object specifying the new definition of the metadata database 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateDatabase)
 """
-
 @inline update_database(aws::AWSConfig=default_aws_config(); args...) = update_database(aws, args)
 
 @inline update_database(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "UpdateDatabase", args)
@@ -3551,6 +3743,14 @@ The name of the DevEndpoint to be updated.
 The public key for the DevEndpoint to use.
 
 
+## `AddPublicKeys = [::String, ...]`
+The list of public keys for the DevEndpoint to use.
+
+
+## `DeletePublicKeys = [::String, ...]`
+The list of public keys to be deleted from the DevEndpoint.
+
+
 ## `CustomLibraries = [ ... ]`
 Custom Python or Java libraries to be loaded in the DevEndpoint.
 ```
@@ -3576,7 +3776,6 @@ True if the list of custom libraries to be loaded in the development endpoint ne
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateDevEndpoint)
 """
-
 @inline update_dev_endpoint(aws::AWSConfig=default_aws_config(); args...) = update_dev_endpoint(aws, args)
 
 @inline update_dev_endpoint(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "UpdateDevEndpoint", args)
@@ -3604,7 +3803,7 @@ Name of the job definition to update.
 
 
 ## `JobUpdate = [ ... ]` -- *Required*
-Specifies the values with which to update the job.
+Specifies the values with which to update the job definition.
 ```
  JobUpdate = [
         "Description" =>  ::String,
@@ -3618,7 +3817,9 @@ Specifies the values with which to update the job.
         "DefaultArguments" =>  ::Dict{String,String},
         "Connections" =>  ["Connections" =>  [::String, ...]],
         "MaxRetries" =>  ::Int,
-        "AllocatedCapacity" =>  ::Int
+        "AllocatedCapacity" =>  ::Int,
+        "Timeout" =>  ::Int,
+        "NotificationProperty" =>  ["NotifyDelayAfter" =>  ::Int]
     ]
 ```
 
@@ -3630,11 +3831,10 @@ Specifies the values with which to update the job.
 
 # Exceptions
 
-`InvalidInputException`, `EntityNotFoundException`, `InternalServiceException` or `OperationTimeoutException`.
+`InvalidInputException`, `EntityNotFoundException`, `InternalServiceException`, `OperationTimeoutException` or `ConcurrentModificationException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateJob)
 """
-
 @inline update_job(aws::AWSConfig=default_aws_config(); args...) = update_job(aws, args)
 
 @inline update_job(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "UpdateJob", args)
@@ -3725,7 +3925,6 @@ The new partition object to which to update the partition.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdatePartition)
 """
-
 @inline update_partition(aws::AWSConfig=default_aws_config(); args...) = update_partition(aws, args)
 
 @inline update_partition(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "UpdatePartition", args)
@@ -3753,7 +3952,7 @@ The ID of the Data Catalog where the table resides. If none is supplied, the AWS
 
 
 ## `DatabaseName = ::String` -- *Required*
-The name of the catalog database in which the table resides.
+The name of the catalog database in which the table resides. For Hive compatibility, this name is entirely lowercase.
 
 
 ## `TableInput = [ ... ]` -- *Required*
@@ -3807,6 +4006,10 @@ An updated `TableInput` object to define the metadata table in the catalog.
     ]
 ```
 
+## `SkipArchive = ::Bool`
+By default, `UpdateTable` always creates an archived version of the table before updating it. If `skipArchive` is set to true, however, `UpdateTable` does not create the archived version.
+
+
 
 
 # Returns
@@ -3815,11 +4018,10 @@ An updated `TableInput` object to define the metadata table in the catalog.
 
 # Exceptions
 
-`EntityNotFoundException`, `InvalidInputException`, `InternalServiceException`, `OperationTimeoutException` or `ConcurrentModificationException`.
+`EntityNotFoundException`, `InvalidInputException`, `InternalServiceException`, `OperationTimeoutException`, `ConcurrentModificationException` or `ResourceNumberLimitExceededException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateTable)
 """
-
 @inline update_table(aws::AWSConfig=default_aws_config(); args...) = update_table(aws, args)
 
 @inline update_table(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "UpdateTable", args)
@@ -3855,14 +4057,16 @@ The new values with which to update the trigger.
         "Schedule" =>  ::String,
         "Actions" =>  [[
             "JobName" =>  ::String,
-            "Arguments" =>  ::Dict{String,String}
+            "Arguments" =>  ::Dict{String,String},
+            "Timeout" =>  ::Int,
+            "NotificationProperty" =>  ["NotifyDelayAfter" =>  ::Int]
         ], ...],
         "Predicate" =>  [
-            "Logical" =>  "AND",
+            "Logical" =>  "AND" or "ANY",
             "Conditions" =>  [[
                 "LogicalOperator" =>  "EQUALS",
                 "JobName" =>  ::String,
-                "State" =>  "STARTING", "RUNNING", "STOPPING", "STOPPED", "SUCCEEDED" or "FAILED"
+                "State" =>  "STARTING", "RUNNING", "STOPPING", "STOPPED", "SUCCEEDED", "FAILED" or "TIMEOUT"
             ], ...]
         ]
     ]
@@ -3876,11 +4080,10 @@ The new values with which to update the trigger.
 
 # Exceptions
 
-`InvalidInputException`, `InternalServiceException`, `EntityNotFoundException` or `OperationTimeoutException`.
+`InvalidInputException`, `InternalServiceException`, `EntityNotFoundException`, `OperationTimeoutException` or `ConcurrentModificationException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateTrigger)
 """
-
 @inline update_trigger(aws::AWSConfig=default_aws_config(); args...) = update_trigger(aws, args)
 
 @inline update_trigger(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "UpdateTrigger", args)
@@ -3942,7 +4145,6 @@ A `FunctionInput` object that re-defines the function in the Data Catalog.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateUserDefinedFunction)
 """
-
 @inline update_user_defined_function(aws::AWSConfig=default_aws_config(); args...) = update_user_defined_function(aws, args)
 
 @inline update_user_defined_function(aws::AWSConfig, args) = AWSCore.Services.glue(aws, "UpdateUserDefinedFunction", args)

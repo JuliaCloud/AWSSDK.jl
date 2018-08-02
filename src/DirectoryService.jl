@@ -100,7 +100,6 @@ These security rules impact an internal network interface that is not exposed pu
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/AddIpRoutes)
 """
-
 @inline add_ip_routes(aws::AWSConfig=default_aws_config(); args...) = add_ip_routes(aws, args)
 
 @inline add_ip_routes(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "AddIpRoutes", args)
@@ -148,7 +147,6 @@ The tags to be assigned to the directory.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/AddTagsToResource)
 """
-
 @inline add_tags_to_resource(aws::AWSConfig=default_aws_config(); args...) = add_tags_to_resource(aws, args)
 
 @inline add_tags_to_resource(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "AddTagsToResource", args)
@@ -191,7 +189,6 @@ The identifier of the schema extension that will be canceled.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CancelSchemaExtension)
 """
-
 @inline cancel_schema_extension(aws::AWSConfig=default_aws_config(); args...) = cancel_schema_extension(aws, args)
 
 @inline cancel_schema_extension(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "CancelSchemaExtension", args)
@@ -259,7 +256,6 @@ A [DirectoryConnectSettings](@ref) object that contains additional information f
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ConnectDirectory)
 """
-
 @inline connect_directory(aws::AWSConfig=default_aws_config(); args...) = connect_directory(aws, args)
 
 @inline connect_directory(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "ConnectDirectory", args)
@@ -307,7 +303,6 @@ The alias must be unique amongst all aliases in AWS. This operation throws an `E
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateAlias)
 """
-
 @inline create_alias(aws::AWSConfig=default_aws_config(); args...) = create_alias(aws, args)
 
 @inline create_alias(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "CreateAlias", args)
@@ -367,7 +362,6 @@ An array of [Attribute](@ref) objects that contain any LDAP attributes to apply 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateComputer)
 """
-
 @inline create_computer(aws::AWSConfig=default_aws_config(); args...) = create_computer(aws, args)
 
 @inline create_computer(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "CreateComputer", args)
@@ -414,7 +408,6 @@ The IP addresses of the remote DNS server associated with RemoteDomainName.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateConditionalForwarder)
 """
-
 @inline create_conditional_forwarder(aws::AWSConfig=default_aws_config(); args...) = create_conditional_forwarder(aws, args)
 
 @inline create_conditional_forwarder(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "CreateConditionalForwarder", args)
@@ -480,7 +473,6 @@ A [DirectoryVpcSettings](@ref) object that contains additional information for t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateDirectory)
 """
-
 @inline create_directory(aws::AWSConfig=default_aws_config(); args...) = create_directory(aws, args)
 
 @inline create_directory(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "CreateDirectory", args)
@@ -530,6 +522,10 @@ Contains VPC information for the [CreateDirectory](@ref) or [CreateMicrosoftAD](
     ]
 ```
 
+## `Edition = "Enterprise" or "Standard"`
+AWS Microsoft AD is available in two editions: Standard and Enterprise. Enterprise is the default.
+
+
 
 
 # Returns
@@ -542,7 +538,6 @@ Contains VPC information for the [CreateDirectory](@ref) or [CreateMicrosoftAD](
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateMicrosoftAD)
 """
-
 @inline create_microsoft_ad(aws::AWSConfig=default_aws_config(); args...) = create_microsoft_ad(aws, args)
 
 @inline create_microsoft_ad(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "CreateMicrosoftAD", args)
@@ -588,7 +583,6 @@ The descriptive name to apply to the snapshot.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateSnapshot)
 """
-
 @inline create_snapshot(aws::AWSConfig=default_aws_config(); args...) = create_snapshot(aws, args)
 
 @inline create_snapshot(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "CreateSnapshot", args)
@@ -649,7 +643,6 @@ The IP addresses of the remote DNS server associated with RemoteDomainName.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateTrust)
 """
-
 @inline create_trust(aws::AWSConfig=default_aws_config(); args...) = create_trust(aws, args)
 
 @inline create_trust(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "CreateTrust", args)
@@ -692,7 +685,6 @@ The fully qualified domain name (FQDN) of the remote domain with which you are d
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteConditionalForwarder)
 """
-
 @inline delete_conditional_forwarder(aws::AWSConfig=default_aws_config(); args...) = delete_conditional_forwarder(aws, args)
 
 @inline delete_conditional_forwarder(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "DeleteConditionalForwarder", args)
@@ -733,7 +725,6 @@ The identifier of the directory to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteDirectory)
 """
-
 @inline delete_directory(aws::AWSConfig=default_aws_config(); args...) = delete_directory(aws, args)
 
 @inline delete_directory(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "DeleteDirectory", args)
@@ -772,7 +763,6 @@ The identifier of the directory snapshot to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteSnapshot)
 """
-
 @inline delete_snapshot(aws::AWSConfig=default_aws_config(); args...) = delete_snapshot(aws, args)
 
 @inline delete_snapshot(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "DeleteSnapshot", args)
@@ -815,7 +805,6 @@ Delete a conditional forwarder as part of a DeleteTrustRequest.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteTrust)
 """
-
 @inline delete_trust(aws::AWSConfig=default_aws_config(); args...) = delete_trust(aws, args)
 
 @inline delete_trust(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "DeleteTrust", args)
@@ -858,7 +847,6 @@ The name of the SNS topic from which to remove the directory as a publisher.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeregisterEventTopic)
 """
-
 @inline deregister_event_topic(aws::AWSConfig=default_aws_config(); args...) = deregister_event_topic(aws, args)
 
 @inline deregister_event_topic(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "DeregisterEventTopic", args)
@@ -903,7 +891,6 @@ The fully qualified domain names (FQDN) of the remote domains for which to get t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeConditionalForwarders)
 """
-
 @inline describe_conditional_forwarders(aws::AWSConfig=default_aws_config(); args...) = describe_conditional_forwarders(aws, args)
 
 @inline describe_conditional_forwarders(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "DescribeConditionalForwarders", args)
@@ -958,7 +945,6 @@ The maximum number of items to return. If this value is zero, the maximum number
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeDirectories)
 """
-
 @inline describe_directories(aws::AWSConfig=default_aws_config(); args...) = describe_directories(aws, args)
 
 @inline describe_directories(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "DescribeDirectories", args)
@@ -1009,7 +995,6 @@ The maximum number of items to return.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeDomainControllers)
 """
-
 @inline describe_domain_controllers(aws::AWSConfig=default_aws_config(); args...) = describe_domain_controllers(aws, args)
 
 @inline describe_domain_controllers(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "DescribeDomainControllers", args)
@@ -1056,7 +1041,6 @@ An empty list results in an `InvalidParameterException` being thrown.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeEventTopics)
 """
-
 @inline describe_event_topics(aws::AWSConfig=default_aws_config(); args...) = describe_event_topics(aws, args)
 
 @inline describe_event_topics(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "DescribeEventTopics", args)
@@ -1111,7 +1095,6 @@ The maximum number of objects to return.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeSnapshots)
 """
-
 @inline describe_snapshots(aws::AWSConfig=default_aws_config(); args...) = describe_snapshots(aws, args)
 
 @inline describe_snapshots(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "DescribeSnapshots", args)
@@ -1166,7 +1149,6 @@ The maximum number of objects to return.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DescribeTrusts)
 """
-
 @inline describe_trusts(aws::AWSConfig=default_aws_config(); args...) = describe_trusts(aws, args)
 
 @inline describe_trusts(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "DescribeTrusts", args)
@@ -1205,7 +1187,6 @@ The identifier of the directory for which to disable MFA.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DisableRadius)
 """
-
 @inline disable_radius(aws::AWSConfig=default_aws_config(); args...) = disable_radius(aws, args)
 
 @inline disable_radius(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "DisableRadius", args)
@@ -1254,7 +1235,6 @@ The password of an alternate account to use to disable single-sign on. This is o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DisableSso)
 """
-
 @inline disable_sso(aws::AWSConfig=default_aws_config(); args...) = disable_sso(aws, args)
 
 @inline disable_sso(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "DisableSso", args)
@@ -1308,7 +1288,6 @@ A [RadiusSettings](@ref) object that contains information about the RADIUS serve
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/EnableRadius)
 """
-
 @inline enable_radius(aws::AWSConfig=default_aws_config(); args...) = enable_radius(aws, args)
 
 @inline enable_radius(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "EnableRadius", args)
@@ -1357,7 +1336,6 @@ The password of an alternate account to use to enable single-sign on. This is on
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/EnableSso)
 """
-
 @inline enable_sso(aws::AWSConfig=default_aws_config(); args...) = enable_sso(aws, args)
 
 @inline enable_sso(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "EnableSso", args)
@@ -1392,7 +1370,6 @@ Obtains directory limit information for the current region.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/GetDirectoryLimits)
 """
-
 @inline get_directory_limits(aws::AWSConfig=default_aws_config(); args...) = get_directory_limits(aws, args)
 
 @inline get_directory_limits(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "GetDirectoryLimits", args)
@@ -1431,7 +1408,6 @@ Contains the identifier of the directory to obtain the limits for.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/GetSnapshotLimits)
 """
-
 @inline get_snapshot_limits(aws::AWSConfig=default_aws_config(); args...) = get_snapshot_limits(aws, args)
 
 @inline get_snapshot_limits(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "GetSnapshotLimits", args)
@@ -1478,7 +1454,6 @@ Maximum number of items to return. If this value is zero, the maximum number of 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ListIpRoutes)
 """
-
 @inline list_ip_routes(aws::AWSConfig=default_aws_config(); args...) = list_ip_routes(aws, args)
 
 @inline list_ip_routes(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "ListIpRoutes", args)
@@ -1525,7 +1500,6 @@ The maximum number of items to return.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ListSchemaExtensions)
 """
-
 @inline list_schema_extensions(aws::AWSConfig=default_aws_config(); args...) = list_schema_extensions(aws, args)
 
 @inline list_schema_extensions(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "ListSchemaExtensions", args)
@@ -1572,7 +1546,6 @@ Reserved for future use.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ListTagsForResource)
 """
-
 @inline list_tags_for_resource(aws::AWSConfig=default_aws_config(); args...) = list_tags_for_resource(aws, args)
 
 @inline list_tags_for_resource(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "ListTagsForResource", args)
@@ -1615,7 +1588,6 @@ The SNS topic name to which the directory will publish status messages. This SNS
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/RegisterEventTopic)
 """
-
 @inline register_event_topic(aws::AWSConfig=default_aws_config(); args...) = register_event_topic(aws, args)
 
 @inline register_event_topic(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "RegisterEventTopic", args)
@@ -1658,7 +1630,6 @@ IP address blocks that you want to remove.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/RemoveIpRoutes)
 """
-
 @inline remove_ip_routes(aws::AWSConfig=default_aws_config(); args...) = remove_ip_routes(aws, args)
 
 @inline remove_ip_routes(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "RemoveIpRoutes", args)
@@ -1701,12 +1672,57 @@ The tag key (name) of the tag to be removed.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/RemoveTagsFromResource)
 """
-
 @inline remove_tags_from_resource(aws::AWSConfig=default_aws_config(); args...) = remove_tags_from_resource(aws, args)
 
 @inline remove_tags_from_resource(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "RemoveTagsFromResource", args)
 
 @inline remove_tags_from_resource(args) = remove_tags_from_resource(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DirectoryService.reset_user_password
+    reset_user_password([::AWSConfig], arguments::Dict)
+    reset_user_password([::AWSConfig]; DirectoryId=, UserName=, NewPassword=)
+
+    using AWSCore.Services.ds
+    ds([::AWSConfig], "ResetUserPassword", arguments::Dict)
+    ds([::AWSConfig], "ResetUserPassword", DirectoryId=, UserName=, NewPassword=)
+
+# ResetUserPassword Operation
+
+Resets the password for any user in your AWS Managed Microsoft AD or Simple AD directory.
+
+# Arguments
+
+## `DirectoryId = ::String` -- *Required*
+Identifier of the AWS Managed Microsoft AD or Simple AD directory in which the user resides.
+
+
+## `UserName = ::String` -- *Required*
+The username of the user whose password will be reset.
+
+
+## `NewPassword = ::String` -- *Required*
+The new password that will be reset.
+
+
+
+
+# Returns
+
+`ResetUserPasswordResult`
+
+# Exceptions
+
+`DirectoryUnavailableException`, `UserDoesNotExistException`, `InvalidPasswordException`, `UnsupportedOperationException`, `EntityDoesNotExistException`, `ClientException` or `ServiceException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/ResetUserPassword)
+"""
+@inline reset_user_password(aws::AWSConfig=default_aws_config(); args...) = reset_user_password(aws, args)
+
+@inline reset_user_password(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "ResetUserPassword", args)
+
+@inline reset_user_password(args) = reset_user_password(default_aws_config(), args)
 
 
 """
@@ -1744,7 +1760,6 @@ The identifier of the snapshot to restore from.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/RestoreFromSnapshot)
 """
-
 @inline restore_from_snapshot(aws::AWSConfig=default_aws_config(); args...) = restore_from_snapshot(aws, args)
 
 @inline restore_from_snapshot(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "RestoreFromSnapshot", args)
@@ -1795,7 +1810,6 @@ A description of the schema extension.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/StartSchemaExtension)
 """
-
 @inline start_schema_extension(aws::AWSConfig=default_aws_config(); args...) = start_schema_extension(aws, args)
 
 @inline start_schema_extension(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "StartSchemaExtension", args)
@@ -1842,7 +1856,6 @@ The updated IP addresses of the remote DNS server associated with the conditiona
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/UpdateConditionalForwarder)
 """
-
 @inline update_conditional_forwarder(aws::AWSConfig=default_aws_config(); args...) = update_conditional_forwarder(aws, args)
 
 @inline update_conditional_forwarder(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "UpdateConditionalForwarder", args)
@@ -1885,7 +1898,6 @@ The number of domain controllers desired in the directory.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/UpdateNumberOfDomainControllers)
 """
-
 @inline update_number_of_domain_controllers(aws::AWSConfig=default_aws_config(); args...) = update_number_of_domain_controllers(aws, args)
 
 @inline update_number_of_domain_controllers(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "UpdateNumberOfDomainControllers", args)
@@ -1939,7 +1951,6 @@ A [RadiusSettings](@ref) object that contains information about the RADIUS serve
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/UpdateRadius)
 """
-
 @inline update_radius(aws::AWSConfig=default_aws_config(); args...) = update_radius(aws, args)
 
 @inline update_radius(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "UpdateRadius", args)
@@ -1980,7 +1991,6 @@ The unique Trust ID of the trust relationship to verify.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/VerifyTrust)
 """
-
 @inline verify_trust(aws::AWSConfig=default_aws_config(); args...) = verify_trust(aws, args)
 
 @inline verify_trust(aws::AWSConfig, args) = AWSCore.Services.ds(aws, "VerifyTrust", args)

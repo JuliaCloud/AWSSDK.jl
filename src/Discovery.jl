@@ -47,7 +47,6 @@ The ID of each configuration item to be associated with an application.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/AssociateConfigurationItemsToApplication)
 """
-
 @inline associate_configuration_items_to_application(aws::AWSConfig=default_aws_config(); args...) = associate_configuration_items_to_application(aws, args)
 
 @inline associate_configuration_items_to_application(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "AssociateConfigurationItemsToApplication", args)
@@ -90,7 +89,6 @@ Description of the application to be created.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/CreateApplication)
 """
-
 @inline create_application(aws::AWSConfig=default_aws_config(); args...) = create_application(aws, args)
 
 @inline create_application(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "CreateApplication", args)
@@ -140,7 +138,6 @@ Tags that you want to associate with one or more configuration items. Specify th
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/CreateTags)
 """
-
 @inline create_tags(aws::AWSConfig=default_aws_config(); args...) = create_tags(aws, args)
 
 @inline create_tags(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "CreateTags", args)
@@ -179,7 +176,6 @@ Configuration ID of an application to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/DeleteApplications)
 """
-
 @inline delete_applications(aws::AWSConfig=default_aws_config(); args...) = delete_applications(aws, args)
 
 @inline delete_applications(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "DeleteApplications", args)
@@ -229,7 +225,6 @@ Tags that you want to delete from one or more configuration items. Specify the t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/DeleteTags)
 """
-
 @inline delete_tags(aws::AWSConfig=default_aws_config(); args...) = delete_tags(aws, args)
 
 @inline delete_tags(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "DeleteTags", args)
@@ -288,7 +283,6 @@ Token to retrieve the next set of results. For example, if you previously specif
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/DescribeAgents)
 """
-
 @inline describe_agents(aws::AWSConfig=default_aws_config(); args...) = describe_agents(aws, args)
 
 @inline describe_agents(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "DescribeAgents", args)
@@ -329,7 +323,6 @@ One or more configuration IDs.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/DescribeConfigurations)
 """
-
 @inline describe_configurations(aws::AWSConfig=default_aws_config(); args...) = describe_configurations(aws, args)
 
 @inline describe_configurations(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "DescribeConfigurations", args)
@@ -378,7 +371,6 @@ A token to get the next set of results. For example, if you specify 100 IDs for 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/DescribeExportConfigurations)
 """
-
 @inline describe_export_configurations(aws::AWSConfig=default_aws_config(); args...) = describe_export_configurations(aws, args)
 
 @inline describe_export_configurations(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "DescribeExportConfigurations", args)
@@ -437,7 +429,6 @@ The `nextToken` value returned from a previous paginated `DescribeExportTasks` r
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/DescribeExportTasks)
 """
-
 @inline describe_export_tasks(aws::AWSConfig=default_aws_config(); args...) = describe_export_tasks(aws, args)
 
 @inline describe_export_tasks(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "DescribeExportTasks", args)
@@ -489,7 +480,6 @@ A token to start the list. Use this token to get the next set of results.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/DescribeTags)
 """
-
 @inline describe_tags(aws::AWSConfig=default_aws_config(); args...) = describe_tags(aws, args)
 
 @inline describe_tags(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "DescribeTags", args)
@@ -532,7 +522,6 @@ Configuration ID of each item to be disassociated from an application.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/DisassociateConfigurationItemsFromApplication)
 """
-
 @inline disassociate_configuration_items_from_application(aws::AWSConfig=default_aws_config(); args...) = disassociate_configuration_items_from_application(aws, args)
 
 @inline disassociate_configuration_items_from_application(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "DisassociateConfigurationItemsFromApplication", args)
@@ -565,7 +554,6 @@ Exports all discovered configuration data to an Amazon S3 bucket or an applicati
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/ExportConfigurations)
 """
-
 @inline export_configurations(aws::AWSConfig=default_aws_config(); args...) = export_configurations(aws, args)
 
 @inline export_configurations(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "ExportConfigurations", args)
@@ -600,7 +588,6 @@ Retrieves a short summary of discovered assets.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/GetDiscoverySummary)
 """
-
 @inline get_discovery_summary(aws::AWSConfig=default_aws_config(); args...) = get_discovery_summary(aws, args)
 
 @inline get_discovery_summary(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "GetDiscoverySummary", args)
@@ -670,7 +657,6 @@ Certain filter criteria return output that can be sorted in ascending or descend
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/ListConfigurations)
 """
-
 @inline list_configurations(aws::AWSConfig=default_aws_config(); args...) = list_configurations(aws, args)
 
 @inline list_configurations(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "ListConfigurations", args)
@@ -725,7 +711,6 @@ Token to retrieve the next set of results. For example, if you previously specif
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/ListServerNeighbors)
 """
-
 @inline list_server_neighbors(aws::AWSConfig=default_aws_config(); args...) = list_server_neighbors(aws, args)
 
 @inline list_server_neighbors(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "ListServerNeighbors", args)
@@ -764,7 +749,6 @@ The IDs of the agents or connectors from which to start collecting data. If you 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/StartDataCollectionByAgentIds)
 """
-
 @inline start_data_collection_by_agent_ids(aws::AWSConfig=default_aws_config(); args...) = start_data_collection_by_agent_ids(aws, args)
 
 @inline start_data_collection_by_agent_ids(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "StartDataCollectionByAgentIds", args)
@@ -785,14 +769,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discov
 
 Begins the export of discovered data to an S3 bucket.
 
-If you specify `agentId` in a filter, the task exports up to 72 hours of detailed data collected by the identified Application Discovery Agent, including network, process, and performance details. A time range for exported agent data may be set by using `startTime` and `endTime`. Export of detailed agent data is limited to five concurrently running exports.
+If you specify `agentIds` in a filter, the task exports up to 72 hours of detailed data collected by the identified Application Discovery Agent, including network, process, and performance details. A time range for exported agent data may be set by using `startTime` and `endTime`. Export of detailed agent data is limited to five concurrently running exports.
 
-If you do not include an `agentId` filter, summary data is exported that includes both AWS Agentless Discovery Connector data and summary data from AWS Discovery Agents. Export of summary data is limited to two exports per day.
+If you do not include an `agentIds` filter, summary data is exported that includes both AWS Agentless Discovery Connector data and summary data from AWS Discovery Agents. Export of summary data is limited to two exports per day.
 
 # Arguments
 
 ## `exportDataFormat = ["CSV" or "GRAPHML", ...]`
-The file format for the returned export data. Default value is `CSV`.
+The file format for the returned export data. Default value is `CSV`. **Note:** *The* `GRAPHML` *option has been deprecated.*
 
 
 ## `filters = [[ ... ], ...]`
@@ -825,7 +809,6 @@ The end timestamp for exported data from the single Application Discovery Agent 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/StartExportTask)
 """
-
 @inline start_export_task(aws::AWSConfig=default_aws_config(); args...) = start_export_task(aws, args)
 
 @inline start_export_task(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "StartExportTask", args)
@@ -864,7 +847,6 @@ The IDs of the agents or connectors from which to stop collecting data.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/StopDataCollectionByAgentIds)
 """
-
 @inline stop_data_collection_by_agent_ids(aws::AWSConfig=default_aws_config(); args...) = stop_data_collection_by_agent_ids(aws, args)
 
 @inline stop_data_collection_by_agent_ids(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "StopDataCollectionByAgentIds", args)
@@ -911,7 +893,6 @@ New description of the application to be updated.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01/UpdateApplication)
 """
-
 @inline update_application(aws::AWSConfig=default_aws_config(); args...) = update_application(aws, args)
 
 @inline update_application(aws::AWSConfig, args) = AWSCore.Services.discovery(aws, "UpdateApplication", args)

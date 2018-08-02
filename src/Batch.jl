@@ -32,7 +32,7 @@ The AWS Batch job ID of the job to cancel.
 
 
 ## `reason = ::String` -- *Required*
-A message to attach to the job that explains the reason for cancelling it. This message is returned by future [DescribeJobs](@ref) operations on the job. This message is also recorded in the AWS Batch activity logs.
+A message to attach to the job that explains the reason for canceling it. This message is returned by future [DescribeJobs](@ref) operations on the job. This message is also recorded in the AWS Batch activity logs.
 
 
 
@@ -66,7 +66,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/CancelJob)
 """
-
 @inline cancel_job(aws::AWSConfig=default_aws_config(); args...) = cancel_job(aws, args)
 
 @inline cancel_job(aws::AWSConfig, args) = AWSCore.Services.batch(aws, "POST", "/v1/canceljob", args)
@@ -87,9 +86,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 
 Creates an AWS Batch compute environment. You can create `MANAGED` or `UNMANAGED` compute environments.
 
-In a managed compute environment, AWS Batch manages the compute resources within the environment, based on the compute resources that you specify. Instances launched into a managed compute environment use a recent, approved version of the Amazon ECS-optimized AMI. You can choose to use Amazon EC2 On-Demand instances in your managed compute environment, or you can use Amazon EC2 Spot instances that only launch when the Spot bid price is below a specified percentage of the On-Demand price.
+In a managed compute environment, AWS Batch manages the compute resources within the environment, based on the compute resources that you specify. Instances launched into a managed compute environment use a recent, approved version of the Amazon ECS-optimized AMI. You can choose to use Amazon EC2 On-Demand Instances in your managed compute environment, or you can use Amazon EC2 Spot Instances that only launch when the Spot bid price is below a specified percentage of the On-Demand price.
 
-In an unmanaged compute environment, you can manage your own compute resources. This provides more compute resource configuration options, such as using a custom AMI, but you must ensure that your AMI meets the Amazon ECS container instance AMI specification. For more information, see [Container Instance AMIs](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html) in the *Amazon EC2 Container Service Developer Guide*. After you have created your unmanaged compute environment, you can use the [DescribeComputeEnvironments](@ref) operation to find the Amazon ECS cluster that is associated with it and then manually launch your container instances into that Amazon ECS cluster. For more information, see [Launching an Amazon ECS Container Instance](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html) in the *Amazon EC2 Container Service Developer Guide*.
+In an unmanaged compute environment, you can manage your own compute resources. This provides more compute resource configuration options, such as using a custom AMI, but you must ensure that your AMI meets the Amazon ECS container instance AMI specification. For more information, see [Container Instance AMIs](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html) in the *Amazon Elastic Container Service Developer Guide*. After you have created your unmanaged compute environment, you can use the [DescribeComputeEnvironments](@ref) operation to find the Amazon ECS cluster that is associated with it and then manually launch your container instances into that Amazon ECS cluster. For more information, see [Launching an Amazon ECS Container Instance](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html) in the *Amazon Elastic Container Service Developer Guide*.
 
 # Arguments
 
@@ -240,7 +239,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/CreateComputeEnvironment)
 """
-
 @inline create_compute_environment(aws::AWSConfig=default_aws_config(); args...) = create_compute_environment(aws, args)
 
 @inline create_compute_environment(aws::AWSConfig, args) = AWSCore.Services.batch(aws, "POST", "/v1/createcomputeenvironment", args)
@@ -278,7 +276,7 @@ The priority of the job queue. Job queues with a higher priority (or a higher in
 
 
 ## `computeEnvironmentOrder = [[ ... ], ...]` -- *Required*
-The set of compute environments mapped to a job queue and their order relative to each other. The job scheduler uses this parameter to determine which compute environment should execute a given job. Compute environments must be in the `VALID` state before you can associate them with a job queue. You can associate up to 3 compute environments with a job queue.
+The set of compute environments mapped to a job queue and their order relative to each other. The job scheduler uses this parameter to determine which compute environment should execute a given job. Compute environments must be in the `VALID` state before you can associate them with a job queue. You can associate up to three compute environments with a job queue.
 ```
  computeEnvironmentOrder = [[
         "order" => <required> ::Int,
@@ -356,7 +354,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/CreateJobQueue)
 """
-
 @inline create_job_queue(aws::AWSConfig=default_aws_config(); args...) = create_job_queue(aws, args)
 
 @inline create_job_queue(aws::AWSConfig, args) = AWSCore.Services.batch(aws, "POST", "/v1/createjobqueue", args)
@@ -415,7 +412,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/DeleteComputeEnvironment)
 """
-
 @inline delete_compute_environment(aws::AWSConfig=default_aws_config(); args...) = delete_compute_environment(aws, args)
 
 @inline delete_compute_environment(aws::AWSConfig, args) = AWSCore.Services.batch(aws, "POST", "/v1/deletecomputeenvironment", args)
@@ -474,7 +470,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/DeleteJobQueue)
 """
-
 @inline delete_job_queue(aws::AWSConfig=default_aws_config(); args...) = delete_job_queue(aws, args)
 
 @inline delete_job_queue(aws::AWSConfig, args) = AWSCore.Services.batch(aws, "POST", "/v1/deletejobqueue", args)
@@ -531,7 +526,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/DeregisterJobDefinition)
 """
-
 @inline deregister_job_definition(aws::AWSConfig=default_aws_config(); args...) = deregister_job_definition(aws, args)
 
 @inline deregister_job_definition(aws::AWSConfig, args) = AWSCore.Services.batch(aws, "POST", "/v1/deregisterjobdefinition", args)
@@ -636,7 +630,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/DescribeComputeEnvironments)
 """
-
 @inline describe_compute_environments(aws::AWSConfig=default_aws_config(); args...) = describe_compute_environments(aws, args)
 
 @inline describe_compute_environments(aws::AWSConfig, args) = AWSCore.Services.batch(aws, "POST", "/v1/describecomputeenvironments", args)
@@ -741,7 +734,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/DescribeJobDefinitions)
 """
-
 @inline describe_job_definitions(aws::AWSConfig=default_aws_config(); args...) = describe_job_definitions(aws, args)
 
 @inline describe_job_definitions(aws::AWSConfig, args) = AWSCore.Services.batch(aws, "POST", "/v1/describejobdefinitions", args)
@@ -826,7 +818,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/DescribeJobQueues)
 """
-
 @inline describe_job_queues(aws::AWSConfig=default_aws_config(); args...) = describe_job_queues(aws, args)
 
 @inline describe_job_queues(aws::AWSConfig, args) = AWSCore.Services.batch(aws, "POST", "/v1/describejobqueues", args)
@@ -925,7 +916,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/DescribeJobs)
 """
-
 @inline describe_jobs(aws::AWSConfig=default_aws_config(); args...) = describe_jobs(aws, args)
 
 @inline describe_jobs(aws::AWSConfig, args) = AWSCore.Services.batch(aws, "POST", "/v1/describejobs", args)
@@ -936,11 +926,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-
 """
     using AWSSDK.Batch.list_jobs
     list_jobs([::AWSConfig], arguments::Dict)
-    list_jobs([::AWSConfig]; jobQueue=, <keyword arguments>)
+    list_jobs([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.batch
     batch([::AWSConfig], "POST", "/v1/listjobs", arguments::Dict)
-    batch([::AWSConfig], "POST", "/v1/listjobs", jobQueue=, <keyword arguments>)
+    batch([::AWSConfig], "POST", "/v1/listjobs", <keyword arguments>)
 
 # ListJobs Operation
 
@@ -948,8 +938,12 @@ Returns a list of task jobs for a specified job queue. You can filter the result
 
 # Arguments
 
-## `jobQueue = ::String` -- *Required*
+## `jobQueue = ::String`
 The name or full Amazon Resource Name (ARN) of the job queue with which to list jobs.
+
+
+## `arrayJobId = ::String`
+The job ID for an array job. Specifying an array job ID with this parameter lists all child jobs from within the specified array.
 
 
 ## `jobStatus = "SUBMITTED", "PENDING", "RUNNABLE", "STARTING", "RUNNING", "SUCCEEDED" or "FAILED"`
@@ -1026,7 +1020,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/ListJobs)
 """
-
 @inline list_jobs(aws::AWSConfig=default_aws_config(); args...) = list_jobs(aws, args)
 
 @inline list_jobs(aws::AWSConfig, args) = AWSCore.Services.batch(aws, "POST", "/v1/listjobs", args)
@@ -1095,7 +1088,11 @@ An object with various properties specific for container-based jobs. This parame
 ```
 
 ## `retryStrategy = ["attempts" =>  ::Int]`
-The retry strategy to use for failed jobs that are submitted with this job definition. Any retry strategy that is specified during a [SubmitJob](@ref) operation overrides the retry strategy defined here.
+The retry strategy to use for failed jobs that are submitted with this job definition. Any retry strategy that is specified during a [SubmitJob](@ref) operation overrides the retry strategy defined here. If a job is terminated due to a timeout, it is not retried.
+
+
+## `timeout = ["attemptDurationSeconds" =>  ::Int]`
+The timeout configuration for jobs that are submitted with this job definition, after which AWS Batch terminates your jobs if they have not finished. If a job is terminated due to a timeout, it is not retried. The minimum value for the timeout is 60 seconds. Any timeout configuration that is specified during a [SubmitJob](@ref) operation overrides the timeout configuration defined here. For more information, see [Job Timeouts](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html) in the *Amazon Elastic Container Service Developer Guide*.
 
 
 
@@ -1140,7 +1137,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/RegisterJobDefinition)
 """
-
 @inline register_job_definition(aws::AWSConfig=default_aws_config(); args...) = register_job_definition(aws, args)
 
 @inline register_job_definition(aws::AWSConfig, args) = AWSCore.Services.batch(aws, "POST", "/v1/registerjobdefinition", args)
@@ -1168,12 +1164,21 @@ The name of the job. The first character must be alphanumeric, and up to 128 let
 
 
 ## `jobQueue = ::String` -- *Required*
-The job queue into which the job will be submitted. You can specify either the name or the Amazon Resource Name (ARN) of the queue.
+The job queue into which the job is submitted. You can specify either the name or the Amazon Resource Name (ARN) of the queue.
 
 
-## `dependsOn = [["jobId" =>  ::String], ...]`
-A list of job IDs on which this job depends. A job can depend upon a maximum of 20 jobs.
+## `arrayProperties = ["size" =>  ::Int]`
+The array properties for the submitted job, such as the size of the array. The array size can be between 2 and 10,000. If you specify array properties for a job, it becomes an array job. For more information, see [Array Jobs](http://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html) in the *AWS Batch User Guide*.
 
+
+## `dependsOn = [[ ... ], ...]`
+A list of dependencies for the job. A job can depend upon a maximum of 20 jobs. You can specify a `SEQUENTIAL` type dependency without specifying a job ID for array jobs so that each child array job completes sequentially, starting at index 0. You can also specify an `N_TO_N` type dependency with a job ID for array jobs so that each index child of this job must wait for the corresponding index child of each dependency to complete before it can begin.
+```
+ dependsOn = [[
+        "jobId" =>  ::String,
+        "type" =>  "N_TO_N" or "SEQUENTIAL"
+    ], ...]
+```
 
 ## `jobDefinition = ::String` -- *Required*
 The job definition used by this job. This value can be either a `name:revision` or the Amazon Resource Name (ARN) for the job definition.
@@ -1199,6 +1204,10 @@ A list of container overrides in JSON format that specify the name of a containe
 
 ## `retryStrategy = ["attempts" =>  ::Int]`
 The retry strategy to use for failed jobs from this [SubmitJob](@ref) operation. When a retry strategy is specified here, it overrides the retry strategy defined in the job definition.
+
+
+## `timeout = ["attemptDurationSeconds" =>  ::Int]`
+The timeout configuration for this [SubmitJob](@ref) operation. You can specify a timeout duration after which AWS Batch terminates your jobs if they have not finished. If a job is terminated due to a timeout, it is not retried. The minimum value for the timeout is 60 seconds. This configuration overrides any timeout configuration specified in the job definition. For array jobs, child jobs have the same timeout configuration as the parent job. For more information, see [Job Timeouts](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html) in the *Amazon Elastic Container Service Developer Guide*.
 
 
 
@@ -1234,7 +1243,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/SubmitJob)
 """
-
 @inline submit_job(aws::AWSConfig=default_aws_config(); args...) = submit_job(aws, args)
 
 @inline submit_job(aws::AWSConfig, args) = AWSCore.Services.batch(aws, "POST", "/v1/submitjob", args)
@@ -1262,7 +1270,7 @@ The AWS Batch job ID of the job to terminate.
 
 
 ## `reason = ::String` -- *Required*
-A message to attach to the job that explains the reason for cancelling it. This message is returned by future [DescribeJobs](@ref) operations on the job. This message is also recorded in the AWS Batch activity logs.
+A message to attach to the job that explains the reason for canceling it. This message is returned by future [DescribeJobs](@ref) operations on the job. This message is also recorded in the AWS Batch activity logs.
 
 
 
@@ -1296,7 +1304,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/TerminateJob)
 """
-
 @inline terminate_job(aws::AWSConfig=default_aws_config(); args...) = terminate_job(aws, args)
 
 @inline terminate_job(aws::AWSConfig, args) = AWSCore.Services.batch(aws, "POST", "/v1/terminatejob", args)
@@ -1378,7 +1385,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/UpdateComputeEnvironment)
 """
-
 @inline update_compute_environment(aws::AWSConfig=default_aws_config(); args...) = update_compute_environment(aws, args)
 
 @inline update_compute_environment(aws::AWSConfig, args) = AWSCore.Services.batch(aws, "POST", "/v1/updatecomputeenvironment", args)
@@ -1454,7 +1460,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/UpdateJobQueue)
 """
-
 @inline update_job_queue(aws::AWSConfig=default_aws_config(); args...) = update_job_queue(aws, args)
 
 @inline update_job_queue(aws::AWSConfig, args) = AWSCore.Services.batch(aws, "POST", "/v1/updatejobqueue", args)

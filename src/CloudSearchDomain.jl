@@ -178,7 +178,6 @@ There are currently no options supported for statistics.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearchdomain-2013-01-01/Search)
 """
-
 @inline search(aws::AWSConfig=default_aws_config(); args...) = search(aws, args)
 
 @inline search(aws::AWSConfig, args) = AWSCore.Services.cloudsearchdomain(aws, "GET", "/2013-01-01/search?format=sdk&pretty=true", args)
@@ -229,7 +228,6 @@ Specifies the maximum number of suggestions to return.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearchdomain-2013-01-01/Suggest)
 """
-
 @inline suggest(aws::AWSConfig=default_aws_config(); args...) = suggest(aws, args)
 
 @inline suggest(aws::AWSConfig, args) = AWSCore.Services.cloudsearchdomain(aws, "GET", "/2013-01-01/suggest?format=sdk&pretty=true", args)
@@ -279,7 +277,6 @@ The format of the batch you are uploading. Amazon CloudSearch supports two docum
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearchdomain-2013-01-01/UploadDocuments)
 """
-
 @inline upload_documents(aws::AWSConfig=default_aws_config(); args...) = upload_documents(aws, args)
 
 @inline upload_documents(aws::AWSConfig, args) = AWSCore.Services.cloudsearchdomain(aws, "POST", "/2013-01-01/documents/batch?format=sdk", args)

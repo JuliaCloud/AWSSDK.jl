@@ -35,8 +35,8 @@ To create a scaling policy or update an existing one, see [PutScalingPolicy](@re
 The name of the scaling policy.
 
 
-## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream" or "dynamodb"` -- *Required*
-The namespace of the AWS service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
+## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream", "dynamodb", "rds", "sagemaker" or "custom-resource"` -- *Required*
+The namespace of the AWS service that provides the resource or `custom-resource` for a resource provided by your own application or service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
 
 
 ## `ResourceId = ::String` -- *Required*
@@ -54,8 +54,14 @@ The identifier of the resource associated with the scalable target. This string 
 
 *   DynamoDB global secondary index - The resource type is `index` and the unique identifier is the resource ID. Example: `table/my-table/index/my-table-index`.
 
+*   Aurora DB cluster - The resource type is `cluster` and the unique identifier is the cluster name. Example: `cluster:my-db-cluster`.
 
-## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits" or "dynamodb:index:WriteCapacityUnits"` -- *Required*
+*   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
+
+*   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+
+
+## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits", "dynamodb:index:WriteCapacityUnits", "rds:cluster:ReadReplicaCount", "sagemaker:variant:DesiredInstanceCount" or "custom-resource:ResourceType:Property"` -- *Required*
 The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
 
 *   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -73,6 +79,12 @@ The scalable dimension. This string consists of the service namespace, resource 
 *   `dynamodb:index:ReadCapacityUnits` - The provisioned read capacity for a DynamoDB global secondary index.
 
 *   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
+
+*   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+
+*   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
+
+*   `custom-resource:ResourceType:Property` - The scalable dimension for a custom resource provided by your own application or service.
 
 
 
@@ -108,7 +120,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/DeleteScalingPolicy)
 """
-
 @inline delete_scaling_policy(aws::AWSConfig=default_aws_config(); args...) = delete_scaling_policy(aws, args)
 
 @inline delete_scaling_policy(aws::AWSConfig, args) = AWSCore.Services.application_autoscaling(aws, "DeleteScalingPolicy", args)
@@ -131,8 +142,8 @@ Deletes the specified Application Auto Scaling scheduled action.
 
 # Arguments
 
-## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream" or "dynamodb"` -- *Required*
-The namespace of the AWS service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
+## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream", "dynamodb", "rds", "sagemaker" or "custom-resource"` -- *Required*
+The namespace of the AWS service that provides the resource or `custom-resource` for a resource provided by your own application or service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
 
 
 ## `ScheduledActionName = ::String` -- *Required*
@@ -154,8 +165,14 @@ The identifier of the resource associated with the scheduled action. This string
 
 *   DynamoDB global secondary index - The resource type is `index` and the unique identifier is the resource ID. Example: `table/my-table/index/my-table-index`.
 
+*   Aurora DB cluster - The resource type is `cluster` and the unique identifier is the cluster name. Example: `cluster:my-db-cluster`.
 
-## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits" or "dynamodb:index:WriteCapacityUnits"`
+*   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
+
+*   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+
+
+## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits", "dynamodb:index:WriteCapacityUnits", "rds:cluster:ReadReplicaCount", "sagemaker:variant:DesiredInstanceCount" or "custom-resource:ResourceType:Property"`
 The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
 
 *   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -174,6 +191,12 @@ The scalable dimension. This string consists of the service namespace, resource 
 
 *   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
 
+*   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+
+*   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
+
+*   `custom-resource:ResourceType:Property` - The scalable dimension for a custom resource provided by your own application or service.
+
 
 
 
@@ -187,7 +210,6 @@ The scalable dimension. This string consists of the service namespace, resource 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/DeleteScheduledAction)
 """
-
 @inline delete_scheduled_action(aws::AWSConfig=default_aws_config(); args...) = delete_scheduled_action(aws, args)
 
 @inline delete_scheduled_action(aws::AWSConfig, args) = AWSCore.Services.application_autoscaling(aws, "DeleteScheduledAction", args)
@@ -214,8 +236,8 @@ To create a scalable target or update an existing one, see [RegisterScalableTarg
 
 # Arguments
 
-## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream" or "dynamodb"` -- *Required*
-The namespace of the AWS service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
+## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream", "dynamodb", "rds", "sagemaker" or "custom-resource"` -- *Required*
+The namespace of the AWS service that provides the resource or `custom-resource` for a resource provided by your own application or service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
 
 
 ## `ResourceId = ::String` -- *Required*
@@ -233,8 +255,14 @@ The identifier of the resource associated with the scalable target. This string 
 
 *   DynamoDB global secondary index - The resource type is `index` and the unique identifier is the resource ID. Example: `table/my-table/index/my-table-index`.
 
+*   Aurora DB cluster - The resource type is `cluster` and the unique identifier is the cluster name. Example: `cluster:my-db-cluster`.
 
-## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits" or "dynamodb:index:WriteCapacityUnits"` -- *Required*
+*   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
+
+*   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+
+
+## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits", "dynamodb:index:WriteCapacityUnits", "rds:cluster:ReadReplicaCount", "sagemaker:variant:DesiredInstanceCount" or "custom-resource:ResourceType:Property"` -- *Required*
 The scalable dimension associated with the scalable target. This string consists of the service namespace, resource type, and scaling property.
 
 *   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -252,6 +280,12 @@ The scalable dimension associated with the scalable target. This string consists
 *   `dynamodb:index:ReadCapacityUnits` - The provisioned read capacity for a DynamoDB global secondary index.
 
 *   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
+
+*   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+
+*   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
+
+*   `custom-resource:ResourceType:Property` - The scalable dimension for a custom resource provided by your own application or service.
 
 
 
@@ -286,7 +320,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/DeregisterScalableTarget)
 """
-
 @inline deregister_scalable_target(aws::AWSConfig=default_aws_config(); args...) = deregister_scalable_target(aws, args)
 
 @inline deregister_scalable_target(aws::AWSConfig, args) = AWSCore.Services.application_autoscaling(aws, "DeregisterScalableTarget", args)
@@ -305,7 +338,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/applic
 
 # DescribeScalableTargets Operation
 
-Provides descriptive information about the scalable targets in the specified namespace.
+Gets information about the scalable targets in the specified namespace.
 
 You can filter the results using the `ResourceIds` and `ScalableDimension` parameters.
 
@@ -313,8 +346,8 @@ To create a scalable target or update an existing one, see [RegisterScalableTarg
 
 # Arguments
 
-## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream" or "dynamodb"` -- *Required*
-The namespace of the AWS service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
+## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream", "dynamodb", "rds", "sagemaker" or "custom-resource"` -- *Required*
+The namespace of the AWS service that provides the resource or `custom-resource` for a resource provided by your own application or service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
 
 
 ## `ResourceIds = [::String, ...]`
@@ -332,8 +365,14 @@ The identifier of the resource associated with the scalable target. This string 
 
 *   DynamoDB global secondary index - The resource type is `index` and the unique identifier is the resource ID. Example: `table/my-table/index/my-table-index`.
 
+*   Aurora DB cluster - The resource type is `cluster` and the unique identifier is the cluster name. Example: `cluster:my-db-cluster`.
 
-## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits" or "dynamodb:index:WriteCapacityUnits"`
+*   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
+
+*   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+
+
+## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits", "dynamodb:index:WriteCapacityUnits", "rds:cluster:ReadReplicaCount", "sagemaker:variant:DesiredInstanceCount" or "custom-resource:ResourceType:Property"`
 The scalable dimension associated with the scalable target. This string consists of the service namespace, resource type, and scaling property. If you specify a scalable dimension, you must also specify a resource ID.
 
 *   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -352,9 +391,15 @@ The scalable dimension associated with the scalable target. This string consists
 
 *   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
 
+*   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+
+*   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
+
+*   `custom-resource:ResourceType:Property` - The scalable dimension for a custom resource provided by your own application or service.
+
 
 ## `MaxResults = ::Int`
-The maximum number of scalable target results. This value can be between 1 and 50. The default value is 50.
+The maximum number of scalable targets. This value can be between 1 and 50. The default value is 50.
 
 If this parameter is used, the operation returns up to `MaxResults` results at a time, along with a `NextToken` value. To get the next set of results, include the `NextToken` value in a subsequent call. If this parameter is not used, the operation returns up to 50 results and a `NextToken` value, if applicable.
 
@@ -403,7 +448,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/DescribeScalableTargets)
 """
-
 @inline describe_scalable_targets(aws::AWSConfig=default_aws_config(); args...) = describe_scalable_targets(aws, args)
 
 @inline describe_scalable_targets(aws::AWSConfig, args) = AWSCore.Services.application_autoscaling(aws, "DescribeScalableTargets", args)
@@ -430,8 +474,8 @@ Scaling activities are triggered by CloudWatch alarms that are associated with s
 
 # Arguments
 
-## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream" or "dynamodb"` -- *Required*
-The namespace of the AWS service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
+## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream", "dynamodb", "rds", "sagemaker" or "custom-resource"` -- *Required*
+The namespace of the AWS service that provides the resource or `custom-resource` for a resource provided by your own application or service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
 
 
 ## `ResourceId = ::String`
@@ -449,8 +493,14 @@ The identifier of the resource associated with the scaling activity. This string
 
 *   DynamoDB global secondary index - The resource type is `index` and the unique identifier is the resource ID. Example: `table/my-table/index/my-table-index`.
 
+*   Aurora DB cluster - The resource type is `cluster` and the unique identifier is the cluster name. Example: `cluster:my-db-cluster`.
 
-## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits" or "dynamodb:index:WriteCapacityUnits"`
+*   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
+
+*   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+
+
+## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits", "dynamodb:index:WriteCapacityUnits", "rds:cluster:ReadReplicaCount", "sagemaker:variant:DesiredInstanceCount" or "custom-resource:ResourceType:Property"`
 The scalable dimension. This string consists of the service namespace, resource type, and scaling property. If you specify a scalable dimension, you must also specify a resource ID.
 
 *   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -469,9 +519,15 @@ The scalable dimension. This string consists of the service namespace, resource 
 
 *   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
 
+*   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+
+*   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
+
+*   `custom-resource:ResourceType:Property` - The scalable dimension for a custom resource provided by your own application or service.
+
 
 ## `MaxResults = ::Int`
-The maximum number of scalable target results. This value can be between 1 and 50. The default value is 50.
+The maximum number of scalable targets. This value can be between 1 and 50. The default value is 50.
 
 If this parameter is used, the operation returns up to `MaxResults` results at a time, along with a `NextToken` value. To get the next set of results, include the `NextToken` value in a subsequent call. If this parameter is not used, the operation returns up to 50 results and a `NextToken` value, if applicable.
 
@@ -525,7 +581,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/DescribeScalingActivities)
 """
-
 @inline describe_scaling_activities(aws::AWSConfig=default_aws_config(); args...) = describe_scaling_activities(aws, args)
 
 @inline describe_scaling_activities(aws::AWSConfig, args) = AWSCore.Services.application_autoscaling(aws, "DescribeScalingActivities", args)
@@ -556,8 +611,8 @@ To create a scaling policy or update an existing one, see [PutScalingPolicy](@re
 The names of the scaling policies to describe.
 
 
-## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream" or "dynamodb"` -- *Required*
-The namespace of the AWS service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
+## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream", "dynamodb", "rds", "sagemaker" or "custom-resource"` -- *Required*
+The namespace of the AWS service that provides the resource or `custom-resource` for a resource provided by your own application or service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
 
 
 ## `ResourceId = ::String`
@@ -575,8 +630,14 @@ The identifier of the resource associated with the scaling policy. This string c
 
 *   DynamoDB global secondary index - The resource type is `index` and the unique identifier is the resource ID. Example: `table/my-table/index/my-table-index`.
 
+*   Aurora DB cluster - The resource type is `cluster` and the unique identifier is the cluster name. Example: `cluster:my-db-cluster`.
 
-## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits" or "dynamodb:index:WriteCapacityUnits"`
+*   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
+
+*   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+
+
+## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits", "dynamodb:index:WriteCapacityUnits", "rds:cluster:ReadReplicaCount", "sagemaker:variant:DesiredInstanceCount" or "custom-resource:ResourceType:Property"`
 The scalable dimension. This string consists of the service namespace, resource type, and scaling property. If you specify a scalable dimension, you must also specify a resource ID.
 
 *   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -595,9 +656,15 @@ The scalable dimension. This string consists of the service namespace, resource 
 
 *   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
 
+*   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+
+*   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
+
+*   `custom-resource:ResourceType:Property` - The scalable dimension for a custom resource provided by your own application or service.
+
 
 ## `MaxResults = ::Int`
-The maximum number of scalable target results. This value can be between 1 and 50. The default value is 50.
+The maximum number of scalable targets. This value can be between 1 and 50. The default value is 50.
 
 If this parameter is used, the operation returns up to `MaxResults` results at a time, along with a `NextToken` value. To get the next set of results, include the `NextToken` value in a subsequent call. If this parameter is not used, the operation returns up to 50 results and a `NextToken` value, if applicable.
 
@@ -663,7 +730,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/DescribeScalingPolicies)
 """
-
 @inline describe_scaling_policies(aws::AWSConfig=default_aws_config(); args...) = describe_scaling_policies(aws, args)
 
 @inline describe_scaling_policies(aws::AWSConfig, args) = AWSCore.Services.application_autoscaling(aws, "DescribeScalingPolicies", args)
@@ -694,8 +760,8 @@ To create a scheduled action or update an existing one, see [PutScheduledAction]
 The names of the scheduled actions to describe.
 
 
-## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream" or "dynamodb"` -- *Required*
-The namespace of the AWS service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
+## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream", "dynamodb", "rds", "sagemaker" or "custom-resource"` -- *Required*
+The namespace of the AWS service that provides the resource or `custom-resource` for a resource provided by your own application or service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
 
 
 ## `ResourceId = ::String`
@@ -713,8 +779,14 @@ The identifier of the resource associated with the scheduled action. This string
 
 *   DynamoDB global secondary index - The resource type is `index` and the unique identifier is the resource ID. Example: `table/my-table/index/my-table-index`.
 
+*   Aurora DB cluster - The resource type is `cluster` and the unique identifier is the cluster name. Example: `cluster:my-db-cluster`.
 
-## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits" or "dynamodb:index:WriteCapacityUnits"`
+*   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
+
+*   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+
+
+## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits", "dynamodb:index:WriteCapacityUnits", "rds:cluster:ReadReplicaCount", "sagemaker:variant:DesiredInstanceCount" or "custom-resource:ResourceType:Property"`
 The scalable dimension. This string consists of the service namespace, resource type, and scaling property. If you specify a scalable dimension, you must also specify a resource ID.
 
 *   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -733,9 +805,15 @@ The scalable dimension. This string consists of the service namespace, resource 
 
 *   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
 
+*   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+
+*   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
+
+*   `custom-resource:ResourceType:Property` - The scalable dimension for a custom resource provided by your own application or service.
+
 
 ## `MaxResults = ::Int`
-The maximum number of scalable target results. This value can be between 1 and 50. The default value is 50.
+The maximum number of scheduled action results. This value can be between 1 and 50. The default value is 50.
 
 If this parameter is used, the operation returns up to `MaxResults` results at a time, along with a `NextToken` value. To get the next set of results, include the `NextToken` value in a subsequent call. If this parameter is not used, the operation returns up to 50 results and a `NextToken` value, if applicable.
 
@@ -756,7 +834,6 @@ The token for the next set of results.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/DescribeScheduledActions)
 """
-
 @inline describe_scheduled_actions(aws::AWSConfig=default_aws_config(); args...) = describe_scheduled_actions(aws, args)
 
 @inline describe_scheduled_actions(aws::AWSConfig, args) = AWSCore.Services.application_autoscaling(aws, "DescribeScheduledActions", args)
@@ -777,7 +854,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/applic
 
 Creates or updates a policy for an Application Auto Scaling scalable target.
 
-Each scalable target is identified by a service namespace, resource ID, and scalable dimension. A scaling policy applies to the scalable target identified by those three attributes. You cannot create a scaling policy without first registering a scalable target using [RegisterScalableTarget](@ref).
+Each scalable target is identified by a service namespace, resource ID, and scalable dimension. A scaling policy applies to the scalable target identified by those three attributes. You cannot create a scaling policy until you register the scalable target using [RegisterScalableTarget](@ref).
 
 To update a policy, specify its policy name and the parameters that you want to change. Any parameters that you don't specify are not changed by this update request.
 
@@ -789,8 +866,8 @@ You can view the scaling policies for a service namespace using [DescribeScaling
 The name of the scaling policy.
 
 
-## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream" or "dynamodb"` -- *Required*
-The namespace of the AWS service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
+## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream", "dynamodb", "rds", "sagemaker" or "custom-resource"` -- *Required*
+The namespace of the AWS service that provides the resource or `custom-resource` for a resource provided by your own application or service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
 
 
 ## `ResourceId = ::String` -- *Required*
@@ -808,8 +885,14 @@ The identifier of the resource associated with the scaling policy. This string c
 
 *   DynamoDB global secondary index - The resource type is `index` and the unique identifier is the resource ID. Example: `table/my-table/index/my-table-index`.
 
+*   Aurora DB cluster - The resource type is `cluster` and the unique identifier is the cluster name. Example: `cluster:my-db-cluster`.
 
-## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits" or "dynamodb:index:WriteCapacityUnits"` -- *Required*
+*   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
+
+*   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+
+
+## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits", "dynamodb:index:WriteCapacityUnits", "rds:cluster:ReadReplicaCount", "sagemaker:variant:DesiredInstanceCount" or "custom-resource:ResourceType:Property"` -- *Required*
 The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
 
 *   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -828,11 +911,17 @@ The scalable dimension. This string consists of the service namespace, resource 
 
 *   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
 
+*   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+
+*   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
+
+*   `custom-resource:ResourceType:Property` - The scalable dimension for a custom resource provided by your own application or service.
+
 
 ## `PolicyType = "StepScaling" or "TargetTrackingScaling"`
-The policy type. If you are creating a new policy, this parameter is required. If you are updating a policy, this parameter is not required.
+The policy type. This parameter is required if you are creating a policy.
 
-For DynamoDB, only `TargetTrackingScaling` is supported. For any other service, only `StepScaling` is supported.
+For DynamoDB, only `TargetTrackingScaling` is supported. For Amazon ECS, Spot Fleet, and Amazon RDS, both `StepScaling` and `TargetTrackingScaling` are supported. For any other service, only `StepScaling` is supported.
 
 
 ## `StepScalingPolicyConfiguration = [ ... ]`
@@ -856,12 +945,12 @@ This parameter is required if you are creating a policy and the policy type is `
 ## `TargetTrackingScalingPolicyConfiguration = [ ... ]`
 A target tracking policy.
 
-This parameter is required if you are creating a new policy and the policy type is `TargetTrackingScaling`.
+This parameter is required if you are creating a policy and the policy type is `TargetTrackingScaling`.
 ```
  TargetTrackingScalingPolicyConfiguration = [
         "TargetValue" => <required> double,
         "PredefinedMetricSpecification" =>  [
-            "PredefinedMetricType" => <required> "DynamoDBReadCapacityUtilization" or "DynamoDBWriteCapacityUtilization",
+            "PredefinedMetricType" => <required> "DynamoDBReadCapacityUtilization", "DynamoDBWriteCapacityUtilization", "ALBRequestCountPerTarget", "RDSReaderAverageCPUUtilization", "RDSReaderAverageDatabaseConnections", "EC2SpotFleetRequestAverageCPUUtilization", "EC2SpotFleetRequestAverageNetworkIn", "EC2SpotFleetRequestAverageNetworkOut", "SageMakerVariantInvocationsPerInstance", "ECSServiceAverageCPUUtilization" or "ECSServiceAverageMemoryUtilization",
             "ResourceLabel" =>  ::String
         ],
         "CustomizedMetricSpecification" =>  [
@@ -957,7 +1046,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/PutScalingPolicy)
 """
-
 @inline put_scaling_policy(aws::AWSConfig=default_aws_config(); args...) = put_scaling_policy(aws, args)
 
 @inline put_scaling_policy(aws::AWSConfig, args) = AWSCore.Services.application_autoscaling(aws, "PutScalingPolicy", args)
@@ -978,7 +1066,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/applic
 
 Creates or updates a scheduled action for an Application Auto Scaling scalable target.
 
-Each scalable target is identified by a service namespace, resource ID, and scalable dimension. A scheduled action applies to the scalable target identified by those three attributes. You cannot create a scheduled action without first registering a scalable target using [RegisterScalableTarget](@ref).
+Each scalable target is identified by a service namespace, resource ID, and scalable dimension. A scheduled action applies to the scalable target identified by those three attributes. You cannot create a scheduled action until you register the scalable target using [RegisterScalableTarget](@ref).
 
 To update an action, specify its name and the parameters that you want to change. If you don't specify start and end times, the old values are deleted. Any other parameters that you don't specify are not changed by this update request.
 
@@ -986,8 +1074,8 @@ You can view the scheduled actions using [DescribeScheduledActions](@ref). If yo
 
 # Arguments
 
-## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream" or "dynamodb"` -- *Required*
-The namespace of the AWS service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
+## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream", "dynamodb", "rds", "sagemaker" or "custom-resource"` -- *Required*
+The namespace of the AWS service that provides the resource or `custom-resource` for a resource provided by your own application or service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
 
 
 ## `Schedule = ::String`
@@ -1003,7 +1091,7 @@ At expressions are useful for one-time schedules. Specify the time, in UTC.
 
 For rate expressions, *value* is a positive integer and *unit* is `minute` | `minutes` | `hour` | `hours` | `day` | `days`.
 
-For more information about cron expressions, see [Cron](https://en.wikipedia.org/wiki/Cron).
+For more information about cron expressions, see [Cron Expressions](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions) in the *Amazon CloudWatch Events User Guide*.
 
 
 ## `ScheduledActionName = ::String` -- *Required*
@@ -1025,9 +1113,15 @@ The identifier of the resource associated with the scheduled action. This string
 
 *   DynamoDB global secondary index - The resource type is `index` and the unique identifier is the resource ID. Example: `table/my-table/index/my-table-index`.
 
+*   Aurora DB cluster - The resource type is `cluster` and the unique identifier is the cluster name. Example: `cluster:my-db-cluster`.
 
-## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits" or "dynamodb:index:WriteCapacityUnits"`
-The scalable dimension. This string consists of the service namespace, resource type, and scaling property.
+*   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
+
+*   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+
+
+## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits", "dynamodb:index:WriteCapacityUnits", "rds:cluster:ReadReplicaCount", "sagemaker:variant:DesiredInstanceCount" or "custom-resource:ResourceType:Property"`
+The scalable dimension. This parameter is required if you are creating a scheduled action. This string consists of the service namespace, resource type, and scaling property.
 
 *   `ecs:service:DesiredCount` - The desired task count of an ECS service.
 
@@ -1044,6 +1138,12 @@ The scalable dimension. This string consists of the service namespace, resource 
 *   `dynamodb:index:ReadCapacityUnits` - The provisioned read capacity for a DynamoDB global secondary index.
 
 *   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
+
+*   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+
+*   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
+
+*   `custom-resource:ResourceType:Property` - The scalable dimension for a custom resource provided by your own application or service.
 
 
 ## `StartTime = timestamp`
@@ -1075,7 +1175,6 @@ The new minimum and maximum capacity. You can set both values or just one. Durin
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/PutScheduledAction)
 """
-
 @inline put_scheduled_action(aws::AWSConfig=default_aws_config(); args...) = put_scheduled_action(aws, args)
 
 @inline put_scheduled_action(aws::AWSConfig, args) = AWSCore.Services.application_autoscaling(aws, "PutScheduledAction", args)
@@ -1094,14 +1193,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/applic
 
 # RegisterScalableTarget Operation
 
-Registers or updates a scalable target. A scalable target is a resource that Application Auto Scaling can scale out or scale in. After you have registered a scalable target, you can use this operation to update the minimum and maximum values for your scalable dimension.
+Registers or updates a scalable target. A scalable target is a resource that Application Auto Scaling can scale out or scale in. After you have registered a scalable target, you can use this operation to update the minimum and maximum values for its scalable dimension.
 
-After you register a scalable target, you can create and apply scaling policies using [PutScalingPolicy](@ref). You can view the scaling policies for a service namespace using [DescribeScalableTargets](@ref). If you are no longer using a scalable target, you can deregister it using [DeregisterScalableTarget](@ref).
+After you register a scalable target, you can create and apply scaling policies using [PutScalingPolicy](@ref). You can view the scaling policies for a service namespace using [DescribeScalableTargets](@ref). If you no longer need a scalable target, you can deregister it using [DeregisterScalableTarget](@ref).
 
 # Arguments
 
-## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream" or "dynamodb"` -- *Required*
-The namespace of the AWS service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
+## `ServiceNamespace = "ecs", "elasticmapreduce", "ec2", "appstream", "dynamodb", "rds", "sagemaker" or "custom-resource"` -- *Required*
+The namespace of the AWS service that provides the resource or `custom-resource` for a resource provided by your own application or service. For more information, see [AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) in the *Amazon Web Services General Reference*.
 
 
 ## `ResourceId = ::String` -- *Required*
@@ -1119,8 +1218,14 @@ The identifier of the resource associated with the scalable target. This string 
 
 *   DynamoDB global secondary index - The resource type is `index` and the unique identifier is the resource ID. Example: `table/my-table/index/my-table-index`.
 
+*   Aurora DB cluster - The resource type is `cluster` and the unique identifier is the cluster name. Example: `cluster:my-db-cluster`.
 
-## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits" or "dynamodb:index:WriteCapacityUnits"` -- *Required*
+*   Amazon SageMaker endpoint variants - The resource type is `variant` and the unique identifier is the resource ID. Example: `endpoint/my-end-point/variant/KMeansClustering`.
+
+*   Custom resources are not supported with a resource type. This parameter must specify the `OutputValue` from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider.
+
+
+## `ScalableDimension = "ecs:service:DesiredCount", "ec2:spot-fleet-request:TargetCapacity", "elasticmapreduce:instancegroup:InstanceCount", "appstream:fleet:DesiredCapacity", "dynamodb:table:ReadCapacityUnits", "dynamodb:table:WriteCapacityUnits", "dynamodb:index:ReadCapacityUnits", "dynamodb:index:WriteCapacityUnits", "rds:cluster:ReadReplicaCount", "sagemaker:variant:DesiredInstanceCount" or "custom-resource:ResourceType:Property"` -- *Required*
 The scalable dimension associated with the scalable target. This string consists of the service namespace, resource type, and scaling property.
 
 *   `ecs:service:DesiredCount` - The desired task count of an ECS service.
@@ -1139,17 +1244,25 @@ The scalable dimension associated with the scalable target. This string consists
 
 *   `dynamodb:index:WriteCapacityUnits` - The provisioned write capacity for a DynamoDB global secondary index.
 
+*   `rds:cluster:ReadReplicaCount` - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+
+*   `sagemaker:variant:DesiredInstanceCount` - The number of EC2 instances for an Amazon SageMaker model endpoint variant.
+
+*   `custom-resource:ResourceType:Property` - The scalable dimension for a custom resource provided by your own application or service.
+
 
 ## `MinCapacity = ::Int`
-The minimum value to scale to in response to a scale in event. This parameter is required if you are registering a scalable target and optional if you are updating one.
+The minimum value to scale to in response to a scale in event. This parameter is required if you are registering a scalable target.
 
 
 ## `MaxCapacity = ::Int`
-The maximum value to scale to in response to a scale out event. This parameter is required if you are registering a scalable target and optional if you are updating one.
+The maximum value to scale to in response to a scale out event. This parameter is required if you are registering a scalable target.
 
 
 ## `RoleARN = ::String`
-The ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf. This parameter is required when you register a scalable target and optional when you update one.
+Application Auto Scaling creates a service-linked role that grants it permissions to modify the scalable target on your behalf. For more information, see [Service-Linked Roles for Application Auto Scaling](http://docs.aws.amazon.com/autoscaling/application/userguide/application-autoscaling-service-linked-roles.html).
+
+For resources that are not supported using a service-linked role, this parameter is required and must specify the ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.
 
 
 
@@ -1203,7 +1316,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/RegisterScalableTarget)
 """
-
 @inline register_scalable_target(aws::AWSConfig=default_aws_config(); args...) = register_scalable_target(aws, args)
 
 @inline register_scalable_target(aws::AWSConfig, args) = AWSCore.Services.application_autoscaling(aws, "RegisterScalableTarget", args)

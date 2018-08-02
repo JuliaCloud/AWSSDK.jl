@@ -13,6 +13,152 @@ using AWSCore
 
 
 """
+    using AWSSDK.WorkSpaces.associate_ip_groups
+    associate_ip_groups([::AWSConfig], arguments::Dict)
+    associate_ip_groups([::AWSConfig]; DirectoryId=, GroupIds=)
+
+    using AWSCore.Services.workspaces
+    workspaces([::AWSConfig], "AssociateIpGroups", arguments::Dict)
+    workspaces([::AWSConfig], "AssociateIpGroups", DirectoryId=, GroupIds=)
+
+# AssociateIpGroups Operation
+
+Associates the specified IP access control group with the specified directory.
+
+# Arguments
+
+## `DirectoryId = ::String` -- *Required*
+The ID of the directory.
+
+
+## `GroupIds = [::String, ...]` -- *Required*
+The IDs of one or more IP access control groups.
+
+
+
+
+# Returns
+
+`AssociateIpGroupsResult`
+
+# Exceptions
+
+`InvalidParameterValuesException`, `ResourceNotFoundException`, `ResourceLimitExceededException`, `InvalidResourceStateException`, `AccessDeniedException` or `OperationNotSupportedException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/AssociateIpGroups)
+"""
+@inline associate_ip_groups(aws::AWSConfig=default_aws_config(); args...) = associate_ip_groups(aws, args)
+
+@inline associate_ip_groups(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "AssociateIpGroups", args)
+
+@inline associate_ip_groups(args) = associate_ip_groups(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WorkSpaces.authorize_ip_rules
+    authorize_ip_rules([::AWSConfig], arguments::Dict)
+    authorize_ip_rules([::AWSConfig]; GroupId=, UserRules=)
+
+    using AWSCore.Services.workspaces
+    workspaces([::AWSConfig], "AuthorizeIpRules", arguments::Dict)
+    workspaces([::AWSConfig], "AuthorizeIpRules", GroupId=, UserRules=)
+
+# AuthorizeIpRules Operation
+
+Adds one or more rules to the specified IP access control group.
+
+This action gives users permission to access their WorkSpaces from the CIDR address ranges specified in the rules.
+
+# Arguments
+
+## `GroupId = ::String` -- *Required*
+The ID of the group.
+
+
+## `UserRules = [[ ... ], ...]` -- *Required*
+The rules to add to the group.
+```
+ UserRules = [[
+        "ipRule" =>  ::String,
+        "ruleDesc" =>  ::String
+    ], ...]
+```
+
+
+
+# Returns
+
+`AuthorizeIpRulesResult`
+
+# Exceptions
+
+`InvalidParameterValuesException`, `ResourceNotFoundException`, `ResourceLimitExceededException`, `InvalidResourceStateException` or `AccessDeniedException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/AuthorizeIpRules)
+"""
+@inline authorize_ip_rules(aws::AWSConfig=default_aws_config(); args...) = authorize_ip_rules(aws, args)
+
+@inline authorize_ip_rules(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "AuthorizeIpRules", args)
+
+@inline authorize_ip_rules(args) = authorize_ip_rules(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WorkSpaces.create_ip_group
+    create_ip_group([::AWSConfig], arguments::Dict)
+    create_ip_group([::AWSConfig]; GroupName=, <keyword arguments>)
+
+    using AWSCore.Services.workspaces
+    workspaces([::AWSConfig], "CreateIpGroup", arguments::Dict)
+    workspaces([::AWSConfig], "CreateIpGroup", GroupName=, <keyword arguments>)
+
+# CreateIpGroup Operation
+
+Creates an IP access control group.
+
+An IP access control group provides you with the ability to control the IP addresses from which users are allowed to access their WorkSpaces. To specify the CIDR address ranges, add rules to your IP access control group and then associate the group with your directory. You can add rules when you create the group or at any time using [AuthorizeIpRules](@ref).
+
+There is a default IP access control group associated with your directory. If you don't associate an IP access control group with your directory, the default group is used. The default group includes a default rule that allows users to access their WorkSpaces from anywhere. You cannot modify the default IP access control group for your directory.
+
+# Arguments
+
+## `GroupName = ::String` -- *Required*
+The name of the group.
+
+
+## `GroupDesc = ::String`
+The description of the group.
+
+
+## `UserRules = [[ ... ], ...]`
+The rules to add to the group.
+```
+ UserRules = [[
+        "ipRule" =>  ::String,
+        "ruleDesc" =>  ::String
+    ], ...]
+```
+
+
+
+# Returns
+
+`CreateIpGroupResult`
+
+# Exceptions
+
+`InvalidParameterValuesException`, `ResourceLimitExceededException`, `ResourceAlreadyExistsException`, `ResourceCreationFailedException` or `AccessDeniedException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CreateIpGroup)
+"""
+@inline create_ip_group(aws::AWSConfig=default_aws_config(); args...) = create_ip_group(aws, args)
+
+@inline create_ip_group(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "CreateIpGroup", args)
+
+@inline create_ip_group(args) = create_ip_group(default_aws_config(), args)
+
+
+"""
     using AWSSDK.WorkSpaces.create_tags
     create_tags([::AWSConfig], arguments::Dict)
     create_tags([::AWSConfig]; ResourceId=, Tags=)
@@ -23,16 +169,16 @@ using AWSCore
 
 # CreateTags Operation
 
-Creates tags for a WorkSpace.
+Creates the specified tags for the specified WorkSpace.
 
 # Arguments
 
 ## `ResourceId = ::String` -- *Required*
-The resource ID of the request.
+The ID of the WorkSpace. To find this ID, use [DescribeWorkspaces](@ref).
 
 
 ## `Tags = [[ ... ], ...]` -- *Required*
-The tags of the request.
+The tags. Each WorkSpace can have a maximum of 50 tags.
 ```
  Tags = [[
         "Key" => <required> ::String,
@@ -52,7 +198,6 @@ The tags of the request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CreateTags)
 """
-
 @inline create_tags(aws::AWSConfig=default_aws_config(); args...) = create_tags(aws, args)
 
 @inline create_tags(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "CreateTags", args)
@@ -73,13 +218,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 Creates one or more WorkSpaces.
 
-**Note**
-> This operation is asynchronous and returns before the WorkSpaces are created.
+This operation is asynchronous and returns before the WorkSpaces are created.
 
 # Arguments
 
 ## `Workspaces = [[ ... ], ...]` -- *Required*
-An array of structures that specify the WorkSpaces to create.
+The WorkSpaces to create. You can specify up to 25 WorkSpaces.
 ```
  Workspaces = [[
         "DirectoryId" => <required> ::String,
@@ -90,7 +234,10 @@ An array of structures that specify the WorkSpaces to create.
         "RootVolumeEncryptionEnabled" =>  ::Bool,
         "WorkspaceProperties" =>  [
             "RunningMode" =>  "AUTO_STOP" or "ALWAYS_ON",
-            "RunningModeAutoStopTimeoutInMinutes" =>  ::Int
+            "RunningModeAutoStopTimeoutInMinutes" =>  ::Int,
+            "RootVolumeSizeGib" =>  ::Int,
+            "UserVolumeSizeGib" =>  ::Int,
+            "ComputeTypeName" =>  "VALUE", "STANDARD", "PERFORMANCE", "POWER" or "GRAPHICS"
         ],
         "Tags" =>  [[
             "Key" => <required> ::String,
@@ -111,12 +258,51 @@ An array of structures that specify the WorkSpaces to create.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CreateWorkspaces)
 """
-
 @inline create_workspaces(aws::AWSConfig=default_aws_config(); args...) = create_workspaces(aws, args)
 
 @inline create_workspaces(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "CreateWorkspaces", args)
 
 @inline create_workspaces(args) = create_workspaces(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WorkSpaces.delete_ip_group
+    delete_ip_group([::AWSConfig], arguments::Dict)
+    delete_ip_group([::AWSConfig]; GroupId=)
+
+    using AWSCore.Services.workspaces
+    workspaces([::AWSConfig], "DeleteIpGroup", arguments::Dict)
+    workspaces([::AWSConfig], "DeleteIpGroup", GroupId=)
+
+# DeleteIpGroup Operation
+
+Deletes the specified IP access control group.
+
+You cannot delete an IP access control group that is associated with a directory.
+
+# Arguments
+
+## `GroupId = ::String` -- *Required*
+The ID of the IP access control group.
+
+
+
+
+# Returns
+
+`DeleteIpGroupResult`
+
+# Exceptions
+
+`InvalidParameterValuesException`, `ResourceNotFoundException`, `ResourceAssociatedException` or `AccessDeniedException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DeleteIpGroup)
+"""
+@inline delete_ip_group(aws::AWSConfig=default_aws_config(); args...) = delete_ip_group(aws, args)
+
+@inline delete_ip_group(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "DeleteIpGroup", args)
+
+@inline delete_ip_group(args) = delete_ip_group(default_aws_config(), args)
 
 
 """
@@ -130,16 +316,16 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 # DeleteTags Operation
 
-Deletes tags from a WorkSpace.
+Deletes the specified tags from the specified WorkSpace.
 
 # Arguments
 
 ## `ResourceId = ::String` -- *Required*
-The resource ID of the request.
+The ID of the WorkSpace. To find this ID, use [DescribeWorkspaces](@ref).
 
 
 ## `TagKeys = [::String, ...]` -- *Required*
-The tag keys of the request.
+The tag keys.
 
 
 
@@ -154,12 +340,57 @@ The tag keys of the request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DeleteTags)
 """
-
 @inline delete_tags(aws::AWSConfig=default_aws_config(); args...) = delete_tags(aws, args)
 
 @inline delete_tags(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "DeleteTags", args)
 
 @inline delete_tags(args) = delete_tags(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WorkSpaces.describe_ip_groups
+    describe_ip_groups([::AWSConfig], arguments::Dict)
+    describe_ip_groups([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.workspaces
+    workspaces([::AWSConfig], "DescribeIpGroups", arguments::Dict)
+    workspaces([::AWSConfig], "DescribeIpGroups", <keyword arguments>)
+
+# DescribeIpGroups Operation
+
+Describes one or more of your IP access control groups.
+
+# Arguments
+
+## `GroupIds = [::String, ...]`
+The IDs of one or more IP access control groups.
+
+
+## `NextToken = ::String`
+The token for the next set of results. (You received this token from a previous call.)
+
+
+## `MaxResults = ::Int`
+The maximum number of items to return.
+
+
+
+
+# Returns
+
+`DescribeIpGroupsResult`
+
+# Exceptions
+
+`InvalidParameterValuesException` or `AccessDeniedException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeIpGroups)
+"""
+@inline describe_ip_groups(aws::AWSConfig=default_aws_config(); args...) = describe_ip_groups(aws, args)
+
+@inline describe_ip_groups(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "DescribeIpGroups", args)
+
+@inline describe_ip_groups(args) = describe_ip_groups(default_aws_config(), args)
 
 
 """
@@ -173,12 +404,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 # DescribeTags Operation
 
-Describes tags for a WorkSpace.
+Describes the specified tags for the specified WorkSpace.
 
 # Arguments
 
 ## `ResourceId = ::String` -- *Required*
-The resource ID of the request.
+The ID of the WorkSpace. To find this ID, use [DescribeWorkspaces](@ref).
 
 
 
@@ -193,7 +424,6 @@ The resource ID of the request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeTags)
 """
-
 @inline describe_tags(aws::AWSConfig=default_aws_config(); args...) = describe_tags(aws, args)
 
 @inline describe_tags(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "DescribeTags", args)
@@ -212,30 +442,24 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 # DescribeWorkspaceBundles Operation
 
-Obtains information about the WorkSpace bundles that are available to your account in the specified region.
+Describes the available WorkSpace bundles.
 
-You can filter the results with either the `BundleIds` parameter, or the `Owner` parameter, but not both.
-
-This operation supports pagination with the use of the `NextToken` request and response parameters. If more results are available, the `NextToken` response member contains a token that you pass in the next call to this operation to retrieve the next set of items.
+You can filter the results using either bundle ID or owner, but not both.
 
 # Arguments
 
 ## `BundleIds = [::String, ...]`
-An array of strings that contains the identifiers of the bundles to retrieve. This parameter cannot be combined with any other filter parameter.
+The IDs of the bundles. This parameter cannot be combined with any other filter.
 
 
 ## `Owner = ::String`
-The owner of the bundles to retrieve. This parameter cannot be combined with any other filter parameter.
+The owner of the bundles. This parameter cannot be combined with any other filter.
 
-This contains one of the following values:
-
-*   null- Retrieves the bundles that belong to the account making the call.
-
-*   `AMAZON`- Retrieves the bundles that are provided by AWS.
+Specify `AMAZON` to describe the bundles provided by AWS or null to describe the bundles that belong to your account.
 
 
 ## `NextToken = ::String`
-The `NextToken` value from a previous call to this operation. Pass null if this is the first call.
+The token for the next set of results. (You received this token from a previous call.)
 
 
 
@@ -250,7 +474,6 @@ The `NextToken` value from a previous call to this operation. Pass null if this 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceBundles)
 """
-
 @inline describe_workspace_bundles(aws::AWSConfig=default_aws_config(); args...) = describe_workspace_bundles(aws, args)
 
 @inline describe_workspace_bundles(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "DescribeWorkspaceBundles", args)
@@ -269,18 +492,16 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 # DescribeWorkspaceDirectories Operation
 
-Retrieves information about the AWS Directory Service directories in the region that are registered with Amazon WorkSpaces and are available to your account.
-
-This operation supports pagination with the use of the `NextToken` request and response parameters. If more results are available, the `NextToken` response member contains a token that you pass in the next call to this operation to retrieve the next set of items.
+Describes the available AWS Directory Service directories that are registered with Amazon WorkSpaces.
 
 # Arguments
 
 ## `DirectoryIds = [::String, ...]`
-An array of strings that contains the directory identifiers to retrieve information for. If this member is null, all directories are retrieved.
+The identifiers of the directories. If the value is null, all directories are retrieved.
 
 
 ## `NextToken = ::String`
-The `NextToken` value from a previous call to this operation. Pass null if this is the first call.
+The token for the next set of results. (You received this token from a previous call.)
 
 
 
@@ -295,7 +516,6 @@ The `NextToken` value from a previous call to this operation. Pass null if this 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceDirectories)
 """
-
 @inline describe_workspace_directories(aws::AWSConfig=default_aws_config(); args...) = describe_workspace_directories(aws, args)
 
 @inline describe_workspace_directories(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "DescribeWorkspaceDirectories", args)
@@ -314,30 +534,28 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 # DescribeWorkspaces Operation
 
-Obtains information about the specified WorkSpaces.
+Describes the specified WorkSpaces.
 
-Only one of the filter parameters, such as `BundleId`, `DirectoryId`, or `WorkspaceIds`, can be specified at a time.
-
-This operation supports pagination with the use of the `NextToken` request and response parameters. If more results are available, the `NextToken` response member contains a token that you pass in the next call to this operation to retrieve the next set of items.
+You can filter the results using bundle ID, directory ID, or owner, but you can specify only one filter at a time.
 
 # Arguments
 
 ## `WorkspaceIds = [::String, ...]`
-An array of strings that contain the identifiers of the WorkSpaces for which to retrieve information. This parameter cannot be combined with any other filter parameter.
+The IDs of the WorkSpaces. This parameter cannot be combined with any other filter.
 
 Because the [CreateWorkspaces](@ref) operation is asynchronous, the identifier it returns is not immediately available. If you immediately call [DescribeWorkspaces](@ref) with this identifier, no information is returned.
 
 
 ## `DirectoryId = ::String`
-Specifies the directory identifier to which to limit the WorkSpaces. Optionally, you can specify a specific directory user with the `UserName` parameter. This parameter cannot be combined with any other filter parameter.
+The ID of the directory. In addition, you can optionally specify a specific directory user (see `UserName`). This parameter cannot be combined with any other filter.
 
 
 ## `UserName = ::String`
-Used with the `DirectoryId` parameter to specify the directory user for whom to obtain the WorkSpace.
+The name of the directory user. You must specify this parameter with `DirectoryId`.
 
 
 ## `BundleId = ::String`
-The identifier of a bundle to obtain the WorkSpaces for. All WorkSpaces that are created from this bundle will be retrieved. This parameter cannot be combined with any other filter parameter.
+The ID of the bundle. All WorkSpaces that are created from this bundle are retrieved. This parameter cannot be combined with any other filter.
 
 
 ## `Limit = ::Int`
@@ -345,7 +563,7 @@ The maximum number of items to return.
 
 
 ## `NextToken = ::String`
-The `NextToken` value from a previous call to this operation. Pass null if this is the first call.
+The token for the next set of results. (You received this token from a previous call.)
 
 
 
@@ -360,7 +578,6 @@ The `NextToken` value from a previous call to this operation. Pass null if this 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaces)
 """
-
 @inline describe_workspaces(aws::AWSConfig=default_aws_config(); args...) = describe_workspaces(aws, args)
 
 @inline describe_workspaces(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "DescribeWorkspaces", args)
@@ -379,16 +596,16 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 # DescribeWorkspacesConnectionStatus Operation
 
-Describes the connection status of a specified WorkSpace.
+Describes the connection status of the specified WorkSpaces.
 
 # Arguments
 
 ## `WorkspaceIds = [::String, ...]`
-An array of strings that contain the identifiers of the WorkSpaces.
+The identifiers of the WorkSpaces. You can specify up to 25 WorkSpaces.
 
 
 ## `NextToken = ::String`
-The next token of the request.
+The token for the next set of results. (You received this token from a previous call.)
 
 
 
@@ -403,12 +620,53 @@ The next token of the request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspacesConnectionStatus)
 """
-
 @inline describe_workspaces_connection_status(aws::AWSConfig=default_aws_config(); args...) = describe_workspaces_connection_status(aws, args)
 
 @inline describe_workspaces_connection_status(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "DescribeWorkspacesConnectionStatus", args)
 
 @inline describe_workspaces_connection_status(args) = describe_workspaces_connection_status(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WorkSpaces.disassociate_ip_groups
+    disassociate_ip_groups([::AWSConfig], arguments::Dict)
+    disassociate_ip_groups([::AWSConfig]; DirectoryId=, GroupIds=)
+
+    using AWSCore.Services.workspaces
+    workspaces([::AWSConfig], "DisassociateIpGroups", arguments::Dict)
+    workspaces([::AWSConfig], "DisassociateIpGroups", DirectoryId=, GroupIds=)
+
+# DisassociateIpGroups Operation
+
+Disassociates the specified IP access control group from the specified directory.
+
+# Arguments
+
+## `DirectoryId = ::String` -- *Required*
+The ID of the directory.
+
+
+## `GroupIds = [::String, ...]` -- *Required*
+The IDs of one or more IP access control groups.
+
+
+
+
+# Returns
+
+`DisassociateIpGroupsResult`
+
+# Exceptions
+
+`InvalidParameterValuesException`, `ResourceNotFoundException`, `InvalidResourceStateException` or `AccessDeniedException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DisassociateIpGroups)
+"""
+@inline disassociate_ip_groups(aws::AWSConfig=default_aws_config(); args...) = disassociate_ip_groups(aws, args)
+
+@inline disassociate_ip_groups(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "DisassociateIpGroups", args)
+
+@inline disassociate_ip_groups(args) = disassociate_ip_groups(default_aws_config(), args)
 
 
 """
@@ -422,7 +680,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 # ModifyWorkspaceProperties Operation
 
-Modifies the WorkSpace properties, including the running mode and AutoStop time.
+Modifies the specified WorkSpace properties.
 
 # Arguments
 
@@ -431,11 +689,14 @@ The ID of the WorkSpace.
 
 
 ## `WorkspaceProperties = [ ... ]` -- *Required*
-The WorkSpace properties of the request.
+The properties of the WorkSpace.
 ```
  WorkspaceProperties = [
         "RunningMode" =>  "AUTO_STOP" or "ALWAYS_ON",
-        "RunningModeAutoStopTimeoutInMinutes" =>  ::Int
+        "RunningModeAutoStopTimeoutInMinutes" =>  ::Int,
+        "RootVolumeSizeGib" =>  ::Int,
+        "UserVolumeSizeGib" =>  ::Int,
+        "ComputeTypeName" =>  "VALUE", "STANDARD", "PERFORMANCE", "POWER" or "GRAPHICS"
     ]
 ```
 
@@ -451,12 +712,55 @@ The WorkSpace properties of the request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifyWorkspaceProperties)
 """
-
 @inline modify_workspace_properties(aws::AWSConfig=default_aws_config(); args...) = modify_workspace_properties(aws, args)
 
 @inline modify_workspace_properties(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "ModifyWorkspaceProperties", args)
 
 @inline modify_workspace_properties(args) = modify_workspace_properties(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WorkSpaces.modify_workspace_state
+    modify_workspace_state([::AWSConfig], arguments::Dict)
+    modify_workspace_state([::AWSConfig]; WorkspaceId=, WorkspaceState=)
+
+    using AWSCore.Services.workspaces
+    workspaces([::AWSConfig], "ModifyWorkspaceState", arguments::Dict)
+    workspaces([::AWSConfig], "ModifyWorkspaceState", WorkspaceId=, WorkspaceState=)
+
+# ModifyWorkspaceState Operation
+
+Sets the state of the specified WorkSpace.
+
+To maintain a WorkSpace without being interrupted, set the WorkSpace state to `ADMIN_MAINTENANCE`. WorkSpaces in this state do not respond to requests to reboot, stop, start, or rebuild. An AutoStop WorkSpace in this state is not stopped. Users can log into a WorkSpace in the `ADMIN_MAINTENANCE` state.
+
+# Arguments
+
+## `WorkspaceId = ::String` -- *Required*
+The ID of the WorkSpace.
+
+
+## `WorkspaceState = "AVAILABLE" or "ADMIN_MAINTENANCE"` -- *Required*
+The WorkSpace state.
+
+
+
+
+# Returns
+
+`ModifyWorkspaceStateResult`
+
+# Exceptions
+
+`InvalidParameterValuesException`, `InvalidResourceStateException` or `ResourceNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifyWorkspaceState)
+"""
+@inline modify_workspace_state(aws::AWSConfig=default_aws_config(); args...) = modify_workspace_state(aws, args)
+
+@inline modify_workspace_state(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "ModifyWorkspaceState", args)
+
+@inline modify_workspace_state(args) = modify_workspace_state(default_aws_config(), args)
 
 
 """
@@ -472,15 +776,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 Reboots the specified WorkSpaces.
 
-To be able to reboot a WorkSpace, the WorkSpace must have a **State** of `AVAILABLE`, `IMPAIRED`, or `INOPERABLE`.
+You cannot reboot a WorkSpace unless its state is `AVAILABLE` or `UNHEALTHY`.
 
-**Note**
-> This operation is asynchronous and returns before the WorkSpaces have rebooted.
+This operation is asynchronous and returns before the WorkSpaces have rebooted.
 
 # Arguments
 
 ## `RebootWorkspaceRequests = [["WorkspaceId" => <required> ::String], ...]` -- *Required*
-An array of structures that specify the WorkSpaces to reboot.
+The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.
 
 
 
@@ -491,7 +794,6 @@ An array of structures that specify the WorkSpaces to reboot.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RebootWorkspaces)
 """
-
 @inline reboot_workspaces(aws::AWSConfig=default_aws_config(); args...) = reboot_workspaces(aws, args)
 
 @inline reboot_workspaces(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "RebootWorkspaces", args)
@@ -510,23 +812,18 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 # RebuildWorkspaces Operation
 
-Rebuilds the specified WorkSpaces.
+Rebuilds the specified WorkSpace.
 
-Rebuilding a WorkSpace is a potentially destructive action that can result in the loss of data. Rebuilding a WorkSpace causes the following to occur:
+You cannot rebuild a WorkSpace unless its state is `AVAILABLE`, `ERROR`, or `UNHEALTHY`.
 
-*   The system is restored to the image of the bundle that the WorkSpace is created from. Any applications that have been installed, or system settings that have been made since the WorkSpace was created will be lost.
+Rebuilding a WorkSpace is a potentially destructive action that can result in the loss of data. For more information, see [Rebuild a WorkSpace](http://docs.aws.amazon.com/workspaces/latest/adminguide/reset-workspace.html).
 
-*   The data drive (D drive) is re-created from the last automatic snapshot taken of the data drive. The current contents of the data drive are overwritten. Automatic snapshots of the data drive are taken every 12 hours, so the snapshot can be as much as 12 hours old.
-
-To be able to rebuild a WorkSpace, the WorkSpace must have a **State** of `AVAILABLE` or `ERROR`.
-
-**Note**
-> This operation is asynchronous and returns before the WorkSpaces have been completely rebuilt.
+This operation is asynchronous and returns before the WorkSpaces have been completely rebuilt.
 
 # Arguments
 
 ## `RebuildWorkspaceRequests = [["WorkspaceId" => <required> ::String], ...]` -- *Required*
-An array of structures that specify the WorkSpaces to rebuild.
+The WorkSpace to rebuild. You can specify a single WorkSpace.
 
 
 
@@ -537,12 +834,53 @@ An array of structures that specify the WorkSpaces to rebuild.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RebuildWorkspaces)
 """
-
 @inline rebuild_workspaces(aws::AWSConfig=default_aws_config(); args...) = rebuild_workspaces(aws, args)
 
 @inline rebuild_workspaces(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "RebuildWorkspaces", args)
 
 @inline rebuild_workspaces(args) = rebuild_workspaces(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WorkSpaces.revoke_ip_rules
+    revoke_ip_rules([::AWSConfig], arguments::Dict)
+    revoke_ip_rules([::AWSConfig]; GroupId=, UserRules=)
+
+    using AWSCore.Services.workspaces
+    workspaces([::AWSConfig], "RevokeIpRules", arguments::Dict)
+    workspaces([::AWSConfig], "RevokeIpRules", GroupId=, UserRules=)
+
+# RevokeIpRules Operation
+
+Removes one or more rules from the specified IP access control group.
+
+# Arguments
+
+## `GroupId = ::String` -- *Required*
+The ID of the group.
+
+
+## `UserRules = [::String, ...]` -- *Required*
+The rules to remove from the group.
+
+
+
+
+# Returns
+
+`RevokeIpRulesResult`
+
+# Exceptions
+
+`InvalidParameterValuesException`, `ResourceNotFoundException`, `InvalidResourceStateException` or `AccessDeniedException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RevokeIpRules)
+"""
+@inline revoke_ip_rules(aws::AWSConfig=default_aws_config(); args...) = revoke_ip_rules(aws, args)
+
+@inline revoke_ip_rules(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "RevokeIpRules", args)
+
+@inline revoke_ip_rules(args) = revoke_ip_rules(default_aws_config(), args)
 
 
 """
@@ -556,12 +894,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 # StartWorkspaces Operation
 
-Starts the specified WorkSpaces. The WorkSpaces must have a running mode of AutoStop and a state of STOPPED.
+Starts the specified WorkSpaces.
+
+You cannot start a WorkSpace unless it has a running mode of `AutoStop` and a state of `STOPPED`.
 
 # Arguments
 
 ## `StartWorkspaceRequests = [["WorkspaceId" =>  ::String], ...]` -- *Required*
-The requests.
+The WorkSpaces to start. You can specify up to 25 WorkSpaces.
 
 
 
@@ -572,7 +912,6 @@ The requests.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/StartWorkspaces)
 """
-
 @inline start_workspaces(aws::AWSConfig=default_aws_config(); args...) = start_workspaces(aws, args)
 
 @inline start_workspaces(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "StartWorkspaces", args)
@@ -591,12 +930,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 # StopWorkspaces Operation
 
-Stops the specified WorkSpaces. The WorkSpaces must have a running mode of AutoStop and a state of AVAILABLE, IMPAIRED, UNHEALTHY, or ERROR.
+Stops the specified WorkSpaces.
+
+You cannot stop a WorkSpace unless it has a running mode of `AutoStop` and a state of `AVAILABLE`, `IMPAIRED`, `UNHEALTHY`, or `ERROR`.
 
 # Arguments
 
 ## `StopWorkspaceRequests = [["WorkspaceId" =>  ::String], ...]` -- *Required*
-The requests.
+The WorkSpaces to stop. You can specify up to 25 WorkSpaces.
 
 
 
@@ -607,7 +948,6 @@ The requests.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/StopWorkspaces)
 """
-
 @inline stop_workspaces(aws::AWSConfig=default_aws_config(); args...) = stop_workspaces(aws, args)
 
 @inline stop_workspaces(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "StopWorkspaces", args)
@@ -628,17 +968,16 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/worksp
 
 Terminates the specified WorkSpaces.
 
-Terminating a WorkSpace is a permanent action and cannot be undone. The user's data is not maintained and will be destroyed. If you need to archive any user data, contact Amazon Web Services before terminating the WorkSpace.
+Terminating a WorkSpace is a permanent action and cannot be undone. The user's data is destroyed. If you need to archive any user data, contact Amazon Web Services before terminating the WorkSpace.
 
 You can terminate a WorkSpace that is in any state except `SUSPENDED`.
 
-**Note**
-> This operation is asynchronous and returns before the WorkSpaces have been completely terminated.
+This operation is asynchronous and returns before the WorkSpaces have been completely terminated.
 
 # Arguments
 
 ## `TerminateWorkspaceRequests = [["WorkspaceId" => <required> ::String], ...]` -- *Required*
-An array of structures that specify the WorkSpaces to terminate.
+The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
 
 
 
@@ -649,12 +988,58 @@ An array of structures that specify the WorkSpaces to terminate.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/TerminateWorkspaces)
 """
-
 @inline terminate_workspaces(aws::AWSConfig=default_aws_config(); args...) = terminate_workspaces(aws, args)
 
 @inline terminate_workspaces(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "TerminateWorkspaces", args)
 
 @inline terminate_workspaces(args) = terminate_workspaces(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WorkSpaces.update_rules_of_ip_group
+    update_rules_of_ip_group([::AWSConfig], arguments::Dict)
+    update_rules_of_ip_group([::AWSConfig]; GroupId=, UserRules=)
+
+    using AWSCore.Services.workspaces
+    workspaces([::AWSConfig], "UpdateRulesOfIpGroup", arguments::Dict)
+    workspaces([::AWSConfig], "UpdateRulesOfIpGroup", GroupId=, UserRules=)
+
+# UpdateRulesOfIpGroup Operation
+
+Replaces the current rules of the specified IP access control group with the specified rules.
+
+# Arguments
+
+## `GroupId = ::String` -- *Required*
+The ID of the group.
+
+
+## `UserRules = [[ ... ], ...]` -- *Required*
+One or more rules.
+```
+ UserRules = [[
+        "ipRule" =>  ::String,
+        "ruleDesc" =>  ::String
+    ], ...]
+```
+
+
+
+# Returns
+
+`UpdateRulesOfIpGroupResult`
+
+# Exceptions
+
+`InvalidParameterValuesException`, `ResourceNotFoundException`, `ResourceLimitExceededException`, `InvalidResourceStateException` or `AccessDeniedException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/UpdateRulesOfIpGroup)
+"""
+@inline update_rules_of_ip_group(aws::AWSConfig=default_aws_config(); args...) = update_rules_of_ip_group(aws, args)
+
+@inline update_rules_of_ip_group(aws::AWSConfig, args) = AWSCore.Services.workspaces(aws, "UpdateRulesOfIpGroup", args)
+
+@inline update_rules_of_ip_group(args) = update_rules_of_ip_group(default_aws_config(), args)
 
 
 

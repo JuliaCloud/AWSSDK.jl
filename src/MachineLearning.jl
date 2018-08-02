@@ -56,7 +56,6 @@ The type of the ML object to tag.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/AddTags)
 """
-
 @inline add_tags(aws::AWSConfig=default_aws_config(); args...) = add_tags(aws, args)
 
 @inline add_tags(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "AddTags", args)
@@ -117,7 +116,6 @@ Amazon ML needs permissions to store and retrieve the logs on your behalf. For i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/CreateBatchPrediction)
 """
-
 @inline create_batch_prediction(aws::AWSConfig=default_aws_config(); args...) = create_batch_prediction(aws, args)
 
 @inline create_batch_prediction(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "CreateBatchPrediction", args)
@@ -220,7 +218,6 @@ The compute statistics for a `DataSource`. The statistics are generated from the
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/CreateDataSourceFromRDS)
 """
-
 @inline create_data_source_from_rds(aws::AWSConfig=default_aws_config(); args...) = create_data_source_from_rds(aws, args)
 
 @inline create_data_source_from_rds(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "CreateDataSourceFromRDS", args)
@@ -323,7 +320,6 @@ The compute statistics for a `DataSource`. The statistics are generated from the
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/CreateDataSourceFromRedshift)
 """
-
 @inline create_data_source_from_redshift(aws::AWSConfig=default_aws_config(); args...) = create_data_source_from_redshift(aws, args)
 
 @inline create_data_source_from_redshift(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "CreateDataSourceFromRedshift", args)
@@ -399,7 +395,6 @@ The compute statistics for a `DataSource`. The statistics are generated from the
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/CreateDataSourceFromS3)
 """
-
 @inline create_data_source_from_s3(aws::AWSConfig=default_aws_config(); args...) = create_data_source_from_s3(aws, args)
 
 @inline create_data_source_from_s3(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "CreateDataSourceFromS3", args)
@@ -456,7 +451,6 @@ The ID of the `DataSource` for the evaluation. The schema of the `DataSource` mu
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/CreateEvaluation)
 """
-
 @inline create_evaluation(aws::AWSConfig=default_aws_config(); args...) = create_evaluation(aws, args)
 
 @inline create_evaluation(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "CreateEvaluation", args)
@@ -551,7 +545,6 @@ The Amazon Simple Storage Service (Amazon S3) location and file name that contai
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/CreateMLModel)
 """
-
 @inline create_mlmodel(aws::AWSConfig=default_aws_config(); args...) = create_mlmodel(aws, args)
 
 @inline create_mlmodel(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "CreateMLModel", args)
@@ -590,7 +583,6 @@ The ID assigned to the `MLModel` during creation.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/CreateRealtimeEndpoint)
 """
-
 @inline create_realtime_endpoint(aws::AWSConfig=default_aws_config(); args...) = create_realtime_endpoint(aws, args)
 
 @inline create_realtime_endpoint(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "CreateRealtimeEndpoint", args)
@@ -633,7 +625,6 @@ A user-supplied ID that uniquely identifies the `BatchPrediction`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/DeleteBatchPrediction)
 """
-
 @inline delete_batch_prediction(aws::AWSConfig=default_aws_config(); args...) = delete_batch_prediction(aws, args)
 
 @inline delete_batch_prediction(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "DeleteBatchPrediction", args)
@@ -676,7 +667,6 @@ A user-supplied ID that uniquely identifies the `DataSource`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/DeleteDataSource)
 """
-
 @inline delete_data_source(aws::AWSConfig=default_aws_config(); args...) = delete_data_source(aws, args)
 
 @inline delete_data_source(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "DeleteDataSource", args)
@@ -721,7 +711,6 @@ A user-supplied ID that uniquely identifies the `Evaluation` to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/DeleteEvaluation)
 """
-
 @inline delete_evaluation(aws::AWSConfig=default_aws_config(); args...) = delete_evaluation(aws, args)
 
 @inline delete_evaluation(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "DeleteEvaluation", args)
@@ -764,7 +753,6 @@ A user-supplied ID that uniquely identifies the `MLModel`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/DeleteMLModel)
 """
-
 @inline delete_mlmodel(aws::AWSConfig=default_aws_config(); args...) = delete_mlmodel(aws, args)
 
 @inline delete_mlmodel(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "DeleteMLModel", args)
@@ -803,7 +791,6 @@ The ID assigned to the `MLModel` during creation.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/DeleteRealtimeEndpoint)
 """
-
 @inline delete_realtime_endpoint(aws::AWSConfig=default_aws_config(); args...) = delete_realtime_endpoint(aws, args)
 
 @inline delete_realtime_endpoint(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "DeleteRealtimeEndpoint", args)
@@ -852,7 +839,6 @@ The type of the tagged ML object.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/DeleteTags)
 """
-
 @inline delete_tags(aws::AWSConfig=default_aws_config(); args...) = delete_tags(aws, args)
 
 @inline delete_tags(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "DeleteTags", args)
@@ -952,7 +938,6 @@ The number of pages of information to include in the result. The range of accept
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/DescribeBatchPredictions)
 """
-
 @inline describe_batch_predictions(aws::AWSConfig=default_aws_config(); args...) = describe_batch_predictions(aws, args)
 
 @inline describe_batch_predictions(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "DescribeBatchPredictions", args)
@@ -1050,7 +1035,6 @@ The maximum number of `DataSource` to include in the result.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/DescribeDataSources)
 """
-
 @inline describe_data_sources(aws::AWSConfig=default_aws_config(); args...) = describe_data_sources(aws, args)
 
 @inline describe_data_sources(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "DescribeDataSources", args)
@@ -1150,7 +1134,6 @@ The maximum number of `Evaluation` to include in the result.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/DescribeEvaluations)
 """
-
 @inline describe_evaluations(aws::AWSConfig=default_aws_config(); args...) = describe_evaluations(aws, args)
 
 @inline describe_evaluations(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "DescribeEvaluations", args)
@@ -1252,7 +1235,6 @@ The number of pages of information to include in the result. The range of accept
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/DescribeMLModels)
 """
-
 @inline describe_mlmodels(aws::AWSConfig=default_aws_config(); args...) = describe_mlmodels(aws, args)
 
 @inline describe_mlmodels(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "DescribeMLModels", args)
@@ -1295,7 +1277,6 @@ The type of the ML object.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/DescribeTags)
 """
-
 @inline describe_tags(aws::AWSConfig=default_aws_config(); args...) = describe_tags(aws, args)
 
 @inline describe_tags(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "DescribeTags", args)
@@ -1334,7 +1315,6 @@ An ID assigned to the `BatchPrediction` at creation.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/GetBatchPrediction)
 """
-
 @inline get_batch_prediction(aws::AWSConfig=default_aws_config(); args...) = get_batch_prediction(aws, args)
 
 @inline get_batch_prediction(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "GetBatchPrediction", args)
@@ -1383,7 +1363,6 @@ If false, `DataSourceSchema` is not returned.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/GetDataSource)
 """
-
 @inline get_data_source(aws::AWSConfig=default_aws_config(); args...) = get_data_source(aws, args)
 
 @inline get_data_source(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "GetDataSource", args)
@@ -1422,7 +1401,6 @@ The ID of the `Evaluation` to retrieve. The evaluation of each `MLModel` is reco
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/GetEvaluation)
 """
-
 @inline get_evaluation(aws::AWSConfig=default_aws_config(); args...) = get_evaluation(aws, args)
 
 @inline get_evaluation(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "GetEvaluation", args)
@@ -1471,7 +1449,6 @@ If false, `Recipe` is not returned.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/GetMLModel)
 """
-
 @inline get_mlmodel(aws::AWSConfig=default_aws_config(); args...) = get_mlmodel(aws, args)
 
 @inline get_mlmodel(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "GetMLModel", args)
@@ -1523,7 +1500,6 @@ A unique identifier of the `MLModel`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/Predict)
 """
-
 @inline predict(aws::AWSConfig=default_aws_config(); args...) = predict(aws, args)
 
 @inline predict(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "Predict", args)
@@ -1568,7 +1544,6 @@ A new user-supplied name or description of the `BatchPrediction`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/UpdateBatchPrediction)
 """
-
 @inline update_batch_prediction(aws::AWSConfig=default_aws_config(); args...) = update_batch_prediction(aws, args)
 
 @inline update_batch_prediction(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "UpdateBatchPrediction", args)
@@ -1613,7 +1588,6 @@ A new user-supplied name or description of the `DataSource` that will replace th
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/UpdateDataSource)
 """
-
 @inline update_data_source(aws::AWSConfig=default_aws_config(); args...) = update_data_source(aws, args)
 
 @inline update_data_source(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "UpdateDataSource", args)
@@ -1658,7 +1632,6 @@ A new user-supplied name or description of the `Evaluation` that will replace th
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/UpdateEvaluation)
 """
-
 @inline update_evaluation(aws::AWSConfig=default_aws_config(); args...) = update_evaluation(aws, args)
 
 @inline update_evaluation(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "UpdateEvaluation", args)
@@ -1709,7 +1682,6 @@ Output values greater than or equal to the `ScoreThreshold` receive a positive r
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/UpdateMLModel)
 """
-
 @inline update_mlmodel(aws::AWSConfig=default_aws_config(); args...) = update_mlmodel(aws, args)
 
 @inline update_mlmodel(aws::AWSConfig, args) = AWSCore.Services.machinelearning(aws, "UpdateMLModel", args)

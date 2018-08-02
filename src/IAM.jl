@@ -25,12 +25,12 @@ using AWSCore
 
 Adds a new client ID (also known as audience) to the list of client IDs already registered for the specified IAM OpenID Connect (OIDC) provider resource.
 
-This action is idempotent; it does not fail or return an error if you add an existing client ID to the provider.
+This operation is idempotent; it does not fail or return an error if you add an existing client ID to the provider.
 
 # Arguments
 
 ## `OpenIDConnectProviderArn = ::String` -- *Required*
-The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC) provider resource to add the client ID to. You can get a list of OIDC provider ARNs by using the [ListOpenIDConnectProviders](@ref) action.
+The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC) provider resource to add the client ID to. You can get a list of OIDC provider ARNs by using the [ListOpenIDConnectProviders](@ref) operation.
 
 
 ## `ClientID = ::String` -- *Required*
@@ -57,7 +57,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/AddClientIDToOpenIDConnectProvider)
 """
-
 @inline add_client_idto_open_idconnect_provider(aws::AWSConfig=default_aws_config(); args...) = add_client_idto_open_idconnect_provider(aws, args)
 
 @inline add_client_idto_open_idconnect_provider(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "AddClientIDToOpenIDConnectProvider", args)
@@ -76,7 +75,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # AddRoleToInstanceProfile Operation
 
-Adds the specified IAM role to the specified instance profile. An instance profile can contain only one role, and this limit cannot be increased.
+Adds the specified IAM role to the specified instance profile. An instance profile can contain only one role, and this limit cannot be increased. You can remove the existing role and then add a different role to an instance profile. You must then wait for the change to appear across all of AWS because of [eventual consistency](https://en.wikipedia.org/wiki/Eventual_consistency). To force the change, you must [disassociate the instance profile](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateIamInstanceProfile.html) and then [associate the instance profile](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateIamInstanceProfile.html), or you can stop your instance and then restart it.
 
 **Note**
 > The caller of this API must be granted the `PassRole` permission on the IAM role by a permission policy.
@@ -88,7 +87,7 @@ For more information about roles, go to [Working with Roles](http://docs.aws.ama
 ## `InstanceProfileName = ::String` -- *Required*
 The name of the instance profile to update.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `RoleName = ::String` -- *Required*
@@ -117,7 +116,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/AddRoleToInstanceProfile)
 """
-
 @inline add_role_to_instance_profile(aws::AWSConfig=default_aws_config(); args...) = add_role_to_instance_profile(aws, args)
 
 @inline add_role_to_instance_profile(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "AddRoleToInstanceProfile", args)
@@ -143,13 +141,13 @@ Adds the specified user to the specified group.
 ## `GroupName = ::String` -- *Required*
 The name of the group to update.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `UserName = ::String` -- *Required*
 The name of the user to add.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -172,7 +170,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/AddUserToGroup)
 """
-
 @inline add_user_to_group(aws::AWSConfig=default_aws_config(); args...) = add_user_to_group(aws, args)
 
 @inline add_user_to_group(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "AddUserToGroup", args)
@@ -202,7 +199,7 @@ For more information about policies, see [Managed Policies and Inline Policies](
 ## `GroupName = ::String` -- *Required*
 The name (friendly name, not ARN) of the group to attach the policy to.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `PolicyArn = ::String` -- *Required*
@@ -231,7 +228,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/AttachGroupPolicy)
 """
-
 @inline attach_group_policy(aws::AWSConfig=default_aws_config(); args...) = attach_group_policy(aws, args)
 
 @inline attach_group_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "AttachGroupPolicy", args)
@@ -291,7 +287,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/AttachRolePolicy)
 """
-
 @inline attach_role_policy(aws::AWSConfig=default_aws_config(); args...) = attach_role_policy(aws, args)
 
 @inline attach_role_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "AttachRolePolicy", args)
@@ -321,7 +316,7 @@ For more information about policies, see [Managed Policies and Inline Policies](
 ## `UserName = ::String` -- *Required*
 The name (friendly name, not ARN) of the IAM user to attach the policy to.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `PolicyArn = ::String` -- *Required*
@@ -350,7 +345,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/AttachUserPolicy)
 """
-
 @inline attach_user_policy(aws::AWSConfig=default_aws_config(); args...) = attach_user_policy(aws, args)
 
 @inline attach_user_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "AttachUserPolicy", args)
@@ -369,7 +363,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # ChangePassword Operation
 
-Changes the password of the IAM user who is calling this action. The root account password is not affected by this action.
+Changes the password of the IAM user who is calling this operation. The AWS account root user password is not affected by this operation.
 
 To change the password for a different user, see [UpdateLoginProfile](@ref). For more information about modifying passwords, see [Managing Passwords](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html) in the *IAM User Guide*.
 
@@ -382,7 +376,7 @@ The IAM user's current password.
 ## `NewPassword = ::String` -- *Required*
 The new password. The new password must conform to the AWS account's password policy, if one exists.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of almost any printable ASCII character from the space (\\u0020) through the end of the ASCII character range (\\u00FF). You can also include the tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D) characters. Although any of these characters are valid in a password, note that many tools, such as the AWS Management Console, might restrict the ability to enter certain characters because they have special meaning within that tool.
+The [regex pattern](http://wikipedia.org/wiki/regex) that is used to validate this parameter is a string of characters. That string can include almost any printable ASCII character from the space (\\u0020) through the end of the ASCII character range (\\u00FF). You can also include the tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D) characters. Any of these characters are valid in a password. However, many tools, such as the AWS Management Console, might restrict the ability to type certain characters because they have special meaning within that tool.
 
 
 
@@ -405,7 +399,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ChangePassword)
 """
-
 @inline change_password(aws::AWSConfig=default_aws_config(); args...) = change_password(aws, args)
 
 @inline change_password(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ChangePassword", args)
@@ -426,7 +419,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Creates a new AWS secret access key and corresponding AWS access key ID for the specified user. The default status for new keys is `Active`.
 
-If you do not specify a user name, IAM determines the user name implicitly based on the AWS access key ID signing the request. Because this action works for access keys under the AWS account, you can use this action to manage root credentials even if the AWS account has no associated users.
+If you do not specify a user name, IAM determines the user name implicitly based on the AWS access key ID signing the request. Because this operation works for access keys under the AWS account, you can use this operation to manage AWS account root user credentials. This is true even if the AWS account has no associated users.
 
 For information about limits on the number of keys you can create, see [Limitations on IAM Entities](http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html) in the *IAM User Guide*.
 
@@ -438,7 +431,7 @@ For information about limits on the number of keys you can create, see [Limitati
 ## `UserName = ::String`
 The name of the IAM user that the new key will belong to.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -477,7 +470,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateAccessKey)
 """
-
 @inline create_access_key(aws::AWSConfig=default_aws_config(); args...) = create_access_key(aws, args)
 
 @inline create_access_key(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "CreateAccessKey", args)
@@ -525,7 +517,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateAccountAlias)
 """
-
 @inline create_account_alias(aws::AWSConfig=default_aws_config(); args...) = create_account_alias(aws, args)
 
 @inline create_account_alias(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "CreateAccountAlias", args)
@@ -555,13 +546,13 @@ The path to the group. For more information about paths, see [IAM Identifiers](h
 
 This parameter is optional. If it is not included, it defaults to a slash (/).
 
-This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 
 ## `GroupName = ::String` -- *Required*
 The name of the group to create. Do not include the path in this value.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-. The group name must be unique within the account. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-. The group name must be unique within the account. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".
 
 
 
@@ -600,7 +591,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateGroup)
 """
-
 @inline create_group(aws::AWSConfig=default_aws_config(); args...) = create_group(aws, args)
 
 @inline create_group(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "CreateGroup", args)
@@ -628,7 +618,7 @@ For information about the number of instance profiles you can create, see [Limit
 ## `InstanceProfileName = ::String` -- *Required*
 The name of the instance profile to create.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `Path = ::String`
@@ -636,7 +626,7 @@ The path to the instance profile. For more information about paths, see [IAM Ide
 
 This parameter is optional. If it is not included, it defaults to a slash (/).
 
-This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 
 
@@ -678,7 +668,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateInstanceProfile)
 """
-
 @inline create_instance_profile(aws::AWSConfig=default_aws_config(); args...) = create_instance_profile(aws, args)
 
 @inline create_instance_profile(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "CreateInstanceProfile", args)
@@ -704,13 +693,13 @@ Creates a password for the specified user, giving the user the ability to access
 ## `UserName = ::String` -- *Required*
 The name of the IAM user to create a password for. The user must already exist.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `Password = ::String` -- *Required*
 The new password for the user.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of almost any printable ASCII character from the space (\\u0020) through the end of the ASCII character range (\\u00FF). You can also include the tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D) characters. Although any of these characters are valid in a password, note that many tools, such as the AWS Management Console, might restrict the ability to enter certain characters because they have special meaning within that tool.
+The [regex pattern](http://wikipedia.org/wiki/regex) that is used to validate this parameter is a string of characters. That string can include almost any printable ASCII character from the space (\\u0020) through the end of the ASCII character range (\\u00FF). You can also include the tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D) characters. Any of these characters are valid in a password. However, many tools, such as the AWS Management Console, might restrict the ability to type certain characters because they have special meaning within that tool.
 
 
 ## `PasswordResetRequired = ::Bool`
@@ -753,7 +742,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateLoginProfile)
 """
-
 @inline create_login_profile(aws::AWSConfig=default_aws_config(); args...) = create_login_profile(aws, args)
 
 @inline create_login_profile(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "CreateLoginProfile", args)
@@ -774,17 +762,25 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Creates an IAM entity to describe an identity provider (IdP) that supports [OpenID Connect (OIDC)](http://openid.net/connect/).
 
-The OIDC provider that you create with this operation can be used as a principal in a role's trust policy to establish a trust relationship between AWS and the OIDC provider.
+The OIDC provider that you create with this operation can be used as a principal in a role's trust policy. Such a policy establishes a trust relationship between AWS and the OIDC provider.
 
-When you create the IAM OIDC provider, you specify the URL of the OIDC identity provider (IdP) to trust, a list of client IDs (also known as audiences) that identify the application or applications that are allowed to authenticate using the OIDC provider, and a list of thumbprints of the server certificate(s) that the IdP uses. You get all of this information from the OIDC IdP that you want to use for access to AWS.
+When you create the IAM OIDC provider, you specify the following:
+
+*   The URL of the OIDC identity provider (IdP) to trust
+
+*   A list of client IDs (also known as audiences) that identify the application or applications that are allowed to authenticate using the OIDC provider
+
+*   A list of thumbprints of the server certificate(s) that the IdP uses.
+
+You get all of this information from the OIDC IdP that you want to use to access AWS.
 
 **Note**
-> Because trust for the OIDC provider is ultimately derived from the IAM provider that this action creates, it is a best practice to limit access to the [CreateOpenIDConnectProvider](@ref) action to highly-privileged users.
+> Because trust for the OIDC provider is derived from the IAM provider that this operation creates, it is best to limit access to the [CreateOpenIDConnectProvider](@ref) operation to highly privileged users.
 
 # Arguments
 
 ## `Url = ::String` -- *Required*
-The URL of the identity provider. The URL must begin with "https://" and should correspond to the `iss` claim in the provider's OpenID Connect ID tokens. Per the OIDC standard, path components are allowed but query parameters are not. Typically the URL consists of only a host name, like "https://server.example.org" or "https://example.com".
+The URL of the identity provider. The URL must begin with `https://` and should correspond to the `iss` claim in the provider's OpenID Connect ID tokens. Per the OIDC standard, path components are allowed but query parameters are not. Typically the URL consists of only a hostname, like `https://server.example.org` or `https://example.com`.
 
 You cannot register the same provider multiple times in a single AWS account. If you try to submit a URL that has already been used for an OpenID Connect provider in the AWS account, you will get an error.
 
@@ -794,15 +790,15 @@ A list of client IDs (also known as audiences). When a mobile or web app registe
 
 You can register multiple client IDs with the same provider. For example, you might have multiple applications that use the same OIDC provider. You cannot register more than 100 client IDs with a single IAM OIDC provider.
 
-There is no defined format for a client ID. The `CreateOpenIDConnectProviderRequest` action accepts client IDs up to 255 characters long.
+There is no defined format for a client ID. The `CreateOpenIDConnectProviderRequest` operation accepts client IDs up to 255 characters long.
 
 
 ## `ThumbprintList = [::String, ...]` -- *Required*
-A list of server certificate thumbprints for the OpenID Connect (OIDC) identity provider's server certificate(s). Typically this list includes only one entry. However, IAM lets you have up to five thumbprints for an OIDC provider. This lets you maintain multiple thumbprints if the identity provider is rotating certificates.
+A list of server certificate thumbprints for the OpenID Connect (OIDC) identity provider's server certificates. Typically this list includes only one entry. However, IAM lets you have up to five thumbprints for an OIDC provider. This lets you maintain multiple thumbprints if the identity provider is rotating certificates.
 
 The server certificate thumbprint is the hex-encoded SHA-1 hash value of the X.509 certificate used by the domain where the OpenID Connect provider makes its keys available. It is always a 40-character string.
 
-You must provide at least one thumbprint when creating an IAM OIDC provider. For example, if the OIDC provider is `server.example.com` and the provider stores its keys at "https://keys.server.example.com/openid-connect", the thumbprint string would be the hex-encoded SHA-1 hash value of the certificate used by https://keys.server.example.com.
+You must provide at least one thumbprint when creating an IAM OIDC provider. For example, assume that the OIDC provider is `server.example.com` and the provider stores its keys at https://keys.server.example.com/openid-connect. In that case, the thumbprint string would be the hex-encoded SHA-1 hash value of the certificate used by https://keys.server.example.com.
 
 For more information about obtaining the OIDC provider's thumbprint, see [Obtaining the Thumbprint for an OpenID Connect Provider](http://docs.aws.amazon.com/IAM/latest/UserGuide/identity-providers-oidc-obtain-thumbprint.html) in the *IAM User Guide*.
 
@@ -843,7 +839,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateOpenIDConnectProvider)
 """
-
 @inline create_open_idconnect_provider(aws::AWSConfig=default_aws_config(); args...) = create_open_idconnect_provider(aws, args)
 
 @inline create_open_idconnect_provider(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "CreateOpenIDConnectProvider", args)
@@ -873,7 +868,7 @@ For more information about managed policies in general, see [Managed Policies an
 ## `PolicyName = ::String` -- *Required*
 The friendly name of the policy.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `Path = ::String`
@@ -883,13 +878,19 @@ For more information about paths, see [IAM Identifiers](http://docs.aws.amazon.c
 
 This parameter is optional. If it is not included, it defaults to a slash (/).
 
-This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 
 ## `PolicyDocument = ::String` -- *Required*
 The JSON policy document that you want to use as the content for the new policy.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 ## `Description = ::String`
@@ -912,7 +913,6 @@ The policy description is immutable. After a value is assigned, it cannot be cha
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreatePolicy)
 """
-
 @inline create_policy(aws::AWSConfig=default_aws_config(); args...) = create_policy(aws, args)
 
 @inline create_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "CreatePolicy", args)
@@ -948,13 +948,19 @@ For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Servi
 ## `PolicyDocument = ::String` -- *Required*
 The JSON policy document that you want to use as the content for this new version of the policy.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 ## `SetAsDefault = ::Bool`
 Specifies whether to set this version as the policy's default version.
 
-When this parameter is `true`, the new policy version becomes the operative version; that is, the version that is in effect for the IAM users, groups, and roles that the policy is attached to.
+When this parameter is `true`, the new policy version becomes the operative version. That is, it becomes the version that is in effect for the IAM users, groups, and roles that the policy is attached to.
 
 For more information about managed policy versions, see [Versioning for Managed Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html) in the *IAM User Guide*.
 
@@ -971,7 +977,6 @@ For more information about managed policy versions, see [Versioning for Managed 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreatePolicyVersion)
 """
-
 @inline create_policy_version(aws::AWSConfig=default_aws_config(); args...) = create_policy_version(aws, args)
 
 @inline create_policy_version(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "CreatePolicyVersion", args)
@@ -990,7 +995,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # CreateRole Operation
 
-Creates a new role for your AWS account. For more information about roles, go to [Working with Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html). For information about limitations on role names and the number of roles you can create, go to [Limitations on IAM Entities](http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html) in the *IAM User Guide*.
+Creates a new role for your AWS account. For more information about roles, go to [IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html). For information about limitations on role names and the number of roles you can create, go to [Limitations on IAM Entities](http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html) in the *IAM User Guide*.
 
 # Arguments
 
@@ -999,7 +1004,7 @@ The path to the role. For more information about paths, see [IAM Identifiers](ht
 
 This parameter is optional. If it is not included, it defaults to a slash (/).
 
-This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 
 ## `RoleName = ::String` -- *Required*
@@ -1013,11 +1018,27 @@ Role names are not distinguished by case. For example, you cannot create roles n
 ## `AssumeRolePolicyDocument = ::String` -- *Required*
 The trust relationship policy document that grants an entity permission to assume the role.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 ## `Description = ::String`
-A customer-provided description of the role.
+A description of the role.
+
+
+## `MaxSessionDuration = ::Int`
+The maximum session duration (in seconds) that you want to set for the specified role. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 1 hour to 12 hours.
+
+Anyone who assumes the role from the AWS CLI or API can use the `DurationSeconds` API parameter or the `duration-seconds` CLI parameter to request a longer session. The `MaxSessionDuration` setting determines the maximum duration that can be requested using the `DurationSeconds` parameter. If users don't specify a value for the `DurationSeconds` parameter, their security credentials are valid for one hour by default. This applies when you use the `AssumeRole*` API operations or the `assume-role*` CLI operations but does not apply when you use those operations to create a console URL. For more information, see [Using IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html) in the *IAM User Guide*.
+
+
+## `PermissionsBoundary = ::String`
+The ARN of the policy that is used to set the permissions boundary for the role.
 
 
 
@@ -1059,7 +1080,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateRole)
 """
-
 @inline create_role(aws::AWSConfig=default_aws_config(); args...) = create_role(aws, args)
 
 @inline create_role(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "CreateRole", args)
@@ -1080,9 +1100,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Creates an IAM resource that describes an identity provider (IdP) that supports SAML 2.0.
 
-The SAML provider resource that you create with this operation can be used as a principal in an IAM role's trust policy to enable federated users who sign-in using the SAML IdP to assume the role. You can create an IAM role that supports Web-based single sign-on (SSO) to the AWS Management Console or one that supports API access to AWS.
+The SAML provider resource that you create with this operation can be used as a principal in an IAM role's trust policy. Such a policy can enable federated users who sign-in using the SAML IdP to assume the role. You can create an IAM role that supports Web-based single sign-on (SSO) to the AWS Management Console or one that supports API access to AWS.
 
-When you create the SAML provider resource, you upload an a SAML metadata document that you get from your IdP and that includes the issuer's name, expiration information, and keys that can be used to validate the SAML authentication response (assertions) that the IdP sends. You must generate the metadata document using the identity management software that is used as your organization's IdP.
+When you create the SAML provider resource, you upload a SAML metadata document that you get from your IdP. That document includes the issuer's name, expiration information, and keys that can be used to validate the SAML authentication response (assertions) that the IdP sends. You must generate the metadata document using the identity management software that is used as your organization's IdP.
 
 **Note**
 > This operation requires [Signature Version 4](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
@@ -1100,7 +1120,7 @@ For more information, see [About SAML 2.0-based Federation](http://docs.aws.amaz
 ## `Name = ::String` -- *Required*
 The name of the provider to create.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -1115,7 +1135,6 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateSAMLProvider)
 """
-
 @inline create_samlprovider(aws::AWSConfig=default_aws_config(); args...) = create_samlprovider(aws, args)
 
 @inline create_samlprovider(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "CreateSAMLProvider", args)
@@ -1136,7 +1155,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Creates an IAM role that is linked to a specific AWS service. The service controls the attached policies and when the role can be deleted. This helps ensure that the service is not broken by an unexpectedly changed or deleted role, which could put your AWS resources into an unknown state. Allowing the service to control the role helps improve service stability and proper cleanup when a service and its role are no longer needed.
 
-The name of the role is autogenerated by combining the string that you specify for the `AWSServiceName` parameter with the string that you specify for the `CustomSuffix` parameter. The resulting name must be unique in your account or the request fails.
+The name of the role is generated by combining the string that you specify for the `AWSServiceName` parameter with the string that you specify for the `CustomSuffix` parameter. The resulting name must be unique in your account or the request fails.
 
 To attach a policy to this service-linked role, you must make the request using the AWS service that depends on this role.
 
@@ -1166,7 +1185,6 @@ A string that you provide, which is combined with the service name to form the c
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateServiceLinkedRole)
 """
-
 @inline create_service_linked_role(aws::AWSConfig=default_aws_config(); args...) = create_service_linked_role(aws, args)
 
 @inline create_service_linked_role(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "CreateServiceLinkedRole", args)
@@ -1200,7 +1218,7 @@ For more information about service-specific credentials, see [Using IAM with AWS
 ## `UserName = ::String` -- *Required*
 The name of the IAM user that is to be associated with the credentials. The new service-specific credentials have the same permissions as the associated user except that they can be used only to access the specified service.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `ServiceName = ::String` -- *Required*
@@ -1219,7 +1237,6 @@ The name of the AWS service that is to be associated with the credentials. The s
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateServiceSpecificCredential)
 """
-
 @inline create_service_specific_credential(aws::AWSConfig=default_aws_config(); args...) = create_service_specific_credential(aws, args)
 
 @inline create_service_specific_credential(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "CreateServiceSpecificCredential", args)
@@ -1249,13 +1266,17 @@ The path for the user name. For more information about paths, see [IAM Identifie
 
 This parameter is optional. If it is not included, it defaults to a slash (/).
 
-This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 
 ## `UserName = ::String` -- *Required*
 The name of the user to create.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-. User names are not distinguished by case. For example, you cannot create users named both "TESTUSER" and "testuser".
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-. User names are not distinguished by case. For example, you cannot create users named both "TESTUSER" and "testuser".
+
+
+## `PermissionsBoundary = ::String`
+The ARN of the policy that is used to set the permissions boundary for the user.
 
 
 
@@ -1294,7 +1315,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateUser)
 """
-
 @inline create_user(aws::AWSConfig=default_aws_config(); args...) = create_user(aws, args)
 
 @inline create_user(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "CreateUser", args)
@@ -1327,13 +1347,13 @@ The path for the virtual MFA device. For more information about paths, see [IAM 
 
 This parameter is optional. If it is not included, it defaults to a slash (/).
 
-This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 
 ## `VirtualMFADeviceName = ::String` -- *Required*
 The name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -1348,7 +1368,6 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/CreateVirtualMFADevice)
 """
-
 @inline create_virtual_mfadevice(aws::AWSConfig=default_aws_config(); args...) = create_virtual_mfadevice(aws, args)
 
 @inline create_virtual_mfadevice(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "CreateVirtualMFADevice", args)
@@ -1376,7 +1395,7 @@ For more information about creating and working with virtual MFA devices, go to 
 ## `UserName = ::String` -- *Required*
 The name of the user whose MFA device you want to deactivate.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `SerialNumber = ::String` -- *Required*
@@ -1393,7 +1412,6 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeactivateMFADevice)
 """
-
 @inline deactivate_mfadevice(aws::AWSConfig=default_aws_config(); args...) = deactivate_mfadevice(aws, args)
 
 @inline deactivate_mfadevice(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeactivateMFADevice", args)
@@ -1414,14 +1432,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Deletes the access key pair associated with the specified IAM user.
 
-If you do not specify a user name, IAM determines the user name implicitly based on the AWS access key ID signing the request. Because this action works for access keys under the AWS account, you can use this action to manage root credentials even if the AWS account has no associated users.
+If you do not specify a user name, IAM determines the user name implicitly based on the AWS access key ID signing the request. Because this operation works for access keys under the AWS account, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated users.
 
 # Arguments
 
 ## `UserName = ::String`
 The name of the user whose access key pair you want to delete.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `AccessKeyId = ::String` -- *Required*
@@ -1450,7 +1468,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteAccessKey)
 """
-
 @inline delete_access_key(aws::AWSConfig=default_aws_config(); args...) = delete_access_key(aws, args)
 
 @inline delete_access_key(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteAccessKey", args)
@@ -1498,7 +1515,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteAccountAlias)
 """
-
 @inline delete_account_alias(aws::AWSConfig=default_aws_config(); args...) = delete_account_alias(aws, args)
 
 @inline delete_account_alias(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteAccountAlias", args)
@@ -1529,7 +1545,6 @@ The following command removes the password policy from the current AWS account:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteAccountPasswordPolicy)
 """
-
 @inline delete_account_password_policy(aws::AWSConfig=default_aws_config(); args...) = delete_account_password_policy(aws, args)
 
 @inline delete_account_password_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteAccountPasswordPolicy", args)
@@ -1555,7 +1570,7 @@ Deletes the specified IAM group. The group must not contain any users or have an
 ## `GroupName = ::String` -- *Required*
 The name of the IAM group to delete.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -1566,7 +1581,6 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteGroup)
 """
-
 @inline delete_group(aws::AWSConfig=default_aws_config(); args...) = delete_group(aws, args)
 
 @inline delete_group(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteGroup", args)
@@ -1594,13 +1608,13 @@ A group can also have managed policies attached to it. To detach a managed polic
 ## `GroupName = ::String` -- *Required*
 The name (friendly name, not ARN) identifying the group that the policy is embedded in.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `PolicyName = ::String` -- *Required*
 The name identifying the policy document to delete.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -1623,7 +1637,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteGroupPolicy)
 """
-
 @inline delete_group_policy(aws::AWSConfig=default_aws_config(); args...) = delete_group_policy(aws, args)
 
 @inline delete_group_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteGroupPolicy", args)
@@ -1645,7 +1658,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 Deletes the specified instance profile. The instance profile must not have an associated role.
 
 **Important**
-> Make sure you do not have any Amazon EC2 instances running with the instance profile you are about to delete. Deleting a role or instance profile that is associated with a running instance will break any applications running on the instance.
+> Make sure that you do not have any Amazon EC2 instances running with the instance profile you are about to delete. Deleting a role or instance profile that is associated with a running instance will break any applications running on the instance.
 
 For more information about instance profiles, go to [About Instance Profiles](http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
 
@@ -1654,7 +1667,7 @@ For more information about instance profiles, go to [About Instance Profiles](ht
 ## `InstanceProfileName = ::String` -- *Required*
 The name of the instance profile to delete.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -1676,7 +1689,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteInstanceProfile)
 """
-
 @inline delete_instance_profile(aws::AWSConfig=default_aws_config(); args...) = delete_instance_profile(aws, args)
 
 @inline delete_instance_profile(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteInstanceProfile", args)
@@ -1705,7 +1717,7 @@ Deletes the password for the specified IAM user, which terminates the user's abi
 ## `UserName = ::String` -- *Required*
 The name of the user whose password you want to delete.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -1727,7 +1739,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteLoginProfile)
 """
-
 @inline delete_login_profile(aws::AWSConfig=default_aws_config(); args...) = delete_login_profile(aws, args)
 
 @inline delete_login_profile(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteLoginProfile", args)
@@ -1750,12 +1761,12 @@ Deletes an OpenID Connect identity provider (IdP) resource object in IAM.
 
 Deleting an IAM OIDC provider resource does not update any roles that reference the provider as a principal in their trust policies. Any attempt to assume a role that references a deleted provider fails.
 
-This action is idempotent; it does not fail or return an error if you call the action for a provider that does not exist.
+This operation is idempotent; it does not fail or return an error if you call the operation for a provider that does not exist.
 
 # Arguments
 
 ## `OpenIDConnectProviderArn = ::String` -- *Required*
-The Amazon Resource Name (ARN) of the IAM OpenID Connect provider resource object to delete. You can get a list of OpenID Connect provider resource ARNs by using the [ListOpenIDConnectProviders](@ref) action.
+The Amazon Resource Name (ARN) of the IAM OpenID Connect provider resource object to delete. You can get a list of OpenID Connect provider resource ARNs by using the [ListOpenIDConnectProviders](@ref) operation.
 
 
 
@@ -1766,7 +1777,6 @@ The Amazon Resource Name (ARN) of the IAM OpenID Connect provider resource objec
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteOpenIDConnectProvider)
 """
-
 @inline delete_open_idconnect_provider(aws::AWSConfig=default_aws_config(); args...) = delete_open_idconnect_provider(aws, args)
 
 @inline delete_open_idconnect_provider(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteOpenIDConnectProvider", args)
@@ -1787,9 +1797,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Deletes the specified managed policy.
 
-Before you can delete a managed policy, you must first detach the policy from all users, groups, and roles that it is attached to, and you must delete all of the policy's versions. The following steps describe the process for deleting a managed policy:
+Before you can delete a managed policy, you must first detach the policy from all users, groups, and roles that it is attached to. In addition you must delete all the policy's versions. The following steps describe the process for deleting a managed policy:
 
-*   Detach the policy from all users, groups, and roles that the policy is attached to, using the [DetachUserPolicy](@ref), [DetachGroupPolicy](@ref), or [DetachRolePolicy](@ref) APIs. To list all the users, groups, and roles that a policy is attached to, use [ListEntitiesForPolicy](@ref).
+*   Detach the policy from all users, groups, and roles that the policy is attached to, using the [DetachUserPolicy](@ref), [DetachGroupPolicy](@ref), or [DetachRolePolicy](@ref) API operations. To list all the users, groups, and roles that a policy is attached to, use [ListEntitiesForPolicy](@ref).
 
 *   Delete all versions of the policy using [DeletePolicyVersion](@ref). To list the policy's versions, use [ListPolicyVersions](@ref). You cannot use [DeletePolicyVersion](@ref) to delete the version that is marked as the default version. You delete the policy's default version in the next step of the process.
 
@@ -1813,7 +1823,6 @@ For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Servi
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeletePolicy)
 """
-
 @inline delete_policy(aws::AWSConfig=default_aws_config(); args...) = delete_policy(aws, args)
 
 @inline delete_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeletePolicy", args)
@@ -1862,7 +1871,6 @@ For more information about managed policy versions, see [Versioning for Managed 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeletePolicyVersion)
 """
-
 @inline delete_policy_version(aws::AWSConfig=default_aws_config(); args...) = delete_policy_version(aws, args)
 
 @inline delete_policy_version(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeletePolicyVersion", args)
@@ -1884,7 +1892,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 Deletes the specified role. The role must not have any policies attached. For more information about roles, go to [Working with Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
 
 **Important**
-> Make sure you do not have any Amazon EC2 instances running with the role you are about to delete. Deleting a role or instance profile that is associated with a running instance will break any applications running on the instance.
+> Make sure that you do not have any Amazon EC2 instances running with the role you are about to delete. Deleting a role or instance profile that is associated with a running instance will break any applications running on the instance.
 
 # Arguments
 
@@ -1913,12 +1921,48 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteRole)
 """
-
 @inline delete_role(aws::AWSConfig=default_aws_config(); args...) = delete_role(aws, args)
 
 @inline delete_role(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteRole", args)
 
 @inline delete_role(args) = delete_role(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.IAM.delete_role_permissions_boundary
+    delete_role_permissions_boundary([::AWSConfig], arguments::Dict)
+    delete_role_permissions_boundary([::AWSConfig]; RoleName=)
+
+    using AWSCore.Services.iam
+    iam([::AWSConfig], "DeleteRolePermissionsBoundary", arguments::Dict)
+    iam([::AWSConfig], "DeleteRolePermissionsBoundary", RoleName=)
+
+# DeleteRolePermissionsBoundary Operation
+
+Deletes the permissions boundary for the specified IAM role.
+
+**Important**
+> Deleting the permissions boundary for a role might increase its permissions by allowing anyone who assumes the role to perform all the actions granted in its permissions policies.
+
+# Arguments
+
+## `RoleName = ::String` -- *Required*
+The name (friendly name, not ARN) of the IAM role from which you want to remove the permissions boundary.
+
+
+
+
+# Exceptions
+
+`NoSuchEntityException`, `UnmodifiableEntityException` or `ServiceFailureException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteRolePermissionsBoundary)
+"""
+@inline delete_role_permissions_boundary(aws::AWSConfig=default_aws_config(); args...) = delete_role_permissions_boundary(aws, args)
+
+@inline delete_role_permissions_boundary(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteRolePermissionsBoundary", args)
+
+@inline delete_role_permissions_boundary(args) = delete_role_permissions_boundary(default_aws_config(), args)
 
 
 """
@@ -1947,7 +1991,7 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 ## `PolicyName = ::String` -- *Required*
 The name of the inline policy to delete from the specified IAM role.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -1970,7 +2014,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteRolePolicy)
 """
-
 @inline delete_role_policy(aws::AWSConfig=default_aws_config(); args...) = delete_role_policy(aws, args)
 
 @inline delete_role_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteRolePolicy", args)
@@ -2010,7 +2053,6 @@ The Amazon Resource Name (ARN) of the SAML provider to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteSAMLProvider)
 """
-
 @inline delete_samlprovider(aws::AWSConfig=default_aws_config(); args...) = delete_samlprovider(aws, args)
 
 @inline delete_samlprovider(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteSAMLProvider", args)
@@ -2031,14 +2073,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Deletes the specified SSH public key.
 
-The SSH public key deleted by this action is used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see [Set up AWS CodeCommit for SSH Connections](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html) in the *AWS CodeCommit User Guide*.
+The SSH public key deleted by this operation is used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see [Set up AWS CodeCommit for SSH Connections](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html) in the *AWS CodeCommit User Guide*.
 
 # Arguments
 
 ## `UserName = ::String` -- *Required*
 The name of the IAM user associated with the SSH public key.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `SSHPublicKeyId = ::String` -- *Required*
@@ -2055,7 +2097,6 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteSSHPublicKey)
 """
-
 @inline delete_sshpublic_key(aws::AWSConfig=default_aws_config(); args...) = delete_sshpublic_key(aws, args)
 
 @inline delete_sshpublic_key(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteSSHPublicKey", args)
@@ -2076,7 +2117,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Deletes the specified server certificate.
 
-For more information about working with server certificates, including a list of AWS services that can use the server certificates that you manage with IAM, go to [Working with Server Certificates](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html) in the *IAM User Guide*.
+For more information about working with server certificates, see [Working with Server Certificates](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html) in the *IAM User Guide*. This topic also includes a list of AWS services that can use the server certificates that you manage with IAM.
 
 **Important**
 > If you are using a server certificate with Elastic Load Balancing, deleting the certificate could have implications for your application. If Elastic Load Balancing doesn't detect the deletion of bound certificates, it may continue to use the certificates. This could cause Elastic Load Balancing to stop accepting traffic. We recommend that you remove the reference to the certificate from Elastic Load Balancing before using this command to delete the certificate. For more information, go to [DeleteLoadBalancerListeners](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/APIReference/API_DeleteLoadBalancerListeners.html) in the *Elastic Load Balancing API Reference*.
@@ -2086,7 +2127,7 @@ For more information about working with server certificates, including a list of
 ## `ServerCertificateName = ::String` -- *Required*
 The name of the server certificate you want to delete.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -2097,7 +2138,6 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteServerCertificate)
 """
-
 @inline delete_server_certificate(aws::AWSConfig=default_aws_config(); args...) = delete_server_certificate(aws, args)
 
 @inline delete_server_certificate(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteServerCertificate", args)
@@ -2118,7 +2158,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Submits a service-linked role deletion request and returns a `DeletionTaskId`, which you can use to check the status of the deletion. Before you call this operation, confirm that the role has no active sessions and that any resources used by the role in the linked service are deleted. If you call this operation more than once for the same service-linked role and an earlier deletion task is not complete, then the `DeletionTaskId` of the earlier request is returned.
 
-If you submit a deletion request for a service-linked role whose linked service is still accessing a resource, then the deletion task fails. If it fails, the [GetServiceLinkedRoleDeletionStatus](@ref) API operation returns the reason for the failure, including the resources that must be deleted. To delete the service-linked role, you must first remove those resources from the linked service and then submit the deletion request again. Resources are specific to the service that is linked to the role. For more information about removing resources from a service, see the [AWS documentation](http://docs.aws.amazon.com/) for your service.
+If you submit a deletion request for a service-linked role whose linked service is still accessing a resource, then the deletion task fails. If it fails, the [GetServiceLinkedRoleDeletionStatus](@ref) API operation returns the reason for the failure, usually including the resources that must be deleted. To delete the service-linked role, you must first remove those resources from the linked service and then submit the deletion request again. Resources are specific to the service that is linked to the role. For more information about removing resources from a service, see the [AWS documentation](http://docs.aws.amazon.com/) for your service.
 
 For more information about service-linked roles, see [Roles Terms and Concepts: AWS Service-Linked Role](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role) in the *IAM User Guide*.
 
@@ -2140,7 +2180,6 @@ The name of the service-linked role to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteServiceLinkedRole)
 """
-
 @inline delete_service_linked_role(aws::AWSConfig=default_aws_config(); args...) = delete_service_linked_role(aws, args)
 
 @inline delete_service_linked_role(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteServiceLinkedRole", args)
@@ -2166,7 +2205,7 @@ Deletes the specified service-specific credential.
 ## `UserName = ::String`
 The name of the IAM user associated with the service-specific credential. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `ServiceSpecificCredentialId = ::String` -- *Required*
@@ -2183,7 +2222,6 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteServiceSpecificCredential)
 """
-
 @inline delete_service_specific_credential(aws::AWSConfig=default_aws_config(); args...) = delete_service_specific_credential(aws, args)
 
 @inline delete_service_specific_credential(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteServiceSpecificCredential", args)
@@ -2204,14 +2242,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Deletes a signing certificate associated with the specified IAM user.
 
-If you do not specify a user name, IAM determines the user name implicitly based on the AWS access key ID signing the request. Because this action works for access keys under the AWS account, you can use this action to manage root credentials even if the AWS account has no associated IAM users.
+If you do not specify a user name, IAM determines the user name implicitly based on the AWS access key ID signing the request. Because this operation works for access keys under the AWS account, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated IAM users.
 
 # Arguments
 
 ## `UserName = ::String`
 The name of the user the signing certificate belongs to.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `CertificateId = ::String` -- *Required*
@@ -2240,7 +2278,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteSigningCertificate)
 """
-
 @inline delete_signing_certificate(aws::AWSConfig=default_aws_config(); args...) = delete_signing_certificate(aws, args)
 
 @inline delete_signing_certificate(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteSigningCertificate", args)
@@ -2266,7 +2303,7 @@ Deletes the specified IAM user. The user must not belong to any groups or have a
 ## `UserName = ::String` -- *Required*
 The name of the user to delete.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -2288,12 +2325,48 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteUser)
 """
-
 @inline delete_user(aws::AWSConfig=default_aws_config(); args...) = delete_user(aws, args)
 
 @inline delete_user(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteUser", args)
 
 @inline delete_user(args) = delete_user(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.IAM.delete_user_permissions_boundary
+    delete_user_permissions_boundary([::AWSConfig], arguments::Dict)
+    delete_user_permissions_boundary([::AWSConfig]; UserName=)
+
+    using AWSCore.Services.iam
+    iam([::AWSConfig], "DeleteUserPermissionsBoundary", arguments::Dict)
+    iam([::AWSConfig], "DeleteUserPermissionsBoundary", UserName=)
+
+# DeleteUserPermissionsBoundary Operation
+
+Deletes the permissions boundary for the specified IAM user.
+
+**Important**
+> Deleting the permissions boundary for a user might increase its permissions by allowing the user to perform all the actions granted in its permissions policies.
+
+# Arguments
+
+## `UserName = ::String` -- *Required*
+The name (friendly name, not ARN) of the IAM user from which you want to remove the permissions boundary.
+
+
+
+
+# Exceptions
+
+`NoSuchEntityException` or `ServiceFailureException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteUserPermissionsBoundary)
+"""
+@inline delete_user_permissions_boundary(aws::AWSConfig=default_aws_config(); args...) = delete_user_permissions_boundary(aws, args)
+
+@inline delete_user_permissions_boundary(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteUserPermissionsBoundary", args)
+
+@inline delete_user_permissions_boundary(args) = delete_user_permissions_boundary(default_aws_config(), args)
 
 
 """
@@ -2316,13 +2389,13 @@ A user can also have managed policies attached to it. To detach a managed policy
 ## `UserName = ::String` -- *Required*
 The name (friendly name, not ARN) identifying the user that the policy is embedded in.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `PolicyName = ::String` -- *Required*
 The name identifying the policy document to delete.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -2345,7 +2418,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteUserPolicy)
 """
-
 @inline delete_user_policy(aws::AWSConfig=default_aws_config(); args...) = delete_user_policy(aws, args)
 
 @inline delete_user_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteUserPolicy", args)
@@ -2396,7 +2468,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DeleteVirtualMFADevice)
 """
-
 @inline delete_virtual_mfadevice(aws::AWSConfig=default_aws_config(); args...) = delete_virtual_mfadevice(aws, args)
 
 @inline delete_virtual_mfadevice(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DeleteVirtualMFADevice", args)
@@ -2424,7 +2495,7 @@ A group can also have inline policies embedded with it. To delete an inline poli
 ## `GroupName = ::String` -- *Required*
 The name (friendly name, not ARN) of the IAM group to detach the policy from.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `PolicyArn = ::String` -- *Required*
@@ -2441,7 +2512,6 @@ For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Servi
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DetachGroupPolicy)
 """
-
 @inline detach_group_policy(aws::AWSConfig=default_aws_config(); args...) = detach_group_policy(aws, args)
 
 @inline detach_group_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DetachGroupPolicy", args)
@@ -2486,7 +2556,6 @@ For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Servi
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DetachRolePolicy)
 """
-
 @inline detach_role_policy(aws::AWSConfig=default_aws_config(); args...) = detach_role_policy(aws, args)
 
 @inline detach_role_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DetachRolePolicy", args)
@@ -2514,7 +2583,7 @@ A user can also have inline policies embedded with it. To delete an inline polic
 ## `UserName = ::String` -- *Required*
 The name (friendly name, not ARN) of the IAM user to detach the policy from.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `PolicyArn = ::String` -- *Required*
@@ -2531,7 +2600,6 @@ For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Servi
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/DetachUserPolicy)
 """
-
 @inline detach_user_policy(aws::AWSConfig=default_aws_config(); args...) = detach_user_policy(aws, args)
 
 @inline detach_user_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "DetachUserPolicy", args)
@@ -2557,7 +2625,7 @@ Enables the specified MFA device and associates it with the specified IAM user. 
 ## `UserName = ::String` -- *Required*
 The name of the IAM user for whom you want to enable the MFA device.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `SerialNumber = ::String` -- *Required*
@@ -2569,7 +2637,7 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 ## `AuthenticationCode1 = ::String` -- *Required*
 An authentication code emitted by the device.
 
-The format for this parameter is a string of 6 digits.
+The format for this parameter is a string of six digits.
 
 **Important**
 > Submit your request immediately after generating the authentication codes. If you generate the codes and then wait too long to submit the request, the MFA device successfully associates with the user but the MFA device becomes out of sync. This happens because time-based one-time passwords (TOTP) expire after a short period of time. If this happens, you can [resync the device](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html).
@@ -2578,7 +2646,7 @@ The format for this parameter is a string of 6 digits.
 ## `AuthenticationCode2 = ::String` -- *Required*
 A subsequent authentication code emitted by the device.
 
-The format for this parameter is a string of 6 digits.
+The format for this parameter is a string of six digits.
 
 **Important**
 > Submit your request immediately after generating the authentication codes. If you generate the codes and then wait too long to submit the request, the MFA device successfully associates with the user but the MFA device becomes out of sync. This happens because time-based one-time passwords (TOTP) expire after a short period of time. If this happens, you can [resync the device](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html).
@@ -2592,7 +2660,6 @@ The format for this parameter is a string of 6 digits.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/EnableMFADevice)
 """
-
 @inline enable_mfadevice(aws::AWSConfig=default_aws_config(); args...) = enable_mfadevice(aws, args)
 
 @inline enable_mfadevice(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "EnableMFADevice", args)
@@ -2623,7 +2690,6 @@ Generates a credential report for the AWS account. For more information about th
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GenerateCredentialReport)
 """
-
 @inline generate_credential_report(aws::AWSConfig=default_aws_config(); args...) = generate_credential_report(aws, args)
 
 @inline generate_credential_report(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GenerateCredentialReport", args)
@@ -2664,7 +2730,6 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetAccessKeyLastUsed)
 """
-
 @inline get_access_key_last_used(aws::AWSConfig=default_aws_config(); args...) = get_access_key_last_used(aws, args)
 
 @inline get_access_key_last_used(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetAccessKeyLastUsed", args)
@@ -2684,6 +2749,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 # GetAccountAuthorizationDetails Operation
 
 Retrieves information about all IAM users, groups, roles, and policies in your AWS account, including their relationships to one another. Use this API to obtain a snapshot of the configuration of IAM permissions (users, groups, roles, and policies) in your account.
+
+**Note**
+> Policies returned by this API are URL-encoded compliant with [RFC 3986](https://tools.ietf.org/html/rfc3986). You can use a URL decoding method to convert the policy back to plain JSON text. For example, if you use Java, you can use the `decode` method of the `java.net.URLDecoder` utility class in the Java SDK. Other languages and SDKs provide similar functionality.
 
 You can optionally filter the results using the `Filter` parameter. You can paginate the results using the `MaxItems` and `Marker` parameters.
 
@@ -2717,7 +2785,6 @@ Use this parameter only when paginating results and only after you receive a res
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetAccountAuthorizationDetails)
 """
-
 @inline get_account_authorization_details(aws::AWSConfig=default_aws_config(); args...) = get_account_authorization_details(aws, args)
 
 @inline get_account_authorization_details(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetAccountAuthorizationDetails", args)
@@ -2770,7 +2837,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetAccountPasswordPolicy)
 """
-
 @inline get_account_password_policy(aws::AWSConfig=default_aws_config(); args...) = get_account_password_policy(aws, args)
 
 @inline get_account_password_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetAccountPasswordPolicy", args)
@@ -2840,7 +2906,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetAccountSummary)
 """
-
 @inline get_account_summary(aws::AWSConfig=default_aws_config(); args...) = get_account_summary(aws, args)
 
 @inline get_account_summary(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetAccountSummary", args)
@@ -2861,14 +2926,20 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Gets a list of all of the context keys referenced in the input policies. The policies are supplied as a list of one or more strings. To get the context keys from policies associated with an IAM user, group, or role, use [GetContextKeysForPrincipalPolicy](@ref).
 
-Context keys are variables maintained by AWS and its services that provide details about the context of an API query request, and can be evaluated by testing against a value specified in an IAM policy. Use GetContextKeysForCustomPolicy to understand what key names and values you must supply when you call [SimulateCustomPolicy](@ref). Note that all parameters are shown in unencoded form here for clarity, but must be URL encoded to be included as a part of a real HTML request.
+Context keys are variables maintained by AWS and its services that provide details about the context of an API query request. Context keys can be evaluated by testing against a value specified in an IAM policy. Use `GetContextKeysForCustomPolicy` to understand what key names and values you must supply when you call [SimulateCustomPolicy](@ref). Note that all parameters are shown in unencoded form here for clarity but must be URL encoded to be included as a part of a real HTML request.
 
 # Arguments
 
 ## `PolicyInputList = [::String, ...]` -- *Required*
 A list of policies for which you want the list of context keys referenced in those policies. Each document is specified as a string containing the complete, valid JSON text of an IAM policy.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 
@@ -2883,7 +2954,6 @@ The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this param
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetContextKeysForCustomPolicy)
 """
-
 @inline get_context_keys_for_custom_policy(aws::AWSConfig=default_aws_config(); args...) = get_context_keys_for_custom_policy(aws, args)
 
 @inline get_context_keys_for_custom_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetContextKeysForCustomPolicy", args)
@@ -2902,18 +2972,18 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # GetContextKeysForPrincipalPolicy Operation
 
-Gets a list of all of the context keys referenced in all of the IAM policies attached to the specified IAM entity. The entity can be an IAM user, group, or role. If you specify a user, then the request also includes all of the policies attached to groups that the user is a member of.
+Gets a list of all of the context keys referenced in all the IAM policies that are attached to the specified IAM entity. The entity can be an IAM user, group, or role. If you specify a user, then the request also includes all of the policies attached to groups that the user is a member of.
 
 You can optionally include a list of one or more additional policies, specified as strings. If you want to include *only* a list of policies by string, use [GetContextKeysForCustomPolicy](@ref) instead.
 
 **Note:** This API discloses information about the permissions granted to other users. If you do not want users to see other user's permissions, then consider allowing them to use [GetContextKeysForCustomPolicy](@ref) instead.
 
-Context keys are variables maintained by AWS and its services that provide details about the context of an API query request, and can be evaluated by testing against a value in an IAM policy. Use [GetContextKeysForPrincipalPolicy](@ref) to understand what key names and values you must supply when you call [SimulatePrincipalPolicy](@ref).
+Context keys are variables maintained by AWS and its services that provide details about the context of an API query request. Context keys can be evaluated by testing against a value in an IAM policy. Use [GetContextKeysForPrincipalPolicy](@ref) to understand what key names and values you must supply when you call [SimulatePrincipalPolicy](@ref).
 
 # Arguments
 
 ## `PolicySourceArn = ::String` -- *Required*
-The ARN of a user, group, or role whose policies contain the context keys that you want listed. If you specify a user, the list includes context keys that are found in all policies attached to the user as well as to all groups that the user is a member of. If you pick a group or a role, then it includes only those context keys that are found in policies attached to that entity. Note that all parameters are shown in unencoded form here for clarity, but must be URL encoded to be included as a part of a real HTML request.
+The ARN of a user, group, or role whose policies contain the context keys that you want listed. If you specify a user, the list includes context keys that are found in all policies that are attached to the user. The list also includes all groups that the user is a member of. If you pick a group or a role, then it includes only those context keys that are found in policies attached to that entity. Note that all parameters are shown in unencoded form here for clarity, but must be URL encoded to be included as a part of a real HTML request.
 
 For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) in the *AWS General Reference*.
 
@@ -2921,7 +2991,13 @@ For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Servi
 ## `PolicyInputList = [::String, ...]`
 An optional list of additional policies for which you want the list of context keys that are referenced.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 
@@ -2936,7 +3012,6 @@ The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this param
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetContextKeysForPrincipalPolicy)
 """
-
 @inline get_context_keys_for_principal_policy(aws::AWSConfig=default_aws_config(); args...) = get_context_keys_for_principal_policy(aws, args)
 
 @inline get_context_keys_for_principal_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetContextKeysForPrincipalPolicy", args)
@@ -2967,7 +3042,6 @@ Retrieves a credential report for the AWS account. For more information about th
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetCredentialReport)
 """
-
 @inline get_credential_report(aws::AWSConfig=default_aws_config(); args...) = get_credential_report(aws, args)
 
 @inline get_credential_report(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetCredentialReport", args)
@@ -2993,7 +3067,7 @@ Returns a list of IAM users that are in the specified IAM group. You can paginat
 ## `GroupName = ::String` -- *Required*
 The name of the group.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `Marker = ::String`
@@ -3018,7 +3092,6 @@ If you do not include this parameter, it defaults to 100. Note that IAM might re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetGroup)
 """
-
 @inline get_group(aws::AWSConfig=default_aws_config(); args...) = get_group(aws, args)
 
 @inline get_group(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetGroup", args)
@@ -3051,13 +3124,13 @@ For more information about policies, see [Managed Policies and Inline Policies](
 ## `GroupName = ::String` -- *Required*
 The name of the group the policy is associated with.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `PolicyName = ::String` -- *Required*
 The name of the policy document to get.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -3072,7 +3145,6 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetGroupPolicy)
 """
-
 @inline get_group_policy(aws::AWSConfig=default_aws_config(); args...) = get_group_policy(aws, args)
 
 @inline get_group_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetGroupPolicy", args)
@@ -3098,7 +3170,7 @@ Retrieves information about the specified instance profile, including the instan
 ## `InstanceProfileName = ::String` -- *Required*
 The name of the instance profile to get information about.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -3147,7 +3219,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetInstanceProfile)
 """
-
 @inline get_instance_profile(aws::AWSConfig=default_aws_config(); args...) = get_instance_profile(aws, args)
 
 @inline get_instance_profile(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetInstanceProfile", args)
@@ -3166,14 +3237,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # GetLoginProfile Operation
 
-Retrieves the user name and password-creation date for the specified IAM user. If the user has not been assigned a password, the action returns a 404 (`NoSuchEntity`) error.
+Retrieves the user name and password-creation date for the specified IAM user. If the user has not been assigned a password, the operation returns a 404 (`NoSuchEntity`) error.
 
 # Arguments
 
 ## `UserName = ::String` -- *Required*
 The name of the user whose login profile you want to retrieve.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -3209,7 +3280,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetLoginProfile)
 """
-
 @inline get_login_profile(aws::AWSConfig=default_aws_config(); args...) = get_login_profile(aws, args)
 
 @inline get_login_profile(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetLoginProfile", args)
@@ -3233,7 +3303,7 @@ Returns information about the specified OpenID Connect (OIDC) provider resource 
 # Arguments
 
 ## `OpenIDConnectProviderArn = ::String` -- *Required*
-The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to get information for. You can get a list of OIDC provider resource ARNs by using the [ListOpenIDConnectProviders](@ref) action.
+The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to get information for. You can get a list of OIDC provider resource ARNs by using the [ListOpenIDConnectProviders](@ref) operation.
 
 For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) in the *AWS General Reference*.
 
@@ -3250,7 +3320,6 @@ For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Servi
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetOpenIDConnectProvider)
 """
-
 @inline get_open_idconnect_provider(aws::AWSConfig=default_aws_config(); args...) = get_open_idconnect_provider(aws, args)
 
 @inline get_open_idconnect_provider(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetOpenIDConnectProvider", args)
@@ -3295,7 +3364,6 @@ For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Servi
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetPolicy)
 """
-
 @inline get_policy(aws::AWSConfig=default_aws_config(); args...) = get_policy(aws, args)
 
 @inline get_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetPolicy", args)
@@ -3353,7 +3421,6 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetPolicyVersion)
 """
-
 @inline get_policy_version(aws::AWSConfig=default_aws_config(); args...) = get_policy_version(aws, args)
 
 @inline get_policy_version(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetPolicyVersion", args)
@@ -3422,7 +3489,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetRole)
 """
-
 @inline get_role(aws::AWSConfig=default_aws_config(); args...) = get_role(aws, args)
 
 @inline get_role(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetRole", args)
@@ -3463,7 +3529,7 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 ## `PolicyName = ::String` -- *Required*
 The name of the policy document to get.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -3478,7 +3544,6 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetRolePolicy)
 """
-
 @inline get_role_policy(aws::AWSConfig=default_aws_config(); args...) = get_role_policy(aws, args)
 
 @inline get_role_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetRolePolicy", args)
@@ -3522,7 +3587,6 @@ For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Servi
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetSAMLProvider)
 """
-
 @inline get_samlprovider(aws::AWSConfig=default_aws_config(); args...) = get_samlprovider(aws, args)
 
 @inline get_samlprovider(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetSAMLProvider", args)
@@ -3543,14 +3607,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Retrieves the specified SSH public key, including metadata about the key.
 
-The SSH public key retrieved by this action is used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see [Set up AWS CodeCommit for SSH Connections](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html) in the *AWS CodeCommit User Guide*.
+The SSH public key retrieved by this operation is used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see [Set up AWS CodeCommit for SSH Connections](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html) in the *AWS CodeCommit User Guide*.
 
 # Arguments
 
 ## `UserName = ::String` -- *Required*
 The name of the IAM user associated with the SSH public key.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `SSHPublicKeyId = ::String` -- *Required*
@@ -3575,7 +3639,6 @@ Specifies the public key encoding format to use in the response. To retrieve the
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetSSHPublicKey)
 """
-
 @inline get_sshpublic_key(aws::AWSConfig=default_aws_config(); args...) = get_sshpublic_key(aws, args)
 
 @inline get_sshpublic_key(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetSSHPublicKey", args)
@@ -3596,14 +3659,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Retrieves information about the specified server certificate stored in IAM.
 
-For more information about working with server certificates, including a list of AWS services that can use the server certificates that you manage with IAM, go to [Working with Server Certificates](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html) in the *IAM User Guide*.
+For more information about working with server certificates, see [Working with Server Certificates](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html) in the *IAM User Guide*. This topic includes a list of AWS services that can use the server certificates that you manage with IAM.
 
 # Arguments
 
 ## `ServerCertificateName = ::String` -- *Required*
 The name of the server certificate you want to retrieve information about.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -3618,7 +3681,6 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetServerCertificate)
 """
-
 @inline get_server_certificate(aws::AWSConfig=default_aws_config(); args...) = get_server_certificate(aws, args)
 
 @inline get_server_certificate(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetServerCertificate", args)
@@ -3637,7 +3699,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # GetServiceLinkedRoleDeletionStatus Operation
 
-Retrieves the status of your service-linked role deletion. After you use the [DeleteServiceLinkedRole](@ref) API operation to submit a service-linked role for deletion, you can use the `DeletionTaskId` parameter in `GetServiceLinkedRoleDeletionStatus` to check the status of the deletion. If the deletion fails, this operation returns the reason that it failed.
+Retrieves the status of your service-linked role deletion. After you use the [DeleteServiceLinkedRole](@ref) API operation to submit a service-linked role for deletion, you can use the `DeletionTaskId` parameter in `GetServiceLinkedRoleDeletionStatus` to check the status of the deletion. If the deletion fails, this operation returns the reason that it failed, if that information is returned by the service.
 
 # Arguments
 
@@ -3657,7 +3719,6 @@ The deletion task identifier. This identifier is returned by the [DeleteServiceL
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetServiceLinkedRoleDeletionStatus)
 """
-
 @inline get_service_linked_role_deletion_status(aws::AWSConfig=default_aws_config(); args...) = get_service_linked_role_deletion_status(aws, args)
 
 @inline get_service_linked_role_deletion_status(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetServiceLinkedRoleDeletionStatus", args)
@@ -3685,7 +3746,7 @@ If you do not specify a user name, IAM determines the user name implicitly based
 ## `UserName = ::String`
 The name of the user to get information about.
 
-This parameter is optional. If it is not included, it defaults to the user making the request. This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter is optional. If it is not included, it defaults to the user making the request. This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -3724,7 +3785,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetUser)
 """
-
 @inline get_user(aws::AWSConfig=default_aws_config(); args...) = get_user(aws, args)
 
 @inline get_user(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetUser", args)
@@ -3757,13 +3817,13 @@ For more information about policies, see [Managed Policies and Inline Policies](
 ## `UserName = ::String` -- *Required*
 The name of the user who the policy is associated with.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `PolicyName = ::String` -- *Required*
 The name of the policy document to get.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -3778,7 +3838,6 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetUserPolicy)
 """
-
 @inline get_user_policy(aws::AWSConfig=default_aws_config(); args...) = get_user_policy(aws, args)
 
 @inline get_user_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "GetUserPolicy", args)
@@ -3797,11 +3856,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # ListAccessKeys Operation
 
-Returns information about the access key IDs associated with the specified IAM user. If there are none, the action returns an empty list.
+Returns information about the access key IDs associated with the specified IAM user. If there are none, the operation returns an empty list.
 
 Although each user is limited to a small number of keys, you can still paginate the results using the `MaxItems` and `Marker` parameters.
 
-If the `UserName` field is not specified, the UserName is determined implicitly based on the AWS access key ID used to sign the request. Because this action works for access keys under the AWS account, you can use this action to manage root credentials even if the AWS account has no associated users.
+If the `UserName` field is not specified, the user name is determined implicitly based on the AWS access key ID used to sign the request. Because this operation works for access keys under the AWS account, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated users.
 
 **Note**
 > To ensure the security of your AWS account, the secret access key is accessible only during key and user creation.
@@ -3811,7 +3870,7 @@ If the `UserName` field is not specified, the UserName is determined implicitly 
 ## `UserName = ::String`
 The name of the user.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `Marker = ::String`
@@ -3867,7 +3926,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAccessKeys)
 """
-
 @inline list_access_keys(aws::AWSConfig=default_aws_config(); args...) = list_access_keys(aws, args)
 
 @inline list_access_keys(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListAccessKeys", args)
@@ -3932,7 +3990,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAccountAliases)
 """
-
 @inline list_account_aliases(aws::AWSConfig=default_aws_config(); args...) = list_account_aliases(aws, args)
 
 @inline list_account_aliases(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListAccountAliases", args)
@@ -3955,20 +4012,20 @@ Lists all managed policies that are attached to the specified IAM group.
 
 An IAM group can also have inline policies embedded with it. To list the inline policies for a group, use the [ListGroupPolicies](@ref) API. For information about policies, see [Managed Policies and Inline Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html) in the *IAM User Guide*.
 
-You can paginate the results using the `MaxItems` and `Marker` parameters. You can use the `PathPrefix` parameter to limit the list of policies to only those matching the specified path prefix. If there are no policies attached to the specified group (or none that match the specified path prefix), the action returns an empty list.
+You can paginate the results using the `MaxItems` and `Marker` parameters. You can use the `PathPrefix` parameter to limit the list of policies to only those matching the specified path prefix. If there are no policies attached to the specified group (or none that match the specified path prefix), the operation returns an empty list.
 
 # Arguments
 
 ## `GroupName = ::String` -- *Required*
 The name (friendly name, not ARN) of the group to list attached policies for.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `PathPrefix = ::String`
 The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies.
 
-This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 
 ## `Marker = ::String`
@@ -3993,7 +4050,6 @@ If you do not include this parameter, it defaults to 100. Note that IAM might re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAttachedGroupPolicies)
 """
-
 @inline list_attached_group_policies(aws::AWSConfig=default_aws_config(); args...) = list_attached_group_policies(aws, args)
 
 @inline list_attached_group_policies(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListAttachedGroupPolicies", args)
@@ -4016,7 +4072,7 @@ Lists all managed policies that are attached to the specified IAM role.
 
 An IAM role can also have inline policies embedded with it. To list the inline policies for a role, use the [ListRolePolicies](@ref) API. For information about policies, see [Managed Policies and Inline Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html) in the *IAM User Guide*.
 
-You can paginate the results using the `MaxItems` and `Marker` parameters. You can use the `PathPrefix` parameter to limit the list of policies to only those matching the specified path prefix. If there are no policies attached to the specified role (or none that match the specified path prefix), the action returns an empty list.
+You can paginate the results using the `MaxItems` and `Marker` parameters. You can use the `PathPrefix` parameter to limit the list of policies to only those matching the specified path prefix. If there are no policies attached to the specified role (or none that match the specified path prefix), the operation returns an empty list.
 
 # Arguments
 
@@ -4029,7 +4085,7 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 ## `PathPrefix = ::String`
 The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies.
 
-This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 
 ## `Marker = ::String`
@@ -4054,7 +4110,6 @@ If you do not include this parameter, it defaults to 100. Note that IAM might re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAttachedRolePolicies)
 """
-
 @inline list_attached_role_policies(aws::AWSConfig=default_aws_config(); args...) = list_attached_role_policies(aws, args)
 
 @inline list_attached_role_policies(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListAttachedRolePolicies", args)
@@ -4077,20 +4132,20 @@ Lists all managed policies that are attached to the specified IAM user.
 
 An IAM user can also have inline policies embedded with it. To list the inline policies for a user, use the [ListUserPolicies](@ref) API. For information about policies, see [Managed Policies and Inline Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html) in the *IAM User Guide*.
 
-You can paginate the results using the `MaxItems` and `Marker` parameters. You can use the `PathPrefix` parameter to limit the list of policies to only those matching the specified path prefix. If there are no policies attached to the specified group (or none that match the specified path prefix), the action returns an empty list.
+You can paginate the results using the `MaxItems` and `Marker` parameters. You can use the `PathPrefix` parameter to limit the list of policies to only those matching the specified path prefix. If there are no policies attached to the specified group (or none that match the specified path prefix), the operation returns an empty list.
 
 # Arguments
 
 ## `UserName = ::String` -- *Required*
 The name (friendly name, not ARN) of the user to list attached policies for.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `PathPrefix = ::String`
 The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies.
 
-This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 
 ## `Marker = ::String`
@@ -4115,7 +4170,6 @@ If you do not include this parameter, it defaults to 100. Note that IAM might re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAttachedUserPolicies)
 """
-
 @inline list_attached_user_policies(aws::AWSConfig=default_aws_config(); args...) = list_attached_user_policies(aws, args)
 
 @inline list_attached_user_policies(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListAttachedUserPolicies", args)
@@ -4157,7 +4211,15 @@ For example, when `EntityFilter` is `Role`, only the roles that are attached to 
 ## `PathPrefix = ::String`
 The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all entities.
 
-This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+
+
+## `PolicyUsageFilter = "PermissionsPolicy" or "PermissionsBoundary"`
+The policy usage method to use for filtering the results.
+
+To list only permissions policies, set `PolicyUsageFilter` to `PermissionsPolicy`. To list only the policies used to set permissions boundaries, set the value to `PermissionsBoundary`.
+
+This parameter is optional. If it is not included, all policies are returned.
 
 
 ## `Marker = ::String`
@@ -4182,7 +4244,6 @@ If you do not include this parameter, it defaults to 100. Note that IAM might re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListEntitiesForPolicy)
 """
-
 @inline list_entities_for_policy(aws::AWSConfig=default_aws_config(); args...) = list_entities_for_policy(aws, args)
 
 @inline list_entities_for_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListEntitiesForPolicy", args)
@@ -4205,14 +4266,14 @@ Lists the names of the inline policies that are embedded in the specified IAM gr
 
 An IAM group can also have managed policies attached to it. To list the managed policies that are attached to a group, use [ListAttachedGroupPolicies](@ref). For more information about policies, see [Managed Policies and Inline Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html) in the *IAM User Guide*.
 
-You can paginate the results using the `MaxItems` and `Marker` parameters. If there are no inline policies embedded with the specified group, the action returns an empty list.
+You can paginate the results using the `MaxItems` and `Marker` parameters. If there are no inline policies embedded with the specified group, the operation returns an empty list.
 
 # Arguments
 
 ## `GroupName = ::String` -- *Required*
 The name of the group to list policies for.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `Marker = ::String`
@@ -4258,7 +4319,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListGroupPolicies)
 """
-
 @inline list_group_policies(aws::AWSConfig=default_aws_config(); args...) = list_group_policies(aws, args)
 
 @inline list_group_policies(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListGroupPolicies", args)
@@ -4286,7 +4346,7 @@ You can paginate the results using the `MaxItems` and `Marker` parameters.
 ## `PathPrefix = ::String`
 The path prefix for filtering the results. For example, the prefix `/division_abc/subdivision_xyz/` gets all groups whose path starts with `/division_abc/subdivision_xyz/`.
 
-This parameter is optional. If it is not included, it defaults to a slash (/), listing all groups. This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter is optional. If it is not included, it defaults to a slash (/), listing all groups. This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 
 ## `Marker = ::String`
@@ -4351,7 +4411,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListGroups)
 """
-
 @inline list_groups(aws::AWSConfig=default_aws_config(); args...) = list_groups(aws, args)
 
 @inline list_groups(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListGroups", args)
@@ -4379,7 +4438,7 @@ You can paginate the results using the `MaxItems` and `Marker` parameters.
 ## `UserName = ::String` -- *Required*
 The name of the user to list groups for.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `Marker = ::String`
@@ -4437,7 +4496,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListGroupsForUser)
 """
-
 @inline list_groups_for_user(aws::AWSConfig=default_aws_config(); args...) = list_groups_for_user(aws, args)
 
 @inline list_groups_for_user(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListGroupsForUser", args)
@@ -4456,7 +4514,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # ListInstanceProfiles Operation
 
-Lists the instance profiles that have the specified path prefix. If there are none, the action returns an empty list. For more information about instance profiles, go to [About Instance Profiles](http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
+Lists the instance profiles that have the specified path prefix. If there are none, the operation returns an empty list. For more information about instance profiles, go to [About Instance Profiles](http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
 
 You can paginate the results using the `MaxItems` and `Marker` parameters.
 
@@ -4465,7 +4523,7 @@ You can paginate the results using the `MaxItems` and `Marker` parameters.
 ## `PathPrefix = ::String`
 The path prefix for filtering the results. For example, the prefix `/application_abc/component_xyz/` gets all instance profiles whose path starts with `/application_abc/component_xyz/`.
 
-This parameter is optional. If it is not included, it defaults to a slash (/), listing all instance profiles. This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter is optional. If it is not included, it defaults to a slash (/), listing all instance profiles. This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 
 ## `Marker = ::String`
@@ -4490,7 +4548,6 @@ If you do not include this parameter, it defaults to 100. Note that IAM might re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListInstanceProfiles)
 """
-
 @inline list_instance_profiles(aws::AWSConfig=default_aws_config(); args...) = list_instance_profiles(aws, args)
 
 @inline list_instance_profiles(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListInstanceProfiles", args)
@@ -4509,7 +4566,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # ListInstanceProfilesForRole Operation
 
-Lists the instance profiles that have the specified associated IAM role. If there are none, the action returns an empty list. For more information about instance profiles, go to [About Instance Profiles](http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
+Lists the instance profiles that have the specified associated IAM role. If there are none, the operation returns an empty list. For more information about instance profiles, go to [About Instance Profiles](http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
 
 You can paginate the results using the `MaxItems` and `Marker` parameters.
 
@@ -4543,7 +4600,6 @@ If you do not include this parameter, it defaults to 100. Note that IAM might re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListInstanceProfilesForRole)
 """
-
 @inline list_instance_profiles_for_role(aws::AWSConfig=default_aws_config(); args...) = list_instance_profiles_for_role(aws, args)
 
 @inline list_instance_profiles_for_role(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListInstanceProfilesForRole", args)
@@ -4562,7 +4618,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # ListMFADevices Operation
 
-Lists the MFA devices for an IAM user. If the request includes a IAM user name, then this action lists all the MFA devices associated with the specified user. If you do not specify a user name, IAM determines the user name implicitly based on the AWS access key ID signing the request for this API.
+Lists the MFA devices for an IAM user. If the request includes a IAM user name, then this operation lists all the MFA devices associated with the specified user. If you do not specify a user name, IAM determines the user name implicitly based on the AWS access key ID signing the request for this API.
 
 You can paginate the results using the `MaxItems` and `Marker` parameters.
 
@@ -4571,7 +4627,7 @@ You can paginate the results using the `MaxItems` and `Marker` parameters.
 ## `UserName = ::String`
 The name of the user whose MFA devices you want to list.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `Marker = ::String`
@@ -4596,7 +4652,6 @@ If you do not include this parameter, it defaults to 100. Note that IAM might re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListMFADevices)
 """
-
 @inline list_mfadevices(aws::AWSConfig=default_aws_config(); args...) = list_mfadevices(aws, args)
 
 @inline list_mfadevices(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListMFADevices", args)
@@ -4631,7 +4686,6 @@ Lists information about the IAM OpenID Connect (OIDC) provider resource objects 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListOpenIDConnectProviders)
 """
-
 @inline list_open_idconnect_providers(aws::AWSConfig=default_aws_config(); args...) = list_open_idconnect_providers(aws, args)
 
 @inline list_open_idconnect_providers(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListOpenIDConnectProviders", args)
@@ -4675,7 +4729,15 @@ When `OnlyAttached` is `true`, the returned list contains only the policies that
 
 
 ## `PathPrefix = ::String`
-The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies. This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies. This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+
+
+## `PolicyUsageFilter = "PermissionsPolicy" or "PermissionsBoundary"`
+The policy usage method to use for filtering the results.
+
+To list only permissions policies, set `PolicyUsageFilter` to `PermissionsPolicy`. To list only the policies used to set permissions boundaries, set the value to `PermissionsBoundary`.
+
+This parameter is optional. If it is not included, all policies are returned.
 
 
 ## `Marker = ::String`
@@ -4700,7 +4762,6 @@ If you do not include this parameter, it defaults to 100. Note that IAM might re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListPolicies)
 """
-
 @inline list_policies(aws::AWSConfig=default_aws_config(); args...) = list_policies(aws, args)
 
 @inline list_policies(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListPolicies", args)
@@ -4753,7 +4814,6 @@ If you do not include this parameter, it defaults to 100. Note that IAM might re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListPolicyVersions)
 """
-
 @inline list_policy_versions(aws::AWSConfig=default_aws_config(); args...) = list_policy_versions(aws, args)
 
 @inline list_policy_versions(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListPolicyVersions", args)
@@ -4776,7 +4836,7 @@ Lists the names of the inline policies that are embedded in the specified IAM ro
 
 An IAM role can also have managed policies attached to it. To list the managed policies that are attached to a role, use [ListAttachedRolePolicies](@ref). For more information about policies, see [Managed Policies and Inline Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html) in the *IAM User Guide*.
 
-You can paginate the results using the `MaxItems` and `Marker` parameters. If there are no inline policies embedded with the specified role, the action returns an empty list.
+You can paginate the results using the `MaxItems` and `Marker` parameters. If there are no inline policies embedded with the specified role, the operation returns an empty list.
 
 # Arguments
 
@@ -4808,7 +4868,6 @@ If you do not include this parameter, it defaults to 100. Note that IAM might re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListRolePolicies)
 """
-
 @inline list_role_policies(aws::AWSConfig=default_aws_config(); args...) = list_role_policies(aws, args)
 
 @inline list_role_policies(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListRolePolicies", args)
@@ -4827,7 +4886,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # ListRoles Operation
 
-Lists the IAM roles that have the specified path prefix. If there are none, the action returns an empty list. For more information about roles, go to [Working with Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
+Lists the IAM roles that have the specified path prefix. If there are none, the operation returns an empty list. For more information about roles, go to [Working with Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
 
 You can paginate the results using the `MaxItems` and `Marker` parameters.
 
@@ -4836,7 +4895,7 @@ You can paginate the results using the `MaxItems` and `Marker` parameters.
 ## `PathPrefix = ::String`
 The path prefix for filtering the results. For example, the prefix `/application_abc/component_xyz/` gets all roles whose path starts with `/application_abc/component_xyz/`.
 
-This parameter is optional. If it is not included, it defaults to a slash (/), listing all roles. This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter is optional. If it is not included, it defaults to a slash (/), listing all roles. This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 
 ## `Marker = ::String`
@@ -4861,7 +4920,6 @@ If you do not include this parameter, it defaults to 100. Note that IAM might re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListRoles)
 """
-
 @inline list_roles(aws::AWSConfig=default_aws_config(); args...) = list_roles(aws, args)
 
 @inline list_roles(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListRoles", args)
@@ -4899,7 +4957,6 @@ Lists the SAML provider resource objects defined in IAM in the account.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListSAMLProviders)
 """
-
 @inline list_samlproviders(aws::AWSConfig=default_aws_config(); args...) = list_samlproviders(aws, args)
 
 @inline list_samlproviders(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListSAMLProviders", args)
@@ -4918,18 +4975,18 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # ListSSHPublicKeys Operation
 
-Returns information about the SSH public keys associated with the specified IAM user. If there are none, the action returns an empty list.
+Returns information about the SSH public keys associated with the specified IAM user. If there are none, the operation returns an empty list.
 
-The SSH public keys returned by this action are used only for authenticating the IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see [Set up AWS CodeCommit for SSH Connections](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html) in the *AWS CodeCommit User Guide*.
+The SSH public keys returned by this operation are used only for authenticating the IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see [Set up AWS CodeCommit for SSH Connections](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html) in the *AWS CodeCommit User Guide*.
 
 Although each user is limited to a small number of keys, you can still paginate the results using the `MaxItems` and `Marker` parameters.
 
 # Arguments
 
 ## `UserName = ::String`
-The name of the IAM user to list SSH public keys for. If none is specified, the UserName field is determined implicitly based on the AWS access key used to sign the request.
+The name of the IAM user to list SSH public keys for. If none is specified, the `UserName` field is determined implicitly based on the AWS access key used to sign the request.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `Marker = ::String`
@@ -4954,7 +5011,6 @@ If you do not include this parameter, it defaults to 100. Note that IAM might re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListSSHPublicKeys)
 """
-
 @inline list_sshpublic_keys(aws::AWSConfig=default_aws_config(); args...) = list_sshpublic_keys(aws, args)
 
 @inline list_sshpublic_keys(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListSSHPublicKeys", args)
@@ -4973,18 +5029,18 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # ListServerCertificates Operation
 
-Lists the server certificates stored in IAM that have the specified path prefix. If none exist, the action returns an empty list.
+Lists the server certificates stored in IAM that have the specified path prefix. If none exist, the operation returns an empty list.
 
 You can paginate the results using the `MaxItems` and `Marker` parameters.
 
-For more information about working with server certificates, including a list of AWS services that can use the server certificates that you manage with IAM, go to [Working with Server Certificates](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html) in the *IAM User Guide*.
+For more information about working with server certificates, see [Working with Server Certificates](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html) in the *IAM User Guide*. This topic also includes a list of AWS services that can use the server certificates that you manage with IAM.
 
 # Arguments
 
 ## `PathPrefix = ::String`
 The path prefix for filtering the results. For example: `/company/servercerts` would get all server certificates for which the path starts with `/company/servercerts`.
 
-This parameter is optional. If it is not included, it defaults to a slash (/), listing all server certificates. This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter is optional. If it is not included, it defaults to a slash (/), listing all server certificates. This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 
 ## `Marker = ::String`
@@ -5009,7 +5065,6 @@ If you do not include this parameter, it defaults to 100. Note that IAM might re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListServerCertificates)
 """
-
 @inline list_server_certificates(aws::AWSConfig=default_aws_config(); args...) = list_server_certificates(aws, args)
 
 @inline list_server_certificates(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListServerCertificates", args)
@@ -5028,14 +5083,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # ListServiceSpecificCredentials Operation
 
-Returns information about the service-specific credentials associated with the specified IAM user. If there are none, the action returns an empty list. The service-specific credentials returned by this action are used only for authenticating the IAM user to a specific service. For more information about using service-specific credentials to authenticate to an AWS service, see [Set Up service-specific credentials](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html) in the AWS CodeCommit User Guide.
+Returns information about the service-specific credentials associated with the specified IAM user. If there are none, the operation returns an empty list. The service-specific credentials returned by this operation are used only for authenticating the IAM user to a specific service. For more information about using service-specific credentials to authenticate to an AWS service, see [Set Up service-specific credentials](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html) in the AWS CodeCommit User Guide.
 
 # Arguments
 
 ## `UserName = ::String`
-The name of the user whose service-specific credentials you want information about. If this value is not specified then the operation assumes the user whose credentials are used to call the operation.
+The name of the user whose service-specific credentials you want information about. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `ServiceName = ::String`
@@ -5054,7 +5109,6 @@ Filters the returned results to only those for the specified AWS service. If not
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListServiceSpecificCredentials)
 """
-
 @inline list_service_specific_credentials(aws::AWSConfig=default_aws_config(); args...) = list_service_specific_credentials(aws, args)
 
 @inline list_service_specific_credentials(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListServiceSpecificCredentials", args)
@@ -5073,18 +5127,18 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # ListSigningCertificates Operation
 
-Returns information about the signing certificates associated with the specified IAM user. If there are none, the action returns an empty list.
+Returns information about the signing certificates associated with the specified IAM user. If there are none, the operation returns an empty list.
 
 Although each user is limited to a small number of signing certificates, you can still paginate the results using the `MaxItems` and `Marker` parameters.
 
-If the `UserName` field is not specified, the user name is determined implicitly based on the AWS access key ID used to sign the request for this API. Because this action works for access keys under the AWS account, you can use this action to manage root credentials even if the AWS account has no associated users.
+If the `UserName` field is not specified, the user name is determined implicitly based on the AWS access key ID used to sign the request for this API. Because this operation works for access keys under the AWS account, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated users.
 
 # Arguments
 
 ## `UserName = ::String`
 The name of the IAM user whose signing certificates you want to examine.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `Marker = ::String`
@@ -5135,7 +5189,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListSigningCertificates)
 """
-
 @inline list_signing_certificates(aws::AWSConfig=default_aws_config(); args...) = list_signing_certificates(aws, args)
 
 @inline list_signing_certificates(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListSigningCertificates", args)
@@ -5158,14 +5211,14 @@ Lists the names of the inline policies embedded in the specified IAM user.
 
 An IAM user can also have managed policies attached to it. To list the managed policies that are attached to a user, use [ListAttachedUserPolicies](@ref). For more information about policies, see [Managed Policies and Inline Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html) in the *IAM User Guide*.
 
-You can paginate the results using the `MaxItems` and `Marker` parameters. If there are no inline policies embedded with the specified user, the action returns an empty list.
+You can paginate the results using the `MaxItems` and `Marker` parameters. If there are no inline policies embedded with the specified user, the operation returns an empty list.
 
 # Arguments
 
 ## `UserName = ::String` -- *Required*
 The name of the user to list policies for.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `Marker = ::String`
@@ -5190,7 +5243,6 @@ If you do not include this parameter, it defaults to 100. Note that IAM might re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListUserPolicies)
 """
-
 @inline list_user_policies(aws::AWSConfig=default_aws_config(); args...) = list_user_policies(aws, args)
 
 @inline list_user_policies(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListUserPolicies", args)
@@ -5209,7 +5261,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # ListUsers Operation
 
-Lists the IAM users that have the specified path prefix. If no path prefix is specified, the action returns all users in the AWS account. If there are none, the action returns an empty list.
+Lists the IAM users that have the specified path prefix. If no path prefix is specified, the operation returns all users in the AWS account. If there are none, the operation returns an empty list.
 
 You can paginate the results using the `MaxItems` and `Marker` parameters.
 
@@ -5218,7 +5270,7 @@ You can paginate the results using the `MaxItems` and `Marker` parameters.
 ## `PathPrefix = ::String`
 The path prefix for filtering the results. For example: `/division_abc/subdivision_xyz/`, which would get all user names whose path starts with `/division_abc/subdivision_xyz/`.
 
-This parameter is optional. If it is not included, it defaults to a slash (/), listing all user names. This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter is optional. If it is not included, it defaults to a slash (/), listing all user names. This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 
 ## `Marker = ::String`
@@ -5278,7 +5330,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListUsers)
 """
-
 @inline list_users(aws::AWSConfig=default_aws_config(); args...) = list_users(aws, args)
 
 @inline list_users(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListUsers", args)
@@ -5297,14 +5348,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # ListVirtualMFADevices Operation
 
-Lists the virtual MFA devices defined in the AWS account by assignment status. If you do not specify an assignment status, the action returns a list of all virtual MFA devices. Assignment status can be `Assigned`, `Unassigned`, or `Any`.
+Lists the virtual MFA devices defined in the AWS account by assignment status. If you do not specify an assignment status, the operation returns a list of all virtual MFA devices. Assignment status can be `Assigned`, `Unassigned`, or `Any`.
 
 You can paginate the results using the `MaxItems` and `Marker` parameters.
 
 # Arguments
 
 ## `AssignmentStatus = "Assigned", "Unassigned" or "Any"`
-The status (`Unassigned` or `Assigned`) of the devices to list. If you do not specify an `AssignmentStatus`, the action defaults to `Any` which lists both assigned and unassigned virtual MFA devices.
+The status (`Unassigned` or `Assigned`) of the devices to list. If you do not specify an `AssignmentStatus`, the operation defaults to `Any` which lists both assigned and unassigned virtual MFA devices.
 
 
 ## `Marker = ::String`
@@ -5350,7 +5401,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListVirtualMFADevices)
 """
-
 @inline list_virtual_mfadevices(aws::AWSConfig=default_aws_config(); args...) = list_virtual_mfadevices(aws, args)
 
 @inline list_virtual_mfadevices(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ListVirtualMFADevices", args)
@@ -5383,19 +5433,25 @@ For information about limits on the number of inline policies that you can embed
 ## `GroupName = ::String` -- *Required*
 The name of the group to associate the policy with.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `PolicyName = ::String` -- *Required*
 The name of the policy document.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `PolicyDocument = ::String` -- *Required*
 The policy document.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 
@@ -5419,12 +5475,54 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/PutGroupPolicy)
 """
-
 @inline put_group_policy(aws::AWSConfig=default_aws_config(); args...) = put_group_policy(aws, args)
 
 @inline put_group_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "PutGroupPolicy", args)
 
 @inline put_group_policy(args) = put_group_policy(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.IAM.put_role_permissions_boundary
+    put_role_permissions_boundary([::AWSConfig], arguments::Dict)
+    put_role_permissions_boundary([::AWSConfig]; RoleName=, PermissionsBoundary=)
+
+    using AWSCore.Services.iam
+    iam([::AWSConfig], "PutRolePermissionsBoundary", arguments::Dict)
+    iam([::AWSConfig], "PutRolePermissionsBoundary", RoleName=, PermissionsBoundary=)
+
+# PutRolePermissionsBoundary Operation
+
+Adds or updates the policy that is specified as the IAM role's permissions boundary. You can use an AWS managed policy or a customer managed policy to set the boundary for a role. Use the boundary to control the maximum permissions that the role can have. Setting a permissions boundary is an advanced feature that can affect the permissions for the role.
+
+You cannot set the boundary for a service-linked role.
+
+**Important**
+> Policies used as permissions boundaries do not provide permissions. You must also attach a permissions policy to the role. To learn how the effective permissions for a role are evaluated, see [IAM JSON Policy Evaluation Logic](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html) in the IAM User Guide.
+
+# Arguments
+
+## `RoleName = ::String` -- *Required*
+The name (friendly name, not ARN) of the IAM role for which you want to set the permissions boundary.
+
+
+## `PermissionsBoundary = ::String` -- *Required*
+The ARN of the policy that is used to set the permissions boundary for the role.
+
+
+
+
+# Exceptions
+
+`NoSuchEntityException`, `InvalidInputException`, `UnmodifiableEntityException`, `PolicyNotAttachableException` or `ServiceFailureException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/PutRolePermissionsBoundary)
+"""
+@inline put_role_permissions_boundary(aws::AWSConfig=default_aws_config(); args...) = put_role_permissions_boundary(aws, args)
+
+@inline put_role_permissions_boundary(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "PutRolePermissionsBoundary", args)
+
+@inline put_role_permissions_boundary(args) = put_role_permissions_boundary(default_aws_config(), args)
 
 
 """
@@ -5460,13 +5558,19 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 ## `PolicyName = ::String` -- *Required*
 The name of the policy document.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `PolicyDocument = ::String` -- *Required*
 The policy document.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 
@@ -5490,12 +5594,52 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/PutRolePolicy)
 """
-
 @inline put_role_policy(aws::AWSConfig=default_aws_config(); args...) = put_role_policy(aws, args)
 
 @inline put_role_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "PutRolePolicy", args)
 
 @inline put_role_policy(args) = put_role_policy(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.IAM.put_user_permissions_boundary
+    put_user_permissions_boundary([::AWSConfig], arguments::Dict)
+    put_user_permissions_boundary([::AWSConfig]; UserName=, PermissionsBoundary=)
+
+    using AWSCore.Services.iam
+    iam([::AWSConfig], "PutUserPermissionsBoundary", arguments::Dict)
+    iam([::AWSConfig], "PutUserPermissionsBoundary", UserName=, PermissionsBoundary=)
+
+# PutUserPermissionsBoundary Operation
+
+Adds or updates the policy that is specified as the IAM user's permissions boundary. You can use an AWS managed policy or a customer managed policy to set the boundary for a user. Use the boundary to control the maximum permissions that the user can have. Setting a permissions boundary is an advanced feature that can affect the permissions for the user.
+
+**Important**
+> Policies that are used as permissions boundaries do not provide permissions. You must also attach a permissions policy to the user. To learn how the effective permissions for a user are evaluated, see [IAM JSON Policy Evaluation Logic](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html) in the IAM User Guide.
+
+# Arguments
+
+## `UserName = ::String` -- *Required*
+The name (friendly name, not ARN) of the IAM user for which you want to set the permissions boundary.
+
+
+## `PermissionsBoundary = ::String` -- *Required*
+The ARN of the policy that is used to set the permissions boundary for the user.
+
+
+
+
+# Exceptions
+
+`NoSuchEntityException`, `InvalidInputException`, `PolicyNotAttachableException` or `ServiceFailureException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/PutUserPermissionsBoundary)
+"""
+@inline put_user_permissions_boundary(aws::AWSConfig=default_aws_config(); args...) = put_user_permissions_boundary(aws, args)
+
+@inline put_user_permissions_boundary(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "PutUserPermissionsBoundary", args)
+
+@inline put_user_permissions_boundary(args) = put_user_permissions_boundary(default_aws_config(), args)
 
 
 """
@@ -5523,19 +5667,25 @@ For information about limits on the number of inline policies that you can embed
 ## `UserName = ::String` -- *Required*
 The name of the user to associate the policy with.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `PolicyName = ::String` -- *Required*
 The name of the policy document.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-+
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `PolicyDocument = ::String` -- *Required*
 The policy document.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 
@@ -5559,7 +5709,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/PutUserPolicy)
 """
-
 @inline put_user_policy(aws::AWSConfig=default_aws_config(); args...) = put_user_policy(aws, args)
 
 @inline put_user_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "PutUserPolicy", args)
@@ -5580,12 +5729,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Removes the specified client ID (also known as audience) from the list of client IDs registered for the specified IAM OpenID Connect (OIDC) provider resource object.
 
-This action is idempotent; it does not fail or return an error if you try to remove a client ID that does not exist.
+This operation is idempotent; it does not fail or return an error if you try to remove a client ID that does not exist.
 
 # Arguments
 
 ## `OpenIDConnectProviderArn = ::String` -- *Required*
-The Amazon Resource Name (ARN) of the IAM OIDC provider resource to remove the client ID from. You can get a list of OIDC provider ARNs by using the [ListOpenIDConnectProviders](@ref) action.
+The Amazon Resource Name (ARN) of the IAM OIDC provider resource to remove the client ID from. You can get a list of OIDC provider ARNs by using the [ListOpenIDConnectProviders](@ref) operation.
 
 For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) in the *AWS General Reference*.
 
@@ -5602,7 +5751,6 @@ The client ID (also known as audience) to remove from the IAM OIDC provider reso
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/RemoveClientIDFromOpenIDConnectProvider)
 """
-
 @inline remove_client_idfrom_open_idconnect_provider(aws::AWSConfig=default_aws_config(); args...) = remove_client_idfrom_open_idconnect_provider(aws, args)
 
 @inline remove_client_idfrom_open_idconnect_provider(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "RemoveClientIDFromOpenIDConnectProvider", args)
@@ -5624,7 +5772,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 Removes the specified IAM role from the specified EC2 instance profile.
 
 **Important**
-> Make sure you do not have any Amazon EC2 instances running with the role you are about to remove from the instance profile. Removing a role from an instance profile that is associated with a running instance might break any applications running on the instance.
+> Make sure that you do not have any Amazon EC2 instances running with the role you are about to remove from the instance profile. Removing a role from an instance profile that is associated with a running instance might break any applications running on the instance.
 
 For more information about IAM roles, go to [Working with Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html). For more information about instance profiles, go to [About Instance Profiles](http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
 
@@ -5633,7 +5781,7 @@ For more information about IAM roles, go to [Working with Roles](http://docs.aws
 ## `InstanceProfileName = ::String` -- *Required*
 The name of the instance profile to update.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `RoleName = ::String` -- *Required*
@@ -5662,7 +5810,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/RemoveRoleFromInstanceProfile)
 """
-
 @inline remove_role_from_instance_profile(aws::AWSConfig=default_aws_config(); args...) = remove_role_from_instance_profile(aws, args)
 
 @inline remove_role_from_instance_profile(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "RemoveRoleFromInstanceProfile", args)
@@ -5688,13 +5835,13 @@ Removes the specified user from the specified group.
 ## `GroupName = ::String` -- *Required*
 The name of the group to update.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `UserName = ::String` -- *Required*
 The name of the user to remove.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -5717,7 +5864,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/RemoveUserFromGroup)
 """
-
 @inline remove_user_from_group(aws::AWSConfig=default_aws_config(); args...) = remove_user_from_group(aws, args)
 
 @inline remove_user_from_group(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "RemoveUserFromGroup", args)
@@ -5743,7 +5889,7 @@ Resets the password for a service-specific credential. The new password is AWS g
 ## `UserName = ::String`
 The name of the IAM user associated with the service-specific credential. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `ServiceSpecificCredentialId = ::String` -- *Required*
@@ -5764,7 +5910,6 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ResetServiceSpecificCredential)
 """
-
 @inline reset_service_specific_credential(aws::AWSConfig=default_aws_config(); args...) = reset_service_specific_credential(aws, args)
 
 @inline reset_service_specific_credential(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ResetServiceSpecificCredential", args)
@@ -5792,13 +5937,13 @@ For more information about creating and working with virtual MFA devices, go to 
 ## `UserName = ::String` -- *Required*
 The name of the user whose MFA device you want to resynchronize.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `SerialNumber = ::String` -- *Required*
 Serial number that uniquely identifies the MFA device.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `AuthenticationCode1 = ::String` -- *Required*
@@ -5821,7 +5966,6 @@ The format for this parameter is a sequence of six digits.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ResyncMFADevice)
 """
-
 @inline resync_mfadevice(aws::AWSConfig=default_aws_config(); args...) = resync_mfadevice(aws, args)
 
 @inline resync_mfadevice(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "ResyncMFADevice", args)
@@ -5842,7 +5986,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Sets the specified version of the specified policy as the policy's default (operative) version.
 
-This action affects all users, groups, and roles that the policy is attached to. To list the users, groups, and roles that the policy is attached to, use the [ListEntitiesForPolicy](@ref) API.
+This operation affects all users, groups, and roles that the policy is attached to. To list the users, groups, and roles that the policy is attached to, use the [ListEntitiesForPolicy](@ref) API.
 
 For information about managed policies, see [Managed Policies and Inline Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html) in the *IAM User Guide*.
 
@@ -5868,7 +6012,6 @@ For more information about managed policy versions, see [Versioning for Managed 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/SetDefaultPolicyVersion)
 """
-
 @inline set_default_policy_version(aws::AWSConfig=default_aws_config(); args...) = set_default_policy_version(aws, args)
 
 @inline set_default_policy_version(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "SetDefaultPolicyVersion", args)
@@ -5887,9 +6030,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # SimulateCustomPolicy Operation
 
-Simulate how a set of IAM policies and optionally a resource-based policy works with a list of API actions and AWS resources to determine the policies' effective permissions. The policies are provided as strings.
+Simulate how a set of IAM policies and optionally a resource-based policy works with a list of API operations and AWS resources to determine the policies' effective permissions. The policies are provided as strings.
 
-The simulation does not perform the API actions; it only checks the authorization to determine if the simulated policies allow or deny the actions.
+The simulation does not perform the API operations; it only checks the authorization to determine if the simulated policies allow or deny the operations.
 
 If you want to simulate existing policies attached to an IAM user, group, or role, use [SimulatePrincipalPolicy](@ref) instead.
 
@@ -5900,13 +6043,19 @@ If the output is long, you can use `MaxItems` and `Marker` parameters to paginat
 # Arguments
 
 ## `PolicyInputList = [::String, ...]` -- *Required*
-A list of policy documents to include in the simulation. Each document is specified as a string containing the complete, valid JSON text of an IAM policy. Do not include any resource-based policies in this parameter. Any resource-based policy must be submitted with the `ResourcePolicy` parameter. The policies cannot be "scope-down" policies, such as you could include in a call to [GetFederationToken](http://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html) or one of the [AssumeRole](http://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html) APIs to restrict what a user can do while using the temporary credentials.
+A list of policy documents to include in the simulation. Each document is specified as a string containing the complete, valid JSON text of an IAM policy. Do not include any resource-based policies in this parameter. Any resource-based policy must be submitted with the `ResourcePolicy` parameter. The policies cannot be "scope-down" policies, such as you could include in a call to [GetFederationToken](http://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html) or one of the [AssumeRole](http://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html) API operations. In other words, do not use policies designed to restrict what a user can do while using the temporary credentials.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 ## `ActionNames = [::String, ...]` -- *Required*
-A list of names of API actions to evaluate in the simulation. Each action is evaluated against each resource. Each action must include the service identifier, such as `iam:CreateUser`.
+A list of names of API operations to evaluate in the simulation. Each operation is evaluated against each resource. Each operation must include the service identifier, such as `iam:CreateUser`.
 
 
 ## `ResourceArns = [::String, ...]`
@@ -5922,15 +6071,23 @@ For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Servi
 ## `ResourcePolicy = ::String`
 A resource-based policy to include in the simulation provided as a string. Each resource in the simulation is treated as if it had this policy attached. You can include only one resource-based policy in a simulation.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 ## `ResourceOwner = ::String`
-An AWS account ID that specifies the owner of any simulated resource that does not identify its owner in the resource ARN, such as an S3 bucket or object. If `ResourceOwner` is specified, it is also used as the account owner of any `ResourcePolicy` included in the simulation. If the `ResourceOwner` parameter is not specified, then the owner of the resources and the resource policy defaults to the account of the identity provided in `CallerArn`. This parameter is required only if you specify a resource-based policy and account that owns the resource is different from the account that owns the simulated calling user `CallerArn`.
+An ARN representing the AWS account ID that specifies the owner of any simulated resource that does not identify its owner in the resource ARN, such as an S3 bucket or object. If `ResourceOwner` is specified, it is also used as the account owner of any `ResourcePolicy` included in the simulation. If the `ResourceOwner` parameter is not specified, then the owner of the resources and the resource policy defaults to the account of the identity provided in `CallerArn`. This parameter is required only if you specify a resource-based policy and account that owns the resource is different from the account that owns the simulated calling user `CallerArn`.
+
+The ARN for an account uses the following syntax: `arn:aws:iam::*AWS-account-ID*:root`. For example, to represent the account with the 112233445566 ID, use the following ARN: `arn:aws:iam::112233445566-ID:root`.
 
 
 ## `CallerArn = ::String`
-The ARN of the IAM user that you want to use as the simulated caller of the APIs. `CallerArn` is required if you include a `ResourcePolicy` so that the policy's `Principal` element has a value to use in evaluating the policy.
+The ARN of the IAM user that you want to use as the simulated caller of the API operations. `CallerArn` is required if you include a `ResourcePolicy` so that the policy's `Principal` element has a value to use in evaluating the policy.
 
 You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed role, federated user, or a service principal.
 
@@ -5946,9 +6103,9 @@ A list of context keys and corresponding values for the simulation to use. Whene
 ```
 
 ## `ResourceHandlingOption = ::String`
-Specifies the type of simulation to run. Different APIs that support resource-based policies require different combinations of resources. By specifying the type of simulation to run, you enable the policy simulator to enforce the presence of the required resources to ensure reliable simulation results. If your simulation does not match one of the following scenarios, then you can omit this parameter. The following list shows each of the supported scenario values and the resources that you must define to run the simulation.
+Specifies the type of simulation to run. Different API operations that support resource-based policies require different combinations of resources. By specifying the type of simulation to run, you enable the policy simulator to enforce the presence of the required resources to ensure reliable simulation results. If your simulation does not match one of the following scenarios, then you can omit this parameter. The following list shows each of the supported scenario values and the resources that you must define to run the simulation.
 
-Each of the EC2 scenarios requires that you specify instance, image, and security-group resources. If your scenario includes an EBS volume, then you must specify that volume as a resource. If the EC2 scenario includes VPC, then you must supply the network-interface resource. If it includes an IP subnet, then you must specify the subnet resource. For more information on the EC2 scenario options, see [Supported Platforms](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html) in the *AWS EC2 User Guide*.
+Each of the EC2 scenarios requires that you specify instance, image, and security-group resources. If your scenario includes an EBS volume, then you must specify that volume as a resource. If the EC2 scenario includes VPC, then you must supply the network-interface resource. If it includes an IP subnet, then you must specify the subnet resource. For more information on the EC2 scenario options, see [Supported Platforms](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html) in the *Amazon EC2 User Guide*.
 
 *   **EC2-Classic-InstanceStore**
 
@@ -5997,7 +6154,6 @@ Use this parameter only when paginating results and only after you receive a res
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/SimulateCustomPolicy)
 """
-
 @inline simulate_custom_policy(aws::AWSConfig=default_aws_config(); args...) = simulate_custom_policy(aws, args)
 
 @inline simulate_custom_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "SimulateCustomPolicy", args)
@@ -6016,13 +6172,13 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # SimulatePrincipalPolicy Operation
 
-Simulate how a set of IAM policies attached to an IAM entity works with a list of API actions and AWS resources to determine the policies' effective permissions. The entity can be an IAM user, group, or role. If you specify a user, then the simulation also includes all of the policies that are attached to groups that the user belongs to .
+Simulate how a set of IAM policies attached to an IAM entity works with a list of API operations and AWS resources to determine the policies' effective permissions. The entity can be an IAM user, group, or role. If you specify a user, then the simulation also includes all of the policies that are attached to groups that the user belongs to.
 
 You can optionally include a list of one or more additional policies specified as strings to include in the simulation. If you want to simulate only policies specified as strings, use [SimulateCustomPolicy](@ref) instead.
 
 You can also optionally include one resource-based policy to be evaluated with each of the resources included in the simulation.
 
-The simulation does not perform the API actions, it only checks the authorization to determine if the simulated policies allow or deny the actions.
+The simulation does not perform the API operations, it only checks the authorization to determine if the simulated policies allow or deny the operations.
 
 **Note:** This API discloses information about the permissions granted to other users. If you do not want users to see other user's permissions, then consider allowing them to use [SimulateCustomPolicy](@ref) instead.
 
@@ -6041,15 +6197,21 @@ For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Servi
 ## `PolicyInputList = [::String, ...]`
 An optional list of additional policy documents to include in the simulation. Each document is specified as a string containing the complete, valid JSON text of an IAM policy.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 ## `ActionNames = [::String, ...]` -- *Required*
-A list of names of API actions to evaluate in the simulation. Each action is evaluated for each resource. Each action must include the service identifier, such as `iam:CreateUser`.
+A list of names of API operations to evaluate in the simulation. Each operation is evaluated for each resource. Each operation must include the service identifier, such as `iam:CreateUser`.
 
 
 ## `ResourceArns = [::String, ...]`
-A list of ARNs of AWS resources to include in the simulation. If this parameter is not provided then the value defaults to `*` (all resources). Each API in the `ActionNames` parameter is evaluated for each resource in this list. The simulation determines the access result (allowed or denied) of each combination and reports it in the response.
+A list of ARNs of AWS resources to include in the simulation. If this parameter is not provided, then the value defaults to `*` (all resources). Each API in the `ActionNames` parameter is evaluated for each resource in this list. The simulation determines the access result (allowed or denied) of each combination and reports it in the response.
 
 The simulation does not automatically retrieve policies for the specified resources. If you want to include a resource policy in the simulation, then you must include the policy as a string in the `ResourcePolicy` parameter.
 
@@ -6059,7 +6221,13 @@ For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Servi
 ## `ResourcePolicy = ::String`
 A resource-based policy to include in the simulation provided as a string. Each resource in the simulation is treated as if it had this policy attached. You can include only one resource-based policy in a simulation.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 ## `ResourceOwner = ::String`
@@ -6067,7 +6235,7 @@ An AWS account ID that specifies the owner of any simulated resource that does n
 
 
 ## `CallerArn = ::String`
-The ARN of the IAM user that you want to specify as the simulated caller of the APIs. If you do not specify a `CallerArn`, it defaults to the ARN of the user that you specify in `PolicySourceArn`, if you specified a user. If you include both a `PolicySourceArn` (for example, `arn:aws:iam::123456789012:user/David`) and a `CallerArn` (for example, `arn:aws:iam::123456789012:user/Bob`), the result is that you simulate calling the APIs as Bob, as if Bob had David's policies.
+The ARN of the IAM user that you want to specify as the simulated caller of the API operations. If you do not specify a `CallerArn`, it defaults to the ARN of the user that you specify in `PolicySourceArn`, if you specified a user. If you include both a `PolicySourceArn` (for example, `arn:aws:iam::123456789012:user/David`) and a `CallerArn` (for example, `arn:aws:iam::123456789012:user/Bob`), the result is that you simulate calling the API operations as Bob, as if Bob had David's policies.
 
 You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed role, federated user, or a service principal.
 
@@ -6087,9 +6255,9 @@ A list of context keys and corresponding values for the simulation to use. Whene
 ```
 
 ## `ResourceHandlingOption = ::String`
-Specifies the type of simulation to run. Different APIs that support resource-based policies require different combinations of resources. By specifying the type of simulation to run, you enable the policy simulator to enforce the presence of the required resources to ensure reliable simulation results. If your simulation does not match one of the following scenarios, then you can omit this parameter. The following list shows each of the supported scenario values and the resources that you must define to run the simulation.
+Specifies the type of simulation to run. Different API operations that support resource-based policies require different combinations of resources. By specifying the type of simulation to run, you enable the policy simulator to enforce the presence of the required resources to ensure reliable simulation results. If your simulation does not match one of the following scenarios, then you can omit this parameter. The following list shows each of the supported scenario values and the resources that you must define to run the simulation.
 
-Each of the EC2 scenarios requires that you specify instance, image, and security-group resources. If your scenario includes an EBS volume, then you must specify that volume as a resource. If the EC2 scenario includes VPC, then you must supply the network-interface resource. If it includes an IP subnet, then you must specify the subnet resource. For more information on the EC2 scenario options, see [Supported Platforms](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html) in the *AWS EC2 User Guide*.
+Each of the EC2 scenarios requires that you specify instance, image, and security-group resources. If your scenario includes an EBS volume, then you must specify that volume as a resource. If the EC2 scenario includes VPC, then you must supply the network-interface resource. If it includes an IP subnet, then you must specify the subnet resource. For more information on the EC2 scenario options, see [Supported Platforms](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html) in the *Amazon EC2 User Guide*.
 
 *   **EC2-Classic-InstanceStore**
 
@@ -6138,7 +6306,6 @@ Use this parameter only when paginating results and only after you receive a res
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/SimulatePrincipalPolicy)
 """
-
 @inline simulate_principal_policy(aws::AWSConfig=default_aws_config(); args...) = simulate_principal_policy(aws, args)
 
 @inline simulate_principal_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "SimulatePrincipalPolicy", args)
@@ -6157,9 +6324,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # UpdateAccessKey Operation
 
-Changes the status of the specified access key from Active to Inactive, or vice versa. This action can be used to disable a user's key as part of a key rotation work flow.
+Changes the status of the specified access key from Active to Inactive, or vice versa. This operation can be used to disable a user's key as part of a key rotation workflow.
 
-If the `UserName` field is not specified, the UserName is determined implicitly based on the AWS access key ID used to sign the request. Because this action works for access keys under the AWS account, you can use this action to manage root credentials even if the AWS account has no associated users.
+If the `UserName` field is not specified, the user name is determined implicitly based on the AWS access key ID used to sign the request. Because this operation works for access keys under the AWS account, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated users.
 
 For information about rotating keys, see [Managing Keys and Certificates](http://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingCredentials.html) in the *IAM User Guide*.
 
@@ -6168,7 +6335,7 @@ For information about rotating keys, see [Managing Keys and Certificates](http:/
 ## `UserName = ::String`
 The name of the user whose key you want to update.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `AccessKeyId = ::String` -- *Required*
@@ -6178,7 +6345,7 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 
 ## `Status = "Active" or "Inactive"` -- *Required*
-The status you want to assign to the secret access key. `Active` means the key can be used for API calls to AWS, while `Inactive` means the key cannot be used.
+The status you want to assign to the secret access key. `Active` means that the key can be used for API calls to AWS, while `Inactive` means that the key cannot be used.
 
 
 
@@ -6202,7 +6369,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateAccessKey)
 """
-
 @inline update_access_key(aws::AWSConfig=default_aws_config(); args...) = update_access_key(aws, args)
 
 @inline update_access_key(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "UpdateAccessKey", args)
@@ -6224,7 +6390,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 Updates the password policy settings for the AWS account.
 
 **Note**
-> This action does not support partial updates. No parameters are required, but if you do not specify a parameter, that parameter's value reverts to its default value. See the **Request Parameters** section for each parameter's default value.
+> *   This operation does not support partial updates. No parameters are required, but if you do not specify a parameter, that parameter's value reverts to its default value. See the **Request Parameters** section for each parameter's default value. Also note that some parameters do not allow the default parameter to be explicitly set. Instead, to invoke the default value, do not include that parameter when you invoke the operation.
 
 For more information about using a password policy, see [Managing an IAM Password Policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingPasswordPolicies.html) in the *IAM User Guide*.
 
@@ -6233,57 +6399,57 @@ For more information about using a password policy, see [Managing an IAM Passwor
 ## `MinimumPasswordLength = ::Int`
 The minimum number of characters allowed in an IAM user password.
 
-Default value: 6
+If you do not specify a value for this parameter, then the operation uses the default value of `6`.
 
 
 ## `RequireSymbols = ::Bool`
 Specifies whether IAM user passwords must contain at least one of the following non-alphanumeric characters:
 
-! @ # \$ % ^ &amp; * ( ) _ + - = [ ] { } | '
+! @ # \$ % ^ & * ( ) _ + - = [ ] { } | '
 
-Default value: false
+If you do not specify a value for this parameter, then the operation uses the default value of `false`. The result is that passwords do not require at least one symbol character.
 
 
 ## `RequireNumbers = ::Bool`
 Specifies whether IAM user passwords must contain at least one numeric character (0 to 9).
 
-Default value: false
+If you do not specify a value for this parameter, then the operation uses the default value of `false`. The result is that passwords do not require at least one numeric character.
 
 
 ## `RequireUppercaseCharacters = ::Bool`
 Specifies whether IAM user passwords must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z).
 
-Default value: false
+If you do not specify a value for this parameter, then the operation uses the default value of `false`. The result is that passwords do not require at least one uppercase character.
 
 
 ## `RequireLowercaseCharacters = ::Bool`
 Specifies whether IAM user passwords must contain at least one lowercase character from the ISO basic Latin alphabet (a to z).
 
-Default value: false
+If you do not specify a value for this parameter, then the operation uses the default value of `false`. The result is that passwords do not require at least one lowercase character.
 
 
 ## `AllowUsersToChangePassword = ::Bool`
 Allows all IAM users in your account to use the AWS Management Console to change their own passwords. For more information, see [Letting IAM Users Change Their Own Passwords](http://docs.aws.amazon.com/IAM/latest/UserGuide/HowToPwdIAMUser.html) in the *IAM User Guide*.
 
-Default value: false
+If you do not specify a value for this parameter, then the operation uses the default value of `false`. The result is that IAM users in the account do not automatically have permissions to change their own password.
 
 
 ## `MaxPasswordAge = ::Int`
-The number of days that an IAM user password is valid. The default value of 0 means IAM user passwords never expire.
+The number of days that an IAM user password is valid.
 
-Default value: 0
+If you do not specify a value for this parameter, then the operation uses the default value of `0`. The result is that IAM user passwords never expire.
 
 
 ## `PasswordReusePrevention = ::Int`
-Specifies the number of previous passwords that IAM users are prevented from reusing. The default value of 0 means IAM users are not prevented from reusing previous passwords.
+Specifies the number of previous passwords that IAM users are prevented from reusing.
 
-Default value: 0
+If you do not specify a value for this parameter, then the operation uses the default value of `0`. The result is that IAM users are not prevented from reusing previous passwords.
 
 
 ## `HardExpiry = ::Bool`
-Prevents IAM users from setting a new password after their password has expired.
+Prevents IAM users from setting a new password after their password has expired. The IAM user cannot be accessed until an administrator resets the password.
 
-Default value: false
+If you do not specify a value for this parameter, then the operation uses the default value of `false`. The result is that IAM users can change their passwords after they expire and continue to sign in as the user.
 
 
 
@@ -6306,7 +6472,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateAccountPasswordPolicy)
 """
-
 @inline update_account_password_policy(aws::AWSConfig=default_aws_config(); args...) = update_account_password_policy(aws, args)
 
 @inline update_account_password_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "UpdateAccountPasswordPolicy", args)
@@ -6338,7 +6503,13 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 ## `PolicyDocument = ::String` -- *Required*
 The policy that grants an entity permission to assume the role.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 
@@ -6361,7 +6532,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateAssumeRolePolicy)
 """
-
 @inline update_assume_role_policy(aws::AWSConfig=default_aws_config(); args...) = update_assume_role_policy(aws, args)
 
 @inline update_assume_role_policy(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "UpdateAssumeRolePolicy", args)
@@ -6386,26 +6556,26 @@ Updates the name and/or the path of the specified IAM group.
 > You should understand the implications of changing a group's path or name. For more information, see [Renaming Users and Groups](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_WorkingWithGroupsAndUsers.html) in the *IAM User Guide*.
 
 **Note**
-> To change an IAM group name the requester must have appropriate permissions on both the source object and the target object. For example, to change "Managers" to "MGRs", the entity making the request must have permission on both "Managers" and "MGRs", or must have permission on all (*). For more information about permissions, see [Permissions and Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html).
+> The person making the request (the principal), must have permission to change the role group with the old name and the new name. For example, to change the group named `Managers` to `MGRs`, the principal must have a policy that allows them to update both groups. If the principal has permission to update the `Managers` group, but not the `MGRs` group, then the update fails. For more information about permissions, see [Access Management](http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html).
 
 # Arguments
 
 ## `GroupName = ::String` -- *Required*
 Name of the IAM group to update. If you're changing the name of the group, this is the original name.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `NewPath = ::String`
 New path for the IAM group. Only include this if changing the group's path.
 
-This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 
 ## `NewGroupName = ::String`
 New name for the IAM group. Only include this if changing the group's name.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -6428,7 +6598,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateGroup)
 """
-
 @inline update_group(aws::AWSConfig=default_aws_config(); args...) = update_group(aws, args)
 
 @inline update_group(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "UpdateGroup", args)
@@ -6456,13 +6625,21 @@ IAM users can change their own passwords by calling [ChangePassword](@ref). For 
 ## `UserName = ::String` -- *Required*
 The name of the user whose password you want to update.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `Password = ::String`
 The new password for the specified IAM user.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D). However, the format can be further restricted by the account administrator by setting a password policy on the AWS account. For more information, see [UpdateAccountPasswordPolicy](@ref).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
+
+However, the format can be further restricted by the account administrator by setting a password policy on the AWS account. For more information, see [UpdateAccountPasswordPolicy](@ref).
 
 
 ## `PasswordResetRequired = ::Bool`
@@ -6489,7 +6666,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateLoginProfile)
 """
-
 @inline update_login_profile(aws::AWSConfig=default_aws_config(); args...) = update_login_profile(aws, args)
 
 @inline update_login_profile(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "UpdateLoginProfile", args)
@@ -6510,17 +6686,17 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Replaces the existing list of server certificate thumbprints associated with an OpenID Connect (OIDC) provider resource object with a new list of thumbprints.
 
-The list that you pass with this action completely replaces the existing list of thumbprints. (The lists are not merged.)
+The list that you pass with this operation completely replaces the existing list of thumbprints. (The lists are not merged.)
 
 Typically, you need to update a thumbprint only when the identity provider's certificate changes, which occurs rarely. However, if the provider's certificate *does* change, any attempt to assume an IAM role that specifies the OIDC provider as a principal fails until the certificate thumbprint is updated.
 
 **Note**
-> Because trust for the OIDC provider is ultimately derived from the provider's certificate and is validated by the thumbprint, it is a best practice to limit access to the `UpdateOpenIDConnectProviderThumbprint` action to highly-privileged users.
+> Because trust for the OIDC provider is derived from the provider's certificate and is validated by the thumbprint, it is best to limit access to the `UpdateOpenIDConnectProviderThumbprint` operation to highly privileged users.
 
 # Arguments
 
 ## `OpenIDConnectProviderArn = ::String` -- *Required*
-The Amazon Resource Name (ARN) of the IAM OIDC provider resource object for which you want to update the thumbprint. You can get a list of OIDC provider ARNs by using the [ListOpenIDConnectProviders](@ref) action.
+The Amazon Resource Name (ARN) of the IAM OIDC provider resource object for which you want to update the thumbprint. You can get a list of OIDC provider ARNs by using the [ListOpenIDConnectProviders](@ref) operation.
 
 For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) in the *AWS General Reference*.
 
@@ -6537,12 +6713,59 @@ A list of certificate thumbprints that are associated with the specified IAM Ope
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateOpenIDConnectProviderThumbprint)
 """
-
 @inline update_open_idconnect_provider_thumbprint(aws::AWSConfig=default_aws_config(); args...) = update_open_idconnect_provider_thumbprint(aws, args)
 
 @inline update_open_idconnect_provider_thumbprint(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "UpdateOpenIDConnectProviderThumbprint", args)
 
 @inline update_open_idconnect_provider_thumbprint(args) = update_open_idconnect_provider_thumbprint(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.IAM.update_role
+    update_role([::AWSConfig], arguments::Dict)
+    update_role([::AWSConfig]; RoleName=, <keyword arguments>)
+
+    using AWSCore.Services.iam
+    iam([::AWSConfig], "UpdateRole", arguments::Dict)
+    iam([::AWSConfig], "UpdateRole", RoleName=, <keyword arguments>)
+
+# UpdateRole Operation
+
+Updates the description or maximum session duration setting of a role.
+
+# Arguments
+
+## `RoleName = ::String` -- *Required*
+The name of the role that you want to modify.
+
+
+## `Description = ::String`
+The new description that you want to apply to the specified role.
+
+
+## `MaxSessionDuration = ::Int`
+The maximum session duration (in seconds) that you want to set for the specified role. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 1 hour to 12 hours.
+
+Anyone who assumes the role from the AWS CLI or API can use the `DurationSeconds` API parameter or the `duration-seconds` CLI parameter to request a longer session. The `MaxSessionDuration` setting determines the maximum duration that can be requested using the `DurationSeconds` parameter. If users don't specify a value for the `DurationSeconds` parameter, their security credentials are valid for one hour by default. This applies when you use the `AssumeRole*` API operations or the `assume-role*` CLI operations but does not apply when you use those operations to create a console URL. For more information, see [Using IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html) in the *IAM User Guide*.
+
+
+
+
+# Returns
+
+`UpdateRoleResponse`
+
+# Exceptions
+
+`UnmodifiableEntityException`, `NoSuchEntityException` or `ServiceFailureException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateRole)
+"""
+@inline update_role(aws::AWSConfig=default_aws_config(); args...) = update_role(aws, args)
+
+@inline update_role(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "UpdateRole", args)
+
+@inline update_role(args) = update_role(default_aws_config(), args)
 
 
 """
@@ -6556,7 +6779,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # UpdateRoleDescription Operation
 
-Modifies the description of a role.
+Use instead.
+
+Modifies only the description of a role. This operation performs the same function as the `Description` parameter in the `UpdateRole` operation.
 
 # Arguments
 
@@ -6580,7 +6805,6 @@ The new description that you want to apply to the specified role.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateRoleDescription)
 """
-
 @inline update_role_description(aws::AWSConfig=default_aws_config(); args...) = update_role_description(aws, args)
 
 @inline update_role_description(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "UpdateRoleDescription", args)
@@ -6628,7 +6852,6 @@ For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Servi
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateSAMLProvider)
 """
-
 @inline update_samlprovider(aws::AWSConfig=default_aws_config(); args...) = update_samlprovider(aws, args)
 
 @inline update_samlprovider(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "UpdateSAMLProvider", args)
@@ -6647,16 +6870,16 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # UpdateSSHPublicKey Operation
 
-Sets the status of an IAM user's SSH public key to active or inactive. SSH public keys that are inactive cannot be used for authentication. This action can be used to disable a user's SSH public key as part of a key rotation work flow.
+Sets the status of an IAM user's SSH public key to active or inactive. SSH public keys that are inactive cannot be used for authentication. This operation can be used to disable a user's SSH public key as part of a key rotation work flow.
 
-The SSH public key affected by this action is used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see [Set up AWS CodeCommit for SSH Connections](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html) in the *AWS CodeCommit User Guide*.
+The SSH public key affected by this operation is used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see [Set up AWS CodeCommit for SSH Connections](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html) in the *AWS CodeCommit User Guide*.
 
 # Arguments
 
 ## `UserName = ::String` -- *Required*
 The name of the IAM user associated with the SSH public key.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `SSHPublicKeyId = ::String` -- *Required*
@@ -6666,7 +6889,7 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 
 ## `Status = "Active" or "Inactive"` -- *Required*
-The status to assign to the SSH public key. `Active` means the key can be used for authentication with an AWS CodeCommit repository. `Inactive` means the key cannot be used.
+The status to assign to the SSH public key. `Active` means that the key can be used for authentication with an AWS CodeCommit repository. `Inactive` means that the key cannot be used.
 
 
 
@@ -6677,7 +6900,6 @@ The status to assign to the SSH public key. `Active` means the key can be used f
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateSSHPublicKey)
 """
-
 @inline update_sshpublic_key(aws::AWSConfig=default_aws_config(); args...) = update_sshpublic_key(aws, args)
 
 @inline update_sshpublic_key(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "UpdateSSHPublicKey", args)
@@ -6698,32 +6920,32 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Updates the name and/or the path of the specified server certificate stored in IAM.
 
-For more information about working with server certificates, including a list of AWS services that can use the server certificates that you manage with IAM, go to [Working with Server Certificates](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html) in the *IAM User Guide*.
+For more information about working with server certificates, see [Working with Server Certificates](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html) in the *IAM User Guide*. This topic also includes a list of AWS services that can use the server certificates that you manage with IAM.
 
 **Important**
 > You should understand the implications of changing a server certificate's path or name. For more information, see [Renaming a Server Certificate](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs_manage.html#RenamingServerCerts) in the *IAM User Guide*.
 
 **Note**
-> To change a server certificate name the requester must have appropriate permissions on both the source object and the target object. For example, to change the name from "ProductionCert" to "ProdCert", the entity making the request must have permission on "ProductionCert" and "ProdCert", or must have permission on all (*). For more information about permissions, see [Access Management](http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html) in the *IAM User Guide*.
+> The person making the request (the principal), must have permission to change the server certificate with the old name and the new name. For example, to change the certificate named `ProductionCert` to `ProdCert`, the principal must have a policy that allows them to update both certificates. If the principal has permission to update the `ProductionCert` group, but not the `ProdCert` certificate, then the update fails. For more information about permissions, see [Access Management](http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html) in the *IAM User Guide*.
 
 # Arguments
 
 ## `ServerCertificateName = ::String` -- *Required*
 The name of the server certificate that you want to update.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `NewPath = ::String`
 The new path for the server certificate. Include this only if you are updating the server certificate's path.
 
-This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 
 ## `NewServerCertificateName = ::String`
 The new name for the server certificate. Include this only if you are updating the server certificate's name. The name of the certificate cannot contain any spaces.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -6734,7 +6956,6 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateServerCertificate)
 """
-
 @inline update_server_certificate(aws::AWSConfig=default_aws_config(); args...) = update_server_certificate(aws, args)
 
 @inline update_server_certificate(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "UpdateServerCertificate", args)
@@ -6753,14 +6974,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # UpdateServiceSpecificCredential Operation
 
-Sets the status of a service-specific credential to `Active` or `Inactive`. Service-specific credentials that are inactive cannot be used for authentication to the service. This action can be used to disable a user’s service-specific credential as part of a credential rotation work flow.
+Sets the status of a service-specific credential to `Active` or `Inactive`. Service-specific credentials that are inactive cannot be used for authentication to the service. This operation can be used to disable a user's service-specific credential as part of a credential rotation work flow.
 
 # Arguments
 
 ## `UserName = ::String`
 The name of the IAM user associated with the service-specific credential. If you do not specify this value, then the operation assumes the user whose credentials are used to call the operation.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `ServiceSpecificCredentialId = ::String` -- *Required*
@@ -6781,7 +7002,6 @@ The status to be assigned to the service-specific credential.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateServiceSpecificCredential)
 """
-
 @inline update_service_specific_credential(aws::AWSConfig=default_aws_config(); args...) = update_service_specific_credential(aws, args)
 
 @inline update_service_specific_credential(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "UpdateServiceSpecificCredential", args)
@@ -6800,16 +7020,16 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 # UpdateSigningCertificate Operation
 
-Changes the status of the specified user signing certificate from active to disabled, or vice versa. This action can be used to disable an IAM user's signing certificate as part of a certificate rotation work flow.
+Changes the status of the specified user signing certificate from active to disabled, or vice versa. This operation can be used to disable an IAM user's signing certificate as part of a certificate rotation work flow.
 
-If the `UserName` field is not specified, the UserName is determined implicitly based on the AWS access key ID used to sign the request. Because this action works for access keys under the AWS account, you can use this action to manage root credentials even if the AWS account has no associated users.
+If the `UserName` field is not specified, the user name is determined implicitly based on the AWS access key ID used to sign the request. Because this operation works for access keys under the AWS account, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated users.
 
 # Arguments
 
 ## `UserName = ::String`
 The name of the IAM user the signing certificate belongs to.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `CertificateId = ::String` -- *Required*
@@ -6819,7 +7039,7 @@ This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex))
 
 
 ## `Status = "Active" or "Inactive"` -- *Required*
-The status you want to assign to the certificate. `Active` means the certificate can be used for API calls to AWS, while `Inactive` means the certificate cannot be used.
+The status you want to assign to the certificate. `Active` means that the certificate can be used for API calls to AWS `Inactive` means that the certificate cannot be used.
 
 
 
@@ -6843,7 +7063,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateSigningCertificate)
 """
-
 @inline update_signing_certificate(aws::AWSConfig=default_aws_config(); args...) = update_signing_certificate(aws, args)
 
 @inline update_signing_certificate(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "UpdateSigningCertificate", args)
@@ -6868,26 +7087,26 @@ Updates the name and/or the path of the specified IAM user.
 > You should understand the implications of changing an IAM user's path or name. For more information, see [Renaming an IAM User](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_renaming) and [Renaming an IAM Group](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_manage_rename.html) in the *IAM User Guide*.
 
 **Note**
-> To change a user name the requester must have appropriate permissions on both the source object and the target object. For example, to change Bob to Robert, the entity making the request must have permission on Bob and Robert, or must have permission on all (*). For more information about permissions, see [Permissions and Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html).
+> To change a user name, the requester must have appropriate permissions on both the source object and the target object. For example, to change Bob to Robert, the entity making the request must have permission on Bob and Robert, or must have permission on all (*). For more information about permissions, see [Permissions and Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html).
 
 # Arguments
 
 ## `UserName = ::String` -- *Required*
 Name of the user to update. If you're changing the name of the user, this is the original user name.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `NewPath = ::String`
 New path for the IAM user. Include this parameter only if you're changing the user's path.
 
-This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 
 ## `NewUserName = ::String`
 New name for the user. Include this parameter only if you're changing the user's name.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 
@@ -6910,7 +7129,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UpdateUser)
 """
-
 @inline update_user(aws::AWSConfig=default_aws_config(); args...) = update_user(aws, args)
 
 @inline update_user(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "UpdateUser", args)
@@ -6931,20 +7149,26 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Uploads an SSH public key and associates it with the specified IAM user.
 
-The SSH public key uploaded by this action can be used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see [Set up AWS CodeCommit for SSH Connections](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html) in the *AWS CodeCommit User Guide*.
+The SSH public key uploaded by this operation can be used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see [Set up AWS CodeCommit for SSH Connections](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html) in the *AWS CodeCommit User Guide*.
 
 # Arguments
 
 ## `UserName = ::String` -- *Required*
 The name of the IAM user to associate the SSH public key with.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `SSHPublicKeyBody = ::String` -- *Required*
-The SSH public key. The public key must be encoded in ssh-rsa format or PEM format.
+The SSH public key. The public key must be encoded in ssh-rsa format or PEM format. The miminum bit-length of the public key is 2048 bits. For example, you can generate a 2048-bit key, and the resulting PEM file is 1679 bytes long.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 
@@ -6959,7 +7183,6 @@ The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this param
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UploadSSHPublicKey)
 """
-
 @inline upload_sshpublic_key(aws::AWSConfig=default_aws_config(); args...) = upload_sshpublic_key(aws, args)
 
 @inline upload_sshpublic_key(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "UploadSSHPublicKey", args)
@@ -6982,7 +7205,7 @@ Uploads a server certificate entity for the AWS account. The server certificate 
 
 We recommend that you use [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/) to provision, manage, and deploy your server certificates. With ACM you can request a certificate, deploy it to AWS resources, and let ACM handle certificate renewals for you. Certificates provided by ACM are free. For more information about using ACM, see the [AWS Certificate Manager User Guide](http://docs.aws.amazon.com/acm/latest/userguide/).
 
-For more information about working with server certificates, including a list of AWS services that can use the server certificates that you manage with IAM, go to [Working with Server Certificates](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html) in the *IAM User Guide*.
+For more information about working with server certificates, see [Working with Server Certificates](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html) in the *IAM User Guide*. This topic includes a list of AWS services that can use the server certificates that you manage with IAM.
 
 For information about the number of server certificates you can upload, see [Limitations on IAM Entities and Objects](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html) in the *IAM User Guide*.
 
@@ -6994,34 +7217,52 @@ For information about the number of server certificates you can upload, see [Lim
 ## `Path = ::String`
 The path for the server certificate. For more information about paths, see [IAM Identifiers](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) in the *IAM User Guide*.
 
-This parameter is optional. If it is not included, it defaults to a slash (/). This paramater allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\\u0021) thru the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+This parameter is optional. If it is not included, it defaults to a slash (/). This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 
 **Note**
-> If you are uploading a server certificate specifically for use with Amazon CloudFront distributions, you must specify a path using the `--path` option. The path must begin with `/cloudfront` and must include a trailing slash (for example, `/cloudfront/test/`).
+> If you are uploading a server certificate specifically for use with Amazon CloudFront distributions, you must specify a path using the `path` parameter. The path must begin with `/cloudfront` and must include a trailing slash (for example, `/cloudfront/test/`).
 
 
 ## `ServerCertificateName = ::String` -- *Required*
 The name for the server certificate. Do not include the path in this value. The name of the certificate cannot contain any spaces.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `CertificateBody = ::String` -- *Required*
 The contents of the public key certificate in PEM-encoded format.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 ## `PrivateKey = ::String` -- *Required*
 The contents of the private key in PEM-encoded format.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 ## `CertificateChain = ::String`
 The contents of the certificate chain. This is typically a concatenation of the PEM-encoded public key certificates of the chain.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 
@@ -7064,7 +7305,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UploadServerCertificate)
 """
-
 @inline upload_server_certificate(aws::AWSConfig=default_aws_config(); args...) = upload_server_certificate(aws, args)
 
 @inline upload_server_certificate(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "UploadServerCertificate", args)
@@ -7085,23 +7325,29 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-20
 
 Uploads an X.509 signing certificate and associates it with the specified IAM user. Some AWS services use X.509 signing certificates to validate requests that are signed with a corresponding private key. When you upload the certificate, its default status is `Active`.
 
-If the `UserName` field is not specified, the IAM user name is determined implicitly based on the AWS access key ID used to sign the request. Because this action works for access keys under the AWS account, you can use this action to manage root credentials even if the AWS account has no associated users.
+If the `UserName` field is not specified, the IAM user name is determined implicitly based on the AWS access key ID used to sign the request. Because this operation works for access keys under the AWS account, you can use this operation to manage AWS account root user credentials even if the AWS account has no associated users.
 
 **Note**
-> Because the body of a X.509 certificate can be large, you should use POST rather than GET when calling `UploadSigningCertificate`. For information about setting up signatures and authorization through the API, go to [Signing AWS API Requests](http://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html) in the *AWS General Reference*. For general information about using the Query API with IAM, go to [Making Query Requests](http://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html) in the *IAM User Guide*.
+> Because the body of an X.509 certificate can be large, you should use POST rather than GET when calling `UploadSigningCertificate`. For information about setting up signatures and authorization through the API, go to [Signing AWS API Requests](http://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html) in the *AWS General Reference*. For general information about using the Query API with IAM, go to [Making Query Requests](http://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html) in the *IAM User Guide*.
 
 # Arguments
 
 ## `UserName = ::String`
 The name of the user the signing certificate is for.
 
-This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its [regex pattern](http://wikipedia.org/wiki/regex)) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 
 
 ## `CertificateBody = ::String` -- *Required*
 The contents of the signing certificate.
 
-The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF). It also includes the special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D).
+The [regex pattern](http://wikipedia.org/wiki/regex) used to validate this parameter is a string of characters consisting of the following:
+
+*   Any printable ASCII character ranging from the space character (\\u0020) through the end of the ASCII character range
+
+*   The printable characters in the Basic Latin and Latin-1 Supplement character set (through \\u00FF)
+
+*   The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
 
 
@@ -7141,7 +7387,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/UploadSigningCertificate)
 """
-
 @inline upload_signing_certificate(aws::AWSConfig=default_aws_config(); args...) = upload_signing_certificate(aws, args)
 
 @inline upload_signing_certificate(aws::AWSConfig, args) = AWSCore.Services.iam(aws, "UploadSigningCertificate", args)

@@ -69,7 +69,6 @@ The maximum number of items to return in one batch, between 10 and 100, inclusiv
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/health-2016-08-04/DescribeAffectedEntities)
 """
-
 @inline describe_affected_entities(aws::AWSConfig=default_aws_config(); args...) = describe_affected_entities(aws, args)
 
 @inline describe_affected_entities(aws::AWSConfig, args) = AWSCore.Services.health(aws, "DescribeAffectedEntities", args)
@@ -104,7 +103,6 @@ A list of event ARNs (unique identifiers). For example: `"arn:aws:health:us-east
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/health-2016-08-04/DescribeEntityAggregates)
 """
-
 @inline describe_entity_aggregates(aws::AWSConfig=default_aws_config(); args...) = describe_entity_aggregates(aws, args)
 
 @inline describe_entity_aggregates(aws::AWSConfig, args) = AWSCore.Services.health(aws, "DescribeEntityAggregates", args)
@@ -180,7 +178,6 @@ If the results of a search are large, only a portion of the results are returned
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/health-2016-08-04/DescribeEventAggregates)
 """
-
 @inline describe_event_aggregates(aws::AWSConfig=default_aws_config(); args...) = describe_event_aggregates(aws, args)
 
 @inline describe_event_aggregates(aws::AWSConfig, args) = AWSCore.Services.health(aws, "DescribeEventAggregates", args)
@@ -225,7 +222,6 @@ The locale (language) to return information in. English (en) is the default and 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/health-2016-08-04/DescribeEventDetails)
 """
-
 @inline describe_event_details(aws::AWSConfig=default_aws_config(); args...) = describe_event_details(aws, args)
 
 @inline describe_event_details(aws::AWSConfig, args) = AWSCore.Services.health(aws, "DescribeEventDetails", args)
@@ -282,7 +278,6 @@ The maximum number of items to return in one batch, between 10 and 100, inclusiv
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/health-2016-08-04/DescribeEventTypes)
 """
-
 @inline describe_event_types(aws::AWSConfig=default_aws_config(); args...) = describe_event_types(aws, args)
 
 @inline describe_event_types(aws::AWSConfig, args) = AWSCore.Services.health(aws, "DescribeEventTypes", args)
@@ -360,7 +355,6 @@ The locale (language) to return information in. English (en) is the default and 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/health-2016-08-04/DescribeEvents)
 """
-
 @inline describe_events(aws::AWSConfig=default_aws_config(); args...) = describe_events(aws, args)
 
 @inline describe_events(aws::AWSConfig, args) = AWSCore.Services.health(aws, "DescribeEvents", args)

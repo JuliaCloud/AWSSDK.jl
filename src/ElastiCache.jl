@@ -56,7 +56,6 @@ A list of cost allocation tags to be added to this resource. A tag is a key-valu
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/AddTagsToResource)
 """
-
 @inline add_tags_to_resource(aws::AWSConfig=default_aws_config(); args...) = add_tags_to_resource(aws, args)
 
 @inline add_tags_to_resource(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "AddTagsToResource", args)
@@ -106,7 +105,6 @@ The AWS account number of the Amazon EC2 security group owner. Note that this is
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/AuthorizeCacheSecurityGroupIngress)
 """
-
 @inline authorize_cache_security_group_ingress(aws::AWSConfig=default_aws_config(); args...) = authorize_cache_security_group_ingress(aws, args)
 
 @inline authorize_cache_security_group_ingress(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "AuthorizeCacheSecurityGroupIngress", args)
@@ -199,7 +197,6 @@ For more information, see [Exporting a Snapshot](http://docs.aws.amazon.com/Amaz
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CopySnapshot)
 """
-
 @inline copy_snapshot(aws::AWSConfig=default_aws_config(); args...) = copy_snapshot(aws, args)
 
 @inline copy_snapshot(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "CopySnapshot", args)
@@ -492,7 +489,6 @@ For more information, see [AUTH password](http://redis.io/commands/AUTH) at http
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheCluster)
 """
-
 @inline create_cache_cluster(aws::AWSConfig=default_aws_config(); args...) = create_cache_cluster(aws, args)
 
 @inline create_cache_cluster(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "CreateCacheCluster", args)
@@ -547,7 +543,6 @@ A user-specified description for the cache parameter group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheParameterGroup)
 """
-
 @inline create_cache_parameter_group(aws::AWSConfig=default_aws_config(); args...) = create_cache_parameter_group(aws, args)
 
 @inline create_cache_parameter_group(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "CreateCacheParameterGroup", args)
@@ -596,7 +591,6 @@ A description for the cache security group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheSecurityGroup)
 """
-
 @inline create_cache_security_group(aws::AWSConfig=default_aws_config(); args...) = create_cache_security_group(aws, args)
 
 @inline create_cache_security_group(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "CreateCacheSecurityGroup", args)
@@ -649,7 +643,6 @@ A list of VPC subnet IDs for the cache subnet group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheSubnetGroup)
 """
-
 @inline create_cache_subnet_group(aws::AWSConfig=default_aws_config(); args...) = create_cache_subnet_group(aws, args)
 
 @inline create_cache_subnet_group(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "CreateCacheSubnetGroup", args)
@@ -981,7 +974,6 @@ Default: `false`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateReplicationGroup)
 """
-
 @inline create_replication_group(aws::AWSConfig=default_aws_config(); args...) = create_replication_group(aws, args)
 
 @inline create_replication_group(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "CreateReplicationGroup", args)
@@ -1031,7 +1023,6 @@ A name for the snapshot being created.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateSnapshot)
 """
-
 @inline create_snapshot(aws::AWSConfig=default_aws_config(); args...) = create_snapshot(aws, args)
 
 @inline create_snapshot(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "CreateSnapshot", args)
@@ -1079,7 +1070,6 @@ The user-supplied name of a final cluster snapshot. This is the unique name that
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheCluster)
 """
-
 @inline delete_cache_cluster(aws::AWSConfig=default_aws_config(); args...) = delete_cache_cluster(aws, args)
 
 @inline delete_cache_cluster(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DeleteCacheCluster", args)
@@ -1117,7 +1107,6 @@ The name of the cache parameter group to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheParameterGroup)
 """
-
 @inline delete_cache_parameter_group(aws::AWSConfig=default_aws_config(); args...) = delete_cache_parameter_group(aws, args)
 
 @inline delete_cache_parameter_group(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DeleteCacheParameterGroup", args)
@@ -1158,7 +1147,6 @@ The name of the cache security group to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheSecurityGroup)
 """
-
 @inline delete_cache_security_group(aws::AWSConfig=default_aws_config(); args...) = delete_cache_security_group(aws, args)
 
 @inline delete_cache_security_group(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DeleteCacheSecurityGroup", args)
@@ -1198,7 +1186,6 @@ Constraints: Must contain no more than 255 alphanumeric characters or hyphens.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheSubnetGroup)
 """
-
 @inline delete_cache_subnet_group(aws::AWSConfig=default_aws_config(); args...) = delete_cache_subnet_group(aws, args)
 
 @inline delete_cache_subnet_group(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DeleteCacheSubnetGroup", args)
@@ -1250,7 +1237,6 @@ The name of a final node group (shard) snapshot. ElastiCache creates the snapsho
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteReplicationGroup)
 """
-
 @inline delete_replication_group(aws::AWSConfig=default_aws_config(); args...) = delete_replication_group(aws, args)
 
 @inline delete_replication_group(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DeleteReplicationGroup", args)
@@ -1292,7 +1278,6 @@ The name of the snapshot to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteSnapshot)
 """
-
 @inline delete_snapshot(aws::AWSConfig=default_aws_config(); args...) = delete_snapshot(aws, args)
 
 @inline delete_snapshot(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DeleteSnapshot", args)
@@ -1361,7 +1346,6 @@ An optional flag that can be included in the `DescribeCacheCluster` request to s
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheClusters)
 """
-
 @inline describe_cache_clusters(aws::AWSConfig=default_aws_config(); args...) = describe_cache_clusters(aws, args)
 
 @inline describe_cache_clusters(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DescribeCacheClusters", args)
@@ -1432,7 +1416,6 @@ If `true`, specifies that only the default version of the specified engine or en
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheEngineVersions)
 """
-
 @inline describe_cache_engine_versions(aws::AWSConfig=default_aws_config(); args...) = describe_cache_engine_versions(aws, args)
 
 @inline describe_cache_engine_versions(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DescribeCacheEngineVersions", args)
@@ -1483,7 +1466,6 @@ An optional marker returned from a prior request. Use this marker for pagination
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheParameterGroups)
 """
-
 @inline describe_cache_parameter_groups(aws::AWSConfig=default_aws_config(); args...) = describe_cache_parameter_groups(aws, args)
 
 @inline describe_cache_parameter_groups(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DescribeCacheParameterGroups", args)
@@ -1540,7 +1522,6 @@ An optional marker returned from a prior request. Use this marker for pagination
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheParameters)
 """
-
 @inline describe_cache_parameters(aws::AWSConfig=default_aws_config(); args...) = describe_cache_parameters(aws, args)
 
 @inline describe_cache_parameters(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DescribeCacheParameters", args)
@@ -1591,7 +1572,6 @@ An optional marker returned from a prior request. Use this marker for pagination
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheSecurityGroups)
 """
-
 @inline describe_cache_security_groups(aws::AWSConfig=default_aws_config(); args...) = describe_cache_security_groups(aws, args)
 
 @inline describe_cache_security_groups(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DescribeCacheSecurityGroups", args)
@@ -1642,7 +1622,6 @@ An optional marker returned from a prior request. Use this marker for pagination
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheSubnetGroups)
 """
-
 @inline describe_cache_subnet_groups(aws::AWSConfig=default_aws_config(); args...) = describe_cache_subnet_groups(aws, args)
 
 @inline describe_cache_subnet_groups(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DescribeCacheSubnetGroups", args)
@@ -1695,7 +1674,6 @@ An optional marker returned from a prior request. Use this marker for pagination
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeEngineDefaultParameters)
 """
-
 @inline describe_engine_default_parameters(aws::AWSConfig=default_aws_config(); args...) = describe_engine_default_parameters(aws, args)
 
 @inline describe_engine_default_parameters(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DescribeEngineDefaultParameters", args)
@@ -1768,7 +1746,6 @@ An optional marker returned from a prior request. Use this marker for pagination
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeEvents)
 """
-
 @inline describe_events(aws::AWSConfig=default_aws_config(); args...) = describe_events(aws, args)
 
 @inline describe_events(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DescribeEvents", args)
@@ -1824,7 +1801,6 @@ An optional marker returned from a prior request. Use this marker for pagination
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeReplicationGroups)
 """
-
 @inline describe_replication_groups(aws::AWSConfig=default_aws_config(); args...) = describe_replication_groups(aws, args)
 
 @inline describe_replication_groups(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DescribeReplicationGroups", args)
@@ -1945,7 +1921,6 @@ An optional marker returned from a prior request. Use this marker for pagination
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeReservedCacheNodes)
 """
-
 @inline describe_reserved_cache_nodes(aws::AWSConfig=default_aws_config(); args...) = describe_reserved_cache_nodes(aws, args)
 
 @inline describe_reserved_cache_nodes(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DescribeReservedCacheNodes", args)
@@ -2064,7 +2039,6 @@ An optional marker returned from a prior request. Use this marker for pagination
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeReservedCacheNodesOfferings)
 """
-
 @inline describe_reserved_cache_nodes_offerings(aws::AWSConfig=default_aws_config(); args...) = describe_reserved_cache_nodes_offerings(aws, args)
 
 @inline describe_reserved_cache_nodes_offerings(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DescribeReservedCacheNodesOfferings", args)
@@ -2134,7 +2108,6 @@ A Boolean value which if true, the node group (shard) configuration is included 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeSnapshots)
 """
-
 @inline describe_snapshots(aws::AWSConfig=default_aws_config(); args...) = describe_snapshots(aws, args)
 
 @inline describe_snapshots(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "DescribeSnapshots", args)
@@ -2185,7 +2158,6 @@ The name of the replication group want to scale up to a larger node type. Elasti
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ListAllowedNodeTypeModifications)
 """
-
 @inline list_allowed_node_type_modifications(aws::AWSConfig=default_aws_config(); args...) = list_allowed_node_type_modifications(aws, args)
 
 @inline list_allowed_node_type_modifications(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "ListAllowedNodeTypeModifications", args)
@@ -2228,7 +2200,6 @@ For more information about ARNs, see [Amazon Resource Names (ARNs) and AWS Servi
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ListTagsForResource)
 """
-
 @inline list_tags_for_resource(aws::AWSConfig=default_aws_config(); args...) = list_tags_for_resource(aws, args)
 
 @inline list_tags_for_resource(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "ListTagsForResource", args)
@@ -2447,7 +2418,6 @@ A valid cache node type that you want to scale this cluster up to.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyCacheCluster)
 """
-
 @inline modify_cache_cluster(aws::AWSConfig=default_aws_config(); args...) = modify_cache_cluster(aws, args)
 
 @inline modify_cache_cluster(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "ModifyCacheCluster", args)
@@ -2495,7 +2465,6 @@ An array of parameter names and values for the parameter update. You must supply
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyCacheParameterGroup)
 """
-
 @inline modify_cache_parameter_group(aws::AWSConfig=default_aws_config(); args...) = modify_cache_parameter_group(aws, args)
 
 @inline modify_cache_parameter_group(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "ModifyCacheParameterGroup", args)
@@ -2546,7 +2515,6 @@ The EC2 subnet IDs for the cache subnet group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyCacheSubnetGroup)
 """
-
 @inline modify_cache_subnet_group(aws::AWSConfig=default_aws_config(); args...) = modify_cache_subnet_group(aws, args)
 
 @inline modify_cache_subnet_group(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "ModifyCacheSubnetGroup", args)
@@ -2712,7 +2680,6 @@ The name of the Node Group (called shard in the console).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyReplicationGroup)
 """
-
 @inline modify_replication_group(aws::AWSConfig=default_aws_config(); args...) = modify_replication_group(aws, args)
 
 @inline modify_replication_group(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "ModifyReplicationGroup", args)
@@ -2773,7 +2740,6 @@ If the value of `NodeGroupCount` is less than the current number of node groups 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyReplicationGroupShardConfiguration)
 """
-
 @inline modify_replication_group_shard_configuration(aws::AWSConfig=default_aws_config(); args...) = modify_replication_group_shard_configuration(aws, args)
 
 @inline modify_replication_group_shard_configuration(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "ModifyReplicationGroupShardConfiguration", args)
@@ -2829,7 +2795,6 @@ Default: `1`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/PurchaseReservedCacheNodesOffering)
 """
-
 @inline purchase_reserved_cache_nodes_offering(aws::AWSConfig=default_aws_config(); args...) = purchase_reserved_cache_nodes_offering(aws, args)
 
 @inline purchase_reserved_cache_nodes_offering(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "PurchaseReservedCacheNodesOffering", args)
@@ -2880,7 +2845,6 @@ A list of cache node IDs to reboot. A node ID is a numeric identifier (0001, 000
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/RebootCacheCluster)
 """
-
 @inline reboot_cache_cluster(aws::AWSConfig=default_aws_config(); args...) = reboot_cache_cluster(aws, args)
 
 @inline reboot_cache_cluster(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "RebootCacheCluster", args)
@@ -2925,7 +2889,6 @@ A list of `TagKeys` identifying the tags you want removed from the named resourc
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/RemoveTagsFromResource)
 """
-
 @inline remove_tags_from_resource(aws::AWSConfig=default_aws_config(); args...) = remove_tags_from_resource(aws, args)
 
 @inline remove_tags_from_resource(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "RemoveTagsFromResource", args)
@@ -2979,7 +2942,6 @@ An array of parameter names to reset to their default values. If `ResetAllParame
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ResetCacheParameterGroup)
 """
-
 @inline reset_cache_parameter_group(aws::AWSConfig=default_aws_config(); args...) = reset_cache_parameter_group(aws, args)
 
 @inline reset_cache_parameter_group(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "ResetCacheParameterGroup", args)
@@ -3026,7 +2988,6 @@ The AWS account number of the Amazon EC2 security group owner. Note that this is
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/RevokeCacheSecurityGroupIngress)
 """
-
 @inline revoke_cache_security_group_ingress(aws::AWSConfig=default_aws_config(); args...) = revoke_cache_security_group_ingress(aws, args)
 
 @inline revoke_cache_security_group_ingress(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "RevokeCacheSecurityGroupIngress", args)
@@ -3097,7 +3058,6 @@ The name of the node group (called shard in the console) in this replication gro
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/TestFailover)
 """
-
 @inline test_failover(aws::AWSConfig=default_aws_config(); args...) = test_failover(aws, args)
 
 @inline test_failover(aws::AWSConfig, args) = AWSCore.Services.elasticache(aws, "TestFailover", args)

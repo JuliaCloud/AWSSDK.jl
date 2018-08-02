@@ -77,7 +77,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/AbortMultipartUpload)
 """
-
 @inline abort_multipart_upload(aws::AWSConfig=default_aws_config(); args...) = abort_multipart_upload(aws, args)
 
 @inline abort_multipart_upload(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "DELETE", "/{Bucket}/{Key+}", args)
@@ -168,7 +167,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CompleteMultipartUpload)
 """
-
 @inline complete_multipart_upload(aws::AWSConfig=default_aws_config(); args...) = complete_multipart_upload(aws, args)
 
 @inline complete_multipart_upload(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "POST", "/{Bucket}/{Key+}", args)
@@ -279,7 +277,7 @@ Specifies whether the object tag-set are copied from the source object or replac
 The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
 
 
-## `*header:* x-amz-storage-class = "STANDARD", "REDUCED_REDUNDANCY" or "STANDARD_IA"`
+## `*header:* x-amz-storage-class = "STANDARD", "REDUCED_REDUNDANCY", "STANDARD_IA" or "ONEZONE_IA"`
 The type of storage to use for the object. Defaults to 'STANDARD'.
 
 
@@ -358,7 +356,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CopyObject)
 """
-
 @inline copy_object(aws::AWSConfig=default_aws_config(); args...) = copy_object(aws, args)
 
 @inline copy_object(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}/{Key+}", args)
@@ -464,7 +461,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CreateBucket)
 """
-
 @inline create_bucket(aws::AWSConfig=default_aws_config(); args...) = create_bucket(aws, args)
 
 @inline create_bucket(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}", args)
@@ -549,7 +545,7 @@ A map of metadata to store with the object in S3.
 The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
 
 
-## `*header:* x-amz-storage-class = "STANDARD", "REDUCED_REDUNDANCY" or "STANDARD_IA"`
+## `*header:* x-amz-storage-class = "STANDARD", "REDUCED_REDUNDANCY", "STANDARD_IA" or "ONEZONE_IA"`
 The type of storage to use for the object. Defaults to 'STANDARD'.
 
 
@@ -610,7 +606,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CreateMultipartUpload)
 """
-
 @inline create_multipart_upload(aws::AWSConfig=default_aws_config(); args...) = create_multipart_upload(aws, args)
 
 @inline create_multipart_upload(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "POST", "/{Bucket}/{Key+}?uploads", args)
@@ -652,7 +647,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucket)
 """
-
 @inline delete_bucket(aws::AWSConfig=default_aws_config(); args...) = delete_bucket(aws, args)
 
 @inline delete_bucket(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "DELETE", "/{Bucket}", args)
@@ -687,7 +681,6 @@ The identifier used to represent an analytics configuration.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketAnalyticsConfiguration)
 """
-
 @inline delete_bucket_analytics_configuration(aws::AWSConfig=default_aws_config(); args...) = delete_bucket_analytics_configuration(aws, args)
 
 @inline delete_bucket_analytics_configuration(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "DELETE", "/{Bucket}?analytics", args)
@@ -729,7 +722,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketCors)
 """
-
 @inline delete_bucket_cors(aws::AWSConfig=default_aws_config(); args...) = delete_bucket_cors(aws, args)
 
 @inline delete_bucket_cors(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "DELETE", "/{Bucket}?cors", args)
@@ -760,7 +752,6 @@ The name of the bucket containing the server-side encryption configuration to de
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketEncryption)
 """
-
 @inline delete_bucket_encryption(aws::AWSConfig=default_aws_config(); args...) = delete_bucket_encryption(aws, args)
 
 @inline delete_bucket_encryption(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "DELETE", "/{Bucket}?encryption", args)
@@ -795,7 +786,6 @@ The ID used to identify the inventory configuration.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketInventoryConfiguration)
 """
-
 @inline delete_bucket_inventory_configuration(aws::AWSConfig=default_aws_config(); args...) = delete_bucket_inventory_configuration(aws, args)
 
 @inline delete_bucket_inventory_configuration(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "DELETE", "/{Bucket}?inventory", args)
@@ -837,7 +827,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketLifecycle)
 """
-
 @inline delete_bucket_lifecycle(aws::AWSConfig=default_aws_config(); args...) = delete_bucket_lifecycle(aws, args)
 
 @inline delete_bucket_lifecycle(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "DELETE", "/{Bucket}?lifecycle", args)
@@ -872,7 +861,6 @@ The ID used to identify the metrics configuration.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketMetricsConfiguration)
 """
-
 @inline delete_bucket_metrics_configuration(aws::AWSConfig=default_aws_config(); args...) = delete_bucket_metrics_configuration(aws, args)
 
 @inline delete_bucket_metrics_configuration(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "DELETE", "/{Bucket}?metrics", args)
@@ -914,7 +902,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketPolicy)
 """
-
 @inline delete_bucket_policy(aws::AWSConfig=default_aws_config(); args...) = delete_bucket_policy(aws, args)
 
 @inline delete_bucket_policy(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "DELETE", "/{Bucket}?policy", args)
@@ -956,7 +943,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketReplication)
 """
-
 @inline delete_bucket_replication(aws::AWSConfig=default_aws_config(); args...) = delete_bucket_replication(aws, args)
 
 @inline delete_bucket_replication(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "DELETE", "/{Bucket}?replication", args)
@@ -998,7 +984,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketTagging)
 """
-
 @inline delete_bucket_tagging(aws::AWSConfig=default_aws_config(); args...) = delete_bucket_tagging(aws, args)
 
 @inline delete_bucket_tagging(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "DELETE", "/{Bucket}?tagging", args)
@@ -1040,7 +1025,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketWebsite)
 """
-
 @inline delete_bucket_website(aws::AWSConfig=default_aws_config(); args...) = delete_bucket_website(aws, args)
 
 @inline delete_bucket_website(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "DELETE", "/{Bucket}?website", args)
@@ -1122,7 +1106,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteObject)
 """
-
 @inline delete_object(aws::AWSConfig=default_aws_config(); args...) = delete_object(aws, args)
 
 @inline delete_object(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "DELETE", "/{Bucket}/{Key+}", args)
@@ -1204,7 +1187,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteObjectTagging)
 """
-
 @inline delete_object_tagging(aws::AWSConfig=default_aws_config(); args...) = delete_object_tagging(aws, args)
 
 @inline delete_object_tagging(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "DELETE", "/{Bucket}/{Key+}?tagging", args)
@@ -1339,7 +1321,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteObjects)
 """
-
 @inline delete_objects(aws::AWSConfig=default_aws_config(); args...) = delete_objects(aws, args)
 
 @inline delete_objects(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "POST", "/{Bucket}?delete", args)
@@ -1374,7 +1355,6 @@ Name of the bucket for which the accelerate configuration is retrieved.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketAccelerateConfiguration)
 """
-
 @inline get_bucket_accelerate_configuration(aws::AWSConfig=default_aws_config(); args...) = get_bucket_accelerate_configuration(aws, args)
 
 @inline get_bucket_accelerate_configuration(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?accelerate", args)
@@ -1409,7 +1389,6 @@ Gets the access control policy for the bucket.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketAcl)
 """
-
 @inline get_bucket_acl(aws::AWSConfig=default_aws_config(); args...) = get_bucket_acl(aws, args)
 
 @inline get_bucket_acl(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?acl", args)
@@ -1448,7 +1427,6 @@ The identifier used to represent an analytics configuration.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketAnalyticsConfiguration)
 """
-
 @inline get_bucket_analytics_configuration(aws::AWSConfig=default_aws_config(); args...) = get_bucket_analytics_configuration(aws, args)
 
 @inline get_bucket_analytics_configuration(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?analytics", args)
@@ -1514,7 +1492,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketCors)
 """
-
 @inline get_bucket_cors(aws::AWSConfig=default_aws_config(); args...) = get_bucket_cors(aws, args)
 
 @inline get_bucket_cors(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?cors", args)
@@ -1549,7 +1526,6 @@ The name of the bucket from which the server-side encryption configuration is re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketEncryption)
 """
-
 @inline get_bucket_encryption(aws::AWSConfig=default_aws_config(); args...) = get_bucket_encryption(aws, args)
 
 @inline get_bucket_encryption(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?encryption", args)
@@ -1588,7 +1564,6 @@ The ID used to identify the inventory configuration.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketInventoryConfiguration)
 """
-
 @inline get_bucket_inventory_configuration(aws::AWSConfig=default_aws_config(); args...) = get_bucket_inventory_configuration(aws, args)
 
 @inline get_bucket_inventory_configuration(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?inventory", args)
@@ -1650,7 +1625,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketLifecycle)
 """
-
 @inline get_bucket_lifecycle(aws::AWSConfig=default_aws_config(); args...) = get_bucket_lifecycle(aws, args)
 
 @inline get_bucket_lifecycle(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?lifecycle", args)
@@ -1715,7 +1689,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketLifecycleConfiguration)
 """
-
 @inline get_bucket_lifecycle_configuration(aws::AWSConfig=default_aws_config(); args...) = get_bucket_lifecycle_configuration(aws, args)
 
 @inline get_bucket_lifecycle_configuration(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?lifecycle", args)
@@ -1768,7 +1741,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketLocation)
 """
-
 @inline get_bucket_location(aws::AWSConfig=default_aws_config(); args...) = get_bucket_location(aws, args)
 
 @inline get_bucket_location(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?location", args)
@@ -1803,7 +1775,6 @@ Returns the logging status of a bucket and the permissions users have to view an
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketLogging)
 """
-
 @inline get_bucket_logging(aws::AWSConfig=default_aws_config(); args...) = get_bucket_logging(aws, args)
 
 @inline get_bucket_logging(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?logging", args)
@@ -1842,7 +1813,6 @@ The ID used to identify the metrics configuration.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketMetricsConfiguration)
 """
-
 @inline get_bucket_metrics_configuration(aws::AWSConfig=default_aws_config(); args...) = get_bucket_metrics_configuration(aws, args)
 
 @inline get_bucket_metrics_configuration(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?metrics", args)
@@ -1943,7 +1913,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketNotification)
 """
-
 @inline get_bucket_notification(aws::AWSConfig=default_aws_config(); args...) = get_bucket_notification(aws, args)
 
 @inline get_bucket_notification(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?notification", args)
@@ -1978,7 +1947,6 @@ Name of the bucket to get the notification configuration for.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketNotificationConfiguration)
 """
-
 @inline get_bucket_notification_configuration(aws::AWSConfig=default_aws_config(); args...) = get_bucket_notification_configuration(aws, args)
 
 @inline get_bucket_notification_configuration(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?notification", args)
@@ -2031,7 +1999,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketPolicy)
 """
-
 @inline get_bucket_policy(aws::AWSConfig=default_aws_config(); args...) = get_bucket_policy(aws, args)
 
 @inline get_bucket_policy(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?policy", args)
@@ -2096,7 +2063,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketReplication)
 """
-
 @inline get_bucket_replication(aws::AWSConfig=default_aws_config(); args...) = get_bucket_replication(aws, args)
 
 @inline get_bucket_replication(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?replication", args)
@@ -2149,7 +2115,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketRequestPayment)
 """
-
 @inline get_bucket_request_payment(aws::AWSConfig=default_aws_config(); args...) = get_bucket_request_payment(aws, args)
 
 @inline get_bucket_request_payment(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?requestPayment", args)
@@ -2211,7 +2176,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketTagging)
 """
-
 @inline get_bucket_tagging(aws::AWSConfig=default_aws_config(); args...) = get_bucket_tagging(aws, args)
 
 @inline get_bucket_tagging(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?tagging", args)
@@ -2265,7 +2229,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketVersioning)
 """
-
 @inline get_bucket_versioning(aws::AWSConfig=default_aws_config(); args...) = get_bucket_versioning(aws, args)
 
 @inline get_bucket_versioning(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?versioning", args)
@@ -2323,7 +2286,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketWebsite)
 """
-
 @inline get_bucket_website(aws::AWSConfig=default_aws_config(); args...) = get_bucket_website(aws, args)
 
 @inline get_bucket_website(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?website", args)
@@ -2491,7 +2453,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObject)
 """
-
 @inline get_object(aws::AWSConfig=default_aws_config(); args...) = get_object(aws, args)
 
 @inline get_object(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}/{Key+}", args)
@@ -2598,7 +2559,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectAcl)
 """
-
 @inline get_object_acl(aws::AWSConfig=default_aws_config(); args...) = get_object_acl(aws, args)
 
 @inline get_object_acl(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}/{Key+}?acl", args)
@@ -2696,7 +2656,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectTagging)
 """
-
 @inline get_object_tagging(aws::AWSConfig=default_aws_config(); args...) = get_object_tagging(aws, args)
 
 @inline get_object_tagging(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}/{Key+}?tagging", args)
@@ -2758,7 +2717,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectTorrent)
 """
-
 @inline get_object_torrent(aws::AWSConfig=default_aws_config(); args...) = get_object_torrent(aws, args)
 
 @inline get_object_torrent(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}/{Key+}?torrent", args)
@@ -2804,7 +2762,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/HeadBucket)
 """
-
 @inline head_bucket(aws::AWSConfig=default_aws_config(); args...) = head_bucket(aws, args)
 
 @inline head_bucket(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "HEAD", "/{Bucket}", args)
@@ -2918,7 +2875,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/HeadObject)
 """
-
 @inline head_object(aws::AWSConfig=default_aws_config(); args...) = head_object(aws, args)
 
 @inline head_object(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "HEAD", "/{Bucket}/{Key+}", args)
@@ -2957,7 +2913,6 @@ The ContinuationToken that represents a placeholder from where this request shou
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListBucketAnalyticsConfigurations)
 """
-
 @inline list_bucket_analytics_configurations(aws::AWSConfig=default_aws_config(); args...) = list_bucket_analytics_configurations(aws, args)
 
 @inline list_bucket_analytics_configurations(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?analytics", args)
@@ -2996,7 +2951,6 @@ The marker used to continue an inventory configuration listing that has been tru
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListBucketInventoryConfigurations)
 """
-
 @inline list_bucket_inventory_configurations(aws::AWSConfig=default_aws_config(); args...) = list_bucket_inventory_configurations(aws, args)
 
 @inline list_bucket_inventory_configurations(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?inventory", args)
@@ -3035,7 +2989,6 @@ The marker that is used to continue a metrics configuration listing that has bee
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListBucketMetricsConfigurations)
 """
-
 @inline list_bucket_metrics_configurations(aws::AWSConfig=default_aws_config(); args...) = list_bucket_metrics_configurations(aws, args)
 
 @inline list_bucket_metrics_configurations(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?metrics", args)
@@ -3090,7 +3043,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListBuckets)
 """
-
 @inline list_buckets(aws::AWSConfig=default_aws_config(); args...) = list_buckets(aws, args)
 
 @inline list_buckets(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/", args)
@@ -3253,7 +3205,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListMultipartUploads)
 """
-
 @inline list_multipart_uploads(aws::AWSConfig=default_aws_config(); args...) = list_multipart_uploads(aws, args)
 
 @inline list_multipart_uploads(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?uploads", args)
@@ -3358,7 +3309,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjectVersions)
 """
-
 @inline list_object_versions(aws::AWSConfig=default_aws_config(); args...) = list_object_versions(aws, args)
 
 @inline list_object_versions(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?versions", args)
@@ -3464,7 +3414,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjects)
 """
-
 @inline list_objects(aws::AWSConfig=default_aws_config(); args...) = list_objects(aws, args)
 
 @inline list_objects(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}", args)
@@ -3575,7 +3524,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjectsV2)
 """
-
 @inline list_objects_v2(aws::AWSConfig=default_aws_config(); args...) = list_objects_v2(aws, args)
 
 @inline list_objects_v2(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}?list-type=2", args)
@@ -3672,7 +3620,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListParts)
 """
-
 @inline list_parts(aws::AWSConfig=default_aws_config(); args...) = list_parts(aws, args)
 
 @inline list_parts(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "GET", "/{Bucket}/{Key+}", args)
@@ -3707,7 +3654,6 @@ Specifies the Accelerate Configuration you want to set for the bucket.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketAccelerateConfiguration)
 """
-
 @inline put_bucket_accelerate_configuration(aws::AWSConfig=default_aws_config(); args...) = put_bucket_accelerate_configuration(aws, args)
 
 @inline put_bucket_accelerate_configuration(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?accelerate", args)
@@ -3800,7 +3746,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketAcl)
 """
-
 @inline put_bucket_acl(aws::AWSConfig=default_aws_config(); args...) = put_bucket_acl(aws, args)
 
 @inline put_bucket_acl(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?acl", args)
@@ -3866,7 +3811,6 @@ The configuration and any analyses for the analytics filter.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketAnalyticsConfiguration)
 """
-
 @inline put_bucket_analytics_configuration(aws::AWSConfig=default_aws_config(); args...) = put_bucket_analytics_configuration(aws, args)
 
 @inline put_bucket_analytics_configuration(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?analytics", args)
@@ -3958,7 +3902,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketCors)
 """
-
 @inline put_bucket_cors(aws::AWSConfig=default_aws_config(); args...) = put_bucket_cors(aws, args)
 
 @inline put_bucket_cors(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?cors", args)
@@ -4002,7 +3945,6 @@ The base64-encoded 128-bit MD5 digest of the server-side encryption configuratio
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketEncryption)
 """
-
 @inline put_bucket_encryption(aws::AWSConfig=default_aws_config(); args...) = put_bucket_encryption(aws, args)
 
 @inline put_bucket_encryption(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?encryption", args)
@@ -4040,7 +3982,7 @@ Specifies the inventory configuration.
         "Destination" => <required> ["S3BucketDestination" => <required> [
                 "AccountId" =>  ::String,
                 "Bucket" => <required> ::String,
-                "Format" => <required> "CSV",
+                "Format" => <required> "CSV" or "ORC",
                 "Prefix" =>  ::String,
                 "Encryption" =>  [
                     "SSE-S3" =>  [
@@ -4062,7 +4004,6 @@ Specifies the inventory configuration.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketInventoryConfiguration)
 """
-
 @inline put_bucket_inventory_configuration(aws::AWSConfig=default_aws_config(); args...) = put_bucket_inventory_configuration(aws, args)
 
 @inline put_bucket_inventory_configuration(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?inventory", args)
@@ -4108,11 +4049,11 @@ Deprecated, see the PutBucketLifecycleConfiguration operation.
             "Transition" =>  [
                 "Date" =>  timestamp,
                 "Days" =>  ::Int,
-                "StorageClass" =>  "GLACIER" or "STANDARD_IA"
+                "StorageClass" =>  "GLACIER", "STANDARD_IA" or "ONEZONE_IA"
             ],
             "NoncurrentVersionTransition" =>  [
                 "NoncurrentDays" =>  ::Int,
-                "StorageClass" =>  "GLACIER" or "STANDARD_IA"
+                "StorageClass" =>  "GLACIER", "STANDARD_IA" or "ONEZONE_IA"
             ],
             "NoncurrentVersionExpiration" =>  ["NoncurrentDays" =>  ::Int],
             "AbortIncompleteMultipartUpload" =>  ["DaysAfterInitiation" =>  ::Int]
@@ -4123,7 +4064,6 @@ Deprecated, see the PutBucketLifecycleConfiguration operation.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketLifecycle)
 """
-
 @inline put_bucket_lifecycle(aws::AWSConfig=default_aws_config(); args...) = put_bucket_lifecycle(aws, args)
 
 @inline put_bucket_lifecycle(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?lifecycle", args)
@@ -4179,11 +4119,11 @@ Sets lifecycle configuration for your bucket. If a lifecycle configuration exist
             "Transition" =>  [[
                 "Date" =>  timestamp,
                 "Days" =>  ::Int,
-                "StorageClass" =>  "GLACIER" or "STANDARD_IA"
+                "StorageClass" =>  "GLACIER", "STANDARD_IA" or "ONEZONE_IA"
             ], ...],
             "NoncurrentVersionTransition" =>  [[
                 "NoncurrentDays" =>  ::Int,
-                "StorageClass" =>  "GLACIER" or "STANDARD_IA"
+                "StorageClass" =>  "GLACIER", "STANDARD_IA" or "ONEZONE_IA"
             ], ...],
             "NoncurrentVersionExpiration" =>  ["NoncurrentDays" =>  ::Int],
             "AbortIncompleteMultipartUpload" =>  ["DaysAfterInitiation" =>  ::Int]
@@ -4225,7 +4165,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketLifecycleConfiguration)
 """
-
 @inline put_bucket_lifecycle_configuration(aws::AWSConfig=default_aws_config(); args...) = put_bucket_lifecycle_configuration(aws, args)
 
 @inline put_bucket_lifecycle_configuration(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?lifecycle", args)
@@ -4256,7 +4195,7 @@ Set the logging parameters for a bucket and to specify permissions for who can v
 
 ```
  BucketLoggingStatus = ["LoggingEnabled" =>  [
-            "TargetBucket" =>  ::String,
+            "TargetBucket" => <required> ::String,
             "TargetGrants" =>  [[
                 "Grantee" =>  [
                     "DisplayName" =>  ::String,
@@ -4267,7 +4206,7 @@ Set the logging parameters for a bucket and to specify permissions for who can v
                 ],
                 "Permission" =>  "FULL_CONTROL", "READ" or "WRITE"
             ], ...],
-            "TargetPrefix" =>  ::String
+            "TargetPrefix" => <required> ::String
         ]]
 ```
 
@@ -4305,7 +4244,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketLogging)
 """
-
 @inline put_bucket_logging(aws::AWSConfig=default_aws_config(); args...) = put_bucket_logging(aws, args)
 
 @inline put_bucket_logging(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?logging", args)
@@ -4362,7 +4300,6 @@ Specifies the metrics configuration.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketMetricsConfiguration)
 """
-
 @inline put_bucket_metrics_configuration(aws::AWSConfig=default_aws_config(); args...) = put_bucket_metrics_configuration(aws, args)
 
 @inline put_bucket_metrics_configuration(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?metrics", args)
@@ -4423,7 +4360,6 @@ Deprecated, see the PutBucketNotificationConfiguraiton operation.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketNotification)
 """
-
 @inline put_bucket_notification(aws::AWSConfig=default_aws_config(); args...) = put_bucket_notification(aws, args)
 
 @inline put_bucket_notification(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?notification", args)
@@ -4509,7 +4445,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketNotificationConfiguration)
 """
-
 @inline put_bucket_notification_configuration(aws::AWSConfig=default_aws_config(); args...) = put_bucket_notification_configuration(aws, args)
 
 @inline put_bucket_notification_configuration(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?notification", args)
@@ -4564,7 +4499,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketPolicy)
 """
-
 @inline put_bucket_policy(aws::AWSConfig=default_aws_config(); args...) = put_bucket_policy(aws, args)
 
 @inline put_bucket_policy(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?policy", args)
@@ -4608,7 +4542,7 @@ Creates a new replication configuration (or replaces an existing one, if present
             "Destination" => <required> [
                 "Bucket" => <required> ::String,
                 "Account" =>  ::String,
-                "StorageClass" =>  "STANDARD", "REDUCED_REDUNDANCY" or "STANDARD_IA",
+                "StorageClass" =>  "STANDARD", "REDUCED_REDUNDANCY", "STANDARD_IA" or "ONEZONE_IA",
                 "AccessControlTranslation" =>  ["Owner" => <required> "Destination"],
                 "EncryptionConfiguration" =>  ["ReplicaKmsKeyID" =>  ::String]
             ]
@@ -4644,7 +4578,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketReplication)
 """
-
 @inline put_bucket_replication(aws::AWSConfig=default_aws_config(); args...) = put_bucket_replication(aws, args)
 
 @inline put_bucket_replication(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?replication", args)
@@ -4697,7 +4630,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketRequestPayment)
 """
-
 @inline put_bucket_request_payment(aws::AWSConfig=default_aws_config(); args...) = put_bucket_request_payment(aws, args)
 
 @inline put_bucket_request_payment(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?requestPayment", args)
@@ -4764,7 +4696,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketTagging)
 """
-
 @inline put_bucket_tagging(aws::AWSConfig=default_aws_config(); args...) = put_bucket_tagging(aws, args)
 
 @inline put_bucket_tagging(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?tagging", args)
@@ -4827,7 +4758,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketVersioning)
 """
-
 @inline put_bucket_versioning(aws::AWSConfig=default_aws_config(); args...) = put_bucket_versioning(aws, args)
 
 @inline put_bucket_versioning(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?versioning", args)
@@ -4908,7 +4838,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketWebsite)
 """
-
 @inline put_bucket_website(aws::AWSConfig=default_aws_config(); args...) = put_bucket_website(aws, args)
 
 @inline put_bucket_website(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}?website", args)
@@ -5003,7 +4932,7 @@ A map of metadata to store with the object in S3.
 The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
 
 
-## `*header:* x-amz-storage-class = "STANDARD", "REDUCED_REDUNDANCY" or "STANDARD_IA"`
+## `*header:* x-amz-storage-class = "STANDARD", "REDUCED_REDUNDANCY", "STANDARD_IA" or "ONEZONE_IA"`
 The type of storage to use for the object. Defaults to 'STANDARD'.
 
 
@@ -5202,7 +5131,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObject)
 """
-
 @inline put_object(aws::AWSConfig=default_aws_config(); args...) = put_object(aws, args)
 
 @inline put_object(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}/{Key+}", args)
@@ -5326,7 +5254,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectAcl)
 """
-
 @inline put_object_acl(aws::AWSConfig=default_aws_config(); args...) = put_object_acl(aws, args)
 
 @inline put_object_acl(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}/{Key+}?acl", args)
@@ -5413,7 +5340,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectTagging)
 """
-
 @inline put_object_tagging(aws::AWSConfig=default_aws_config(); args...) = put_object_tagging(aws, args)
 
 @inline put_object_tagging(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}/{Key+}?tagging", args)
@@ -5452,8 +5378,67 @@ Restores an archived copy of an object back into Amazon S3
 
 ```
  RestoreRequest = [
-        "Days" => <required> ::Int,
-        "GlacierJobParameters" =>  ["Tier" => <required> "Standard", "Bulk" or "Expedited"]
+        "Days" =>  ::Int,
+        "GlacierJobParameters" =>  ["Tier" => <required> "Standard", "Bulk" or "Expedited"],
+        "Type" =>  "SELECT",
+        "Tier" =>  "Standard", "Bulk" or "Expedited",
+        "Description" =>  ::String,
+        "SelectParameters" =>  [
+            "InputSerialization" => <required> [
+                "CSV" =>  [
+                    "FileHeaderInfo" =>  "USE", "IGNORE" or "NONE",
+                    "Comments" =>  ::String,
+                    "QuoteEscapeCharacter" =>  ::String,
+                    "RecordDelimiter" =>  ::String,
+                    "FieldDelimiter" =>  ::String,
+                    "QuoteCharacter" =>  ::String,
+                    "AllowQuotedRecordDelimiter" =>  ::Bool
+                ],
+                "CompressionType" =>  "NONE", "GZIP" or "BZIP2",
+                "JSON" =>  ["Type" =>  "DOCUMENT" or "LINES"]
+            ],
+            "ExpressionType" => <required> "SQL",
+            "Expression" => <required> ::String,
+            "OutputSerialization" => <required> [
+                "CSV" =>  [
+                    "QuoteFields" =>  "ALWAYS" or "ASNEEDED",
+                    "QuoteEscapeCharacter" =>  ::String,
+                    "RecordDelimiter" =>  ::String,
+                    "FieldDelimiter" =>  ::String,
+                    "QuoteCharacter" =>  ::String
+                ],
+                "JSON" =>  ["RecordDelimiter" =>  ::String]
+            ]
+        ],
+        "OutputLocation" =>  ["S3" =>  [
+                "BucketName" => <required> ::String,
+                "Prefix" => <required> ::String,
+                "Encryption" =>  [
+                    "EncryptionType" => <required> "AES256" or "aws:kms",
+                    "KMSKeyId" =>  ::String,
+                    "KMSContext" =>  ::String
+                ],
+                "CannedACL" =>  "private", "public-read", "public-read-write", "authenticated-read", "aws-exec-read", "bucket-owner-read" or "bucket-owner-full-control",
+                "AccessControlList" =>  [[
+                    "Grantee" =>  [
+                        "DisplayName" =>  ::String,
+                        "EmailAddress" =>  ::String,
+                        "ID" =>  ::String,
+                        "xsi:type" => <required> "CanonicalUser", "AmazonCustomerByEmail" or "Group",
+                        "URI" =>  ::String
+                    ],
+                    "Permission" =>  "FULL_CONTROL", "WRITE", "WRITE_ACP", "READ" or "READ_ACP"
+                ], ...],
+                "Tagging" =>  ["TagSet" => <required> [[
+                        "Key" => <required> ::String,
+                        "Value" => <required> ::String
+                    ], ...]],
+                "UserMetadata" =>  [[
+                    "Name" =>  ::String,
+                    "Value" =>  ::String
+                ], ...],
+                "StorageClass" =>  "STANDARD", "REDUCED_REDUNDANCY", "STANDARD_IA" or "ONEZONE_IA"
+            ]]
     ]
 ```
 
@@ -5498,12 +5483,106 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/RestoreObject)
 """
-
 @inline restore_object(aws::AWSConfig=default_aws_config(); args...) = restore_object(aws, args)
 
 @inline restore_object(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "POST", "/{Bucket}/{Key+}?restore", args)
 
 @inline restore_object(args) = restore_object(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.S3.select_object_content
+    select_object_content([::AWSConfig], arguments::Dict)
+    select_object_content([::AWSConfig]; Bucket=, Key=, Expression=, ExpressionType=, InputSerialization=, OutputSerialization=, <keyword arguments>)
+
+    using AWSCore.Services.s3
+    s3([::AWSConfig], "POST", "/{Bucket}/{Key+}?select&select-type=2", arguments::Dict)
+    s3([::AWSConfig], "POST", "/{Bucket}/{Key+}?select&select-type=2", Bucket=, Key=, Expression=, ExpressionType=, InputSerialization=, OutputSerialization=, <keyword arguments>)
+
+# SelectObjectContent Operation
+
+This operation filters the contents of an Amazon S3 object based on a simple Structured Query Language (SQL) statement. In the request, along with the SQL expression, you must also specify a data serialization format (JSON or CSV) of the object. Amazon S3 uses this to parse object data into records, and returns only records that match the specified SQL expression. You must also specify the data serialization format for the response.
+
+# Arguments
+
+## `Bucket = ::String` -- *Required*
+The S3 Bucket.
+
+
+## `Key = ::String` -- *Required*
+The Object Key.
+
+
+## `*header:* x-amz-server-side-encryption-customer-algorithm = ::String`
+The SSE Algorithm used to encrypt the object. For more information, go to [Server-Side Encryption (Using Customer-Provided Encryption Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
+
+
+## `*header:* x-amz-server-side-encryption-customer-key = blob`
+The SSE Customer Key. For more information, go to [Server-Side Encryption (Using Customer-Provided Encryption Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
+
+
+## `*header:* x-amz-server-side-encryption-customer-key-MD5 = ::String`
+The SSE Customer Key MD5. For more information, go to [Server-Side Encryption (Using Customer-Provided Encryption Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
+
+
+## `Expression = ::String` -- *Required*
+The expression that is used to query the object.
+
+
+## `ExpressionType = "SQL"` -- *Required*
+The type of the provided expression (e.g., SQL).
+
+
+## `RequestProgress = ["Enabled" =>  ::Bool]`
+Specifies if periodic request progress information should be enabled.
+
+
+## `InputSerialization = [ ... ]` -- *Required*
+Describes the format of the data in the object that is being queried.
+```
+ InputSerialization = [
+        "CSV" =>  [
+            "FileHeaderInfo" =>  "USE", "IGNORE" or "NONE",
+            "Comments" =>  ::String,
+            "QuoteEscapeCharacter" =>  ::String,
+            "RecordDelimiter" =>  ::String,
+            "FieldDelimiter" =>  ::String,
+            "QuoteCharacter" =>  ::String,
+            "AllowQuotedRecordDelimiter" =>  ::Bool
+        ],
+        "CompressionType" =>  "NONE", "GZIP" or "BZIP2",
+        "JSON" =>  ["Type" =>  "DOCUMENT" or "LINES"]
+    ]
+```
+
+## `OutputSerialization = [ ... ]` -- *Required*
+Describes the format of the data that you want Amazon S3 to return in response.
+```
+ OutputSerialization = [
+        "CSV" =>  [
+            "QuoteFields" =>  "ALWAYS" or "ASNEEDED",
+            "QuoteEscapeCharacter" =>  ::String,
+            "RecordDelimiter" =>  ::String,
+            "FieldDelimiter" =>  ::String,
+            "QuoteCharacter" =>  ::String
+        ],
+        "JSON" =>  ["RecordDelimiter" =>  ::String]
+    ]
+```
+
+
+
+# Returns
+
+`SelectObjectContentOutput`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/SelectObjectContent)
+"""
+@inline select_object_content(aws::AWSConfig=default_aws_config(); args...) = select_object_content(aws, args)
+
+@inline select_object_content(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "POST", "/{Bucket}/{Key+}?select&select-type=2", args)
+
+@inline select_object_content(args) = select_object_content(default_aws_config(), args)
 
 
 """
@@ -5597,7 +5676,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/UploadPart)
 """
-
 @inline upload_part(aws::AWSConfig=default_aws_config(); args...) = upload_part(aws, args)
 
 @inline upload_part(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}/{Key+}", args)
@@ -5747,7 +5825,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/UploadPartCopy)
 """
-
 @inline upload_part_copy(aws::AWSConfig=default_aws_config(); args...) = upload_part_copy(aws, args)
 
 @inline upload_part_copy(aws::AWSConfig, args) = AWSCore.Services.s3(aws, "PUT", "/{Bucket}/{Key+}", args)

@@ -87,7 +87,6 @@ An array of Amazon Resource Names (ARNs) of the SAML provider for your identity 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/CreateIdentityPool)
 """
-
 @inline create_identity_pool(aws::AWSConfig=default_aws_config(); args...) = create_identity_pool(aws, args)
 
 @inline create_identity_pool(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "CreateIdentityPool", args)
@@ -128,7 +127,6 @@ A list of 1-60 identities that you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/DeleteIdentities)
 """
-
 @inline delete_identities(aws::AWSConfig=default_aws_config(); args...) = delete_identities(aws, args)
 
 @inline delete_identities(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "DeleteIdentities", args)
@@ -165,7 +163,6 @@ An identity pool ID in the format REGION:GUID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/DeleteIdentityPool)
 """
-
 @inline delete_identity_pool(aws::AWSConfig=default_aws_config(); args...) = delete_identity_pool(aws, args)
 
 @inline delete_identity_pool(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "DeleteIdentityPool", args)
@@ -206,7 +203,6 @@ A unique identifier in the format REGION:GUID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/DescribeIdentity)
 """
-
 @inline describe_identity(aws::AWSConfig=default_aws_config(); args...) = describe_identity(aws, args)
 
 @inline describe_identity(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "DescribeIdentity", args)
@@ -247,7 +243,6 @@ An identity pool ID in the format REGION:GUID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/DescribeIdentityPool)
 """
-
 @inline describe_identity_pool(aws::AWSConfig=default_aws_config(); args...) = describe_identity_pool(aws, args)
 
 @inline describe_identity_pool(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "DescribeIdentityPool", args)
@@ -296,7 +291,6 @@ The Amazon Resource Name (ARN) of the role to be assumed when multiple roles wer
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/GetCredentialsForIdentity)
 """
-
 @inline get_credentials_for_identity(aws::AWSConfig=default_aws_config(); args...) = get_credentials_for_identity(aws, args)
 
 @inline get_credentials_for_identity(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "GetCredentialsForIdentity", args)
@@ -357,7 +351,6 @@ A set of optional name-value pairs that map provider names to provider tokens. T
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/GetId)
 """
-
 @inline get_id(aws::AWSConfig=default_aws_config(); args...) = get_id(aws, args)
 
 @inline get_id(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "GetId", args)
@@ -398,7 +391,6 @@ An identity pool ID in the format REGION:GUID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/GetIdentityPoolRoles)
 """
-
 @inline get_identity_pool_roles(aws::AWSConfig=default_aws_config(); args...) = get_identity_pool_roles(aws, args)
 
 @inline get_identity_pool_roles(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "GetIdentityPoolRoles", args)
@@ -445,7 +437,6 @@ A set of optional name-value pairs that map provider names to provider tokens. W
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/GetOpenIdToken)
 """
-
 @inline get_open_id_token(aws::AWSConfig=default_aws_config(); args...) = get_open_id_token(aws, args)
 
 @inline get_open_id_token(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "GetOpenIdToken", args)
@@ -500,7 +491,6 @@ The expiration time of the token, in seconds. You can specify a custom expiratio
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/GetOpenIdTokenForDeveloperIdentity)
 """
-
 @inline get_open_id_token_for_developer_identity(aws::AWSConfig=default_aws_config(); args...) = get_open_id_token_for_developer_identity(aws, args)
 
 @inline get_open_id_token_for_developer_identity(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "GetOpenIdTokenForDeveloperIdentity", args)
@@ -553,7 +543,6 @@ An optional boolean parameter that allows you to hide disabled identities. If om
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/ListIdentities)
 """
-
 @inline list_identities(aws::AWSConfig=default_aws_config(); args...) = list_identities(aws, args)
 
 @inline list_identities(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "ListIdentities", args)
@@ -598,7 +587,6 @@ A pagination token.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/ListIdentityPools)
 """
-
 @inline list_identity_pools(aws::AWSConfig=default_aws_config(); args...) = list_identity_pools(aws, args)
 
 @inline list_identity_pools(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "ListIdentityPools", args)
@@ -655,7 +643,6 @@ A pagination token. The first call you make will have `NextToken` set to null. A
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/LookupDeveloperIdentity)
 """
-
 @inline lookup_developer_identity(aws::AWSConfig=default_aws_config(); args...) = lookup_developer_identity(aws, args)
 
 @inline lookup_developer_identity(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "LookupDeveloperIdentity", args)
@@ -708,7 +695,6 @@ An identity pool ID in the format REGION:GUID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/MergeDeveloperIdentities)
 """
-
 @inline merge_developer_identities(aws::AWSConfig=default_aws_config(); args...) = merge_developer_identities(aws, args)
 
 @inline merge_developer_identities(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "MergeDeveloperIdentities", args)
@@ -755,7 +741,6 @@ Up to 25 rules can be specified per identity provider.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/SetIdentityPoolRoles)
 """
-
 @inline set_identity_pool_roles(aws::AWSConfig=default_aws_config(); args...) = set_identity_pool_roles(aws, args)
 
 @inline set_identity_pool_roles(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "SetIdentityPoolRoles", args)
@@ -804,7 +789,6 @@ A unique ID used by your backend authentication process to identify a user.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/UnlinkDeveloperIdentity)
 """
-
 @inline unlink_developer_identity(aws::AWSConfig=default_aws_config(); args...) = unlink_developer_identity(aws, args)
 
 @inline unlink_developer_identity(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "UnlinkDeveloperIdentity", args)
@@ -849,7 +833,6 @@ Provider names to unlink from this identity.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/UnlinkIdentity)
 """
-
 @inline unlink_identity(aws::AWSConfig=default_aws_config(); args...) = unlink_identity(aws, args)
 
 @inline unlink_identity(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "UnlinkIdentity", args)
@@ -924,7 +907,6 @@ An array of Amazon Resource Names (ARNs) of the SAML provider for your identity 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/UpdateIdentityPool)
 """
-
 @inline update_identity_pool(aws::AWSConfig=default_aws_config(); args...) = update_identity_pool(aws, args)
 
 @inline update_identity_pool(aws::AWSConfig, args) = AWSCore.Services.cognito_identity(aws, "UpdateIdentityPool", args)

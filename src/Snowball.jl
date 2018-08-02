@@ -54,7 +54,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CancelCluster)
 """
-
 @inline cancel_cluster(aws::AWSConfig=default_aws_config(); args...) = cancel_cluster(aws, args)
 
 @inline cancel_cluster(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "CancelCluster", args)
@@ -73,7 +72,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowba
 
 # CancelJob Operation
 
-Cancels the specified job. You can only cancel a job before its `JobState` value changes to `PreparingAppliance`. Requesting the `ListJobs` or `DescribeJob` action will return a job's `JobState` as part of the response element data returned.
+Cancels the specified job. You can only cancel a job before its `JobState` value changes to `PreparingAppliance`. Requesting the `ListJobs` or `DescribeJob` action returns a job's `JobState` as part of the response element data returned.
 
 # Arguments
 
@@ -104,7 +103,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CancelJob)
 """
-
 @inline cancel_job(aws::AWSConfig=default_aws_config(); args...) = cancel_job(aws, args)
 
 @inline cancel_job(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "CancelJob", args)
@@ -187,7 +185,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateAddress)
 """
-
 @inline create_address(aws::AWSConfig=default_aws_config(); args...) = create_address(aws, args)
 
 @inline create_address(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "CreateAddress", args)
@@ -228,6 +225,10 @@ The resources associated with the cluster job. These resources include Amazon S3
         "LambdaResources" =>  [[
             "LambdaArn" =>  ::String,
             "EventTriggers" =>  [["EventResourceARN" =>  ::String], ...]
+        ], ...],
+        "Ec2AmiResources" =>  [[
+            "AmiId" => <required> ::String,
+            "SnowballAmiId" =>  ::String
         ], ...]
     ]
 ```
@@ -237,7 +238,7 @@ An optional description of this specific cluster, for example `Environmental Dat
 
 
 ## `AddressId = ::String` -- *Required*
-The ID for the address that you want the cluster shipped to.>
+The ID for the address that you want the cluster shipped to.
 
 
 ## `KmsKeyARN = ::String`
@@ -249,13 +250,13 @@ The `RoleARN` that you want to associate with this cluster. `RoleArn` values are
 
 
 ## `SnowballType = "STANDARD" or "EDGE"`
-The type of AWS Snowball appliance to use for this cluster. Currently, the only supported appliance type for cluster jobs is `EDGE`.
+The type of AWS Snowball device to use for this cluster. Currently, the only supported device type for cluster jobs is `EDGE`.
 
 
 ## `ShippingOption = "SECOND_DAY", "NEXT_DAY", "EXPRESS" or "STANDARD"` -- *Required*
-The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge appliance, rather it represents how quickly each appliance moves to its destination while in transit. Regional shipping speeds are as follows:
+The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge device, rather it represents how quickly each device moves to its destination while in transit. Regional shipping speeds are as follows:
 
-*   In Australia, you have access to express shipping. Typically, appliances shipped express are delivered in about a day.
+*   In Australia, you have access to express shipping. Typically, devices shipped express are delivered in about a day.
 
 *   In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.
 
@@ -286,7 +287,7 @@ The forwarding address ID for a cluster. This field is not supported in most reg
 
 # Exceptions
 
-`InvalidResourceException`, `KMSRequestFailedException` or `InvalidInputCombinationException`.
+`InvalidResourceException`, `KMSRequestFailedException`, `InvalidInputCombinationException` or `Ec2RequestFailedException`.
 
 # Example: To create a cluster
 
@@ -330,7 +331,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateCluster)
 """
-
 @inline create_cluster(aws::AWSConfig=default_aws_config(); args...) = create_cluster(aws, args)
 
 @inline create_cluster(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "CreateCluster", args)
@@ -375,6 +375,10 @@ With `EXPORT` jobs, you specify the bucket or buckets that your transferred data
         "LambdaResources" =>  [[
             "LambdaArn" =>  ::String,
             "EventTriggers" =>  [["EventResourceARN" =>  ::String], ...]
+        ], ...],
+        "Ec2AmiResources" =>  [[
+            "AmiId" => <required> ::String,
+            "SnowballAmiId" =>  ::String
         ], ...]
     ]
 ```
@@ -426,7 +430,7 @@ The ID of a cluster. If you're creating a job for a node in a cluster, you need 
 
 
 ## `SnowballType = "STANDARD" or "EDGE"`
-The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster jobs is `EDGE`.
+The type of AWS Snowball device to use for this job. Currently, the only supported device type for cluster jobs is `EDGE`.
 
 
 ## `ForwardingAddressId = ::String`
@@ -441,7 +445,7 @@ The forwarding address ID for a job. This field is not supported in most regions
 
 # Exceptions
 
-`InvalidResourceException`, `KMSRequestFailedException`, `InvalidInputCombinationException` or `ClusterLimitExceededException`.
+`InvalidResourceException`, `KMSRequestFailedException`, `InvalidInputCombinationException`, `ClusterLimitExceededException` or `Ec2RequestFailedException`.
 
 # Example: To create a job
 
@@ -486,7 +490,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateJob)
 """
-
 @inline create_job(aws::AWSConfig=default_aws_config(); args...) = create_job(aws, args)
 
 @inline create_job(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "CreateJob", args)
@@ -553,7 +556,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeAddress)
 """
-
 @inline describe_address(aws::AWSConfig=default_aws_config(); args...) = describe_address(aws, args)
 
 @inline describe_address(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "DescribeAddress", args)
@@ -626,7 +628,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeAddresses)
 """
-
 @inline describe_addresses(aws::AWSConfig=default_aws_config(); args...) = describe_addresses(aws, args)
 
 @inline describe_addresses(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "DescribeAddresses", args)
@@ -709,7 +710,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeCluster)
 """
-
 @inline describe_cluster(aws::AWSConfig=default_aws_config(); args...) = describe_cluster(aws, args)
 
 @inline describe_cluster(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "DescribeCluster", args)
@@ -796,7 +796,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeJob)
 """
-
 @inline describe_job(aws::AWSConfig=default_aws_config(); args...) = describe_job(aws, args)
 
 @inline describe_job(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "DescribeJob", args)
@@ -865,7 +864,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetJobManifest)
 """
-
 @inline get_job_manifest(aws::AWSConfig=default_aws_config(); args...) = get_job_manifest(aws, args)
 
 @inline get_job_manifest(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "GetJobManifest", args)
@@ -930,7 +928,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetJobUnlockCode)
 """
-
 @inline get_job_unlock_code(aws::AWSConfig=default_aws_config(); args...) = get_job_unlock_code(aws, args)
 
 @inline get_job_unlock_code(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "GetJobUnlockCode", args)
@@ -984,7 +981,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetSnowballUsage)
 """
-
 @inline get_snowball_usage(aws::AWSConfig=default_aws_config(); args...) = get_snowball_usage(aws, args)
 
 @inline get_snowball_usage(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "GetSnowballUsage", args)
@@ -1095,7 +1091,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListClusterJobs)
 """
-
 @inline list_cluster_jobs(aws::AWSConfig=default_aws_config(); args...) = list_cluster_jobs(aws, args)
 
 @inline list_cluster_jobs(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "ListClusterJobs", args)
@@ -1163,12 +1158,53 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListClusters)
 """
-
 @inline list_clusters(aws::AWSConfig=default_aws_config(); args...) = list_clusters(aws, args)
 
 @inline list_clusters(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "ListClusters", args)
 
 @inline list_clusters(args) = list_clusters(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Snowball.list_compatible_images
+    list_compatible_images([::AWSConfig], arguments::Dict)
+    list_compatible_images([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.snowball
+    snowball([::AWSConfig], "ListCompatibleImages", arguments::Dict)
+    snowball([::AWSConfig], "ListCompatibleImages", <keyword arguments>)
+
+# ListCompatibleImages Operation
+
+This action returns a list of the different Amazon EC2 Amazon Machine Images (AMIs) that are owned by your AWS account that would be supported for use on a Snowball Edge device. Currently, supported AMIs are based on the CentOS 7 (x86_64) - with Updates HVM, Ubuntu Server 14.04 LTS (HVM), and Ubuntu 16.04 LTS - Xenial (HVM) images, available on the AWS Marketplace.
+
+# Arguments
+
+## `MaxResults = ::Int`
+The maximum number of results for the list of compatible images. Currently, a Snowball Edge device can store 10 AMIs.
+
+
+## `NextToken = ::String`
+HTTP requests are stateless. To identify what object comes "next" in the list of compatible images, you can specify a value for `NextToken` as the starting point for your list of returned images.
+
+
+
+
+# Returns
+
+`ListCompatibleImagesResult`
+
+# Exceptions
+
+`InvalidNextTokenException` or `Ec2RequestFailedException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListCompatibleImages)
+"""
+@inline list_compatible_images(aws::AWSConfig=default_aws_config(); args...) = list_compatible_images(aws, args)
+
+@inline list_compatible_images(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "ListCompatibleImages", args)
+
+@inline list_compatible_images(args) = list_compatible_images(default_aws_config(), args)
 
 
 """
@@ -1234,7 +1270,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListJobs)
 """
-
 @inline list_jobs(aws::AWSConfig=default_aws_config(); args...) = list_jobs(aws, args)
 
 @inline list_jobs(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "ListJobs", args)
@@ -1283,6 +1318,10 @@ The updated arrays of [JobResource](@ref) objects that can include updated [S3Re
         "LambdaResources" =>  [[
             "LambdaArn" =>  ::String,
             "EventTriggers" =>  [["EventResourceARN" =>  ::String], ...]
+        ], ...],
+        "Ec2AmiResources" =>  [[
+            "AmiId" => <required> ::String,
+            "SnowballAmiId" =>  ::String
         ], ...]
     ]
 ```
@@ -1317,7 +1356,7 @@ The updated ID for the forwarding address for a cluster. This field is not suppo
 
 # Exceptions
 
-`InvalidResourceException`, `InvalidJobStateException`, `KMSRequestFailedException` or `InvalidInputCombinationException`.
+`InvalidResourceException`, `InvalidJobStateException`, `KMSRequestFailedException`, `InvalidInputCombinationException` or `Ec2RequestFailedException`.
 
 # Example: To update a cluster
 
@@ -1334,7 +1373,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/UpdateCluster)
 """
-
 @inline update_cluster(aws::AWSConfig=default_aws_config(); args...) = update_cluster(aws, args)
 
 @inline update_cluster(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "UpdateCluster", args)
@@ -1376,7 +1414,7 @@ The new or updated [Notification](@ref) object.
 ```
 
 ## `Resources = [ ... ]`
-The updated [S3Resource](@ref) object (for a single Amazon S3 bucket or key range), or the updated [JobResource](@ref) object (for multiple buckets or key ranges).
+The updated `JobResource` object, or the updated [JobResource](@ref) object.
 ```
  Resources = [
         "S3Resources" =>  [[
@@ -1389,6 +1427,10 @@ The updated [S3Resource](@ref) object (for a single Amazon S3 bucket or key rang
         "LambdaResources" =>  [[
             "LambdaArn" =>  ::String,
             "EventTriggers" =>  [["EventResourceARN" =>  ::String], ...]
+        ], ...],
+        "Ec2AmiResources" =>  [[
+            "AmiId" => <required> ::String,
+            "SnowballAmiId" =>  ::String
         ], ...]
     ]
 ```
@@ -1421,7 +1463,7 @@ The updated ID for the forwarding address for a job. This field is not supported
 
 # Exceptions
 
-`InvalidResourceException`, `InvalidJobStateException`, `KMSRequestFailedException`, `InvalidInputCombinationException` or `ClusterLimitExceededException`.
+`InvalidResourceException`, `InvalidJobStateException`, `KMSRequestFailedException`, `InvalidInputCombinationException`, `ClusterLimitExceededException` or `Ec2RequestFailedException`.
 
 # Example: To update a job
 
@@ -1440,7 +1482,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/UpdateJob)
 """
-
 @inline update_job(aws::AWSConfig=default_aws_config(); args...) = update_job(aws, args)
 
 @inline update_job(aws::AWSConfig, args) = AWSCore.Services.snowball(aws, "UpdateJob", args)

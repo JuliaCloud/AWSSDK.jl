@@ -55,7 +55,6 @@ Unique identifier for an exported snapshot of project configuration. This snapsh
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mobile-2017-07-01/CreateProject)
 """
-
 @inline create_project(aws::AWSConfig=default_aws_config(); args...) = create_project(aws, args)
 
 @inline create_project(aws::AWSConfig, args) = AWSCore.Services.mobile(aws, "POST", "/projects", args)
@@ -94,7 +93,6 @@ Unique project identifier.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mobile-2017-07-01/DeleteProject)
 """
-
 @inline delete_project(aws::AWSConfig=default_aws_config(); args...) = delete_project(aws, args)
 
 @inline delete_project(aws::AWSConfig, args) = AWSCore.Services.mobile(aws, "DELETE", "/projects/{projectId}", args)
@@ -133,7 +131,6 @@ Unique bundle identifier.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mobile-2017-07-01/DescribeBundle)
 """
-
 @inline describe_bundle(aws::AWSConfig=default_aws_config(); args...) = describe_bundle(aws, args)
 
 @inline describe_bundle(aws::AWSConfig, args) = AWSCore.Services.mobile(aws, "GET", "/bundles/{bundleId}", args)
@@ -176,7 +173,6 @@ If set to true, causes AWS Mobile Hub to synchronize information from other serv
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mobile-2017-07-01/DescribeProject)
 """
-
 @inline describe_project(aws::AWSConfig=default_aws_config(); args...) = describe_project(aws, args)
 
 @inline describe_project(aws::AWSConfig, args) = AWSCore.Services.mobile(aws, "GET", "/project", args)
@@ -223,7 +219,6 @@ Developer desktop or target application platform.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mobile-2017-07-01/ExportBundle)
 """
-
 @inline export_bundle(aws::AWSConfig=default_aws_config(); args...) = export_bundle(aws, args)
 
 @inline export_bundle(aws::AWSConfig, args) = AWSCore.Services.mobile(aws, "POST", "/bundles/{bundleId}", args)
@@ -262,7 +257,6 @@ Unique project identifier.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mobile-2017-07-01/ExportProject)
 """
-
 @inline export_project(aws::AWSConfig=default_aws_config(); args...) = export_project(aws, args)
 
 @inline export_project(aws::AWSConfig, args) = AWSCore.Services.mobile(aws, "POST", "/exports/{projectId}", args)
@@ -305,7 +299,6 @@ Pagination token. Set to null to start listing bundles from start. If non-null p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mobile-2017-07-01/ListBundles)
 """
-
 @inline list_bundles(aws::AWSConfig=default_aws_config(); args...) = list_bundles(aws, args)
 
 @inline list_bundles(aws::AWSConfig, args) = AWSCore.Services.mobile(aws, "GET", "/bundles", args)
@@ -348,7 +341,6 @@ Pagination token. Set to null to start listing projects from start. If non-null 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mobile-2017-07-01/ListProjects)
 """
-
 @inline list_projects(aws::AWSConfig=default_aws_config(); args...) = list_projects(aws, args)
 
 @inline list_projects(aws::AWSConfig, args) = AWSCore.Services.mobile(aws, "GET", "/projects", args)
@@ -391,7 +383,6 @@ Unique project identifier.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mobile-2017-07-01/UpdateProject)
 """
-
 @inline update_project(aws::AWSConfig=default_aws_config(); args...) = update_project(aws, args)
 
 @inline update_project(aws::AWSConfig, args) = AWSCore.Services.mobile(aws, "POST", "/update", args)

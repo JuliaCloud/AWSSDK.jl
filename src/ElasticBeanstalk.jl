@@ -54,7 +54,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/AbortEnvironmentUpdate)
 """
-
 @inline abort_environment_update(aws::AWSConfig=default_aws_config(); args...) = abort_environment_update(aws, args)
 
 @inline abort_environment_update(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "AbortEnvironmentUpdate", args)
@@ -101,7 +100,6 @@ The action ID of the scheduled managed action to execute.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ApplyEnvironmentManagedAction)
 """
-
 @inline apply_environment_managed_action(aws::AWSConfig=default_aws_config(); args...) = apply_environment_managed_action(aws, args)
 
 @inline apply_environment_managed_action(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "ApplyEnvironmentManagedAction", args)
@@ -155,7 +153,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CheckDNSAvailability)
 """
-
 @inline check_dnsavailability(aws::AWSConfig=default_aws_config(); args...) = check_dnsavailability(aws, args)
 
 @inline check_dnsavailability(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "CheckDNSAvailability", args)
@@ -202,7 +199,6 @@ A list of version labels, specifying one or more application source bundles that
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ComposeEnvironments)
 """
-
 @inline compose_environments(aws::AWSConfig=default_aws_config(); args...) = compose_environments(aws, args)
 
 @inline compose_environments(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "ComposeEnvironments", args)
@@ -294,7 +290,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CreateApplication)
 """
-
 @inline create_application(aws::AWSConfig=default_aws_config(); args...) = create_application(aws, args)
 
 @inline create_application(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "CreateApplication", args)
@@ -383,7 +378,12 @@ Set to `true` to create an application with the specified name if it doesn't alr
 
 
 ## `Process = ::Bool`
-Preprocesses and validates the environment manifest and configuration files in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment.
+Pre-processes and validates the environment manifest (`env.yaml`) and configuration files (`*.config` files in the `.ebextensions` folder) in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment.
+
+You must turn processing on for application versions that you create using AWS CodeBuild or AWS CodeCommit. For application versions built from a source bundle in Amazon S3, processing is optional.
+
+**Note**
+> The `Process` option validates Elastic Beanstalk configuration files. It doesn't validate your application's configuration files, like proxy server or Docker configuration.
 
 
 
@@ -434,7 +434,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CreateApplicationVersion)
 """
-
 @inline create_application_version(aws::AWSConfig=default_aws_config(); args...) = create_application_version(aws, args)
 
 @inline create_application_version(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "CreateApplicationVersion", args)
@@ -488,7 +487,7 @@ If a solution stack name is not specified and the source configuration parameter
 
 
 ## `PlatformArn = ::String`
-The ARN of the custome platform.
+The ARN of the custom platform.
 
 
 ## `SourceConfiguration = [ ... ]`
@@ -561,7 +560,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CreateConfigurationTemplate)
 """
-
 @inline create_configuration_template(aws::AWSConfig=default_aws_config(); args...) = create_configuration_template(aws, args)
 
 @inline create_configuration_template(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "CreateConfigurationTemplate", args)
@@ -644,6 +642,8 @@ The name of the configuration template to use in deployment. If no configuration
 ## `SolutionStackName = ::String`
 This is an alternative to specifying a template name. If specified, AWS Elastic Beanstalk sets the configuration values to the default values associated with the specified solution stack.
 
+For a list of current solution stacks, see [Elastic Beanstalk Supported Platforms](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html).
+
 
 ## `PlatformArn = ::String`
 The ARN of the platform.
@@ -718,7 +718,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CreateEnvironment)
 """
-
 @inline create_environment(aws::AWSConfig=default_aws_config(); args...) = create_environment(aws, args)
 
 @inline create_environment(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "CreateEnvironment", args)
@@ -785,7 +784,6 @@ The configuration option settings to apply to the builder environment.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CreatePlatformVersion)
 """
-
 @inline create_platform_version(aws::AWSConfig=default_aws_config(); args...) = create_platform_version(aws, args)
 
 @inline create_platform_version(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "CreatePlatformVersion", args)
@@ -804,9 +802,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 # CreateStorageLocation Operation
 
-Creates the Amazon S3 storage location for the account.
-
-This location is used to store user log files.
+Creates a bucket in Amazon S3 to store application versions, logs, and other files used by Elastic Beanstalk environments. The Elastic Beanstalk console and EB CLI call this API the first time you create an environment in a region. If the storage location already exists, `CreateStorageLocation` still returns the bucket name but does not create a new bucket.
 
 # Returns
 
@@ -829,7 +825,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CreateStorageLocation)
 """
-
 @inline create_storage_location(aws::AWSConfig=default_aws_config(); args...) = create_storage_location(aws, args)
 
 @inline create_storage_location(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "CreateStorageLocation", args)
@@ -882,7 +877,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DeleteApplication)
 """
-
 @inline delete_application(aws::AWSConfig=default_aws_config(); args...) = delete_application(aws, args)
 
 @inline delete_application(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DeleteApplication", args)
@@ -941,7 +935,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DeleteApplicationVersion)
 """
-
 @inline delete_application_version(aws::AWSConfig=default_aws_config(); args...) = delete_application_version(aws, args)
 
 @inline delete_application_version(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DeleteApplicationVersion", args)
@@ -995,7 +988,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DeleteConfigurationTemplate)
 """
-
 @inline delete_configuration_template(aws::AWSConfig=default_aws_config(); args...) = delete_configuration_template(aws, args)
 
 @inline delete_configuration_template(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DeleteConfigurationTemplate", args)
@@ -1044,7 +1036,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DeleteEnvironmentConfiguration)
 """
-
 @inline delete_environment_configuration(aws::AWSConfig=default_aws_config(); args...) = delete_environment_configuration(aws, args)
 
 @inline delete_environment_configuration(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DeleteEnvironmentConfiguration", args)
@@ -1083,12 +1074,43 @@ The ARN of the version of the custom platform.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DeletePlatformVersion)
 """
-
 @inline delete_platform_version(aws::AWSConfig=default_aws_config(); args...) = delete_platform_version(aws, args)
 
 @inline delete_platform_version(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DeletePlatformVersion", args)
 
 @inline delete_platform_version(args) = delete_platform_version(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.ElasticBeanstalk.describe_account_attributes
+    describe_account_attributes([::AWSConfig])
+    
+
+    using AWSCore.Services.elasticbeanstalk
+    elasticbeanstalk([::AWSConfig], "DescribeAccountAttributes",)
+    
+
+# DescribeAccountAttributes Operation
+
+Returns attributes related to AWS Elastic Beanstalk that are associated with the calling AWS account.
+
+The result currently has one set of attributes—resource quotas.
+
+# Returns
+
+`DescribeAccountAttributesResult`
+
+# Exceptions
+
+`InsufficientPrivilegesException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeAccountAttributes)
+"""
+@inline describe_account_attributes(aws::AWSConfig=default_aws_config(); args...) = describe_account_attributes(aws, args)
+
+@inline describe_account_attributes(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DescribeAccountAttributes", args)
+
+@inline describe_account_attributes(args) = describe_account_attributes(default_aws_config(), args)
 
 
 """
@@ -1178,7 +1200,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeApplicationVersions)
 """
-
 @inline describe_application_versions(aws::AWSConfig=default_aws_config(); args...) = describe_application_versions(aws, args)
 
 @inline describe_application_versions(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DescribeApplicationVersions", args)
@@ -1267,7 +1288,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeApplications)
 """
-
 @inline describe_applications(aws::AWSConfig=default_aws_config(); args...) = describe_applications(aws, args)
 
 @inline describe_applications(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DescribeApplications", args)
@@ -1371,7 +1391,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeConfigurationOptions)
 """
-
 @inline describe_configuration_options(aws::AWSConfig=default_aws_config(); args...) = describe_configuration_options(aws, args)
 
 @inline describe_configuration_options(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DescribeConfigurationOptions", args)
@@ -1483,7 +1502,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeConfigurationSettings)
 """
-
 @inline describe_configuration_settings(aws::AWSConfig=default_aws_config(); args...) = describe_configuration_settings(aws, args)
 
 @inline describe_configuration_settings(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DescribeConfigurationSettings", args)
@@ -1591,7 +1609,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeEnvironmentHealth)
 """
-
 @inline describe_environment_health(aws::AWSConfig=default_aws_config(); args...) = describe_environment_health(aws, args)
 
 @inline describe_environment_health(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DescribeEnvironmentHealth", args)
@@ -1642,7 +1659,6 @@ The maximum number of items to return for a single request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeEnvironmentManagedActionHistory)
 """
-
 @inline describe_environment_managed_action_history(aws::AWSConfig=default_aws_config(); args...) = describe_environment_managed_action_history(aws, args)
 
 @inline describe_environment_managed_action_history(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DescribeEnvironmentManagedActionHistory", args)
@@ -1689,7 +1705,6 @@ To show only actions with a particular status, specify a status.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeEnvironmentManagedActions)
 """
-
 @inline describe_environment_managed_actions(aws::AWSConfig=default_aws_config(); args...) = describe_environment_managed_actions(aws, args)
 
 @inline describe_environment_managed_actions(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DescribeEnvironmentManagedActions", args)
@@ -1782,7 +1797,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeEnvironmentResources)
 """
-
 @inline describe_environment_resources(aws::AWSConfig=default_aws_config(); args...) = describe_environment_resources(aws, args)
 
 @inline describe_environment_resources(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DescribeEnvironmentResources", args)
@@ -1893,7 +1907,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeEnvironments)
 """
-
 @inline describe_environments(aws::AWSConfig=default_aws_config(); args...) = describe_environments(aws, args)
 
 @inline describe_environments(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DescribeEnvironments", args)
@@ -2025,7 +2038,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeEvents)
 """
-
 @inline describe_events(aws::AWSConfig=default_aws_config(); args...) = describe_events(aws, args)
 
 @inline describe_events(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DescribeEvents", args)
@@ -2044,7 +2056,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 # DescribeInstancesHealth Operation
 
-Retrives detailed information about the health of instances in your AWS Elastic Beanstalk. This operation requires [enhanced health reporting](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html).
+Retrieves detailed information about the health of instances in your AWS Elastic Beanstalk. This operation requires [enhanced health reporting](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html).
 
 # Arguments
 
@@ -2144,7 +2156,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeInstancesHealth)
 """
-
 @inline describe_instances_health(aws::AWSConfig=default_aws_config(); args...) = describe_instances_health(aws, args)
 
 @inline describe_instances_health(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DescribeInstancesHealth", args)
@@ -2183,7 +2194,6 @@ The ARN of the version of the platform.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribePlatformVersion)
 """
-
 @inline describe_platform_version(aws::AWSConfig=default_aws_config(); args...) = describe_platform_version(aws, args)
 
 @inline describe_platform_version(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "DescribePlatformVersion", args)
@@ -2258,7 +2268,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ListAvailableSolutionStacks)
 """
-
 @inline list_available_solution_stacks(aws::AWSConfig=default_aws_config(); args...) = list_available_solution_stacks(aws, args)
 
 @inline list_available_solution_stacks(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "ListAvailableSolutionStacks", args)
@@ -2311,7 +2320,6 @@ The starting index into the remaining list of platforms. Use the `NextToken` val
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ListPlatformVersions)
 """
-
 @inline list_platform_versions(aws::AWSConfig=default_aws_config(); args...) = list_platform_versions(aws, args)
 
 @inline list_platform_versions(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "ListPlatformVersions", args)
@@ -2332,7 +2340,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 Returns the tags applied to an AWS Elastic Beanstalk resource. The response contains a list of tag key-value pairs.
 
-Currently, Elastic Beanstalk only supports tagging Elastic Beanstalk environments.
+Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk environments. For details about environment tagging, see [Tagging Resources in Your Elastic Beanstalk Environment](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
 
 # Arguments
 
@@ -2354,7 +2362,6 @@ Must be the ARN of an Elastic Beanstalk environment.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ListTagsForResource)
 """
-
 @inline list_tags_for_resource(aws::AWSConfig=default_aws_config(); args...) = list_tags_for_resource(aws, args)
 
 @inline list_tags_for_resource(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "ListTagsForResource", args)
@@ -2408,7 +2415,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/RebuildEnvironment)
 """
-
 @inline rebuild_environment(aws::AWSConfig=default_aws_config(); args...) = rebuild_environment(aws, args)
 
 @inline rebuild_environment(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "RebuildEnvironment", args)
@@ -2477,7 +2483,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/RequestEnvironmentInfo)
 """
-
 @inline request_environment_info(aws::AWSConfig=default_aws_config(); args...) = request_environment_info(aws, args)
 
 @inline request_environment_info(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "RequestEnvironmentInfo", args)
@@ -2527,7 +2532,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/RestartAppServer)
 """
-
 @inline restart_app_server(aws::AWSConfig=default_aws_config(); args...) = restart_app_server(aws, args)
 
 @inline restart_app_server(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "RestartAppServer", args)
@@ -2608,7 +2612,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/RetrieveEnvironmentInfo)
 """
-
 @inline retrieve_environment_info(aws::AWSConfig=default_aws_config(); args...) = retrieve_environment_info(aws, args)
 
 @inline retrieve_environment_info(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "RetrieveEnvironmentInfo", args)
@@ -2671,7 +2674,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/SwapEnvironmentCNAMEs)
 """
-
 @inline swap_environment_cnames(aws::AWSConfig=default_aws_config(); args...) = swap_environment_cnames(aws, args)
 
 @inline swap_environment_cnames(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "SwapEnvironmentCNAMEs", args)
@@ -2769,7 +2771,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/TerminateEnvironment)
 """
-
 @inline terminate_environment(aws::AWSConfig=default_aws_config(); args...) = terminate_environment(aws, args)
 
 @inline terminate_environment(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "TerminateEnvironment", args)
@@ -2847,7 +2848,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/UpdateApplication)
 """
-
 @inline update_application(aws::AWSConfig=default_aws_config(); args...) = update_application(aws, args)
 
 @inline update_application(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "UpdateApplication", args)
@@ -2906,7 +2906,6 @@ The lifecycle configuration.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/UpdateApplicationResourceLifecycle)
 """
-
 @inline update_application_resource_lifecycle(aws::AWSConfig=default_aws_config(); args...) = update_application_resource_lifecycle(aws, args)
 
 @inline update_application_resource_lifecycle(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "UpdateApplicationResourceLifecycle", args)
@@ -2986,7 +2985,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/UpdateApplicationVersion)
 """
-
 @inline update_application_version(aws::AWSConfig=default_aws_config(); args...) = update_application_version(aws, args)
 
 @inline update_application_version(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "UpdateApplicationVersion", args)
@@ -3096,7 +3094,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/UpdateConfigurationTemplate)
 """
-
 @inline update_configuration_template(aws::AWSConfig=default_aws_config(); args...) = update_configuration_template(aws, args)
 
 @inline update_configuration_template(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "UpdateConfigurationTemplate", args)
@@ -3300,7 +3297,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/UpdateEnvironment)
 """
-
 @inline update_environment(aws::AWSConfig=default_aws_config(); args...) = update_environment(aws, args)
 
 @inline update_environment(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "UpdateEnvironment", args)
@@ -3321,7 +3317,31 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 Update the list of tags applied to an AWS Elastic Beanstalk resource. Two lists can be passed: `TagsToAdd` for tags to add or update, and `TagsToRemove`.
 
-Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk environments.
+Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk environments. For details about environment tagging, see [Tagging Resources in Your Elastic Beanstalk Environment](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
+
+If you create a custom IAM user policy to control permission to this operation, specify one of the following two virtual actions (or both) instead of the API operation name:
+
+<dl>
+
+<dt>elasticbeanstalk:AddTags</dt>
+
+<dd>
+
+Controls permission to call `UpdateTagsForResource` and pass a list of tags to add in the `TagsToAdd` parameter.
+
+</dd>
+
+<dt>elasticbeanstalk:RemoveTags</dt>
+
+<dd>
+
+Controls permission to call `UpdateTagsForResource` and pass a list of tag keys to remove in the `TagsToRemove` parameter.
+
+</dd>
+
+</dl>
+
+For details about creating a custom user policy, see [Creating a Custom User Policy](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies).
 
 # Arguments
 
@@ -3356,7 +3376,6 @@ If a tag key doesn't exist, it is silently ignored.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/UpdateTagsForResource)
 """
-
 @inline update_tags_for_resource(aws::AWSConfig=default_aws_config(); args...) = update_tags_for_resource(aws, args)
 
 @inline update_tags_for_resource(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "UpdateTagsForResource", args)
@@ -3448,7 +3467,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ValidateConfigurationSettings)
 """
-
 @inline validate_configuration_settings(aws::AWSConfig=default_aws_config(); args...) = validate_configuration_settings(aws, args)
 
 @inline validate_configuration_settings(aws::AWSConfig, args) = AWSCore.Services.elasticbeanstalk(aws, "ValidateConfigurationSettings", args)

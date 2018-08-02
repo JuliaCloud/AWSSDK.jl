@@ -130,7 +130,6 @@ A set of tags to associate with the DAX cluster.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/CreateCluster)
 """
-
 @inline create_cluster(aws::AWSConfig=default_aws_config(); args...) = create_cluster(aws, args)
 
 @inline create_cluster(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "CreateCluster", args)
@@ -173,7 +172,6 @@ A description of the parameter group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/CreateParameterGroup)
 """
-
 @inline create_parameter_group(aws::AWSConfig=default_aws_config(); args...) = create_parameter_group(aws, args)
 
 @inline create_parameter_group(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "CreateParameterGroup", args)
@@ -220,7 +218,6 @@ A list of VPC subnet IDs for the subnet group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/CreateSubnetGroup)
 """
-
 @inline create_subnet_group(aws::AWSConfig=default_aws_config(); args...) = create_subnet_group(aws, args)
 
 @inline create_subnet_group(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "CreateSubnetGroup", args)
@@ -274,7 +271,6 @@ The unique identifiers of the nodes to be removed from the cluster.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DecreaseReplicationFactor)
 """
-
 @inline decrease_replication_factor(aws::AWSConfig=default_aws_config(); args...) = decrease_replication_factor(aws, args)
 
 @inline decrease_replication_factor(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "DecreaseReplicationFactor", args)
@@ -313,7 +309,6 @@ The name of the cluster to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DeleteCluster)
 """
-
 @inline delete_cluster(aws::AWSConfig=default_aws_config(); args...) = delete_cluster(aws, args)
 
 @inline delete_cluster(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "DeleteCluster", args)
@@ -352,7 +347,6 @@ The name of the parameter group to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DeleteParameterGroup)
 """
-
 @inline delete_parameter_group(aws::AWSConfig=default_aws_config(); args...) = delete_parameter_group(aws, args)
 
 @inline delete_parameter_group(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "DeleteParameterGroup", args)
@@ -394,7 +388,6 @@ The name of the subnet group to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DeleteSubnetGroup)
 """
-
 @inline delete_subnet_group(aws::AWSConfig=default_aws_config(); args...) = delete_subnet_group(aws, args)
 
 @inline delete_subnet_group(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "DeleteSubnetGroup", args)
@@ -451,7 +444,6 @@ An optional token returned from a prior request. Use this token for pagination o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeClusters)
 """
-
 @inline describe_clusters(aws::AWSConfig=default_aws_config(); args...) = describe_clusters(aws, args)
 
 @inline describe_clusters(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "DescribeClusters", args)
@@ -496,7 +488,6 @@ An optional token returned from a prior request. Use this token for pagination o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeDefaultParameters)
 """
-
 @inline describe_default_parameters(aws::AWSConfig=default_aws_config(); args...) = describe_default_parameters(aws, args)
 
 @inline describe_default_parameters(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "DescribeDefaultParameters", args)
@@ -563,7 +554,6 @@ An optional token returned from a prior request. Use this token for pagination o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeEvents)
 """
-
 @inline describe_events(aws::AWSConfig=default_aws_config(); args...) = describe_events(aws, args)
 
 @inline describe_events(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "DescribeEvents", args)
@@ -612,7 +602,6 @@ An optional token returned from a prior request. Use this token for pagination o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeParameterGroups)
 """
-
 @inline describe_parameter_groups(aws::AWSConfig=default_aws_config(); args...) = describe_parameter_groups(aws, args)
 
 @inline describe_parameter_groups(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "DescribeParameterGroups", args)
@@ -665,7 +654,6 @@ An optional token returned from a prior request. Use this token for pagination o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeParameters)
 """
-
 @inline describe_parameters(aws::AWSConfig=default_aws_config(); args...) = describe_parameters(aws, args)
 
 @inline describe_parameters(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "DescribeParameters", args)
@@ -714,7 +702,6 @@ An optional token returned from a prior request. Use this token for pagination o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/DescribeSubnetGroups)
 """
-
 @inline describe_subnet_groups(aws::AWSConfig=default_aws_config(); args...) = describe_subnet_groups(aws, args)
 
 @inline describe_subnet_groups(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "DescribeSubnetGroups", args)
@@ -761,7 +748,6 @@ The Availability Zones (AZs) in which the cluster nodes will be created. All nod
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/IncreaseReplicationFactor)
 """
-
 @inline increase_replication_factor(aws::AWSConfig=default_aws_config(); args...) = increase_replication_factor(aws, args)
 
 @inline increase_replication_factor(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "IncreaseReplicationFactor", args)
@@ -804,7 +790,6 @@ An optional token returned from a prior request. Use this token for pagination o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/ListTags)
 """
-
 @inline list_tags(aws::AWSConfig=default_aws_config(); args...) = list_tags(aws, args)
 
 @inline list_tags(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "ListTags", args)
@@ -847,7 +832,6 @@ The system-assigned ID of the node to be rebooted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/RebootNode)
 """
-
 @inline reboot_node(aws::AWSConfig=default_aws_config(); args...) = reboot_node(aws, args)
 
 @inline reboot_node(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "RebootNode", args)
@@ -895,7 +879,6 @@ The tags to be assigned to the DAX resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/TagResource)
 """
-
 @inline tag_resource(aws::AWSConfig=default_aws_config(); args...) = tag_resource(aws, args)
 
 @inline tag_resource(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "TagResource", args)
@@ -938,7 +921,6 @@ A list of tag keys. If the DAX cluster has any tags with these keys, then the ta
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/UntagResource)
 """
-
 @inline untag_resource(aws::AWSConfig=default_aws_config(); args...) = untag_resource(aws, args)
 
 @inline untag_resource(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "UntagResource", args)
@@ -1001,7 +983,6 @@ A list of user-specified security group IDs to be assigned to each node in the D
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/UpdateCluster)
 """
-
 @inline update_cluster(aws::AWSConfig=default_aws_config(); args...) = update_cluster(aws, args)
 
 @inline update_cluster(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "UpdateCluster", args)
@@ -1049,7 +1030,6 @@ An array of name-value pairs for the parameters in the group. Each element in th
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/UpdateParameterGroup)
 """
-
 @inline update_parameter_group(aws::AWSConfig=default_aws_config(); args...) = update_parameter_group(aws, args)
 
 @inline update_parameter_group(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "UpdateParameterGroup", args)
@@ -1096,7 +1076,6 @@ A list of subnet IDs in the subnet group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dax-2017-04-19/UpdateSubnetGroup)
 """
-
 @inline update_subnet_group(aws::AWSConfig=default_aws_config(); args...) = update_subnet_group(aws, args)
 
 @inline update_subnet_group(aws::AWSConfig, args) = AWSCore.Services.dax(aws, "UpdateSubnetGroup", args)

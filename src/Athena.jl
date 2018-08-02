@@ -43,7 +43,6 @@ An array of query IDs.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena-2017-05-18/BatchGetNamedQuery)
 """
-
 @inline batch_get_named_query(aws::AWSConfig=default_aws_config(); args...) = batch_get_named_query(aws, args)
 
 @inline batch_get_named_query(aws::AWSConfig, args) = AWSCore.Services.athena(aws, "BatchGetNamedQuery", args)
@@ -82,7 +81,6 @@ An array of query execution IDs.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena-2017-05-18/BatchGetQueryExecution)
 """
-
 @inline batch_get_query_execution(aws::AWSConfig=default_aws_config(); args...) = batch_get_query_execution(aws, args)
 
 @inline batch_get_query_execution(aws::AWSConfig, args) = AWSCore.Services.athena(aws, "BatchGetQueryExecution", args)
@@ -142,7 +140,6 @@ A unique case-sensitive string used to ensure the request to create the query is
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena-2017-05-18/CreateNamedQuery)
 """
-
 @inline create_named_query(aws::AWSConfig=default_aws_config(); args...) = create_named_query(aws, args)
 
 @inline create_named_query(aws::AWSConfig, args) = AWSCore.Services.athena(aws, "CreateNamedQuery", args)
@@ -183,7 +180,6 @@ The unique ID of the query to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena-2017-05-18/DeleteNamedQuery)
 """
-
 @inline delete_named_query(aws::AWSConfig=default_aws_config(); args...) = delete_named_query(aws, args)
 
 @inline delete_named_query(aws::AWSConfig, args) = AWSCore.Services.athena(aws, "DeleteNamedQuery", args)
@@ -222,7 +218,6 @@ The unique ID of the query. Use [ListNamedQueries](@ref) to get query IDs.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena-2017-05-18/GetNamedQuery)
 """
-
 @inline get_named_query(aws::AWSConfig=default_aws_config(); args...) = get_named_query(aws, args)
 
 @inline get_named_query(aws::AWSConfig, args) = AWSCore.Services.athena(aws, "GetNamedQuery", args)
@@ -261,7 +256,6 @@ The unique ID of the query execution.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena-2017-05-18/GetQueryExecution)
 """
-
 @inline get_query_execution(aws::AWSConfig=default_aws_config(); args...) = get_query_execution(aws, args)
 
 @inline get_query_execution(aws::AWSConfig, args) = AWSCore.Services.athena(aws, "GetQueryExecution", args)
@@ -308,7 +302,6 @@ The maximum number of results (rows) to return in this request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena-2017-05-18/GetQueryResults)
 """
-
 @inline get_query_results(aws::AWSConfig=default_aws_config(); args...) = get_query_results(aws, args)
 
 @inline get_query_results(aws::AWSConfig, args) = AWSCore.Services.athena(aws, "GetQueryResults", args)
@@ -353,7 +346,6 @@ The maximum number of queries to return in this request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena-2017-05-18/ListNamedQueries)
 """
-
 @inline list_named_queries(aws::AWSConfig=default_aws_config(); args...) = list_named_queries(aws, args)
 
 @inline list_named_queries(aws::AWSConfig, args) = AWSCore.Services.athena(aws, "ListNamedQueries", args)
@@ -398,7 +390,6 @@ The maximum number of query executions to return in this request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena-2017-05-18/ListQueryExecutions)
 """
-
 @inline list_query_executions(aws::AWSConfig=default_aws_config(); args...) = list_query_executions(aws, args)
 
 @inline list_query_executions(aws::AWSConfig, args) = AWSCore.Services.athena(aws, "ListQueryExecutions", args)
@@ -462,7 +453,6 @@ Specifies information about where and how to save the results of the query execu
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena-2017-05-18/StartQueryExecution)
 """
-
 @inline start_query_execution(aws::AWSConfig=default_aws_config(); args...) = start_query_execution(aws, args)
 
 @inline start_query_execution(aws::AWSConfig, args) = AWSCore.Services.athena(aws, "StartQueryExecution", args)
@@ -503,7 +493,6 @@ The unique ID of the query execution to stop.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/athena-2017-05-18/StopQueryExecution)
 """
-
 @inline stop_query_execution(aws::AWSConfig=default_aws_config(); args...) = stop_query_execution(aws, args)
 
 @inline stop_query_execution(aws::AWSConfig, args) = AWSCore.Services.athena(aws, "StopQueryExecution", args)

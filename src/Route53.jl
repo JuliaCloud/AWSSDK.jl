@@ -43,7 +43,7 @@ Note that you can't associate a VPC with a hosted zone that doesn't have an exis
 A complex type that contains information about the VPC that you want to associate with a private hosted zone.
 ```
  VPC = [
-        "VPCRegion" =>  "us-east-1", "us-east-2", "us-west-1", "us-west-2", "eu-west-1", "eu-west-2", "eu-central-1", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "ap-northeast-1", "ap-northeast-2", "sa-east-1", "ca-central-1" or "cn-north-1",
+        "VPCRegion" =>  "us-east-1", "us-east-2", "us-west-1", "us-west-2", "eu-west-1", "eu-west-2", "eu-west-3", "eu-central-1", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "sa-east-1", "ca-central-1" or "cn-north-1",
         "VPCId" =>  ::String
     ]
 ```
@@ -92,7 +92,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/AssociateVPCWithHostedZone)
 """
-
 @inline associate_vpcwith_hosted_zone(aws::AWSConfig=default_aws_config(); args...) = associate_vpcwith_hosted_zone(aws, args)
 
 @inline associate_vpcwith_hosted_zone(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/hostedzone/{Id}/associatevpc", args)
@@ -170,7 +169,7 @@ A complex type that contains an optional comment and the `Changes` element.
                 "Type" => <required> "SOA", "A", "TXT", "NS", "CNAME", "MX", "NAPTR", "PTR", "SRV", "SPF", "AAAA" or "CAA",
                 "SetIdentifier" =>  ::String,
                 "Weight" =>  ::Int,
-                "Region" =>  "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1", "eu-west-1", "eu-west-2", "eu-central-1", "ap-southeast-1", "ap-southeast-2", "ap-northeast-1", "ap-northeast-2", "sa-east-1", "cn-north-1" or "ap-south-1",
+                "Region" =>  "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1", "eu-west-1", "eu-west-2", "eu-west-3", "eu-central-1", "ap-southeast-1", "ap-southeast-2", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "sa-east-1", "cn-north-1", "cn-northwest-1" or "ap-south-1",
                 "GeoLocation" =>  [
                     "ContinentCode" =>  ::String,
                     "CountryCode" =>  ::String,
@@ -821,7 +820,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ChangeResourceRecordSets)
 """
-
 @inline change_resource_record_sets(aws::AWSConfig=default_aws_config(); args...) = change_resource_record_sets(aws, args)
 
 @inline change_resource_record_sets(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/hostedzone/{Id}/rrset/", args)
@@ -917,7 +915,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ChangeTagsForResource)
 """
-
 @inline change_tags_for_resource(aws::AWSConfig=default_aws_config(); args...) = change_tags_for_resource(aws, args)
 
 @inline change_tags_for_resource(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/tags/{ResourceType}/{ResourceId}", args)
@@ -987,7 +984,7 @@ A complex type that contains the response to a `CreateHealthCheck` request.
         "EnableSNI" =>  ::Bool,
         "Regions" =>  ["us-east-1", "us-west-1", "us-west-2", "eu-west-1", "ap-southeast-1", "ap-southeast-2", "ap-northeast-1" or "sa-east-1", ...],
         "AlarmIdentifier" =>  [
-            "Region" => <required> "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1", "eu-central-1", "eu-west-1", "eu-west-2", "ap-south-1", "ap-southeast-1", "ap-southeast-2", "ap-northeast-1", "ap-northeast-2" or "sa-east-1",
+            "Region" => <required> "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1", "eu-central-1", "eu-west-1", "eu-west-2", "eu-west-3", "ap-south-1", "ap-southeast-1", "ap-southeast-2", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3" or "sa-east-1",
             "Name" => <required> ::String
         ],
         "InsufficientDataHealthStatus" =>  "Healthy", "Unhealthy" or "LastKnownStatus"
@@ -1006,7 +1003,6 @@ A complex type that contains the response to a `CreateHealthCheck` request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateHealthCheck)
 """
-
 @inline create_health_check(aws::AWSConfig=default_aws_config(); args...) = create_health_check(aws, args)
 
 @inline create_health_check(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/healthcheck", args)
@@ -1058,7 +1054,7 @@ If you're creating a public hosted zone, this is the name you have registered wi
 You can specify only one Amazon VPC when you create a private hosted zone. To associate additional Amazon VPCs with the hosted zone, use [AssociateVPCWithHostedZone](@ref) after you create a hosted zone.
 ```
  VPC = [
-        "VPCRegion" =>  "us-east-1", "us-east-2", "us-west-1", "us-west-2", "eu-west-1", "eu-west-2", "eu-central-1", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "ap-northeast-1", "ap-northeast-2", "sa-east-1", "ca-central-1" or "cn-north-1",
+        "VPCRegion" =>  "us-east-1", "us-east-2", "us-west-1", "us-west-2", "eu-west-1", "eu-west-2", "eu-west-3", "eu-central-1", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "sa-east-1", "ca-central-1" or "cn-north-1",
         "VPCId" =>  ::String
     ]
 ```
@@ -1098,7 +1094,6 @@ If you want to associate a reusable delegation set with this hosted zone, the ID
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateHostedZone)
 """
-
 @inline create_hosted_zone(aws::AWSConfig=default_aws_config(); args...) = create_hosted_zone(aws, args)
 
 @inline create_hosted_zone(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/hostedzone", args)
@@ -1152,7 +1147,7 @@ Before you create a query logging configuration, perform the following operation
 
         In the next step, you'll create a resource policy, which controls access to one or more log groups and the associated AWS resources, such as Amazon Route 53 hosted zones. There's a limit on the number of resource policies that you can create, so we recommend that you use a consistent prefix so you can use the same resource policy for all the log groups that you create for query logging.
 
-2.  Create a CloudWatch Logs resource policy, and give it the permissions that Amazon Route 53 needs to create log streams and to to send query logs to log streams. For the value of `Resource`, specify the ARN for the log group that you created in the previous step. To use the same resource policy for all the CloudWatch Logs log groups that you created for query logging configurations, replace the hosted zone name with `*`, for example:
+2.  Create a CloudWatch Logs resource policy, and give it the permissions that Amazon Route 53 needs to create log streams and to send query logs to log streams. For the value of `Resource`, specify the ARN for the log group that you created in the previous step. To use the same resource policy for all the CloudWatch Logs log groups that you created for query logging configurations, replace the hosted zone name with `*`, for example:
 
     `arn:aws:logs:us-east-1:123412341234:log-group:/aws/route53/*`
 
@@ -1239,7 +1234,6 @@ To get the ARN for a log group, you can use the CloudWatch console, the [Describ
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateQueryLoggingConfig)
 """
-
 @inline create_query_logging_config(aws::AWSConfig=default_aws_config(); args...) = create_query_logging_config(aws, args)
 
 @inline create_query_logging_config(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/queryloggingconfig", args)
@@ -1258,12 +1252,34 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 # CreateReusableDelegationSet Operation
 
-Creates a delegation set (a group of four name servers) that can be reused by multiple hosted zones. If a hosted zoned ID is specified, `CreateReusableDelegationSet` marks the delegation set associated with that zone as reusable
+Creates a delegation set (a group of four name servers) that can be reused by multiple hosted zones. If a hosted zoned ID is specified, `CreateReusableDelegationSet` marks the delegation set associated with that zone as reusable.
 
 **Note**
-> A reusable delegation set can't be associated with a private hosted zone.
+> You can't associate a reusable delegation set with a private hosted zone.
 
-For information on how to use a reusable delegation set to configure white label name servers, see [Configuring White Label Name Servers](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/white-label-name-servers.html).
+For information about using a reusable delegation set to configure white label name servers, see [Configuring White Label Name Servers](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/white-label-name-servers.html).
+
+The process for migrating existing hosted zones to use a reusable delegation set is comparable to the process for configuring white label name servers. You need to perform the following steps:
+
+1.  Create a reusable delegation set.
+
+2.  Recreate hosted zones, and reduce the TTL to 60 seconds or less.
+
+3.  Recreate resource record sets in the new hosted zones.
+
+4.  Change the registrar's name servers to use the name servers for the new hosted zones.
+
+5.  Monitor traffic for the website or application.
+
+6.  Change TTLs back to their original values.
+
+If you want to migrate existing hosted zones to use a reusable delegation set, the existing hosted zones can't use any of the name servers that are assigned to the reusable delegation set. If one or more hosted zones do use one or more name servers that are assigned to the reusable delegation set, you can do one of the following:
+
+*   For small numbers of hosted zones—up to a few hundred—it's relatively easy to create reusable delegation sets until you get one that has four name servers that don't overlap with any of the name servers in your hosted zones.
+
+*   For larger numbers of hosted zones, the easiest solution is to use more than one reusable delegation set.
+
+*   For larger numbers of hosted zones, you can also migrate hosted zones that have overlapping name servers to hosted zones that don't have overlapping name servers, then migrate the hosted zones again to use the reusable delegation set.
 
 # Arguments
 
@@ -1287,7 +1303,6 @@ If you want to mark the delegation set for an existing hosted zone as reusable, 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateReusableDelegationSet)
 """
-
 @inline create_reusable_delegation_set(aws::AWSConfig=default_aws_config(); args...) = create_reusable_delegation_set(aws, args)
 
 @inline create_reusable_delegation_set(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/delegationset", args)
@@ -1334,7 +1349,6 @@ The definition of this traffic policy in JSON format. For more information, see 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateTrafficPolicy)
 """
-
 @inline create_traffic_policy(aws::AWSConfig=default_aws_config(); args...) = create_traffic_policy(aws, args)
 
 @inline create_traffic_policy(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/trafficpolicy", args)
@@ -1389,7 +1403,6 @@ The version of the traffic policy that you want to use to create resource record
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateTrafficPolicyInstance)
 """
-
 @inline create_traffic_policy_instance(aws::AWSConfig=default_aws_config(); args...) = create_traffic_policy_instance(aws, args)
 
 @inline create_traffic_policy_instance(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/trafficpolicyinstance", args)
@@ -1432,11 +1445,10 @@ The comment that you specified in the `CreateTrafficPolicyVersion` request, if a
 
 # Exceptions
 
-`NoSuchTrafficPolicy`, `InvalidInput`, `ConcurrentModification` or `InvalidTrafficPolicyDocument`.
+`NoSuchTrafficPolicy`, `InvalidInput`, `TooManyTrafficPolicyVersionsForCurrentPolicy`, `ConcurrentModification` or `InvalidTrafficPolicyDocument`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateTrafficPolicyVersion)
 """
-
 @inline create_traffic_policy_version(aws::AWSConfig=default_aws_config(); args...) = create_traffic_policy_version(aws, args)
 
 @inline create_traffic_policy_version(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/trafficpolicy/{Id}", args)
@@ -1470,7 +1482,7 @@ The ID of the private hosted zone that you want to authorize associating a VPC w
 A complex type that contains the VPC ID and region for the VPC that you want to authorize associating with your hosted zone.
 ```
  VPC = [
-        "VPCRegion" =>  "us-east-1", "us-east-2", "us-west-1", "us-west-2", "eu-west-1", "eu-west-2", "eu-central-1", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "ap-northeast-1", "ap-northeast-2", "sa-east-1", "ca-central-1" or "cn-north-1",
+        "VPCRegion" =>  "us-east-1", "us-east-2", "us-west-1", "us-west-2", "eu-west-1", "eu-west-2", "eu-west-3", "eu-central-1", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "sa-east-1", "ca-central-1" or "cn-north-1",
         "VPCId" =>  ::String
     ]
 ```
@@ -1487,7 +1499,6 @@ A complex type that contains the VPC ID and region for the VPC that you want to 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateVPCAssociationAuthorization)
 """
-
 @inline create_vpcassociation_authorization(aws::AWSConfig=default_aws_config(); args...) = create_vpcassociation_authorization(aws, args)
 
 @inline create_vpcassociation_authorization(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/hostedzone/{Id}/authorizevpcassociation", args)
@@ -1529,7 +1540,6 @@ The ID of the health check that you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DeleteHealthCheck)
 """
-
 @inline delete_health_check(aws::AWSConfig=default_aws_config(); args...) = delete_health_check(aws, args)
 
 @inline delete_health_check(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "DELETE", "/2013-04-01/healthcheck/{HealthCheckId}", args)
@@ -1581,7 +1591,6 @@ The ID of the hosted zone you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DeleteHostedZone)
 """
-
 @inline delete_hosted_zone(aws::AWSConfig=default_aws_config(); args...) = delete_hosted_zone(aws, args)
 
 @inline delete_hosted_zone(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "DELETE", "/2013-04-01/hostedzone/{Id}", args)
@@ -1622,7 +1631,6 @@ The ID of the configuration that you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DeleteQueryLoggingConfig)
 """
-
 @inline delete_query_logging_config(aws::AWSConfig=default_aws_config(); args...) = delete_query_logging_config(aws, args)
 
 @inline delete_query_logging_config(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "DELETE", "/2013-04-01/queryloggingconfig/{Id}", args)
@@ -1666,7 +1674,6 @@ The ID of the reusable delegation set that you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DeleteReusableDelegationSet)
 """
-
 @inline delete_reusable_delegation_set(aws::AWSConfig=default_aws_config(); args...) = delete_reusable_delegation_set(aws, args)
 
 @inline delete_reusable_delegation_set(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "DELETE", "/2013-04-01/delegationset/{Id}", args)
@@ -1709,7 +1716,6 @@ The version number of the traffic policy that you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DeleteTrafficPolicy)
 """
-
 @inline delete_traffic_policy(aws::AWSConfig=default_aws_config(); args...) = delete_traffic_policy(aws, args)
 
 @inline delete_traffic_policy(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "DELETE", "/2013-04-01/trafficpolicy/{Id}/{Version}", args)
@@ -1754,7 +1760,6 @@ The ID of the traffic policy instance that you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DeleteTrafficPolicyInstance)
 """
-
 @inline delete_traffic_policy_instance(aws::AWSConfig=default_aws_config(); args...) = delete_traffic_policy_instance(aws, args)
 
 @inline delete_traffic_policy_instance(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "DELETE", "/2013-04-01/trafficpolicyinstance/{Id}", args)
@@ -1788,7 +1793,7 @@ When removing authorization to associate a VPC that was created by one AWS accou
 When removing authorization to associate a VPC that was created by one AWS account with a hosted zone that was created with a different AWS account, a complex type that includes the ID and region of the VPC.
 ```
  VPC = [
-        "VPCRegion" =>  "us-east-1", "us-east-2", "us-west-1", "us-west-2", "eu-west-1", "eu-west-2", "eu-central-1", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "ap-northeast-1", "ap-northeast-2", "sa-east-1", "ca-central-1" or "cn-north-1",
+        "VPCRegion" =>  "us-east-1", "us-east-2", "us-west-1", "us-west-2", "eu-west-1", "eu-west-2", "eu-west-3", "eu-central-1", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "sa-east-1", "ca-central-1" or "cn-north-1",
         "VPCId" =>  ::String
     ]
 ```
@@ -1805,7 +1810,6 @@ When removing authorization to associate a VPC that was created by one AWS accou
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DeleteVPCAssociationAuthorization)
 """
-
 @inline delete_vpcassociation_authorization(aws::AWSConfig=default_aws_config(); args...) = delete_vpcassociation_authorization(aws, args)
 
 @inline delete_vpcassociation_authorization(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/hostedzone/{Id}/deauthorizevpcassociation", args)
@@ -1842,7 +1846,7 @@ The ID of the private hosted zone that you want to disassociate a VPC from.
 A complex type that contains information about the VPC that you're disassociating from the specified hosted zone.
 ```
  VPC = [
-        "VPCRegion" =>  "us-east-1", "us-east-2", "us-west-1", "us-west-2", "eu-west-1", "eu-west-2", "eu-central-1", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "ap-northeast-1", "ap-northeast-2", "sa-east-1", "ca-central-1" or "cn-north-1",
+        "VPCRegion" =>  "us-east-1", "us-east-2", "us-west-1", "us-west-2", "eu-west-1", "eu-west-2", "eu-west-3", "eu-central-1", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "sa-east-1", "ca-central-1" or "cn-north-1",
         "VPCId" =>  ::String
     ]
 ```
@@ -1863,12 +1867,61 @@ A complex type that contains information about the VPC that you're disassociatin
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DisassociateVPCFromHostedZone)
 """
-
 @inline disassociate_vpcfrom_hosted_zone(aws::AWSConfig=default_aws_config(); args...) = disassociate_vpcfrom_hosted_zone(aws, args)
 
 @inline disassociate_vpcfrom_hosted_zone(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/hostedzone/{Id}/disassociatevpc", args)
 
 @inline disassociate_vpcfrom_hosted_zone(args) = disassociate_vpcfrom_hosted_zone(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Route53.get_account_limit
+    get_account_limit([::AWSConfig], arguments::Dict)
+    get_account_limit([::AWSConfig]; Type=)
+
+    using AWSCore.Services.route53
+    route53([::AWSConfig], "GET", "/2013-04-01/accountlimit/{Type}", arguments::Dict)
+    route53([::AWSConfig], "GET", "/2013-04-01/accountlimit/{Type}", Type=)
+
+# GetAccountLimit Operation
+
+Gets the specified limit for the current account, for example, the maximum number of health checks that you can create using the account.
+
+For the default limit, see [Limits](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html) in the *Amazon Route 53 Developer Guide*. To request a higher limit, [open a case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
+
+# Arguments
+
+## `Type = "MAX_HEALTH_CHECKS_BY_OWNER", "MAX_HOSTED_ZONES_BY_OWNER", "MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER", "MAX_REUSABLE_DELEGATION_SETS_BY_OWNER" or "MAX_TRAFFIC_POLICIES_BY_OWNER"` -- *Required*
+The limit that you want to get. Valid values include the following:
+
+*   **MAX_HEALTH_CHECKS_BY_OWNER**: The maximum number of health checks that you can create using the current account.
+
+*   **MAX_HOSTED_ZONES_BY_OWNER**: The maximum number of hosted zones that you can create using the current account.
+
+*   **MAX_REUSABLE_DELEGATION_SETS_BY_OWNER**: The maximum number of reusable delegation sets that you can create using the current account.
+
+*   **MAX_TRAFFIC_POLICIES_BY_OWNER**: The maximum number of traffic policies that you can create using the current account.
+
+*   **MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER**: The maximum number of traffic policy instances that you can create using the current account. (Traffic policy instances are referred to as traffic flow policy records in the Amazon Route 53 console.)
+
+
+
+
+# Returns
+
+`GetAccountLimitResponse`
+
+# Exceptions
+
+`InvalidInput`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetAccountLimit)
+"""
+@inline get_account_limit(aws::AWSConfig=default_aws_config(); args...) = get_account_limit(aws, args)
+
+@inline get_account_limit(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/accountlimit/{Type}", args)
+
+@inline get_account_limit(args) = get_account_limit(default_aws_config(), args)
 
 
 """
@@ -1906,7 +1959,6 @@ The ID of the change batch request. The value that you specify here is the value
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetChange)
 """
-
 @inline get_change(aws::AWSConfig=default_aws_config(); args...) = get_change(aws, args)
 
 @inline get_change(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/change/{Id}", args)
@@ -1937,7 +1989,6 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetCheckerIpRanges)
 """
-
 @inline get_checker_ip_ranges(aws::AWSConfig=default_aws_config(); args...) = get_checker_ip_ranges(aws, args)
 
 @inline get_checker_ip_ranges(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/checkeripranges", args)
@@ -2010,7 +2061,6 @@ Amazon Route 53 uses the one- to three-letter subdivision codes that are specifi
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetGeoLocation)
 """
-
 @inline get_geo_location(aws::AWSConfig=default_aws_config(); args...) = get_geo_location(aws, args)
 
 @inline get_geo_location(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/geolocation", args)
@@ -2049,7 +2099,6 @@ The identifier that Amazon Route 53 assigned to the health check when you create
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetHealthCheck)
 """
-
 @inline get_health_check(aws::AWSConfig=default_aws_config(); args...) = get_health_check(aws, args)
 
 @inline get_health_check(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/healthcheck/{HealthCheckId}", args)
@@ -2080,7 +2129,6 @@ Retrieves the number of health checks that are associated with the current AWS a
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetHealthCheckCount)
 """
-
 @inline get_health_check_count(aws::AWSConfig=default_aws_config(); args...) = get_health_check_count(aws, args)
 
 @inline get_health_check_count(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/healthcheckcount", args)
@@ -2106,6 +2154,9 @@ Gets the reason that a specified health check failed most recently.
 ## `HealthCheckId = ::String` -- *Required*
 The ID for the health check for which you want the last failure reason. When you created the health check, `CreateHealthCheck` returned the ID in the response, in the `HealthCheckId` element.
 
+**Note**
+> If you want to get the last failure reason for a calculated health check, you must use the Amazon Route 53 console or the CloudWatch console. You can't use `GetHealthCheckLastFailureReason` for a calculated health check.
+
 
 
 
@@ -2119,7 +2170,6 @@ The ID for the health check for which you want the last failure reason. When you
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetHealthCheckLastFailureReason)
 """
-
 @inline get_health_check_last_failure_reason(aws::AWSConfig=default_aws_config(); args...) = get_health_check_last_failure_reason(aws, args)
 
 @inline get_health_check_last_failure_reason(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/healthcheck/{HealthCheckId}/lastfailurereason", args)
@@ -2161,7 +2211,6 @@ The ID for the health check that you want the current status for. When you creat
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetHealthCheckStatus)
 """
-
 @inline get_health_check_status(aws::AWSConfig=default_aws_config(); args...) = get_health_check_status(aws, args)
 
 @inline get_health_check_status(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/healthcheck/{HealthCheckId}/status", args)
@@ -2234,7 +2283,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetHostedZone)
 """
-
 @inline get_hosted_zone(aws::AWSConfig=default_aws_config(); args...) = get_hosted_zone(aws, args)
 
 @inline get_hosted_zone(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/hostedzone/{Id}", args)
@@ -2269,12 +2317,59 @@ Retrieves the number of hosted zones that are associated with the current AWS ac
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetHostedZoneCount)
 """
-
 @inline get_hosted_zone_count(aws::AWSConfig=default_aws_config(); args...) = get_hosted_zone_count(aws, args)
 
 @inline get_hosted_zone_count(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/hostedzonecount", args)
 
 @inline get_hosted_zone_count(args) = get_hosted_zone_count(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Route53.get_hosted_zone_limit
+    get_hosted_zone_limit([::AWSConfig], arguments::Dict)
+    get_hosted_zone_limit([::AWSConfig]; Type=, Id=)
+
+    using AWSCore.Services.route53
+    route53([::AWSConfig], "GET", "/2013-04-01/hostedzonelimit/{Id}/{Type}", arguments::Dict)
+    route53([::AWSConfig], "GET", "/2013-04-01/hostedzonelimit/{Id}/{Type}", Type=, Id=)
+
+# GetHostedZoneLimit Operation
+
+Gets the specified limit for a specified hosted zone, for example, the maximum number of records that you can create in the hosted zone.
+
+For the default limit, see [Limits](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html) in the *Amazon Route 53 Developer Guide*. To request a higher limit, [open a case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
+
+# Arguments
+
+## `Type = "MAX_RRSETS_BY_ZONE" or "MAX_VPCS_ASSOCIATED_BY_ZONE"` -- *Required*
+The limit that you want to get. Valid values include the following:
+
+*   **MAX_RRSETS_BY_ZONE**: The maximum number of records that you can create in the specified hosted zone.
+
+*   **MAX_VPCS_ASSOCIATED_BY_ZONE**: The maximum number of Amazon VPCs that you can associate with the specified private hosted zone.
+
+
+## `Id = ::String` -- *Required*
+The ID of the hosted zone that you want to get a limit for.
+
+
+
+
+# Returns
+
+`GetHostedZoneLimitResponse`
+
+# Exceptions
+
+`NoSuchHostedZone`, `InvalidInput` or `HostedZoneNotPrivate`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetHostedZoneLimit)
+"""
+@inline get_hosted_zone_limit(aws::AWSConfig=default_aws_config(); args...) = get_hosted_zone_limit(aws, args)
+
+@inline get_hosted_zone_limit(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/hostedzonelimit/{Id}/{Type}", args)
+
+@inline get_hosted_zone_limit(args) = get_hosted_zone_limit(default_aws_config(), args)
 
 
 """
@@ -2310,7 +2405,6 @@ The ID of the configuration for DNS query logging that you want to get informati
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetQueryLoggingConfig)
 """
-
 @inline get_query_logging_config(aws::AWSConfig=default_aws_config(); args...) = get_query_logging_config(aws, args)
 
 @inline get_query_logging_config(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/queryloggingconfig/{Id}", args)
@@ -2349,12 +2443,55 @@ The ID of the reusable delegation set that you want to get a list of name server
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetReusableDelegationSet)
 """
-
 @inline get_reusable_delegation_set(aws::AWSConfig=default_aws_config(); args...) = get_reusable_delegation_set(aws, args)
 
 @inline get_reusable_delegation_set(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/delegationset/{Id}", args)
 
 @inline get_reusable_delegation_set(args) = get_reusable_delegation_set(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Route53.get_reusable_delegation_set_limit
+    get_reusable_delegation_set_limit([::AWSConfig], arguments::Dict)
+    get_reusable_delegation_set_limit([::AWSConfig]; Type=, Id=)
+
+    using AWSCore.Services.route53
+    route53([::AWSConfig], "GET", "/2013-04-01/reusabledelegationsetlimit/{Id}/{Type}", arguments::Dict)
+    route53([::AWSConfig], "GET", "/2013-04-01/reusabledelegationsetlimit/{Id}/{Type}", Type=, Id=)
+
+# GetReusableDelegationSetLimit Operation
+
+Gets the maximum number of hosted zones that you can associate with the specified reusable delegation set.
+
+For the default limit, see [Limits](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html) in the *Amazon Route 53 Developer Guide*. To request a higher limit, [open a case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
+
+# Arguments
+
+## `Type = "MAX_ZONES_BY_REUSABLE_DELEGATION_SET"` -- *Required*
+Specify `MAX_ZONES_BY_REUSABLE_DELEGATION_SET` to get the maximum number of hosted zones that you can associate with the specified reusable delegation set.
+
+
+## `Id = ::String` -- *Required*
+The ID of the delegation set that you want to get the limit for.
+
+
+
+
+# Returns
+
+`GetReusableDelegationSetLimitResponse`
+
+# Exceptions
+
+`InvalidInput` or `NoSuchDelegationSet`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetReusableDelegationSetLimit)
+"""
+@inline get_reusable_delegation_set_limit(aws::AWSConfig=default_aws_config(); args...) = get_reusable_delegation_set_limit(aws, args)
+
+@inline get_reusable_delegation_set_limit(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/reusabledelegationsetlimit/{Id}/{Type}", args)
+
+@inline get_reusable_delegation_set_limit(args) = get_reusable_delegation_set_limit(default_aws_config(), args)
 
 
 """
@@ -2392,7 +2529,6 @@ The version number of the traffic policy that you want to get information about.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetTrafficPolicy)
 """
-
 @inline get_traffic_policy(aws::AWSConfig=default_aws_config(); args...) = get_traffic_policy(aws, args)
 
 @inline get_traffic_policy(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/trafficpolicy/{Id}/{Version}", args)
@@ -2437,7 +2573,6 @@ The ID of the traffic policy instance that you want to get information about.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetTrafficPolicyInstance)
 """
-
 @inline get_traffic_policy_instance(aws::AWSConfig=default_aws_config(); args...) = get_traffic_policy_instance(aws, args)
 
 @inline get_traffic_policy_instance(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/trafficpolicyinstance/{Id}", args)
@@ -2468,7 +2603,6 @@ Gets the number of traffic policy instances that are associated with the current
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetTrafficPolicyInstanceCount)
 """
-
 @inline get_traffic_policy_instance_count(aws::AWSConfig=default_aws_config(); args...) = get_traffic_policy_instance_count(aws, args)
 
 @inline get_traffic_policy_instance_count(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/trafficpolicyinstancecount", args)
@@ -2527,7 +2661,6 @@ To list subdivisions of a country, you must include both `StartCountryCode` and 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListGeoLocations)
 """
-
 @inline list_geo_locations(aws::AWSConfig=default_aws_config(); args...) = list_geo_locations(aws, args)
 
 @inline list_geo_locations(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/geolocations", args)
@@ -2574,7 +2707,6 @@ The maximum number of health checks that you want `ListHealthChecks` to return i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListHealthChecks)
 """
-
 @inline list_health_checks(aws::AWSConfig=default_aws_config(); args...) = list_health_checks(aws, args)
 
 @inline list_health_checks(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/healthcheck", args)
@@ -2627,7 +2759,6 @@ If you're using reusable delegation sets and you want to list all of the hosted 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListHostedZones)
 """
-
 @inline list_hosted_zones(aws::AWSConfig=default_aws_config(); args...) = list_hosted_zones(aws, args)
 
 @inline list_hosted_zones(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/hostedzone", args)
@@ -2700,7 +2831,6 @@ The maximum number of hosted zones to be included in the response body for this 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListHostedZonesByName)
 """
-
 @inline list_hosted_zones_by_name(aws::AWSConfig=default_aws_config(); args...) = list_hosted_zones_by_name(aws, args)
 
 @inline list_hosted_zones_by_name(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/hostedzonesbyname", args)
@@ -2757,7 +2887,6 @@ If you don't specify a value for `MaxResults`, Amazon Route 53 returns up to 100
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListQueryLoggingConfigs)
 """
-
 @inline list_query_logging_configs(aws::AWSConfig=default_aws_config(); args...) = list_query_logging_configs(aws, args)
 
 @inline list_query_logging_configs(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/queryloggingconfig", args)
@@ -2880,7 +3009,6 @@ Constraint: Specifying `type` without specifying `name` returns an `InvalidInput
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListResourceRecordSets)
 """
-
 @inline list_resource_record_sets(aws::AWSConfig=default_aws_config(); args...) = list_resource_record_sets(aws, args)
 
 @inline list_resource_record_sets(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/hostedzone/{Id}/rrset", args)
@@ -2927,7 +3055,6 @@ The number of reusable delegation sets that you want Amazon Route 53 to return i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListReusableDelegationSets)
 """
-
 @inline list_reusable_delegation_sets(aws::AWSConfig=default_aws_config(); args...) = list_reusable_delegation_sets(aws, args)
 
 @inline list_reusable_delegation_sets(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/delegationset", args)
@@ -2976,7 +3103,6 @@ The ID of the resource for which you want to retrieve tags.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTagsForResource)
 """
-
 @inline list_tags_for_resource(aws::AWSConfig=default_aws_config(); args...) = list_tags_for_resource(aws, args)
 
 @inline list_tags_for_resource(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/tags/{ResourceType}/{ResourceId}", args)
@@ -3025,7 +3151,6 @@ A complex type that contains the ResourceId element for each resource for which 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTagsForResources)
 """
-
 @inline list_tags_for_resources(aws::AWSConfig=default_aws_config(); args...) = list_tags_for_resources(aws, args)
 
 @inline list_tags_for_resources(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/tags/{ResourceType}", args)
@@ -3070,7 +3195,6 @@ If you have more traffic policies than the value of `MaxItems`, `ListTrafficPoli
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTrafficPolicies)
 """
-
 @inline list_traffic_policies(aws::AWSConfig=default_aws_config(); args...) = list_traffic_policies(aws, args)
 
 @inline list_traffic_policies(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/trafficpolicies", args)
@@ -3132,7 +3256,6 @@ The maximum number of traffic policy instances that you want Amazon Route 53 to 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTrafficPolicyInstances)
 """
-
 @inline list_traffic_policy_instances(aws::AWSConfig=default_aws_config(); args...) = list_traffic_policy_instances(aws, args)
 
 @inline list_traffic_policy_instances(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/trafficpolicyinstances", args)
@@ -3192,7 +3315,6 @@ The maximum number of traffic policy instances to be included in the response bo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTrafficPolicyInstancesByHostedZone)
 """
-
 @inline list_traffic_policy_instances_by_hosted_zone(aws::AWSConfig=default_aws_config(); args...) = list_traffic_policy_instances_by_hosted_zone(aws, args)
 
 @inline list_traffic_policy_instances_by_hosted_zone(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/trafficpolicyinstances/hostedzone", args)
@@ -3268,7 +3390,6 @@ The maximum number of traffic policy instances to be included in the response bo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTrafficPolicyInstancesByPolicy)
 """
-
 @inline list_traffic_policy_instances_by_policy(aws::AWSConfig=default_aws_config(); args...) = list_traffic_policy_instances_by_policy(aws, args)
 
 @inline list_traffic_policy_instances_by_policy(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/trafficpolicyinstances/trafficpolicy", args)
@@ -3319,7 +3440,6 @@ The maximum number of traffic policy versions that you want Amazon Route 53 to i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTrafficPolicyVersions)
 """
-
 @inline list_traffic_policy_versions(aws::AWSConfig=default_aws_config(); args...) = list_traffic_policy_versions(aws, args)
 
 @inline list_traffic_policy_versions(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/trafficpolicies/{Id}/versions", args)
@@ -3368,7 +3488,6 @@ The ID of the hosted zone for which you want a list of VPCs that can be associat
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListVPCAssociationAuthorizations)
 """
-
 @inline list_vpcassociation_authorizations(aws::AWSConfig=default_aws_config(); args...) = list_vpcassociation_authorizations(aws, args)
 
 @inline list_vpcassociation_authorizations(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/hostedzone/{Id}/authorizevpcassociation", args)
@@ -3427,7 +3546,6 @@ If you specify an IP address for `edns0clientsubnetip`, you can optionally speci
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/TestDNSAnswer)
 """
-
 @inline test_dnsanswer(aws::AWSConfig=default_aws_config(); args...) = test_dnsanswer(aws, args)
 
 @inline test_dnsanswer(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "GET", "/2013-04-01/testdnsanswer", args)
@@ -3584,7 +3702,7 @@ A complex type that contains one `Region` element for each region that you want 
 
 ```
  AlarmIdentifier = [
-        "Region" => <required> "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1", "eu-central-1", "eu-west-1", "eu-west-2", "ap-south-1", "ap-southeast-1", "ap-southeast-2", "ap-northeast-1", "ap-northeast-2" or "sa-east-1",
+        "Region" => <required> "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1", "eu-central-1", "eu-west-1", "eu-west-2", "eu-west-3", "ap-south-1", "ap-southeast-1", "ap-southeast-2", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3" or "sa-east-1",
         "Name" => <required> ::String
     ]
 ```
@@ -3600,7 +3718,7 @@ When CloudWatch has insufficient data about the metric to determine the alarm st
 
 
 ## `ResetElements = ["FullyQualifiedDomainName", "Regions", "ResourcePath" or "ChildHealthChecks", ...]`
-A complex type that contains one `ResetElement` element for each element that you want to reset to the default value. Valid values for `ResetElement` include the following:
+A complex type that contains one `ResettableElementName` element for each element that you want to reset to the default value. Valid values for `ResettableElementName` include the following:
 
 *   `ChildHealthChecks`: Amazon Route 53 resets [HealthCheckConfig\$ChildHealthChecks](@ref) to null.
 
@@ -3623,7 +3741,6 @@ A complex type that contains one `ResetElement` element for each element that yo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/UpdateHealthCheck)
 """
-
 @inline update_health_check(aws::AWSConfig=default_aws_config(); args...) = update_health_check(aws, args)
 
 @inline update_health_check(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/healthcheck/{HealthCheckId}", args)
@@ -3666,7 +3783,6 @@ The new comment for the hosted zone. If you don't specify a value for `Comment`,
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/UpdateHostedZoneComment)
 """
-
 @inline update_hosted_zone_comment(aws::AWSConfig=default_aws_config(); args...) = update_hosted_zone_comment(aws, args)
 
 @inline update_hosted_zone_comment(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/hostedzone/{Id}", args)
@@ -3713,7 +3829,6 @@ The new comment for the specified traffic policy and version.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/UpdateTrafficPolicyComment)
 """
-
 @inline update_traffic_policy_comment(aws::AWSConfig=default_aws_config(); args...) = update_traffic_policy_comment(aws, args)
 
 @inline update_traffic_policy_comment(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/trafficpolicy/{Id}/{Version}", args)
@@ -3772,7 +3887,6 @@ The version of the traffic policy that you want Amazon Route 53 to use to update
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/UpdateTrafficPolicyInstance)
 """
-
 @inline update_traffic_policy_instance(aws::AWSConfig=default_aws_config(); args...) = update_traffic_policy_instance(aws, args)
 
 @inline update_traffic_policy_instance(aws::AWSConfig, args) = AWSCore.Services.route53(aws, "POST", "/2013-04-01/trafficpolicyinstance/{Id}", args)

@@ -82,7 +82,6 @@ Specifying `SendMessage`, `DeleteMessage`, or `ChangeMessageVisibility` for `Act
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/AddPermission)
 """
-
 @inline add_permission(aws::AWSConfig=default_aws_config(); args...) = add_permission(aws, args)
 
 @inline add_permission(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "AddPermission", args)
@@ -140,7 +139,6 @@ The new value for the message's visibility timeout (in seconds). Values values: 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/ChangeMessageVisibility)
 """
-
 @inline change_message_visibility(aws::AWSConfig=default_aws_config(); args...) = change_message_visibility(aws, args)
 
 @inline change_message_visibility(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "ChangeMessageVisibility", args)
@@ -201,7 +199,6 @@ A list of receipt handles of the messages for which the visibility timeout must 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/ChangeMessageVisibilityBatch)
 """
-
 @inline change_message_visibility_batch(aws::AWSConfig=default_aws_config(); args...) = change_message_visibility_batch(aws, args)
 
 @inline change_message_visibility_batch(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "ChangeMessageVisibilityBatch", args)
@@ -341,7 +338,6 @@ Any other valid special request parameters (such as the following) are ignored:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/CreateQueue)
 """
-
 @inline create_queue(aws::AWSConfig=default_aws_config(); args...) = create_queue(aws, args)
 
 @inline create_queue(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "CreateQueue", args)
@@ -387,7 +383,6 @@ The receipt handle associated with the message to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/DeleteMessage)
 """
-
 @inline delete_message(aws::AWSConfig=default_aws_config(); args...) = delete_message(aws, args)
 
 @inline delete_message(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "DeleteMessage", args)
@@ -447,7 +442,6 @@ A list of receipt handles for the messages to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/DeleteMessageBatch)
 """
-
 @inline delete_message_batch(aws::AWSConfig=default_aws_config(); args...) = delete_message_batch(aws, args)
 
 @inline delete_message_batch(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "DeleteMessageBatch", args)
@@ -487,7 +481,6 @@ Queue URLs are case-sensitive.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/DeleteQueue)
 """
-
 @inline delete_queue(aws::AWSConfig=default_aws_config(); args...) = delete_queue(aws, args)
 
 @inline delete_queue(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "DeleteQueue", args)
@@ -594,7 +587,6 @@ The following attributes apply only to [FIFO (first-in-first-out) queues](http:/
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/GetQueueAttributes)
 """
-
 @inline get_queue_attributes(aws::AWSConfig=default_aws_config(); args...) = get_queue_attributes(aws, args)
 
 @inline get_queue_attributes(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "GetQueueAttributes", args)
@@ -641,7 +633,6 @@ The AWS account ID of the account that created the queue.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/GetQueueUrl)
 """
-
 @inline get_queue_url(aws::AWSConfig=default_aws_config(); args...) = get_queue_url(aws, args)
 
 @inline get_queue_url(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "GetQueueUrl", args)
@@ -684,7 +675,6 @@ Queue URLs are case-sensitive.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/ListDeadLetterSourceQueues)
 """
-
 @inline list_dead_letter_source_queues(aws::AWSConfig=default_aws_config(); args...) = list_dead_letter_source_queues(aws, args)
 
 @inline list_dead_letter_source_queues(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "ListDeadLetterSourceQueues", args)
@@ -733,7 +723,6 @@ The URL of the queue.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/ListQueueTags)
 """
-
 @inline list_queue_tags(aws::AWSConfig=default_aws_config(); args...) = list_queue_tags(aws, args)
 
 @inline list_queue_tags(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "ListQueueTags", args)
@@ -770,7 +759,6 @@ Queue names are case-sensitive.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/ListQueues)
 """
-
 @inline list_queues(aws::AWSConfig=default_aws_config(); args...) = list_queues(aws, args)
 
 @inline list_queues(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "ListQueues", args)
@@ -812,7 +800,6 @@ Queue URLs are case-sensitive.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/PurgeQueue)
 """
-
 @inline purge_queue(aws::AWSConfig=default_aws_config(); args...) = purge_queue(aws, args)
 
 @inline purge_queue(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "PurgeQueue", args)
@@ -991,7 +978,6 @@ For best practices of using `ReceiveRequestAttemptId`, see [Using the ReceiveReq
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/ReceiveMessage)
 """
-
 @inline receive_message(aws::AWSConfig=default_aws_config(); args...) = receive_message(aws, args)
 
 @inline receive_message(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "ReceiveMessage", args)
@@ -1028,7 +1014,6 @@ The identification of the permission to remove. This is the label added using th
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/RemovePermission)
 """
-
 @inline remove_permission(aws::AWSConfig=default_aws_config(); args...) = remove_permission(aws, args)
 
 @inline remove_permission(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "RemovePermission", args)
@@ -1144,7 +1129,6 @@ For best practices of using `MessageGroupId`, see [Using the MessageGroupId Prop
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/SendMessage)
 """
-
 @inline send_message(aws::AWSConfig=default_aws_config(); args...) = send_message(aws, args)
 
 @inline send_message(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "SendMessage", args)
@@ -1218,7 +1202,6 @@ A list of `[SendMessageBatchRequestEntry](@ref)` items.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/SendMessageBatch)
 """
-
 @inline send_message_batch(aws::AWSConfig=default_aws_config(); args...) = send_message_batch(aws, args)
 
 @inline send_message_batch(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "SendMessageBatch", args)
@@ -1323,7 +1306,6 @@ Any other valid special request parameters (such as the following) are ignored:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/SetQueueAttributes)
 """
-
 @inline set_queue_attributes(aws::AWSConfig=default_aws_config(); args...) = set_queue_attributes(aws, args)
 
 @inline set_queue_attributes(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "SetQueueAttributes", args)
@@ -1372,7 +1354,6 @@ The list of tags to be added to the specified queue.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/TagQueue)
 """
-
 @inline tag_queue(aws::AWSConfig=default_aws_config(); args...) = tag_queue(aws, args)
 
 @inline tag_queue(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "TagQueue", args)
@@ -1421,7 +1402,6 @@ The list of tags to be removed from the specified queue.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/UntagQueue)
 """
-
 @inline untag_queue(aws::AWSConfig=default_aws_config(); args...) = untag_queue(aws, args)
 
 @inline untag_queue(aws::AWSConfig, args) = AWSCore.Services.sqs(aws, "UntagQueue", args)

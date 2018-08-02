@@ -27,6 +27,8 @@ Cancels the deletion of a customer master key (CMK). When this operation is succ
 
 For more information about scheduling and canceling deletion of a CMK, see [Deleting Customer Master Keys](http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html) in the *AWS Key Management Service Developer Guide*.
 
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+
 # Arguments
 
 ## `KeyId = ::String` -- *Required*
@@ -73,7 +75,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CancelKeyDeletion)
 """
-
 @inline cancel_key_deletion(aws::AWSConfig=default_aws_config(); args...) = cancel_key_deletion(aws, args)
 
 @inline cancel_key_deletion(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "CancelKeyDeletion", args)
@@ -92,22 +93,24 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 # CreateAlias Operation
 
-Creates a display name for a customer master key (CMK). You can use an alias to identify a CMK in selected operations, such as [Encrypt](@ref) and [GenerateDataKey](@ref).
+Creates a display name for a customer-managed customer master key (CMK). You can use an alias to identify a CMK in selected operations, such as [Encrypt](@ref) and [GenerateDataKey](@ref).
 
 Each CMK can have multiple aliases, but each alias points to only one CMK. The alias name must be unique in the AWS account and region. To simplify code that runs in multiple regions, use the same alias name, but point it to a different CMK in each region.
 
 Because an alias is not a property of a CMK, you can delete and change the aliases of a CMK without affecting the CMK. Also, aliases do not appear in the response from the [DescribeKey](@ref) operation. To get the aliases of all CMKs, use the [ListAliases](@ref) operation.
 
-An alias must start with the word `alias` followed by a forward slash (`alias/`). The alias name can contain only alphanumeric characters, forward slashes (/), underscores (_), and dashes (-). Alias names cannot begin with `aws`; that alias name prefix is reserved by Amazon Web Services (AWS).
+The alias name can contain only alphanumeric characters, forward slashes (/), underscores (_), and dashes (-). Alias names cannot begin with **aws/**. That alias name prefix is reserved for AWS managed CMKs.
 
 The alias and the CMK it is mapped to must be in the same AWS account and the same region. You cannot perform this operation on an alias in a different AWS account.
 
 To map an existing alias to a different CMK, call [UpdateAlias](@ref).
 
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+
 # Arguments
 
 ## `AliasName = ::String` -- *Required*
-String that contains the display name. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/AWS" are reserved.
+Specifies the alias name. This value must begin with `alias/` followed by the alias name, such as `alias/ExampleAlias`. The alias name cannot begin with `aws/`. The `alias/aws/` prefix is reserved for AWS managed CMKs.
 
 
 ## `TargetKeyId = ::String` -- *Required*
@@ -144,7 +147,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateAlias)
 """
-
 @inline create_alias(aws::AWSConfig=default_aws_config(); args...) = create_alias(aws, args)
 
 @inline create_alias(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "CreateAlias", args)
@@ -165,7 +167,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 Adds a grant to a customer master key (CMK). The grant specifies who can use the CMK and under what conditions. When setting permissions, grants are an alternative to key policies.
 
-To perform this operation on a CMK in a different AWS account, specify the key ARN in the value of the KeyId parameter. For more information about grants, see [Grants](http://docs.aws.amazon.com/kms/latest/developerguide/grants.html) in the *AWS Key Management Service Developer Guide*.
+To perform this operation on a CMK in a different AWS account, specify the key ARN in the value of the `KeyId` parameter. For more information about grants, see [Grants](http://docs.aws.amazon.com/kms/latest/developerguide/grants.html) in the *AWS Key Management Service Developer Guide*.
+
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 
 # Arguments
 
@@ -215,7 +219,7 @@ For more information, see [Grant Tokens](http://docs.aws.amazon.com/kms/latest/d
 
 
 ## `Name = ::String`
-A friendly name for identifying the grant. Use this value to prevent unintended creation of duplicate grants when retrying this request.
+A friendly name for identifying the grant. Use this value to prevent the unintended creation of duplicate grants when retrying this request.
 
 When this value is absent, all `CreateGrant` requests result in a new grant with a unique `GrantId` even if all the supplied parameters are identical. This can result in unintended duplicates when you retry the `CreateGrant` request.
 
@@ -258,7 +262,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateGrant)
 """
-
 @inline create_grant(aws::AWSConfig=default_aws_config(); args...) = create_grant(aws, args)
 
 @inline create_grant(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "CreateGrant", args)
@@ -279,7 +282,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 Creates a customer master key (CMK) in the caller's AWS account.
 
-You can use a CMK to encrypt small amounts of data (4 KiB or less) directly, but CMKs are more commonly used to encrypt data encryption keys (DEKs), which are used to encrypt raw data. For more information about DEKs and the difference between CMKs and DEKs, see the following:
+You can use a CMK to encrypt small amounts of data (4 KiB or less) directly. But CMKs are more commonly used to encrypt data encryption keys (DEKs), which are used to encrypt raw data. For more information about DEKs and the difference between CMKs and DEKs, see the following:
 
 *   The [GenerateDataKey](@ref) operation
 
@@ -292,15 +295,15 @@ You cannot use this operation to create a CMK in a different AWS account.
 ## `Policy = ::String`
 The key policy to attach to the CMK.
 
-If you specify a policy and do not set `BypassPolicyLockoutSafetyCheck` to true, the policy must meet the following criteria:
+If you provide a key policy, it must meet the following criteria:
 
-*   It must allow the principal that is making the `CreateKey` request to make a subsequent [PutKeyPolicy](@ref) request on the CMK. This reduces the likelihood that the CMK becomes unmanageable. For more information, refer to the scenario in the [Default Key Policy](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section in the *AWS Key Management Service Developer Guide*.
+*   If you don't set `BypassPolicyLockoutSafetyCheck` to true, the key policy must allow the principal that is making the `CreateKey` request to make a subsequent [PutKeyPolicy](@ref) request on the CMK. This reduces the risk that the CMK becomes unmanageable. For more information, refer to the scenario in the [Default Key Policy](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section of the *AWS Key Management Service Developer Guide*.
 
-*   The principals that are specified in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before specifying the new principal in a key policy because the new principal might not immediately be visible to AWS KMS. For more information, see [Changes that I make are not always immediately visible](http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency) in the *IAM User Guide*.
+*   Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before including the new principal in a key policy. The reason for this is that the new principal might not be immediately visible to AWS KMS. For more information, see [Changes that I make are not always immediately visible](http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency) in the *AWS Identity and Access Management User Guide*.
 
-If you do not specify a policy, AWS KMS attaches a default key policy to the CMK. For more information, see [Default Key Policy](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default) in the *AWS Key Management Service Developer Guide*.
+If you do not provide a key policy, AWS KMS attaches a default key policy to the CMK. For more information, see [Default Key Policy](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default) in the *AWS Key Management Service Developer Guide*.
 
-The policy size limit is 32 kilobytes (32768 bytes).
+The key policy size limit is 32 kilobytes (32768 bytes).
 
 
 ## `Description = ::String`
@@ -327,7 +330,7 @@ The CMK's `Origin` is immutable and is set when the CMK is created.
 A flag to indicate whether to bypass the key policy lockout safety check.
 
 **Important**
-> Setting this value to true increases the likelihood that the CMK becomes unmanageable. Do not set this value to true indiscriminately.
+> Setting this value to true increases the risk that the CMK becomes unmanageable. Do not set this value to true indiscriminately.
 
 For more information, refer to the scenario in the [Default Key Policy](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section in the *AWS Key Management Service Developer Guide*.
 
@@ -393,7 +396,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateKey)
 """
-
 @inline create_key(aws::AWSConfig=default_aws_config(); args...) = create_key(aws, args)
 
 @inline create_key(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "CreateKey", args)
@@ -420,7 +422,9 @@ Decrypts ciphertext. Ciphertext is plaintext that has been previously encrypted 
 
 *   [Encrypt](@ref)
 
-Note that if a caller has been granted access permissions to all keys (through, for example, IAM user policies that grant `Decrypt` permission on all resources), then ciphertext encrypted by using keys in other accounts where the key grants access to the caller can be decrypted. To remedy this, we recommend that you do not grant `Decrypt` access in an IAM user policy. Instead grant `Decrypt` access only in key policies. If you must grant `Decrypt` access in an IAM user policy, you should scope the resource to specific keys or to specific trusted accounts.
+Whenever possible, use key policies to give users permission to call the Decrypt operation on the CMK, instead of IAM policies. Otherwise, you might create an IAM user policy that gives the user Decrypt permission on all CMKs. This user could decrypt ciphertext that was encrypted by CMKs in other accounts if the key policy for the cross-account CMK permits it. If you must use an IAM policy for `Decrypt` permissions, limit the user to particular CMKs or particular trusted accounts.
+
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 
 # Arguments
 
@@ -469,7 +473,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/Decrypt)
 """
-
 @inline decrypt(aws::AWSConfig=default_aws_config(); args...) = decrypt(aws, args)
 
 @inline decrypt(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "Decrypt", args)
@@ -519,7 +522,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DeleteAlias)
 """
-
 @inline delete_alias(aws::AWSConfig=default_aws_config(); args...) = delete_alias(aws, args)
 
 @inline delete_alias(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "DeleteAlias", args)
@@ -543,6 +545,8 @@ Deletes key material that you previously imported. This operation makes the spec
 When the specified CMK is in the `PendingDeletion` state, this operation does not change the CMK's state. Otherwise, it changes the CMK's state to `PendingImport`.
 
 After you delete key material, you can use [ImportKeyMaterial](@ref) to reimport the same key material into the CMK.
+
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 
 # Arguments
 
@@ -579,7 +583,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DeleteImportedKeyMaterial)
 """
-
 @inline delete_imported_key_material(aws::AWSConfig=default_aws_config(); args...) = delete_imported_key_material(aws, args)
 
 @inline delete_imported_key_material(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "DeleteImportedKeyMaterial", args)
@@ -600,14 +603,18 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 Provides detailed information about the specified customer master key (CMK).
 
+You can use `DescribeKey` on a predefined AWS alias, that is, an AWS alias with no key ID. When you do, AWS KMS associates the alias with an [AWS managed CMK](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys) and returns its `KeyId` and `Arn` in the response.
+
 To perform this operation on a CMK in a different AWS account, specify the key ARN or alias ARN in the value of the KeyId parameter.
 
 # Arguments
 
 ## `KeyId = ::String` -- *Required*
-A unique identifier for the customer master key (CMK).
+Describes the specified customer master key (CMK).
 
-To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with "alias/". To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+If you specify a predefined AWS alias (an AWS alias with no key ID), KMS associates the alias with an [AWS managed CMK](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys) and returns its `KeyId` and `Arn` in the response.
+
+To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
 
 For example:
 
@@ -669,7 +676,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DescribeKey)
 """
-
 @inline describe_key(aws::AWSConfig=default_aws_config(); args...) = describe_key(aws, args)
 
 @inline describe_key(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "DescribeKey", args)
@@ -691,6 +697,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 Sets the state of a customer master key (CMK) to disabled, thereby preventing its use for cryptographic operations. You cannot perform this operation on a CMK in a different AWS account.
 
 For more information about how key state affects the use of a CMK, see [How Key State Affects the Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 
 # Arguments
 
@@ -727,7 +735,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DisableKey)
 """
-
 @inline disable_key(aws::AWSConfig=default_aws_config(); args...) = disable_key(aws, args)
 
 @inline disable_key(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "DisableKey", args)
@@ -746,7 +753,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 # DisableKeyRotation Operation
 
-Disables automatic rotation of the key material for the specified customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.
+Disables [automatic rotation of the key material](http://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html) for the specified customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.
+
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 
 # Arguments
 
@@ -783,7 +792,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DisableKeyRotation)
 """
-
 @inline disable_key_rotation(aws::AWSConfig=default_aws_config(); args...) = disable_key_rotation(aws, args)
 
 @inline disable_key_rotation(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "DisableKeyRotation", args)
@@ -803,6 +811,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 # EnableKey Operation
 
 Sets the state of a customer master key (CMK) to enabled, thereby permitting its use for cryptographic operations. You cannot perform this operation on a CMK in a different AWS account.
+
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 
 # Arguments
 
@@ -839,7 +849,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/EnableKey)
 """
-
 @inline enable_key(aws::AWSConfig=default_aws_config(); args...) = enable_key(aws, args)
 
 @inline enable_key(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "EnableKey", args)
@@ -858,7 +867,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 # EnableKeyRotation Operation
 
-Enables automatic rotation of the key material for the specified customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.
+Enables [automatic rotation of the key material](http://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html) for the specified customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.
+
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 
 # Arguments
 
@@ -895,7 +906,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/EnableKeyRotation)
 """
-
 @inline enable_key_rotation(aws::AWSConfig=default_aws_config(); args...) = enable_key_rotation(aws, args)
 
 @inline enable_key_rotation(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "EnableKeyRotation", args)
@@ -918,20 +928,22 @@ Encrypts plaintext into ciphertext by using a customer master key (CMK). The `En
 
 *   You can encrypt up to 4 kilobytes (4096 bytes) of arbitrary data such as an RSA key, a database password, or other sensitive information.
 
-*   To move encrypted data from one AWS region to another, you can use this operation to encrypt in the new region the plaintext data key that was used to encrypt the data in the original region. This provides you with an encrypted copy of the data key that can be decrypted in the new region and used there to decrypt the encrypted data.
+*   You can use the `Encrypt` operation to move encrypted data from one AWS region to another. In the first region, generate a data key and use the plaintext key to encrypt the data. Then, in the new region, call the `Encrypt` method on same plaintext data key. Now, you can safely move the encrypted data and encrypted data key to the new region, and decrypt in the new region when necessary.
+
+You don't need use this operation to encrypt a data key within a region. The [GenerateDataKey](@ref) and [GenerateDataKeyWithoutPlaintext](@ref) operations return an encrypted data key.
+
+Also, you don't need to use this operation to encrypt data in your application. You can use the plaintext and encrypted data keys that the `GenerateDataKey` operation returns.
+
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 
 To perform this operation on a CMK in a different AWS account, specify the key ARN or alias ARN in the value of the KeyId parameter.
-
-Unless you are moving encrypted data from one region to another, you don't use this operation to encrypt a generated data key within a region. To get data keys that are already encrypted, call the [GenerateDataKey](@ref) or [GenerateDataKeyWithoutPlaintext](@ref) operation. Data keys don't need to be encrypted again by calling `Encrypt`.
-
-To encrypt data locally in your application, use the [GenerateDataKey](@ref) operation to return a plaintext data encryption key and a copy of the key encrypted under the CMK of your choosing.
 
 # Arguments
 
 ## `KeyId = ::String` -- *Required*
 A unique identifier for the customer master key (CMK).
 
-To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with "alias/". To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
 
 For example:
 
@@ -992,7 +1004,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/Encrypt)
 """
-
 @inline encrypt(aws::AWSConfig=default_aws_config(); args...) = encrypt(aws, args)
 
 @inline encrypt(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "Encrypt", args)
@@ -1035,12 +1046,14 @@ To return only an encrypted copy of the data key, use [GenerateDataKeyWithoutPla
 
 If you use the optional `EncryptionContext` field, you must store at least enough information to be able to reconstruct the full encryption context when you later send the ciphertext to the [Decrypt](@ref) operation. It is a good practice to choose an encryption context that you can reconstruct on the fly to better secure the ciphertext. For more information, see [Encryption Context](http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html) in the *AWS Key Management Service Developer Guide*.
 
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+
 # Arguments
 
 ## `KeyId = ::String` -- *Required*
 The identifier of the CMK under which to generate and encrypt the data encryption key.
 
-To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with "alias/". To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
 
 For example:
 
@@ -1108,7 +1121,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateDataKey)
 """
-
 @inline generate_data_key(aws::AWSConfig=default_aws_config(); args...) = generate_data_key(aws, args)
 
 @inline generate_data_key(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "GenerateDataKey", args)
@@ -1131,14 +1143,16 @@ Returns a data encryption key encrypted under a customer master key (CMK). This 
 
 To perform this operation on a CMK in a different AWS account, specify the key ARN or alias ARN in the value of the KeyId parameter.
 
-This operation is useful in a system that has multiple components with different degrees of trust. For example, consider a system that stores encrypted data in containers. Each container stores the encrypted data and an encrypted copy of the data key. One component of the system, called the *control plane*, creates new containers. When it creates a new container, it uses this operation (`GenerateDataKeyWithoutPlaintext`) to get an encrypted data key and then stores it in the container. Later, a different component of the system, called the *data plane*, puts encrypted data into the containers. To do this, it passes the encrypted data key to the [Decrypt](@ref) operation, then uses the returned plaintext data key to encrypt data, and finally stores the encrypted data in the container. In this system, the control plane never sees the plaintext data key.
+This operation is useful in a system that has multiple components with different degrees of trust. For example, consider a system that stores encrypted data in containers. Each container stores the encrypted data and an encrypted copy of the data key. One component of the system, called the *control plane*, creates new containers. When it creates a new container, it uses this operation (`GenerateDataKeyWithoutPlaintext`) to get an encrypted data key and then stores it in the container. Later, a different component of the system, called the *data plane*, puts encrypted data into the containers. To do this, it passes the encrypted data key to the [Decrypt](@ref) operation. It then uses the returned plaintext data key to encrypt data and finally stores the encrypted data in the container. In this system, the control plane never sees the plaintext data key.
+
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 
 # Arguments
 
 ## `KeyId = ::String` -- *Required*
 The identifier of the customer master key (CMK) under which to generate and encrypt the data encryption key.
 
-To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with "alias/". To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
 
 For example:
 
@@ -1205,7 +1219,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateDataKeyWithoutPlaintext)
 """
-
 @inline generate_data_key_without_plaintext(aws::AWSConfig=default_aws_config(); args...) = generate_data_key_without_plaintext(aws, args)
 
 @inline generate_data_key_without_plaintext(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "GenerateDataKeyWithoutPlaintext", args)
@@ -1264,7 +1277,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateRandom)
 """
-
 @inline generate_random(aws::AWSConfig=default_aws_config(); args...) = generate_random(aws, args)
 
 @inline generate_random(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "GenerateRandom", args)
@@ -1302,7 +1314,7 @@ To get the key ID and key ARN for a CMK, use [ListKeys](@ref) or [DescribeKey](@
 
 
 ## `PolicyName = ::String` -- *Required*
-Specifies the name of the policy. The only valid name is `default`. To get the names of key policies, use [ListKeyPolicies](@ref).
+Specifies the name of the key policy. The only valid name is `default`. To get the names of key policies, use [ListKeyPolicies](@ref).
 
 
 
@@ -1348,7 +1360,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetKeyPolicy)
 """
-
 @inline get_key_policy(aws::AWSConfig=default_aws_config(); args...) = get_key_policy(aws, args)
 
 @inline get_key_policy(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "GetKeyPolicy", args)
@@ -1367,9 +1378,15 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 # GetKeyRotationStatus Operation
 
-Gets a Boolean value that indicates whether automatic rotation of the key material is enabled for the specified customer master key (CMK).
+Gets a Boolean value that indicates whether [automatic rotation of the key material](http://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html) is enabled for the specified customer master key (CMK).
 
-To perform this operation on a CMK in a different AWS account, specify the key ARN in the value of the KeyId parameter.
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+
+*   Disabled: The key rotation status does not change when you disable a CMK. However, while the CMK is disabled, AWS KMS does not rotate the backing key.
+
+*   Pending deletion: While a CMK is pending deletion, its key rotation status is `false` and AWS KMS does not rotate the backing key. If you cancel the deletion, the original key rotation status is restored.
+
+To perform this operation on a CMK in a different AWS account, specify the key ARN in the value of the `KeyId` parameter.
 
 # Arguments
 
@@ -1417,7 +1434,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetKeyRotationStatus)
 """
-
 @inline get_key_rotation_status(aws::AWSConfig=default_aws_config(); args...) = get_key_rotation_status(aws, args)
 
 @inline get_key_rotation_status(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "GetKeyRotationStatus", args)
@@ -1442,6 +1458,8 @@ You must specify the key ID of the customer master key (CMK) into which you will
 
 This operation returns a public key and an import token. Use the public key to encrypt the key material. Store the import token to send with a subsequent [ImportKeyMaterial](@ref) request. The public key and import token from the same response must be used together. These items are valid for 24 hours. When they expire, they cannot be used for a subsequent [ImportKeyMaterial](@ref) request. To get new ones, send another `GetParametersForImport` request.
 
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
+
 # Arguments
 
 ## `KeyId = ::String` -- *Required*
@@ -1459,7 +1477,7 @@ To get the key ID and key ARN for a CMK, use [ListKeys](@ref) or [DescribeKey](@
 
 
 ## `WrappingAlgorithm = "RSAES_PKCS1_V1_5", "RSAES_OAEP_SHA_1" or "RSAES_OAEP_SHA_256"` -- *Required*
-The algorithm you will use to encrypt the key material before importing it with [ImportKeyMaterial](@ref). For more information, see [Encrypt the Key Material](http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html) in the *AWS Key Management Service Developer Guide*.
+The algorithm you use to encrypt the key material before importing it with [ImportKeyMaterial](@ref). For more information, see [Encrypt the Key Material](http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html) in the *AWS Key Management Service Developer Guide*.
 
 
 ## `WrappingKeySpec = "RSA_2048"` -- *Required*
@@ -1501,7 +1519,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetParametersForImport)
 """
-
 @inline get_parameters_for_import(aws::AWSConfig=default_aws_config(); args...) = get_parameters_for_import(aws, args)
 
 @inline get_parameters_for_import(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "GetParametersForImport", args)
@@ -1537,6 +1554,8 @@ When calling this operation, you must specify the following values:
 *   Whether the key material expires and if so, when. If you set an expiration date, you can change it only by reimporting the same key material and specifying a new expiration date. If the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. To use the CMK again, you must reimport the same key material.
 
 When this operation is successful, the CMK's key state changes from `PendingImport` to `Enabled`, and you can use the CMK. After you successfully import key material into a CMK, you can reimport the same key material into that CMK, but you cannot import different key material.
+
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 
 # Arguments
 
@@ -1596,7 +1615,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ImportKeyMaterial)
 """
-
 @inline import_key_material(aws::AWSConfig=default_aws_config(); args...) = import_key_material(aws, args)
 
 @inline import_key_material(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "ImportKeyMaterial", args)
@@ -1615,11 +1633,21 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 # ListAliases Operation
 
-Gets a list of all aliases in the caller's AWS account and region. You cannot list aliases in other accounts. For more information about aliases, see [CreateAlias](@ref).
+Gets a list of aliases in the caller's AWS account and region. You cannot list aliases in other accounts. For more information about aliases, see [CreateAlias](@ref).
 
-The response might include several aliases that do not have a `TargetKeyId` field because they are not associated with a CMK. These are predefined aliases that are reserved for CMKs managed by AWS services. If an alias is not associated with a CMK, the alias does not count against the [alias limit](http://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit) for your account.
+By default, the ListAliases command returns all aliases in the account and region. To get only the aliases that point to a particular customer master key (CMK), use the `KeyId` parameter.
+
+The `ListAliases` response can include aliases that you created and associated with your customer managed CMKs, and aliases that AWS created and associated with AWS managed CMKs in your account. You can recognize AWS aliases because their names have the format `aws/<service-name>`, such as `aws/dynamodb`.
+
+The response might also include aliases that have no `TargetKeyId` field. These are predefined aliases that AWS has created but has not yet associated with a CMK. Aliases that AWS creates in your account, including predefined aliases, do not count against your [AWS KMS aliases limit](http://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit).
 
 # Arguments
+
+## `KeyId = ::String`
+Lists only aliases that refer to the specified CMK. The value of this parameter can be the ID or Amazon Resource Name (ARN) of a CMK in the caller's account and region. You cannot use an alias name or alias ARN in this value.
+
+This parameter is optional. If you omit it, `ListAliases` returns all aliases in the account and region.
+
 
 ## `Limit = ::Int`
 Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.
@@ -1696,7 +1724,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListAliases)
 """
-
 @inline list_aliases(aws::AWSConfig=default_aws_config(); args...) = list_aliases(aws, args)
 
 @inline list_aliases(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "ListAliases", args)
@@ -1717,7 +1744,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 Gets a list of all grants for the specified customer master key (CMK).
 
-To perform this operation on a CMK in a different AWS account, specify the key ARN in the value of the KeyId parameter.
+To perform this operation on a CMK in a different AWS account, specify the key ARN in the value of the `KeyId` parameter.
 
 # Arguments
 
@@ -1828,7 +1855,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListGrants)
 """
-
 @inline list_grants(aws::AWSConfig=default_aws_config(); args...) = list_grants(aws, args)
 
 @inline list_grants(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "ListGrants", args)
@@ -1910,7 +1936,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListKeyPolicies)
 """
-
 @inline list_key_policies(aws::AWSConfig=default_aws_config(); args...) = list_key_policies(aws, args)
 
 @inline list_key_policies(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "ListKeyPolicies", args)
@@ -1996,7 +2021,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListKeys)
 """
-
 @inline list_keys(aws::AWSConfig=default_aws_config(); args...) = list_keys(aws, args)
 
 @inline list_keys(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "ListKeys", args)
@@ -2091,7 +2115,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListResourceTags)
 """
-
 @inline list_resource_tags(aws::AWSConfig=default_aws_config(); args...) = list_resource_tags(aws, args)
 
 @inline list_resource_tags(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "ListResourceTags", args)
@@ -2176,7 +2199,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListRetirableGrants)
 """
-
 @inline list_retirable_grants(aws::AWSConfig=default_aws_config(); args...) = list_retirable_grants(aws, args)
 
 @inline list_retirable_grants(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "ListRetirableGrants", args)
@@ -2222,20 +2244,20 @@ The name of the key policy. The only valid value is `default`.
 ## `Policy = ::String` -- *Required*
 The key policy to attach to the CMK.
 
-If you do not set `BypassPolicyLockoutSafetyCheck` to true, the policy must meet the following criteria:
+The key policy must meet the following criteria:
 
-*   It must allow the principal that is making the `PutKeyPolicy` request to make a subsequent `PutKeyPolicy` request on the CMK. This reduces the likelihood that the CMK becomes unmanageable. For more information, refer to the scenario in the [Default Key Policy](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section in the *AWS Key Management Service Developer Guide*.
+*   If you don't set `BypassPolicyLockoutSafetyCheck` to true, the key policy must allow the principal that is making the `PutKeyPolicy` request to make a subsequent `PutKeyPolicy` request on the CMK. This reduces the risk that the CMK becomes unmanageable. For more information, refer to the scenario in the [Default Key Policy](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section of the *AWS Key Management Service Developer Guide*.
 
-*   The principals that are specified in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before specifying the new principal in a key policy because the new principal might not immediately be visible to AWS KMS. For more information, see [Changes that I make are not always immediately visible](http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency) in the *IAM User Guide*.
+*   Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before including the new principal in a key policy. The reason for this is that the new principal might not be immediately visible to AWS KMS. For more information, see [Changes that I make are not always immediately visible](http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency) in the *AWS Identity and Access Management User Guide*.
 
-The policy size limit is 32 kilobytes (32768 bytes).
+The key policy size limit is 32 kilobytes (32768 bytes).
 
 
 ## `BypassPolicyLockoutSafetyCheck = ::Bool`
 A flag to indicate whether to bypass the key policy lockout safety check.
 
 **Important**
-> Setting this value to true increases the likelihood that the CMK becomes unmanageable. Do not set this value to true indiscriminately.
+> Setting this value to true increases the risk that the CMK becomes unmanageable. Do not set this value to true indiscriminately.
 
 For more information, refer to the scenario in the [Default Key Policy](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section in the *AWS Key Management Service Developer Guide*.
 
@@ -2338,7 +2360,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/PutKeyPolicy)
 """
-
 @inline put_key_policy(aws::AWSConfig=default_aws_config(); args...) = put_key_policy(aws, args)
 
 @inline put_key_policy(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "PutKeyPolicy", args)
@@ -2361,7 +2382,9 @@ Encrypts data on the server side with a new customer master key (CMK) without ex
 
 You can reencrypt data using CMKs in different AWS accounts.
 
-Unlike other operations, `ReEncrypt` is authorized twice, once as `ReEncryptFrom` on the source CMK and once as `ReEncryptTo` on the destination CMK. We recommend that you include the `"kms:ReEncrypt*"` permission in your [key policies](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) to permit reencryption from or to the CMK. This permission is automatically included in the key policy when you create a CMK through the console, but you must include it manually when you create a CMK programmatically or when you set a key policy with the [PutKeyPolicy](@ref) operation.
+Unlike other operations, `ReEncrypt` is authorized twice, once as `ReEncryptFrom` on the source CMK and once as `ReEncryptTo` on the destination CMK. We recommend that you include the `"kms:ReEncrypt*"` permission in your [key policies](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) to permit reencryption from or to the CMK. This permission is automatically included in the key policy when you create a CMK through the console. But you must include it manually when you create a CMK programmatically or when you set a key policy with the [PutKeyPolicy](@ref) operation.
+
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 
 # Arguments
 
@@ -2376,7 +2399,7 @@ Encryption context used to encrypt and decrypt the data specified in the `Cipher
 ## `DestinationKeyId = ::String` -- *Required*
 A unique identifier for the CMK that is used to reencrypt the data.
 
-To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with "alias/". To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
+To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with `"alias/"`. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.
 
 For example:
 
@@ -2434,7 +2457,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ReEncrypt)
 """
-
 @inline re_encrypt(aws::AWSConfig=default_aws_config(); args...) = re_encrypt(aws, args)
 
 @inline re_encrypt(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "ReEncrypt", args)
@@ -2485,7 +2507,7 @@ Unique identifier of the grant to retire. The grant ID is returned in the respon
 
 # Exceptions
 
-`InvalidGrantTokenException`, `InvalidGrantIdException`, `NotFoundException`, `DependencyTimeoutException`, `KMSInternalException` or `KMSInvalidStateException`.
+`InvalidArnException`, `InvalidGrantTokenException`, `InvalidGrantIdException`, `NotFoundException`, `DependencyTimeoutException`, `KMSInternalException` or `KMSInvalidStateException`.
 
 # Example: To retire a grant
 
@@ -2501,7 +2523,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/RetireGrant)
 """
-
 @inline retire_grant(aws::AWSConfig=default_aws_config(); args...) = retire_grant(aws, args)
 
 @inline retire_grant(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "RetireGrant", args)
@@ -2522,7 +2543,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 Revokes the specified grant for the specified customer master key (CMK). You can revoke a grant to actively deny operations that depend on it.
 
-To perform this operation on a CMK in a different AWS account, specify the key ARN in the value of the KeyId parameter.
+To perform this operation on a CMK in a different AWS account, specify the key ARN in the value of the `KeyId` parameter.
 
 # Arguments
 
@@ -2564,7 +2585,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/RevokeGrant)
 """
-
 @inline revoke_grant(aws::AWSConfig=default_aws_config(); args...) = revoke_grant(aws, args)
 
 @inline revoke_grant(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "RevokeGrant", args)
@@ -2591,6 +2611,8 @@ You cannot perform this operation on a CMK in a different AWS account.
 > Deleting a CMK is a destructive and potentially dangerous operation. When a CMK is deleted, all data that was encrypted under the CMK is rendered unrecoverable. To restrict the use of a CMK without deleting it, use [DisableKey](@ref).
 
 For more information about scheduling a CMK for deletion, see [Deleting Customer Master Keys](http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html) in the *AWS Key Management Service Developer Guide*.
+
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 
 # Arguments
 
@@ -2646,7 +2668,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ScheduleKeyDeletion)
 """
-
 @inline schedule_key_deletion(aws::AWSConfig=default_aws_config(); args...) = schedule_key_deletion(aws, args)
 
 @inline schedule_key_deletion(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "ScheduleKeyDeletion", args)
@@ -2665,13 +2686,15 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 # TagResource Operation
 
-Adds or overwrites one or more tags for the specified customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.
+Adds or edits tags for a customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.
 
 Each tag consists of a tag key and a tag value. Tag keys and tag values are both required, but tag values can be empty (null) strings.
 
-You cannot use the same tag key more than once per CMK. For example, consider a CMK with one tag whose tag key is `Purpose` and tag value is `Test`. If you send a `TagResource` request for this CMK with a tag key of `Purpose` and a tag value of `Prod`, it does not create a second tag. Instead, the original tag is overwritten with the new tag value.
+You can only use a tag key once for each CMK. If you use the tag key again, AWS KMS replaces the current tag value with the specified value.
 
 For information about the rules that apply to tag keys and tag values, see [User-Defined Tag Restrictions](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html) in the *AWS Billing and Cost Management User Guide*.
+
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 
 # Arguments
 
@@ -2723,7 +2746,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/TagResource)
 """
-
 @inline tag_resource(aws::AWSConfig=default_aws_config(); args...) = tag_resource(aws, args)
 
 @inline tag_resource(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "TagResource", args)
@@ -2742,9 +2764,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 # UntagResource Operation
 
-Removes the specified tag or tags from the specified customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.
+Removes the specified tags from the specified customer master key (CMK). You cannot perform this operation on a CMK in a different AWS account.
 
-To remove a tag, you specify the tag key for each tag to remove. You do not specify the tag value. To overwrite the tag value for an existing tag, use [TagResource](@ref).
+To remove a tag, specify the tag key. To change the tag value of an existing tag key, use [TagResource](@ref).
+
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 
 # Arguments
 
@@ -2789,7 +2813,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UntagResource)
 """
-
 @inline untag_resource(aws::AWSConfig=default_aws_config(); args...) = untag_resource(aws, args)
 
 @inline untag_resource(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "UntagResource", args)
@@ -2815,6 +2838,8 @@ This operation works only on existing aliases. To change the alias of a CMK to a
 Because an alias is not a property of a CMK, you can create, update, and delete the aliases of a CMK without affecting the CMK. Also, aliases do not appear in the response from the [DescribeKey](@ref) operation. To get the aliases of all CMKs in the account, use the [ListAliases](@ref) operation.
 
 An alias name can contain only alphanumeric characters, forward slashes (/), underscores (_), and dashes (-). An alias must start with the word `alias` followed by a forward slash (`alias/`). The alias name can contain only alphanumeric characters, forward slashes (/), underscores (_), and dashes (-). Alias names cannot begin with `aws`; that alias name prefix is reserved by Amazon Web Services (AWS).
+
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 
 # Arguments
 
@@ -2858,7 +2883,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UpdateAlias)
 """
-
 @inline update_alias(aws::AWSConfig=default_aws_config(); args...) = update_alias(aws, args)
 
 @inline update_alias(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "UpdateAlias", args)
@@ -2877,9 +2901,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-20
 
 # UpdateKeyDescription Operation
 
-Updates the description of a customer master key (CMK). To see the decription of a CMK, use [DescribeKey](@ref).
+Updates the description of a customer master key (CMK). To see the description of a CMK, use [DescribeKey](@ref).
 
 You cannot perform this operation on a CMK in a different AWS account.
+
+The result of this operation varies with the key state of the CMK. For details, see [How Key State Affects Use of a Customer Master Key](http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*.
 
 # Arguments
 
@@ -2921,7 +2947,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UpdateKeyDescription)
 """
-
 @inline update_key_description(aws::AWSConfig=default_aws_config(); args...) = update_key_description(aws, args)
 
 @inline update_key_description(aws::AWSConfig, args) = AWSCore.Services.kms(aws, "UpdateKeyDescription", args)

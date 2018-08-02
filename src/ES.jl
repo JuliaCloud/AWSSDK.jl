@@ -48,7 +48,6 @@ List of `Tag` that need to be added for the Elasticsearch domain.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/AddTags)
 """
-
 @inline add_tags(aws::AWSConfig=default_aws_config(); args...) = add_tags(aws, args)
 
 @inline add_tags(aws::AWSConfig, args) = AWSCore.Services.es(aws, "POST", "/2015-01-01/tags", args)
@@ -120,6 +119,26 @@ Options to specify the subnets and security groups for VPC endpoint. For more in
     ]
 ```
 
+## `CognitoOptions = [ ... ]`
+Options to specify the Cognito user and identity pools for Kibana authentication. For more information, see [Amazon Cognito Authentication for Kibana](http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html).
+```
+ CognitoOptions = [
+        "Enabled" =>  ::Bool,
+        "UserPoolId" =>  ::String,
+        "IdentityPoolId" =>  ::String,
+        "RoleArn" =>  ::String
+    ]
+```
+
+## `EncryptionAtRestOptions = [ ... ]`
+Specifies the Encryption At Rest Options.
+```
+ EncryptionAtRestOptions = [
+        "Enabled" =>  ::Bool,
+        "KmsKeyId" =>  ::String
+    ]
+```
+
 ## `AdvancedOptions = ::Dict{String,String}`
 Option to allow references to indices in an HTTP request body. Must be `false` when configuring access to individual sub-resources. By default, the value is `true`. See [Configuration Advanced Options](http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options) for more information.
 
@@ -140,7 +159,6 @@ Map of `LogType` and `LogPublishingOption`, each containing options to publish a
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/CreateElasticsearchDomain)
 """
-
 @inline create_elasticsearch_domain(aws::AWSConfig=default_aws_config(); args...) = create_elasticsearch_domain(aws, args)
 
 @inline create_elasticsearch_domain(aws::AWSConfig, args) = AWSCore.Services.es(aws, "POST", "/2015-01-01/es/domain", args)
@@ -179,7 +197,6 @@ The name of the Elasticsearch domain that you want to permanently delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/DeleteElasticsearchDomain)
 """
-
 @inline delete_elasticsearch_domain(aws::AWSConfig=default_aws_config(); args...) = delete_elasticsearch_domain(aws, args)
 
 @inline delete_elasticsearch_domain(aws::AWSConfig, args) = AWSCore.Services.es(aws, "DELETE", "/2015-01-01/es/domain/{DomainName}", args)
@@ -206,7 +223,6 @@ Deletes the service-linked role that Elasticsearch Service uses to manage and ma
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/DeleteElasticsearchServiceRole)
 """
-
 @inline delete_elasticsearch_service_role(aws::AWSConfig=default_aws_config(); args...) = delete_elasticsearch_service_role(aws, args)
 
 @inline delete_elasticsearch_service_role(aws::AWSConfig, args) = AWSCore.Services.es(aws, "DELETE", "/2015-01-01/es/role", args)
@@ -245,7 +261,6 @@ The name of the Elasticsearch domain for which you want information.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/DescribeElasticsearchDomain)
 """
-
 @inline describe_elasticsearch_domain(aws::AWSConfig=default_aws_config(); args...) = describe_elasticsearch_domain(aws, args)
 
 @inline describe_elasticsearch_domain(aws::AWSConfig, args) = AWSCore.Services.es(aws, "GET", "/2015-01-01/es/domain/{DomainName}", args)
@@ -284,7 +299,6 @@ The Elasticsearch domain that you want to get information about.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/DescribeElasticsearchDomainConfig)
 """
-
 @inline describe_elasticsearch_domain_config(aws::AWSConfig=default_aws_config(); args...) = describe_elasticsearch_domain_config(aws, args)
 
 @inline describe_elasticsearch_domain_config(aws::AWSConfig, args) = AWSCore.Services.es(aws, "GET", "/2015-01-01/es/domain/{DomainName}/config", args)
@@ -323,7 +337,6 @@ The Elasticsearch domains for which you want information.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/DescribeElasticsearchDomains)
 """
-
 @inline describe_elasticsearch_domains(aws::AWSConfig=default_aws_config(); args...) = describe_elasticsearch_domains(aws, args)
 
 @inline describe_elasticsearch_domains(aws::AWSConfig, args) = AWSCore.Services.es(aws, "POST", "/2015-01-01/es/domain-info", args)
@@ -370,12 +383,103 @@ Version of Elasticsearch for which `[Limits](@ref)` are needed.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/DescribeElasticsearchInstanceTypeLimits)
 """
-
 @inline describe_elasticsearch_instance_type_limits(aws::AWSConfig=default_aws_config(); args...) = describe_elasticsearch_instance_type_limits(aws, args)
 
 @inline describe_elasticsearch_instance_type_limits(aws::AWSConfig, args) = AWSCore.Services.es(aws, "GET", "/2015-01-01/es/instanceTypeLimits/{ElasticsearchVersion}/{InstanceType}", args)
 
 @inline describe_elasticsearch_instance_type_limits(args) = describe_elasticsearch_instance_type_limits(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.ES.describe_reserved_elasticsearch_instance_offerings
+    describe_reserved_elasticsearch_instance_offerings([::AWSConfig], arguments::Dict)
+    describe_reserved_elasticsearch_instance_offerings([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.es
+    es([::AWSConfig], "GET", "/2015-01-01/es/reservedInstanceOfferings", arguments::Dict)
+    es([::AWSConfig], "GET", "/2015-01-01/es/reservedInstanceOfferings", <keyword arguments>)
+
+# DescribeReservedElasticsearchInstanceOfferings Operation
+
+Lists available reserved Elasticsearch instance offerings.
+
+# Arguments
+
+## `offeringId = ::String`
+The offering identifier filter value. Use this parameter to show only the available offering that matches the specified reservation identifier.
+
+
+## `maxResults = ::Int`
+Set this value to limit the number of results returned. If not specified, defaults to 100.
+
+
+## `nextToken = ::String`
+NextToken should be sent in case if earlier API call produced result containing NextToken. It is used for pagination.
+
+
+
+
+# Returns
+
+`DescribeReservedElasticsearchInstanceOfferingsResponse`
+
+# Exceptions
+
+`ResourceNotFoundException`, `ValidationException`, `DisabledOperationException` or `InternalException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/DescribeReservedElasticsearchInstanceOfferings)
+"""
+@inline describe_reserved_elasticsearch_instance_offerings(aws::AWSConfig=default_aws_config(); args...) = describe_reserved_elasticsearch_instance_offerings(aws, args)
+
+@inline describe_reserved_elasticsearch_instance_offerings(aws::AWSConfig, args) = AWSCore.Services.es(aws, "GET", "/2015-01-01/es/reservedInstanceOfferings", args)
+
+@inline describe_reserved_elasticsearch_instance_offerings(args) = describe_reserved_elasticsearch_instance_offerings(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.ES.describe_reserved_elasticsearch_instances
+    describe_reserved_elasticsearch_instances([::AWSConfig], arguments::Dict)
+    describe_reserved_elasticsearch_instances([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.es
+    es([::AWSConfig], "GET", "/2015-01-01/es/reservedInstances", arguments::Dict)
+    es([::AWSConfig], "GET", "/2015-01-01/es/reservedInstances", <keyword arguments>)
+
+# DescribeReservedElasticsearchInstances Operation
+
+Returns information about reserved Elasticsearch instances for this account.
+
+# Arguments
+
+## `reservationId = ::String`
+The reserved instance identifier filter value. Use this parameter to show only the reservation that matches the specified reserved Elasticsearch instance ID.
+
+
+## `maxResults = ::Int`
+Set this value to limit the number of results returned. If not specified, defaults to 100.
+
+
+## `nextToken = ::String`
+NextToken should be sent in case if earlier API call produced result containing NextToken. It is used for pagination.
+
+
+
+
+# Returns
+
+`DescribeReservedElasticsearchInstancesResponse`
+
+# Exceptions
+
+`ResourceNotFoundException`, `InternalException`, `ValidationException` or `DisabledOperationException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/DescribeReservedElasticsearchInstances)
+"""
+@inline describe_reserved_elasticsearch_instances(aws::AWSConfig=default_aws_config(); args...) = describe_reserved_elasticsearch_instances(aws, args)
+
+@inline describe_reserved_elasticsearch_instances(aws::AWSConfig, args) = AWSCore.Services.es(aws, "GET", "/2015-01-01/es/reservedInstances", args)
+
+@inline describe_reserved_elasticsearch_instances(args) = describe_reserved_elasticsearch_instances(default_aws_config(), args)
 
 
 """
@@ -401,7 +505,6 @@ Returns the name of all Elasticsearch domains owned by the current user's accoun
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/ListDomainNames)
 """
-
 @inline list_domain_names(aws::AWSConfig=default_aws_config(); args...) = list_domain_names(aws, args)
 
 @inline list_domain_names(aws::AWSConfig, args) = AWSCore.Services.es(aws, "GET", "/2015-01-01/domain", args)
@@ -452,7 +555,6 @@ NextToken should be sent in case if earlier API call produced result containing 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/ListElasticsearchInstanceTypes)
 """
-
 @inline list_elasticsearch_instance_types(aws::AWSConfig=default_aws_config(); args...) = list_elasticsearch_instance_types(aws, args)
 
 @inline list_elasticsearch_instance_types(aws::AWSConfig, args) = AWSCore.Services.es(aws, "GET", "/2015-01-01/es/instanceTypes/{ElasticsearchVersion}", args)
@@ -495,7 +597,6 @@ Set this value to limit the number of results returned. Value provided must be g
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/ListElasticsearchVersions)
 """
-
 @inline list_elasticsearch_versions(aws::AWSConfig=default_aws_config(); args...) = list_elasticsearch_versions(aws, args)
 
 @inline list_elasticsearch_versions(aws::AWSConfig, args) = AWSCore.Services.es(aws, "GET", "/2015-01-01/es/versions", args)
@@ -534,12 +635,57 @@ Specify the `ARN` for the Elasticsearch domain to which the tags are attached th
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/ListTags)
 """
-
 @inline list_tags(aws::AWSConfig=default_aws_config(); args...) = list_tags(aws, args)
 
 @inline list_tags(aws::AWSConfig, args) = AWSCore.Services.es(aws, "GET", "/2015-01-01/tags/", args)
 
 @inline list_tags(args) = list_tags(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.ES.purchase_reserved_elasticsearch_instance_offering
+    purchase_reserved_elasticsearch_instance_offering([::AWSConfig], arguments::Dict)
+    purchase_reserved_elasticsearch_instance_offering([::AWSConfig]; ReservedElasticsearchInstanceOfferingId=, ReservationName=, <keyword arguments>)
+
+    using AWSCore.Services.es
+    es([::AWSConfig], "POST", "/2015-01-01/es/purchaseReservedInstanceOffering", arguments::Dict)
+    es([::AWSConfig], "POST", "/2015-01-01/es/purchaseReservedInstanceOffering", ReservedElasticsearchInstanceOfferingId=, ReservationName=, <keyword arguments>)
+
+# PurchaseReservedElasticsearchInstanceOffering Operation
+
+Allows you to purchase reserved Elasticsearch instances.
+
+# Arguments
+
+## `ReservedElasticsearchInstanceOfferingId = ::String` -- *Required*
+The ID of the reserved Elasticsearch instance offering to purchase.
+
+
+## `ReservationName = ::String` -- *Required*
+A customer-specified identifier to track this reservation.
+
+
+## `InstanceCount = ::Int`
+The number of Elasticsearch instances to reserve.
+
+
+
+
+# Returns
+
+`PurchaseReservedElasticsearchInstanceOfferingResponse`
+
+# Exceptions
+
+`ResourceNotFoundException`, `ResourceAlreadyExistsException`, `LimitExceededException`, `DisabledOperationException`, `ValidationException` or `InternalException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/PurchaseReservedElasticsearchInstanceOffering)
+"""
+@inline purchase_reserved_elasticsearch_instance_offering(aws::AWSConfig=default_aws_config(); args...) = purchase_reserved_elasticsearch_instance_offering(aws, args)
+
+@inline purchase_reserved_elasticsearch_instance_offering(aws::AWSConfig, args) = AWSCore.Services.es(aws, "POST", "/2015-01-01/es/purchaseReservedInstanceOffering", args)
+
+@inline purchase_reserved_elasticsearch_instance_offering(args) = purchase_reserved_elasticsearch_instance_offering(default_aws_config(), args)
 
 
 """
@@ -573,7 +719,6 @@ Specifies the `TagKey` list which you want to remove from the Elasticsearch doma
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/RemoveTags)
 """
-
 @inline remove_tags(aws::AWSConfig=default_aws_config(); args...) = remove_tags(aws, args)
 
 @inline remove_tags(aws::AWSConfig, args) = AWSCore.Services.es(aws, "POST", "/2015-01-01/tags-removal", args)
@@ -637,6 +782,17 @@ Options to specify the subnets and security groups for VPC endpoint. For more in
     ]
 ```
 
+## `CognitoOptions = [ ... ]`
+Options to specify the Cognito user and identity pools for Kibana authentication. For more information, see [Amazon Cognito Authentication for Kibana](http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html).
+```
+ CognitoOptions = [
+        "Enabled" =>  ::Bool,
+        "UserPoolId" =>  ::String,
+        "IdentityPoolId" =>  ::String,
+        "RoleArn" =>  ::String
+    ]
+```
+
 ## `AdvancedOptions = ::Dict{String,String}`
 Modifies the advanced option to allow references to indices in an HTTP request body. Must be `false` when configuring access to individual sub-resources. By default, the value is `true`. See [Configuration Advanced Options](http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options) for more information.
 
@@ -661,7 +817,6 @@ Map of `LogType` and `LogPublishingOption`, each containing options to publish a
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/UpdateElasticsearchDomainConfig)
 """
-
 @inline update_elasticsearch_domain_config(aws::AWSConfig=default_aws_config(); args...) = update_elasticsearch_domain_config(aws, args)
 
 @inline update_elasticsearch_domain_config(aws::AWSConfig, args) = AWSCore.Services.es(aws, "POST", "/2015-01-01/es/domain/{DomainName}/config", args)

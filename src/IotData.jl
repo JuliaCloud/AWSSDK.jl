@@ -45,7 +45,6 @@ The name of the thing.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-data-2015-05-28/DeleteThingShadow)
 """
-
 @inline delete_thing_shadow(aws::AWSConfig=default_aws_config(); args...) = delete_thing_shadow(aws, args)
 
 @inline delete_thing_shadow(aws::AWSConfig, args) = AWSCore.Services.iot_data(aws, "DELETE", "/things/{thingName}/shadow", args)
@@ -86,7 +85,6 @@ The name of the thing.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-data-2015-05-28/GetThingShadow)
 """
-
 @inline get_thing_shadow(aws::AWSConfig=default_aws_config(); args...) = get_thing_shadow(aws, args)
 
 @inline get_thing_shadow(aws::AWSConfig, args) = AWSCore.Services.iot_data(aws, "GET", "/things/{thingName}/shadow", args)
@@ -131,7 +129,6 @@ The state information, in JSON format.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-data-2015-05-28/Publish)
 """
-
 @inline publish(aws::AWSConfig=default_aws_config(); args...) = publish(aws, args)
 
 @inline publish(aws::AWSConfig, args) = AWSCore.Services.iot_data(aws, "POST", "/topics/{topic}", args)
@@ -176,7 +173,6 @@ The state information, in JSON format.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/iot-data-2015-05-28/UpdateThingShadow)
 """
-
 @inline update_thing_shadow(aws::AWSConfig=default_aws_config(); args...) = update_thing_shadow(aws, args)
 
 @inline update_thing_shadow(aws::AWSConfig, args) = AWSCore.Services.iot_data(aws, "POST", "/things/{thingName}/shadow", args)

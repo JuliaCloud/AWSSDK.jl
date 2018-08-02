@@ -47,7 +47,6 @@ A system-generated random number that AWS CodePipeline uses to ensure that the j
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/AcknowledgeJob)
 """
-
 @inline acknowledge_job(aws::AWSConfig=default_aws_config(); args...) = acknowledge_job(aws, args)
 
 @inline acknowledge_job(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "AcknowledgeJob", args)
@@ -94,7 +93,6 @@ The clientToken portion of the clientId and clientToken pair used to verify that
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/AcknowledgeThirdPartyJob)
 """
-
 @inline acknowledge_third_party_job(aws::AWSConfig=default_aws_config(); args...) = acknowledge_third_party_job(aws, args)
 
 @inline acknowledge_third_party_job(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "AcknowledgeThirdPartyJob", args)
@@ -190,7 +188,6 @@ The details of the output artifact of the action, such as its commit ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/CreateCustomActionType)
 """
-
 @inline create_custom_action_type(aws::AWSConfig=default_aws_config(); args...) = create_custom_action_type(aws, args)
 
 @inline create_custom_action_type(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "CreateCustomActionType", args)
@@ -264,7 +261,6 @@ Represents the structure of actions and stages to be performed in the pipeline.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/CreatePipeline)
 """
-
 @inline create_pipeline(aws::AWSConfig=default_aws_config(); args...) = create_pipeline(aws, args)
 
 @inline create_pipeline(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "CreatePipeline", args)
@@ -286,7 +282,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 Marks a custom action as deleted. PollForJobs for the custom action will fail after the action is marked for deletion. Only used for custom actions.
 
 **Important**
-> You cannot recreate a custom action after it has been deleted unless you increase the version number of the action.
+> To re-create a custom action after it has been deleted you must use a string in the version field that has never been used before. This string can be an incremented version number, for example. To restore a deleted custom action, use a JSON file that is identical to the deleted action, including the original string in the version field.
 
 # Arguments
 
@@ -310,7 +306,6 @@ The version of the custom action to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/DeleteCustomActionType)
 """
-
 @inline delete_custom_action_type(aws::AWSConfig=default_aws_config(); args...) = delete_custom_action_type(aws, args)
 
 @inline delete_custom_action_type(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "DeleteCustomActionType", args)
@@ -345,12 +340,87 @@ The name of the pipeline to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/DeletePipeline)
 """
-
 @inline delete_pipeline(aws::AWSConfig=default_aws_config(); args...) = delete_pipeline(aws, args)
 
 @inline delete_pipeline(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "DeletePipeline", args)
 
 @inline delete_pipeline(args) = delete_pipeline(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CodePipeline.delete_webhook
+    delete_webhook([::AWSConfig], arguments::Dict)
+    delete_webhook([::AWSConfig]; name=)
+
+    using AWSCore.Services.codepipeline
+    codepipeline([::AWSConfig], "DeleteWebhook", arguments::Dict)
+    codepipeline([::AWSConfig], "DeleteWebhook", name=)
+
+# DeleteWebhook Operation
+
+Deletes a previously created webhook by name. Deleting the webhook stops AWS CodePipeline from starting a pipeline every time an external event occurs. The API will return successfully when trying to delete a webhook that is already deleted. If a deleted webhook is re-created by calling PutWebhook with the same name, it will have a different URL.
+
+# Arguments
+
+## `name = ::String` -- *Required*
+The name of the webhook you want to delete.
+
+
+
+
+# Returns
+
+`DeleteWebhookOutput`
+
+# Exceptions
+
+`ValidationException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/DeleteWebhook)
+"""
+@inline delete_webhook(aws::AWSConfig=default_aws_config(); args...) = delete_webhook(aws, args)
+
+@inline delete_webhook(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "DeleteWebhook", args)
+
+@inline delete_webhook(args) = delete_webhook(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CodePipeline.deregister_webhook_with_third_party
+    deregister_webhook_with_third_party([::AWSConfig], arguments::Dict)
+    deregister_webhook_with_third_party([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.codepipeline
+    codepipeline([::AWSConfig], "DeregisterWebhookWithThirdParty", arguments::Dict)
+    codepipeline([::AWSConfig], "DeregisterWebhookWithThirdParty", <keyword arguments>)
+
+# DeregisterWebhookWithThirdParty Operation
+
+Removes the connection between the webhook that was created by CodePipeline and the external tool with events to be detected. Currently only supported for webhooks that target an action type of GitHub.
+
+# Arguments
+
+## `webhookName = ::String`
+The name of the webhook you want to deregister.
+
+
+
+
+# Returns
+
+`DeregisterWebhookWithThirdPartyOutput`
+
+# Exceptions
+
+`ValidationException` or `WebhookNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/DeregisterWebhookWithThirdParty)
+"""
+@inline deregister_webhook_with_third_party(aws::AWSConfig=default_aws_config(); args...) = deregister_webhook_with_third_party(aws, args)
+
+@inline deregister_webhook_with_third_party(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "DeregisterWebhookWithThirdParty", args)
+
+@inline deregister_webhook_with_third_party(args) = deregister_webhook_with_third_party(default_aws_config(), args)
 
 
 """
@@ -392,7 +462,6 @@ The reason given to the user why a stage is disabled, such as waiting for manual
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/DisableStageTransition)
 """
-
 @inline disable_stage_transition(aws::AWSConfig=default_aws_config(); args...) = disable_stage_transition(aws, args)
 
 @inline disable_stage_transition(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "DisableStageTransition", args)
@@ -435,7 +504,6 @@ Specifies whether artifacts will be allowed to enter the stage and be processed 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/EnableStageTransition)
 """
-
 @inline enable_stage_transition(aws::AWSConfig=default_aws_config(); args...) = enable_stage_transition(aws, args)
 
 @inline enable_stage_transition(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "EnableStageTransition", args)
@@ -477,7 +545,6 @@ The unique system-generated ID for the job.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/GetJobDetails)
 """
-
 @inline get_job_details(aws::AWSConfig=default_aws_config(); args...) = get_job_details(aws, args)
 
 @inline get_job_details(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "GetJobDetails", args)
@@ -520,7 +587,6 @@ The version number of the pipeline. If you do not specify a version, defaults to
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/GetPipeline)
 """
-
 @inline get_pipeline(aws::AWSConfig=default_aws_config(); args...) = get_pipeline(aws, args)
 
 @inline get_pipeline(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "GetPipeline", args)
@@ -563,7 +629,6 @@ The ID of the pipeline execution about which you want to get execution details.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/GetPipelineExecution)
 """
-
 @inline get_pipeline_execution(aws::AWSConfig=default_aws_config(); args...) = get_pipeline_execution(aws, args)
 
 @inline get_pipeline_execution(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "GetPipelineExecution", args)
@@ -602,7 +667,6 @@ The name of the pipeline about which you want to get information.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/GetPipelineState)
 """
-
 @inline get_pipeline_state(aws::AWSConfig=default_aws_config(); args...) = get_pipeline_state(aws, args)
 
 @inline get_pipeline_state(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "GetPipelineState", args)
@@ -648,7 +712,6 @@ The clientToken portion of the clientId and clientToken pair used to verify that
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/GetThirdPartyJobDetails)
 """
-
 @inline get_third_party_job_details(aws::AWSConfig=default_aws_config(); args...) = get_third_party_job_details(aws, args)
 
 @inline get_third_party_job_details(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "GetThirdPartyJobDetails", args)
@@ -691,7 +754,6 @@ An identifier that was returned from the previous list action types call, which 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ListActionTypes)
 """
-
 @inline list_action_types(aws::AWSConfig=default_aws_config(); args...) = list_action_types(aws, args)
 
 @inline list_action_types(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "ListActionTypes", args)
@@ -738,7 +800,6 @@ The token that was returned from the previous ListPipelineExecutions call, which
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ListPipelineExecutions)
 """
-
 @inline list_pipeline_executions(aws::AWSConfig=default_aws_config(); args...) = list_pipeline_executions(aws, args)
 
 @inline list_pipeline_executions(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "ListPipelineExecutions", args)
@@ -773,16 +834,57 @@ An identifier that was returned from the previous list pipelines call, which can
 
 # Exceptions
 
-`InvalidNextTokenException`.
+`ValidationException` or `InvalidNextTokenException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ListPipelines)
 """
-
 @inline list_pipelines(aws::AWSConfig=default_aws_config(); args...) = list_pipelines(aws, args)
 
 @inline list_pipelines(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "ListPipelines", args)
 
 @inline list_pipelines(args) = list_pipelines(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CodePipeline.list_webhooks
+    list_webhooks([::AWSConfig], arguments::Dict)
+    list_webhooks([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.codepipeline
+    codepipeline([::AWSConfig], "ListWebhooks", arguments::Dict)
+    codepipeline([::AWSConfig], "ListWebhooks", <keyword arguments>)
+
+# ListWebhooks Operation
+
+Gets a listing of all the webhooks in this region for this account. The output lists all webhooks and includes the webhook URL and ARN, as well the configuration for each webhook.
+
+# Arguments
+
+## `NextToken = ::String`
+The token that was returned from the previous ListWebhooks call, which can be used to return the next set of webhooks in the list.
+
+
+## `MaxResults = ::Int`
+The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned nextToken value.
+
+
+
+
+# Returns
+
+`ListWebhooksOutput`
+
+# Exceptions
+
+`ValidationException` or `InvalidNextTokenException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ListWebhooks)
+"""
+@inline list_webhooks(aws::AWSConfig=default_aws_config(); args...) = list_webhooks(aws, args)
+
+@inline list_webhooks(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "ListWebhooks", args)
+
+@inline list_webhooks(args) = list_webhooks(default_aws_config(), args)
 
 
 """
@@ -796,7 +898,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepi
 
 # PollForJobs Operation
 
-Returns information about any jobs for AWS CodePipeline to act upon.
+Returns information about any jobs for AWS CodePipeline to act upon. PollForJobs is only valid for action types with "Custom" in the owner field. If the action type contains "AWS" or "ThirdParty" in the owner field, the PollForJobs action returns an error.
 
 **Important**
 > When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action.
@@ -834,7 +936,6 @@ A map of property names and values. For an action type with no queryable propert
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PollForJobs)
 """
-
 @inline poll_for_jobs(aws::AWSConfig=default_aws_config(); args...) = poll_for_jobs(aws, args)
 
 @inline poll_for_jobs(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "PollForJobs", args)
@@ -887,7 +988,6 @@ The maximum number of jobs to return in a poll for jobs call.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PollForThirdPartyJobs)
 """
-
 @inline poll_for_third_party_jobs(aws::AWSConfig=default_aws_config(); args...) = poll_for_third_party_jobs(aws, args)
 
 @inline poll_for_third_party_jobs(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "PollForThirdPartyJobs", args)
@@ -944,7 +1044,6 @@ Represents information about the version (or revision) of an action.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutActionRevision)
 """
-
 @inline put_action_revision(aws::AWSConfig=default_aws_config(); args...) = put_action_revision(aws, args)
 
 @inline put_action_revision(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "PutActionRevision", args)
@@ -1004,7 +1103,6 @@ The system-generated token used to identify a unique approval request. The token
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutApprovalResult)
 """
-
 @inline put_approval_result(aws::AWSConfig=default_aws_config(); args...) = put_approval_result(aws, args)
 
 @inline put_approval_result(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "PutApprovalResult", args)
@@ -1049,7 +1147,6 @@ The details about the failure of a job.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutJobFailureResult)
 """
-
 @inline put_job_failure_result(aws::AWSConfig=default_aws_config(); args...) = put_job_failure_result(aws, args)
 
 @inline put_job_failure_result(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "PutJobFailureResult", args)
@@ -1109,7 +1206,6 @@ The execution details of the successful job, such as the actions taken by the jo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutJobSuccessResult)
 """
-
 @inline put_job_success_result(aws::AWSConfig=default_aws_config(); args...) = put_job_success_result(aws, args)
 
 @inline put_job_success_result(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "PutJobSuccessResult", args)
@@ -1158,7 +1254,6 @@ Represents information about failure details.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutThirdPartyJobFailureResult)
 """
-
 @inline put_third_party_job_failure_result(aws::AWSConfig=default_aws_config(); args...) = put_third_party_job_failure_result(aws, args)
 
 @inline put_third_party_job_failure_result(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "PutThirdPartyJobFailureResult", args)
@@ -1222,12 +1317,102 @@ The details of the actions taken and results produced on an artifact as it passe
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutThirdPartyJobSuccessResult)
 """
-
 @inline put_third_party_job_success_result(aws::AWSConfig=default_aws_config(); args...) = put_third_party_job_success_result(aws, args)
 
 @inline put_third_party_job_success_result(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "PutThirdPartyJobSuccessResult", args)
 
 @inline put_third_party_job_success_result(args) = put_third_party_job_success_result(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CodePipeline.put_webhook
+    put_webhook([::AWSConfig], arguments::Dict)
+    put_webhook([::AWSConfig]; webhook=)
+
+    using AWSCore.Services.codepipeline
+    codepipeline([::AWSConfig], "PutWebhook", arguments::Dict)
+    codepipeline([::AWSConfig], "PutWebhook", webhook=)
+
+# PutWebhook Operation
+
+Defines a webhook and returns a unique webhook URL generated by CodePipeline. This URL can be supplied to third party source hosting providers to call every time there's a code change. When CodePipeline receives a POST request on this URL, the pipeline defined in the webhook is started as long as the POST request satisfied the authentication and filtering requirements supplied when defining the webhook. RegisterWebhookWithThirdParty and DeregisterWebhookWithThirdParty APIs can be used to automatically configure supported third parties to call the generated webhook URL.
+
+# Arguments
+
+## `webhook = [ ... ]` -- *Required*
+The detail provided in an input file to create the webhook, such as the webhook name, the pipeline name, and the action name. Give the webhook a unique name which identifies the webhook being defined. You may choose to name the webhook after the pipeline and action it targets so that you can easily recognize what it's used for later.
+```
+ webhook = [
+        "name" => <required> ::String,
+        "targetPipeline" => <required> ::String,
+        "targetAction" => <required> ::String,
+        "filters" => <required> [[
+            "jsonPath" => <required> ::String,
+            "matchEquals" =>  ::String
+        ], ...],
+        "authentication" => <required> "GITHUB_HMAC", "IP" or "UNAUTHENTICATED",
+        "authenticationConfiguration" => <required> [
+            "AllowedIPRange" =>  ::String,
+            "SecretToken" =>  ::String
+        ]
+    ]
+```
+
+
+
+# Returns
+
+`PutWebhookOutput`
+
+# Exceptions
+
+`ValidationException`, `LimitExceededException`, `InvalidWebhookFilterPatternException`, `InvalidWebhookAuthenticationParametersException` or `PipelineNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutWebhook)
+"""
+@inline put_webhook(aws::AWSConfig=default_aws_config(); args...) = put_webhook(aws, args)
+
+@inline put_webhook(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "PutWebhook", args)
+
+@inline put_webhook(args) = put_webhook(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CodePipeline.register_webhook_with_third_party
+    register_webhook_with_third_party([::AWSConfig], arguments::Dict)
+    register_webhook_with_third_party([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.codepipeline
+    codepipeline([::AWSConfig], "RegisterWebhookWithThirdParty", arguments::Dict)
+    codepipeline([::AWSConfig], "RegisterWebhookWithThirdParty", <keyword arguments>)
+
+# RegisterWebhookWithThirdParty Operation
+
+Configures a connection between the webhook that was created and the external tool with events to be detected.
+
+# Arguments
+
+## `webhookName = ::String`
+The name of an existing webhook created with PutWebhook to register with a supported third party.
+
+
+
+
+# Returns
+
+`RegisterWebhookWithThirdPartyOutput`
+
+# Exceptions
+
+`ValidationException` or `WebhookNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/RegisterWebhookWithThirdParty)
+"""
+@inline register_webhook_with_third_party(aws::AWSConfig=default_aws_config(); args...) = register_webhook_with_third_party(aws, args)
+
+@inline register_webhook_with_third_party(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "RegisterWebhookWithThirdParty", args)
+
+@inline register_webhook_with_third_party(args) = register_webhook_with_third_party(default_aws_config(), args)
 
 
 """
@@ -1273,7 +1458,6 @@ The scope of the retry attempt. Currently, the only supported value is FAILED_AC
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/RetryStageExecution)
 """
-
 @inline retry_stage_execution(aws::AWSConfig=default_aws_config(); args...) = retry_stage_execution(aws, args)
 
 @inline retry_stage_execution(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "RetryStageExecution", args)
@@ -1312,7 +1496,6 @@ The name of the pipeline to start.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/StartPipelineExecution)
 """
-
 @inline start_pipeline_execution(aws::AWSConfig=default_aws_config(); args...) = start_pipeline_execution(aws, args)
 
 @inline start_pipeline_execution(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "StartPipelineExecution", args)
@@ -1382,11 +1565,10 @@ The name of the pipeline to be updated.
 
 # Exceptions
 
-`ValidationException`, `InvalidStageDeclarationException`, `InvalidActionDeclarationException`, `InvalidBlockerDeclarationException` or `InvalidStructureException`.
+`ValidationException`, `InvalidStageDeclarationException`, `InvalidActionDeclarationException`, `InvalidBlockerDeclarationException`, `InvalidStructureException` or `LimitExceededException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/UpdatePipeline)
 """
-
 @inline update_pipeline(aws::AWSConfig=default_aws_config(); args...) = update_pipeline(aws, args)
 
 @inline update_pipeline(aws::AWSConfig, args) = AWSCore.Services.codepipeline(aws, "UpdatePipeline", args)

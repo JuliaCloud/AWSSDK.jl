@@ -51,7 +51,6 @@ The layer ID, which must correspond to a custom layer. You cannot assign a regis
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/AssignInstance)
 """
-
 @inline assign_instance(aws::AWSConfig=default_aws_config(); args...) = assign_instance(aws, args)
 
 @inline assign_instance(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "AssignInstance", args)
@@ -92,7 +91,6 @@ The instance ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/AssignVolume)
 """
-
 @inline assign_volume(aws::AWSConfig=default_aws_config(); args...) = assign_volume(aws, args)
 
 @inline assign_volume(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "AssignVolume", args)
@@ -133,7 +131,6 @@ The instance ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/AssociateElasticIp)
 """
-
 @inline associate_elastic_ip(aws::AWSConfig=default_aws_config(); args...) = associate_elastic_ip(aws, args)
 
 @inline associate_elastic_ip(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "AssociateElasticIp", args)
@@ -166,7 +163,7 @@ The Elastic Load Balancing instance's name.
 
 
 ## `LayerId = ::String` -- *Required*
-The ID of the layer that the Elastic Load Balancing instance is to be attached to.
+The ID of the layer to which the Elastic Load Balancing instance is to be attached.
 
 
 
@@ -177,7 +174,6 @@ The ID of the layer that the Elastic Load Balancing instance is to be attached t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/AttachElasticLoadBalancer)
 """
-
 @inline attach_elastic_load_balancer(aws::AWSConfig=default_aws_config(); args...) = attach_elastic_load_balancer(aws, args)
 
 @inline attach_elastic_load_balancer(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "AttachElasticLoadBalancer", args)
@@ -198,7 +194,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 Creates a clone of a specified stack. For more information, see [Clone a Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html). By default, all parameters are set to the values used by the parent stack.
 
-**Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -229,7 +225,7 @@ If you specify a nondefault VPC ID, note the following:
 
 *   You must specify a value for `DefaultSubnetId`.
 
-For more information on how to use AWS OpsWorks Stacks with a VPC, see [Running a Stack in a VPC](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html). For more information on default VPC and EC2 Classic, see [Supported Platforms](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
+For more information about how to use AWS OpsWorks Stacks with a VPC, see [Running a Stack in a VPC](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html). For more information about default VPC and EC2 Classic, see [Supported Platforms](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
 
 
 ## `Attributes = ::Dict{String,String}`
@@ -250,7 +246,7 @@ The Amazon Resource Name (ARN) of an IAM profile that is the default profile for
 ## `DefaultOs = ::String`
 The stack's operating system, which must be set to one of the following.
 
-*   A supported Linux operating system: An Amazon Linux version, such as `Amazon Linux 2017.03`, `Amazon Linux 2016.09`, `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
+*   A supported Linux operating system: An Amazon Linux version, such as `Amazon Linux 2017.09`, `Amazon Linux 2017.03`, `Amazon Linux 2016.09`, `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
 
 *   A supported Ubuntu operating system, such as `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
 
@@ -260,9 +256,9 @@ The stack's operating system, which must be set to one of the following.
 
 *   `Microsoft Windows Server 2012 R2 Base`, `Microsoft Windows Server 2012 R2 with SQL Server Express`, `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or `Microsoft Windows Server 2012 R2 with SQL Server Web`.
 
-*   A custom AMI: `Custom`. You specify the custom AMI you want to use when you create instances. For more information on how to use custom AMIs with OpsWorks, see [Using Custom AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+*   A custom AMI: `Custom`. You specify the custom AMI you want to use when you create instances. For more information about how to use custom AMIs with OpsWorks, see [Using Custom AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 
-The default option is the parent stack's operating system. For more information on the supported operating systems, see [AWS OpsWorks Stacks Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+The default option is the parent stack's operating system. For more information about supported operating systems, see [AWS OpsWorks Stacks Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 
 **Note**
 > You can specify a different Linux operating system for the cloned stack, but you cannot change from Linux to Windows or Windows to Linux.
@@ -309,7 +305,7 @@ A string that contains user-defined, custom JSON. It is used to override the cor
 
 `"{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...}"`
 
-For more information on custom JSON, see [Use Custom JSON to Modify the Stack Configuration Attributes](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html)
+For more information about custom JSON, see [Use Custom JSON to Modify the Stack Configuration Attributes](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html)
 
 
 ## `ConfigurationManager = [ ... ]`
@@ -400,7 +396,6 @@ The default setting is `LATEST`. To specify an agent version, you must use the c
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CloneStack)
 """
-
 @inline clone_stack(aws::AWSConfig=default_aws_config(); args...) = clone_stack(aws, args)
 
 @inline clone_stack(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "CloneStack", args)
@@ -517,7 +512,6 @@ There is no specific limit on the number of environment variables. However, the 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CreateApp)
 """
-
 @inline create_app(aws::AWSConfig=default_aws_config(); args...) = create_app(aws, args)
 
 @inline create_app(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "CreateApp", args)
@@ -576,7 +570,7 @@ A string that contains user-defined, custom JSON. It is used to override the cor
 
 `"{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...}"`
 
-For more information on custom JSON, see [Use Custom JSON to Modify the Stack Configuration Attributes](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
+For more information about custom JSON, see [Use Custom JSON to Modify the Stack Configuration Attributes](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
 
 
 
@@ -591,7 +585,6 @@ For more information on custom JSON, see [Use Custom JSON to Modify the Stack Co
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CreateDeployment)
 """
-
 @inline create_deployment(aws::AWSConfig=default_aws_config(); args...) = create_deployment(aws, args)
 
 @inline create_deployment(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "CreateDeployment", args)
@@ -639,7 +632,7 @@ The instance host name.
 ## `Os = ::String`
 The instance's operating system, which must be set to one of the following.
 
-*   A supported Linux operating system: An Amazon Linux version, such as `Amazon Linux 2017.03`, `Amazon Linux 2016.09`, `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
+*   A supported Linux operating system: An Amazon Linux version, such as `Amazon Linux 2017.09`, `Amazon Linux 2017.03`, `Amazon Linux 2016.09`, `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
 
 *   A supported Ubuntu operating system, such as `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
 
@@ -651,9 +644,9 @@ The instance's operating system, which must be set to one of the following.
 
 *   A custom AMI: `Custom`.
 
-For more information on the supported operating systems, see [AWS OpsWorks Stacks Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+For more information about the supported operating systems, see [AWS OpsWorks Stacks Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 
-The default option is the current Amazon Linux version. If you set this parameter to `Custom`, you must use the [CreateInstance](@ref) action's AmiId parameter to specify the custom AMI that you want to use. Block device mappings are not supported if the value is `Custom`. For more information on the supported operating systems, see [Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html)For more information on how to use custom AMIs with AWS OpsWorks Stacks, see [Using Custom AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+The default option is the current Amazon Linux version. If you set this parameter to `Custom`, you must use the [CreateInstance](@ref) action's AmiId parameter to specify the custom AMI that you want to use. Block device mappings are not supported if the value is `Custom`. For more information about supported operating systems, see [Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html)For more information about how to use custom AMIs with AWS OpsWorks Stacks, see [Using Custom AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 
 
 ## `AmiId = ::String`
@@ -741,7 +734,6 @@ The instance's tenancy option. The default option is no tenancy, or if the insta
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CreateInstance)
 """
-
 @inline create_instance(aws::AWSConfig=default_aws_config(); args...) = create_instance(aws, args)
 
 @inline create_instance(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "CreateInstance", args)
@@ -839,7 +831,8 @@ A `VolumeConfigurations` object that describes the layer's Amazon EBS volumes.
         "NumberOfDisks" => <required> ::Int,
         "Size" => <required> ::Int,
         "VolumeType" =>  ::String,
-        "Iops" =>  ::Int
+        "Iops" =>  ::Int,
+        "Encrypted" =>  ::Bool
     ], ...]
 ```
 
@@ -899,7 +892,6 @@ A `LifeCycleEventConfiguration` object that you can use to configure the Shutdow
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CreateLayer)
 """
-
 @inline create_layer(aws::AWSConfig=default_aws_config(); args...) = create_layer(aws, args)
 
 @inline create_layer(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "CreateLayer", args)
@@ -920,7 +912,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 Creates a new stack. For more information, see [Create a New Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html).
 
-**Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -929,7 +921,10 @@ The stack name.
 
 
 ## `Region = ::String` -- *Required*
-The stack's AWS region, such as "ap-south-1". For more information about Amazon regions, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html).
+The stack's AWS region, such as `ap-south-1`. For more information about Amazon regions, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html).
+
+**Note**
+> In the AWS CLI, this API maps to the `--stack-region` parameter. If the `--stack-region` parameter and the AWS CLI common parameter `--region` are set to the same value, the stack uses a *regional* endpoint. If the `--stack-region` parameter is not set, but the AWS CLI `--region` parameter is, this also results in a stack with a *regional* endpoint. However, if the `--region` parameter is set to `us-east-1`, and the `--stack-region` parameter is set to one of the following, then the stack uses a legacy or *classic* region: `us-west-1, us-west-2, sa-east-1, eu-central-1, eu-west-1, ap-northeast-1, ap-southeast-1, ap-southeast-2`. In this case, the actual API endpoint of the stack is in `us-east-1`. Only the preceding regions are supported as classic regions in the `us-east-1` API endpoint. Because it is a best practice to choose the regional endpoint that is closest to where you manage AWS, we recommend that you use regional endpoints for new stacks. The AWS CLI common `--region` parameter always specifies a regional API endpoint; it cannot be used to specify a classic AWS OpsWorks Stacks region.
 
 
 ## `VpcId = ::String`
@@ -947,7 +942,7 @@ If you specify a nondefault VPC ID, note the following:
 
 *   You must specify a value for `DefaultSubnetId`.
 
-For more information on how to use AWS OpsWorks Stacks with a VPC, see [Running a Stack in a VPC](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html). For more information on default VPC and EC2-Classic, see [Supported Platforms](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
+For more information about how to use AWS OpsWorks Stacks with a VPC, see [Running a Stack in a VPC](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html). For more information about default VPC and EC2-Classic, see [Supported Platforms](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
 
 
 ## `Attributes = ::Dict{String,String}`
@@ -965,7 +960,7 @@ The Amazon Resource Name (ARN) of an IAM profile that is the default profile for
 ## `DefaultOs = ::String`
 The stack's default operating system, which is installed on every instance unless you specify a different operating system when you create the instance. You can specify one of the following.
 
-*   A supported Linux operating system: An Amazon Linux version, such as `Amazon Linux 2017.03`, `Amazon Linux 2016.09`, `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
+*   A supported Linux operating system: An Amazon Linux version, such as `Amazon Linux 2017.09`, `Amazon Linux 2017.03`, `Amazon Linux 2016.09`, `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
 
 *   A supported Ubuntu operating system, such as `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
 
@@ -977,7 +972,7 @@ The stack's default operating system, which is installed on every instance unles
 
 *   A custom AMI: `Custom`. You specify the custom AMI you want to use when you create instances. For more information, see [Using Custom AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 
-The default option is the current Amazon Linux version. For more information on the supported operating systems, see [AWS OpsWorks Stacks Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+The default option is the current Amazon Linux version. For more information about supported operating systems, see [AWS OpsWorks Stacks Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 
 
 ## `HostnameTheme = ::String`
@@ -1021,11 +1016,11 @@ A string that contains user-defined, custom JSON. It can be used to override the
 
 `"{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...}"`
 
-For more information on custom JSON, see [Use Custom JSON to Modify the Stack Configuration Attributes](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
+For more information about custom JSON, see [Use Custom JSON to Modify the Stack Configuration Attributes](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
 
 
 ## `ConfigurationManager = [ ... ]`
-The configuration manager. When you create a stack we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 11.4.
+The configuration manager. When you create a stack we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 12.
 ```
  ConfigurationManager = [
         "Name" =>  ::String,
@@ -1104,7 +1099,6 @@ The default setting is the most recent release of the agent. To specify an agent
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CreateStack)
 """
-
 @inline create_stack(aws::AWSConfig=default_aws_config(); args...) = create_stack(aws, args)
 
 @inline create_stack(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "CreateStack", args)
@@ -1125,7 +1119,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 Creates a new user profile.
 
-**Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -1157,7 +1151,6 @@ Whether users can specify their own SSH public key through the My Settings page.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CreateUserProfile)
 """
-
 @inline create_user_profile(aws::AWSConfig=default_aws_config(); args...) = create_user_profile(aws, args)
 
 @inline create_user_profile(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "CreateUserProfile", args)
@@ -1194,7 +1187,6 @@ The app ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeleteApp)
 """
-
 @inline delete_app(aws::AWSConfig=default_aws_config(); args...) = delete_app(aws, args)
 
 @inline delete_app(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DeleteApp", args)
@@ -1241,7 +1233,6 @@ Whether to delete the instance's Amazon EBS volumes.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeleteInstance)
 """
-
 @inline delete_instance(aws::AWSConfig=default_aws_config(); args...) = delete_instance(aws, args)
 
 @inline delete_instance(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DeleteInstance", args)
@@ -1278,7 +1269,6 @@ The layer ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeleteLayer)
 """
-
 @inline delete_layer(aws::AWSConfig=default_aws_config(); args...) = delete_layer(aws, args)
 
 @inline delete_layer(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DeleteLayer", args)
@@ -1315,7 +1305,6 @@ The stack ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeleteStack)
 """
-
 @inline delete_stack(aws::AWSConfig=default_aws_config(); args...) = delete_stack(aws, args)
 
 @inline delete_stack(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DeleteStack", args)
@@ -1336,7 +1325,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 Deletes a user profile.
 
-**Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -1352,7 +1341,6 @@ The user's IAM ARN. This can also be a federated user's ARN.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeleteUserProfile)
 """
-
 @inline delete_user_profile(aws::AWSConfig=default_aws_config(); args...) = delete_user_profile(aws, args)
 
 @inline delete_user_profile(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DeleteUserProfile", args)
@@ -1378,7 +1366,7 @@ Deregisters a specified Amazon ECS cluster from a stack. For more information, s
 # Arguments
 
 ## `EcsClusterArn = ::String` -- *Required*
-The cluster's ARN.
+The cluster's Amazon Resource Number (ARN).
 
 
 
@@ -1389,7 +1377,6 @@ The cluster's ARN.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeregisterEcsCluster)
 """
-
 @inline deregister_ecs_cluster(aws::AWSConfig=default_aws_config(); args...) = deregister_ecs_cluster(aws, args)
 
 @inline deregister_ecs_cluster(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DeregisterEcsCluster", args)
@@ -1426,7 +1413,6 @@ The Elastic IP address.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeregisterElasticIp)
 """
-
 @inline deregister_elastic_ip(aws::AWSConfig=default_aws_config(); args...) = deregister_elastic_ip(aws, args)
 
 @inline deregister_elastic_ip(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DeregisterElasticIp", args)
@@ -1445,7 +1431,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 # DeregisterInstance Operation
 
-Deregister a registered Amazon EC2 or on-premises instance. This action removes the instance from the stack and returns it to your control. This action can not be used with instances that were created with AWS OpsWorks Stacks.
+Deregister a registered Amazon EC2 or on-premises instance. This action removes the instance from the stack and returns it to your control. This action cannot be used with instances that were created with AWS OpsWorks Stacks.
 
 **Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
@@ -1463,7 +1449,6 @@ The instance ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeregisterInstance)
 """
-
 @inline deregister_instance(aws::AWSConfig=default_aws_config(); args...) = deregister_instance(aws, args)
 
 @inline deregister_instance(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DeregisterInstance", args)
@@ -1500,7 +1485,6 @@ The Amazon RDS instance's ARN.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeregisterRdsDbInstance)
 """
-
 @inline deregister_rds_db_instance(aws::AWSConfig=default_aws_config(); args...) = deregister_rds_db_instance(aws, args)
 
 @inline deregister_rds_db_instance(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DeregisterRdsDbInstance", args)
@@ -1537,7 +1521,6 @@ The AWS OpsWorks Stacks volume ID, which is the GUID that AWS OpsWorks Stacks as
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeregisterVolume)
 """
-
 @inline deregister_volume(aws::AWSConfig=default_aws_config(); args...) = deregister_volume(aws, args)
 
 @inline deregister_volume(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DeregisterVolume", args)
@@ -1585,7 +1568,6 @@ The configuration manager.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeAgentVersions)
 """
-
 @inline describe_agent_versions(aws::AWSConfig=default_aws_config(); args...) = describe_agent_versions(aws, args)
 
 @inline describe_agent_versions(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeAgentVersions", args)
@@ -1609,7 +1591,7 @@ Requests a description of a specified set of apps.
 **Note**
 > This call accepts only one resource-identifying parameter.
 
-**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -1633,7 +1615,6 @@ An array of app IDs for the apps to be described. If you use this parameter, `De
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeApps)
 """
-
 @inline describe_apps(aws::AWSConfig=default_aws_config(); args...) = describe_apps(aws, args)
 
 @inline describe_apps(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeApps", args)
@@ -1657,7 +1638,7 @@ Describes the results of specified commands.
 **Note**
 > This call accepts only one resource-identifying parameter.
 
-**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -1685,7 +1666,6 @@ An array of command IDs. If you include this parameter, `DescribeCommands` retur
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeCommands)
 """
-
 @inline describe_commands(aws::AWSConfig=default_aws_config(); args...) = describe_commands(aws, args)
 
 @inline describe_commands(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeCommands", args)
@@ -1709,20 +1689,20 @@ Requests a description of a specified set of deployments.
 **Note**
 > This call accepts only one resource-identifying parameter.
 
-**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
 ## `StackId = ::String`
-The stack ID. If you include this parameter, `DescribeDeployments` returns a description of the commands associated with the specified stack.
+The stack ID. If you include this parameter, the command returns a description of the commands associated with the specified stack.
 
 
 ## `AppId = ::String`
-The app ID. If you include this parameter, `DescribeDeployments` returns a description of the commands associated with the specified app.
+The app ID. If you include this parameter, the command returns a description of the commands associated with the specified app.
 
 
 ## `DeploymentIds = [::String, ...]`
-An array of deployment IDs to be described. If you include this parameter, `DescribeDeployments` returns a description of the specified deployments. Otherwise, it returns a description of every deployment.
+An array of deployment IDs to be described. If you include this parameter, the command returns a description of the specified deployments. Otherwise, it returns a description of every deployment.
 
 
 
@@ -1737,7 +1717,6 @@ An array of deployment IDs to be described. If you include this parameter, `Desc
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeDeployments)
 """
-
 @inline describe_deployments(aws::AWSConfig=default_aws_config(); args...) = describe_deployments(aws, args)
 
 @inline describe_deployments(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeDeployments", args)
@@ -1758,7 +1737,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 Describes Amazon ECS clusters that are registered with a stack. If you specify only a stack ID, you can use the `MaxResults` and `NextToken` parameters to paginate the response. However, AWS OpsWorks Stacks currently supports only one cluster per layer, so the result set has a maximum of one element.
 
-**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack or an attached policy that explicitly grants permission. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack or an attached policy that explicitly grants permission. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 This call accepts only one resource-identifying parameter.
 
@@ -1792,7 +1771,6 @@ To receive a paginated response, use this parameter to specify the maximum numbe
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeEcsClusters)
 """
-
 @inline describe_ecs_clusters(aws::AWSConfig=default_aws_config(); args...) = describe_ecs_clusters(aws, args)
 
 @inline describe_ecs_clusters(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeEcsClusters", args)
@@ -1816,7 +1794,7 @@ Describes [Elastic IP addresses](http://docs.aws.amazon.com/AWSEC2/latest/UserGu
 **Note**
 > This call accepts only one resource-identifying parameter.
 
-**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -1844,7 +1822,6 @@ An array of Elastic IP addresses to be described. If you include this parameter,
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeElasticIps)
 """
-
 @inline describe_elastic_ips(aws::AWSConfig=default_aws_config(); args...) = describe_elastic_ips(aws, args)
 
 @inline describe_elastic_ips(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeElasticIps", args)
@@ -1868,7 +1845,7 @@ Describes a stack's Elastic Load Balancing instances.
 **Note**
 > This call accepts only one resource-identifying parameter.
 
-**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -1892,7 +1869,6 @@ A list of layer IDs. The action describes the Elastic Load Balancing instances f
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeElasticLoadBalancers)
 """
-
 @inline describe_elastic_load_balancers(aws::AWSConfig=default_aws_config(); args...) = describe_elastic_load_balancers(aws, args)
 
 @inline describe_elastic_load_balancers(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeElasticLoadBalancers", args)
@@ -1916,7 +1892,7 @@ Requests a description of a set of instances.
 **Note**
 > This call accepts only one resource-identifying parameter.
 
-**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -1944,7 +1920,6 @@ An array of instance IDs to be described. If you use this parameter, `DescribeIn
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeInstances)
 """
-
 @inline describe_instances(aws::AWSConfig=default_aws_config(); args...) = describe_instances(aws, args)
 
 @inline describe_instances(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeInstances", args)
@@ -1968,7 +1943,7 @@ Requests a description of one or more layers in a specified stack.
 **Note**
 > This call accepts only one resource-identifying parameter.
 
-**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -1992,7 +1967,6 @@ An array of layer IDs that specify the layers to be described. If you omit this 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeLayers)
 """
-
 @inline describe_layers(aws::AWSConfig=default_aws_config(); args...) = describe_layers(aws, args)
 
 @inline describe_layers(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeLayers", args)
@@ -2016,7 +1990,7 @@ Describes load-based auto scaling configurations for specified layers.
 **Note**
 > You must specify at least one of the parameters.
 
-**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -2036,7 +2010,6 @@ An array of layer IDs.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeLoadBasedAutoScaling)
 """
-
 @inline describe_load_based_auto_scaling(aws::AWSConfig=default_aws_config(); args...) = describe_load_based_auto_scaling(aws, args)
 
 @inline describe_load_based_auto_scaling(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeLoadBasedAutoScaling", args)
@@ -2057,7 +2030,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 Describes a user's SSH information.
 
-**Required Permissions**: To use this action, an IAM user must have self-management enabled or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have self-management enabled or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Returns
 
@@ -2065,12 +2038,37 @@ Describes a user's SSH information.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeMyUserProfile)
 """
-
 @inline describe_my_user_profile(aws::AWSConfig=default_aws_config(); args...) = describe_my_user_profile(aws, args)
 
 @inline describe_my_user_profile(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeMyUserProfile", args)
 
 @inline describe_my_user_profile(args) = describe_my_user_profile(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.OpsWorks.describe_operating_systems
+    describe_operating_systems([::AWSConfig])
+    
+
+    using AWSCore.Services.opsworks
+    opsworks([::AWSConfig], "DescribeOperatingSystems",)
+    
+
+# DescribeOperatingSystems Operation
+
+Describes the operating systems that are supported by AWS OpsWorks Stacks.
+
+# Returns
+
+`DescribeOperatingSystemsResponse`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeOperatingSystems)
+"""
+@inline describe_operating_systems(aws::AWSConfig=default_aws_config(); args...) = describe_operating_systems(aws, args)
+
+@inline describe_operating_systems(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeOperatingSystems", args)
+
+@inline describe_operating_systems(args) = describe_operating_systems(default_aws_config(), args)
 
 
 """
@@ -2110,7 +2108,6 @@ The stack ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribePermissions)
 """
-
 @inline describe_permissions(aws::AWSConfig=default_aws_config(); args...) = describe_permissions(aws, args)
 
 @inline describe_permissions(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribePermissions", args)
@@ -2134,7 +2131,7 @@ Describe an instance's RAID arrays.
 **Note**
 > This call accepts only one resource-identifying parameter.
 
-**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -2162,7 +2159,6 @@ An array of RAID array IDs. If you use this parameter, `DescribeRaidArrays` retu
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeRaidArrays)
 """
-
 @inline describe_raid_arrays(aws::AWSConfig=default_aws_config(); args...) = describe_raid_arrays(aws, args)
 
 @inline describe_raid_arrays(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeRaidArrays", args)
@@ -2183,14 +2179,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 Describes Amazon RDS instances.
 
-**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 This call accepts only one resource-identifying parameter.
 
 # Arguments
 
 ## `StackId = ::String` -- *Required*
-The stack ID that the instances are registered with. The operation returns descriptions of all registered Amazon RDS instances.
+The ID of the stack with which the instances are registered. The operation returns descriptions of all registered Amazon RDS instances.
 
 
 ## `RdsDbInstanceArns = [::String, ...]`
@@ -2209,7 +2205,6 @@ An array containing the ARNs of the instances to be described.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeRdsDbInstances)
 """
-
 @inline describe_rds_db_instances(aws::AWSConfig=default_aws_config(); args...) = describe_rds_db_instances(aws, args)
 
 @inline describe_rds_db_instances(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeRdsDbInstances", args)
@@ -2230,7 +2225,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 Describes AWS OpsWorks Stacks service errors.
 
-**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 This call accepts only one resource-identifying parameter.
 
@@ -2260,7 +2255,6 @@ An array of service error IDs. If you use this parameter, `DescribeServiceErrors
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeServiceErrors)
 """
-
 @inline describe_service_errors(aws::AWSConfig=default_aws_config(); args...) = describe_service_errors(aws, args)
 
 @inline describe_service_errors(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeServiceErrors", args)
@@ -2281,12 +2275,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 Requests a description of a stack's provisioning parameters.
 
-**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
 ## `StackId = ::String` -- *Required*
-The stack ID
+The stack ID.
 
 
 
@@ -2301,7 +2295,6 @@ The stack ID
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeStackProvisioningParameters)
 """
-
 @inline describe_stack_provisioning_parameters(aws::AWSConfig=default_aws_config(); args...) = describe_stack_provisioning_parameters(aws, args)
 
 @inline describe_stack_provisioning_parameters(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeStackProvisioningParameters", args)
@@ -2322,7 +2315,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 Describes the number of layers and apps in a specified stack, and the number of instances in each state, such as `running_setup` or `online`.
 
-**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -2342,7 +2335,6 @@ The stack ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeStackSummary)
 """
-
 @inline describe_stack_summary(aws::AWSConfig=default_aws_config(); args...) = describe_stack_summary(aws, args)
 
 @inline describe_stack_summary(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeStackSummary", args)
@@ -2363,7 +2355,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 Requests a description of one or more stacks.
 
-**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -2383,7 +2375,6 @@ An array of stack IDs that specify the stacks to be described. If you omit this 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeStacks)
 """
-
 @inline describe_stacks(aws::AWSConfig=default_aws_config(); args...) = describe_stacks(aws, args)
 
 @inline describe_stacks(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeStacks", args)
@@ -2407,7 +2398,7 @@ Describes time-based auto scaling configurations for specified instances.
 **Note**
 > You must specify at least one of the parameters.
 
-**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -2427,7 +2418,6 @@ An array of instance IDs.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeTimeBasedAutoScaling)
 """
-
 @inline describe_time_based_auto_scaling(aws::AWSConfig=default_aws_config(); args...) = describe_time_based_auto_scaling(aws, args)
 
 @inline describe_time_based_auto_scaling(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeTimeBasedAutoScaling", args)
@@ -2448,7 +2438,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 Describe specified users.
 
-**Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -2468,7 +2458,6 @@ An array of IAM or federated user ARNs that identify the users to be described.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeUserProfiles)
 """
-
 @inline describe_user_profiles(aws::AWSConfig=default_aws_config(); args...) = describe_user_profiles(aws, args)
 
 @inline describe_user_profiles(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeUserProfiles", args)
@@ -2492,7 +2481,7 @@ Describes an instance's Amazon EBS volumes.
 **Note**
 > This call accepts only one resource-identifying parameter.
 
-**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Show, Deploy, or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -2524,7 +2513,6 @@ Am array of volume IDs. If you use this parameter, `DescribeVolumes` returns des
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribeVolumes)
 """
-
 @inline describe_volumes(aws::AWSConfig=default_aws_config(); args...) = describe_volumes(aws, args)
 
 @inline describe_volumes(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DescribeVolumes", args)
@@ -2565,7 +2553,6 @@ The ID of the layer that the Elastic Load Balancing instance is attached to.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DetachElasticLoadBalancer)
 """
-
 @inline detach_elastic_load_balancer(aws::AWSConfig=default_aws_config(); args...) = detach_elastic_load_balancer(aws, args)
 
 @inline detach_elastic_load_balancer(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DetachElasticLoadBalancer", args)
@@ -2602,7 +2589,6 @@ The Elastic IP address.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DisassociateElasticIp)
 """
-
 @inline disassociate_elastic_ip(aws::AWSConfig=default_aws_config(); args...) = disassociate_elastic_ip(aws, args)
 
 @inline disassociate_elastic_ip(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "DisassociateElasticIp", args)
@@ -2643,7 +2629,6 @@ The layer ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/GetHostnameSuggestion)
 """
-
 @inline get_hostname_suggestion(aws::AWSConfig=default_aws_config(); args...) = get_hostname_suggestion(aws, args)
 
 @inline get_hostname_suggestion(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "GetHostnameSuggestion", args)
@@ -2690,7 +2675,6 @@ The length of time (in minutes) that the grant is valid. When the grant expires 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/GrantAccess)
 """
-
 @inline grant_access(aws::AWSConfig=default_aws_config(); args...) = grant_access(aws, args)
 
 @inline grant_access(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "GrantAccess", args)
@@ -2737,7 +2721,6 @@ Do not use. A validation exception occurs if you add a `NextToken` parameter to 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/ListTags)
 """
-
 @inline list_tags(aws::AWSConfig=default_aws_config(); args...) = list_tags(aws, args)
 
 @inline list_tags(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "ListTags", args)
@@ -2774,7 +2757,6 @@ The instance ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/RebootInstance)
 """
-
 @inline reboot_instance(aws::AWSConfig=default_aws_config(); args...) = reboot_instance(aws, args)
 
 @inline reboot_instance(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "RebootInstance", args)
@@ -2819,7 +2801,6 @@ The stack ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/RegisterEcsCluster)
 """
-
 @inline register_ecs_cluster(aws::AWSConfig=default_aws_config(); args...) = register_ecs_cluster(aws, args)
 
 @inline register_ecs_cluster(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "RegisterEcsCluster", args)
@@ -2864,7 +2845,6 @@ The stack ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/RegisterElasticIp)
 """
-
 @inline register_elastic_ip(aws::AWSConfig=default_aws_config(); args...) = register_elastic_ip(aws, args)
 
 @inline register_elastic_ip(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "RegisterElasticIp", args)
@@ -2939,7 +2919,6 @@ An InstanceIdentity object that contains the instance's identity.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/RegisterInstance)
 """
-
 @inline register_instance(aws::AWSConfig=default_aws_config(); args...) = register_instance(aws, args)
 
 @inline register_instance(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "RegisterInstance", args)
@@ -2988,7 +2967,6 @@ The database password.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/RegisterRdsDbInstance)
 """
-
 @inline register_rds_db_instance(aws::AWSConfig=default_aws_config(); args...) = register_rds_db_instance(aws, args)
 
 @inline register_rds_db_instance(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "RegisterRdsDbInstance", args)
@@ -3033,7 +3011,6 @@ The stack ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/RegisterVolume)
 """
-
 @inline register_volume(aws::AWSConfig=default_aws_config(); args...) = register_volume(aws, args)
 
 @inline register_volume(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "RegisterVolume", args)
@@ -3105,7 +3082,6 @@ An `AutoScalingThresholds` object with the downscaling threshold configuration. 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/SetLoadBasedAutoScaling)
 """
-
 @inline set_load_based_auto_scaling(aws::AWSConfig=default_aws_config(); args...) = set_load_based_auto_scaling(aws, args)
 
 @inline set_load_based_auto_scaling(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "SetLoadBasedAutoScaling", args)
@@ -3159,7 +3135,7 @@ The user's permission level, which must be set to one of the following strings. 
 
 *   `iam_only`
 
-For more information on the permissions associated with these levels, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+For more information about the permissions associated with these levels, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 
 
@@ -3170,7 +3146,6 @@ For more information on the permissions associated with these levels, see [Manag
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/SetPermission)
 """
-
 @inline set_permission(aws::AWSConfig=default_aws_config(); args...) = set_permission(aws, args)
 
 @inline set_permission(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "SetPermission", args)
@@ -3221,7 +3196,6 @@ An `AutoScalingSchedule` with the instance schedule.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/SetTimeBasedAutoScaling)
 """
-
 @inline set_time_based_auto_scaling(aws::AWSConfig=default_aws_config(); args...) = set_time_based_auto_scaling(aws, args)
 
 @inline set_time_based_auto_scaling(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "SetTimeBasedAutoScaling", args)
@@ -3258,7 +3232,6 @@ The instance ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/StartInstance)
 """
-
 @inline start_instance(aws::AWSConfig=default_aws_config(); args...) = start_instance(aws, args)
 
 @inline start_instance(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "StartInstance", args)
@@ -3295,7 +3268,6 @@ The stack ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/StartStack)
 """
-
 @inline start_stack(aws::AWSConfig=default_aws_config(); args...) = start_stack(aws, args)
 
 @inline start_stack(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "StartStack", args)
@@ -3306,11 +3278,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 """
     using AWSSDK.OpsWorks.stop_instance
     stop_instance([::AWSConfig], arguments::Dict)
-    stop_instance([::AWSConfig]; InstanceId=)
+    stop_instance([::AWSConfig]; InstanceId=, <keyword arguments>)
 
     using AWSCore.Services.opsworks
     opsworks([::AWSConfig], "StopInstance", arguments::Dict)
-    opsworks([::AWSConfig], "StopInstance", InstanceId=)
+    opsworks([::AWSConfig], "StopInstance", InstanceId=, <keyword arguments>)
 
 # StopInstance Operation
 
@@ -3324,6 +3296,10 @@ Stops a specified instance. When you stop a standard instance, the data disappea
 The instance ID.
 
 
+## `Force = ::Bool`
+Specifies whether to force an instance to stop.
+
+
 
 
 # Exceptions
@@ -3332,7 +3308,6 @@ The instance ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/StopInstance)
 """
-
 @inline stop_instance(aws::AWSConfig=default_aws_config(); args...) = stop_instance(aws, args)
 
 @inline stop_instance(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "StopInstance", args)
@@ -3369,7 +3344,6 @@ The stack ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/StopStack)
 """
-
 @inline stop_stack(aws::AWSConfig=default_aws_config(); args...) = stop_stack(aws, args)
 
 @inline stop_stack(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "StopStack", args)
@@ -3418,7 +3392,6 @@ A map that contains tag keys and tag values that are attached to a stack or laye
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/TagResource)
 """
-
 @inline tag_resource(aws::AWSConfig=default_aws_config(); args...) = tag_resource(aws, args)
 
 @inline tag_resource(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "TagResource", args)
@@ -3437,9 +3410,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 # UnassignInstance Operation
 
-Unassigns a registered instance from all of it's layers. The instance remains in the stack as an unassigned instance and can be assigned to another layer, as needed. You cannot use this action with instances that were created with AWS OpsWorks Stacks.
+Unassigns a registered instance from all layers that are using the instance. The instance remains in the stack as an unassigned instance, and can be assigned to another layer as needed. You cannot use this action with instances that were created with AWS OpsWorks Stacks.
 
-**Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have a Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -3455,7 +3428,6 @@ The instance ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UnassignInstance)
 """
-
 @inline unassign_instance(aws::AWSConfig=default_aws_config(); args...) = unassign_instance(aws, args)
 
 @inline unassign_instance(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "UnassignInstance", args)
@@ -3492,7 +3464,6 @@ The volume ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UnassignVolume)
 """
-
 @inline unassign_volume(aws::AWSConfig=default_aws_config(); args...) = unassign_volume(aws, args)
 
 @inline unassign_volume(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "UnassignVolume", args)
@@ -3531,7 +3502,6 @@ A list of the keys of tags to be removed from a stack or layer.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UntagResource)
 """
-
 @inline untag_resource(aws::AWSConfig=default_aws_config(); args...) = untag_resource(aws, args)
 
 @inline untag_resource(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "UntagResource", args)
@@ -3640,7 +3610,6 @@ There is no specific limit on the number of environment variables. However, the 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateApp)
 """
-
 @inline update_app(aws::AWSConfig=default_aws_config(); args...) = update_app(aws, args)
 
 @inline update_app(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "UpdateApp", args)
@@ -3666,7 +3635,7 @@ Updates a registered Elastic IP address's name. For more information, see [Resou
 # Arguments
 
 ## `ElasticIp = ::String` -- *Required*
-The address.
+The IP address for which you want to update the name.
 
 
 ## `Name = ::String`
@@ -3681,7 +3650,6 @@ The new name.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateElasticIp)
 """
-
 @inline update_elastic_ip(aws::AWSConfig=default_aws_config(); args...) = update_elastic_ip(aws, args)
 
 @inline update_elastic_ip(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "UpdateElasticIp", args)
@@ -3729,7 +3697,7 @@ The instance host name.
 ## `Os = ::String`
 The instance's operating system, which must be set to one of the following. You cannot update an instance that is using a custom AMI.
 
-*   A supported Linux operating system: An Amazon Linux version, such as `Amazon Linux 2017.03`, `Amazon Linux 2016.09`, `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
+*   A supported Linux operating system: An Amazon Linux version, such as `Amazon Linux 2017.09`, `Amazon Linux 2017.03`, `Amazon Linux 2016.09`, `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
 
 *   A supported Ubuntu operating system, such as `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
 
@@ -3739,9 +3707,9 @@ The instance's operating system, which must be set to one of the following. You 
 
 *   A supported Windows operating system, such as `Microsoft Windows Server 2012 R2 Base`, `Microsoft Windows Server 2012 R2 with SQL Server Express`, `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or `Microsoft Windows Server 2012 R2 with SQL Server Web`.
 
-For more information on the supported operating systems, see [AWS OpsWorks Stacks Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+For more information about supported operating systems, see [AWS OpsWorks Stacks Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 
-The default option is the current Amazon Linux version. If you set this parameter to `Custom`, you must use the AmiId parameter to specify the custom AMI that you want to use. For more information on the supported operating systems, see [Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html). For more information on how to use custom AMIs with OpsWorks, see [Using Custom AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+The default option is the current Amazon Linux version. If you set this parameter to `Custom`, you must use the AmiId parameter to specify the custom AMI that you want to use. For more information about supported operating systems, see [Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html). For more information about how to use custom AMIs with OpsWorks, see [Using Custom AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 
 **Note**
 > You can specify a different Linux operating system for the updated stack, but you cannot change from Linux to Windows or Windows to Linux.
@@ -3790,7 +3758,6 @@ AgentVersion cannot be set to Chef 12.2.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateInstance)
 """
-
 @inline update_instance(aws::AWSConfig=default_aws_config(); args...) = update_instance(aws, args)
 
 @inline update_instance(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "UpdateInstance", args)
@@ -3879,7 +3846,8 @@ A `VolumeConfigurations` object that describes the layer's Amazon EBS volumes.
         "NumberOfDisks" => <required> ::Int,
         "Size" => <required> ::Int,
         "VolumeType" =>  ::String,
-        "Iops" =>  ::Int
+        "Iops" =>  ::Int,
+        "Encrypted" =>  ::Bool
     ], ...]
 ```
 
@@ -3935,7 +3903,6 @@ Whether to use Amazon EBS-optimized instances.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateLayer)
 """
-
 @inline update_layer(aws::AWSConfig=default_aws_config(); args...) = update_layer(aws, args)
 
 @inline update_layer(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "UpdateLayer", args)
@@ -3956,7 +3923,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 Updates a user's SSH public key.
 
-**Required Permissions**: To use this action, an IAM user must have self-management enabled or an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have self-management enabled or an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -3972,7 +3939,6 @@ The user's SSH public key.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateMyUserProfile)
 """
-
 @inline update_my_user_profile(aws::AWSConfig=default_aws_config(); args...) = update_my_user_profile(aws, args)
 
 @inline update_my_user_profile(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "UpdateMyUserProfile", args)
@@ -4017,7 +3983,6 @@ The database password.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateRdsDbInstance)
 """
-
 @inline update_rds_db_instance(aws::AWSConfig=default_aws_config(); args...) = update_rds_db_instance(aws, args)
 
 @inline update_rds_db_instance(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "UpdateRdsDbInstance", args)
@@ -4065,7 +4030,7 @@ The ARN of an IAM profile that is the default profile for all of the stack's EC2
 ## `DefaultOs = ::String`
 The stack's operating system, which must be set to one of the following:
 
-*   A supported Linux operating system: An Amazon Linux version, such as `Amazon Linux 2017.03`, `Amazon Linux 2016.09`, `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
+*   A supported Linux operating system: An Amazon Linux version, such as `Amazon Linux 2017.09`, `Amazon Linux 2017.03`, `Amazon Linux 2016.09`, `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
 
 *   A supported Ubuntu operating system, such as `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
 
@@ -4075,9 +4040,9 @@ The stack's operating system, which must be set to one of the following:
 
 *   A supported Windows operating system, such as `Microsoft Windows Server 2012 R2 Base`, `Microsoft Windows Server 2012 R2 with SQL Server Express`, `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or `Microsoft Windows Server 2012 R2 with SQL Server Web`.
 
-*   A custom AMI: `Custom`. You specify the custom AMI you want to use when you create instances. For more information on how to use custom AMIs with OpsWorks, see [Using Custom AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+*   A custom AMI: `Custom`. You specify the custom AMI you want to use when you create instances. For more information about how to use custom AMIs with OpsWorks, see [Using Custom AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 
-The default option is the stack's current operating system. For more information on the supported operating systems, see [AWS OpsWorks Stacks Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+The default option is the stack's current operating system. For more information about supported operating systems, see [AWS OpsWorks Stacks Operating Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 
 
 ## `HostnameTheme = ::String`
@@ -4121,11 +4086,11 @@ A string that contains user-defined, custom JSON. It can be used to override the
 
 `"{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...}"`
 
-For more information on custom JSON, see [Use Custom JSON to Modify the Stack Configuration Attributes](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
+For more information about custom JSON, see [Use Custom JSON to Modify the Stack Configuration Attributes](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
 
 
 ## `ConfigurationManager = [ ... ]`
-The configuration manager. When you update a stack, we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 11.4.
+The configuration manager. When you update a stack, we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 12.
 ```
  ConfigurationManager = [
         "Name" =>  ::String,
@@ -4200,7 +4165,6 @@ The default setting is `LATEST`. To specify an agent version, you must use the c
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateStack)
 """
-
 @inline update_stack(aws::AWSConfig=default_aws_config(); args...) = update_stack(aws, args)
 
 @inline update_stack(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "UpdateStack", args)
@@ -4221,7 +4185,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 Updates a specified user profile.
 
-**Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information on user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+**Required Permissions**: To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information about user permissions, see [Managing User Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 
 # Arguments
 
@@ -4249,7 +4213,6 @@ Whether users can specify their own SSH public key through the My Settings page.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateUserProfile)
 """
-
 @inline update_user_profile(aws::AWSConfig=default_aws_config(); args...) = update_user_profile(aws, args)
 
 @inline update_user_profile(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "UpdateUserProfile", args)
@@ -4294,7 +4257,6 @@ The new mount point.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/UpdateVolume)
 """
-
 @inline update_volume(aws::AWSConfig=default_aws_config(); args...) = update_volume(aws, args)
 
 @inline update_volume(aws::AWSConfig, args) = AWSCore.Services.opsworks(aws, "UpdateVolume", args)

@@ -59,7 +59,6 @@ Whether the team member is allowed to use an SSH public/private key pair to remo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/AssociateTeamMember)
 """
-
 @inline associate_team_member(aws::AWSConfig=default_aws_config(); args...) = associate_team_member(aws, args)
 
 @inline associate_team_member(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "AssociateTeamMember", args)
@@ -110,7 +109,6 @@ Reserved for future use.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/CreateProject)
 """
-
 @inline create_project(aws::AWSConfig=default_aws_config(); args...) = create_project(aws, args)
 
 @inline create_project(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "CreateProject", args)
@@ -161,7 +159,6 @@ The SSH public key associated with the user in AWS CodeStar. If a project owner 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/CreateUserProfile)
 """
-
 @inline create_user_profile(aws::AWSConfig=default_aws_config(); args...) = create_user_profile(aws, args)
 
 @inline create_user_profile(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "CreateUserProfile", args)
@@ -208,7 +205,6 @@ Whether to send a delete request for the primary stack in AWS CloudFormation ori
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/DeleteProject)
 """
-
 @inline delete_project(aws::AWSConfig=default_aws_config(); args...) = delete_project(aws, args)
 
 @inline delete_project(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "DeleteProject", args)
@@ -247,7 +243,6 @@ The Amazon Resource Name (ARN) of the user to delete from AWS CodeStar.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/DeleteUserProfile)
 """
-
 @inline delete_user_profile(aws::AWSConfig=default_aws_config(); args...) = delete_user_profile(aws, args)
 
 @inline delete_user_profile(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "DeleteUserProfile", args)
@@ -286,7 +281,6 @@ The ID of the project.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/DescribeProject)
 """
-
 @inline describe_project(aws::AWSConfig=default_aws_config(); args...) = describe_project(aws, args)
 
 @inline describe_project(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "DescribeProject", args)
@@ -325,7 +319,6 @@ The Amazon Resource Name (ARN) of the user.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/DescribeUserProfile)
 """
-
 @inline describe_user_profile(aws::AWSConfig=default_aws_config(); args...) = describe_user_profile(aws, args)
 
 @inline describe_user_profile(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "DescribeUserProfile", args)
@@ -368,7 +361,6 @@ The Amazon Resource Name (ARN) of the IAM user or group whom you want to remove 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/DisassociateTeamMember)
 """
-
 @inline disassociate_team_member(aws::AWSConfig=default_aws_config(); args...) = disassociate_team_member(aws, args)
 
 @inline disassociate_team_member(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "DisassociateTeamMember", args)
@@ -411,7 +403,6 @@ The maximum amount of data that can be contained in a single set of results.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/ListProjects)
 """
-
 @inline list_projects(aws::AWSConfig=default_aws_config(); args...) = list_projects(aws, args)
 
 @inline list_projects(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "ListProjects", args)
@@ -458,7 +449,6 @@ The maximum amount of data that can be contained in a single set of results.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/ListResources)
 """
-
 @inline list_resources(aws::AWSConfig=default_aws_config(); args...) = list_resources(aws, args)
 
 @inline list_resources(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "ListResources", args)
@@ -505,7 +495,6 @@ Reserved for future use.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/ListTagsForProject)
 """
-
 @inline list_tags_for_project(aws::AWSConfig=default_aws_config(); args...) = list_tags_for_project(aws, args)
 
 @inline list_tags_for_project(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "ListTagsForProject", args)
@@ -552,7 +541,6 @@ The maximum number of team members you want returned in a response.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/ListTeamMembers)
 """
-
 @inline list_team_members(aws::AWSConfig=default_aws_config(); args...) = list_team_members(aws, args)
 
 @inline list_team_members(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "ListTeamMembers", args)
@@ -595,7 +583,6 @@ The maximum number of results to return in a response.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/ListUserProfiles)
 """
-
 @inline list_user_profiles(aws::AWSConfig=default_aws_config(); args...) = list_user_profiles(aws, args)
 
 @inline list_user_profiles(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "ListUserProfiles", args)
@@ -638,7 +625,6 @@ The tags you want to add to the project.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/TagProject)
 """
-
 @inline tag_project(aws::AWSConfig=default_aws_config(); args...) = tag_project(aws, args)
 
 @inline tag_project(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "TagProject", args)
@@ -681,7 +667,6 @@ The tags to remove from the project.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/UntagProject)
 """
-
 @inline untag_project(aws::AWSConfig=default_aws_config(); args...) = untag_project(aws, args)
 
 @inline untag_project(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "UntagProject", args)
@@ -728,7 +713,6 @@ The description of the project, if any.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/UpdateProject)
 """
-
 @inline update_project(aws::AWSConfig=default_aws_config(); args...) = update_project(aws, args)
 
 @inline update_project(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "UpdateProject", args)
@@ -779,7 +763,6 @@ Whether a team member is allowed to remotely access project resources using the 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/UpdateTeamMember)
 """
-
 @inline update_team_member(aws::AWSConfig=default_aws_config(); args...) = update_team_member(aws, args)
 
 @inline update_team_member(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "UpdateTeamMember", args)
@@ -830,7 +813,6 @@ The SSH public key associated with the user in AWS CodeStar. If a project owner 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19/UpdateUserProfile)
 """
-
 @inline update_user_profile(aws::AWSConfig=default_aws_config(); args...) = update_user_profile(aws, args)
 
 @inline update_user_profile(aws::AWSConfig, args) = AWSCore.Services.codestar(aws, "UpdateUserProfile", args)

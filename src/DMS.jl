@@ -23,7 +23,7 @@ using AWSCore
 
 # AddTagsToResource Operation
 
-Adds metadata tags to a DMS resource, including replication instance, endpoint, security group, and migration task. These tags can also be used with cost allocation reporting to track cost associated with DMS resources, or used in a Condition statement in an IAM policy for DMS.
+Adds metadata tags to an AWS DMS resource, including replication instance, endpoint, security group, and migration task. These tags can also be used with cost allocation reporting to track cost associated with DMS resources, or used in a Condition statement in an IAM policy for DMS.
 
 # Arguments
 
@@ -76,7 +76,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/AddTagsToResource)
 """
-
 @inline add_tags_to_resource(aws::AWSConfig=default_aws_config(); args...) = add_tags_to_resource(aws, args)
 
 @inline add_tags_to_resource(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "AddTagsToResource", args)
@@ -108,7 +107,7 @@ The type of endpoint.
 
 
 ## `EngineName = ::String` -- *Required*
-The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.
+The type of engine for the endpoint. Valid values, depending on the EndPointType, include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.
 
 
 ## `Username = ::String`
@@ -149,7 +148,7 @@ Tags to be added to the endpoint.
 ```
 
 ## `CertificateArn = ::String`
-The Amazon Resource Number (ARN) for the certificate.
+The Amazon Resource Name (ARN) for the certificate.
 
 
 ## `SslMode = "none", "require", "verify-ca" or "verify-full"`
@@ -160,12 +159,20 @@ SSL mode can be one of four values: none, require, verify-ca, verify-full.
 The default value is none.
 
 
+## `ServiceAccessRoleArn = ::String`
+The Amazon Resource Name (ARN) for the service access role you want to use to create the endpoint.
+
+
+## `ExternalTableDefinition = ::String`
+The external table definition.
+
+
 ## `DynamoDbSettings = ["ServiceAccessRoleArn" => <required> ::String]`
 Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the **Using Object Mapping to Migrate Data to DynamoDB** section at [Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html).
 
 
 ## `S3Settings = [ ... ]`
-Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the **Extra Connection Attributes** section at [Using Amazon S3 as a Target for AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html).
+Settings in JSON format for the target Amazon S3 endpoint. For more information about the available settings, see the **Extra Connection Attributes** section at [Using Amazon S3 as a Target for AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html).
 ```
  S3Settings = [
         "ServiceAccessRoleArn" =>  ::String,
@@ -178,8 +185,31 @@ Settings in JSON format for the target S3 endpoint. For more information about t
     ]
 ```
 
+## `DmsTransferSettings = [ ... ]`
+The settings in JSON format for the DMS Transfer type source endpoint.
+
+Attributes include:
+
+*   serviceAccessRoleArn - The IAM role that has permission to access the Amazon S3 bucket.
+
+*   bucketName - The name of the S3 bucket to use.
+
+*   compressionType - An optional parameter to use GZIP to compress the target files. Set to NONE (the default) or do not use to leave the files uncompressed.
+
+Shorthand syntax: ServiceAccessRoleArn=string ,BucketName=string,CompressionType=string
+
+JSON syntax:
+
+{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" }
+```
+ DmsTransferSettings = [
+        "ServiceAccessRoleArn" =>  ::String,
+        "BucketName" =>  ::String
+    ]
+```
+
 ## `MongoDbSettings = [ ... ]`
-Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the **Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service** section at [Using Amazon S3 as a Target for AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html).
+Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the **Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service** section at [Using MongoDB as a Target for AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html).
 ```
  MongoDbSettings = [
         "Username" =>  ::String,
@@ -192,7 +222,8 @@ Settings in JSON format for the source MongoDB endpoint. For more information ab
         "NestingLevel" =>  "none" or "one",
         "ExtractDocId" =>  ::String,
         "DocsToInvestigate" =>  ::String,
-        "AuthSource" =>  ::String
+        "AuthSource" =>  ::String,
+        "KmsKeyId" =>  ::String
     ]
 ```
 
@@ -253,7 +284,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateEndpoint)
 """
-
 @inline create_endpoint(aws::AWSConfig=default_aws_config(); args...) = create_endpoint(aws, args)
 
 @inline create_endpoint(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "CreateEndpoint", args)
@@ -281,7 +311,7 @@ For more information about AWS DMS events, see [Working with Events and Notifica
 # Arguments
 
 ## `SubscriptionName = ::String` -- *Required*
-The name of the DMS event notification subscription.
+The name of the AWS DMS event notification subscription.
 
 Constraints: The name must be less than 255 characters.
 
@@ -329,7 +359,6 @@ A tag to be attached to the event subscription.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateEventSubscription)
 """
-
 @inline create_event_subscription(aws::AWSConfig=default_aws_config(); args...) = create_event_subscription(aws, args)
 
 @inline create_event_subscription(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "CreateEventSubscription", args)
@@ -534,7 +563,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationInstance)
 """
-
 @inline create_replication_instance(aws::AWSConfig=default_aws_config(); args...) = create_replication_instance(aws, args)
 
 @inline create_replication_instance(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "CreateReplicationInstance", args)
@@ -625,7 +653,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationSubnetGroup)
 """
-
 @inline create_replication_subnet_group(aws::AWSConfig=default_aws_config(); args...) = create_replication_subnet_group(aws, args)
 
 @inline create_replication_subnet_group(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "CreateReplicationSubnetGroup", args)
@@ -687,7 +714,29 @@ Settings for the task, such as target metadata settings. For a complete list of 
 
 
 ## `CdcStartTime = timestamp`
-The start time for the Change Data Capture (CDC) operation.
+Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an error.
+
+Timestamp Example: --cdc-start-time “2018-03-08T12:12:12”
+
+
+## `CdcStartPosition = ::String`
+Indicates when you want a change data capture (CDC) operation to start. Use either CdcStartPosition or CdcStartTime to specify when you want a CDC operation to start. Specifying both values results in an error.
+
+The value can be in date, checkpoint, or LSN/SCN format.
+
+Date Example: --cdc-start-position “2018-03-08T12:12:12”
+
+Checkpoint Example: --cdc-start-position "checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93"
+
+LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
+
+
+## `CdcStopPosition = ::String`
+Indicates when you want a change data capture (CDC) operation to stop. The value can be either server time or commit time.
+
+Server time example: --cdc-stop-position “server_time:3018-02-09T12:12:12”
+
+Commit time example: --cdc-stop-position “commit_time: 3018-02-09T12:12:12 “
 
 
 ## `Tags = [[ ... ], ...]`
@@ -753,7 +802,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationTask)
 """
-
 @inline create_replication_task(aws::AWSConfig=default_aws_config(); args...) = create_replication_task(aws, args)
 
 @inline create_replication_task(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "CreateReplicationTask", args)
@@ -812,7 +860,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteCertificate)
 """
-
 @inline delete_certificate(aws::AWSConfig=default_aws_config(); args...) = delete_certificate(aws, args)
 
 @inline delete_certificate(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DeleteCertificate", args)
@@ -883,7 +930,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteEndpoint)
 """
-
 @inline delete_endpoint(aws::AWSConfig=default_aws_config(); args...) = delete_endpoint(aws, args)
 
 @inline delete_endpoint(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DeleteEndpoint", args)
@@ -922,7 +968,6 @@ The name of the DMS event notification subscription to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteEventSubscription)
 """
-
 @inline delete_event_subscription(aws::AWSConfig=default_aws_config(); args...) = delete_event_subscription(aws, args)
 
 @inline delete_event_subscription(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DeleteEventSubscription", args)
@@ -1034,7 +1079,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteReplicationInstance)
 """
-
 @inline delete_replication_instance(aws::AWSConfig=default_aws_config(); args...) = delete_replication_instance(aws, args)
 
 @inline delete_replication_instance(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DeleteReplicationInstance", args)
@@ -1091,7 +1135,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteReplicationSubnetGroup)
 """
-
 @inline delete_replication_subnet_group(aws::AWSConfig=default_aws_config(); args...) = delete_replication_subnet_group(aws, args)
 
 @inline delete_replication_subnet_group(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DeleteReplicationSubnetGroup", args)
@@ -1159,7 +1202,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteReplicationTask)
 """
-
 @inline delete_replication_task(aws::AWSConfig=default_aws_config(); args...) = delete_replication_task(aws, args)
 
 @inline delete_replication_task(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DeleteReplicationTask", args)
@@ -1226,7 +1268,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeAccountAttributes)
 """
-
 @inline describe_account_attributes(aws::AWSConfig=default_aws_config(); args...) = describe_account_attributes(aws, args)
 
 @inline describe_account_attributes(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DescribeAccountAttributes", args)
@@ -1311,7 +1352,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeCertificates)
 """
-
 @inline describe_certificates(aws::AWSConfig=default_aws_config(); args...) = describe_certificates(aws, args)
 
 @inline describe_certificates(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DescribeCertificates", args)
@@ -1406,7 +1446,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeConnections)
 """
-
 @inline describe_connections(aws::AWSConfig=default_aws_config(); args...) = describe_connections(aws, args)
 
 @inline describe_connections(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DescribeConnections", args)
@@ -1491,7 +1530,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeEndpointTypes)
 """
-
 @inline describe_endpoint_types(aws::AWSConfig=default_aws_config(); args...) = describe_endpoint_types(aws, args)
 
 @inline describe_endpoint_types(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DescribeEndpointTypes", args)
@@ -1580,7 +1618,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeEndpoints)
 """
-
 @inline describe_endpoints(aws::AWSConfig=default_aws_config(); args...) = describe_endpoints(aws, args)
 
 @inline describe_endpoints(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DescribeEndpoints", args)
@@ -1626,7 +1663,6 @@ Filters applied to the action.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeEventCategories)
 """
-
 @inline describe_event_categories(aws::AWSConfig=default_aws_config(); args...) = describe_event_categories(aws, args)
 
 @inline describe_event_categories(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DescribeEventCategories", args)
@@ -1688,7 +1724,6 @@ An optional pagination token provided by a previous request. If this parameter i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeEventSubscriptions)
 """
-
 @inline describe_event_subscriptions(aws::AWSConfig=default_aws_config(); args...) = describe_event_subscriptions(aws, args)
 
 @inline describe_event_subscriptions(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DescribeEventSubscriptions", args)
@@ -1766,7 +1801,6 @@ An optional pagination token provided by a previous request. If this parameter i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeEvents)
 """
-
 @inline describe_events(aws::AWSConfig=default_aws_config(); args...) = describe_events(aws, args)
 
 @inline describe_events(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DescribeEvents", args)
@@ -1831,7 +1865,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeOrderableReplicationInstances)
 """
-
 @inline describe_orderable_replication_instances(aws::AWSConfig=default_aws_config(); args...) = describe_orderable_replication_instances(aws, args)
 
 @inline describe_orderable_replication_instances(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DescribeOrderableReplicationInstances", args)
@@ -1890,12 +1923,61 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeRefreshSchemasStatus)
 """
-
 @inline describe_refresh_schemas_status(aws::AWSConfig=default_aws_config(); args...) = describe_refresh_schemas_status(aws, args)
 
 @inline describe_refresh_schemas_status(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DescribeRefreshSchemasStatus", args)
 
 @inline describe_refresh_schemas_status(args) = describe_refresh_schemas_status(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DMS.describe_replication_instance_task_logs
+    describe_replication_instance_task_logs([::AWSConfig], arguments::Dict)
+    describe_replication_instance_task_logs([::AWSConfig]; ReplicationInstanceArn=, <keyword arguments>)
+
+    using AWSCore.Services.dms
+    dms([::AWSConfig], "DescribeReplicationInstanceTaskLogs", arguments::Dict)
+    dms([::AWSConfig], "DescribeReplicationInstanceTaskLogs", ReplicationInstanceArn=, <keyword arguments>)
+
+# DescribeReplicationInstanceTaskLogs Operation
+
+Returns information about the task logs for the specified task.
+
+# Arguments
+
+## `ReplicationInstanceArn = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the replication instance.
+
+
+## `MaxRecords = ::Int`
+The maximum number of records to include in the response. If more records exist than the specified `MaxRecords` value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.
+
+Default: 100
+
+Constraints: Minimum 20, maximum 100.
+
+
+## `Marker = ::String`
+An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by `MaxRecords`.
+
+
+
+
+# Returns
+
+`DescribeReplicationInstanceTaskLogsResponse`
+
+# Exceptions
+
+`ResourceNotFoundFault` or `InvalidResourceStateFault`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationInstanceTaskLogs)
+"""
+@inline describe_replication_instance_task_logs(aws::AWSConfig=default_aws_config(); args...) = describe_replication_instance_task_logs(aws, args)
+
+@inline describe_replication_instance_task_logs(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DescribeReplicationInstanceTaskLogs", args)
+
+@inline describe_replication_instance_task_logs(args) = describe_replication_instance_task_logs(default_aws_config(), args)
 
 
 """
@@ -1979,7 +2061,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationInstances)
 """
-
 @inline describe_replication_instances(aws::AWSConfig=default_aws_config(); args...) = describe_replication_instances(aws, args)
 
 @inline describe_replication_instances(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DescribeReplicationInstances", args)
@@ -2066,12 +2147,61 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationSubnetGroups)
 """
-
 @inline describe_replication_subnet_groups(aws::AWSConfig=default_aws_config(); args...) = describe_replication_subnet_groups(aws, args)
 
 @inline describe_replication_subnet_groups(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DescribeReplicationSubnetGroups", args)
 
 @inline describe_replication_subnet_groups(args) = describe_replication_subnet_groups(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DMS.describe_replication_task_assessment_results
+    describe_replication_task_assessment_results([::AWSConfig], arguments::Dict)
+    describe_replication_task_assessment_results([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.dms
+    dms([::AWSConfig], "DescribeReplicationTaskAssessmentResults", arguments::Dict)
+    dms([::AWSConfig], "DescribeReplicationTaskAssessmentResults", <keyword arguments>)
+
+# DescribeReplicationTaskAssessmentResults Operation
+
+Returns the task assessment results from Amazon S3. This action always returns the latest results.
+
+# Arguments
+
+## `ReplicationTaskArn = ::String`
+- The Amazon Resource Name (ARN) string that uniquely identifies the task. When this input parameter is specified the API will return only one result and ignore the values of the max-records and marker parameters.
+
+
+## `MaxRecords = ::Int`
+The maximum number of records to include in the response. If more records exist than the specified `MaxRecords` value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.
+
+Default: 100
+
+Constraints: Minimum 20, maximum 100.
+
+
+## `Marker = ::String`
+An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by `MaxRecords`.
+
+
+
+
+# Returns
+
+`DescribeReplicationTaskAssessmentResultsResponse`
+
+# Exceptions
+
+`ResourceNotFoundFault`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationTaskAssessmentResults)
+"""
+@inline describe_replication_task_assessment_results(aws::AWSConfig=default_aws_config(); args...) = describe_replication_task_assessment_results(aws, args)
+
+@inline describe_replication_task_assessment_results(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DescribeReplicationTaskAssessmentResults", args)
+
+@inline describe_replication_task_assessment_results(args) = describe_replication_task_assessment_results(default_aws_config(), args)
 
 
 """
@@ -2155,7 +2285,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeReplicationTasks)
 """
-
 @inline describe_replication_tasks(aws::AWSConfig=default_aws_config(); args...) = describe_replication_tasks(aws, args)
 
 @inline describe_replication_tasks(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DescribeReplicationTasks", args)
@@ -2229,7 +2358,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeSchemas)
 """
-
 @inline describe_schemas(aws::AWSConfig=default_aws_config(); args...) = describe_schemas(aws, args)
 
 @inline describe_schemas(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DescribeSchemas", args)
@@ -2319,7 +2447,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeTableStatistics)
 """
-
 @inline describe_table_statistics(aws::AWSConfig=default_aws_config(); args...) = describe_table_statistics(aws, args)
 
 @inline describe_table_statistics(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "DescribeTableStatistics", args)
@@ -2371,7 +2498,7 @@ The tags associated with the certificate.
 
 # Exceptions
 
-`ResourceAlreadyExistsFault` or `InvalidCertificateFault`.
+`ResourceAlreadyExistsFault`, `InvalidCertificateFault` or `ResourceQuotaExceededFault`.
 
 # Example: Import certificate
 
@@ -2396,7 +2523,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ImportCertificate)
 """
-
 @inline import_certificate(aws::AWSConfig=default_aws_config(); args...) = import_certificate(aws, args)
 
 @inline import_certificate(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "ImportCertificate", args)
@@ -2455,7 +2581,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ListTagsForResource)
 """
-
 @inline list_tags_for_resource(aws::AWSConfig=default_aws_config(); args...) = list_tags_for_resource(aws, args)
 
 @inline list_tags_for_resource(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "ListTagsForResource", args)
@@ -2491,7 +2616,7 @@ The type of endpoint.
 
 
 ## `EngineName = ::String`
-The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, DYNAMODB, MONGODB, SYBASE, and SQLSERVER.
+The type of engine for the endpoint. Valid values, depending on the EndPointType, include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and sqlserver.
 
 
 ## `Username = ::String`
@@ -2530,6 +2655,14 @@ SSL mode can be one of four values: none, require, verify-ca, verify-full.
 The default value is none.
 
 
+## `ServiceAccessRoleArn = ::String`
+The Amazon Resource Name (ARN) for the service access role you want to use to modify the endpoint.
+
+
+## `ExternalTableDefinition = ::String`
+The external table definition.
+
+
 ## `DynamoDbSettings = ["ServiceAccessRoleArn" => <required> ::String]`
 Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the **Using Object Mapping to Migrate Data to DynamoDB** section at [Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html).
 
@@ -2548,6 +2681,29 @@ Settings in JSON format for the target S3 endpoint. For more information about t
     ]
 ```
 
+## `DmsTransferSettings = [ ... ]`
+The settings in JSON format for the DMS Transfer type source endpoint.
+
+Attributes include:
+
+*   serviceAccessRoleArn - The IAM role that has permission to access the Amazon S3 bucket.
+
+*   BucketName - The name of the S3 bucket to use.
+
+*   compressionType - An optional parameter to use GZIP to compress the target files. Set to NONE (the default) or do not use to leave the files uncompressed.
+
+Shorthand syntax: ServiceAccessRoleArn=string ,BucketName=string,CompressionType=string
+
+JSON syntax:
+
+{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" }
+```
+ DmsTransferSettings = [
+        "ServiceAccessRoleArn" =>  ::String,
+        "BucketName" =>  ::String
+    ]
+```
+
 ## `MongoDbSettings = [ ... ]`
 Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the **Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service** section at [Using Amazon S3 as a Target for AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html).
 ```
@@ -2562,7 +2718,8 @@ Settings in JSON format for the source MongoDB endpoint. For more information ab
         "NestingLevel" =>  "none" or "one",
         "ExtractDocId" =>  ::String,
         "DocsToInvestigate" =>  ::String,
-        "AuthSource" =>  ::String
+        "AuthSource" =>  ::String,
+        "KmsKeyId" =>  ::String
     ]
 ```
 
@@ -2609,7 +2766,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyEndpoint)
 """
-
 @inline modify_endpoint(aws::AWSConfig=default_aws_config(); args...) = modify_endpoint(aws, args)
 
 @inline modify_endpoint(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "ModifyEndpoint", args)
@@ -2666,7 +2822,6 @@ A Boolean value; set to **true** to activate the subscription.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyEventSubscription)
 """
-
 @inline modify_event_subscription(aws::AWSConfig=default_aws_config(); args...) = modify_event_subscription(aws, args)
 
 @inline modify_event_subscription(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "ModifyEventSubscription", args)
@@ -2839,7 +2994,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyReplicationInstance)
 """
-
 @inline modify_replication_instance(aws::AWSConfig=default_aws_config(); args...) = modify_replication_instance(aws, args)
 
 @inline modify_replication_instance(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "ModifyReplicationInstance", args)
@@ -2910,7 +3064,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyReplicationSubnetGroup)
 """
-
 @inline modify_replication_subnet_group(aws::AWSConfig=default_aws_config(); args...) = modify_replication_subnet_group(aws, args)
 
 @inline modify_replication_subnet_group(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "ModifyReplicationSubnetGroup", args)
@@ -2970,7 +3123,29 @@ JSON file that contains settings for the task, such as target metadata settings.
 
 
 ## `CdcStartTime = timestamp`
-The start time for the Change Data Capture (CDC) operation.
+Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an error.
+
+Timestamp Example: --cdc-start-time “2018-03-08T12:12:12”
+
+
+## `CdcStartPosition = ::String`
+Indicates when you want a change data capture (CDC) operation to start. Use either CdcStartPosition or CdcStartTime to specify when you want a CDC operation to start. Specifying both values results in an error.
+
+The value can be in date, checkpoint, or LSN/SCN format.
+
+Date Example: --cdc-start-position “2018-03-08T12:12:12”
+
+Checkpoint Example: --cdc-start-position "checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93"
+
+LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
+
+
+## `CdcStopPosition = ::String`
+Indicates when you want a change data capture (CDC) operation to stop. The value can be either server time or commit time.
+
+Server time example: --cdc-stop-position “server_time:3018-02-09T12:12:12”
+
+Commit time example: --cdc-stop-position “commit_time: 3018-02-09T12:12:12 “
 
 
 
@@ -2985,12 +3160,53 @@ The start time for the Change Data Capture (CDC) operation.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyReplicationTask)
 """
-
 @inline modify_replication_task(aws::AWSConfig=default_aws_config(); args...) = modify_replication_task(aws, args)
 
 @inline modify_replication_task(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "ModifyReplicationTask", args)
 
 @inline modify_replication_task(args) = modify_replication_task(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DMS.reboot_replication_instance
+    reboot_replication_instance([::AWSConfig], arguments::Dict)
+    reboot_replication_instance([::AWSConfig]; ReplicationInstanceArn=, <keyword arguments>)
+
+    using AWSCore.Services.dms
+    dms([::AWSConfig], "RebootReplicationInstance", arguments::Dict)
+    dms([::AWSConfig], "RebootReplicationInstance", ReplicationInstanceArn=, <keyword arguments>)
+
+# RebootReplicationInstance Operation
+
+Reboots a replication instance. Rebooting results in a momentary outage, until the replication instance becomes available again.
+
+# Arguments
+
+## `ReplicationInstanceArn = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the replication instance.
+
+
+## `ForceFailover = ::Bool`
+If this parameter is `true`, the reboot is conducted through a Multi-AZ failover. (If the instance isn't configured for Multi-AZ, then you can't specify `true`.)
+
+
+
+
+# Returns
+
+`RebootReplicationInstanceResponse`
+
+# Exceptions
+
+`ResourceNotFoundFault` or `InvalidResourceStateFault`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RebootReplicationInstance)
+"""
+@inline reboot_replication_instance(aws::AWSConfig=default_aws_config(); args...) = reboot_replication_instance(aws, args)
+
+@inline reboot_replication_instance(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "RebootReplicationInstance", args)
+
+@inline reboot_replication_instance(args) = reboot_replication_instance(default_aws_config(), args)
 
 
 """
@@ -3049,7 +3265,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RefreshSchemas)
 """
-
 @inline refresh_schemas(aws::AWSConfig=default_aws_config(); args...) = refresh_schemas(aws, args)
 
 @inline refresh_schemas(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "RefreshSchemas", args)
@@ -3060,11 +3275,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-20
 """
     using AWSSDK.DMS.reload_tables
     reload_tables([::AWSConfig], arguments::Dict)
-    reload_tables([::AWSConfig]; ReplicationTaskArn=, TablesToReload=)
+    reload_tables([::AWSConfig]; ReplicationTaskArn=, TablesToReload=, <keyword arguments>)
 
     using AWSCore.Services.dms
     dms([::AWSConfig], "ReloadTables", arguments::Dict)
-    dms([::AWSConfig], "ReloadTables", ReplicationTaskArn=, TablesToReload=)
+    dms([::AWSConfig], "ReloadTables", ReplicationTaskArn=, TablesToReload=, <keyword arguments>)
 
 # ReloadTables Operation
 
@@ -3073,7 +3288,7 @@ Reloads the target database table with the source data.
 # Arguments
 
 ## `ReplicationTaskArn = ::String` -- *Required*
-The Amazon Resource Name (ARN) of the replication instance.
+The Amazon Resource Name (ARN) of the replication task.
 
 
 ## `TablesToReload = [[ ... ], ...]` -- *Required*
@@ -3084,6 +3299,14 @@ The name and schema of the table to be reloaded.
         "TableName" =>  ::String
     ], ...]
 ```
+
+## `ReloadOption = "data-reload" or "validate-only"`
+Options for reload. Specify `data-reload` to reload the data and re-validate it if validation is enabled. Specify `validate-only` to re-validate the table. This option applies only when validation is enabled for the task.
+
+Valid values: data-reload, validate-only
+
+Default value is data-reload.
+
 
 
 
@@ -3097,7 +3320,6 @@ The name and schema of the table to be reloaded.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ReloadTables)
 """
-
 @inline reload_tables(aws::AWSConfig=default_aws_config(); args...) = reload_tables(aws, args)
 
 @inline reload_tables(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "ReloadTables", args)
@@ -3161,7 +3383,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RemoveTagsFromResource)
 """
-
 @inline remove_tags_from_resource(aws::AWSConfig=default_aws_config(); args...) = remove_tags_from_resource(aws, args)
 
 @inline remove_tags_from_resource(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "RemoveTagsFromResource", args)
@@ -3187,7 +3408,7 @@ For more information about AWS DMS tasks, see the AWS DMS user guide at [Working
 # Arguments
 
 ## `ReplicationTaskArn = ::String` -- *Required*
-The Amazon Resource Number (ARN) of the replication task to be started.
+The Amazon Resource Name (ARN) of the replication task to be started.
 
 
 ## `StartReplicationTaskType = "start-replication", "resume-processing" or "reload-target"` -- *Required*
@@ -3195,7 +3416,29 @@ The type of replication task.
 
 
 ## `CdcStartTime = timestamp`
-The start time for the Change Data Capture (CDC) operation.
+Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an error.
+
+Timestamp Example: --cdc-start-time “2018-03-08T12:12:12”
+
+
+## `CdcStartPosition = ::String`
+Indicates when you want a change data capture (CDC) operation to start. Use either CdcStartPosition or CdcStartTime to specify when you want a CDC operation to start. Specifying both values results in an error.
+
+The value can be in date, checkpoint, or LSN/SCN format.
+
+Date Example: --cdc-start-position “2018-03-08T12:12:12”
+
+Checkpoint Example: --cdc-start-position "checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93"
+
+LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
+
+
+## `CdcStopPosition = ::String`
+Indicates when you want a change data capture (CDC) operation to stop. The value can be either server time or commit time.
+
+Server time example: --cdc-stop-position “server_time:3018-02-09T12:12:12”
+
+Commit time example: --cdc-stop-position “commit_time: 3018-02-09T12:12:12 “
 
 
 
@@ -3206,7 +3449,7 @@ The start time for the Change Data Capture (CDC) operation.
 
 # Exceptions
 
-`ResourceNotFoundFault` or `InvalidResourceStateFault`.
+`ResourceNotFoundFault`, `InvalidResourceStateFault` or `AccessDeniedFault`.
 
 # Example: Start replication task
 
@@ -3241,12 +3484,49 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/StartReplicationTask)
 """
-
 @inline start_replication_task(aws::AWSConfig=default_aws_config(); args...) = start_replication_task(aws, args)
 
 @inline start_replication_task(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "StartReplicationTask", args)
 
 @inline start_replication_task(args) = start_replication_task(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DMS.start_replication_task_assessment
+    start_replication_task_assessment([::AWSConfig], arguments::Dict)
+    start_replication_task_assessment([::AWSConfig]; ReplicationTaskArn=)
+
+    using AWSCore.Services.dms
+    dms([::AWSConfig], "StartReplicationTaskAssessment", arguments::Dict)
+    dms([::AWSConfig], "StartReplicationTaskAssessment", ReplicationTaskArn=)
+
+# StartReplicationTaskAssessment Operation
+
+Starts the replication task assessment for unsupported data types in the source database.
+
+# Arguments
+
+## `ReplicationTaskArn = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the replication task.
+
+
+
+
+# Returns
+
+`StartReplicationTaskAssessmentResponse`
+
+# Exceptions
+
+`InvalidResourceStateFault` or `ResourceNotFoundFault`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/StartReplicationTaskAssessment)
+"""
+@inline start_replication_task_assessment(aws::AWSConfig=default_aws_config(); args...) = start_replication_task_assessment(aws, args)
+
+@inline start_replication_task_assessment(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "StartReplicationTaskAssessment", args)
+
+@inline start_replication_task_assessment(args) = start_replication_task_assessment(default_aws_config(), args)
 
 
 """
@@ -3265,7 +3545,7 @@ Stops the replication task.
 # Arguments
 
 ## `ReplicationTaskArn = ::String` -- *Required*
-The Amazon Resource Number(ARN) of the replication task to be stopped.
+The Amazon Resource Name(ARN) of the replication task to be stopped.
 
 
 
@@ -3309,7 +3589,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/StopReplicationTask)
 """
-
 @inline stop_replication_task(aws::AWSConfig=default_aws_config(); args...) = stop_replication_task(aws, args)
 
 @inline stop_replication_task(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "StopReplicationTask", args)
@@ -3373,7 +3652,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/TestConnection)
 """
-
 @inline test_connection(aws::AWSConfig=default_aws_config(); args...) = test_connection(aws, args)
 
 @inline test_connection(aws::AWSConfig, args) = AWSCore.Services.dms(aws, "TestConnection", args)

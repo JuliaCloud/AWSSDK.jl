@@ -43,7 +43,6 @@ Delete a specified report definition
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cur-2017-01-06/DeleteReportDefinition)
 """
-
 @inline delete_report_definition(aws::AWSConfig=default_aws_config(); args...) = delete_report_definition(aws, args)
 
 @inline delete_report_definition(aws::AWSConfig, args) = AWSCore.Services.cur(aws, "DeleteReportDefinition", args)
@@ -86,7 +85,6 @@ Describe a list of report definitions owned by the account
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cur-2017-01-06/DescribeReportDefinitions)
 """
-
 @inline describe_report_definitions(aws::AWSConfig=default_aws_config(); args...) = describe_report_definitions(aws, args)
 
 @inline describe_report_definitions(aws::AWSConfig, args) = AWSCore.Services.cur(aws, "DescribeReportDefinitions", args)
@@ -137,7 +135,6 @@ Create a new report definition
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cur-2017-01-06/PutReportDefinition)
 """
-
 @inline put_report_definition(aws::AWSConfig=default_aws_config(); args...) = put_report_definition(aws, args)
 
 @inline put_report_definition(aws::AWSConfig, args) = AWSCore.Services.cur(aws, "PutReportDefinition", args)

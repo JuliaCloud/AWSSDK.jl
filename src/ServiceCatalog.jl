@@ -23,7 +23,7 @@ using AWSCore
 
 # AcceptPortfolioShare Operation
 
-Accepts an offer to share a portfolio.
+Accepts an offer to share the specified portfolio.
 
 # Arguments
 
@@ -53,7 +53,6 @@ The portfolio identifier.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/AcceptPortfolioShare)
 """
-
 @inline accept_portfolio_share(aws::AWSConfig=default_aws_config(); args...) = accept_portfolio_share(aws, args)
 
 @inline accept_portfolio_share(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "AcceptPortfolioShare", args)
@@ -91,11 +90,11 @@ The portfolio identifier.
 
 
 ## `PrincipalARN = ::String` -- *Required*
-The ARN representing the principal (IAM user, role, or group).
+The ARN of the principal (IAM user, role, or group).
 
 
 ## `PrincipalType = "IAM"` -- *Required*
-The principal type. Must be `IAM`
+The principal type. The supported value is `IAM`.
 
 
 
@@ -110,7 +109,6 @@ The principal type. Must be `IAM`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/AssociatePrincipalWithPortfolio)
 """
-
 @inline associate_principal_with_portfolio(aws::AWSConfig=default_aws_config(); args...) = associate_principal_with_portfolio(aws, args)
 
 @inline associate_principal_with_portfolio(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "AssociatePrincipalWithPortfolio", args)
@@ -129,7 +127,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # AssociateProductWithPortfolio Operation
 
-Associates a product with a portfolio.
+Associates the specified product with the specified portfolio.
 
 # Arguments
 
@@ -152,7 +150,7 @@ The portfolio identifier.
 
 
 ## `SourcePortfolioId = ::String`
-The identifier of the source portfolio to use with this association.
+The identifier of the source portfolio.
 
 
 
@@ -167,7 +165,6 @@ The identifier of the source portfolio to use with this association.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/AssociateProductWithPortfolio)
 """
-
 @inline associate_product_with_portfolio(aws::AWSConfig=default_aws_config(); args...) = associate_product_with_portfolio(aws, args)
 
 @inline associate_product_with_portfolio(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "AssociateProductWithPortfolio", args)
@@ -186,7 +183,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # AssociateTagOptionWithResource Operation
 
-Associate a TagOption identifier with a resource identifier.
+Associate the specified TagOption with the specified portfolio or product.
 
 # Arguments
 
@@ -210,7 +207,6 @@ The TagOption identifier.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/AssociateTagOptionWithResource)
 """
-
 @inline associate_tag_option_with_resource(aws::AWSConfig=default_aws_config(); args...) = associate_tag_option_with_resource(aws, args)
 
 @inline associate_tag_option_with_resource(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "AssociateTagOptionWithResource", args)
@@ -231,7 +227,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 Copies the specified source product to the specified target product or a new product.
 
-You can copy the product to the same account or another account. You can copy the product to the same region or another region.
+You can copy a product to the same account or another account. You can copy a product to the same region or another region.
 
 This operation is performed asynchronously. To track the progress of the operation, use [DescribeCopyProductStatus](@ref).
 
@@ -252,7 +248,7 @@ The Amazon Resource Name (ARN) of the source product.
 
 
 ## `TargetProductId = ::String`
-The ID of the target product. By default, a new product is created.
+The identifier of the target product. By default, a new product is created.
 
 
 ## `TargetProductName = ::String`
@@ -260,7 +256,7 @@ A name for the target product. The default is the name of the source product.
 
 
 ## `SourceProvisioningArtifactIdentifiers = [::Dict{String,String}, ...]`
-The IDs of the product versions to copy. By default, all provisioning artifacts are copied.
+The identifiers of the provisioning artifacts (also known as versions) of the product to copy. By default, all provisioning artifacts are copied.
 
 
 ## `CopyOptions = ["CopyTags", ...]`
@@ -268,7 +264,7 @@ The copy options. If the value is `CopyTags`, the tags from the source product a
 
 
 ## `IdempotencyToken = ::String` -- *Required*
-A token to disambiguate duplicate requests. You can use the same input in multiple requests, provided that you also specify a different idempotency token for each request.
+A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
 
 
 
@@ -283,7 +279,6 @@ A token to disambiguate duplicate requests. You can use the same input in multip
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/CopyProduct)
 """
-
 @inline copy_product(aws::AWSConfig=default_aws_config(); args...) = copy_product(aws, args)
 
 @inline copy_product(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "CopyProduct", args)
@@ -302,7 +297,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # CreateConstraint Operation
 
-Creates a new constraint. For more information, see [Using Constraints](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/constraints.html).
+Creates a constraint.
 
 # Arguments
 
@@ -325,25 +320,57 @@ The product identifier.
 
 
 ## `Parameters = ::String` -- *Required*
-The constraint parameters. Expected values vary depending on which **Type** is specified. For more information, see the Examples section.
+The constraint parameters, in JSON format. The syntax depends on the constraint type as follows:
 
-For Type `LAUNCH`, the `RoleArn` property is required.
+<dl>
 
-For Type `NOTIFICATION`, the `NotificationArns` property is required.
+<dt>LAUNCH</dt>
 
-For Type `TEMPLATE`, the `Rules` property is required.
+<dd>
+
+Specify the `RoleArn` property as follows:
+
+\\"RoleArn\\" : \\"arn:aws:iam::123456789012:role/LaunchRole\\"
+
+</dd>
+
+<dt>NOTIFICATION</dt>
+
+<dd>
+
+Specify the `NotificationArns` property as follows:
+
+\\"NotificationArns\\" : [\\"arn:aws:sns:us-east-1:123456789012:Topic\\"]
+
+</dd>
+
+<dt>TEMPLATE</dt>
+
+<dd>
+
+Specify the `Rules` property. For more information, see [Template Constraint Rules](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
+
+</dd>
+
+</dl>
 
 
 ## `Type = ::String` -- *Required*
-The type of the constraint. Case-sensitive valid values are: `LAUNCH`, `NOTIFICATION`, or `TEMPLATE`.
+The type of constraint.
+
+*   `LAUNCH`
+
+*   `NOTIFICATION`
+
+*   `TEMPLATE`
 
 
 ## `Description = ::String`
-The text description of the constraint.
+The description of the constraint.
 
 
 ## `IdempotencyToken = ::String` -- *Required*
-A token to disambiguate duplicate requests. You can use the same input in multiple requests, provided that you also specify a different idempotency token for each request.
+A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
 
 
 
@@ -358,7 +385,6 @@ A token to disambiguate duplicate requests. You can use the same input in multip
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/CreateConstraint)
 """
-
 @inline create_constraint(aws::AWSConfig=default_aws_config(); args...) = create_constraint(aws, args)
 
 @inline create_constraint(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "CreateConstraint", args)
@@ -377,7 +403,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # CreatePortfolio Operation
 
-Creates a new portfolio.
+Creates a portfolio.
 
 # Arguments
 
@@ -396,7 +422,7 @@ The name to use for display purposes.
 
 
 ## `Description = ::String`
-The text description of the portfolio.
+The description of the portfolio.
 
 
 ## `ProviderName = ::String` -- *Required*
@@ -404,7 +430,7 @@ The name of the portfolio provider.
 
 
 ## `Tags = [[ ... ], ...]`
-Tags to associate with the new portfolio.
+One or more tags.
 ```
  Tags = [[
         "Key" => <required> ::String,
@@ -413,7 +439,7 @@ Tags to associate with the new portfolio.
 ```
 
 ## `IdempotencyToken = ::String` -- *Required*
-A token to disambiguate duplicate requests. You can use the same input in multiple requests, provided that you also specify a different idempotency token for each request.
+A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
 
 
 
@@ -428,7 +454,6 @@ A token to disambiguate duplicate requests. You can use the same input in multip
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/CreatePortfolio)
 """
-
 @inline create_portfolio(aws::AWSConfig=default_aws_config(); args...) = create_portfolio(aws, args)
 
 @inline create_portfolio(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "CreatePortfolio", args)
@@ -447,7 +472,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # CreatePortfolioShare Operation
 
-Creates a new portfolio share.
+Shares the specified portfolio with the specified account.
 
 # Arguments
 
@@ -466,7 +491,7 @@ The portfolio identifier.
 
 
 ## `AccountId = ::String` -- *Required*
-The account ID with which to share the portfolio.
+The AWS account ID.
 
 
 
@@ -481,7 +506,6 @@ The account ID with which to share the portfolio.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/CreatePortfolioShare)
 """
-
 @inline create_portfolio_share(aws::AWSConfig=default_aws_config(); args...) = create_portfolio_share(aws, args)
 
 @inline create_portfolio_share(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "CreatePortfolioShare", args)
@@ -500,7 +524,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # CreateProduct Operation
 
-Creates a new product.
+Creates a product.
 
 # Arguments
 
@@ -523,7 +547,7 @@ The owner of the product.
 
 
 ## `Description = ::String`
-The text description of the product.
+The description of the product.
 
 
 ## `Distributor = ::String`
@@ -531,23 +555,23 @@ The distributor of the product.
 
 
 ## `SupportDescription = ::String`
-Support information about the product.
+The support information about the product.
 
 
 ## `SupportEmail = ::String`
-Contact email for product support.
+The contact email for product support.
 
 
 ## `SupportUrl = ::String`
-Contact URL for product support.
+The contact URL for product support.
 
 
 ## `ProductType = "CLOUD_FORMATION_TEMPLATE" or "MARKETPLACE"` -- *Required*
-The type of the product to create.
+The type of product.
 
 
 ## `Tags = [[ ... ], ...]`
-Tags to associate with the new product.
+One or more tags.
 ```
  Tags = [[
         "Key" => <required> ::String,
@@ -556,7 +580,7 @@ Tags to associate with the new product.
 ```
 
 ## `ProvisioningArtifactParameters = [ ... ]` -- *Required*
-Parameters for the provisioning artifact.
+The configuration of the provisioning artifact.
 ```
  ProvisioningArtifactParameters = [
         "Name" =>  ::String,
@@ -567,7 +591,7 @@ Parameters for the provisioning artifact.
 ```
 
 ## `IdempotencyToken = ::String` -- *Required*
-A token to disambiguate duplicate requests. You can use the same input in multiple requests, provided that you also specify a different idempotency token for each request.
+A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
 
 
 
@@ -582,12 +606,110 @@ A token to disambiguate duplicate requests. You can use the same input in multip
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/CreateProduct)
 """
-
 @inline create_product(aws::AWSConfig=default_aws_config(); args...) = create_product(aws, args)
 
 @inline create_product(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "CreateProduct", args)
 
 @inline create_product(args) = create_product(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.ServiceCatalog.create_provisioned_product_plan
+    create_provisioned_product_plan([::AWSConfig], arguments::Dict)
+    create_provisioned_product_plan([::AWSConfig]; PlanName=, PlanType=, ProductId=, ProvisionedProductName=, ProvisioningArtifactId=, IdempotencyToken=, <keyword arguments>)
+
+    using AWSCore.Services.servicecatalog
+    servicecatalog([::AWSConfig], "CreateProvisionedProductPlan", arguments::Dict)
+    servicecatalog([::AWSConfig], "CreateProvisionedProductPlan", PlanName=, PlanType=, ProductId=, ProvisionedProductName=, ProvisioningArtifactId=, IdempotencyToken=, <keyword arguments>)
+
+# CreateProvisionedProductPlan Operation
+
+Creates a plan. A plan includes the list of resources to be created (when provisioning a new product) or modified (when updating a provisioned product) when the plan is executed.
+
+You can create one plan per provisioned product. To create a plan for an existing provisioned product, the product status must be AVAILBLE or TAINTED.
+
+To view the resource changes in the change set, use [DescribeProvisionedProductPlan](@ref). To create or modify the provisioned product, use [ExecuteProvisionedProductPlan](@ref).
+
+# Arguments
+
+## `AcceptLanguage = ::String`
+The language code.
+
+*   `en` - English (default)
+
+*   `jp` - Japanese
+
+*   `zh` - Chinese
+
+
+## `PlanName = ::String` -- *Required*
+The name of the plan.
+
+
+## `PlanType = "CLOUDFORMATION"` -- *Required*
+The plan type.
+
+
+## `NotificationArns = [::String, ...]`
+Passed to CloudFormation. The SNS topic ARNs to which to publish stack-related events.
+
+
+## `PathId = ::String`
+The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use [ListLaunchPaths](@ref).
+
+
+## `ProductId = ::String` -- *Required*
+The product identifier.
+
+
+## `ProvisionedProductName = ::String` -- *Required*
+A user-friendly name for the provisioned product. This value must be unique for the AWS account and cannot be updated after the product is provisioned.
+
+
+## `ProvisioningArtifactId = ::String` -- *Required*
+The identifier of the provisioning artifact.
+
+
+## `ProvisioningParameters = [[ ... ], ...]`
+Parameters specified by the administrator that are required for provisioning the product.
+```
+ ProvisioningParameters = [[
+        "Key" =>  ::String,
+        "Value" =>  ::String,
+        "UsePreviousValue" =>  ::Bool
+    ], ...]
+```
+
+## `IdempotencyToken = ::String` -- *Required*
+A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
+
+
+## `Tags = [[ ... ], ...]`
+One or more tags.
+```
+ Tags = [[
+        "Key" => <required> ::String,
+        "Value" => <required> ::String
+    ], ...]
+```
+
+
+
+# Returns
+
+`CreateProvisionedProductPlanOutput`
+
+# Exceptions
+
+`InvalidParametersException`, `ResourceNotFoundException` or `InvalidStateException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/CreateProvisionedProductPlan)
+"""
+@inline create_provisioned_product_plan(aws::AWSConfig=default_aws_config(); args...) = create_provisioned_product_plan(aws, args)
+
+@inline create_provisioned_product_plan(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "CreateProvisionedProductPlan", args)
+
+@inline create_provisioned_product_plan(args) = create_provisioned_product_plan(default_aws_config(), args)
 
 
 """
@@ -601,7 +723,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # CreateProvisioningArtifact Operation
 
-Create a new provisioning artifact for the specified product. This operation does not work with a product that has been shared with you.
+Creates a provisioning artifact (also known as a version) for the specified product.
+
+You cannot create a provisioning artifact for a product that was shared with you.
 
 # Arguments
 
@@ -620,7 +744,7 @@ The product identifier.
 
 
 ## `Parameters = [ ... ]` -- *Required*
-The parameters to use when creating the new provisioning artifact.
+The configuration for the provisioning artifact.
 ```
  Parameters = [
         "Name" =>  ::String,
@@ -631,7 +755,7 @@ The parameters to use when creating the new provisioning artifact.
 ```
 
 ## `IdempotencyToken = ::String` -- *Required*
-A token to disambiguate duplicate requests. You can use the same input in multiple requests, provided that you also specify a different idempotency token for each request.
+A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
 
 
 
@@ -646,7 +770,6 @@ A token to disambiguate duplicate requests. You can use the same input in multip
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/CreateProvisioningArtifact)
 """
-
 @inline create_provisioning_artifact(aws::AWSConfig=default_aws_config(); args...) = create_provisioning_artifact(aws, args)
 
 @inline create_provisioning_artifact(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "CreateProvisioningArtifact", args)
@@ -665,7 +788,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # CreateTagOption Operation
 
-Create a new TagOption.
+Creates a TagOption.
 
 # Arguments
 
@@ -689,7 +812,6 @@ The TagOption value.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/CreateTagOption)
 """
-
 @inline create_tag_option(aws::AWSConfig=default_aws_config(); args...) = create_tag_option(aws, args)
 
 @inline create_tag_option(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "CreateTagOption", args)
@@ -723,7 +845,7 @@ The language code.
 
 
 ## `Id = ::String` -- *Required*
-The identifier of the constraint to delete.
+The identifier of the constraint.
 
 
 
@@ -738,7 +860,6 @@ The identifier of the constraint to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DeleteConstraint)
 """
-
 @inline delete_constraint(aws::AWSConfig=default_aws_config(); args...) = delete_constraint(aws, args)
 
 @inline delete_constraint(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DeleteConstraint", args)
@@ -757,7 +878,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # DeletePortfolio Operation
 
-Deletes the specified portfolio. This operation does not work with a portfolio that has been shared with you or if it has products, users, constraints, or shared accounts associated with it.
+Deletes the specified portfolio.
+
+You cannot delete a portfolio if it was shared with you or if it has associated products, users, constraints, or shared accounts.
 
 # Arguments
 
@@ -772,7 +895,7 @@ The language code.
 
 
 ## `Id = ::String` -- *Required*
-The identifier of the portfolio for the delete request.
+The portfolio identifier.
 
 
 
@@ -787,7 +910,6 @@ The identifier of the portfolio for the delete request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DeletePortfolio)
 """
-
 @inline delete_portfolio(aws::AWSConfig=default_aws_config(); args...) = delete_portfolio(aws, args)
 
 @inline delete_portfolio(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DeletePortfolio", args)
@@ -806,7 +928,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # DeletePortfolioShare Operation
 
-Deletes the specified portfolio share.
+Stops sharing the specified portfolio with the specified account.
 
 # Arguments
 
@@ -825,7 +947,7 @@ The portfolio identifier.
 
 
 ## `AccountId = ::String` -- *Required*
-The account ID associated with the share to delete.
+The AWS account ID.
 
 
 
@@ -840,7 +962,6 @@ The account ID associated with the share to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DeletePortfolioShare)
 """
-
 @inline delete_portfolio_share(aws::AWSConfig=default_aws_config(); args...) = delete_portfolio_share(aws, args)
 
 @inline delete_portfolio_share(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DeletePortfolioShare", args)
@@ -859,7 +980,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # DeleteProduct Operation
 
-Deletes the specified product. This operation does not work with a product that has been shared with you or is associated with a portfolio.
+Deletes the specified product.
+
+You cannot delete a product if it was shared with you or is associated with a portfolio.
 
 # Arguments
 
@@ -874,7 +997,7 @@ The language code.
 
 
 ## `Id = ::String` -- *Required*
-The identifier of the product for the delete request.
+The product identifier.
 
 
 
@@ -889,12 +1012,63 @@ The identifier of the product for the delete request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DeleteProduct)
 """
-
 @inline delete_product(aws::AWSConfig=default_aws_config(); args...) = delete_product(aws, args)
 
 @inline delete_product(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DeleteProduct", args)
 
 @inline delete_product(args) = delete_product(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.ServiceCatalog.delete_provisioned_product_plan
+    delete_provisioned_product_plan([::AWSConfig], arguments::Dict)
+    delete_provisioned_product_plan([::AWSConfig]; PlanId=, <keyword arguments>)
+
+    using AWSCore.Services.servicecatalog
+    servicecatalog([::AWSConfig], "DeleteProvisionedProductPlan", arguments::Dict)
+    servicecatalog([::AWSConfig], "DeleteProvisionedProductPlan", PlanId=, <keyword arguments>)
+
+# DeleteProvisionedProductPlan Operation
+
+Deletes the specified plan.
+
+# Arguments
+
+## `AcceptLanguage = ::String`
+The language code.
+
+*   `en` - English (default)
+
+*   `jp` - Japanese
+
+*   `zh` - Chinese
+
+
+## `PlanId = ::String` -- *Required*
+The plan identifier.
+
+
+## `IgnoreErrors = ::Bool`
+If set to true, AWS Service Catalog stops managing the specified provisioned product even if it cannot delete the underlying resources.
+
+
+
+
+# Returns
+
+`DeleteProvisionedProductPlanOutput`
+
+# Exceptions
+
+`InvalidParametersException` or `ResourceNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DeleteProvisionedProductPlan)
+"""
+@inline delete_provisioned_product_plan(aws::AWSConfig=default_aws_config(); args...) = delete_provisioned_product_plan(aws, args)
+
+@inline delete_provisioned_product_plan(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DeleteProvisionedProductPlan", args)
+
+@inline delete_provisioned_product_plan(args) = delete_provisioned_product_plan(default_aws_config(), args)
 
 
 """
@@ -908,7 +1082,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # DeleteProvisioningArtifact Operation
 
-Deletes the specified provisioning artifact. This operation does not work on a provisioning artifact associated with a product that has been shared with you, or on the last provisioning artifact associated with a product (a product must have at least one provisioning artifact).
+Deletes the specified provisioning artifact (also known as a version) for the specified product.
+
+You cannot delete a provisioning artifact associated with a product that was shared with you. You cannot delete the last provisioning artifact for a product, because a product must have at least one provisioning artifact.
 
 # Arguments
 
@@ -927,7 +1103,7 @@ The product identifier.
 
 
 ## `ProvisioningArtifactId = ::String` -- *Required*
-The identifier of the provisioning artifact for the delete request. This is sometimes referred to as the product version.
+The identifier of the provisioning artifact.
 
 
 
@@ -942,12 +1118,51 @@ The identifier of the provisioning artifact for the delete request. This is some
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DeleteProvisioningArtifact)
 """
-
 @inline delete_provisioning_artifact(aws::AWSConfig=default_aws_config(); args...) = delete_provisioning_artifact(aws, args)
 
 @inline delete_provisioning_artifact(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DeleteProvisioningArtifact", args)
 
 @inline delete_provisioning_artifact(args) = delete_provisioning_artifact(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.ServiceCatalog.delete_tag_option
+    delete_tag_option([::AWSConfig], arguments::Dict)
+    delete_tag_option([::AWSConfig]; Id=)
+
+    using AWSCore.Services.servicecatalog
+    servicecatalog([::AWSConfig], "DeleteTagOption", arguments::Dict)
+    servicecatalog([::AWSConfig], "DeleteTagOption", Id=)
+
+# DeleteTagOption Operation
+
+Deletes the specified TagOption.
+
+You cannot delete a TagOption if it is associated with a product or portfolio.
+
+# Arguments
+
+## `Id = ::String` -- *Required*
+The TagOption identifier.
+
+
+
+
+# Returns
+
+`DeleteTagOptionOutput`
+
+# Exceptions
+
+`TagOptionNotMigratedException`, `ResourceInUseException` or `ResourceNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DeleteTagOption)
+"""
+@inline delete_tag_option(aws::AWSConfig=default_aws_config(); args...) = delete_tag_option(aws, args)
+
+@inline delete_tag_option(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DeleteTagOption", args)
+
+@inline delete_tag_option(args) = delete_tag_option(default_aws_config(), args)
 
 
 """
@@ -961,7 +1176,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # DescribeConstraint Operation
 
-Retrieves detailed information for a specified constraint.
+Gets information about the specified constraint.
 
 # Arguments
 
@@ -991,7 +1206,6 @@ The identifier of the constraint.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DescribeConstraint)
 """
-
 @inline describe_constraint(aws::AWSConfig=default_aws_config(); args...) = describe_constraint(aws, args)
 
 @inline describe_constraint(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DescribeConstraint", args)
@@ -1010,7 +1224,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # DescribeCopyProductStatus Operation
 
-Describes the status of the specified copy product operation.
+Gets the status of the specified copy product operation.
 
 # Arguments
 
@@ -1025,7 +1239,7 @@ The language code.
 
 
 ## `CopyProductToken = ::String` -- *Required*
-The token returned from the call to `CopyProduct` that initiated the operation.
+The token for the copy product operation. This token is returned by [CopyProduct](@ref).
 
 
 
@@ -1040,7 +1254,6 @@ The token returned from the call to `CopyProduct` that initiated the operation.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DescribeCopyProductStatus)
 """
-
 @inline describe_copy_product_status(aws::AWSConfig=default_aws_config(); args...) = describe_copy_product_status(aws, args)
 
 @inline describe_copy_product_status(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DescribeCopyProductStatus", args)
@@ -1059,7 +1272,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # DescribePortfolio Operation
 
-Retrieves detailed information and any tags associated with the specified portfolio.
+Gets information about the specified portfolio.
 
 # Arguments
 
@@ -1074,7 +1287,7 @@ The language code.
 
 
 ## `Id = ::String` -- *Required*
-The identifier of the portfolio for which to retrieve information.
+The portfolio identifier.
 
 
 
@@ -1089,7 +1302,6 @@ The identifier of the portfolio for which to retrieve information.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DescribePortfolio)
 """
-
 @inline describe_portfolio(aws::AWSConfig=default_aws_config(); args...) = describe_portfolio(aws, args)
 
 @inline describe_portfolio(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DescribePortfolio", args)
@@ -1108,9 +1320,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # DescribeProduct Operation
 
-Retrieves information about a specified product.
-
-This operation is functionally identical to [DescribeProductView](@ref) except that it takes as input `ProductId` instead of `ProductViewId`.
+Gets information about the specified product.
 
 # Arguments
 
@@ -1125,7 +1335,7 @@ The language code.
 
 
 ## `Id = ::String` -- *Required*
-The `ProductId` of the product to describe.
+The product identifier.
 
 
 
@@ -1140,7 +1350,6 @@ The `ProductId` of the product to describe.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DescribeProduct)
 """
-
 @inline describe_product(aws::AWSConfig=default_aws_config(); args...) = describe_product(aws, args)
 
 @inline describe_product(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DescribeProduct", args)
@@ -1159,7 +1368,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # DescribeProductAsAdmin Operation
 
-Retrieves information about a specified product, run with administrator access.
+Gets information about the specified product. This operation is run with administrator access.
 
 # Arguments
 
@@ -1174,7 +1383,7 @@ The language code.
 
 
 ## `Id = ::String` -- *Required*
-The identifier of the product for which to retrieve information.
+The product identifier.
 
 
 
@@ -1189,7 +1398,6 @@ The identifier of the product for which to retrieve information.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DescribeProductAsAdmin)
 """
-
 @inline describe_product_as_admin(aws::AWSConfig=default_aws_config(); args...) = describe_product_as_admin(aws, args)
 
 @inline describe_product_as_admin(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DescribeProductAsAdmin", args)
@@ -1208,9 +1416,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # DescribeProductView Operation
 
-Retrieves information about a specified product.
-
-This operation is functionally identical to [DescribeProduct](@ref) except that it takes as input `ProductViewId` instead of `ProductId`.
+Gets information about the specified product.
 
 # Arguments
 
@@ -1225,7 +1431,7 @@ The language code.
 
 
 ## `Id = ::String` -- *Required*
-The `ProductViewId` of the product to describe.
+The product view identifier.
 
 
 
@@ -1240,7 +1446,6 @@ The `ProductViewId` of the product to describe.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DescribeProductView)
 """
-
 @inline describe_product_view(aws::AWSConfig=default_aws_config(); args...) = describe_product_view(aws, args)
 
 @inline describe_product_view(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DescribeProductView", args)
@@ -1259,7 +1464,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # DescribeProvisionedProduct Operation
 
-Retrieve detailed information about the provisioned product.
+Gets information about the specified provisioned product.
 
 # Arguments
 
@@ -1289,12 +1494,67 @@ The provisioned product identifier.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DescribeProvisionedProduct)
 """
-
 @inline describe_provisioned_product(aws::AWSConfig=default_aws_config(); args...) = describe_provisioned_product(aws, args)
 
 @inline describe_provisioned_product(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DescribeProvisionedProduct", args)
 
 @inline describe_provisioned_product(args) = describe_provisioned_product(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.ServiceCatalog.describe_provisioned_product_plan
+    describe_provisioned_product_plan([::AWSConfig], arguments::Dict)
+    describe_provisioned_product_plan([::AWSConfig]; PlanId=, <keyword arguments>)
+
+    using AWSCore.Services.servicecatalog
+    servicecatalog([::AWSConfig], "DescribeProvisionedProductPlan", arguments::Dict)
+    servicecatalog([::AWSConfig], "DescribeProvisionedProductPlan", PlanId=, <keyword arguments>)
+
+# DescribeProvisionedProductPlan Operation
+
+Gets information about the resource changes for the specified plan.
+
+# Arguments
+
+## `AcceptLanguage = ::String`
+The language code.
+
+*   `en` - English (default)
+
+*   `jp` - Japanese
+
+*   `zh` - Chinese
+
+
+## `PlanId = ::String` -- *Required*
+The plan identifier.
+
+
+## `PageSize = ::Int`
+The maximum number of items to return with this call.
+
+
+## `PageToken = ::String`
+The page token for the next set of results. To retrieve the first set of results, use null.
+
+
+
+
+# Returns
+
+`DescribeProvisionedProductPlanOutput`
+
+# Exceptions
+
+`ResourceNotFoundException` or `InvalidParametersException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DescribeProvisionedProductPlan)
+"""
+@inline describe_provisioned_product_plan(aws::AWSConfig=default_aws_config(); args...) = describe_provisioned_product_plan(aws, args)
+
+@inline describe_provisioned_product_plan(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DescribeProvisionedProductPlan", args)
+
+@inline describe_provisioned_product_plan(args) = describe_provisioned_product_plan(default_aws_config(), args)
 
 
 """
@@ -1308,7 +1568,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # DescribeProvisioningArtifact Operation
 
-Retrieves detailed information about the specified provisioning artifact.
+Gets information about the specified provisioning artifact (also known as a version) for the specified product.
 
 # Arguments
 
@@ -1323,7 +1583,7 @@ The language code.
 
 
 ## `ProvisioningArtifactId = ::String` -- *Required*
-The identifier of the provisioning artifact. This is sometimes referred to as the product version.
+The identifier of the provisioning artifact.
 
 
 ## `ProductId = ::String` -- *Required*
@@ -1331,7 +1591,7 @@ The product identifier.
 
 
 ## `Verbose = ::Bool`
-Enable a verbose level of details for the provisioning artifact.
+Indicates whether a verbose level of detail is enabled.
 
 
 
@@ -1346,7 +1606,6 @@ Enable a verbose level of details for the provisioning artifact.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DescribeProvisioningArtifact)
 """
-
 @inline describe_provisioning_artifact(aws::AWSConfig=default_aws_config(); args...) = describe_provisioning_artifact(aws, args)
 
 @inline describe_provisioning_artifact(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DescribeProvisioningArtifact", args)
@@ -1365,9 +1624,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # DescribeProvisioningParameters Operation
 
-Provides information about parameters required to provision a specified product in a specified manner. Use this operation to obtain the list of `ProvisioningArtifactParameters` parameters available to call the [ProvisionProduct](@ref) operation for the specified product.
+Gets information about the configuration required to provision the specified product using the specified provisioning artifact.
 
-If the output contains a TagOption key with an empty list of values, there is a TagOption conflict for that key. The end user cannot take action to fix the conflict, and launch is not blocked. In subsequent calls to the `ProvisionProduct` operation, do not include conflicted TagOption keys as tags. Calls to `ProvisionProduct` with empty TagOption values cause the error "Parameter validation failed: Missing required parameter in Tags[*N*]:*Value* ". Calls to `ProvisionProduct` with conflicted TagOption keys automatically tag the provisioned product with the conflicted keys with the value "`sc-tagoption-conflict-portfolioId-productId`".
+If the output contains a TagOption key with an empty list of values, there is a TagOption conflict for that key. The end user cannot take action to fix the conflict, and launch is not blocked. In subsequent calls to [ProvisionProduct](@ref), do not include conflicted TagOption keys as tags, or this causes the error "Parameter validation failed: Missing required parameter in Tags[*N*]:*Value*". Tag the provisioned product with the value `sc-tagoption-conflict-portfolioId-productId`.
 
 # Arguments
 
@@ -1386,11 +1645,11 @@ The product identifier.
 
 
 ## `ProvisioningArtifactId = ::String` -- *Required*
-The provisioning artifact identifier for this product. This is sometimes referred to as the product version.
+The identifier of the provisioning artifact.
 
 
 ## `PathId = ::String`
-The identifier of the path for this product's provisioning. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.
+The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use [ListLaunchPaths](@ref).
 
 
 
@@ -1405,7 +1664,6 @@ The identifier of the path for this product's provisioning. This value is option
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DescribeProvisioningParameters)
 """
-
 @inline describe_provisioning_parameters(aws::AWSConfig=default_aws_config(); args...) = describe_provisioning_parameters(aws, args)
 
 @inline describe_provisioning_parameters(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DescribeProvisioningParameters", args)
@@ -1424,7 +1682,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # DescribeRecord Operation
 
-Retrieves a paginated list of the full details of a specific request. Use this operation after calling a request operation ([ProvisionProduct](@ref), [TerminateProvisionedProduct](@ref), or [UpdateProvisionedProduct](@ref)).
+Gets information about the specified request operation.
+
+Use this operation after calling a request operation (for example, [ProvisionProduct](@ref), [TerminateProvisionedProduct](@ref), or [UpdateProvisionedProduct](@ref)).
 
 # Arguments
 
@@ -1439,15 +1699,15 @@ The language code.
 
 
 ## `Id = ::String` -- *Required*
-The record identifier of the ProvisionedProduct object for which to retrieve output information. This is the `RecordDetail.RecordId` obtained from the request operation's response.
+The record identifier of the provisioned product. This identifier is returned by the request operation.
 
 
 ## `PageToken = ::String`
-The page token of the first page retrieved. If null, this retrieves the first page of size `PageSize`.
+The page token for the next set of results. To retrieve the first set of results, use null.
 
 
 ## `PageSize = ::Int`
-The maximum number of items to return in the results. If more results exist than fit in the specified `PageSize`, the value of `NextPageToken` in the response is non-null.
+The maximum number of items to return with this call.
 
 
 
@@ -1462,7 +1722,6 @@ The maximum number of items to return in the results. If more results exist than
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DescribeRecord)
 """
-
 @inline describe_record(aws::AWSConfig=default_aws_config(); args...) = describe_record(aws, args)
 
 @inline describe_record(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DescribeRecord", args)
@@ -1481,12 +1740,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # DescribeTagOption Operation
 
-Describes a TagOption.
+Gets information about the specified TagOption.
 
 # Arguments
 
 ## `Id = ::String` -- *Required*
-The identifier of the TagOption.
+The TagOption identifier.
 
 
 
@@ -1501,7 +1760,6 @@ The identifier of the TagOption.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DescribeTagOption)
 """
-
 @inline describe_tag_option(aws::AWSConfig=default_aws_config(); args...) = describe_tag_option(aws, args)
 
 @inline describe_tag_option(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DescribeTagOption", args)
@@ -1539,7 +1797,7 @@ The portfolio identifier.
 
 
 ## `PrincipalARN = ::String` -- *Required*
-The ARN representing the principal (IAM user, role, or group).
+The ARN of the principal (IAM user, role, or group).
 
 
 
@@ -1554,7 +1812,6 @@ The ARN representing the principal (IAM user, role, or group).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DisassociatePrincipalFromPortfolio)
 """
-
 @inline disassociate_principal_from_portfolio(aws::AWSConfig=default_aws_config(); args...) = disassociate_principal_from_portfolio(aws, args)
 
 @inline disassociate_principal_from_portfolio(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DisassociatePrincipalFromPortfolio", args)
@@ -1607,7 +1864,6 @@ The portfolio identifier.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DisassociateProductFromPortfolio)
 """
-
 @inline disassociate_product_from_portfolio(aws::AWSConfig=default_aws_config(); args...) = disassociate_product_from_portfolio(aws, args)
 
 @inline disassociate_product_from_portfolio(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DisassociateProductFromPortfolio", args)
@@ -1626,16 +1882,16 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # DisassociateTagOptionFromResource Operation
 
-Disassociates a TagOption from a resource.
+Disassociates the specified TagOption from the specified resource.
 
 # Arguments
 
 ## `ResourceId = ::String` -- *Required*
-Identifier of the resource from which to disassociate the TagOption.
+The resource identifier.
 
 
 ## `TagOptionId = ::String` -- *Required*
-Identifier of the TagOption to disassociate from the resource.
+The TagOption identifier.
 
 
 
@@ -1650,12 +1906,63 @@ Identifier of the TagOption to disassociate from the resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DisassociateTagOptionFromResource)
 """
-
 @inline disassociate_tag_option_from_resource(aws::AWSConfig=default_aws_config(); args...) = disassociate_tag_option_from_resource(aws, args)
 
 @inline disassociate_tag_option_from_resource(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "DisassociateTagOptionFromResource", args)
 
 @inline disassociate_tag_option_from_resource(args) = disassociate_tag_option_from_resource(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.ServiceCatalog.execute_provisioned_product_plan
+    execute_provisioned_product_plan([::AWSConfig], arguments::Dict)
+    execute_provisioned_product_plan([::AWSConfig]; PlanId=, IdempotencyToken=, <keyword arguments>)
+
+    using AWSCore.Services.servicecatalog
+    servicecatalog([::AWSConfig], "ExecuteProvisionedProductPlan", arguments::Dict)
+    servicecatalog([::AWSConfig], "ExecuteProvisionedProductPlan", PlanId=, IdempotencyToken=, <keyword arguments>)
+
+# ExecuteProvisionedProductPlan Operation
+
+Provisions or modifies a product based on the resource changes for the specified plan.
+
+# Arguments
+
+## `AcceptLanguage = ::String`
+The language code.
+
+*   `en` - English (default)
+
+*   `jp` - Japanese
+
+*   `zh` - Chinese
+
+
+## `PlanId = ::String` -- *Required*
+The plan identifier.
+
+
+## `IdempotencyToken = ::String` -- *Required*
+A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
+
+
+
+
+# Returns
+
+`ExecuteProvisionedProductPlanOutput`
+
+# Exceptions
+
+`InvalidParametersException`, `ResourceNotFoundException` or `InvalidStateException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ExecuteProvisionedProductPlan)
+"""
+@inline execute_provisioned_product_plan(aws::AWSConfig=default_aws_config(); args...) = execute_provisioned_product_plan(aws, args)
+
+@inline execute_provisioned_product_plan(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "ExecuteProvisionedProductPlan", args)
+
+@inline execute_provisioned_product_plan(args) = execute_provisioned_product_plan(default_aws_config(), args)
 
 
 """
@@ -1669,7 +1976,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # ListAcceptedPortfolioShares Operation
 
-Lists details of all portfolios for which sharing was accepted by this account.
+Lists all portfolios for which sharing was accepted by this account.
 
 # Arguments
 
@@ -1684,11 +1991,19 @@ The language code.
 
 
 ## `PageToken = ::String`
-The page token of the first page retrieved. If null, this retrieves the first page of size `PageSize`.
+The page token for the next set of results. To retrieve the first set of results, use null.
 
 
 ## `PageSize = ::Int`
-The maximum number of items to return in the results. If more results exist than fit in the specified `PageSize`, the value of `NextPageToken` in the response is non-null.
+The maximum number of items to return with this call.
+
+
+## `PortfolioShareType = "IMPORTED" or "AWS_SERVICECATALOG"`
+The type of shared portfolios to list. The default is to list imported portfolios.
+
+*   `AWS_SERVICECATALOG` - List default portfolios
+
+*   `IMPORTED` - List imported portfolios
 
 
 
@@ -1703,7 +2018,6 @@ The maximum number of items to return in the results. If more results exist than
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ListAcceptedPortfolioShares)
 """
-
 @inline list_accepted_portfolio_shares(aws::AWSConfig=default_aws_config(); args...) = list_accepted_portfolio_shares(aws, args)
 
 @inline list_accepted_portfolio_shares(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "ListAcceptedPortfolioShares", args)
@@ -1722,7 +2036,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # ListConstraintsForPortfolio Operation
 
-Retrieves detailed constraint information for the specified portfolio and product.
+Lists the constraints for the specified portfolio and product.
 
 # Arguments
 
@@ -1745,11 +2059,11 @@ The product identifier.
 
 
 ## `PageSize = ::Int`
-The maximum number of items to return in the results. If more results exist than fit in the specified `PageSize`, the value of `NextPageToken` in the response is non-null.
+The maximum number of items to return with this call.
 
 
 ## `PageToken = ::String`
-The page token of the first page retrieved. If null, this retrieves the first page of size `PageSize`.
+The page token for the next set of results. To retrieve the first set of results, use null.
 
 
 
@@ -1764,7 +2078,6 @@ The page token of the first page retrieved. If null, this retrieves the first pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ListConstraintsForPortfolio)
 """
-
 @inline list_constraints_for_portfolio(aws::AWSConfig=default_aws_config(); args...) = list_constraints_for_portfolio(aws, args)
 
 @inline list_constraints_for_portfolio(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "ListConstraintsForPortfolio", args)
@@ -1783,7 +2096,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # ListLaunchPaths Operation
 
-Returns a paginated list of all paths to a specified product. A path is how the user has access to a specified product, and is necessary when provisioning a product. A path also determines the constraints put on the product.
+Lists the paths to the specified product. A path is how the user has access to a specified product, and is necessary when provisioning a product. A path also determines the constraints put on the product.
 
 # Arguments
 
@@ -1798,15 +2111,15 @@ The language code.
 
 
 ## `ProductId = ::String` -- *Required*
-The product identifier. Identifies the product for which to retrieve `LaunchPathSummaries` information.
+The product identifier.
 
 
 ## `PageSize = ::Int`
-The maximum number of items to return in the results. If more results exist than fit in the specified `PageSize`, the value of `NextPageToken` in the response is non-null.
+The maximum number of items to return with this call.
 
 
 ## `PageToken = ::String`
-The page token of the first page retrieved. If null, this retrieves the first page of size `PageSize`.
+The page token for the next set of results. To retrieve the first set of results, use null.
 
 
 
@@ -1821,7 +2134,6 @@ The page token of the first page retrieved. If null, this retrieves the first pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ListLaunchPaths)
 """
-
 @inline list_launch_paths(aws::AWSConfig=default_aws_config(); args...) = list_launch_paths(aws, args)
 
 @inline list_launch_paths(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "ListLaunchPaths", args)
@@ -1840,7 +2152,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # ListPortfolioAccess Operation
 
-Lists the account IDs that have been authorized sharing of the specified portfolio.
+Lists the account IDs that have access to the specified portfolio.
 
 # Arguments
 
@@ -1870,7 +2182,6 @@ The portfolio identifier.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ListPortfolioAccess)
 """
-
 @inline list_portfolio_access(aws::AWSConfig=default_aws_config(); args...) = list_portfolio_access(aws, args)
 
 @inline list_portfolio_access(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "ListPortfolioAccess", args)
@@ -1904,11 +2215,11 @@ The language code.
 
 
 ## `PageToken = ::String`
-The page token of the first page retrieved. If null, this retrieves the first page of size `PageSize`.
+The page token for the next set of results. To retrieve the first set of results, use null.
 
 
 ## `PageSize = ::Int`
-The maximum number of items to return in the results. If more results exist than fit in the specified `PageSize`, the value of `NextPageToken` in the response is non-null.
+The maximum number of items to return with this call.
 
 
 
@@ -1923,7 +2234,6 @@ The maximum number of items to return in the results. If more results exist than
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ListPortfolios)
 """
-
 @inline list_portfolios(aws::AWSConfig=default_aws_config(); args...) = list_portfolios(aws, args)
 
 @inline list_portfolios(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "ListPortfolios", args)
@@ -1961,11 +2271,11 @@ The product identifier.
 
 
 ## `PageToken = ::String`
-The page token of the first page retrieved. If null, this retrieves the first page of size `PageSize`.
+The page token for the next set of results. To retrieve the first set of results, use null.
 
 
 ## `PageSize = ::Int`
-The maximum number of items to return in the results. If more results exist than fit in the specified `PageSize`, the value of `NextPageToken` in the response is non-null.
+The maximum number of items to return with this call.
 
 
 
@@ -1980,7 +2290,6 @@ The maximum number of items to return in the results. If more results exist than
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ListPortfoliosForProduct)
 """
-
 @inline list_portfolios_for_product(aws::AWSConfig=default_aws_config(); args...) = list_portfolios_for_product(aws, args)
 
 @inline list_portfolios_for_product(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "ListPortfoliosForProduct", args)
@@ -2018,11 +2327,11 @@ The portfolio identifier.
 
 
 ## `PageSize = ::Int`
-The maximum number of items to return in the results. If more results exist than fit in the specified `PageSize`, the value of `NextPageToken` in the response is non-null.
+The maximum number of items to return with this call.
 
 
 ## `PageToken = ::String`
-The page token of the first page retrieved. If null, this retrieves the first page of size `PageSize`.
+The page token for the next set of results. To retrieve the first set of results, use null.
 
 
 
@@ -2037,12 +2346,76 @@ The page token of the first page retrieved. If null, this retrieves the first pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ListPrincipalsForPortfolio)
 """
-
 @inline list_principals_for_portfolio(aws::AWSConfig=default_aws_config(); args...) = list_principals_for_portfolio(aws, args)
 
 @inline list_principals_for_portfolio(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "ListPrincipalsForPortfolio", args)
 
 @inline list_principals_for_portfolio(args) = list_principals_for_portfolio(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.ServiceCatalog.list_provisioned_product_plans
+    list_provisioned_product_plans([::AWSConfig], arguments::Dict)
+    list_provisioned_product_plans([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.servicecatalog
+    servicecatalog([::AWSConfig], "ListProvisionedProductPlans", arguments::Dict)
+    servicecatalog([::AWSConfig], "ListProvisionedProductPlans", <keyword arguments>)
+
+# ListProvisionedProductPlans Operation
+
+Lists the plans for the specified provisioned product or all plans to which the user has access.
+
+# Arguments
+
+## `AcceptLanguage = ::String`
+The language code.
+
+*   `en` - English (default)
+
+*   `jp` - Japanese
+
+*   `zh` - Chinese
+
+
+## `ProvisionProductId = ::String`
+The product identifier.
+
+
+## `PageSize = ::Int`
+The maximum number of items to return with this call.
+
+
+## `PageToken = ::String`
+The page token for the next set of results. To retrieve the first set of results, use null.
+
+
+## `AccessLevelFilter = [ ... ]`
+The access level to use to obtain results. The default is `User`.
+```
+ AccessLevelFilter = [
+        "Key" =>  "Account", "Role" or "User",
+        "Value" =>  ::String
+    ]
+```
+
+
+
+# Returns
+
+`ListProvisionedProductPlansOutput`
+
+# Exceptions
+
+`ResourceNotFoundException` or `InvalidParametersException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ListProvisionedProductPlans)
+"""
+@inline list_provisioned_product_plans(aws::AWSConfig=default_aws_config(); args...) = list_provisioned_product_plans(aws, args)
+
+@inline list_provisioned_product_plans(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "ListProvisionedProductPlans", args)
+
+@inline list_provisioned_product_plans(args) = list_provisioned_product_plans(default_aws_config(), args)
 
 
 """
@@ -2056,7 +2429,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # ListProvisioningArtifacts Operation
 
-Lists all provisioning artifacts associated with the specified product.
+Lists all provisioning artifacts (also known as versions) for the specified product.
 
 # Arguments
 
@@ -2086,7 +2459,6 @@ The product identifier.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ListProvisioningArtifacts)
 """
-
 @inline list_provisioning_artifacts(aws::AWSConfig=default_aws_config(); args...) = list_provisioning_artifacts(aws, args)
 
 @inline list_provisioning_artifacts(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "ListProvisioningArtifacts", args)
@@ -2105,7 +2477,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # ListRecordHistory Operation
 
-Returns a paginated list of all performed requests, in the form of RecordDetails objects that are filtered as specified.
+Lists the specified requests or all performed requests.
 
 # Arguments
 
@@ -2120,7 +2492,7 @@ The language code.
 
 
 ## `AccessLevelFilter = [ ... ]`
-The access level for obtaining results. If left unspecified, `User` level access is used.
+The access level to use to obtain results. The default is `User`.
 ```
  AccessLevelFilter = [
         "Key" =>  "Account", "Role" or "User",
@@ -2129,7 +2501,7 @@ The access level for obtaining results. If left unspecified, `User` level access
 ```
 
 ## `SearchFilter = [ ... ]`
-The filter to limit search results.
+The search filter to scope the results.
 ```
  SearchFilter = [
         "Key" =>  ::String,
@@ -2138,11 +2510,11 @@ The filter to limit search results.
 ```
 
 ## `PageSize = ::Int`
-The maximum number of items to return in the results. If more results exist than fit in the specified `PageSize`, the value of `NextPageToken` in the response is non-null.
+The maximum number of items to return with this call.
 
 
 ## `PageToken = ::String`
-The page token of the first page retrieved. If null, this retrieves the first page of size `PageSize`.
+The page token for the next set of results. To retrieve the first set of results, use null.
 
 
 
@@ -2157,7 +2529,6 @@ The page token of the first page retrieved. If null, this retrieves the first pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ListRecordHistory)
 """
-
 @inline list_record_history(aws::AWSConfig=default_aws_config(); args...) = list_record_history(aws, args)
 
 @inline list_record_history(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "ListRecordHistory", args)
@@ -2176,24 +2547,28 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # ListResourcesForTagOption Operation
 
-Lists resources associated with a TagOption.
+Lists the resources associated with the specified TagOption.
 
 # Arguments
 
 ## `TagOptionId = ::String` -- *Required*
-Identifier of the TagOption.
+The TagOption identifier.
 
 
 ## `ResourceType = ::String`
-Resource type.
+The resource type.
+
+*   `Portfolio`
+
+*   `Product`
 
 
 ## `PageSize = ::Int`
-The maximum number of items to return in the results. If more results exist than fit in the specified `PageSize`, the value of `NextPageToken` in the response is non-null.
+The maximum number of items to return with this call.
 
 
 ## `PageToken = ::String`
-The page token of the first page retrieved. If null, this retrieves the first page of size `PageSize`.
+The page token for the next set of results. To retrieve the first set of results, use null.
 
 
 
@@ -2208,7 +2583,6 @@ The page token of the first page retrieved. If null, this retrieves the first pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ListResourcesForTagOption)
 """
-
 @inline list_resources_for_tag_option(aws::AWSConfig=default_aws_config(); args...) = list_resources_for_tag_option(aws, args)
 
 @inline list_resources_for_tag_option(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "ListResourcesForTagOption", args)
@@ -2227,12 +2601,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # ListTagOptions Operation
 
-Lists detailed TagOptions information.
+Lists the specified TagOptions or all TagOptions.
 
 # Arguments
 
 ## `Filters = [ ... ]`
-The list of filters with which to limit search results. If no search filters are specified, the output is all TagOptions.
+The search filters. If no search filters are specified, the output includes all TagOptions.
 ```
  Filters = [
         "Key" =>  ::String,
@@ -2242,11 +2616,11 @@ The list of filters with which to limit search results. If no search filters are
 ```
 
 ## `PageSize = ::Int`
-The maximum number of items to return in the results. If more results exist than fit in the specified `PageSize`, the value of `NextPageToken` in the response is non-null.
+The maximum number of items to return with this call.
 
 
 ## `PageToken = ::String`
-The page token of the first page retrieved. If null, this retrieves the first page of size `PageSize`.
+The page token for the next set of results. To retrieve the first set of results, use null.
 
 
 
@@ -2261,7 +2635,6 @@ The page token of the first page retrieved. If null, this retrieves the first pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ListTagOptions)
 """
-
 @inline list_tag_options(aws::AWSConfig=default_aws_config(); args...) = list_tag_options(aws, args)
 
 @inline list_tag_options(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "ListTagOptions", args)
@@ -2280,9 +2653,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # ProvisionProduct Operation
 
-Requests a *provision* of a specified product. A *provisioned product* is a resourced instance for a product. For example, provisioning a CloudFormation-template-backed product results in launching a CloudFormation stack and all the underlying resources that come with it.
+Provisions the specified product.
 
-You can check the status of this request using the [DescribeRecord](@ref) operation. The error "Parameter validation failed: Missing required parameter in Tags[*N*]:*Value*" indicates that your request contains a tag which has a tag key but no corresponding tag value (value is empty or null). Your call may have included values returned from a `DescribeProvisioningParameters` call that resulted in a TagOption key with an empty list. This happens when TagOption keys are in conflict. For more information, see [DescribeProvisioningParameters](@ref).
+A provisioned product is a resourced instance of a product. For example, provisioning a product based on a CloudFormation template launches a CloudFormation stack and its underlying resources. You can check the status of this request using [DescribeRecord](@ref).
+
+If the request contains a tag key with an empty list of values, there is a tag conflict for that key. Do not include conflicted keys as tags, or this causes the error "Parameter validation failed: Missing required parameter in Tags[*N*]:*Value*".
 
 # Arguments
 
@@ -2301,15 +2676,15 @@ The product identifier.
 
 
 ## `ProvisioningArtifactId = ::String` -- *Required*
-The provisioning artifact identifier for this product. This is sometimes referred to as the product version.
+The identifier of the provisioning artifact.
 
 
 ## `PathId = ::String`
-The identifier of the path for this product's provisioning. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.
+The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use [ListLaunchPaths](@ref).
 
 
 ## `ProvisionedProductName = ::String` -- *Required*
-A user-friendly name to identify the ProvisionedProduct object. This value must be unique for the AWS account and cannot be updated after the product is provisioned.
+A user-friendly name for the provisioned product. This value must be unique for the AWS account and cannot be updated after the product is provisioned.
 
 
 ## `ProvisioningParameters = [[ ... ], ...]`
@@ -2322,7 +2697,7 @@ Parameters specified by the administrator that are required for provisioning the
 ```
 
 ## `Tags = [[ ... ], ...]`
-A list of tags to use as provisioning options.
+One or more tags.
 ```
  Tags = [[
         "Key" => <required> ::String,
@@ -2350,7 +2725,6 @@ An idempotency token that uniquely identifies the provisioning request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ProvisionProduct)
 """
-
 @inline provision_product(aws::AWSConfig=default_aws_config(); args...) = provision_product(aws, args)
 
 @inline provision_product(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "ProvisionProduct", args)
@@ -2369,7 +2743,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # RejectPortfolioShare Operation
 
-Rejects an offer to share a portfolio.
+Rejects an offer to share the specified portfolio.
 
 # Arguments
 
@@ -2399,7 +2773,6 @@ The portfolio identifier.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/RejectPortfolioShare)
 """
-
 @inline reject_portfolio_share(aws::AWSConfig=default_aws_config(); args...) = reject_portfolio_share(aws, args)
 
 @inline reject_portfolio_share(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "RejectPortfolioShare", args)
@@ -2418,7 +2791,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # ScanProvisionedProducts Operation
 
-Returns a paginated list of all the ProvisionedProduct objects that are currently available (not terminated).
+Lists the provisioned products that are available (not terminated).
+
+To use additional filtering, see [SearchProvisionedProducts](@ref).
 
 # Arguments
 
@@ -2433,7 +2808,7 @@ The language code.
 
 
 ## `AccessLevelFilter = [ ... ]`
-The access level for obtaining results. If left unspecified, `User` level access is used.
+The access level to use to obtain results. The default is `User`.
 ```
  AccessLevelFilter = [
         "Key" =>  "Account", "Role" or "User",
@@ -2442,11 +2817,11 @@ The access level for obtaining results. If left unspecified, `User` level access
 ```
 
 ## `PageSize = ::Int`
-The maximum number of items to return in the results. If more results exist than fit in the specified `PageSize`, the value of `NextPageToken` in the response is non-null.
+The maximum number of items to return with this call.
 
 
 ## `PageToken = ::String`
-The page token of the first page retrieved. If null, this retrieves the first page of size `PageSize`.
+The page token for the next set of results. To retrieve the first set of results, use null.
 
 
 
@@ -2461,7 +2836,6 @@ The page token of the first page retrieved. If null, this retrieves the first pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ScanProvisionedProducts)
 """
-
 @inline scan_provisioned_products(aws::AWSConfig=default_aws_config(); args...) = scan_provisioned_products(aws, args)
 
 @inline scan_provisioned_products(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "ScanProvisionedProducts", args)
@@ -2480,9 +2854,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # SearchProducts Operation
 
-Returns a paginated list all of the `Products` objects to which the caller has access.
-
-The output of this operation can be used as input for other operations, such as [DescribeProductView](@ref).
+Gets information about the products to which the caller has access.
 
 # Arguments
 
@@ -2497,23 +2869,23 @@ The language code.
 
 
 ## `Filters = ::Dict{String,String}`
-The list of filters with which to limit search results. If no search filters are specified, the output is all the products to which the calling user has access.
+The search filters. If no search filters are specified, the output includes all products to which the caller has access.
 
 
 ## `PageSize = ::Int`
-The maximum number of items to return in the results. If more results exist than fit in the specified `PageSize`, the value of `NextPageToken` in the response is non-null.
+The maximum number of items to return with this call.
 
 
 ## `SortBy = "Title", "VersionCount" or "CreationDate"`
-The sort field specifier. If no value is specified, results are not sorted.
+The sort field. If no value is specified, the results are not sorted.
 
 
 ## `SortOrder = "ASCENDING" or "DESCENDING"`
-The sort order specifier. If no value is specified, results are not sorted.
+The sort order. If no value is specified, the results are not sorted.
 
 
 ## `PageToken = ::String`
-The page token of the first page retrieved. If null, this retrieves the first page of size `PageSize`.
+The page token for the next set of results. To retrieve the first set of results, use null.
 
 
 
@@ -2528,7 +2900,6 @@ The page token of the first page retrieved. If null, this retrieves the first pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/SearchProducts)
 """
-
 @inline search_products(aws::AWSConfig=default_aws_config(); args...) = search_products(aws, args)
 
 @inline search_products(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "SearchProducts", args)
@@ -2547,7 +2918,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # SearchProductsAsAdmin Operation
 
-Retrieves summary and status information about all products created within the caller's account. If a portfolio ID is provided, this operation retrieves information for only those products that are associated with the specified portfolio.
+Gets information about the products for the specified portfolio or all products.
 
 # Arguments
 
@@ -2566,23 +2937,23 @@ The portfolio identifier.
 
 
 ## `Filters = ::Dict{String,String}`
-The list of filters with which to limit search results. If no search filters are specified, the output is all the products to which the administrator has access.
+The search filters. If no search filters are specified, the output includes all products to which the administrator has access.
 
 
 ## `SortBy = "Title", "VersionCount" or "CreationDate"`
-The sort field specifier. If no value is specified, results are not sorted.
+The sort field. If no value is specified, the results are not sorted.
 
 
 ## `SortOrder = "ASCENDING" or "DESCENDING"`
-The sort order specifier. If no value is specified, results are not sorted.
+The sort order. If no value is specified, the results are not sorted.
 
 
 ## `PageToken = ::String`
-The page token of the first page retrieved. If null, this retrieves the first page of size `PageSize`.
+The page token for the next set of results. To retrieve the first set of results, use null.
 
 
 ## `PageSize = ::Int`
-The maximum number of items to return in the results. If more results exist than fit in the specified `PageSize`, the value of `NextPageToken` in the response is non-null.
+The maximum number of items to return with this call.
 
 
 ## `ProductSource = "ACCOUNT"`
@@ -2601,12 +2972,88 @@ Access level of the source of the product.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/SearchProductsAsAdmin)
 """
-
 @inline search_products_as_admin(aws::AWSConfig=default_aws_config(); args...) = search_products_as_admin(aws, args)
 
 @inline search_products_as_admin(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "SearchProductsAsAdmin", args)
 
 @inline search_products_as_admin(args) = search_products_as_admin(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.ServiceCatalog.search_provisioned_products
+    search_provisioned_products([::AWSConfig], arguments::Dict)
+    search_provisioned_products([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.servicecatalog
+    servicecatalog([::AWSConfig], "SearchProvisionedProducts", arguments::Dict)
+    servicecatalog([::AWSConfig], "SearchProvisionedProducts", <keyword arguments>)
+
+# SearchProvisionedProducts Operation
+
+Gets information about the provisioned products that meet the specified criteria.
+
+# Arguments
+
+## `AcceptLanguage = ::String`
+The language code.
+
+*   `en` - English (default)
+
+*   `jp` - Japanese
+
+*   `zh` - Chinese
+
+
+## `AccessLevelFilter = [ ... ]`
+The access level to use to obtain results. The default is `User`.
+```
+ AccessLevelFilter = [
+        "Key" =>  "Account", "Role" or "User",
+        "Value" =>  ::String
+    ]
+```
+
+## `Filters = ::Dict{String,String}`
+The search filters.
+
+When the key is `SearchQuery`, the searchable fields are `arn`, `createdTime`, `id`, `lastRecordId`, `idempotencyToken`, `name`, `physicalId`, `productId`, `provisioningArtifact`, `type`, `status`, `tags`, `userArn`, and `userArnSession`.
+
+Example: `"SearchQuery":["status:AVAILABLE"]`
+
+
+## `SortBy = ::String`
+The sort field. If no value is specified, the results are not sorted. The valid values are `arn`, `id`, `name`, and `lastRecordId`.
+
+
+## `SortOrder = "ASCENDING" or "DESCENDING"`
+The sort order. If no value is specified, the results are not sorted.
+
+
+## `PageSize = ::Int`
+The maximum number of items to return with this call.
+
+
+## `PageToken = ::String`
+The page token for the next set of results. To retrieve the first set of results, use null.
+
+
+
+
+# Returns
+
+`SearchProvisionedProductsOutput`
+
+# Exceptions
+
+`InvalidParametersException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/SearchProvisionedProducts)
+"""
+@inline search_provisioned_products(aws::AWSConfig=default_aws_config(); args...) = search_provisioned_products(aws, args)
+
+@inline search_provisioned_products(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "SearchProvisionedProducts", args)
+
+@inline search_provisioned_products(args) = search_provisioned_products(default_aws_config(), args)
 
 
 """
@@ -2620,28 +3067,28 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # TerminateProvisionedProduct Operation
 
-Requests termination of an existing ProvisionedProduct object. If there are `Tags` associated with the object, they are terminated when the ProvisionedProduct object is terminated.
+Terminates the specified provisioned product.
 
-This operation does not delete any records associated with the ProvisionedProduct object.
+This operation does not delete any records associated with the provisioned product.
 
-You can check the status of this request using the [DescribeRecord](@ref) operation.
+You can check the status of this request using [DescribeRecord](@ref).
 
 # Arguments
 
 ## `ProvisionedProductName = ::String`
-The name of the ProvisionedProduct object to terminate. Specify either `ProvisionedProductName` or `ProvisionedProductId`, but not both.
+The name of the provisioned product. You cannot specify both `ProvisionedProductName` and `ProvisionedProductId`.
 
 
 ## `ProvisionedProductId = ::String`
-The identifier of the ProvisionedProduct object to terminate. Specify either `ProvisionedProductName` or `ProvisionedProductId`, but not both.
+The identifier of the provisioned product. You cannot specify both `ProvisionedProductName` and `ProvisionedProductId`.
 
 
 ## `TerminateToken = ::String` -- *Required*
-An idempotency token that uniquely identifies the termination request. This token is only valid during the termination process. After the ProvisionedProduct object is terminated, further requests to terminate the same ProvisionedProduct object always return **ResourceNotFound** regardless of the value of `TerminateToken`.
+An idempotency token that uniquely identifies the termination request. This token is only valid during the termination process. After the provisioned product is terminated, subsequent requests to terminate the same provisioned product always return **ResourceNotFound**.
 
 
 ## `IgnoreErrors = ::Bool`
-If set to true, AWS Service Catalog stops managing the specified ProvisionedProduct object even if it cannot delete the underlying resources.
+If set to true, AWS Service Catalog stops managing the specified provisioned product even if it cannot delete the underlying resources.
 
 
 ## `AcceptLanguage = ::String`
@@ -2666,7 +3113,6 @@ The language code.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/TerminateProvisionedProduct)
 """
-
 @inline terminate_provisioned_product(aws::AWSConfig=default_aws_config(); args...) = terminate_provisioned_product(aws, args)
 
 @inline terminate_provisioned_product(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "TerminateProvisionedProduct", args)
@@ -2685,7 +3131,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # UpdateConstraint Operation
 
-Updates an existing constraint.
+Updates the specified constraint.
 
 # Arguments
 
@@ -2700,11 +3146,11 @@ The language code.
 
 
 ## `Id = ::String` -- *Required*
-The identifier of the constraint to update.
+The identifier of the constraint.
 
 
 ## `Description = ::String`
-The updated text description of the constraint.
+The updated description of the constraint.
 
 
 
@@ -2719,7 +3165,6 @@ The updated text description of the constraint.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/UpdateConstraint)
 """
-
 @inline update_constraint(aws::AWSConfig=default_aws_config(); args...) = update_constraint(aws, args)
 
 @inline update_constraint(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "UpdateConstraint", args)
@@ -2738,7 +3183,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # UpdatePortfolio Operation
 
-Updates the specified portfolio's details. This operation does not work with a product that has been shared with you.
+Updates the specified portfolio.
+
+You cannot update a product that was shared with you.
 
 # Arguments
 
@@ -2753,7 +3200,7 @@ The language code.
 
 
 ## `Id = ::String` -- *Required*
-The identifier of the portfolio for the update request.
+The portfolio identifier.
 
 
 ## `DisplayName = ::String`
@@ -2761,7 +3208,7 @@ The name to use for display purposes.
 
 
 ## `Description = ::String`
-The updated text description of the portfolio.
+The updated description of the portfolio.
 
 
 ## `ProviderName = ::String`
@@ -2769,7 +3216,7 @@ The updated name of the portfolio provider.
 
 
 ## `AddTags = [[ ... ], ...]`
-Tags to add to the existing list of tags associated with the portfolio.
+The tags to add.
 ```
  AddTags = [[
         "Key" => <required> ::String,
@@ -2778,7 +3225,7 @@ Tags to add to the existing list of tags associated with the portfolio.
 ```
 
 ## `RemoveTags = [::String, ...]`
-Tags to remove from the existing list of tags associated with the portfolio.
+The tags to remove.
 
 
 
@@ -2793,7 +3240,6 @@ Tags to remove from the existing list of tags associated with the portfolio.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/UpdatePortfolio)
 """
-
 @inline update_portfolio(aws::AWSConfig=default_aws_config(); args...) = update_portfolio(aws, args)
 
 @inline update_portfolio(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "UpdatePortfolio", args)
@@ -2812,7 +3258,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # UpdateProduct Operation
 
-Updates an existing product.
+Updates the specified product.
 
 # Arguments
 
@@ -2827,7 +3273,7 @@ The language code.
 
 
 ## `Id = ::String` -- *Required*
-The identifier of the product for the update request.
+The product identifier.
 
 
 ## `Name = ::String`
@@ -2839,7 +3285,7 @@ The updated owner of the product.
 
 
 ## `Description = ::String`
-The updated text description of the product.
+The updated description of the product.
 
 
 ## `Distributor = ::String`
@@ -2859,7 +3305,7 @@ The updated support URL for the product.
 
 
 ## `AddTags = [[ ... ], ...]`
-Tags to add to the existing list of tags associated with the product.
+The tags to add to the product.
 ```
  AddTags = [[
         "Key" => <required> ::String,
@@ -2868,7 +3314,7 @@ Tags to add to the existing list of tags associated with the product.
 ```
 
 ## `RemoveTags = [::String, ...]`
-Tags to remove from the existing list of tags associated with the product.
+The tags to remove from the product.
 
 
 
@@ -2883,7 +3329,6 @@ Tags to remove from the existing list of tags associated with the product.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/UpdateProduct)
 """
-
 @inline update_product(aws::AWSConfig=default_aws_config(); args...) = update_product(aws, args)
 
 @inline update_product(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "UpdateProduct", args)
@@ -2902,9 +3347,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # UpdateProvisionedProduct Operation
 
-Requests updates to the configuration of an existing ProvisionedProduct object. If there are tags associated with the object, they cannot be updated or added with this operation. Depending on the specific updates requested, this operation may update with no interruption, with some interruption, or replace the ProvisionedProduct object entirely.
+Requests updates to the configuration of the specified provisioned product.
 
-You can check the status of this request using the [DescribeRecord](@ref) operation.
+If there are tags associated with the object, they cannot be updated or added. Depending on the specific updates requested, this operation can update with no interruption, with some interruption, or replace the provisioned product entirely.
+
+You can check the status of this request using [DescribeRecord](@ref).
 
 # Arguments
 
@@ -2919,27 +3366,27 @@ The language code.
 
 
 ## `ProvisionedProductName = ::String`
-The updated name of the ProvisionedProduct object. Specify either `ProvisionedProductName` or `ProvisionedProductId`, but not both.
+The updated name of the provisioned product. You cannot specify both `ProvisionedProductName` and `ProvisionedProductId`.
 
 
 ## `ProvisionedProductId = ::String`
-The identifier of the ProvisionedProduct object to update. Specify either `ProvisionedProductName` or `ProvisionedProductId`, but not both.
+The identifier of the provisioned product. You cannot specify both `ProvisionedProductName` and `ProvisionedProductId`.
 
 
 ## `ProductId = ::String`
-The identifier of the ProvisionedProduct object.
+The identifier of the provisioned product.
 
 
 ## `ProvisioningArtifactId = ::String`
-The provisioning artifact identifier for this product. This is sometimes referred to as the product version.
+The identifier of the provisioning artifact.
 
 
 ## `PathId = ::String`
-The identifier of the path to use in the updated ProvisionedProduct object. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.
+The new path identifier. This value is optional if the product has a default path, and required if the product has more than one path.
 
 
 ## `ProvisioningParameters = [[ ... ], ...]`
-A list of `ProvisioningParameter` objects used to update the ProvisionedProduct object.
+The new parameters.
 ```
  ProvisioningParameters = [[
         "Key" =>  ::String,
@@ -2964,7 +3411,6 @@ The idempotency token that uniquely identifies the provisioning update request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/UpdateProvisionedProduct)
 """
-
 @inline update_provisioned_product(aws::AWSConfig=default_aws_config(); args...) = update_provisioned_product(aws, args)
 
 @inline update_provisioned_product(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "UpdateProvisionedProduct", args)
@@ -2983,7 +3429,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # UpdateProvisioningArtifact Operation
 
-Updates an existing provisioning artifact's information. This operation does not work on a provisioning artifact associated with a product that has been shared with you.
+Updates the specified provisioning artifact (also known as a version) for the specified product.
+
+You cannot update a provisioning artifact for a product that was shared with you.
 
 # Arguments
 
@@ -3002,7 +3450,7 @@ The product identifier.
 
 
 ## `ProvisioningArtifactId = ::String` -- *Required*
-The identifier of the provisioning artifact for the update request. This is sometimes referred to as the product version.
+The identifier of the provisioning artifact.
 
 
 ## `Name = ::String`
@@ -3010,7 +3458,11 @@ The updated name of the provisioning artifact.
 
 
 ## `Description = ::String`
-The updated text description of the provisioning artifact.
+The updated description of the provisioning artifact.
+
+
+## `Active = ::Bool`
+Indicates whether the product version is active.
 
 
 
@@ -3025,7 +3477,6 @@ The updated text description of the provisioning artifact.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/UpdateProvisioningArtifact)
 """
-
 @inline update_provisioning_artifact(aws::AWSConfig=default_aws_config(); args...) = update_provisioning_artifact(aws, args)
 
 @inline update_provisioning_artifact(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "UpdateProvisioningArtifact", args)
@@ -3044,12 +3495,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servic
 
 # UpdateTagOption Operation
 
-Updates an existing TagOption.
+Updates the specified TagOption.
 
 # Arguments
 
 ## `Id = ::String` -- *Required*
-The identifier of the constraint to update.
+The TagOption identifier.
 
 
 ## `Value = ::String`
@@ -3072,7 +3523,6 @@ The updated active state.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/UpdateTagOption)
 """
-
 @inline update_tag_option(aws::AWSConfig=default_aws_config(); args...) = update_tag_option(aws, args)
 
 @inline update_tag_option(aws::AWSConfig, args) = AWSCore.Services.servicecatalog(aws, "UpdateTagOption", args)

@@ -25,7 +25,7 @@ using AWSCore
 
 Adds or overwrites one or more tags for the specified resource. Tags are metadata that you can assign to your documents, managed instances, Maintenance Windows, Parameter Store parameters, and patch baselines. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment. Each tag consists of a key and an optional value, both of which you define. For example, you could define a set of tags for your account's managed instances that helps you track each instance's owner and stack level. For example: Key=Owner and Value=DbAdmin, SysAdmin, or Dev. Or Key=Stack and Value=Production, Pre-Production, or Test.
 
-Each resource can have a maximum of 10 tags.
+Each resource can have a maximum of 50 tags.
 
 We recommend that you devise a set of tag keys that meets your needs for each resource type. Using a consistent set of tag keys makes it easier for you to manage your resources. You can search and filter the resources based on the tags you add. Tags don't have any semantic meaning to Amazon EC2 and are interpreted strictly as a string of characters.
 
@@ -36,17 +36,32 @@ For more information about tags, see [Tagging Your Amazon EC2 Resources](http://
 ## `ResourceType = "Document", "ManagedInstance", "MaintenanceWindow", "Parameter" or "PatchBaseline"` -- *Required*
 Specifies the type of resource you are tagging.
 
+**Note**
+> The ManagedInstance type for this API action is for on-premises managed instances. You must specify the the name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+
 
 ## `ResourceId = ::String` -- *Required*
 The resource ID you want to tag.
 
-For the ManagedInstance, MaintenanceWindow, and PatchBaseline values, use the ID of the resource, such as mw-01234361858c9b57b for a Maintenance Window.
+Use the ID of the resource. Here are some examples:
+
+ManagedInstance: mi-012345abcde
+
+MaintenanceWindow: mw-012345abcde
+
+PatchBaseline: pb-012345abcde
 
 For the Document and Parameter values, use the name of the resource.
+
+**Note**
+> The ManagedInstance type for this API action is only for on-premises managed instances. You must specify the the name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
 
 
 ## `Tags = [[ ... ], ...]` -- *Required*
 One or more tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
+
+**Important**
+> Do not enter personally identifiable information in this field.
 ```
  Tags = [[
         "Key" => <required> ::String,
@@ -62,11 +77,10 @@ One or more tags. The value parameter is required, but if you don't want the tag
 
 # Exceptions
 
-`InvalidResourceType`, `InvalidResourceId`, `InternalServerError` or `TooManyTagsError`.
+`InvalidResourceType`, `InvalidResourceId`, `InternalServerError`, `TooManyTagsError` or `TooManyUpdates`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/AddTagsToResource)
 """
-
 @inline add_tags_to_resource(aws::AWSConfig=default_aws_config(); args...) = add_tags_to_resource(aws, args)
 
 @inline add_tags_to_resource(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "AddTagsToResource", args)
@@ -109,7 +123,6 @@ The ID of the command you want to cancel.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/CancelCommand)
 """
-
 @inline cancel_command(aws::AWSConfig=default_aws_config(); args...) = cancel_command(aws, args)
 
 @inline cancel_command(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "CancelCommand", args)
@@ -133,11 +146,17 @@ Registers your on-premises server or virtual machine with Amazon EC2 so that you
 # Arguments
 
 ## `Description = ::String`
-A userdefined description of the resource that you want to register with Amazon EC2.
+A user-defined description of the resource that you want to register with Amazon EC2.
+
+**Important**
+> Do not enter personally identifiable information in this field.
 
 
 ## `DefaultInstanceName = ::String`
 The name of the registered, managed instance as it will appear in the Amazon EC2 console or when you use the AWS command line tools to list EC2 resources.
+
+**Important**
+> Do not enter personally identifiable information in this field.
 
 
 ## `IamRole = ::String` -- *Required*
@@ -164,7 +183,6 @@ The date by which this activation request should expire. The default value is 24
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/CreateActivation)
 """
-
 @inline create_activation(aws::AWSConfig=default_aws_config(); args...) = create_activation(aws, args)
 
 @inline create_activation(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "CreateActivation", args)
@@ -246,7 +264,6 @@ Specify a descriptive name for the association.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/CreateAssociation)
 """
-
 @inline create_association(aws::AWSConfig=default_aws_config(); args...) = create_association(aws, args)
 
 @inline create_association(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "CreateAssociation", args)
@@ -307,7 +324,6 @@ One or more associations.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/CreateAssociationBatch)
 """
-
 @inline create_association_batch(aws::AWSConfig=default_aws_config(); args...) = create_association_batch(aws, args)
 
 @inline create_association_batch(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "CreateAssociationBatch", args)
@@ -333,15 +349,32 @@ After you create a document, you can use CreateAssociation to associate it with 
 # Arguments
 
 ## `Content = ::String` -- *Required*
-A valid JSON string.
+A valid JSON or YAML string.
 
 
 ## `Name = ::String` -- *Required*
 A name for the Systems Manager document.
 
+**Important**
+> Do not use the following to begin the names of documents you create. They are reserved by AWS for use as document prefixes:
+
+*   `aws`
+
+*   `amazon`
+
+*   `amzn`
+
 
 ## `DocumentType = "Command", "Policy" or "Automation"`
 The type of document to create. Valid document types include: Policy, Automation, and Command.
+
+
+## `DocumentFormat = "YAML" or "JSON"`
+Specify the document format for the request. The document format can be either JSON or YAML. JSON is the default format.
+
+
+## `TargetType = ::String`
+Specify a target type to define the kinds of resources the document can run on. For example, to run a document on EC2 instances, specify the following value: /AWS::EC2::Instance. If you specify a value of '/' the document can run on all types of resources. If you don't specify a value, the document can't run on any resources. For a list of valid resource types, see [AWS Resource Types Reference](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html) in the *AWS CloudFormation User Guide*.
 
 
 
@@ -356,7 +389,6 @@ The type of document to create. Valid document types include: Policy, Automation
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/CreateDocument)
 """
-
 @inline create_document(aws::AWSConfig=default_aws_config(); args...) = create_document(aws, args)
 
 @inline create_document(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "CreateDocument", args)
@@ -421,7 +453,6 @@ User-provided idempotency token.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/CreateMaintenanceWindow)
 """
-
 @inline create_maintenance_window(aws::AWSConfig=default_aws_config(); args...) = create_maintenance_window(aws, args)
 
 @inline create_maintenance_window(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "CreateMaintenanceWindow", args)
@@ -442,10 +473,13 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 Creates a patch baseline.
 
+**Note**
+> For information about valid key and value pairs in `PatchFilters` for each supported operating system type, see [PatchFilter](http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html).
+
 # Arguments
 
-## `OperatingSystem = "WINDOWS", "AMAZON_LINUX", "UBUNTU" or "REDHAT_ENTERPRISE_LINUX"`
-Defines the operating system the patch baseline applies to. Supported operating systems include WINDOWS, AMAZON_LINUX, UBUNTU and REDHAT_ENTERPRISE_LINUX. The Default value is WINDOWS.
+## `OperatingSystem = "WINDOWS", "AMAZON_LINUX", "AMAZON_LINUX_2", "UBUNTU", "REDHAT_ENTERPRISE_LINUX", "SUSE" or "CENTOS"`
+Defines the operating system the patch baseline applies to. The Default value is WINDOWS.
 
 
 ## `Name = ::String` -- *Required*
@@ -470,25 +504,44 @@ A set of rules used to include patches in the baseline.
                     "Values" => <required> [::String, ...]
                 ], ...]],
             "ComplianceLevel" =>  "CRITICAL", "HIGH", "MEDIUM", "LOW", "INFORMATIONAL" or "UNSPECIFIED",
-            "ApproveAfterDays" => <required> ::Int
+            "ApproveAfterDays" => <required> ::Int,
+            "EnableNonSecurity" =>  ::Bool
         ], ...]]
 ```
 
 ## `ApprovedPatches = [::String, ...]`
 A list of explicitly approved patches for the baseline.
 
+For information about accepted formats for lists of approved patches and rejected patches, see [Package Name Formats for Approved and Rejected Patch Lists](http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html) in the *AWS Systems Manager User Guide*.
+
 
 ## `ApprovedPatchesComplianceLevel = "CRITICAL", "HIGH", "MEDIUM", "LOW", "INFORMATIONAL" or "UNSPECIFIED"`
-Defines the compliance level for approved patches. This means that if an approved patch is reported as missing, this is the severity of the compliance violation. Valid compliance severity levels include the following: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED. The default value is UNSPECIFIED.
+Defines the compliance level for approved patches. This means that if an approved patch is reported as missing, this is the severity of the compliance violation. The default value is UNSPECIFIED.
+
+
+## `ApprovedPatchesEnableNonSecurity = ::Bool`
+Indicates whether the list of approved patches includes non-security updates that should be applied to the instances. The default value is 'false'. Applies to Linux instances only.
 
 
 ## `RejectedPatches = [::String, ...]`
 A list of explicitly rejected patches for the baseline.
 
+For information about accepted formats for lists of approved patches and rejected patches, see [Package Name Formats for Approved and Rejected Patch Lists](http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html) in the *AWS Systems Manager User Guide*.
+
 
 ## `Description = ::String`
 A description of the patch baseline.
 
+
+## `Sources = [[ ... ], ...]`
+Information about the patches to use to update the instances, including target operating systems and source repositories. Applies to Linux instances only.
+```
+ Sources = [[
+        "Name" => <required> ::String,
+        "Products" => <required> [::String, ...],
+        "Configuration" => <required> ::String
+    ], ...]
+```
 
 ## `ClientToken = ::String`
 User-provided idempotency token.
@@ -506,7 +559,6 @@ User-provided idempotency token.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/CreatePatchBaseline)
 """
-
 @inline create_patch_baseline(aws::AWSConfig=default_aws_config(); args...) = create_patch_baseline(aws, args)
 
 @inline create_patch_baseline(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "CreatePatchBaseline", args)
@@ -525,9 +577,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # CreateResourceDataSync Operation
 
-Creates a resource data sync configuration to a single bucket in Amazon S3. This is an asynchronous operation that returns immediately. After a successful initial sync is completed, the system continuously syncs data to the Amazon S3 bucket. To check the status of the sync, use the [ListResourceDataSync](API_ListResourceDataSync.html) operation.
+Creates a resource data sync configuration to a single bucket in Amazon S3. This is an asynchronous operation that returns immediately. After a successful initial sync is completed, the system continuously syncs data to the Amazon S3 bucket. To check the status of the sync, use the [ListResourceDataSync](@ref).
 
-By default, data is not encrypted in Amazon S3. We strongly recommend that you enable encryption in Amazon S3 to ensure secure data storage. We also recommend that you secure access to the Amazon S3 bucket by creating a restrictive bucket policy. To view an example of a restrictive Amazon S3 bucket policy for Resource Data Sync, see [Configuring Resource Data Sync for Inventory](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-configuring.html#sysman-inventory-datasync).
+By default, data is not encrypted in Amazon S3. We strongly recommend that you enable encryption in Amazon S3 to ensure secure data storage. We also recommend that you secure access to the Amazon S3 bucket by creating a restrictive bucket policy. To view an example of a restrictive Amazon S3 bucket policy for Resource Data Sync, see [Create a Resource Data Sync for Inventory](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync-create.html) in the *AWS Systems Manager User Guide*.
 
 # Arguments
 
@@ -559,7 +611,6 @@ Amazon S3 configuration details for the sync.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/CreateResourceDataSync)
 """
-
 @inline create_resource_data_sync(aws::AWSConfig=default_aws_config(); args...) = create_resource_data_sync(aws, args)
 
 @inline create_resource_data_sync(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "CreateResourceDataSync", args)
@@ -598,7 +649,6 @@ The ID of the activation that you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeleteActivation)
 """
-
 @inline delete_activation(aws::AWSConfig=default_aws_config(); args...) = delete_activation(aws, args)
 
 @inline delete_activation(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DeleteActivation", args)
@@ -647,7 +697,6 @@ The association ID that you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeleteAssociation)
 """
-
 @inline delete_association(aws::AWSConfig=default_aws_config(); args...) = delete_association(aws, args)
 
 @inline delete_association(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DeleteAssociation", args)
@@ -688,12 +737,65 @@ The name of the document.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeleteDocument)
 """
-
 @inline delete_document(aws::AWSConfig=default_aws_config(); args...) = delete_document(aws, args)
 
 @inline delete_document(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DeleteDocument", args)
 
 @inline delete_document(args) = delete_document(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SSM.delete_inventory
+    delete_inventory([::AWSConfig], arguments::Dict)
+    delete_inventory([::AWSConfig]; TypeName=, <keyword arguments>)
+
+    using AWSCore.Services.ssm
+    ssm([::AWSConfig], "DeleteInventory", arguments::Dict)
+    ssm([::AWSConfig], "DeleteInventory", TypeName=, <keyword arguments>)
+
+# DeleteInventory Operation
+
+Delete a custom inventory type, or the data associated with a custom Inventory type. Deleting a custom inventory type is also referred to as deleting a custom inventory schema.
+
+# Arguments
+
+## `TypeName = ::String` -- *Required*
+The name of the custom inventory type for which you want to delete either all previously collected data, or the inventory type itself.
+
+
+## `SchemaDeleteOption = "DisableSchema" or "DeleteSchema"`
+Use the `SchemaDeleteOption` to delete a custom inventory type (schema). If you don't choose this option, the system only deletes existing inventory data associated with the custom inventory type. Choose one of the following options:
+
+DisableSchema: If you choose this option, the system ignores all inventory data for the specified version, and any earlier versions. To enable this schema again, you must call the `PutInventory` action for a version greater than the disbled version.
+
+DeleteSchema: This option deletes the specified custom type from the Inventory service. You can recreate the schema later, if you want.
+
+
+## `DryRun = ::Bool`
+Use this option to view a summary of the deletion request without deleting any data or the data type. This option is useful when you only want to understand what will be deleted. Once you validate that the data to be deleted is what you intend to delete, you can run the same command without specifying the `DryRun` option.
+
+
+## `ClientToken = ::String`
+User-provided idempotency token.
+
+
+
+
+# Returns
+
+`DeleteInventoryResult`
+
+# Exceptions
+
+`InternalServerError`, `InvalidTypeNameException`, `InvalidOptionException`, `InvalidDeleteInventoryParametersException` or `InvalidInventoryRequestException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeleteInventory)
+"""
+@inline delete_inventory(aws::AWSConfig=default_aws_config(); args...) = delete_inventory(aws, args)
+
+@inline delete_inventory(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DeleteInventory", args)
+
+@inline delete_inventory(args) = delete_inventory(default_aws_config(), args)
 
 
 """
@@ -727,7 +829,6 @@ The ID of the Maintenance Window to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeleteMaintenanceWindow)
 """
-
 @inline delete_maintenance_window(aws::AWSConfig=default_aws_config(); args...) = delete_maintenance_window(aws, args)
 
 @inline delete_maintenance_window(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DeleteMaintenanceWindow", args)
@@ -766,7 +867,6 @@ The name of the parameter to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeleteParameter)
 """
-
 @inline delete_parameter(aws::AWSConfig=default_aws_config(); args...) = delete_parameter(aws, args)
 
 @inline delete_parameter(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DeleteParameter", args)
@@ -805,7 +905,6 @@ The names of the parameters to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeleteParameters)
 """
-
 @inline delete_parameters(aws::AWSConfig=default_aws_config(); args...) = delete_parameters(aws, args)
 
 @inline delete_parameters(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DeleteParameters", args)
@@ -844,7 +943,6 @@ The ID of the patch baseline to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeletePatchBaseline)
 """
-
 @inline delete_patch_baseline(aws::AWSConfig=default_aws_config(); args...) = delete_patch_baseline(aws, args)
 
 @inline delete_patch_baseline(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DeletePatchBaseline", args)
@@ -883,7 +981,6 @@ The name of the configuration to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeleteResourceDataSync)
 """
-
 @inline delete_resource_data_sync(aws::AWSConfig=default_aws_config(); args...) = delete_resource_data_sync(aws, args)
 
 @inline delete_resource_data_sync(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DeleteResourceDataSync", args)
@@ -902,7 +999,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # DeregisterManagedInstance Operation
 
-Removes the server or virtual machine from the list of registered servers. You can reregister the instance again at any time. If you don't plan to use Run Command on the server, we suggest uninstalling the SSM Agent first.
+Removes the server or virtual machine from the list of registered servers. You can reregister the instance again at any time. If you don't plan to use Run Command on the server, we suggest uninstalling SSM Agent first.
 
 # Arguments
 
@@ -922,7 +1019,6 @@ The ID assigned to the managed instance when you registered it using the activat
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeregisterManagedInstance)
 """
-
 @inline deregister_managed_instance(aws::AWSConfig=default_aws_config(); args...) = deregister_managed_instance(aws, args)
 
 @inline deregister_managed_instance(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DeregisterManagedInstance", args)
@@ -965,7 +1061,6 @@ The name of the patch group that should be deregistered from the patch baseline.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeregisterPatchBaselineForPatchGroup)
 """
-
 @inline deregister_patch_baseline_for_patch_group(aws::AWSConfig=default_aws_config(); args...) = deregister_patch_baseline_for_patch_group(aws, args)
 
 @inline deregister_patch_baseline_for_patch_group(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DeregisterPatchBaselineForPatchGroup", args)
@@ -1012,7 +1107,6 @@ The system checks if the target is being referenced by a task. If the target is 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeregisterTargetFromMaintenanceWindow)
 """
-
 @inline deregister_target_from_maintenance_window(aws::AWSConfig=default_aws_config(); args...) = deregister_target_from_maintenance_window(aws, args)
 
 @inline deregister_target_from_maintenance_window(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DeregisterTargetFromMaintenanceWindow", args)
@@ -1055,7 +1149,6 @@ The ID of the task to remove from the Maintenance Window.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DeregisterTaskFromMaintenanceWindow)
 """
-
 @inline deregister_task_from_maintenance_window(aws::AWSConfig=default_aws_config(); args...) = deregister_task_from_maintenance_window(aws, args)
 
 @inline deregister_task_from_maintenance_window(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DeregisterTaskFromMaintenanceWindow", args)
@@ -1107,7 +1200,6 @@ A token to start the list. Use this token to get the next set of results.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeActivations)
 """
-
 @inline describe_activations(aws::AWSConfig=default_aws_config(); args...) = describe_activations(aws, args)
 
 @inline describe_activations(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeActivations", args)
@@ -1126,7 +1218,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # DescribeAssociation Operation
 
-Describes the associations for the specified Systems Manager document or instance.
+Describes the association for the specified target or instance. If you created the association by using the `Targets` parameter, then you must retrieve the association by using the association ID. If you created the association by specifying an instance ID and a Systems Manager document, then you retrieve the association by specifying the document name and the instance ID.
 
 # Arguments
 
@@ -1158,12 +1250,138 @@ Specify the association version to retrieve. To view the latest version, either 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeAssociation)
 """
-
 @inline describe_association(aws::AWSConfig=default_aws_config(); args...) = describe_association(aws, args)
 
 @inline describe_association(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeAssociation", args)
 
 @inline describe_association(args) = describe_association(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SSM.describe_association_execution_targets
+    describe_association_execution_targets([::AWSConfig], arguments::Dict)
+    describe_association_execution_targets([::AWSConfig]; AssociationId=, ExecutionId=, <keyword arguments>)
+
+    using AWSCore.Services.ssm
+    ssm([::AWSConfig], "DescribeAssociationExecutionTargets", arguments::Dict)
+    ssm([::AWSConfig], "DescribeAssociationExecutionTargets", AssociationId=, ExecutionId=, <keyword arguments>)
+
+# DescribeAssociationExecutionTargets Operation
+
+Use this API action to view information about a specific execution of a specific association.
+
+# Arguments
+
+## `AssociationId = ::String` -- *Required*
+The association ID that includes the execution for which you want to view details.
+
+
+## `ExecutionId = ::String` -- *Required*
+The execution ID for which you want to view details.
+
+
+## `Filters = [[ ... ], ...]`
+Filters for the request. You can specify the following filters and values.
+
+Status (EQUAL)
+
+ResourceId (EQUAL)
+
+ResourceType (EQUAL)
+```
+ Filters = [[
+        "Key" => <required> "Status", "ResourceId" or "ResourceType",
+        "Value" => <required> ::String
+    ], ...]
+```
+
+## `MaxResults = ::Int`
+The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+
+
+## `NextToken = ::String`
+A token to start the list. Use this token to get the next set of results.
+
+
+
+
+# Returns
+
+`DescribeAssociationExecutionTargetsResult`
+
+# Exceptions
+
+`InternalServerError`, `AssociationDoesNotExist`, `InvalidNextToken` or `AssociationExecutionDoesNotExist`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeAssociationExecutionTargets)
+"""
+@inline describe_association_execution_targets(aws::AWSConfig=default_aws_config(); args...) = describe_association_execution_targets(aws, args)
+
+@inline describe_association_execution_targets(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeAssociationExecutionTargets", args)
+
+@inline describe_association_execution_targets(args) = describe_association_execution_targets(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SSM.describe_association_executions
+    describe_association_executions([::AWSConfig], arguments::Dict)
+    describe_association_executions([::AWSConfig]; AssociationId=, <keyword arguments>)
+
+    using AWSCore.Services.ssm
+    ssm([::AWSConfig], "DescribeAssociationExecutions", arguments::Dict)
+    ssm([::AWSConfig], "DescribeAssociationExecutions", AssociationId=, <keyword arguments>)
+
+# DescribeAssociationExecutions Operation
+
+Use this API action to view all executions for a specific association ID.
+
+# Arguments
+
+## `AssociationId = ::String` -- *Required*
+The association ID for which you want to view execution history details.
+
+
+## `Filters = [[ ... ], ...]`
+Filters for the request. You can specify the following filters and values.
+
+ExecutionId (EQUAL)
+
+Status (EQUAL)
+
+CreatedTime (EQUAL, GREATER_THAN, LESS_THAN)
+```
+ Filters = [[
+        "Key" => <required> "ExecutionId", "Status" or "CreatedTime",
+        "Value" => <required> ::String,
+        "Type" => <required> "EQUAL", "LESS_THAN" or "GREATER_THAN"
+    ], ...]
+```
+
+## `MaxResults = ::Int`
+The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+
+
+## `NextToken = ::String`
+A token to start the list. Use this token to get the next set of results.
+
+
+
+
+# Returns
+
+`DescribeAssociationExecutionsResult`
+
+# Exceptions
+
+`InternalServerError`, `AssociationDoesNotExist` or `InvalidNextToken`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeAssociationExecutions)
+"""
+@inline describe_association_executions(aws::AWSConfig=default_aws_config(); args...) = describe_association_executions(aws, args)
+
+@inline describe_association_executions(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeAssociationExecutions", args)
+
+@inline describe_association_executions(args) = describe_association_executions(default_aws_config(), args)
 
 
 """
@@ -1185,7 +1403,7 @@ Provides details about all active and terminated Automation executions.
 Filters used to limit the scope of executions that are requested.
 ```
  Filters = [[
-        "Key" => <required> "DocumentNamePrefix" or "ExecutionStatus",
+        "Key" => <required> "DocumentNamePrefix", "ExecutionStatus", "ExecutionId", "ParentExecutionId", "CurrentAction", "StartTimeBefore" or "StartTimeAfter",
         "Values" => <required> [::String, ...]
     ], ...]
 ```
@@ -1206,16 +1424,74 @@ The token for the next set of items to return. (You received this token from a p
 
 # Exceptions
 
-`InvalidNextToken` or `InternalServerError`.
+`InvalidFilterKey`, `InvalidFilterValue`, `InvalidNextToken` or `InternalServerError`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeAutomationExecutions)
 """
-
 @inline describe_automation_executions(aws::AWSConfig=default_aws_config(); args...) = describe_automation_executions(aws, args)
 
 @inline describe_automation_executions(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeAutomationExecutions", args)
 
 @inline describe_automation_executions(args) = describe_automation_executions(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SSM.describe_automation_step_executions
+    describe_automation_step_executions([::AWSConfig], arguments::Dict)
+    describe_automation_step_executions([::AWSConfig]; AutomationExecutionId=, <keyword arguments>)
+
+    using AWSCore.Services.ssm
+    ssm([::AWSConfig], "DescribeAutomationStepExecutions", arguments::Dict)
+    ssm([::AWSConfig], "DescribeAutomationStepExecutions", AutomationExecutionId=, <keyword arguments>)
+
+# DescribeAutomationStepExecutions Operation
+
+Information about all active and terminated step executions in an Automation workflow.
+
+# Arguments
+
+## `AutomationExecutionId = ::String` -- *Required*
+The Automation execution ID for which you want step execution descriptions.
+
+
+## `Filters = [[ ... ], ...]`
+One or more filters to limit the number of step executions returned by the request.
+```
+ Filters = [[
+        "Key" => <required> "StartTimeBefore", "StartTimeAfter", "StepExecutionStatus", "StepExecutionId", "StepName" or "Action",
+        "Values" => <required> [::String, ...]
+    ], ...]
+```
+
+## `NextToken = ::String`
+The token for the next set of items to return. (You received this token from a previous call.)
+
+
+## `MaxResults = ::Int`
+The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+
+
+## `ReverseOrder = ::Bool`
+A boolean that indicates whether to list step executions in reverse order by start time. The default value is false.
+
+
+
+
+# Returns
+
+`DescribeAutomationStepExecutionsResult`
+
+# Exceptions
+
+`AutomationExecutionNotFoundException`, `InvalidNextToken`, `InvalidFilterKey`, `InvalidFilterValue` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeAutomationStepExecutions)
+"""
+@inline describe_automation_step_executions(aws::AWSConfig=default_aws_config(); args...) = describe_automation_step_executions(aws, args)
+
+@inline describe_automation_step_executions(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeAutomationStepExecutions", args)
+
+@inline describe_automation_step_executions(args) = describe_automation_step_executions(default_aws_config(), args)
 
 
 """
@@ -1262,7 +1538,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeAvailablePatches)
 """
-
 @inline describe_available_patches(aws::AWSConfig=default_aws_config(); args...) = describe_available_patches(aws, args)
 
 @inline describe_available_patches(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeAvailablePatches", args)
@@ -1305,7 +1580,6 @@ The document version for which you want information. Can be a specific version o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeDocument)
 """
-
 @inline describe_document(aws::AWSConfig=default_aws_config(); args...) = describe_document(aws, args)
 
 @inline describe_document(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeDocument", args)
@@ -1348,7 +1622,6 @@ The permission type for the document. The permission type can be *Share*.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeDocumentPermission)
 """
-
 @inline describe_document_permission(aws::AWSConfig=default_aws_config(); args...) = describe_document_permission(aws, args)
 
 @inline describe_document_permission(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeDocumentPermission", args)
@@ -1395,7 +1668,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeEffectiveInstanceAssociations)
 """
-
 @inline describe_effective_instance_associations(aws::AWSConfig=default_aws_config(); args...) = describe_effective_instance_associations(aws, args)
 
 @inline describe_effective_instance_associations(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeEffectiveInstanceAssociations", args)
@@ -1442,7 +1714,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeEffectivePatchesForPatchBaseline)
 """
-
 @inline describe_effective_patches_for_patch_baseline(aws::AWSConfig=default_aws_config(); args...) = describe_effective_patches_for_patch_baseline(aws, args)
 
 @inline describe_effective_patches_for_patch_baseline(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeEffectivePatchesForPatchBaseline", args)
@@ -1489,7 +1760,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeInstanceAssociationsStatus)
 """
-
 @inline describe_instance_associations_status(aws::AWSConfig=default_aws_config(); args...) = describe_instance_associations_status(aws, args)
 
 @inline describe_instance_associations_status(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeInstanceAssociationsStatus", args)
@@ -1509,6 +1779,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 # DescribeInstanceInformation Operation
 
 Describes one or more of your instances. You can use this to get information about instances like the operating system platform, the SSM Agent version (Linux), status etc. If you specify one or more instance IDs, it returns information for those instances. If you do not specify instance IDs, it returns information for all your instances. If you specify an instance ID that is not valid or an instance that you do not own, you receive an error.
+
+**Note**
+> The IamRole field for this API action is the Amazon Identity and Access Management (IAM) role assigned to on-premises instances. This call does not return the IAM role for Amazon EC2 instances.
 
 # Arguments
 
@@ -1550,7 +1823,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeInstanceInformation)
 """
-
 @inline describe_instance_information(aws::AWSConfig=default_aws_config(); args...) = describe_instance_information(aws, args)
 
 @inline describe_instance_information(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeInstanceInformation", args)
@@ -1597,7 +1869,6 @@ The maximum number of instances to return (per page).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeInstancePatchStates)
 """
-
 @inline describe_instance_patch_states(aws::AWSConfig=default_aws_config(); args...) = describe_instance_patch_states(aws, args)
 
 @inline describe_instance_patch_states(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeInstancePatchStates", args)
@@ -1660,7 +1931,6 @@ The maximum number of patches to return (per page).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeInstancePatchStatesForPatchGroup)
 """
-
 @inline describe_instance_patch_states_for_patch_group(aws::AWSConfig=default_aws_config(); args...) = describe_instance_patch_states_for_patch_group(aws, args)
 
 @inline describe_instance_patch_states_for_patch_group(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeInstancePatchStatesForPatchGroup", args)
@@ -1720,12 +1990,57 @@ The maximum number of patches to return (per page).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeInstancePatches)
 """
-
 @inline describe_instance_patches(aws::AWSConfig=default_aws_config(); args...) = describe_instance_patches(aws, args)
 
 @inline describe_instance_patches(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeInstancePatches", args)
 
 @inline describe_instance_patches(args) = describe_instance_patches(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SSM.describe_inventory_deletions
+    describe_inventory_deletions([::AWSConfig], arguments::Dict)
+    describe_inventory_deletions([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.ssm
+    ssm([::AWSConfig], "DescribeInventoryDeletions", arguments::Dict)
+    ssm([::AWSConfig], "DescribeInventoryDeletions", <keyword arguments>)
+
+# DescribeInventoryDeletions Operation
+
+Describes a specific delete inventory operation.
+
+# Arguments
+
+## `DeletionId = ::String`
+Specify the delete inventory ID for which you want information. This ID was returned by the `DeleteInventory` action.
+
+
+## `NextToken = ::String`
+A token to start the list. Use this token to get the next set of results.
+
+
+## `MaxResults = ::Int`
+The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+
+
+
+
+# Returns
+
+`DescribeInventoryDeletionsResult`
+
+# Exceptions
+
+`InternalServerError`, `InvalidDeletionIdException` or `InvalidNextToken`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeInventoryDeletions)
+"""
+@inline describe_inventory_deletions(aws::AWSConfig=default_aws_config(); args...) = describe_inventory_deletions(aws, args)
+
+@inline describe_inventory_deletions(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeInventoryDeletions", args)
+
+@inline describe_inventory_deletions(args) = describe_inventory_deletions(default_aws_config(), args)
 
 
 """
@@ -1780,7 +2095,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeMaintenanceWindowExecutionTaskInvocations)
 """
-
 @inline describe_maintenance_window_execution_task_invocations(aws::AWSConfig=default_aws_config(); args...) = describe_maintenance_window_execution_task_invocations(aws, args)
 
 @inline describe_maintenance_window_execution_task_invocations(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeMaintenanceWindowExecutionTaskInvocations", args)
@@ -1836,7 +2150,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeMaintenanceWindowExecutionTasks)
 """
-
 @inline describe_maintenance_window_execution_tasks(aws::AWSConfig=default_aws_config(); args...) = describe_maintenance_window_execution_tasks(aws, args)
 
 @inline describe_maintenance_window_execution_tasks(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeMaintenanceWindowExecutionTasks", args)
@@ -1898,7 +2211,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeMaintenanceWindowExecutions)
 """
-
 @inline describe_maintenance_window_executions(aws::AWSConfig=default_aws_config(); args...) = describe_maintenance_window_executions(aws, args)
 
 @inline describe_maintenance_window_executions(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeMaintenanceWindowExecutions", args)
@@ -1954,7 +2266,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeMaintenanceWindowTargets)
 """
-
 @inline describe_maintenance_window_targets(aws::AWSConfig=default_aws_config(); args...) = describe_maintenance_window_targets(aws, args)
 
 @inline describe_maintenance_window_targets(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeMaintenanceWindowTargets", args)
@@ -2010,7 +2321,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeMaintenanceWindowTasks)
 """
-
 @inline describe_maintenance_window_tasks(aws::AWSConfig=default_aws_config(); args...) = describe_maintenance_window_tasks(aws, args)
 
 @inline describe_maintenance_window_tasks(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeMaintenanceWindowTasks", args)
@@ -2062,7 +2372,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeMaintenanceWindows)
 """
-
 @inline describe_maintenance_windows(aws::AWSConfig=default_aws_config(); args...) = describe_maintenance_windows(aws, args)
 
 @inline describe_maintenance_windows(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeMaintenanceWindows", args)
@@ -2126,7 +2435,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeParameters)
 """
-
 @inline describe_parameters(aws::AWSConfig=default_aws_config(); args...) = describe_parameters(aws, args)
 
 @inline describe_parameters(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribeParameters", args)
@@ -2182,7 +2490,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribePatchBaselines)
 """
-
 @inline describe_patch_baselines(aws::AWSConfig=default_aws_config(); args...) = describe_patch_baselines(aws, args)
 
 @inline describe_patch_baselines(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribePatchBaselines", args)
@@ -2221,7 +2528,6 @@ The name of the patch group whose patch snapshot should be retrieved.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribePatchGroupState)
 """
-
 @inline describe_patch_group_state(aws::AWSConfig=default_aws_config(); args...) = describe_patch_group_state(aws, args)
 
 @inline describe_patch_group_state(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribePatchGroupState", args)
@@ -2273,7 +2579,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribePatchGroups)
 """
-
 @inline describe_patch_groups(aws::AWSConfig=default_aws_config(); args...) = describe_patch_groups(aws, args)
 
 @inline describe_patch_groups(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "DescribePatchGroups", args)
@@ -2312,7 +2617,6 @@ The unique identifier for an existing automation execution to examine. The execu
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetAutomationExecution)
 """
-
 @inline get_automation_execution(aws::AWSConfig=default_aws_config(); args...) = get_automation_execution(aws, args)
 
 @inline get_automation_execution(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetAutomationExecution", args)
@@ -2359,7 +2663,6 @@ Returns detailed information about command execution for an invocation or plugin
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetCommandInvocation)
 """
-
 @inline get_command_invocation(aws::AWSConfig=default_aws_config(); args...) = get_command_invocation(aws, args)
 
 @inline get_command_invocation(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetCommandInvocation", args)
@@ -2380,9 +2683,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 Retrieves the default patch baseline. Note that Systems Manager supports creating multiple default patch baselines. For example, you can create a default patch baseline for each operating system.
 
+If you do not specify an operating system value, the default patch baseline for Windows is returned.
+
 # Arguments
 
-## `OperatingSystem = "WINDOWS", "AMAZON_LINUX", "UBUNTU" or "REDHAT_ENTERPRISE_LINUX"`
+## `OperatingSystem = "WINDOWS", "AMAZON_LINUX", "AMAZON_LINUX_2", "UBUNTU", "REDHAT_ENTERPRISE_LINUX", "SUSE" or "CENTOS"`
 Returns the default patch baseline for the specified operating system.
 
 
@@ -2398,7 +2703,6 @@ Returns the default patch baseline for the specified operating system.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetDefaultPatchBaseline)
 """
-
 @inline get_default_patch_baseline(aws::AWSConfig=default_aws_config(); args...) = get_default_patch_baseline(aws, args)
 
 @inline get_default_patch_baseline(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetDefaultPatchBaseline", args)
@@ -2441,7 +2745,6 @@ The user-defined snapshot ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetDeployablePatchSnapshotForInstance)
 """
-
 @inline get_deployable_patch_snapshot_for_instance(aws::AWSConfig=default_aws_config(); args...) = get_deployable_patch_snapshot_for_instance(aws, args)
 
 @inline get_deployable_patch_snapshot_for_instance(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetDeployablePatchSnapshotForInstance", args)
@@ -2472,6 +2775,10 @@ The name of the Systems Manager document.
 The document version for which you want information.
 
 
+## `DocumentFormat = "YAML" or "JSON"`
+Returns the document in the specified format. The document format can be either JSON or YAML. JSON is the default format.
+
+
 
 
 # Returns
@@ -2484,7 +2791,6 @@ The document version for which you want information.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetDocument)
 """
-
 @inline get_document(aws::AWSConfig=default_aws_config(); args...) = get_document(aws, args)
 
 @inline get_document(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetDocument", args)
@@ -2517,6 +2823,15 @@ One or more filters. Use a filter to return a more specific list of results.
     ], ...]
 ```
 
+## `Aggregators = [[ ... ], ...]`
+Returns counts of inventory types based on one or more expressions. For example, if you aggregate by using an expression that uses the `AWS:InstanceInformation.PlatformType` type, you can see a count of how many Windows and Linux instances exist in your inventoried fleet.
+```
+ Aggregators = [[
+        "Expression" =>  ::String,
+        "Aggregators" =>  list
+    ], ...]
+```
+
 ## `ResultAttributes = [["TypeName" => <required> ::String], ...]`
 The list of inventory item types to return.
 
@@ -2541,7 +2856,6 @@ The maximum number of items to return for this call. The call also returns a tok
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetInventory)
 """
-
 @inline get_inventory(aws::AWSConfig=default_aws_config(); args...) = get_inventory(aws, args)
 
 @inline get_inventory(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetInventory", args)
@@ -2576,6 +2890,10 @@ The token for the next set of items to return. (You received this token from a p
 The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 
 
+## `Aggregator = ::Bool`
+Returns inventory schemas that support aggregation. For example, this call returns the `AWS:InstanceInformation` type, because it supports aggregation based on the `PlatformName`, `PlatformType`, and `PlatformVersion` attributes.
+
+
 ## `SubType = ::Bool`
 Returns the sub-type schema for a specified inventory type.
 
@@ -2592,7 +2910,6 @@ Returns the sub-type schema for a specified inventory type.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetInventorySchema)
 """
-
 @inline get_inventory_schema(aws::AWSConfig=default_aws_config(); args...) = get_inventory_schema(aws, args)
 
 @inline get_inventory_schema(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetInventorySchema", args)
@@ -2631,7 +2948,6 @@ The ID of the desired Maintenance Window.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetMaintenanceWindow)
 """
-
 @inline get_maintenance_window(aws::AWSConfig=default_aws_config(); args...) = get_maintenance_window(aws, args)
 
 @inline get_maintenance_window(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetMaintenanceWindow", args)
@@ -2670,7 +2986,6 @@ The ID of the Maintenance Window execution that includes the task.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetMaintenanceWindowExecution)
 """
-
 @inline get_maintenance_window_execution(aws::AWSConfig=default_aws_config(); args...) = get_maintenance_window_execution(aws, args)
 
 @inline get_maintenance_window_execution(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetMaintenanceWindowExecution", args)
@@ -2713,7 +3028,6 @@ The ID of the specific task execution in the Maintenance Window task that should
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetMaintenanceWindowExecutionTask)
 """
-
 @inline get_maintenance_window_execution_task(aws::AWSConfig=default_aws_config(); args...) = get_maintenance_window_execution_task(aws, args)
 
 @inline get_maintenance_window_execution_task(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetMaintenanceWindowExecutionTask", args)
@@ -2760,7 +3074,6 @@ The invocation ID to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetMaintenanceWindowExecutionTaskInvocation)
 """
-
 @inline get_maintenance_window_execution_task_invocation(aws::AWSConfig=default_aws_config(); args...) = get_maintenance_window_execution_task_invocation(aws, args)
 
 @inline get_maintenance_window_execution_task_invocation(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetMaintenanceWindowExecutionTaskInvocation", args)
@@ -2803,7 +3116,6 @@ The Maintenance Window task ID to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetMaintenanceWindowTask)
 """
-
 @inline get_maintenance_window_task(aws::AWSConfig=default_aws_config(); args...) = get_maintenance_window_task(aws, args)
 
 @inline get_maintenance_window_task(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetMaintenanceWindowTask", args)
@@ -2822,7 +3134,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # GetParameter Operation
 
-Get information about a parameter by using the parameter name.
+Get information about a parameter by using the parameter name. Don't confuse this API action with the [GetParameters](@ref) API action.
 
 # Arguments
 
@@ -2846,7 +3158,6 @@ Return decrypted values for secure string parameters. This flag is ignored for S
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetParameter)
 """
-
 @inline get_parameter(aws::AWSConfig=default_aws_config(); args...) = get_parameter(aws, args)
 
 @inline get_parameter(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetParameter", args)
@@ -2897,7 +3208,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetParameterHistory)
 """
-
 @inline get_parameter_history(aws::AWSConfig=default_aws_config(); args...) = get_parameter_history(aws, args)
 
 @inline get_parameter_history(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetParameterHistory", args)
@@ -2916,7 +3226,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # GetParameters Operation
 
-Get details of a parameter.
+Get details of a parameter. Don't confuse this API action with the [GetParameter](@ref) API action.
 
 # Arguments
 
@@ -2940,7 +3250,6 @@ Return decrypted secure string value. Return decrypted values for secure string 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetParameters)
 """
-
 @inline get_parameters(aws::AWSConfig=default_aws_config(); args...) = get_parameters(aws, args)
 
 @inline get_parameters(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetParameters", args)
@@ -2959,24 +3268,31 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # GetParametersByPath Operation
 
-Retrieve parameters in a specific hierarchy. For more information, see [Working with Systems Manager Parameters](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html).
+Retrieve parameters in a specific hierarchy. For more information, see [Working with Systems Manager Parameters](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html) in the *AWS Systems Manager User Guide*.
 
 Request results are returned on a best-effort basis. If you specify `MaxResults` in the request, the response includes information up to the limit specified. The number of items returned, however, can be between zero and the value of `MaxResults`. If the service reaches an internal limit while processing the results, it stops the operation and returns the matching values up to that point and a `NextToken`. You can specify the `NextToken` in a subsequent call to get the next set of results.
+
+**Note**
+> This API action doesn't support filtering by tags.
 
 # Arguments
 
 ## `Path = ::String` -- *Required*
-The hierarchy for the parameter. Hierarchies start with a forward slash (/) and end with the parameter name. A hierarchy can have a maximum of five levels. Examples: /Environment/Test/DBString003
-
-/Finance/Prod/IAD/OS/WinServ2016/license15
+The hierarchy for the parameter. Hierarchies start with a forward slash (/) and end with the parameter name. A parameter name hierarchy can have a maximum of 15 levels. Here is an example of a hierarchy: `/Finance/Prod/IAD/WinServ2016/license33`
 
 
 ## `Recursive = ::Bool`
 Retrieve all parameters within a hierarchy.
 
+**Important**
+> If a user has access to a path, then the user can access all levels of that path. For example, if a user has permission to access path /a, then the user can also access /a/b. Even if a user has explicitly been denied access in IAM for parameter /a, they can still call the GetParametersByPath API action recursively and view /a/b.
+
 
 ## `ParameterFilters = [[ ... ], ...]`
 Filters to limit the request results.
+
+**Note**
+> You can't filter using the parameter name.
 ```
  ParameterFilters = [[
         "Key" => <required> ::String,
@@ -3009,7 +3325,6 @@ A token to start the list. Use this token to get the next set of results.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetParametersByPath)
 """
-
 @inline get_parameters_by_path(aws::AWSConfig=default_aws_config(); args...) = get_parameters_by_path(aws, args)
 
 @inline get_parameters_by_path(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetParametersByPath", args)
@@ -3048,7 +3363,6 @@ The ID of the patch baseline to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetPatchBaseline)
 """
-
 @inline get_patch_baseline(aws::AWSConfig=default_aws_config(); args...) = get_patch_baseline(aws, args)
 
 @inline get_patch_baseline(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetPatchBaseline", args)
@@ -3075,7 +3389,7 @@ Retrieves the patch baseline that should be used for the specified patch group.
 The name of the patch group whose patch baseline should be retrieved.
 
 
-## `OperatingSystem = "WINDOWS", "AMAZON_LINUX", "UBUNTU" or "REDHAT_ENTERPRISE_LINUX"`
+## `OperatingSystem = "WINDOWS", "AMAZON_LINUX", "AMAZON_LINUX_2", "UBUNTU", "REDHAT_ENTERPRISE_LINUX", "SUSE" or "CENTOS"`
 Returns he operating system rule specified for patch groups using the patch baseline.
 
 
@@ -3091,12 +3405,57 @@ Returns he operating system rule specified for patch groups using the patch base
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetPatchBaselineForPatchGroup)
 """
-
 @inline get_patch_baseline_for_patch_group(aws::AWSConfig=default_aws_config(); args...) = get_patch_baseline_for_patch_group(aws, args)
 
 @inline get_patch_baseline_for_patch_group(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "GetPatchBaselineForPatchGroup", args)
 
 @inline get_patch_baseline_for_patch_group(args) = get_patch_baseline_for_patch_group(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SSM.label_parameter_version
+    label_parameter_version([::AWSConfig], arguments::Dict)
+    label_parameter_version([::AWSConfig]; Name=, Labels=, <keyword arguments>)
+
+    using AWSCore.Services.ssm
+    ssm([::AWSConfig], "LabelParameterVersion", arguments::Dict)
+    ssm([::AWSConfig], "LabelParameterVersion", Name=, Labels=, <keyword arguments>)
+
+# LabelParameterVersion Operation
+
+
+
+# Arguments
+
+## `Name = ::String` -- *Required*
+
+
+
+## `ParameterVersion = ::Int`
+
+
+
+## `Labels = [::String, ...]` -- *Required*
+
+
+
+
+
+# Returns
+
+`LabelParameterVersionResult`
+
+# Exceptions
+
+`InternalServerError`, `TooManyUpdates`, `ParameterNotFound`, `ParameterVersionNotFound` or `ParameterVersionLabelLimitExceeded`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/LabelParameterVersion)
+"""
+@inline label_parameter_version(aws::AWSConfig=default_aws_config(); args...) = label_parameter_version(aws, args)
+
+@inline label_parameter_version(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "LabelParameterVersion", args)
+
+@inline label_parameter_version(args) = label_parameter_version(default_aws_config(), args)
 
 
 """
@@ -3138,7 +3497,6 @@ A token to start the list. Use this token to get the next set of results.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListAssociationVersions)
 """
-
 @inline list_association_versions(aws::AWSConfig=default_aws_config(); args...) = list_association_versions(aws, args)
 
 @inline list_association_versions(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "ListAssociationVersions", args)
@@ -3190,7 +3548,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListAssociations)
 """
-
 @inline list_associations(aws::AWSConfig=default_aws_config(); args...) = list_associations(aws, args)
 
 @inline list_associations(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "ListAssociations", args)
@@ -3254,7 +3611,6 @@ An invocation is copy of a command sent to a specific instance. A command can ap
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListCommandInvocations)
 """
-
 @inline list_command_invocations(aws::AWSConfig=default_aws_config(); args...) = list_command_invocations(aws, args)
 
 @inline list_command_invocations(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "ListCommandInvocations", args)
@@ -3314,7 +3670,6 @@ Lists the commands requested by users of the AWS account.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListCommands)
 """
-
 @inline list_commands(aws::AWSConfig=default_aws_config(); args...) = list_commands(aws, args)
 
 @inline list_commands(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "ListCommands", args)
@@ -3375,7 +3730,6 @@ The maximum number of items to return for this call. The call also returns a tok
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListComplianceItems)
 """
-
 @inline list_compliance_items(aws::AWSConfig=default_aws_config(); args...) = list_compliance_items(aws, args)
 
 @inline list_compliance_items(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "ListComplianceItems", args)
@@ -3428,7 +3782,6 @@ The maximum number of items to return for this call. Currently, you can specify 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListComplianceSummaries)
 """
-
 @inline list_compliance_summaries(aws::AWSConfig=default_aws_config(); args...) = list_compliance_summaries(aws, args)
 
 @inline list_compliance_summaries(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "ListComplianceSummaries", args)
@@ -3475,7 +3828,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListDocumentVersions)
 """
-
 @inline list_document_versions(aws::AWSConfig=default_aws_config(); args...) = list_document_versions(aws, args)
 
 @inline list_document_versions(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "ListDocumentVersions", args)
@@ -3536,7 +3888,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListDocuments)
 """
-
 @inline list_documents(aws::AWSConfig=default_aws_config(); args...) = list_documents(aws, args)
 
 @inline list_documents(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "ListDocuments", args)
@@ -3597,7 +3948,6 @@ The maximum number of items to return for this call. The call also returns a tok
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListInventoryEntries)
 """
-
 @inline list_inventory_entries(aws::AWSConfig=default_aws_config(); args...) = list_inventory_entries(aws, args)
 
 @inline list_inventory_entries(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "ListInventoryEntries", args)
@@ -3650,7 +4000,6 @@ The maximum number of items to return for this call. The call also returns a tok
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListResourceComplianceSummaries)
 """
-
 @inline list_resource_compliance_summaries(aws::AWSConfig=default_aws_config(); args...) = list_resource_compliance_summaries(aws, args)
 
 @inline list_resource_compliance_summaries(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "ListResourceComplianceSummaries", args)
@@ -3695,7 +4044,6 @@ The maximum number of items to return for this call. The call also returns a tok
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListResourceDataSync)
 """
-
 @inline list_resource_data_sync(aws::AWSConfig=default_aws_config(); args...) = list_resource_data_sync(aws, args)
 
 @inline list_resource_data_sync(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "ListResourceDataSync", args)
@@ -3738,7 +4086,6 @@ The resource ID for which you want to see a list of tags.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ListTagsForResource)
 """
-
 @inline list_tags_for_resource(aws::AWSConfig=default_aws_config(); args...) = list_tags_for_resource(aws, args)
 
 @inline list_tags_for_resource(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "ListTagsForResource", args)
@@ -3789,7 +4136,6 @@ The AWS user accounts that should no longer have access to the document. The AWS
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ModifyDocumentPermission)
 """
-
 @inline modify_document_permission(aws::AWSConfig=default_aws_config(); args...) = modify_document_permission(aws, args)
 
 @inline modify_document_permission(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "ModifyDocumentPermission", args)
@@ -3809,6 +4155,38 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 # PutComplianceItems Operation
 
 Registers a compliance type and other compliance details on a designated resource. This action lets you register custom compliance details with a resource. This call overwrites existing compliance information on the resource, so you must provide a full list of compliance items each time that you send the request.
+
+ComplianceType can be one of the following:
+
+*   ExecutionId: The execution ID when the patch, association, or custom compliance item was applied.
+
+*   ExecutionType: Specify patch, association, or Custom:`string`.
+
+*   ExecutionTime. The time the patch, association, or custom compliance item was applied to the instance.
+
+*   Id: The patch, association, or custom compliance ID.
+
+*   Title: A title.
+
+*   Status: The status of the compliance item. For example, `approved` for patches, or `Failed` for associations.
+
+*   Severity: A patch severity. For example, `critical`.
+
+*   DocumentName: A SSM document name. For example, AWS-RunPatchBaseline.
+
+*   DocumentVersion: An SSM document version number. For example, 4.
+
+*   Classification: A patch classification. For example, `security updates`.
+
+*   PatchBaselineId: A patch baseline ID.
+
+*   PatchSeverity: A patch severity. For example, `Critical`.
+
+*   PatchState: A patch state. For example, `InstancesWithFailedPatches`.
+
+*   PatchGroup: The name of a patch group.
+
+*   InstalledTime: The time the association, patch, or custom compliance item was applied to the resource. Specify the time by using the following format: yyyy-MM-dd'T'HH:mm:ss'Z'
 
 # Arguments
 
@@ -3862,7 +4240,6 @@ MD5 or SHA-256 content hash. The content hash is used to determine if existing i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/PutComplianceItems)
 """
-
 @inline put_compliance_items(aws::AWSConfig=default_aws_config(); args...) = put_compliance_items(aws, args)
 
 @inline put_compliance_items(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "PutComplianceItems", args)
@@ -3914,7 +4291,6 @@ The inventory items that you want to add or update on instances.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/PutInventory)
 """
-
 @inline put_inventory(aws::AWSConfig=default_aws_config(); args...) = put_inventory(aws, args)
 
 @inline put_inventory(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "PutInventory", args)
@@ -3933,16 +4309,38 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 # PutParameter Operation
 
-Add one or more parameters to the system.
+Add a parameter to the system.
 
 # Arguments
 
 ## `Name = ::String` -- *Required*
-The name of the parameter that you want to add to the system.
+The fully qualified name of the parameter that you want to add to the system. The fully qualified name includes the complete hierarchy of the parameter path and name. For example: `/Dev/DBServer/MySQL/db-string13`
+
+Naming Constraints:
+
+*   Parameter names are case sensitive.
+
+*   A parameter name must be unique within an AWS Region
+
+*   A parameter name can't be prefixed with "aws" or "ssm" (case-insensitive).
+
+*   Parameter names can include only the following symbols and letters: `a-zA-Z0-9_.-/`
+
+*   A parameter name can't include spaces.
+
+*   Parameter hierarchies are limited to a maximum depth of fifteen levels.
+
+For additional information about valid values for parameter names, see [Requirements and Constraints for Parameter Names](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-parameter-name-constraints.html) in the *AWS Systems Manager User Guide*.
+
+**Note**
+> The maximum length constraint listed below includes capacity for additional system attributes that are not part of the name. The maximum length for the fully qualified parameter name is 1011 characters.
 
 
 ## `Description = ::String`
-Information about the parameter that you want to add to the system
+Information about the parameter that you want to add to the system. Optional but recommended.
+
+**Important**
+> Do not enter personally identifiable information in this field.
 
 
 ## `Value = ::String` -- *Required*
@@ -3952,9 +4350,20 @@ The parameter value that you want to add to the system.
 ## `Type = "String", "StringList" or "SecureString"` -- *Required*
 The type of parameter that you want to add to the system.
 
+Items in a `StringList` must be separated by a comma (,). You can't use other punctuation or special character to escape items in the list. If you have a parameter value that requires a comma, then use the `String` data type.
+
+**Note**
+> `SecureString` is not currently supported for AWS CloudFormation templates or in the China Regions.
+
 
 ## `KeyId = ::String`
-The KMS Key ID that you want to use to encrypt a parameter when you choose the SecureString data type. If you don't specify a key ID, the system uses the default key associated with your AWS account.
+The KMS Key ID that you want to use to encrypt a parameter. Either the default AWS Key Management Service (AWS KMS) key automatically assigned to your AWS account or a custom key. Required for parameters that use the `SecureString` data type.
+
+If you don't specify a key ID, the system uses the default key associated with your AWS account.
+
+*   To use your default AWS KMS key, choose the `SecureString` data type, and do *not* specify the `Key ID` when you create the parameter. The system automatically populates `Key ID` with your default KMS key.
+
+*   To use a custom KMS key, choose the `SecureString` data type with the `Key ID` parameter.
 
 
 ## `Overwrite = ::Bool`
@@ -3977,7 +4386,6 @@ A regular expression used to validate the parameter value. For example, for Stri
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/PutParameter)
 """
-
 @inline put_parameter(aws::AWSConfig=default_aws_config(); args...) = put_parameter(aws, args)
 
 @inline put_parameter(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "PutParameter", args)
@@ -4016,7 +4424,6 @@ The ID of the patch baseline that should be the default patch baseline.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/RegisterDefaultPatchBaseline)
 """
-
 @inline register_default_patch_baseline(aws::AWSConfig=default_aws_config(); args...) = register_default_patch_baseline(aws, args)
 
 @inline register_default_patch_baseline(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "RegisterDefaultPatchBaseline", args)
@@ -4059,7 +4466,6 @@ The name of the patch group that should be registered with the patch baseline.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/RegisterPatchBaselineForPatchGroup)
 """
-
 @inline register_patch_baseline_for_patch_group(aws::AWSConfig=default_aws_config(); args...) = register_patch_baseline_for_patch_group(aws, args)
 
 @inline register_patch_baseline_for_patch_group(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "RegisterPatchBaselineForPatchGroup", args)
@@ -4091,7 +4497,17 @@ The type of target being registered with the Maintenance Window.
 
 
 ## `Targets = [[ ... ], ...]` -- *Required*
-The targets (either instances or tags). Instances are specified using Key=instanceids,Values=<instanceid1>,<instanceid2>. Tags are specified using Key=<tag name>,Values=<tag value>.
+The targets (either instances or tags).
+
+Specify instances using the following format:
+
+`Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>`
+
+Specify tags using either of the following formats:
+
+`Key=tag:<tag-key>,Values=<tag-value-1>,<tag-value-2>`
+
+`Key=tag-key,Values=<tag-key-1>,<tag-key-2>`
 ```
  Targets = [[
         "Key" =>  ::String,
@@ -4127,7 +4543,6 @@ User-provided idempotency token.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/RegisterTargetWithMaintenanceWindow)
 """
-
 @inline register_target_with_maintenance_window(aws::AWSConfig=default_aws_config(); args...) = register_target_with_maintenance_window(aws, args)
 
 @inline register_target_with_maintenance_window(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "RegisterTargetWithMaintenanceWindow", args)
@@ -4151,11 +4566,19 @@ Adds a new task to a Maintenance Window.
 # Arguments
 
 ## `WindowId = ::String` -- *Required*
-The id of the Maintenance Window the task should be added to.
+The ID of the Maintenance Window the task should be added to.
 
 
 ## `Targets = [[ ... ], ...]` -- *Required*
-The targets (either instances or tags). Instances are specified using Key=instanceids,Values=<instanceid1>,<instanceid2>. Tags are specified using Key=<tag name>,Values=<tag value>.
+The targets (either instances or Maintenance Window targets).
+
+Specify instances using the following format:
+
+`Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>`
+
+Specify Maintenance Window targets using the following format:
+
+`Key=<WindowTargetIds>,Values=<window-target-id-1>,<window-target-id-2>`
 ```
  Targets = [[
         "Key" =>  ::String,
@@ -4177,6 +4600,9 @@ The type of task being registered.
 
 ## `TaskParameters = ::Dict{String,String}`
 The parameters that should be passed to the task when it is executed.
+
+**Note**
+> `TaskParameters` has been deprecated. To specify parameters to pass to a task when it runs, instead use the `Parameters` option in the `TaskInvocationParameters` structure. For information about how Systems Manager handles these options for the supported Maintenance Window task types, see [MaintenanceWindowTaskInvocationParameters](@ref).
 
 
 ## `TaskInvocationParameters = [ ... ]`
@@ -4228,6 +4654,9 @@ The maximum number of errors allowed before this task stops being scheduled.
 
 ## `LoggingInfo = [ ... ]`
 A structure containing information about an Amazon S3 bucket to write instance-level logs to.
+
+**Note**
+> `LoggingInfo` has been deprecated. To specify an S3 bucket to contain logs, instead use the `OutputS3BucketName` and `OutputS3KeyPrefix` options in the `TaskInvocationParameters` structure. For information about how Systems Manager handles these options for the supported Maintenance Window task types, see [MaintenanceWindowTaskInvocationParameters](@ref).
 ```
  LoggingInfo = [
         "S3BucketName" => <required> ::String,
@@ -4260,7 +4689,6 @@ User-provided idempotency token.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/RegisterTaskWithMaintenanceWindow)
 """
-
 @inline register_task_with_maintenance_window(aws::AWSConfig=default_aws_config(); args...) = register_task_with_maintenance_window(aws, args)
 
 @inline register_task_with_maintenance_window(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "RegisterTaskWithMaintenanceWindow", args)
@@ -4286,9 +4714,23 @@ Removes all tags from the specified resource.
 ## `ResourceType = "Document", "ManagedInstance", "MaintenanceWindow", "Parameter" or "PatchBaseline"` -- *Required*
 The type of resource of which you want to remove a tag.
 
+**Note**
+> The ManagedInstance type for this API action is only for on-premises managed instances. You must specify the the name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+
 
 ## `ResourceId = ::String` -- *Required*
-The resource ID for which you want to remove tags.
+The resource ID for which you want to remove tags. Use the ID of the resource. Here are some examples:
+
+ManagedInstance: mi-012345abcde
+
+MaintenanceWindow: mw-012345abcde
+
+PatchBaseline: pb-012345abcde
+
+For the Document and Parameter values, use the name of the resource.
+
+**Note**
+> The ManagedInstance type for this API action is only for on-premises managed instances. You must specify the the name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
 
 
 ## `TagKeys = [::String, ...]` -- *Required*
@@ -4303,11 +4745,10 @@ Tag keys that you want to remove from the specified resource.
 
 # Exceptions
 
-`InvalidResourceType`, `InvalidResourceId` or `InternalServerError`.
+`InvalidResourceType`, `InvalidResourceId`, `InternalServerError` or `TooManyUpdates`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/RemoveTagsFromResource)
 """
-
 @inline remove_tags_from_resource(aws::AWSConfig=default_aws_config(); args...) = remove_tags_from_resource(aws, args)
 
 @inline remove_tags_from_resource(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "RemoveTagsFromResource", args)
@@ -4334,7 +4775,7 @@ Sends a signal to an Automation execution to change the current behavior or stat
 The unique identifier for an existing Automation execution that you want to send the signal to.
 
 
-## `SignalType = "Approve" or "Reject"` -- *Required*
+## `SignalType = "Approve", "Reject", "StartStep", "StopStep" or "Resume"` -- *Required*
 The type of signal. Valid signal types include the following: Approve and Reject
 
 
@@ -4350,11 +4791,10 @@ The data sent with the signal. The data schema depends on the type of signal use
 
 # Exceptions
 
-`AutomationExecutionNotFoundException`, `InvalidAutomationSignalException` or `InternalServerError`.
+`AutomationExecutionNotFoundException`, `AutomationStepNotFoundException`, `InvalidAutomationSignalException` or `InternalServerError`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/SendAutomationSignal)
 """
-
 @inline send_automation_signal(aws::AWSConfig=default_aws_config(); args...) = send_automation_signal(aws, args)
 
 @inline send_automation_signal(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "SendAutomationSignal", args)
@@ -4378,11 +4818,11 @@ Executes commands on one or more managed instances.
 # Arguments
 
 ## `InstanceIds = [::String, ...]`
-The instance IDs where the command should execute. You can specify a maximum of 50 IDs. If you prefer not to list individual instance IDs, you can instead send commands to a fleet of instances using the Targets parameter, which accepts EC2 tags. For more information about how to use Targets, see [Sending Commands to a Fleet](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html).
+The instance IDs where the command should execute. You can specify a maximum of 50 IDs. If you prefer not to list individual instance IDs, you can instead send commands to a fleet of instances using the Targets parameter, which accepts EC2 tags. For more information about how to use Targets, see [Sending Commands to a Fleet](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html) in the *AWS Systems Manager User Guide*.
 
 
 ## `Targets = [[ ... ], ...]`
-(Optional) An array of search criteria that targets instances using a Key,Value combination that you specify. Targets is required if you don't provide one or more instance IDs in the call. For more information about how to use Targets, see [Sending Commands to a Fleet](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html).
+(Optional) An array of search criteria that targets instances using a Key,Value combination that you specify. Targets is required if you don't provide one or more instance IDs in the call. For more information about how to use Targets, see [Sending Commands to a Fleet](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html) in the *AWS Systems Manager User Guide*.
 ```
  Targets = [[
         "Key" =>  ::String,
@@ -4392,6 +4832,16 @@ The instance IDs where the command should execute. You can specify a maximum of 
 
 ## `DocumentName = ::String` -- *Required*
 Required. The name of the Systems Manager document to execute. This can be a public document or a custom document.
+
+
+## `DocumentVersion = ::String`
+The SSM document version to use in the request. You can specify \$DEFAULT, \$LATEST, or a specific version number. If you execute commands by using the AWS CLI, then you must escape the first two options by using a backslash. If you specify a version number, then you don't need to use the backslash. For example:
+
+--document-version "\\\$DEFAULT"
+
+--document-version "\\\$LATEST"
+
+--document-version "3"
 
 
 ## `DocumentHash = ::String`
@@ -4409,7 +4859,7 @@ Sha256 or Sha1.
 
 
 ## `TimeoutSeconds = ::Int`
-If this time is reached and the command has not already started executing, it will not execute.
+If this time is reached and the command has not already started executing, it will not run.
 
 
 ## `Comment = ::String`
@@ -4433,11 +4883,11 @@ The directory structure within the S3 bucket where the responses should be store
 
 
 ## `MaxConcurrency = ::String`
-(Optional) The maximum number of instances that are allowed to execute the command at the same time. You can specify a number such as 10 or a percentage such as 10%. The default value is 50. For more information about how to use MaxConcurrency, see [Using Concurrency Controls](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-velocity.html).
+(Optional) The maximum number of instances that are allowed to execute the command at the same time. You can specify a number such as 10 or a percentage such as 10%. The default value is 50. For more information about how to use MaxConcurrency, see [Using Concurrency Controls](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-velocity) in the *AWS Systems Manager User Guide*.
 
 
 ## `MaxErrors = ::String`
-The maximum number of errors allowed without the command failing. When the command fails one more time beyond the value of MaxErrors, the systems stops sending the command to additional targets. You can specify a number like 10 or a percentage like 10%. The default value is 50. For more information about how to use MaxErrors, see [Using Error Controls](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html).
+The maximum number of errors allowed without the command failing. When the command fails one more time beyond the value of MaxErrors, the systems stops sending the command to additional targets. You can specify a number like 10 or a percentage like 10%. The default value is 0. For more information about how to use MaxErrors, see [Using Error Controls](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-maxerrors) in the *AWS Systems Manager User Guide*.
 
 
 ## `ServiceRoleArn = ::String`
@@ -4454,6 +4904,15 @@ Configurations for sending notifications.
     ]
 ```
 
+## `CloudWatchOutputConfig = [ ... ]`
+Enables Systems Manager to send Run Command output to Amazon CloudWatch Logs.
+```
+ CloudWatchOutputConfig = [
+        "CloudWatchLogGroupName" =>  ::String,
+        "CloudWatchOutputEnabled" =>  ::Bool
+    ]
+```
+
 
 
 # Returns
@@ -4462,16 +4921,53 @@ Configurations for sending notifications.
 
 # Exceptions
 
-`DuplicateInstanceId`, `InternalServerError`, `InvalidInstanceId`, `InvalidDocument`, `InvalidOutputFolder`, `InvalidParameters`, `UnsupportedPlatformType`, `MaxDocumentSizeExceeded`, `InvalidRole` or `InvalidNotificationConfig`.
+`DuplicateInstanceId`, `InternalServerError`, `InvalidInstanceId`, `InvalidDocument`, `InvalidDocumentVersion`, `InvalidOutputFolder`, `InvalidParameters`, `UnsupportedPlatformType`, `MaxDocumentSizeExceeded`, `InvalidRole` or `InvalidNotificationConfig`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/SendCommand)
 """
-
 @inline send_command(aws::AWSConfig=default_aws_config(); args...) = send_command(aws, args)
 
 @inline send_command(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "SendCommand", args)
 
 @inline send_command(args) = send_command(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SSM.start_associations_once
+    start_associations_once([::AWSConfig], arguments::Dict)
+    start_associations_once([::AWSConfig]; AssociationIds=)
+
+    using AWSCore.Services.ssm
+    ssm([::AWSConfig], "StartAssociationsOnce", arguments::Dict)
+    ssm([::AWSConfig], "StartAssociationsOnce", AssociationIds=)
+
+# StartAssociationsOnce Operation
+
+Use this API action to execute an association immediately and only one time. This action can be helpful when troubleshooting associations.
+
+# Arguments
+
+## `AssociationIds = [::String, ...]` -- *Required*
+The association IDs that you want to execute immediately and only one time.
+
+
+
+
+# Returns
+
+`StartAssociationsOnceResult`
+
+# Exceptions
+
+`InvalidAssociation` or `AssociationDoesNotExist`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/StartAssociationsOnce)
+"""
+@inline start_associations_once(aws::AWSConfig=default_aws_config(); args...) = start_associations_once(aws, args)
+
+@inline start_associations_once(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "StartAssociationsOnce", args)
+
+@inline start_associations_once(args) = start_associations_once(default_aws_config(), args)
 
 
 """
@@ -4505,6 +5001,33 @@ A key-value map of execution parameters, which match the declared parameters in 
 User-provided idempotency token. The token must be unique, is case insensitive, enforces the UUID format, and can't be reused.
 
 
+## `Mode = "Auto" or "Interactive"`
+The execution mode of the automation. Valid modes include the following: Auto and Interactive. The default mode is Auto.
+
+
+## `TargetParameterName = ::String`
+The name of the parameter used as the target resource for the rate-controlled execution. Required if you specify Targets.
+
+
+## `Targets = [[ ... ], ...]`
+A key-value mapping to target resources. Required if you specify TargetParameterName.
+```
+ Targets = [[
+        "Key" =>  ::String,
+        "Values" =>  [::String, ...]
+    ], ...]
+```
+
+## `MaxConcurrency = ::String`
+The maximum number of targets allowed to run this task in parallel. You can specify a number, such as 10, or a percentage, such as 10%. The default value is 10.
+
+
+## `MaxErrors = ::String`
+The number of errors that are allowed before the system stops running the automation on additional targets. You can specify either an absolute number of errors, for example 10, or a percentage of the target set, for example 10%. If you specify 3, for example, the system stops running the automation when the fourth error is received. If you specify 0, then the system stops running the automation on additional targets after the first error result is returned. If you run an automation on 50 resources and set max-errors to 10%, then the system stops running the automation on additional targets when the sixth error is received.
+
+Executions that are already running an automation when max-errors is reached are allowed to complete, but some of these executions may fail as well. If you need to ensure that there won't be more than max-errors failed executions, set max-concurrency to 1 so the executions proceed one at a time.
+
+
 
 
 # Returns
@@ -4513,11 +5036,10 @@ User-provided idempotency token. The token must be unique, is case insensitive, 
 
 # Exceptions
 
-`AutomationDefinitionNotFoundException`, `InvalidAutomationExecutionParametersException`, `AutomationExecutionLimitExceededException`, `AutomationDefinitionVersionNotFoundException`, `IdempotentParameterMismatch` or `InternalServerError`.
+`AutomationDefinitionNotFoundException`, `InvalidAutomationExecutionParametersException`, `AutomationExecutionLimitExceededException`, `AutomationDefinitionVersionNotFoundException`, `IdempotentParameterMismatch`, `InvalidTarget` or `InternalServerError`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/StartAutomationExecution)
 """
-
 @inline start_automation_execution(aws::AWSConfig=default_aws_config(); args...) = start_automation_execution(aws, args)
 
 @inline start_automation_execution(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "StartAutomationExecution", args)
@@ -4528,11 +5050,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 """
     using AWSSDK.SSM.stop_automation_execution
     stop_automation_execution([::AWSConfig], arguments::Dict)
-    stop_automation_execution([::AWSConfig]; AutomationExecutionId=)
+    stop_automation_execution([::AWSConfig]; AutomationExecutionId=, <keyword arguments>)
 
     using AWSCore.Services.ssm
     ssm([::AWSConfig], "StopAutomationExecution", arguments::Dict)
-    ssm([::AWSConfig], "StopAutomationExecution", AutomationExecutionId=)
+    ssm([::AWSConfig], "StopAutomationExecution", AutomationExecutionId=, <keyword arguments>)
 
 # StopAutomationExecution Operation
 
@@ -4544,6 +5066,10 @@ Stop an Automation that is currently executing.
 The execution ID of the Automation to stop.
 
 
+## `Type = "Complete" or "Cancel"`
+The stop request type. Valid types include the following: Cancel and Complete. The default type is Cancel.
+
+
 
 
 # Returns
@@ -4552,11 +5078,10 @@ The execution ID of the Automation to stop.
 
 # Exceptions
 
-`AutomationExecutionNotFoundException` or `InternalServerError`.
+`AutomationExecutionNotFoundException`, `InvalidAutomationStatusUpdateException` or `InternalServerError`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/StopAutomationExecution)
 """
-
 @inline stop_automation_execution(aws::AWSConfig=default_aws_config(); args...) = stop_automation_execution(aws, args)
 
 @inline stop_automation_execution(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "StopAutomationExecution", args)
@@ -4638,7 +5163,6 @@ This parameter is provided for concurrency control purposes. You must specify th
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdateAssociation)
 """
-
 @inline update_association(aws::AWSConfig=default_aws_config(); args...) = update_association(aws, args)
 
 @inline update_association(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "UpdateAssociation", args)
@@ -4692,7 +5216,6 @@ The association status.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdateAssociationStatus)
 """
-
 @inline update_association_status(aws::AWSConfig=default_aws_config(); args...) = update_association_status(aws, args)
 
 @inline update_association_status(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "UpdateAssociationStatus", args)
@@ -4727,6 +5250,14 @@ The name of the document that you want to update.
 The version of the document that you want to update.
 
 
+## `DocumentFormat = "YAML" or "JSON"`
+Specify the document format for the new document version. Systems Manager supports JSON and YAML documents. JSON is the default format.
+
+
+## `TargetType = ::String`
+Specify a new target type for the document.
+
+
 
 
 # Returns
@@ -4739,7 +5270,6 @@ The version of the document that you want to update.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdateDocument)
 """
-
 @inline update_document(aws::AWSConfig=default_aws_config(); args...) = update_document(aws, args)
 
 @inline update_document(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "UpdateDocument", args)
@@ -4782,7 +5312,6 @@ The version of a custom document that you want to set as the default version.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdateDocumentDefaultVersion)
 """
-
 @inline update_document_default_version(aws::AWSConfig=default_aws_config(); args...) = update_document_default_version(aws, args)
 
 @inline update_document_default_version(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "UpdateDocumentDefaultVersion", args)
@@ -4853,7 +5382,6 @@ If True, then all fields that are required by the CreateMaintenanceWindow action
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdateMaintenanceWindow)
 """
-
 @inline update_maintenance_window(aws::AWSConfig=default_aws_config(); args...) = update_maintenance_window(aws, args)
 
 @inline update_maintenance_window(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "UpdateMaintenanceWindow", args)
@@ -4935,7 +5463,6 @@ If True, then all fields that are required by the RegisterTargetWithMaintenanceW
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdateMaintenanceWindowTarget)
 """
-
 @inline update_maintenance_window_target(aws::AWSConfig=default_aws_config(); args...) = update_maintenance_window_target(aws, args)
 
 @inline update_maintenance_window_target(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "UpdateMaintenanceWindowTarget", args)
@@ -4956,19 +5483,19 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 
 Modifies a task assigned to a Maintenance Window. You can't change the task type, but you can change the following values:
 
-Task ARN. For example, you can change a RUN_COMMAND task from AWS-RunPowerShellScript to AWS-RunShellScript.
+*   TaskARN. For example, you can change a RUN_COMMAND task from AWS-RunPowerShellScript to AWS-RunShellScript.
 
-Service role ARN.
+*   ServiceRoleArn
 
-Task parameters.
+*   TaskInvocationParameters
 
-Task priority.
+*   Priority
 
-Task MaxConcurrency and MaxErrors.
+*   MaxConcurrency
 
-Log location.
+*   MaxErrors
 
-If a parameter is null, then the corresponding field is not modified. Also, if you set Replace to true, then all fields required by the RegisterTaskWithMaintenanceWindow action are required for this request. Optional fields that aren't specified are set to null.
+If a parameter is null, then the corresponding field is not modified. Also, if you set Replace to true, then all fields required by the [RegisterTaskWithMaintenanceWindow](@ref) action are required for this request. Optional fields that aren't specified are set to null.
 
 # Arguments
 
@@ -4998,7 +5525,12 @@ The IAM service role ARN to modify. The system assumes this role during task exe
 
 
 ## `TaskParameters = ::Dict{String,String}`
-The parameters to modify. The map has the following format:
+The parameters to modify.
+
+**Note**
+> `TaskParameters` has been deprecated. To specify parameters to pass to a task when it runs, instead use the `Parameters` option in the `TaskInvocationParameters` structure. For information about how Systems Manager handles these options for the supported Maintenance Window task types, see [MaintenanceWindowTaskInvocationParameters](@ref).
+
+The map has the following format:
 
 Key: string, between 1 and 255 characters
 
@@ -5054,6 +5586,9 @@ The new `MaxErrors` value to specify. `MaxErrors` is the maximum number of error
 
 ## `LoggingInfo = [ ... ]`
 The new logging location in Amazon S3 to specify.
+
+**Note**
+> `LoggingInfo` has been deprecated. To specify an S3 bucket to contain logs, instead use the `OutputS3BucketName` and `OutputS3KeyPrefix` options in the `TaskInvocationParameters` structure. For information about how Systems Manager handles these options for the supported Maintenance Window task types, see [MaintenanceWindowTaskInvocationParameters](@ref).
 ```
  LoggingInfo = [
         "S3BucketName" => <required> ::String,
@@ -5086,7 +5621,6 @@ If True, then all fields that are required by the RegisterTaskWithMaintenanceWnd
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdateMaintenanceWindowTask)
 """
-
 @inline update_maintenance_window_task(aws::AWSConfig=default_aws_config(); args...) = update_maintenance_window_task(aws, args)
 
 @inline update_maintenance_window_task(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "UpdateMaintenanceWindowTask", args)
@@ -5129,7 +5663,6 @@ The IAM role you want to assign or change.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdateManagedInstanceRole)
 """
-
 @inline update_managed_instance_role(aws::AWSConfig=default_aws_config(); args...) = update_managed_instance_role(aws, args)
 
 @inline update_managed_instance_role(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "UpdateManagedInstanceRole", args)
@@ -5149,6 +5682,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-20
 # UpdatePatchBaseline Operation
 
 Modifies an existing patch baseline. Fields not specified in the request are left unchanged.
+
+**Note**
+> For information about valid key and value pairs in `PatchFilters` for each supported operating system type, see [PatchFilter](http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html).
 
 # Arguments
 
@@ -5178,24 +5714,47 @@ A set of rules used to include patches in the baseline.
                     "Values" => <required> [::String, ...]
                 ], ...]],
             "ComplianceLevel" =>  "CRITICAL", "HIGH", "MEDIUM", "LOW", "INFORMATIONAL" or "UNSPECIFIED",
-            "ApproveAfterDays" => <required> ::Int
+            "ApproveAfterDays" => <required> ::Int,
+            "EnableNonSecurity" =>  ::Bool
         ], ...]]
 ```
 
 ## `ApprovedPatches = [::String, ...]`
 A list of explicitly approved patches for the baseline.
 
+For information about accepted formats for lists of approved patches and rejected patches, see [Package Name Formats for Approved and Rejected Patch Lists](http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html) in the *AWS Systems Manager User Guide*.
+
 
 ## `ApprovedPatchesComplianceLevel = "CRITICAL", "HIGH", "MEDIUM", "LOW", "INFORMATIONAL" or "UNSPECIFIED"`
 Assigns a new compliance severity level to an existing patch baseline.
 
 
+## `ApprovedPatchesEnableNonSecurity = ::Bool`
+Indicates whether the list of approved patches includes non-security updates that should be applied to the instances. The default value is 'false'. Applies to Linux instances only.
+
+
 ## `RejectedPatches = [::String, ...]`
 A list of explicitly rejected patches for the baseline.
+
+For information about accepted formats for lists of approved patches and rejected patches, see [Package Name Formats for Approved and Rejected Patch Lists](http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html) in the *AWS Systems Manager User Guide*.
 
 
 ## `Description = ::String`
 A description of the patch baseline.
+
+
+## `Sources = [[ ... ], ...]`
+Information about the patches to use to update the instances, including target operating systems and source repositories. Applies to Linux instances only.
+```
+ Sources = [[
+        "Name" => <required> ::String,
+        "Products" => <required> [::String, ...],
+        "Configuration" => <required> ::String
+    ], ...]
+```
+
+## `Replace = ::Bool`
+If True, then all fields that are required by the CreatePatchBaseline action are also required for this API request. Optional fields that are not specified are set to null.
 
 
 
@@ -5210,7 +5769,6 @@ A description of the patch baseline.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdatePatchBaseline)
 """
-
 @inline update_patch_baseline(aws::AWSConfig=default_aws_config(); args...) = update_patch_baseline(aws, args)
 
 @inline update_patch_baseline(aws::AWSConfig, args) = AWSCore.Services.ssm(aws, "UpdatePatchBaseline", args)

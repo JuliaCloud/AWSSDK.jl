@@ -51,7 +51,6 @@ The value of the Qualification. You can omit this value if you are using the pre
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/AcceptQualificationRequest)
 """
-
 @inline accept_qualification_request(aws::AWSConfig=default_aws_config(); args...) = accept_qualification_request(aws, args)
 
 @inline accept_qualification_request(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "AcceptQualificationRequest", args)
@@ -108,7 +107,6 @@ A flag indicating that an assignment should be approved even if it was previousl
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/ApproveAssignment)
 """
-
 @inline approve_assignment(aws::AWSConfig=default_aws_config(); args...) = approve_assignment(aws, args)
 
 @inline approve_assignment(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "ApproveAssignment", args)
@@ -164,7 +162,6 @@ Specifies whether to send a notification email message to the Worker saying that
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/AssociateQualificationWithWorker)
 """
-
 @inline associate_qualification_with_worker(aws::AWSConfig=default_aws_config(); args...) = associate_qualification_with_worker(aws, args)
 
 @inline associate_qualification_with_worker(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "AssociateQualificationWithWorker", args)
@@ -218,7 +215,6 @@ A unique identifier for this request, which allows you to retry the call on erro
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/CreateAdditionalAssignmentsForHIT)
 """
-
 @inline create_additional_assignments_for_hit(aws::AWSConfig=default_aws_config(); args...) = create_additional_assignments_for_hit(aws, args)
 
 @inline create_additional_assignments_for_hit(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "CreateAdditionalAssignmentsForHIT", args)
@@ -299,7 +295,7 @@ The RequesterAnnotation parameter may be different for each HIT you submit. It d
 
 
 ## `QualificationRequirements = [[ ... ], ...]`
-A condition that a Worker's Qualifications must meet before the Worker is allowed to accept and complete the HIT.
+Conditions that a Worker's Qualifications must meet in order to accept the HIT. A HIT can have between zero and ten Qualification requirements. All requirements must be met in order for a Worker to accept the HIT. Additionally, other actions can be restricted using the `ActionsGuarded` field on each `QualificationRequirement` structure.
 ```
  QualificationRequirements = [[
         "QualificationTypeId" => <required> ::String,
@@ -309,7 +305,8 @@ A condition that a Worker's Qualifications must meet before the Worker is allowe
             "Country" => <required> ::String,
             "Subdivision" =>  ::String
         ], ...],
-        "RequiredToPreview" =>  ::Bool
+        "RequiredToPreview" =>  ::Bool,
+        "ActionsGuarded" =>  "Accept", "PreviewAndAccept" or "DiscoverPreviewAndAccept"
     ], ...]
 ```
 
@@ -379,7 +376,6 @@ If the HITLayoutId is provided, any placeholder values must be filled in with va
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/CreateHIT)
 """
-
 @inline create_hit(aws::AWSConfig=default_aws_config(); args...) = create_hit(aws, args)
 
 @inline create_hit(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "CreateHIT", args)
@@ -427,7 +423,7 @@ A general description of the HIT. A description includes detailed information ab
 
 
 ## `QualificationRequirements = [[ ... ], ...]`
-A condition that a Worker's Qualifications must meet before the Worker is allowed to accept and complete the HIT.
+Conditions that a Worker's Qualifications must meet in order to accept the HIT. A HIT can have between zero and ten Qualification requirements. All requirements must be met in order for a Worker to accept the HIT. Additionally, other actions can be restricted using the `ActionsGuarded` field on each `QualificationRequirement` structure.
 ```
  QualificationRequirements = [[
         "QualificationTypeId" => <required> ::String,
@@ -437,7 +433,8 @@ A condition that a Worker's Qualifications must meet before the Worker is allowe
             "Country" => <required> ::String,
             "Subdivision" =>  ::String
         ], ...],
-        "RequiredToPreview" =>  ::Bool
+        "RequiredToPreview" =>  ::Bool,
+        "ActionsGuarded" =>  "Accept", "PreviewAndAccept" or "DiscoverPreviewAndAccept"
     ], ...]
 ```
 
@@ -453,7 +450,6 @@ A condition that a Worker's Qualifications must meet before the Worker is allowe
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/CreateHITType)
 """
-
 @inline create_hittype(aws::AWSConfig=default_aws_config(); args...) = create_hittype(aws, args)
 
 @inline create_hittype(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "CreateHITType", args)
@@ -577,7 +573,6 @@ If the HITLayoutId is provided, any placeholder values must be filled in with va
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/CreateHITWithHITType)
 """
-
 @inline create_hitwith_hittype(aws::AWSConfig=default_aws_config(); args...) = create_hitwith_hittype(aws, args)
 
 @inline create_hitwith_hittype(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "CreateHITWithHITType", args)
@@ -666,7 +661,6 @@ The Qualification value to use for automatically granted Qualifications. This pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/CreateQualificationType)
 """
-
 @inline create_qualification_type(aws::AWSConfig=default_aws_config(); args...) = create_qualification_type(aws, args)
 
 @inline create_qualification_type(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "CreateQualificationType", args)
@@ -709,7 +703,6 @@ A message explaining the reason for blocking the Worker. This parameter enables 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/CreateWorkerBlock)
 """
-
 @inline create_worker_block(aws::AWSConfig=default_aws_config(); args...) = create_worker_block(aws, args)
 
 @inline create_worker_block(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "CreateWorkerBlock", args)
@@ -759,7 +752,6 @@ The ID of the HIT to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/DeleteHIT)
 """
-
 @inline delete_hit(aws::AWSConfig=default_aws_config(); args...) = delete_hit(aws, args)
 
 @inline delete_hit(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "DeleteHIT", args)
@@ -803,7 +795,6 @@ The ID of the QualificationType to dispose.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/DeleteQualificationType)
 """
-
 @inline delete_qualification_type(aws::AWSConfig=default_aws_config(); args...) = delete_qualification_type(aws, args)
 
 @inline delete_qualification_type(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "DeleteQualificationType", args)
@@ -846,7 +837,6 @@ A message that explains the reason for unblocking the Worker. The Worker does no
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/DeleteWorkerBlock)
 """
-
 @inline delete_worker_block(aws::AWSConfig=default_aws_config(); args...) = delete_worker_block(aws, args)
 
 @inline delete_worker_block(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "DeleteWorkerBlock", args)
@@ -895,7 +885,6 @@ A text message that explains why the Qualification was revoked. The user who had
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/DisassociateQualificationFromWorker)
 """
-
 @inline disassociate_qualification_from_worker(aws::AWSConfig=default_aws_config(); args...) = disassociate_qualification_from_worker(aws, args)
 
 @inline disassociate_qualification_from_worker(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "DisassociateQualificationFromWorker", args)
@@ -930,7 +919,6 @@ The `GetAccountBalance` operation retrieves the amount of money in your Amazon M
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/GetAccountBalance)
 """
-
 @inline get_account_balance(aws::AWSConfig=default_aws_config(); args...) = get_account_balance(aws, args)
 
 @inline get_account_balance(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "GetAccountBalance", args)
@@ -969,7 +957,6 @@ The ID of the Assignment to be retrieved.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/GetAssignment)
 """
-
 @inline get_assignment(aws::AWSConfig=default_aws_config(); args...) = get_assignment(aws, args)
 
 @inline get_assignment(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "GetAssignment", args)
@@ -988,7 +975,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 # GetFileUploadURL Operation
 
-The `GetFileUploadURL` operation generates and returns a temporary URL. You use the temporary URL to retrieve a file uploaded by a Worker as an answer to a FileUploadAnswer question for a HIT. The temporary URL is generated the instant the GetFileUploadURL operation is called, and is valid for 60 seconds. You can get a temporary file upload URL any time until the HIT is disposed. After the HIT is disposed, any uploaded files are deleted, and cannot be retrieved.
+The `GetFileUploadURL` operation generates and returns a temporary URL. You use the temporary URL to retrieve a file uploaded by a Worker as an answer to a FileUploadAnswer question for a HIT. The temporary URL is generated the instant the GetFileUploadURL operation is called, and is valid for 60 seconds. You can get a temporary file upload URL any time until the HIT is disposed. After the HIT is disposed, any uploaded files are deleted, and cannot be retrieved. Pending Deprecation on December 12, 2017. The Answer Specification structure will no longer support the `FileUploadAnswer` element to be used for the QuestionForm data structure. Instead, we recommend that Requesters who want to create HITs asking Workers to upload files to use Amazon S3.
 
 # Arguments
 
@@ -1012,7 +999,6 @@ The identifier of the question with a FileUploadAnswer, as specified in the Ques
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/GetFileUploadURL)
 """
-
 @inline get_file_upload_url(aws::AWSConfig=default_aws_config(); args...) = get_file_upload_url(aws, args)
 
 @inline get_file_upload_url(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "GetFileUploadURL", args)
@@ -1051,7 +1037,6 @@ The ID of the HIT to be retrieved.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/GetHIT)
 """
-
 @inline get_hit(aws::AWSConfig=default_aws_config(); args...) = get_hit(aws, args)
 
 @inline get_hit(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "GetHIT", args)
@@ -1098,7 +1083,6 @@ The ID of the Worker whose Qualification is being updated.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/GetQualificationScore)
 """
-
 @inline get_qualification_score(aws::AWSConfig=default_aws_config(); args...) = get_qualification_score(aws, args)
 
 @inline get_qualification_score(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "GetQualificationScore", args)
@@ -1137,7 +1121,6 @@ The ID of the QualificationType.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/GetQualificationType)
 """
-
 @inline get_qualification_type(aws::AWSConfig=default_aws_config(); args...) = get_qualification_type(aws, args)
 
 @inline get_qualification_type(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "GetQualificationType", args)
@@ -1196,7 +1179,6 @@ The status of the assignments to return: Submitted | Approved | Rejected
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/ListAssignmentsForHIT)
 """
-
 @inline list_assignments_for_hit(aws::AWSConfig=default_aws_config(); args...) = list_assignments_for_hit(aws, args)
 
 @inline list_assignments_for_hit(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "ListAssignmentsForHIT", args)
@@ -1247,7 +1229,6 @@ Pagination token
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/ListBonusPayments)
 """
-
 @inline list_bonus_payments(aws::AWSConfig=default_aws_config(); args...) = list_bonus_payments(aws, args)
 
 @inline list_bonus_payments(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "ListBonusPayments", args)
@@ -1290,7 +1271,6 @@ Pagination token
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/ListHITs)
 """
-
 @inline list_hits(aws::AWSConfig=default_aws_config(); args...) = list_hits(aws, args)
 
 @inline list_hits(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "ListHITs", args)
@@ -1337,7 +1317,6 @@ Limit the number of results returned.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/ListHITsForQualificationType)
 """
-
 @inline list_hits_for_qualification_type(aws::AWSConfig=default_aws_config(); args...) = list_hits_for_qualification_type(aws, args)
 
 @inline list_hits_for_qualification_type(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "ListHITsForQualificationType", args)
@@ -1384,7 +1363,6 @@ The maximum number of results to return in a single call.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/ListQualificationRequests)
 """
-
 @inline list_qualification_requests(aws::AWSConfig=default_aws_config(); args...) = list_qualification_requests(aws, args)
 
 @inline list_qualification_requests(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "ListQualificationRequests", args)
@@ -1403,7 +1381,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-
 
 # ListQualificationTypes Operation
 
-The `ListQualificationRequests` operation retrieves requests for Qualifications of a particular Qualification type. The owner of the Qualification type calls this operation to poll for pending requests, and accepts them using the AcceptQualification operation.
+The `ListQualificationTypes` operation returns a list of Qualification types, filtered by an optional search term.
 
 # Arguments
 
@@ -1439,7 +1417,6 @@ The maximum number of results to return in a single call.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/ListQualificationTypes)
 """
-
 @inline list_qualification_types(aws::AWSConfig=default_aws_config(); args...) = list_qualification_types(aws, args)
 
 @inline list_qualification_types(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "ListQualificationTypes", args)
@@ -1498,7 +1475,6 @@ Limit the number of results returned.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/ListReviewPolicyResultsForHIT)
 """
-
 @inline list_review_policy_results_for_hit(aws::AWSConfig=default_aws_config(); args...) = list_review_policy_results_for_hit(aws, args)
 
 @inline list_review_policy_results_for_hit(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "ListReviewPolicyResultsForHIT", args)
@@ -1549,7 +1525,6 @@ Limit the number of results returned.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/ListReviewableHITs)
 """
-
 @inline list_reviewable_hits(aws::AWSConfig=default_aws_config(); args...) = list_reviewable_hits(aws, args)
 
 @inline list_reviewable_hits(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "ListReviewableHITs", args)
@@ -1592,7 +1567,6 @@ Pagination token
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/ListWorkerBlocks)
 """
-
 @inline list_worker_blocks(aws::AWSConfig=default_aws_config(); args...) = list_worker_blocks(aws, args)
 
 @inline list_worker_blocks(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "ListWorkerBlocks", args)
@@ -1643,7 +1617,6 @@ Limit the number of results returned.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/ListWorkersWithQualificationType)
 """
-
 @inline list_workers_with_qualification_type(aws::AWSConfig=default_aws_config(); args...) = list_workers_with_qualification_type(aws, args)
 
 @inline list_workers_with_qualification_type(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "ListWorkersWithQualificationType", args)
@@ -1690,7 +1663,6 @@ A list of Worker IDs you wish to notify. You can notify upto 100 Workers at a ti
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/NotifyWorkers)
 """
-
 @inline notify_workers(aws::AWSConfig=default_aws_config(); args...) = notify_workers(aws, args)
 
 @inline notify_workers(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "NotifyWorkers", args)
@@ -1737,7 +1709,6 @@ A message for the Worker, which the Worker can see in the Status section of the 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/RejectAssignment)
 """
-
 @inline reject_assignment(aws::AWSConfig=default_aws_config(); args...) = reject_assignment(aws, args)
 
 @inline reject_assignment(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "RejectAssignment", args)
@@ -1782,7 +1753,6 @@ A text message explaining why the request was rejected, to be shown to the Worke
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/RejectQualificationRequest)
 """
-
 @inline reject_qualification_request(aws::AWSConfig=default_aws_config(); args...) = reject_qualification_request(aws, args)
 
 @inline reject_qualification_request(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "RejectQualificationRequest", args)
@@ -1837,7 +1807,6 @@ A unique identifier for this request, which allows you to retry the call on erro
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/SendBonus)
 """
-
 @inline send_bonus(aws::AWSConfig=default_aws_config(); args...) = send_bonus(aws, args)
 
 @inline send_bonus(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "SendBonus", args)
@@ -1887,7 +1856,6 @@ The event to simulate to test the notification specification. This event is incl
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/SendTestEventNotification)
 """
-
 @inline send_test_event_notification(aws::AWSConfig=default_aws_config(); args...) = send_test_event_notification(aws, args)
 
 @inline send_test_event_notification(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "SendTestEventNotification", args)
@@ -1930,7 +1898,6 @@ The date and time at which you want the HIT to expire
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/UpdateExpirationForHIT)
 """
-
 @inline update_expiration_for_hit(aws::AWSConfig=default_aws_config(); args...) = update_expiration_for_hit(aws, args)
 
 @inline update_expiration_for_hit(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "UpdateExpirationForHIT", args)
@@ -1977,7 +1944,6 @@ Specifies how to update the HIT status. Default is `False`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/UpdateHITReviewStatus)
 """
-
 @inline update_hitreview_status(aws::AWSConfig=default_aws_config(); args...) = update_hitreview_status(aws, args)
 
 @inline update_hitreview_status(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "UpdateHITReviewStatus", args)
@@ -2020,7 +1986,6 @@ The ID of the new HIT type.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/UpdateHITTypeOfHIT)
 """
-
 @inline update_hittype_of_hit(aws::AWSConfig=default_aws_config(); args...) = update_hittype_of_hit(aws, args)
 
 @inline update_hittype_of_hit(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "UpdateHITTypeOfHIT", args)
@@ -2074,7 +2039,6 @@ Specifies whether notifications are sent for HITs of this HIT type, according to
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/UpdateNotificationSettings)
 """
-
 @inline update_notification_settings(aws::AWSConfig=default_aws_config(); args...) = update_notification_settings(aws, args)
 
 @inline update_notification_settings(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "UpdateNotificationSettings", args)
@@ -2163,7 +2127,6 @@ The Qualification value to use for automatically granted Qualifications. This pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mturk-requester-2017-01-17/UpdateQualificationType)
 """
-
 @inline update_qualification_type(aws::AWSConfig=default_aws_config(); args...) = update_qualification_type(aws, args)
 
 @inline update_qualification_type(aws::AWSConfig, args) = AWSCore.Services.mturk_requester(aws, "UpdateQualificationType", args)

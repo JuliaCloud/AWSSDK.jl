@@ -43,7 +43,6 @@ Indexes the search suggestions. For more information, see [Configuring Suggester
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/BuildSuggesters)
 """
-
 @inline build_suggesters(aws::AWSConfig=default_aws_config(); args...) = build_suggesters(aws, args)
 
 @inline build_suggesters(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "BuildSuggesters", args)
@@ -82,7 +81,6 @@ A name for the domain you are creating. Allowed characters are a-z (lower-case l
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/CreateDomain)
 """
-
 @inline create_domain(aws::AWSConfig=default_aws_config(); args...) = create_domain(aws, args)
 
 @inline create_domain(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "CreateDomain", args)
@@ -137,7 +135,6 @@ Configures an analysis scheme that can be applied to a `text` or `text-array` fi
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DefineAnalysisScheme)
 """
-
 @inline define_analysis_scheme(aws::AWSConfig=default_aws_config(); args...) = define_analysis_scheme(aws, args)
 
 @inline define_analysis_scheme(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "DefineAnalysisScheme", args)
@@ -185,7 +182,6 @@ Configures an `[Expression](@ref)` for the search domain. Used to create new exp
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DefineExpression)
 """
-
 @inline define_expression(aws::AWSConfig=default_aws_config(); args...) = define_expression(aws, args)
 
 @inline define_expression(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "DefineExpression", args)
@@ -316,7 +312,6 @@ The index field and field options you want to configure.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DefineIndexField)
 """
-
 @inline define_index_field(aws::AWSConfig=default_aws_config(); args...) = define_index_field(aws, args)
 
 @inline define_index_field(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "DefineIndexField", args)
@@ -368,7 +363,6 @@ Configures a suggester for a domain. A suggester enables you to display possible
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DefineSuggester)
 """
-
 @inline define_suggester(aws::AWSConfig=default_aws_config(); args...) = define_suggester(aws, args)
 
 @inline define_suggester(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "DefineSuggester", args)
@@ -411,7 +405,6 @@ The name of the analysis scheme you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DeleteAnalysisScheme)
 """
-
 @inline delete_analysis_scheme(aws::AWSConfig=default_aws_config(); args...) = delete_analysis_scheme(aws, args)
 
 @inline delete_analysis_scheme(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "DeleteAnalysisScheme", args)
@@ -450,7 +443,6 @@ The name of the domain you want to permanently delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DeleteDomain)
 """
-
 @inline delete_domain(aws::AWSConfig=default_aws_config(); args...) = delete_domain(aws, args)
 
 @inline delete_domain(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "DeleteDomain", args)
@@ -493,7 +485,6 @@ The name of the `[Expression](@ref)` to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DeleteExpression)
 """
-
 @inline delete_expression(aws::AWSConfig=default_aws_config(); args...) = delete_expression(aws, args)
 
 @inline delete_expression(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "DeleteExpression", args)
@@ -536,7 +527,6 @@ The name of the index field your want to remove from the domain's indexing optio
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DeleteIndexField)
 """
-
 @inline delete_index_field(aws::AWSConfig=default_aws_config(); args...) = delete_index_field(aws, args)
 
 @inline delete_index_field(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "DeleteIndexField", args)
@@ -579,7 +569,6 @@ Specifies the name of the suggester you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DeleteSuggester)
 """
-
 @inline delete_suggester(aws::AWSConfig=default_aws_config(); args...) = delete_suggester(aws, args)
 
 @inline delete_suggester(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "DeleteSuggester", args)
@@ -626,7 +615,6 @@ Whether to display the deployed configuration (`true`) or include any pending ch
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DescribeAnalysisSchemes)
 """
-
 @inline describe_analysis_schemes(aws::AWSConfig=default_aws_config(); args...) = describe_analysis_schemes(aws, args)
 
 @inline describe_analysis_schemes(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "DescribeAnalysisSchemes", args)
@@ -669,7 +657,6 @@ Whether to display the deployed configuration (`true`) or include any pending ch
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DescribeAvailabilityOptions)
 """
-
 @inline describe_availability_options(aws::AWSConfig=default_aws_config(); args...) = describe_availability_options(aws, args)
 
 @inline describe_availability_options(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "DescribeAvailabilityOptions", args)
@@ -708,7 +695,6 @@ The names of the domains you want to include in the response.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DescribeDomains)
 """
-
 @inline describe_domains(aws::AWSConfig=default_aws_config(); args...) = describe_domains(aws, args)
 
 @inline describe_domains(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "DescribeDomains", args)
@@ -755,7 +741,6 @@ Whether to display the deployed configuration (`true`) or include any pending ch
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DescribeExpressions)
 """
-
 @inline describe_expressions(aws::AWSConfig=default_aws_config(); args...) = describe_expressions(aws, args)
 
 @inline describe_expressions(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "DescribeExpressions", args)
@@ -802,7 +787,6 @@ Whether to display the deployed configuration (`true`) or include any pending ch
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DescribeIndexFields)
 """
-
 @inline describe_index_fields(aws::AWSConfig=default_aws_config(); args...) = describe_index_fields(aws, args)
 
 @inline describe_index_fields(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "DescribeIndexFields", args)
@@ -841,7 +825,6 @@ Gets the scaling parameters configured for a domain. A domain's scaling paramete
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DescribeScalingParameters)
 """
-
 @inline describe_scaling_parameters(aws::AWSConfig=default_aws_config(); args...) = describe_scaling_parameters(aws, args)
 
 @inline describe_scaling_parameters(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "DescribeScalingParameters", args)
@@ -884,7 +867,6 @@ Whether to display the deployed configuration (`true`) or include any pending ch
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DescribeServiceAccessPolicies)
 """
-
 @inline describe_service_access_policies(aws::AWSConfig=default_aws_config(); args...) = describe_service_access_policies(aws, args)
 
 @inline describe_service_access_policies(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "DescribeServiceAccessPolicies", args)
@@ -931,7 +913,6 @@ Whether to display the deployed configuration (`true`) or include any pending ch
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DescribeSuggesters)
 """
-
 @inline describe_suggesters(aws::AWSConfig=default_aws_config(); args...) = describe_suggesters(aws, args)
 
 @inline describe_suggesters(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "DescribeSuggesters", args)
@@ -970,7 +951,6 @@ Tells the search domain to start indexing its documents using the latest indexin
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/IndexDocuments)
 """
-
 @inline index_documents(aws::AWSConfig=default_aws_config(); args...) = index_documents(aws, args)
 
 @inline index_documents(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "IndexDocuments", args)
@@ -1001,7 +981,6 @@ Lists all search domains owned by an account.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/ListDomainNames)
 """
-
 @inline list_domain_names(aws::AWSConfig=default_aws_config(); args...) = list_domain_names(aws, args)
 
 @inline list_domain_names(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "ListDomainNames", args)
@@ -1044,7 +1023,6 @@ You expand an existing search domain to a second Availability Zone by setting th
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/UpdateAvailabilityOptions)
 """
-
 @inline update_availability_options(aws::AWSConfig=default_aws_config(); args...) = update_availability_options(aws, args)
 
 @inline update_availability_options(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "UpdateAvailabilityOptions", args)
@@ -1093,7 +1071,6 @@ Configures scaling parameters for a domain. A domain's scaling parameters specif
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/UpdateScalingParameters)
 """
-
 @inline update_scaling_parameters(aws::AWSConfig=default_aws_config(); args...) = update_scaling_parameters(aws, args)
 
 @inline update_scaling_parameters(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "UpdateScalingParameters", args)
@@ -1136,7 +1113,6 @@ The access rules you want to configure. These rules replace any existing rules.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/UpdateServiceAccessPolicies)
 """
-
 @inline update_service_access_policies(aws::AWSConfig=default_aws_config(); args...) = update_service_access_policies(aws, args)
 
 @inline update_service_access_policies(aws::AWSConfig, args) = AWSCore.Services.cloudsearch(aws, "UpdateServiceAccessPolicies", args)

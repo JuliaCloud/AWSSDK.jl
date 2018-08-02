@@ -88,7 +88,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/AllocateConnectionOnInterconnect)
 """
-
 @inline allocate_connection_on_interconnect(aws::AWSConfig=default_aws_config(); args...) = allocate_connection_on_interconnect(aws, args)
 
 @inline allocate_connection_on_interconnect(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "AllocateConnectionOnInterconnect", args)
@@ -170,7 +169,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/AllocateHostedConnection)
 """
-
 @inline allocate_hosted_connection(aws::AWSConfig=default_aws_config(); args...) = allocate_hosted_connection(aws, args)
 
 @inline allocate_hosted_connection(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "AllocateHostedConnection", args)
@@ -235,7 +233,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/AllocatePrivateVirtualInterface)
 """
-
 @inline allocate_private_virtual_interface(aws::AWSConfig=default_aws_config(); args...) = allocate_private_virtual_interface(aws, args)
 
 @inline allocate_private_virtual_interface(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "AllocatePrivateVirtualInterface", args)
@@ -305,7 +302,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/AllocatePublicVirtualInterface)
 """
-
 @inline allocate_public_virtual_interface(aws::AWSConfig=default_aws_config(); args...) = allocate_public_virtual_interface(aws, args)
 
 @inline allocate_public_virtual_interface(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "AllocatePublicVirtualInterface", args)
@@ -360,7 +356,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/AssociateConnectionWithLag)
 """
-
 @inline associate_connection_with_lag(aws::AWSConfig=default_aws_config(); args...) = associate_connection_with_lag(aws, args)
 
 @inline associate_connection_with_lag(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "AssociateConnectionWithLag", args)
@@ -414,7 +409,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/AssociateHostedConnection)
 """
-
 @inline associate_hosted_connection(aws::AWSConfig=default_aws_config(); args...) = associate_hosted_connection(aws, args)
 
 @inline associate_hosted_connection(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "AssociateHostedConnection", args)
@@ -469,7 +463,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/AssociateVirtualInterface)
 """
-
 @inline associate_virtual_interface(aws::AWSConfig=default_aws_config(); args...) = associate_virtual_interface(aws, args)
 
 @inline associate_virtual_interface(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "AssociateVirtualInterface", args)
@@ -510,7 +503,6 @@ Upon creation, the hosted connection is initially in the 'Ordering' state, and w
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/ConfirmConnection)
 """
-
 @inline confirm_connection(aws::AWSConfig=default_aws_config(); args...) = confirm_connection(aws, args)
 
 @inline confirm_connection(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "ConfirmConnection", args)
@@ -567,7 +559,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/ConfirmPrivateVirtualInterface)
 """
-
 @inline confirm_private_virtual_interface(aws::AWSConfig=default_aws_config(); args...) = confirm_private_virtual_interface(aws, args)
 
 @inline confirm_private_virtual_interface(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "ConfirmPrivateVirtualInterface", args)
@@ -608,7 +599,6 @@ After the virtual interface owner calls this function, the specified virtual int
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/ConfirmPublicVirtualInterface)
 """
-
 @inline confirm_public_virtual_interface(aws::AWSConfig=default_aws_config(); args...) = confirm_public_virtual_interface(aws, args)
 
 @inline confirm_public_virtual_interface(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "ConfirmPublicVirtualInterface", args)
@@ -671,7 +661,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/CreateBGPPeer)
 """
-
 @inline create_bgppeer(aws::AWSConfig=default_aws_config(); args...) = create_bgppeer(aws, args)
 
 @inline create_bgppeer(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "CreateBGPPeer", args)
@@ -728,7 +717,6 @@ You can automatically add the new connection to a link aggregation group (LAG) b
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/CreateConnection)
 """
-
 @inline create_connection(aws::AWSConfig=default_aws_config(); args...) = create_connection(aws, args)
 
 @inline create_connection(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "CreateConnection", args)
@@ -779,7 +767,6 @@ Default: 64512
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/CreateDirectConnectGateway)
 """
-
 @inline create_direct_connect_gateway(aws::AWSConfig=default_aws_config(); args...) = create_direct_connect_gateway(aws, args)
 
 @inline create_direct_connect_gateway(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "CreateDirectConnectGateway", args)
@@ -830,7 +817,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/CreateDirectConnectGatewayAssociation)
 """
-
 @inline create_direct_connect_gateway_association(aws::AWSConfig=default_aws_config(); args...) = create_direct_connect_gateway_association(aws, args)
 
 @inline create_direct_connect_gateway_association(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "CreateDirectConnectGatewayAssociation", args)
@@ -904,7 +890,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/CreateInterconnect)
 """
-
 @inline create_interconnect(aws::AWSConfig=default_aws_config(); args...) = create_interconnect(aws, args)
 
 @inline create_interconnect(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "CreateInterconnect", args)
@@ -983,7 +968,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/CreateLag)
 """
-
 @inline create_lag(aws::AWSConfig=default_aws_config(); args...) = create_lag(aws, args)
 
 @inline create_lag(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "CreateLag", args)
@@ -1040,7 +1024,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/CreatePrivateVirtualInterface)
 """
-
 @inline create_private_virtual_interface(aws::AWSConfig=default_aws_config(); args...) = create_private_virtual_interface(aws, args)
 
 @inline create_private_virtual_interface(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "CreatePrivateVirtualInterface", args)
@@ -1098,7 +1081,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/CreatePublicVirtualInterface)
 """
-
 @inline create_public_virtual_interface(aws::AWSConfig=default_aws_config(); args...) = create_public_virtual_interface(aws, args)
 
 @inline create_public_virtual_interface(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "CreatePublicVirtualInterface", args)
@@ -1149,7 +1131,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DeleteBGPPeer)
 """
-
 @inline delete_bgppeer(aws::AWSConfig=default_aws_config(); args...) = delete_bgppeer(aws, args)
 
 @inline delete_bgppeer(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DeleteBGPPeer", args)
@@ -1190,7 +1171,6 @@ Deleting a connection only stops the AWS Direct Connect port hour and data trans
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DeleteConnection)
 """
-
 @inline delete_connection(aws::AWSConfig=default_aws_config(); args...) = delete_connection(aws, args)
 
 @inline delete_connection(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DeleteConnection", args)
@@ -1233,7 +1213,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DeleteDirectConnectGateway)
 """
-
 @inline delete_direct_connect_gateway(aws::AWSConfig=default_aws_config(); args...) = delete_direct_connect_gateway(aws, args)
 
 @inline delete_direct_connect_gateway(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DeleteDirectConnectGateway", args)
@@ -1284,7 +1263,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DeleteDirectConnectGatewayAssociation)
 """
-
 @inline delete_direct_connect_gateway_association(aws::AWSConfig=default_aws_config(); args...) = delete_direct_connect_gateway_association(aws, args)
 
 @inline delete_direct_connect_gateway_association(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DeleteDirectConnectGatewayAssociation", args)
@@ -1326,7 +1304,6 @@ Deletes the specified interconnect.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DeleteInterconnect)
 """
-
 @inline delete_interconnect(aws::AWSConfig=default_aws_config(); args...) = delete_interconnect(aws, args)
 
 @inline delete_interconnect(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DeleteInterconnect", args)
@@ -1369,7 +1346,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DeleteLag)
 """
-
 @inline delete_lag(aws::AWSConfig=default_aws_config(); args...) = delete_lag(aws, args)
 
 @inline delete_lag(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DeleteLag", args)
@@ -1408,7 +1384,6 @@ Deletes a virtual interface.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DeleteVirtualInterface)
 """
-
 @inline delete_virtual_interface(aws::AWSConfig=default_aws_config(); args...) = delete_virtual_interface(aws, args)
 
 @inline delete_virtual_interface(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DeleteVirtualInterface", args)
@@ -1461,7 +1436,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeConnectionLoa)
 """
-
 @inline describe_connection_loa(aws::AWSConfig=default_aws_config(); args...) = describe_connection_loa(aws, args)
 
 @inline describe_connection_loa(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeConnectionLoa", args)
@@ -1502,7 +1476,6 @@ If a connection ID is provided, the call returns only that particular connection
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeConnections)
 """
-
 @inline describe_connections(aws::AWSConfig=default_aws_config(); args...) = describe_connections(aws, args)
 
 @inline describe_connections(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeConnections", args)
@@ -1550,7 +1523,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeConnectionsOnInterconnect)
 """
-
 @inline describe_connections_on_interconnect(aws::AWSConfig=default_aws_config(); args...) = describe_connections_on_interconnect(aws, args)
 
 @inline describe_connections_on_interconnect(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeConnectionsOnInterconnect", args)
@@ -1615,7 +1587,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeDirectConnectGatewayAssociations)
 """
-
 @inline describe_direct_connect_gateway_associations(aws::AWSConfig=default_aws_config(); args...) = describe_direct_connect_gateway_associations(aws, args)
 
 @inline describe_direct_connect_gateway_associations(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeDirectConnectGatewayAssociations", args)
@@ -1680,7 +1651,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeDirectConnectGatewayAttachments)
 """
-
 @inline describe_direct_connect_gateway_attachments(aws::AWSConfig=default_aws_config(); args...) = describe_direct_connect_gateway_attachments(aws, args)
 
 @inline describe_direct_connect_gateway_attachments(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeDirectConnectGatewayAttachments", args)
@@ -1737,7 +1707,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeDirectConnectGateways)
 """
-
 @inline describe_direct_connect_gateways(aws::AWSConfig=default_aws_config(); args...) = describe_direct_connect_gateways(aws, args)
 
 @inline describe_direct_connect_gateways(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeDirectConnectGateways", args)
@@ -1783,7 +1752,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeHostedConnections)
 """
-
 @inline describe_hosted_connections(aws::AWSConfig=default_aws_config(); args...) = describe_hosted_connections(aws, args)
 
 @inline describe_hosted_connections(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeHostedConnections", args)
@@ -1836,7 +1804,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeInterconnectLoa)
 """
-
 @inline describe_interconnect_loa(aws::AWSConfig=default_aws_config(); args...) = describe_interconnect_loa(aws, args)
 
 @inline describe_interconnect_loa(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeInterconnectLoa", args)
@@ -1877,7 +1844,6 @@ If an interconnect ID is provided, it will only return this particular interconn
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeInterconnects)
 """
-
 @inline describe_interconnects(aws::AWSConfig=default_aws_config(); args...) = describe_interconnects(aws, args)
 
 @inline describe_interconnects(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeInterconnects", args)
@@ -1922,7 +1888,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeLags)
 """
-
 @inline describe_lags(aws::AWSConfig=default_aws_config(); args...) = describe_lags(aws, args)
 
 @inline describe_lags(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeLags", args)
@@ -1979,7 +1944,6 @@ Default: application/pdf
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeLoa)
 """
-
 @inline describe_loa(aws::AWSConfig=default_aws_config(); args...) = describe_loa(aws, args)
 
 @inline describe_loa(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeLoa", args)
@@ -2010,7 +1974,6 @@ Returns the list of AWS Direct Connect locations in the current AWS region. Thes
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeLocations)
 """
-
 @inline describe_locations(aws::AWSConfig=default_aws_config(); args...) = describe_locations(aws, args)
 
 @inline describe_locations(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeLocations", args)
@@ -2049,7 +2012,6 @@ The Amazon Resource Names (ARNs) of the Direct Connect resources.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeTags)
 """
-
 @inline describe_tags(aws::AWSConfig=default_aws_config(); args...) = describe_tags(aws, args)
 
 @inline describe_tags(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeTags", args)
@@ -2082,7 +2044,6 @@ You can create one or more AWS Direct Connect private virtual interfaces linking
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeVirtualGateways)
 """
-
 @inline describe_virtual_gateways(aws::AWSConfig=default_aws_config(); args...) = describe_virtual_gateways(aws, args)
 
 @inline describe_virtual_gateways(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeVirtualGateways", args)
@@ -2127,7 +2088,6 @@ A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeVirtualInterfaces)
 """
-
 @inline describe_virtual_interfaces(aws::AWSConfig=default_aws_config(); args...) = describe_virtual_interfaces(aws, args)
 
 @inline describe_virtual_interfaces(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DescribeVirtualInterfaces", args)
@@ -2180,7 +2140,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DisassociateConnectionFromLag)
 """
-
 @inline disassociate_connection_from_lag(aws::AWSConfig=default_aws_config(); args...) = disassociate_connection_from_lag(aws, args)
 
 @inline disassociate_connection_from_lag(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "DisassociateConnectionFromLag", args)
@@ -2232,7 +2191,6 @@ The list of tags to add.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/TagResource)
 """
-
 @inline tag_resource(aws::AWSConfig=default_aws_config(); args...) = tag_resource(aws, args)
 
 @inline tag_resource(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "TagResource", args)
@@ -2275,7 +2233,6 @@ The list of tag keys to remove.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/UntagResource)
 """
-
 @inline untag_resource(aws::AWSConfig=default_aws_config(); args...) = untag_resource(aws, args)
 
 @inline untag_resource(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "UntagResource", args)
@@ -2340,7 +2297,6 @@ Default: None
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/UpdateLag)
 """
-
 @inline update_lag(aws::AWSConfig=default_aws_config(); args...) = update_lag(aws, args)
 
 @inline update_lag(aws::AWSConfig, args) = AWSCore.Services.directconnect(aws, "UpdateLag", args)

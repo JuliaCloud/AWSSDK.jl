@@ -60,7 +60,6 @@ Product code is used to uniquely identify a product in AWS Marketplace. The prod
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/meteringmarketplace-2016-01-14/BatchMeterUsage)
 """
-
 @inline batch_meter_usage(aws::AWSConfig=default_aws_config(); args...) = batch_meter_usage(aws, args)
 
 @inline batch_meter_usage(aws::AWSConfig, args) = AWSCore.Services.meteringmarketplace(aws, "BatchMeterUsage", args)
@@ -117,7 +116,6 @@ Checks whether you have the permissions required for the action, but does not ma
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/meteringmarketplace-2016-01-14/MeterUsage)
 """
-
 @inline meter_usage(aws::AWSConfig=default_aws_config(); args...) = meter_usage(aws, args)
 
 @inline meter_usage(aws::AWSConfig, args) = AWSCore.Services.meteringmarketplace(aws, "MeterUsage", args)
@@ -156,7 +154,6 @@ When a buyer visits your website during the registration process, the buyer subm
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/meteringmarketplace-2016-01-14/ResolveCustomer)
 """
-
 @inline resolve_customer(aws::AWSConfig=default_aws_config(); args...) = resolve_customer(aws, args)
 
 @inline resolve_customer(aws::AWSConfig, args) = AWSCore.Services.meteringmarketplace(aws, "ResolveCustomer", args)

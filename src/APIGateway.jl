@@ -74,7 +74,6 @@ An AWS Marketplace customer identifier , when integrating with the AWS SaaS Mark
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateApiKey)
 """
-
 @inline create_api_key(aws::AWSConfig=default_aws_config(); args...) = create_api_key(aws, args)
 
 @inline create_api_key(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/apikeys", args)
@@ -100,7 +99,7 @@ Adds a new [Authorizer](@ref) resource to an existing [RestApi](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `name = ::String` -- *Required*
@@ -124,19 +123,18 @@ Specifies the authorizer's Uniform Resource Identifier (URI). For `TOKEN` or `RE
 
 
 ## `authorizerCredentials = ::String`
-Specifies the required credentials as an IAM role for Amazon API Gateway to invoke the authorizer. To specify an IAM role for Amazon API Gateway to assume, use the role's Amazon Resource Name (ARN). To use resource-based permissions on the Lambda function, specify null.
+Specifies the required credentials as an IAM role for API Gateway to invoke the authorizer. To specify an IAM role for API Gateway to assume, use the role's Amazon Resource Name (ARN). To use resource-based permissions on the Lambda function, specify null.
 
 
 ## `identitySource = ::String`
 The identity source for which authorization is requested.
 
-*   For a `TOKEN` authorizer, this is required and specifies the request header mapping expression for the custom header holding the authorization token submitted by the client. For example, if the token header name is `Auth`, the header mapping expression is `method.request.header.Auth`.
+*   For a `TOKEN` or `COGNITO_USER_POOLS` authorizer, this is required and specifies the request header mapping expression for the custom header holding the authorization token submitted by the client. For example, if the token header name is `Auth`, the header mapping expression is `method.request.header.Auth`.
 *   For the `REQUEST` authorizer, this is required when authorization caching is enabled. The value is a comma-separated string of one or more mapping expressions of the specified request parameters. For example, if an `Auth` header, a `Name` query string parameter are defined as identity sources, this value is `method.request.header.Auth, method.request.querystring.Name`. These parameters will be used to derive the authorization caching key and to perform runtime validation of the `REQUEST` authorizer by verifying all of the identity-related request parameters are present, not null and non-empty. Only when this is true does the authorizer invoke the authorizer Lambda function, otherwise, it returns a 401 Unauthorized response without calling the Lambda function. The valid value is a string of comma-separated mapping expressions of the specified request parameters. When the authorization caching is not enabled, this property is optional.
-*   For a `COGNITO_USER_POOLS` authorizer, this property is not used.
 
 
 ## `identityValidationExpression = ::String`
-A validation expression for the incoming identity token. For `TOKEN` authorizers, this value is a regular expression. Amazon API Gateway will match the incoming token from the client against the specified regular expression. It will invoke the authorizer's Lambda function there is a match. Otherwise, it will return a 401 Unauthorized response without calling the Lambda function. The validation expression does not apply to the `REQUEST` authorizer.
+A validation expression for the incoming identity token. For `TOKEN` authorizers, this value is a regular expression. API Gateway will match the `aud` field of the incoming token from the client against the specified regular expression. It will invoke the authorizer's Lambda function when there is a match. Otherwise, it will return a 401 Unauthorized response without calling the Lambda function. The validation expression does not apply to the `REQUEST` authorizer.
 
 
 ## `authorizerResultTtlInSeconds = ::Int`
@@ -155,7 +153,6 @@ The TTL in seconds of cached authorizer results. If it equals 0, authorization c
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateAuthorizer)
 """
-
 @inline create_authorizer(aws::AWSConfig=default_aws_config(); args...) = create_authorizer(aws, args)
 
 @inline create_authorizer(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/restapis/{restapi_id}/authorizers", args)
@@ -179,7 +176,7 @@ Creates a new [BasePathMapping](@ref) resource.
 # Arguments
 
 ## `domain_name = ::String` -- *Required*
-The domain name of the [BasePathMapping](@ref) resource to create.
+[Required] The domain name of the [BasePathMapping](@ref) resource to create.
 
 
 ## `basePath = ::String`
@@ -187,7 +184,7 @@ The base path name that callers of the API must provide as part of the URL after
 
 
 ## `restApiId = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `stage = ::String`
@@ -206,7 +203,6 @@ The name of the API's stage that you want to use for this mapping. Leave this bl
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateBasePathMapping)
 """
-
 @inline create_base_path_mapping(aws::AWSConfig=default_aws_config(); args...) = create_base_path_mapping(aws, args)
 
 @inline create_base_path_mapping(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/domainnames/{domain_name}/basepathmappings", args)
@@ -230,7 +226,7 @@ Creates a [Deployment](@ref) resource, which makes a specified [RestApi](@ref) c
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `stageName = ::String`
@@ -257,6 +253,16 @@ Specifies the cache cluster size for the [Stage](@ref) resource specified in the
 A map that defines the stage variables for the [Stage](@ref) resource that is associated with the new deployment. Variable names can have alphanumeric and underscore characters, and the values must match `[A-Za-z0-9-._~:/?#&=,]+`.
 
 
+## `canarySettings = [ ... ]`
+The input configuration for the canary deployment when the deployment is a canary release deployment.
+```
+ canarySettings = [
+        "percentTraffic" =>  double,
+        "stageVariableOverrides" =>  ::Dict{String,String},
+        "useStageCache" =>  ::Bool
+    ]
+```
+
 
 
 # Returns
@@ -269,7 +275,6 @@ A map that defines the stage variables for the [Stage](@ref) resource that is as
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateDeployment)
 """
-
 @inline create_deployment(aws::AWSConfig=default_aws_config(); args...) = create_deployment(aws, args)
 
 @inline create_deployment(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/restapis/{restapi_id}/deployments", args)
@@ -324,7 +329,6 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateDocumentationPart)
 """
-
 @inline create_documentation_part(aws::AWSConfig=default_aws_config(); args...) = create_documentation_part(aws, args)
 
 @inline create_documentation_part(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/restapis/{restapi_id}/documentation/parts", args)
@@ -375,7 +379,6 @@ A description about the new documentation snapshot.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateDocumentationVersion)
 """
-
 @inline create_documentation_version(aws::AWSConfig=default_aws_config(); args...) = create_documentation_version(aws, args)
 
 @inline create_documentation_version(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/restapis/{restapi_id}/documentation/versions", args)
@@ -399,7 +402,7 @@ Creates a new domain name.
 # Arguments
 
 ## `domainName = ::String` -- *Required*
-(Required) The name of the [DomainName](@ref) resource.
+[Required] The name of the [DomainName](@ref) resource.
 
 
 ## `certificateName = ::String`
@@ -430,7 +433,7 @@ The user-friendly name of the certificate that will be used by regional endpoint
 The reference to an AWS-managed certificate that will be used by regional endpoint for this domain name. AWS Certificate Manager is the only supported source.
 
 
-## `endpointConfiguration = ["types" =>  ["REGIONAL" or "EDGE", ...]]`
+## `endpointConfiguration = ["types" =>  ["REGIONAL", "EDGE" or "PRIVATE", ...]]`
 The endpoint configuration of this [DomainName](@ref) showing the endpoint types of the domain name.
 
 
@@ -446,7 +449,6 @@ The endpoint configuration of this [DomainName](@ref) showing the endpoint types
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateDomainName)
 """
-
 @inline create_domain_name(aws::AWSConfig=default_aws_config(); args...) = create_domain_name(aws, args)
 
 @inline create_domain_name(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/domainnames", args)
@@ -470,11 +472,11 @@ Adds a new [Model](@ref) resource to an existing [RestApi](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The [RestApi](@ref) identifier under which the [Model](@ref) will be created.
+[Required] The [RestApi](@ref) identifier under which the [Model](@ref) will be created.
 
 
 ## `name = ::String` -- *Required*
-The name of the model. Must be alphanumeric.
+[Required] The name of the model. Must be alphanumeric.
 
 
 ## `description = ::String`
@@ -482,11 +484,11 @@ The description of the model.
 
 
 ## `schema = ::String`
-The schema for the model. For `application/json` models, this should be [JSON-schema draft v4](http://json-schema.org/documentation.html) model.
+The schema for the model. For `application/json` models, this should be [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model.
 
 
 ## `contentType = ::String` -- *Required*
-The content-type for the model.
+[Required] The content-type for the model.
 
 
 
@@ -501,7 +503,6 @@ The content-type for the model.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateModel)
 """
-
 @inline create_model(aws::AWSConfig=default_aws_config(); args...) = create_model(aws, args)
 
 @inline create_model(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/restapis/{restapi_id}/models", args)
@@ -525,7 +526,7 @@ Creates a [ReqeustValidator](@ref) of a given [RestApi](@ref).
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `name = ::String`
@@ -552,7 +553,6 @@ A Boolean flag to indicate whether to validate request parameters, `true`, or no
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateRequestValidator)
 """
-
 @inline create_request_validator(aws::AWSConfig=default_aws_config(); args...) = create_request_validator(aws, args)
 
 @inline create_request_validator(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/restapis/{restapi_id}/requestvalidators", args)
@@ -576,11 +576,11 @@ Creates a [Resource](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `parent_id = ::String` -- *Required*
-The parent resource's identifier.
+[Required] The parent resource's identifier.
 
 
 ## `pathPart = ::String` -- *Required*
@@ -599,7 +599,6 @@ The last path segment for this resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateResource)
 """
-
 @inline create_resource(aws::AWSConfig=default_aws_config(); args...) = create_resource(aws, args)
 
 @inline create_resource(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/restapis/{restapi_id}/resources/{parent_id}", args)
@@ -623,7 +622,7 @@ Creates a new [RestApi](@ref) resource.
 # Arguments
 
 ## `name = ::String` -- *Required*
-The name of the [RestApi](@ref).
+[Required] The name of the [RestApi](@ref).
 
 
 ## `description = ::String`
@@ -642,8 +641,23 @@ The ID of the [RestApi](@ref) that you want to clone from.
 The list of binary media types supported by the [RestApi](@ref). By default, the [RestApi](@ref) supports only UTF-8-encoded text payloads.
 
 
-## `endpointConfiguration = ["types" =>  ["REGIONAL" or "EDGE", ...]]`
+## `minimumCompressionSize = ::Int`
+A nullable integer that is used to enable compression (with non-negative between 0 and 10485760 (10M) bytes, inclusive) or disable compression (with a null value) on an API. When compression is enabled, compression or decompression is not applied on the payload if the payload size is smaller than this value. Setting it to zero allows compression for any payload size.
+
+
+## `apiKeySource = "HEADER" or "AUTHORIZER"`
+The source of the API key for metering requests according to a usage plan. Valid values are:
+
+*   `HEADER` to read the API key from the `X-API-Key` header of a request.
+*   `AUTHORIZER` to read the API key from the `UsageIdentifierKey` from a custom authorizer.
+
+
+## `endpointConfiguration = ["types" =>  ["REGIONAL", "EDGE" or "PRIVATE", ...]]`
 The endpoint configuration of this [RestApi](@ref) showing the endpoint types of the API.
+
+
+## `policy = ::String`
+A stringified JSON policy document that applies to this RestApi regardless of the caller and [Method](@ref) configuration.
 
 
 
@@ -658,7 +672,6 @@ The endpoint configuration of this [RestApi](@ref) showing the endpoint types of
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateRestApi)
 """
-
 @inline create_rest_api(aws::AWSConfig=default_aws_config(); args...) = create_rest_api(aws, args)
 
 @inline create_rest_api(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/restapis", args)
@@ -682,15 +695,15 @@ Creates a new [Stage](@ref) resource that references a pre-existing [Deployment]
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `stageName = ::String` -- *Required*
-The name for the [Stage](@ref) resource.
+[Required] The name for the [Stage](@ref) resource.
 
 
 ## `deploymentId = ::String` -- *Required*
-The identifier of the [Deployment](@ref) resource for the [Stage](@ref) resource.
+[Required] The identifier of the [Deployment](@ref) resource for the [Stage](@ref) resource.
 
 
 ## `description = ::String`
@@ -713,6 +726,21 @@ A map that defines the stage variables for the new [Stage](@ref) resource. Varia
 The version of the associated API documentation.
 
 
+## `canarySettings = [ ... ]`
+The canary deployment settings of this stage.
+```
+ canarySettings = [
+        "percentTraffic" =>  double,
+        "deploymentId" =>  ::String,
+        "stageVariableOverrides" =>  ::Dict{String,String},
+        "useStageCache" =>  ::Bool
+    ]
+```
+
+## `tags = ::Dict{String,String}`
+The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with `aws:`. The tag value can be up to 256 characters.
+
+
 
 
 # Returns
@@ -725,7 +753,6 @@ The version of the associated API documentation.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateStage)
 """
-
 @inline create_stage(aws::AWSConfig=default_aws_config(); args...) = create_stage(aws, args)
 
 @inline create_stage(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/restapis/{restapi_id}/stages", args)
@@ -749,7 +776,7 @@ Creates a usage plan with the throttle and quota limits, as well as the associat
 # Arguments
 
 ## `name = ::String` -- *Required*
-The name of the usage plan.
+[Required] The name of the usage plan.
 
 
 ## `description = ::String`
@@ -761,7 +788,8 @@ The associated API stages of the usage plan.
 ```
  apiStages = [[
         "apiId" =>  ::String,
-        "stage" =>  ::String
+        "stage" =>  ::String,
+        "throttle" =>  ::Dict{String,String}
     ], ...]
 ```
 
@@ -796,7 +824,6 @@ The quota of the usage plan.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateUsagePlan)
 """
-
 @inline create_usage_plan(aws::AWSConfig=default_aws_config(); args...) = create_usage_plan(aws, args)
 
 @inline create_usage_plan(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/usageplans", args)
@@ -820,15 +847,15 @@ Creates a usage plan key for adding an existing API key to a usage plan.
 # Arguments
 
 ## `usageplanId = ::String` -- *Required*
-The Id of the [UsagePlan](@ref) resource representing the usage plan containing the to-be-created [UsagePlanKey](@ref) resource representing a plan customer.
+[Required] The Id of the [UsagePlan](@ref) resource representing the usage plan containing the to-be-created [UsagePlanKey](@ref) resource representing a plan customer.
 
 
 ## `keyId = ::String` -- *Required*
-The identifier of a [UsagePlanKey](@ref) resource for a plan customer.
+[Required] The identifier of a [UsagePlanKey](@ref) resource for a plan customer.
 
 
 ## `keyType = ::String` -- *Required*
-The type of a [UsagePlanKey](@ref) resource for a plan customer.
+[Required] The type of a [UsagePlanKey](@ref) resource for a plan customer.
 
 
 
@@ -843,12 +870,57 @@ The type of a [UsagePlanKey](@ref) resource for a plan customer.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateUsagePlanKey)
 """
-
 @inline create_usage_plan_key(aws::AWSConfig=default_aws_config(); args...) = create_usage_plan_key(aws, args)
 
 @inline create_usage_plan_key(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/usageplans/{usageplanId}/keys", args)
 
 @inline create_usage_plan_key(args) = create_usage_plan_key(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.APIGateway.create_vpc_link
+    create_vpc_link([::AWSConfig], arguments::Dict)
+    create_vpc_link([::AWSConfig]; name=, targetArns=, <keyword arguments>)
+
+    using AWSCore.Services.apigateway
+    apigateway([::AWSConfig], "POST", "/vpclinks", arguments::Dict)
+    apigateway([::AWSConfig], "POST", "/vpclinks", name=, targetArns=, <keyword arguments>)
+
+# CreateVpcLink Operation
+
+Creates a VPC link, under the caller's account in a selected region, in an asynchronous operation that typically takes 2-4 minutes to complete and become operational. The caller must have permissions to create and update VPC Endpoint services.
+
+# Arguments
+
+## `name = ::String` -- *Required*
+[Required] The name used to label and identify the VPC link.
+
+
+## `description = ::String`
+The description of the VPC link.
+
+
+## `targetArns = [::String, ...]` -- *Required*
+[Required] The ARNs of network load balancers of the VPC targeted by the VPC link. The network load balancers must be owned by the same AWS account of the API owner.
+
+
+
+
+# Returns
+
+`VpcLink`
+
+# Exceptions
+
+`UnauthorizedException`, `BadRequestException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateVpcLink)
+"""
+@inline create_vpc_link(aws::AWSConfig=default_aws_config(); args...) = create_vpc_link(aws, args)
+
+@inline create_vpc_link(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/vpclinks", args)
+
+@inline create_vpc_link(args) = create_vpc_link(default_aws_config(), args)
 
 
 """
@@ -867,7 +939,7 @@ Deletes the [ApiKey](@ref) resource.
 # Arguments
 
 ## `api_Key = ::String` -- *Required*
-The identifier of the [ApiKey](@ref) resource to be deleted.
+[Required] The identifier of the [ApiKey](@ref) resource to be deleted.
 
 
 
@@ -878,7 +950,6 @@ The identifier of the [ApiKey](@ref) resource to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteApiKey)
 """
-
 @inline delete_api_key(aws::AWSConfig=default_aws_config(); args...) = delete_api_key(aws, args)
 
 @inline delete_api_key(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/apikeys/{api_Key}", args)
@@ -904,11 +975,11 @@ Deletes an existing [Authorizer](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `authorizer_id = ::String` -- *Required*
-The identifier of the [Authorizer](@ref) resource.
+[Required] The identifier of the [Authorizer](@ref) resource.
 
 
 
@@ -919,7 +990,6 @@ The identifier of the [Authorizer](@ref) resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteAuthorizer)
 """
-
 @inline delete_authorizer(aws::AWSConfig=default_aws_config(); args...) = delete_authorizer(aws, args)
 
 @inline delete_authorizer(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/restapis/{restapi_id}/authorizers/{authorizer_id}", args)
@@ -943,11 +1013,11 @@ Deletes the [BasePathMapping](@ref) resource.
 # Arguments
 
 ## `domain_name = ::String` -- *Required*
-The domain name of the [BasePathMapping](@ref) resource to delete.
+[Required] The domain name of the [BasePathMapping](@ref) resource to delete.
 
 
 ## `base_path = ::String` -- *Required*
-The base path name of the [BasePathMapping](@ref) resource to delete.
+[Required] The base path name of the [BasePathMapping](@ref) resource to delete.
 
 
 
@@ -958,7 +1028,6 @@ The base path name of the [BasePathMapping](@ref) resource to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteBasePathMapping)
 """
-
 @inline delete_base_path_mapping(aws::AWSConfig=default_aws_config(); args...) = delete_base_path_mapping(aws, args)
 
 @inline delete_base_path_mapping(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/domainnames/{domain_name}/basepathmappings/{base_path}", args)
@@ -982,7 +1051,7 @@ Deletes the [ClientCertificate](@ref) resource.
 # Arguments
 
 ## `clientcertificate_id = ::String` -- *Required*
-The identifier of the [ClientCertificate](@ref) resource to be deleted.
+[Required] The identifier of the [ClientCertificate](@ref) resource to be deleted.
 
 
 
@@ -993,7 +1062,6 @@ The identifier of the [ClientCertificate](@ref) resource to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteClientCertificate)
 """
-
 @inline delete_client_certificate(aws::AWSConfig=default_aws_config(); args...) = delete_client_certificate(aws, args)
 
 @inline delete_client_certificate(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/clientcertificates/{clientcertificate_id}", args)
@@ -1017,11 +1085,11 @@ Deletes a [Deployment](@ref) resource. Deleting a deployment will only succeed i
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `deployment_id = ::String` -- *Required*
-The identifier of the [Deployment](@ref) resource to delete.
+[Required] The identifier of the [Deployment](@ref) resource to delete.
 
 
 
@@ -1032,7 +1100,6 @@ The identifier of the [Deployment](@ref) resource to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteDeployment)
 """
-
 @inline delete_deployment(aws::AWSConfig=default_aws_config(); args...) = delete_deployment(aws, args)
 
 @inline delete_deployment(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/restapis/{restapi_id}/deployments/{deployment_id}", args)
@@ -1071,7 +1138,6 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteDocumentationPart)
 """
-
 @inline delete_documentation_part(aws::AWSConfig=default_aws_config(); args...) = delete_documentation_part(aws, args)
 
 @inline delete_documentation_part(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/restapis/{restapi_id}/documentation/parts/{part_id}", args)
@@ -1110,7 +1176,6 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteDocumentationVersion)
 """
-
 @inline delete_documentation_version(aws::AWSConfig=default_aws_config(); args...) = delete_documentation_version(aws, args)
 
 @inline delete_documentation_version(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/restapis/{restapi_id}/documentation/versions/{doc_version}", args)
@@ -1134,7 +1199,7 @@ Deletes the [DomainName](@ref) resource.
 # Arguments
 
 ## `domain_name = ::String` -- *Required*
-The name of the [DomainName](@ref) resource to be deleted.
+[Required] The name of the [DomainName](@ref) resource to be deleted.
 
 
 
@@ -1145,7 +1210,6 @@ The name of the [DomainName](@ref) resource to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteDomainName)
 """
-
 @inline delete_domain_name(aws::AWSConfig=default_aws_config(); args...) = delete_domain_name(aws, args)
 
 @inline delete_domain_name(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/domainnames/{domain_name}", args)
@@ -1169,10 +1233,12 @@ Clears any customization of a [GatewayResponse](@ref) of a specified response ty
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `response_type = "DEFAULT_4XX", "DEFAULT_5XX", "RESOURCE_NOT_FOUND", "UNAUTHORIZED", "INVALID_API_KEY", "ACCESS_DENIED", "AUTHORIZER_FAILURE", "AUTHORIZER_CONFIGURATION_ERROR", "INVALID_SIGNATURE", "EXPIRED_TOKEN", "MISSING_AUTHENTICATION_TOKEN", "INTEGRATION_FAILURE", "INTEGRATION_TIMEOUT", "API_CONFIGURATION_ERROR", "UNSUPPORTED_MEDIA_TYPE", "BAD_REQUEST_PARAMETERS", "BAD_REQUEST_BODY", "REQUEST_TOO_LARGE", "THROTTLED" or "QUOTA_EXCEEDED"` -- *Required*
+[Required]
+
 The response type of the associated [GatewayResponse](@ref). Valid values are
 
 *   ACCESS_DENIED
@@ -1194,7 +1260,7 @@ The response type of the associated [GatewayResponse](@ref). Valid values are
 *   RESOURCE_NOT_FOUND
 *   THROTTLED
 *   UNAUTHORIZED
-*   UNSUPPORTED_MEDIA_TYPES
+*   UNSUPPORTED_MEDIA_TYPE
 
 
 
@@ -1205,7 +1271,6 @@ The response type of the associated [GatewayResponse](@ref). Valid values are
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteGatewayResponse)
 """
-
 @inline delete_gateway_response(aws::AWSConfig=default_aws_config(); args...) = delete_gateway_response(aws, args)
 
 @inline delete_gateway_response(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/restapis/{restapi_id}/gatewayresponses/{response_type}", args)
@@ -1229,15 +1294,15 @@ Represents a delete integration.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-Specifies a delete integration request's resource identifier.
+[Required] Specifies a delete integration request's resource identifier.
 
 
 ## `http_method = ::String` -- *Required*
-Specifies a delete integration request's HTTP method.
+[Required] Specifies a delete integration request's HTTP method.
 
 
 
@@ -1248,7 +1313,6 @@ Specifies a delete integration request's HTTP method.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteIntegration)
 """
-
 @inline delete_integration(aws::AWSConfig=default_aws_config(); args...) = delete_integration(aws, args)
 
 @inline delete_integration(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", args)
@@ -1272,19 +1336,19 @@ Represents a delete integration response.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-Specifies a delete integration response request's resource identifier.
+[Required] Specifies a delete integration response request's resource identifier.
 
 
 ## `http_method = ::String` -- *Required*
-Specifies a delete integration response request's HTTP method.
+[Required] Specifies a delete integration response request's HTTP method.
 
 
 ## `status_code = ::String` -- *Required*
-Specifies a delete integration response request's status code.
+[Required] Specifies a delete integration response request's status code.
 
 
 
@@ -1295,7 +1359,6 @@ Specifies a delete integration response request's status code.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteIntegrationResponse)
 """
-
 @inline delete_integration_response(aws::AWSConfig=default_aws_config(); args...) = delete_integration_response(aws, args)
 
 @inline delete_integration_response(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", args)
@@ -1319,15 +1382,15 @@ Deletes an existing [Method](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-The [Resource](@ref) identifier for the [Method](@ref) resource.
+[Required] The [Resource](@ref) identifier for the [Method](@ref) resource.
 
 
 ## `http_method = ::String` -- *Required*
-The HTTP verb of the [Method](@ref) resource.
+[Required] The HTTP verb of the [Method](@ref) resource.
 
 
 
@@ -1338,7 +1401,6 @@ The HTTP verb of the [Method](@ref) resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteMethod)
 """
-
 @inline delete_method(aws::AWSConfig=default_aws_config(); args...) = delete_method(aws, args)
 
 @inline delete_method(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", args)
@@ -1362,19 +1424,19 @@ Deletes an existing [MethodResponse](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-The [Resource](@ref) identifier for the [MethodResponse](@ref) resource.
+[Required] The [Resource](@ref) identifier for the [MethodResponse](@ref) resource.
 
 
 ## `http_method = ::String` -- *Required*
-The HTTP verb of the [Method](@ref) resource.
+[Required] The HTTP verb of the [Method](@ref) resource.
 
 
 ## `status_code = ::String` -- *Required*
-The status code identifier for the [MethodResponse](@ref) resource.
+[Required] The status code identifier for the [MethodResponse](@ref) resource.
 
 
 
@@ -1385,7 +1447,6 @@ The status code identifier for the [MethodResponse](@ref) resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteMethodResponse)
 """
-
 @inline delete_method_response(aws::AWSConfig=default_aws_config(); args...) = delete_method_response(aws, args)
 
 @inline delete_method_response(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", args)
@@ -1409,11 +1470,11 @@ Deletes a model.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `model_name = ::String` -- *Required*
-The name of the model to delete.
+[Required] The name of the model to delete.
 
 
 
@@ -1424,7 +1485,6 @@ The name of the model to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteModel)
 """
-
 @inline delete_model(aws::AWSConfig=default_aws_config(); args...) = delete_model(aws, args)
 
 @inline delete_model(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/restapis/{restapi_id}/models/{model_name}", args)
@@ -1448,7 +1508,7 @@ Deletes a [RequestValidator](@ref) of a given [RestApi](@ref).
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `requestvalidator_id = ::String` -- *Required*
@@ -1463,7 +1523,6 @@ The string identifier of the associated [RestApi](@ref).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteRequestValidator)
 """
-
 @inline delete_request_validator(aws::AWSConfig=default_aws_config(); args...) = delete_request_validator(aws, args)
 
 @inline delete_request_validator(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", args)
@@ -1487,11 +1546,11 @@ Deletes a [Resource](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-The identifier of the [Resource](@ref) resource.
+[Required] The identifier of the [Resource](@ref) resource.
 
 
 
@@ -1502,7 +1561,6 @@ The identifier of the [Resource](@ref) resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteResource)
 """
-
 @inline delete_resource(aws::AWSConfig=default_aws_config(); args...) = delete_resource(aws, args)
 
 @inline delete_resource(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/restapis/{restapi_id}/resources/{resource_id}", args)
@@ -1526,7 +1584,7 @@ Deletes the specified API.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 
@@ -1537,7 +1595,6 @@ The string identifier of the associated [RestApi](@ref).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteRestApi)
 """
-
 @inline delete_rest_api(aws::AWSConfig=default_aws_config(); args...) = delete_rest_api(aws, args)
 
 @inline delete_rest_api(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/restapis/{restapi_id}", args)
@@ -1561,11 +1618,11 @@ Deletes a [Stage](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `stage_name = ::String` -- *Required*
-The name of the [Stage](@ref) resource to delete.
+[Required] The name of the [Stage](@ref) resource to delete.
 
 
 
@@ -1576,7 +1633,6 @@ The name of the [Stage](@ref) resource to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteStage)
 """
-
 @inline delete_stage(aws::AWSConfig=default_aws_config(); args...) = delete_stage(aws, args)
 
 @inline delete_stage(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/restapis/{restapi_id}/stages/{stage_name}", args)
@@ -1600,7 +1656,7 @@ Deletes a usage plan of a given plan Id.
 # Arguments
 
 ## `usageplanId = ::String` -- *Required*
-The Id of the to-be-deleted usage plan.
+[Required] The Id of the to-be-deleted usage plan.
 
 
 
@@ -1611,7 +1667,6 @@ The Id of the to-be-deleted usage plan.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteUsagePlan)
 """
-
 @inline delete_usage_plan(aws::AWSConfig=default_aws_config(); args...) = delete_usage_plan(aws, args)
 
 @inline delete_usage_plan(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/usageplans/{usageplanId}", args)
@@ -1635,11 +1690,11 @@ Deletes a usage plan key and remove the underlying API key from the associated u
 # Arguments
 
 ## `usageplanId = ::String` -- *Required*
-The Id of the [UsagePlan](@ref) resource representing the usage plan containing the to-be-deleted [UsagePlanKey](@ref) resource representing a plan customer.
+[Required] The Id of the [UsagePlan](@ref) resource representing the usage plan containing the to-be-deleted [UsagePlanKey](@ref) resource representing a plan customer.
 
 
 ## `keyId = ::String` -- *Required*
-The Id of the [UsagePlanKey](@ref) resource to be deleted.
+[Required] The Id of the [UsagePlanKey](@ref) resource to be deleted.
 
 
 
@@ -1650,12 +1705,45 @@ The Id of the [UsagePlanKey](@ref) resource to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteUsagePlanKey)
 """
-
 @inline delete_usage_plan_key(aws::AWSConfig=default_aws_config(); args...) = delete_usage_plan_key(aws, args)
 
 @inline delete_usage_plan_key(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/usageplans/{usageplanId}/keys/{keyId}", args)
 
 @inline delete_usage_plan_key(args) = delete_usage_plan_key(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.APIGateway.delete_vpc_link
+    delete_vpc_link([::AWSConfig], arguments::Dict)
+    delete_vpc_link([::AWSConfig]; vpclink_id=)
+
+    using AWSCore.Services.apigateway
+    apigateway([::AWSConfig], "DELETE", "/vpclinks/{vpclink_id}", arguments::Dict)
+    apigateway([::AWSConfig], "DELETE", "/vpclinks/{vpclink_id}", vpclink_id=)
+
+# DeleteVpcLink Operation
+
+Deletes an existing [VpcLink](@ref) of a specified identifier.
+
+# Arguments
+
+## `vpclink_id = ::String` -- *Required*
+[Required] The identifier of the [VpcLink](@ref). It is used in an [Integration](@ref) to reference this [VpcLink](@ref).
+
+
+
+
+# Exceptions
+
+`UnauthorizedException`, `NotFoundException`, `TooManyRequestsException` or `BadRequestException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteVpcLink)
+"""
+@inline delete_vpc_link(aws::AWSConfig=default_aws_config(); args...) = delete_vpc_link(aws, args)
+
+@inline delete_vpc_link(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/vpclinks/{vpclink_id}", args)
+
+@inline delete_vpc_link(args) = delete_vpc_link(default_aws_config(), args)
 
 
 """
@@ -1689,7 +1777,6 @@ The name of the stage to flush.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/FlushStageAuthorizersCache)
 """
-
 @inline flush_stage_authorizers_cache(aws::AWSConfig=default_aws_config(); args...) = flush_stage_authorizers_cache(aws, args)
 
 @inline flush_stage_authorizers_cache(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/restapis/{restapi_id}/stages/{stage_name}/cache/authorizers", args)
@@ -1713,11 +1800,11 @@ Flushes a stage's cache.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `stage_name = ::String` -- *Required*
-The name of the stage to flush its cache.
+[Required] The name of the stage to flush its cache.
 
 
 
@@ -1728,7 +1815,6 @@ The name of the stage to flush its cache.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/FlushStageCache)
 """
-
 @inline flush_stage_cache(aws::AWSConfig=default_aws_config(); args...) = flush_stage_cache(aws, args)
 
 @inline flush_stage_cache(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/restapis/{restapi_id}/stages/{stage_name}/cache/data", args)
@@ -1767,7 +1853,6 @@ The description of the [ClientCertificate](@ref).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GenerateClientCertificate)
 """
-
 @inline generate_client_certificate(aws::AWSConfig=default_aws_config(); args...) = generate_client_certificate(aws, args)
 
 @inline generate_client_certificate(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/clientcertificates", args)
@@ -1802,7 +1887,6 @@ Gets information about the current [Account](@ref) resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetAccount)
 """
-
 @inline get_account(aws::AWSConfig=default_aws_config(); args...) = get_account(aws, args)
 
 @inline get_account(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/account", args)
@@ -1826,7 +1910,7 @@ Gets information about the current [ApiKey](@ref) resource.
 # Arguments
 
 ## `api_Key = ::String` -- *Required*
-The identifier of the [ApiKey](@ref) resource.
+[Required] The identifier of the [ApiKey](@ref) resource.
 
 
 ## `includeValue = ::Bool`
@@ -1845,7 +1929,6 @@ A boolean flag to specify whether (`true`) or not (`false`) the result contains 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetApiKey)
 """
-
 @inline get_api_key(aws::AWSConfig=default_aws_config(); args...) = get_api_key(aws, args)
 
 @inline get_api_key(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/apikeys/{api_Key}", args)
@@ -1873,7 +1956,7 @@ The current pagination position in the paged result set.
 
 
 ## `limit = ::Int`
-The maximum number of returned results per page.
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 
 
 ## `name = ::String`
@@ -1900,7 +1983,6 @@ A boolean flag to specify whether (`true`) or not (`false`) the result contains 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetApiKeys)
 """
-
 @inline get_api_keys(aws::AWSConfig=default_aws_config(); args...) = get_api_keys(aws, args)
 
 @inline get_api_keys(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/apikeys", args)
@@ -1926,11 +2008,11 @@ Describe an existing [Authorizer](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `authorizer_id = ::String` -- *Required*
-The identifier of the [Authorizer](@ref) resource.
+[Required] The identifier of the [Authorizer](@ref) resource.
 
 
 
@@ -1945,7 +2027,6 @@ The identifier of the [Authorizer](@ref) resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetAuthorizer)
 """
-
 @inline get_authorizer(aws::AWSConfig=default_aws_config(); args...) = get_authorizer(aws, args)
 
 @inline get_authorizer(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/authorizers/{authorizer_id}", args)
@@ -1971,7 +2052,7 @@ Describe an existing [Authorizers](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `position = ::String`
@@ -1979,7 +2060,7 @@ The current pagination position in the paged result set.
 
 
 ## `limit = ::Int`
-The maximum number of returned results per page.
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 
 
 
@@ -1994,7 +2075,6 @@ The maximum number of returned results per page.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetAuthorizers)
 """
-
 @inline get_authorizers(aws::AWSConfig=default_aws_config(); args...) = get_authorizers(aws, args)
 
 @inline get_authorizers(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/authorizers", args)
@@ -2018,11 +2098,11 @@ Describe a [BasePathMapping](@ref) resource.
 # Arguments
 
 ## `domain_name = ::String` -- *Required*
-The domain name of the [BasePathMapping](@ref) resource to be described.
+[Required] The domain name of the [BasePathMapping](@ref) resource to be described.
 
 
 ## `base_path = ::String` -- *Required*
-The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify any base path name after the domain name.
+[Required] The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify any base path name after the domain name.
 
 
 
@@ -2037,7 +2117,6 @@ The base path name that callers of the API must provide as part of the URL after
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetBasePathMapping)
 """
-
 @inline get_base_path_mapping(aws::AWSConfig=default_aws_config(); args...) = get_base_path_mapping(aws, args)
 
 @inline get_base_path_mapping(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/domainnames/{domain_name}/basepathmappings/{base_path}", args)
@@ -2061,7 +2140,7 @@ Represents a collection of [BasePathMapping](@ref) resources.
 # Arguments
 
 ## `domain_name = ::String` -- *Required*
-The domain name of a [BasePathMapping](@ref) resource.
+[Required] The domain name of a [BasePathMapping](@ref) resource.
 
 
 ## `position = ::String`
@@ -2069,7 +2148,7 @@ The current pagination position in the paged result set.
 
 
 ## `limit = ::Int`
-The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 
 
 
@@ -2084,7 +2163,6 @@ The maximum number of returned results per page. The value is 25 by default and 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetBasePathMappings)
 """
-
 @inline get_base_path_mappings(aws::AWSConfig=default_aws_config(); args...) = get_base_path_mappings(aws, args)
 
 @inline get_base_path_mappings(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/domainnames/{domain_name}/basepathmappings", args)
@@ -2108,7 +2186,7 @@ Gets information about the current [ClientCertificate](@ref) resource.
 # Arguments
 
 ## `clientcertificate_id = ::String` -- *Required*
-The identifier of the [ClientCertificate](@ref) resource to be described.
+[Required] The identifier of the [ClientCertificate](@ref) resource to be described.
 
 
 
@@ -2123,7 +2201,6 @@ The identifier of the [ClientCertificate](@ref) resource to be described.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetClientCertificate)
 """
-
 @inline get_client_certificate(aws::AWSConfig=default_aws_config(); args...) = get_client_certificate(aws, args)
 
 @inline get_client_certificate(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/clientcertificates/{clientcertificate_id}", args)
@@ -2151,7 +2228,7 @@ The current pagination position in the paged result set.
 
 
 ## `limit = ::Int`
-The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 
 
 
@@ -2166,7 +2243,6 @@ The maximum number of returned results per page. The value is 25 by default and 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetClientCertificates)
 """
-
 @inline get_client_certificates(aws::AWSConfig=default_aws_config(); args...) = get_client_certificates(aws, args)
 
 @inline get_client_certificates(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/clientcertificates", args)
@@ -2190,11 +2266,11 @@ Gets information about a [Deployment](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `deployment_id = ::String` -- *Required*
-The identifier of the [Deployment](@ref) resource to get information about.
+[Required] The identifier of the [Deployment](@ref) resource to get information about.
 
 
 ## `embed = [::String, ...]`
@@ -2213,7 +2289,6 @@ A query parameter to retrieve the specified embedded resources of the returned [
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetDeployment)
 """
-
 @inline get_deployment(aws::AWSConfig=default_aws_config(); args...) = get_deployment(aws, args)
 
 @inline get_deployment(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/deployments/{deployment_id}", args)
@@ -2237,7 +2312,7 @@ Gets information about a [Deployments](@ref) collection.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `position = ::String`
@@ -2245,7 +2320,7 @@ The current pagination position in the paged result set.
 
 
 ## `limit = ::Int`
-The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 
 
 
@@ -2260,7 +2335,6 @@ The maximum number of returned results per page. The value is 25 by default and 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetDeployments)
 """
-
 @inline get_deployments(aws::AWSConfig=default_aws_config(); args...) = get_deployments(aws, args)
 
 @inline get_deployments(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/deployments", args)
@@ -2303,7 +2377,6 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetDocumentationPart)
 """
-
 @inline get_documentation_part(aws::AWSConfig=default_aws_config(); args...) = get_documentation_part(aws, args)
 
 @inline get_documentation_part(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/documentation/parts/{part_id}", args)
@@ -2347,7 +2420,11 @@ The current pagination position in the paged result set.
 
 
 ## `limit = ::Int`
-The maximum number of returned results per page.
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
+
+
+## `locationStatus = "DOCUMENTED" or "UNDOCUMENTED"`
+The status of the API documentation parts to retrieve. Valid values are `DOCUMENTED` for retrieving [DocumentationPart](@ref) resources with content and `UNDOCUMENTED` for [DocumentationPart](@ref) resources without content.
 
 
 
@@ -2362,7 +2439,6 @@ The maximum number of returned results per page.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetDocumentationParts)
 """
-
 @inline get_documentation_parts(aws::AWSConfig=default_aws_config(); args...) = get_documentation_parts(aws, args)
 
 @inline get_documentation_parts(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/documentation/parts", args)
@@ -2405,7 +2481,6 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetDocumentationVersion)
 """
-
 @inline get_documentation_version(aws::AWSConfig=default_aws_config(); args...) = get_documentation_version(aws, args)
 
 @inline get_documentation_version(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/documentation/versions/{doc_version}", args)
@@ -2437,7 +2512,7 @@ The current pagination position in the paged result set.
 
 
 ## `limit = ::Int`
-The maximum number of returned results per page.
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 
 
 
@@ -2452,7 +2527,6 @@ The maximum number of returned results per page.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetDocumentationVersions)
 """
-
 @inline get_documentation_versions(aws::AWSConfig=default_aws_config(); args...) = get_documentation_versions(aws, args)
 
 @inline get_documentation_versions(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/documentation/versions", args)
@@ -2476,7 +2550,7 @@ Represents a domain name that is contained in a simpler, more intuitive URL that
 # Arguments
 
 ## `domain_name = ::String` -- *Required*
-The name of the [DomainName](@ref) resource.
+[Required] The name of the [DomainName](@ref) resource.
 
 
 
@@ -2491,7 +2565,6 @@ The name of the [DomainName](@ref) resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetDomainName)
 """
-
 @inline get_domain_name(aws::AWSConfig=default_aws_config(); args...) = get_domain_name(aws, args)
 
 @inline get_domain_name(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/domainnames/{domain_name}", args)
@@ -2519,7 +2592,7 @@ The current pagination position in the paged result set.
 
 
 ## `limit = ::Int`
-The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 
 
 
@@ -2534,7 +2607,6 @@ The maximum number of returned results per page. The value is 25 by default and 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetDomainNames)
 """
-
 @inline get_domain_names(aws::AWSConfig=default_aws_config(); args...) = get_domain_names(aws, args)
 
 @inline get_domain_names(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/domainnames", args)
@@ -2558,19 +2630,19 @@ Exports a deployed version of a [RestApi](@ref) in a specified format.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `stage_name = ::String` -- *Required*
-The name of the [Stage](@ref) that will be exported.
+[Required] The name of the [Stage](@ref) that will be exported.
 
 
 ## `export_type = ::String` -- *Required*
-The type of export. Currently only 'swagger' is supported.
+[Required] The type of export. Currently only 'swagger' is supported.
 
 
 ## `parameters = ::Dict{String,String}`
-A key-value map of query string parameters that specify properties of the export, depending on the requested `exportType`. For `exportType` `swagger`, any combination of the following parameters are supported: `integrations` will export the API with x-amazon-apigateway-integration extensions. `authorizers` will export the API with x-amazon-apigateway-authorizer extensions. `postman` will export the API with Postman extensions, allowing for import to the Postman tool
+A key-value map of query string parameters that specify properties of the export, depending on the requested `exportType`. For `exportType` `swagger`, any combination of the following parameters are supported: `extensions='integrations'` or `extensions='apigateway'` will export the API with x-amazon-apigateway-integration extensions. `extensions='authorizers'` will export the API with x-amazon-apigateway-authorizer extensions. `postman` will export the API with Postman extensions, allowing for import to the Postman tool
 
 
 ## `*header:* Accept = ::String`
@@ -2589,7 +2661,6 @@ The content-type of the export, for example `application/json`. Currently `appli
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetExport)
 """
-
 @inline get_export(aws::AWSConfig=default_aws_config(); args...) = get_export(aws, args)
 
 @inline get_export(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/stages/{stage_name}/exports/{export_type}", args)
@@ -2613,10 +2684,12 @@ Gets a [GatewayResponse](@ref) of a specified response type on the given [RestAp
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `response_type = "DEFAULT_4XX", "DEFAULT_5XX", "RESOURCE_NOT_FOUND", "UNAUTHORIZED", "INVALID_API_KEY", "ACCESS_DENIED", "AUTHORIZER_FAILURE", "AUTHORIZER_CONFIGURATION_ERROR", "INVALID_SIGNATURE", "EXPIRED_TOKEN", "MISSING_AUTHENTICATION_TOKEN", "INTEGRATION_FAILURE", "INTEGRATION_TIMEOUT", "API_CONFIGURATION_ERROR", "UNSUPPORTED_MEDIA_TYPE", "BAD_REQUEST_PARAMETERS", "BAD_REQUEST_BODY", "REQUEST_TOO_LARGE", "THROTTLED" or "QUOTA_EXCEEDED"` -- *Required*
+[Required]
+
 The response type of the associated [GatewayResponse](@ref). Valid values are
 
 *   ACCESS_DENIED
@@ -2638,7 +2711,7 @@ The response type of the associated [GatewayResponse](@ref). Valid values are
 *   RESOURCE_NOT_FOUND
 *   THROTTLED
 *   UNAUTHORIZED
-*   UNSUPPORTED_MEDIA_TYPES
+*   UNSUPPORTED_MEDIA_TYPE
 
 
 
@@ -2653,7 +2726,6 @@ The response type of the associated [GatewayResponse](@ref). Valid values are
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetGatewayResponse)
 """
-
 @inline get_gateway_response(aws::AWSConfig=default_aws_config(); args...) = get_gateway_response(aws, args)
 
 @inline get_gateway_response(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/gatewayresponses/{response_type}", args)
@@ -2672,12 +2744,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 # GetGatewayResponses Operation
 
-Gets the [GatewayResponses](@ref) collection on the given [RestApi](@ref). If an API developer has not added any definitions for gateway responses, the result will be the Amazon API Gateway-generated default [GatewayResponses](@ref) collection for the supported response types.
+Gets the [GatewayResponses](@ref) collection on the given [RestApi](@ref). If an API developer has not added any definitions for gateway responses, the result will be the API Gateway-generated default [GatewayResponses](@ref) collection for the supported response types.
 
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `position = ::String`
@@ -2685,7 +2757,7 @@ The current pagination position in the paged result set. The [GatewayResponse](@
 
 
 ## `limit = ::Int`
-The maximum number of returned results per page. The [GatewayResponses](@ref) collection does not support pagination and the limit does not apply here.
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500. The [GatewayResponses](@ref) collection does not support pagination and the limit does not apply here.
 
 
 
@@ -2700,7 +2772,6 @@ The maximum number of returned results per page. The [GatewayResponses](@ref) co
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetGatewayResponses)
 """
-
 @inline get_gateway_responses(aws::AWSConfig=default_aws_config(); args...) = get_gateway_responses(aws, args)
 
 @inline get_gateway_responses(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/gatewayresponses", args)
@@ -2719,20 +2790,20 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 # GetIntegration Operation
 
-Represents a get integration.
+Get the integration settings.
 
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-Specifies a get integration request's resource identifier
+[Required] Specifies a get integration request's resource identifier
 
 
 ## `http_method = ::String` -- *Required*
-Specifies a get integration request's HTTP method.
+[Required] Specifies a get integration request's HTTP method.
 
 
 
@@ -2747,7 +2818,6 @@ Specifies a get integration request's HTTP method.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetIntegration)
 """
-
 @inline get_integration(aws::AWSConfig=default_aws_config(); args...) = get_integration(aws, args)
 
 @inline get_integration(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", args)
@@ -2771,19 +2841,19 @@ Represents a get integration response.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-Specifies a get integration response request's resource identifier.
+[Required] Specifies a get integration response request's resource identifier.
 
 
 ## `http_method = ::String` -- *Required*
-Specifies a get integration response request's HTTP method.
+[Required] Specifies a get integration response request's HTTP method.
 
 
 ## `status_code = ::String` -- *Required*
-Specifies a get integration response request's status code.
+[Required] Specifies a get integration response request's status code.
 
 
 
@@ -2798,7 +2868,6 @@ Specifies a get integration response request's status code.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetIntegrationResponse)
 """
-
 @inline get_integration_response(aws::AWSConfig=default_aws_config(); args...) = get_integration_response(aws, args)
 
 @inline get_integration_response(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", args)
@@ -2822,15 +2891,15 @@ Describe an existing [Method](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-The [Resource](@ref) identifier for the [Method](@ref) resource.
+[Required] The [Resource](@ref) identifier for the [Method](@ref) resource.
 
 
 ## `http_method = ::String` -- *Required*
-Specifies the method request's HTTP method type.
+[Required] Specifies the method request's HTTP method type.
 
 
 
@@ -2845,7 +2914,6 @@ Specifies the method request's HTTP method type.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetMethod)
 """
-
 @inline get_method(aws::AWSConfig=default_aws_config(); args...) = get_method(aws, args)
 
 @inline get_method(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", args)
@@ -2869,19 +2937,19 @@ Describes a [MethodResponse](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-The [Resource](@ref) identifier for the [MethodResponse](@ref) resource.
+[Required] The [Resource](@ref) identifier for the [MethodResponse](@ref) resource.
 
 
 ## `http_method = ::String` -- *Required*
-The HTTP verb of the [Method](@ref) resource.
+[Required] The HTTP verb of the [Method](@ref) resource.
 
 
 ## `status_code = ::String` -- *Required*
-The status code for the [MethodResponse](@ref) resource.
+[Required] The status code for the [MethodResponse](@ref) resource.
 
 
 
@@ -2896,7 +2964,6 @@ The status code for the [MethodResponse](@ref) resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetMethodResponse)
 """
-
 @inline get_method_response(aws::AWSConfig=default_aws_config(); args...) = get_method_response(aws, args)
 
 @inline get_method_response(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", args)
@@ -2920,11 +2987,11 @@ Describes an existing model defined for a [RestApi](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The [RestApi](@ref) identifier under which the [Model](@ref) exists.
+[Required] The [RestApi](@ref) identifier under which the [Model](@ref) exists.
 
 
 ## `model_name = ::String` -- *Required*
-The name of the model as an identifier.
+[Required] The name of the model as an identifier.
 
 
 ## `flatten = ::Bool`
@@ -2943,7 +3010,6 @@ A query parameter of a Boolean value to resolve (`true`) all external model refe
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetModel)
 """
-
 @inline get_model(aws::AWSConfig=default_aws_config(); args...) = get_model(aws, args)
 
 @inline get_model(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/models/{model_name}", args)
@@ -2967,11 +3033,11 @@ Generates a sample mapping template that can be used to transform a payload into
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `model_name = ::String` -- *Required*
-The name of the model for which to generate a template.
+[Required] The name of the model for which to generate a template.
 
 
 
@@ -2986,7 +3052,6 @@ The name of the model for which to generate a template.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetModelTemplate)
 """
-
 @inline get_model_template(aws::AWSConfig=default_aws_config(); args...) = get_model_template(aws, args)
 
 @inline get_model_template(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/models/{model_name}/default_template", args)
@@ -3010,7 +3075,7 @@ Describes existing [Models](@ref) defined for a [RestApi](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `position = ::String`
@@ -3018,7 +3083,7 @@ The current pagination position in the paged result set.
 
 
 ## `limit = ::Int`
-The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 
 
 
@@ -3033,7 +3098,6 @@ The maximum number of returned results per page. The value is 25 by default and 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetModels)
 """
-
 @inline get_models(aws::AWSConfig=default_aws_config(); args...) = get_models(aws, args)
 
 @inline get_models(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/models", args)
@@ -3057,7 +3121,7 @@ Gets a [RequestValidator](@ref) of a given [RestApi](@ref).
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `requestvalidator_id = ::String` -- *Required*
@@ -3076,7 +3140,6 @@ The string identifier of the associated [RestApi](@ref).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetRequestValidator)
 """
-
 @inline get_request_validator(aws::AWSConfig=default_aws_config(); args...) = get_request_validator(aws, args)
 
 @inline get_request_validator(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", args)
@@ -3100,7 +3163,7 @@ Gets the [RequestValidators](@ref) collection of a given [RestApi](@ref).
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `position = ::String`
@@ -3108,7 +3171,7 @@ The current pagination position in the paged result set.
 
 
 ## `limit = ::Int`
-The maximum number of returned results per page.
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 
 
 
@@ -3123,7 +3186,6 @@ The maximum number of returned results per page.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetRequestValidators)
 """
-
 @inline get_request_validators(aws::AWSConfig=default_aws_config(); args...) = get_request_validators(aws, args)
 
 @inline get_request_validators(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/requestvalidators", args)
@@ -3147,11 +3209,11 @@ Lists information about a resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-The identifier for the [Resource](@ref) resource.
+[Required] The identifier for the [Resource](@ref) resource.
 
 
 ## `embed = [::String, ...]`
@@ -3170,7 +3232,6 @@ A query parameter to retrieve the specified resources embedded in the returned [
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetResource)
 """
-
 @inline get_resource(aws::AWSConfig=default_aws_config(); args...) = get_resource(aws, args)
 
 @inline get_resource(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/resources/{resource_id}", args)
@@ -3194,7 +3255,7 @@ Lists information about a collection of [Resource](@ref) resources.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `position = ::String`
@@ -3202,7 +3263,7 @@ The current pagination position in the paged result set.
 
 
 ## `limit = ::Int`
-The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 
 
 ## `embed = [::String, ...]`
@@ -3221,7 +3282,6 @@ A query parameter used to retrieve the specified resources embedded in the retur
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetResources)
 """
-
 @inline get_resources(aws::AWSConfig=default_aws_config(); args...) = get_resources(aws, args)
 
 @inline get_resources(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/resources", args)
@@ -3245,7 +3305,7 @@ Lists the [RestApi](@ref) resource in the collection.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The identifier of the [RestApi](@ref) resource.
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 
@@ -3260,7 +3320,6 @@ The identifier of the [RestApi](@ref) resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetRestApi)
 """
-
 @inline get_rest_api(aws::AWSConfig=default_aws_config(); args...) = get_rest_api(aws, args)
 
 @inline get_rest_api(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}", args)
@@ -3288,7 +3347,7 @@ The current pagination position in the paged result set.
 
 
 ## `limit = ::Int`
-The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 
 
 
@@ -3303,7 +3362,6 @@ The maximum number of returned results per page. The value is 25 by default and 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetRestApis)
 """
-
 @inline get_rest_apis(aws::AWSConfig=default_aws_config(); args...) = get_rest_apis(aws, args)
 
 @inline get_rest_apis(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis", args)
@@ -3327,15 +3385,15 @@ Generates a client SDK for a [RestApi](@ref) and [Stage](@ref).
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `stage_name = ::String` -- *Required*
-The name of the [Stage](@ref) that the SDK will use.
+[Required] The name of the [Stage](@ref) that the SDK will use.
 
 
 ## `sdk_type = ::String` -- *Required*
-The language for the generated SDK. Currently `java`, `javascript`, `android`, `objectivec` and `swift` (for iOS) are supported.
+[Required] The language for the generated SDK. Currently `java`, `javascript`, `android`, `objectivec` (for iOS), `swift` (for iOS), and `ruby` are supported.
 
 
 ## `parameters = ::Dict{String,String}`
@@ -3354,7 +3412,6 @@ A string-to-string key-value map of query parameters `sdkType`-dependent propert
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetSdk)
 """
-
 @inline get_sdk(aws::AWSConfig=default_aws_config(); args...) = get_sdk(aws, args)
 
 @inline get_sdk(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/stages/{stage_name}/sdks/{sdk_type}", args)
@@ -3378,7 +3435,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 # Arguments
 
 ## `sdktype_id = ::String` -- *Required*
-The identifier of the queried [SdkType](@ref) instance.
+[Required] The identifier of the queried [SdkType](@ref) instance.
 
 
 
@@ -3393,7 +3450,6 @@ The identifier of the queried [SdkType](@ref) instance.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetSdkType)
 """
-
 @inline get_sdk_type(aws::AWSConfig=default_aws_config(); args...) = get_sdk_type(aws, args)
 
 @inline get_sdk_type(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/sdktypes/{sdktype_id}", args)
@@ -3421,7 +3477,7 @@ The current pagination position in the paged result set.
 
 
 ## `limit = ::Int`
-The maximum number of returned results per page.
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 
 
 
@@ -3436,7 +3492,6 @@ The maximum number of returned results per page.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetSdkTypes)
 """
-
 @inline get_sdk_types(aws::AWSConfig=default_aws_config(); args...) = get_sdk_types(aws, args)
 
 @inline get_sdk_types(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/sdktypes", args)
@@ -3460,11 +3515,11 @@ Gets information about a [Stage](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `stage_name = ::String` -- *Required*
-The name of the [Stage](@ref) resource to get information about.
+[Required] The name of the [Stage](@ref) resource to get information about.
 
 
 
@@ -3479,7 +3534,6 @@ The name of the [Stage](@ref) resource to get information about.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetStage)
 """
-
 @inline get_stage(aws::AWSConfig=default_aws_config(); args...) = get_stage(aws, args)
 
 @inline get_stage(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/stages/{stage_name}", args)
@@ -3503,7 +3557,7 @@ Gets information about one or more [Stage](@ref) resources.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `deploymentId = ::String`
@@ -3522,12 +3576,57 @@ The stages' deployment identifiers.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetStages)
 """
-
 @inline get_stages(aws::AWSConfig=default_aws_config(); args...) = get_stages(aws, args)
 
 @inline get_stages(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/restapis/{restapi_id}/stages", args)
 
 @inline get_stages(args) = get_stages(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.APIGateway.get_tags
+    get_tags([::AWSConfig], arguments::Dict)
+    get_tags([::AWSConfig]; resource_arn=, <keyword arguments>)
+
+    using AWSCore.Services.apigateway
+    apigateway([::AWSConfig], "GET", "/tags/{resource_arn}", arguments::Dict)
+    apigateway([::AWSConfig], "GET", "/tags/{resource_arn}", resource_arn=, <keyword arguments>)
+
+# GetTags Operation
+
+Gets the [Tags](@ref) collection for a given resource.
+
+# Arguments
+
+## `resource_arn = ::String` -- *Required*
+[Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present, [Stage](@ref) is the only taggable resource.
+
+
+## `position = ::String`
+(Not currently supported) The current pagination position in the paged result set.
+
+
+## `limit = ::Int`
+(Not currently supported) The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
+
+
+
+
+# Returns
+
+`Tags`
+
+# Exceptions
+
+`BadRequestException`, `UnauthorizedException`, `TooManyRequestsException`, `NotFoundException` or `LimitExceededException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetTags)
+"""
+@inline get_tags(aws::AWSConfig=default_aws_config(); args...) = get_tags(aws, args)
+
+@inline get_tags(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/tags/{resource_arn}", args)
+
+@inline get_tags(args) = get_tags(default_aws_config(), args)
 
 
 """
@@ -3546,7 +3645,7 @@ Gets the usage data of a usage plan in a specified time interval.
 # Arguments
 
 ## `usageplanId = ::String` -- *Required*
-The Id of the usage plan associated with the usage data.
+[Required] The Id of the usage plan associated with the usage data.
 
 
 ## `keyId = ::String`
@@ -3554,11 +3653,11 @@ The Id of the API key associated with the resultant usage data.
 
 
 ## `startDate = ::String` -- *Required*
-The starting date (e.g., 2016-01-01) of the usage data.
+[Required] The starting date (e.g., 2016-01-01) of the usage data.
 
 
 ## `endDate = ::String` -- *Required*
-The ending date (e.g., 2016-12-31) of the usage data.
+[Required] The ending date (e.g., 2016-12-31) of the usage data.
 
 
 ## `position = ::String`
@@ -3566,7 +3665,7 @@ The current pagination position in the paged result set.
 
 
 ## `limit = ::Int`
-The maximum number of returned results per page.
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 
 
 
@@ -3581,7 +3680,6 @@ The maximum number of returned results per page.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetUsage)
 """
-
 @inline get_usage(aws::AWSConfig=default_aws_config(); args...) = get_usage(aws, args)
 
 @inline get_usage(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/usageplans/{usageplanId}/usage", args)
@@ -3605,7 +3703,7 @@ Gets a usage plan of a given plan identifier.
 # Arguments
 
 ## `usageplanId = ::String` -- *Required*
-The identifier of the [UsagePlan](@ref) resource to be retrieved.
+[Required] The identifier of the [UsagePlan](@ref) resource to be retrieved.
 
 
 
@@ -3620,7 +3718,6 @@ The identifier of the [UsagePlan](@ref) resource to be retrieved.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetUsagePlan)
 """
-
 @inline get_usage_plan(aws::AWSConfig=default_aws_config(); args...) = get_usage_plan(aws, args)
 
 @inline get_usage_plan(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/usageplans/{usageplanId}", args)
@@ -3644,11 +3741,11 @@ Gets a usage plan key of a given key identifier.
 # Arguments
 
 ## `usageplanId = ::String` -- *Required*
-The Id of the [UsagePlan](@ref) resource representing the usage plan containing the to-be-retrieved [UsagePlanKey](@ref) resource representing a plan customer.
+[Required] The Id of the [UsagePlan](@ref) resource representing the usage plan containing the to-be-retrieved [UsagePlanKey](@ref) resource representing a plan customer.
 
 
 ## `keyId = ::String` -- *Required*
-The key Id of the to-be-retrieved [UsagePlanKey](@ref) resource representing a plan customer.
+[Required] The key Id of the to-be-retrieved [UsagePlanKey](@ref) resource representing a plan customer.
 
 
 
@@ -3663,7 +3760,6 @@ The key Id of the to-be-retrieved [UsagePlanKey](@ref) resource representing a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetUsagePlanKey)
 """
-
 @inline get_usage_plan_key(aws::AWSConfig=default_aws_config(); args...) = get_usage_plan_key(aws, args)
 
 @inline get_usage_plan_key(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/usageplans/{usageplanId}/keys/{keyId}", args)
@@ -3687,7 +3783,7 @@ Gets all the usage plan keys representing the API keys added to a specified usag
 # Arguments
 
 ## `usageplanId = ::String` -- *Required*
-The Id of the [UsagePlan](@ref) resource representing the usage plan containing the to-be-retrieved [UsagePlanKey](@ref) resource representing a plan customer.
+[Required] The Id of the [UsagePlan](@ref) resource representing the usage plan containing the to-be-retrieved [UsagePlanKey](@ref) resource representing a plan customer.
 
 
 ## `position = ::String`
@@ -3695,7 +3791,7 @@ The current pagination position in the paged result set.
 
 
 ## `limit = ::Int`
-The maximum number of returned results per page.
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 
 
 ## `name = ::String`
@@ -3714,7 +3810,6 @@ A query parameter specifying the name of the to-be-returned usage plan keys.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetUsagePlanKeys)
 """
-
 @inline get_usage_plan_keys(aws::AWSConfig=default_aws_config(); args...) = get_usage_plan_keys(aws, args)
 
 @inline get_usage_plan_keys(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/usageplans/{usageplanId}/keys", args)
@@ -3746,7 +3841,7 @@ The identifier of the API key associated with the usage plans.
 
 
 ## `limit = ::Int`
-The maximum number of returned results per page.
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 
 
 
@@ -3761,12 +3856,91 @@ The maximum number of returned results per page.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetUsagePlans)
 """
-
 @inline get_usage_plans(aws::AWSConfig=default_aws_config(); args...) = get_usage_plans(aws, args)
 
 @inline get_usage_plans(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/usageplans", args)
 
 @inline get_usage_plans(args) = get_usage_plans(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.APIGateway.get_vpc_link
+    get_vpc_link([::AWSConfig], arguments::Dict)
+    get_vpc_link([::AWSConfig]; vpclink_id=)
+
+    using AWSCore.Services.apigateway
+    apigateway([::AWSConfig], "GET", "/vpclinks/{vpclink_id}", arguments::Dict)
+    apigateway([::AWSConfig], "GET", "/vpclinks/{vpclink_id}", vpclink_id=)
+
+# GetVpcLink Operation
+
+Gets a specified VPC link under the caller's account in a region.
+
+# Arguments
+
+## `vpclink_id = ::String` -- *Required*
+[Required] The identifier of the [VpcLink](@ref). It is used in an [Integration](@ref) to reference this [VpcLink](@ref).
+
+
+
+
+# Returns
+
+`VpcLink`
+
+# Exceptions
+
+`UnauthorizedException`, `NotFoundException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetVpcLink)
+"""
+@inline get_vpc_link(aws::AWSConfig=default_aws_config(); args...) = get_vpc_link(aws, args)
+
+@inline get_vpc_link(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/vpclinks/{vpclink_id}", args)
+
+@inline get_vpc_link(args) = get_vpc_link(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.APIGateway.get_vpc_links
+    get_vpc_links([::AWSConfig], arguments::Dict)
+    get_vpc_links([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.apigateway
+    apigateway([::AWSConfig], "GET", "/vpclinks", arguments::Dict)
+    apigateway([::AWSConfig], "GET", "/vpclinks", <keyword arguments>)
+
+# GetVpcLinks Operation
+
+Gets the [VpcLinks](@ref) collection under the caller's account in a selected region.
+
+# Arguments
+
+## `position = ::String`
+The current pagination position in the paged result set.
+
+
+## `limit = ::Int`
+The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
+
+
+
+
+# Returns
+
+`VpcLinks`
+
+# Exceptions
+
+`BadRequestException`, `UnauthorizedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetVpcLinks)
+"""
+@inline get_vpc_links(aws::AWSConfig=default_aws_config(); args...) = get_vpc_links(aws, args)
+
+@inline get_vpc_links(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "GET", "/vpclinks", args)
+
+@inline get_vpc_links(args) = get_vpc_links(default_aws_config(), args)
 
 
 """
@@ -3808,7 +3982,6 @@ A query parameter to indicate whether to rollback [ApiKey](@ref) importation (`t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/ImportApiKeys)
 """
-
 @inline import_api_keys(aws::AWSConfig=default_aws_config(); args...) = import_api_keys(aws, args)
 
 @inline import_api_keys(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/apikeys?mode=import", args)
@@ -3859,7 +4032,6 @@ A query parameter to specify whether to rollback the documentation importation (
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/ImportDocumentationParts)
 """
-
 @inline import_documentation_parts(aws::AWSConfig=default_aws_config(); args...) = import_documentation_parts(aws, args)
 
 @inline import_documentation_parts(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PUT", "/restapis/{restapi_id}/documentation/parts", args)
@@ -3878,7 +4050,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 # ImportRestApi Operation
 
-A feature of the Amazon API Gateway control service for creating a new API from an external API definition file.
+A feature of the API Gateway control service for creating a new API from an external API definition file.
 
 # Arguments
 
@@ -3887,11 +4059,25 @@ A query parameter to indicate whether to rollback the API creation (`true`) or n
 
 
 ## `parameters = ::Dict{String,String}`
-Custom header parameters as part of the request. For example, to exclude [DocumentationParts](@ref) from an imported API, set `ignore=documentation` as a `parameters` value, as in the AWS CLI command of `aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json`.
+A key-value map of context-specific query string parameters specifying the behavior of different API importing operations. The following shows operation-specific parameters and their supported values.
+
+To exclude [DocumentationParts](@ref) from the import, set `parameters` as `ignore=documentation`.
+
+To configure the endpoint type, set `parameters` as `endpointConfigurationTypes=EDGE`, `endpointConfigurationTypes=REGIONAL`, or `endpointConfigurationTypes=PRIVATE`. The default endpoint type is `EDGE`.
+
+To handle imported `basePath`, set `parameters` as `basePath=ignore`, `basePath=prepend` or `basePath=split`.
+
+For example, the AWS CLI command to exclude documentation from the imported API is:
+
+    aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'
+
+The AWS CLI command to set the regional endpoint on the imported API is:
+
+    aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'
 
 
 ## `body = blob` -- *Required*
-The POST request body containing external API definitions. Currently, only Swagger definition JSON files are supported. The maximum size of the API definition file is 2MB.
+[Required] The POST request body containing external API definitions. Currently, only Swagger definition JSON files are supported. The maximum size of the API definition file is 2MB.
 
 
 
@@ -3906,7 +4092,6 @@ The POST request body containing external API definitions. Currently, only Swagg
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/ImportRestApi)
 """
-
 @inline import_rest_api(aws::AWSConfig=default_aws_config(); args...) = import_rest_api(aws, args)
 
 @inline import_rest_api(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/restapis?mode=import", args)
@@ -3930,10 +4115,12 @@ Creates a customization of a [GatewayResponse](@ref) of a specified response typ
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `response_type = "DEFAULT_4XX", "DEFAULT_5XX", "RESOURCE_NOT_FOUND", "UNAUTHORIZED", "INVALID_API_KEY", "ACCESS_DENIED", "AUTHORIZER_FAILURE", "AUTHORIZER_CONFIGURATION_ERROR", "INVALID_SIGNATURE", "EXPIRED_TOKEN", "MISSING_AUTHENTICATION_TOKEN", "INTEGRATION_FAILURE", "INTEGRATION_TIMEOUT", "API_CONFIGURATION_ERROR", "UNSUPPORTED_MEDIA_TYPE", "BAD_REQUEST_PARAMETERS", "BAD_REQUEST_BODY", "REQUEST_TOO_LARGE", "THROTTLED" or "QUOTA_EXCEEDED"` -- *Required*
+[Required]
+
 The response type of the associated [GatewayResponse](@ref). Valid values are
 
 *   ACCESS_DENIED
@@ -3955,7 +4142,7 @@ The response type of the associated [GatewayResponse](@ref). Valid values are
 *   RESOURCE_NOT_FOUND
 *   THROTTLED
 *   UNAUTHORIZED
-*   UNSUPPORTED_MEDIA_TYPES
+*   UNSUPPORTED_MEDIA_TYPE
 
 
 ## `statusCode = ::String`
@@ -3982,7 +4169,6 @@ Response templates of the [GatewayResponse](@ref) as a string-to-string map of k
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/PutGatewayResponse)
 """
-
 @inline put_gateway_response(aws::AWSConfig=default_aws_config(); args...) = put_gateway_response(aws, args)
 
 @inline put_gateway_response(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PUT", "/restapis/{restapi_id}/gatewayresponses/{response_type}", args)
@@ -4006,19 +4192,19 @@ Sets up a method's integration.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-Specifies a put integration request's resource ID.
+[Required] Specifies a put integration request's resource ID.
 
 
 ## `http_method = ::String` -- *Required*
-Specifies a put integration request's HTTP method.
+[Required] Specifies a put integration request's HTTP method.
 
 
 ## `type = "HTTP", "AWS", "MOCK", "HTTP_PROXY" or "AWS_PROXY"` -- *Required*
-Specifies a put integration input's type.
+[Required] Specifies a put integration input's type.
 
 
 ## `httpMethod = ::String`
@@ -4026,7 +4212,19 @@ Specifies a put integration HTTP method. When the integration type is HTTP or AW
 
 
 ## `uri = ::String`
-Specifies the integration's Uniform Resource Identifier (URI). For HTTP integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the [RFC-3986 specification](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier). For AWS integrations, the URI should be of the form `arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}`. `Region`, `subdomain` and `service` are used to determine the right endpoint. For AWS services that use the `Action=` query string parameter, `service_api` should be a valid action for the desired service. For RESTful AWS service APIs, `path` is used to indicate that the remaining substring in the URI should be treated as the path to the resource, including the initial `/`.
+Specifies Uniform Resource Identifier (URI) of the integration endpoint.
+
+*   For `HTTP` or `HTTP_PROXY` integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the [RFC-3986 specification](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier), for either standard integration, where `connectionType` is not `VPC_LINK`, or private integration, where `connectionType` is `VPC_LINK`. For a private HTTP integration, the URI is not used for routing.
+
+*   For `AWS` or `AWS_PROXY` integrations, the URI is of the form `arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}`. Here, `{Region}` is the API Gateway region (e.g., `us-east-1`); `{service}` is the name of the integrated AWS service (e.g., `s3`); and `{subdomain}` is a designated subdomain supported by certain AWS service for fast host-name lookup. `action` can be used for an AWS service action-based API, using an `Action={name}&{p1}={v1}&p2={v2}...` query string. The ensuing `{service_api}` refers to a supported action `{name}` plus any required input parameters. Alternatively, `path` can be used for an AWS service path-based API. The ensuing `service_api` refers to the path to an AWS service resource, including the region of the integrated AWS service, if applicable. For example, for integration with the S3 API of `[GetObject](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html)`, the `uri` can be either `arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}` or `arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}`
+
+
+## `connectionType = "INTERNET" or "VPC_LINK"`
+The type of the network connection to the integration endpoint. The valid value is `INTERNET` for connections through the public routable internet or `VPC_LINK` for private connections between API Gateway and a network load balancer in a VPC. The default value is `INTERNET`.
+
+
+## `connectionId = ::String`
+The ([`id`](http://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id)) of the [VpcLink](@ref) used for the integration when `connectionType=VPC_LINK` and undefined, otherwise.
 
 
 ## `credentials = ::String`
@@ -4069,6 +4267,10 @@ Specifies how to handle request payload content type conversions. Supported valu
 If this property is not defined, the request payload will be passed through from the method request to integration request without modification, provided that the `passthroughBehaviors` is configured to support payload pass-through.
 
 
+## `timeoutInMillis = ::Int`
+Custom timeout between 50 and 29,000 milliseconds. The default value is 29,000 milliseconds or 29 seconds.
+
+
 
 
 # Returns
@@ -4081,7 +4283,6 @@ If this property is not defined, the request payload will be passed through from
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/PutIntegration)
 """
-
 @inline put_integration(aws::AWSConfig=default_aws_config(); args...) = put_integration(aws, args)
 
 @inline put_integration(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PUT", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", args)
@@ -4105,19 +4306,19 @@ Represents a put integration.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-Specifies a put integration response request's resource identifier.
+[Required] Specifies a put integration response request's resource identifier.
 
 
 ## `http_method = ::String` -- *Required*
-Specifies a put integration response request's HTTP method.
+[Required] Specifies a put integration response request's HTTP method.
 
 
 ## `status_code = ::String` -- *Required*
-Specifies the status code that is used to map the integration response to an existing [MethodResponse](@ref).
+[Required] Specifies the status code that is used to map the integration response to an existing [MethodResponse](@ref).
 
 
 ## `selectionPattern = ::String`
@@ -4154,7 +4355,6 @@ If this property is not defined, the response payload will be passed through fro
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/PutIntegrationResponse)
 """
-
 @inline put_integration_response(aws::AWSConfig=default_aws_config(); args...) = put_integration_response(aws, args)
 
 @inline put_integration_response(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PUT", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", args)
@@ -4178,23 +4378,23 @@ Add a method to an existing [Resource](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-The [Resource](@ref) identifier for the new [Method](@ref) resource.
+[Required] The [Resource](@ref) identifier for the new [Method](@ref) resource.
 
 
 ## `http_method = ::String` -- *Required*
-Specifies the method request's HTTP method type.
+[Required] Specifies the method request's HTTP method type.
 
 
 ## `authorizationType = ::String` -- *Required*
-The method's authorization type. Valid values are `NONE` for open access, `AWS_IAM` for using AWS IAM permissions, `CUSTOM` for using a custom authorizer, or `COGNITO_USER_POOLS` for using a Cognito user pool.
+[Required] The method's authorization type. Valid values are `NONE` for open access, `AWS_IAM` for using AWS IAM permissions, `CUSTOM` for using a custom authorizer, or `COGNITO_USER_POOLS` for using a Cognito user pool.
 
 
 ## `authorizerId = ::String`
-Specifies the identifier of an [Authorizer](@ref) to use on this Method, if the type is CUSTOM.
+Specifies the identifier of an [Authorizer](@ref) to use on this Method, if the type is CUSTOM or COGNITO_USER_POOLS. The authorizer identifier is generated by API Gateway when you created the authorizer.
 
 
 ## `apiKeyRequired = ::Bool`
@@ -4206,7 +4406,7 @@ A human-friendly operation identifier for the method. For example, you can assig
 
 
 ## `requestParameters = ::Dict{String,String}`
-A key-value map defining required or optional method request parameters that can be accepted by Amazon API Gateway. A key defines a method request parameter name matching the pattern of `method.request.{location}.{name}`, where `location` is `querystring`, `path`, or `header` and `name` is a valid and unique parameter name. The value associated with the key is a Boolean flag indicating whether the parameter is required (`true`) or optional (`false`). The method request parameter names defined here are available in [Integration](@ref) to be mapped to integration request parameters or body-mapping templates.
+A key-value map defining required or optional method request parameters that can be accepted by API Gateway. A key defines a method request parameter name matching the pattern of `method.request.{location}.{name}`, where `location` is `querystring`, `path`, or `header` and `name` is a valid and unique parameter name. The value associated with the key is a Boolean flag indicating whether the parameter is required (`true`) or optional (`false`). The method request parameter names defined here are available in [Integration](@ref) to be mapped to integration request parameters or body-mapping templates.
 
 
 ## `requestModels = ::Dict{String,String}`
@@ -4215,6 +4415,10 @@ Specifies the [Model](@ref) resources used for the request's content type. Reque
 
 ## `requestValidatorId = ::String`
 The identifier of a [RequestValidator](@ref) for validating the method request.
+
+
+## `authorizationScopes = [::String, ...]`
+A list of authorization scopes configured on the method. The scopes are used with a `COGNITO_USER_POOLS` authorizer to authorize the method invocation. The authorization works by matching the method scopes against the scopes parsed from the access token in the incoming request. The method invocation is authorized if any method scopes matches a claimed scope in the access token. Otherwise, the invocation is not authorized. When the method scope is configured, the client must provide an access token instead of an identity token for authorization purposes.
 
 
 
@@ -4229,7 +4433,6 @@ The identifier of a [RequestValidator](@ref) for validating the method request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/PutMethod)
 """
-
 @inline put_method(aws::AWSConfig=default_aws_config(); args...) = put_method(aws, args)
 
 @inline put_method(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PUT", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", args)
@@ -4253,23 +4456,23 @@ Adds a [MethodResponse](@ref) to an existing [Method](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-The [Resource](@ref) identifier for the [Method](@ref) resource.
+[Required] The [Resource](@ref) identifier for the [Method](@ref) resource.
 
 
 ## `http_method = ::String` -- *Required*
-The HTTP verb of the [Method](@ref) resource.
+[Required] The HTTP verb of the [Method](@ref) resource.
 
 
 ## `status_code = ::String` -- *Required*
-The method response's status code.
+[Required] The method response's status code.
 
 
 ## `responseParameters = ::Dict{String,String}`
-A key-value map specifying required or optional response parameters that Amazon API Gateway can send back to the caller. A key defines a method response header name and the associated value is a Boolean flag indicating whether the method response parameter is required or not. The method response header names must match the pattern of `method.response.header.{name}`, where `name` is a valid and unique header name. The response parameter names defined here are available in the integration response to be mapped from an integration response header expressed in `integration.response.header.{name}`, a static value enclosed within a pair of single quotes (e.g., `'application/json'`), or a JSON expression from the back-end response payload in the form of `integration.response.body.{JSON-expression}`, where `JSON-expression` is a valid JSON expression without the `\$` prefix.)
+A key-value map specifying required or optional response parameters that API Gateway can send back to the caller. A key defines a method response header name and the associated value is a Boolean flag indicating whether the method response parameter is required or not. The method response header names must match the pattern of `method.response.header.{name}`, where `name` is a valid and unique header name. The response parameter names defined here are available in the integration response to be mapped from an integration response header expressed in `integration.response.header.{name}`, a static value enclosed within a pair of single quotes (e.g., `'application/json'`), or a JSON expression from the back-end response payload in the form of `integration.response.body.{JSON-expression}`, where `JSON-expression` is a valid JSON expression without the `\$` prefix.)
 
 
 ## `responseModels = ::Dict{String,String}`
@@ -4288,7 +4491,6 @@ Specifies the [Model](@ref) resources used for the response's content type. Resp
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/PutMethodResponse)
 """
-
 @inline put_method_response(aws::AWSConfig=default_aws_config(); args...) = put_method_response(aws, args)
 
 @inline put_method_response(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PUT", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", args)
@@ -4307,12 +4509,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigat
 
 # PutRestApi Operation
 
-A feature of the Amazon API Gateway control service for updating an existing API with an input of external API definitions. The update can take the form of merging the supplied definition into the existing API or overwriting the existing API.
+A feature of the API Gateway control service for updating an existing API with an input of external API definitions. The update can take the form of merging the supplied definition into the existing API or overwriting the existing API.
 
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `mode = "merge" or "overwrite"`
@@ -4324,11 +4526,11 @@ A query parameter to indicate whether to rollback the API update (`true`) or not
 
 
 ## `parameters = ::Dict{String,String}`
-Custom header parameters as part of the request. For example, to exclude [DocumentationParts](@ref) from an imported API, set `ignore=documentation` as a `parameters` value, as in the AWS CLI command of `aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json`.
+Custom header parameters as part of the request. For example, to exclude [DocumentationParts](@ref) from an imported API, set `ignore=documentation` as a `parameters` value, as in the AWS CLI command of `aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'`.
 
 
 ## `body = blob` -- *Required*
-The PUT request body containing external API definitions. Currently, only Swagger definition JSON files are supported. The maximum size of the API definition file is 2MB.
+[Required] The PUT request body containing external API definitions. Currently, only Swagger definition JSON files are supported. The maximum size of the API definition file is 2MB.
 
 
 
@@ -4343,12 +4545,49 @@ The PUT request body containing external API definitions. Currently, only Swagge
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/PutRestApi)
 """
-
 @inline put_rest_api(aws::AWSConfig=default_aws_config(); args...) = put_rest_api(aws, args)
 
 @inline put_rest_api(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PUT", "/restapis/{restapi_id}", args)
 
 @inline put_rest_api(args) = put_rest_api(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.APIGateway.tag_resource
+    tag_resource([::AWSConfig], arguments::Dict)
+    tag_resource([::AWSConfig]; resource_arn=, tags=)
+
+    using AWSCore.Services.apigateway
+    apigateway([::AWSConfig], "PUT", "/tags/{resource_arn}", arguments::Dict)
+    apigateway([::AWSConfig], "PUT", "/tags/{resource_arn}", resource_arn=, tags=)
+
+# TagResource Operation
+
+Adds or updates a tag on a given resource.
+
+# Arguments
+
+## `resource_arn = ::String` -- *Required*
+[Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present, [Stage](@ref) is the only taggable resource.
+
+
+## `tags = ::Dict{String,String}` -- *Required*
+[Required] The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with `aws:`. The tag value can be up to 256 characters.
+
+
+
+
+# Exceptions
+
+`BadRequestException`, `UnauthorizedException`, `TooManyRequestsException`, `NotFoundException`, `LimitExceededException` or `ConflictException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/TagResource)
+"""
+@inline tag_resource(aws::AWSConfig=default_aws_config(); args...) = tag_resource(aws, args)
+
+@inline tag_resource(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PUT", "/tags/{resource_arn}", args)
+
+@inline tag_resource(args) = tag_resource(default_aws_config(), args)
 
 
 """
@@ -4369,11 +4608,11 @@ Simulate the execution of an [Authorizer](@ref) in your [RestApi](@ref) with hea
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `authorizer_id = ::String` -- *Required*
-Specifies a test invoke authorizer request's [Authorizer](@ref) ID.
+[Required] Specifies a test invoke authorizer request's [Authorizer](@ref) ID.
 
 
 ## `headers = ::Dict{String,String}`
@@ -4408,7 +4647,6 @@ A key-value map of stage variables to simulate an invocation on a deployed [Stag
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/TestInvokeAuthorizer)
 """
-
 @inline test_invoke_authorizer(aws::AWSConfig=default_aws_config(); args...) = test_invoke_authorizer(aws, args)
 
 @inline test_invoke_authorizer(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/restapis/{restapi_id}/authorizers/{authorizer_id}", args)
@@ -4432,15 +4670,15 @@ Simulate the execution of a [Method](@ref) in your [RestApi](@ref) with headers,
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-Specifies a test invoke method request's resource ID.
+[Required] Specifies a test invoke method request's resource ID.
 
 
 ## `http_method = ::String` -- *Required*
-Specifies a test invoke method request's HTTP method.
+[Required] Specifies a test invoke method request's HTTP method.
 
 
 ## `pathWithQueryString = ::String`
@@ -4475,12 +4713,49 @@ A key-value map of stage variables to simulate an invocation on a deployed [Stag
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/TestInvokeMethod)
 """
-
 @inline test_invoke_method(aws::AWSConfig=default_aws_config(); args...) = test_invoke_method(aws, args)
 
 @inline test_invoke_method(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "POST", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", args)
 
 @inline test_invoke_method(args) = test_invoke_method(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.APIGateway.untag_resource
+    untag_resource([::AWSConfig], arguments::Dict)
+    untag_resource([::AWSConfig]; resource_arn=, tagKeys=)
+
+    using AWSCore.Services.apigateway
+    apigateway([::AWSConfig], "DELETE", "/tags/{resource_arn}", arguments::Dict)
+    apigateway([::AWSConfig], "DELETE", "/tags/{resource_arn}", resource_arn=, tagKeys=)
+
+# UntagResource Operation
+
+Removes a tag from a given resource.
+
+# Arguments
+
+## `resource_arn = ::String` -- *Required*
+[Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present, [Stage](@ref) is the only taggable resource.
+
+
+## `tagKeys = [::String, ...]` -- *Required*
+[Required] The Tag keys to delete.
+
+
+
+
+# Exceptions
+
+`BadRequestException`, `UnauthorizedException`, `TooManyRequestsException`, `NotFoundException` or `ConflictException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UntagResource)
+"""
+@inline untag_resource(aws::AWSConfig=default_aws_config(); args...) = untag_resource(aws, args)
+
+@inline untag_resource(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "DELETE", "/tags/{resource_arn}", args)
+
+@inline untag_resource(args) = untag_resource(default_aws_config(), args)
 
 
 """
@@ -4521,7 +4796,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateAccount)
 """
-
 @inline update_account(aws::AWSConfig=default_aws_config(); args...) = update_account(aws, args)
 
 @inline update_account(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/account", args)
@@ -4545,7 +4819,7 @@ Changes information about an [ApiKey](@ref) resource.
 # Arguments
 
 ## `api_Key = ::String` -- *Required*
-The identifier of the [ApiKey](@ref) resource to be updated.
+[Required] The identifier of the [ApiKey](@ref) resource to be updated.
 
 
 ## `patchOperations = [[ ... ], ...]`
@@ -4571,7 +4845,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateApiKey)
 """
-
 @inline update_api_key(aws::AWSConfig=default_aws_config(); args...) = update_api_key(aws, args)
 
 @inline update_api_key(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/apikeys/{api_Key}", args)
@@ -4597,11 +4870,11 @@ Updates an existing [Authorizer](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `authorizer_id = ::String` -- *Required*
-The identifier of the [Authorizer](@ref) resource.
+[Required] The identifier of the [Authorizer](@ref) resource.
 
 
 ## `patchOperations = [[ ... ], ...]`
@@ -4627,7 +4900,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateAuthorizer)
 """
-
 @inline update_authorizer(aws::AWSConfig=default_aws_config(); args...) = update_authorizer(aws, args)
 
 @inline update_authorizer(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/restapis/{restapi_id}/authorizers/{authorizer_id}", args)
@@ -4651,11 +4923,11 @@ Changes information about the [BasePathMapping](@ref) resource.
 # Arguments
 
 ## `domain_name = ::String` -- *Required*
-The domain name of the [BasePathMapping](@ref) resource to change.
+[Required] The domain name of the [BasePathMapping](@ref) resource to change.
 
 
 ## `base_path = ::String` -- *Required*
-The base path of the [BasePathMapping](@ref) resource to change.
+[Required] The base path of the [BasePathMapping](@ref) resource to change.
 
 
 ## `patchOperations = [[ ... ], ...]`
@@ -4681,7 +4953,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateBasePathMapping)
 """
-
 @inline update_base_path_mapping(aws::AWSConfig=default_aws_config(); args...) = update_base_path_mapping(aws, args)
 
 @inline update_base_path_mapping(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/domainnames/{domain_name}/basepathmappings/{base_path}", args)
@@ -4705,7 +4976,7 @@ Changes information about an [ClientCertificate](@ref) resource.
 # Arguments
 
 ## `clientcertificate_id = ::String` -- *Required*
-The identifier of the [ClientCertificate](@ref) resource to be updated.
+[Required] The identifier of the [ClientCertificate](@ref) resource to be updated.
 
 
 ## `patchOperations = [[ ... ], ...]`
@@ -4731,7 +5002,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateClientCertificate)
 """
-
 @inline update_client_certificate(aws::AWSConfig=default_aws_config(); args...) = update_client_certificate(aws, args)
 
 @inline update_client_certificate(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/clientcertificates/{clientcertificate_id}", args)
@@ -4755,7 +5025,7 @@ Changes information about a [Deployment](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `deployment_id = ::String` -- *Required*
@@ -4785,7 +5055,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateDeployment)
 """
-
 @inline update_deployment(aws::AWSConfig=default_aws_config(); args...) = update_deployment(aws, args)
 
 @inline update_deployment(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/restapis/{restapi_id}/deployments/{deployment_id}", args)
@@ -4839,7 +5108,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateDocumentationPart)
 """
-
 @inline update_documentation_part(aws::AWSConfig=default_aws_config(); args...) = update_documentation_part(aws, args)
 
 @inline update_documentation_part(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/restapis/{restapi_id}/documentation/parts/{part_id}", args)
@@ -4893,7 +5161,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateDocumentationVersion)
 """
-
 @inline update_documentation_version(aws::AWSConfig=default_aws_config(); args...) = update_documentation_version(aws, args)
 
 @inline update_documentation_version(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/restapis/{restapi_id}/documentation/versions/{doc_version}", args)
@@ -4917,7 +5184,7 @@ Changes information about the [DomainName](@ref) resource.
 # Arguments
 
 ## `domain_name = ::String` -- *Required*
-The name of the [DomainName](@ref) resource to be changed.
+[Required] The name of the [DomainName](@ref) resource to be changed.
 
 
 ## `patchOperations = [[ ... ], ...]`
@@ -4943,7 +5210,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateDomainName)
 """
-
 @inline update_domain_name(aws::AWSConfig=default_aws_config(); args...) = update_domain_name(aws, args)
 
 @inline update_domain_name(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/domainnames/{domain_name}", args)
@@ -4967,10 +5233,12 @@ Updates a [GatewayResponse](@ref) of a specified response type on the given [Res
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `response_type = "DEFAULT_4XX", "DEFAULT_5XX", "RESOURCE_NOT_FOUND", "UNAUTHORIZED", "INVALID_API_KEY", "ACCESS_DENIED", "AUTHORIZER_FAILURE", "AUTHORIZER_CONFIGURATION_ERROR", "INVALID_SIGNATURE", "EXPIRED_TOKEN", "MISSING_AUTHENTICATION_TOKEN", "INTEGRATION_FAILURE", "INTEGRATION_TIMEOUT", "API_CONFIGURATION_ERROR", "UNSUPPORTED_MEDIA_TYPE", "BAD_REQUEST_PARAMETERS", "BAD_REQUEST_BODY", "REQUEST_TOO_LARGE", "THROTTLED" or "QUOTA_EXCEEDED"` -- *Required*
+[Required]
+
 The response type of the associated [GatewayResponse](@ref). Valid values are
 
 *   ACCESS_DENIED
@@ -4992,7 +5260,7 @@ The response type of the associated [GatewayResponse](@ref). Valid values are
 *   RESOURCE_NOT_FOUND
 *   THROTTLED
 *   UNAUTHORIZED
-*   UNSUPPORTED_MEDIA_TYPES
+*   UNSUPPORTED_MEDIA_TYPE
 
 
 ## `patchOperations = [[ ... ], ...]`
@@ -5018,7 +5286,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateGatewayResponse)
 """
-
 @inline update_gateway_response(aws::AWSConfig=default_aws_config(); args...) = update_gateway_response(aws, args)
 
 @inline update_gateway_response(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/restapis/{restapi_id}/gatewayresponses/{response_type}", args)
@@ -5042,15 +5309,15 @@ Represents an update integration.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-Represents an update integration request's resource identifier.
+[Required] Represents an update integration request's resource identifier.
 
 
 ## `http_method = ::String` -- *Required*
-Represents an update integration request's HTTP method.
+[Required] Represents an update integration request's HTTP method.
 
 
 ## `patchOperations = [[ ... ], ...]`
@@ -5076,7 +5343,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateIntegration)
 """
-
 @inline update_integration(aws::AWSConfig=default_aws_config(); args...) = update_integration(aws, args)
 
 @inline update_integration(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", args)
@@ -5100,19 +5366,19 @@ Represents an update integration response.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-Specifies an update integration response request's resource identifier.
+[Required] Specifies an update integration response request's resource identifier.
 
 
 ## `http_method = ::String` -- *Required*
-Specifies an update integration response request's HTTP method.
+[Required] Specifies an update integration response request's HTTP method.
 
 
 ## `status_code = ::String` -- *Required*
-Specifies an update integration response request's status code.
+[Required] Specifies an update integration response request's status code.
 
 
 ## `patchOperations = [[ ... ], ...]`
@@ -5138,7 +5404,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateIntegrationResponse)
 """
-
 @inline update_integration_response(aws::AWSConfig=default_aws_config(); args...) = update_integration_response(aws, args)
 
 @inline update_integration_response(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", args)
@@ -5162,15 +5427,15 @@ Updates an existing [Method](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-The [Resource](@ref) identifier for the [Method](@ref) resource.
+[Required] The [Resource](@ref) identifier for the [Method](@ref) resource.
 
 
 ## `http_method = ::String` -- *Required*
-The HTTP verb of the [Method](@ref) resource.
+[Required] The HTTP verb of the [Method](@ref) resource.
 
 
 ## `patchOperations = [[ ... ], ...]`
@@ -5196,7 +5461,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateMethod)
 """
-
 @inline update_method(aws::AWSConfig=default_aws_config(); args...) = update_method(aws, args)
 
 @inline update_method(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", args)
@@ -5220,19 +5484,19 @@ Updates an existing [MethodResponse](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-The [Resource](@ref) identifier for the [MethodResponse](@ref) resource.
+[Required] The [Resource](@ref) identifier for the [MethodResponse](@ref) resource.
 
 
 ## `http_method = ::String` -- *Required*
-The HTTP verb of the [Method](@ref) resource.
+[Required] The HTTP verb of the [Method](@ref) resource.
 
 
 ## `status_code = ::String` -- *Required*
-The status code for the [MethodResponse](@ref) resource.
+[Required] The status code for the [MethodResponse](@ref) resource.
 
 
 ## `patchOperations = [[ ... ], ...]`
@@ -5258,7 +5522,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateMethodResponse)
 """
-
 @inline update_method_response(aws::AWSConfig=default_aws_config(); args...) = update_method_response(aws, args)
 
 @inline update_method_response(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", args)
@@ -5282,11 +5545,11 @@ Changes information about a model.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `model_name = ::String` -- *Required*
-The name of the model to update.
+[Required] The name of the model to update.
 
 
 ## `patchOperations = [[ ... ], ...]`
@@ -5312,7 +5575,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateModel)
 """
-
 @inline update_model(aws::AWSConfig=default_aws_config(); args...) = update_model(aws, args)
 
 @inline update_model(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/restapis/{restapi_id}/models/{model_name}", args)
@@ -5336,7 +5598,7 @@ Updates a [RequestValidator](@ref) of a given [RestApi](@ref).
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `requestvalidator_id = ::String` -- *Required*
@@ -5366,7 +5628,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateRequestValidator)
 """
-
 @inline update_request_validator(aws::AWSConfig=default_aws_config(); args...) = update_request_validator(aws, args)
 
 @inline update_request_validator(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", args)
@@ -5390,11 +5651,11 @@ Changes information about a [Resource](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `resource_id = ::String` -- *Required*
-The identifier of the [Resource](@ref) resource.
+[Required] The identifier of the [Resource](@ref) resource.
 
 
 ## `patchOperations = [[ ... ], ...]`
@@ -5420,7 +5681,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateResource)
 """
-
 @inline update_resource(aws::AWSConfig=default_aws_config(); args...) = update_resource(aws, args)
 
 @inline update_resource(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/restapis/{restapi_id}/resources/{resource_id}", args)
@@ -5444,7 +5704,7 @@ Changes information about the specified API.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `patchOperations = [[ ... ], ...]`
@@ -5470,7 +5730,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateRestApi)
 """
-
 @inline update_rest_api(aws::AWSConfig=default_aws_config(); args...) = update_rest_api(aws, args)
 
 @inline update_rest_api(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/restapis/{restapi_id}", args)
@@ -5494,11 +5753,11 @@ Changes information about a [Stage](@ref) resource.
 # Arguments
 
 ## `restapi_id = ::String` -- *Required*
-The string identifier of the associated [RestApi](@ref).
+[Required] The string identifier of the associated [RestApi](@ref).
 
 
 ## `stage_name = ::String` -- *Required*
-The name of the [Stage](@ref) resource to change information about.
+[Required] The name of the [Stage](@ref) resource to change information about.
 
 
 ## `patchOperations = [[ ... ], ...]`
@@ -5524,7 +5783,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateStage)
 """
-
 @inline update_stage(aws::AWSConfig=default_aws_config(); args...) = update_stage(aws, args)
 
 @inline update_stage(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/restapis/{restapi_id}/stages/{stage_name}", args)
@@ -5548,11 +5806,11 @@ Grants a temporary extension to the remaining quota of a usage plan associated w
 # Arguments
 
 ## `usageplanId = ::String` -- *Required*
-The Id of the usage plan associated with the usage data.
+[Required] The Id of the usage plan associated with the usage data.
 
 
 ## `keyId = ::String` -- *Required*
-The identifier of the API key associated with the usage plan in which a temporary extension is granted to the remaining quota.
+[Required] The identifier of the API key associated with the usage plan in which a temporary extension is granted to the remaining quota.
 
 
 ## `patchOperations = [[ ... ], ...]`
@@ -5578,7 +5836,6 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateUsage)
 """
-
 @inline update_usage(aws::AWSConfig=default_aws_config(); args...) = update_usage(aws, args)
 
 @inline update_usage(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/usageplans/{usageplanId}/keys/{keyId}/usage", args)
@@ -5602,7 +5859,7 @@ Updates a usage plan of a given plan Id.
 # Arguments
 
 ## `usageplanId = ::String` -- *Required*
-The Id of the to-be-updated usage plan.
+[Required] The Id of the to-be-updated usage plan.
 
 
 ## `patchOperations = [[ ... ], ...]`
@@ -5628,12 +5885,60 @@ A list of update operations to be applied to the specified resource and in the o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateUsagePlan)
 """
-
 @inline update_usage_plan(aws::AWSConfig=default_aws_config(); args...) = update_usage_plan(aws, args)
 
 @inline update_usage_plan(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/usageplans/{usageplanId}", args)
 
 @inline update_usage_plan(args) = update_usage_plan(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.APIGateway.update_vpc_link
+    update_vpc_link([::AWSConfig], arguments::Dict)
+    update_vpc_link([::AWSConfig]; vpclink_id=, <keyword arguments>)
+
+    using AWSCore.Services.apigateway
+    apigateway([::AWSConfig], "PATCH", "/vpclinks/{vpclink_id}", arguments::Dict)
+    apigateway([::AWSConfig], "PATCH", "/vpclinks/{vpclink_id}", vpclink_id=, <keyword arguments>)
+
+# UpdateVpcLink Operation
+
+Updates an existing [VpcLink](@ref) of a specified identifier.
+
+# Arguments
+
+## `vpclink_id = ::String` -- *Required*
+[Required] The identifier of the [VpcLink](@ref). It is used in an [Integration](@ref) to reference this [VpcLink](@ref).
+
+
+## `patchOperations = [[ ... ], ...]`
+A list of update operations to be applied to the specified resource and in the order specified in this list.
+```
+ patchOperations = [[
+        "op" =>  "add", "remove", "replace", "move", "copy" or "test",
+        "path" =>  ::String,
+        "value" =>  ::String,
+        "from" =>  ::String
+    ], ...]
+```
+
+
+
+# Returns
+
+`VpcLink`
+
+# Exceptions
+
+`UnauthorizedException`, `NotFoundException`, `BadRequestException`, `ConflictException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateVpcLink)
+"""
+@inline update_vpc_link(aws::AWSConfig=default_aws_config(); args...) = update_vpc_link(aws, args)
+
+@inline update_vpc_link(aws::AWSConfig, args) = AWSCore.Services.apigateway(aws, "PATCH", "/vpclinks/{vpclink_id}", args)
+
+@inline update_vpc_link(args) = update_vpc_link(default_aws_config(), args)
 
 
 

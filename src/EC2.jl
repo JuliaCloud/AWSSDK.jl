@@ -52,12 +52,53 @@ The configuration of the target Convertible Reserved Instance to exchange for yo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AcceptReservedInstancesExchangeQuote)
 """
-
 @inline accept_reserved_instances_exchange_quote(aws::AWSConfig=default_aws_config(); args...) = accept_reserved_instances_exchange_quote(aws, args)
 
 @inline accept_reserved_instances_exchange_quote(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AcceptReservedInstancesExchangeQuote", args)
 
 @inline accept_reserved_instances_exchange_quote(args) = accept_reserved_instances_exchange_quote(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.accept_vpc_endpoint_connections
+    accept_vpc_endpoint_connections([::AWSConfig], arguments::Dict)
+    accept_vpc_endpoint_connections([::AWSConfig]; ServiceId=, VpcEndpointId=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "AcceptVpcEndpointConnections", arguments::Dict)
+    ec2([::AWSConfig], "AcceptVpcEndpointConnections", ServiceId=, VpcEndpointId=, <keyword arguments>)
+
+# AcceptVpcEndpointConnections Operation
+
+Accepts one or more interface VPC endpoint connection requests to your VPC endpoint service.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `ServiceId = ::String` -- *Required*
+The ID of the endpoint service.
+
+
+## `VpcEndpointId = [::String, ...]` -- *Required*
+The IDs of one or more interface VPC endpoints.
+
+
+
+
+# Returns
+
+`AcceptVpcEndpointConnectionsResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AcceptVpcEndpointConnections)
+"""
+@inline accept_vpc_endpoint_connections(aws::AWSConfig=default_aws_config(); args...) = accept_vpc_endpoint_connections(aws, args)
+
+@inline accept_vpc_endpoint_connections(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AcceptVpcEndpointConnections", args)
+
+@inline accept_vpc_endpoint_connections(args) = accept_vpc_endpoint_connections(default_aws_config(), args)
 
 
 """
@@ -73,6 +114,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 Accept a VPC peering connection request. To accept a request, the VPC peering connection must be in the `pending-acceptance` state, and you must be the owner of the peer VPC. Use [DescribeVpcPeeringConnections](@ref) to view your outstanding VPC peering connection requests.
 
+For an inter-region VPC peering connection request, you must accept the VPC peering connection in the region of the accepter VPC.
+
 # Arguments
 
 ## `DryRun = ::Bool`
@@ -80,7 +123,7 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `VpcPeeringConnectionId = ::String`
-The ID of the VPC peering connection.
+The ID of the VPC peering connection. You must specify this parameter in the request.
 
 
 
@@ -91,7 +134,6 @@ The ID of the VPC peering connection.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AcceptVpcPeeringConnection)
 """
-
 @inline accept_vpc_peering_connection(aws::AWSConfig=default_aws_config(); args...) = accept_vpc_peering_connection(aws, args)
 
 @inline accept_vpc_peering_connection(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AcceptVpcPeeringConnection", args)
@@ -174,7 +216,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AllocateAddress)
 """
-
 @inline allocate_address(aws::AWSConfig=default_aws_config(); args...) = allocate_address(aws, args)
 
 @inline allocate_address(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AllocateAddress", args)
@@ -193,7 +234,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # AllocateHosts Operation
 
-Allocates a Dedicated Host to your account. At minimum you need to specify the instance size type, Availability Zone, and quantity of hosts you want to allocate.
+Allocates a Dedicated Host to your account. At a minimum, specify the instance size type, Availability Zone, and quantity of hosts to allocate.
 
 # Arguments
 
@@ -208,15 +249,15 @@ The Availability Zone for the Dedicated Hosts.
 
 
 ## `ClientToken = ::String`
-Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html) in the *Amazon Elastic Compute Cloud User Guide*.
+Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 
 ## `InstanceType = ::String` -- *Required*
-Specify the instance type that you want your Dedicated Hosts to be configured for. When you specify the instance type, that is the only instance type that you can launch onto that host.
+Specify the instance type for which to configure your Dedicated Hosts. When you specify the instance type, that is the only instance type that you can launch onto that host.
 
 
 ## `Quantity = ::Int` -- *Required*
-The number of Dedicated Hosts you want to allocate to your account with these parameters.
+The number of Dedicated Hosts to allocate to your account with these parameters.
 
 
 
@@ -227,7 +268,6 @@ The number of Dedicated Hosts you want to allocate to your account with these pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AllocateHosts)
 """
-
 @inline allocate_hosts(aws::AWSConfig=default_aws_config(); args...) = allocate_hosts(aws, args)
 
 @inline allocate_hosts(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AllocateHosts", args)
@@ -270,7 +310,6 @@ The ID of the network interface.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssignIpv6Addresses)
 """
-
 @inline assign_ipv6addresses(aws::AWSConfig=default_aws_config(); args...) = assign_ipv6addresses(aws, args)
 
 @inline assign_ipv6addresses(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AssignIpv6Addresses", args)
@@ -343,7 +382,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssignPrivateIpAddresses)
 """
-
 @inline assign_private_ip_addresses(aws::AWSConfig=default_aws_config(); args...) = assign_private_ip_addresses(aws, args)
 
 @inline assign_private_ip_addresses(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AssignPrivateIpAddresses", args)
@@ -461,7 +499,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateAddress)
 """
-
 @inline associate_address(aws::AWSConfig=default_aws_config(); args...) = associate_address(aws, args)
 
 @inline associate_address(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AssociateAddress", args)
@@ -528,7 +565,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateDhcpOptions)
 """
-
 @inline associate_dhcp_options(aws::AWSConfig=default_aws_config(); args...) = associate_dhcp_options(aws, args)
 
 @inline associate_dhcp_options(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AssociateDhcpOptions", args)
@@ -570,9 +606,37 @@ The ID of the instance.
 
 `AssociateIamInstanceProfileResult`
 
+# Example: To associate an IAM instance profile with an instance
+
+This example associates an IAM instance profile named admin-role with the specified instance.
+
+Input:
+```
+[
+    "IamInstanceProfile" => [
+        "Name" => "admin-role"
+    ],
+    "InstanceId" => "i-123456789abcde123"
+]
+```
+
+Output:
+```
+Dict(
+    "IamInstanceProfileAssociation" => Dict(
+        "AssociationId" => "iip-assoc-0e7736511a163c209",
+        "IamInstanceProfile" => Dict(
+            "Arn" => "arn:aws:iam::123456789012:instance-profile/admin-role",
+            "Id" => "AIPAJBLK7RKJKWDXVHIEC"
+        ),
+        "InstanceId" => "i-123456789abcde123",
+        "State" => "associating"
+    )
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateIamInstanceProfile)
 """
-
 @inline associate_iam_instance_profile(aws::AWSConfig=default_aws_config(); args...) = associate_iam_instance_profile(aws, args)
 
 @inline associate_iam_instance_profile(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AssociateIamInstanceProfile", args)
@@ -636,7 +700,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateRouteTable)
 """
-
 @inline associate_route_table(aws::AWSConfig=default_aws_config(); args...) = associate_route_table(aws, args)
 
 @inline associate_route_table(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AssociateRouteTable", args)
@@ -675,7 +738,6 @@ The ID of your subnet.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateSubnetCidrBlock)
 """
-
 @inline associate_subnet_cidr_block(aws::AWSConfig=default_aws_config(); args...) = associate_subnet_cidr_block(aws, args)
 
 @inline associate_subnet_cidr_block(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AssociateSubnetCidrBlock", args)
@@ -720,7 +782,6 @@ The ID of the VPC.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateVpcCidrBlock)
 """
-
 @inline associate_vpc_cidr_block(aws::AWSConfig=default_aws_config(); args...) = associate_vpc_cidr_block(aws, args)
 
 @inline associate_vpc_cidr_block(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AssociateVpcCidrBlock", args)
@@ -771,7 +832,6 @@ The ID of a ClassicLink-enabled VPC.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachClassicLinkVpc)
 """
-
 @inline attach_classic_link_vpc(aws::AWSConfig=default_aws_config(); args...) = attach_classic_link_vpc(aws, args)
 
 @inline attach_classic_link_vpc(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AttachClassicLinkVpc", args)
@@ -822,7 +882,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachInternetGateway)
 """
-
 @inline attach_internet_gateway(aws::AWSConfig=default_aws_config(); args...) = attach_internet_gateway(aws, args)
 
 @inline attach_internet_gateway(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AttachInternetGateway", args)
@@ -889,7 +948,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachNetworkInterface)
 """
-
 @inline attach_network_interface(aws::AWSConfig=default_aws_config(); args...) = attach_network_interface(aws, args)
 
 @inline attach_network_interface(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AttachNetworkInterface", args)
@@ -923,8 +981,6 @@ If a volume has an AWS Marketplace product code:
 *   You must be subscribed to the product.
 
 *   The instance type and operating system of the instance must support the product. For example, you can't detach a volume from a Windows instance and attach it to a Linux instance.
-
-For an overview of the AWS Marketplace, see [Introducing AWS Marketplace](https://aws.amazon.com/marketplace/help/200900000).
 
 For more information about EBS volumes, see [Attaching Amazon EBS Volumes](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
@@ -978,7 +1034,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachVolume)
 """
-
 @inline attach_volume(aws::AWSConfig=default_aws_config(); args...) = attach_volume(aws, args)
 
 @inline attach_volume(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AttachVolume", args)
@@ -1023,7 +1078,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachVpnGateway)
 """
-
 @inline attach_vpn_gateway(aws::AWSConfig=default_aws_config(); args...) = attach_vpn_gateway(aws, args)
 
 @inline attach_vpn_gateway(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AttachVpnGateway", args)
@@ -1115,9 +1169,68 @@ Not supported. Use a set of IP permissions to specify a destination security gro
 
 
 
+# Example: To add a rule that allows outbound traffic to a specific address range
+
+This example adds a rule that grants access to the specified address ranges on TCP port 80.
+
+Input:
+```
+[
+    "GroupId" => "sg-1a2b3c4d",
+    "IpPermissions" => [
+        [
+            "FromPort" => 80,
+            "IpProtocol" => "tcp",
+            "IpRanges" => [
+                [
+                    "CidrIp" => "10.0.0.0/16"
+                ]
+            ],
+            "ToPort" => 80
+        ]
+    ]
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
+# Example: To add a rule that allows outbound traffic to a specific security group
+
+This example adds a rule that grants access to the specified security group on TCP port 80.
+
+Input:
+```
+[
+    "GroupId" => "sg-1a2b3c4d",
+    "IpPermissions" => [
+        [
+            "FromPort" => 80,
+            "IpProtocol" => "tcp",
+            "ToPort" => 80,
+            "UserIdGroupPairs" => [
+                [
+                    "GroupId" => "sg-4b51a32f"
+                ]
+            ]
+        ]
+    ]
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AuthorizeSecurityGroupEgress)
 """
-
 @inline authorize_security_group_egress(aws::AWSConfig=default_aws_config(); args...) = authorize_security_group_egress(aws, args)
 
 @inline authorize_security_group_egress(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AuthorizeSecurityGroupEgress", args)
@@ -1217,9 +1330,101 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 
+# Example: To add a rule that allows inbound SSH traffic from an IPv4 address range
+
+This example enables inbound traffic on TCP port 22 (SSH). The rule includes a description to help you identify it later.
+
+Input:
+```
+[
+    "GroupId" => "sg-903004f8",
+    "IpPermissions" => [
+        [
+            "FromPort" => 22,
+            "IpProtocol" => "tcp",
+            "IpRanges" => [
+                [
+                    "CidrIp" => "203.0.113.0/24",
+                    "Description" => "SSH access from the LA office"
+                ]
+            ],
+            "ToPort" => 22
+        ]
+    ]
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
+# Example: To add a rule that allows inbound HTTP traffic from another security group
+
+This example enables inbound traffic on TCP port 80 from the specified security group. The group must be in the same VPC or a peer VPC. Incoming traffic is allowed based on the private IP addresses of instances that are associated with the specified security group.
+
+Input:
+```
+[
+    "GroupId" => "sg-111aaa22",
+    "IpPermissions" => [
+        [
+            "FromPort" => 80,
+            "IpProtocol" => "tcp",
+            "ToPort" => 80,
+            "UserIdGroupPairs" => [
+                [
+                    "Description" => "HTTP access from other instances",
+                    "GroupId" => "sg-1a2b3c4d"
+                ]
+            ]
+        ]
+    ]
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
+# Example: To add a rule that allows inbound RDP traffic from an IPv6 address range
+
+This example adds an inbound rule that allows RDP traffic from the specified IPv6 address range. The rule includes a description to help you identify it later.
+
+Input:
+```
+[
+    "GroupId" => "sg-123abc12 ",
+    "IpPermissions" => [
+        [
+            "FromPort" => 3389,
+            "IpProtocol" => "tcp",
+            "Ipv6Ranges" => [
+                [
+                    "CidrIpv6" => "2001:db8:1234:1a00::/64",
+                    "Description" => "RDP access from the NY office"
+                ]
+            ],
+            "ToPort" => 3389
+        ]
+    ]
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AuthorizeSecurityGroupIngress)
 """
-
 @inline authorize_security_group_ingress(aws::AWSConfig=default_aws_config(); args...) = authorize_security_group_ingress(aws, args)
 
 @inline authorize_security_group_ingress(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "AuthorizeSecurityGroupIngress", args)
@@ -1244,8 +1449,6 @@ During bundling, only the root device volume (C:\\) is bundled. Data on other in
 
 **Note**
 > This action is not applicable for Linux/Unix instances or Windows instances that are backed by Amazon EBS.
-
-For more information, see [Creating an Instance Store-Backed Windows AMI](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Creating_InstanceStoreBacked_WinAMI.html).
 
 # Arguments
 
@@ -1283,7 +1486,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/BundleInstance)
 """
-
 @inline bundle_instance(aws::AWSConfig=default_aws_config(); args...) = bundle_instance(aws, args)
 
 @inline bundle_instance(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "BundleInstance", args)
@@ -1322,7 +1524,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelBundleTask)
 """
-
 @inline cancel_bundle_task(aws::AWSConfig=default_aws_config(); args...) = cancel_bundle_task(aws, args)
 
 @inline cancel_bundle_task(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CancelBundleTask", args)
@@ -1363,7 +1564,6 @@ The reason for canceling the conversion task.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelConversionTask)
 """
-
 @inline cancel_conversion_task(aws::AWSConfig=default_aws_config(); args...) = cancel_conversion_task(aws, args)
 
 @inline cancel_conversion_task(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CancelConversionTask", args)
@@ -1394,7 +1594,6 @@ The ID of the export task. This is the ID returned by `CreateInstanceExportTask`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelExportTask)
 """
-
 @inline cancel_export_task(aws::AWSConfig=default_aws_config(); args...) = cancel_export_task(aws, args)
 
 @inline cancel_export_task(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CancelExportTask", args)
@@ -1437,7 +1636,6 @@ The ID of the import image or import snapshot task to be canceled.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelImportTask)
 """
-
 @inline cancel_import_task(aws::AWSConfig=default_aws_config(); args...) = cancel_import_task(aws, args)
 
 @inline cancel_import_task(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CancelImportTask", args)
@@ -1474,7 +1672,6 @@ The ID of the Reserved Instance listing.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelReservedInstancesListing)
 """
-
 @inline cancel_reserved_instances_listing(aws::AWSConfig=default_aws_config(); args...) = cancel_reserved_instances_listing(aws, args)
 
 @inline cancel_reserved_instances_listing(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CancelReservedInstancesListing", args)
@@ -1493,9 +1690,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # CancelSpotFleetRequests Operation
 
-Cancels the specified Spot fleet requests.
+Cancels the specified Spot Fleet requests.
 
-After you cancel a Spot fleet request, the Spot fleet launches no new Spot instances. You must specify whether the Spot fleet should also terminate its Spot instances. If you terminate the instances, the Spot fleet request enters the `cancelled_terminating` state. Otherwise, the Spot fleet request enters the `cancelled_running` state and the instances continue to run until they are interrupted or you terminate them manually.
+After you cancel a Spot Fleet request, the Spot Fleet launches no new Spot Instances. You must specify whether the Spot Fleet should also terminate its Spot Instances. If you terminate the instances, the Spot Fleet request enters the `cancelled_terminating` state. Otherwise, the Spot Fleet request enters the `cancelled_running` state and the instances continue to run until they are interrupted or you terminate them manually.
 
 # Arguments
 
@@ -1504,11 +1701,11 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `SpotFleetRequestId = [::String, ...]` -- *Required*
-The IDs of the Spot fleet requests.
+The IDs of the Spot Fleet requests.
 
 
 ## `TerminateInstances = ::Bool` -- *Required*
-Indicates whether to terminate instances for a Spot fleet request if it is canceled successfully.
+Indicates whether to terminate instances for a Spot Fleet request if it is canceled successfully.
 
 
 
@@ -1573,7 +1770,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelSpotFleetRequests)
 """
-
 @inline cancel_spot_fleet_requests(aws::AWSConfig=default_aws_config(); args...) = cancel_spot_fleet_requests(aws, args)
 
 @inline cancel_spot_fleet_requests(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CancelSpotFleetRequests", args)
@@ -1592,10 +1788,10 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # CancelSpotInstanceRequests Operation
 
-Cancels one or more Spot instance requests. Spot instances are instances that Amazon EC2 starts on your behalf when the bid price that you specify exceeds the current Spot price. Amazon EC2 periodically sets the Spot price based on available Spot instance capacity and current Spot instance requests. For more information, see [Spot Instance Requests](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html) in the *Amazon Elastic Compute Cloud User Guide*.
+Cancels one or more Spot Instance requests.
 
 **Important**
-> Canceling a Spot instance request does not terminate running Spot instances associated with the request.
+> Canceling a Spot Instance request does not terminate running Spot Instances associated with the request.
 
 # Arguments
 
@@ -1604,7 +1800,7 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `SpotInstanceRequestId = [::String, ...]` -- *Required*
-One or more Spot instance request IDs.
+One or more Spot Instance request IDs.
 
 
 
@@ -1640,7 +1836,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelSpotInstanceRequests)
 """
-
 @inline cancel_spot_instance_requests(aws::AWSConfig=default_aws_config(); args...) = cancel_spot_instance_requests(aws, args)
 
 @inline cancel_spot_instance_requests(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CancelSpotInstanceRequests", args)
@@ -1702,7 +1897,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ConfirmProductInstance)
 """
-
 @inline confirm_product_instance(aws::AWSConfig=default_aws_config(); args...) = confirm_product_instance(aws, args)
 
 @inline confirm_product_instance(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ConfirmProductInstance", args)
@@ -1757,7 +1951,6 @@ Unique, case-sensitive identifier that you provide to ensure the idempotency of 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CopyFpgaImage)
 """
-
 @inline copy_fpga_image(aws::AWSConfig=default_aws_config(); args...) = copy_fpga_image(aws, args)
 
 @inline copy_fpga_image(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CopyFpgaImage", args)
@@ -1795,7 +1988,21 @@ Specifies whether the destination snapshots of the copied image should be encryp
 
 
 ## `KmsKeyId = ::String`
-The full ARN of the AWS Key Management Service (AWS KMS) CMK to use when encrypting the snapshots of an image during a copy operation. This parameter is only required if you want to use a non-default CMK; if this parameter is not specified, the default CMK for EBS is used. The ARN contains the `arn:aws:kms` namespace, followed by the region of the CMK, the AWS account ID of the CMK owner, the `key` namespace, and then the CMK ID. For example, arn:aws:kms:*us-east-1*:*012345678910*:key/*abcd1234-a123-456a-a12b-a123b4cd56ef*. The specified CMK must exist in the region that the snapshot is being copied to. If a `KmsKeyId` is specified, the `Encrypted` flag must also be set.
+An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the encrypted volume. This parameter is only required if you want to use a non-default CMK; if this parameter is not specified, the default CMK for EBS is used. If a `KmsKeyId` is specified, the `Encrypted` flag must also be set.
+
+The CMK identifier may be provided in any of the following formats:
+
+*   Key ID
+
+*   Key alias, in the form `alias/*ExampleAlias*`
+
+*   ARN using key ID. The ID ARN contains the `arn:aws:kms` namespace, followed by the region of the CMK, the AWS account ID of the CMK owner, the `key` namespace, and then the CMK ID. For example, arn:aws:kms:*us-east-1*:*012345678910*:key/*abcd1234-a123-456a-a12b-a123b4cd56ef*.
+
+*   ARN using key alias. The alias ARN contains the `arn:aws:kms` namespace, followed by the region of the CMK, the AWS account ID of the CMK owner, the `alias` namespace, and then the CMK alias. For example, arn:aws:kms:*us-east-1*:*012345678910*:alias/*ExampleAlias*.
+
+AWS parses `KmsKeyId` asynchronously, meaning that the action you call may appear to complete even though you provided an invalid identifier. This action will eventually report failure.
+
+The specified CMK must exist in the region that the snapshot is being copied to.
 
 
 ## `Name = ::String` -- *Required*
@@ -1820,9 +2027,29 @@ Checks whether you have the required permissions for the action, without actuall
 
 `CopyImageResult`
 
+# Example: To copy an AMI to another region
+
+This example copies the specified AMI from the us-east-1 region to the current region.
+
+Input:
+```
+[
+    "Description" => "",
+    "Name" => "My server",
+    "SourceImageId" => "ami-5731123e",
+    "SourceRegion" => "us-east-1"
+]
+```
+
+Output:
+```
+Dict(
+    "ImageId" => "ami-438bea42"
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CopyImage)
 """
-
 @inline copy_image(aws::AWSConfig=default_aws_config(); args...) = copy_image(aws, args)
 
 @inline copy_image(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CopyImage", args)
@@ -1845,11 +2072,9 @@ Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3. You
 
 Copies of encrypted EBS snapshots remain encrypted. Copies of unencrypted snapshots remain unencrypted, unless the `Encrypted` flag is specified during the snapshot copy operation. By default, encrypted snapshot copies use the default AWS Key Management Service (AWS KMS) customer master key (CMK); however, you can specify a non-default CMK with the `KmsKeyId` parameter.
 
-**Note**
-> To copy an encrypted snapshot that has been shared from another account, you must have permissions for the CMK used to encrypt the snapshot.
+To copy an encrypted snapshot that has been shared from another account, you must have permissions for the CMK used to encrypt the snapshot.
 
-**Note**
-> Snapshots created by the CopySnapshot action have an arbitrary volume ID that should not be used for any purpose.
+Snapshots created by copying another snapshot have an arbitrary volume ID that should not be used for any purpose.
 
 For more information, see [Copying an Amazon EBS Snapshot](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
@@ -1862,8 +2087,7 @@ A description for the EBS snapshot.
 ## `DestinationRegion = ::String`
 The destination region to use in the `PresignedUrl` parameter of a snapshot copy operation. This parameter is only valid for specifying the destination region in a `PresignedUrl` parameter, where it is required.
 
-**Note**
-> `CopySnapshot` sends the snapshot copy to the regional endpoint that you send the HTTP request to, such as `ec2.us-east-1.amazonaws.com` (in the AWS CLI, this is specified with the `--region` parameter or the default region in your AWS configuration file).
+The snapshot copy is sent to the regional endpoint that you sent the HTTP request to (for example, `ec2.us-east-1.amazonaws.com`). With the AWS CLI, this is specified using the `--region` parameter or the default region in your AWS configuration file.
 
 
 ## `Encrypted = ::Bool`
@@ -1871,11 +2095,25 @@ Specifies whether the destination snapshot should be encrypted. You can encrypt 
 
 
 ## `KmsKeyId = ::String`
-The full ARN of the AWS Key Management Service (AWS KMS) CMK to use when creating the snapshot copy. This parameter is only required if you want to use a non-default CMK; if this parameter is not specified, the default CMK for EBS is used. The ARN contains the `arn:aws:kms` namespace, followed by the region of the CMK, the AWS account ID of the CMK owner, the `key` namespace, and then the CMK ID. For example, arn:aws:kms:*us-east-1*:*012345678910*:key/*abcd1234-a123-456a-a12b-a123b4cd56ef*. The specified CMK must exist in the region that the snapshot is being copied to. If a `KmsKeyId` is specified, the `Encrypted` flag must also be set.
+An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the encrypted volume. This parameter is only required if you want to use a non-default CMK; if this parameter is not specified, the default CMK for EBS is used. If a `KmsKeyId` is specified, the `Encrypted` flag must also be set.
+
+The CMK identifier may be provided in any of the following formats:
+
+*   Key ID
+
+*   Key alias
+
+*   ARN using key ID. The ID ARN contains the `arn:aws:kms` namespace, followed by the region of the CMK, the AWS account ID of the CMK owner, the `key` namespace, and then the CMK ID. For example, arn:aws:kms:*us-east-1*:*012345678910*:key/*abcd1234-a123-456a-a12b-a123b4cd56ef*.
+
+*   ARN using key alias. The alias ARN contains the `arn:aws:kms` namespace, followed by the region of the CMK, the AWS account ID of the CMK owner, the `alias` namespace, and then the CMK alias. For example, arn:aws:kms:*us-east-1*:*012345678910*:alias/*ExampleAlias*.
+
+AWS parses `KmsKeyId` asynchronously, meaning that the action you call may appear to complete even though you provided an invalid identifier. The action will eventually fail.
 
 
 ## `PresignedUrl = ::String`
-The pre-signed URL that facilitates copying an encrypted snapshot. This parameter is only required when copying an encrypted snapshot with the Amazon EC2 Query API; it is available as an optional parameter in all other cases. The `PresignedUrl` should use the snapshot source endpoint, the `CopySnapshot` action, and include the `SourceRegion`, `SourceSnapshotId`, and `DestinationRegion` parameters. The `PresignedUrl` must be signed using AWS Signature Version 4. Because EBS snapshots are stored in Amazon S3, the signing algorithm for this parameter uses the same logic that is described in [Authenticating Requests by Using Query Parameters (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) in the *Amazon Simple Storage Service API Reference*. An invalid or improperly signed `PresignedUrl` will cause the copy operation to fail asynchronously, and the snapshot will move to an `error` state.
+When you copy an encrypted source snapshot using the Amazon EC2 Query API, you must supply a pre-signed URL. This parameter is optional for unencrypted snapshots. For more information, see [Query Requests](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html).
+
+The `PresignedUrl` should use the snapshot source endpoint, the `CopySnapshot` action, and include the `SourceRegion`, `SourceSnapshotId`, and `DestinationRegion` parameters. The `PresignedUrl` must be signed using AWS Signature Version 4. Because EBS snapshots are stored in Amazon S3, the signing algorithm for this parameter uses the same logic that is described in [Authenticating Requests by Using Query Parameters (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) in the *Amazon Simple Storage Service API Reference*. An invalid or improperly signed `PresignedUrl` will cause the copy operation to fail asynchronously, and the snapshot will move to an `error` state.
 
 
 ## `SourceRegion = ::String` -- *Required*
@@ -1919,7 +2157,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CopySnapshot)
 """
-
 @inline copy_snapshot(aws::AWSConfig=default_aws_config(); args...) = copy_snapshot(aws, args)
 
 @inline copy_snapshot(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CopySnapshot", args)
@@ -2004,7 +2241,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateCustomerGateway)
 """
-
 @inline create_customer_gateway(aws::AWSConfig=default_aws_config(); args...) = create_customer_gateway(aws, args)
 
 @inline create_customer_gateway(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateCustomerGateway", args)
@@ -2043,7 +2279,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateDefaultSubnet)
 """
-
 @inline create_default_subnet(aws::AWSConfig=default_aws_config(); args...) = create_default_subnet(aws, args)
 
 @inline create_default_subnet(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateDefaultSubnet", args)
@@ -2082,7 +2317,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateDefaultVpc)
 """
-
 @inline create_default_vpc(aws::AWSConfig=default_aws_config(); args...) = create_default_vpc(aws, args)
 
 @inline create_default_vpc(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateDefaultVpc", args)
@@ -2179,7 +2413,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateDhcpOptions)
 """
-
 @inline create_dhcp_options(aws::AWSConfig=default_aws_config(); args...) = create_dhcp_options(aws, args)
 
 @inline create_dhcp_options(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateDhcpOptions", args)
@@ -2222,12 +2455,134 @@ The ID of the VPC for which to create the egress-only Internet gateway.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateEgressOnlyInternetGateway)
 """
-
 @inline create_egress_only_internet_gateway(aws::AWSConfig=default_aws_config(); args...) = create_egress_only_internet_gateway(aws, args)
 
 @inline create_egress_only_internet_gateway(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateEgressOnlyInternetGateway", args)
 
 @inline create_egress_only_internet_gateway(args) = create_egress_only_internet_gateway(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.create_fleet
+    create_fleet([::AWSConfig], arguments::Dict)
+    create_fleet([::AWSConfig]; LaunchTemplateConfigs=, TargetCapacitySpecification=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "CreateFleet", arguments::Dict)
+    ec2([::AWSConfig], "CreateFleet", LaunchTemplateConfigs=, TargetCapacitySpecification=, <keyword arguments>)
+
+# CreateFleet Operation
+
+Launches an EC2 Fleet.
+
+You can create a single EC2 Fleet that includes multiple launch specifications that vary by instance type, AMI, Availability Zone, or subnet.
+
+For more information, see [Launching an EC2 Fleet](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html) in the *Amazon Elastic Compute Cloud User Guide*.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `ClientToken = ::String`
+Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+
+
+## `SpotOptions = [ ... ]`
+Describes the configuration of Spot Instances in an EC2 Fleet.
+```
+ SpotOptions = [
+        "AllocationStrategy" =>  "lowest-price" or "diversified",
+        "InstanceInterruptionBehavior" =>  "hibernate", "stop" or "terminate",
+        "InstancePoolsToUseCount" =>  ::Int
+    ]
+```
+
+## `OnDemandOptions = ["AllocationStrategy" =>  "lowest-price" or "prioritized"]`
+The allocation strategy of On-Demand Instances in an EC2 Fleet.
+
+
+## `ExcessCapacityTerminationPolicy = "no-termination" or "termination"`
+Indicates whether running instances should be terminated if the total target capacity of the EC2 Fleet is decreased below the current size of the EC2 Fleet.
+
+
+## `LaunchTemplateConfigs = [[ ... ], ...]` -- *Required*
+The configuration for the EC2 Fleet.
+```
+ LaunchTemplateConfigs = [[
+        "LaunchTemplateSpecification" =>  [
+            "LaunchTemplateId" =>  ::String,
+            "LaunchTemplateName" =>  ::String,
+            "Version" =>  ::String
+        ],
+        "Overrides" =>  [[
+            "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "r5.large", "r5.xlarge", "r5.2xlarge", "r5.4xlarge", "r5.8xlarge", "r5.12xlarge", "r5.16xlarge", "r5.24xlarge", "r5.metal", "r5d.large", "r5d.xlarge", "r5d.2xlarge", "r5d.4xlarge", "r5d.8xlarge", "r5d.12xlarge", "r5d.16xlarge", "r5d.24xlarge", "r5d.metal", "x1.16xlarge", "x1.32xlarge", "x1e.xlarge", "x1e.2xlarge", "x1e.4xlarge", "x1e.8xlarge", "x1e.16xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "i3.metal", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "c5d.large", "c5d.xlarge", "c5d.2xlarge", "c5d.4xlarge", "c5d.9xlarge", "c5d.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge", "f1.16xlarge", "m5.large", "m5.xlarge", "m5.2xlarge", "m5.4xlarge", "m5.12xlarge", "m5.24xlarge", "m5d.large", "m5d.xlarge", "m5d.2xlarge", "m5d.4xlarge", "m5d.12xlarge", "m5d.24xlarge", "h1.2xlarge", "h1.4xlarge", "h1.8xlarge", "h1.16xlarge", "z1d.large", "z1d.xlarge", "z1d.2xlarge", "z1d.3xlarge", "z1d.6xlarge" or "z1d.12xlarge",
+            "MaxPrice" =>  ::String,
+            "SubnetId" =>  ::String,
+            "AvailabilityZone" =>  ::String,
+            "WeightedCapacity" =>  double,
+            "Priority" =>  double
+        ], ...]
+    ], ...]
+```
+
+## `TargetCapacitySpecification = [ ... ]` -- *Required*
+The `TotalTargetCapacity`, `OnDemandTargetCapacity`, `SpotTargetCapacity`, and `DefaultCapacityType` structure.
+```
+ TargetCapacitySpecification = [
+        "TotalTargetCapacity" => <required> ::Int,
+        "OnDemandTargetCapacity" =>  ::Int,
+        "SpotTargetCapacity" =>  ::Int,
+        "DefaultTargetCapacityType" =>  "spot" or "on-demand"
+    ]
+```
+
+## `TerminateInstancesWithExpiration = ::Bool`
+Indicates whether running instances should be terminated when the EC2 Fleet expires.
+
+
+## `Type = "request" or "maintain"`
+The type of request. Indicates whether the EC2 Fleet only `requests` the target capacity, or also attempts to `maintain` it. If you request a certain target capacity, EC2 Fleet only places the required requests. It does not attempt to replenish instances if capacity is diminished, and does not submit requests in alternative capacity pools if capacity is unavailable. To maintain a certain target capacity, EC2 Fleet places the required requests to meet this target capacity. It also automatically replenishes any interrupted Spot Instances. Default: `maintain`.
+
+
+## `ValidFrom = timestamp`
+The start date and time of the request, in UTC format (for example, *YYYY*-*MM*-*DD*T*HH*:*MM*:*SS*Z). The default is to start fulfilling the request immediately.
+
+
+## `ValidUntil = timestamp`
+The end date and time of the request, in UTC format (for example, *YYYY*-*MM*-*DD*T*HH*:*MM*:*SS*Z). At this point, no new EC2 Fleet requests are placed or able to fulfill the request. The default end date is 7 days from the current date.
+
+
+## `ReplaceUnhealthyInstances = ::Bool`
+Indicates whether EC2 Fleet should replace unhealthy instances.
+
+
+## `TagSpecification = [[ ... ], ...]`
+The key-value pair for tagging the EC2 Fleet request on creation. The value for `ResourceType` must be `fleet`, otherwise the fleet request fails. To tag instances at launch, specify the tags in the [launch template](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template). For information about tagging after launch, see [Tagging Your Resources](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources).
+```
+ TagSpecification = [[
+        "ResourceType" =>  "customer-gateway", "dhcp-options", "image", "instance", "internet-gateway", "network-acl", "network-interface", "reserved-instances", "route-table", "snapshot", "spot-instances-request", "subnet", "security-group", "volume", "vpc", "vpn-connection" or "vpn-gateway",
+        "Tag" =>  [[
+            "Key" =>  ::String,
+            "Value" =>  ::String
+        ], ...]
+    ], ...]
+```
+
+
+
+# Returns
+
+`CreateFleetResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateFleet)
+"""
+@inline create_fleet(aws::AWSConfig=default_aws_config(); args...) = create_fleet(aws, args)
+
+@inline create_fleet(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateFleet", args)
+
+@inline create_fleet(args) = create_fleet(default_aws_config(), args)
 
 
 """
@@ -2244,6 +2599,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 Creates one or more flow logs to capture IP traffic for a specific network interface, subnet, or VPC. Flow logs are delivered to a specified log group in Amazon CloudWatch Logs. If you specify a VPC or subnet in the request, a log stream is created in CloudWatch Logs for each network interface in the subnet or VPC. Log streams can include information about accepted and rejected traffic to a network interface. You can view the data in your log streams using Amazon CloudWatch Logs.
 
 In your request, you must also specify an IAM role that has permission to publish logs to CloudWatch Logs.
+
+For more information, see [VPC Flow Logs](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html) in the *Amazon Virtual Private Cloud User Guide*.
 
 # Arguments
 
@@ -2281,7 +2638,6 @@ The type of traffic to log.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateFlowLogs)
 """
-
 @inline create_flow_logs(aws::AWSConfig=default_aws_config(); args...) = create_flow_logs(aws, args)
 
 @inline create_flow_logs(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateFlowLogs", args)
@@ -2350,7 +2706,6 @@ Unique, case-sensitive identifier that you provide to ensure the idempotency of 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateFpgaImage)
 """
-
 @inline create_fpga_image(aws::AWSConfig=default_aws_config(); args...) = create_fpga_image(aws, args)
 
 @inline create_fpga_image(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateFpgaImage", args)
@@ -2387,6 +2742,7 @@ Information about one or more block device mappings.
             "Encrypted" =>  ::Bool,
             "DeleteOnTermination" =>  ::Bool,
             "Iops" =>  ::Int,
+            "KmsKeyId" =>  ::String,
             "SnapshotId" =>  ::String,
             "VolumeSize" =>  ::Int,
             "VolumeType" =>  "standard", "io1", "gp2", "sc1" or "st1"
@@ -2423,9 +2779,41 @@ By default, Amazon EC2 attempts to shut down and reboot the instance before crea
 
 `CreateImageResult`
 
+# Example: To create an AMI from an Amazon EBS-backed instance
+
+This example creates an AMI from the specified instance and adds an EBS volume with the device name /dev/sdh and an instance store volume with the device name /dev/sdc.
+
+Input:
+```
+[
+    "BlockDeviceMappings" => [
+        [
+            "DeviceName" => "/dev/sdh",
+            "Ebs" => [
+                "VolumeSize" => "100"
+            ]
+        ],
+        [
+            "DeviceName" => "/dev/sdc",
+            "VirtualName" => "ephemeral1"
+        ]
+    ],
+    "Description" => "An AMI for my server",
+    "InstanceId" => "i-1234567890abcdef0",
+    "Name" => "My server",
+    "NoReboot" => true
+]
+```
+
+Output:
+```
+Dict(
+    "ImageId" => "ami-1a2b3c4d"
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateImage)
 """
-
 @inline create_image(aws::AWSConfig=default_aws_config(); args...) = create_image(aws, args)
 
 @inline create_image(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateImage", args)
@@ -2481,7 +2869,6 @@ The target virtualization environment.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateInstanceExportTask)
 """
-
 @inline create_instance_export_task(aws::AWSConfig=default_aws_config(); args...) = create_instance_export_task(aws, args)
 
 @inline create_instance_export_task(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateInstanceExportTask", args)
@@ -2537,7 +2924,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateInternetGateway)
 """
-
 @inline create_internet_gateway(aws::AWSConfig=default_aws_config(); args...) = create_internet_gateway(aws, args)
 
 @inline create_internet_gateway(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateInternetGateway", args)
@@ -2556,13 +2942,13 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # CreateKeyPair Operation
 
-Creates a 2048-bit RSA key pair with the specified name. Amazon EC2 stores the public key and displays the private key for you to save to a file. The private key is returned as an unencrypted PEM encoded PKCS#8 private key. If a key with the specified name already exists, Amazon EC2 returns an error.
+Creates a 2048-bit RSA key pair with the specified name. Amazon EC2 stores the public key and displays the private key for you to save to a file. The private key is returned as an unencrypted PEM encoded PKCS#1 private key. If a key with the specified name already exists, Amazon EC2 returns an error.
 
 You can have up to five thousand key pairs per region.
 
-The key pair returned to you is available only in the region in which you create it. To create a key pair that is available in all regions, use [ImportKeyPair](@ref).
+The key pair returned to you is available only in the region in which you create it. If you prefer, you can create your own key pair using a third-party tool and upload it to any region using [ImportKeyPair](@ref).
 
-For more information about key pairs, see [Key Pairs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon Elastic Compute Cloud User Guide*.
+For more information, see [Key Pairs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 # Arguments
 
@@ -2595,12 +2981,379 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateKeyPair)
 """
-
 @inline create_key_pair(aws::AWSConfig=default_aws_config(); args...) = create_key_pair(aws, args)
 
 @inline create_key_pair(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateKeyPair", args)
 
 @inline create_key_pair(args) = create_key_pair(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.create_launch_template
+    create_launch_template([::AWSConfig], arguments::Dict)
+    create_launch_template([::AWSConfig]; LaunchTemplateName=, LaunchTemplateData=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "CreateLaunchTemplate", arguments::Dict)
+    ec2([::AWSConfig], "CreateLaunchTemplate", LaunchTemplateName=, LaunchTemplateData=, <keyword arguments>)
+
+# CreateLaunchTemplate Operation
+
+Creates a launch template. A launch template contains the parameters to launch an instance. When you launch an instance using [RunInstances](@ref), you can specify a launch template instead of providing the launch parameters in the request.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `ClientToken = ::String`
+Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+
+
+## `LaunchTemplateName = ::String` -- *Required*
+A name for the launch template.
+
+
+## `VersionDescription = ::String`
+A description for the first version of the launch template.
+
+
+## `LaunchTemplateData = [ ... ]` -- *Required*
+The information for the launch template.
+```
+ LaunchTemplateData = [
+        "KernelId" =>  ::String,
+        "EbsOptimized" =>  ::Bool,
+        "IamInstanceProfile" =>  [
+            "Arn" =>  ::String,
+            "Name" =>  ::String
+        ],
+        "BlockDeviceMapping" =>  [[
+            "DeviceName" =>  ::String,
+            "VirtualName" =>  ::String,
+            "Ebs" =>  [
+                "Encrypted" =>  ::Bool,
+                "DeleteOnTermination" =>  ::Bool,
+                "Iops" =>  ::Int,
+                "KmsKeyId" =>  ::String,
+                "SnapshotId" =>  ::String,
+                "VolumeSize" =>  ::Int,
+                "VolumeType" =>  "standard", "io1", "gp2", "sc1" or "st1"
+            ],
+            "NoDevice" =>  ::String
+        ], ...],
+        "NetworkInterface" =>  [[
+            "AssociatePublicIpAddress" =>  ::Bool,
+            "DeleteOnTermination" =>  ::Bool,
+            "Description" =>  ::String,
+            "DeviceIndex" =>  ::Int,
+            "SecurityGroupId" =>  [::String, ...],
+            "Ipv6AddressCount" =>  ::Int,
+            "Ipv6Addresses" =>  [["Ipv6Address" =>  ::String], ...],
+            "NetworkInterfaceId" =>  ::String,
+            "PrivateIpAddress" =>  ::String,
+            "PrivateIpAddresses" =>  [[
+                "Primary" =>  ::Bool,
+                "PrivateIpAddress" =>  ::String
+            ], ...],
+            "SecondaryPrivateIpAddressCount" =>  ::Int,
+            "SubnetId" =>  ::String
+        ], ...],
+        "ImageId" =>  ::String,
+        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "r5.large", "r5.xlarge", "r5.2xlarge", "r5.4xlarge", "r5.8xlarge", "r5.12xlarge", "r5.16xlarge", "r5.24xlarge", "r5.metal", "r5d.large", "r5d.xlarge", "r5d.2xlarge", "r5d.4xlarge", "r5d.8xlarge", "r5d.12xlarge", "r5d.16xlarge", "r5d.24xlarge", "r5d.metal", "x1.16xlarge", "x1.32xlarge", "x1e.xlarge", "x1e.2xlarge", "x1e.4xlarge", "x1e.8xlarge", "x1e.16xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "i3.metal", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "c5d.large", "c5d.xlarge", "c5d.2xlarge", "c5d.4xlarge", "c5d.9xlarge", "c5d.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge", "f1.16xlarge", "m5.large", "m5.xlarge", "m5.2xlarge", "m5.4xlarge", "m5.12xlarge", "m5.24xlarge", "m5d.large", "m5d.xlarge", "m5d.2xlarge", "m5d.4xlarge", "m5d.12xlarge", "m5d.24xlarge", "h1.2xlarge", "h1.4xlarge", "h1.8xlarge", "h1.16xlarge", "z1d.large", "z1d.xlarge", "z1d.2xlarge", "z1d.3xlarge", "z1d.6xlarge" or "z1d.12xlarge",
+        "KeyName" =>  ::String,
+        "Monitoring" =>  ["Enabled" =>  ::Bool],
+        "Placement" =>  [
+            "AvailabilityZone" =>  ::String,
+            "Affinity" =>  ::String,
+            "GroupName" =>  ::String,
+            "HostId" =>  ::String,
+            "Tenancy" =>  "default", "dedicated" or "host",
+            "SpreadDomain" =>  ::String
+        ],
+        "RamDiskId" =>  ::String,
+        "DisableApiTermination" =>  ::Bool,
+        "InstanceInitiatedShutdownBehavior" =>  "stop" or "terminate",
+        "UserData" =>  ::String,
+        "TagSpecification" =>  [[
+            "ResourceType" =>  "customer-gateway", "dhcp-options", "image", "instance", "internet-gateway", "network-acl", "network-interface", "reserved-instances", "route-table", "snapshot", "spot-instances-request", "subnet", "security-group", "volume", "vpc", "vpn-connection" or "vpn-gateway",
+            "Tag" =>  [[
+                "Key" =>  ::String,
+                "Value" =>  ::String
+            ], ...]
+        ], ...],
+        "ElasticGpuSpecification" =>  [["Type" => <required> ::String], ...],
+        "SecurityGroupId" =>  [::String, ...],
+        "SecurityGroup" =>  [::String, ...],
+        "InstanceMarketOptions" =>  [
+            "MarketType" =>  "spot",
+            "SpotOptions" =>  [
+                "MaxPrice" =>  ::String,
+                "SpotInstanceType" =>  "one-time" or "persistent",
+                "BlockDurationMinutes" =>  ::Int,
+                "ValidUntil" =>  timestamp,
+                "InstanceInterruptionBehavior" =>  "hibernate", "stop" or "terminate"
+            ]
+        ],
+        "CreditSpecification" =>  ["CpuCredits" => <required> ::String],
+        "CpuOptions" =>  [
+            "CoreCount" =>  ::Int,
+            "ThreadsPerCore" =>  ::Int
+        ]
+    ]
+```
+
+
+
+# Returns
+
+`CreateLaunchTemplateResult`
+
+# Example: To create a launch template
+
+This example creates a launch template that specifies the subnet in which to launch the instance, assigns a public IP address and an IPv6 address to the instance, and creates a tag for the instance.
+
+Input:
+```
+[
+    "LaunchTemplateData" => [
+        "ImageId" => "ami-8c1be5f6",
+        "InstanceType" => "t2.small",
+        "NetworkInterfaces" => [
+            [
+                "AssociatePublicIpAddress" => true,
+                "DeviceIndex" => 0,
+                "Ipv6AddressCount" => 1,
+                "SubnetId" => "subnet-7b16de0c"
+            ]
+        ],
+        "TagSpecifications" => [
+            [
+                "ResourceType" => "instance",
+                "Tags" => [
+                    [
+                        "Key" => "Name",
+                        "Value" => "webserver"
+                    ]
+                ]
+            ]
+        ]
+    ],
+    "LaunchTemplateName" => "my-template",
+    "VersionDescription" => "WebVersion1"
+]
+```
+
+Output:
+```
+Dict(
+    "LaunchTemplate" => Dict(
+        "CreateTime" => "2017-11-27T09:13:24.000Z",
+        "CreatedBy" => "arn:aws:iam::123456789012:root",
+        "DefaultVersionNumber" => 1,
+        "LatestVersionNumber" => 1,
+        "LaunchTemplateId" => "lt-01238c059e3466abc",
+        "LaunchTemplateName" => "my-template"
+    )
+)
+```
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateLaunchTemplate)
+"""
+@inline create_launch_template(aws::AWSConfig=default_aws_config(); args...) = create_launch_template(aws, args)
+
+@inline create_launch_template(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateLaunchTemplate", args)
+
+@inline create_launch_template(args) = create_launch_template(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.create_launch_template_version
+    create_launch_template_version([::AWSConfig], arguments::Dict)
+    create_launch_template_version([::AWSConfig]; LaunchTemplateData=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "CreateLaunchTemplateVersion", arguments::Dict)
+    ec2([::AWSConfig], "CreateLaunchTemplateVersion", LaunchTemplateData=, <keyword arguments>)
+
+# CreateLaunchTemplateVersion Operation
+
+Creates a new version for a launch template. You can specify an existing version of launch template from which to base the new version.
+
+Launch template versions are numbered in the order in which they are created. You cannot specify, change, or replace the numbering of launch template versions.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `ClientToken = ::String`
+Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+
+
+## `LaunchTemplateId = ::String`
+The ID of the launch template. You must specify either the launch template ID or launch template name in the request.
+
+
+## `LaunchTemplateName = ::String`
+The name of the launch template. You must specify either the launch template ID or launch template name in the request.
+
+
+## `SourceVersion = ::String`
+The version number of the launch template version on which to base the new version. The new version inherits the same launch parameters as the source version, except for parameters that you specify in LaunchTemplateData.
+
+
+## `VersionDescription = ::String`
+A description for the version of the launch template.
+
+
+## `LaunchTemplateData = [ ... ]` -- *Required*
+The information for the launch template.
+```
+ LaunchTemplateData = [
+        "KernelId" =>  ::String,
+        "EbsOptimized" =>  ::Bool,
+        "IamInstanceProfile" =>  [
+            "Arn" =>  ::String,
+            "Name" =>  ::String
+        ],
+        "BlockDeviceMapping" =>  [[
+            "DeviceName" =>  ::String,
+            "VirtualName" =>  ::String,
+            "Ebs" =>  [
+                "Encrypted" =>  ::Bool,
+                "DeleteOnTermination" =>  ::Bool,
+                "Iops" =>  ::Int,
+                "KmsKeyId" =>  ::String,
+                "SnapshotId" =>  ::String,
+                "VolumeSize" =>  ::Int,
+                "VolumeType" =>  "standard", "io1", "gp2", "sc1" or "st1"
+            ],
+            "NoDevice" =>  ::String
+        ], ...],
+        "NetworkInterface" =>  [[
+            "AssociatePublicIpAddress" =>  ::Bool,
+            "DeleteOnTermination" =>  ::Bool,
+            "Description" =>  ::String,
+            "DeviceIndex" =>  ::Int,
+            "SecurityGroupId" =>  [::String, ...],
+            "Ipv6AddressCount" =>  ::Int,
+            "Ipv6Addresses" =>  [["Ipv6Address" =>  ::String], ...],
+            "NetworkInterfaceId" =>  ::String,
+            "PrivateIpAddress" =>  ::String,
+            "PrivateIpAddresses" =>  [[
+                "Primary" =>  ::Bool,
+                "PrivateIpAddress" =>  ::String
+            ], ...],
+            "SecondaryPrivateIpAddressCount" =>  ::Int,
+            "SubnetId" =>  ::String
+        ], ...],
+        "ImageId" =>  ::String,
+        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "r5.large", "r5.xlarge", "r5.2xlarge", "r5.4xlarge", "r5.8xlarge", "r5.12xlarge", "r5.16xlarge", "r5.24xlarge", "r5.metal", "r5d.large", "r5d.xlarge", "r5d.2xlarge", "r5d.4xlarge", "r5d.8xlarge", "r5d.12xlarge", "r5d.16xlarge", "r5d.24xlarge", "r5d.metal", "x1.16xlarge", "x1.32xlarge", "x1e.xlarge", "x1e.2xlarge", "x1e.4xlarge", "x1e.8xlarge", "x1e.16xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "i3.metal", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "c5d.large", "c5d.xlarge", "c5d.2xlarge", "c5d.4xlarge", "c5d.9xlarge", "c5d.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge", "f1.16xlarge", "m5.large", "m5.xlarge", "m5.2xlarge", "m5.4xlarge", "m5.12xlarge", "m5.24xlarge", "m5d.large", "m5d.xlarge", "m5d.2xlarge", "m5d.4xlarge", "m5d.12xlarge", "m5d.24xlarge", "h1.2xlarge", "h1.4xlarge", "h1.8xlarge", "h1.16xlarge", "z1d.large", "z1d.xlarge", "z1d.2xlarge", "z1d.3xlarge", "z1d.6xlarge" or "z1d.12xlarge",
+        "KeyName" =>  ::String,
+        "Monitoring" =>  ["Enabled" =>  ::Bool],
+        "Placement" =>  [
+            "AvailabilityZone" =>  ::String,
+            "Affinity" =>  ::String,
+            "GroupName" =>  ::String,
+            "HostId" =>  ::String,
+            "Tenancy" =>  "default", "dedicated" or "host",
+            "SpreadDomain" =>  ::String
+        ],
+        "RamDiskId" =>  ::String,
+        "DisableApiTermination" =>  ::Bool,
+        "InstanceInitiatedShutdownBehavior" =>  "stop" or "terminate",
+        "UserData" =>  ::String,
+        "TagSpecification" =>  [[
+            "ResourceType" =>  "customer-gateway", "dhcp-options", "image", "instance", "internet-gateway", "network-acl", "network-interface", "reserved-instances", "route-table", "snapshot", "spot-instances-request", "subnet", "security-group", "volume", "vpc", "vpn-connection" or "vpn-gateway",
+            "Tag" =>  [[
+                "Key" =>  ::String,
+                "Value" =>  ::String
+            ], ...]
+        ], ...],
+        "ElasticGpuSpecification" =>  [["Type" => <required> ::String], ...],
+        "SecurityGroupId" =>  [::String, ...],
+        "SecurityGroup" =>  [::String, ...],
+        "InstanceMarketOptions" =>  [
+            "MarketType" =>  "spot",
+            "SpotOptions" =>  [
+                "MaxPrice" =>  ::String,
+                "SpotInstanceType" =>  "one-time" or "persistent",
+                "BlockDurationMinutes" =>  ::Int,
+                "ValidUntil" =>  timestamp,
+                "InstanceInterruptionBehavior" =>  "hibernate", "stop" or "terminate"
+            ]
+        ],
+        "CreditSpecification" =>  ["CpuCredits" => <required> ::String],
+        "CpuOptions" =>  [
+            "CoreCount" =>  ::Int,
+            "ThreadsPerCore" =>  ::Int
+        ]
+    ]
+```
+
+
+
+# Returns
+
+`CreateLaunchTemplateVersionResult`
+
+# Example: To create a launch template version
+
+This example creates a new launch template version based on version 1 of the specified launch template and specifies a different AMI ID.
+
+Input:
+```
+[
+    "LaunchTemplateData" => [
+        "ImageId" => "ami-c998b6b2"
+    ],
+    "LaunchTemplateId" => "lt-0abcd290751193123",
+    "SourceVersion" => "1",
+    "VersionDescription" => "WebVersion2"
+]
+```
+
+Output:
+```
+Dict(
+    "LaunchTemplateVersion" => Dict(
+        "CreateTime" => "2017-12-01T13:35:46.000Z",
+        "CreatedBy" => "arn:aws:iam::123456789012:root",
+        "DefaultVersion" => false,
+        "LaunchTemplateData" => Dict(
+            "ImageId" => "ami-c998b6b2",
+            "InstanceType" => "t2.micro",
+            "NetworkInterfaces" => [
+                Dict(
+                    "AssociatePublicIpAddress" => true,
+                    "DeviceIndex" => 0,
+                    "Ipv6Addresses" => [
+                        Dict(
+                            "Ipv6Address" => "2001:db8:1234:1a00::123"
+                        )
+                    ],
+                    "SubnetId" => "subnet-7b16de0c"
+                )
+            ]
+        ),
+        "LaunchTemplateId" => "lt-0abcd290751193123",
+        "LaunchTemplateName" => "my-template",
+        "VersionDescription" => "WebVersion2",
+        "VersionNumber" => 2
+    )
+)
+```
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateLaunchTemplateVersion)
+"""
+@inline create_launch_template_version(aws::AWSConfig=default_aws_config(); args...) = create_launch_template_version(aws, args)
+
+@inline create_launch_template_version(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateLaunchTemplateVersion", args)
+
+@inline create_launch_template_version(args) = create_launch_template_version(default_aws_config(), args)
 
 
 """
@@ -2614,7 +3367,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # CreateNatGateway Operation
 
-Creates a NAT gateway in the specified subnet. A NAT gateway can be used to enable instances in a private subnet to connect to the Internet. This action creates a network interface in the specified subnet with a private IP address from the IP address range of the subnet. For more information, see [NAT Gateways](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html) in the *Amazon Virtual Private Cloud User Guide*.
+Creates a NAT gateway in the specified public subnet. This action creates a network interface in the specified subnet with a private IP address from the IP address range of the subnet. Internet-bound traffic from a private subnet can be routed to the NAT gateway, therefore enabling instances in the private subnet to connect to the internet. For more information, see [NAT Gateways](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html) in the *Amazon Virtual Private Cloud User Guide*.
 
 # Arguments
 
@@ -2670,7 +3423,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNatGateway)
 """
-
 @inline create_nat_gateway(aws::AWSConfig=default_aws_config(); args...) = create_nat_gateway(aws, args)
 
 @inline create_nat_gateway(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateNatGateway", args)
@@ -2755,7 +3507,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNetworkAcl)
 """
-
 @inline create_network_acl(aws::AWSConfig=default_aws_config(); args...) = create_network_acl(aws, args)
 
 @inline create_network_acl(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateNetworkAcl", args)
@@ -2823,7 +3574,7 @@ TCP or UDP protocols: The range of ports the rule applies to.
 ```
 
 ## `Protocol = ::String` -- *Required*
-The protocol. A value of `-1` or `all` means all protocols. If you specify `all`, `-1`, or a protocol number other than `tcp`, `udp`, or `icmp`, traffic on all ports is allowed, regardless of any ports or ICMP types or codes you specify. If you specify protocol `58` (ICMPv6) and specify an IPv4 CIDR block, traffic for all ICMP types and codes allowed, regardless of any that you specify. If you specify protocol `58` (ICMPv6) and specify an IPv6 CIDR block, you must specify an ICMP type and code.
+The protocol. A value of `-1` or `all` means all protocols. If you specify `all`, `-1`, or a protocol number other than `6` (tcp), `17` (udp), or `1` (icmp), traffic on all ports is allowed, regardless of any ports or ICMP types or codes you specify. If you specify protocol `58` (ICMPv6) and specify an IPv4 CIDR block, traffic for all ICMP types and codes allowed, regardless of any that you specify. If you specify protocol `58` (ICMPv6) and specify an IPv6 CIDR block, you must specify an ICMP type and code.
 
 
 ## `RuleAction = "allow" or "deny"` -- *Required*
@@ -2860,7 +3611,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNetworkAclEntry)
 """
-
 @inline create_network_acl_entry(aws::AWSConfig=default_aws_config(); args...) = create_network_acl_entry(aws, args)
 
 @inline create_network_acl_entry(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateNetworkAclEntry", args)
@@ -2914,7 +3664,7 @@ One or more private IPv4 addresses.
 ```
  PrivateIpAddresses = [[
         "Primary" =>  ::Bool,
-        "PrivateIpAddress" => <required> ::String
+        "PrivateIpAddress" =>  ::String
     ], ...]
 ```
 
@@ -2986,7 +3736,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNetworkInterface)
 """
-
 @inline create_network_interface(aws::AWSConfig=default_aws_config(); args...) = create_network_interface(aws, args)
 
 @inline create_network_interface(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateNetworkInterface", args)
@@ -3005,7 +3754,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # CreateNetworkInterfacePermission Operation
 
-Grants an AWS authorized partner account permission to attach the specified network interface to an instance in their account.
+Grants an AWS-authorized account permission to attach the specified network interface to an instance in their account.
 
 You can grant permission to a single AWS account only, and only one account at a time.
 
@@ -3039,7 +3788,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateNetworkInterfacePermission)
 """
-
 @inline create_network_interface_permission(aws::AWSConfig=default_aws_config(); args...) = create_network_interface_permission(aws, args)
 
 @inline create_network_interface_permission(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateNetworkInterfacePermission", args)
@@ -3058,9 +3806,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # CreatePlacementGroup Operation
 
-Creates a placement group that you launch cluster instances into. Give the group a name that's unique within the scope of your account.
+Creates a placement group in which to launch instances. The strategy of the placement group determines how the instances are organized within the group.
 
-For more information about placement groups and cluster instances, see [Cluster Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html) in the *Amazon Elastic Compute Cloud User Guide*.
+A `cluster` placement group is a logical grouping of instances within a single Availability Zone that benefit from low network latency, high network throughput. A `spread` placement group places instances on distinct hardware.
+
+For more information, see [Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 # Arguments
 
@@ -3069,12 +3819,12 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `GroupName = ::String` -- *Required*
-A name for the placement group.
+A name for the placement group. Must be unique within the scope of your account for the region.
 
 Constraints: Up to 255 ASCII characters
 
 
-## `Strategy = "cluster"` -- *Required*
+## `Strategy = "cluster" or "spread"` -- *Required*
 The placement strategy.
 
 
@@ -3101,7 +3851,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreatePlacementGroup)
 """
-
 @inline create_placement_group(aws::AWSConfig=default_aws_config(); args...) = create_placement_group(aws, args)
 
 @inline create_placement_group(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreatePlacementGroup", args)
@@ -3163,7 +3912,6 @@ The ID of the active Standard Reserved Instance.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateReservedInstancesListing)
 """
-
 @inline create_reserved_instances_listing(aws::AWSConfig=default_aws_config(); args...) = create_reserved_instances_listing(aws, args)
 
 @inline create_reserved_instances_listing(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateReservedInstancesListing", args)
@@ -3259,7 +4007,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateRoute)
 """
-
 @inline create_route(aws::AWSConfig=default_aws_config(); args...) = create_route(aws, args)
 
 @inline create_route(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateRoute", args)
@@ -3337,7 +4084,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateRouteTable)
 """
-
 @inline create_route_table(aws::AWSConfig=default_aws_config(); args...) = create_route_table(aws, args)
 
 @inline create_route_table(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateRouteTable", args)
@@ -3386,7 +4132,7 @@ Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!\$*
 ## `GroupName = ::String` -- *Required*
 The name of the security group.
 
-Constraints: Up to 255 characters in length
+Constraints: Up to 255 characters in length. Cannot start with `sg-`.
 
 Constraints for EC2-Classic: ASCII characters
 
@@ -3407,9 +4153,28 @@ Checks whether you have the required permissions for the action, without actuall
 
 `CreateSecurityGroupResult`
 
+# Example: To create a security group for a VPC
+
+This example creates a security group for the specified VPC.
+
+Input:
+```
+[
+    "Description" => "My security group",
+    "GroupName" => "my-security-group",
+    "VpcId" => "vpc-1a2b3c4d"
+]
+```
+
+Output:
+```
+Dict(
+    "GroupId" => "sg-903004f8"
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSecurityGroup)
 """
-
 @inline create_security_group(aws::AWSConfig=default_aws_config(); args...) = create_security_group(aws, args)
 
 @inline create_security_group(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateSecurityGroup", args)
@@ -3438,6 +4203,8 @@ To create a snapshot for EBS volumes that serve as root devices, you should stop
 
 Snapshots that are taken from encrypted volumes are automatically encrypted. Volumes that are created from encrypted snapshots are also automatically encrypted. Your encrypted volumes and any associated snapshots always remain protected.
 
+You can tag your snapshots during creation. For more information, see [Tagging Your Amazon EC2 Resources](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon Elastic Compute Cloud User Guide*.
+
 For more information, see [Amazon Elastic Block Store](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html) and [Amazon EBS Encryption](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 # Arguments
@@ -3449,6 +4216,18 @@ A description for the snapshot.
 ## `VolumeId = ::String` -- *Required*
 The ID of the EBS volume.
 
+
+## `TagSpecification = [[ ... ], ...]`
+The tags to apply to the snapshot during creation.
+```
+ TagSpecification = [[
+        "ResourceType" =>  "customer-gateway", "dhcp-options", "image", "instance", "internet-gateway", "network-acl", "network-interface", "reserved-instances", "route-table", "snapshot", "spot-instances-request", "subnet", "security-group", "volume", "vpc", "vpn-connection" or "vpn-gateway",
+        "Tag" =>  [[
+            "Key" =>  ::String,
+            "Value" =>  ::String
+        ], ...]
+    ], ...]
+```
 
 ## `DryRun = ::Bool`
 Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
@@ -3490,7 +4269,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSnapshot)
 """
-
 @inline create_snapshot(aws::AWSConfig=default_aws_config(); args...) = create_snapshot(aws, args)
 
 @inline create_snapshot(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateSnapshot", args)
@@ -3509,12 +4287,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # CreateSpotDatafeedSubscription Operation
 
-Creates a data feed for Spot instances, enabling you to view Spot instance usage logs. You can create one data feed per AWS account. For more information, see [Spot Instance Data Feed](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) in the *Amazon Elastic Compute Cloud User Guide*.
+Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs. You can create one data feed per AWS account. For more information, see [Spot Instance Data Feed](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) in the *Amazon EC2 User Guide for Linux Instances*.
 
 # Arguments
 
 ## `Bucket = ::String` -- *Required*
-The Amazon S3 bucket in which to store the Spot instance data feed.
+The Amazon S3 bucket in which to store the Spot Instance data feed.
 
 
 ## `DryRun = ::Bool`
@@ -3557,7 +4335,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSpotDatafeedSubscription)
 """
-
 @inline create_spot_datafeed_subscription(aws::AWSConfig=default_aws_config(); args...) = create_spot_datafeed_subscription(aws, args)
 
 @inline create_spot_datafeed_subscription(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateSpotDatafeedSubscription", args)
@@ -3649,7 +4426,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSubnet)
 """
-
 @inline create_subnet(aws::AWSConfig=default_aws_config(); args...) = create_subnet(aws, args)
 
 @inline create_subnet(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateSubnet", args)
@@ -3714,7 +4490,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateTags)
 """
-
 @inline create_tags(aws::AWSConfig=default_aws_config(); args...) = create_tags(aws, args)
 
 @inline create_tags(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateTags", args)
@@ -3739,7 +4514,7 @@ You can create a new empty volume or restore a volume from an EBS snapshot. Any 
 
 You can create encrypted volumes with the `Encrypted` parameter. Encrypted volumes may only be attached to instances that support Amazon EBS encryption. Volumes that are created from encrypted snapshots are also automatically encrypted. For more information, see [Amazon EBS Encryption](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
-You can tag your volumes during creation. For more information, see [Tagging Your Amazon EC2 Resources](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html).
+You can tag your volumes during creation. For more information, see [Tagging Your Amazon EC2 Resources](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 For more information, see [Creating an Amazon EBS Volume](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
@@ -3754,13 +4529,25 @@ Specifies whether the volume should be encrypted. Encrypted Amazon EBS volumes m
 
 
 ## `Iops = ::Int`
-Only valid for Provisioned IOPS SSD volumes. The number of I/O operations per second (IOPS) to provision for the volume, with a maximum ratio of 50 IOPS/GiB.
+The number of I/O operations per second (IOPS) to provision for the volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 32000 IOPS for volumes in most regions. For exceptions, see [Amazon EBS Volume Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
-Constraint: Range is 100 to 20000 for Provisioned IOPS SSD volumes
+This parameter is valid only for Provisioned IOPS SSD (io1) volumes.
 
 
 ## `KmsKeyId = ::String`
-The full ARN of the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the encrypted volume. This parameter is only required if you want to use a non-default CMK; if this parameter is not specified, the default CMK for EBS is used. The ARN contains the `arn:aws:kms` namespace, followed by the region of the CMK, the AWS account ID of the CMK owner, the `key` namespace, and then the CMK ID. For example, arn:aws:kms:*us-east-1*:*012345678910*:key/*abcd1234-a123-456a-a12b-a123b4cd56ef*. If a `KmsKeyId` is specified, the `Encrypted` flag must also be set.
+An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the encrypted volume. This parameter is only required if you want to use a non-default CMK; if this parameter is not specified, the default CMK for EBS is used. If a `KmsKeyId` is specified, the `Encrypted` flag must also be set.
+
+The CMK identifier may be provided in any of the following formats:
+
+*   Key ID
+
+*   Key alias
+
+*   ARN using key ID. The ID ARN contains the `arn:aws:kms` namespace, followed by the region of the CMK, the AWS account ID of the CMK owner, the `key` namespace, and then the CMK ID. For example, arn:aws:kms:*us-east-1*:*012345678910*:key/*abcd1234-a123-456a-a12b-a123b4cd56ef*.
+
+*   ARN using key alias. The alias ARN contains the `arn:aws:kms` namespace, followed by the region of the CMK, the AWS account ID of the CMK owner, the `alias` namespace, and then the CMK alias. For example, arn:aws:kms:*us-east-1*:*012345678910*:alias/*ExampleAlias*.
+
+AWS parses `KmsKeyId` asynchronously, meaning that the action you call may appear to complete even though you provided an invalid identifier. The action will eventually fail.
 
 
 ## `Size = ::Int`
@@ -3778,7 +4565,7 @@ The snapshot from which to create the volume.
 ## `VolumeType = "standard", "io1", "gp2", "sc1" or "st1"`
 The volume type. This can be `gp2` for General Purpose SSD, `io1` for Provisioned IOPS SSD, `st1` for Throughput Optimized HDD, `sc1` for Cold HDD, or `standard` for Magnetic volumes.
 
-Default: `standard`
+Defaults: If no volume type is specified, the default is `standard` in us-east-1, eu-west-1, eu-central-1, us-west-2, us-west-1, sa-east-1, ap-northeast-1, ap-northeast-2, ap-southeast-1, ap-southeast-2, ap-south-1, us-gov-west-1, and cn-north-1. In all other regions, EBS defaults to `gp2`.
 
 
 ## `DryRun = ::Bool`
@@ -3867,7 +4654,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVolume)
 """
-
 @inline create_volume(aws::AWSConfig=default_aws_config(); args...) = create_volume(aws, args)
 
 @inline create_volume(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateVolume", args)
@@ -3948,7 +4734,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpc)
 """
-
 @inline create_vpc(aws::AWSConfig=default_aws_config(); args...) = create_vpc(aws, args)
 
 @inline create_vpc(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateVpc", args)
@@ -3967,11 +4752,13 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # CreateVpcEndpoint Operation
 
-Creates a VPC endpoint for a specified AWS service. An endpoint enables you to create a private connection between your VPC and another AWS service in your account. You can create a gateway endpoint or an interface endpoint.
+Creates a VPC endpoint for a specified service. An endpoint enables you to create a private connection between your VPC and the service. The service may be provided by AWS, an AWS Marketplace partner, or another AWS account. For more information, see [VPC Endpoints](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html) in the *Amazon Virtual Private Cloud User Guide*.
 
-A gateway endpoint serves as a target for a route in your route table for traffic destined for the AWS service. You can specify the VPC route tables that use the endpoint, and you can optionally specify an endpoint policy to attach to the endpoint that will control access to the service from your VPC.
+A `gateway` endpoint serves as a target for a route in your route table for traffic destined for the AWS service. You can specify an endpoint policy to attach to the endpoint that will control access to the service from your VPC. You can also specify the VPC route tables that use the endpoint.
 
-An interface endpoint is a network interface in your subnet with a private IP address that serves as an entry point for traffic destined to the AWS service. You can specify the subnets in which to create an endpoint, and the security groups to associate with the network interface.
+An `interface` endpoint is a network interface in your subnet that serves as an endpoint for communicating with the specified service. You can specify the subnets in which to create an endpoint, and the security groups to associate with the endpoint network interface.
+
+Use [DescribeVpcEndpointServices](@ref) to get a list of supported services.
 
 # Arguments
 
@@ -3980,7 +4767,9 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `VpcEndpointType = "Interface" or "Gateway"`
-The type of endpoint. If not specified, the default is a gateway endpoint.
+The type of endpoint.
+
+Default: Gateway
 
 
 ## `VpcId = ::String` -- *Required*
@@ -3988,7 +4777,7 @@ The ID of the VPC in which the endpoint will be used.
 
 
 ## `ServiceName = ::String` -- *Required*
-The AWS service name, in the form `com.amazonaws.*region*.*service*` . To get a list of available services, use the [DescribeVpcEndpointServices](@ref) request.
+The service name. To get a list of available services, use the [DescribeVpcEndpointServices](@ref) request, or get the name from the service provider.
 
 
 ## `PolicyDocument = ::String`
@@ -4000,11 +4789,11 @@ The AWS service name, in the form `com.amazonaws.*region*.*service*` . To get a 
 
 
 ## `SubnetId = [::String, ...]`
-(Interface endpoint) The ID of one or more subnets in which to create a network interface for the endpoint.
+(Interface endpoint) The ID of one or more subnets in which to create an endpoint network interface.
 
 
 ## `SecurityGroupId = [::String, ...]`
-(Interface endpoint) The ID of one or more security groups to associate with the network interface.
+(Interface endpoint) The ID of one or more security groups to associate with the endpoint network interface.
 
 
 ## `ClientToken = ::String`
@@ -4027,12 +4816,115 @@ Default: `true`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpcEndpoint)
 """
-
 @inline create_vpc_endpoint(aws::AWSConfig=default_aws_config(); args...) = create_vpc_endpoint(aws, args)
 
 @inline create_vpc_endpoint(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateVpcEndpoint", args)
 
 @inline create_vpc_endpoint(args) = create_vpc_endpoint(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.create_vpc_endpoint_connection_notification
+    create_vpc_endpoint_connection_notification([::AWSConfig], arguments::Dict)
+    create_vpc_endpoint_connection_notification([::AWSConfig]; ConnectionNotificationArn=, ConnectionEvents=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "CreateVpcEndpointConnectionNotification", arguments::Dict)
+    ec2([::AWSConfig], "CreateVpcEndpointConnectionNotification", ConnectionNotificationArn=, ConnectionEvents=, <keyword arguments>)
+
+# CreateVpcEndpointConnectionNotification Operation
+
+Creates a connection notification for a specified VPC endpoint or VPC endpoint service. A connection notification notifies you of specific endpoint events. You must create an SNS topic to receive notifications. For more information, see [Create a Topic](http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html) in the *Amazon Simple Notification Service Developer Guide*.
+
+You can create a connection notification for interface endpoints only.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `ServiceId = ::String`
+The ID of the endpoint service.
+
+
+## `VpcEndpointId = ::String`
+The ID of the endpoint.
+
+
+## `ConnectionNotificationArn = ::String` -- *Required*
+The ARN of the SNS topic for the notifications.
+
+
+## `ConnectionEvents = [::String, ...]` -- *Required*
+One or more endpoint events for which to receive notifications. Valid values are `Accept`, `Connect`, `Delete`, and `Reject`.
+
+
+## `ClientToken = ::String`
+Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+
+
+
+
+# Returns
+
+`CreateVpcEndpointConnectionNotificationResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpcEndpointConnectionNotification)
+"""
+@inline create_vpc_endpoint_connection_notification(aws::AWSConfig=default_aws_config(); args...) = create_vpc_endpoint_connection_notification(aws, args)
+
+@inline create_vpc_endpoint_connection_notification(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateVpcEndpointConnectionNotification", args)
+
+@inline create_vpc_endpoint_connection_notification(args) = create_vpc_endpoint_connection_notification(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.create_vpc_endpoint_service_configuration
+    create_vpc_endpoint_service_configuration([::AWSConfig], arguments::Dict)
+    create_vpc_endpoint_service_configuration([::AWSConfig]; NetworkLoadBalancerArn=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "CreateVpcEndpointServiceConfiguration", arguments::Dict)
+    ec2([::AWSConfig], "CreateVpcEndpointServiceConfiguration", NetworkLoadBalancerArn=, <keyword arguments>)
+
+# CreateVpcEndpointServiceConfiguration Operation
+
+Creates a VPC endpoint service configuration to which service consumers (AWS accounts, IAM users, and IAM roles) can connect. Service consumers can create an interface VPC endpoint to connect to your service.
+
+To create an endpoint service configuration, you must first create a Network Load Balancer for your service. For more information, see [VPC Endpoint Services](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/endpoint-service.html) in the *Amazon Virtual Private Cloud User Guide*.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `AcceptanceRequired = ::Bool`
+Indicate whether requests from service consumers to create an endpoint to your service must be accepted. To accept a request, use [AcceptVpcEndpointConnections](@ref).
+
+
+## `NetworkLoadBalancerArn = [::String, ...]` -- *Required*
+The Amazon Resource Names (ARNs) of one or more Network Load Balancers for your service.
+
+
+## `ClientToken = ::String`
+Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
+
+
+
+
+# Returns
+
+`CreateVpcEndpointServiceConfigurationResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpcEndpointServiceConfiguration)
+"""
+@inline create_vpc_endpoint_service_configuration(aws::AWSConfig=default_aws_config(); args...) = create_vpc_endpoint_service_configuration(aws, args)
+
+@inline create_vpc_endpoint_service_configuration(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateVpcEndpointServiceConfiguration", args)
+
+@inline create_vpc_endpoint_service_configuration(args) = create_vpc_endpoint_service_configuration(default_aws_config(), args)
 
 
 """
@@ -4046,11 +4938,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # CreateVpcPeeringConnection Operation
 
-Requests a VPC peering connection between two VPCs: a requester VPC that you own and a peer VPC with which to create the connection. The peer VPC can belong to another AWS account. The requester VPC and peer VPC cannot have overlapping CIDR blocks.
+Requests a VPC peering connection between two VPCs: a requester VPC that you own and an accepter VPC with which to create the connection. The accepter VPC can belong to another AWS account and can be in a different region to the requester VPC. The requester VPC and accepter VPC cannot have overlapping CIDR blocks.
 
-The owner of the peer VPC must accept the peering request to activate the peering connection. The VPC peering connection request expires after 7 days, after which it cannot be accepted or rejected.
+**Note**
+> Limitations and rules apply to a VPC peering connection. For more information, see the [limitations](http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/vpc-peering-basics.html#vpc-peering-limitations) section in the *VPC Peering Guide*.
 
-If you try to create a VPC peering connection between VPCs that have overlapping CIDR blocks, the VPC peering connection status goes to `failed`.
+The owner of the accepter VPC must accept the peering request to activate the peering connection. The VPC peering connection request expires after 7 days, after which it cannot be accepted or rejected.
+
+If you create a VPC peering connection request between VPCs with overlapping CIDR blocks, the VPC peering connection has a status of `failed`.
 
 # Arguments
 
@@ -4059,17 +4954,23 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `PeerOwnerId = ::String`
-The AWS account ID of the owner of the peer VPC.
+The AWS account ID of the owner of the accepter VPC.
 
 Default: Your AWS account ID
 
 
 ## `PeerVpcId = ::String`
-The ID of the VPC with which you are creating the VPC peering connection.
+The ID of the VPC with which you are creating the VPC peering connection. You must specify this parameter in the request.
 
 
 ## `VpcId = ::String`
-The ID of the requester VPC.
+The ID of the requester VPC. You must specify this parameter in the request.
+
+
+## `PeerRegion = ::String`
+The region code for the accepter VPC, if the accepter VPC is located in a region other than the region in which you make the request.
+
+Default: The region in which you make the request.
 
 
 
@@ -4080,7 +4981,6 @@ The ID of the requester VPC.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpcPeeringConnection)
 """
-
 @inline create_vpc_peering_connection(aws::AWSConfig=default_aws_config(); args...) = create_vpc_peering_connection(aws, args)
 
 @inline create_vpc_peering_connection(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateVpcPeeringConnection", args)
@@ -4150,7 +5050,6 @@ The options for the VPN connection.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpnConnection)
 """
-
 @inline create_vpn_connection(aws::AWSConfig=default_aws_config(); args...) = create_vpn_connection(aws, args)
 
 @inline create_vpn_connection(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateVpnConnection", args)
@@ -4187,7 +5086,6 @@ The ID of the VPN connection.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpnConnectionRoute)
 """
-
 @inline create_vpn_connection_route(aws::AWSConfig=default_aws_config(); args...) = create_vpn_connection_route(aws, args)
 
 @inline create_vpn_connection_route(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateVpnConnectionRoute", args)
@@ -4238,7 +5136,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpnGateway)
 """
-
 @inline create_vpn_gateway(aws::AWSConfig=default_aws_config(); args...) = create_vpn_gateway(aws, args)
 
 @inline create_vpn_gateway(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "CreateVpnGateway", args)
@@ -4284,7 +5181,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteCustomerGateway)
 """
-
 @inline delete_customer_gateway(aws::AWSConfig=default_aws_config(); args...) = delete_customer_gateway(aws, args)
 
 @inline delete_customer_gateway(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteCustomerGateway", args)
@@ -4330,7 +5226,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteDhcpOptions)
 """
-
 @inline delete_dhcp_options(aws::AWSConfig=default_aws_config(); args...) = delete_dhcp_options(aws, args)
 
 @inline delete_dhcp_options(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteDhcpOptions", args)
@@ -4369,12 +5264,55 @@ The ID of the egress-only Internet gateway.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteEgressOnlyInternetGateway)
 """
-
 @inline delete_egress_only_internet_gateway(aws::AWSConfig=default_aws_config(); args...) = delete_egress_only_internet_gateway(aws, args)
 
 @inline delete_egress_only_internet_gateway(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteEgressOnlyInternetGateway", args)
 
 @inline delete_egress_only_internet_gateway(args) = delete_egress_only_internet_gateway(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.delete_fleets
+    delete_fleets([::AWSConfig], arguments::Dict)
+    delete_fleets([::AWSConfig]; FleetId=, TerminateInstances=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DeleteFleets", arguments::Dict)
+    ec2([::AWSConfig], "DeleteFleets", FleetId=, TerminateInstances=, <keyword arguments>)
+
+# DeleteFleets Operation
+
+Deletes the specified EC2 Fleet.
+
+After you delete an EC2 Fleet, it launches no new instances. You must specify whether an EC2 Fleet should also terminate its instances. If you terminate the instances, the EC2 Fleet enters the `deleted_terminating` state. Otherwise, the EC2 Fleet enters the `deleted_running` state, and the instances continue to run until they are interrupted or you terminate them manually.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `FleetId = [::String, ...]` -- *Required*
+The IDs of the EC2 Fleets.
+
+
+## `TerminateInstances = ::Bool` -- *Required*
+Indicates whether to terminate instances for an EC2 Fleet if it is deleted successfully.
+
+
+
+
+# Returns
+
+`DeleteFleetsResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteFleets)
+"""
+@inline delete_fleets(aws::AWSConfig=default_aws_config(); args...) = delete_fleets(aws, args)
+
+@inline delete_fleets(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteFleets", args)
+
+@inline delete_fleets(args) = delete_fleets(default_aws_config(), args)
 
 
 """
@@ -4404,7 +5342,6 @@ One or more flow log IDs.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteFlowLogs)
 """
-
 @inline delete_flow_logs(aws::AWSConfig=default_aws_config(); args...) = delete_flow_logs(aws, args)
 
 @inline delete_flow_logs(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteFlowLogs", args)
@@ -4443,7 +5380,6 @@ The ID of the AFI.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteFpgaImage)
 """
-
 @inline delete_fpga_image(aws::AWSConfig=default_aws_config(); args...) = delete_fpga_image(aws, args)
 
 @inline delete_fpga_image(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteFpgaImage", args)
@@ -4489,7 +5425,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteInternetGateway)
 """
-
 @inline delete_internet_gateway(aws::AWSConfig=default_aws_config(); args...) = delete_internet_gateway(aws, args)
 
 @inline delete_internet_gateway(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteInternetGateway", args)
@@ -4535,12 +5470,154 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteKeyPair)
 """
-
 @inline delete_key_pair(aws::AWSConfig=default_aws_config(); args...) = delete_key_pair(aws, args)
 
 @inline delete_key_pair(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteKeyPair", args)
 
 @inline delete_key_pair(args) = delete_key_pair(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.delete_launch_template
+    delete_launch_template([::AWSConfig], arguments::Dict)
+    delete_launch_template([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DeleteLaunchTemplate", arguments::Dict)
+    ec2([::AWSConfig], "DeleteLaunchTemplate", <keyword arguments>)
+
+# DeleteLaunchTemplate Operation
+
+Deletes a launch template. Deleting a launch template deletes all of its versions.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `LaunchTemplateId = ::String`
+The ID of the launch template. You must specify either the launch template ID or launch template name in the request.
+
+
+## `LaunchTemplateName = ::String`
+The name of the launch template. You must specify either the launch template ID or launch template name in the request.
+
+
+
+
+# Returns
+
+`DeleteLaunchTemplateResult`
+
+# Example: To delete a launch template
+
+This example deletes the specified launch template.
+
+Input:
+```
+[
+    "LaunchTemplateId" => "lt-0abcd290751193123"
+]
+```
+
+Output:
+```
+Dict(
+    "LaunchTemplate" => Dict(
+        "CreateTime" => "2017-11-23T16:46:25.000Z",
+        "CreatedBy" => "arn:aws:iam::123456789012:root",
+        "DefaultVersionNumber" => 2,
+        "LatestVersionNumber" => 2,
+        "LaunchTemplateId" => "lt-0abcd290751193123",
+        "LaunchTemplateName" => "my-template"
+    )
+)
+```
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteLaunchTemplate)
+"""
+@inline delete_launch_template(aws::AWSConfig=default_aws_config(); args...) = delete_launch_template(aws, args)
+
+@inline delete_launch_template(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteLaunchTemplate", args)
+
+@inline delete_launch_template(args) = delete_launch_template(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.delete_launch_template_versions
+    delete_launch_template_versions([::AWSConfig], arguments::Dict)
+    delete_launch_template_versions([::AWSConfig]; LaunchTemplateVersion=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DeleteLaunchTemplateVersions", arguments::Dict)
+    ec2([::AWSConfig], "DeleteLaunchTemplateVersions", LaunchTemplateVersion=, <keyword arguments>)
+
+# DeleteLaunchTemplateVersions Operation
+
+Deletes one or more versions of a launch template. You cannot delete the default version of a launch template; you must first assign a different version as the default. If the default version is the only version for the launch template, you must delete the entire launch template using [DeleteLaunchTemplate](@ref).
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `LaunchTemplateId = ::String`
+The ID of the launch template. You must specify either the launch template ID or launch template name in the request.
+
+
+## `LaunchTemplateName = ::String`
+The name of the launch template. You must specify either the launch template ID or launch template name in the request.
+
+
+## `LaunchTemplateVersion = [::String, ...]` -- *Required*
+The version numbers of one or more launch template versions to delete.
+
+
+
+
+# Returns
+
+`DeleteLaunchTemplateVersionsResult`
+
+# Example: To delete a launch template version
+
+This example deletes the specified launch template version.
+
+Input:
+```
+[
+    "LaunchTemplateId" => "lt-0abcd290751193123",
+    "Versions" => [
+        "1"
+    ]
+]
+```
+
+Output:
+```
+Dict(
+    "SuccessfullyDeletedLaunchTemplateVersions" => [
+        Dict(
+            "LaunchTemplateId" => "lt-0abcd290751193123",
+            "LaunchTemplateName" => "my-template",
+            "VersionNumber" => 1
+        )
+    ],
+    "UnsuccessfullyDeletedLaunchTemplateVersions" => [
+
+    ]
+)
+```
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteLaunchTemplateVersions)
+"""
+@inline delete_launch_template_versions(aws::AWSConfig=default_aws_config(); args...) = delete_launch_template_versions(aws, args)
+
+@inline delete_launch_template_versions(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteLaunchTemplateVersions", args)
+
+@inline delete_launch_template_versions(args) = delete_launch_template_versions(default_aws_config(), args)
 
 
 """
@@ -4588,7 +5665,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteNatGateway)
 """
-
 @inline delete_nat_gateway(aws::AWSConfig=default_aws_config(); args...) = delete_nat_gateway(aws, args)
 
 @inline delete_nat_gateway(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteNatGateway", args)
@@ -4634,7 +5710,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteNetworkAcl)
 """
-
 @inline delete_network_acl(aws::AWSConfig=default_aws_config(); args...) = delete_network_acl(aws, args)
 
 @inline delete_network_acl(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteNetworkAcl", args)
@@ -4690,7 +5765,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteNetworkAclEntry)
 """
-
 @inline delete_network_acl_entry(aws::AWSConfig=default_aws_config(); args...) = delete_network_acl_entry(aws, args)
 
 @inline delete_network_acl_entry(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteNetworkAclEntry", args)
@@ -4736,7 +5810,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteNetworkInterface)
 """
-
 @inline delete_network_interface(aws::AWSConfig=default_aws_config(); args...) = delete_network_interface(aws, args)
 
 @inline delete_network_interface(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteNetworkInterface", args)
@@ -4779,7 +5852,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteNetworkInterfacePermission)
 """
-
 @inline delete_network_interface_permission(aws::AWSConfig=default_aws_config(); args...) = delete_network_interface_permission(aws, args)
 
 @inline delete_network_interface_permission(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteNetworkInterfacePermission", args)
@@ -4798,7 +5870,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DeletePlacementGroup Operation
 
-Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information about placement groups and cluster instances, see [Cluster Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html) in the *Amazon Elastic Compute Cloud User Guide*.
+Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information, see [Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 # Arguments
 
@@ -4833,7 +5905,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeletePlacementGroup)
 """
-
 @inline delete_placement_group(aws::AWSConfig=default_aws_config(); args...) = delete_placement_group(aws, args)
 
 @inline delete_placement_group(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeletePlacementGroup", args)
@@ -4888,7 +5959,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteRoute)
 """
-
 @inline delete_route(aws::AWSConfig=default_aws_config(); args...) = delete_route(aws, args)
 
 @inline delete_route(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteRoute", args)
@@ -4934,7 +6004,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteRouteTable)
 """
-
 @inline delete_route_table(aws::AWSConfig=default_aws_config(); args...) = delete_route_table(aws, args)
 
 @inline delete_route_table(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteRouteTable", args)
@@ -4973,9 +6042,26 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 
+# Example: To delete a security group
+
+This example deletes the specified security group.
+
+Input:
+```
+[
+    "GroupId" => "sg-903004f8"
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSecurityGroup)
 """
-
 @inline delete_security_group(aws::AWSConfig=default_aws_config(); args...) = delete_security_group(aws, args)
 
 @inline delete_security_group(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteSecurityGroup", args)
@@ -5034,7 +6120,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSnapshot)
 """
-
 @inline delete_snapshot(aws::AWSConfig=default_aws_config(); args...) = delete_snapshot(aws, args)
 
 @inline delete_snapshot(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteSnapshot", args)
@@ -5053,7 +6138,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DeleteSpotDatafeedSubscription Operation
 
-Deletes the data feed for Spot instances.
+Deletes the data feed for Spot Instances.
 
 # Arguments
 
@@ -5069,7 +6154,6 @@ This example deletes a Spot data feed subscription for the account.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSpotDatafeedSubscription)
 """
-
 @inline delete_spot_datafeed_subscription(aws::AWSConfig=default_aws_config(); args...) = delete_spot_datafeed_subscription(aws, args)
 
 @inline delete_spot_datafeed_subscription(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteSpotDatafeedSubscription", args)
@@ -5115,7 +6199,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSubnet)
 """
-
 @inline delete_subnet(aws::AWSConfig=default_aws_config(); args...) = delete_subnet(aws, args)
 
 @inline delete_subnet(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteSubnet", args)
@@ -5149,7 +6232,9 @@ The IDs of one or more resources.
 
 
 ## `Tag = [[ ... ], ...]`
-One or more tags to delete. If you omit this parameter, we delete all tags for the specified resources. Specify a tag key and an optional tag value to delete specific tags. If you specify a tag key without a tag value, we delete any tag with this key regardless of its value. If you specify a tag key with an empty string as the tag value, we delete the tag only if its value is an empty string.
+One or more tags to delete. Specify a tag key and an optional tag value to delete specific tags. If you specify a tag key without a tag value, we delete any tag with this key regardless of its value. If you specify a tag key with an empty string as the tag value, we delete the tag only if its value is an empty string.
+
+If you omit this parameter, we delete all user-defined tags for the specified resources. We do not delete AWS-generated tags (tags that have the `aws:` prefix).
 ```
  Tag = [[
         "Key" =>  ::String,
@@ -5180,7 +6265,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteTags)
 """
-
 @inline delete_tags(aws::AWSConfig=default_aws_config(); args...) = delete_tags(aws, args)
 
 @inline delete_tags(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteTags", args)
@@ -5201,8 +6285,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 Deletes the specified EBS volume. The volume must be in the `available` state (not attached to an instance).
 
-**Note**
-> The volume may remain in the `deleting` state for several minutes.
+The volume can remain in the `deleting` state for several minutes.
 
 For more information, see [Deleting an Amazon EBS Volume](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
@@ -5238,7 +6321,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVolume)
 """
-
 @inline delete_volume(aws::AWSConfig=default_aws_config(); args...) = delete_volume(aws, args)
 
 @inline delete_volume(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteVolume", args)
@@ -5284,12 +6366,87 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpc)
 """
-
 @inline delete_vpc(aws::AWSConfig=default_aws_config(); args...) = delete_vpc(aws, args)
 
 @inline delete_vpc(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteVpc", args)
 
 @inline delete_vpc(args) = delete_vpc(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.delete_vpc_endpoint_connection_notifications
+    delete_vpc_endpoint_connection_notifications([::AWSConfig], arguments::Dict)
+    delete_vpc_endpoint_connection_notifications([::AWSConfig]; ConnectionNotificationId=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DeleteVpcEndpointConnectionNotifications", arguments::Dict)
+    ec2([::AWSConfig], "DeleteVpcEndpointConnectionNotifications", ConnectionNotificationId=, <keyword arguments>)
+
+# DeleteVpcEndpointConnectionNotifications Operation
+
+Deletes one or more VPC endpoint connection notifications.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `ConnectionNotificationId = [::String, ...]` -- *Required*
+One or more notification IDs.
+
+
+
+
+# Returns
+
+`DeleteVpcEndpointConnectionNotificationsResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpcEndpointConnectionNotifications)
+"""
+@inline delete_vpc_endpoint_connection_notifications(aws::AWSConfig=default_aws_config(); args...) = delete_vpc_endpoint_connection_notifications(aws, args)
+
+@inline delete_vpc_endpoint_connection_notifications(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteVpcEndpointConnectionNotifications", args)
+
+@inline delete_vpc_endpoint_connection_notifications(args) = delete_vpc_endpoint_connection_notifications(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.delete_vpc_endpoint_service_configurations
+    delete_vpc_endpoint_service_configurations([::AWSConfig], arguments::Dict)
+    delete_vpc_endpoint_service_configurations([::AWSConfig]; ServiceId=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DeleteVpcEndpointServiceConfigurations", arguments::Dict)
+    ec2([::AWSConfig], "DeleteVpcEndpointServiceConfigurations", ServiceId=, <keyword arguments>)
+
+# DeleteVpcEndpointServiceConfigurations Operation
+
+Deletes one or more VPC endpoint service configurations in your account. Before you delete the endpoint service configuration, you must reject any `Available` or `PendingAcceptance` interface endpoint connections that are attached to the service.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `ServiceId = [::String, ...]` -- *Required*
+The IDs of one or more services.
+
+
+
+
+# Returns
+
+`DeleteVpcEndpointServiceConfigurationsResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpcEndpointServiceConfigurations)
+"""
+@inline delete_vpc_endpoint_service_configurations(aws::AWSConfig=default_aws_config(); args...) = delete_vpc_endpoint_service_configurations(aws, args)
+
+@inline delete_vpc_endpoint_service_configurations(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteVpcEndpointServiceConfigurations", args)
+
+@inline delete_vpc_endpoint_service_configurations(args) = delete_vpc_endpoint_service_configurations(default_aws_config(), args)
 
 
 """
@@ -5312,7 +6469,7 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `VpcEndpointId = [::String, ...]` -- *Required*
-One or more endpoint IDs.
+One or more VPC endpoint IDs.
 
 
 
@@ -5323,7 +6480,6 @@ One or more endpoint IDs.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpcEndpoints)
 """
-
 @inline delete_vpc_endpoints(aws::AWSConfig=default_aws_config(); args...) = delete_vpc_endpoints(aws, args)
 
 @inline delete_vpc_endpoints(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteVpcEndpoints", args)
@@ -5342,7 +6498,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DeleteVpcPeeringConnection Operation
 
-Deletes a VPC peering connection. Either the owner of the requester VPC or the owner of the peer VPC can delete the VPC peering connection if it's in the `active` state. The owner of the requester VPC can delete a VPC peering connection in the `pending-acceptance` state.
+Deletes a VPC peering connection. Either the owner of the requester VPC or the owner of the accepter VPC can delete the VPC peering connection if it's in the `active` state. The owner of the requester VPC can delete a VPC peering connection in the `pending-acceptance` state. You cannot delete a VPC peering connection that's in the `failed` state.
 
 # Arguments
 
@@ -5362,7 +6518,6 @@ The ID of the VPC peering connection.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpcPeeringConnection)
 """
-
 @inline delete_vpc_peering_connection(aws::AWSConfig=default_aws_config(); args...) = delete_vpc_peering_connection(aws, args)
 
 @inline delete_vpc_peering_connection(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteVpcPeeringConnection", args)
@@ -5399,7 +6554,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpnConnection)
 """
-
 @inline delete_vpn_connection(aws::AWSConfig=default_aws_config(); args...) = delete_vpn_connection(aws, args)
 
 @inline delete_vpn_connection(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteVpnConnection", args)
@@ -5434,7 +6588,6 @@ The ID of the VPN connection.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpnConnectionRoute)
 """
-
 @inline delete_vpn_connection_route(aws::AWSConfig=default_aws_config(); args...) = delete_vpn_connection_route(aws, args)
 
 @inline delete_vpn_connection_route(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteVpnConnectionRoute", args)
@@ -5469,7 +6622,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVpnGateway)
 """
-
 @inline delete_vpn_gateway(aws::AWSConfig=default_aws_config(); args...) = delete_vpn_gateway(aws, args)
 
 @inline delete_vpn_gateway(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeleteVpnGateway", args)
@@ -5506,7 +6658,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeregisterImage)
 """
-
 @inline deregister_image(aws::AWSConfig=default_aws_config(); args...) = deregister_image(aws, args)
 
 @inline deregister_image(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DeregisterImage", args)
@@ -5531,7 +6682,7 @@ Describes attributes of your AWS account. The following are the supported accoun
 
 *   `default-vpc`: The ID of the default VPC for your account, or `none`.
 
-*   `max-instances`: The maximum number of On-Demand instances that you can run.
+*   `max-instances`: The maximum number of On-Demand Instances that you can run.
 
 *   `vpc-max-security-groups-per-interface`: The maximum number of security groups that you can assign to a network interface.
 
@@ -5652,7 +6803,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAccountAttributes)
 """
-
 @inline describe_account_attributes(aws::AWSConfig=default_aws_config(); args...) = describe_account_attributes(aws, args)
 
 @inline describe_account_attributes(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeAccountAttributes", args)
@@ -5695,6 +6845,10 @@ One or more filters. Filter names and values are case-sensitive.
 *   `private-ip-address` - [EC2-VPC] The private IP address associated with the Elastic IP address.
 
 *   `public-ip` - The Elastic IP address.
+
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
+
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 ```
  Filter = [[
         "Name" =>  ::String,
@@ -5820,12 +6974,49 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAddresses)
 """
-
 @inline describe_addresses(aws::AWSConfig=default_aws_config(); args...) = describe_addresses(aws, args)
 
 @inline describe_addresses(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeAddresses", args)
 
 @inline describe_addresses(args) = describe_addresses(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.describe_aggregate_id_format
+    describe_aggregate_id_format([::AWSConfig], arguments::Dict)
+    describe_aggregate_id_format([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DescribeAggregateIdFormat", arguments::Dict)
+    ec2([::AWSConfig], "DescribeAggregateIdFormat", <keyword arguments>)
+
+# DescribeAggregateIdFormat Operation
+
+Describes the longer ID format settings for all resource types in a specific region. This request is useful for performing a quick audit to determine whether a specific region is fully opted in for longer IDs (17-character IDs).
+
+This request only returns information about resource types that support longer IDs.
+
+The following resource types support longer IDs: `bundle` | `conversion-task` | `customer-gateway` | `dhcp-options` | `elastic-ip-allocation` | `elastic-ip-association` | `export-task` | `flow-log` | `image` | `import-task` | `instance` | `internet-gateway` | `network-acl` | `network-acl-association` | `network-interface` | `network-interface-attachment` | `prefix-list` | `reservation` | `route-table` | `route-table-association` | `security-group` | `snapshot` | `subnet` | `subnet-cidr-block-association` | `volume` | `vpc` | `vpc-cidr-block-association` | `vpc-endpoint` | `vpc-peering-connection` | `vpn-connection` | `vpn-gateway`.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+
+
+# Returns
+
+`DescribeAggregateIdFormatResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAggregateIdFormat)
+"""
+@inline describe_aggregate_id_format(aws::AWSConfig=default_aws_config(); args...) = describe_aggregate_id_format(aws, args)
+
+@inline describe_aggregate_id_format(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeAggregateIdFormat", args)
+
+@inline describe_aggregate_id_format(args) = describe_aggregate_id_format(default_aws_config(), args)
 
 
 """
@@ -5922,7 +7113,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAvailabilityZones)
 """
-
 @inline describe_availability_zones(aws::AWSConfig=default_aws_config(); args...) = describe_availability_zones(aws, args)
 
 @inline describe_availability_zones(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeAvailabilityZones", args)
@@ -5995,7 +7185,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeBundleTasks)
 """
-
 @inline describe_bundle_tasks(aws::AWSConfig=default_aws_config(); args...) = describe_bundle_tasks(aws, args)
 
 @inline describe_bundle_tasks(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeBundleTasks", args)
@@ -6025,11 +7214,9 @@ One or more filters.
 
 *   `instance-id` - The ID of the instance.
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 
 *   `vpc-id` - The ID of the VPC that the instance is linked to.
 ```
@@ -6065,7 +7252,6 @@ The token to retrieve the next page of results.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeClassicLinkInstances)
 """
-
 @inline describe_classic_link_instances(aws::AWSConfig=default_aws_config(); args...) = describe_classic_link_instances(aws, args)
 
 @inline describe_classic_link_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeClassicLinkInstances", args)
@@ -6106,7 +7292,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeConversionTasks)
 """
-
 @inline describe_conversion_tasks(aws::AWSConfig=default_aws_config(); args...) = describe_conversion_tasks(aws, args)
 
 @inline describe_conversion_tasks(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeConversionTasks", args)
@@ -6150,11 +7335,9 @@ One or more filters.
 
 *   `type` - The type of customer gateway. Currently, the only supported type is `ipsec.1`.
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 ```
  Filter = [[
         "Name" =>  ::String,
@@ -6202,7 +7385,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeCustomerGateways)
 """
-
 @inline describe_customer_gateways(aws::AWSConfig=default_aws_config(); args...) = describe_customer_gateways(aws, args)
 
 @inline describe_customer_gateways(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeCustomerGateways", args)
@@ -6242,11 +7424,9 @@ One or more filters.
 
 *   `value` - The value for one of the options.
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 ```
  Filter = [[
         "Name" =>  ::String,
@@ -6303,7 +7483,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeDhcpOptions)
 """
-
 @inline describe_dhcp_options(aws::AWSConfig=default_aws_config(); args...) = describe_dhcp_options(aws, args)
 
 @inline describe_dhcp_options(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeDhcpOptions", args)
@@ -6350,7 +7529,6 @@ The token to retrieve the next page of results.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeEgressOnlyInternetGateways)
 """
-
 @inline describe_egress_only_internet_gateways(aws::AWSConfig=default_aws_config(); args...) = describe_egress_only_internet_gateways(aws, args)
 
 @inline describe_egress_only_internet_gateways(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeEgressOnlyInternetGateways", args)
@@ -6416,7 +7594,6 @@ The token to request the next page of results.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeElasticGpus)
 """
-
 @inline describe_elastic_gpus(aws::AWSConfig=default_aws_config(); args...) = describe_elastic_gpus(aws, args)
 
 @inline describe_elastic_gpus(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeElasticGpus", args)
@@ -6451,12 +7628,187 @@ One or more export task IDs.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeExportTasks)
 """
-
 @inline describe_export_tasks(aws::AWSConfig=default_aws_config(); args...) = describe_export_tasks(aws, args)
 
 @inline describe_export_tasks(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeExportTasks", args)
 
 @inline describe_export_tasks(args) = describe_export_tasks(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.describe_fleet_history
+    describe_fleet_history([::AWSConfig], arguments::Dict)
+    describe_fleet_history([::AWSConfig]; FleetId=, StartTime=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DescribeFleetHistory", arguments::Dict)
+    ec2([::AWSConfig], "DescribeFleetHistory", FleetId=, StartTime=, <keyword arguments>)
+
+# DescribeFleetHistory Operation
+
+Describes the events for the specified EC2 Fleet during the specified time.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `EventType = "instance-change", "fleet-change" or "service-error"`
+The type of events to describe. By default, all events are described.
+
+
+## `MaxResults = ::Int`
+The maximum number of results to return in a single call. Specify a value between 1 and 1000. The default value is 1000. To retrieve the remaining results, make another call with the returned `NextToken` value.
+
+
+## `NextToken = ::String`
+The token for the next set of results.
+
+
+## `FleetId = ::String` -- *Required*
+The ID of the EC2 Fleet.
+
+
+## `StartTime = timestamp` -- *Required*
+The start date and time for the events, in UTC format (for example, *YYYY*-*MM*-*DD*T*HH*:*MM*:*SS*Z).
+
+
+
+
+# Returns
+
+`DescribeFleetHistoryResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFleetHistory)
+"""
+@inline describe_fleet_history(aws::AWSConfig=default_aws_config(); args...) = describe_fleet_history(aws, args)
+
+@inline describe_fleet_history(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeFleetHistory", args)
+
+@inline describe_fleet_history(args) = describe_fleet_history(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.describe_fleet_instances
+    describe_fleet_instances([::AWSConfig], arguments::Dict)
+    describe_fleet_instances([::AWSConfig]; FleetId=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DescribeFleetInstances", arguments::Dict)
+    ec2([::AWSConfig], "DescribeFleetInstances", FleetId=, <keyword arguments>)
+
+# DescribeFleetInstances Operation
+
+Describes the running instances for the specified EC2 Fleet.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `MaxResults = ::Int`
+The maximum number of results to return in a single call. Specify a value between 1 and 1000. The default value is 1000. To retrieve the remaining results, make another call with the returned `NextToken` value.
+
+
+## `NextToken = ::String`
+The token for the next set of results.
+
+
+## `FleetId = ::String` -- *Required*
+The ID of the EC2 Fleet.
+
+
+## `Filter = [[ ... ], ...]`
+One or more filters.
+
+*   `instance-type` - The instance type.
+```
+ Filter = [[
+        "Name" =>  ::String,
+        "Value" =>  [::String, ...]
+    ], ...]
+```
+
+
+
+# Returns
+
+`DescribeFleetInstancesResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFleetInstances)
+"""
+@inline describe_fleet_instances(aws::AWSConfig=default_aws_config(); args...) = describe_fleet_instances(aws, args)
+
+@inline describe_fleet_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeFleetInstances", args)
+
+@inline describe_fleet_instances(args) = describe_fleet_instances(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.describe_fleets
+    describe_fleets([::AWSConfig], arguments::Dict)
+    describe_fleets([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DescribeFleets", arguments::Dict)
+    ec2([::AWSConfig], "DescribeFleets", <keyword arguments>)
+
+# DescribeFleets Operation
+
+Describes one or more of your EC2 Fleet.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `MaxResults = ::Int`
+The maximum number of results to return in a single call. Specify a value between 1 and 1000. The default value is 1000. To retrieve the remaining results, make another call with the returned `NextToken` value.
+
+
+## `NextToken = ::String`
+The token for the next set of results.
+
+
+## `FleetId = [::String, ...]`
+The ID of the EC2 Fleets.
+
+
+## `Filter = [[ ... ], ...]`
+One or more filters.
+
+*   `activity-status` - The progress of the EC2 Fleet ( `error` | `pending-fulfillment` | `pending-termination` | `fulfilled`).
+
+*   `excess-capacity-termination-policy` - Indicates whether to terminate running instances if the target capacity is decreased below the current EC2 Fleet size (`true` | `false`).
+
+*   `fleet-state` - The state of the EC2 Fleet (`submitted` | `active` | `deleted` | `failed` | `deleted-running` | `deleted-terminating` | `modifying`).
+
+*   `replace-unhealthy-instances` - Indicates whether EC2 Fleet should replace unhealthy instances (`true` | `false`).
+
+*   `type` - The type of request (`request` | `maintain`).
+```
+ Filter = [[
+        "Name" =>  ::String,
+        "Value" =>  [::String, ...]
+    ], ...]
+```
+
+
+
+# Returns
+
+`DescribeFleetsResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFleets)
+"""
+@inline describe_fleets(aws::AWSConfig=default_aws_config(); args...) = describe_fleets(aws, args)
+
+@inline describe_fleets(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeFleets", args)
+
+@inline describe_fleets(args) = describe_fleets(default_aws_config(), args)
 
 
 """
@@ -6513,7 +7865,6 @@ The token to retrieve the next page of results.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFlowLogs)
 """
-
 @inline describe_flow_logs(aws::AWSConfig=default_aws_config(); args...) = describe_flow_logs(aws, args)
 
 @inline describe_flow_logs(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeFlowLogs", args)
@@ -6556,7 +7907,6 @@ The AFI attribute.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFpgaImageAttribute)
 """
-
 @inline describe_fpga_image_attribute(aws::AWSConfig=default_aws_config(); args...) = describe_fpga_image_attribute(aws, args)
 
 @inline describe_fpga_image_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeFpgaImageAttribute", args)
@@ -6610,11 +7960,9 @@ One or more filters.
 
 *   `state` - The state of the AFI (`pending` | `failed` | `available` | `unavailable`).
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 
 *   `update-time` - The time of the most recent update.
 ```
@@ -6640,7 +7988,6 @@ The maximum number of results to return in a single call.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFpgaImages)
 """
-
 @inline describe_fpga_images(aws::AWSConfig=default_aws_config(); args...) = describe_fpga_images(aws, args)
 
 @inline describe_fpga_images(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeFpgaImages", args)
@@ -6659,16 +8006,16 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DescribeHostReservationOfferings Operation
 
-Describes the Dedicated Host Reservations that are available to purchase.
+Describes the Dedicated Host reservations that are available to purchase.
 
-The results describe all the Dedicated Host Reservation offerings, including offerings that may not match the instance family and region of your Dedicated Hosts. When purchasing an offering, ensure that the the instance family and region of the offering matches that of the Dedicated Host/s it will be associated with. For an overview of supported instance types, see [Dedicated Hosts Overview](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html) in the *Amazon Elastic Compute Cloud User Guide*.
+The results describe all the Dedicated Host reservation offerings, including offerings that may not match the instance family and region of your Dedicated Hosts. When purchasing an offering, ensure that the instance family and Region of the offering matches that of the Dedicated Hosts with which it is to be associated . For more information about supported instance types, see [Dedicated Hosts Overview](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 # Arguments
 
 ## `Filter = [[ ... ], ...]`
 One or more filters.
 
-*   `instance-family` - The instance family of the offering (e.g., `m4`).
+*   `instance-family` - The instance family of the offering (for example, `m4`).
 
 *   `payment-option` - The payment option (`NoUpfront` | `PartialUpfront` | `AllUpfront`).
 ```
@@ -6679,11 +8026,11 @@ One or more filters.
 ```
 
 ## `MaxDuration = ::Int`
-This is the maximum duration of the reservation you'd like to purchase, specified in seconds. Reservations are available in one-year and three-year terms. The number of seconds specified must be the number of seconds in a year (365x24x60x60) times one of the supported durations (1 or 3). For example, specify 94608000 for three years.
+This is the maximum duration of the reservation to purchase, specified in seconds. Reservations are available in one-year and three-year terms. The number of seconds specified must be the number of seconds in a year (365x24x60x60) times one of the supported durations (1 or 3). For example, specify 94608000 for three years.
 
 
 ## `MaxResults = ::Int`
-The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned `nextToken` value. This value can be between 5 and 500; if `maxResults` is given a larger value than 500, you will receive an error.
+The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned `nextToken` value. This value can be between 5 and 500. If `maxResults` is given a larger value than 500, you receive an error.
 
 
 ## `MinDuration = ::Int`
@@ -6706,7 +8053,6 @@ The ID of the reservation offering.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeHostReservationOfferings)
 """
-
 @inline describe_host_reservation_offerings(aws::AWSConfig=default_aws_config(); args...) = describe_host_reservation_offerings(aws, args)
 
 @inline describe_host_reservation_offerings(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeHostReservationOfferings", args)
@@ -6725,14 +8071,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DescribeHostReservations Operation
 
-Describes Dedicated Host Reservations which are associated with Dedicated Hosts in your account.
+Describes reservations that are associated with Dedicated Hosts in your account.
 
 # Arguments
 
 ## `Filter = [[ ... ], ...]`
 One or more filters.
 
-*   `instance-family` - The instance family (e.g., `m4`).
+*   `instance-family` - The instance family (for example, `m4`).
 
 *   `payment-option` - The payment option (`NoUpfront` | `PartialUpfront` | `AllUpfront`).
 
@@ -6749,7 +8095,7 @@ One or more host reservation IDs.
 
 
 ## `MaxResults = ::Int`
-The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned `nextToken` value. This value can be between 5 and 500; if `maxResults` is given a larger value than 500, you will receive an error.
+The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned `nextToken` value. This value can be between 5 and 500.If `maxResults` is given a larger value than 500, you receive an error.
 
 
 ## `NextToken = ::String`
@@ -6764,7 +8110,6 @@ The token to use to retrieve the next page of results.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeHostReservations)
 """
-
 @inline describe_host_reservations(aws::AWSConfig=default_aws_config(); args...) = describe_host_reservations(aws, args)
 
 @inline describe_host_reservations(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeHostReservations", args)
@@ -6785,24 +8130,26 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 Describes one or more of your Dedicated Hosts.
 
-The results describe only the Dedicated Hosts in the region you're currently using. All listed instances consume capacity on your Dedicated Host. Dedicated Hosts that have recently been released will be listed with the state `released`.
+The results describe only the Dedicated Hosts in the region you're currently using. All listed instances consume capacity on your Dedicated Host. Dedicated Hosts that have recently been released are listed with the state `released`.
 
 # Arguments
 
 ## `Filter = [[ ... ], ...]`
 One or more filters.
 
-*   `instance-type` - The instance type size that the Dedicated Host is configured to support.
-
 *   `auto-placement` - Whether auto-placement is enabled or disabled (`on` | `off`).
+
+*   `availability-zone` - The Availability Zone of the host.
+
+*   `client-token` - The idempotency token that you provided when you allocated the host.
 
 *   `host-reservation-id` - The ID of the reservation assigned to this host.
 
-*   `client-token` - The idempotency token you provided when you launched the instance
+*   `instance-type` - The instance type size that the Dedicated Host is configured to support.
 
-*   `state`- The allocation state of the Dedicated Host (`available` | `under-assessment` | `permanent-failure` | `released` | `released-permanent-failure`).
+*   `state` - The allocation state of the Dedicated Host (`available` | `under-assessment` | `permanent-failure` | `released` | `released-permanent-failure`).
 
-*   `availability-zone` - The Availability Zone of the host.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 ```
  Filter = [[
         "Name" =>  ::String,
@@ -6815,7 +8162,7 @@ The IDs of the Dedicated Hosts. The IDs are used for targeted instance launches.
 
 
 ## `MaxResults = ::Int`
-The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned `nextToken` value. This value can be between 5 and 500; if `maxResults` is given a larger value than 500, you will receive an error. You cannot specify this parameter and the host IDs parameter in the same request.
+The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned `nextToken` value. This value can be between 5 and 500. If `maxResults` is given a larger value than 500, you receive an error. You cannot specify this parameter and the host IDs parameter in the same request.
 
 
 ## `NextToken = ::String`
@@ -6830,7 +8177,6 @@ The token to retrieve the next page of results.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeHosts)
 """
-
 @inline describe_hosts(aws::AWSConfig=default_aws_config(); args...) = describe_hosts(aws, args)
 
 @inline describe_hosts(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeHosts", args)
@@ -6884,9 +8230,38 @@ The token to request the next page of results.
 
 `DescribeIamInstanceProfileAssociationsResult`
 
+# Example: To describe an IAM instance profile association
+
+This example describes the specified IAM instance profile association.
+
+Input:
+```
+[
+    "AssociationIds" => [
+        "iip-assoc-0db249b1f25fa24b8"
+    ]
+]
+```
+
+Output:
+```
+Dict(
+    "IamInstanceProfileAssociations" => [
+        Dict(
+            "AssociationId" => "iip-assoc-0db249b1f25fa24b8",
+            "IamInstanceProfile" => Dict(
+                "Arn" => "arn:aws:iam::123456789012:instance-profile/admin-role",
+                "Id" => "AIPAJVQN4F5WVLGCJDRGM"
+            ),
+            "InstanceId" => "i-09eb09efa73ec1dee",
+            "State" => "associated"
+        )
+    ]
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIamInstanceProfileAssociations)
 """
-
 @inline describe_iam_instance_profile_associations(aws::AWSConfig=default_aws_config(); args...) = describe_iam_instance_profile_associations(aws, args)
 
 @inline describe_iam_instance_profile_associations(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeIamInstanceProfileAssociations", args)
@@ -6907,14 +8282,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 Describes the ID format settings for your resources on a per-region basis, for example, to view which resource types are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types.
 
-The following resource types support longer IDs: `instance` | `reservation` | `snapshot` | `volume`.
+The following resource types support longer IDs: `bundle` | `conversion-task` | `customer-gateway` | `dhcp-options` | `elastic-ip-allocation` | `elastic-ip-association` | `export-task` | `flow-log` | `image` | `import-task` | `instance` | `internet-gateway` | `network-acl` | `network-acl-association` | `network-interface` | `network-interface-attachment` | `prefix-list` | `reservation` | `route-table` | `route-table-association` | `security-group` | `snapshot` | `subnet` | `subnet-cidr-block-association` | `volume` | `vpc` | `vpc-cidr-block-association` | `vpc-endpoint` | `vpc-peering-connection` | `vpn-connection` | `vpn-gateway`.
 
 These settings apply to the IAM user who makes the request; they do not apply to the entire AWS account. By default, an IAM user defaults to the same settings as the root user, unless they explicitly override the settings by running the [ModifyIdFormat](@ref) command. Resources created with longer IDs are visible to all IAM users, regardless of these settings and provided that they have permission to use the relevant `Describe` command for the resource type.
 
 # Arguments
 
 ## `Resource = ::String`
-The type of resource: `instance` | `reservation` | `snapshot` | `volume`
+The type of resource: `bundle` | `conversion-task` | `customer-gateway` | `dhcp-options` | `elastic-ip-allocation` | `elastic-ip-association` | `export-task` | `flow-log` | `image` | `import-task` | `instance` | `internet-gateway` | `network-acl` | `network-acl-association` | `network-interface` | `network-interface-attachment` | `prefix-list` | `reservation` | `route-table` | `route-table-association` | `security-group` | `snapshot` | `subnet` | `subnet-cidr-block-association` | `volume` | `vpc` | `vpc-cidr-block-association` | `vpc-endpoint` | `vpc-peering-connection` | `vpn-connection` | `vpn-gateway`
 
 
 
@@ -6925,7 +8300,6 @@ The type of resource: `instance` | `reservation` | `snapshot` | `volume`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIdFormat)
 """
-
 @inline describe_id_format(aws::AWSConfig=default_aws_config(); args...) = describe_id_format(aws, args)
 
 @inline describe_id_format(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeIdFormat", args)
@@ -6946,7 +8320,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 Describes the ID format settings for resources for the specified IAM user, IAM role, or root user. For example, you can view the resource types that are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types. For more information, see [Resource IDs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
-The following resource types support longer IDs: `instance` | `reservation` | `snapshot` | `volume`.
+The following resource types support longer IDs: `bundle` | `conversion-task` | `customer-gateway` | `dhcp-options` | `elastic-ip-allocation` | `elastic-ip-association` | `export-task` | `flow-log` | `image` | `import-task` | `instance` | `internet-gateway` | `network-acl` | `network-acl-association` | `network-interface` | `network-interface-attachment` | `prefix-list` | `reservation` | `route-table` | `route-table-association` | `security-group` | `snapshot` | `subnet` | `subnet-cidr-block-association` | `volume` | `vpc` | `vpc-cidr-block-association` | `vpc-endpoint` | `vpc-peering-connection` | `vpn-connection` | `vpn-gateway`.
 
 These settings apply to the principal specified in the request. They do not apply to the principal that makes the request.
 
@@ -6957,7 +8331,7 @@ The ARN of the principal, which can be an IAM role, IAM user, or the root user.
 
 
 ## `Resource = ::String`
-The type of resource: `instance` | `reservation` | `snapshot` | `volume`
+The type of resource: `bundle` | `conversion-task` | `customer-gateway` | `dhcp-options` | `elastic-ip-allocation` | `elastic-ip-association` | `export-task` | `flow-log` | `image` | `import-task` | `instance` | `internet-gateway` | `network-acl` | `network-acl-association` | `network-interface` | `network-interface-attachment` | `prefix-list` | `reservation` | `route-table` | `route-table-association` | `security-group` | `snapshot` | `subnet` | `subnet-cidr-block-association` | `volume` | `vpc` | `vpc-cidr-block-association` | `vpc-endpoint` | `vpc-peering-connection` | `vpn-connection` | `vpn-gateway`
 
 
 
@@ -6968,7 +8342,6 @@ The type of resource: `instance` | `reservation` | `snapshot` | `volume`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIdentityIdFormat)
 """
-
 @inline describe_identity_id_format(aws::AWSConfig=default_aws_config(); args...) = describe_identity_id_format(aws, args)
 
 @inline describe_identity_id_format(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeIdentityIdFormat", args)
@@ -7011,9 +8384,32 @@ Checks whether you have the required permissions for the action, without actuall
 
 `ImageAttribute`
 
+# Example: To describe the launch permissions for an AMI
+
+This example describes the launch permissions for the specified AMI.
+
+Input:
+```
+[
+    "Attribute" => "launchPermission",
+    "ImageId" => "ami-5731123e"
+]
+```
+
+Output:
+```
+Dict(
+    "ImageId" => "ami-5731123e",
+    "LaunchPermissions" => [
+        Dict(
+            "UserId" => "123456789012"
+        )
+    ]
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImageAttribute)
 """
-
 @inline describe_image_attribute(aws::AWSConfig=default_aws_config(); args...) = describe_image_attribute(aws, args)
 
 @inline describe_image_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeImageAttribute", args)
@@ -7100,11 +8496,9 @@ One or more filters.
 
 *   `sriov-net-support` - A value of `simple` indicates that enhanced networking with the Intel 82599 VF interface is enabled.
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the tag-value filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 
 *   `virtualization-type` - The virtualization type (`paravirtual` | `hvm`).
 ```
@@ -7134,9 +8528,56 @@ Checks whether you have the required permissions for the action, without actuall
 
 `DescribeImagesResult`
 
+# Example: To describe an AMI
+
+This example describes the specified AMI.
+
+Input:
+```
+[
+    "ImageIds" => [
+        "ami-5731123e"
+    ]
+]
+```
+
+Output:
+```
+Dict(
+    "Images" => [
+        Dict(
+            "Architecture" => "x86_64",
+            "BlockDeviceMappings" => [
+                Dict(
+                    "DeviceName" => "/dev/sda1",
+                    "Ebs" => Dict(
+                        "DeleteOnTermination" => true,
+                        "SnapshotId" => "snap-1234567890abcdef0",
+                        "VolumeSize" => 8,
+                        "VolumeType" => "standard"
+                    )
+                )
+            ],
+            "Description" => "An AMI for my server",
+            "Hypervisor" => "xen",
+            "ImageId" => "ami-5731123e",
+            "ImageLocation" => "123456789012/My server",
+            "ImageType" => "machine",
+            "KernelId" => "aki-88aa75e1",
+            "Name" => "My server",
+            "OwnerId" => "123456789012",
+            "Public" => false,
+            "RootDeviceName" => "/dev/sda1",
+            "RootDeviceType" => "ebs",
+            "State" => "available",
+            "VirtualizationType" => "paravirtual"
+        )
+    ]
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImages)
 """
-
 @inline describe_images(aws::AWSConfig=default_aws_config(); args...) = describe_images(aws, args)
 
 @inline describe_images(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeImages", args)
@@ -7192,7 +8633,6 @@ A token that indicates the next page of results.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImportImageTasks)
 """
-
 @inline describe_import_image_tasks(aws::AWSConfig=default_aws_config(); args...) = describe_import_image_tasks(aws, args)
 
 @inline describe_import_image_tasks(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeImportImageTasks", args)
@@ -7248,7 +8688,6 @@ A token that indicates the next page of results.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeImportSnapshotTasks)
 """
-
 @inline describe_import_snapshot_tasks(aws::AWSConfig=default_aws_config(); args...) = describe_import_snapshot_tasks(aws, args)
 
 @inline describe_import_snapshot_tasks(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeImportSnapshotTasks", args)
@@ -7379,12 +8818,80 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceAttribute)
 """
-
 @inline describe_instance_attribute(aws::AWSConfig=default_aws_config(); args...) = describe_instance_attribute(aws, args)
 
 @inline describe_instance_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeInstanceAttribute", args)
 
 @inline describe_instance_attribute(args) = describe_instance_attribute(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.describe_instance_credit_specifications
+    describe_instance_credit_specifications([::AWSConfig], arguments::Dict)
+    describe_instance_credit_specifications([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DescribeInstanceCreditSpecifications", arguments::Dict)
+    ec2([::AWSConfig], "DescribeInstanceCreditSpecifications", <keyword arguments>)
+
+# DescribeInstanceCreditSpecifications Operation
+
+Describes the credit option for CPU usage of one or more of your T2 instances. The credit options are `standard` and `unlimited`.
+
+If you do not specify an instance ID, Amazon EC2 returns only the T2 instances with the `unlimited` credit option. If you specify one or more instance IDs, Amazon EC2 returns the credit option (`standard` or `unlimited`) of those instances. If you specify an instance ID that is not valid, such as an instance that is not a T2 instance, an error is returned.
+
+Recently terminated instances might appear in the returned results. This interval is usually less than one hour.
+
+If an Availability Zone is experiencing a service disruption and you specify instance IDs in the affected zone, or do not specify any instance IDs at all, the call fails. If you specify only instance IDs in an unaffected zone, the call works normally.
+
+For more information, see [T2 Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/t2-instances.html) in the *Amazon Elastic Compute Cloud User Guide*.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `Filter = [[ ... ], ...]`
+One or more filters.
+
+*   `instance-id` - The ID of the instance.
+```
+ Filter = [[
+        "Name" =>  ::String,
+        "Value" =>  [::String, ...]
+    ], ...]
+```
+
+## `InstanceId = [::String, ...]`
+One or more instance IDs.
+
+Default: Describes all your instances.
+
+Constraints: Maximum 1000 explicitly specified instance IDs.
+
+
+## `MaxResults = ::Int`
+The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value. This value can be between 5 and 1000. You cannot specify this parameter and the instance IDs parameter in the same call.
+
+
+## `NextToken = ::String`
+The token to retrieve the next page of results.
+
+
+
+
+# Returns
+
+`DescribeInstanceCreditSpecificationsResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceCreditSpecifications)
+"""
+@inline describe_instance_credit_specifications(aws::AWSConfig=default_aws_config(); args...) = describe_instance_credit_specifications(aws, args)
+
+@inline describe_instance_credit_specifications(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeInstanceCreditSpecifications", args)
+
+@inline describe_instance_credit_specifications(args) = describe_instance_credit_specifications(default_aws_config(), args)
 
 
 """
@@ -7423,7 +8930,7 @@ One or more filters.
 
 *   `event.not-before` - The earliest start time for the scheduled event (for example, `2014-09-15T17:15:20.000Z`).
 
-*   `instance-state-code` - The code for the instance state, as a 16-bit unsigned integer. The high byte is an opaque internal value and should be ignored. The low byte is set based on the state represented. The valid values are 0 (pending), 16 (running), 32 (shutting-down), 48 (terminated), 64 (stopping), and 80 (stopped).
+*   `instance-state-code` - The code for the instance state, as a 16-bit unsigned integer. The high byte is used for internal purposes and should be ignored. The low byte is set based on the state represented. The valid values are 0 (pending), 16 (running), 32 (shutting-down), 48 (terminated), 64 (stopping), and 80 (stopped).
 
 *   `instance-state-name` - The state of the instance (`pending` | `running` | `shutting-down` | `terminated` | `stopping` | `stopped`).
 
@@ -7473,9 +8980,55 @@ Default: `false`
 
 `DescribeInstanceStatusResult`
 
+# Example: To describe the status of an instance
+
+This example describes the current status of the specified instance.
+
+Input:
+```
+[
+    "InstanceIds" => [
+        "i-1234567890abcdef0"
+    ]
+]
+```
+
+Output:
+```
+Dict(
+    "InstanceStatuses" => [
+        Dict(
+            "AvailabilityZone" => "us-east-1d",
+            "InstanceId" => "i-1234567890abcdef0",
+            "InstanceState" => Dict(
+                "Code" => 16,
+                "Name" => "running"
+            ),
+            "InstanceStatus" => Dict(
+                "Details" => [
+                    Dict(
+                        "Name" => "reachability",
+                        "Status" => "passed"
+                    )
+                ],
+                "Status" => "ok"
+            ),
+            "SystemStatus" => Dict(
+                "Details" => [
+                    Dict(
+                        "Name" => "reachability",
+                        "Status" => "passed"
+                    )
+                ],
+                "Status" => "ok"
+            )
+        )
+    ]
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceStatus)
 """
-
 @inline describe_instance_status(aws::AWSConfig=default_aws_config(); args...) = describe_instance_status(aws, args)
 
 @inline describe_instance_status(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeInstanceStatus", args)
@@ -7543,7 +9096,7 @@ One or more filters.
 
 *   `instance-lifecycle` - Indicates whether this is a Spot Instance or a Scheduled Instance (`spot` | `scheduled`).
 
-*   `instance-state-code` - The state of the instance, as a 16-bit unsigned integer. The high byte is an opaque internal value and should be ignored. The low byte is set based on the state represented. The valid values are: 0 (pending), 16 (running), 32 (shutting-down), 48 (terminated), 64 (stopping), and 80 (stopped).
+*   `instance-state-code` - The state of the instance, as a 16-bit unsigned integer. The high byte is used for internal purposes and should be ignored. The low byte is set based on the state represented. The valid values are: 0 (pending), 16 (running), 32 (shutting-down), 48 (terminated), 64 (stopping), and 80 (stopped).
 
 *   `instance-state-name` - The state of the instance (`pending` | `running` | `shutting-down` | `terminated` | `stopping` | `stopped`).
 
@@ -7661,11 +9214,9 @@ One or more filters.
 
 *   `subnet-id` - The ID of the subnet for the instance.
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of the tag's key). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources that have a tag with a specific key, regardless of the tag value.
 
 *   `tenancy` - The tenancy of an instance (`dedicated` | `default` | `host`).
 
@@ -7690,7 +9241,7 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `MaxResults = ::Int`
-The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value. This value can be between 5 and 1000. You cannot specify this parameter and the instance IDs parameter or tag filters in the same call.
+The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value. This value can be between 5 and 1000. You cannot specify this parameter and the instance IDs parameter in the same call.
 
 
 ## `NextToken = ::String`
@@ -7703,9 +9254,78 @@ The token to request the next page of results.
 
 `DescribeInstancesResult`
 
+# Example: To describe an Amazon EC2 instance
+
+This example describes the specified instance.
+
+Input:
+```
+[
+    "InstanceIds" => [
+        "i-1234567890abcdef0"
+    ]
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
+# Example: To describe the instances with a specific instance type
+
+This example describes the instances with the t2.micro instance type.
+
+Input:
+```
+[
+    "Filters" => [
+        [
+            "Name" => "instance-type",
+            "Values" => [
+                "t2.micro"
+            ]
+        ]
+    ]
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
+# Example: To describe the instances with a specific tag
+
+This example describes the instances with the Purpose=test tag.
+
+Input:
+```
+[
+    "Filters" => [
+        [
+            "Name" => "tag:Purpose",
+            "Values" => [
+                "test"
+            ]
+        ]
+    ]
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstances)
 """
-
 @inline describe_instances(aws::AWSConfig=default_aws_config(); args...) = describe_instances(aws, args)
 
 @inline describe_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeInstances", args)
@@ -7737,11 +9357,9 @@ One or more filters.
 
 *   `internet-gateway-id` - The ID of the Internet gateway.
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 ```
  Filter = [[
         "Name" =>  ::String,
@@ -7805,7 +9423,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInternetGateways)
 """
-
 @inline describe_internet_gateways(aws::AWSConfig=default_aws_config(); args...) = describe_internet_gateways(aws, args)
 
 @inline describe_internet_gateways(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeInternetGateways", args)
@@ -7886,12 +9503,260 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeKeyPairs)
 """
-
 @inline describe_key_pairs(aws::AWSConfig=default_aws_config(); args...) = describe_key_pairs(aws, args)
 
 @inline describe_key_pairs(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeKeyPairs", args)
 
 @inline describe_key_pairs(args) = describe_key_pairs(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.describe_launch_template_versions
+    describe_launch_template_versions([::AWSConfig], arguments::Dict)
+    describe_launch_template_versions([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DescribeLaunchTemplateVersions", arguments::Dict)
+    ec2([::AWSConfig], "DescribeLaunchTemplateVersions", <keyword arguments>)
+
+# DescribeLaunchTemplateVersions Operation
+
+Describes one or more versions of a specified launch template. You can describe all versions, individual versions, or a range of versions.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `LaunchTemplateId = ::String`
+The ID of the launch template. You must specify either the launch template ID or launch template name in the request.
+
+
+## `LaunchTemplateName = ::String`
+The name of the launch template. You must specify either the launch template ID or launch template name in the request.
+
+
+## `LaunchTemplateVersion = [::String, ...]`
+One or more versions of the launch template.
+
+
+## `MinVersion = ::String`
+The version number after which to describe launch template versions.
+
+
+## `MaxVersion = ::String`
+The version number up to which to describe launch template versions.
+
+
+## `NextToken = ::String`
+The token to request the next page of results.
+
+
+## `MaxResults = ::Int`
+The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value. This value can be between 1 and 200.
+
+
+## `Filter = [[ ... ], ...]`
+One or more filters.
+
+*   `create-time` - The time the launch template version was created.
+
+*   `ebs-optimized` - A boolean that indicates whether the instance is optimized for Amazon EBS I/O.
+
+*   `iam-instance-profile` - The ARN of the IAM instance profile.
+
+*   `image-id` - The ID of the AMI.
+
+*   `instance-type` - The instance type.
+
+*   `is-default-version` - A boolean that indicates whether the launch template version is the default version.
+
+*   `kernel-id` - The kernel ID.
+
+*   `ram-disk-id` - The RAM disk ID.
+```
+ Filter = [[
+        "Name" =>  ::String,
+        "Value" =>  [::String, ...]
+    ], ...]
+```
+
+
+
+# Returns
+
+`DescribeLaunchTemplateVersionsResult`
+
+# Example: To describe the versions for a launch template
+
+This example describes the versions for the specified launch template.
+
+Input:
+```
+[
+    "LaunchTemplateId" => "068f72b72934aff71"
+]
+```
+
+Output:
+```
+Dict(
+    "LaunchTemplateVersions" => [
+        Dict(
+            "CreateTime" => "2017-11-20T13:12:32.000Z",
+            "CreatedBy" => "arn:aws:iam::123456789102:root",
+            "DefaultVersion" => false,
+            "LaunchTemplateData" => Dict(
+                "ImageId" => "ami-6057e21a",
+                "InstanceType" => "t2.medium",
+                "KeyName" => "kp-us-east",
+                "NetworkInterfaces" => [
+                    Dict(
+                        "DeviceIndex" => 0,
+                        "Groups" => [
+                            "sg-7c227019"
+                        ],
+                        "SubnetId" => "subnet-1a2b3c4d"
+                    )
+                ]
+            ),
+            "LaunchTemplateId" => "lt-068f72b72934aff71",
+            "LaunchTemplateName" => "Webservers",
+            "VersionNumber" => 2
+        ),
+        Dict(
+            "CreateTime" => "2017-11-20T12:52:33.000Z",
+            "CreatedBy" => "arn:aws:iam::123456789102:root",
+            "DefaultVersion" => true,
+            "LaunchTemplateData" => Dict(
+                "ImageId" => "ami-aabbcc11",
+                "InstanceType" => "t2.medium",
+                "KeyName" => "kp-us-east",
+                "NetworkInterfaces" => [
+                    Dict(
+                        "AssociatePublicIpAddress" => true,
+                        "DeleteOnTermination" => false,
+                        "DeviceIndex" => 0,
+                        "Groups" => [
+                            "sg-7c227019"
+                        ],
+                        "SubnetId" => "subnet-7b16de0c"
+                    )
+                ],
+                "UserData" => ""
+            ),
+            "LaunchTemplateId" => "lt-068f72b72934aff71",
+            "LaunchTemplateName" => "Webservers",
+            "VersionNumber" => 1
+        )
+    ]
+)
+```
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeLaunchTemplateVersions)
+"""
+@inline describe_launch_template_versions(aws::AWSConfig=default_aws_config(); args...) = describe_launch_template_versions(aws, args)
+
+@inline describe_launch_template_versions(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeLaunchTemplateVersions", args)
+
+@inline describe_launch_template_versions(args) = describe_launch_template_versions(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.describe_launch_templates
+    describe_launch_templates([::AWSConfig], arguments::Dict)
+    describe_launch_templates([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DescribeLaunchTemplates", arguments::Dict)
+    ec2([::AWSConfig], "DescribeLaunchTemplates", <keyword arguments>)
+
+# DescribeLaunchTemplates Operation
+
+Describes one or more launch templates.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `LaunchTemplateId = [::String, ...]`
+One or more launch template IDs.
+
+
+## `LaunchTemplateName = [::String, ...]`
+One or more launch template names.
+
+
+## `Filter = [[ ... ], ...]`
+One or more filters.
+
+*   `create-time` - The time the launch template was created.
+
+*   `launch-template-name` - The name of the launch template.
+
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
+
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
+```
+ Filter = [[
+        "Name" =>  ::String,
+        "Value" =>  [::String, ...]
+    ], ...]
+```
+
+## `NextToken = ::String`
+The token to request the next page of results.
+
+
+## `MaxResults = ::Int`
+The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value. This value can be between 5 and 1000.
+
+
+
+
+# Returns
+
+`DescribeLaunchTemplatesResult`
+
+# Example: To describe a launch template
+
+This example describes the specified launch template.
+
+Input:
+```
+[
+    "LaunchTemplateIds" => [
+        "lt-01238c059e3466abc"
+    ]
+]
+```
+
+Output:
+```
+Dict(
+    "LaunchTemplates" => [
+        Dict(
+            "CreateTime" => "2018-01-16T04:32:57.000Z",
+            "CreatedBy" => "arn:aws:iam::123456789012:root",
+            "DefaultVersionNumber" => 1,
+            "LatestVersionNumber" => 1,
+            "LaunchTemplateId" => "lt-01238c059e3466abc",
+            "LaunchTemplateName" => "my-template"
+        )
+    ]
+)
+```
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeLaunchTemplates)
+"""
+@inline describe_launch_templates(aws::AWSConfig=default_aws_config(); args...) = describe_launch_templates(aws, args)
+
+@inline describe_launch_templates(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeLaunchTemplates", args)
+
+@inline describe_launch_templates(args) = describe_launch_templates(default_aws_config(), args)
 
 
 """
@@ -7962,7 +9827,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeMovingAddresses)
 """
-
 @inline describe_moving_addresses(aws::AWSConfig=default_aws_config(); args...) = describe_moving_addresses(aws, args)
 
 @inline describe_moving_addresses(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeMovingAddresses", args)
@@ -7994,11 +9858,9 @@ One or more filters.
 
 *   `subnet-id` - The ID of the subnet in which the NAT gateway resides.
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 
 *   `vpc-id` - The ID of the VPC in which the NAT gateway resides.
 ```
@@ -8071,7 +9933,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNatGateways)
 """
-
 @inline describe_nat_gateways(aws::AWSConfig=default_aws_config(); args...) = describe_nat_gateways(aws, args)
 
 @inline describe_nat_gateways(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeNatGateways", args)
@@ -8129,11 +9990,9 @@ One or more filters.
 
 *   `network-acl-id` - The ID of the network ACL.
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 
 *   `vpc-id` - The ID of the VPC for the network ACL.
 ```
@@ -8213,7 +10072,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkAcls)
 """
-
 @inline describe_network_acls(aws::AWSConfig=default_aws_config(); args...) = describe_network_acls(aws, args)
 
 @inline describe_network_acls(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeNetworkAcls", args)
@@ -8353,7 +10211,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfaceAttribute)
 """
-
 @inline describe_network_interface_attribute(aws::AWSConfig=default_aws_config(); args...) = describe_network_interface_attribute(aws, args)
 
 @inline describe_network_interface_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeNetworkInterfaceAttribute", args)
@@ -8415,7 +10272,6 @@ The maximum number of results to return in a single call. To retrieve the remain
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfacePermissions)
 """
-
 @inline describe_network_interface_permissions(aws::AWSConfig=default_aws_config(); args...) = describe_network_interface_permissions(aws, args)
 
 @inline describe_network_interface_permissions(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeNetworkInterfacePermissions", args)
@@ -8505,11 +10361,9 @@ One or more filters.
 
 *   `subnet-id` - The ID of the subnet for the network interface.
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 
 *   `vpc-id` - The ID of the VPC for the network interface.
 ```
@@ -8609,7 +10463,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfaces)
 """
-
 @inline describe_network_interfaces(aws::AWSConfig=default_aws_config(); args...) = describe_network_interfaces(aws, args)
 
 @inline describe_network_interfaces(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeNetworkInterfaces", args)
@@ -8628,7 +10481,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DescribePlacementGroups Operation
 
-Describes one or more of your placement groups. For more information about placement groups and cluster instances, see [Cluster Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html) in the *Amazon Elastic Compute Cloud User Guide*.
+Describes one or more of your placement groups. For more information, see [Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 # Arguments
 
@@ -8639,7 +10492,7 @@ One or more filters.
 
 *   `state` - The state of the placement group (`pending` | `available` | `deleting` | `deleted`).
 
-*   `strategy` - The strategy of the placement group (`cluster`).
+*   `strategy` - The strategy of the placement group (`cluster` | `spread`).
 ```
  Filter = [[
         "Name" =>  ::String,
@@ -8665,7 +10518,6 @@ Default: Describes all your placement groups, or only those otherwise specified.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribePlacementGroups)
 """
-
 @inline describe_placement_groups(aws::AWSConfig=default_aws_config(); args...) = describe_placement_groups(aws, args)
 
 @inline describe_placement_groups(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribePlacementGroups", args)
@@ -8684,7 +10536,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DescribePrefixLists Operation
 
-Describes available AWS services in a prefix list format, which includes the prefix list name and prefix list ID of the service and the IP address range for the service. A prefix list ID is required for creating an outbound security group rule that allows traffic from a VPC to access an AWS service through a VPC endpoint.
+Describes available AWS services in a prefix list format, which includes the prefix list name and prefix list ID of the service and the IP address range for the service. A prefix list ID is required for creating an outbound security group rule that allows traffic from a VPC to access an AWS service through a gateway VPC endpoint. Currently, the services that support this action are Amazon S3 and Amazon DynamoDB.
 
 # Arguments
 
@@ -8727,12 +10579,61 @@ One or more prefix list IDs.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribePrefixLists)
 """
-
 @inline describe_prefix_lists(aws::AWSConfig=default_aws_config(); args...) = describe_prefix_lists(aws, args)
 
 @inline describe_prefix_lists(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribePrefixLists", args)
 
 @inline describe_prefix_lists(args) = describe_prefix_lists(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.describe_principal_id_format
+    describe_principal_id_format([::AWSConfig], arguments::Dict)
+    describe_principal_id_format([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DescribePrincipalIdFormat", arguments::Dict)
+    ec2([::AWSConfig], "DescribePrincipalIdFormat", <keyword arguments>)
+
+# DescribePrincipalIdFormat Operation
+
+Describes the ID format settings for the root user and all IAM roles and IAM users that have explicitly specified a longer ID (17-character ID) preference.
+
+By default, all IAM roles and IAM users default to the same ID settings as the root user, unless they explicitly override the settings. This request is useful for identifying those IAM users and IAM roles that have overridden the default ID settings.
+
+The following resource types support longer IDs: `bundle` | `conversion-task` | `customer-gateway` | `dhcp-options` | `elastic-ip-allocation` | `elastic-ip-association` | `export-task` | `flow-log` | `image` | `import-task` | `instance` | `internet-gateway` | `network-acl` | `network-acl-association` | `network-interface` | `network-interface-attachment` | `prefix-list` | `reservation` | `route-table` | `route-table-association` | `security-group` | `snapshot` | `subnet` | `subnet-cidr-block-association` | `volume` | `vpc` | `vpc-cidr-block-association` | `vpc-endpoint` | `vpc-peering-connection` | `vpn-connection` | `vpn-gateway`.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `Resource = [::String, ...]`
+The type of resource: `bundle` | `conversion-task` | `customer-gateway` | `dhcp-options` | `elastic-ip-allocation` | `elastic-ip-association` | `export-task` | `flow-log` | `image` | `import-task` | `instance` | `internet-gateway` | `network-acl` | `network-acl-association` | `network-interface` | `network-interface-attachment` | `prefix-list` | `reservation` | `route-table` | `route-table-association` | `security-group` | `snapshot` | `subnet` | `subnet-cidr-block-association` | `volume` | `vpc` | `vpc-cidr-block-association` | `vpc-endpoint` | `vpc-peering-connection` | `vpn-connection` | `vpn-gateway`
+
+
+## `MaxResults = ::Int`
+The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned NextToken value.
+
+
+## `NextToken = ::String`
+The token to request the next page of results.
+
+
+
+
+# Returns
+
+`DescribePrincipalIdFormatResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribePrincipalIdFormat)
+"""
+@inline describe_principal_id_format(aws::AWSConfig=default_aws_config(); args...) = describe_principal_id_format(aws, args)
+
+@inline describe_principal_id_format(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribePrincipalIdFormat", args)
+
+@inline describe_principal_id_format(args) = describe_principal_id_format(default_aws_config(), args)
 
 
 """
@@ -8837,7 +10738,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeRegions)
 """
-
 @inline describe_regions(aws::AWSConfig=default_aws_config(); args...) = describe_regions(aws, args)
 
 @inline describe_regions(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeRegions", args)
@@ -8885,11 +10785,9 @@ One or more filters.
 
 *   `state` - The state of the Reserved Instance (`payment-pending` | `active` | `payment-failed` | `retired`).
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 
 *   `usage-price` - The usage price of the Reserved Instance, per hour (for example, 0.84).
 ```
@@ -8925,7 +10823,6 @@ The Reserved Instance offering type. If you are using tools that predate the 201
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstances)
 """
-
 @inline describe_reserved_instances(aws::AWSConfig=default_aws_config(); args...) = describe_reserved_instances(aws, args)
 
 @inline describe_reserved_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeReservedInstances", args)
@@ -8989,7 +10886,6 @@ One or more Reserved Instance listing IDs.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstancesListings)
 """
-
 @inline describe_reserved_instances_listings(aws::AWSConfig=default_aws_config(); args...) = describe_reserved_instances_listings(aws, args)
 
 @inline describe_reserved_instances_listings(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeReservedInstancesListings", args)
@@ -9065,7 +10961,6 @@ The token to retrieve the next page of results.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstancesModifications)
 """
-
 @inline describe_reserved_instances_modifications(aws::AWSConfig=default_aws_config(); args...) = describe_reserved_instances_modifications(aws, args)
 
 @inline describe_reserved_instances_modifications(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeReservedInstancesModifications", args)
@@ -9127,7 +11022,7 @@ One or more filters.
 Include Reserved Instance Marketplace offerings in the response.
 
 
-## `InstanceType = "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge"`
+## `InstanceType = "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "r5.large", "r5.xlarge", "r5.2xlarge", "r5.4xlarge", "r5.8xlarge", "r5.12xlarge", "r5.16xlarge", "r5.24xlarge", "r5.metal", "r5d.large", "r5d.xlarge", "r5d.2xlarge", "r5d.4xlarge", "r5d.8xlarge", "r5d.12xlarge", "r5d.16xlarge", "r5d.24xlarge", "r5d.metal", "x1.16xlarge", "x1.32xlarge", "x1e.xlarge", "x1e.2xlarge", "x1e.4xlarge", "x1e.8xlarge", "x1e.16xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "i3.metal", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "c5d.large", "c5d.xlarge", "c5d.2xlarge", "c5d.4xlarge", "c5d.9xlarge", "c5d.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge", "f1.16xlarge", "m5.large", "m5.xlarge", "m5.2xlarge", "m5.4xlarge", "m5.12xlarge", "m5.24xlarge", "m5d.large", "m5d.xlarge", "m5d.2xlarge", "m5d.4xlarge", "m5d.12xlarge", "m5d.24xlarge", "h1.2xlarge", "h1.4xlarge", "h1.8xlarge", "h1.16xlarge", "z1d.large", "z1d.xlarge", "z1d.2xlarge", "z1d.3xlarge", "z1d.6xlarge" or "z1d.12xlarge"`
 The instance type that the reservation will cover (for example, `m1.small`). For more information, see [Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 
@@ -9195,7 +11090,6 @@ The Reserved Instance offering type. If you are using tools that predate the 201
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeReservedInstancesOfferings)
 """
-
 @inline describe_reserved_instances_offerings(aws::AWSConfig=default_aws_config(); args...) = describe_reserved_instances_offerings(aws, args)
 
 @inline describe_reserved_instances_offerings(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeReservedInstancesOfferings", args)
@@ -9255,11 +11149,9 @@ One or more filters.
 
 *   `route.vpc-peering-connection-id` - The ID of a VPC peering connection specified in a route in the table.
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 
 *   `vpc-id` - The ID of the VPC for the route table.
 ```
@@ -9332,7 +11224,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeRouteTables)
 """
-
 @inline describe_route_tables(aws::AWSConfig=default_aws_config(); args...) = describe_route_tables(aws, args)
 
 @inline describe_route_tables(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeRouteTables", args)
@@ -9476,7 +11367,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeScheduledInstanceAvailability)
 """
-
 @inline describe_scheduled_instance_availability(aws::AWSConfig=default_aws_config(); args...) = describe_scheduled_instance_availability(aws, args)
 
 @inline describe_scheduled_instance_availability(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeScheduledInstanceAvailability", args)
@@ -9594,7 +11484,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeScheduledInstances)
 """
-
 @inline describe_scheduled_instances(aws::AWSConfig=default_aws_config(); args...) = describe_scheduled_instances(aws, args)
 
 @inline describe_scheduled_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeScheduledInstances", args)
@@ -9631,9 +11520,34 @@ One or more security group IDs in your account.
 
 `DescribeSecurityGroupReferencesResult`
 
+# Example: To describe security group references
+
+This example describes the security group references for the specified security group.
+
+Input:
+```
+[
+    "GroupId" => [
+        "sg-903004f8"
+    ]
+]
+```
+
+Output:
+```
+Dict(
+    "SecurityGroupReferenceSet" => [
+        Dict(
+            "GroupId" => "sg-903004f8",
+            "ReferencingVpcId" => "vpc-1a2b3c4d",
+            "VpcPeeringConnectionId" => "pcx-b04deed9"
+        )
+    ]
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSecurityGroupReferences)
 """
-
 @inline describe_security_group_references(aws::AWSConfig=default_aws_config(); args...) = describe_security_group_references(aws, args)
 
 @inline describe_security_group_references(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeSecurityGroupReferences", args)
@@ -9705,9 +11619,9 @@ One or more filters. If using multiple filters for rules, the results include se
 
 *   `owner-id` - The AWS account ID of the owner of the security group.
 
-*   `tag-key` - The key of a tag assigned to the security group.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-value` - The value of a tag assigned to the security group.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 
 *   `vpc-id` - The ID of the VPC specified when the security group was created.
 ```
@@ -9738,7 +11652,7 @@ The token to request the next page of results.
 
 
 ## `MaxResults = ::Int`
-The maximum number of results to return in a single call. To retrieve the remaining results, make another request with the returned `NextToken` value. This value can be between 5 and 1000.
+The maximum number of results to return in a single call. To retrieve the remaining results, make another request with the returned `NextToken` value. This value can be between 5 and 1000. If this parameter is not specified, then all results are returned.
 
 
 
@@ -9747,9 +11661,53 @@ The maximum number of results to return in a single call. To retrieve the remain
 
 `DescribeSecurityGroupsResult`
 
+# Example: To describe a security group
+
+This example describes the specified security group.
+
+Input:
+```
+[
+    "GroupIds" => [
+        "sg-903004f8"
+    ]
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
+# Example: To describe a tagged security group
+
+This example describes the security groups that include the specified tag (Purpose=test).
+
+Input:
+```
+[
+    "Filters" => [
+        [
+            "Name" => "tag:Purpose",
+            "Values" => [
+                "test"
+            ]
+        ]
+    ]
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSecurityGroups)
 """
-
 @inline describe_security_groups(aws::AWSConfig=default_aws_config(); args...) = describe_security_groups(aws, args)
 
 @inline describe_security_groups(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeSecurityGroups", args)
@@ -9816,7 +11774,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSnapshotAttribute)
 """
-
 @inline describe_snapshot_attribute(aws::AWSConfig=default_aws_config(); args...) = describe_snapshot_attribute(aws, args)
 
 @inline describe_snapshot_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeSnapshotAttribute", args)
@@ -9876,11 +11833,9 @@ One or more filters.
 
 *   `status` - The status of the snapshot (`pending` | `completed` | `error`).
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 
 *   `volume-id` - The ID of the volume the snapshot is for.
 
@@ -9998,7 +11953,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSnapshots)
 """
-
 @inline describe_snapshots(aws::AWSConfig=default_aws_config(); args...) = describe_snapshots(aws, args)
 
 @inline describe_snapshots(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeSnapshots", args)
@@ -10017,7 +11971,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DescribeSpotDatafeedSubscription Operation
 
-Describes the data feed for Spot instances. For more information, see [Spot Instance Data Feed](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) in the *Amazon Elastic Compute Cloud User Guide*.
+Describes the data feed for Spot Instances. For more information, see [Spot Instance Data Feed](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) in the *Amazon EC2 User Guide for Linux Instances*.
 
 # Arguments
 
@@ -10049,7 +12003,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotDatafeedSubscription)
 """
-
 @inline describe_spot_datafeed_subscription(aws::AWSConfig=default_aws_config(); args...) = describe_spot_datafeed_subscription(aws, args)
 
 @inline describe_spot_datafeed_subscription(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeSpotDatafeedSubscription", args)
@@ -10068,7 +12021,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DescribeSpotFleetInstances Operation
 
-Describes the running instances for the specified Spot fleet.
+Describes the running instances for the specified Spot Fleet.
 
 # Arguments
 
@@ -10085,7 +12038,7 @@ The token for the next set of results.
 
 
 ## `SpotFleetRequestId = ::String` -- *Required*
-The ID of the Spot fleet request.
+The ID of the Spot Fleet request.
 
 
 
@@ -10121,7 +12074,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotFleetInstances)
 """
-
 @inline describe_spot_fleet_instances(aws::AWSConfig=default_aws_config(); args...) = describe_spot_fleet_instances(aws, args)
 
 @inline describe_spot_fleet_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeSpotFleetInstances", args)
@@ -10140,9 +12092,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DescribeSpotFleetRequestHistory Operation
 
-Describes the events for the specified Spot fleet request during the specified time.
+Describes the events for the specified Spot Fleet request during the specified time.
 
-Spot fleet events are delayed by up to 30 seconds before they can be described. This ensures that you can query by the last evaluated time and not miss a recorded event.
+Spot Fleet events are delayed by up to 30 seconds before they can be described. This ensures that you can query by the last evaluated time and not miss a recorded event.
 
 # Arguments
 
@@ -10163,7 +12115,7 @@ The token for the next set of results.
 
 
 ## `SpotFleetRequestId = ::String` -- *Required*
-The ID of the Spot fleet request.
+The ID of the Spot Fleet request.
 
 
 ## `StartTime = timestamp` -- *Required*
@@ -10231,7 +12183,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotFleetRequestHistory)
 """
-
 @inline describe_spot_fleet_request_history(aws::AWSConfig=default_aws_config(); args...) = describe_spot_fleet_request_history(aws, args)
 
 @inline describe_spot_fleet_request_history(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeSpotFleetRequestHistory", args)
@@ -10250,9 +12201,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DescribeSpotFleetRequests Operation
 
-Describes your Spot fleet requests.
+Describes your Spot Fleet requests.
 
-Spot fleet requests are deleted 48 hours after they are canceled and their instances are terminated.
+Spot Fleet requests are deleted 48 hours after they are canceled and their instances are terminated.
 
 # Arguments
 
@@ -10269,7 +12220,7 @@ The token for the next set of results.
 
 
 ## `SpotFleetRequestId = [::String, ...]`
-The IDs of the Spot fleet requests.
+The IDs of the Spot Fleet requests.
 
 
 
@@ -10340,7 +12291,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotFleetRequests)
 """
-
 @inline describe_spot_fleet_requests(aws::AWSConfig=default_aws_config(); args...) = describe_spot_fleet_requests(aws, args)
 
 @inline describe_spot_fleet_requests(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeSpotFleetRequests", args)
@@ -10359,11 +12309,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DescribeSpotInstanceRequests Operation
 
-Describes the Spot instance requests that belong to your account. Spot instances are instances that Amazon EC2 launches when the bid price that you specify exceeds the current Spot price. Amazon EC2 periodically sets the Spot price based on available Spot instance capacity and current Spot instance requests. For more information, see [Spot Instance Requests](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html) in the *Amazon Elastic Compute Cloud User Guide*.
+Describes the specified Spot Instance requests.
 
-You can use `DescribeSpotInstanceRequests` to find a running Spot instance by examining the response. If the status of the Spot instance is `fulfilled`, the instance ID appears in the response and contains the identifier of the instance. Alternatively, you can use [DescribeInstances](@ref) with a filter to look for instances where the instance lifecycle is `spot`.
+You can use `DescribeSpotInstanceRequests` to find a running Spot Instance by examining the response. If the status of the Spot Instance is `fulfilled`, the instance ID appears in the response and contains the identifier of the instance. Alternatively, you can use [DescribeInstances](@ref) with a filter to look for instances where the instance lifecycle is `spot`.
 
-Spot instance requests are deleted 4 hours after they are canceled and their instances are terminated.
+Spot Instance requests are deleted four hours after they are canceled and their instances are terminated.
 
 # Arguments
 
@@ -10372,7 +12322,7 @@ One or more filters.
 
 *   `availability-zone-group` - The Availability Zone group.
 
-*   `create-time` - The time stamp when the Spot instance request was created.
+*   `create-time` - The time stamp when the Spot Instance request was created.
 
 *   `fault-code` - The fault code related to the request.
 
@@ -10380,7 +12330,7 @@ One or more filters.
 
 *   `instance-id` - The ID of the instance that fulfilled the request.
 
-*   `launch-group` - The Spot instance launch group.
+*   `launch-group` - The Spot Instance launch group.
 
 *   `launch.block-device-mapping.delete-on-termination` - Indicates whether the EBS volume is deleted on instance termination.
 
@@ -10392,7 +12342,9 @@ One or more filters.
 
 *   `launch.block-device-mapping.volume-type` - The type of EBS volume: `gp2` for General Purpose SSD, `io1` for Provisioned IOPS SSD, `st1` for Throughput Optimized HDD, `sc1`for Cold HDD, or `standard` for Magnetic.
 
-*   `launch.group-id` - The security group for the instance.
+*   `launch.group-id` - The ID of the security group for the instance.
+
+*   `launch.group-name` - The name of the security group for the instance.
 
 *   `launch.image-id` - The ID of the AMI.
 
@@ -10402,11 +12354,11 @@ One or more filters.
 
 *   `launch.key-name` - The name of the key pair the instance launched with.
 
-*   `launch.monitoring-enabled` - Whether detailed monitoring is enabled for the Spot instance.
+*   `launch.monitoring-enabled` - Whether detailed monitoring is enabled for the Spot Instance.
 
 *   `launch.ramdisk-id` - The RAM disk ID.
 
-*   `launched-availability-zone` - The Availability Zone in which the bid is launched.
+*   `launched-availability-zone` - The Availability Zone in which the request is launched.
 
 *   `network-interface.addresses.primary` - Indicates whether the IP address is the primary private IP address.
 
@@ -10426,23 +12378,21 @@ One or more filters.
 
 *   `product-description` - The product description associated with the instance (`Linux/UNIX` | `Windows`).
 
-*   `spot-instance-request-id` - The Spot instance request ID.
+*   `spot-instance-request-id` - The Spot Instance request ID.
 
-*   `spot-price` - The maximum hourly price for any Spot instance launched to fulfill the request.
+*   `spot-price` - The maximum hourly price for any Spot Instance launched to fulfill the request.
 
-*   `state` - The state of the Spot instance request (`open` | `active` | `closed` | `cancelled` | `failed`). Spot bid status information can help you track your Amazon EC2 Spot instance requests. For more information, see [Spot Bid Status](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html) in the Amazon Elastic Compute Cloud User Guide.
+*   `state` - The state of the Spot Instance request (`open` | `active` | `closed` | `cancelled` | `failed`). Spot request status information can help you track your Amazon EC2 Spot Instance requests. For more information, see [Spot Request Status](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html) in the *Amazon EC2 User Guide for Linux Instances*.
 
-*   `status-code` - The short code describing the most recent evaluation of your Spot instance request.
+*   `status-code` - The short code describing the most recent evaluation of your Spot Instance request.
 
-*   `status-message` - The message explaining the status of the Spot instance request.
+*   `status-message` - The message explaining the status of the Spot Instance request.
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
-
-*   `type` - The type of Spot instance request (`one-time` | `persistent`).
+*   `type` - The type of Spot Instance request (`one-time` | `persistent`).
 
 *   `valid-from` - The start date of the request.
 
@@ -10459,7 +12409,7 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `SpotInstanceRequestId = [::String, ...]`
-One or more Spot instance request IDs.
+One or more Spot Instance request IDs.
 
 
 
@@ -10528,7 +12478,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotInstanceRequests)
 """
-
 @inline describe_spot_instance_requests(aws::AWSConfig=default_aws_config(); args...) = describe_spot_instance_requests(aws, args)
 
 @inline describe_spot_instance_requests(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeSpotInstanceRequests", args)
@@ -10547,7 +12496,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DescribeSpotPriceHistory Operation
 
-Describes the Spot price history. For more information, see [Spot Instance Pricing History](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html) in the *Amazon Elastic Compute Cloud User Guide*.
+Describes the Spot price history. For more information, see [Spot Instance Pricing History](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html) in the *Amazon EC2 User Guide for Linux Instances*.
 
 When you specify a start and end time, this operation returns the prices of the instance types within the time range that you specified and the time when the price changed. The price is valid within the time period that you specified; the response merely indicates the last time that the price changed.
 
@@ -10564,7 +12513,7 @@ One or more filters.
 
 *   `spot-price` - The Spot price. The value must match exactly (or use wildcards; greater than or less than comparison is not supported).
 
-*   `timestamp` - The timestamp of the Spot price history, in UTC format (for example, *YYYY*-*MM*-*DD*T*HH*:*MM*:*SS*Z). You can use wildcards (* and ?). Greater than or less than comparison is not supported.
+*   `timestamp` - The time stamp of the Spot price history, in UTC format (for example, *YYYY*-*MM*-*DD*T*HH*:*MM*:*SS*Z). You can use wildcards (* and ?). Greater than or less than comparison is not supported.
 ```
  Filter = [[
         "Name" =>  ::String,
@@ -10584,8 +12533,8 @@ Checks whether you have the required permissions for the action, without actuall
 The date and time, up to the current date, from which to stop retrieving the price history data, in UTC format (for example, *YYYY*-*MM*-*DD*T*HH*:*MM*:*SS*Z).
 
 
-## `InstanceType = ["t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge", ...]`
-Filters the results by the specified instance types. Note that T2 and HS1 instance types are not supported.
+## `InstanceType = ["t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "r5.large", "r5.xlarge", "r5.2xlarge", "r5.4xlarge", "r5.8xlarge", "r5.12xlarge", "r5.16xlarge", "r5.24xlarge", "r5.metal", "r5d.large", "r5d.xlarge", "r5d.2xlarge", "r5d.4xlarge", "r5d.8xlarge", "r5d.12xlarge", "r5d.16xlarge", "r5d.24xlarge", "r5d.metal", "x1.16xlarge", "x1.32xlarge", "x1e.xlarge", "x1e.2xlarge", "x1e.4xlarge", "x1e.8xlarge", "x1e.16xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "i3.metal", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "c5d.large", "c5d.xlarge", "c5d.2xlarge", "c5d.4xlarge", "c5d.9xlarge", "c5d.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge", "f1.16xlarge", "m5.large", "m5.xlarge", "m5.2xlarge", "m5.4xlarge", "m5.12xlarge", "m5.24xlarge", "m5d.large", "m5d.xlarge", "m5d.2xlarge", "m5d.4xlarge", "m5d.12xlarge", "m5d.24xlarge", "h1.2xlarge", "h1.4xlarge", "h1.8xlarge", "h1.16xlarge", "z1d.large", "z1d.xlarge", "z1d.2xlarge", "z1d.3xlarge", "z1d.6xlarge" or "z1d.12xlarge", ...]`
+Filters the results by the specified instance types.
 
 
 ## `MaxResults = ::Int`
@@ -10652,7 +12601,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotPriceHistory)
 """
-
 @inline describe_spot_price_history(aws::AWSConfig=default_aws_config(); args...) = describe_spot_price_history(aws, args)
 
 @inline describe_spot_price_history(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeSpotPriceHistory", args)
@@ -10699,7 +12647,6 @@ The ID of the VPC.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeStaleSecurityGroups)
 """
-
 @inline describe_stale_security_groups(aws::AWSConfig=default_aws_config(); args...) = describe_stale_security_groups(aws, args)
 
 @inline describe_stale_security_groups(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeStaleSecurityGroups", args)
@@ -10745,11 +12692,9 @@ One or more filters.
 
 *   `subnet-id` - The ID of the subnet.
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 
 *   `vpc-id` - The ID of the VPC for the subnet.
 ```
@@ -10813,7 +12758,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSubnets)
 """
-
 @inline describe_subnets(aws::AWSConfig=default_aws_config(); args...) = describe_subnets(aws, args)
 
 @inline describe_subnets(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeSubnets", args)
@@ -10849,7 +12793,7 @@ One or more filters.
 
 *   `resource-id` - The resource ID.
 
-*   `resource-type` - The resource type (`customer-gateway` | `dhcp-options` | `image` | `instance` | `internet-gateway` | `network-acl` | `network-interface` | `reserved-instances` | `route-table` | `security-group` | `snapshot` | `spot-instances-request` | `subnet` | `volume` | `vpc` | `vpn-connection` | `vpn-gateway`).
+*   `resource-type` - The resource type (`customer-gateway` | `dhcp-options` | `elastic-ip` | `fleet` | `fpga-image` | `image` | `instance` | `internet-gateway` | `launch-template` | `natgateway` | `network-acl` | `network-interface` | `reserved-instances` | `route-table` | `security-group` | `snapshot` | `spot-instances-request` | `subnet` | `volume` | `vpc` | `vpc-peering-connection` | `vpn-connection` | `vpn-gateway`).
 
 *   `value` - The tag value.
 ```
@@ -10913,7 +12857,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTags)
 """
-
 @inline describe_tags(aws::AWSConfig=default_aws_config(); args...) = describe_tags(aws, args)
 
 @inline describe_tags(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeTags", args)
@@ -10980,7 +12923,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumeAttribute)
 """
-
 @inline describe_volume_attribute(aws::AWSConfig=default_aws_config(); args...) = describe_volume_attribute(aws, args)
 
 @inline describe_volume_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeVolumeAttribute", args)
@@ -11003,14 +12945,13 @@ Describes the status of the specified volumes. Volume status provides the result
 
 The `DescribeVolumeStatus` operation provides the following information about the specified volumes:
 
-*Status*: Reflects the current status of the volume. The possible values are `ok`, `impaired` , `warning`, or `insufficient-data`. If all checks pass, the overall status of the volume is `ok`. If the check fails, the overall status is `impaired`. If the status is `insufficient-data`, then the checks may still be taking place on your volume at the time. We recommend that you retry the request. For more information on volume status, see [Monitoring the Status of Your Volumes](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html).
+*Status*: Reflects the current status of the volume. The possible values are `ok`, `impaired` , `warning`, or `insufficient-data`. If all checks pass, the overall status of the volume is `ok`. If the check fails, the overall status is `impaired`. If the status is `insufficient-data`, then the checks may still be taking place on your volume at the time. We recommend that you retry the request. For more information about volume status, see [Monitoring the Status of Your Volumes](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 *Events*: Reflect the cause of a volume status and may require you to take action. For example, if your volume returns an `impaired` status, then the volume event might be `potential-data-inconsistency`. This means that your volume has been affected by an issue with the underlying host, has all I/O operations disabled, and may have inconsistent data.
 
 *Actions*: Reflect the actions you may have to take in response to an event. For example, if the status of the volume is `impaired` and the volume event shows `potential-data-inconsistency`, then the action shows `enable-volume-io`. This means that you may want to enable the I/O operations for the volume by calling the [EnableVolumeIO](@ref) action and then check the volume for data consistency.
 
-**Note**
-> Volume status is based on the volume status checks, and does not reflect the volume state. Therefore, volume status does not indicate volumes in the `error` state (for example, when a volume is incapable of accepting I/O.)
+Volume status is based on the volume status checks, and does not reflect the volume state. Therefore, volume status does not indicate volumes in the `error` state (for example, when a volume is incapable of accepting I/O.)
 
 # Arguments
 
@@ -11144,7 +13085,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumeStatus)
 """
-
 @inline describe_volume_status(aws::AWSConfig=default_aws_config(); args...) = describe_volume_status(aws, args)
 
 @inline describe_volume_status(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeVolumeStatus", args)
@@ -11182,7 +13122,7 @@ One or more filters.
 
 *   `attachment.instance-id` - The ID of the instance the volume is attached to.
 
-*   `attachment.status` - The attachment state (`attaching` | `attached` | `detaching` | `detached`).
+*   `attachment.status` - The attachment state (`attaching` | `attached` | `detaching`).
 
 *   `availability-zone` - The Availability Zone in which the volume was created.
 
@@ -11196,11 +13136,9 @@ One or more filters.
 
 *   `status` - The status of the volume (`creating` | `available` | `in-use` | `deleting` | `deleted` | `error`).
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 
 *   `volume-id` - The volume ID.
 
@@ -11326,7 +13264,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumes)
 """
-
 @inline describe_volumes(aws::AWSConfig=default_aws_config(); args...) = describe_volumes(aws, args)
 
 @inline describe_volumes(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeVolumes", args)
@@ -11349,7 +13286,7 @@ Reports the current modification status of EBS volumes.
 
 Current-generation EBS volumes support modification of attributes including type, size, and (for `io1` volumes) IOPS provisioning while either attached to or detached from an instance. Following an action from the API or the console to modify a volume, the status of the modification may be `modifying`, `optimizing`, `completed`, or `failed`. If a volume has never been modified, then certain elements of the returned `VolumeModification` objects are null.
 
-You can also use CloudWatch Events to check the status of a modification to an EBS volume. For information about CloudWatch Events, see the [Amazon CloudWatch Events User Guide](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/). For more information, see [Monitoring Volume Modifications"](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods).
+You can also use CloudWatch Events to check the status of a modification to an EBS volume. For information about CloudWatch Events, see the [Amazon CloudWatch Events User Guide](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/). For more information, see [Monitoring Volume Modifications"](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods) in the *Amazon Elastic Compute Cloud User Guide*.
 
 # Arguments
 
@@ -11386,7 +13323,6 @@ The maximum number of results (up to a limit of 500) to be returned in a paginat
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumesModifications)
 """
-
 @inline describe_volumes_modifications(aws::AWSConfig=default_aws_config(); args...) = describe_volumes_modifications(aws, args)
 
 @inline describe_volumes_modifications(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeVolumesModifications", args)
@@ -11473,7 +13409,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcAttribute)
 """
-
 @inline describe_vpc_attribute(aws::AWSConfig=default_aws_config(); args...) = describe_vpc_attribute(aws, args)
 
 @inline describe_vpc_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeVpcAttribute", args)
@@ -11501,11 +13436,9 @@ One or more filters.
 
 *   `is-classic-link-enabled` - Whether the VPC is enabled for ClassicLink (`true` | `false`).
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 ```
  Filter = [[
         "Name" =>  ::String,
@@ -11529,7 +13462,6 @@ One or more VPCs for which you want to describe the ClassicLink status.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcClassicLink)
 """
-
 @inline describe_vpc_classic_link(aws::AWSConfig=default_aws_config(); args...) = describe_vpc_classic_link(aws, args)
 
 @inline describe_vpc_classic_link(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeVpcClassicLink", args)
@@ -11572,12 +13504,257 @@ One or more VPC IDs.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcClassicLinkDnsSupport)
 """
-
 @inline describe_vpc_classic_link_dns_support(aws::AWSConfig=default_aws_config(); args...) = describe_vpc_classic_link_dns_support(aws, args)
 
 @inline describe_vpc_classic_link_dns_support(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeVpcClassicLinkDnsSupport", args)
 
 @inline describe_vpc_classic_link_dns_support(args) = describe_vpc_classic_link_dns_support(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.describe_vpc_endpoint_connection_notifications
+    describe_vpc_endpoint_connection_notifications([::AWSConfig], arguments::Dict)
+    describe_vpc_endpoint_connection_notifications([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DescribeVpcEndpointConnectionNotifications", arguments::Dict)
+    ec2([::AWSConfig], "DescribeVpcEndpointConnectionNotifications", <keyword arguments>)
+
+# DescribeVpcEndpointConnectionNotifications Operation
+
+Describes the connection notifications for VPC endpoints and VPC endpoint services.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `ConnectionNotificationId = ::String`
+The ID of the notification.
+
+
+## `Filter = [[ ... ], ...]`
+One or more filters.
+
+*   `connection-notification-arn` - The ARN of SNS topic for the notification.
+
+*   `connection-notification-id` - The ID of the notification.
+
+*   `connection-notification-state` - The state of the notification (`Enabled` | `Disabled`).
+
+*   `connection-notification-type` - The type of notification (`Topic`).
+
+*   `service-id` - The ID of the endpoint service.
+
+*   `vpc-endpoint-id` - The ID of the VPC endpoint.
+```
+ Filter = [[
+        "Name" =>  ::String,
+        "Value" =>  [::String, ...]
+    ], ...]
+```
+
+## `MaxResults = ::Int`
+The maximum number of results to return in a single call. To retrieve the remaining results, make another request with the returned `NextToken` value.
+
+
+## `NextToken = ::String`
+The token to request the next page of results.
+
+
+
+
+# Returns
+
+`DescribeVpcEndpointConnectionNotificationsResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpointConnectionNotifications)
+"""
+@inline describe_vpc_endpoint_connection_notifications(aws::AWSConfig=default_aws_config(); args...) = describe_vpc_endpoint_connection_notifications(aws, args)
+
+@inline describe_vpc_endpoint_connection_notifications(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeVpcEndpointConnectionNotifications", args)
+
+@inline describe_vpc_endpoint_connection_notifications(args) = describe_vpc_endpoint_connection_notifications(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.describe_vpc_endpoint_connections
+    describe_vpc_endpoint_connections([::AWSConfig], arguments::Dict)
+    describe_vpc_endpoint_connections([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DescribeVpcEndpointConnections", arguments::Dict)
+    ec2([::AWSConfig], "DescribeVpcEndpointConnections", <keyword arguments>)
+
+# DescribeVpcEndpointConnections Operation
+
+Describes the VPC endpoint connections to your VPC endpoint services, including any endpoints that are pending your acceptance.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `Filter = [[ ... ], ...]`
+One or more filters.
+
+*   `service-id` - The ID of the service.
+
+*   `vpc-endpoint-owner` - The AWS account number of the owner of the endpoint.
+
+*   `vpc-endpoint-state` - The state of the endpoint (`pendingAcceptance` | `pending` | `available` | `deleting` | `deleted` | `rejected` | `failed`).
+
+*   `vpc-endpoint-id` - The ID of the endpoint.
+```
+ Filter = [[
+        "Name" =>  ::String,
+        "Value" =>  [::String, ...]
+    ], ...]
+```
+
+## `MaxResults = ::Int`
+The maximum number of results to return for the request in a single page. The remaining results of the initial request can be seen by sending another request with the returned `NextToken` value. This value can be between 5 and 1000; if `MaxResults` is given a value larger than 1000, only 1000 results are returned.
+
+
+## `NextToken = ::String`
+The token to retrieve the next page of results.
+
+
+
+
+# Returns
+
+`DescribeVpcEndpointConnectionsResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpointConnections)
+"""
+@inline describe_vpc_endpoint_connections(aws::AWSConfig=default_aws_config(); args...) = describe_vpc_endpoint_connections(aws, args)
+
+@inline describe_vpc_endpoint_connections(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeVpcEndpointConnections", args)
+
+@inline describe_vpc_endpoint_connections(args) = describe_vpc_endpoint_connections(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.describe_vpc_endpoint_service_configurations
+    describe_vpc_endpoint_service_configurations([::AWSConfig], arguments::Dict)
+    describe_vpc_endpoint_service_configurations([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DescribeVpcEndpointServiceConfigurations", arguments::Dict)
+    ec2([::AWSConfig], "DescribeVpcEndpointServiceConfigurations", <keyword arguments>)
+
+# DescribeVpcEndpointServiceConfigurations Operation
+
+Describes the VPC endpoint service configurations in your account (your services).
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `ServiceId = [::String, ...]`
+The IDs of one or more services.
+
+
+## `Filter = [[ ... ], ...]`
+One or more filters.
+
+*   `service-name` - The name of the service.
+
+*   `service-id` - The ID of the service.
+
+*   `service-state` - The state of the service (`Pending` | `Available` | `Deleting` | `Deleted` | `Failed`).
+```
+ Filter = [[
+        "Name" =>  ::String,
+        "Value" =>  [::String, ...]
+    ], ...]
+```
+
+## `MaxResults = ::Int`
+The maximum number of results to return for the request in a single page. The remaining results of the initial request can be seen by sending another request with the returned `NextToken` value. This value can be between 5 and 1000; if `MaxResults` is given a value larger than 1000, only 1000 results are returned.
+
+
+## `NextToken = ::String`
+The token to retrieve the next page of results.
+
+
+
+
+# Returns
+
+`DescribeVpcEndpointServiceConfigurationsResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpointServiceConfigurations)
+"""
+@inline describe_vpc_endpoint_service_configurations(aws::AWSConfig=default_aws_config(); args...) = describe_vpc_endpoint_service_configurations(aws, args)
+
+@inline describe_vpc_endpoint_service_configurations(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeVpcEndpointServiceConfigurations", args)
+
+@inline describe_vpc_endpoint_service_configurations(args) = describe_vpc_endpoint_service_configurations(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.describe_vpc_endpoint_service_permissions
+    describe_vpc_endpoint_service_permissions([::AWSConfig], arguments::Dict)
+    describe_vpc_endpoint_service_permissions([::AWSConfig]; ServiceId=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "DescribeVpcEndpointServicePermissions", arguments::Dict)
+    ec2([::AWSConfig], "DescribeVpcEndpointServicePermissions", ServiceId=, <keyword arguments>)
+
+# DescribeVpcEndpointServicePermissions Operation
+
+Describes the principals (service consumers) that are permitted to discover your VPC endpoint service.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `ServiceId = ::String` -- *Required*
+The ID of the service.
+
+
+## `Filter = [[ ... ], ...]`
+One or more filters.
+
+*   `principal` - The ARN of the principal.
+
+*   `principal-type` - The principal type (`All` | `Service` | `OrganizationUnit` | `Account` | `User` | `Role`).
+```
+ Filter = [[
+        "Name" =>  ::String,
+        "Value" =>  [::String, ...]
+    ], ...]
+```
+
+## `MaxResults = ::Int`
+The maximum number of results to return for the request in a single page. The remaining results of the initial request can be seen by sending another request with the returned `NextToken` value. This value can be between 5 and 1000; if `MaxResults` is given a value larger than 1000, only 1000 results are returned.
+
+
+## `NextToken = ::String`
+The token to retrieve the next page of results.
+
+
+
+
+# Returns
+
+`DescribeVpcEndpointServicePermissionsResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpointServicePermissions)
+"""
+@inline describe_vpc_endpoint_service_permissions(aws::AWSConfig=default_aws_config(); args...) = describe_vpc_endpoint_service_permissions(aws, args)
+
+@inline describe_vpc_endpoint_service_permissions(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeVpcEndpointServicePermissions", args)
+
+@inline describe_vpc_endpoint_service_permissions(args) = describe_vpc_endpoint_service_permissions(default_aws_config(), args)
 
 
 """
@@ -11591,7 +13768,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # DescribeVpcEndpointServices Operation
 
-Describes all supported AWS services that can be specified when creating a VPC endpoint.
+Describes available services to which you can create a VPC endpoint.
 
 # Arguments
 
@@ -11632,7 +13809,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpointServices)
 """
-
 @inline describe_vpc_endpoint_services(aws::AWSConfig=default_aws_config(); args...) = describe_vpc_endpoint_services(aws, args)
 
 @inline describe_vpc_endpoint_services(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeVpcEndpointServices", args)
@@ -11666,7 +13842,7 @@ One or more endpoint IDs.
 ## `Filter = [[ ... ], ...]`
 One or more filters.
 
-*   `service-name`: The name of the AWS service.
+*   `service-name`: The name of the service.
 
 *   `vpc-id`: The ID of the VPC in which the endpoint resides.
 
@@ -11698,7 +13874,6 @@ The token for the next set of items to return. (You received this token from a p
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpoints)
 """
-
 @inline describe_vpc_endpoints(aws::AWSConfig=default_aws_config(); args...) = describe_vpc_endpoints(aws, args)
 
 @inline describe_vpc_endpoints(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeVpcEndpoints", args)
@@ -11724,11 +13899,11 @@ Describes one or more of your VPC peering connections.
 ## `Filter = [[ ... ], ...]`
 One or more filters.
 
-*   `accepter-vpc-info.cidr-block` - The IPv4 CIDR block of the peer VPC.
+*   `accepter-vpc-info.cidr-block` - The IPv4 CIDR block of the accepter VPC.
 
-*   `accepter-vpc-info.owner-id` - The AWS account ID of the owner of the peer VPC.
+*   `accepter-vpc-info.owner-id` - The AWS account ID of the owner of the accepter VPC.
 
-*   `accepter-vpc-info.vpc-id` - The ID of the peer VPC.
+*   `accepter-vpc-info.vpc-id` - The ID of the accepter VPC.
 
 *   `expiration-time` - The expiration date and time for the VPC peering connection.
 
@@ -11738,15 +13913,13 @@ One or more filters.
 
 *   `requester-vpc-info.vpc-id` - The ID of the requester VPC.
 
-*   `status-code` - The status of the VPC peering connection (`pending-acceptance` | `failed` | `expired` | `provisioning` | `active` | `deleted` | `rejected`).
+*   `status-code` - The status of the VPC peering connection (`pending-acceptance` | `failed` | `expired` | `provisioning` | `active` | `deleting` | `deleted` | `rejected`).
 
 *   `status-message` - A message that provides more information about the status of the VPC peering connection, if applicable.
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 
 *   `vpc-peering-connection-id` - The ID of the VPC peering connection.
 ```
@@ -11774,7 +13947,6 @@ Default: Describes all your VPC peering connections.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcPeeringConnections)
 """
-
 @inline describe_vpc_peering_connections(aws::AWSConfig=default_aws_config(); args...) = describe_vpc_peering_connections(aws, args)
 
 @inline describe_vpc_peering_connections(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeVpcPeeringConnections", args)
@@ -11820,11 +13992,9 @@ One or more filters.
 
 *   `state` - The state of the VPC (`pending` | `available`).
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 
 *   `vpc-id` - The ID of the VPC.
 ```
@@ -11887,7 +14057,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcs)
 """
-
 @inline describe_vpcs(aws::AWSConfig=default_aws_config(); args...) = describe_vpcs(aws, args)
 
 @inline describe_vpcs(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeVpcs", args)
@@ -11927,11 +14096,9 @@ One or more filters.
 
 *   `bgp-asn` - The BGP Autonomous System Number (ASN) associated with a BGP device.
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 
 *   `type` - The type of VPN connection. Currently the only supported type is `ipsec.1`.
 
@@ -11963,7 +14130,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpnConnections)
 """
-
 @inline describe_vpn_connections(aws::AWSConfig=default_aws_config(); args...) = describe_vpn_connections(aws, args)
 
 @inline describe_vpn_connections(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeVpnConnections", args)
@@ -12001,11 +14167,9 @@ One or more filters.
 
 *   `state` - The state of the virtual private gateway (`pending` | `available` | `deleting` | `deleted`).
 
-*   `tag`:*key*=*value* - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify `tag:Purpose` for the filter name and `X` for the filter value.
+*   `tag`:<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key `Owner` and the value `TeamA`, specify `tag:Owner` for the filter name and `TeamA` for the filter value.
 
-*   `tag-key` - The key of a tag assigned to the resource. This filter is independent of the `tag-value` filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the `tag`:*key*=*value* filter.
-
-*   `tag-value` - The value of a tag assigned to the resource. This filter is independent of the `tag-key` filter.
+*   `tag-key` - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 
 *   `type` - The type of virtual private gateway. Currently the only supported type is `ipsec.1`.
 
@@ -12035,7 +14199,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpnGateways)
 """
-
 @inline describe_vpn_gateways(aws::AWSConfig=default_aws_config(); args...) = describe_vpn_gateways(aws, args)
 
 @inline describe_vpn_gateways(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DescribeVpnGateways", args)
@@ -12078,7 +14241,6 @@ The ID of the VPC to which the instance is linked.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachClassicLinkVpc)
 """
-
 @inline detach_classic_link_vpc(aws::AWSConfig=default_aws_config(); args...) = detach_classic_link_vpc(aws, args)
 
 @inline detach_classic_link_vpc(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DetachClassicLinkVpc", args)
@@ -12129,7 +14291,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachInternetGateway)
 """
-
 @inline detach_internet_gateway(aws::AWSConfig=default_aws_config(); args...) = detach_internet_gateway(aws, args)
 
 @inline detach_internet_gateway(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DetachInternetGateway", args)
@@ -12179,7 +14340,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachNetworkInterface)
 """
-
 @inline detach_network_interface(aws::AWSConfig=default_aws_config(); args...) = detach_network_interface(aws, args)
 
 @inline detach_network_interface(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DetachNetworkInterface", args)
@@ -12256,7 +14416,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachVolume)
 """
-
 @inline detach_volume(aws::AWSConfig=default_aws_config(); args...) = detach_volume(aws, args)
 
 @inline detach_volume(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DetachVolume", args)
@@ -12297,7 +14456,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachVpnGateway)
 """
-
 @inline detach_vpn_gateway(aws::AWSConfig=default_aws_config(); args...) = detach_vpn_gateway(aws, args)
 
 @inline detach_vpn_gateway(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DetachVpnGateway", args)
@@ -12344,7 +14502,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableVgwRoutePropagation)
 """
-
 @inline disable_vgw_route_propagation(aws::AWSConfig=default_aws_config(); args...) = disable_vgw_route_propagation(aws, args)
 
 @inline disable_vgw_route_propagation(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DisableVgwRoutePropagation", args)
@@ -12383,7 +14540,6 @@ The ID of the VPC.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableVpcClassicLink)
 """
-
 @inline disable_vpc_classic_link(aws::AWSConfig=default_aws_config(); args...) = disable_vpc_classic_link(aws, args)
 
 @inline disable_vpc_classic_link(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DisableVpcClassicLink", args)
@@ -12418,7 +14574,6 @@ The ID of the VPC.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableVpcClassicLinkDnsSupport)
 """
-
 @inline disable_vpc_classic_link_dns_support(aws::AWSConfig=default_aws_config(); args...) = disable_vpc_classic_link_dns_support(aws, args)
 
 @inline disable_vpc_classic_link_dns_support(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DisableVpcClassicLinkDnsSupport", args)
@@ -12483,7 +14638,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateAddress)
 """
-
 @inline disassociate_address(aws::AWSConfig=default_aws_config(); args...) = disassociate_address(aws, args)
 
 @inline disassociate_address(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DisassociateAddress", args)
@@ -12518,9 +14672,34 @@ The ID of the IAM instance profile association.
 
 `DisassociateIamInstanceProfileResult`
 
+# Example: To disassociate an IAM instance profile
+
+This example disassociates the specified IAM instance profile from an instance.
+
+Input:
+```
+[
+    "AssociationId" => "iip-assoc-05020b59952902f5f"
+]
+```
+
+Output:
+```
+Dict(
+    "IamInstanceProfileAssociation" => Dict(
+        "AssociationId" => "iip-assoc-05020b59952902f5f",
+        "IamInstanceProfile" => Dict(
+            "Arn" => "arn:aws:iam::123456789012:instance-profile/admin-role",
+            "Id" => "AIPAI5IVIHMFFYY2DKV5Y"
+        ),
+        "InstanceId" => "i-123456789abcde123",
+        "State" => "disassociating"
+    )
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateIamInstanceProfile)
 """
-
 @inline disassociate_iam_instance_profile(aws::AWSConfig=default_aws_config(); args...) = disassociate_iam_instance_profile(aws, args)
 
 @inline disassociate_iam_instance_profile(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DisassociateIamInstanceProfile", args)
@@ -12568,7 +14747,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateRouteTable)
 """
-
 @inline disassociate_route_table(aws::AWSConfig=default_aws_config(); args...) = disassociate_route_table(aws, args)
 
 @inline disassociate_route_table(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DisassociateRouteTable", args)
@@ -12603,7 +14781,6 @@ The association ID for the CIDR block.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateSubnetCidrBlock)
 """
-
 @inline disassociate_subnet_cidr_block(aws::AWSConfig=default_aws_config(); args...) = disassociate_subnet_cidr_block(aws, args)
 
 @inline disassociate_subnet_cidr_block(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DisassociateSubnetCidrBlock", args)
@@ -12640,7 +14817,6 @@ The association ID for the CIDR block.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateVpcCidrBlock)
 """
-
 @inline disassociate_vpc_cidr_block(aws::AWSConfig=default_aws_config(); args...) = disassociate_vpc_cidr_block(aws, args)
 
 @inline disassociate_vpc_cidr_block(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "DisassociateVpcCidrBlock", args)
@@ -12687,7 +14863,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVgwRoutePropagation)
 """
-
 @inline enable_vgw_route_propagation(aws::AWSConfig=default_aws_config(); args...) = enable_vgw_route_propagation(aws, args)
 
 @inline enable_vgw_route_propagation(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "EnableVgwRoutePropagation", args)
@@ -12733,7 +14908,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVolumeIO)
 """
-
 @inline enable_volume_io(aws::AWSConfig=default_aws_config(); args...) = enable_volume_io(aws, args)
 
 @inline enable_volume_io(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "EnableVolumeIO", args)
@@ -12772,7 +14946,6 @@ The ID of the VPC.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVpcClassicLink)
 """
-
 @inline enable_vpc_classic_link(aws::AWSConfig=default_aws_config(); args...) = enable_vpc_classic_link(aws, args)
 
 @inline enable_vpc_classic_link(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "EnableVpcClassicLink", args)
@@ -12807,7 +14980,6 @@ The ID of the VPC.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVpcClassicLinkDnsSupport)
 """
-
 @inline enable_vpc_classic_link_dns_support(aws::AWSConfig=default_aws_config(); args...) = enable_vpc_classic_link_dns_support(aws, args)
 
 @inline enable_vpc_classic_link_dns_support(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "EnableVpcClassicLinkDnsSupport", args)
@@ -12826,15 +14998,13 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # GetConsoleOutput Operation
 
-Gets the console output for the specified instance.
+Gets the console output for the specified instance. For Linux instances, the instance console output displays the exact console output that would normally be displayed on a physical monitor attached to a computer. For Windows instances, the instance console output includes output from the EC2Config service.
 
-Instances do not have a physical monitor through which you can view their console output. They also lack physical controls that allow you to power up, reboot, or shut them down. To allow these actions, we provide them through the Amazon EC2 API and command line interface.
+[GetConsoleOutput](@ref) returns up to 64 KB of console output shortly after it's generated by the instance.
 
-Instance console output is buffered and posted shortly after instance boot, reboot, and termination. Amazon EC2 preserves the most recent 64 KB output, which is available for at least one hour after the most recent post.
+By default, the console output returns buffered information that was posted shortly after an instance transition state (start, stop, reboot, or terminate). This information is available for at least one hour after the most recent post.
 
-For Linux instances, the instance console output displays the exact console output that would normally be displayed on a physical monitor attached to a computer. This output is buffered because the instance produces it and then posts it to a store where the instance's owner can retrieve it.
-
-For Windows instances, the instance console output includes output from the EC2Config service.
+You can optionally retrieve the latest serial console output at any time during the instance lifecycle. This option is only supported on C5, M5, and `i3.metal` instances.
 
 # Arguments
 
@@ -12846,15 +15016,40 @@ The ID of the instance.
 Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
 
 
+## `Latest = ::Bool`
+When enabled, retrieves the latest console output for the instance.
+
+Default: disabled (`false`)
+
+
 
 
 # Returns
 
 `GetConsoleOutputResult`
 
+# Example: To get the console output
+
+This example gets the console output for the specified instance.
+
+Input:
+```
+[
+    "InstanceId" => "i-1234567890abcdef0"
+]
+```
+
+Output:
+```
+Dict(
+    "InstanceId" => "i-1234567890abcdef0",
+    "Output" => "...",
+    "Timestamp" => "2018-05-25T21:23:53.000Z"
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetConsoleOutput)
 """
-
 @inline get_console_output(aws::AWSConfig=default_aws_config(); args...) = get_console_output(aws, args)
 
 @inline get_console_output(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "GetConsoleOutput", args)
@@ -12899,7 +15094,6 @@ When set to `true`, acts as keystroke input and wakes up an instance that's in s
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetConsoleScreenshot)
 """
-
 @inline get_console_screenshot(aws::AWSConfig=default_aws_config(); args...) = get_console_screenshot(aws, args)
 
 @inline get_console_screenshot(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "GetConsoleScreenshot", args)
@@ -12925,7 +15119,7 @@ This is a preview of the [PurchaseHostReservation](@ref) action and does not res
 # Arguments
 
 ## `HostIdSet = [::String, ...]` -- *Required*
-The ID/s of the Dedicated Host/s that the reservation will be associated with.
+The IDs of the Dedicated Hosts with which the reservation is associated.
 
 
 ## `OfferingId = ::String` -- *Required*
@@ -12940,12 +15134,116 @@ The offering ID of the reservation.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetHostReservationPurchasePreview)
 """
-
 @inline get_host_reservation_purchase_preview(aws::AWSConfig=default_aws_config(); args...) = get_host_reservation_purchase_preview(aws, args)
 
 @inline get_host_reservation_purchase_preview(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "GetHostReservationPurchasePreview", args)
 
 @inline get_host_reservation_purchase_preview(args) = get_host_reservation_purchase_preview(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.get_launch_template_data
+    get_launch_template_data([::AWSConfig], arguments::Dict)
+    get_launch_template_data([::AWSConfig]; InstanceId=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "GetLaunchTemplateData", arguments::Dict)
+    ec2([::AWSConfig], "GetLaunchTemplateData", InstanceId=, <keyword arguments>)
+
+# GetLaunchTemplateData Operation
+
+Retrieves the configuration data of the specified instance. You can use this data to create a launch template.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `InstanceId = ::String` -- *Required*
+The ID of the instance.
+
+
+
+
+# Returns
+
+`GetLaunchTemplateDataResult`
+
+# Example: To get the launch template data for an instance 
+
+This example gets the launch template data for the specified instance.
+
+Input:
+```
+[
+    "InstanceId" => "0123d646e8048babc"
+]
+```
+
+Output:
+```
+Dict(
+    "LaunchTemplateData" => Dict(
+        "BlockDeviceMappings" => [
+            Dict(
+                "DeviceName" => "/dev/xvda",
+                "Ebs" => Dict(
+                    "DeleteOnTermination" => true,
+                    "Encrypted" => false,
+                    "Iops" => 100,
+                    "SnapshotId" => "snap-02594938353ef77d3",
+                    "VolumeSize" => 8,
+                    "VolumeType" => "gp2"
+                )
+            )
+        ],
+        "EbsOptimized" => false,
+        "ImageId" => "ami-32cf7b4a",
+        "InstanceType" => "t2.medium",
+        "KeyName" => "my-key-pair",
+        "Monitoring" => Dict(
+            "Enabled" => false
+        ),
+        "NetworkInterfaces" => [
+            Dict(
+                "AssociatePublicIpAddress" => false,
+                "DeleteOnTermination" => true,
+                "Description" => "",
+                "DeviceIndex" => 0,
+                "Groups" => [
+                    "sg-d14e1bb4"
+                ],
+                "Ipv6Addresses" => [
+
+                ],
+                "NetworkInterfaceId" => "eni-4338b5a9",
+                "PrivateIpAddress" => "10.0.3.233",
+                "PrivateIpAddresses" => [
+                    Dict(
+                        "Primary" => true,
+                        "PrivateIpAddress" => "10.0.3.233"
+                    )
+                ],
+                "SubnetId" => "subnet-5264e837"
+            )
+        ],
+        "Placement" => Dict(
+            "AvailabilityZone" => "us-east-2b",
+            "GroupName" => "",
+            "Tenancy" => "default"
+        )
+    )
+)
+```
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetLaunchTemplateData)
+"""
+@inline get_launch_template_data(aws::AWSConfig=default_aws_config(); args...) = get_launch_template_data(aws, args)
+
+@inline get_launch_template_data(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "GetLaunchTemplateData", args)
+
+@inline get_launch_template_data(args) = get_launch_template_data(default_aws_config(), args)
 
 
 """
@@ -12987,7 +15285,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetPasswordData)
 """
-
 @inline get_password_data(aws::AWSConfig=default_aws_config(); args...) = get_password_data(aws, args)
 
 @inline get_password_data(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "GetPasswordData", args)
@@ -13035,7 +15332,6 @@ The configuration of the target Convertible Reserved Instance to exchange for yo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetReservedInstancesExchangeQuote)
 """
-
 @inline get_reserved_instances_exchange_quote(aws::AWSConfig=default_aws_config(); args...) = get_reserved_instances_exchange_quote(aws, args)
 
 @inline get_reserved_instances_exchange_quote(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "GetReservedInstancesExchangeQuote", args)
@@ -13135,7 +15431,6 @@ The name of the role to use when not using the default role, 'vmimport'.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportImage)
 """
-
 @inline import_image(aws::AWSConfig=default_aws_config(); args...) = import_image(aws, args)
 
 @inline import_image(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ImportImage", args)
@@ -13191,7 +15486,7 @@ The launch specification.
         "GroupId" =>  [::String, ...],
         "GroupName" =>  [::String, ...],
         "InstanceInitiatedShutdownBehavior" =>  "stop" or "terminate",
-        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
+        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "r5.large", "r5.xlarge", "r5.2xlarge", "r5.4xlarge", "r5.8xlarge", "r5.12xlarge", "r5.16xlarge", "r5.24xlarge", "r5.metal", "r5d.large", "r5d.xlarge", "r5d.2xlarge", "r5d.4xlarge", "r5d.8xlarge", "r5d.12xlarge", "r5d.16xlarge", "r5d.24xlarge", "r5d.metal", "x1.16xlarge", "x1.32xlarge", "x1e.xlarge", "x1e.2xlarge", "x1e.4xlarge", "x1e.8xlarge", "x1e.16xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "i3.metal", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "c5d.large", "c5d.xlarge", "c5d.2xlarge", "c5d.4xlarge", "c5d.9xlarge", "c5d.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge", "f1.16xlarge", "m5.large", "m5.xlarge", "m5.2xlarge", "m5.4xlarge", "m5.12xlarge", "m5.24xlarge", "m5d.large", "m5d.xlarge", "m5d.2xlarge", "m5d.4xlarge", "m5d.12xlarge", "m5d.24xlarge", "h1.2xlarge", "h1.4xlarge", "h1.8xlarge", "h1.16xlarge", "z1d.large", "z1d.xlarge", "z1d.2xlarge", "z1d.3xlarge", "z1d.6xlarge" or "z1d.12xlarge",
         "Monitoring" =>  ::Bool,
         "Placement" =>  [
             "AvailabilityZone" =>  ::String,
@@ -13219,7 +15514,6 @@ The instance operating system.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportInstance)
 """
-
 @inline import_instance(aws::AWSConfig=default_aws_config(); args...) = import_instance(aws, args)
 
 @inline import_instance(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ImportInstance", args)
@@ -13264,7 +15558,6 @@ The public key. For API calls, the text must be base64-encoded. For command line
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportKeyPair)
 """
-
 @inline import_key_pair(aws::AWSConfig=default_aws_config(); args...) = import_key_pair(aws, args)
 
 @inline import_key_pair(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ImportKeyPair", args)
@@ -13336,7 +15629,6 @@ The name of the role to use when not using the default role, 'vmimport'.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportSnapshot)
 """
-
 @inline import_snapshot(aws::AWSConfig=default_aws_config(); args...) = import_snapshot(aws, args)
 
 @inline import_snapshot(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ImportSnapshot", args)
@@ -13395,12 +15687,66 @@ The volume size.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportVolume)
 """
-
 @inline import_volume(aws::AWSConfig=default_aws_config(); args...) = import_volume(aws, args)
 
 @inline import_volume(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ImportVolume", args)
 
 @inline import_volume(args) = import_volume(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.modify_fleet
+    modify_fleet([::AWSConfig], arguments::Dict)
+    modify_fleet([::AWSConfig]; FleetId=, TargetCapacitySpecification=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "ModifyFleet", arguments::Dict)
+    ec2([::AWSConfig], "ModifyFleet", FleetId=, TargetCapacitySpecification=, <keyword arguments>)
+
+# ModifyFleet Operation
+
+Modifies the specified EC2 Fleet.
+
+While the EC2 Fleet is being modified, it is in the `modifying` state.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `ExcessCapacityTerminationPolicy = "no-termination" or "termination"`
+Indicates whether running instances should be terminated if the total target capacity of the EC2 Fleet is decreased below the current size of the EC2 Fleet.
+
+
+## `FleetId = ::String` -- *Required*
+The ID of the EC2 Fleet.
+
+
+## `TargetCapacitySpecification = [ ... ]` -- *Required*
+The size of the EC2 Fleet.
+```
+ TargetCapacitySpecification = [
+        "TotalTargetCapacity" => <required> ::Int,
+        "OnDemandTargetCapacity" =>  ::Int,
+        "SpotTargetCapacity" =>  ::Int,
+        "DefaultTargetCapacityType" =>  "spot" or "on-demand"
+    ]
+```
+
+
+
+# Returns
+
+`ModifyFleetResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyFleet)
+"""
+@inline modify_fleet(aws::AWSConfig=default_aws_config(); args...) = modify_fleet(aws, args)
+
+@inline modify_fleet(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyFleet", args)
+
+@inline modify_fleet(args) = modify_fleet(default_aws_config(), args)
 
 
 """
@@ -13477,7 +15823,6 @@ A name for the AFI.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyFpgaImageAttribute)
 """
-
 @inline modify_fpga_image_attribute(aws::AWSConfig=default_aws_config(); args...) = modify_fpga_image_attribute(aws, args)
 
 @inline modify_fpga_image_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyFpgaImageAttribute", args)
@@ -13496,7 +15841,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # ModifyHosts Operation
 
-Modify the auto-placement setting of a Dedicated Host. When auto-placement is enabled, AWS will place instances that you launch with a tenancy of `host`, but without targeting a specific host ID, onto any available Dedicated Host in your account which has auto-placement enabled. When auto-placement is disabled, you need to provide a host ID if you want the instance to launch onto a specific host. If no host ID is provided, the instance will be launched onto a suitable host which has auto-placement enabled.
+Modify the auto-placement setting of a Dedicated Host. When auto-placement is enabled, any instances that you launch with a tenancy of `host` but without a specific host ID are placed onto any available Dedicated Host in your account that has auto-placement enabled. When auto-placement is disabled, you need to provide a host ID ito have the instance launch onto a specific host. If no host ID is provided, the instance is launched onto a suitable host with auto-placement enabled.
 
 # Arguments
 
@@ -13505,7 +15850,7 @@ Specify whether to enable or disable auto-placement.
 
 
 ## `HostId = [::String, ...]` -- *Required*
-The host IDs of the Dedicated Hosts you want to modify.
+The IDs of the Dedicated Hosts to modify.
 
 
 
@@ -13516,7 +15861,6 @@ The host IDs of the Dedicated Hosts you want to modify.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyHosts)
 """
-
 @inline modify_hosts(aws::AWSConfig=default_aws_config(); args...) = modify_hosts(aws, args)
 
 @inline modify_hosts(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyHosts", args)
@@ -13535,7 +15879,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # ModifyIdFormat Operation
 
-Modifies the ID format for the specified resource on a per-region basis. You can specify that resources should receive longer IDs (17-character IDs) when they are created. The following resource types support longer IDs: `instance` | `reservation` | `snapshot` | `volume`.
+Modifies the ID format for the specified resource on a per-region basis. You can specify that resources should receive longer IDs (17-character IDs) when they are created.
+
+This request can only be used to modify longer ID settings for resource types that are within the opt-in period. Resources currently in their opt-in period include: `bundle` | `conversion-task` | `customer-gateway` | `dhcp-options` | `elastic-ip-allocation` | `elastic-ip-association` | `export-task` | `flow-log` | `image` | `import-task` | `internet-gateway` | `network-acl` | `network-acl-association` | `network-interface` | `network-interface-attachment` | `prefix-list` | `route-table` | `route-table-association` | `security-group` | `subnet` | `subnet-cidr-block-association` | `vpc` | `vpc-cidr-block-association` | `vpc-endpoint` | `vpc-peering-connection` | `vpn-connection` | `vpn-gateway`.
 
 This setting applies to the IAM user who makes the request; it does not apply to the entire AWS account. By default, an IAM user defaults to the same settings as the root user. If you're using this action as the root user, then these settings apply to the entire account, unless an IAM user explicitly overrides these settings for themselves. For more information, see [Resource IDs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
@@ -13544,7 +15890,9 @@ Resources created with longer IDs are visible to all IAM roles and users, regard
 # Arguments
 
 ## `Resource = ::String` -- *Required*
-The type of resource: `instance` | `reservation` | `snapshot` | `volume`
+The type of resource: `bundle` | `conversion-task` | `customer-gateway` | `dhcp-options` | `elastic-ip-allocation` | `elastic-ip-association` | `export-task` | `flow-log` | `image` | `import-task` | `internet-gateway` | `network-acl` | `network-acl-association` | `network-interface` | `network-interface-attachment` | `prefix-list` | `route-table` | `route-table-association` | `security-group` | `subnet` | `subnet-cidr-block-association` | `vpc` | `vpc-cidr-block-association` | `vpc-endpoint` | `vpc-peering-connection` | `vpn-connection` | `vpn-gateway`.
+
+Alternatively, use the `all-current` option to include all resource types that are currently within their opt-in period for longer IDs.
 
 
 ## `UseLongIds = ::Bool` -- *Required*
@@ -13555,7 +15903,6 @@ Indicate whether the resource should use longer IDs (17-character IDs).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyIdFormat)
 """
-
 @inline modify_id_format(aws::AWSConfig=default_aws_config(); args...) = modify_id_format(aws, args)
 
 @inline modify_id_format(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyIdFormat", args)
@@ -13576,7 +15923,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 Modifies the ID format of a resource for a specified IAM user, IAM role, or the root user for an account; or all IAM users, IAM roles, and the root user for an account. You can specify that resources should receive longer IDs (17-character IDs) when they are created.
 
-The following resource types support longer IDs: `instance` | `reservation` | `snapshot` | `volume`. For more information, see [Resource IDs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html) in the *Amazon Elastic Compute Cloud User Guide*.
+This request can only be used to modify longer ID settings for resource types that are within the opt-in period. Resources currently in their opt-in period include: `bundle` | `conversion-task` | `customer-gateway` | `dhcp-options` | `elastic-ip-allocation` | `elastic-ip-association` | `export-task` | `flow-log` | `image` | `import-task` | `internet-gateway` | `network-acl` | `network-acl-association` | `network-interface` | `network-interface-attachment` | `prefix-list` | `route-table` | `route-table-association` | `security-group` | `subnet` | `subnet-cidr-block-association` | `vpc` | `vpc-cidr-block-association` | `vpc-endpoint` | `vpc-peering-connection` | `vpn-connection` | `vpn-gateway`.
+
+For more information, see [Resource IDs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 This setting applies to the principal specified in the request; it does not apply to the principal that makes the request.
 
@@ -13589,7 +15938,9 @@ The ARN of the principal, which can be an IAM user, IAM role, or the root user. 
 
 
 ## `Resource = ::String` -- *Required*
-The type of resource: `instance` | `reservation` | `snapshot` | `volume`
+The type of resource: `bundle` | `conversion-task` | `customer-gateway` | `dhcp-options` | `elastic-ip-allocation` | `elastic-ip-association` | `export-task` | `flow-log` | `image` | `import-task` | `internet-gateway` | `network-acl` | `network-acl-association` | `network-interface` | `network-interface-attachment` | `prefix-list` | `route-table` | `route-table-association` | `security-group` | `subnet` | `subnet-cidr-block-association` | `vpc` | `vpc-cidr-block-association` | `vpc-endpoint` | `vpc-peering-connection` | `vpn-connection` | `vpn-gateway`.
+
+Alternatively, use the `all-current` option to include all resource types that are currently within their opt-in period for longer IDs.
 
 
 ## `UseLongIds = ::Bool` -- *Required*
@@ -13600,7 +15951,6 @@ Indicates whether the resource should use longer IDs (17-character IDs)
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyIdentityIdFormat)
 """
-
 @inline modify_identity_id_format(aws::AWSConfig=default_aws_config(); args...) = modify_identity_id_format(aws, args)
 
 @inline modify_identity_id_format(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyIdentityIdFormat", args)
@@ -13680,9 +16030,58 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 
+# Example: To make an AMI public
+
+This example makes the specified AMI public.
+
+Input:
+```
+[
+    "ImageId" => "ami-5731123e",
+    "LaunchPermission" => [
+        "Add" => [
+            [
+                "Group" => "all"
+            ]
+        ]
+    ]
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
+# Example: To grant launch permissions
+
+This example grants launch permissions for the specified AMI to the specified AWS account.
+
+Input:
+```
+[
+    "ImageId" => "ami-5731123e",
+    "LaunchPermission" => [
+        "Add" => [
+            [
+                "UserId" => "123456789012"
+            ]
+        ]
+    ]
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyImageAttribute)
 """
-
 @inline modify_image_attribute(aws::AWSConfig=default_aws_config(); args...) = modify_image_attribute(aws, args)
 
 @inline modify_image_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyImageAttribute", args)
@@ -13702,6 +16101,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 # ModifyInstanceAttribute Operation
 
 Modifies the specified attribute of the specified instance. You can specify only one attribute at a time.
+
+**Note:** Using this action to change the security groups associated with an elastic network interface (ENI) attached to an instance in a VPC can result in an error if the instance has more than one ENI. To change the security groups associated with an ENI attached to an instance that has multiple ENIs, we recommend that you use the [ModifyNetworkInterfaceAttribute](@ref) action.
 
 To modify some attributes, the instance must be stopped. For more information, see [Modifying Attributes of a Stopped Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
@@ -13791,14 +16192,104 @@ A new value for the attribute. Use only with the `kernel`, `ramdisk`, `userData`
 
 
 
+# Example: To modify the instance type
+
+This example modifies the instance type of the specified stopped instance.
+
+Input:
+```
+[
+    "InstanceId" => "i-1234567890abcdef0",
+    "InstanceType" => [
+        "Value" => "m5.large"
+    ]
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
+# Example: To enable enhanced networking
+
+This example enables enhanced networking for the specified stopped instance.
+
+Input:
+```
+[
+    "EnaSupport" => [
+        "Value" => true
+    ],
+    "InstanceId" => "i-1234567890abcdef0"
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstanceAttribute)
 """
-
 @inline modify_instance_attribute(aws::AWSConfig=default_aws_config(); args...) = modify_instance_attribute(aws, args)
 
 @inline modify_instance_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyInstanceAttribute", args)
 
 @inline modify_instance_attribute(args) = modify_instance_attribute(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.modify_instance_credit_specification
+    modify_instance_credit_specification([::AWSConfig], arguments::Dict)
+    modify_instance_credit_specification([::AWSConfig]; InstanceCreditSpecification=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "ModifyInstanceCreditSpecification", arguments::Dict)
+    ec2([::AWSConfig], "ModifyInstanceCreditSpecification", InstanceCreditSpecification=, <keyword arguments>)
+
+# ModifyInstanceCreditSpecification Operation
+
+Modifies the credit option for CPU usage on a running or stopped T2 instance. The credit options are `standard` and `unlimited`.
+
+For more information, see [T2 Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/t2-instances.html) in the *Amazon Elastic Compute Cloud User Guide*.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `ClientToken = ::String`
+A unique, case-sensitive token that you provide to ensure idempotency of your modification request. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+
+
+## `InstanceCreditSpecification = [[ ... ], ...]` -- *Required*
+Information about the credit option for CPU usage.
+```
+ InstanceCreditSpecification = [[
+        "InstanceId" =>  ::String,
+        "CpuCredits" =>  ::String
+    ], ...]
+```
+
+
+
+# Returns
+
+`ModifyInstanceCreditSpecificationResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstanceCreditSpecification)
+"""
+@inline modify_instance_credit_specification(aws::AWSConfig=default_aws_config(); args...) = modify_instance_credit_specification(aws, args)
+
+@inline modify_instance_credit_specification(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyInstanceCreditSpecification", args)
+
+@inline modify_instance_credit_specification(args) = modify_instance_credit_specification(default_aws_config(), args)
 
 
 """
@@ -13812,24 +16303,34 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # ModifyInstancePlacement Operation
 
-Set the instance affinity value for a specific stopped instance and modify the instance tenancy setting.
+Modifies the placement attributes for a specified instance. You can do the following:
 
-Instance affinity is disabled by default. When instance affinity is `host` and it is not associated with a specific Dedicated Host, the next time it is launched it will automatically be associated with the host it lands on. This relationship will persist if the instance is stopped/started, or rebooted.
+*   Modify the affinity between an instance and a [Dedicated Host](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html). When affinity is set to `host` and the instance is not associated with a specific Dedicated Host, the next time the instance is launched, it is automatically associated with the host on which it lands. If the instance is restarted or rebooted, this relationship persists.
 
-You can modify the host ID associated with a stopped instance. If a stopped instance has a new host ID association, the instance will target that host when restarted.
+*   Change the Dedicated Host with which an instance is associated.
 
-You can modify the tenancy of a stopped instance with a tenancy of `host` or `dedicated`.
+*   Change the instance tenancy of an instance from `host` to `dedicated`, or from `dedicated` to `host`.
 
-Affinity, hostID, and tenancy are not required parameters, but at least one of them must be specified in the request. Affinity and tenancy can be modified in the same request, but tenancy can only be modified on instances that are stopped.
+*   Move an instance to or from a [placement group](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html).
+
+At least one attribute for affinity, host ID, tenancy, or placement group name must be specified in the request. Affinity and tenancy can be modified in the same request.
+
+To modify the host ID, tenancy, or placement group for an instance, the instance must be in the `stopped` state.
 
 # Arguments
 
 ## `Affinity = "default" or "host"`
-The new affinity setting for the instance.
+The affinity setting for the instance.
+
+
+## `GroupName = ::String`
+The name of the placement group in which to place the instance. For spread placement groups, the instance must have a tenancy of `default`. For cluster placement groups, the instance must have a tenancy of `default` or `dedicated`.
+
+To remove an instance from a placement group, specify an empty string ("").
 
 
 ## `HostId = ::String`
-The ID of the Dedicated Host that the instance will have affinity with.
+The ID of the Dedicated Host with which to associate the instance.
 
 
 ## `InstanceId = ::String` -- *Required*
@@ -13837,7 +16338,7 @@ The ID of the instance that you are modifying.
 
 
 ## `Tenancy = "dedicated" or "host"`
-The tenancy of the instance that you are modifying.
+The tenancy for the instance.
 
 
 
@@ -13848,12 +16349,87 @@ The tenancy of the instance that you are modifying.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstancePlacement)
 """
-
 @inline modify_instance_placement(aws::AWSConfig=default_aws_config(); args...) = modify_instance_placement(aws, args)
 
 @inline modify_instance_placement(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyInstancePlacement", args)
 
 @inline modify_instance_placement(args) = modify_instance_placement(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.modify_launch_template
+    modify_launch_template([::AWSConfig], arguments::Dict)
+    modify_launch_template([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "ModifyLaunchTemplate", arguments::Dict)
+    ec2([::AWSConfig], "ModifyLaunchTemplate", <keyword arguments>)
+
+# ModifyLaunchTemplate Operation
+
+Modifies a launch template. You can specify which version of the launch template to set as the default version. When launching an instance, the default version applies when a launch template version is not specified.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `ClientToken = ::String`
+Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see [Ensuring Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+
+
+## `LaunchTemplateId = ::String`
+The ID of the launch template. You must specify either the launch template ID or launch template name in the request.
+
+
+## `LaunchTemplateName = ::String`
+The name of the launch template. You must specify either the launch template ID or launch template name in the request.
+
+
+## `SetDefaultVersion = ::String`
+The version number of the launch template to set as the default version.
+
+
+
+
+# Returns
+
+`ModifyLaunchTemplateResult`
+
+# Example: To change the default version of a launch template
+
+This example specifies version 2 as the default version of the specified launch template.
+
+Input:
+```
+[
+    "DefaultVersion" => "2",
+    "LaunchTemplateId" => "lt-0abcd290751193123"
+]
+```
+
+Output:
+```
+Dict(
+    "LaunchTemplate" => Dict(
+        "CreateTime" => "2017-12-01T13:35:46.000Z",
+        "CreatedBy" => "arn:aws:iam::123456789012:root",
+        "DefaultVersionNumber" => 2,
+        "LatestVersionNumber" => 2,
+        "LaunchTemplateId" => "lt-0abcd290751193123",
+        "LaunchTemplateName" => "WebServers"
+    )
+)
+```
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyLaunchTemplate)
+"""
+@inline modify_launch_template(aws::AWSConfig=default_aws_config(); args...) = modify_launch_template(aws, args)
+
+@inline modify_launch_template(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyLaunchTemplate", args)
+
+@inline modify_launch_template(args) = modify_launch_template(default_aws_config(), args)
 
 
 """
@@ -13962,7 +16538,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyNetworkInterfaceAttribute)
 """
-
 @inline modify_network_interface_attribute(aws::AWSConfig=default_aws_config(); args...) = modify_network_interface_attribute(aws, args)
 
 @inline modify_network_interface_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyNetworkInterfaceAttribute", args)
@@ -14001,7 +16576,7 @@ The configuration settings for the Reserved Instances to modify.
  ReservedInstancesConfigurationSetItemType = [[
         "AvailabilityZone" =>  ::String,
         "InstanceCount" =>  ::Int,
-        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
+        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "r5.large", "r5.xlarge", "r5.2xlarge", "r5.4xlarge", "r5.8xlarge", "r5.12xlarge", "r5.16xlarge", "r5.24xlarge", "r5.metal", "r5d.large", "r5d.xlarge", "r5d.2xlarge", "r5d.4xlarge", "r5d.8xlarge", "r5d.12xlarge", "r5d.16xlarge", "r5d.24xlarge", "r5d.metal", "x1.16xlarge", "x1.32xlarge", "x1e.xlarge", "x1e.2xlarge", "x1e.4xlarge", "x1e.8xlarge", "x1e.16xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "i3.metal", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "c5d.large", "c5d.xlarge", "c5d.2xlarge", "c5d.4xlarge", "c5d.9xlarge", "c5d.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge", "f1.16xlarge", "m5.large", "m5.xlarge", "m5.2xlarge", "m5.4xlarge", "m5.12xlarge", "m5.24xlarge", "m5d.large", "m5d.xlarge", "m5d.2xlarge", "m5d.4xlarge", "m5d.12xlarge", "m5d.24xlarge", "h1.2xlarge", "h1.4xlarge", "h1.8xlarge", "h1.16xlarge", "z1d.large", "z1d.xlarge", "z1d.2xlarge", "z1d.3xlarge", "z1d.6xlarge" or "z1d.12xlarge",
         "Platform" =>  ::String,
         "Scope" =>  "Availability Zone" or "Region"
     ], ...]
@@ -14015,7 +16590,6 @@ The configuration settings for the Reserved Instances to modify.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyReservedInstances)
 """
-
 @inline modify_reserved_instances(aws::AWSConfig=default_aws_config(); args...) = modify_reserved_instances(aws, args)
 
 @inline modify_reserved_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyReservedInstances", args)
@@ -14036,18 +16610,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 Adds or removes permission settings for the specified snapshot. You may add or remove specified AWS account IDs from a snapshot's list of create volume permissions, but you cannot do both in a single API call. If you need to both add and remove account IDs for a snapshot, you must use multiple API calls.
 
-**Note**
-> Encrypted snapshots and snapshots with AWS Marketplace product codes cannot be made public. Snapshots encrypted with your default CMK cannot be shared with other accounts.
+Encrypted snapshots and snapshots with AWS Marketplace product codes cannot be made public. Snapshots encrypted with your default CMK cannot be shared with other accounts.
 
-For more information on modifying snapshot permissions, see [Sharing Snapshots](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html) in the *Amazon Elastic Compute Cloud User Guide*.
+For more information about modifying snapshot permissions, see [Sharing Snapshots](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 # Arguments
 
 ## `Attribute = "productCodes" or "createVolumePermission"`
-The snapshot attribute to modify.
-
-**Note**
-> Only volume creation permissions may be modified at the customer level.
+The snapshot attribute to modify. Only volume creation permissions can be modified.
 
 
 ## `CreateVolumePermission = [ ... ]`
@@ -14135,7 +16705,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifySnapshotAttribute)
 """
-
 @inline modify_snapshot_attribute(aws::AWSConfig=default_aws_config(); args...) = modify_snapshot_attribute(aws, args)
 
 @inline modify_snapshot_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifySnapshotAttribute", args)
@@ -14154,22 +16723,24 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # ModifySpotFleetRequest Operation
 
-Modifies the specified Spot fleet request.
+Modifies the specified Spot Fleet request.
 
-While the Spot fleet request is being modified, it is in the `modifying` state.
+While the Spot Fleet request is being modified, it is in the `modifying` state.
 
-To scale up your Spot fleet, increase its target capacity. The Spot fleet launches the additional Spot instances according to the allocation strategy for the Spot fleet request. If the allocation strategy is `lowestPrice`, the Spot fleet launches instances using the Spot pool with the lowest price. If the allocation strategy is `diversified`, the Spot fleet distributes the instances across the Spot pools.
+To scale up your Spot Fleet, increase its target capacity. The Spot Fleet launches the additional Spot Instances according to the allocation strategy for the Spot Fleet request. If the allocation strategy is `lowestPrice`, the Spot Fleet launches instances using the Spot pool with the lowest price. If the allocation strategy is `diversified`, the Spot Fleet distributes the instances across the Spot pools.
 
-To scale down your Spot fleet, decrease its target capacity. First, the Spot fleet cancels any open bids that exceed the new target capacity. You can request that the Spot fleet terminate Spot instances until the size of the fleet no longer exceeds the new target capacity. If the allocation strategy is `lowestPrice`, the Spot fleet terminates the instances with the highest price per unit. If the allocation strategy is `diversified`, the Spot fleet terminates instances across the Spot pools. Alternatively, you can request that the Spot fleet keep the fleet at its current size, but not replace any Spot instances that are interrupted or that you terminate manually.
+To scale down your Spot Fleet, decrease its target capacity. First, the Spot Fleet cancels any open requests that exceed the new target capacity. You can request that the Spot Fleet terminate Spot Instances until the size of the fleet no longer exceeds the new target capacity. If the allocation strategy is `lowestPrice`, the Spot Fleet terminates the instances with the highest price per unit. If the allocation strategy is `diversified`, the Spot Fleet terminates instances across the Spot pools. Alternatively, you can request that the Spot Fleet keep the fleet at its current size, but not replace any Spot Instances that are interrupted or that you terminate manually.
+
+If you are finished with your Spot Fleet for now, but will use it again later, you can set the target capacity to 0.
 
 # Arguments
 
 ## `ExcessCapacityTerminationPolicy = "noTermination" or "default"`
-Indicates whether running Spot instances should be terminated if the target capacity of the Spot fleet request is decreased below the current size of the Spot fleet.
+Indicates whether running Spot Instances should be terminated if the target capacity of the Spot Fleet request is decreased below the current size of the Spot Fleet.
 
 
 ## `SpotFleetRequestId = ::String` -- *Required*
-The ID of the Spot fleet request.
+The ID of the Spot Fleet request.
 
 
 ## `TargetCapacity = ::Int`
@@ -14223,7 +16794,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifySpotFleetRequest)
 """
-
 @inline modify_spot_fleet_request(aws::AWSConfig=default_aws_config(); args...) = modify_spot_fleet_request(aws, args)
 
 @inline modify_spot_fleet_request(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifySpotFleetRequest", args)
@@ -14278,7 +16848,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifySubnetAttribute)
 """
-
 @inline modify_subnet_attribute(aws::AWSConfig=default_aws_config(); args...) = modify_subnet_attribute(aws, args)
 
 @inline modify_subnet_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifySubnetAttribute", args)
@@ -14303,11 +16872,9 @@ When you complete a resize operation on your volume, you need to extend the volu
 
 You can use CloudWatch Events to check the status of a modification to an EBS volume. For information about CloudWatch Events, see the [Amazon CloudWatch Events User Guide](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/). You can also track the status of a modification using the [DescribeVolumesModifications](@ref) API. For information about tracking status changes using either method, see [Monitoring Volume Modifications](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods).
 
-**Note**
-> With previous-generation instance types, resizing an EBS volume may require detaching and reattaching the volume or stopping and restarting the instance. For more information about modifying an EBS volume running Linux, see [Modifying the Size, IOPS, or Type of an EBS Volume on Linux](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html). For more information about modifying an EBS volume running Windows, see [Modifying the Size, IOPS, or Type of an EBS Volume on Windows](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html).
+With previous-generation instance types, resizing an EBS volume may require detaching and reattaching the volume or stopping and restarting the instance. For more information, see [Modifying the Size, IOPS, or Type of an EBS Volume on Linux](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html) and [Modifying the Size, IOPS, or Type of an EBS Volume on Windows](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html).
 
-**Note**
-> If you reach the maximum volume modification rate per volume limit, you will need to wait at least six hours before applying further modifications to the affected EBS volume.
+If you reach the maximum volume modification rate per volume limit, you will need to wait at least six hours before applying further modifications to the affected EBS volume.
 
 # Arguments
 
@@ -14316,27 +16883,25 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `VolumeId = ::String` -- *Required*
-
+The ID of the volume.
 
 
 ## `Size = ::Int`
-Target size in GiB of the volume to be modified. Target volume size must be greater than or equal to than the existing size of the volume. For information about available EBS volume sizes, see [http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
+The target size of the volume, in GiB. The target volume size must be greater than or equal to than the existing size of the volume. For information about available EBS volume sizes, see [Amazon EBS Volume Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
 
 Default: If no size is specified, the existing size is retained.
 
 
 ## `VolumeType = "standard", "io1", "gp2", "sc1" or "st1"`
-Target EBS volume type of the volume to be modified
-
-The API does not support modifications for volume type `standard`. You also cannot change the type of a volume to `standard`.
+The target EBS volume type of the volume.
 
 Default: If no type is specified, the existing type is retained.
 
 
 ## `Iops = ::Int`
-Target IOPS rate of the volume to be modified.
+The target IOPS rate of the volume.
 
-Only valid for Provisioned IOPS SSD (`io1`) volumes. For more information about `io1` IOPS configuration, see [http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html#EBSVolumeTypes_piops](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html#EBSVolumeTypes_piops).
+This is only valid for Provisioned IOPS SSD (`io1`) volumes. For more information, see [Provisioned IOPS SSD (io1) Volumes](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html#EBSVolumeTypes_piops).
 
 Default: If no IOPS value is specified, the existing value is retained.
 
@@ -14349,7 +16914,6 @@ Default: If no IOPS value is specified, the existing value is retained.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVolume)
 """
-
 @inline modify_volume(aws::AWSConfig=default_aws_config(); args...) = modify_volume(aws, args)
 
 @inline modify_volume(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyVolume", args)
@@ -14414,7 +16978,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVolumeAttribute)
 """
-
 @inline modify_volume_attribute(aws::AWSConfig=default_aws_config(); args...) = modify_volume_attribute(aws, args)
 
 @inline modify_volume_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyVolumeAttribute", args)
@@ -14485,7 +17048,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcAttribute)
 """
-
 @inline modify_vpc_attribute(aws::AWSConfig=default_aws_config(); args...) = modify_vpc_attribute(aws, args)
 
 @inline modify_vpc_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyVpcAttribute", args)
@@ -14560,12 +17122,153 @@ The ID of the endpoint.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcEndpoint)
 """
-
 @inline modify_vpc_endpoint(aws::AWSConfig=default_aws_config(); args...) = modify_vpc_endpoint(aws, args)
 
 @inline modify_vpc_endpoint(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyVpcEndpoint", args)
 
 @inline modify_vpc_endpoint(args) = modify_vpc_endpoint(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.modify_vpc_endpoint_connection_notification
+    modify_vpc_endpoint_connection_notification([::AWSConfig], arguments::Dict)
+    modify_vpc_endpoint_connection_notification([::AWSConfig]; ConnectionNotificationId=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "ModifyVpcEndpointConnectionNotification", arguments::Dict)
+    ec2([::AWSConfig], "ModifyVpcEndpointConnectionNotification", ConnectionNotificationId=, <keyword arguments>)
+
+# ModifyVpcEndpointConnectionNotification Operation
+
+Modifies a connection notification for VPC endpoint or VPC endpoint service. You can change the SNS topic for the notification, or the events for which to be notified.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `ConnectionNotificationId = ::String` -- *Required*
+The ID of the notification.
+
+
+## `ConnectionNotificationArn = ::String`
+The ARN for the SNS topic for the notification.
+
+
+## `ConnectionEvents = [::String, ...]`
+One or more events for the endpoint. Valid values are `Accept`, `Connect`, `Delete`, and `Reject`.
+
+
+
+
+# Returns
+
+`ModifyVpcEndpointConnectionNotificationResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcEndpointConnectionNotification)
+"""
+@inline modify_vpc_endpoint_connection_notification(aws::AWSConfig=default_aws_config(); args...) = modify_vpc_endpoint_connection_notification(aws, args)
+
+@inline modify_vpc_endpoint_connection_notification(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyVpcEndpointConnectionNotification", args)
+
+@inline modify_vpc_endpoint_connection_notification(args) = modify_vpc_endpoint_connection_notification(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.modify_vpc_endpoint_service_configuration
+    modify_vpc_endpoint_service_configuration([::AWSConfig], arguments::Dict)
+    modify_vpc_endpoint_service_configuration([::AWSConfig]; ServiceId=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "ModifyVpcEndpointServiceConfiguration", arguments::Dict)
+    ec2([::AWSConfig], "ModifyVpcEndpointServiceConfiguration", ServiceId=, <keyword arguments>)
+
+# ModifyVpcEndpointServiceConfiguration Operation
+
+Modifies the attributes of your VPC endpoint service configuration. You can change the Network Load Balancers for your service, and you can specify whether acceptance is required for requests to connect to your endpoint service through an interface VPC endpoint.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `ServiceId = ::String` -- *Required*
+The ID of the service.
+
+
+## `AcceptanceRequired = ::Bool`
+Indicate whether requests to create an endpoint to your service must be accepted.
+
+
+## `AddNetworkLoadBalancerArn = [::String, ...]`
+The Amazon Resource Names (ARNs) of Network Load Balancers to add to your service configuration.
+
+
+## `RemoveNetworkLoadBalancerArn = [::String, ...]`
+The Amazon Resource Names (ARNs) of Network Load Balancers to remove from your service configuration.
+
+
+
+
+# Returns
+
+`ModifyVpcEndpointServiceConfigurationResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcEndpointServiceConfiguration)
+"""
+@inline modify_vpc_endpoint_service_configuration(aws::AWSConfig=default_aws_config(); args...) = modify_vpc_endpoint_service_configuration(aws, args)
+
+@inline modify_vpc_endpoint_service_configuration(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyVpcEndpointServiceConfiguration", args)
+
+@inline modify_vpc_endpoint_service_configuration(args) = modify_vpc_endpoint_service_configuration(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.modify_vpc_endpoint_service_permissions
+    modify_vpc_endpoint_service_permissions([::AWSConfig], arguments::Dict)
+    modify_vpc_endpoint_service_permissions([::AWSConfig]; ServiceId=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "ModifyVpcEndpointServicePermissions", arguments::Dict)
+    ec2([::AWSConfig], "ModifyVpcEndpointServicePermissions", ServiceId=, <keyword arguments>)
+
+# ModifyVpcEndpointServicePermissions Operation
+
+Modifies the permissions for your [VPC endpoint service](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/endpoint-service.html). You can add or remove permissions for service consumers (IAM users, IAM roles, and AWS accounts) to connect to your endpoint service.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `ServiceId = ::String` -- *Required*
+The ID of the service.
+
+
+## `AddAllowedPrincipals = [::String, ...]`
+One or more Amazon Resource Names (ARNs) of principals for which to allow permission. Specify `*` to allow all principals.
+
+
+## `RemoveAllowedPrincipals = [::String, ...]`
+One or more Amazon Resource Names (ARNs) of principals for which to remove permission.
+
+
+
+
+# Returns
+
+`ModifyVpcEndpointServicePermissionsResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcEndpointServicePermissions)
+"""
+@inline modify_vpc_endpoint_service_permissions(aws::AWSConfig=default_aws_config(); args...) = modify_vpc_endpoint_service_permissions(aws, args)
+
+@inline modify_vpc_endpoint_service_permissions(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyVpcEndpointServicePermissions", args)
+
+@inline modify_vpc_endpoint_service_permissions(args) = modify_vpc_endpoint_service_permissions(default_aws_config(), args)
 
 
 """
@@ -14585,7 +17288,7 @@ Modifies the VPC peering connection options on one side of a VPC peering connect
 
 *   Enable/disable communication over the peering connection between instances in your VPC and an EC2-Classic instance that's linked to the peer VPC.
 
-*   Enable/disable a local VPC to resolve public DNS hostnames to private IP addresses when queried from instances in the peer VPC.
+*   Enable/disable the ability to resolve public DNS hostnames to private IP addresses when queried from instances in the peer VPC.
 
 If the peered VPCs are in different accounts, each owner must initiate a separate request to modify the peering connection options, depending on whether their VPC was the requester or accepter for the VPC peering connection. If the peered VPCs are in the same account, you can modify the requester and accepter options in the same request. To confirm which VPC is the accepter and requester for a VPC peering connection, use the [DescribeVpcPeeringConnections](@ref) command.
 
@@ -14627,7 +17330,6 @@ The ID of the VPC peering connection.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcPeeringConnectionOptions)
 """
-
 @inline modify_vpc_peering_connection_options(aws::AWSConfig=default_aws_config(); args...) = modify_vpc_peering_connection_options(aws, args)
 
 @inline modify_vpc_peering_connection_options(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyVpcPeeringConnectionOptions", args)
@@ -14674,7 +17376,6 @@ Checks whether you have the required permissions for the operation, without actu
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcTenancy)
 """
-
 @inline modify_vpc_tenancy(aws::AWSConfig=default_aws_config(); args...) = modify_vpc_tenancy(aws, args)
 
 @inline modify_vpc_tenancy(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ModifyVpcTenancy", args)
@@ -14715,7 +17416,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/MonitorInstances)
 """
-
 @inline monitor_instances(aws::AWSConfig=default_aws_config(); args...) = monitor_instances(aws, args)
 
 @inline monitor_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "MonitorInstances", args)
@@ -14772,7 +17472,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/MoveAddressToVpc)
 """
-
 @inline move_address_to_vpc(aws::AWSConfig=default_aws_config(); args...) = move_address_to_vpc(aws, args)
 
 @inline move_address_to_vpc(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "MoveAddressToVpc", args)
@@ -14804,11 +17503,11 @@ The currency in which the `totalUpfrontPrice`, `LimitPrice`, and `totalHourlyPri
 
 
 ## `HostIdSet = [::String, ...]` -- *Required*
-The ID/s of the Dedicated Host/s that the reservation will be associated with.
+The IDs of the Dedicated Hosts with which the reservation will be associated.
 
 
 ## `LimitPrice = ::String`
-The specified limit is checked against the total upfront cost of the reservation (calculated as the offering's upfront cost multiplied by the host count). If the total upfront cost is greater than the specified price limit, the request will fail. This is used to ensure that the purchase does not exceed the expected upfront cost of the purchase. At this time, the only supported currency is `USD`. For example, to indicate a limit price of USD 100, specify 100.00.
+The specified limit is checked against the total upfront cost of the reservation (calculated as the offering's upfront cost multiplied by the host count). If the total upfront cost is greater than the specified price limit, the request fails. This is used to ensure that the purchase does not exceed the expected upfront cost of the purchase. At this time, the only supported currency is `USD`. For example, to indicate a limit price of USD 100, specify 100.00.
 
 
 ## `OfferingId = ::String` -- *Required*
@@ -14823,7 +17522,6 @@ The ID of the offering.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PurchaseHostReservation)
 """
-
 @inline purchase_host_reservation(aws::AWSConfig=default_aws_config(); args...) = purchase_host_reservation(aws, args)
 
 @inline purchase_host_reservation(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "PurchaseHostReservation", args)
@@ -14879,7 +17577,6 @@ Specified for Reserved Instance Marketplace offerings to limit the total order a
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PurchaseReservedInstancesOffering)
 """
-
 @inline purchase_reserved_instances_offering(aws::AWSConfig=default_aws_config(); args...) = purchase_reserved_instances_offering(aws, args)
 
 @inline purchase_reserved_instances_offering(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "PurchaseReservedInstancesOffering", args)
@@ -14979,7 +17676,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PurchaseScheduledInstances)
 """
-
 @inline purchase_scheduled_instances(aws::AWSConfig=default_aws_config(); args...) = purchase_scheduled_instances(aws, args)
 
 @inline purchase_scheduled_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "PurchaseScheduledInstances", args)
@@ -15016,9 +17712,28 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 
+# Example: To reboot an EC2 instance
+
+This example reboots the specified EC2 instance.
+
+Input:
+```
+[
+    "InstanceIds" => [
+        "i-1234567890abcdef5"
+    ]
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RebootInstances)
 """
-
 @inline reboot_instances(aws::AWSConfig=default_aws_config(); args...) = reboot_instances(aws, args)
 
 @inline reboot_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "RebootInstances", args)
@@ -15046,7 +17761,9 @@ You can also use `RegisterImage` to create an Amazon EBS-backed Linux AMI from a
 
 You can't register an image where a secondary (non-root) snapshot has AWS Marketplace product codes.
 
-Some Linux distributions, such as Red Hat Enterprise Linux (RHEL) and SUSE Linux Enterprise Server (SLES), use the EC2 billing product code associated with an AMI to verify the subscription status for package updates. Creating an AMI from an EBS snapshot does not maintain this billing code, and subsequent instances launched from such an AMI will not be able to connect to package update infrastructure. To create an AMI that must retain billing codes, see [CreateImage](@ref).
+Some Linux distributions, such as Red Hat Enterprise Linux (RHEL) and SUSE Linux Enterprise Server (SLES), use the EC2 billing product code associated with an AMI to verify the subscription status for package updates. Creating an AMI from an EBS snapshot does not maintain this billing code, and instances launched from such an AMI are not able to connect to package update infrastructure. If you purchase a Reserved Instance offering for one of these Linux distributions and launch instances using an AMI that does not contain the required billing code, your Reserved Instance is not applied to these instances.
+
+To create an AMI for operating systems that require a billing code, see [CreateImage](@ref).
 
 If needed, you can deregister an AMI at any time. Any modifications you make to an AMI backed by an instance store volume invalidates its registration. If you make changes to an image, deregister the previous image and register the new image.
 
@@ -15072,6 +17789,7 @@ One or more block device mapping entries.
             "Encrypted" =>  ::Bool,
             "DeleteOnTermination" =>  ::Bool,
             "Iops" =>  ::Int,
+            "KmsKeyId" =>  ::String,
             "SnapshotId" =>  ::String,
             "VolumeSize" =>  ::Int,
             "VolumeType" =>  "standard", "io1", "gp2", "sc1" or "st1"
@@ -15125,7 +17843,7 @@ This option is supported only for HVM AMIs. Specifying this option with a PV AMI
 
 
 ## `VirtualizationType = ::String`
-The type of virtualization.
+The type of virtualization (`hvm` | `paravirtual`).
 
 Default: `paravirtual`
 
@@ -15138,12 +17856,53 @@ Default: `paravirtual`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RegisterImage)
 """
-
 @inline register_image(aws::AWSConfig=default_aws_config(); args...) = register_image(aws, args)
 
 @inline register_image(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "RegisterImage", args)
 
 @inline register_image(args) = register_image(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EC2.reject_vpc_endpoint_connections
+    reject_vpc_endpoint_connections([::AWSConfig], arguments::Dict)
+    reject_vpc_endpoint_connections([::AWSConfig]; ServiceId=, VpcEndpointId=, <keyword arguments>)
+
+    using AWSCore.Services.ec2
+    ec2([::AWSConfig], "RejectVpcEndpointConnections", arguments::Dict)
+    ec2([::AWSConfig], "RejectVpcEndpointConnections", ServiceId=, VpcEndpointId=, <keyword arguments>)
+
+# RejectVpcEndpointConnections Operation
+
+Rejects one or more VPC endpoint connection requests to your VPC endpoint service.
+
+# Arguments
+
+## `DryRun = ::Bool`
+Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
+
+
+## `ServiceId = ::String` -- *Required*
+The ID of the service.
+
+
+## `VpcEndpointId = [::String, ...]` -- *Required*
+The IDs of one or more VPC endpoints.
+
+
+
+
+# Returns
+
+`RejectVpcEndpointConnectionsResult`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RejectVpcEndpointConnections)
+"""
+@inline reject_vpc_endpoint_connections(aws::AWSConfig=default_aws_config(); args...) = reject_vpc_endpoint_connections(aws, args)
+
+@inline reject_vpc_endpoint_connections(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "RejectVpcEndpointConnections", args)
+
+@inline reject_vpc_endpoint_connections(args) = reject_vpc_endpoint_connections(default_aws_config(), args)
 
 
 """
@@ -15177,7 +17936,6 @@ The ID of the VPC peering connection.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RejectVpcPeeringConnection)
 """
-
 @inline reject_vpc_peering_connection(aws::AWSConfig=default_aws_config(); args...) = reject_vpc_peering_connection(aws, args)
 
 @inline reject_vpc_peering_connection(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "RejectVpcPeeringConnection", args)
@@ -15246,7 +18004,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReleaseAddress)
 """
-
 @inline release_address(aws::AWSConfig=default_aws_config(); args...) = release_address(aws, args)
 
 @inline release_address(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ReleaseAddress", args)
@@ -15265,16 +18022,16 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # ReleaseHosts Operation
 
-When you no longer want to use an On-Demand Dedicated Host it can be released. On-Demand billing is stopped and the host goes into `released` state. The host ID of Dedicated Hosts that have been released can no longer be specified in another request, e.g., ModifyHosts. You must stop or terminate all instances on a host before it can be released.
+When you no longer want to use an On-Demand Dedicated Host it can be released. On-Demand billing is stopped and the host goes into `released` state. The host ID of Dedicated Hosts that have been released can no longer be specified in another request, for example, ModifyHosts. You must stop or terminate all instances on a host before it can be released.
 
-When Dedicated Hosts are released, it make take some time for them to stop counting toward your limit and you may receive capacity errors when trying to allocate new Dedicated hosts. Try waiting a few minutes, and then try again.
+When Dedicated Hosts are released, it may take some time for them to stop counting toward your limit and you may receive capacity errors when trying to allocate new Dedicated Hosts. Wait a few minutes and then try again.
 
-Released hosts will still appear in a [DescribeHosts](@ref) response.
+Released hosts still appear in a [DescribeHosts](@ref) response.
 
 # Arguments
 
 ## `HostId = [::String, ...]` -- *Required*
-The IDs of the Dedicated Hosts you want to release.
+The IDs of the Dedicated Hosts to release.
 
 
 
@@ -15285,7 +18042,6 @@ The IDs of the Dedicated Hosts you want to release.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReleaseHosts)
 """
-
 @inline release_hosts(aws::AWSConfig=default_aws_config(); args...) = release_hosts(aws, args)
 
 @inline release_hosts(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ReleaseHosts", args)
@@ -15331,7 +18087,6 @@ The ID of the existing IAM instance profile association.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceIamInstanceProfileAssociation)
 """
-
 @inline replace_iam_instance_profile_association(aws::AWSConfig=default_aws_config(); args...) = replace_iam_instance_profile_association(aws, args)
 
 @inline replace_iam_instance_profile_association(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ReplaceIamInstanceProfileAssociation", args)
@@ -15351,6 +18106,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 # ReplaceNetworkAclAssociation Operation
 
 Changes which network ACL a subnet is associated with. By default when you create a subnet, it's automatically associated with the default network ACL. For more information about network ACLs, see [Network ACLs](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html) in the *Amazon Virtual Private Cloud User Guide*.
+
+This is an idempotent operation.
 
 # Arguments
 
@@ -15393,7 +18150,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceNetworkAclAssociation)
 """
-
 @inline replace_network_acl_association(aws::AWSConfig=default_aws_config(); args...) = replace_network_acl_association(aws, args)
 
 @inline replace_network_acl_association(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ReplaceNetworkAclAssociation", args)
@@ -15492,7 +18248,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceNetworkAclEntry)
 """
-
 @inline replace_network_acl_entry(aws::AWSConfig=default_aws_config(); args...) = replace_network_acl_entry(aws, args)
 
 @inline replace_network_acl_entry(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ReplaceNetworkAclEntry", args)
@@ -15574,7 +18329,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceRoute)
 """
-
 @inline replace_route(aws::AWSConfig=default_aws_config(); args...) = replace_route(aws, args)
 
 @inline replace_route(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ReplaceRoute", args)
@@ -15638,7 +18392,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReplaceRouteTableAssociation)
 """
-
 @inline replace_route_table_association(aws::AWSConfig=default_aws_config(); args...) = replace_route_table_association(aws, args)
 
 @inline replace_route_table_association(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ReplaceRouteTableAssociation", args)
@@ -15713,7 +18466,6 @@ The status of all instances listed.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReportInstanceStatus)
 """
-
 @inline report_instance_status(aws::AWSConfig=default_aws_config(); args...) = report_instance_status(aws, args)
 
 @inline report_instance_status(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ReportInstanceStatus", args)
@@ -15732,15 +18484,19 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 # RequestSpotFleet Operation
 
-Creates a Spot fleet request.
+Creates a Spot Fleet request.
+
+The Spot Fleet request specifies the total target capacity and the On-Demand target capacity. Amazon EC2 calculates the difference between the total capacity and On-Demand capacity, and launches the difference as Spot capacity.
 
 You can submit a single request that includes multiple launch specifications that vary by instance type, AMI, Availability Zone, or subnet.
 
-By default, the Spot fleet requests Spot instances in the Spot pool where the price per unit is the lowest. Each launch specification can include its own instance weighting that reflects the value of the instance type to your application workload.
+By default, the Spot Fleet requests Spot Instances in the Spot pool where the price per unit is the lowest. Each launch specification can include its own instance weighting that reflects the value of the instance type to your application workload.
 
-Alternatively, you can specify that the Spot fleet distribute the target capacity across the Spot pools included in its launch specifications. By ensuring that the Spot instances in your Spot fleet are in different Spot pools, you can improve the availability of your fleet.
+Alternatively, you can specify that the Spot Fleet distribute the target capacity across the Spot pools included in its launch specifications. By ensuring that the Spot Instances in your Spot Fleet are in different Spot pools, you can improve the availability of your fleet.
 
-For more information, see [Spot Fleet Requests](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html) in the *Amazon Elastic Compute Cloud User Guide*.
+You can specify tags for the Spot Instances. You cannot tag other resource types in a Spot Fleet request because only the `instance` resource type is supported.
+
+For more information, see [Spot Fleet Requests](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html) in the *Amazon EC2 User Guide for Linux Instances*.
 
 # Arguments
 
@@ -15749,15 +18505,17 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `SpotFleetRequestConfig = [ ... ]` -- *Required*
-The configuration for the Spot fleet request.
+The configuration for the Spot Fleet request.
 ```
  SpotFleetRequestConfig = [
         "AllocationStrategy" =>  "lowestPrice" or "diversified",
+        "OnDemandAllocationStrategy" =>  "lowestPrice" or "prioritized",
         "ClientToken" =>  ::String,
         "ExcessCapacityTerminationPolicy" =>  "noTermination" or "default",
         "FulfilledCapacity" =>  double,
+        "OnDemandFulfilledCapacity" =>  double,
         "IamFleetRole" => <required> ::String,
-        "LaunchSpecifications" => <required> [[
+        "LaunchSpecifications" =>  [[
             "GroupSet" =>  [[
                 "GroupName" =>  ::String,
                 "GroupId" =>  ::String
@@ -15770,6 +18528,7 @@ The configuration for the Spot fleet request.
                     "Encrypted" =>  ::Bool,
                     "DeleteOnTermination" =>  ::Bool,
                     "Iops" =>  ::Int,
+                    "KmsKeyId" =>  ::String,
                     "SnapshotId" =>  ::String,
                     "VolumeSize" =>  ::Int,
                     "VolumeType" =>  "standard", "io1", "gp2", "sc1" or "st1"
@@ -15782,7 +18541,7 @@ The configuration for the Spot fleet request.
                 "Name" =>  ::String
             ],
             "ImageId" =>  ::String,
-            "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
+            "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "r5.large", "r5.xlarge", "r5.2xlarge", "r5.4xlarge", "r5.8xlarge", "r5.12xlarge", "r5.16xlarge", "r5.24xlarge", "r5.metal", "r5d.large", "r5d.xlarge", "r5d.2xlarge", "r5d.4xlarge", "r5d.8xlarge", "r5d.12xlarge", "r5d.16xlarge", "r5d.24xlarge", "r5d.metal", "x1.16xlarge", "x1.32xlarge", "x1e.xlarge", "x1e.2xlarge", "x1e.4xlarge", "x1e.8xlarge", "x1e.16xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "i3.metal", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "c5d.large", "c5d.xlarge", "c5d.2xlarge", "c5d.4xlarge", "c5d.9xlarge", "c5d.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge", "f1.16xlarge", "m5.large", "m5.xlarge", "m5.2xlarge", "m5.4xlarge", "m5.12xlarge", "m5.24xlarge", "m5d.large", "m5d.xlarge", "m5d.2xlarge", "m5d.4xlarge", "m5d.12xlarge", "m5d.24xlarge", "h1.2xlarge", "h1.4xlarge", "h1.8xlarge", "h1.16xlarge", "z1d.large", "z1d.xlarge", "z1d.2xlarge", "z1d.3xlarge", "z1d.6xlarge" or "z1d.12xlarge",
             "KernelId" =>  ::String,
             "KeyName" =>  ::String,
             "Monitoring" =>  ["Enabled" =>  ::Bool],
@@ -15798,7 +18557,7 @@ The configuration for the Spot fleet request.
                 "PrivateIpAddress" =>  ::String,
                 "PrivateIpAddressesSet" =>  [[
                     "Primary" =>  ::Bool,
-                    "PrivateIpAddress" => <required> ::String
+                    "PrivateIpAddress" =>  ::String
                 ], ...],
                 "SecondaryPrivateIpAddressCount" =>  ::Int,
                 "SubnetId" =>  ::String
@@ -15821,18 +18580,35 @@ The configuration for the Spot fleet request.
                 ], ...]
             ], ...]
         ], ...],
-        "SpotPrice" => <required> ::String,
+        "LaunchTemplateConfigs" =>  [[
+            "LaunchTemplateSpecification" =>  [
+                "LaunchTemplateId" =>  ::String,
+                "LaunchTemplateName" =>  ::String,
+                "Version" =>  ::String
+            ],
+            "Overrides" =>  [[
+                "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "r5.large", "r5.xlarge", "r5.2xlarge", "r5.4xlarge", "r5.8xlarge", "r5.12xlarge", "r5.16xlarge", "r5.24xlarge", "r5.metal", "r5d.large", "r5d.xlarge", "r5d.2xlarge", "r5d.4xlarge", "r5d.8xlarge", "r5d.12xlarge", "r5d.16xlarge", "r5d.24xlarge", "r5d.metal", "x1.16xlarge", "x1.32xlarge", "x1e.xlarge", "x1e.2xlarge", "x1e.4xlarge", "x1e.8xlarge", "x1e.16xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "i3.metal", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "c5d.large", "c5d.xlarge", "c5d.2xlarge", "c5d.4xlarge", "c5d.9xlarge", "c5d.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge", "f1.16xlarge", "m5.large", "m5.xlarge", "m5.2xlarge", "m5.4xlarge", "m5.12xlarge", "m5.24xlarge", "m5d.large", "m5d.xlarge", "m5d.2xlarge", "m5d.4xlarge", "m5d.12xlarge", "m5d.24xlarge", "h1.2xlarge", "h1.4xlarge", "h1.8xlarge", "h1.16xlarge", "z1d.large", "z1d.xlarge", "z1d.2xlarge", "z1d.3xlarge", "z1d.6xlarge" or "z1d.12xlarge",
+                "SpotPrice" =>  ::String,
+                "SubnetId" =>  ::String,
+                "AvailabilityZone" =>  ::String,
+                "WeightedCapacity" =>  double,
+                "Priority" =>  double
+            ], ...]
+        ], ...],
+        "SpotPrice" =>  ::String,
         "TargetCapacity" => <required> ::Int,
+        "OnDemandTargetCapacity" =>  ::Int,
         "TerminateInstancesWithExpiration" =>  ::Bool,
         "Type" =>  "request" or "maintain",
         "ValidFrom" =>  timestamp,
         "ValidUntil" =>  timestamp,
         "ReplaceUnhealthyInstances" =>  ::Bool,
-        "InstanceInterruptionBehavior" =>  "stop" or "terminate",
+        "InstanceInterruptionBehavior" =>  "hibernate", "stop" or "terminate",
         "LoadBalancersConfig" =>  [
             "ClassicLoadBalancersConfig" =>  ["ClassicLoadBalancers" => <required> [["Name" => <required> ::String], ...]],
             "TargetGroupsConfig" =>  ["TargetGroups" => <required> [["Arn" => <required> ::String], ...]]
-        ]
+        ],
+        "InstancePoolsToUseCount" =>  ::Int
     ]
 ```
 
@@ -16004,7 +18780,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RequestSpotFleet)
 """
-
 @inline request_spot_fleet(aws::AWSConfig=default_aws_config(); args...) = request_spot_fleet(aws, args)
 
 @inline request_spot_fleet(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "RequestSpotFleet", args)
@@ -16015,38 +18790,40 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 """
     using AWSSDK.EC2.request_spot_instances
     request_spot_instances([::AWSConfig], arguments::Dict)
-    request_spot_instances([::AWSConfig]; SpotPrice=, <keyword arguments>)
+    request_spot_instances([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "RequestSpotInstances", arguments::Dict)
-    ec2([::AWSConfig], "RequestSpotInstances", SpotPrice=, <keyword arguments>)
+    ec2([::AWSConfig], "RequestSpotInstances", <keyword arguments>)
 
 # RequestSpotInstances Operation
 
-Creates a Spot instance request. Spot instances are instances that Amazon EC2 launches when the bid price that you specify exceeds the current Spot price. Amazon EC2 periodically sets the Spot price based on available Spot Instance capacity and current Spot instance requests. For more information, see [Spot Instance Requests](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html) in the *Amazon Elastic Compute Cloud User Guide*.
+Creates a Spot Instance request.
+
+For more information, see [Spot Instance Requests](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html) in the *Amazon EC2 User Guide for Linux Instances*.
 
 # Arguments
 
 ## `AvailabilityZoneGroup = ::String`
-The user-specified name for a logical grouping of bids.
+The user-specified name for a logical grouping of requests.
 
-When you specify an Availability Zone group in a Spot Instance request, all Spot instances in the request are launched in the same Availability Zone. Instance proximity is maintained with this parameter, but the choice of Availability Zone is not. The group applies only to bids for Spot Instances of the same instance type. Any additional Spot instance requests that are specified with the same Availability Zone group name are launched in that same Availability Zone, as long as at least one instance from the group is still active.
+When you specify an Availability Zone group in a Spot Instance request, all Spot Instances in the request are launched in the same Availability Zone. Instance proximity is maintained with this parameter, but the choice of Availability Zone is not. The group applies only to requests for Spot Instances of the same instance type. Any additional Spot Instance requests that are specified with the same Availability Zone group name are launched in that same Availability Zone, as long as at least one instance from the group is still active.
 
-If there is no active instance running in the Availability Zone group that you specify for a new Spot instance request (all instances are terminated, the bid is expired, or the bid falls below current market), then Amazon EC2 launches the instance in any Availability Zone where the constraint can be met. Consequently, the subsequent set of Spot instances could be placed in a different zone from the original request, even if you specified the same Availability Zone group.
+If there is no active instance running in the Availability Zone group that you specify for a new Spot Instance request (all instances are terminated, the request is expired, or the maximum price you specified falls below current Spot price), then Amazon EC2 launches the instance in any Availability Zone where the constraint can be met. Consequently, the subsequent set of Spot Instances could be placed in a different zone from the original request, even if you specified the same Availability Zone group.
 
 Default: Instances are launched in any available Availability Zone.
 
 
 ## `BlockDurationMinutes = ::Int`
-The required duration for the Spot instances (also known as Spot blocks), in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
+The required duration for the Spot Instances (also known as Spot blocks), in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
 
-The duration period starts as soon as your Spot instance receives its instance ID. At the end of the duration period, Amazon EC2 marks the Spot instance for termination and provides a Spot instance termination notice, which gives the instance a two-minute warning before it terminates.
+The duration period starts as soon as your Spot Instance receives its instance ID. At the end of the duration period, Amazon EC2 marks the Spot Instance for termination and provides a Spot Instance termination notice, which gives the instance a two-minute warning before it terminates.
 
-Note that you can't specify an Availability Zone group or a launch group if you specify a duration.
+You can't specify an Availability Zone group or a launch group if you specify a duration.
 
 
 ## `ClientToken = ::String`
-Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html) in the *Amazon Elastic Compute Cloud User Guide*.
+Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html) in the *Amazon EC2 User Guide for Linux Instances*.
 
 
 ## `DryRun = ::Bool`
@@ -16054,13 +18831,13 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 ## `InstanceCount = ::Int`
-The maximum number of Spot instances to launch.
+The maximum number of Spot Instances to launch.
 
 Default: 1
 
 
 ## `LaunchGroup = ::String`
-The instance launch group. Launch groups are Spot instances that launch together and terminate together.
+The instance launch group. Launch groups are Spot Instances that launch together and terminate together.
 
 Default: Instances are launched and terminated individually
 
@@ -16079,6 +18856,7 @@ The launch specification.
                 "Encrypted" =>  ::Bool,
                 "DeleteOnTermination" =>  ::Bool,
                 "Iops" =>  ::Int,
+                "KmsKeyId" =>  ::String,
                 "SnapshotId" =>  ::String,
                 "VolumeSize" =>  ::Int,
                 "VolumeType" =>  "standard", "io1", "gp2", "sc1" or "st1"
@@ -16091,7 +18869,7 @@ The launch specification.
             "Name" =>  ::String
         ],
         "ImageId" =>  ::String,
-        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge",
+        "InstanceType" =>  "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "r5.large", "r5.xlarge", "r5.2xlarge", "r5.4xlarge", "r5.8xlarge", "r5.12xlarge", "r5.16xlarge", "r5.24xlarge", "r5.metal", "r5d.large", "r5d.xlarge", "r5d.2xlarge", "r5d.4xlarge", "r5d.8xlarge", "r5d.12xlarge", "r5d.16xlarge", "r5d.24xlarge", "r5d.metal", "x1.16xlarge", "x1.32xlarge", "x1e.xlarge", "x1e.2xlarge", "x1e.4xlarge", "x1e.8xlarge", "x1e.16xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "i3.metal", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "c5d.large", "c5d.xlarge", "c5d.2xlarge", "c5d.4xlarge", "c5d.9xlarge", "c5d.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge", "f1.16xlarge", "m5.large", "m5.xlarge", "m5.2xlarge", "m5.4xlarge", "m5.12xlarge", "m5.24xlarge", "m5d.large", "m5d.xlarge", "m5d.2xlarge", "m5d.4xlarge", "m5d.12xlarge", "m5d.24xlarge", "h1.2xlarge", "h1.4xlarge", "h1.8xlarge", "h1.16xlarge", "z1d.large", "z1d.xlarge", "z1d.2xlarge", "z1d.3xlarge", "z1d.6xlarge" or "z1d.12xlarge",
         "KernelId" =>  ::String,
         "KeyName" =>  ::String,
         "Monitoring" =>  ["Enabled" => <required> ::Bool],
@@ -16107,7 +18885,7 @@ The launch specification.
             "PrivateIpAddress" =>  ::String,
             "PrivateIpAddressesSet" =>  [[
                 "Primary" =>  ::Bool,
-                "PrivateIpAddress" => <required> ::String
+                "PrivateIpAddress" =>  ::String
             ], ...],
             "SecondaryPrivateIpAddressCount" =>  ::Int,
             "SubnetId" =>  ::String
@@ -16123,12 +18901,12 @@ The launch specification.
     ]
 ```
 
-## `SpotPrice = ::String` -- *Required*
-The maximum hourly price (bid) for any Spot instance launched to fulfill the request.
+## `SpotPrice = ::String`
+The maximum price per hour that you are willing to pay for a Spot Instance. The default is the On-Demand price.
 
 
 ## `Type = "one-time" or "persistent"`
-The Spot instance request type.
+The Spot Instance request type.
 
 Default: `one-time`
 
@@ -16136,17 +18914,13 @@ Default: `one-time`
 ## `ValidFrom = timestamp`
 The start date of the request. If this is a one-time request, the request becomes active at this date and time and remains active until all instances launch, the request expires, or the request is canceled. If the request is persistent, the request becomes active at this date and time and remains active until it expires or is canceled.
 
-Default: The request is effective indefinitely.
-
 
 ## `ValidUntil = timestamp`
-The end date of the request. If this is a one-time request, the request remains active until all instances launch, the request is canceled, or this date is reached. If the request is persistent, it remains active until it is canceled or this date and time is reached.
-
-Default: The request is effective indefinitely.
+The end date of the request. If this is a one-time request, the request remains active until all instances launch, the request is canceled, or this date is reached. If the request is persistent, it remains active until it is canceled or this date is reached. The default end date is 7 days from the current date.
 
 
-## `InstanceInterruptionBehavior = "stop" or "terminate"`
-Indicates whether a Spot instance stops or terminates when it is interrupted.
+## `InstanceInterruptionBehavior = "hibernate", "stop" or "terminate"`
+The behavior when a Spot Instance is interrupted. The default is `terminate`.
 
 
 
@@ -16208,7 +18982,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RequestSpotInstances)
 """
-
 @inline request_spot_instances(aws::AWSConfig=default_aws_config(); args...) = request_spot_instances(aws, args)
 
 @inline request_spot_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "RequestSpotInstances", args)
@@ -16251,7 +19024,6 @@ The attribute.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetFpgaImageAttribute)
 """
-
 @inline reset_fpga_image_attribute(aws::AWSConfig=default_aws_config(); args...) = reset_fpga_image_attribute(aws, args)
 
 @inline reset_fpga_image_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ResetFpgaImageAttribute", args)
@@ -16291,9 +19063,27 @@ Checks whether you have the required permissions for the action, without actuall
 
 
 
+# Example: To reset the launchPermission attribute
+
+This example resets the launchPermission attribute for the specified AMI. By default, AMIs are private.
+
+Input:
+```
+[
+    "Attribute" => "launchPermission",
+    "ImageId" => "ami-5731123e"
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetImageAttribute)
 """
-
 @inline reset_image_attribute(aws::AWSConfig=default_aws_config(); args...) = reset_image_attribute(aws, args)
 
 @inline reset_image_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ResetImageAttribute", args)
@@ -16335,9 +19125,27 @@ The ID of the instance.
 
 
 
+# Example: To reset the sourceDestCheck attribute
+
+This example resets the sourceDestCheck attribute for the specified instance.
+
+Input:
+```
+[
+    "Attribute" => "sourceDestCheck",
+    "InstanceId" => "i-1234567890abcdef0"
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetInstanceAttribute)
 """
-
 @inline reset_instance_attribute(aws::AWSConfig=default_aws_config(); args...) = reset_instance_attribute(aws, args)
 
 @inline reset_instance_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ResetInstanceAttribute", args)
@@ -16376,7 +19184,6 @@ The source/destination checking attribute. Resets the value to `true`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetNetworkInterfaceAttribute)
 """
-
 @inline reset_network_interface_attribute(aws::AWSConfig=default_aws_config(); args...) = reset_network_interface_attribute(aws, args)
 
 @inline reset_network_interface_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ResetNetworkInterfaceAttribute", args)
@@ -16397,7 +19204,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 
 Resets permission settings for the specified snapshot.
 
-For more information on modifying snapshot permissions, see [Sharing Snapshots](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html) in the *Amazon Elastic Compute Cloud User Guide*.
+For more information about modifying snapshot permissions, see [Sharing Snapshots](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 # Arguments
 
@@ -16436,7 +19243,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetSnapshotAttribute)
 """
-
 @inline reset_snapshot_attribute(aws::AWSConfig=default_aws_config(); args...) = reset_snapshot_attribute(aws, args)
 
 @inline reset_snapshot_attribute(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "ResetSnapshotAttribute", args)
@@ -16494,7 +19300,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RestoreAddressToClassic)
 """
-
 @inline restore_address_to_classic(aws::AWSConfig=default_aws_config(); args...) = restore_address_to_classic(aws, args)
 
 @inline restore_address_to_classic(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "RestoreAddressToClassic", args)
@@ -16588,7 +19393,6 @@ Not supported. Use a set of IP permissions to specify a destination security gro
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RevokeSecurityGroupEgress)
 """
-
 @inline revoke_security_group_egress(aws::AWSConfig=default_aws_config(); args...) = revoke_security_group_egress(aws, args)
 
 @inline revoke_security_group_egress(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "RevokeSecurityGroupEgress", args)
@@ -16689,7 +19493,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RevokeSecurityGroupIngress)
 """
-
 @inline revoke_security_group_ingress(aws::AWSConfig=default_aws_config(); args...) = revoke_security_group_ingress(aws, args)
 
 @inline revoke_security_group_ingress(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "RevokeSecurityGroupIngress", args)
@@ -16700,11 +19503,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-20
 """
     using AWSSDK.EC2.run_instances
     run_instances([::AWSConfig], arguments::Dict)
-    run_instances([::AWSConfig]; ImageId=, MaxCount=, MinCount=, <keyword arguments>)
+    run_instances([::AWSConfig]; MaxCount=, MinCount=, <keyword arguments>)
 
     using AWSCore.Services.ec2
     ec2([::AWSConfig], "RunInstances", arguments::Dict)
-    ec2([::AWSConfig], "RunInstances", ImageId=, MaxCount=, MinCount=, <keyword arguments>)
+    ec2([::AWSConfig], "RunInstances", MaxCount=, MinCount=, <keyword arguments>)
 
 # RunInstances Operation
 
@@ -16726,6 +19529,8 @@ You can specify a number of options, or leave the default options. The following
 
 *   If any of the AMIs have a product code attached for which the user has not subscribed, the request fails.
 
+You can create a [launch template](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html), which is a resource that contains the parameters to launch an instance. When you launch an instance using [RunInstances](@ref), you can specify the launch template instead of specifying the launch parameters.
+
 To ensure faster instance launches, break up large requests into smaller batches. For example, create five separate launch requests for 100 instances each instead of one launch request for 500 instances.
 
 An instance is ready for you to use when it's in the `running` state. You can check the state of your instance using [DescribeInstances](@ref). You can tag instances and EBS volumes during launch, after launch, or both. For more information, see [CreateTags](@ref) and [Tagging Your Amazon EC2 Resources](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html).
@@ -16746,6 +19551,7 @@ One or more block device mapping entries. You can't specify both a snapshot ID a
             "Encrypted" =>  ::Bool,
             "DeleteOnTermination" =>  ::Bool,
             "Iops" =>  ::Int,
+            "KmsKeyId" =>  ::String,
             "SnapshotId" =>  ::String,
             "VolumeSize" =>  ::Int,
             "VolumeType" =>  "standard", "io1", "gp2", "sc1" or "st1"
@@ -16754,11 +19560,11 @@ One or more block device mapping entries. You can't specify both a snapshot ID a
     ], ...]
 ```
 
-## `ImageId = ::String` -- *Required*
-The ID of the AMI, which you can get by calling [DescribeImages](@ref).
+## `ImageId = ::String`
+The ID of the AMI, which you can get by calling [DescribeImages](@ref). An AMI is required to launch an instance and must be specified here or in a launch template.
 
 
-## `InstanceType = "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "x1.16xlarge", "x1.32xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge" or "f1.16xlarge"`
+## `InstanceType = "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "cr1.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r4.8xlarge", "r4.16xlarge", "r5.large", "r5.xlarge", "r5.2xlarge", "r5.4xlarge", "r5.8xlarge", "r5.12xlarge", "r5.16xlarge", "r5.24xlarge", "r5.metal", "r5d.large", "r5d.xlarge", "r5d.2xlarge", "r5d.4xlarge", "r5d.8xlarge", "r5d.12xlarge", "r5d.16xlarge", "r5d.24xlarge", "r5d.metal", "x1.16xlarge", "x1.32xlarge", "x1e.xlarge", "x1e.2xlarge", "x1e.4xlarge", "x1e.8xlarge", "x1e.16xlarge", "x1e.32xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "i3.large", "i3.xlarge", "i3.2xlarge", "i3.4xlarge", "i3.8xlarge", "i3.16xlarge", "i3.metal", "hi1.4xlarge", "hs1.8xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c5.large", "c5.xlarge", "c5.2xlarge", "c5.4xlarge", "c5.9xlarge", "c5.18xlarge", "c5d.large", "c5d.xlarge", "c5d.2xlarge", "c5d.4xlarge", "c5d.9xlarge", "c5d.18xlarge", "cc1.4xlarge", "cc2.8xlarge", "g2.2xlarge", "g2.8xlarge", "g3.4xlarge", "g3.8xlarge", "g3.16xlarge", "cg1.4xlarge", "p2.xlarge", "p2.8xlarge", "p2.16xlarge", "p3.2xlarge", "p3.8xlarge", "p3.16xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "f1.2xlarge", "f1.16xlarge", "m5.large", "m5.xlarge", "m5.2xlarge", "m5.4xlarge", "m5.12xlarge", "m5.24xlarge", "m5d.large", "m5d.xlarge", "m5d.2xlarge", "m5d.4xlarge", "m5d.12xlarge", "m5d.24xlarge", "h1.2xlarge", "h1.4xlarge", "h1.8xlarge", "h1.16xlarge", "z1d.large", "z1d.xlarge", "z1d.2xlarge", "z1d.3xlarge", "z1d.6xlarge" or "z1d.12xlarge"`
 The instance type. For more information, see [Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon Elastic Compute Cloud User Guide*.
 
 Default: `m1.small`
@@ -16898,7 +19704,7 @@ One or more network interfaces.
         "PrivateIpAddress" =>  ::String,
         "PrivateIpAddressesSet" =>  [[
             "Primary" =>  ::Bool,
-            "PrivateIpAddress" => <required> ::String
+            "PrivateIpAddress" =>  ::String
         ], ...],
         "SecondaryPrivateIpAddressCount" =>  ::Int,
         "SubnetId" =>  ::String
@@ -16912,11 +19718,11 @@ Only one private IP address can be designated as primary. You can't specify this
 
 
 ## `ElasticGpuSpecification = [["Type" => <required> ::String], ...]`
-An Elastic GPU to associate with the instance.
+An elastic GPU to associate with the instance.
 
 
 ## `TagSpecification = [[ ... ], ...]`
-The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags are applied to all instances or volumes that are created during launch.
+The tags to apply to the resources during launch. You can only tag instances and volumes on launch. The specified tags are applied to all instances or volumes that are created during launch. To tag a resource after it has been created, see [CreateTags](@ref).
 ```
  TagSpecification = [[
         "ResourceType" =>  "customer-gateway", "dhcp-options", "image", "instance", "internet-gateway", "network-acl", "network-interface", "reserved-instances", "route-table", "snapshot", "spot-instances-request", "subnet", "security-group", "volume", "vpc", "vpn-connection" or "vpn-gateway",
@@ -16927,15 +19733,101 @@ The tags to apply to the resources during launch. You can tag instances and volu
     ], ...]
 ```
 
+## `LaunchTemplate = [ ... ]`
+The launch template to use to launch the instances. Any parameters that you specify in [RunInstances](@ref) override the same parameters in the launch template. You can specify either the name or ID of a launch template, but not both.
+```
+ LaunchTemplate = [
+        "LaunchTemplateId" =>  ::String,
+        "LaunchTemplateName" =>  ::String,
+        "Version" =>  ::String
+    ]
+```
+
+## `InstanceMarketOptions = [ ... ]`
+The market (purchasing) option for the instances.
+
+For [RunInstances](@ref), persistent Spot Instance requests are only supported when **InstanceInterruptionBehavior** is set to either `hibernate` or `stop`.
+```
+ InstanceMarketOptions = [
+        "MarketType" =>  "spot",
+        "SpotOptions" =>  [
+            "MaxPrice" =>  ::String,
+            "SpotInstanceType" =>  "one-time" or "persistent",
+            "BlockDurationMinutes" =>  ::Int,
+            "ValidUntil" =>  timestamp,
+            "InstanceInterruptionBehavior" =>  "hibernate", "stop" or "terminate"
+        ]
+    ]
+```
+
+## `CreditSpecification = ["CpuCredits" => <required> ::String]`
+The credit option for CPU usage of the instance. Valid values are `standard` and `unlimited`. To change this attribute after launch, use [ModifyInstanceCreditSpecification](@ref). For more information, see [T2 Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/t2-instances.html) in the *Amazon Elastic Compute Cloud User Guide*.
+
+Default: `standard`
+
+
+## `CpuOptions = [ ... ]`
+The CPU options for the instance. For more information, see [Optimizing CPU Options](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) in the *Amazon Elastic Compute Cloud User Guide*.
+```
+ CpuOptions = [
+        "CoreCount" =>  ::Int,
+        "ThreadsPerCore" =>  ::Int
+    ]
+```
+
 
 
 # Returns
 
 `Reservation`
 
+# Example: To launch an instance
+
+This example launches an instance using the specified AMI, instance type, security group, subnet, block device mapping, and tags.
+
+Input:
+```
+[
+    "BlockDeviceMappings" => [
+        [
+            "DeviceName" => "/dev/sdh",
+            "Ebs" => [
+                "VolumeSize" => 100
+            ]
+        ]
+    ],
+    "ImageId" => "ami-abc12345",
+    "InstanceType" => "t2.micro",
+    "KeyName" => "my-key-pair",
+    "MaxCount" => 1,
+    "MinCount" => 1,
+    "SecurityGroupIds" => [
+        "sg-1a2b3c4d"
+    ],
+    "SubnetId" => "subnet-6e7f829e",
+    "TagSpecifications" => [
+        [
+            "ResourceType" => "instance",
+            "Tags" => [
+                [
+                    "Key" => "Purpose",
+                    "Value" => "test"
+                ]
+            ]
+        ]
+    ]
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RunInstances)
 """
-
 @inline run_instances(aws::AWSConfig=default_aws_config(); args...) = run_instances(aws, args)
 
 @inline run_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "RunInstances", args)
@@ -17117,7 +20009,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RunScheduledInstances)
 """
-
 @inline run_scheduled_instances(aws::AWSConfig=default_aws_config(); args...) = run_scheduled_instances(aws, args)
 
 @inline run_scheduled_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "RunScheduledInstances", args)
@@ -17166,9 +20057,40 @@ Checks whether you have the required permissions for the action, without actuall
 
 `StartInstancesResult`
 
+# Example: To start a stopped EC2 instance
+
+This example starts the specified EC2 instance.
+
+Input:
+```
+[
+    "InstanceIds" => [
+        "i-1234567890abcdef0"
+    ]
+]
+```
+
+Output:
+```
+Dict(
+    "StartingInstances" => [
+        Dict(
+            "CurrentState" => Dict(
+                "Code" => 0,
+                "Name" => "pending"
+            ),
+            "InstanceId" => "i-1234567890abcdef0",
+            "PreviousState" => Dict(
+                "Code" => 80,
+                "Name" => "stopped"
+            )
+        )
+    ]
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StartInstances)
 """
-
 @inline start_instances(aws::AWSConfig=default_aws_config(); args...) = start_instances(aws, args)
 
 @inline start_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "StartInstances", args)
@@ -17221,9 +20143,40 @@ Default: `false`
 
 `StopInstancesResult`
 
+# Example: To stop a running EC2 instance
+
+This example stops the specified EC2 instance.
+
+Input:
+```
+[
+    "InstanceIds" => [
+        "i-1234567890abcdef0"
+    ]
+]
+```
+
+Output:
+```
+Dict(
+    "StoppingInstances" => [
+        Dict(
+            "CurrentState" => Dict(
+                "Code" => 64,
+                "Name" => "stopping"
+            ),
+            "InstanceId" => "i-1234567890abcdef0",
+            "PreviousState" => Dict(
+                "Code" => 16,
+                "Name" => "running"
+            )
+        )
+    ]
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StopInstances)
 """
-
 @inline stop_instances(aws::AWSConfig=default_aws_config(); args...) = stop_instances(aws, args)
 
 @inline stop_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "StopInstances", args)
@@ -17272,9 +20225,40 @@ Checks whether you have the required permissions for the action, without actuall
 
 `TerminateInstancesResult`
 
+# Example: To terminate an EC2 instance
+
+This example terminates the specified EC2 instance.
+
+Input:
+```
+[
+    "InstanceIds" => [
+        "i-1234567890abcdef0"
+    ]
+]
+```
+
+Output:
+```
+Dict(
+    "TerminatingInstances" => [
+        Dict(
+            "CurrentState" => Dict(
+                "Code" => 32,
+                "Name" => "shutting-down"
+            ),
+            "InstanceId" => "i-1234567890abcdef0",
+            "PreviousState" => Dict(
+                "Code" => 16,
+                "Name" => "running"
+            )
+        )
+    ]
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/TerminateInstances)
 """
-
 @inline terminate_instances(aws::AWSConfig=default_aws_config(); args...) = terminate_instances(aws, args)
 
 @inline terminate_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "TerminateInstances", args)
@@ -17313,7 +20297,6 @@ The ID of the network interface.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnassignIpv6Addresses)
 """
-
 @inline unassign_ipv6addresses(aws::AWSConfig=default_aws_config(); args...) = unassign_ipv6addresses(aws, args)
 
 @inline unassign_ipv6addresses(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "UnassignIpv6Addresses", args)
@@ -17362,7 +20345,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnassignPrivateIpAddresses)
 """
-
 @inline unassign_private_ip_addresses(aws::AWSConfig=default_aws_config(); args...) = unassign_private_ip_addresses(aws, args)
 
 @inline unassign_private_ip_addresses(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "UnassignPrivateIpAddresses", args)
@@ -17401,7 +20383,6 @@ Checks whether you have the required permissions for the action, without actuall
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnmonitorInstances)
 """
-
 @inline unmonitor_instances(aws::AWSConfig=default_aws_config(); args...) = unmonitor_instances(aws, args)
 
 @inline unmonitor_instances(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "UnmonitorInstances", args)
@@ -17475,9 +20456,39 @@ The IP permissions for the security group rule.
 
 `UpdateSecurityGroupRuleDescriptionsEgressResult`
 
+# Example: To update an outbound security group rule description
+
+This example updates the description for the specified security group rule.
+
+Input:
+```
+[
+    "GroupId" => "sg-123abc12",
+    "IpPermissions" => [
+        [
+            "FromPort" => 80,
+            "IpProtocol" => "tcp",
+            "IpRanges" => [
+                [
+                    "CidrIp" => "203.0.113.0/24",
+                    "Description" => "Outbound HTTP access to server 2"
+                ]
+            ],
+            "ToPort" => 80
+        ]
+    ]
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UpdateSecurityGroupRuleDescriptionsEgress)
 """
-
 @inline update_security_group_rule_descriptions_egress(aws::AWSConfig=default_aws_config(); args...) = update_security_group_rule_descriptions_egress(aws, args)
 
 @inline update_security_group_rule_descriptions_egress(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "UpdateSecurityGroupRuleDescriptionsEgress", args)
@@ -17551,9 +20562,39 @@ The IP permissions for the security group rule.
 
 `UpdateSecurityGroupRuleDescriptionsIngressResult`
 
+# Example: To update an inbound security group rule description
+
+This example updates the description for the specified security group rule.
+
+Input:
+```
+[
+    "GroupId" => "sg-123abc12",
+    "IpPermissions" => [
+        [
+            "FromPort" => 22,
+            "IpProtocol" => "tcp",
+            "IpRanges" => [
+                [
+                    "CidrIp" => "203.0.113.0/16",
+                    "Description" => "SSH access from the LA office"
+                ]
+            ],
+            "ToPort" => 22
+        ]
+    ]
+]
+```
+
+Output:
+```
+Dict(
+
+)
+```
+
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UpdateSecurityGroupRuleDescriptionsIngress)
 """
-
 @inline update_security_group_rule_descriptions_ingress(aws::AWSConfig=default_aws_config(); args...) = update_security_group_rule_descriptions_ingress(aws, args)
 
 @inline update_security_group_rule_descriptions_ingress(aws::AWSConfig, args) = AWSCore.Services.ec2(aws, "UpdateSecurityGroupRuleDescriptionsIngress", args)

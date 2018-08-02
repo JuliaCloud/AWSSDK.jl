@@ -41,6 +41,8 @@ Matchmaking-related operations include:
 
 *   [AcceptMatch](@ref)
 
+*   [StartMatchBackfill](@ref)
+
 # Arguments
 
 ## `TicketId = ::String` -- *Required*
@@ -67,7 +69,6 @@ Player response to the proposed match.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/AcceptMatch)
 """
-
 @inline accept_match(aws::AWSConfig=default_aws_config(); args...) = accept_match(aws, args)
 
 @inline accept_match(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "AcceptMatch", args)
@@ -138,7 +139,6 @@ Object that specifies the fleet and routing type to use for the alias.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateAlias)
 """
-
 @inline create_alias(aws::AWSConfig=default_aws_config(); args...) = create_alias(aws, args)
 
 @inline create_alias(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "CreateAlias", args)
@@ -157,12 +157,20 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 # CreateBuild Operation
 
-Creates a new Amazon GameLift build from a set of game server binary files stored in an Amazon Simple Storage Service (Amazon S3) location. To use this API call, create a `.zip` file containing all of the files for the build and store it in an Amazon S3 bucket under your AWS account. For help on packaging your build files and creating a build, see [Uploading Your Game to Amazon GameLift](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html).
+Creates a new Amazon GameLift build record for your game server binary files and points to the location of your game server build files in an Amazon Simple Storage Service (Amazon S3) location.
+
+Game server binaries must be combined into a `.zip` file for use with Amazon GameLift. See [Uploading Your Game](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html) for more information.
 
 **Important**
-> Use this API action ONLY if you are storing your game build files in an Amazon S3 bucket. To create a build using files stored locally, use the CLI command [`upload-build`](http://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html) , which uploads the build files from a file location you specify.
+> To create new builds quickly and easily, use the AWS CLI command **[upload-build](http://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html)** . This helper command uploads your build and creates a new build record in one step, and automatically handles the necessary permissions. See [Upload Build Files to Amazon GameLift](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html) for more help.
 
-To create a new build using `CreateBuild`, identify the storage location and operating system of your game build. You also have the option of specifying a build name and version. If successful, this action creates a new build record with an unique build ID and in `INITIALIZED` status. Use the API call [DescribeBuild](@ref) to check the status of your build. A build must be in `READY` status before it can be used to create fleets to host your game.
+The `CreateBuild` operation should be used only when you need to manually upload your build files, as in the following scenarios:
+
+*   Store a build file in an Amazon S3 bucket under your own AWS account. To use this option, you must first give Amazon GameLift access to that Amazon S3 bucket. See [Create a Build with Files in Amazon S3](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build) for detailed help. To create a new build record using files in your Amazon S3 bucket, call `CreateBuild` and specify a build name, operating system, and the storage location of your game build.
+
+*   Upload a build file directly to Amazon GameLift's Amazon S3 account. To use this option, you first call `CreateBuild` with a build name and operating system. This action creates a new build record and returns an Amazon S3 storage location (bucket and key only) and temporary access credentials. Use the credentials to manually upload your build file to the storage location (see the Amazon S3 topic [Uploading Objects](http://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html)). You can upload files to a location only once.
+
+If successful, this operation creates a new build record with a unique build ID and places it in `INITIALIZED` status. You can use [DescribeBuild](@ref) to check the status of your build. A build must be in `READY` status before it can be used to create fleets.
 
 Build-related operations include:
 
@@ -187,7 +195,7 @@ Version that is associated with this build. Version strings do not need to be un
 
 
 ## `StorageLocation = [ ... ]`
-Amazon S3 location of the game build files to be uploaded. The S3 bucket must be owned by the same AWS account that you're using to manage Amazon GameLift. It also must in the same region that you want to create a new build in. Before calling `CreateBuild` with this location, you must allow Amazon GameLift to access your Amazon S3 bucket (see [Create a Build with Files in Amazon S3](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build)).
+Information indicating where your game build files are stored. Use this parameter only when creating a build with files stored in an Amazon S3 bucket that you own. The storage location must specify an Amazon S3 bucket name and key, as well as a role ARN that you set up to allow Amazon GameLift to access your Amazon S3 bucket. The S3 bucket must be in the same region that you want to create a new build in.
 ```
  StorageLocation = [
         "Bucket" =>  ::String,
@@ -197,7 +205,7 @@ Amazon S3 location of the game build files to be uploaded. The S3 bucket must be
 ```
 
 ## `OperatingSystem = "WINDOWS_2012" or "AMAZON_LINUX"`
-Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build. If your game build contains multiple executables, they all must run on the same operating system.
+Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build. If your game build contains multiple executables, they all must run on the same operating system. If an operating system is not specified when creating a build, Amazon GameLift uses the default value (WINDOWS_2012). This value cannot be changed later.
 
 
 
@@ -212,7 +220,6 @@ Operating system that the game server binaries are built to run on. This value d
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateBuild)
 """
-
 @inline create_build(aws::AWSConfig=default_aws_config(); args...) = create_build(aws, args)
 
 @inline create_build(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "CreateBuild", args)
@@ -231,9 +238,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 # CreateFleet Operation
 
-Creates a new fleet to run your game servers. A fleet is a set of Amazon Elastic Compute Cloud (Amazon EC2) instances, each of which can run multiple server processes to host game sessions. You configure a fleet to create instances with certain hardware specifications (see [Amazon EC2 Instance Types](http://aws.amazon.com/ec2/instance-types/) for more information), and deploy a specified game build to each instance. A newly created fleet passes through several statuses; once it reaches the `ACTIVE` status, it can begin hosting game sessions.
+Creates a new fleet to run your game servers. A fleet is a set of Amazon Elastic Compute Cloud (Amazon EC2) instances, each of which can run multiple server processes to host game sessions. You set up a fleet to use instances with certain hardware specifications (see [Amazon EC2 Instance Types](http://aws.amazon.com/ec2/instance-types/) for more information), and deploy your game build to run on each instance.
 
-To create a new fleet, you must specify the following: (1) fleet name, (2) build ID of an uploaded game build, (3) an EC2 instance type, and (4) a run-time configuration that describes which server processes to run on each instance in the fleet. (Although the run-time configuration is not a required parameter, the fleet cannot be successfully activated without it.)
+To create a new fleet, you must specify the following: (1) a fleet name, (2) the build ID of a successfully uploaded game build, (3) an EC2 instance type, and (4) a run-time configuration, which describes the server processes to run on each instance in the fleet. If you don't specify a fleet type (on-demand or spot), the new fleet uses on-demand instances by default.
 
 You can also configure the new fleet with the following settings:
 
@@ -243,23 +250,25 @@ You can also configure the new fleet with the following settings:
 
 *   Fleet-wide game session protection
 
-*   Resource creation limit
+*   Resource usage limits
 
-If you use Amazon CloudWatch for metrics, you can add the new fleet to a metric group. This allows you to view aggregated metrics for a set of fleets. Once you specify a metric group, the new fleet's metrics are included in the metric group's data.
+*   VPC peering connection (see [VPC Peering with Amazon GameLift Fleets](http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html))
 
-You have the option of creating a VPC peering connection with the new fleet. For more information, see [VPC Peering with Amazon GameLift Fleets](http://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
+If you use Amazon CloudWatch for metrics, you can add the new fleet to a metric group. By adding multiple fleets to a metric group, you can view aggregated metrics for all the fleets in the group.
 
-If the CreateFleet call is successful, Amazon GameLift performs the following tasks:
+If the `CreateFleet` call is successful, Amazon GameLift performs the following tasks. You can track the process of a fleet by checking the fleet status or by monitoring fleet creation events:
 
-*   Creates a fleet record and sets the status to `NEW` (followed by other statuses as the fleet is activated).
-
-*   Sets the fleet's target capacity to 1 (desired instances), which causes Amazon GameLift to start one new EC2 instance.
-
-*   Starts launching server processes on the instance. If the fleet is configured to run multiple server processes per instance, Amazon GameLift staggers each launch by a few seconds.
+*   Creates a fleet record. Status: `NEW`.
 
 *   Begins writing events to the fleet event log, which can be accessed in the Amazon GameLift console.
 
-*   Sets the fleet's status to `ACTIVE` as soon as one server process in the fleet is ready to host a game session.
+    Sets the fleet's target capacity to 1 (desired instances), which triggers Amazon GameLift to start one new EC2 instance.
+
+*   Downloads the game build to the new instance and installs it. Statuses: `DOWNLOADING`, `VALIDATING`, `BUILDING`.
+
+*   Starts launching server processes on the instance. If the fleet is configured to run multiple server processes per instance, Amazon GameLift staggers each launch by a few seconds. Status: `ACTIVATING`.
+
+*   Sets the fleet's status to `ACTIVE` as soon as one server process is ready to host a game session.
 
 Fleet-related operations include:
 
@@ -267,15 +276,21 @@ Fleet-related operations include:
 
 *   [ListFleets](@ref)
 
+*   [DeleteFleet](@ref)
+
 *   Describe fleets:
 
     *   [DescribeFleetAttributes](@ref)
+
+    *   [DescribeFleetCapacity](@ref)
 
     *   [DescribeFleetPortSettings](@ref)
 
     *   [DescribeFleetUtilization](@ref)
 
     *   [DescribeRuntimeConfiguration](@ref)
+
+    *   [DescribeEC2InstanceLimits](@ref)
 
     *   [DescribeFleetEvents](@ref)
 
@@ -289,21 +304,11 @@ Fleet-related operations include:
 
     *   [UpdateRuntimeConfiguration](@ref)
 
-*   Manage fleet capacity:
+*   Manage fleet actions:
 
-    *   [DescribeFleetCapacity](@ref)
+    *   [StartFleetActions](@ref)
 
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [PutScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeScalingPolicies](@ref) (automatic scaling)
-
-    *   [DeleteScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeEC2InstanceLimits](@ref)
-
-*   [DeleteFleet](@ref)
+    *   [StopFleetActions](@ref)
 
 # Arguments
 
@@ -347,7 +352,7 @@ Range of IP addresses and port settings that permit inbound traffic to access se
 ```
 
 ## `NewGameSessionProtectionPolicy = "NoProtection" or "FullProtection"`
-Game session protection policy to apply to all instances in this fleet. If this parameter is not set, instances in this fleet default to no protection. You can change a fleet's protection policy using UpdateFleetAttributes, but this change will only affect sessions created after the policy change. You can also set protection for individual instances using [UpdateGameSession](@ref).
+Game session protection policy to apply to all instances in this fleet. If this parameter is not set, instances in this fleet default to no protection. You can change a fleet's protection policy using [UpdateFleetAttributes](@ref), but this change will only affect sessions created after the policy change. You can also set protection for individual instances using [UpdateGameSession](@ref).
 
 *   **NoProtection** -- The game session can be terminated during a scale-down event.
 
@@ -378,7 +383,7 @@ Policy that limits the number of game sessions an individual player can create o
 ```
 
 ## `MetricGroups = [::String, ...]`
-Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the group. Or use a new name to create a new metric group. A fleet can only be included in one metric group at a time.
+Name of a metric group to add this fleet to. A metric group tracks metrics across all fleets in the group. Use an existing metric group name to add this fleet to the group, or use a new name to create a new metric group. A fleet can only be included in one metric group at a time.
 
 
 ## `PeerVpcAwsAccountId = ::String`
@@ -387,6 +392,10 @@ Unique identifier for the AWS account with the VPC that you want to peer your Am
 
 ## `PeerVpcId = ::String`
 Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud service tools, including the VPC Dashboard in the AWS Management Console.
+
+
+## `FleetType = "ON_DEMAND" or "SPOT"`
+Indicates whether to use on-demand instances or spot instances for this fleet. If empty, the default is ON_DEMAND. Both categories of instances use identical hardware and configurations, based on the instance type selected for this fleet. You can acquire on-demand instances at any time for a fixed price and keep them as long as you need them. Spot instances have lower prices, but spot pricing is variable, and while in use they can be interrupted (with a two-minute notification). Learn more about Amazon GameLift spot instances with at [Choose Computing Resources](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-ec2-instances.html).
 
 
 
@@ -401,7 +410,6 @@ Unique identifier for a VPC with resources to be accessed by your Amazon GameLif
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateFleet)
 """
-
 @inline create_fleet(aws::AWSConfig=default_aws_config(); args...) = create_fleet(aws, args)
 
 @inline create_fleet(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "CreateFleet", args)
@@ -475,7 +483,7 @@ Descriptive label that is associated with a game session. Session names do not n
 
 
 ## `GameProperties = [[ ... ], ...]`
-Set of developer-defined properties for a game session, formatted as a set of type:value pairs. These properties are included in the [GameSession](@ref) object, which is passed to the game server with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the [GameSession](@ref) object with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 ```
  GameProperties = [[
         "Key" => <required> ::String,
@@ -496,7 +504,7 @@ Custom string that uniquely identifies a request for a new game session. Maximum
 
 
 ## `GameSessionData = ::String`
-Set of developer-defined game session properties, formatted as a single string value. This data is included in the [GameSession](@ref) object, which is passed to the game server with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the [GameSession](@ref) object with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
 
@@ -511,7 +519,6 @@ Set of developer-defined game session properties, formatted as a single string v
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateGameSession)
 """
-
 @inline create_game_session(aws::AWSConfig=default_aws_config(); args...) = create_game_session(aws, args)
 
 @inline create_game_session(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "CreateGameSession", args)
@@ -583,7 +590,6 @@ List of fleets that can be used to fulfill game session placement requests in th
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateGameSessionQueue)
 """
-
 @inline create_game_session_queue(aws::AWSConfig=default_aws_config(); args...) = create_game_session_queue(aws, args)
 
 @inline create_game_session_queue(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "CreateGameSessionQueue", args)
@@ -602,7 +608,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 # CreateMatchmakingConfiguration Operation
 
-Defines a new matchmaking configuration for use with FlexMatch. A matchmaking configuration sets out guidelines for matching players and getting the matches into games. You can set up multiple matchmaking configurations to handle the scenarios needed for your game. Each matchmaking request ([StartMatchmaking](@ref)) specifies a configuration for the match and provides player attributes to support the configuration being used.
+Defines a new matchmaking configuration for use with FlexMatch. A matchmaking configuration sets out guidelines for matching players and getting the matches into games. You can set up multiple matchmaking configurations to handle the scenarios needed for your game. Each matchmaking ticket ([StartMatchmaking](@ref) or [StartMatchBackfill](@ref)) specifies a configuration for the match and provides player attributes to support the configuration being used.
 
 To create a matchmaking configuration, at a minimum you must specify the following: configuration name; a rule set that governs how to evaluate players and find acceptable matches; a game session queue to use when placing a new game session for the match; and the maximum time allowed for a matchmaking attempt.
 
@@ -669,7 +675,7 @@ Information to attached to all events related to the matchmaking configuration.
 
 
 ## `GameProperties = [[ ... ], ...]`
-Set of developer-defined properties for a game session, formatted as a set of type:value pairs. These properties are included in the [GameSession](@ref) object, which is passed to the game server with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new [GameSession](@ref) object that is created for a successful match.
+Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the [GameSession](@ref) object with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new [GameSession](@ref) object that is created for a successful match.
 ```
  GameProperties = [[
         "Key" => <required> ::String,
@@ -678,7 +684,7 @@ Set of developer-defined properties for a game session, formatted as a set of ty
 ```
 
 ## `GameSessionData = ::String`
-Set of developer-defined game session properties, formatted as a single string value. This data is included in the [GameSession](@ref) object, which is passed to the game server with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new [GameSession](@ref) object that is created for a successful match.
+Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the [GameSession](@ref) object with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new [GameSession](@ref) object that is created for a successful match.
 
 
 
@@ -693,7 +699,6 @@ Set of developer-defined game session properties, formatted as a single string v
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateMatchmakingConfiguration)
 """
-
 @inline create_matchmaking_configuration(aws::AWSConfig=default_aws_config(); args...) = create_matchmaking_configuration(aws, args)
 
 @inline create_matchmaking_configuration(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "CreateMatchmakingConfiguration", args)
@@ -714,7 +719,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 Creates a new rule set for FlexMatch matchmaking. A rule set describes the type of match to create, such as the number and size of teams, and sets the parameters for acceptable player matches, such as minimum skill level or character type. Rule sets are used in matchmaking configurations, which define how matchmaking requests are handled. Each [MatchmakingConfiguration](@ref) uses one rule set; you can set up multiple rule sets to handle the scenarios that suit your game (such as for different game modes), and create a separate matchmaking configuration for each rule set. See additional information on rule set content in the [MatchmakingRuleSet](@ref) structure. For help creating rule sets, including useful examples, see the topic [Adding FlexMatch to Your Game](http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
 
-Once created, matchmaking rule sets cannot be changed or deleted, so we recommend checking the rule set syntax using [ValidateMatchmakingRuleSet](@ref)before creating the rule set.
+Once created, matchmaking rule sets cannot be changed or deleted, so we recommend checking the rule set syntax using [ValidateMatchmakingRuleSet](@ref) before creating the rule set.
 
 To create a matchmaking rule set, provide the set of rules and a unique name. Rule sets must be defined in the same region as the matchmaking configuration they will be used with. Rule sets cannot be edited or deleted. If you need to change a rule set, create a new one with the necessary edits and then update matchmaking configurations to use the new rule set.
 
@@ -756,7 +761,6 @@ Collection of matchmaking rules, formatted as a JSON string. (Note that comments
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateMatchmakingRuleSet)
 """
-
 @inline create_matchmaking_rule_set(aws::AWSConfig=default_aws_config(); args...) = create_matchmaking_rule_set(aws, args)
 
 @inline create_matchmaking_rule_set(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "CreateMatchmakingRuleSet", args)
@@ -823,7 +827,6 @@ Developer-defined information related to a player. Amazon GameLift does not use 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreatePlayerSession)
 """
-
 @inline create_player_session(aws::AWSConfig=default_aws_config(); args...) = create_player_session(aws, args)
 
 @inline create_player_session(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "CreatePlayerSession", args)
@@ -890,7 +893,6 @@ Map of string pairs, each specifying a player ID and a set of developer-defined 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreatePlayerSessions)
 """
-
 @inline create_player_sessions(aws::AWSConfig=default_aws_config(); args...) = create_player_sessions(aws, args)
 
 @inline create_player_sessions(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "CreatePlayerSessions", args)
@@ -955,7 +957,6 @@ Unique identifier for a VPC with resources to be accessed by your Amazon GameLif
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateVpcPeeringAuthorization)
 """
-
 @inline create_vpc_peering_authorization(aws::AWSConfig=default_aws_config(); args...) = create_vpc_peering_authorization(aws, args)
 
 @inline create_vpc_peering_authorization(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "CreateVpcPeeringAuthorization", args)
@@ -1020,7 +1021,6 @@ Unique identifier for a VPC with resources to be accessed by your Amazon GameLif
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/CreateVpcPeeringConnection)
 """
-
 @inline create_vpc_peering_connection(aws::AWSConfig=default_aws_config(); args...) = create_vpc_peering_connection(aws, args)
 
 @inline create_vpc_peering_connection(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "CreateVpcPeeringConnection", args)
@@ -1069,7 +1069,6 @@ Unique identifier for a fleet alias. Specify the alias you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DeleteAlias)
 """
-
 @inline delete_alias(aws::AWSConfig=default_aws_config(); args...) = delete_alias(aws, args)
 
 @inline delete_alias(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DeleteAlias", args)
@@ -1118,7 +1117,6 @@ Unique identifier for a build to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DeleteBuild)
 """
-
 @inline delete_build(aws::AWSConfig=default_aws_config(); args...) = delete_build(aws, args)
 
 @inline delete_build(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DeleteBuild", args)
@@ -1147,15 +1145,21 @@ Fleet-related operations include:
 
 *   [ListFleets](@ref)
 
+*   [DeleteFleet](@ref)
+
 *   Describe fleets:
 
     *   [DescribeFleetAttributes](@ref)
+
+    *   [DescribeFleetCapacity](@ref)
 
     *   [DescribeFleetPortSettings](@ref)
 
     *   [DescribeFleetUtilization](@ref)
 
     *   [DescribeRuntimeConfiguration](@ref)
+
+    *   [DescribeEC2InstanceLimits](@ref)
 
     *   [DescribeFleetEvents](@ref)
 
@@ -1169,21 +1173,11 @@ Fleet-related operations include:
 
     *   [UpdateRuntimeConfiguration](@ref)
 
-*   Manage fleet capacity:
+*   Manage fleet actions:
 
-    *   [DescribeFleetCapacity](@ref)
+    *   [StartFleetActions](@ref)
 
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [PutScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeScalingPolicies](@ref) (automatic scaling)
-
-    *   [DeleteScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeEC2InstanceLimits](@ref)
-
-*   [DeleteFleet](@ref)
+    *   [StopFleetActions](@ref)
 
 # Arguments
 
@@ -1199,7 +1193,6 @@ Unique identifier for a fleet to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DeleteFleet)
 """
-
 @inline delete_fleet(aws::AWSConfig=default_aws_config(); args...) = delete_fleet(aws, args)
 
 @inline delete_fleet(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DeleteFleet", args)
@@ -1248,7 +1241,6 @@ Descriptive label that is associated with game session queue. Queue names must b
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DeleteGameSessionQueue)
 """
-
 @inline delete_game_session_queue(aws::AWSConfig=default_aws_config(); args...) = delete_game_session_queue(aws, args)
 
 @inline delete_game_session_queue(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DeleteGameSessionQueue", args)
@@ -1303,7 +1295,6 @@ Unique identifier for a matchmaking configuration
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DeleteMatchmakingConfiguration)
 """
-
 @inline delete_matchmaking_configuration(aws::AWSConfig=default_aws_config(); args...) = delete_matchmaking_configuration(aws, args)
 
 @inline delete_matchmaking_configuration(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DeleteMatchmakingConfiguration", args)
@@ -1324,49 +1315,29 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 Deletes a fleet scaling policy. This action means that the policy is no longer in force and removes all record of it. To delete a scaling policy, specify both the scaling policy name and the fleet ID it is associated with.
 
-Fleet-related operations include:
+To temporarily suspend scaling policies, call [StopFleetActions](@ref). This operation suspends all policies for the fleet.
 
-*   [CreateFleet](@ref)
+Operations related to fleet capacity scaling include:
 
-*   [ListFleets](@ref)
+*   [DescribeFleetCapacity](@ref)
 
-*   Describe fleets:
+*   [UpdateFleetCapacity](@ref)
 
-    *   [DescribeFleetAttributes](@ref)
+*   [DescribeEC2InstanceLimits](@ref)
 
-    *   [DescribeFleetPortSettings](@ref)
+*   Manage scaling policies:
 
-    *   [DescribeFleetUtilization](@ref)
+    *   [PutScalingPolicy](@ref) (auto-scaling)
 
-    *   [DescribeRuntimeConfiguration](@ref)
+    *   [DescribeScalingPolicies](@ref) (auto-scaling)
 
-    *   [DescribeFleetEvents](@ref)
+    *   [DeleteScalingPolicy](@ref) (auto-scaling)
 
-*   Update fleets:
+*   Manage fleet actions:
 
-    *   [UpdateFleetAttributes](@ref)
+    *   [StartFleetActions](@ref)
 
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [UpdateFleetPortSettings](@ref)
-
-    *   [UpdateRuntimeConfiguration](@ref)
-
-*   Manage fleet capacity:
-
-    *   [DescribeFleetCapacity](@ref)
-
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [PutScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeScalingPolicies](@ref) (automatic scaling)
-
-    *   [DeleteScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeEC2InstanceLimits](@ref)
-
-*   [DeleteFleet](@ref)
+    *   [StopFleetActions](@ref)
 
 # Arguments
 
@@ -1386,7 +1357,6 @@ Unique identifier for a fleet to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DeleteScalingPolicy)
 """
-
 @inline delete_scaling_policy(aws::AWSConfig=default_aws_config(); args...) = delete_scaling_policy(aws, args)
 
 @inline delete_scaling_policy(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DeleteScalingPolicy", args)
@@ -1443,7 +1413,6 @@ Unique identifier for a VPC with resources to be accessed by your Amazon GameLif
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DeleteVpcPeeringAuthorization)
 """
-
 @inline delete_vpc_peering_authorization(aws::AWSConfig=default_aws_config(); args...) = delete_vpc_peering_authorization(aws, args)
 
 @inline delete_vpc_peering_authorization(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DeleteVpcPeeringAuthorization", args)
@@ -1502,7 +1471,6 @@ Unique identifier for a VPC peering connection. This value is included in the [V
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DeleteVpcPeeringConnection)
 """
-
 @inline delete_vpc_peering_connection(aws::AWSConfig=default_aws_config(); args...) = delete_vpc_peering_connection(aws, args)
 
 @inline delete_vpc_peering_connection(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DeleteVpcPeeringConnection", args)
@@ -1557,7 +1525,6 @@ Unique identifier for a fleet alias. Specify the alias you want to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeAlias)
 """
-
 @inline describe_alias(aws::AWSConfig=default_aws_config(); args...) = describe_alias(aws, args)
 
 @inline describe_alias(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeAlias", args)
@@ -1576,7 +1543,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 # DescribeBuild Operation
 
-Retrieves properties for a build. To get a build record, specify a build ID. If successful, an object containing the build properties is returned.
+Retrieves properties for a build. To request a build record, specify a build ID. If successful, an object containing the build properties is returned.
 
 Build-related operations include:
 
@@ -1608,7 +1575,6 @@ Unique identifier for a build to retrieve properties for.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeBuild)
 """
-
 @inline describe_build(aws::AWSConfig=default_aws_config(); args...) = describe_build(aws, args)
 
 @inline describe_build(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeBuild", args)
@@ -1641,15 +1607,21 @@ Fleet-related operations include:
 
 *   [ListFleets](@ref)
 
+*   [DeleteFleet](@ref)
+
 *   Describe fleets:
 
     *   [DescribeFleetAttributes](@ref)
+
+    *   [DescribeFleetCapacity](@ref)
 
     *   [DescribeFleetPortSettings](@ref)
 
     *   [DescribeFleetUtilization](@ref)
 
     *   [DescribeRuntimeConfiguration](@ref)
+
+    *   [DescribeEC2InstanceLimits](@ref)
 
     *   [DescribeFleetEvents](@ref)
 
@@ -1663,21 +1635,11 @@ Fleet-related operations include:
 
     *   [UpdateRuntimeConfiguration](@ref)
 
-*   Manage fleet capacity:
+*   Manage fleet actions:
 
-    *   [DescribeFleetCapacity](@ref)
+    *   [StartFleetActions](@ref)
 
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [PutScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeScalingPolicies](@ref) (automatic scaling)
-
-    *   [DeleteScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeEC2InstanceLimits](@ref)
-
-*   [DeleteFleet](@ref)
+    *   [StopFleetActions](@ref)
 
 # Arguments
 
@@ -1697,7 +1659,6 @@ Name of an EC2 instance type that is supported in Amazon GameLift. A fleet insta
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeEC2InstanceLimits)
 """
-
 @inline describe_ec2instance_limits(aws::AWSConfig=default_aws_config(); args...) = describe_ec2instance_limits(aws, args)
 
 @inline describe_ec2instance_limits(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeEC2InstanceLimits", args)
@@ -1727,15 +1688,21 @@ Fleet-related operations include:
 
 *   [ListFleets](@ref)
 
+*   [DeleteFleet](@ref)
+
 *   Describe fleets:
 
     *   [DescribeFleetAttributes](@ref)
+
+    *   [DescribeFleetCapacity](@ref)
 
     *   [DescribeFleetPortSettings](@ref)
 
     *   [DescribeFleetUtilization](@ref)
 
     *   [DescribeRuntimeConfiguration](@ref)
+
+    *   [DescribeEC2InstanceLimits](@ref)
 
     *   [DescribeFleetEvents](@ref)
 
@@ -1749,21 +1716,11 @@ Fleet-related operations include:
 
     *   [UpdateRuntimeConfiguration](@ref)
 
-*   Manage fleet capacity:
+*   Manage fleet actions:
 
-    *   [DescribeFleetCapacity](@ref)
+    *   [StartFleetActions](@ref)
 
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [PutScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeScalingPolicies](@ref) (automatic scaling)
-
-    *   [DeleteScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeEC2InstanceLimits](@ref)
-
-*   [DeleteFleet](@ref)
+    *   [StopFleetActions](@ref)
 
 # Arguments
 
@@ -1791,7 +1748,6 @@ Token that indicates the start of the next sequential page of results. Use the t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeFleetAttributes)
 """
-
 @inline describe_fleet_attributes(aws::AWSConfig=default_aws_config(); args...) = describe_fleet_attributes(aws, args)
 
 @inline describe_fleet_attributes(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeFleetAttributes", args)
@@ -1821,15 +1777,21 @@ Fleet-related operations include:
 
 *   [ListFleets](@ref)
 
+*   [DeleteFleet](@ref)
+
 *   Describe fleets:
 
     *   [DescribeFleetAttributes](@ref)
+
+    *   [DescribeFleetCapacity](@ref)
 
     *   [DescribeFleetPortSettings](@ref)
 
     *   [DescribeFleetUtilization](@ref)
 
     *   [DescribeRuntimeConfiguration](@ref)
+
+    *   [DescribeEC2InstanceLimits](@ref)
 
     *   [DescribeFleetEvents](@ref)
 
@@ -1843,21 +1805,11 @@ Fleet-related operations include:
 
     *   [UpdateRuntimeConfiguration](@ref)
 
-*   Manage fleet capacity:
+*   Manage fleet actions:
 
-    *   [DescribeFleetCapacity](@ref)
+    *   [StartFleetActions](@ref)
 
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [PutScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeScalingPolicies](@ref) (automatic scaling)
-
-    *   [DeleteScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeEC2InstanceLimits](@ref)
-
-*   [DeleteFleet](@ref)
+    *   [StopFleetActions](@ref)
 
 # Arguments
 
@@ -1885,7 +1837,6 @@ Token that indicates the start of the next sequential page of results. Use the t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeFleetCapacity)
 """
-
 @inline describe_fleet_capacity(aws::AWSConfig=default_aws_config(); args...) = describe_fleet_capacity(aws, args)
 
 @inline describe_fleet_capacity(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeFleetCapacity", args)
@@ -1912,15 +1863,21 @@ Fleet-related operations include:
 
 *   [ListFleets](@ref)
 
+*   [DeleteFleet](@ref)
+
 *   Describe fleets:
 
     *   [DescribeFleetAttributes](@ref)
+
+    *   [DescribeFleetCapacity](@ref)
 
     *   [DescribeFleetPortSettings](@ref)
 
     *   [DescribeFleetUtilization](@ref)
 
     *   [DescribeRuntimeConfiguration](@ref)
+
+    *   [DescribeEC2InstanceLimits](@ref)
 
     *   [DescribeFleetEvents](@ref)
 
@@ -1934,21 +1891,11 @@ Fleet-related operations include:
 
     *   [UpdateRuntimeConfiguration](@ref)
 
-*   Manage fleet capacity:
+*   Manage fleet actions:
 
-    *   [DescribeFleetCapacity](@ref)
+    *   [StartFleetActions](@ref)
 
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [PutScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeScalingPolicies](@ref) (automatic scaling)
-
-    *   [DeleteScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeEC2InstanceLimits](@ref)
-
-*   [DeleteFleet](@ref)
+    *   [StopFleetActions](@ref)
 
 # Arguments
 
@@ -1984,7 +1931,6 @@ Token that indicates the start of the next sequential page of results. Use the t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeFleetEvents)
 """
-
 @inline describe_fleet_events(aws::AWSConfig=default_aws_config(); args...) = describe_fleet_events(aws, args)
 
 @inline describe_fleet_events(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeFleetEvents", args)
@@ -2011,15 +1957,21 @@ Fleet-related operations include:
 
 *   [ListFleets](@ref)
 
+*   [DeleteFleet](@ref)
+
 *   Describe fleets:
 
     *   [DescribeFleetAttributes](@ref)
+
+    *   [DescribeFleetCapacity](@ref)
 
     *   [DescribeFleetPortSettings](@ref)
 
     *   [DescribeFleetUtilization](@ref)
 
     *   [DescribeRuntimeConfiguration](@ref)
+
+    *   [DescribeEC2InstanceLimits](@ref)
 
     *   [DescribeFleetEvents](@ref)
 
@@ -2033,21 +1985,11 @@ Fleet-related operations include:
 
     *   [UpdateRuntimeConfiguration](@ref)
 
-*   Manage fleet capacity:
+*   Manage fleet actions:
 
-    *   [DescribeFleetCapacity](@ref)
+    *   [StartFleetActions](@ref)
 
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [PutScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeScalingPolicies](@ref) (automatic scaling)
-
-    *   [DeleteScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeEC2InstanceLimits](@ref)
-
-*   [DeleteFleet](@ref)
+    *   [StopFleetActions](@ref)
 
 # Arguments
 
@@ -2067,7 +2009,6 @@ Unique identifier for a fleet to retrieve port settings for.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeFleetPortSettings)
 """
-
 @inline describe_fleet_port_settings(aws::AWSConfig=default_aws_config(); args...) = describe_fleet_port_settings(aws, args)
 
 @inline describe_fleet_port_settings(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeFleetPortSettings", args)
@@ -2097,15 +2038,21 @@ Fleet-related operations include:
 
 *   [ListFleets](@ref)
 
+*   [DeleteFleet](@ref)
+
 *   Describe fleets:
 
     *   [DescribeFleetAttributes](@ref)
+
+    *   [DescribeFleetCapacity](@ref)
 
     *   [DescribeFleetPortSettings](@ref)
 
     *   [DescribeFleetUtilization](@ref)
 
     *   [DescribeRuntimeConfiguration](@ref)
+
+    *   [DescribeEC2InstanceLimits](@ref)
 
     *   [DescribeFleetEvents](@ref)
 
@@ -2119,21 +2066,11 @@ Fleet-related operations include:
 
     *   [UpdateRuntimeConfiguration](@ref)
 
-*   Manage fleet capacity:
+*   Manage fleet actions:
 
-    *   [DescribeFleetCapacity](@ref)
+    *   [StartFleetActions](@ref)
 
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [PutScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeScalingPolicies](@ref) (automatic scaling)
-
-    *   [DeleteScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeEC2InstanceLimits](@ref)
-
-*   [DeleteFleet](@ref)
+    *   [StopFleetActions](@ref)
 
 # Arguments
 
@@ -2161,7 +2098,6 @@ Token that indicates the start of the next sequential page of results. Use the t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeFleetUtilization)
 """
-
 @inline describe_fleet_utilization(aws::AWSConfig=default_aws_config(); args...) = describe_fleet_utilization(aws, args)
 
 @inline describe_fleet_utilization(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeFleetUtilization", args)
@@ -2244,7 +2180,6 @@ Token that indicates the start of the next sequential page of results. Use the t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeGameSessionDetails)
 """
-
 @inline describe_game_session_details(aws::AWSConfig=default_aws_config(); args...) = describe_game_session_details(aws, args)
 
 @inline describe_game_session_details(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeGameSessionDetails", args)
@@ -2305,7 +2240,6 @@ Unique identifier for a game session placement to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeGameSessionPlacement)
 """
-
 @inline describe_game_session_placement(aws::AWSConfig=default_aws_config(); args...) = describe_game_session_placement(aws, args)
 
 @inline describe_game_session_placement(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeGameSessionPlacement", args)
@@ -2362,7 +2296,6 @@ Token that indicates the start of the next sequential page of results. Use the t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeGameSessionQueues)
 """
-
 @inline describe_game_session_queues(aws::AWSConfig=default_aws_config(); args...) = describe_game_session_queues(aws, args)
 
 @inline describe_game_session_queues(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeGameSessionQueues", args)
@@ -2447,7 +2380,6 @@ Token that indicates the start of the next sequential page of results. Use the t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeGameSessions)
 """
-
 @inline describe_game_sessions(aws::AWSConfig=default_aws_config(); args...) = describe_game_sessions(aws, args)
 
 @inline describe_game_sessions(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeGameSessions", args)
@@ -2500,7 +2432,6 @@ Token that indicates the start of the next sequential page of results. Use the t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeInstances)
 """
-
 @inline describe_instances(aws::AWSConfig=default_aws_config(); args...) = describe_instances(aws, args)
 
 @inline describe_instances(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeInstances", args)
@@ -2519,11 +2450,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 # DescribeMatchmaking Operation
 
-Retrieves a set of one or more matchmaking tickets. Use this operation to retrieve ticket information, including status and--once a successful match is made--acquire connection information for the resulting new game session.
+Retrieves one or more matchmaking tickets. Use this operation to retrieve ticket information, including status and--once a successful match is made--acquire connection information for the resulting new game session.
 
 You can use this operation to track the progress of matchmaking requests (through polling) as an alternative to using event notifications. See more details on tracking matchmaking requests through polling or notifications in [StartMatchmaking](@ref).
 
-You can request data for a one or a list of ticket IDs. If the request is successful, a ticket object is returned for each requested ID. When specifying a list of ticket IDs, objects are returned only for tickets that currently exist.
+To request matchmaking tickets, provide a list of up to 10 ticket IDs. If the request is successful, a ticket object is returned for each requested ID that currently exists.
 
 Matchmaking-related operations include:
 
@@ -2535,10 +2466,12 @@ Matchmaking-related operations include:
 
 *   [AcceptMatch](@ref)
 
+*   [StartMatchBackfill](@ref)
+
 # Arguments
 
 ## `TicketIds = [::String, ...]` -- *Required*
-Unique identifier for a matchmaking ticket. To request all existing tickets, leave this parameter empty.
+Unique identifier for a matchmaking ticket. You can include up to 10 ID values.
 
 
 
@@ -2553,7 +2486,6 @@ Unique identifier for a matchmaking ticket. To request all existing tickets, lea
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeMatchmaking)
 """
-
 @inline describe_matchmaking(aws::AWSConfig=default_aws_config(); args...) = describe_matchmaking(aws, args)
 
 @inline describe_matchmaking(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeMatchmaking", args)
@@ -2620,7 +2552,6 @@ Token that indicates the start of the next sequential page of results. Use the t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeMatchmakingConfigurations)
 """
-
 @inline describe_matchmaking_configurations(aws::AWSConfig=default_aws_config(); args...) = describe_matchmaking_configurations(aws, args)
 
 @inline describe_matchmaking_configurations(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeMatchmakingConfigurations", args)
@@ -2683,7 +2614,6 @@ Token that indicates the start of the next sequential page of results. Use the t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeMatchmakingRuleSets)
 """
-
 @inline describe_matchmaking_rule_sets(aws::AWSConfig=default_aws_config(); args...) = describe_matchmaking_rule_sets(aws, args)
 
 @inline describe_matchmaking_rule_sets(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeMatchmakingRuleSets", args)
@@ -2772,7 +2702,6 @@ Token that indicates the start of the next sequential page of results. Use the t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribePlayerSessions)
 """
-
 @inline describe_player_sessions(aws::AWSConfig=default_aws_config(); args...) = describe_player_sessions(aws, args)
 
 @inline describe_player_sessions(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribePlayerSessions", args)
@@ -2799,15 +2728,21 @@ Fleet-related operations include:
 
 *   [ListFleets](@ref)
 
+*   [DeleteFleet](@ref)
+
 *   Describe fleets:
 
     *   [DescribeFleetAttributes](@ref)
+
+    *   [DescribeFleetCapacity](@ref)
 
     *   [DescribeFleetPortSettings](@ref)
 
     *   [DescribeFleetUtilization](@ref)
 
     *   [DescribeRuntimeConfiguration](@ref)
+
+    *   [DescribeEC2InstanceLimits](@ref)
 
     *   [DescribeFleetEvents](@ref)
 
@@ -2821,21 +2756,11 @@ Fleet-related operations include:
 
     *   [UpdateRuntimeConfiguration](@ref)
 
-*   Manage fleet capacity:
+*   Manage fleet actions:
 
-    *   [DescribeFleetCapacity](@ref)
+    *   [StartFleetActions](@ref)
 
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [PutScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeScalingPolicies](@ref) (automatic scaling)
-
-    *   [DeleteScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeEC2InstanceLimits](@ref)
-
-*   [DeleteFleet](@ref)
+    *   [StopFleetActions](@ref)
 
 # Arguments
 
@@ -2855,7 +2780,6 @@ Unique identifier for a fleet to get the run-time configuration for.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeRuntimeConfiguration)
 """
-
 @inline describe_runtime_configuration(aws::AWSConfig=default_aws_config(); args...) = describe_runtime_configuration(aws, args)
 
 @inline describe_runtime_configuration(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeRuntimeConfiguration", args)
@@ -2878,49 +2802,29 @@ Retrieves all scaling policies applied to a fleet.
 
 To get a fleet's scaling policies, specify the fleet ID. You can filter this request by policy status, such as to retrieve only active scaling policies. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, set of [ScalingPolicy](@ref) objects is returned for the fleet.
 
-Fleet-related operations include:
+A fleet may have all of its scaling policies suspended ([StopFleetActions](@ref)). This action does not affect the status of the scaling policies, which remains ACTIVE. To see whether a fleet's scaling policies are in force or suspended, call [DescribeFleetAttributes](@ref) and check the stopped actions.
 
-*   [CreateFleet](@ref)
+Operations related to fleet capacity scaling include:
 
-*   [ListFleets](@ref)
+*   [DescribeFleetCapacity](@ref)
 
-*   Describe fleets:
+*   [UpdateFleetCapacity](@ref)
 
-    *   [DescribeFleetAttributes](@ref)
+*   [DescribeEC2InstanceLimits](@ref)
 
-    *   [DescribeFleetPortSettings](@ref)
+*   Manage scaling policies:
 
-    *   [DescribeFleetUtilization](@ref)
+    *   [PutScalingPolicy](@ref) (auto-scaling)
 
-    *   [DescribeRuntimeConfiguration](@ref)
+    *   [DescribeScalingPolicies](@ref) (auto-scaling)
 
-    *   [DescribeFleetEvents](@ref)
+    *   [DeleteScalingPolicy](@ref) (auto-scaling)
 
-*   Update fleets:
+*   Manage fleet actions:
 
-    *   [UpdateFleetAttributes](@ref)
+    *   [StartFleetActions](@ref)
 
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [UpdateFleetPortSettings](@ref)
-
-    *   [UpdateRuntimeConfiguration](@ref)
-
-*   Manage fleet capacity:
-
-    *   [DescribeFleetCapacity](@ref)
-
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [PutScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeScalingPolicies](@ref) (automatic scaling)
-
-    *   [DeleteScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeEC2InstanceLimits](@ref)
-
-*   [DeleteFleet](@ref)
+    *   [StopFleetActions](@ref)
 
 # Arguments
 
@@ -2966,7 +2870,6 @@ Token that indicates the start of the next sequential page of results. Use the t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeScalingPolicies)
 """
-
 @inline describe_scaling_policies(aws::AWSConfig=default_aws_config(); args...) = describe_scaling_policies(aws, args)
 
 @inline describe_scaling_policies(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeScalingPolicies", args)
@@ -3015,7 +2918,6 @@ VPC peering connection operations include:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeVpcPeeringAuthorizations)
 """
-
 @inline describe_vpc_peering_authorizations(aws::AWSConfig=default_aws_config(); args...) = describe_vpc_peering_authorizations(aws, args)
 
 @inline describe_vpc_peering_authorizations(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeVpcPeeringAuthorizations", args)
@@ -3070,7 +2972,6 @@ Unique identifier for a fleet.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/DescribeVpcPeeringConnections)
 """
-
 @inline describe_vpc_peering_connections(aws::AWSConfig=default_aws_config(); args...) = describe_vpc_peering_connections(aws, args)
 
 @inline describe_vpc_peering_connections(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "DescribeVpcPeeringConnections", args)
@@ -3134,7 +3035,6 @@ Unique identifier for the game session to get logs for.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/GetGameSessionLogUrl)
 """
-
 @inline get_game_session_log_url(aws::AWSConfig=default_aws_config(); args...) = get_game_session_log_url(aws, args)
 
 @inline get_game_session_log_url(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "GetGameSessionLogUrl", args)
@@ -3181,7 +3081,6 @@ Unique identifier for an instance you want to get access to. You can access an i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/GetInstanceAccess)
 """
-
 @inline get_instance_access(aws::AWSConfig=default_aws_config(); args...) = get_instance_access(aws, args)
 
 @inline get_instance_access(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "GetInstanceAccess", args)
@@ -3255,7 +3154,6 @@ Token that indicates the start of the next sequential page of results. Use the t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/ListAliases)
 """
-
 @inline list_aliases(aws::AWSConfig=default_aws_config(); args...) = list_aliases(aws, args)
 
 @inline list_aliases(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "ListAliases", args)
@@ -3325,7 +3223,6 @@ Token that indicates the start of the next sequential page of results. Use the t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/ListBuilds)
 """
-
 @inline list_builds(aws::AWSConfig=default_aws_config(); args...) = list_builds(aws, args)
 
 @inline list_builds(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "ListBuilds", args)
@@ -3355,15 +3252,21 @@ Fleet-related operations include:
 
 *   [ListFleets](@ref)
 
+*   [DeleteFleet](@ref)
+
 *   Describe fleets:
 
     *   [DescribeFleetAttributes](@ref)
+
+    *   [DescribeFleetCapacity](@ref)
 
     *   [DescribeFleetPortSettings](@ref)
 
     *   [DescribeFleetUtilization](@ref)
 
     *   [DescribeRuntimeConfiguration](@ref)
+
+    *   [DescribeEC2InstanceLimits](@ref)
 
     *   [DescribeFleetEvents](@ref)
 
@@ -3377,21 +3280,11 @@ Fleet-related operations include:
 
     *   [UpdateRuntimeConfiguration](@ref)
 
-*   Manage fleet capacity:
+*   Manage fleet actions:
 
-    *   [DescribeFleetCapacity](@ref)
+    *   [StartFleetActions](@ref)
 
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [PutScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeScalingPolicies](@ref) (automatic scaling)
-
-    *   [DeleteScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeEC2InstanceLimits](@ref)
-
-*   [DeleteFleet](@ref)
+    *   [StopFleetActions](@ref)
 
 # Arguments
 
@@ -3419,7 +3312,6 @@ Token that indicates the start of the next sequential page of results. Use the t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/ListFleets)
 """
-
 @inline list_fleets(aws::AWSConfig=default_aws_config(); args...) = list_fleets(aws, args)
 
 @inline list_fleets(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "ListFleets", args)
@@ -3430,69 +3322,67 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 """
     using AWSSDK.GameLift.put_scaling_policy
     put_scaling_policy([::AWSConfig], arguments::Dict)
-    put_scaling_policy([::AWSConfig]; Name=, FleetId=, ScalingAdjustment=, ScalingAdjustmentType=, Threshold=, ComparisonOperator=, EvaluationPeriods=, MetricName=)
+    put_scaling_policy([::AWSConfig]; Name=, FleetId=, MetricName=, <keyword arguments>)
 
     using AWSCore.Services.gamelift
     gamelift([::AWSConfig], "PutScalingPolicy", arguments::Dict)
-    gamelift([::AWSConfig], "PutScalingPolicy", Name=, FleetId=, ScalingAdjustment=, ScalingAdjustmentType=, Threshold=, ComparisonOperator=, EvaluationPeriods=, MetricName=)
+    gamelift([::AWSConfig], "PutScalingPolicy", Name=, FleetId=, MetricName=, <keyword arguments>)
 
 # PutScalingPolicy Operation
 
-Creates or updates a scaling policy for a fleet. An active scaling policy prompts Amazon GameLift to track a certain metric for a fleet and automatically change the fleet's capacity in specific circumstances. Each scaling policy contains one rule statement. Fleets can have multiple scaling policies in force simultaneously.
+Creates or updates a scaling policy for a fleet. Scaling policies are used to automatically scale a fleet's hosting capacity to meet player demand. An active scaling policy instructs Amazon GameLift to track a fleet metric and automatically change the fleet's capacity when a certain threshold is reached. There are two types of scaling policies: target-based and rule-based. Use a target-based policy to quickly and efficiently manage fleet scaling; this option is the most commonly used. Use rule-based policies when you need to exert fine-grained control over auto-scaling.
 
-A scaling policy rule statement has the following structure:
+Fleets can have multiple scaling policies of each type in force at the same time; you can have one target-based policy, one or multiple rule-based scaling policies, or both. We recommend caution, however, because multiple auto-scaling policies can have unintended consequences.
+
+You can temporarily suspend all scaling policies for a fleet by calling [StopFleetActions](@ref) with the fleet action AUTO_SCALING. To resume scaling policies, call [StartFleetActions](@ref) with the same fleet action. To stop just one scaling policy--or to permanently remove it, you must delete the policy with [DeleteScalingPolicy](@ref).
+
+Learn more about how to work with auto-scaling in [Set Up Fleet Automatic Scaling](http://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-autoscaling.html).
+
+**Target-based policy**
+
+A target-based policy tracks a single metric: PercentAvailableGameSessions. This metric tells us how much of a fleet's hosting capacity is ready to host game sessions but is not currently in use. This is the fleet's buffer; it measures the additional player demand that the fleet could handle at current capacity. With a target-based policy, you set your ideal buffer size and leave it to Amazon GameLift to take whatever action is needed to maintain that target.
+
+For example, you might choose to maintain a 10% buffer for a fleet that has the capacity to host 100 simultaneous game sessions. This policy tells Amazon GameLift to take action whenever the fleet's available capacity falls below or rises above 10 game sessions. Amazon GameLift will start new instances or stop unused instances in order to return to the 10% buffer.
+
+To create or update a target-based policy, specify a fleet ID and name, and set the policy type to "TargetBased". Specify the metric to track (PercentAvailableGameSessions) and reference a [TargetConfiguration](@ref) object with your desired buffer value. Exclude all other parameters. On a successful request, the policy name is returned. The scaling policy is automatically in force as soon as it's successfully created. If the fleet's auto-scaling actions are temporarily suspended, the new policy will be in force once the fleet actions are restarted.
+
+**Rule-based policy**
+
+A rule-based policy tracks specified fleet metric, sets a threshold value, and specifies the type of action to initiate when triggered. With a rule-based policy, you can select from several available fleet metrics. Each policy specifies whether to scale up or scale down (and by how much), so you need one policy for each type of action.
+
+For example, a policy may make the following statement: "If the percentage of idle instances is greater than 20% for more than 15 minutes, then reduce the fleet capacity by 10%."
+
+A policy's rule statement has the following structure:
 
 If `[MetricName]` is `[ComparisonOperator]` `[Threshold]` for `[EvaluationPeriods]` minutes, then `[ScalingAdjustmentType]` to/by `[ScalingAdjustment]`.
 
-For example, this policy: "If the number of idle instances exceeds 20 for more than 15 minutes, then reduce the fleet capacity by 10 instances" could be implemented as the following rule statement:
+To implement the example, the rule statement would look like this:
 
-If [IdleInstances] is [GreaterThanOrEqualToThreshold] [20] for [15] minutes, then [ChangeInCapacity] by [-10].
+If `[PercentIdleInstances]` is `[GreaterThanThreshold]` `[20]` for `[15]` minutes, then `[PercentChangeInCapacity]` to/by `[10]`.
 
-To create or update a scaling policy, specify a unique combination of name and fleet ID, and set the rule values. All parameters for this action are required. If successful, the policy name is returned. Scaling policies cannot be suspended or made inactive. To stop enforcing a scaling policy, call [DeleteScalingPolicy](@ref).
+To create or update a scaling policy, specify a unique combination of name and fleet ID, and set the policy type to "RuleBased". Specify the parameter values for a policy rule statement. On a successful request, the policy name is returned. Scaling policies are automatically in force as soon as they're successfully created. If the fleet's auto-scaling actions are temporarily suspended, the new policy will be in force once the fleet actions are restarted.
 
-Fleet-related operations include:
+Operations related to fleet capacity scaling include:
 
-*   [CreateFleet](@ref)
+*   [DescribeFleetCapacity](@ref)
 
-*   [ListFleets](@ref)
+*   [UpdateFleetCapacity](@ref)
 
-*   Describe fleets:
+*   [DescribeEC2InstanceLimits](@ref)
 
-    *   [DescribeFleetAttributes](@ref)
+*   Manage scaling policies:
 
-    *   [DescribeFleetPortSettings](@ref)
+    *   [PutScalingPolicy](@ref) (auto-scaling)
 
-    *   [DescribeFleetUtilization](@ref)
+    *   [DescribeScalingPolicies](@ref) (auto-scaling)
 
-    *   [DescribeRuntimeConfiguration](@ref)
+    *   [DeleteScalingPolicy](@ref) (auto-scaling)
 
-    *   [DescribeFleetEvents](@ref)
+*   Manage fleet actions:
 
-*   Update fleets:
+    *   [StartFleetActions](@ref)
 
-    *   [UpdateFleetAttributes](@ref)
-
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [UpdateFleetPortSettings](@ref)
-
-    *   [UpdateRuntimeConfiguration](@ref)
-
-*   Manage fleet capacity:
-
-    *   [DescribeFleetCapacity](@ref)
-
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [PutScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeScalingPolicies](@ref) (automatic scaling)
-
-    *   [DeleteScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeEC2InstanceLimits](@ref)
-
-*   [DeleteFleet](@ref)
+    *   [StopFleetActions](@ref)
 
 # Arguments
 
@@ -3501,14 +3391,14 @@ Descriptive label that is associated with a scaling policy. Policy names do not 
 
 
 ## `FleetId = ::String` -- *Required*
-Unique identifier for a fleet to apply this policy to.
+Unique identifier for a fleet to apply this policy to. The fleet cannot be in any of the following statuses: ERROR or DELETING.
 
 
-## `ScalingAdjustment = ::Int` -- *Required*
+## `ScalingAdjustment = ::Int`
 Amount of adjustment to make, based on the scaling adjustment type.
 
 
-## `ScalingAdjustmentType = "ChangeInCapacity", "ExactCapacity" or "PercentChangeInCapacity"` -- *Required*
+## `ScalingAdjustmentType = "ChangeInCapacity", "ExactCapacity" or "PercentChangeInCapacity"`
 Type of adjustment to make to a fleet's instance count (see [FleetCapacity](@ref)):
 
 *   **ChangeInCapacity** -- add (or subtract) the scaling adjustment value from the current instance count. Positive values scale up while negative values scale down.
@@ -3518,32 +3408,50 @@ Type of adjustment to make to a fleet's instance count (see [FleetCapacity](@ref
 *   **PercentChangeInCapacity** -- increase or reduce the current instance count by the scaling adjustment, read as a percentage. Positive values scale up while negative values scale down; for example, a value of "-10" scales the fleet down by 10%.
 
 
-## `Threshold = double` -- *Required*
+## `Threshold = double`
 Metric value used to trigger a scaling event.
 
 
-## `ComparisonOperator = "GreaterThanOrEqualToThreshold", "GreaterThanThreshold", "LessThanThreshold" or "LessThanOrEqualToThreshold"` -- *Required*
+## `ComparisonOperator = "GreaterThanOrEqualToThreshold", "GreaterThanThreshold", "LessThanThreshold" or "LessThanOrEqualToThreshold"`
 Comparison operator to use when measuring the metric against the threshold value.
 
 
-## `EvaluationPeriods = ::Int` -- *Required*
+## `EvaluationPeriods = ::Int`
 Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.
 
 
 ## `MetricName = "ActivatingGameSessions", "ActiveGameSessions", "ActiveInstances", "AvailableGameSessions", "AvailablePlayerSessions", "CurrentPlayerSessions", "IdleInstances", "PercentAvailableGameSessions", "PercentIdleInstances", "QueueDepth" or "WaitTime"` -- *Required*
-Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.
+Name of the Amazon GameLift-defined metric that is used to trigger a scaling adjustment. For detailed descriptions of fleet metrics, see [Monitor Amazon GameLift with Amazon CloudWatch](http://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html).
 
-*   **ActivatingGameSessions** -- number of game sessions in the process of being created (game session status = `ACTIVATING`).
+*   **ActivatingGameSessions** -- Game sessions in the process of being created.
 
-*   **ActiveGameSessions** -- number of game sessions currently running (game session status = `ACTIVE`).
+*   **ActiveGameSessions** -- Game sessions that are currently running.
 
-*   **CurrentPlayerSessions** -- number of active or reserved player sessions (player session status = `ACTIVE` or `RESERVED`).
+*   **ActiveInstances** -- Fleet instances that are currently running at least one game session.
 
-*   **AvailablePlayerSessions** -- number of player session slots currently available in active game sessions across the fleet, calculated by subtracting a game session's current player session count from its maximum player session count. This number includes game sessions that are not currently accepting players (game session `PlayerSessionCreationPolicy` = `DENY_ALL`).
+*   **AvailableGameSessions** -- Additional game sessions that fleet could host simultaneously, given current capacity.
 
-*   **ActiveInstances** -- number of instances currently running a game session.
+*   **AvailablePlayerSessions** -- Empty player slots in currently active game sessions. This includes game sessions that are not currently accepting players. Reserved player slots are not included.
 
-*   **IdleInstances** -- number of instances not currently running a game session.
+*   **CurrentPlayerSessions** -- Player slots in active game sessions that are being used by a player or are reserved for a player.
+
+*   **IdleInstances** -- Active instances that are currently hosting zero game sessions.
+
+*   **PercentAvailableGameSessions** -- Unused percentage of the total number of game sessions that a fleet could host simultaneously, given current capacity. Use this metric for a target-based scaling policy.
+
+*   **PercentIdleInstances** -- Percentage of the total number of active instances that are hosting zero game sessions.
+
+*   **QueueDepth** -- Pending game session placement requests, in any queue, where the current fleet is the top-priority destination.
+
+*   **WaitTime** -- Current wait time for pending game session placement requests, in any queue, where the current fleet is the top-priority destination.
+
+
+## `PolicyType = "RuleBased" or "TargetBased"`
+Type of scaling policy to create. For a target-based policy, set the parameter *MetricName* to 'PercentAvailableGameSessions' and specify a *TargetConfiguration*. For a rule-based policy set the following parameters: *MetricName*, *ComparisonOperator*, *Threshold*, *EvaluationPeriods*, *ScalingAdjustmentType*, and *ScalingAdjustment*.
+
+
+## `TargetConfiguration = ["TargetValue" => <required> double]`
+Object that contains settings for a target-based scaling policy.
 
 
 
@@ -3558,7 +3466,6 @@ Name of the Amazon GameLift-defined metric that is used to trigger an adjustment
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/PutScalingPolicy)
 """
-
 @inline put_scaling_policy(aws::AWSConfig=default_aws_config(); args...) = put_scaling_policy(aws, args)
 
 @inline put_scaling_policy(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "PutScalingPolicy", args)
@@ -3577,7 +3484,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 # RequestUploadCredentials Operation
 
-*This API call is not currently in use.* Retrieves a fresh set of upload credentials and the assigned Amazon S3 storage location for a specific build. Valid credentials are required to upload your game build files to Amazon S3.
+Retrieves a fresh set of credentials for use when uploading a new set of game build files to Amazon GameLift's Amazon S3. This is done as part of the build creation process; see [CreateBuild](@ref).
+
+To request new credentials, specify the build ID as returned with an initial `CreateBuild` request. If successful, a new set of credentials are returned, along with the S3 storage location associated with the build ID.
 
 # Arguments
 
@@ -3597,7 +3506,6 @@ Unique identifier for a build to get credentials for.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/RequestUploadCredentials)
 """
-
 @inline request_upload_credentials(aws::AWSConfig=default_aws_config(); args...) = request_upload_credentials(aws, args)
 
 @inline request_upload_credentials(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "RequestUploadCredentials", args)
@@ -3650,7 +3558,6 @@ Unique identifier for the alias you want to resolve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/ResolveAlias)
 """
-
 @inline resolve_alias(aws::AWSConfig=default_aws_config(); args...) = resolve_alias(aws, args)
 
 @inline resolve_alias(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "ResolveAlias", args)
@@ -3669,26 +3576,28 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 # SearchGameSessions Operation
 
-Retrieves a set of game sessions that match a set of search criteria and sorts them in a specified order. A game session search is limited to a single fleet. Search results include only game sessions that are in `ACTIVE` status. If you need to retrieve game sessions with a status other than active, use [DescribeGameSessions](@ref). If you need to retrieve the protection policy for each game session, use [DescribeGameSessionDetails](@ref).
-
-You can search or sort by the following game session attributes:
+Retrieves all active game sessions that match a set of search criteria and sorts them in a specified order. You can search or sort by the following game session attributes:
 
 *   **gameSessionId** -- Unique identifier for the game session. You can use either a `GameSessionId` or `GameSessionArn` value.
 
 *   **gameSessionName** -- Name assigned to a game session. This value is set when requesting a new game session with [CreateGameSession](@ref) or updating with [UpdateGameSession](@ref). Game session names do not need to be unique to a game session.
 
+*   **gameSessionProperties** -- Custom data defined in a game session's `GameProperty` parameter. `GameProperty` values are stored as key:value pairs; the filter expression must indicate the key and a string to search the data values for. For example, to search for game sessions with custom data containing the key:value pair "gameMode:brawl", specify the following: `gameSessionProperties.gameMode = "brawl"`. All custom data values are searched as strings.
+
+*   **maximumSessions** -- Maximum number of player sessions allowed for a game session. This value is set when requesting a new game session with [CreateGameSession](@ref) or updating with [UpdateGameSession](@ref).
+
 *   **creationTimeMillis** -- Value indicating when a game session was created. It is expressed in Unix time as milliseconds.
 
 *   **playerSessionCount** -- Number of players currently connected to a game session. This value changes rapidly as players join the session or drop out.
 
-*   **maximumSessions** -- Maximum number of player sessions allowed for a game session. This value is set when requesting a new game session with [CreateGameSession](@ref) or updating with [UpdateGameSession](@ref).
-
-*   **hasAvailablePlayerSessions** -- Boolean value indicating whether a game session has reached its maximum number of players. When searching with this attribute, the search value must be `true` or `false`. It is highly recommended that all search requests include this filter attribute to optimize search performance and return only sessions that players can join.
-
-To search or sort, specify either a fleet ID or an alias ID, and provide a search filter expression, a sort expression, or both. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a collection of [GameSession](@ref) objects matching the request is returned.
+*   **hasAvailablePlayerSessions** -- Boolean value indicating whether a game session has reached its maximum number of players. It is highly recommended that all search requests include this filter attribute to optimize search performance and return only sessions that players can join.
 
 **Note**
 > Returned values for `playerSessionCount` and `hasAvailablePlayerSessions` change quickly as players join sessions and others drop out. Results should be considered a snapshot in time. Be sure to refresh search results often, and handle sessions that fill up before a player can join.
+
+To search or sort, specify either a fleet ID or an alias ID, and provide a search filter expression, a sort expression, or both. If successful, a collection of [GameSession](@ref) objects matching the request is returned. Use the pagination parameters to retrieve results as a set of sequential pages.
+
+You can search for game sessions one fleet at a time only. To find game sessions across multiple fleets, you must search each fleet separately and combine the results. This search feature finds only game sessions that are in `ACTIVE` status. To locate games in statuses other than active, use [DescribeGameSessionDetails](@ref).
 
 Game-session-related operations include:
 
@@ -3727,11 +3636,11 @@ String containing the search criteria for the session search. If no filter expre
 
 A filter expression can contain one or multiple conditions. Each condition consists of the following:
 
-*   **Operand** -- Name of a game session attribute. Valid values are `gameSessionName`, `gameSessionId`, `creationTimeMillis`, `playerSessionCount`, `maximumSessions`, `hasAvailablePlayerSessions`.
+*   **Operand** -- Name of a game session attribute. Valid values are `gameSessionName`, `gameSessionId`, `gameSessionProperties`, `maximumSessions`, `creationTimeMillis`, `playerSessionCount`, `hasAvailablePlayerSessions`.
 
 *   **Comparator** -- Valid comparators are: `=`, `<>`, `<`, `>`, `<=`, `>=`.
 
-*   **Value** -- Value to be searched for. Values can be numbers, boolean values (true/false) or strings. String values are case sensitive, enclosed in single quotes. Special characters must be escaped. Boolean and string values can only be used with the comparators `=` and `<>`. For example, the following filter expression searches on `gameSessionName`: "`FilterExpression": "gameSessionName = 'Matt\\\\'s Awesome Game 1'"`.
+*   **Value** -- Value to be searched for. Values may be numbers, boolean values (true/false) or strings depending on the operand. String values are case sensitive and must be enclosed in single quotes. Special characters must be escaped. Boolean and string values can only be used with the comparators `=` and `<>`. For example, the following filter expression searches on `gameSessionName`: "`FilterExpression": "gameSessionName = 'Matt\\\\'s Awesome Game 1'"`.
 
 To chain multiple conditions in a single expression, use the logical keywords `AND`, `OR`, and `NOT` and parentheses as needed. For example: `x AND y AND NOT z`, `NOT (x OR y)`.
 
@@ -3753,7 +3662,7 @@ For example, this filter expression retrieves game sessions hosting at least ten
 ## `SortExpression = ::String`
 Instructions on how to sort the search results. If no sort expression is included, the request returns results in random order. A sort expression consists of the following elements:
 
-*   **Operand** -- Name of a game session attribute. Valid values are `gameSessionName`, `gameSessionId`, `creationTimeMillis`, `playerSessionCount`, `maximumSessions`, `hasAvailablePlayerSessions`.
+*   **Operand** -- Name of a game session attribute. Valid values are `gameSessionName`, `gameSessionId`, `gameSessionProperties`, `maximumSessions`, `creationTimeMillis`, `playerSessionCount`, `hasAvailablePlayerSessions`.
 
 *   **Order** -- Valid sort orders are `ASC` (ascending) and `DESC` (descending).
 
@@ -3780,12 +3689,77 @@ Token that indicates the start of the next sequential page of results. Use the t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/SearchGameSessions)
 """
-
 @inline search_game_sessions(aws::AWSConfig=default_aws_config(); args...) = search_game_sessions(aws, args)
 
 @inline search_game_sessions(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "SearchGameSessions", args)
 
 @inline search_game_sessions(args) = search_game_sessions(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.GameLift.start_fleet_actions
+    start_fleet_actions([::AWSConfig], arguments::Dict)
+    start_fleet_actions([::AWSConfig]; FleetId=, Actions=)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "StartFleetActions", arguments::Dict)
+    gamelift([::AWSConfig], "StartFleetActions", FleetId=, Actions=)
+
+# StartFleetActions Operation
+
+Resumes activity on a fleet that was suspended with [StopFleetActions](@ref). Currently, this operation is used to restart a fleet's auto-scaling activity.
+
+To start fleet actions, specify the fleet ID and the type of actions to restart. When auto-scaling fleet actions are restarted, Amazon GameLift once again initiates scaling events as triggered by the fleet's scaling policies. If actions on the fleet were never stopped, this operation will have no effect. You can view a fleet's stopped actions using [DescribeFleetAttributes](@ref).
+
+Operations related to fleet capacity scaling include:
+
+*   [DescribeFleetCapacity](@ref)
+
+*   [UpdateFleetCapacity](@ref)
+
+*   [DescribeEC2InstanceLimits](@ref)
+
+*   Manage scaling policies:
+
+    *   [PutScalingPolicy](@ref) (auto-scaling)
+
+    *   [DescribeScalingPolicies](@ref) (auto-scaling)
+
+    *   [DeleteScalingPolicy](@ref) (auto-scaling)
+
+*   Manage fleet actions:
+
+    *   [StartFleetActions](@ref)
+
+    *   [StopFleetActions](@ref)
+
+# Arguments
+
+## `FleetId = ::String` -- *Required*
+Unique identifier for a fleet
+
+
+## `Actions = ["AUTO_SCALING", ...]` -- *Required*
+List of actions to restart on the fleet.
+
+
+
+
+# Returns
+
+`StartFleetActionsOutput`
+
+# Exceptions
+
+`InternalServiceException`, `InvalidRequestException`, `UnauthorizedException` or `NotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/StartFleetActions)
+"""
+@inline start_fleet_actions(aws::AWSConfig=default_aws_config(); args...) = start_fleet_actions(aws, args)
+
+@inline start_fleet_actions(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "StartFleetActions", args)
+
+@inline start_fleet_actions(args) = start_fleet_actions(default_aws_config(), args)
 
 
 """
@@ -3854,7 +3828,7 @@ Name of the queue to use to place the new game session.
 
 
 ## `GameProperties = [[ ... ], ...]`
-Set of developer-defined properties for a game session, formatted as a set of type:value pairs. These properties are included in the [GameSession](@ref) object, which is passed to the game server with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the [GameSession](@ref) object with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 ```
  GameProperties = [[
         "Key" => <required> ::String,
@@ -3890,7 +3864,7 @@ Set of information on each player to create a player session for.
 ```
 
 ## `GameSessionData = ::String`
-Set of developer-defined game session properties, formatted as a single string value. This data is included in the [GameSession](@ref) object, which is passed to the game server with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the [GameSession](@ref) object with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
 
@@ -3905,12 +3879,88 @@ Set of developer-defined game session properties, formatted as a single string v
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/StartGameSessionPlacement)
 """
-
 @inline start_game_session_placement(aws::AWSConfig=default_aws_config(); args...) = start_game_session_placement(aws, args)
 
 @inline start_game_session_placement(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "StartGameSessionPlacement", args)
 
 @inline start_game_session_placement(args) = start_game_session_placement(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.GameLift.start_match_backfill
+    start_match_backfill([::AWSConfig], arguments::Dict)
+    start_match_backfill([::AWSConfig]; ConfigurationName=, GameSessionArn=, Players=, <keyword arguments>)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "StartMatchBackfill", arguments::Dict)
+    gamelift([::AWSConfig], "StartMatchBackfill", ConfigurationName=, GameSessionArn=, Players=, <keyword arguments>)
+
+# StartMatchBackfill Operation
+
+Finds new players to fill open slots in an existing game session. This operation can be used to add players to matched games that start with fewer than the maximum number of players or to replace players when they drop out. By backfilling with the same matchmaker used to create the original match, you ensure that new players meet the match criteria and maintain a consistent experience throughout the game session. You can backfill a match anytime after a game session has been created.
+
+To request a match backfill, specify a unique ticket ID, the existing game session's ARN, a matchmaking configuration, and a set of data that describes all current players in the game session. If successful, a match backfill ticket is created and returned with status set to QUEUED. The ticket is placed in the matchmaker's ticket pool and processed. Track the status of the ticket to respond as needed. For more detail how to set up backfilling, see [Backfill Existing Games with FlexMatch](http://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html).
+
+The process of finding backfill matches is essentially identical to the initial matchmaking process. The matchmaker searches the pool and groups tickets together to form potential matches, allowing only one backfill ticket per potential match. Once the a match is formed, the matchmaker creates player sessions for the new players. All tickets in the match are updated with the game session's connection information, and the [GameSession](@ref) object is updated to include matchmaker data on the new players. For more detail on how match backfill requests are processed, see [How Amazon GameLift FlexMatch Works](http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
+
+Matchmaking-related operations include:
+
+*   [StartMatchmaking](@ref)
+
+*   [DescribeMatchmaking](@ref)
+
+*   [StopMatchmaking](@ref)
+
+*   [AcceptMatch](@ref)
+
+*   [StartMatchBackfill](@ref)
+
+# Arguments
+
+## `TicketId = ::String`
+Unique identifier for a matchmaking ticket. If no ticket ID is specified here, Amazon GameLift will generate one in the form of a UUID. Use this identifier to track the match backfill ticket status and retrieve match results.
+
+
+## `ConfigurationName = ::String` -- *Required*
+Name of the matchmaker to use for this request. The name of the matchmaker that was used with the original game session is listed in the [GameSession](@ref) object, `MatchmakerData` property. This property contains a matchmaking configuration ARN value, which includes the matchmaker name. (In the ARN value "arn:aws:gamelift:us-west-2:111122223333:matchmakingconfiguration/MM-4v4", the matchmaking configuration name is "MM-4v4".) Use only the name for this parameter.
+
+
+## `GameSessionArn = ::String` -- *Required*
+Amazon Resource Name ([ARN](http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html)) that is assigned to a game session and uniquely identifies it.
+
+
+## `Players = [[ ... ], ...]` -- *Required*
+Match information on all players that are currently assigned to the game session. This information is used by the matchmaker to find new players and add them to the existing game.
+
+*   PlayerID, PlayerAttributes, Team -\\\\- This information is maintained in the [GameSession](@ref) object, `MatchmakerData` property, for all players who are currently assigned to the game session. The matchmaker data is in JSON syntax, formatted as a string. For more details, see [Match Data](http://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data).
+
+*   LatencyInMs -\\\\- If the matchmaker uses player latency, include a latency value, in milliseconds, for the region that the game session is currently in. Do not include latency values for any other region.
+```
+ Players = [[
+        "PlayerId" =>  ::String,
+        "PlayerAttributes" =>  ::Dict{String,String},
+        "Team" =>  ::String,
+        "LatencyInMs" =>  ::Dict{String,String}
+    ], ...]
+```
+
+
+
+# Returns
+
+`StartMatchBackfillOutput`
+
+# Exceptions
+
+`InvalidRequestException`, `NotFoundException`, `InternalServiceException` or `UnsupportedRegionException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/StartMatchBackfill)
+"""
+@inline start_match_backfill(aws::AWSConfig=default_aws_config(); args...) = start_match_backfill(aws, args)
+
+@inline start_match_backfill(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "StartMatchBackfill", args)
+
+@inline start_match_backfill(args) = start_match_backfill(default_aws_config(), args)
 
 
 """
@@ -3956,10 +4006,12 @@ Matchmaking-related operations include:
 
 *   [AcceptMatch](@ref)
 
+*   [StartMatchBackfill](@ref)
+
 # Arguments
 
 ## `TicketId = ::String`
-Unique identifier for a matchmaking ticket. Use this identifier to track the matchmaking ticket status and retrieve match results.
+Unique identifier for a matchmaking ticket. If no ticket ID is specified here, Amazon GameLift will generate one in the form of a UUID. Use this identifier to track the matchmaking ticket status and retrieve match results.
 
 
 ## `ConfigurationName = ::String` -- *Required*
@@ -3989,12 +4041,55 @@ Information on each player to be matched. This information must include a player
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/StartMatchmaking)
 """
-
 @inline start_matchmaking(aws::AWSConfig=default_aws_config(); args...) = start_matchmaking(aws, args)
 
 @inline start_matchmaking(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "StartMatchmaking", args)
 
 @inline start_matchmaking(args) = start_matchmaking(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.GameLift.stop_fleet_actions
+    stop_fleet_actions([::AWSConfig], arguments::Dict)
+    stop_fleet_actions([::AWSConfig]; FleetId=, Actions=)
+
+    using AWSCore.Services.gamelift
+    gamelift([::AWSConfig], "StopFleetActions", arguments::Dict)
+    gamelift([::AWSConfig], "StopFleetActions", FleetId=, Actions=)
+
+# StopFleetActions Operation
+
+Suspends activity on a fleet. Currently, this operation is used to stop a fleet's auto-scaling activity. It is used to temporarily stop scaling events triggered by the fleet's scaling policies. The policies can be retained and auto-scaling activity can be restarted using [StartFleetActions](@ref). You can view a fleet's stopped actions using [DescribeFleetAttributes](@ref).
+
+To stop fleet actions, specify the fleet ID and the type of actions to suspend. When auto-scaling fleet actions are stopped, Amazon GameLift no longer initiates scaling events except to maintain the fleet's desired instances setting ([FleetCapacity](@ref). Changes to the fleet's capacity must be done manually using [UpdateFleetCapacity](@ref).
+
+# Arguments
+
+## `FleetId = ::String` -- *Required*
+Unique identifier for a fleet
+
+
+## `Actions = ["AUTO_SCALING", ...]` -- *Required*
+List of actions to suspend on the fleet.
+
+
+
+
+# Returns
+
+`StopFleetActionsOutput`
+
+# Exceptions
+
+`InternalServiceException`, `InvalidRequestException`, `UnauthorizedException` or `NotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/StopFleetActions)
+"""
+@inline stop_fleet_actions(aws::AWSConfig=default_aws_config(); args...) = stop_fleet_actions(aws, args)
+
+@inline stop_fleet_actions(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "StopFleetActions", args)
+
+@inline stop_fleet_actions(args) = stop_fleet_actions(default_aws_config(), args)
 
 
 """
@@ -4050,7 +4145,6 @@ Unique identifier for a game session placement to cancel.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/StopGameSessionPlacement)
 """
-
 @inline stop_game_session_placement(aws::AWSConfig=default_aws_config(); args...) = stop_game_session_placement(aws, args)
 
 @inline stop_game_session_placement(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "StopGameSessionPlacement", args)
@@ -4081,6 +4175,8 @@ Matchmaking-related operations include:
 
 *   [AcceptMatch](@ref)
 
+*   [StartMatchBackfill](@ref)
+
 # Arguments
 
 ## `TicketId = ::String` -- *Required*
@@ -4099,7 +4195,6 @@ Unique identifier for a matchmaking ticket.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/StopMatchmaking)
 """
-
 @inline stop_matchmaking(aws::AWSConfig=default_aws_config(); args...) = stop_matchmaking(aws, args)
 
 @inline stop_matchmaking(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "StopMatchmaking", args)
@@ -4170,7 +4265,6 @@ Object that specifies the fleet and routing type to use for the alias.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateAlias)
 """
-
 @inline update_alias(aws::AWSConfig=default_aws_config(); args...) = update_alias(aws, args)
 
 @inline update_alias(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "UpdateAlias", args)
@@ -4229,7 +4323,6 @@ Version that is associated with this build. Version strings do not need to be un
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateBuild)
 """
-
 @inline update_build(aws::AWSConfig=default_aws_config(); args...) = update_build(aws, args)
 
 @inline update_build(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "UpdateBuild", args)
@@ -4256,15 +4349,21 @@ Fleet-related operations include:
 
 *   [ListFleets](@ref)
 
+*   [DeleteFleet](@ref)
+
 *   Describe fleets:
 
     *   [DescribeFleetAttributes](@ref)
+
+    *   [DescribeFleetCapacity](@ref)
 
     *   [DescribeFleetPortSettings](@ref)
 
     *   [DescribeFleetUtilization](@ref)
 
     *   [DescribeRuntimeConfiguration](@ref)
+
+    *   [DescribeEC2InstanceLimits](@ref)
 
     *   [DescribeFleetEvents](@ref)
 
@@ -4278,21 +4377,11 @@ Fleet-related operations include:
 
     *   [UpdateRuntimeConfiguration](@ref)
 
-*   Manage fleet capacity:
+*   Manage fleet actions:
 
-    *   [DescribeFleetCapacity](@ref)
+    *   [StartFleetActions](@ref)
 
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [PutScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeScalingPolicies](@ref) (automatic scaling)
-
-    *   [DeleteScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeEC2InstanceLimits](@ref)
-
-*   [DeleteFleet](@ref)
+    *   [StopFleetActions](@ref)
 
 # Arguments
 
@@ -4341,7 +4430,6 @@ Names of metric groups to include this fleet in. Amazon CloudWatch uses a fleet 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateFleetAttributes)
 """
-
 @inline update_fleet_attributes(aws::AWSConfig=default_aws_config(); args...) = update_fleet_attributes(aws, args)
 
 @inline update_fleet_attributes(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "UpdateFleetAttributes", args)
@@ -4362,7 +4450,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gameli
 
 Updates capacity settings for a fleet. Use this action to specify the number of EC2 instances (hosts) that you want this fleet to contain. Before calling this action, you may want to call [DescribeEC2InstanceLimits](@ref) to get the maximum capacity based on the fleet's EC2 instance type.
 
-If you're using autoscaling (see [PutScalingPolicy](@ref)), you may want to specify a minimum and/or maximum capacity. If you don't provide these, autoscaling can set capacity anywhere between zero and the [service limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift).
+Specify minimum and maximum number of instances. Amazon GameLift will not change fleet capacity to values fall outside of this range. This is particularly important when using auto-scaling (see [PutScalingPolicy](@ref)) to allow capacity to adjust based on player demand while imposing limits on automatic adjustments.
 
 To update fleet capacity, specify the fleet ID and the number of instances you want the fleet to host. If successful, Amazon GameLift starts or terminates instances so that the fleet's active instance count matches the desired instance count. You can view a fleet's current capacity information by calling [DescribeFleetCapacity](@ref). If the desired instance count is higher than the instance type's limit, the "Limit Exceeded" exception occurs.
 
@@ -4372,15 +4460,21 @@ Fleet-related operations include:
 
 *   [ListFleets](@ref)
 
+*   [DeleteFleet](@ref)
+
 *   Describe fleets:
 
     *   [DescribeFleetAttributes](@ref)
+
+    *   [DescribeFleetCapacity](@ref)
 
     *   [DescribeFleetPortSettings](@ref)
 
     *   [DescribeFleetUtilization](@ref)
 
     *   [DescribeRuntimeConfiguration](@ref)
+
+    *   [DescribeEC2InstanceLimits](@ref)
 
     *   [DescribeFleetEvents](@ref)
 
@@ -4394,21 +4488,11 @@ Fleet-related operations include:
 
     *   [UpdateRuntimeConfiguration](@ref)
 
-*   Manage fleet capacity:
+*   Manage fleet actions:
 
-    *   [DescribeFleetCapacity](@ref)
+    *   [StartFleetActions](@ref)
 
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [PutScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeScalingPolicies](@ref) (automatic scaling)
-
-    *   [DeleteScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeEC2InstanceLimits](@ref)
-
-*   [DeleteFleet](@ref)
+    *   [StopFleetActions](@ref)
 
 # Arguments
 
@@ -4440,7 +4524,6 @@ Maximum value allowed for the fleet's instance count. Default if not set is 1.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateFleetCapacity)
 """
-
 @inline update_fleet_capacity(aws::AWSConfig=default_aws_config(); args...) = update_fleet_capacity(aws, args)
 
 @inline update_fleet_capacity(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "UpdateFleetCapacity", args)
@@ -4467,15 +4550,21 @@ Fleet-related operations include:
 
 *   [ListFleets](@ref)
 
+*   [DeleteFleet](@ref)
+
 *   Describe fleets:
 
     *   [DescribeFleetAttributes](@ref)
+
+    *   [DescribeFleetCapacity](@ref)
 
     *   [DescribeFleetPortSettings](@ref)
 
     *   [DescribeFleetUtilization](@ref)
 
     *   [DescribeRuntimeConfiguration](@ref)
+
+    *   [DescribeEC2InstanceLimits](@ref)
 
     *   [DescribeFleetEvents](@ref)
 
@@ -4489,21 +4578,11 @@ Fleet-related operations include:
 
     *   [UpdateRuntimeConfiguration](@ref)
 
-*   Manage fleet capacity:
+*   Manage fleet actions:
 
-    *   [DescribeFleetCapacity](@ref)
+    *   [StartFleetActions](@ref)
 
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [PutScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeScalingPolicies](@ref) (automatic scaling)
-
-    *   [DeleteScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeEC2InstanceLimits](@ref)
-
-*   [DeleteFleet](@ref)
+    *   [StopFleetActions](@ref)
 
 # Arguments
 
@@ -4545,7 +4624,6 @@ Collection of port settings to be removed from the fleet record.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateFleetPortSettings)
 """
-
 @inline update_fleet_port_settings(aws::AWSConfig=default_aws_config(); args...) = update_fleet_port_settings(aws, args)
 
 @inline update_fleet_port_settings(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "UpdateFleetPortSettings", args)
@@ -4626,7 +4704,6 @@ Game session protection policy to apply to this game session only.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateGameSession)
 """
-
 @inline update_game_session(aws::AWSConfig=default_aws_config(); args...) = update_game_session(aws, args)
 
 @inline update_game_session(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "UpdateGameSession", args)
@@ -4692,7 +4769,6 @@ List of fleets that can be used to fulfill game session placement requests in th
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateGameSessionQueue)
 """
-
 @inline update_game_session_queue(aws::AWSConfig=default_aws_config(); args...) = update_game_session_queue(aws, args)
 
 @inline update_game_session_queue(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "UpdateGameSessionQueue", args)
@@ -4772,7 +4848,7 @@ Information to attached to all events related to the matchmaking configuration.
 
 
 ## `GameProperties = [[ ... ], ...]`
-Set of developer-defined properties for a game session, formatted as a set of type:value pairs. These properties are included in the [GameSession](@ref) object, which is passed to the game server with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new [GameSession](@ref) object that is created for a successful match.
+Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the [GameSession](@ref) object with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new [GameSession](@ref) object that is created for a successful match.
 ```
  GameProperties = [[
         "Key" => <required> ::String,
@@ -4781,7 +4857,7 @@ Set of developer-defined properties for a game session, formatted as a set of ty
 ```
 
 ## `GameSessionData = ::String`
-Set of developer-defined game session properties, formatted as a single string value. This data is included in the [GameSession](@ref) object, which is passed to the game server with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new [GameSession](@ref) object that is created for a successful match.
+Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the [GameSession](@ref) object with a request to start a new game session (see [Start a Game Session](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)). This information is added to the new [GameSession](@ref) object that is created for a successful match.
 
 
 
@@ -4796,7 +4872,6 @@ Set of developer-defined game session properties, formatted as a single string v
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateMatchmakingConfiguration)
 """
-
 @inline update_matchmaking_configuration(aws::AWSConfig=default_aws_config(); args...) = update_matchmaking_configuration(aws, args)
 
 @inline update_matchmaking_configuration(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "UpdateMatchmakingConfiguration", args)
@@ -4827,15 +4902,21 @@ Fleet-related operations include:
 
 *   [ListFleets](@ref)
 
+*   [DeleteFleet](@ref)
+
 *   Describe fleets:
 
     *   [DescribeFleetAttributes](@ref)
+
+    *   [DescribeFleetCapacity](@ref)
 
     *   [DescribeFleetPortSettings](@ref)
 
     *   [DescribeFleetUtilization](@ref)
 
     *   [DescribeRuntimeConfiguration](@ref)
+
+    *   [DescribeEC2InstanceLimits](@ref)
 
     *   [DescribeFleetEvents](@ref)
 
@@ -4849,21 +4930,11 @@ Fleet-related operations include:
 
     *   [UpdateRuntimeConfiguration](@ref)
 
-*   Manage fleet capacity:
+*   Manage fleet actions:
 
-    *   [DescribeFleetCapacity](@ref)
+    *   [StartFleetActions](@ref)
 
-    *   [UpdateFleetCapacity](@ref)
-
-    *   [PutScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeScalingPolicies](@ref) (automatic scaling)
-
-    *   [DeleteScalingPolicy](@ref) (automatic scaling)
-
-    *   [DescribeEC2InstanceLimits](@ref)
-
-*   [DeleteFleet](@ref)
+    *   [StopFleetActions](@ref)
 
 # Arguments
 
@@ -4897,7 +4968,6 @@ Instructions for launching server processes on each instance in the fleet. The r
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateRuntimeConfiguration)
 """
-
 @inline update_runtime_configuration(aws::AWSConfig=default_aws_config(); args...) = update_runtime_configuration(aws, args)
 
 @inline update_runtime_configuration(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "UpdateRuntimeConfiguration", args)
@@ -4952,7 +5022,6 @@ Collection of matchmaking rules to validate, formatted as a JSON string.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/ValidateMatchmakingRuleSet)
 """
-
 @inline validate_matchmaking_rule_set(aws::AWSConfig=default_aws_config(); args...) = validate_matchmaking_rule_set(aws, args)
 
 @inline validate_matchmaking_rule_set(aws::AWSConfig, args) = AWSCore.Services.gamelift(aws, "ValidateMatchmakingRuleSet", args)

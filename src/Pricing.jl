@@ -90,7 +90,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pricing-2017-10-15/DescribeServices)
 """
-
 @inline describe_services(aws::AWSConfig=default_aws_config(); args...) = describe_services(aws, args)
 
 @inline describe_services(aws::AWSConfig, args) = AWSCore.Services.pricing(aws, "DescribeServices", args)
@@ -169,7 +168,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pricing-2017-10-15/GetAttributeValues)
 """
-
 @inline get_attribute_values(aws::AWSConfig=default_aws_config(); args...) = get_attribute_values(aws, args)
 
 @inline get_attribute_values(aws::AWSConfig, args) = AWSCore.Services.pricing(aws, "GetAttributeValues", args)
@@ -267,7 +265,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pricing-2017-10-15/GetProducts)
 """
-
 @inline get_products(aws::AWSConfig=default_aws_config(); args...) = get_products(aws, args)
 
 @inline get_products(aws::AWSConfig, args) = AWSCore.Services.pricing(aws, "GetProducts", args)

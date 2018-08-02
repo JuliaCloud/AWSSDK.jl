@@ -157,7 +157,6 @@ You can stream audio data to Amazon Lex or you can create a local buffer that ca
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/runtime.lex-2016-11-28/PostContent)
 """
-
 @inline post_content(aws::AWSConfig=default_aws_config(); args...) = post_content(aws, args)
 
 @inline post_content(aws::AWSConfig, args) = AWSCore.Services.runtime_lex(aws, "POST", "/bot/{botName}/alias/{botAlias}/user/{userId}/content", args)
@@ -258,7 +257,6 @@ The text that the user entered (Amazon Lex interprets this text).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/runtime.lex-2016-11-28/PostText)
 """
-
 @inline post_text(aws::AWSConfig=default_aws_config(); args...) = post_text(aws, args)
 
 @inline post_text(aws::AWSConfig, args) = AWSCore.Services.runtime_lex(aws, "POST", "/bot/{botName}/alias/{botAlias}/user/{userId}/text", args)

@@ -43,7 +43,6 @@ Creates or updates an app.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateApp)
 """
-
 @inline create_app(aws::AWSConfig=default_aws_config(); args...) = create_app(aws, args)
 
 @inline create_app(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "POST", "/v1/apps", args)
@@ -67,7 +66,7 @@ Creates or updates a campaign.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `WriteCampaignRequest = [ ... ]` -- *Required*
@@ -86,6 +85,7 @@ Creates or updates a campaign.
                     "MediaUrl" =>  ::String,
                     "RawContent" =>  ::String,
                     "SilentPush" =>  ::Bool,
+                    "TimeToLive" =>  ::Int,
                     "Title" =>  ::String,
                     "Url" =>  ::String
                 ],
@@ -99,6 +99,7 @@ Creates or updates a campaign.
                     "MediaUrl" =>  ::String,
                     "RawContent" =>  ::String,
                     "SilentPush" =>  ::Bool,
+                    "TimeToLive" =>  ::Int,
                     "Title" =>  ::String,
                     "Url" =>  ::String
                 ],
@@ -112,6 +113,7 @@ Creates or updates a campaign.
                     "MediaUrl" =>  ::String,
                     "RawContent" =>  ::String,
                     "SilentPush" =>  ::Bool,
+                    "TimeToLive" =>  ::Int,
                     "Title" =>  ::String,
                     "Url" =>  ::String
                 ],
@@ -125,6 +127,7 @@ Creates or updates a campaign.
                     "MediaUrl" =>  ::String,
                     "RawContent" =>  ::String,
                     "SilentPush" =>  ::Bool,
+                    "TimeToLive" =>  ::Int,
                     "Title" =>  ::String,
                     "Url" =>  ::String
                 ],
@@ -144,6 +147,7 @@ Creates or updates a campaign.
                     "MediaUrl" =>  ::String,
                     "RawContent" =>  ::String,
                     "SilentPush" =>  ::Bool,
+                    "TimeToLive" =>  ::Int,
                     "Title" =>  ::String,
                     "Url" =>  ::String
                 ],
@@ -170,6 +174,11 @@ Creates or updates a campaign.
         ], ...],
         "Description" =>  ::String,
         "HoldoutPercent" =>  ::Int,
+        "Hook" =>  [
+            "LambdaFunctionName" =>  ::String,
+            "Mode" =>  "DELIVERY" or "FILTER",
+            "WebUrl" =>  ::String
+        ],
         "IsPaused" =>  ::Bool,
         "Limits" =>  [
             "Daily" =>  ::Int,
@@ -188,6 +197,7 @@ Creates or updates a campaign.
                 "MediaUrl" =>  ::String,
                 "RawContent" =>  ::String,
                 "SilentPush" =>  ::Bool,
+                "TimeToLive" =>  ::Int,
                 "Title" =>  ::String,
                 "Url" =>  ::String
             ],
@@ -201,6 +211,7 @@ Creates or updates a campaign.
                 "MediaUrl" =>  ::String,
                 "RawContent" =>  ::String,
                 "SilentPush" =>  ::Bool,
+                "TimeToLive" =>  ::Int,
                 "Title" =>  ::String,
                 "Url" =>  ::String
             ],
@@ -214,6 +225,7 @@ Creates or updates a campaign.
                 "MediaUrl" =>  ::String,
                 "RawContent" =>  ::String,
                 "SilentPush" =>  ::Bool,
+                "TimeToLive" =>  ::Int,
                 "Title" =>  ::String,
                 "Url" =>  ::String
             ],
@@ -227,6 +239,7 @@ Creates or updates a campaign.
                 "MediaUrl" =>  ::String,
                 "RawContent" =>  ::String,
                 "SilentPush" =>  ::Bool,
+                "TimeToLive" =>  ::Int,
                 "Title" =>  ::String,
                 "Url" =>  ::String
             ],
@@ -246,6 +259,7 @@ Creates or updates a campaign.
                 "MediaUrl" =>  ::String,
                 "RawContent" =>  ::String,
                 "SilentPush" =>  ::Bool,
+                "TimeToLive" =>  ::Int,
                 "Title" =>  ::String,
                 "Url" =>  ::String
             ],
@@ -286,12 +300,60 @@ Creates or updates a campaign.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateCampaign)
 """
-
 @inline create_campaign(aws::AWSConfig=default_aws_config(); args...) = create_campaign(aws, args)
 
 @inline create_campaign(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "POST", "/v1/apps/{application-id}/campaigns", args)
 
 @inline create_campaign(args) = create_campaign(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.create_export_job
+    create_export_job([::AWSConfig], arguments::Dict)
+    create_export_job([::AWSConfig]; application-id=, ExportJobRequest=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "POST", "/v1/apps/{application-id}/jobs/export", arguments::Dict)
+    pinpoint([::AWSConfig], "POST", "/v1/apps/{application-id}/jobs/export", application-id=, ExportJobRequest=)
+
+# CreateExportJob Operation
+
+Creates an export job.
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+The unique ID of your Amazon Pinpoint application.
+
+
+## `ExportJobRequest = [ ... ]` -- *Required*
+
+```
+ ExportJobRequest = [
+        "RoleArn" =>  ::String,
+        "S3UrlPrefix" =>  ::String,
+        "SegmentId" =>  ::String,
+        "SegmentVersion" =>  ::Int
+    ]
+```
+
+
+
+# Returns
+
+`CreateExportJobResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateExportJob)
+"""
+@inline create_export_job(aws::AWSConfig=default_aws_config(); args...) = create_export_job(aws, args)
+
+@inline create_export_job(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "POST", "/v1/apps/{application-id}/jobs/export", args)
+
+@inline create_export_job(args) = create_export_job(default_aws_config(), args)
 
 
 """
@@ -310,7 +372,7 @@ Creates or updates an import job.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `ImportJobRequest = [ ... ]` -- *Required*
@@ -340,7 +402,6 @@ Creates or updates an import job.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateImportJob)
 """
-
 @inline create_import_job(aws::AWSConfig=default_aws_config(); args...) = create_import_job(aws, args)
 
 @inline create_import_job(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "POST", "/v1/apps/{application-id}/jobs/import", args)
@@ -364,7 +425,7 @@ Used to create or update a segment.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `WriteSegmentRequest = [ ... ]` -- *Required*
@@ -403,13 +464,82 @@ Used to create or update a segment.
                     "Values" =>  [::String, ...]
                 ]
             ],
-            "Location" =>  ["Country" =>  [
+            "Location" =>  [
+                "Country" =>  [
                     "DimensionType" =>  "INCLUSIVE" or "EXCLUSIVE",
                     "Values" =>  [::String, ...]
-                ]],
+                ],
+                "GPSPoint" =>  [
+                    "Coordinates" =>  [
+                        "Latitude" =>  double,
+                        "Longitude" =>  double
+                    ],
+                    "RangeInKilometers" =>  double
+                ]
+            ],
+            "Metrics" =>  ::Dict{String,String},
             "UserAttributes" =>  ::Dict{String,String}
         ],
-        "Name" =>  ::String
+        "Name" =>  ::String,
+        "SegmentGroups" =>  [
+            "Groups" =>  [[
+                "Dimensions" =>  [[
+                    "Attributes" =>  ::Dict{String,String},
+                    "Behavior" =>  ["Recency" =>  [
+                            "Duration" =>  "HR_24", "DAY_7", "DAY_14" or "DAY_30",
+                            "RecencyType" =>  "ACTIVE" or "INACTIVE"
+                        ]],
+                    "Demographic" =>  [
+                        "AppVersion" =>  [
+                            "DimensionType" =>  "INCLUSIVE" or "EXCLUSIVE",
+                            "Values" =>  [::String, ...]
+                        ],
+                        "Channel" =>  [
+                            "DimensionType" =>  "INCLUSIVE" or "EXCLUSIVE",
+                            "Values" =>  [::String, ...]
+                        ],
+                        "DeviceType" =>  [
+                            "DimensionType" =>  "INCLUSIVE" or "EXCLUSIVE",
+                            "Values" =>  [::String, ...]
+                        ],
+                        "Make" =>  [
+                            "DimensionType" =>  "INCLUSIVE" or "EXCLUSIVE",
+                            "Values" =>  [::String, ...]
+                        ],
+                        "Model" =>  [
+                            "DimensionType" =>  "INCLUSIVE" or "EXCLUSIVE",
+                            "Values" =>  [::String, ...]
+                        ],
+                        "Platform" =>  [
+                            "DimensionType" =>  "INCLUSIVE" or "EXCLUSIVE",
+                            "Values" =>  [::String, ...]
+                        ]
+                    ],
+                    "Location" =>  [
+                        "Country" =>  [
+                            "DimensionType" =>  "INCLUSIVE" or "EXCLUSIVE",
+                            "Values" =>  [::String, ...]
+                        ],
+                        "GPSPoint" =>  [
+                            "Coordinates" =>  [
+                                "Latitude" =>  double,
+                                "Longitude" =>  double
+                            ],
+                            "RangeInKilometers" =>  double
+                        ]
+                    ],
+                    "Metrics" =>  ::Dict{String,String},
+                    "UserAttributes" =>  ::Dict{String,String}
+                ], ...],
+                "SourceSegments" =>  [[
+                    "Id" =>  ::String,
+                    "Version" =>  ::Int
+                ], ...],
+                "SourceType" =>  "ALL" or "ANY",
+                "Type" =>  "ALL", "ANY" or "NONE"
+            ], ...],
+            "Include" =>  "ALL", "ANY" or "NONE"
+        ]
     ]
 ```
 
@@ -425,7 +555,6 @@ Used to create or update a segment.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateSegment)
 """
-
 @inline create_segment(aws::AWSConfig=default_aws_config(); args...) = create_segment(aws, args)
 
 @inline create_segment(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "POST", "/v1/apps/{application-id}/segments", args)
@@ -444,12 +573,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 # DeleteAdmChannel Operation
 
-Delete an ADM channel
+Delete an ADM channel.
 
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -464,7 +593,6 @@ Delete an ADM channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteAdmChannel)
 """
-
 @inline delete_adm_channel(aws::AWSConfig=default_aws_config(); args...) = delete_adm_channel(aws, args)
 
 @inline delete_adm_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/channels/adm", args)
@@ -488,7 +616,7 @@ Deletes the APNs channel for an app.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -503,7 +631,6 @@ Deletes the APNs channel for an app.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteApnsChannel)
 """
-
 @inline delete_apns_channel(aws::AWSConfig=default_aws_config(); args...) = delete_apns_channel(aws, args)
 
 @inline delete_apns_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/channels/apns", args)
@@ -522,12 +649,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 # DeleteApnsSandboxChannel Operation
 
-Delete an APNS sandbox channel
+Delete an APNS sandbox channel.
 
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -542,7 +669,6 @@ Delete an APNS sandbox channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteApnsSandboxChannel)
 """
-
 @inline delete_apns_sandbox_channel(aws::AWSConfig=default_aws_config(); args...) = delete_apns_sandbox_channel(aws, args)
 
 @inline delete_apns_sandbox_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/channels/apns_sandbox", args)
@@ -566,7 +692,7 @@ Delete an APNS VoIP channel
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -581,7 +707,6 @@ Delete an APNS VoIP channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteApnsVoipChannel)
 """
-
 @inline delete_apns_voip_channel(aws::AWSConfig=default_aws_config(); args...) = delete_apns_voip_channel(aws, args)
 
 @inline delete_apns_voip_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/channels/apns_voip", args)
@@ -605,7 +730,7 @@ Delete an APNS VoIP sandbox channel
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -620,7 +745,6 @@ Delete an APNS VoIP sandbox channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteApnsVoipSandboxChannel)
 """
-
 @inline delete_apns_voip_sandbox_channel(aws::AWSConfig=default_aws_config(); args...) = delete_apns_voip_sandbox_channel(aws, args)
 
 @inline delete_apns_voip_sandbox_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/channels/apns_voip_sandbox", args)
@@ -644,7 +768,7 @@ Deletes an app.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -659,7 +783,6 @@ Deletes an app.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteApp)
 """
-
 @inline delete_app(aws::AWSConfig=default_aws_config(); args...) = delete_app(aws, args)
 
 @inline delete_app(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}", args)
@@ -683,7 +806,7 @@ Delete a BAIDU GCM channel
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -698,7 +821,6 @@ Delete a BAIDU GCM channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteBaiduChannel)
 """
-
 @inline delete_baidu_channel(aws::AWSConfig=default_aws_config(); args...) = delete_baidu_channel(aws, args)
 
 @inline delete_baidu_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/channels/baidu", args)
@@ -722,11 +844,11 @@ Deletes a campaign.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `campaign-id = ::String` -- *Required*
-
+The unique ID of the campaign.
 
 
 
@@ -741,7 +863,6 @@ Deletes a campaign.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteCampaign)
 """
-
 @inline delete_campaign(aws::AWSConfig=default_aws_config(); args...) = delete_campaign(aws, args)
 
 @inline delete_campaign(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/campaigns/{campaign-id}", args)
@@ -760,12 +881,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 # DeleteEmailChannel Operation
 
-Delete an email channel
+Delete an email channel.
 
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -780,12 +901,53 @@ Delete an email channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteEmailChannel)
 """
-
 @inline delete_email_channel(aws::AWSConfig=default_aws_config(); args...) = delete_email_channel(aws, args)
 
 @inline delete_email_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/channels/email", args)
 
 @inline delete_email_channel(args) = delete_email_channel(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.delete_endpoint
+    delete_endpoint([::AWSConfig], arguments::Dict)
+    delete_endpoint([::AWSConfig]; application-id=, endpoint-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/endpoints/{endpoint-id}", arguments::Dict)
+    pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/endpoints/{endpoint-id}", application-id=, endpoint-id=)
+
+# DeleteEndpoint Operation
+
+Deletes an endpoint.
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+The unique ID of your Amazon Pinpoint application.
+
+
+## `endpoint-id = ::String` -- *Required*
+The unique ID of the endpoint.
+
+
+
+
+# Returns
+
+`DeleteEndpointResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteEndpoint)
+"""
+@inline delete_endpoint(aws::AWSConfig=default_aws_config(); args...) = delete_endpoint(aws, args)
+
+@inline delete_endpoint(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/endpoints/{endpoint-id}", args)
+
+@inline delete_endpoint(args) = delete_endpoint(default_aws_config(), args)
 
 
 """
@@ -804,7 +966,7 @@ Deletes the event stream for an app.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-ApplicationId
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -819,7 +981,6 @@ ApplicationId
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteEventStream)
 """
-
 @inline delete_event_stream(aws::AWSConfig=default_aws_config(); args...) = delete_event_stream(aws, args)
 
 @inline delete_event_stream(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/eventstream", args)
@@ -843,7 +1004,7 @@ Deletes the GCM channel for an app.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -858,7 +1019,6 @@ Deletes the GCM channel for an app.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteGcmChannel)
 """
-
 @inline delete_gcm_channel(aws::AWSConfig=default_aws_config(); args...) = delete_gcm_channel(aws, args)
 
 @inline delete_gcm_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/channels/gcm", args)
@@ -882,11 +1042,11 @@ Deletes a segment.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `segment-id = ::String` -- *Required*
-
+The unique ID of the segment.
 
 
 
@@ -901,7 +1061,6 @@ Deletes a segment.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteSegment)
 """
-
 @inline delete_segment(aws::AWSConfig=default_aws_config(); args...) = delete_segment(aws, args)
 
 @inline delete_segment(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/segments/{segment-id}", args)
@@ -920,12 +1079,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 # DeleteSmsChannel Operation
 
-Delete an SMS channel
+Delete an SMS channel.
 
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -940,12 +1099,53 @@ Delete an SMS channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteSmsChannel)
 """
-
 @inline delete_sms_channel(aws::AWSConfig=default_aws_config(); args...) = delete_sms_channel(aws, args)
 
 @inline delete_sms_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/channels/sms", args)
 
 @inline delete_sms_channel(args) = delete_sms_channel(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.delete_user_endpoints
+    delete_user_endpoints([::AWSConfig], arguments::Dict)
+    delete_user_endpoints([::AWSConfig]; application-id=, user-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/users/{user-id}", arguments::Dict)
+    pinpoint([::AWSConfig], "DELETE", "/v1/apps/{application-id}/users/{user-id}", application-id=, user-id=)
+
+# DeleteUserEndpoints Operation
+
+Deletes endpoints associated with an user id.
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+The unique ID of your Amazon Pinpoint application.
+
+
+## `user-id = ::String` -- *Required*
+The unique ID of the user.
+
+
+
+
+# Returns
+
+`DeleteUserEndpointsResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteUserEndpoints)
+"""
+@inline delete_user_endpoints(aws::AWSConfig=default_aws_config(); args...) = delete_user_endpoints(aws, args)
+
+@inline delete_user_endpoints(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "DELETE", "/v1/apps/{application-id}/users/{user-id}", args)
+
+@inline delete_user_endpoints(args) = delete_user_endpoints(default_aws_config(), args)
 
 
 """
@@ -959,12 +1159,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 # GetAdmChannel Operation
 
-Get an ADM channel
+Get an ADM channel.
 
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -979,7 +1179,6 @@ Get an ADM channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetAdmChannel)
 """
-
 @inline get_adm_channel(aws::AWSConfig=default_aws_config(); args...) = get_adm_channel(aws, args)
 
 @inline get_adm_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/channels/adm", args)
@@ -1003,7 +1202,7 @@ Returns information about the APNs channel for an app.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -1018,7 +1217,6 @@ Returns information about the APNs channel for an app.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApnsChannel)
 """
-
 @inline get_apns_channel(aws::AWSConfig=default_aws_config(); args...) = get_apns_channel(aws, args)
 
 @inline get_apns_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/channels/apns", args)
@@ -1037,12 +1235,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 # GetApnsSandboxChannel Operation
 
-Get an APNS sandbox channel
+Get an APNS sandbox channel.
 
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -1057,7 +1255,6 @@ Get an APNS sandbox channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApnsSandboxChannel)
 """
-
 @inline get_apns_sandbox_channel(aws::AWSConfig=default_aws_config(); args...) = get_apns_sandbox_channel(aws, args)
 
 @inline get_apns_sandbox_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/channels/apns_sandbox", args)
@@ -1081,7 +1278,7 @@ Get an APNS VoIP channel
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -1096,7 +1293,6 @@ Get an APNS VoIP channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApnsVoipChannel)
 """
-
 @inline get_apns_voip_channel(aws::AWSConfig=default_aws_config(); args...) = get_apns_voip_channel(aws, args)
 
 @inline get_apns_voip_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/channels/apns_voip", args)
@@ -1115,12 +1311,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 # GetApnsVoipSandboxChannel Operation
 
-Get an APNS VoipSandbox channel
+Get an APNS VoIPSandbox channel
 
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -1135,7 +1331,6 @@ Get an APNS VoipSandbox channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApnsVoipSandboxChannel)
 """
-
 @inline get_apns_voip_sandbox_channel(aws::AWSConfig=default_aws_config(); args...) = get_apns_voip_sandbox_channel(aws, args)
 
 @inline get_apns_voip_sandbox_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/channels/apns_voip_sandbox", args)
@@ -1159,7 +1354,7 @@ Returns information about an app.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -1174,7 +1369,6 @@ Returns information about an app.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApp)
 """
-
 @inline get_app(aws::AWSConfig=default_aws_config(); args...) = get_app(aws, args)
 
 @inline get_app(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}", args)
@@ -1198,7 +1392,7 @@ Used to request the settings for an app.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -1213,7 +1407,6 @@ Used to request the settings for an app.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApplicationSettings)
 """
-
 @inline get_application_settings(aws::AWSConfig=default_aws_config(); args...) = get_application_settings(aws, args)
 
 @inline get_application_settings(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/settings", args)
@@ -1237,11 +1430,11 @@ Returns information about your apps.
 # Arguments
 
 ## `page-size = ::String`
-
+The number of entries you want on each page in the response.
 
 
 ## `token = ::String`
-
+The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 
 
 
@@ -1256,7 +1449,6 @@ Returns information about your apps.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApps)
 """
-
 @inline get_apps(aws::AWSConfig=default_aws_config(); args...) = get_apps(aws, args)
 
 @inline get_apps(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps", args)
@@ -1280,7 +1472,7 @@ Get a BAIDU GCM channel
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -1295,7 +1487,6 @@ Get a BAIDU GCM channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetBaiduChannel)
 """
-
 @inline get_baidu_channel(aws::AWSConfig=default_aws_config(); args...) = get_baidu_channel(aws, args)
 
 @inline get_baidu_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/channels/baidu", args)
@@ -1319,11 +1510,11 @@ Returns information about a campaign.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `campaign-id = ::String` -- *Required*
-
+The unique ID of the campaign.
 
 
 
@@ -1338,7 +1529,6 @@ Returns information about a campaign.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetCampaign)
 """
-
 @inline get_campaign(aws::AWSConfig=default_aws_config(); args...) = get_campaign(aws, args)
 
 @inline get_campaign(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/campaigns/{campaign-id}", args)
@@ -1362,11 +1552,11 @@ Returns information about the activity performed by a campaign.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `campaign-id = ::String` -- *Required*
-
+The unique ID of the campaign.
 
 
 ## `page-size = ::String`
@@ -1389,7 +1579,6 @@ The NextToken string returned on a previous page that you use to get the next pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetCampaignActivities)
 """
-
 @inline get_campaign_activities(aws::AWSConfig=default_aws_config(); args...) = get_campaign_activities(aws, args)
 
 @inline get_campaign_activities(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/campaigns/{campaign-id}/activities", args)
@@ -1413,15 +1602,15 @@ Returns information about a specific version of a campaign.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `campaign-id = ::String` -- *Required*
-
+The unique ID of the campaign.
 
 
 ## `version = ::String` -- *Required*
-
+The version of the campaign.
 
 
 
@@ -1436,7 +1625,6 @@ Returns information about a specific version of a campaign.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetCampaignVersion)
 """
-
 @inline get_campaign_version(aws::AWSConfig=default_aws_config(); args...) = get_campaign_version(aws, args)
 
 @inline get_campaign_version(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/campaigns/{campaign-id}/versions/{version}", args)
@@ -1460,11 +1648,11 @@ Returns information about your campaign versions.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `campaign-id = ::String` -- *Required*
-
+The unique ID of the campaign.
 
 
 ## `page-size = ::String`
@@ -1487,7 +1675,6 @@ The NextToken string returned on a previous page that you use to get the next pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetCampaignVersions)
 """
-
 @inline get_campaign_versions(aws::AWSConfig=default_aws_config(); args...) = get_campaign_versions(aws, args)
 
 @inline get_campaign_versions(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/campaigns/{campaign-id}/versions", args)
@@ -1511,7 +1698,7 @@ Returns information about your campaigns.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `page-size = ::String`
@@ -1534,12 +1721,49 @@ The NextToken string returned on a previous page that you use to get the next pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetCampaigns)
 """
-
 @inline get_campaigns(aws::AWSConfig=default_aws_config(); args...) = get_campaigns(aws, args)
 
 @inline get_campaigns(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/campaigns", args)
 
 @inline get_campaigns(args) = get_campaigns(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.get_channels
+    get_channels([::AWSConfig], arguments::Dict)
+    get_channels([::AWSConfig]; application-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/channels", arguments::Dict)
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/channels", application-id=)
+
+# GetChannels Operation
+
+Get all channels.
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+The unique ID of your Amazon Pinpoint application.
+
+
+
+
+# Returns
+
+`GetChannelsResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetChannels)
+"""
+@inline get_channels(aws::AWSConfig=default_aws_config(); args...) = get_channels(aws, args)
+
+@inline get_channels(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/channels", args)
+
+@inline get_channels(args) = get_channels(default_aws_config(), args)
 
 
 """
@@ -1553,12 +1777,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 # GetEmailChannel Operation
 
-Get an email channel
+Get an email channel.
 
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -1573,7 +1797,6 @@ Get an email channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetEmailChannel)
 """
-
 @inline get_email_channel(aws::AWSConfig=default_aws_config(); args...) = get_email_channel(aws, args)
 
 @inline get_email_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/channels/email", args)
@@ -1597,11 +1820,11 @@ Returns information about an endpoint.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `endpoint-id = ::String` -- *Required*
-
+The unique ID of the endpoint.
 
 
 
@@ -1616,7 +1839,6 @@ Returns information about an endpoint.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetEndpoint)
 """
-
 @inline get_endpoint(aws::AWSConfig=default_aws_config(); args...) = get_endpoint(aws, args)
 
 @inline get_endpoint(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/endpoints/{endpoint-id}", args)
@@ -1640,7 +1862,7 @@ Returns the event stream for an app.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-ApplicationId
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -1655,12 +1877,99 @@ ApplicationId
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetEventStream)
 """
-
 @inline get_event_stream(aws::AWSConfig=default_aws_config(); args...) = get_event_stream(aws, args)
 
 @inline get_event_stream(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/eventstream", args)
 
 @inline get_event_stream(args) = get_event_stream(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.get_export_job
+    get_export_job([::AWSConfig], arguments::Dict)
+    get_export_job([::AWSConfig]; application-id=, job-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/jobs/export/{job-id}", arguments::Dict)
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/jobs/export/{job-id}", application-id=, job-id=)
+
+# GetExportJob Operation
+
+Returns information about an export job.
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+The unique ID of your Amazon Pinpoint application.
+
+
+## `job-id = ::String` -- *Required*
+The unique ID of the job.
+
+
+
+
+# Returns
+
+`GetExportJobResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetExportJob)
+"""
+@inline get_export_job(aws::AWSConfig=default_aws_config(); args...) = get_export_job(aws, args)
+
+@inline get_export_job(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/jobs/export/{job-id}", args)
+
+@inline get_export_job(args) = get_export_job(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.get_export_jobs
+    get_export_jobs([::AWSConfig], arguments::Dict)
+    get_export_jobs([::AWSConfig]; application-id=, <keyword arguments>)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/jobs/export", arguments::Dict)
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/jobs/export", application-id=, <keyword arguments>)
+
+# GetExportJobs Operation
+
+Returns information about your export jobs.
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+The unique ID of your Amazon Pinpoint application.
+
+
+## `page-size = ::String`
+The number of entries you want on each page in the response.
+
+
+## `token = ::String`
+The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+
+
+
+
+# Returns
+
+`GetExportJobsResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetExportJobs)
+"""
+@inline get_export_jobs(aws::AWSConfig=default_aws_config(); args...) = get_export_jobs(aws, args)
+
+@inline get_export_jobs(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/jobs/export", args)
+
+@inline get_export_jobs(args) = get_export_jobs(default_aws_config(), args)
 
 
 """
@@ -1679,7 +1988,7 @@ Returns information about the GCM channel for an app.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -1694,7 +2003,6 @@ Returns information about the GCM channel for an app.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetGcmChannel)
 """
-
 @inline get_gcm_channel(aws::AWSConfig=default_aws_config(); args...) = get_gcm_channel(aws, args)
 
 @inline get_gcm_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/channels/gcm", args)
@@ -1718,11 +2026,11 @@ Returns information about an import job.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `job-id = ::String` -- *Required*
-
+The unique ID of the job.
 
 
 
@@ -1737,7 +2045,6 @@ Returns information about an import job.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetImportJob)
 """
-
 @inline get_import_job(aws::AWSConfig=default_aws_config(); args...) = get_import_job(aws, args)
 
 @inline get_import_job(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/jobs/import/{job-id}", args)
@@ -1761,7 +2068,7 @@ Returns information about your import jobs.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `page-size = ::String`
@@ -1784,7 +2091,6 @@ The NextToken string returned on a previous page that you use to get the next pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetImportJobs)
 """
-
 @inline get_import_jobs(aws::AWSConfig=default_aws_config(); args...) = get_import_jobs(aws, args)
 
 @inline get_import_jobs(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/jobs/import", args)
@@ -1808,11 +2114,11 @@ Returns information about a segment.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `segment-id = ::String` -- *Required*
-
+The unique ID of the segment.
 
 
 
@@ -1827,12 +2133,61 @@ Returns information about a segment.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSegment)
 """
-
 @inline get_segment(aws::AWSConfig=default_aws_config(); args...) = get_segment(aws, args)
 
 @inline get_segment(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/segments/{segment-id}", args)
 
 @inline get_segment(args) = get_segment(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.get_segment_export_jobs
+    get_segment_export_jobs([::AWSConfig], arguments::Dict)
+    get_segment_export_jobs([::AWSConfig]; application-id=, segment-id=, <keyword arguments>)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/segments/{segment-id}/jobs/export", arguments::Dict)
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/segments/{segment-id}/jobs/export", application-id=, segment-id=, <keyword arguments>)
+
+# GetSegmentExportJobs Operation
+
+Returns a list of export jobs for a specific segment.
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+The unique ID of your Amazon Pinpoint application.
+
+
+## `page-size = ::String`
+The number of entries you want on each page in the response.
+
+
+## `segment-id = ::String` -- *Required*
+The unique ID of the segment.
+
+
+## `token = ::String`
+The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+
+
+
+
+# Returns
+
+`GetSegmentExportJobsResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSegmentExportJobs)
+"""
+@inline get_segment_export_jobs(aws::AWSConfig=default_aws_config(); args...) = get_segment_export_jobs(aws, args)
+
+@inline get_segment_export_jobs(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/segments/{segment-id}/jobs/export", args)
+
+@inline get_segment_export_jobs(args) = get_segment_export_jobs(default_aws_config(), args)
 
 
 """
@@ -1851,7 +2206,7 @@ Returns a list of import jobs for a specific segment.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `page-size = ::String`
@@ -1859,7 +2214,7 @@ The number of entries you want on each page in the response.
 
 
 ## `segment-id = ::String` -- *Required*
-
+The unique ID of the segment.
 
 
 ## `token = ::String`
@@ -1878,7 +2233,6 @@ The NextToken string returned on a previous page that you use to get the next pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSegmentImportJobs)
 """
-
 @inline get_segment_import_jobs(aws::AWSConfig=default_aws_config(); args...) = get_segment_import_jobs(aws, args)
 
 @inline get_segment_import_jobs(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/segments/{segment-id}/jobs/import", args)
@@ -1902,15 +2256,15 @@ Returns information about a segment version.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `segment-id = ::String` -- *Required*
-
+The unique ID of the segment.
 
 
 ## `version = ::String` -- *Required*
-
+The segment version.
 
 
 
@@ -1925,7 +2279,6 @@ Returns information about a segment version.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSegmentVersion)
 """
-
 @inline get_segment_version(aws::AWSConfig=default_aws_config(); args...) = get_segment_version(aws, args)
 
 @inline get_segment_version(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/segments/{segment-id}/versions/{version}", args)
@@ -1949,7 +2302,7 @@ Returns information about your segment versions.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `page-size = ::String`
@@ -1957,7 +2310,7 @@ The number of entries you want on each page in the response.
 
 
 ## `segment-id = ::String` -- *Required*
-
+The unique ID of the segment.
 
 
 ## `token = ::String`
@@ -1976,7 +2329,6 @@ The NextToken string returned on a previous page that you use to get the next pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSegmentVersions)
 """
-
 @inline get_segment_versions(aws::AWSConfig=default_aws_config(); args...) = get_segment_versions(aws, args)
 
 @inline get_segment_versions(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/segments/{segment-id}/versions", args)
@@ -2000,7 +2352,7 @@ Used to get information about your segments.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `page-size = ::String`
@@ -2023,7 +2375,6 @@ The NextToken string returned on a previous page that you use to get the next pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSegments)
 """
-
 @inline get_segments(aws::AWSConfig=default_aws_config(); args...) = get_segments(aws, args)
 
 @inline get_segments(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/segments", args)
@@ -2042,12 +2393,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 # GetSmsChannel Operation
 
-Get an SMS channel
+Get an SMS channel.
 
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -2062,12 +2413,96 @@ Get an SMS channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSmsChannel)
 """
-
 @inline get_sms_channel(aws::AWSConfig=default_aws_config(); args...) = get_sms_channel(aws, args)
 
 @inline get_sms_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/channels/sms", args)
 
 @inline get_sms_channel(args) = get_sms_channel(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.get_user_endpoints
+    get_user_endpoints([::AWSConfig], arguments::Dict)
+    get_user_endpoints([::AWSConfig]; application-id=, user-id=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/users/{user-id}", arguments::Dict)
+    pinpoint([::AWSConfig], "GET", "/v1/apps/{application-id}/users/{user-id}", application-id=, user-id=)
+
+# GetUserEndpoints Operation
+
+Returns information about the endpoints associated with an user id.
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+The unique ID of your Amazon Pinpoint application.
+
+
+## `user-id = ::String` -- *Required*
+The unique ID of the user.
+
+
+
+
+# Returns
+
+`GetUserEndpointsResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetUserEndpoints)
+"""
+@inline get_user_endpoints(aws::AWSConfig=default_aws_config(); args...) = get_user_endpoints(aws, args)
+
+@inline get_user_endpoints(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "GET", "/v1/apps/{application-id}/users/{user-id}", args)
+
+@inline get_user_endpoints(args) = get_user_endpoints(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.phone_number_validate
+    phone_number_validate([::AWSConfig], arguments::Dict)
+    phone_number_validate([::AWSConfig]; NumberValidateRequest=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "POST", "/v1/phone/number/validate", arguments::Dict)
+    pinpoint([::AWSConfig], "POST", "/v1/phone/number/validate", NumberValidateRequest=)
+
+# PhoneNumberValidate Operation
+
+Returns information about the specified phone number.
+
+# Arguments
+
+## `NumberValidateRequest = [ ... ]` -- *Required*
+
+```
+ NumberValidateRequest = [
+        "IsoCountryCode" =>  ::String,
+        "PhoneNumber" =>  ::String
+    ]
+```
+
+
+
+# Returns
+
+`PhoneNumberValidateResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/PhoneNumberValidate)
+"""
+@inline phone_number_validate(aws::AWSConfig=default_aws_config(); args...) = phone_number_validate(aws, args)
+
+@inline phone_number_validate(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "POST", "/v1/phone/number/validate", args)
+
+@inline phone_number_validate(args) = phone_number_validate(default_aws_config(), args)
 
 
 """
@@ -2086,11 +2521,11 @@ Use to create or update the event stream for an app.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-ApplicationId
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `WriteEventStream = [ ... ]` -- *Required*
-EventStream to write.
+
 ```
  WriteEventStream = [
         "DestinationStreamArn" =>  ::String,
@@ -2110,12 +2545,57 @@ EventStream to write.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/PutEventStream)
 """
-
 @inline put_event_stream(aws::AWSConfig=default_aws_config(); args...) = put_event_stream(aws, args)
 
 @inline put_event_stream(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "POST", "/v1/apps/{application-id}/eventstream", args)
 
 @inline put_event_stream(args) = put_event_stream(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Pinpoint.remove_attributes
+    remove_attributes([::AWSConfig], arguments::Dict)
+    remove_attributes([::AWSConfig]; application-id=, attribute-type=, UpdateAttributesRequest=)
+
+    using AWSCore.Services.pinpoint
+    pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/attributes/{attribute-type}", arguments::Dict)
+    pinpoint([::AWSConfig], "PUT", "/v1/apps/{application-id}/attributes/{attribute-type}", application-id=, attribute-type=, UpdateAttributesRequest=)
+
+# RemoveAttributes Operation
+
+Used to remove the attributes for an app
+
+# Arguments
+
+## `application-id = ::String` -- *Required*
+The unique ID of your Amazon Pinpoint application.
+
+
+## `attribute-type = ::String` -- *Required*
+Type of attribute. Can be endpoint-custom-attributes, endpoint-custom-metrics, endpoint-user-attributes.
+
+
+## `UpdateAttributesRequest = ["Blacklist" =>  [::String, ...]]` -- *Required*
+
+
+
+
+
+# Returns
+
+`RemoveAttributesResponse`
+
+# Exceptions
+
+`BadRequestException`, `InternalServerErrorException`, `ForbiddenException`, `NotFoundException`, `MethodNotAllowedException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/RemoveAttributes)
+"""
+@inline remove_attributes(aws::AWSConfig=default_aws_config(); args...) = remove_attributes(aws, args)
+
+@inline remove_attributes(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/attributes/{attribute-type}", args)
+
+@inline remove_attributes(args) = remove_attributes(default_aws_config(), args)
 
 
 """
@@ -2129,12 +2609,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 # SendMessages Operation
 
-Send a batch of messages
+Use this resource to send a direct message, which is a one time message that you send to a limited audience without creating a campaign. You can send the message to up to 100 recipients. You cannot use the message to engage a segment. When you send the message, Amazon Pinpoint delivers it immediately, and you cannot schedule the delivery. To engage a user segment, and to schedule the message delivery, create a campaign instead of sending a direct message. You can send a direct message as a push notification to your mobile app or as an SMS message to SMS-enabled devices.
 
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `MessageRequest = [ ... ]` -- *Required*
@@ -2194,6 +2674,7 @@ Send a batch of messages
                 "SmallImageIconUrl" =>  ::String,
                 "Sound" =>  ::String,
                 "Substitutions" =>  ::Dict{String,String},
+                "TimeToLive" =>  ::Int,
                 "Title" =>  ::String,
                 "Url" =>  ::String
             ],
@@ -2231,7 +2712,9 @@ Send a batch of messages
             ],
             "SMSMessage" =>  [
                 "Body" =>  ::String,
+                "Keyword" =>  ::String,
                 "MessageType" =>  "TRANSACTIONAL" or "PROMOTIONAL",
+                "OriginationNumber" =>  ::String,
                 "SenderId" =>  ::String,
                 "Substitutions" =>  ::Dict{String,String}
             ]
@@ -2251,7 +2734,6 @@ Send a batch of messages
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/SendMessages)
 """
-
 @inline send_messages(aws::AWSConfig=default_aws_config(); args...) = send_messages(aws, args)
 
 @inline send_messages(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "POST", "/v1/apps/{application-id}/messages", args)
@@ -2270,12 +2752,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 # SendUsersMessages Operation
 
-Send a batch of messages to users
+Use this resource to message a list of users. Amazon Pinpoint sends the message to all of the endpoints that are associated with each user. A user represents an individual who is assigned a unique user ID, and this ID is assigned to one or more endpoints. For example, if an individual uses your app on multiple devices, your app could assign that person's user ID to the endpoint for each device. With the users-messages resource, you specify the message recipients as user IDs. For each user ID, Amazon Pinpoint delivers the message to all of the user's endpoints. Within the body of your request, you can specify a default message, and you can tailor your message for different channels, including those for mobile push and SMS. With this resource, you send a direct message, which is a one time message that you send to a limited audience without creating a campaign. You can send the message to up to 100 users per request. You cannot use the message to engage a segment. When you send the message, Amazon Pinpoint delivers it immediately, and you cannot schedule the delivery. To engage a user segment, and to schedule the message delivery, create a campaign instead of using the users-messages resource.
 
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `SendUsersMessageRequest = [ ... ]` -- *Required*
@@ -2333,6 +2815,7 @@ Send a batch of messages to users
                 "SmallImageIconUrl" =>  ::String,
                 "Sound" =>  ::String,
                 "Substitutions" =>  ::Dict{String,String},
+                "TimeToLive" =>  ::Int,
                 "Title" =>  ::String,
                 "Url" =>  ::String
             ],
@@ -2370,7 +2853,9 @@ Send a batch of messages to users
             ],
             "SMSMessage" =>  [
                 "Body" =>  ::String,
+                "Keyword" =>  ::String,
                 "MessageType" =>  "TRANSACTIONAL" or "PROMOTIONAL",
+                "OriginationNumber" =>  ::String,
                 "SenderId" =>  ::String,
                 "Substitutions" =>  ::Dict{String,String}
             ]
@@ -2391,7 +2876,6 @@ Send a batch of messages to users
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/SendUsersMessages)
 """
-
 @inline send_users_messages(aws::AWSConfig=default_aws_config(); args...) = send_users_messages(aws, args)
 
 @inline send_users_messages(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "POST", "/v1/apps/{application-id}/users-messages", args)
@@ -2410,7 +2894,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 # UpdateAdmChannel Operation
 
-Update an ADM channel
+Update an ADM channel.
 
 # Arguments
 
@@ -2425,7 +2909,7 @@ Update an ADM channel
 ```
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -2440,7 +2924,6 @@ Update an ADM channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateAdmChannel)
 """
-
 @inline update_adm_channel(aws::AWSConfig=default_aws_config(); args...) = update_adm_channel(aws, args)
 
 @inline update_adm_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/channels/adm", args)
@@ -2479,7 +2962,7 @@ Use to update the APNs channel for an app.
 ```
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -2494,7 +2977,6 @@ Use to update the APNs channel for an app.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateApnsChannel)
 """
-
 @inline update_apns_channel(aws::AWSConfig=default_aws_config(); args...) = update_apns_channel(aws, args)
 
 @inline update_apns_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/channels/apns", args)
@@ -2513,7 +2995,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 # UpdateApnsSandboxChannel Operation
 
-Update an APNS sandbox channel
+Update an APNS sandbox channel.
 
 # Arguments
 
@@ -2533,7 +3015,7 @@ Update an APNS sandbox channel
 ```
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -2548,7 +3030,6 @@ Update an APNS sandbox channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateApnsSandboxChannel)
 """
-
 @inline update_apns_sandbox_channel(aws::AWSConfig=default_aws_config(); args...) = update_apns_sandbox_channel(aws, args)
 
 @inline update_apns_sandbox_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/channels/apns_sandbox", args)
@@ -2587,7 +3068,7 @@ Update an APNS VoIP channel
 ```
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -2602,7 +3083,6 @@ Update an APNS VoIP channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateApnsVoipChannel)
 """
-
 @inline update_apns_voip_channel(aws::AWSConfig=default_aws_config(); args...) = update_apns_voip_channel(aws, args)
 
 @inline update_apns_voip_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/channels/apns_voip", args)
@@ -2641,7 +3121,7 @@ Update an APNS VoIP sandbox channel
 ```
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 
@@ -2656,7 +3136,6 @@ Update an APNS VoIP sandbox channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateApnsVoipSandboxChannel)
 """
-
 @inline update_apns_voip_sandbox_channel(aws::AWSConfig=default_aws_config(); args...) = update_apns_voip_sandbox_channel(aws, args)
 
 @inline update_apns_voip_sandbox_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/channels/apns_voip_sandbox", args)
@@ -2680,13 +3159,19 @@ Used to update the settings for an app.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `WriteApplicationSettingsRequest = [ ... ]` -- *Required*
 
 ```
  WriteApplicationSettingsRequest = [
+        "CampaignHook" =>  [
+            "LambdaFunctionName" =>  ::String,
+            "Mode" =>  "DELIVERY" or "FILTER",
+            "WebUrl" =>  ::String
+        ],
+        "CloudWatchMetricsEnabled" =>  ::Bool,
         "Limits" =>  [
             "Daily" =>  ::Int,
             "MaximumDuration" =>  ::Int,
@@ -2712,7 +3197,6 @@ Used to update the settings for an app.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateApplicationSettings)
 """
-
 @inline update_application_settings(aws::AWSConfig=default_aws_config(); args...) = update_application_settings(aws, args)
 
 @inline update_application_settings(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/settings", args)
@@ -2736,7 +3220,7 @@ Update a BAIDU GCM channel
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `BaiduChannelRequest = [ ... ]` -- *Required*
@@ -2761,7 +3245,6 @@ Update a BAIDU GCM channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateBaiduChannel)
 """
-
 @inline update_baidu_channel(aws::AWSConfig=default_aws_config(); args...) = update_baidu_channel(aws, args)
 
 @inline update_baidu_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/channels/baidu", args)
@@ -2785,11 +3268,11 @@ Use to update a campaign.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `campaign-id = ::String` -- *Required*
-
+The unique ID of the campaign.
 
 
 ## `WriteCampaignRequest = [ ... ]` -- *Required*
@@ -2808,6 +3291,7 @@ Use to update a campaign.
                     "MediaUrl" =>  ::String,
                     "RawContent" =>  ::String,
                     "SilentPush" =>  ::Bool,
+                    "TimeToLive" =>  ::Int,
                     "Title" =>  ::String,
                     "Url" =>  ::String
                 ],
@@ -2821,6 +3305,7 @@ Use to update a campaign.
                     "MediaUrl" =>  ::String,
                     "RawContent" =>  ::String,
                     "SilentPush" =>  ::Bool,
+                    "TimeToLive" =>  ::Int,
                     "Title" =>  ::String,
                     "Url" =>  ::String
                 ],
@@ -2834,6 +3319,7 @@ Use to update a campaign.
                     "MediaUrl" =>  ::String,
                     "RawContent" =>  ::String,
                     "SilentPush" =>  ::Bool,
+                    "TimeToLive" =>  ::Int,
                     "Title" =>  ::String,
                     "Url" =>  ::String
                 ],
@@ -2847,6 +3333,7 @@ Use to update a campaign.
                     "MediaUrl" =>  ::String,
                     "RawContent" =>  ::String,
                     "SilentPush" =>  ::Bool,
+                    "TimeToLive" =>  ::Int,
                     "Title" =>  ::String,
                     "Url" =>  ::String
                 ],
@@ -2866,6 +3353,7 @@ Use to update a campaign.
                     "MediaUrl" =>  ::String,
                     "RawContent" =>  ::String,
                     "SilentPush" =>  ::Bool,
+                    "TimeToLive" =>  ::Int,
                     "Title" =>  ::String,
                     "Url" =>  ::String
                 ],
@@ -2892,6 +3380,11 @@ Use to update a campaign.
         ], ...],
         "Description" =>  ::String,
         "HoldoutPercent" =>  ::Int,
+        "Hook" =>  [
+            "LambdaFunctionName" =>  ::String,
+            "Mode" =>  "DELIVERY" or "FILTER",
+            "WebUrl" =>  ::String
+        ],
         "IsPaused" =>  ::Bool,
         "Limits" =>  [
             "Daily" =>  ::Int,
@@ -2910,6 +3403,7 @@ Use to update a campaign.
                 "MediaUrl" =>  ::String,
                 "RawContent" =>  ::String,
                 "SilentPush" =>  ::Bool,
+                "TimeToLive" =>  ::Int,
                 "Title" =>  ::String,
                 "Url" =>  ::String
             ],
@@ -2923,6 +3417,7 @@ Use to update a campaign.
                 "MediaUrl" =>  ::String,
                 "RawContent" =>  ::String,
                 "SilentPush" =>  ::Bool,
+                "TimeToLive" =>  ::Int,
                 "Title" =>  ::String,
                 "Url" =>  ::String
             ],
@@ -2936,6 +3431,7 @@ Use to update a campaign.
                 "MediaUrl" =>  ::String,
                 "RawContent" =>  ::String,
                 "SilentPush" =>  ::Bool,
+                "TimeToLive" =>  ::Int,
                 "Title" =>  ::String,
                 "Url" =>  ::String
             ],
@@ -2949,6 +3445,7 @@ Use to update a campaign.
                 "MediaUrl" =>  ::String,
                 "RawContent" =>  ::String,
                 "SilentPush" =>  ::Bool,
+                "TimeToLive" =>  ::Int,
                 "Title" =>  ::String,
                 "Url" =>  ::String
             ],
@@ -2968,6 +3465,7 @@ Use to update a campaign.
                 "MediaUrl" =>  ::String,
                 "RawContent" =>  ::String,
                 "SilentPush" =>  ::Bool,
+                "TimeToLive" =>  ::Int,
                 "Title" =>  ::String,
                 "Url" =>  ::String
             ],
@@ -3008,7 +3506,6 @@ Use to update a campaign.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateCampaign)
 """
-
 @inline update_campaign(aws::AWSConfig=default_aws_config(); args...) = update_campaign(aws, args)
 
 @inline update_campaign(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/campaigns/{campaign-id}", args)
@@ -3027,12 +3524,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 # UpdateEmailChannel Operation
 
-Update an email channel
+Update an email channel.
 
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `EmailChannelRequest = [ ... ]` -- *Required*
@@ -3058,7 +3555,6 @@ Update an email channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateEmailChannel)
 """
-
 @inline update_email_channel(aws::AWSConfig=default_aws_config(); args...) = update_email_channel(aws, args)
 
 @inline update_email_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/channels/email", args)
@@ -3077,16 +3573,16 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 # UpdateEndpoint Operation
 
-Use to update an endpoint.
+Creates or updates an endpoint.
 
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `endpoint-id = ::String` -- *Required*
-
+The unique ID of the endpoint.
 
 
 ## `EndpointRequest = [ ... ]` -- *Required*
@@ -3095,7 +3591,7 @@ Use to update an endpoint.
  EndpointRequest = [
         "Address" =>  ::String,
         "Attributes" =>  ::Dict{String,String},
-        "ChannelType" =>  "GCM", "APNS", "APNS_SANDBOX", "APNS_VOIP", "APNS_VOIP_SANDBOX", "ADM", "SMS", "EMAIL" or "BAIDU",
+        "ChannelType" =>  "GCM", "APNS", "APNS_SANDBOX", "APNS_VOIP", "APNS_VOIP_SANDBOX", "ADM", "SMS", "EMAIL", "BAIDU" or "CUSTOM",
         "Demographic" =>  [
             "AppVersion" =>  ::String,
             "Locale" =>  ::String,
@@ -3138,7 +3634,6 @@ Use to update an endpoint.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateEndpoint)
 """
-
 @inline update_endpoint(aws::AWSConfig=default_aws_config(); args...) = update_endpoint(aws, args)
 
 @inline update_endpoint(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/endpoints/{endpoint-id}", args)
@@ -3162,7 +3657,7 @@ Use to update a batch of endpoints.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `EndpointBatchRequest = ["Item" =>  [[ ... ], ...]]` -- *Required*
@@ -3171,7 +3666,7 @@ Use to update a batch of endpoints.
  EndpointBatchRequest = ["Item" =>  [[
             "Address" =>  ::String,
             "Attributes" =>  ::Dict{String,String},
-            "ChannelType" =>  "GCM", "APNS", "APNS_SANDBOX", "APNS_VOIP", "APNS_VOIP_SANDBOX", "ADM", "SMS", "EMAIL" or "BAIDU",
+            "ChannelType" =>  "GCM", "APNS", "APNS_SANDBOX", "APNS_VOIP", "APNS_VOIP_SANDBOX", "ADM", "SMS", "EMAIL", "BAIDU" or "CUSTOM",
             "Demographic" =>  [
                 "AppVersion" =>  ::String,
                 "Locale" =>  ::String,
@@ -3215,7 +3710,6 @@ Use to update a batch of endpoints.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateEndpointsBatch)
 """
-
 @inline update_endpoints_batch(aws::AWSConfig=default_aws_config(); args...) = update_endpoints_batch(aws, args)
 
 @inline update_endpoints_batch(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/endpoints", args)
@@ -3239,7 +3733,7 @@ Use to update the GCM channel for an app.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `GCMChannelRequest = [ ... ]` -- *Required*
@@ -3263,7 +3757,6 @@ Use to update the GCM channel for an app.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateGcmChannel)
 """
-
 @inline update_gcm_channel(aws::AWSConfig=default_aws_config(); args...) = update_gcm_channel(aws, args)
 
 @inline update_gcm_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/channels/gcm", args)
@@ -3287,11 +3780,11 @@ Use to update a segment.
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `segment-id = ::String` -- *Required*
-
+The unique ID of the segment.
 
 
 ## `WriteSegmentRequest = [ ... ]` -- *Required*
@@ -3330,13 +3823,82 @@ Use to update a segment.
                     "Values" =>  [::String, ...]
                 ]
             ],
-            "Location" =>  ["Country" =>  [
+            "Location" =>  [
+                "Country" =>  [
                     "DimensionType" =>  "INCLUSIVE" or "EXCLUSIVE",
                     "Values" =>  [::String, ...]
-                ]],
+                ],
+                "GPSPoint" =>  [
+                    "Coordinates" =>  [
+                        "Latitude" =>  double,
+                        "Longitude" =>  double
+                    ],
+                    "RangeInKilometers" =>  double
+                ]
+            ],
+            "Metrics" =>  ::Dict{String,String},
             "UserAttributes" =>  ::Dict{String,String}
         ],
-        "Name" =>  ::String
+        "Name" =>  ::String,
+        "SegmentGroups" =>  [
+            "Groups" =>  [[
+                "Dimensions" =>  [[
+                    "Attributes" =>  ::Dict{String,String},
+                    "Behavior" =>  ["Recency" =>  [
+                            "Duration" =>  "HR_24", "DAY_7", "DAY_14" or "DAY_30",
+                            "RecencyType" =>  "ACTIVE" or "INACTIVE"
+                        ]],
+                    "Demographic" =>  [
+                        "AppVersion" =>  [
+                            "DimensionType" =>  "INCLUSIVE" or "EXCLUSIVE",
+                            "Values" =>  [::String, ...]
+                        ],
+                        "Channel" =>  [
+                            "DimensionType" =>  "INCLUSIVE" or "EXCLUSIVE",
+                            "Values" =>  [::String, ...]
+                        ],
+                        "DeviceType" =>  [
+                            "DimensionType" =>  "INCLUSIVE" or "EXCLUSIVE",
+                            "Values" =>  [::String, ...]
+                        ],
+                        "Make" =>  [
+                            "DimensionType" =>  "INCLUSIVE" or "EXCLUSIVE",
+                            "Values" =>  [::String, ...]
+                        ],
+                        "Model" =>  [
+                            "DimensionType" =>  "INCLUSIVE" or "EXCLUSIVE",
+                            "Values" =>  [::String, ...]
+                        ],
+                        "Platform" =>  [
+                            "DimensionType" =>  "INCLUSIVE" or "EXCLUSIVE",
+                            "Values" =>  [::String, ...]
+                        ]
+                    ],
+                    "Location" =>  [
+                        "Country" =>  [
+                            "DimensionType" =>  "INCLUSIVE" or "EXCLUSIVE",
+                            "Values" =>  [::String, ...]
+                        ],
+                        "GPSPoint" =>  [
+                            "Coordinates" =>  [
+                                "Latitude" =>  double,
+                                "Longitude" =>  double
+                            ],
+                            "RangeInKilometers" =>  double
+                        ]
+                    ],
+                    "Metrics" =>  ::Dict{String,String},
+                    "UserAttributes" =>  ::Dict{String,String}
+                ], ...],
+                "SourceSegments" =>  [[
+                    "Id" =>  ::String,
+                    "Version" =>  ::Int
+                ], ...],
+                "SourceType" =>  "ALL" or "ANY",
+                "Type" =>  "ALL", "ANY" or "NONE"
+            ], ...],
+            "Include" =>  "ALL", "ANY" or "NONE"
+        ]
     ]
 ```
 
@@ -3352,7 +3914,6 @@ Use to update a segment.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateSegment)
 """
-
 @inline update_segment(aws::AWSConfig=default_aws_config(); args...) = update_segment(aws, args)
 
 @inline update_segment(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/segments/{segment-id}", args)
@@ -3371,12 +3932,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoi
 
 # UpdateSmsChannel Operation
 
-Update an SMS channel
+Update an SMS channel.
 
 # Arguments
 
 ## `application-id = ::String` -- *Required*
-
+The unique ID of your Amazon Pinpoint application.
 
 
 ## `SMSChannelRequest = [ ... ]` -- *Required*
@@ -3401,7 +3962,6 @@ Update an SMS channel
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateSmsChannel)
 """
-
 @inline update_sms_channel(aws::AWSConfig=default_aws_config(); args...) = update_sms_channel(aws, args)
 
 @inline update_sms_channel(aws::AWSConfig, args) = AWSCore.Services.pinpoint(aws, "PUT", "/v1/apps/{application-id}/channels/sms", args)

@@ -13,6 +13,48 @@ using AWSCore
 
 
 """
+    using AWSSDK.Redshift.accept_reserved_node_exchange
+    accept_reserved_node_exchange([::AWSConfig], arguments::Dict)
+    accept_reserved_node_exchange([::AWSConfig]; ReservedNodeId=, TargetReservedNodeOfferingId=)
+
+    using AWSCore.Services.redshift
+    redshift([::AWSConfig], "AcceptReservedNodeExchange", arguments::Dict)
+    redshift([::AWSConfig], "AcceptReservedNodeExchange", ReservedNodeId=, TargetReservedNodeOfferingId=)
+
+# AcceptReservedNodeExchange Operation
+
+Exchanges a DC1 Reserved Node for a DC2 Reserved Node with no changes to the configuration (term, payment type, or number of nodes) and no additional costs.
+
+# Arguments
+
+## `ReservedNodeId = ::String` -- *Required*
+A string representing the node identifier of the DC1 Reserved Node to be exchanged.
+
+
+## `TargetReservedNodeOfferingId = ::String` -- *Required*
+The unique identifier of the DC2 Reserved Node offering to be used for the exchange. You can obtain the value for the parameter by calling [GetReservedNodeExchangeOfferings](@ref)
+
+
+
+
+# Returns
+
+`AcceptReservedNodeExchangeOutputMessage`
+
+# Exceptions
+
+`ReservedNodeNotFoundFault`, `InvalidReservedNodeStateFault`, `ReservedNodeAlreadyMigratedFault`, `ReservedNodeOfferingNotFoundFault`, `UnsupportedOperationFault`, `DependentServiceUnavailableFault` or `ReservedNodeAlreadyExistsFault`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/AcceptReservedNodeExchange)
+"""
+@inline accept_reserved_node_exchange(aws::AWSConfig=default_aws_config(); args...) = accept_reserved_node_exchange(aws, args)
+
+@inline accept_reserved_node_exchange(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "AcceptReservedNodeExchange", args)
+
+@inline accept_reserved_node_exchange(args) = accept_reserved_node_exchange(default_aws_config(), args)
+
+
+"""
     using AWSSDK.Redshift.authorize_cluster_security_group_ingress
     authorize_cluster_security_group_ingress([::AWSConfig], arguments::Dict)
     authorize_cluster_security_group_ingress([::AWSConfig]; ClusterSecurityGroupName=, <keyword arguments>)
@@ -63,7 +105,6 @@ Example: `111122223333`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/AuthorizeClusterSecurityGroupIngress)
 """
-
 @inline authorize_cluster_security_group_ingress(aws::AWSConfig=default_aws_config(); args...) = authorize_cluster_security_group_ingress(aws, args)
 
 @inline authorize_cluster_security_group_ingress(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "AuthorizeClusterSecurityGroupIngress", args)
@@ -114,7 +155,6 @@ To share a snapshot with AWS support, specify amazon-redshift-support.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/AuthorizeSnapshotAccess)
 """
-
 @inline authorize_snapshot_access(aws::AWSConfig=default_aws_config(); args...) = authorize_snapshot_access(aws, args)
 
 @inline authorize_snapshot_access(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "AuthorizeSnapshotAccess", args)
@@ -185,7 +225,6 @@ Constraints:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/CopyClusterSnapshot)
 """
-
 @inline copy_cluster_snapshot(aws::AWSConfig=default_aws_config(); args...) = copy_cluster_snapshot(aws, args)
 
 @inline copy_cluster_snapshot(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "CopyClusterSnapshot", args)
@@ -206,7 +245,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 Creates a new cluster.
 
-To create the cluster in Virtual Private Cloud (VPC), you must provide a cluster subnet group name. The cluster subnet group identifies the subnets of your VPC that Amazon Redshift uses when creating the cluster. For more information about managing clusters, go to [Amazon Redshift Clusters](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html) in the *Amazon Redshift Cluster Management Guide*.
+To create a cluster in Virtual Private Cloud (VPC), you must provide a cluster subnet group name. The cluster subnet group identifies the subnets of your VPC that Amazon Redshift uses when creating the cluster. For more information about managing clusters, go to [Amazon Redshift Clusters](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html) in the *Amazon Redshift Cluster Management Guide*.
 
 # Arguments
 
@@ -259,7 +298,7 @@ Default: `multi-node`
 ## `NodeType = ::String` -- *Required*
 The node type to be provisioned for the cluster. For information about node types, go to [Working with Clusters](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes) in the *Amazon Redshift Cluster Management Guide*.
 
-Valid Values: `ds1.xlarge` | `ds1.8xlarge` | `ds2.xlarge` | `ds2.8xlarge` | `dc1.large` | `dc1.8xlarge`.
+Valid Values: `ds2.xlarge` | `ds2.8xlarge` | `ds2.xlarge` | `ds2.8xlarge` | `dc1.large` | `dc1.8xlarge` | `dc2.large` | `dc2.8xlarge`
 
 
 ## `MasterUsername = ::String` -- *Required*
@@ -267,7 +306,7 @@ The user name associated with the master user account for the cluster that is be
 
 Constraints:
 
-*   Must be 1 - 128 alphanumeric characters.
+*   Must be 1 - 128 alphanumeric characters. The user name can't be `PUBLIC`.
 
 *   First character must be a letter.
 
@@ -447,6 +486,10 @@ A list of AWS Identity and Access Management (IAM) roles that can be used by the
 A cluster can have up to 10 IAM roles associated with it at any time.
 
 
+## `MaintenanceTrackName = ::String`
+An optional parameter for the name of the maintenance track for the cluster. If you don't provide a maintenance track name, the cluster is assigned to the `current` track.
+
+
 
 
 # Returns
@@ -455,11 +498,10 @@ A cluster can have up to 10 IAM roles associated with it at any time.
 
 # Exceptions
 
-`ClusterAlreadyExistsFault`, `InsufficientClusterCapacityFault`, `ClusterParameterGroupNotFoundFault`, `ClusterSecurityGroupNotFoundFault`, `ClusterQuotaExceededFault`, `NumberOfNodesQuotaExceededFault`, `NumberOfNodesPerClusterLimitExceededFault`, `ClusterSubnetGroupNotFoundFault`, `InvalidVPCNetworkStateFault`, `InvalidClusterSubnetGroupStateFault`, `InvalidSubnet`, `UnauthorizedOperation`, `HsmClientCertificateNotFoundFault`, `HsmConfigurationNotFoundFault`, `InvalidElasticIpFault`, `TagLimitExceededFault`, `InvalidTagFault`, `LimitExceededFault` or `DependentServiceRequestThrottlingFault`.
+`ClusterAlreadyExistsFault`, `InsufficientClusterCapacityFault`, `ClusterParameterGroupNotFoundFault`, `ClusterSecurityGroupNotFoundFault`, `ClusterQuotaExceededFault`, `NumberOfNodesQuotaExceededFault`, `NumberOfNodesPerClusterLimitExceededFault`, `ClusterSubnetGroupNotFoundFault`, `InvalidVPCNetworkStateFault`, `InvalidClusterSubnetGroupStateFault`, `InvalidSubnet`, `UnauthorizedOperation`, `HsmClientCertificateNotFoundFault`, `HsmConfigurationNotFoundFault`, `InvalidElasticIpFault`, `TagLimitExceededFault`, `InvalidTagFault`, `LimitExceededFault`, `DependentServiceRequestThrottlingFault` or `InvalidClusterTrackFault`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/CreateCluster)
 """
-
 @inline create_cluster(aws::AWSConfig=default_aws_config(); args...) = create_cluster(aws, args)
 
 @inline create_cluster(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "CreateCluster", args)
@@ -534,7 +576,6 @@ A list of tag instances.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/CreateClusterParameterGroup)
 """
-
 @inline create_cluster_parameter_group(aws::AWSConfig=default_aws_config(); args...) = create_cluster_parameter_group(aws, args)
 
 @inline create_cluster_parameter_group(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "CreateClusterParameterGroup", args)
@@ -598,7 +639,6 @@ A list of tag instances.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/CreateClusterSecurityGroup)
 """
-
 @inline create_cluster_security_group(aws::AWSConfig=default_aws_config(); args...) = create_cluster_security_group(aws, args)
 
 @inline create_cluster_security_group(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "CreateClusterSecurityGroup", args)
@@ -664,7 +704,6 @@ A list of tag instances.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/CreateClusterSnapshot)
 """
-
 @inline create_cluster_snapshot(aws::AWSConfig=default_aws_config(); args...) = create_cluster_snapshot(aws, args)
 
 @inline create_cluster_snapshot(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "CreateClusterSnapshot", args)
@@ -732,7 +771,6 @@ A list of tag instances.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/CreateClusterSubnetGroup)
 """
-
 @inline create_cluster_subnet_group(aws::AWSConfig=default_aws_config(); args...) = create_cluster_subnet_group(aws, args)
 
 @inline create_cluster_subnet_group(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "CreateClusterSubnetGroup", args)
@@ -828,7 +866,6 @@ A list of tag instances.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/CreateEventSubscription)
 """
-
 @inline create_event_subscription(aws::AWSConfig=default_aws_config(); args...) = create_event_subscription(aws, args)
 
 @inline create_event_subscription(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "CreateEventSubscription", args)
@@ -878,7 +915,6 @@ A list of tag instances.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/CreateHsmClientCertificate)
 """
-
 @inline create_hsm_client_certificate(aws::AWSConfig=default_aws_config(); args...) = create_hsm_client_certificate(aws, args)
 
 @inline create_hsm_client_certificate(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "CreateHsmClientCertificate", args)
@@ -948,7 +984,6 @@ A list of tag instances.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/CreateHsmConfiguration)
 """
-
 @inline create_hsm_configuration(aws::AWSConfig=default_aws_config(); args...) = create_hsm_configuration(aws, args)
 
 @inline create_hsm_configuration(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "CreateHsmConfiguration", args)
@@ -1014,7 +1049,6 @@ A list of tag instances.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/CreateSnapshotCopyGrant)
 """
-
 @inline create_snapshot_copy_grant(aws::AWSConfig=default_aws_config(); args...) = create_snapshot_copy_grant(aws, args)
 
 @inline create_snapshot_copy_grant(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "CreateSnapshotCopyGrant", args)
@@ -1035,7 +1069,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshi
 
 Adds one or more tags to a specified resource.
 
-A resource can have up to 10 tags. If you try to create more than 10 tags for a resource, you will receive an error and the attempt will fail.
+A resource can have up to 50 tags. If you try to create more than 50 tags for a resource, you will receive an error and the attempt will fail.
 
 If you specify a key that already exists for the resource, the value for that key will be updated with the new value.
 
@@ -1062,7 +1096,6 @@ One or more name/value pairs to add as tags to the specified resource. Each tag 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/CreateTags)
 """
-
 @inline create_tags(aws::AWSConfig=default_aws_config(); args...) = create_tags(aws, args)
 
 @inline create_tags(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "CreateTags", args)
@@ -1136,7 +1169,6 @@ Constraints:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DeleteCluster)
 """
-
 @inline delete_cluster(aws::AWSConfig=default_aws_config(); args...) = delete_cluster(aws, args)
 
 @inline delete_cluster(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DeleteCluster", args)
@@ -1180,7 +1212,6 @@ Constraints:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DeleteClusterParameterGroup)
 """
-
 @inline delete_cluster_parameter_group(aws::AWSConfig=default_aws_config(); args...) = delete_cluster_parameter_group(aws, args)
 
 @inline delete_cluster_parameter_group(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DeleteClusterParameterGroup", args)
@@ -1220,7 +1251,6 @@ The name of the cluster security group to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DeleteClusterSecurityGroup)
 """
-
 @inline delete_cluster_security_group(aws::AWSConfig=default_aws_config(); args...) = delete_cluster_security_group(aws, args)
 
 @inline delete_cluster_security_group(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DeleteClusterSecurityGroup", args)
@@ -1269,7 +1299,6 @@ Constraints: Must be the name of valid cluster.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DeleteClusterSnapshot)
 """
-
 @inline delete_cluster_snapshot(aws::AWSConfig=default_aws_config(); args...) = delete_cluster_snapshot(aws, args)
 
 @inline delete_cluster_snapshot(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DeleteClusterSnapshot", args)
@@ -1304,7 +1333,6 @@ The name of the cluster subnet group name to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DeleteClusterSubnetGroup)
 """
-
 @inline delete_cluster_subnet_group(aws::AWSConfig=default_aws_config(); args...) = delete_cluster_subnet_group(aws, args)
 
 @inline delete_cluster_subnet_group(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DeleteClusterSubnetGroup", args)
@@ -1339,7 +1367,6 @@ The name of the Amazon Redshift event notification subscription to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DeleteEventSubscription)
 """
-
 @inline delete_event_subscription(aws::AWSConfig=default_aws_config(); args...) = delete_event_subscription(aws, args)
 
 @inline delete_event_subscription(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DeleteEventSubscription", args)
@@ -1374,7 +1401,6 @@ The identifier of the HSM client certificate to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DeleteHsmClientCertificate)
 """
-
 @inline delete_hsm_client_certificate(aws::AWSConfig=default_aws_config(); args...) = delete_hsm_client_certificate(aws, args)
 
 @inline delete_hsm_client_certificate(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DeleteHsmClientCertificate", args)
@@ -1409,7 +1435,6 @@ The identifier of the Amazon Redshift HSM configuration to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DeleteHsmConfiguration)
 """
-
 @inline delete_hsm_configuration(aws::AWSConfig=default_aws_config(); args...) = delete_hsm_configuration(aws, args)
 
 @inline delete_hsm_configuration(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DeleteHsmConfiguration", args)
@@ -1444,7 +1469,6 @@ The name of the snapshot copy grant to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DeleteSnapshotCopyGrant)
 """
-
 @inline delete_snapshot_copy_grant(aws::AWSConfig=default_aws_config(); args...) = delete_snapshot_copy_grant(aws, args)
 
 @inline delete_snapshot_copy_grant(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DeleteSnapshotCopyGrant", args)
@@ -1483,12 +1507,63 @@ The tag key that you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DeleteTags)
 """
-
 @inline delete_tags(aws::AWSConfig=default_aws_config(); args...) = delete_tags(aws, args)
 
 @inline delete_tags(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DeleteTags", args)
 
 @inline delete_tags(args) = delete_tags(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Redshift.describe_cluster_db_revisions
+    describe_cluster_db_revisions([::AWSConfig], arguments::Dict)
+    describe_cluster_db_revisions([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.redshift
+    redshift([::AWSConfig], "DescribeClusterDbRevisions", arguments::Dict)
+    redshift([::AWSConfig], "DescribeClusterDbRevisions", <keyword arguments>)
+
+# DescribeClusterDbRevisions Operation
+
+Returns an array of `ClusterDbRevision` objects.
+
+# Arguments
+
+## `ClusterIdentifier = ::String`
+A unique identifier for a cluster whose `ClusterDbRevisions` you are requesting. This parameter is case sensitive. All clusters defined for an account are returned by default.
+
+
+## `MaxRecords = ::Int`
+The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in the `marker` field of the response. You can retrieve the next set of response records by providing the returned `marker` value in the `marker` parameter and retrying the request.
+
+Default: 100
+
+Constraints: minimum 20, maximum 100.
+
+
+## `Marker = ::String`
+An optional parameter that specifies the starting point for returning a set of response records. When the results of a `DescribeClusterDbRevisions` request exceed the value specified in `MaxRecords`, Amazon Redshift returns a value in the `marker` field of the response. You can retrieve the next set of response records by providing the returned `marker` value in the `marker` parameter and retrying the request.
+
+Constraints: You can specify either the `ClusterIdentifier` parameter, or the `marker` parameter, but not both.
+
+
+
+
+# Returns
+
+`ClusterDbRevisionsMessage`
+
+# Exceptions
+
+`ClusterNotFoundFault`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeClusterDbRevisions)
+"""
+@inline describe_cluster_db_revisions(aws::AWSConfig=default_aws_config(); args...) = describe_cluster_db_revisions(aws, args)
+
+@inline describe_cluster_db_revisions(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeClusterDbRevisions", args)
+
+@inline describe_cluster_db_revisions(args) = describe_cluster_db_revisions(default_aws_config(), args)
 
 
 """
@@ -1548,7 +1623,6 @@ A tag value or values for which you want to return all matching cluster paramete
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeClusterParameterGroups)
 """
-
 @inline describe_cluster_parameter_groups(aws::AWSConfig=default_aws_config(); args...) = describe_cluster_parameter_groups(aws, args)
 
 @inline describe_cluster_parameter_groups(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeClusterParameterGroups", args)
@@ -1611,7 +1685,6 @@ An optional parameter that specifies the starting point to return a set of respo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeClusterParameters)
 """
-
 @inline describe_cluster_parameters(aws::AWSConfig=default_aws_config(); args...) = describe_cluster_parameters(aws, args)
 
 @inline describe_cluster_parameters(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeClusterParameters", args)
@@ -1680,7 +1753,6 @@ A tag value or values for which you want to return all matching cluster security
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeClusterSecurityGroups)
 """
-
 @inline describe_cluster_security_groups(aws::AWSConfig=default_aws_config(); args...) = describe_cluster_security_groups(aws, args)
 
 @inline describe_cluster_security_groups(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeClusterSecurityGroups", args)
@@ -1757,6 +1829,10 @@ A tag key or keys for which you want to return all matching cluster snapshots th
 A tag value or values for which you want to return all matching cluster snapshots that are associated with the specified tag value or values. For example, suppose that you have snapshots that are tagged with values called `admin` and `test`. If you specify both of these tag values in the request, Amazon Redshift returns a response with the snapshots that have either or both of these tag values associated with them.
 
 
+## `ClusterExists = ::Bool`
+A value that indicates whether to return snapshots only for an existing cluster. Table-level restore can be performed only using a snapshot of an existing cluster, that is, a cluster that has not been deleted. If `ClusterExists` is set to `true`, `ClusterIdentifier` is required.
+
+
 
 
 # Returns
@@ -1765,11 +1841,10 @@ A tag value or values for which you want to return all matching cluster snapshot
 
 # Exceptions
 
-`ClusterSnapshotNotFoundFault` or `InvalidTagFault`.
+`ClusterNotFoundFault`, `ClusterSnapshotNotFoundFault` or `InvalidTagFault`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeClusterSnapshots)
 """
-
 @inline describe_cluster_snapshots(aws::AWSConfig=default_aws_config(); args...) = describe_cluster_snapshots(aws, args)
 
 @inline describe_cluster_snapshots(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeClusterSnapshots", args)
@@ -1832,12 +1907,57 @@ A tag value or values for which you want to return all matching cluster subnet g
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeClusterSubnetGroups)
 """
-
 @inline describe_cluster_subnet_groups(aws::AWSConfig=default_aws_config(); args...) = describe_cluster_subnet_groups(aws, args)
 
 @inline describe_cluster_subnet_groups(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeClusterSubnetGroups", args)
 
 @inline describe_cluster_subnet_groups(args) = describe_cluster_subnet_groups(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Redshift.describe_cluster_tracks
+    describe_cluster_tracks([::AWSConfig], arguments::Dict)
+    describe_cluster_tracks([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.redshift
+    redshift([::AWSConfig], "DescribeClusterTracks", arguments::Dict)
+    redshift([::AWSConfig], "DescribeClusterTracks", <keyword arguments>)
+
+# DescribeClusterTracks Operation
+
+Returns a list of all the available maintenance tracks.
+
+# Arguments
+
+## `MaintenanceTrackName = ::String`
+The name of the maintenance track.
+
+
+## `MaxRecords = ::Int`
+An integer value for the maximum number of maintenance tracks to return.
+
+
+## `Marker = ::String`
+An optional parameter that specifies the starting point to return a set of response records. When the results of a `DescribeClusterTracks` request exceed the value specified in `MaxRecords`, Amazon Redshift returns a value in the `Marker` field of the response. You can retrieve the next set of response records by providing the returned marker value in the `Marker` parameter and retrying the request.
+
+
+
+
+# Returns
+
+`TrackListMessage`
+
+# Exceptions
+
+`InvalidClusterTrackFault` or `UnauthorizedOperation`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeClusterTracks)
+"""
+@inline describe_cluster_tracks(aws::AWSConfig=default_aws_config(); args...) = describe_cluster_tracks(aws, args)
+
+@inline describe_cluster_tracks(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeClusterTracks", args)
+
+@inline describe_cluster_tracks(args) = describe_cluster_tracks(default_aws_config(), args)
 
 
 """
@@ -1893,7 +2013,6 @@ An optional parameter that specifies the starting point to return a set of respo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeClusterVersions)
 """
-
 @inline describe_cluster_versions(aws::AWSConfig=default_aws_config(); args...) = describe_cluster_versions(aws, args)
 
 @inline describe_cluster_versions(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeClusterVersions", args)
@@ -1960,7 +2079,6 @@ A tag value or values for which you want to return all matching clusters that ar
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeClusters)
 """
-
 @inline describe_clusters(aws::AWSConfig=default_aws_config(); args...) = describe_clusters(aws, args)
 
 @inline describe_clusters(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeClusters", args)
@@ -2009,7 +2127,6 @@ An optional parameter that specifies the starting point to return a set of respo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeDefaultClusterParameters)
 """
-
 @inline describe_default_cluster_parameters(aws::AWSConfig=default_aws_config(); args...) = describe_default_cluster_parameters(aws, args)
 
 @inline describe_default_cluster_parameters(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeDefaultClusterParameters", args)
@@ -2046,7 +2163,6 @@ Valid values: cluster, cluster-snapshot, cluster-parameter-group, and cluster-se
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeEventCategories)
 """
-
 @inline describe_event_categories(aws::AWSConfig=default_aws_config(); args...) = describe_event_categories(aws, args)
 
 @inline describe_event_categories(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeEventCategories", args)
@@ -2109,7 +2225,6 @@ A tag value or values for which you want to return all matching event notificati
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeEventSubscriptions)
 """
-
 @inline describe_event_subscriptions(aws::AWSConfig=default_aws_config(); args...) = describe_event_subscriptions(aws, args)
 
 @inline describe_event_subscriptions(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeEventSubscriptions", args)
@@ -2202,7 +2317,6 @@ An optional parameter that specifies the starting point to return a set of respo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeEvents)
 """
-
 @inline describe_events(aws::AWSConfig=default_aws_config(); args...) = describe_events(aws, args)
 
 @inline describe_events(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeEvents", args)
@@ -2265,7 +2379,6 @@ A tag value or values for which you want to return all matching HSM client certi
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeHsmClientCertificates)
 """
-
 @inline describe_hsm_client_certificates(aws::AWSConfig=default_aws_config(); args...) = describe_hsm_client_certificates(aws, args)
 
 @inline describe_hsm_client_certificates(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeHsmClientCertificates", args)
@@ -2328,7 +2441,6 @@ A tag value or values for which you want to return all matching HSM configuratio
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeHsmConfigurations)
 """
-
 @inline describe_hsm_configurations(aws::AWSConfig=default_aws_config(); args...) = describe_hsm_configurations(aws, args)
 
 @inline describe_hsm_configurations(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeHsmConfigurations", args)
@@ -2369,7 +2481,6 @@ Example: `examplecluster`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeLoggingStatus)
 """
-
 @inline describe_logging_status(aws::AWSConfig=default_aws_config(); args...) = describe_logging_status(aws, args)
 
 @inline describe_logging_status(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeLoggingStatus", args)
@@ -2424,7 +2535,6 @@ An optional parameter that specifies the starting point to return a set of respo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeOrderableClusterOptions)
 """
-
 @inline describe_orderable_cluster_options(aws::AWSConfig=default_aws_config(); args...) = describe_orderable_cluster_options(aws, args)
 
 @inline describe_orderable_cluster_options(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeOrderableClusterOptions", args)
@@ -2477,7 +2587,6 @@ An optional parameter that specifies the starting point to return a set of respo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeReservedNodeOfferings)
 """
-
 @inline describe_reserved_node_offerings(aws::AWSConfig=default_aws_config(); args...) = describe_reserved_node_offerings(aws, args)
 
 @inline describe_reserved_node_offerings(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeReservedNodeOfferings", args)
@@ -2528,7 +2637,6 @@ An optional parameter that specifies the starting point to return a set of respo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeReservedNodes)
 """
-
 @inline describe_reserved_nodes(aws::AWSConfig=default_aws_config(); args...) = describe_reserved_nodes(aws, args)
 
 @inline describe_reserved_nodes(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeReservedNodes", args)
@@ -2571,7 +2679,6 @@ By default, resize operations for all clusters defined for an AWS account are re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeResize)
 """
-
 @inline describe_resize(aws::AWSConfig=default_aws_config(); args...) = describe_resize(aws, args)
 
 @inline describe_resize(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeResize", args)
@@ -2634,7 +2741,6 @@ A tag value or values for which you want to return all matching resources that a
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeSnapshotCopyGrants)
 """
-
 @inline describe_snapshot_copy_grants(aws::AWSConfig=default_aws_config(); args...) = describe_snapshot_copy_grants(aws, args)
 
 @inline describe_snapshot_copy_grants(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeSnapshotCopyGrants", args)
@@ -2685,7 +2791,6 @@ An optional pagination token provided by a previous `DescribeTableRestoreStatus`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeTableRestoreStatus)
 """
-
 @inline describe_table_restore_status(aws::AWSConfig=default_aws_config(); args...) = describe_table_restore_status(aws, args)
 
 @inline describe_table_restore_status(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeTableRestoreStatus", args)
@@ -2778,7 +2883,6 @@ A tag value or values for which you want to return all matching resources that a
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeTags)
 """
-
 @inline describe_tags(aws::AWSConfig=default_aws_config(); args...) = describe_tags(aws, args)
 
 @inline describe_tags(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DescribeTags", args)
@@ -2819,7 +2923,6 @@ Example: `examplecluster`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DisableLogging)
 """
-
 @inline disable_logging(aws::AWSConfig=default_aws_config(); args...) = disable_logging(aws, args)
 
 @inline disable_logging(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DisableLogging", args)
@@ -2862,7 +2965,6 @@ Constraints: Must be the valid name of an existing cluster that has cross-region
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DisableSnapshotCopy)
 """
-
 @inline disable_snapshot_copy(aws::AWSConfig=default_aws_config(); args...) = disable_snapshot_copy(aws, args)
 
 @inline disable_snapshot_copy(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "DisableSnapshotCopy", args)
@@ -2933,7 +3035,6 @@ Constraints:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/EnableLogging)
 """
-
 @inline enable_logging(aws::AWSConfig=default_aws_config(); args...) = enable_logging(aws, args)
 
 @inline enable_logging(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "EnableLogging", args)
@@ -2992,7 +3093,6 @@ The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypte
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/EnableSnapshotCopy)
 """
-
 @inline enable_snapshot_copy(aws::AWSConfig=default_aws_config(); args...) = enable_snapshot_copy(aws, args)
 
 @inline enable_snapshot_copy(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "EnableSnapshotCopy", args)
@@ -3030,7 +3130,7 @@ For more information, see [CREATE USER](http://docs.aws.amazon.com/redshift/late
 
 Constraints:
 
-*   Must be 1 to 64 alphanumeric characters or hyphens
+*   Must be 1 to 64 alphanumeric characters or hyphens. The user name can't be `PUBLIC`.
 
 *   Must contain only lowercase letters, numbers, underscore, plus sign, period (dot), at symbol (@), or hyphen.
 
@@ -3101,12 +3201,57 @@ Database group name constraints
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/GetClusterCredentials)
 """
-
 @inline get_cluster_credentials(aws::AWSConfig=default_aws_config(); args...) = get_cluster_credentials(aws, args)
 
 @inline get_cluster_credentials(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "GetClusterCredentials", args)
 
 @inline get_cluster_credentials(args) = get_cluster_credentials(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Redshift.get_reserved_node_exchange_offerings
+    get_reserved_node_exchange_offerings([::AWSConfig], arguments::Dict)
+    get_reserved_node_exchange_offerings([::AWSConfig]; ReservedNodeId=, <keyword arguments>)
+
+    using AWSCore.Services.redshift
+    redshift([::AWSConfig], "GetReservedNodeExchangeOfferings", arguments::Dict)
+    redshift([::AWSConfig], "GetReservedNodeExchangeOfferings", ReservedNodeId=, <keyword arguments>)
+
+# GetReservedNodeExchangeOfferings Operation
+
+Returns an array of DC2 ReservedNodeOfferings that matches the payment type, term, and usage price of the given DC1 reserved node.
+
+# Arguments
+
+## `ReservedNodeId = ::String` -- *Required*
+A string representing the node identifier for the DC1 Reserved Node to be exchanged.
+
+
+## `MaxRecords = ::Int`
+An integer setting the maximum number of ReservedNodeOfferings to retrieve.
+
+
+## `Marker = ::String`
+A value that indicates the starting point for the next set of ReservedNodeOfferings.
+
+
+
+
+# Returns
+
+`GetReservedNodeExchangeOfferingsOutputMessage`
+
+# Exceptions
+
+`ReservedNodeNotFoundFault`, `InvalidReservedNodeStateFault`, `ReservedNodeAlreadyMigratedFault`, `ReservedNodeOfferingNotFoundFault`, `UnsupportedOperationFault` or `DependentServiceUnavailableFault`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/GetReservedNodeExchangeOfferings)
+"""
+@inline get_reserved_node_exchange_offerings(aws::AWSConfig=default_aws_config(); args...) = get_reserved_node_exchange_offerings(aws, args)
+
+@inline get_reserved_node_exchange_offerings(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "GetReservedNodeExchangeOfferings", args)
+
+@inline get_reserved_node_exchange_offerings(args) = get_reserved_node_exchange_offerings(default_aws_config(), args)
 
 
 """
@@ -3145,7 +3290,7 @@ The new node type of the cluster. If you specify a new node type, you must also 
 
 When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the new connection is complete, the original access permissions for the cluster are restored. You can use [DescribeResize](@ref) to track the progress of the resize request.
 
-Valid Values: `ds1.xlarge` | `ds1.8xlarge` | `ds2.xlarge` | `ds2.8xlarge` | `dc1.large` | `dc1.8xlarge`.
+Valid Values: `ds2.xlarge` | `ds2.8xlarge` | `dc1.large` | `dc1.8xlarge` | `dc2.large` | `dc2.8xlarge`
 
 
 ## `NumberOfNodes = ::Int`
@@ -3171,7 +3316,7 @@ Constraints:
 
 
 ## `VpcSecurityGroupIds = [::String, ...]`
-A list of virtual private cloud (VPC) security groups to be associated with the cluster.
+A list of virtual private cloud (VPC) security groups to be associated with the cluster. This change is asynchronously applied as soon as possible.
 
 
 ## `MasterUserPassword = ::String`
@@ -3285,6 +3430,10 @@ If this option is `true`, enhanced VPC routing is enabled.
 Default: false
 
 
+## `MaintenanceTrackName = ::String`
+The name for the maintenance track that you want to assign for the cluster. This name change is asynchronous. The new track name stays in the `PendingModifiedValues` for the cluster until the next maintenance window. When the maintenance track changes, the cluster is switched to the latest cluster release available for the maintenance track. At this point, the maintenance track name is applied.
+
+
 
 
 # Returns
@@ -3293,16 +3442,59 @@ Default: false
 
 # Exceptions
 
-`InvalidClusterStateFault`, `InvalidClusterSecurityGroupStateFault`, `ClusterNotFoundFault`, `NumberOfNodesQuotaExceededFault`, `NumberOfNodesPerClusterLimitExceededFault`, `ClusterSecurityGroupNotFoundFault`, `ClusterParameterGroupNotFoundFault`, `InsufficientClusterCapacityFault`, `UnsupportedOptionFault`, `UnauthorizedOperation`, `HsmClientCertificateNotFoundFault`, `HsmConfigurationNotFoundFault`, `ClusterAlreadyExistsFault`, `LimitExceededFault`, `DependentServiceRequestThrottlingFault` or `InvalidElasticIpFault`.
+`InvalidClusterStateFault`, `InvalidClusterSecurityGroupStateFault`, `ClusterNotFoundFault`, `NumberOfNodesQuotaExceededFault`, `NumberOfNodesPerClusterLimitExceededFault`, `ClusterSecurityGroupNotFoundFault`, `ClusterParameterGroupNotFoundFault`, `InsufficientClusterCapacityFault`, `UnsupportedOptionFault`, `UnauthorizedOperation`, `HsmClientCertificateNotFoundFault`, `HsmConfigurationNotFoundFault`, `ClusterAlreadyExistsFault`, `LimitExceededFault`, `DependentServiceRequestThrottlingFault`, `InvalidElasticIpFault`, `TableLimitExceededFault` or `InvalidClusterTrackFault`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/ModifyCluster)
 """
-
 @inline modify_cluster(aws::AWSConfig=default_aws_config(); args...) = modify_cluster(aws, args)
 
 @inline modify_cluster(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "ModifyCluster", args)
 
 @inline modify_cluster(args) = modify_cluster(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Redshift.modify_cluster_db_revision
+    modify_cluster_db_revision([::AWSConfig], arguments::Dict)
+    modify_cluster_db_revision([::AWSConfig]; ClusterIdentifier=, RevisionTarget=)
+
+    using AWSCore.Services.redshift
+    redshift([::AWSConfig], "ModifyClusterDbRevision", arguments::Dict)
+    redshift([::AWSConfig], "ModifyClusterDbRevision", ClusterIdentifier=, RevisionTarget=)
+
+# ModifyClusterDbRevision Operation
+
+Modifies the database revision of a cluster. The database revision is a unique revision of the database running in a cluster.
+
+# Arguments
+
+## `ClusterIdentifier = ::String` -- *Required*
+The unique identifier of a cluster whose database revision you want to modify.
+
+Example: `examplecluster`
+
+
+## `RevisionTarget = ::String` -- *Required*
+The identifier of the database revision. You can retrieve this value from the response to the [DescribeClusterDbRevisions](@ref) request.
+
+
+
+
+# Returns
+
+`ModifyClusterDbRevisionResult`
+
+# Exceptions
+
+`ClusterNotFoundFault`, `ClusterOnLatestRevisionFault` or `InvalidClusterStateFault`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/ModifyClusterDbRevision)
+"""
+@inline modify_cluster_db_revision(aws::AWSConfig=default_aws_config(); args...) = modify_cluster_db_revision(aws, args)
+
+@inline modify_cluster_db_revision(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "ModifyClusterDbRevision", args)
+
+@inline modify_cluster_db_revision(args) = modify_cluster_db_revision(default_aws_config(), args)
 
 
 """
@@ -3346,7 +3538,6 @@ Zero or more IAM roles in ARN format to disassociate from the cluster. You can d
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/ModifyClusterIamRoles)
 """
-
 @inline modify_cluster_iam_roles(aws::AWSConfig=default_aws_config(); args...) = modify_cluster_iam_roles(aws, args)
 
 @inline modify_cluster_iam_roles(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "ModifyClusterIamRoles", args)
@@ -3407,7 +3598,6 @@ For the workload management (WLM) configuration, you must supply all the name-va
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/ModifyClusterParameterGroup)
 """
-
 @inline modify_cluster_parameter_group(aws::AWSConfig=default_aws_config(); args...) = modify_cluster_parameter_group(aws, args)
 
 @inline modify_cluster_parameter_group(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "ModifyClusterParameterGroup", args)
@@ -3454,7 +3644,6 @@ An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a single 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/ModifyClusterSubnetGroup)
 """
-
 @inline modify_cluster_subnet_group(aws::AWSConfig=default_aws_config(); args...) = modify_cluster_subnet_group(aws, args)
 
 @inline modify_cluster_subnet_group(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "ModifyClusterSubnetGroup", args)
@@ -3527,7 +3716,6 @@ A Boolean value indicating if the subscription is enabled. `true` indicates the 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/ModifyEventSubscription)
 """
-
 @inline modify_event_subscription(aws::AWSConfig=default_aws_config(); args...) = modify_event_subscription(aws, args)
 
 @inline modify_event_subscription(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "ModifyEventSubscription", args)
@@ -3576,7 +3764,6 @@ Constraints: Must be at least 1 and no more than 35.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/ModifySnapshotCopyRetentionPeriod)
 """
-
 @inline modify_snapshot_copy_retention_period(aws::AWSConfig=default_aws_config(); args...) = modify_snapshot_copy_retention_period(aws, args)
 
 @inline modify_snapshot_copy_retention_period(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "ModifySnapshotCopyRetentionPeriod", args)
@@ -3623,7 +3810,6 @@ Default: `1`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/PurchaseReservedNodeOffering)
 """
-
 @inline purchase_reserved_node_offering(aws::AWSConfig=default_aws_config(); args...) = purchase_reserved_node_offering(aws, args)
 
 @inline purchase_reserved_node_offering(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "PurchaseReservedNodeOffering", args)
@@ -3662,7 +3848,6 @@ The cluster identifier.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/RebootCluster)
 """
-
 @inline reboot_cluster(aws::AWSConfig=default_aws_config(); args...) = reboot_cluster(aws, args)
 
 @inline reboot_cluster(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "RebootCluster", args)
@@ -3725,7 +3910,6 @@ Constraints: A maximum of 20 parameters can be reset in a single request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/ResetClusterParameterGroup)
 """
-
 @inline reset_cluster_parameter_group(aws::AWSConfig=default_aws_config(); args...) = reset_cluster_parameter_group(aws, args)
 
 @inline reset_cluster_parameter_group(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "ResetClusterParameterGroup", args)
@@ -3883,7 +4067,7 @@ The AWS Key Management Service (KMS) key ID of the encryption key that you want 
 ## `NodeType = ::String`
 The node type that the restored cluster will be provisioned with.
 
-Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are using any DS node type. In that case, you can choose to restore into another DS node type of the same size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or ds2.xlarge into ds1.xlarge. If you have a DC instance type, you must restore into that same instance type and size. In other words, you can only restore a dc1.large instance type into another dc1.large instance type. For more information about node types, see [About Clusters and Nodes](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes) in the *Amazon Redshift Cluster Management Guide*
+Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are using any DS node type. In that case, you can choose to restore into another DS node type of the same size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or ds1.xlarge into ds2.xlarge. If you have a DC instance type, you must restore into that same instance type and size. In other words, you can only restore a dc1.large instance type into another dc1.large instance type or dc2.large instance type. You can't restore dc1.8xlarge to dc2.8xlarge. First restore to a dc1.8xlareg cluster, then resize to a dc2.8large cluster. For more information about node types, see [About Clusters and Nodes](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes) in the *Amazon Redshift Cluster Management Guide*.
 
 
 ## `EnhancedVpcRouting = ::Bool`
@@ -3904,6 +4088,10 @@ A list of AWS Identity and Access Management (IAM) roles that can be used by the
 A cluster can have up to 10 IAM roles associated at any time.
 
 
+## `MaintenanceTrackName = ::String`
+The name of the maintenance track for the restored cluster. When you take a snapshot, the snapshot inherits the `MaintenanceTrack` value from the cluster. The snapshot might be on a different track than the cluster that was the source for the snapshot. For example, suppose that you take a snapshot of a cluster that is on the current track and then change the cluster to be on the trailing track. In this case, the snapshot and the source cluster are on different tracks.
+
+
 
 
 # Returns
@@ -3912,11 +4100,10 @@ A cluster can have up to 10 IAM roles associated at any time.
 
 # Exceptions
 
-`AccessToSnapshotDeniedFault`, `ClusterAlreadyExistsFault`, `ClusterSnapshotNotFoundFault`, `ClusterQuotaExceededFault`, `InsufficientClusterCapacityFault`, `InvalidClusterSnapshotStateFault`, `InvalidRestoreFault`, `NumberOfNodesQuotaExceededFault`, `NumberOfNodesPerClusterLimitExceededFault`, `InvalidVPCNetworkStateFault`, `InvalidClusterSubnetGroupStateFault`, `InvalidSubnet`, `ClusterSubnetGroupNotFoundFault`, `UnauthorizedOperation`, `HsmClientCertificateNotFoundFault`, `HsmConfigurationNotFoundFault`, `InvalidElasticIpFault`, `ClusterParameterGroupNotFoundFault`, `ClusterSecurityGroupNotFoundFault`, `LimitExceededFault` or `DependentServiceRequestThrottlingFault`.
+`AccessToSnapshotDeniedFault`, `ClusterAlreadyExistsFault`, `ClusterSnapshotNotFoundFault`, `ClusterQuotaExceededFault`, `InsufficientClusterCapacityFault`, `InvalidClusterSnapshotStateFault`, `InvalidRestoreFault`, `NumberOfNodesQuotaExceededFault`, `NumberOfNodesPerClusterLimitExceededFault`, `InvalidVPCNetworkStateFault`, `InvalidClusterSubnetGroupStateFault`, `InvalidSubnet`, `ClusterSubnetGroupNotFoundFault`, `UnauthorizedOperation`, `HsmClientCertificateNotFoundFault`, `HsmConfigurationNotFoundFault`, `InvalidElasticIpFault`, `ClusterParameterGroupNotFoundFault`, `ClusterSecurityGroupNotFoundFault`, `LimitExceededFault`, `DependentServiceRequestThrottlingFault` or `InvalidClusterTrackFault`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/RestoreFromClusterSnapshot)
 """
-
 @inline restore_from_cluster_snapshot(aws::AWSConfig=default_aws_config(); args...) = restore_from_cluster_snapshot(aws, args)
 
 @inline restore_from_cluster_snapshot(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "RestoreFromClusterSnapshot", args)
@@ -3985,7 +4172,6 @@ The name of the table to create as a result of the current request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/RestoreTableFromClusterSnapshot)
 """
-
 @inline restore_table_from_cluster_snapshot(aws::AWSConfig=default_aws_config(); args...) = restore_table_from_cluster_snapshot(aws, args)
 
 @inline restore_table_from_cluster_snapshot(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "RestoreTableFromClusterSnapshot", args)
@@ -4038,7 +4224,6 @@ Example: `111122223333`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/RevokeClusterSecurityGroupIngress)
 """
-
 @inline revoke_cluster_security_group_ingress(aws::AWSConfig=default_aws_config(); args...) = revoke_cluster_security_group_ingress(aws, args)
 
 @inline revoke_cluster_security_group_ingress(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "RevokeClusterSecurityGroupIngress", args)
@@ -4087,7 +4272,6 @@ The identifier of the AWS customer account that can no longer restore the specif
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/RevokeSnapshotAccess)
 """
-
 @inline revoke_snapshot_access(aws::AWSConfig=default_aws_config(); args...) = revoke_snapshot_access(aws, args)
 
 @inline revoke_snapshot_access(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "RevokeSnapshotAccess", args)
@@ -4128,7 +4312,6 @@ Constraints: Must be the name of valid cluster that has encryption enabled.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/RotateEncryptionKey)
 """
-
 @inline rotate_encryption_key(aws::AWSConfig=default_aws_config(); args...) = rotate_encryption_key(aws, args)
 
 @inline rotate_encryption_key(aws::AWSConfig, args) = AWSCore.Services.redshift(aws, "RotateEncryptionKey", args)

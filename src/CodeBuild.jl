@@ -43,7 +43,6 @@ The IDs of the builds to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/BatchDeleteBuilds)
 """
-
 @inline batch_delete_builds(aws::AWSConfig=default_aws_config(); args...) = batch_delete_builds(aws, args)
 
 @inline batch_delete_builds(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "BatchDeleteBuilds", args)
@@ -357,7 +356,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/BatchGetBuilds)
 """
-
 @inline batch_get_builds(aws::AWSConfig=default_aws_config(); args...) = batch_get_builds(aws, args)
 
 @inline batch_get_builds(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "BatchGetBuilds", args)
@@ -396,7 +394,6 @@ The names of the build projects.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/BatchGetProjects)
 """
-
 @inline batch_get_projects(aws::AWSConfig=default_aws_config(); args...) = batch_get_projects(aws, args)
 
 @inline batch_get_projects(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "BatchGetProjects", args)
@@ -407,11 +404,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebu
 """
     using AWSSDK.CodeBuild.create_project
     create_project([::AWSConfig], arguments::Dict)
-    create_project([::AWSConfig]; name=, source=, artifacts=, environment=, <keyword arguments>)
+    create_project([::AWSConfig]; name=, source=, artifacts=, environment=, serviceRole=, <keyword arguments>)
 
     using AWSCore.Services.codebuild
     codebuild([::AWSConfig], "CreateProject", arguments::Dict)
-    codebuild([::AWSConfig], "CreateProject", name=, source=, artifacts=, environment=, <keyword arguments>)
+    codebuild([::AWSConfig], "CreateProject", name=, source=, artifacts=, environment=, serviceRole=, <keyword arguments>)
 
 # CreateProject Operation
 
@@ -431,13 +428,16 @@ A description that makes the build project easy to identify.
 Information about the build input source code for the build project.
 ```
  source = [
-        "type" => <required> "CODECOMMIT", "CODEPIPELINE", "GITHUB", "S3" or "BITBUCKET",
+        "type" => <required> "CODECOMMIT", "CODEPIPELINE", "GITHUB", "S3", "BITBUCKET" or "GITHUB_ENTERPRISE",
         "location" =>  ::String,
+        "gitCloneDepth" =>  ::Int,
         "buildspec" =>  ::String,
         "auth" =>  [
             "type" => <required> "OAUTH",
             "resource" =>  ::String
-        ]
+        ],
+        "reportBuildStatus" =>  ::Bool,
+        "insecureSsl" =>  ::Bool
     ]
 ```
 
@@ -450,7 +450,17 @@ Information about the build output artifacts for the build project.
         "path" =>  ::String,
         "namespaceType" =>  "NONE" or "BUILD_ID",
         "name" =>  ::String,
-        "packaging" =>  "NONE" or "ZIP"
+        "packaging" =>  "NONE" or "ZIP",
+        "encryptionDisabled" =>  ::Bool
+    ]
+```
+
+## `cache = [ ... ]`
+Stores recently used information so that it can be quickly accessed at a later time.
+```
+ cache = [
+        "type" => <required> "NO_CACHE" or "S3",
+        "location" =>  ::String
     ]
 ```
 
@@ -458,7 +468,7 @@ Information about the build output artifacts for the build project.
 Information about the build environment for the build project.
 ```
  environment = [
-        "type" => <required> "LINUX_CONTAINER",
+        "type" => <required> "WINDOWS_CONTAINER" or "LINUX_CONTAINER",
         "image" => <required> ::String,
         "computeType" => <required> "BUILD_GENERAL1_SMALL", "BUILD_GENERAL1_MEDIUM" or "BUILD_GENERAL1_LARGE",
         "environmentVariables" =>  [[
@@ -466,11 +476,12 @@ Information about the build environment for the build project.
             "value" => <required> ::String,
             "type" =>  "PLAINTEXT" or "PARAMETER_STORE"
         ], ...],
-        "privilegedMode" =>  ::Bool
+        "privilegedMode" =>  ::Bool,
+        "certificate" =>  ::String
     ]
 ```
 
-## `serviceRole = ::String`
+## `serviceRole = ::String` -- *Required*
 The ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.
 
 
@@ -495,6 +506,20 @@ These tags are available for use by AWS services that support AWS CodeBuild buil
     ], ...]
 ```
 
+## `vpcConfig = [ ... ]`
+VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.
+```
+ vpcConfig = [
+        "vpcId" =>  ::String,
+        "subnets" =>  [::String, ...],
+        "securityGroupIds" =>  [::String, ...]
+    ]
+```
+
+## `badgeEnabled = ::Bool`
+Set this to true to generate a publicly-accessible URL for your project's build badge.
+
+
 
 
 # Returns
@@ -507,7 +532,6 @@ These tags are available for use by AWS services that support AWS CodeBuild buil
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/CreateProject)
 """
-
 @inline create_project(aws::AWSConfig=default_aws_config(); args...) = create_project(aws, args)
 
 @inline create_project(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "CreateProject", args)
@@ -518,23 +542,27 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebu
 """
     using AWSSDK.CodeBuild.create_webhook
     create_webhook([::AWSConfig], arguments::Dict)
-    create_webhook([::AWSConfig]; projectName=)
+    create_webhook([::AWSConfig]; projectName=, <keyword arguments>)
 
     using AWSCore.Services.codebuild
     codebuild([::AWSConfig], "CreateWebhook", arguments::Dict)
-    codebuild([::AWSConfig], "CreateWebhook", projectName=)
+    codebuild([::AWSConfig], "CreateWebhook", projectName=, <keyword arguments>)
 
 # CreateWebhook Operation
 
 For an existing AWS CodeBuild build project that has its source code stored in a GitHub repository, enables AWS CodeBuild to begin automatically rebuilding the source code every time a code change is pushed to the repository.
 
 **Important**
-> If you enable webhooks for an AWS CodeBuild project, and the project is used as a build step in AWS CodePipeline, then two identical builds will be created for each commit. One build is triggered through webhooks, and one through AWS CodePipeline. Because billing is on a per-build basis, you will be billed for both builds. Therefore, if you are using AWS CodePipeline, we recommend that you disable webhooks in CodeBuild. In the AWS CodeBuild console, clear the Webhook box. For more information, see step 9 in [Change a Build Project’s Settings](http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
+> If you enable webhooks for an AWS CodeBuild project, and the project is used as a build step in AWS CodePipeline, then two identical builds will be created for each commit. One build is triggered through webhooks, and one through AWS CodePipeline. Because billing is on a per-build basis, you will be billed for both builds. Therefore, if you are using AWS CodePipeline, we recommend that you disable webhooks in CodeBuild. In the AWS CodeBuild console, clear the Webhook box. For more information, see step 5 in [Change a Build Project's Settings](http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
 
 # Arguments
 
 ## `projectName = ::String` -- *Required*
-The name of the build project.
+The name of the AWS CodeBuild project.
+
+
+## `branchFilter = ::String`
+A regular expression used to determine which branches in a repository are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If it doesn't match, then it is not. If branchFilter is empty, then all branches are built.
 
 
 
@@ -549,7 +577,6 @@ The name of the build project.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/CreateWebhook)
 """
-
 @inline create_webhook(aws::AWSConfig=default_aws_config(); args...) = create_webhook(aws, args)
 
 @inline create_webhook(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "CreateWebhook", args)
@@ -588,7 +615,6 @@ The name of the build project.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/DeleteProject)
 """
-
 @inline delete_project(aws::AWSConfig=default_aws_config(); args...) = delete_project(aws, args)
 
 @inline delete_project(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "DeleteProject", args)
@@ -612,7 +638,7 @@ For an existing AWS CodeBuild build project that has its source code stored in a
 # Arguments
 
 ## `projectName = ::String` -- *Required*
-The name of the build project.
+The name of the AWS CodeBuild project.
 
 
 
@@ -627,12 +653,49 @@ The name of the build project.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/DeleteWebhook)
 """
-
 @inline delete_webhook(aws::AWSConfig=default_aws_config(); args...) = delete_webhook(aws, args)
 
 @inline delete_webhook(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "DeleteWebhook", args)
 
 @inline delete_webhook(args) = delete_webhook(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CodeBuild.invalidate_project_cache
+    invalidate_project_cache([::AWSConfig], arguments::Dict)
+    invalidate_project_cache([::AWSConfig]; projectName=)
+
+    using AWSCore.Services.codebuild
+    codebuild([::AWSConfig], "InvalidateProjectCache", arguments::Dict)
+    codebuild([::AWSConfig], "InvalidateProjectCache", projectName=)
+
+# InvalidateProjectCache Operation
+
+Resets the cache for a project.
+
+# Arguments
+
+## `projectName = ::String` -- *Required*
+The name of the AWS CodeBuild build project that the cache will be reset for.
+
+
+
+
+# Returns
+
+`InvalidateProjectCacheOutput`
+
+# Exceptions
+
+`InvalidInputException` or `ResourceNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/InvalidateProjectCache)
+"""
+@inline invalidate_project_cache(aws::AWSConfig=default_aws_config(); args...) = invalidate_project_cache(aws, args)
+
+@inline invalidate_project_cache(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "InvalidateProjectCache", args)
+
+@inline invalidate_project_cache(args) = invalidate_project_cache(default_aws_config(), args)
 
 
 """
@@ -674,7 +737,6 @@ During a previous call, if there are more than 100 items in the list, only the f
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListBuilds)
 """
-
 @inline list_builds(aws::AWSConfig=default_aws_config(); args...) = list_builds(aws, args)
 
 @inline list_builds(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "ListBuilds", args)
@@ -698,7 +760,7 @@ Gets a list of build IDs for the specified build project, with each build ID rep
 # Arguments
 
 ## `projectName = ::String` -- *Required*
-The name of the build project.
+The name of the AWS CodeBuild project.
 
 
 ## `sortOrder = "ASCENDING" or "DESCENDING"`
@@ -725,7 +787,6 @@ During a previous call, if there are more than 100 items in the list, only the f
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListBuildsForProject)
 """
-
 @inline list_builds_for_project(aws::AWSConfig=default_aws_config(); args...) = list_builds_for_project(aws, args)
 
 @inline list_builds_for_project(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "ListBuildsForProject", args)
@@ -756,7 +817,6 @@ Gets information about Docker images that are managed by AWS CodeBuild.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListCuratedEnvironmentImages)
 """
-
 @inline list_curated_environment_images(aws::AWSConfig=default_aws_config(); args...) = list_curated_environment_images(aws, args)
 
 @inline list_curated_environment_images(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "ListCuratedEnvironmentImages", args)
@@ -817,7 +877,6 @@ During a previous call, if there are more than 100 items in the list, only the f
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListProjects)
 """
-
 @inline list_projects(aws::AWSConfig=default_aws_config(); args...) = list_projects(aws, args)
 
 @inline list_projects(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "ListProjects", args)
@@ -841,7 +900,7 @@ Starts running a build.
 # Arguments
 
 ## `projectName = ::String` -- *Required*
-The name of the build project to start running a build.
+The name of the AWS CodeBuild build project to start running a build.
 
 
 ## `sourceVersion = ::String`
@@ -865,7 +924,8 @@ Build output artifact settings that override, for this build only, the latest on
         "path" =>  ::String,
         "namespaceType" =>  "NONE" or "BUILD_ID",
         "name" =>  ::String,
-        "packaging" =>  "NONE" or "ZIP"
+        "packaging" =>  "NONE" or "ZIP",
+        "encryptionDisabled" =>  ::Bool
     ]
 ```
 
@@ -879,12 +939,78 @@ A set of environment variables that overrides, for this build only, the latest o
     ], ...]
 ```
 
+## `sourceTypeOverride = "CODECOMMIT", "CODEPIPELINE", "GITHUB", "S3", "BITBUCKET" or "GITHUB_ENTERPRISE"`
+A source input type for this build that overrides the source input defined in the build project
+
+
+## `sourceLocationOverride = ::String`
+A location that overrides for this build the source location for the one defined in the build project.
+
+
+## `sourceAuthOverride = [ ... ]`
+An authorization type for this build that overrides the one defined in the build project. This override applies only if the build project's source is BitBucket or GitHub.
+```
+ sourceAuthOverride = [
+        "type" => <required> "OAUTH",
+        "resource" =>  ::String
+    ]
+```
+
+## `gitCloneDepthOverride = ::Int`
+The user-defined depth of history, with a minimum value of 0, that overrides, for this build only, any previous depth of history defined in the build project.
+
+
 ## `buildspecOverride = ::String`
 A build spec declaration that overrides, for this build only, the latest one already defined in the build project.
 
 
+## `insecureSslOverride = ::Bool`
+Enable this flag to override the insecure SSL setting that is specified in the build project. The insecure SSL setting determines whether to ignore SSL warnings while connecting to the project source code. This override applies only if the build's source is GitHub Enterprise.
+
+
+## `reportBuildStatusOverride = ::Bool`
+Set to true to report to your source provider the status of a build's start and completion. If you use this option with a source provider other than GitHub, an invalidInputException is thrown.
+
+
+## `environmentTypeOverride = "WINDOWS_CONTAINER" or "LINUX_CONTAINER"`
+A container type for this build that overrides the one specified in the build project.
+
+
+## `imageOverride = ::String`
+The name of an image for this build that overrides the one specified in the build project.
+
+
+## `computeTypeOverride = "BUILD_GENERAL1_SMALL", "BUILD_GENERAL1_MEDIUM" or "BUILD_GENERAL1_LARGE"`
+The name of a compute type for this build that overrides the one specified in the build project.
+
+
+## `certificateOverride = ::String`
+The name of a certificate for this build that overrides the one specified in the build project.
+
+
+## `cacheOverride = [ ... ]`
+A ProjectCache object specified for this build that overrides the one defined in the build project.
+```
+ cacheOverride = [
+        "type" => <required> "NO_CACHE" or "S3",
+        "location" =>  ::String
+    ]
+```
+
+## `serviceRoleOverride = ::String`
+The name of a service role for this build that overrides the one specified in the build project.
+
+
+## `privilegedModeOverride = ::Bool`
+Enable this flag to override privileged mode in the build project.
+
+
 ## `timeoutInMinutesOverride = ::Int`
 The number of build timeout minutes, from 5 to 480 (8 hours), that overrides, for this build only, the latest setting already defined in the build project.
+
+
+## `idempotencyToken = ::String`
+A unique, case sensitive identifier you provide to ensure the idempotency of the StartBuild request. The token is included in the StartBuild request and is valid for 12 hours. If you repeat the StartBuild request with the same token, but change a parameter, AWS CodeBuild returns a parameter mismatch error.
 
 
 
@@ -899,7 +1025,6 @@ The number of build timeout minutes, from 5 to 480 (8 hours), that overrides, fo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/StartBuild)
 """
-
 @inline start_build(aws::AWSConfig=default_aws_config(); args...) = start_build(aws, args)
 
 @inline start_build(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "StartBuild", args)
@@ -938,7 +1063,6 @@ The ID of the build.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/StopBuild)
 """
-
 @inline stop_build(aws::AWSConfig=default_aws_config(); args...) = stop_build(aws, args)
 
 @inline stop_build(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "StopBuild", args)
@@ -976,13 +1100,16 @@ A new or replacement description of the build project.
 Information to be changed about the build input source code for the build project.
 ```
  source = [
-        "type" => <required> "CODECOMMIT", "CODEPIPELINE", "GITHUB", "S3" or "BITBUCKET",
+        "type" => <required> "CODECOMMIT", "CODEPIPELINE", "GITHUB", "S3", "BITBUCKET" or "GITHUB_ENTERPRISE",
         "location" =>  ::String,
+        "gitCloneDepth" =>  ::Int,
         "buildspec" =>  ::String,
         "auth" =>  [
             "type" => <required> "OAUTH",
             "resource" =>  ::String
-        ]
+        ],
+        "reportBuildStatus" =>  ::Bool,
+        "insecureSsl" =>  ::Bool
     ]
 ```
 
@@ -995,7 +1122,17 @@ Information to be changed about the build output artifacts for the build project
         "path" =>  ::String,
         "namespaceType" =>  "NONE" or "BUILD_ID",
         "name" =>  ::String,
-        "packaging" =>  "NONE" or "ZIP"
+        "packaging" =>  "NONE" or "ZIP",
+        "encryptionDisabled" =>  ::Bool
+    ]
+```
+
+## `cache = [ ... ]`
+Stores recently used information so that it can be quickly accessed at a later time.
+```
+ cache = [
+        "type" => <required> "NO_CACHE" or "S3",
+        "location" =>  ::String
     ]
 ```
 
@@ -1003,7 +1140,7 @@ Information to be changed about the build output artifacts for the build project
 Information to be changed about the build environment for the build project.
 ```
  environment = [
-        "type" => <required> "LINUX_CONTAINER",
+        "type" => <required> "WINDOWS_CONTAINER" or "LINUX_CONTAINER",
         "image" => <required> ::String,
         "computeType" => <required> "BUILD_GENERAL1_SMALL", "BUILD_GENERAL1_MEDIUM" or "BUILD_GENERAL1_LARGE",
         "environmentVariables" =>  [[
@@ -1011,7 +1148,8 @@ Information to be changed about the build environment for the build project.
             "value" => <required> ::String,
             "type" =>  "PLAINTEXT" or "PARAMETER_STORE"
         ], ...],
-        "privilegedMode" =>  ::Bool
+        "privilegedMode" =>  ::Bool,
+        "certificate" =>  ::String
     ]
 ```
 
@@ -1040,6 +1178,20 @@ These tags are available for use by AWS services that support AWS CodeBuild buil
     ], ...]
 ```
 
+## `vpcConfig = [ ... ]`
+VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.
+```
+ vpcConfig = [
+        "vpcId" =>  ::String,
+        "subnets" =>  [::String, ...],
+        "securityGroupIds" =>  [::String, ...]
+    ]
+```
+
+## `badgeEnabled = ::Bool`
+Set this to true to generate a publicly-accessible URL for your project's build badge.
+
+
 
 
 # Returns
@@ -1052,12 +1204,57 @@ These tags are available for use by AWS services that support AWS CodeBuild buil
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/UpdateProject)
 """
-
 @inline update_project(aws::AWSConfig=default_aws_config(); args...) = update_project(aws, args)
 
 @inline update_project(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "UpdateProject", args)
 
 @inline update_project(args) = update_project(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CodeBuild.update_webhook
+    update_webhook([::AWSConfig], arguments::Dict)
+    update_webhook([::AWSConfig]; projectName=, <keyword arguments>)
+
+    using AWSCore.Services.codebuild
+    codebuild([::AWSConfig], "UpdateWebhook", arguments::Dict)
+    codebuild([::AWSConfig], "UpdateWebhook", projectName=, <keyword arguments>)
+
+# UpdateWebhook Operation
+
+Updates the webhook associated with an AWS CodeBuild build project.
+
+# Arguments
+
+## `projectName = ::String` -- *Required*
+The name of the AWS CodeBuild project.
+
+
+## `branchFilter = ::String`
+A regular expression used to determine which branches in a repository are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If it doesn't match, then it is not. If branchFilter is empty, then all branches are built.
+
+
+## `rotateSecret = ::Bool`
+A boolean value that specifies whether the associated repository's secret token should be updated.
+
+
+
+
+# Returns
+
+`UpdateWebhookOutput`
+
+# Exceptions
+
+`InvalidInputException`, `ResourceNotFoundException` or `OAuthProviderException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/UpdateWebhook)
+"""
+@inline update_webhook(aws::AWSConfig=default_aws_config(); args...) = update_webhook(aws, args)
+
+@inline update_webhook(aws::AWSConfig, args) = AWSCore.Services.codebuild(aws, "UpdateWebhook", args)
+
+@inline update_webhook(args) = update_webhook(default_aws_config(), args)
 
 
 

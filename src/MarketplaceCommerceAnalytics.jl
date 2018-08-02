@@ -165,7 +165,6 @@ Amazon Resource Name (ARN) for the SNS Topic that will be notified when the data
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/GenerateDataSet)
 """
-
 @inline generate_data_set(aws::AWSConfig=default_aws_config(); args...) = generate_data_set(aws, args)
 
 @inline generate_data_set(aws::AWSConfig, args) = AWSCore.Services.marketplacecommerceanalytics(aws, "GenerateDataSet", args)
@@ -231,7 +230,6 @@ Amazon Resource Name (ARN) for the SNS Topic that will be notified when the data
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/StartSupportDataExport)
 """
-
 @inline start_support_data_export(aws::AWSConfig=default_aws_config(); args...) = start_support_data_export(aws, args)
 
 @inline start_support_data_export(aws::AWSConfig, args) = AWSCore.Services.marketplacecommerceanalytics(aws, "StartSupportDataExport", args)

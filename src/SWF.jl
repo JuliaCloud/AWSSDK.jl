@@ -121,7 +121,6 @@ If specified, only workflow executions that match this close status are counted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/CountClosedWorkflowExecutions)
 """
-
 @inline count_closed_workflow_executions(aws::AWSConfig=default_aws_config(); args...) = count_closed_workflow_executions(aws, args)
 
 @inline count_closed_workflow_executions(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "CountClosedWorkflowExecutions", args)
@@ -216,7 +215,6 @@ If specified, only workflow executions matching the `WorkflowId` in the filter a
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/CountOpenWorkflowExecutions)
 """
-
 @inline count_open_workflow_executions(aws::AWSConfig=default_aws_config(); args...) = count_open_workflow_executions(aws, args)
 
 @inline count_open_workflow_executions(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "CountOpenWorkflowExecutions", args)
@@ -271,7 +269,6 @@ The name of the task list.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/CountPendingActivityTasks)
 """
-
 @inline count_pending_activity_tasks(aws::AWSConfig=default_aws_config(); args...) = count_pending_activity_tasks(aws, args)
 
 @inline count_pending_activity_tasks(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "CountPendingActivityTasks", args)
@@ -326,7 +323,6 @@ The name of the task list.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/CountPendingDecisionTasks)
 """
-
 @inline count_pending_decision_tasks(aws::AWSConfig=default_aws_config(); args...) = count_pending_decision_tasks(aws, args)
 
 @inline count_pending_decision_tasks(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "CountPendingDecisionTasks", args)
@@ -389,7 +385,6 @@ The activity type to deprecate.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/DeprecateActivityType)
 """
-
 @inline deprecate_activity_type(aws::AWSConfig=default_aws_config(); args...) = deprecate_activity_type(aws, args)
 
 @inline deprecate_activity_type(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "DeprecateActivityType", args)
@@ -439,7 +434,6 @@ The name of the domain to deprecate.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/DeprecateDomain)
 """
-
 @inline deprecate_domain(aws::AWSConfig=default_aws_config(); args...) = deprecate_domain(aws, args)
 
 @inline deprecate_domain(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "DeprecateDomain", args)
@@ -502,7 +496,6 @@ The workflow type to deprecate.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/DeprecateWorkflowType)
 """
-
 @inline deprecate_workflow_type(aws::AWSConfig=default_aws_config(); args...) = deprecate_workflow_type(aws, args)
 
 @inline deprecate_workflow_type(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "DeprecateWorkflowType", args)
@@ -566,7 +559,6 @@ The activity type to get information about. Activity types are identified by the
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/DescribeActivityType)
 """
-
 @inline describe_activity_type(aws::AWSConfig=default_aws_config(); args...) = describe_activity_type(aws, args)
 
 @inline describe_activity_type(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "DescribeActivityType", args)
@@ -617,7 +609,6 @@ The name of the domain to describe.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/DescribeDomain)
 """
-
 @inline describe_domain(aws::AWSConfig=default_aws_config(); args...) = describe_domain(aws, args)
 
 @inline describe_domain(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "DescribeDomain", args)
@@ -680,7 +671,6 @@ The workflow execution to describe.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/DescribeWorkflowExecution)
 """
-
 @inline describe_workflow_execution(aws::AWSConfig=default_aws_config(); args...) = describe_workflow_execution(aws, args)
 
 @inline describe_workflow_execution(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "DescribeWorkflowExecution", args)
@@ -744,7 +734,6 @@ The workflow type to describe.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/DescribeWorkflowType)
 """
-
 @inline describe_workflow_type(aws::AWSConfig=default_aws_config(); args...) = describe_workflow_type(aws, args)
 
 @inline describe_workflow_type(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "DescribeWorkflowType", args)
@@ -823,7 +812,6 @@ When set to `true`, returns the events in reverse order. By default the results 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/GetWorkflowExecutionHistory)
 """
-
 @inline get_workflow_execution_history(aws::AWSConfig=default_aws_config(); args...) = get_workflow_execution_history(aws, args)
 
 @inline get_workflow_execution_history(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "GetWorkflowExecutionHistory", args)
@@ -898,7 +886,6 @@ When set to `true`, returns the results in reverse order. By default, the result
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/ListActivityTypes)
 """
-
 @inline list_activity_types(aws::AWSConfig=default_aws_config(); args...) = list_activity_types(aws, args)
 
 @inline list_activity_types(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "ListActivityTypes", args)
@@ -1031,7 +1018,6 @@ When set to `true`, returns the results in reverse order. By default the results
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/ListClosedWorkflowExecutions)
 """
-
 @inline list_closed_workflow_executions(aws::AWSConfig=default_aws_config(); args...) = list_closed_workflow_executions(aws, args)
 
 @inline list_closed_workflow_executions(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "ListClosedWorkflowExecutions", args)
@@ -1101,7 +1087,6 @@ When set to `true`, returns the results in reverse order. By default, the result
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/ListDomains)
 """
-
 @inline list_domains(aws::AWSConfig=default_aws_config(); args...) = list_domains(aws, args)
 
 @inline list_domains(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "ListDomains", args)
@@ -1212,7 +1197,6 @@ If specified, only workflow executions matching the workflow ID specified in the
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/ListOpenWorkflowExecutions)
 """
-
 @inline list_open_workflow_executions(aws::AWSConfig=default_aws_config(); args...) = list_open_workflow_executions(aws, args)
 
 @inline list_open_workflow_executions(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "ListOpenWorkflowExecutions", args)
@@ -1287,7 +1271,6 @@ When set to `true`, returns the results in reverse order. By default the results
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/ListWorkflowTypes)
 """
-
 @inline list_workflow_types(aws::AWSConfig=default_aws_config(); args...) = list_workflow_types(aws, args)
 
 @inline list_workflow_types(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "ListWorkflowTypes", args)
@@ -1351,7 +1334,6 @@ Identity of the worker making the request, recorded in the `ActivityTaskStarted`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/PollForActivityTask)
 """
-
 @inline poll_for_activity_task(aws::AWSConfig=default_aws_config(); args...) = poll_for_activity_task(aws, args)
 
 @inline poll_for_activity_task(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "PollForActivityTask", args)
@@ -1439,7 +1421,6 @@ When set to `true`, returns the events in reverse order. By default the results 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/PollForDecisionTask)
 """
-
 @inline poll_for_decision_task(aws::AWSConfig=default_aws_config(); args...) = poll_for_decision_task(aws, args)
 
 @inline poll_for_decision_task(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "PollForDecisionTask", args)
@@ -1510,7 +1491,6 @@ If specified, contains details about the progress of the task.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/RecordActivityTaskHeartbeat)
 """
-
 @inline record_activity_task_heartbeat(aws::AWSConfig=default_aws_config(); args...) = record_activity_task_heartbeat(aws, args)
 
 @inline record_activity_task_heartbeat(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "RecordActivityTaskHeartbeat", args)
@@ -1619,7 +1599,6 @@ The duration is specified in seconds, an integer greater than or equal to `0`. Y
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/RegisterActivityType)
 """
-
 @inline register_activity_type(aws::AWSConfig=default_aws_config(); args...) = register_activity_type(aws, args)
 
 @inline register_activity_type(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "RegisterActivityType", args)
@@ -1680,7 +1659,6 @@ The maximum workflow execution retention period is 90 days. For more information
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/RegisterDomain)
 """
-
 @inline register_domain(aws::AWSConfig=default_aws_config(); args...) = register_domain(aws, args)
 
 @inline register_domain(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "RegisterDomain", args)
@@ -1798,7 +1776,6 @@ The default IAM role attached to this workflow type.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/RegisterWorkflowType)
 """
-
 @inline register_workflow_type(aws::AWSConfig=default_aws_config(); args...) = register_workflow_type(aws, args)
 
 @inline register_workflow_type(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "RegisterWorkflowType", args)
@@ -1859,7 +1836,6 @@ The runId of the workflow execution to cancel.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/RequestCancelWorkflowExecution)
 """
-
 @inline request_cancel_workflow_execution(aws::AWSConfig=default_aws_config(); args...) = request_cancel_workflow_execution(aws, args)
 
 @inline request_cancel_workflow_execution(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "RequestCancelWorkflowExecution", args)
@@ -1920,7 +1896,6 @@ Information about the cancellation.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/RespondActivityTaskCanceled)
 """
-
 @inline respond_activity_task_canceled(aws::AWSConfig=default_aws_config(); args...) = respond_activity_task_canceled(aws, args)
 
 @inline respond_activity_task_canceled(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "RespondActivityTaskCanceled", args)
@@ -1979,7 +1954,6 @@ The result of the activity task. It is a free form string that is implementation
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/RespondActivityTaskCompleted)
 """
-
 @inline respond_activity_task_completed(aws::AWSConfig=default_aws_config(); args...) = respond_activity_task_completed(aws, args)
 
 @inline respond_activity_task_completed(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "RespondActivityTaskCompleted", args)
@@ -2039,7 +2013,6 @@ Detailed information about the failure.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/RespondActivityTaskFailed)
 """
-
 @inline respond_activity_task_failed(aws::AWSConfig=default_aws_config(); args...) = respond_activity_task_failed(aws, args)
 
 @inline respond_activity_task_failed(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "RespondActivityTaskFailed", args)
@@ -2173,7 +2146,6 @@ User defined context to add to workflow execution.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/RespondDecisionTaskCompleted)
 """
-
 @inline respond_decision_task_completed(aws::AWSConfig=default_aws_config(); args...) = respond_decision_task_completed(aws, args)
 
 @inline respond_decision_task_completed(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "RespondDecisionTaskCompleted", args)
@@ -2242,7 +2214,6 @@ Data to attach to the `WorkflowExecutionSignaled` event in the target workflow e
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/SignalWorkflowExecution)
 """
-
 @inline signal_workflow_execution(aws::AWSConfig=default_aws_config(); args...) = signal_workflow_execution(aws, args)
 
 @inline signal_workflow_execution(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "SignalWorkflowExecution", args)
@@ -2389,7 +2360,6 @@ The IAM role to attach to this workflow execution.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/StartWorkflowExecution)
 """
-
 @inline start_workflow_execution(aws::AWSConfig=default_aws_config(); args...) = start_workflow_execution(aws, args)
 
 @inline start_workflow_execution(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "StartWorkflowExecution", args)
@@ -2476,7 +2446,6 @@ The supported child policies are:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/TerminateWorkflowExecution)
 """
-
 @inline terminate_workflow_execution(aws::AWSConfig=default_aws_config(); args...) = terminate_workflow_execution(aws, args)
 
 @inline terminate_workflow_execution(aws::AWSConfig, args) = AWSCore.Services.swf(aws, "TerminateWorkflowExecution", args)

@@ -55,7 +55,6 @@ The maximum number of items to retrieve from the GetEntitlements operation. For 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/entitlement.marketplace-2017-01-11/GetEntitlements)
 """
-
 @inline get_entitlements(aws::AWSConfig=default_aws_config(); args...) = get_entitlements(aws, args)
 
 @inline get_entitlements(aws::AWSConfig, args) = AWSCore.Services.entitlement_marketplace(aws, "GetEntitlements", args)

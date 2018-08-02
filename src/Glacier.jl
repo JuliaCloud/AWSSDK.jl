@@ -68,7 +68,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/AbortMultipartUpload)
 """
-
 @inline abort_multipart_upload(aws::AWSConfig=default_aws_config(); args...) = abort_multipart_upload(aws, args)
 
 @inline abort_multipart_upload(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "DELETE", "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", args)
@@ -123,7 +122,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/AbortVaultLock)
 """
-
 @inline abort_vault_lock(aws::AWSConfig=default_aws_config(); args...) = abort_vault_lock(aws, args)
 
 @inline abort_vault_lock(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "DELETE", "/{accountId}/vaults/{vaultName}/lock-policy", args)
@@ -182,7 +180,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/AddTagsToVault)
 """
-
 @inline add_tags_to_vault(aws::AWSConfig=default_aws_config(); args...) = add_tags_to_vault(aws, args)
 
 @inline add_tags_to_vault(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "POST", "/{accountId}/vaults/{vaultName}/tags?operation=add", args)
@@ -271,7 +268,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/CompleteMultipartUpload)
 """
-
 @inline complete_multipart_upload(aws::AWSConfig=default_aws_config(); args...) = complete_multipart_upload(aws, args)
 
 @inline complete_multipart_upload(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "POST", "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", args)
@@ -331,7 +327,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/CompleteVaultLock)
 """
-
 @inline complete_vault_lock(aws::AWSConfig=default_aws_config(); args...) = complete_vault_lock(aws, args)
 
 @inline complete_vault_lock(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "POST", "/{accountId}/vaults/{vaultName}/lock-policy/{lockId}", args)
@@ -405,7 +400,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/CreateVault)
 """
-
 @inline create_vault(aws::AWSConfig=default_aws_config(); args...) = create_vault(aws, args)
 
 @inline create_vault(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "PUT", "/{accountId}/vaults/{vaultName}", args)
@@ -471,7 +465,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/DeleteArchive)
 """
-
 @inline delete_archive(aws::AWSConfig=default_aws_config(); args...) = delete_archive(aws, args)
 
 @inline delete_archive(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "DELETE", "/{accountId}/vaults/{vaultName}/archives/{archiveId}", args)
@@ -528,7 +521,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/DeleteVault)
 """
-
 @inline delete_vault(aws::AWSConfig=default_aws_config(); args...) = delete_vault(aws, args)
 
 @inline delete_vault(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "DELETE", "/{accountId}/vaults/{vaultName}", args)
@@ -581,7 +573,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/DeleteVaultAccessPolicy)
 """
-
 @inline delete_vault_access_policy(aws::AWSConfig=default_aws_config(); args...) = delete_vault_access_policy(aws, args)
 
 @inline delete_vault_access_policy(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "DELETE", "/{accountId}/vaults/{vaultName}/access-policy", args)
@@ -602,7 +593,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 This operation deletes the notification configuration set for a vault. The operation is eventually consistent; that is, it might take some time for Amazon Glacier to completely disable the notifications and you might still receive some notifications for a short time after you send the delete request.
 
-An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access Management (IAM) users don't have any permissions by default. You must grant them explicit permission to perform specific actions. For more information, see [Access Control Using AWS Identity and Access Management (IAM)](http://docs.aws.amazon.com/latest/dev/using-iam-with-amazon-glacier.html).
+An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access Management (IAM) users don't have any permissions by default. You must grant them explicit permission to perform specific actions. For more information, see [Access Control Using AWS Identity and Access Management (IAM)](http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
 For conceptual information and underlying REST API, see [Configuring Vault Notifications in Amazon Glacier](http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html) and [Delete Vault Notification Configuration](http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-delete.html) in the Amazon Glacier Developer Guide.
 
@@ -636,7 +627,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/DeleteVaultNotifications)
 """
-
 @inline delete_vault_notifications(aws::AWSConfig=default_aws_config(); args...) = delete_vault_notifications(aws, args)
 
 @inline delete_vault_notifications(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "DELETE", "/{accountId}/vaults/{vaultName}/notification-configuration", args)
@@ -664,7 +654,7 @@ A job ID will not expire for at least 24 hours after Amazon Glacier completes th
 
 An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access Management (IAM) users don't have any permissions by default. You must grant them explicit permission to perform specific actions. For more information, see [Access Control Using AWS Identity and Access Management (IAM)](http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
-For information about the underlying REST API, see [Working with Archives in Amazon Glacier](http://docs.aws.amazon.com/amazonglacier/latest/dev/api-describe-job-get.html) in the *Amazon Glacier Developer Guide*.
+For more information about using this operation, see the documentation for the underlying REST API [Describe Job](http://docs.aws.amazon.com/amazonglacier/latest/dev/api-describe-job-get.html) in the *Amazon Glacier Developer Guide*.
 
 # Arguments
 
@@ -720,7 +710,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/DescribeJob)
 """
-
 @inline describe_job(aws::AWSConfig=default_aws_config(); args...) = describe_job(aws, args)
 
 @inline describe_job(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "GET", "/{accountId}/vaults/{vaultName}/jobs/{jobId}", args)
@@ -790,7 +779,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/DescribeVault)
 """
-
 @inline describe_vault(aws::AWSConfig=default_aws_config(); args...) = describe_vault(aws, args)
 
 @inline describe_vault(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "GET", "/{accountId}/vaults/{vaultName}", args)
@@ -854,7 +842,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/GetDataRetrievalPolicy)
 """
-
 @inline get_data_retrieval_policy(aws::AWSConfig=default_aws_config(); args...) = get_data_retrieval_policy(aws, args)
 
 @inline get_data_retrieval_policy(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "GET", "/{accountId}/policies/data-retrieval", args)
@@ -953,7 +940,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/GetJobOutput)
 """
-
 @inline get_job_output(aws::AWSConfig=default_aws_config(); args...) = get_job_output(aws, args)
 
 @inline get_job_output(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "GET", "/{accountId}/vaults/{vaultName}/jobs/{jobId}/output", args)
@@ -1017,7 +1003,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/GetVaultAccessPolicy)
 """
-
 @inline get_vault_access_policy(aws::AWSConfig=default_aws_config(); args...) = get_vault_access_policy(aws, args)
 
 @inline get_vault_access_policy(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "GET", "/{accountId}/vaults/{vaultName}/access-policy", args)
@@ -1094,7 +1079,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/GetVaultLock)
 """
-
 @inline get_vault_lock(aws::AWSConfig=default_aws_config(); args...) = get_vault_lock(aws, args)
 
 @inline get_vault_lock(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "GET", "/{accountId}/vaults/{vaultName}/lock-policy", args)
@@ -1168,7 +1152,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/GetVaultNotifications)
 """
-
 @inline get_vault_notifications(aws::AWSConfig=default_aws_config(); args...) = get_vault_notifications(aws, args)
 
 @inline get_vault_notifications(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "GET", "/{accountId}/vaults/{vaultName}/notification-configuration", args)
@@ -1187,69 +1170,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 # InitiateJob Operation
 
-This operation initiates a job of the specified type. In this release, you can initiate a job to retrieve either an archive or a vault inventory (a list of archives in a vault).
-
-Retrieving data from Amazon Glacier is a two-step process:
-
-1.  Initiate a retrieval job.
-
-    **Note**
-    > A data retrieval policy can cause your initiate retrieval job request to fail with a PolicyEnforcedException exception. For more information about data retrieval policies, see [Amazon Glacier Data Retrieval Policies](http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html). For more information about the PolicyEnforcedException exception, see [Error Responses](http://docs.aws.amazon.com/amazonglacier/latest/dev/api-error-responses.html).
-
-2.  After the job completes, download the bytes.
-
-The retrieval request is executed asynchronously. When you initiate a retrieval job, Amazon Glacier creates a job and returns a job ID in the response. When Amazon Glacier completes the job, you can get the job output (archive or inventory data). For information about getting job output, see [GetJobOutput](@ref) operation.
-
-The job must complete before you can get its output. To determine when a job is complete, you have the following options:
-
-*   **Use Amazon SNS Notification** You can specify an Amazon Simple Notification Service (Amazon SNS) topic to which Amazon Glacier can post a notification after the job is completed. You can specify an SNS topic per job request. The notification is sent only after Amazon Glacier completes the job. In addition to specifying an SNS topic per job request, you can configure vault notifications for a vault so that job notifications are always sent. For more information, see [SetVaultNotifications](@ref).
-
-*   **Get job details** You can make a [DescribeJob](@ref) request to obtain job status information while a job is in progress. However, it is more efficient to use an Amazon SNS notification to determine when a job is complete.
-
-**Note**
-> The information you get via notification is same that you get by calling [DescribeJob](@ref).
-
-If for a specific event, you add both the notification configuration on the vault and also specify an SNS topic in your initiate job request, Amazon Glacier sends both notifications. For more information, see [SetVaultNotifications](@ref).
-
-An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access Management (IAM) users don't have any permissions by default. You must grant them explicit permission to perform specific actions. For more information, see [Access Control Using AWS Identity and Access Management (IAM)](http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
-
-**About the Vault Inventory**
-
-Amazon Glacier prepares an inventory for each vault periodically, every 24 hours. When you initiate a job for a vault inventory, Amazon Glacier returns the last inventory for the vault. The inventory data you get might be up to a day or two days old. Also, the initiate inventory job might take some time to complete before you can download the vault inventory. So you do not want to retrieve a vault inventory for each vault operation. However, in some scenarios, you might find the vault inventory useful. For example, when you upload an archive, you can provide an archive description but not an archive name. Amazon Glacier provides you a unique archive ID, an opaque string of characters. So, you might maintain your own database that maps archive names to their corresponding Amazon Glacier assigned archive IDs. You might find the vault inventory useful in the event you need to reconcile information in your database with the actual vault inventory.
-
-**Range Inventory Retrieval**
-
-You can limit the number of inventory items retrieved by filtering on the archive creation date or by setting a limit.
-
-*Filtering by Archive Creation Date*
-
-You can retrieve inventory items for archives created between `StartDate` and `EndDate` by specifying values for these parameters in the **InitiateJob** request. Archives created on or after the `StartDate` and before the `EndDate` will be returned. If you only provide the `StartDate` without the `EndDate`, you will retrieve the inventory for all archives created on or after the `StartDate`. If you only provide the `EndDate` without the `StartDate`, you will get back the inventory for all archives created before the `EndDate`.
-
-*Limiting Inventory Items per Retrieval*
-
-You can limit the number of inventory items returned by setting the `Limit` parameter in the **InitiateJob** request. The inventory job output will contain inventory items up to the specified `Limit`. If there are more inventory items available, the result is paginated. After a job is complete you can use the [DescribeJob](@ref) operation to get a marker that you use in a subsequent **InitiateJob** request. The marker will indicate the starting point to retrieve the next set of inventory items. You can page through your entire inventory by repeatedly making **InitiateJob** requests with the marker from the previous **DescribeJob** output, until you get a marker from **DescribeJob** that returns null, indicating that there are no more inventory items available.
-
-You can use the `Limit` parameter together with the date range parameters.
-
-**About Ranged Archive Retrieval**
-
-You can initiate an archive retrieval for the whole archive or a range of the archive. In the case of ranged archive retrieval, you specify a byte range to return or the whole archive. The range specified must be megabyte (MB) aligned, that is the range start value must be divisible by 1 MB and range end value plus 1 must be divisible by 1 MB or equal the end of the archive. If the ranged archive retrieval is not megabyte aligned, this operation returns a 400 response. Furthermore, to ensure you get checksum values for data you download using Get Job Output API, the range must be tree hash aligned.
-
-An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access Management (IAM) users don't have any permissions by default. You must grant them explicit permission to perform specific actions. For more information, see [Access Control Using AWS Identity and Access Management (IAM)](http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
-
-For conceptual information and the underlying REST API, see [Initiate a Job](http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html) and [Downloading a Vault Inventory](http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html)
-
-**Expedited and Bulk Archive Retrievals**
-
-When retrieving an archive, you can specify one of the following options in the `Tier` field of the request body:
-
-*   **Standard** The default type of retrieval, which allows access to any of your archives within several hours. Standard retrievals typically complete within 3–5 hours.
-
-*   **Bulk** Amazon Glacier’s lowest-cost retrieval option, which enables you to retrieve large amounts of data inexpensively in a day. Bulk retrieval requests typically complete within 5–12 hours.
-
-*   **Expedited** Amazon Glacier’s option for the fastest retrievals. Archives requested using the expedited retrievals typically become accessible within 1–5 minutes.
-
-For more information about expedited and bulk retrievals, see [Retrieving Amazon Glacier Archives](http://docs.aws.amazon.com/amazonglacier/latest/dev/downloading-an-archive-two-steps.html).
+This operation initiates a job of the specified type, which can be a select, an archival retrieval, or a vault retrieval. For more information about using this operation, see the documentation for the underlying REST API [Initiate a Job](http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html).
 
 # Arguments
 
@@ -1277,7 +1198,49 @@ Provides options for specifying job information.
             "EndDate" =>  ::String,
             "Limit" =>  ::String,
             "Marker" =>  ::String
-        ]
+        ],
+        "SelectParameters" =>  [
+            "InputSerialization" =>  ["csv" =>  [
+                    "FileHeaderInfo" =>  "USE", "IGNORE" or "NONE",
+                    "Comments" =>  ::String,
+                    "QuoteEscapeCharacter" =>  ::String,
+                    "RecordDelimiter" =>  ::String,
+                    "FieldDelimiter" =>  ::String,
+                    "QuoteCharacter" =>  ::String
+                ]],
+            "ExpressionType" =>  "SQL",
+            "Expression" =>  ::String,
+            "OutputSerialization" =>  ["csv" =>  [
+                    "QuoteFields" =>  "ALWAYS" or "ASNEEDED",
+                    "QuoteEscapeCharacter" =>  ::String,
+                    "RecordDelimiter" =>  ::String,
+                    "FieldDelimiter" =>  ::String,
+                    "QuoteCharacter" =>  ::String
+                ]]
+        ],
+        "OutputLocation" =>  ["S3" =>  [
+                "BucketName" =>  ::String,
+                "Prefix" =>  ::String,
+                "Encryption" =>  [
+                    "EncryptionType" =>  "aws:kms" or "AES256",
+                    "KMSKeyId" =>  ::String,
+                    "KMSContext" =>  ::String
+                ],
+                "CannedACL" =>  "private", "public-read", "public-read-write", "aws-exec-read", "authenticated-read", "bucket-owner-read" or "bucket-owner-full-control",
+                "AccessControlList" =>  [[
+                    "Grantee" =>  [
+                        "Type" => <required> "AmazonCustomerByEmail", "CanonicalUser" or "Group",
+                        "DisplayName" =>  ::String,
+                        "URI" =>  ::String,
+                        "ID" =>  ::String,
+                        "EmailAddress" =>  ::String
+                    ],
+                    "Permission" =>  "FULL_CONTROL", "WRITE", "WRITE_ACP", "READ" or "READ_ACP"
+                ], ...],
+                "Tagging" =>  ::Dict{String,String},
+                "UserMetadata" =>  ::Dict{String,String},
+                "StorageClass" =>  "STANDARD", "REDUCED_REDUNDANCY" or "STANDARD_IA"
+            ]]
     ]
 ```
 
@@ -1319,7 +1282,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/InitiateJob)
 """
-
 @inline initiate_job(aws::AWSConfig=default_aws_config(); args...) = initiate_job(aws, args)
 
 @inline initiate_job(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "POST", "/{accountId}/vaults/{vaultName}/jobs", args)
@@ -1406,7 +1368,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/InitiateMultipartUpload)
 """
-
 @inline initiate_multipart_upload(aws::AWSConfig=default_aws_config(); args...) = initiate_multipart_upload(aws, args)
 
 @inline initiate_multipart_upload(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "POST", "/{accountId}/vaults/{vaultName}/multipart-uploads", args)
@@ -1491,7 +1452,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/InitiateVaultLock)
 """
-
 @inline initiate_vault_lock(aws::AWSConfig=default_aws_config(); args...) = initiate_vault_lock(aws, args)
 
 @inline initiate_vault_lock(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "POST", "/{accountId}/vaults/{vaultName}/lock-policy", args)
@@ -1510,20 +1470,18 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 # ListJobs Operation
 
-This operation lists jobs for a vault, including jobs that are in-progress and jobs that have recently finished.
+This operation lists jobs for a vault, including jobs that are in-progress and jobs that have recently finished. The List Job operation returns a list of these jobs sorted by job initiation time.
 
 **Note**
 > Amazon Glacier retains recently completed jobs for a period before deleting them; however, it eventually removes completed jobs. The output of completed jobs can be retrieved. Retaining completed jobs for a period of time after they have completed enables you to get a job output in the event you miss the job completion notification or your first attempt to download it fails. For example, suppose you start an archive retrieval job to download an archive. After the job completes, you start to download the archive but encounter a network error. In this scenario, you can retry and download the archive while the job exists.
 
-To retrieve an archive or retrieve a vault inventory from Amazon Glacier, you first initiate a job, and after the job completes, you download the data. For an archive retrieval, the output is the archive data. For an inventory retrieval, it is the inventory list. The List Job operation returns a list of these jobs sorted by job initiation time.
-
 The List Jobs operation supports pagination. You should always check the response `Marker` field. If there are no more jobs to list, the `Marker` field is set to `null`. If there are more jobs to list, the `Marker` field is set to a non-null value, which you can use to continue the pagination of the list. To return a list of jobs that begins at a specific job, set the marker request parameter to the `Marker` value for that job that you obtained from a previous List Jobs request.
 
-You can set a maximum limit for the number of jobs returned in the response by specifying the `limit` parameter in the request. The default limit is 1000. The number of jobs returned might be fewer than the limit, but the number of returned jobs never exceeds the limit.
+You can set a maximum limit for the number of jobs returned in the response by specifying the `limit` parameter in the request. The default limit is 50. The number of jobs returned might be fewer than the limit, but the number of returned jobs never exceeds the limit.
 
 Additionally, you can filter the jobs list returned by specifying the optional `statuscode` parameter or `completed` parameter, or both. Using the `statuscode` parameter, you can specify to return only jobs that match either the `InProgress`, `Succeeded`, or `Failed` status. Using the `completed` parameter, you can specify to return only jobs that were completed (`true`) or jobs that were not completed (`false`).
 
-For the underlying REST API, see [List Jobs](http://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html).
+For more information about using this operation, see the documentation for the underlying REST API [List Jobs](http://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html).
 
 # Arguments
 
@@ -1536,7 +1494,7 @@ The name of the vault.
 
 
 ## `limit = ::String`
-The maximum number of jobs to be returned. The default limit is 1000. The number of jobs returned might be fewer than the specified limit, but the number of returned jobs never exceeds the limit.
+The maximum number of jobs to be returned. The default limit is 50. The number of jobs returned might be fewer than the specified limit, but the number of returned jobs never exceeds the limit.
 
 
 ## `marker = ::String`
@@ -1609,7 +1567,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/ListJobs)
 """
-
 @inline list_jobs(aws::AWSConfig=default_aws_config(); args...) = list_jobs(aws, args)
 
 @inline list_jobs(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "GET", "/{accountId}/vaults/{vaultName}/jobs", args)
@@ -1630,7 +1587,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 This operation lists in-progress multipart uploads for the specified vault. An in-progress multipart upload is a multipart upload that has been initiated by an [InitiateMultipartUpload](@ref) request, but has not yet been completed or aborted. The list returned in the List Multipart Upload response has no guaranteed order.
 
-The List Multipart Uploads operation supports pagination. By default, this operation returns up to 1,000 multipart uploads in the response. You should always check the response for a `marker` at which to continue the list; if there are no more items the `marker` is `null`. To return a list of multipart uploads that begins at a specific upload, set the `marker` request parameter to the value you obtained from a previous List Multipart Upload request. You can also limit the number of uploads returned in the response by specifying the `limit` parameter in the request.
+The List Multipart Uploads operation supports pagination. By default, this operation returns up to 50 multipart uploads in the response. You should always check the response for a `marker` at which to continue the list; if there are no more items the `marker` is `null`. To return a list of multipart uploads that begins at a specific upload, set the `marker` request parameter to the value you obtained from a previous List Multipart Upload request. You can also limit the number of uploads returned in the response by specifying the `limit` parameter in the request.
 
 Note the difference between this operation and listing parts ([ListParts](@ref)). The List Multipart Uploads operation lists all multipart uploads for a vault and does not require a multipart upload ID. The List Parts operation requires a multipart upload ID since parts are associated with a single upload.
 
@@ -1653,7 +1610,7 @@ An opaque string used for pagination. This value specifies the upload at which t
 
 
 ## `limit = ::String`
-Specifies the maximum number of uploads returned in the response body. If this value is not specified, the List Uploads operation returns up to 1,000 uploads.
+Specifies the maximum number of uploads returned in the response body. If this value is not specified, the List Uploads operation returns up to 50 uploads.
 
 
 
@@ -1710,7 +1667,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/ListMultipartUploads)
 """
-
 @inline list_multipart_uploads(aws::AWSConfig=default_aws_config(); args...) = list_multipart_uploads(aws, args)
 
 @inline list_multipart_uploads(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "GET", "/{accountId}/vaults/{vaultName}/multipart-uploads", args)
@@ -1731,7 +1687,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 This operation lists the parts of an archive that have been uploaded in a specific multipart upload. You can make this request at any time during an in-progress multipart upload before you complete the upload (see [CompleteMultipartUpload](@ref). List Parts returns an error for completed uploads. The list returned in the List Parts response is sorted by part range.
 
-The List Parts operation supports pagination. By default, this operation returns up to 1,000 uploaded parts in the response. You should always check the response for a `marker` at which to continue the list; if there are no more items the `marker` is `null`. To return a list of parts that begins at a specific part, set the `marker` request parameter to the value you obtained from a previous List Parts request. You can also limit the number of parts returned in the response by specifying the `limit` parameter in the request.
+The List Parts operation supports pagination. By default, this operation returns up to 50 uploaded parts in the response. You should always check the response for a `marker` at which to continue the list; if there are no more items the `marker` is `null`. To return a list of parts that begins at a specific part, set the `marker` request parameter to the value you obtained from a previous List Parts request. You can also limit the number of parts returned in the response by specifying the `limit` parameter in the request.
 
 An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access Management (IAM) users don't have any permissions by default. You must grant them explicit permission to perform specific actions. For more information, see [Access Control Using AWS Identity and Access Management (IAM)](http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
@@ -1756,7 +1712,7 @@ An opaque string used for pagination. This value specifies the part at which the
 
 
 ## `limit = ::String`
-The maximum number of parts to be returned. The default limit is 1000. The number of parts returned might be fewer than the specified limit, but the number of returned parts never exceeds the limit.
+The maximum number of parts to be returned. The default limit is 50. The number of parts returned might be fewer than the specified limit, but the number of returned parts never exceeds the limit.
 
 
 
@@ -1806,7 +1762,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/ListParts)
 """
-
 @inline list_parts(aws::AWSConfig=default_aws_config(); args...) = list_parts(aws, args)
 
 @inline list_parts(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "GET", "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", args)
@@ -1825,12 +1780,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 # ListProvisionedCapacity Operation
 
-This operation lists the provisioned capacity for the specified AWS account.
+This operation lists the provisioned capacity units for the specified AWS account.
 
 # Arguments
 
 ## `accountId = ::String` -- *Required*
-The `AccountId` value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '-' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, don't include any hyphens ('-') in the ID.
+The AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '-' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, don't include any hyphens ('-') in the ID.
 
 
 
@@ -1874,7 +1829,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/ListProvisionedCapacity)
 """
-
 @inline list_provisioned_capacity(aws::AWSConfig=default_aws_config(); args...) = list_provisioned_capacity(aws, args)
 
 @inline list_provisioned_capacity(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "GET", "/{accountId}/provisioned-capacity", args)
@@ -1939,7 +1893,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/ListTagsForVault)
 """
-
 @inline list_tags_for_vault(aws::AWSConfig=default_aws_config(); args...) = list_tags_for_vault(aws, args)
 
 @inline list_tags_for_vault(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "GET", "/{accountId}/vaults/{vaultName}/tags", args)
@@ -1960,7 +1913,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacie
 
 This operation lists all vaults owned by the calling user's account. The list returned in the response is ASCII-sorted by vault name.
 
-By default, this operation returns up to 1,000 items. If there are more vaults to list, the response `marker` field contains the vault Amazon Resource Name (ARN) at which to continue the list with a new List Vaults request; otherwise, the `marker` field is `null`. To return a list of vaults that begins at a specific vault, set the `marker` request parameter to the vault ARN you obtained from a previous List Vaults request. You can also limit the number of vaults returned in the response by specifying the `limit` parameter in the request.
+By default, this operation returns up to 10 items. If there are more vaults to list, the response `marker` field contains the vault Amazon Resource Name (ARN) at which to continue the list with a new List Vaults request; otherwise, the `marker` field is `null`. To return a list of vaults that begins at a specific vault, set the `marker` request parameter to the vault ARN you obtained from a previous List Vaults request. You can also limit the number of vaults returned in the response by specifying the `limit` parameter in the request.
 
 An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access Management (IAM) users don't have any permissions by default. You must grant them explicit permission to perform specific actions. For more information, see [Access Control Using AWS Identity and Access Management (IAM)](http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html).
 
@@ -1977,7 +1930,7 @@ A string used for pagination. The marker specifies the vault ARN after which the
 
 
 ## `limit = ::String`
-The maximum number of vaults to be returned. The default limit is 1000. The number of vaults returned might be fewer than the specified limit, but the number of returned vaults never exceeds the limit.
+The maximum number of vaults to be returned. The default limit is 10. The number of vaults returned might be fewer than the specified limit, but the number of returned vaults never exceeds the limit.
 
 
 
@@ -2021,7 +1974,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/ListVaults)
 """
-
 @inline list_vaults(aws::AWSConfig=default_aws_config(); args...) = list_vaults(aws, args)
 
 @inline list_vaults(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "GET", "/{accountId}/vaults", args)
@@ -2078,7 +2030,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/PurchaseProvisionedCapacity)
 """
-
 @inline purchase_provisioned_capacity(aws::AWSConfig=default_aws_config(); args...) = purchase_provisioned_capacity(aws, args)
 
 @inline purchase_provisioned_capacity(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "POST", "/{accountId}/provisioned-capacity", args)
@@ -2137,7 +2088,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/RemoveTagsFromVault)
 """
-
 @inline remove_tags_from_vault(aws::AWSConfig=default_aws_config(); args...) = remove_tags_from_vault(aws, args)
 
 @inline remove_tags_from_vault(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "POST", "/{accountId}/vaults/{vaultName}/tags?operation=remove", args)
@@ -2202,7 +2152,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/SetDataRetrievalPolicy)
 """
-
 @inline set_data_retrieval_policy(aws::AWSConfig=default_aws_config(); args...) = set_data_retrieval_policy(aws, args)
 
 @inline set_data_retrieval_policy(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "PUT", "/{accountId}/policies/data-retrieval", args)
@@ -2260,7 +2209,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/SetVaultAccessPolicy)
 """
-
 @inline set_vault_access_policy(aws::AWSConfig=default_aws_config(); args...) = set_vault_access_policy(aws, args)
 
 @inline set_vault_access_policy(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "PUT", "/{accountId}/vaults/{vaultName}/access-policy", args)
@@ -2339,7 +2287,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/SetVaultNotifications)
 """
-
 @inline set_vault_notifications(aws::AWSConfig=default_aws_config(); args...) = set_vault_notifications(aws, args)
 
 @inline set_vault_notifications(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "PUT", "/{accountId}/vaults/{vaultName}/notification-configuration", args)
@@ -2430,7 +2377,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/UploadArchive)
 """
-
 @inline upload_archive(aws::AWSConfig=default_aws_config(); args...) = upload_archive(aws, args)
 
 @inline upload_archive(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "POST", "/{accountId}/vaults/{vaultName}/archives", args)
@@ -2529,7 +2475,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/UploadMultipartPart)
 """
-
 @inline upload_multipart_part(aws::AWSConfig=default_aws_config(); args...) = upload_multipart_part(aws, args)
 
 @inline upload_multipart_part(aws::AWSConfig, args) = AWSCore.Services.glacier(aws, "PUT", "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", args)

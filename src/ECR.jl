@@ -54,7 +54,6 @@ The digests of the image layers to check.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/BatchCheckLayerAvailability)
 """
-
 @inline batch_check_layer_availability(aws::AWSConfig=default_aws_config(); args...) = batch_check_layer_availability(aws, args)
 
 @inline batch_check_layer_availability(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "BatchCheckLayerAvailability", args)
@@ -141,7 +140,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/BatchDeleteImage)
 """
-
 @inline batch_delete_image(aws::AWSConfig=default_aws_config(); args...) = batch_delete_image(aws, args)
 
 @inline batch_delete_image(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "BatchDeleteImage", args)
@@ -239,7 +237,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/BatchGetImage)
 """
-
 @inline batch_get_image(aws::AWSConfig=default_aws_config(); args...) = batch_get_image(aws, args)
 
 @inline batch_get_image(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "BatchGetImage", args)
@@ -293,7 +290,6 @@ The `sha256` digest of the image layer.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/CompleteLayerUpload)
 """
-
 @inline complete_layer_upload(aws::AWSConfig=default_aws_config(); args...) = complete_layer_upload(aws, args)
 
 @inline complete_layer_upload(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "CompleteLayerUpload", args)
@@ -354,7 +350,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/CreateRepository)
 """
-
 @inline create_repository(aws::AWSConfig=default_aws_config(); args...) = create_repository(aws, args)
 
 @inline create_repository(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "CreateRepository", args)
@@ -382,7 +377,7 @@ The AWS account ID associated with the registry that contains the repository. If
 
 
 ## `repositoryName = ::String` -- *Required*
-The name of the repository that is associated with the repository policy to  delete.
+The name of the repository.
 
 
 
@@ -397,7 +392,6 @@ The name of the repository that is associated with the repository policy to  d
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/DeleteLifecyclePolicy)
 """
-
 @inline delete_lifecycle_policy(aws::AWSConfig=default_aws_config(); args...) = delete_lifecycle_policy(aws, args)
 
 @inline delete_lifecycle_policy(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "DeleteLifecyclePolicy", args)
@@ -467,7 +461,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/DeleteRepository)
 """
-
 @inline delete_repository(aws::AWSConfig=default_aws_config(); args...) = delete_repository(aws, args)
 
 @inline delete_repository(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "DeleteRepository", args)
@@ -530,7 +523,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/DeleteRepositoryPolicy)
 """
-
 @inline delete_repository_policy(aws::AWSConfig=default_aws_config(); args...) = delete_repository_policy(aws, args)
 
 @inline delete_repository_policy(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "DeleteRepositoryPolicy", args)
@@ -574,11 +566,11 @@ The list of image IDs for the requested repository.
 ```
 
 ## `nextToken = ::String`
-The `nextToken` value returned from a previous paginated `DescribeImages` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is `null` when there are no more results to return.
+The `nextToken` value returned from a previous paginated `DescribeImages` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is `null` when there are no more results to return. This option cannot be used when you specify images with `imageIds`.
 
 
 ## `maxResults = ::Int`
-The maximum number of repository results returned by `DescribeImages` in paginated output. When this parameter is used, `DescribeImages` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeImages` request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter is not used, then `DescribeImages` returns up to 100 results and a `nextToken` value, if applicable.
+The maximum number of repository results returned by `DescribeImages` in paginated output. When this parameter is used, `DescribeImages` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeImages` request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter is not used, then `DescribeImages` returns up to 100 results and a `nextToken` value, if applicable. This option cannot be used when you specify images with `imageIds`.
 
 
 ## `filter = ["tagStatus" =>  "TAGGED" or "UNTAGGED"]`
@@ -597,7 +589,6 @@ The filter key and value with which to filter your `DescribeImages` results.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/DescribeImages)
 """
-
 @inline describe_images(aws::AWSConfig=default_aws_config(); args...) = describe_images(aws, args)
 
 @inline describe_images(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "DescribeImages", args)
@@ -629,14 +620,14 @@ A list of repositories to describe. If this parameter is omitted, then all repos
 
 
 ## `nextToken = ::String`
-The `nextToken` value returned from a previous paginated `DescribeRepositories` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is `null` when there are no more results to return.
+The `nextToken` value returned from a previous paginated `DescribeRepositories` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is `null` when there are no more results to return. This option cannot be used when you specify repositories with `repositoryNames`.
 
 **Note**
 > This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.
 
 
 ## `maxResults = ::Int`
-The maximum number of repository results returned by `DescribeRepositories` in paginated output. When this parameter is used, `DescribeRepositories` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeRepositories` request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter is not used, then `DescribeRepositories` returns up to 100 results and a `nextToken` value, if applicable.
+The maximum number of repository results returned by `DescribeRepositories` in paginated output. When this parameter is used, `DescribeRepositories` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `DescribeRepositories` request with the returned `nextToken` value. This value can be between 1 and 100. If this parameter is not used, then `DescribeRepositories` returns up to 100 results and a `nextToken` value, if applicable. This option cannot be used when you specify repositories with `repositoryNames`.
 
 
 
@@ -680,7 +671,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/DescribeRepositories)
 """
-
 @inline describe_repositories(aws::AWSConfig=default_aws_config(); args...) = describe_repositories(aws, args)
 
 @inline describe_repositories(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "DescribeRepositories", args)
@@ -745,7 +735,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/GetAuthorizationToken)
 """
-
 @inline get_authorization_token(aws::AWSConfig=default_aws_config(); args...) = get_authorization_token(aws, args)
 
 @inline get_authorization_token(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "GetAuthorizationToken", args)
@@ -795,7 +784,6 @@ The digest of the image layer to download.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/GetDownloadUrlForLayer)
 """
-
 @inline get_download_url_for_layer(aws::AWSConfig=default_aws_config(); args...) = get_download_url_for_layer(aws, args)
 
 @inline get_download_url_for_layer(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "GetDownloadUrlForLayer", args)
@@ -823,7 +811,7 @@ The AWS account ID associated with the registry that contains the repository. If
 
 
 ## `repositoryName = ::String` -- *Required*
-The name of the repository with the policy to retrieve.
+The name of the repository.
 
 
 
@@ -838,7 +826,6 @@ The name of the repository with the policy to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/GetLifecyclePolicy)
 """
-
 @inline get_lifecycle_policy(aws::AWSConfig=default_aws_config(); args...) = get_lifecycle_policy(aws, args)
 
 @inline get_lifecycle_policy(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "GetLifecyclePolicy", args)
@@ -866,7 +853,7 @@ The AWS account ID associated with the registry that contains the repository. If
 
 
 ## `repositoryName = ::String` -- *Required*
-The name of the repository with the policy to retrieve.
+The name of the repository.
 
 
 ## `imageIds = [[ ... ], ...]`
@@ -879,11 +866,11 @@ The list of imageIDs to be included.
 ```
 
 ## `nextToken = ::String`
-The `nextToken` value returned from a previous paginated  `GetLifecyclePolicyPreviewRequest` request where `maxResults` was used and the  results exceeded the value of that parameter. Pagination continues from the end of the  previous results that returned the `nextToken` value. This value is  `null` when there are no more results to return.
+The `nextToken` value returned from a previous paginated  `GetLifecyclePolicyPreviewRequest` request where `maxResults` was used and the  results exceeded the value of that parameter. Pagination continues from the end of the  previous results that returned the `nextToken` value. This value is  `null` when there are no more results to return. This option cannot be used when you specify images with `imageIds`.
 
 
 ## `maxResults = ::Int`
-The maximum number of repository results returned by `GetLifecyclePolicyPreviewRequest` in  paginated output. When this parameter is used, `GetLifecyclePolicyPreviewRequest` only returns  `maxResults` results in a single page along with a `nextToken`  response element. The remaining results of the initial request can be seen by sending  another `GetLifecyclePolicyPreviewRequest` request with the returned `nextToken`  value. This value can be between 1 and 100. If this  parameter is not used, then `GetLifecyclePolicyPreviewRequest` returns up to  100 results and a `nextToken` value, if  applicable.
+The maximum number of repository results returned by `GetLifecyclePolicyPreviewRequest` in  paginated output. When this parameter is used, `GetLifecyclePolicyPreviewRequest` only returns  `maxResults` results in a single page along with a `nextToken`  response element. The remaining results of the initial request can be seen by sending  another `GetLifecyclePolicyPreviewRequest` request with the returned `nextToken`  value. This value can be between 1 and 100. If this  parameter is not used, then `GetLifecyclePolicyPreviewRequest` returns up to  100 results and a `nextToken` value, if  applicable. This option cannot be used when you specify images with `imageIds`.
 
 
 ## `filter = ["tagStatus" =>  "TAGGED" or "UNTAGGED"]`
@@ -902,7 +889,6 @@ An optional parameter that filters results based on image tag status and all tag
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/GetLifecyclePolicyPreview)
 """
-
 @inline get_lifecycle_policy_preview(aws::AWSConfig=default_aws_config(); args...) = get_lifecycle_policy_preview(aws, args)
 
 @inline get_lifecycle_policy_preview(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "GetLifecyclePolicyPreview", args)
@@ -975,7 +961,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/GetRepositoryPolicy)
 """
-
 @inline get_repository_policy(aws::AWSConfig=default_aws_config(); args...) = get_repository_policy(aws, args)
 
 @inline get_repository_policy(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "GetRepositoryPolicy", args)
@@ -1021,7 +1006,6 @@ The name of the repository to which you intend to upload layers.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/InitiateLayerUpload)
 """
-
 @inline initiate_layer_upload(aws::AWSConfig=default_aws_config(); args...) = initiate_layer_upload(aws, args)
 
 @inline initiate_layer_upload(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "InitiateLayerUpload", args)
@@ -1104,7 +1088,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/ListImages)
 """
-
 @inline list_images(aws::AWSConfig=default_aws_config(); args...) = list_images(aws, args)
 
 @inline list_images(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "ListImages", args)
@@ -1158,7 +1141,6 @@ The tag to associate with the image. This parameter is required for images that 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/PutImage)
 """
-
 @inline put_image(aws::AWSConfig=default_aws_config(); args...) = put_image(aws, args)
 
 @inline put_image(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "PutImage", args)
@@ -1177,7 +1159,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-20
 
 # PutLifecyclePolicy Operation
 
-Creates or updates a lifecycle policy.
+Creates or updates a lifecycle policy. For information about lifecycle policy syntax, see [Lifecycle Policy Template](http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html).
 
 # Arguments
 
@@ -1205,7 +1187,6 @@ The JSON repository policy text to apply to the repository.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/PutLifecyclePolicy)
 """
-
 @inline put_lifecycle_policy(aws::AWSConfig=default_aws_config(); args...) = put_lifecycle_policy(aws, args)
 
 @inline put_lifecycle_policy(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "PutLifecyclePolicy", args)
@@ -1256,7 +1237,6 @@ If the policy you are attempting to set on a repository policy would prevent you
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/SetRepositoryPolicy)
 """
-
 @inline set_repository_policy(aws::AWSConfig=default_aws_config(); args...) = set_repository_policy(aws, args)
 
 @inline set_repository_policy(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "SetRepositoryPolicy", args)
@@ -1303,7 +1283,6 @@ The policy to be evaluated against. If you do not specify a policy, the current 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/StartLifecyclePolicyPreview)
 """
-
 @inline start_lifecycle_policy_preview(aws::AWSConfig=default_aws_config(); args...) = start_lifecycle_policy_preview(aws, args)
 
 @inline start_lifecycle_policy_preview(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "StartLifecyclePolicyPreview", args)
@@ -1365,7 +1344,6 @@ The base64-encoded layer part payload.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/UploadLayerPart)
 """
-
 @inline upload_layer_part(aws::AWSConfig=default_aws_config(); args...) = upload_layer_part(aws, args)
 
 @inline upload_layer_part(aws::AWSConfig, args) = AWSCore.Services.ecr(aws, "UploadLayerPart", args)

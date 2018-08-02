@@ -23,11 +23,17 @@ using AWSCore
 
 # AssociateNode Operation
 
-Associates a new node with the Chef server. This command is an alternative to `knife bootstrap`. For more information about how to disassociate a node, see [DisassociateNode](@ref).
+Associates a new node with the server. For more information about how to disassociate a node, see [DisassociateNode](@ref).
+
+On a Chef server: This command is an alternative to `knife bootstrap`.
+
+Example (Chef): `aws opsworks-cm associate-node --server-name *MyServer* --node-name *MyManagedNode* --engine-attributes "Name=*CHEF_ORGANIZATION*,Value=default" "Name=*CHEF_NODE_PUBLIC_KEY*,Value=*public-key-pem*"`
+
+On a Puppet server, this command is an alternative to the `puppet cert sign` command that signs a Puppet node CSR.
+
+Example (Chef): `aws opsworks-cm associate-node --server-name *MyServer* --node-name *MyManagedNode* --engine-attributes "Name=*PUPPET_NODE_CSR*,Value=*csr-pem*"`
 
 A node can can only be associated with servers that are in a `HEALTHY` state. Otherwise, an `InvalidStateException` is thrown. A `ResourceNotFoundException` is thrown when the server does not exist. A `ValidationException` is raised when parameters of the request are not valid. The AssociateNode API call can be integrated into Auto Scaling configurations, AWS Cloudformation templates, or the user data of a server's instance.
-
-Example: `aws opsworks-cm associate-node --server-name *MyServer* --node-name *MyManagedNode* --engine-attributes "Name=*MyOrganization*,Value=default" "Name=*Chef_node_public_key*,Value=*Public_key_contents*"`
 
 # Arguments
 
@@ -36,17 +42,21 @@ The name of the server with which to associate the node.
 
 
 ## `NodeName = ::String` -- *Required*
-The name of the Chef client node.
+The name of the node.
 
 
 ## `EngineAttributes = [[ ... ], ...]` -- *Required*
 Engine attributes used for associating the node.
 
-**Attributes accepted in a AssociateNode request:**
+**Attributes accepted in a AssociateNode request for Chef**
 
 *   `CHEF_ORGANIZATION`: The Chef organization with which the node is associated. By default only one organization named `default` can exist.
 
 *   `CHEF_NODE_PUBLIC_KEY`: A PEM-formatted public key. This key is required for the `chef-client` agent to access the Chef API.
+
+**Attributes accepted in a AssociateNode request for Puppet**
+
+*   `PUPPET_NODE_CSR`: A PEM-formatted certificate-signing request (CSR) that is created by the node.
 ```
  EngineAttributes = [[
         "Name" =>  ::String,
@@ -66,7 +76,6 @@ Engine attributes used for associating the node.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworkscm-2016-11-01/AssociateNode)
 """
-
 @inline associate_node(aws::AWSConfig=default_aws_config(); args...) = associate_node(aws, args)
 
 @inline associate_node(aws::AWSConfig, args) = AWSCore.Services.opsworkscm(aws, "AssociateNode", args)
@@ -115,7 +124,6 @@ A user-defined description of the backup.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworkscm-2016-11-01/CreateBackup)
 """
-
 @inline create_backup(aws::AWSConfig=default_aws_config(); args...) = create_backup(aws, args)
 
 @inline create_backup(aws::AWSConfig, args) = AWSCore.Services.opsworkscm(aws, "CreateBackup", args)
@@ -140,9 +148,13 @@ This operation is asynchronous.
 
 A `LimitExceededException` is thrown when you have created the maximum number of servers (10). A `ResourceAlreadyExistsException` is thrown when a server with the same name already exists in the account. A `ResourceNotFoundException` is thrown when you specify a backup ID that is not valid or is for a backup that does not exist. A `ValidationException` is thrown when parameters of the request are not valid.
 
-If you do not specify a security group by adding the `SecurityGroupIds` parameter, AWS OpsWorks creates a new security group. The default security group opens the Chef server to the world on TCP port 443. If a KeyName is present, AWS OpsWorks enables SSH access. SSH is also open to the world on TCP port 22.
+If you do not specify a security group by adding the `SecurityGroupIds` parameter, AWS OpsWorks creates a new security group.
 
-By default, the Chef Server is accessible from any IP address. We recommend that you update your security group rules to allow access from known IP addresses and address ranges only. To edit security group rules, open Security Groups in the navigation pane of the EC2 management console.
+*Chef Automate:* The default security group opens the Chef server to the world on TCP port 443. If a KeyName is present, AWS OpsWorks enables SSH access. SSH is also open to the world on TCP port 22.
+
+*Puppet Enterprise:* The default security group opens TCP ports 22, 443, 4433, 8140, 8142, 8143, and 8170. If a KeyName is present, AWS OpsWorks enables SSH access. SSH is also open to the world on TCP port 22.
+
+By default, your server is accessible from any IP address. We recommend that you update your security group rules to allow access from known IP addresses and address ranges only. To edit security group rules, open Security Groups in the navigation pane of the EC2 management console.
 
 # Arguments
 
@@ -155,25 +167,29 @@ Enable or disable scheduled backups. Valid values are `true` or `false`. The def
 
 
 ## `Engine = ::String`
-The configuration management engine to use. Valid values include `Chef`.
+The configuration management engine to use. Valid values include `Chef` and `Puppet`.
 
 
 ## `EngineModel = ::String`
-The engine model, or option. Valid values include `Single`.
+The engine model of the server. Valid values in this release include `Monolithic` for Puppet and `Single` for Chef.
 
 
 ## `EngineVersion = ::String`
-The major release version of the engine that you want to use. Values depend on the engine that you choose.
+The major release version of the engine that you want to use. For a Chef server, the valid value for EngineVersion is currently `12`. For a Puppet server, the valid value is `2017`.
 
 
 ## `EngineAttributes = [[ ... ], ...]`
 Optional engine attributes on a specified server.
 
-**Attributes accepted in a createServer request:**
+**Attributes accepted in a Chef createServer request:**
 
-*   `CHEF_PIVOTAL_KEY`: A base64-encoded RSA private key that is not stored by AWS OpsWorks for Chef. This private key is required to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one is generated and returned in the response.
+*   `CHEF_PIVOTAL_KEY`: A base64-encoded RSA private key that is not stored by AWS OpsWorks for Chef Automate. This private key is required to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one is generated and returned in the response.
 
 *   `CHEF_DELIVERY_ADMIN_PASSWORD`: The password for the administrative user in the Chef Automate GUI. The password length is a minimum of eight characters, and a maximum of 32. The password can contain letters, numbers, and special characters (!/@#\$%^&+=_). The password must contain at least one lower case letter, one upper case letter, one number, and one special character. When no CHEF_DELIVERY_ADMIN_PASSWORD is set, one is generated and returned in the response.
+
+**Attributes accepted in a Puppet createServer request:**
+
+*   `PUPPET_ADMIN_PASSWORD`: To work with the Puppet Enterprise console, a password must use ASCII characters.
 ```
  EngineAttributes = [[
         "Name" =>  ::String,
@@ -182,7 +198,7 @@ Optional engine attributes on a specified server.
 ```
 
 ## `BackupRetentionCount = ::Int`
-The number of automated backups that you want to keep. Whenever a new backup is created, AWS OpsWorks for Chef Automate deletes the oldest backups if this number is exceeded. The default value is `1`.
+The number of automated backups that you want to keep. Whenever a new backup is created, AWS OpsWorks CM deletes the oldest backups if this number is exceeded. The default value is `1`.
 
 
 ## `ServerName = ::String` -- *Required*
@@ -194,7 +210,7 @@ The ARN of the instance profile that your Amazon EC2 instances use. Although the
 
 
 ## `InstanceType = ::String` -- *Required*
-The Amazon EC2 instance type to use. Valid values must be specified in the following format: `^([cm][34]|t2).*` For example, `m4.large`. Valid values are `t2.medium`, `m4.large`, or `m4.2xlarge`.
+The Amazon EC2 instance type to use. For example, `m4.large`. Recommended instance types include `t2.medium` and greater, `m4.*`, or `c4.xlarge` and greater.
 
 
 ## `KeyPair = ::String`
@@ -202,13 +218,13 @@ The Amazon EC2 key pair to set for the instance. This parameter is optional; if 
 
 
 ## `PreferredMaintenanceWindow = ::String`
-The start time for a one-hour period each week during which AWS OpsWorks for Chef Automate performs maintenance on the instance. Valid values must be specified in the following format: `DDD:HH:MM`. The specified time is in coordinated universal time (UTC). The default value is a random one-hour period on Tuesday, Wednesday, or Friday. See `TimeWindowDefinition` for more information.
+The start time for a one-hour period each week during which AWS OpsWorks CM performs maintenance on the instance. Valid values must be specified in the following format: `DDD:HH:MM`. The specified time is in coordinated universal time (UTC). The default value is a random one-hour period on Tuesday, Wednesday, or Friday. See `TimeWindowDefinition` for more information.
 
 **Example:** `Mon:08:00`, which represents a start time of every Monday at 08:00 UTC. (8:00 a.m.)
 
 
 ## `PreferredBackupWindow = ::String`
-The start time for a one-hour period during which AWS OpsWorks for Chef Automate backs up application-level data on your server if automated backups are enabled. Valid values must be specified in one of the following formats:
+The start time for a one-hour period during which AWS OpsWorks CM backs up application-level data on your server if automated backups are enabled. Valid values must be specified in one of the following formats:
 
 *   `HH:MM` for daily backups
 
@@ -224,11 +240,11 @@ The specified time is in coordinated universal time (UTC). The default value is 
 ## `SecurityGroupIds = [::String, ...]`
 A list of security group IDs to attach to the Amazon EC2 instance. If you add this parameter, the specified security groups must be within the VPC that is specified by `SubnetIds`.
 
-If you do not specify this parameter, AWS OpsWorks for Chef Automate creates one new security group that uses TCP ports 22 and 443, open to 0.0.0.0/0 (everyone).
+If you do not specify this parameter, AWS OpsWorks CM creates one new security group that uses TCP ports 22 and 443, open to 0.0.0.0/0 (everyone).
 
 
 ## `ServiceRoleArn = ::String` -- *Required*
-The service role that the AWS OpsWorks for Chef Automate service backend uses to work with your account. Although the AWS OpsWorks management console typically creates the service role for you, if you are using the AWS CLI or API commands, run the service-role-creation.yaml AWS CloudFormation template, located at https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml. This template creates a CloudFormation stack that includes the service role that you need.
+The service role that the AWS OpsWorks CM service backend uses to work with your account. Although the AWS OpsWorks management console typically creates the service role for you, if you are using the AWS CLI or API commands, run the service-role-creation.yaml AWS CloudFormation template, located at https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml. This template creates a CloudFormation stack that includes the service role and instance profile that you need.
 
 
 ## `SubnetIds = [::String, ...]`
@@ -242,7 +258,7 @@ For more information about supported Amazon EC2 platforms, see [Supported Platfo
 
 
 ## `BackupId = ::String`
-If you specify this field, AWS OpsWorks for Chef Automate creates the server by using the backup represented by BackupId.
+If you specify this field, AWS OpsWorks CM creates the server by using the backup represented by BackupId.
 
 
 
@@ -257,7 +273,6 @@ If you specify this field, AWS OpsWorks for Chef Automate creates the server by 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworkscm-2016-11-01/CreateServer)
 """
-
 @inline create_server(aws::AWSConfig=default_aws_config(); args...) = create_server(aws, args)
 
 @inline create_server(aws::AWSConfig, args) = AWSCore.Services.opsworkscm(aws, "CreateServer", args)
@@ -298,7 +313,6 @@ The ID of the backup to delete. Run the DescribeBackups command to get a list of
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworkscm-2016-11-01/DeleteBackup)
 """
-
 @inline delete_backup(aws::AWSConfig=default_aws_config(); args...) = delete_backup(aws, args)
 
 @inline delete_backup(aws::AWSConfig, args) = AWSCore.Services.opsworkscm(aws, "DeleteBackup", args)
@@ -317,7 +331,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 # DeleteServer Operation
 
-Deletes the server and the underlying AWS CloudFormation stack (including the server's EC2 instance). When you run this command, the server state is updated to `DELETING`. After the server is deleted, it is no longer returned by `DescribeServer` requests. If the AWS CloudFormation stack cannot be deleted, the server cannot be deleted.
+Deletes the server and the underlying AWS CloudFormation stacks (including the server's EC2 instance). When you run this command, the server state is updated to `DELETING`. After the server is deleted, it is no longer returned by `DescribeServer` requests. If the AWS CloudFormation stack cannot be deleted, the server cannot be deleted.
 
 This operation is asynchronous.
 
@@ -341,7 +355,6 @@ The ID of the server to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworkscm-2016-11-01/DeleteServer)
 """
-
 @inline delete_server(aws::AWSConfig=default_aws_config(); args...) = delete_server(aws, args)
 
 @inline delete_server(aws::AWSConfig, args) = AWSCore.Services.opsworkscm(aws, "DeleteServer", args)
@@ -374,7 +387,6 @@ This operation is synchronous.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworkscm-2016-11-01/DescribeAccountAttributes)
 """
-
 @inline describe_account_attributes(aws::AWSConfig=default_aws_config(); args...) = describe_account_attributes(aws, args)
 
 @inline describe_account_attributes(aws::AWSConfig, args) = AWSCore.Services.opsworkscm(aws, "DescribeAccountAttributes", args)
@@ -429,7 +441,6 @@ To receive a paginated response, use this parameter to specify the maximum numbe
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworkscm-2016-11-01/DescribeBackups)
 """
-
 @inline describe_backups(aws::AWSConfig=default_aws_config(); args...) = describe_backups(aws, args)
 
 @inline describe_backups(aws::AWSConfig, args) = AWSCore.Services.opsworkscm(aws, "DescribeBackups", args)
@@ -480,7 +491,6 @@ To receive a paginated response, use this parameter to specify the maximum numbe
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworkscm-2016-11-01/DescribeEvents)
 """
-
 @inline describe_events(aws::AWSConfig=default_aws_config(); args...) = describe_events(aws, args)
 
 @inline describe_events(aws::AWSConfig, args) = AWSCore.Services.opsworkscm(aws, "DescribeEvents", args)
@@ -525,7 +535,6 @@ The name of the server from which to disassociate the node.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworkscm-2016-11-01/DescribeNodeAssociationStatus)
 """
-
 @inline describe_node_association_status(aws::AWSConfig=default_aws_config(); args...) = describe_node_association_status(aws, args)
 
 @inline describe_node_association_status(aws::AWSConfig, args) = AWSCore.Services.opsworkscm(aws, "DescribeNodeAssociationStatus", args)
@@ -544,7 +553,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 # DescribeServers Operation
 
-Lists all configuration management servers that are identified with your account. Only the stored results from Amazon DynamoDB are returned. AWS OpsWorks for Chef Automate does not query other services.
+Lists all configuration management servers that are identified with your account. Only the stored results from Amazon DynamoDB are returned. AWS OpsWorks CM does not query other services.
 
 This operation is synchronous.
 
@@ -576,7 +585,6 @@ To receive a paginated response, use this parameter to specify the maximum numbe
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworkscm-2016-11-01/DescribeServers)
 """
-
 @inline describe_servers(aws::AWSConfig=default_aws_config(); args...) = describe_servers(aws, args)
 
 @inline describe_servers(aws::AWSConfig, args) = AWSCore.Services.opsworkscm(aws, "DescribeServers", args)
@@ -595,7 +603,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 # DisassociateNode Operation
 
-Disassociates a node from a Chef server, and removes the node from the Chef server's managed nodes. After a node is disassociated, the node key pair is no longer valid for accessing the Chef API. For more information about how to associate a node, see [AssociateNode](@ref).
+Disassociates a node from an AWS OpsWorks CM server, and removes the node from the server's managed nodes. After a node is disassociated, the node key pair is no longer valid for accessing the configuration manager's API. For more information about how to associate a node, see [AssociateNode](@ref).
 
 A node can can only be disassociated from a server that is in a `HEALTHY` state. Otherwise, an `InvalidStateException` is thrown. A `ResourceNotFoundException` is thrown when the server does not exist. A `ValidationException` is raised when parameters of the request are not valid.
 
@@ -606,13 +614,13 @@ The name of the server from which to disassociate the node.
 
 
 ## `NodeName = ::String` -- *Required*
-The name of the Chef client node.
+The name of the client node.
 
 
 ## `EngineAttributes = [[ ... ], ...]`
-Engine attributes used for disassociating the node.
+Engine attributes that are used for disassociating the node. No attributes are required for Puppet.
 
-**Attributes accepted in a DisassociateNode request:**
+**Attributes required in a DisassociateNode request for Chef**
 
 *   `CHEF_ORGANIZATION`: The Chef organization with which the node was associated. By default only one organization named `default` can exist.
 ```
@@ -634,7 +642,6 @@ Engine attributes used for disassociating the node.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworkscm-2016-11-01/DisassociateNode)
 """
-
 @inline disassociate_node(aws::AWSConfig=default_aws_config(); args...) = disassociate_node(aws, args)
 
 @inline disassociate_node(aws::AWSConfig, args) = AWSCore.Services.opsworkscm(aws, "DisassociateNode", args)
@@ -689,7 +696,6 @@ The name of the key pair to set on the new EC2 instance. This can be helpful if 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworkscm-2016-11-01/RestoreServer)
 """
-
 @inline restore_server(aws::AWSConfig=default_aws_config(); args...) = restore_server(aws, args)
 
 @inline restore_server(aws::AWSConfig, args) = AWSCore.Services.opsworkscm(aws, "RestoreServer", args)
@@ -739,7 +745,6 @@ Engine attributes that are specific to the server on which you want to run maint
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworkscm-2016-11-01/StartMaintenance)
 """
-
 @inline start_maintenance(aws::AWSConfig=default_aws_config(); args...) = start_maintenance(aws, args)
 
 @inline start_maintenance(aws::AWSConfig, args) = AWSCore.Services.opsworkscm(aws, "StartMaintenance", args)
@@ -796,7 +801,6 @@ The name of the server to update.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworkscm-2016-11-01/UpdateServer)
 """
-
 @inline update_server(aws::AWSConfig=default_aws_config(); args...) = update_server(aws, args)
 
 @inline update_server(aws::AWSConfig, args) = AWSCore.Services.opsworkscm(aws, "UpdateServer", args)
@@ -815,7 +819,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opswor
 
 # UpdateServerEngineAttributes Operation
 
-Updates engine-specific attributes on a specified server. The server enters the `MODIFYING` state when this operation is in progress. Only one update can occur at a time. You can use this command to reset the Chef server's private key (`CHEF_PIVOTAL_KEY`).
+Updates engine-specific attributes on a specified server. The server enters the `MODIFYING` state when this operation is in progress. Only one update can occur at a time. You can use this command to reset a Chef server's private key (`CHEF_PIVOTAL_KEY`), a Chef server's admin password (`CHEF_DELIVERY_ADMIN_PASSWORD`), or a Puppet server's admin password (`PUPPET_ADMIN_PASSWORD`).
 
 This operation is asynchronous.
 
@@ -847,7 +851,6 @@ The value to set for the attribute.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/opsworkscm-2016-11-01/UpdateServerEngineAttributes)
 """
-
 @inline update_server_engine_attributes(aws::AWSConfig=default_aws_config(); args...) = update_server_engine_attributes(aws, args)
 
 @inline update_server_engine_attributes(aws::AWSConfig, args) = AWSCore.Services.opsworkscm(aws, "UpdateServerEngineAttributes", args)

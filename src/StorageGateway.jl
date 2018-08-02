@@ -23,7 +23,7 @@ using AWSCore
 
 # ActivateGateway Operation
 
-Activates the gateway you previously deployed on your host. For more information, see [Activate the AWS Storage Gateway](http://docs.aws.amazon.com/storagegateway/latest/userguide/GettingStartedActivateGateway-common.html). In the activation process, you specify information such as the region you want to use for storing snapshots or tapes, the time zone for scheduled snapshots the gateway snapshot schedule window, an activation key, and a name for your gateway. The activation process also associates your gateway with your account; for more information, see [UpdateGatewayInformation](@ref).
+Activates the gateway you previously deployed on your host. In the activation process, you specify information such as the region you want to use for storing snapshots or tapes, the time zone for scheduled snapshots the gateway snapshot schedule window, an activation key, and a name for your gateway. The activation process also associates your gateway with your account; for more information, see [UpdateGatewayInformation](@ref).
 
 **Note**
 > You must turn on the gateway VM before you can activate your gateway.
@@ -32,6 +32,8 @@ Activates the gateway you previously deployed on your host. For more information
 
 ## `ActivationKey = ::String` -- *Required*
 Your gateway activation key. You can obtain the activation key by sending an HTTP GET request with redirects enabled to the gateway IP address (port 80). The redirect URL returned in the response provides you the activation key for your gateway in the query string parameter `activationKey`. It may also include other activation-related parameters, however, these are merely defaults -- the arguments you pass to the `ActivateGateway` API call determine the actual configuration of your gateway.
+
+For more information, see https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html in the Storage Gateway User Guide.
 
 
 ## `GatewayName = ::String` -- *Required*
@@ -45,7 +47,7 @@ A value that indicates the time zone you want to set for the gateway. The time z
 ## `GatewayRegion = ::String` -- *Required*
 A value that indicates the region where you want to store your data. The gateway region specified must be the same region as the region in your `Host` header in the request. For more information about available regions and endpoints for AWS Storage Gateway, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in the *Amazon Web Services Glossary*.
 
-Valid Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1", "eu-west-1", "eu-central-1", "eu-west-2", "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "sa-east-1"
+Valid Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1", "eu-west-1", "eu-central-1", "eu-west-2", "eu-west-3", "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "sa-east-1"
 
 
 ## `GatewayType = ::String`
@@ -102,7 +104,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ActivateGateway)
 """
-
 @inline activate_gateway(aws::AWSConfig=default_aws_config(); args...) = activate_gateway(aws, args)
 
 @inline activate_gateway(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "ActivateGateway", args)
@@ -121,7 +122,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # AddCache Operation
 
-Configures one or more gateway local disks as cache for a gateway. This operation is only supported in the cached volume, tape and file gateway architectures (see [Storage Gateway Concepts](http://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html)).
+Configures one or more gateway local disks as cache for a gateway. This operation is only supported in the cached volume, tape and file gateway type (see [Storage Gateway Concepts](http://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html)).
 
 In the request, you specify the gateway Amazon Resource Name (ARN) to which you want to add cache, and one or more disk IDs that you want to configure as cache.
 
@@ -169,7 +170,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AddCache)
 """
-
 @inline add_cache(aws::AWSConfig=default_aws_config(); args...) = add_cache(aws, args)
 
 @inline add_cache(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "AddCache", args)
@@ -252,7 +252,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AddTagsToResource)
 """
-
 @inline add_tags_to_resource(aws::AWSConfig=default_aws_config(); args...) = add_tags_to_resource(aws, args)
 
 @inline add_tags_to_resource(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "AddTagsToResource", args)
@@ -271,7 +270,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # AddUploadBuffer Operation
 
-Configures one or more gateway local disks as upload buffer for a specified gateway. This operation is supported for the stored volume, cached volume and tape gateway architectures.
+Configures one or more gateway local disks as upload buffer for a specified gateway. This operation is supported for the stored volume, cached volume and tape gateway types.
 
 In the request, you specify the gateway Amazon Resource Name (ARN) to which you want to add upload buffer, and one or more disk IDs that you want to configure as upload buffer.
 
@@ -319,7 +318,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AddUploadBuffer)
 """
-
 @inline add_upload_buffer(aws::AWSConfig=default_aws_config(); args...) = add_upload_buffer(aws, args)
 
 @inline add_upload_buffer(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "AddUploadBuffer", args)
@@ -338,7 +336,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # AddWorkingStorage Operation
 
-Configures one or more gateway local disks as working storage for a gateway. This operation is only supported in the stored volume gateway architecture. This operation is deprecated in cached volume API version 20120630. Use [AddUploadBuffer](@ref) instead.
+Configures one or more gateway local disks as working storage for a gateway. This operation is only supported in the stored volume gateway type. This operation is deprecated in cached volume API version 20120630. Use [AddUploadBuffer](@ref) instead.
 
 **Note**
 > Working storage is also referred to as upload buffer. You can also use the [AddUploadBuffer](@ref) operation to add upload buffer to a stored volume gateway.
@@ -389,7 +387,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AddWorkingStorage)
 """
-
 @inline add_working_storage(aws::AWSConfig=default_aws_config(); args...) = add_working_storage(aws, args)
 
 @inline add_working_storage(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "AddWorkingStorage", args)
@@ -408,7 +405,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # CancelArchival Operation
 
-Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated. This operation is only supported in the tape gateway architecture.
+Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated. This operation is only supported in the tape gateway type.
 
 # Arguments
 
@@ -451,7 +448,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CancelArchival)
 """
-
 @inline cancel_archival(aws::AWSConfig=default_aws_config(); args...) = cancel_archival(aws, args)
 
 @inline cancel_archival(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "CancelArchival", args)
@@ -470,7 +466,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # CancelRetrieval Operation
 
-Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to a gateway after the retrieval process is initiated. The virtual tape is returned to the VTS.
+Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to a gateway after the retrieval process is initiated. The virtual tape is returned to the VTS. This operation is only supported in the tape gateway type.
 
 # Arguments
 
@@ -513,7 +509,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CancelRetrieval)
 """
-
 @inline cancel_retrieval(aws::AWSConfig=default_aws_config(); args...) = cancel_retrieval(aws, args)
 
 @inline cancel_retrieval(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "CancelRetrieval", args)
@@ -532,7 +527,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # CreateCachediSCSIVolume Operation
 
-Creates a cached volume on a specified cached volume gateway. This operation is only supported in the cached volume gateway architecture.
+Creates a cached volume on a specified cached volume gateway. This operation is only supported in the cached volume gateway type.
 
 **Note**
 > Cache storage must be allocated to the gateway before you can create a cached volume. Use the [AddCache](@ref) operation to add cache storage to a gateway.
@@ -548,15 +543,15 @@ Optionally, you can provide the ARN for an existing volume as the `SourceVolumeA
 
 
 ## `VolumeSizeInBytes = ::Int` -- *Required*
-
+The size of the volume in bytes.
 
 
 ## `SnapshotId = ::String`
-
+The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the new cached volume. Specify this field if you want to create the iSCSI storage volume from a snapshot otherwise do not include this field. To list snapshots for your account use [DescribeSnapshots](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html) in the *Amazon Elastic Compute Cloud API Reference*.
 
 
 ## `TargetName = ::String` -- *Required*
-
+The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. For example, specifying `TargetName` as *myvolume* results in the target ARN of arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume. The target name must be unique across all volumes of a gateway.
 
 
 ## `SourceVolumeARN = ::String`
@@ -564,11 +559,21 @@ The ARN for an existing volume. Specifying this ARN makes the new volume into an
 
 
 ## `NetworkInterfaceId = ::String` -- *Required*
+The network interface of the gateway on which to expose the iSCSI target. Only IPv4 addresses are accepted. Use [DescribeGatewayInformation](@ref) to get a list of the network interfaces available on a gateway.
 
+Valid Values: A valid IP address.
 
 
 ## `ClientToken = ::String` -- *Required*
+A unique identifier that you use to retry a request. If you retry a request, use the same `ClientToken` you specified in the initial request.
 
+
+## `KMSEncrypted = ::Bool`
+True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.
+
+
+## `KMSKey = ::String`
+The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional.
 
 
 
@@ -607,7 +612,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateCachediSCSIVolume)
 """
-
 @inline create_cachedi_scsivolume(aws::AWSConfig=default_aws_config(); args...) = create_cachedi_scsivolume(aws, args)
 
 @inline create_cachedi_scsivolume(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "CreateCachediSCSIVolume", args)
@@ -626,7 +630,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # CreateNFSFileShare Operation
 
-Creates a file share on an existing file gateway. In Storage Gateway, a file share is a file system mount point backed by Amazon S3 cloud storage. Storage Gateway exposes file shares using a Network File System (NFS) interface. This operation is only supported in the file gateway architecture.
+Creates a Network File System (NFS) file share on an existing file gateway. In Storage Gateway, a file share is a file system mount point backed by Amazon S3 cloud storage. Storage Gateway exposes file shares using a NFS interface. This operation is only supported for file gateways.
 
 **Important**
 > File gateway requires AWS Security Token Service (AWS STS) to be activated to enable you create a file share. Make sure AWS STS is activated in the region you are creating your file gateway in. If AWS STS is not activated in the region, activate it. For information about how to activate AWS STS, see Activating and Deactivating AWS STS in an AWS Region in the AWS Identity and Access Management User Guide.
@@ -659,7 +663,7 @@ True to use Amazon S3 server side encryption with your own AWS KMS key, or false
 
 
 ## `KMSKey = ::String`
-The KMS key used for Amazon S3 server side encryption. This value can only be set when KmsEncrypted is true. Optional.
+The Amazon Resource Name (ARN) AWS KMS key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional.
 
 
 ## `Role = ::String` -- *Required*
@@ -671,7 +675,11 @@ The ARN of the backed storage used for storing file data.
 
 
 ## `DefaultStorageClass = ::String`
-The default storage class for objects put into an Amazon S3 bucket by file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.
+The default storage class for objects put into an Amazon S3 bucket by the file gateway. Possible values are `S3_STANDARD`, `S3_STANDARD_IA`, or `S3_ONEZONE_IA`. If this field is not populated, the default value `S3_STANDARD` is used. Optional.
+
+
+## `ObjectACL = "private", "public-read", "public-read-write", "authenticated-read", "bucket-owner-read", "bucket-owner-full-control" or "aws-exec-read"`
+A value that sets the access control list permission for objects in the S3 bucket that a file gateway puts objects into. The default value is "private".
 
 
 ## `ClientList = [::String, ...]`
@@ -681,15 +689,23 @@ The list of clients that are allowed to access the file gateway. The list must c
 ## `Squash = ::String`
 Maps a user to anonymous user. Valid options are the following:
 
-*   "RootSquash" - Only root is mapped to anonymous user.
+*   `RootSquash` - Only root is mapped to anonymous user.
 
-*   "NoSquash" - No one is mapped to anonymous user.
+*   `NoSquash` - No one is mapped to anonymous user
 
-*   "AllSquash" - Everyone is mapped to anonymous user.
+*   `AllSquash` - Everyone is mapped to anonymous user.
 
 
 ## `ReadOnly = ::Bool`
-Sets the write status of a file share: "true" if the write status is read-only, and otherwise "false".
+A value that sets the write status of a file share. This value is true if the write status is read-only, and otherwise false.
+
+
+## `GuessMIMETypeEnabled = ::Bool`
+A value that enables guessing of the MIME type for uploaded objects based on file extensions. Set this value to true to enable MIME type guessing, and otherwise to false. The default value is true.
+
+
+## `RequesterPays = ::Bool`
+A value that sets the access control list permission for objects in the Amazon S3 bucket that a file gateway puts objects into. The default value is `private`.
 
 
 
@@ -704,12 +720,108 @@ Sets the write status of a file share: "true" if the write status is read-only, 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateNFSFileShare)
 """
-
 @inline create_nfsfile_share(aws::AWSConfig=default_aws_config(); args...) = create_nfsfile_share(aws, args)
 
 @inline create_nfsfile_share(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "CreateNFSFileShare", args)
 
 @inline create_nfsfile_share(args) = create_nfsfile_share(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.StorageGateway.create_smbfile_share
+    create_smbfile_share([::AWSConfig], arguments::Dict)
+    create_smbfile_share([::AWSConfig]; ClientToken=, GatewayARN=, Role=, LocationARN=, <keyword arguments>)
+
+    using AWSCore.Services.storagegateway
+    storagegateway([::AWSConfig], "CreateSMBFileShare", arguments::Dict)
+    storagegateway([::AWSConfig], "CreateSMBFileShare", ClientToken=, GatewayARN=, Role=, LocationARN=, <keyword arguments>)
+
+# CreateSMBFileShare Operation
+
+Creates a Server Message Block (SMB) file share on an existing file gateway. In Storage Gateway, a file share is a file system mount point backed by Amazon S3 cloud storage. Storage Gateway expose file shares using a SMB interface. This operation is only supported for file gateways.
+
+**Important**
+> File gateways require AWS Security Token Service (AWS STS) to be activated to enable you to create a file share. Make sure that AWS STS is activated in the AWS Region you are creating your file gateway in. If AWS STS is not activated in this AWS Region, activate it. For information about how to activate AWS STS, see [Activating and Deactivating AWS STS in an AWS Region](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html) in the *AWS Identity and Access Management User Guide.*
+
+File gateways don't support creating hard or symbolic links on a file share.
+
+# Arguments
+
+## `ClientToken = ::String` -- *Required*
+A unique string value that you supply that is used by file gateway to ensure idempotent file share creation.
+
+
+## `GatewayARN = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the file gateway on which you want to create a file share.
+
+
+## `KMSEncrypted = ::Bool`
+True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.
+
+
+## `KMSKey = ::String`
+The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional.
+
+
+## `Role = ::String` -- *Required*
+The ARN of the AWS Identity and Access Management (IAM) role that a file gateway assumes when it accesses the underlying storage.
+
+
+## `LocationARN = ::String` -- *Required*
+The ARN of the backed storage used for storing file data.
+
+
+## `DefaultStorageClass = ::String`
+The default storage class for objects put into an Amazon S3 bucket by the file gateway. Possible values are `S3_STANDARD`, `S3_STANDARD_IA`, or `S3_ONEZONE_IA`. If this field is not populated, the default value `S3_STANDARD` is used. Optional.
+
+
+## `ObjectACL = "private", "public-read", "public-read-write", "authenticated-read", "bucket-owner-read", "bucket-owner-full-control" or "aws-exec-read"`
+A value that sets the access control list permission for objects in the S3 bucket that a file gateway puts objects into. The default value is "private".
+
+
+## `ReadOnly = ::Bool`
+A value that sets the write status of a file share. This value is true if the write status is read-only, and otherwise false.
+
+
+## `GuessMIMETypeEnabled = ::Bool`
+A value that enables guessing of the MIME type for uploaded objects based on file extensions. Set this value to true to enable MIME type guessing, and otherwise to false. The default value is true.
+
+
+## `RequesterPays = ::Bool`
+A value that sets the access control list permission for objects in the Amazon S3 bucket that a file gateway puts objects into. The default value is `private`.
+
+
+## `ValidUserList = [::String, ...]`
+A list of users or groups in the Active Directory that are allowed to access the file share. A group must be prefixed with the @ character. For example `@group1`. Can only be set if Authentication is set to `ActiveDirectory`.
+
+
+## `InvalidUserList = [::String, ...]`
+A list of users or groups in the Active Directory that are not allowed to access the file share. A group must be prefixed with the @ character. For example `@group1`. Can only be set if Authentication is set to `ActiveDirectory`.
+
+
+## `Authentication = ::String`
+The authentication method that users use to access the file share.
+
+Valid values are `ActiveDirectory` or `GuestAccess`. The default is `ActiveDirectory`.
+
+
+
+
+# Returns
+
+`CreateSMBFileShareOutput`
+
+# Exceptions
+
+`InvalidGatewayRequestException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateSMBFileShare)
+"""
+@inline create_smbfile_share(aws::AWSConfig=default_aws_config(); args...) = create_smbfile_share(aws, args)
+
+@inline create_smbfile_share(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "CreateSMBFileShare", args)
+
+@inline create_smbfile_share(args) = create_smbfile_share(default_aws_config(), args)
 
 
 """
@@ -727,7 +839,7 @@ Initiates a snapshot of a volume.
 
 AWS Storage Gateway provides the ability to back up point-in-time snapshots of your data to Amazon Simple Storage (S3) for durable off-site recovery, as well as import the data to an Amazon Elastic Block Store (EBS) volume in Amazon Elastic Compute Cloud (EC2). You can take snapshots of your gateway volume on a scheduled or ad-hoc basis. This API enables you to take ad-hoc snapshot. For more information, see [Editing a Snapshot Schedule](http://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot).
 
-In the CreateSnapshot request you identify the volume by providing its Amazon Resource Name (ARN). You must also provide description for the snapshot. When AWS Storage Gateway takes the snapshot of specified volume, the snapshot and description appears in the AWS Storage Gateway Console. In response, AWS Storage Gateway returns you a snapshot ID. You can use this snapshot ID to check the snapshot progress or later use it when you want to create a volume from a snapshot. This operation is only supported in stored and cached volume gateway architecture.
+In the CreateSnapshot request you identify the volume by providing its Amazon Resource Name (ARN). You must also provide description for the snapshot. When AWS Storage Gateway takes the snapshot of specified volume, the snapshot and description appears in the AWS Storage Gateway Console. In response, AWS Storage Gateway returns you a snapshot ID. You can use this snapshot ID to check the snapshot progress or later use it when you want to create a volume from a snapshot. This operation is only supported in stored and cached volume gateway type.
 
 **Note**
 > To list or delete a snapshot, you must use the Amazon EC2 API. For more information, see DescribeSnapshots or DeleteSnapshot in the [EC2 API reference](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html).
@@ -777,7 +889,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateSnapshot)
 """
-
 @inline create_snapshot(aws::AWSConfig=default_aws_config(); args...) = create_snapshot(aws, args)
 
 @inline create_snapshot(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "CreateSnapshot", args)
@@ -796,7 +907,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # CreateSnapshotFromVolumeRecoveryPoint Operation
 
-Initiates a snapshot of a gateway from a volume recovery point. This operation is only supported in the cached volume gateway architecture.
+Initiates a snapshot of a gateway from a volume recovery point. This operation is only supported in the cached volume gateway type.
 
 A volume recovery point is a point in time at which all data of the volume is consistent and from which you can create a snapshot. To get a list of volume recovery point for cached volume gateway, use [ListVolumeRecoveryPoints](@ref).
 
@@ -848,7 +959,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateSnapshotFromVolumeRecoveryPoint)
 """
-
 @inline create_snapshot_from_volume_recovery_point(aws::AWSConfig=default_aws_config(); args...) = create_snapshot_from_volume_recovery_point(aws, args)
 
 @inline create_snapshot_from_volume_recovery_point(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "CreateSnapshotFromVolumeRecoveryPoint", args)
@@ -867,7 +977,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # CreateStorediSCSIVolume Operation
 
-Creates a volume on a specified gateway. This operation is only supported in the stored volume gateway architecture.
+Creates a volume on a specified gateway. This operation is only supported in the stored volume gateway type.
 
 The size of the volume to create is inferred from the disk size. You can choose to preserve existing data on the disk, create volume from an existing snapshot, or create an empty volume. If you choose to create an empty gateway volume, then any existing data on the disk is erased.
 
@@ -901,6 +1011,14 @@ The name of the iSCSI target used by initiators to connect to the target and as 
 The network interface of the gateway on which to expose the iSCSI target. Only IPv4 addresses are accepted. Use [DescribeGatewayInformation](@ref) to get a list of the network interfaces available on a gateway.
 
 Valid Values: A valid IP address.
+
+
+## `KMSEncrypted = ::Bool`
+True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.
+
+
+## `KMSKey = ::String`
+The Amazon Resource Name (ARN) of the KMS key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional.
 
 
 
@@ -940,7 +1058,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateStorediSCSIVolume)
 """
-
 @inline create_storedi_scsivolume(aws::AWSConfig=default_aws_config(); args...) = create_storedi_scsivolume(aws, args)
 
 @inline create_storedi_scsivolume(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "CreateStorediSCSIVolume", args)
@@ -951,15 +1068,15 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 """
     using AWSSDK.StorageGateway.create_tape_with_barcode
     create_tape_with_barcode([::AWSConfig], arguments::Dict)
-    create_tape_with_barcode([::AWSConfig]; GatewayARN=, TapeSizeInBytes=, TapeBarcode=)
+    create_tape_with_barcode([::AWSConfig]; GatewayARN=, TapeSizeInBytes=, TapeBarcode=, <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "CreateTapeWithBarcode", arguments::Dict)
-    storagegateway([::AWSConfig], "CreateTapeWithBarcode", GatewayARN=, TapeSizeInBytes=, TapeBarcode=)
+    storagegateway([::AWSConfig], "CreateTapeWithBarcode", GatewayARN=, TapeSizeInBytes=, TapeBarcode=, <keyword arguments>)
 
 # CreateTapeWithBarcode Operation
 
-Creates a virtual tape by using your own barcode. You write data to the virtual tape and then archive the tape. A barcode is unique and can not be reused if it has already been used on a tape . This applies to barcodes used on deleted tapes. This operation is only supported in the tape gateway. architecture.
+Creates a virtual tape by using your own barcode. You write data to the virtual tape and then archive the tape. A barcode is unique and can not be reused if it has already been used on a tape . This applies to barcodes used on deleted tapes. This operation is only supported in the tape gateway type.
 
 **Note**
 > Cache storage must be allocated to the gateway before you can create a virtual tape. Use the [AddCache](@ref) operation to add cache storage to a gateway.
@@ -982,6 +1099,14 @@ The barcode that you want to assign to the tape.
 
 **Note**
 > Barcodes cannot be reused. This includes barcodes used for tapes that have been deleted.
+
+
+## `KMSEncrypted = ::Bool`
+True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.
+
+
+## `KMSKey = ::String`
+The Amazon Resource Name (ARN) of the AWS KMS Key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional.
 
 
 
@@ -1016,7 +1141,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateTapeWithBarcode)
 """
-
 @inline create_tape_with_barcode(aws::AWSConfig=default_aws_config(); args...) = create_tape_with_barcode(aws, args)
 
 @inline create_tape_with_barcode(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "CreateTapeWithBarcode", args)
@@ -1027,15 +1151,15 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 """
     using AWSSDK.StorageGateway.create_tapes
     create_tapes([::AWSConfig], arguments::Dict)
-    create_tapes([::AWSConfig]; GatewayARN=, TapeSizeInBytes=, ClientToken=, NumTapesToCreate=, TapeBarcodePrefix=)
+    create_tapes([::AWSConfig]; GatewayARN=, TapeSizeInBytes=, ClientToken=, NumTapesToCreate=, TapeBarcodePrefix=, <keyword arguments>)
 
     using AWSCore.Services.storagegateway
     storagegateway([::AWSConfig], "CreateTapes", arguments::Dict)
-    storagegateway([::AWSConfig], "CreateTapes", GatewayARN=, TapeSizeInBytes=, ClientToken=, NumTapesToCreate=, TapeBarcodePrefix=)
+    storagegateway([::AWSConfig], "CreateTapes", GatewayARN=, TapeSizeInBytes=, ClientToken=, NumTapesToCreate=, TapeBarcodePrefix=, <keyword arguments>)
 
 # CreateTapes Operation
 
-Creates one or more virtual tapes. You write data to the virtual tapes and then archive the tapes. This operation is only supported in the tape gateway architecture.
+Creates one or more virtual tapes. You write data to the virtual tapes and then archive the tapes. This operation is only supported in the tape gateway type.
 
 **Note**
 > Cache storage must be allocated to the gateway before you can create virtual tapes. Use the [AddCache](@ref) operation to add cache storage to a gateway.
@@ -1069,6 +1193,14 @@ A prefix that you append to the barcode of the virtual tape you are creating. Th
 
 **Note**
 > The prefix must be 1 to 4 characters in length and must be one of the uppercase letters from A to Z.
+
+
+## `KMSEncrypted = ::Bool`
+True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.
+
+
+## `KMSKey = ::String`
+The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional.
 
 
 
@@ -1109,7 +1241,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateTapes)
 """
-
 @inline create_tapes(aws::AWSConfig=default_aws_config(); args...) = create_tapes(aws, args)
 
 @inline create_tapes(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "CreateTapes", args)
@@ -1173,7 +1304,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteBandwidthRateLimit)
 """
-
 @inline delete_bandwidth_rate_limit(aws::AWSConfig=default_aws_config(); args...) = delete_bandwidth_rate_limit(aws, args)
 
 @inline delete_bandwidth_rate_limit(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DeleteBandwidthRateLimit", args)
@@ -1236,7 +1366,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteChapCredentials)
 """
-
 @inline delete_chap_credentials(aws::AWSConfig=default_aws_config(); args...) = delete_chap_credentials(aws, args)
 
 @inline delete_chap_credentials(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DeleteChapCredentials", args)
@@ -1255,7 +1384,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # DeleteFileShare Operation
 
-Deletes a file share from a file gateway. This operation is only supported in the file gateway architecture.
+Deletes a file share from a file gateway. This operation is only supported for file gateways.
 
 # Arguments
 
@@ -1264,7 +1393,7 @@ The Amazon Resource Name (ARN) of the file share to be deleted.
 
 
 ## `ForceDelete = ::Bool`
-If set to true, deletes a file share immediately and aborts all data uploads to AWS. Otherwise the file share is not deleted until all data is uploaded to AWS. This process aborts the data upload process and the file share enters the FORCE_DELETING status.
+If this value is set to true, the operation deletes a file share immediately and aborts all data uploads to AWS. Otherwise, the file share is not deleted until all data is uploaded to AWS. This process aborts the data upload process, and the file share enters the FORCE_DELETING status.
 
 
 
@@ -1279,7 +1408,6 @@ If set to true, deletes a file share immediately and aborts all data uploads to 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteFileShare)
 """
-
 @inline delete_file_share(aws::AWSConfig=default_aws_config(); args...) = delete_file_share(aws, args)
 
 @inline delete_file_share(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DeleteFileShare", args)
@@ -1341,7 +1469,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteGateway)
 """
-
 @inline delete_gateway(aws::AWSConfig=default_aws_config(); args...) = delete_gateway(aws, args)
 
 @inline delete_gateway(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DeleteGateway", args)
@@ -1362,7 +1489,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 Deletes a snapshot of a volume.
 
-You can take snapshots of your gateway volumes on a scheduled or ad hoc basis. This API action enables you to delete a snapshot schedule for a volume. For more information, see [Working with Snapshots](http://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html). In the `DeleteSnapshotSchedule` request, you identify the volume by providing its Amazon Resource Name (ARN).
+You can take snapshots of your gateway volumes on a scheduled or ad hoc basis. This API action enables you to delete a snapshot schedule for a volume. For more information, see [Working with Snapshots](http://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html). In the `DeleteSnapshotSchedule` request, you identify the volume by providing its Amazon Resource Name (ARN). This operation is only supported in stored and cached volume gateway types.
 
 **Note**
 > To list or delete a snapshot, you must use the Amazon EC2 API. in *Amazon Elastic Compute Cloud API Reference*.
@@ -1403,7 +1530,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteSnapshotSchedule)
 """
-
 @inline delete_snapshot_schedule(aws::AWSConfig=default_aws_config(); args...) = delete_snapshot_schedule(aws, args)
 
 @inline delete_snapshot_schedule(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DeleteSnapshotSchedule", args)
@@ -1422,7 +1548,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # DeleteTape Operation
 
-Deletes the specified virtual tape. This operation is only supported in the tape gateway architecture.
+Deletes the specified virtual tape. This operation is only supported in the tape gateway type.
 
 # Arguments
 
@@ -1465,7 +1591,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteTape)
 """
-
 @inline delete_tape(aws::AWSConfig=default_aws_config(); args...) = delete_tape(aws, args)
 
 @inline delete_tape(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DeleteTape", args)
@@ -1484,7 +1609,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # DeleteTapeArchive Operation
 
-Deletes the specified virtual tape from the virtual tape shelf (VTS). This operation is only supported in the tape gateway architecture.
+Deletes the specified virtual tape from the virtual tape shelf (VTS). This operation is only supported in the tape gateway type.
 
 # Arguments
 
@@ -1522,7 +1647,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteTapeArchive)
 """
-
 @inline delete_tape_archive(aws::AWSConfig=default_aws_config(); args...) = delete_tape_archive(aws, args)
 
 @inline delete_tape_archive(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DeleteTapeArchive", args)
@@ -1541,7 +1665,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # DeleteVolume Operation
 
-Deletes the specified storage volume that you previously created using the [CreateCachediSCSIVolume](@ref) or [CreateStorediSCSIVolume](@ref) API. This operation is only supported in the cached volume and stored volume architectures. For stored volume gateways, the local disk that was configured as the storage volume is not deleted. You can reuse the local disk to create another storage volume.
+Deletes the specified storage volume that you previously created using the [CreateCachediSCSIVolume](@ref) or [CreateStorediSCSIVolume](@ref) API. This operation is only supported in the cached volume and stored volume types. For stored volume gateways, the local disk that was configured as the storage volume is not deleted. You can reuse the local disk to create another storage volume.
 
 Before you delete a volume, make sure there are no iSCSI connections to the volume you are deleting. You should also make sure there is no snapshot in progress. You can use the Amazon Elastic Compute Cloud (Amazon EC2) API to query snapshots on the volume you are deleting and check the snapshot status. For more information, go to [DescribeSnapshots](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html) in the *Amazon Elastic Compute Cloud API Reference*.
 
@@ -1583,7 +1707,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DeleteVolume)
 """
-
 @inline delete_volume(aws::AWSConfig=default_aws_config(); args...) = delete_volume(aws, args)
 
 @inline delete_volume(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DeleteVolume", args)
@@ -1644,7 +1767,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeBandwidthRateLimit)
 """
-
 @inline describe_bandwidth_rate_limit(aws::AWSConfig=default_aws_config(); args...) = describe_bandwidth_rate_limit(aws, args)
 
 @inline describe_bandwidth_rate_limit(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DescribeBandwidthRateLimit", args)
@@ -1663,7 +1785,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # DescribeCache Operation
 
-Returns information about the cache of a gateway. This operation is only supported in the cached volume,tape and file gateway architectures.
+Returns information about the cache of a gateway. This operation is only supported in the cached volume, tape and file gateway types.
 
 The response includes disk IDs that are configured as cache, and it includes the amount of cache allocated and used.
 
@@ -1712,7 +1834,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeCache)
 """
-
 @inline describe_cache(aws::AWSConfig=default_aws_config(); args...) = describe_cache(aws, args)
 
 @inline describe_cache(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DescribeCache", args)
@@ -1731,7 +1852,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # DescribeCachediSCSIVolumes Operation
 
-Returns a description of the gateway volumes specified in the request. This operation is only supported in the cached volume gateway architecture.
+Returns a description of the gateway volumes specified in the request. This operation is only supported in the cached volume gateway types.
 
 The list of gateway volumes in the request must be from one gateway. In the response Amazon Storage Gateway returns volume information sorted by volume Amazon Resource Name (ARN).
 
@@ -1788,7 +1909,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeCachediSCSIVolumes)
 """
-
 @inline describe_cachedi_scsivolumes(aws::AWSConfig=default_aws_config(); args...) = describe_cachedi_scsivolumes(aws, args)
 
 @inline describe_cachedi_scsivolumes(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DescribeCachediSCSIVolumes", args)
@@ -1852,7 +1972,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeChapCredentials)
 """
-
 @inline describe_chap_credentials(aws::AWSConfig=default_aws_config(); args...) = describe_chap_credentials(aws, args)
 
 @inline describe_chap_credentials(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DescribeChapCredentials", args)
@@ -1921,7 +2040,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeGatewayInformation)
 """
-
 @inline describe_gateway_information(aws::AWSConfig=default_aws_config(); args...) = describe_gateway_information(aws, args)
 
 @inline describe_gateway_information(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DescribeGatewayInformation", args)
@@ -1982,7 +2100,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeMaintenanceStartTime)
 """
-
 @inline describe_maintenance_start_time(aws::AWSConfig=default_aws_config(); args...) = describe_maintenance_start_time(aws, args)
 
 @inline describe_maintenance_start_time(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DescribeMaintenanceStartTime", args)
@@ -2001,7 +2118,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # DescribeNFSFileShares Operation
 
-Gets a description for one or more file shares from a file gateway. This operation is only supported in file gateways.
+Gets a description for one or more Network File System (NFS) file shares from a file gateway. This operation is only supported for file gateways.
 
 # Arguments
 
@@ -2021,12 +2138,87 @@ An array containing the Amazon Resource Name (ARN) of each file share to be desc
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeNFSFileShares)
 """
-
 @inline describe_nfsfile_shares(aws::AWSConfig=default_aws_config(); args...) = describe_nfsfile_shares(aws, args)
 
 @inline describe_nfsfile_shares(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DescribeNFSFileShares", args)
 
 @inline describe_nfsfile_shares(args) = describe_nfsfile_shares(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.StorageGateway.describe_smbfile_shares
+    describe_smbfile_shares([::AWSConfig], arguments::Dict)
+    describe_smbfile_shares([::AWSConfig]; FileShareARNList=)
+
+    using AWSCore.Services.storagegateway
+    storagegateway([::AWSConfig], "DescribeSMBFileShares", arguments::Dict)
+    storagegateway([::AWSConfig], "DescribeSMBFileShares", FileShareARNList=)
+
+# DescribeSMBFileShares Operation
+
+Gets a description for one or more Server Message Block (SMB) file shares from a file gateway. This operation is only supported for file gateways.
+
+# Arguments
+
+## `FileShareARNList = [::String, ...]` -- *Required*
+An array containing the Amazon Resource Name (ARN) of each file share to be described.
+
+
+
+
+# Returns
+
+`DescribeSMBFileSharesOutput`
+
+# Exceptions
+
+`InvalidGatewayRequestException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeSMBFileShares)
+"""
+@inline describe_smbfile_shares(aws::AWSConfig=default_aws_config(); args...) = describe_smbfile_shares(aws, args)
+
+@inline describe_smbfile_shares(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DescribeSMBFileShares", args)
+
+@inline describe_smbfile_shares(args) = describe_smbfile_shares(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.StorageGateway.describe_smbsettings
+    describe_smbsettings([::AWSConfig], arguments::Dict)
+    describe_smbsettings([::AWSConfig]; GatewayARN=)
+
+    using AWSCore.Services.storagegateway
+    storagegateway([::AWSConfig], "DescribeSMBSettings", arguments::Dict)
+    storagegateway([::AWSConfig], "DescribeSMBSettings", GatewayARN=)
+
+# DescribeSMBSettings Operation
+
+Gets a description of a Server Message Block (SMB) file share settings from a file gateway. This operation is only supported for file gateways.
+
+# Arguments
+
+## `GatewayARN = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`DescribeSMBSettingsOutput`
+
+# Exceptions
+
+`InvalidGatewayRequestException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeSMBSettings)
+"""
+@inline describe_smbsettings(aws::AWSConfig=default_aws_config(); args...) = describe_smbsettings(aws, args)
+
+@inline describe_smbsettings(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DescribeSMBSettings", args)
+
+@inline describe_smbsettings(args) = describe_smbsettings(default_aws_config(), args)
 
 
 """
@@ -2040,7 +2232,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # DescribeSnapshotSchedule Operation
 
-Describes the snapshot schedule for the specified gateway volume. The snapshot schedule information includes intervals at which snapshots are automatically initiated on the volume. This operation is only supported in the cached volume and stored volume architectures.
+Describes the snapshot schedule for the specified gateway volume. The snapshot schedule information includes intervals at which snapshots are automatically initiated on the volume. This operation is only supported in the cached volume and stored volume types.
 
 # Arguments
 
@@ -2082,7 +2274,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeSnapshotSchedule)
 """
-
 @inline describe_snapshot_schedule(aws::AWSConfig=default_aws_config(); args...) = describe_snapshot_schedule(aws, args)
 
 @inline describe_snapshot_schedule(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DescribeSnapshotSchedule", args)
@@ -2101,7 +2292,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # DescribeStorediSCSIVolumes Operation
 
-Returns the description of the gateway volumes specified in the request. The list of gateway volumes in the request must be from one gateway. In the response Amazon Storage Gateway returns volume information sorted by volume ARNs. This operation is only supported in stored volume gateway architecture.
+Returns the description of the gateway volumes specified in the request. The list of gateway volumes in the request must be from one gateway. In the response Amazon Storage Gateway returns volume information sorted by volume ARNs. This operation is only supported in stored volume gateway type.
 
 # Arguments
 
@@ -2157,7 +2348,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeStorediSCSIVolumes)
 """
-
 @inline describe_storedi_scsivolumes(aws::AWSConfig=default_aws_config(); args...) = describe_storedi_scsivolumes(aws, args)
 
 @inline describe_storedi_scsivolumes(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DescribeStorediSCSIVolumes", args)
@@ -2176,7 +2366,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # DescribeTapeArchives Operation
 
-Returns a description of specified virtual tapes in the virtual tape shelf (VTS). This operation is only supported in the tape gateway architecture.
+Returns a description of specified virtual tapes in the virtual tape shelf (VTS). This operation is only supported in the tape gateway type.
 
 If a specific `TapeARN` is not specified, AWS Storage Gateway returns a description of all virtual tapes found in the VTS associated with your account.
 
@@ -2245,7 +2435,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeTapeArchives)
 """
-
 @inline describe_tape_archives(aws::AWSConfig=default_aws_config(); args...) = describe_tape_archives(aws, args)
 
 @inline describe_tape_archives(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DescribeTapeArchives", args)
@@ -2266,7 +2455,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 Returns a list of virtual tape recovery points that are available for the specified tape gateway.
 
-A recovery point is a point-in-time view of a virtual tape at which all the data on the virtual tape is consistent. If your gateway crashes, virtual tapes that have recovery points can be recovered to a new gateway. This operation is only supported in the tape gateway architecture.
+A recovery point is a point-in-time view of a virtual tape at which all the data on the virtual tape is consistent. If your gateway crashes, virtual tapes that have recovery points can be recovered to a new gateway. This operation is only supported in the tape gateway type.
 
 # Arguments
 
@@ -2323,7 +2512,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeTapeRecoveryPoints)
 """
-
 @inline describe_tape_recovery_points(aws::AWSConfig=default_aws_config(); args...) = describe_tape_recovery_points(aws, args)
 
 @inline describe_tape_recovery_points(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DescribeTapeRecoveryPoints", args)
@@ -2342,7 +2530,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # DescribeTapes Operation
 
-Returns a description of the specified Amazon Resource Name (ARN) of virtual tapes. If a `TapeARN` is not specified, returns a description of all virtual tapes associated with the specified gateway. This operation is only supported in the tape gateway architecture.
+Returns a description of the specified Amazon Resource Name (ARN) of virtual tapes. If a `TapeARN` is not specified, returns a description of all virtual tapes associated with the specified gateway. This operation is only supported in the tape gateway type.
 
 # Arguments
 
@@ -2417,7 +2605,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeTapes)
 """
-
 @inline describe_tapes(aws::AWSConfig=default_aws_config(); args...) = describe_tapes(aws, args)
 
 @inline describe_tapes(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DescribeTapes", args)
@@ -2436,7 +2623,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # DescribeUploadBuffer Operation
 
-Returns information about the upload buffer of a gateway. This operation is supported for the stored volume, cached volume and tape gateway architectures.
+Returns information about the upload buffer of a gateway. This operation is supported for the stored volume, cached volume and tape gateway types.
 
 The response includes disk IDs that are configured as upload buffer space, and it includes the amount of upload buffer space allocated and used.
 
@@ -2506,7 +2693,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeUploadBuffer)
 """
-
 @inline describe_upload_buffer(aws::AWSConfig=default_aws_config(); args...) = describe_upload_buffer(aws, args)
 
 @inline describe_upload_buffer(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DescribeUploadBuffer", args)
@@ -2527,7 +2713,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 Returns a description of virtual tape library (VTL) devices for the specified tape gateway. In the response, AWS Storage Gateway returns VTL device information.
 
-This operation is only supported in the tape gateway architecture.
+This operation is only supported in the tape gateway type.
 
 # Arguments
 
@@ -2624,7 +2810,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeVTLDevices)
 """
-
 @inline describe_vtldevices(aws::AWSConfig=default_aws_config(); args...) = describe_vtldevices(aws, args)
 
 @inline describe_vtldevices(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DescribeVTLDevices", args)
@@ -2643,7 +2828,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # DescribeWorkingStorage Operation
 
-Returns information about the working storage of a gateway. This operation is only supported in the stored volumes gateway architecture. This operation is deprecated in cached volumes API version (20120630). Use DescribeUploadBuffer instead.
+Returns information about the working storage of a gateway. This operation is only supported in the stored volumes gateway type. This operation is deprecated in cached volumes API version (20120630). Use DescribeUploadBuffer instead.
 
 **Note**
 > Working storage is also referred to as upload buffer. You can also use the DescribeUploadBuffer operation to add upload buffer to a stored volume gateway.
@@ -2692,7 +2877,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeWorkingStorage)
 """
-
 @inline describe_working_storage(aws::AWSConfig=default_aws_config(); args...) = describe_working_storage(aws, args)
 
 @inline describe_working_storage(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DescribeWorkingStorage", args)
@@ -2713,7 +2897,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 Disables a tape gateway when the gateway is no longer functioning. For example, if your gateway VM is damaged, you can disable the gateway so you can recover virtual tapes.
 
-Use this operation for a tape gateway that is not reachable or not functioning. This operation is only supported in the tape gateway architectures.
+Use this operation for a tape gateway that is not reachable or not functioning. This operation is only supported in the tape gateway type.
 
 **Important**
 > Once a gateway is disabled it cannot be enabled.
@@ -2754,12 +2938,61 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DisableGateway)
 """
-
 @inline disable_gateway(aws::AWSConfig=default_aws_config(); args...) = disable_gateway(aws, args)
 
 @inline disable_gateway(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "DisableGateway", args)
 
 @inline disable_gateway(args) = disable_gateway(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.StorageGateway.join_domain
+    join_domain([::AWSConfig], arguments::Dict)
+    join_domain([::AWSConfig]; GatewayARN=, DomainName=, UserName=, Password=)
+
+    using AWSCore.Services.storagegateway
+    storagegateway([::AWSConfig], "JoinDomain", arguments::Dict)
+    storagegateway([::AWSConfig], "JoinDomain", GatewayARN=, DomainName=, UserName=, Password=)
+
+# JoinDomain Operation
+
+Adds a file gateway to an Active Directory domain. This operation is only supported for file gateways that support the SMB file protocol.
+
+# Arguments
+
+## `GatewayARN = ::String` -- *Required*
+The unique Amazon Resource Name (ARN) of the file gateway you want to add to the Active Directory domain.
+
+
+## `DomainName = ::String` -- *Required*
+The name of the domain that you want the gateway to join.
+
+
+## `UserName = ::String` -- *Required*
+Sets the user name of user who has permission to add the gateway to the Active Directory domain.
+
+
+## `Password = ::String` -- *Required*
+Sets the password of the user who has permission to add the gateway to the Active Directory domain.
+
+
+
+
+# Returns
+
+`JoinDomainOutput`
+
+# Exceptions
+
+`InvalidGatewayRequestException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/JoinDomain)
+"""
+@inline join_domain(aws::AWSConfig=default_aws_config(); args...) = join_domain(aws, args)
+
+@inline join_domain(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "JoinDomain", args)
+
+@inline join_domain(args) = join_domain(default_aws_config(), args)
 
 
 """
@@ -2773,7 +3006,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # ListFileShares Operation
 
-Gets a list of the file shares for a specific file gateway, or the list of file shares that belong to the calling user account. This operation is only supported in the file gateway architecture.
+Gets a list of the file shares for a specific file gateway, or the list of file shares that belong to the calling user account. This operation is only supported for file gateways.
 
 # Arguments
 
@@ -2801,7 +3034,6 @@ Opaque pagination token returned from a previous ListFileShares operation. If pr
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListFileShares)
 """
-
 @inline list_file_shares(aws::AWSConfig=default_aws_config(); args...) = list_file_shares(aws, args)
 
 @inline list_file_shares(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "ListFileShares", args)
@@ -2875,7 +3107,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListGateways)
 """
-
 @inline list_gateways(aws::AWSConfig=default_aws_config(); args...) = list_gateways(aws, args)
 
 @inline list_gateways(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "ListGateways", args)
@@ -2953,7 +3184,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListLocalDisks)
 """
-
 @inline list_local_disks(aws::AWSConfig=default_aws_config(); args...) = list_local_disks(aws, args)
 
 @inline list_local_disks(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "ListLocalDisks", args)
@@ -2972,7 +3202,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # ListTagsForResource Operation
 
-Lists the tags that have been added to the specified resource. This operation is only supported in the cached volume, stored volume and tape gateway architecture.
+Lists the tags that have been added to the specified resource. This operation is only supported in the cached volume, stored volume and tape gateway type.
 
 # Arguments
 
@@ -3027,7 +3257,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListTagsForResource)
 """
-
 @inline list_tags_for_resource(aws::AWSConfig=default_aws_config(); args...) = list_tags_for_resource(aws, args)
 
 @inline list_tags_for_resource(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "ListTagsForResource", args)
@@ -3048,7 +3277,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 Lists virtual tapes in your virtual tape library (VTL) and your virtual tape shelf (VTS). You specify the tapes to list by specifying one or more tape Amazon Resource Names (ARNs). If you don't specify a tape ARN, the operation lists all virtual tapes in both your VTL and VTS.
 
-This operation supports pagination. By default, the operation returns a maximum of up to 100 tapes. You can optionally specify the `Limit` parameter in the body to limit the number of tapes in the response. If the number of tapes returned in the response is truncated, the response includes a `Marker` element that you can use in your subsequent request to retrieve the next set of tapes. This operation is only supported in the tape gateway architecture.
+This operation supports pagination. By default, the operation returns a maximum of up to 100 tapes. You can optionally specify the `Limit` parameter in the body to limit the number of tapes in the response. If the number of tapes returned in the response is truncated, the response includes a `Marker` element that you can use in your subsequent request to retrieve the next set of tapes. This operation is only supported in the tape gateway type.
 
 # Arguments
 
@@ -3076,7 +3305,6 @@ An optional number limit for the tapes in the list returned by this call.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListTapes)
 """
-
 @inline list_tapes(aws::AWSConfig=default_aws_config(); args...) = list_tapes(aws, args)
 
 @inline list_tapes(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "ListTapes", args)
@@ -3095,7 +3323,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # ListVolumeInitiators Operation
 
-Lists iSCSI initiators that are connected to a volume. You can use this operation to determine whether a volume is being used or not. This operation is only supported in the cached volume and stored volume gateway architecture.
+Lists iSCSI initiators that are connected to a volume. You can use this operation to determine whether a volume is being used or not. This operation is only supported in the cached volume and stored volume gateway types.
 
 # Arguments
 
@@ -3115,7 +3343,6 @@ The Amazon Resource Name (ARN) of the volume. Use the [ListVolumes](@ref) operat
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListVolumeInitiators)
 """
-
 @inline list_volume_initiators(aws::AWSConfig=default_aws_config(); args...) = list_volume_initiators(aws, args)
 
 @inline list_volume_initiators(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "ListVolumeInitiators", args)
@@ -3134,7 +3361,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # ListVolumeRecoveryPoints Operation
 
-Lists the recovery points for a specified gateway. This operation is only supported in the cached volume gateway architecture.
+Lists the recovery points for a specified gateway. This operation is only supported in the cached volume gateway type.
 
 Each cache volume has one recovery point. A volume recovery point is a point in time at which all data of the volume is consistent and from which you can create a snapshot or clone a new cached volume from a source volume. To create a snapshot from a volume recovery point use the [CreateSnapshotFromVolumeRecoveryPoint](@ref) operation.
 
@@ -3181,7 +3408,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListVolumeRecoveryPoints)
 """
-
 @inline list_volume_recovery_points(aws::AWSConfig=default_aws_config(); args...) = list_volume_recovery_points(aws, args)
 
 @inline list_volume_recovery_points(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "ListVolumeRecoveryPoints", args)
@@ -3202,7 +3428,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 Lists the iSCSI stored volumes of a gateway. Results are sorted by volume ARN. The response includes only the volume ARNs. If you want additional volume information, use the [DescribeStorediSCSIVolumes](@ref) or the [DescribeCachediSCSIVolumes](@ref) API.
 
-The operation supports pagination. By default, the operation returns a maximum of up to 100 volumes. You can optionally specify the `Limit` field in the body to limit the number of volumes in the response. If the number of volumes returned in the response is truncated, the response includes a Marker field. You can use this Marker value in your subsequent request to retrieve the next set of volumes. This operation is only supported in the cached volume and stored volume gateway architectures.
+The operation supports pagination. By default, the operation returns a maximum of up to 100 volumes. You can optionally specify the `Limit` field in the body to limit the number of volumes in the response. If the number of volumes returned in the response is truncated, the response includes a Marker field. You can use this Marker value in your subsequent request to retrieve the next set of volumes. This operation is only supported in the cached volume and stored volume gateway types.
 
 # Arguments
 
@@ -3269,12 +3495,53 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ListVolumes)
 """
-
 @inline list_volumes(aws::AWSConfig=default_aws_config(); args...) = list_volumes(aws, args)
 
 @inline list_volumes(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "ListVolumes", args)
 
 @inline list_volumes(args) = list_volumes(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.StorageGateway.notify_when_uploaded
+    notify_when_uploaded([::AWSConfig], arguments::Dict)
+    notify_when_uploaded([::AWSConfig]; FileShareARN=)
+
+    using AWSCore.Services.storagegateway
+    storagegateway([::AWSConfig], "NotifyWhenUploaded", arguments::Dict)
+    storagegateway([::AWSConfig], "NotifyWhenUploaded", FileShareARN=)
+
+# NotifyWhenUploaded Operation
+
+Sends you notification through CloudWatch Events when all files written to your NFS file share have been uploaded to Amazon S3.
+
+AWS Storage Gateway can send a notification through Amazon CloudWatch Events when all files written to your file share up to that point in time have been uploaded to Amazon S3. These files include files written to the NFS file share up to the time that you make a request for notification. When the upload is done, Storage Gateway sends you notification through an Amazon CloudWatch Event. You can configure CloudWatch Events to send the notification through event targets such as Amazon SNS or AWS Lambda function. This operation is only supported for file gateways.
+
+For more information, see Getting File Upload Notification in the Storage Gateway User Guide (https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-upload-notification).
+
+# Arguments
+
+## `FileShareARN = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`NotifyWhenUploadedOutput`
+
+# Exceptions
+
+`InvalidGatewayRequestException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/NotifyWhenUploaded)
+"""
+@inline notify_when_uploaded(aws::AWSConfig=default_aws_config(); args...) = notify_when_uploaded(aws, args)
+
+@inline notify_when_uploaded(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "NotifyWhenUploaded", args)
+
+@inline notify_when_uploaded(args) = notify_when_uploaded(default_aws_config(), args)
 
 
 """
@@ -3288,7 +3555,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # RefreshCache Operation
 
-Refreshes the cache for the specified file share. This operation finds objects in the Amazon S3 bucket that were added, removed or replaced since the gateway last listed the bucket's contents and cached the results.
+Refreshes the cache for the specified file share. This operation finds objects in the Amazon S3 bucket that were added, removed or replaced since the gateway last listed the bucket's contents and cached the results. This operation is only supported in the file gateway type.
 
 # Arguments
 
@@ -3308,7 +3575,6 @@ Refreshes the cache for the specified file share. This operation finds objects i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RefreshCache)
 """
-
 @inline refresh_cache(aws::AWSConfig=default_aws_config(); args...) = refresh_cache(aws, args)
 
 @inline refresh_cache(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "RefreshCache", args)
@@ -3327,7 +3593,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # RemoveTagsFromResource Operation
 
-Removes one or more tags from the specified resource. This operation is only supported in the cached volume, stored volume and tape gateway architectures.
+Removes one or more tags from the specified resource. This operation is only supported in the cached volume, stored volume and tape gateway types.
 
 # Arguments
 
@@ -3373,7 +3639,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RemoveTagsFromResource)
 """
-
 @inline remove_tags_from_resource(aws::AWSConfig=default_aws_config(); args...) = remove_tags_from_resource(aws, args)
 
 @inline remove_tags_from_resource(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "RemoveTagsFromResource", args)
@@ -3392,7 +3657,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # ResetCache Operation
 
-Resets all cache disks that have encountered a error and makes the disks available for reconfiguration as cache storage. If your cache disk encounters a error, the gateway prevents read and write operations on virtual tapes in the gateway. For example, an error can occur when a disk is corrupted or removed from the gateway. When a cache is reset, the gateway loses its cache storage. At this point you can reconfigure the disks as cache disks. This operation is only supported in the cached volume,tape and file gateway architectures.
+Resets all cache disks that have encountered a error and makes the disks available for reconfiguration as cache storage. If your cache disk encounters a error, the gateway prevents read and write operations on virtual tapes in the gateway. For example, an error can occur when a disk is corrupted or removed from the gateway. When a cache is reset, the gateway loses its cache storage. At this point you can reconfigure the disks as cache disks. This operation is only supported in the cached volume and tape types.
 
 **Important**
 > If the cache disk you are resetting contains data that has not been uploaded to Amazon S3 yet, that data can be lost. After you reset cache disks, there will be no configured cache disks left in the gateway, so you must configure at least one new cache disk for your gateway to function properly.
@@ -3433,7 +3698,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ResetCache)
 """
-
 @inline reset_cache(aws::AWSConfig=default_aws_config(); args...) = reset_cache(aws, args)
 
 @inline reset_cache(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "ResetCache", args)
@@ -3452,9 +3716,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # RetrieveTapeArchive Operation
 
-Retrieves an archived virtual tape from the virtual tape shelf (VTS) to a tape gateway. Virtual tapes archived in the VTS are not associated with any gateway. However after a tape is retrieved, it is associated with a gateway, even though it is also listed in the VTS, that is, archive. This operation is only supported in the tape gateway architecture.
+Retrieves an archived virtual tape from the virtual tape shelf (VTS) to a tape gateway. Virtual tapes archived in the VTS are not associated with any gateway. However after a tape is retrieved, it is associated with a gateway, even though it is also listed in the VTS, that is, archive. This operation is only supported in the tape gateway type.
 
-Once a tape is successfully retrieved to a gateway, it cannot be retrieved again to another gateway. You must archive the tape again before you can retrieve it to another gateway. This operation is only supported in the tape gateway architecture.
+Once a tape is successfully retrieved to a gateway, it cannot be retrieved again to another gateway. You must archive the tape again before you can retrieve it to another gateway. This operation is only supported in the tape gateway type.
 
 # Arguments
 
@@ -3499,7 +3763,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RetrieveTapeArchive)
 """
-
 @inline retrieve_tape_archive(aws::AWSConfig=default_aws_config(); args...) = retrieve_tape_archive(aws, args)
 
 @inline retrieve_tape_archive(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "RetrieveTapeArchive", args)
@@ -3518,7 +3781,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # RetrieveTapeRecoveryPoint Operation
 
-Retrieves the recovery point for the specified virtual tape. This operation is only supported in the tape gateway architecture.
+Retrieves the recovery point for the specified virtual tape. This operation is only supported in the tape gateway type.
 
 A recovery point is a point in time view of a virtual tape at which all the data on the tape is consistent. If your gateway crashes, virtual tapes that have recovery points can be recovered to a new gateway.
 
@@ -3566,7 +3829,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RetrieveTapeRecoveryPoint)
 """
-
 @inline retrieve_tape_recovery_point(aws::AWSConfig=default_aws_config(); args...) = retrieve_tape_recovery_point(aws, args)
 
 @inline retrieve_tape_recovery_point(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "RetrieveTapeRecoveryPoint", args)
@@ -3628,12 +3890,53 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/SetLocalConsolePassword)
 """
-
 @inline set_local_console_password(aws::AWSConfig=default_aws_config(); args...) = set_local_console_password(aws, args)
 
 @inline set_local_console_password(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "SetLocalConsolePassword", args)
 
 @inline set_local_console_password(args) = set_local_console_password(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.StorageGateway.set_smbguest_password
+    set_smbguest_password([::AWSConfig], arguments::Dict)
+    set_smbguest_password([::AWSConfig]; GatewayARN=, Password=)
+
+    using AWSCore.Services.storagegateway
+    storagegateway([::AWSConfig], "SetSMBGuestPassword", arguments::Dict)
+    storagegateway([::AWSConfig], "SetSMBGuestPassword", GatewayARN=, Password=)
+
+# SetSMBGuestPassword Operation
+
+Sets the password for the guest user `smbguest`. The `smbguest` user is the user when the authentication method for the file share is set to `GuestAccess`.
+
+# Arguments
+
+## `GatewayARN = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the file gateway the SMB file share is associated with.
+
+
+## `Password = ::String` -- *Required*
+The password that you want to set for your SMB Server.
+
+
+
+
+# Returns
+
+`SetSMBGuestPasswordOutput`
+
+# Exceptions
+
+`InvalidGatewayRequestException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/SetSMBGuestPassword)
+"""
+@inline set_smbguest_password(aws::AWSConfig=default_aws_config(); args...) = set_smbguest_password(aws, args)
+
+@inline set_smbguest_password(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "SetSMBGuestPassword", args)
+
+@inline set_smbguest_password(args) = set_smbguest_password(default_aws_config(), args)
 
 
 """
@@ -3697,7 +4000,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ShutdownGateway)
 """
-
 @inline shutdown_gateway(aws::AWSConfig=default_aws_config(); args...) = shutdown_gateway(aws, args)
 
 @inline shutdown_gateway(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "ShutdownGateway", args)
@@ -3759,7 +4061,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/StartGateway)
 """
-
 @inline start_gateway(aws::AWSConfig=default_aws_config(); args...) = start_gateway(aws, args)
 
 @inline start_gateway(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "StartGateway", args)
@@ -3830,7 +4131,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateBandwidthRateLimit)
 """
-
 @inline update_bandwidth_rate_limit(aws::AWSConfig=default_aws_config(); args...) = update_bandwidth_rate_limit(aws, args)
 
 @inline update_bandwidth_rate_limit(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "UpdateBandwidthRateLimit", args)
@@ -3914,7 +4214,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateChapCredentials)
 """
-
 @inline update_chap_credentials(aws::AWSConfig=default_aws_config(); args...) = update_chap_credentials(aws, args)
 
 @inline update_chap_credentials(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "UpdateChapCredentials", args)
@@ -3985,7 +4284,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateGatewayInformation)
 """
-
 @inline update_gateway_information(aws::AWSConfig=default_aws_config(); args...) = update_gateway_information(aws, args)
 
 @inline update_gateway_information(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "UpdateGatewayInformation", args)
@@ -4048,7 +4346,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateGatewaySoftwareNow)
 """
-
 @inline update_gateway_software_now(aws::AWSConfig=default_aws_config(); args...) = update_gateway_software_now(aws, args)
 
 @inline update_gateway_software_now(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "UpdateGatewaySoftwareNow", args)
@@ -4120,7 +4417,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateMaintenanceStartTime)
 """
-
 @inline update_maintenance_start_time(aws::AWSConfig=default_aws_config(); args...) = update_maintenance_start_time(aws, args)
 
 @inline update_maintenance_start_time(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "UpdateMaintenanceStartTime", args)
@@ -4139,7 +4435,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # UpdateNFSFileShare Operation
 
-Updates a file share. This operation is only supported in the file gateway architecture.
+Updates a Network File System (NFS) file share. This operation is only supported in the file gateway type.
 
 **Note**
 > To leave a file share field unchanged, set the corresponding input field to null.
@@ -4170,7 +4466,7 @@ True to use Amazon S3 server side encryption with your own AWS KMS key, or false
 
 
 ## `KMSKey = ::String`
-The KMS key used for Amazon S3 server side encryption. This value can only be set when KmsEncrypted is true. Optional.
+The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional.
 
 
 ## `NFSFileShareDefaults = [ ... ]`
@@ -4185,7 +4481,11 @@ The default values for the file share. Optional.
 ```
 
 ## `DefaultStorageClass = ::String`
-The default storage class for objects put into an Amazon S3 bucket by a file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.
+The default storage class for objects put into an Amazon S3 bucket by the file gateway. Possible values are `S3_STANDARD`, `S3_STANDARD_IA`, or `S3_ONEZONE_IA`. If this field is not populated, the default value `S3_STANDARD` is used. Optional.
+
+
+## `ObjectACL = "private", "public-read", "public-read-write", "authenticated-read", "bucket-owner-read", "bucket-owner-full-control" or "aws-exec-read"`
+A value that sets the access control list permission for objects in the S3 bucket that a file gateway puts objects into. The default value is "private".
 
 
 ## `ClientList = [::String, ...]`
@@ -4195,15 +4495,23 @@ The list of clients that are allowed to access the file gateway. The list must c
 ## `Squash = ::String`
 The user mapped to anonymous user. Valid options are the following:
 
-*   "RootSquash" - Only root is mapped to anonymous user.
+*   `RootSquash` - Only root is mapped to anonymous user.
 
-*   "NoSquash" - No one is mapped to anonymous user
+*   `NoSquash` - No one is mapped to anonymous user
 
-*   "AllSquash" - Everyone is mapped to anonymous user.
+*   `AllSquash` - Everyone is mapped to anonymous user.
 
 
 ## `ReadOnly = ::Bool`
-Sets the write status of a file share: "true" if the write status is read-only, otherwise "false".
+A value that sets the write status of a file share. This value is true if the write status is read-only, and otherwise false.
+
+
+## `GuessMIMETypeEnabled = ::Bool`
+A value that enables guessing of the MIME type for uploaded objects based on file extensions. Set this value to true to enable MIME type guessing, and otherwise to false. The default value is true.
+
+
+## `RequesterPays = ::Bool`
+A value that sets the access control list permission for objects in the Amazon S3 bucket that a file gateway puts objects into. The default value is `private`.
 
 
 
@@ -4218,12 +4526,93 @@ Sets the write status of a file share: "true" if the write status is read-only, 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateNFSFileShare)
 """
-
 @inline update_nfsfile_share(aws::AWSConfig=default_aws_config(); args...) = update_nfsfile_share(aws, args)
 
 @inline update_nfsfile_share(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "UpdateNFSFileShare", args)
 
 @inline update_nfsfile_share(args) = update_nfsfile_share(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.StorageGateway.update_smbfile_share
+    update_smbfile_share([::AWSConfig], arguments::Dict)
+    update_smbfile_share([::AWSConfig]; FileShareARN=, <keyword arguments>)
+
+    using AWSCore.Services.storagegateway
+    storagegateway([::AWSConfig], "UpdateSMBFileShare", arguments::Dict)
+    storagegateway([::AWSConfig], "UpdateSMBFileShare", FileShareARN=, <keyword arguments>)
+
+# UpdateSMBFileShare Operation
+
+Updates a Server Message Block (SMB) file share.
+
+**Note**
+> To leave a file share field unchanged, set the corresponding input field to null. This operation is only supported for file gateways.
+
+**Important**
+> File gateways require AWS Security Token Service (AWS STS) to be activated to enable you to create a file share. Make sure that AWS STS is activated in the AWS Region you are creating your file gateway in. If AWS STS is not activated in this AWS Region, activate it. For information about how to activate AWS STS, see [Activating and Deactivating AWS STS in an AWS Region](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html) in the *AWS Identity and Access Management User Guide.*
+
+File gateways don't support creating hard or symbolic links on a file share.
+
+# Arguments
+
+## `FileShareARN = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the SMB file share that you want to update.
+
+
+## `KMSEncrypted = ::Bool`
+True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.
+
+
+## `KMSKey = ::String`
+The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. This value can only be set when KMSEncrypted is true. Optional.
+
+
+## `DefaultStorageClass = ::String`
+The default storage class for objects put into an Amazon S3 bucket by the file gateway. Possible values are `S3_STANDARD`, `S3_STANDARD_IA`, or `S3_ONEZONE_IA`. If this field is not populated, the default value `S3_STANDARD` is used. Optional.
+
+
+## `ObjectACL = "private", "public-read", "public-read-write", "authenticated-read", "bucket-owner-read", "bucket-owner-full-control" or "aws-exec-read"`
+A value that sets the access control list permission for objects in the S3 bucket that a file gateway puts objects into. The default value is "private".
+
+
+## `ReadOnly = ::Bool`
+A value that sets the write status of a file share. This value is true if the write status is read-only, and otherwise false.
+
+
+## `GuessMIMETypeEnabled = ::Bool`
+A value that enables guessing of the MIME type for uploaded objects based on file extensions. Set this value to true to enable MIME type guessing, and otherwise to false. The default value is true.
+
+
+## `RequesterPays = ::Bool`
+A value that sets the access control list permission for objects in the Amazon S3 bucket that a file gateway puts objects into. The default value is `private`.
+
+
+## `ValidUserList = [::String, ...]`
+A list of users or groups in the Active Directory that are allowed to access the file share. A group must be prefixed with the @ character. For example `@group1`. Can only be set if Authentication is set to `ActiveDirectory`.
+
+
+## `InvalidUserList = [::String, ...]`
+A list of users or groups in the Active Directory that are not allowed to access the file share. A group must be prefixed with the @ character. For example `@group1`. Can only be set if Authentication is set to `ActiveDirectory`.
+
+
+
+
+# Returns
+
+`UpdateSMBFileShareOutput`
+
+# Exceptions
+
+`InvalidGatewayRequestException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateSMBFileShare)
+"""
+@inline update_smbfile_share(aws::AWSConfig=default_aws_config(); args...) = update_smbfile_share(aws, args)
+
+@inline update_smbfile_share(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "UpdateSMBFileShare", args)
+
+@inline update_smbfile_share(args) = update_smbfile_share(default_aws_config(), args)
 
 
 """
@@ -4237,7 +4626,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # UpdateSnapshotSchedule Operation
 
-Updates a snapshot schedule configured for a gateway volume. This operation is only supported in the cached volume and stored volume gateway architectures.
+Updates a snapshot schedule configured for a gateway volume. This operation is only supported in the cached volume and stored volume gateway types.
 
 The default snapshot schedule for volume is once every 24 hours, starting at the creation time of the volume. You can use this API to change the snapshot schedule configured for the volume.
 
@@ -4294,7 +4683,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateSnapshotSchedule)
 """
-
 @inline update_snapshot_schedule(aws::AWSConfig=default_aws_config(); args...) = update_snapshot_schedule(aws, args)
 
 @inline update_snapshot_schedule(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "UpdateSnapshotSchedule", args)
@@ -4313,7 +4701,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storag
 
 # UpdateVTLDeviceType Operation
 
-Updates the type of medium changer in a tape gateway. When you activate a tape gateway, you select a medium changer type for the tape gateway. This operation enables you to select a different type of medium changer after a tape gateway is activated. This operation is only supported in the tape gateway architecture.
+Updates the type of medium changer in a tape gateway. When you activate a tape gateway, you select a medium changer type for the tape gateway. This operation enables you to select a different type of medium changer after a tape gateway is activated. This operation is only supported in the tape gateway type.
 
 # Arguments
 
@@ -4358,7 +4746,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateVTLDeviceType)
 """
-
 @inline update_vtldevice_type(aws::AWSConfig=default_aws_config(); args...) = update_vtldevice_type(aws, args)
 
 @inline update_vtldevice_type(aws::AWSConfig, args) = AWSCore.Services.storagegateway(aws, "UpdateVTLDeviceType", args)

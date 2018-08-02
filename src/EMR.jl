@@ -84,7 +84,6 @@ Specifies the configuration of the instance fleet.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/AddInstanceFleet)
 """
-
 @inline add_instance_fleet(aws::AWSConfig=default_aws_config(); args...) = add_instance_fleet(aws, args)
 
 @inline add_instance_fleet(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "AddInstanceFleet", args)
@@ -184,7 +183,6 @@ Job flow in which to add the instance groups.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/AddInstanceGroups)
 """
-
 @inline add_instance_groups(aws::AWSConfig=default_aws_config(); args...) = add_instance_groups(aws, args)
 
 @inline add_instance_groups(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "AddInstanceGroups", args)
@@ -205,7 +203,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 AddJobFlowSteps adds new steps to a running cluster. A maximum of 256 steps are allowed in each job flow.
 
-If your cluster is long-running (such as a Hive data warehouse) or complex, you may require more than 256 steps to process your data. You can bypass the 256-step limitation in various ways, including using SSH to connect to the master node and submitting queries directly to the software running on the master node, such as Hive and Hadoop. For more information on how to do this, see [Add More than 256 Steps to a Cluster](http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/AddMoreThan256Steps.html) in the *Amazon EMR Management Guide*.
+If your cluster is long-running (such as a Hive data warehouse) or complex, you may require more than 256 steps to process your data. You can bypass the 256-step limitation in various ways, including using SSH to connect to the master node and submitting queries directly to the software running on the master node, such as Hive and Hadoop. For more information on how to do this, see [Add More than 256 Steps to a Cluster](http://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html) in the *Amazon EMR Management Guide*.
 
 A step specifies the location of a JAR file stored either on the master node of the cluster or in Amazon S3. Each step is performed by the main function of the main class of the JAR file. The main class can be specified either in the manifest of the JAR or by using the MainFunction parameter of the step.
 
@@ -249,7 +247,6 @@ A list of [StepConfig](@ref) to be executed by the job flow.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/AddJobFlowSteps)
 """
-
 @inline add_job_flow_steps(aws::AWSConfig=default_aws_config(); args...) = add_job_flow_steps(aws, args)
 
 @inline add_job_flow_steps(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "AddJobFlowSteps", args)
@@ -268,7 +265,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 # AddTags Operation
 
-Adds tags to an Amazon EMR resource. Tags make it easier to associate clusters in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see [Tagging Amazon EMR Resources](http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html).
+Adds tags to an Amazon EMR resource. Tags make it easier to associate clusters in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see [Tag Clusters](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 
 # Arguments
 
@@ -297,7 +294,6 @@ A list of tags to associate with a cluster and propagate to EC2 instances. Tags 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/AddTags)
 """
-
 @inline add_tags(aws::AWSConfig=default_aws_config(); args...) = add_tags(aws, args)
 
 @inline add_tags(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "AddTags", args)
@@ -340,7 +336,6 @@ The list of `StepIDs` to cancel. Use [ListSteps](@ref) to get steps and their st
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/CancelSteps)
 """
-
 @inline cancel_steps(aws::AWSConfig=default_aws_config(); args...) = cancel_steps(aws, args)
 
 @inline cancel_steps(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "CancelSteps", args)
@@ -368,7 +363,7 @@ The name of the security configuration.
 
 
 ## `SecurityConfiguration = ::String` -- *Required*
-The security configuration details in JSON format.
+The security configuration details in JSON format. For JSON parameters and examples, see [Use Security Configurations to Set Up Cluster Security](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-security-configurations.html) in the *Amazon EMR Management Guide*.
 
 
 
@@ -383,7 +378,6 @@ The security configuration details in JSON format.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/CreateSecurityConfiguration)
 """
-
 @inline create_security_configuration(aws::AWSConfig=default_aws_config(); args...) = create_security_configuration(aws, args)
 
 @inline create_security_configuration(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "CreateSecurityConfiguration", args)
@@ -422,7 +416,6 @@ The name of the security configuration.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/DeleteSecurityConfiguration)
 """
-
 @inline delete_security_configuration(aws::AWSConfig=default_aws_config(); args...) = delete_security_configuration(aws, args)
 
 @inline delete_security_configuration(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "DeleteSecurityConfiguration", args)
@@ -441,7 +434,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 # DescribeCluster Operation
 
-Provides cluster-level details including status, hardware and software configuration, VPC settings, and so on. For information about the cluster steps, see [ListSteps](@ref).
+Provides cluster-level details including status, hardware and software configuration, VPC settings, and so on.
 
 # Arguments
 
@@ -461,7 +454,6 @@ The identifier of the cluster to describe.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/DescribeCluster)
 """
-
 @inline describe_cluster(aws::AWSConfig=default_aws_config(); args...) = describe_cluster(aws, args)
 
 @inline describe_cluster(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "DescribeCluster", args)
@@ -524,7 +516,6 @@ Return only job flows whose state is contained in this list.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/DescribeJobFlows)
 """
-
 @inline describe_job_flows(aws::AWSConfig=default_aws_config(); args...) = describe_job_flows(aws, args)
 
 @inline describe_job_flows(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "DescribeJobFlows", args)
@@ -563,7 +554,6 @@ The name of the security configuration.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/DescribeSecurityConfiguration)
 """
-
 @inline describe_security_configuration(aws::AWSConfig=default_aws_config(); args...) = describe_security_configuration(aws, args)
 
 @inline describe_security_configuration(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "DescribeSecurityConfiguration", args)
@@ -606,7 +596,6 @@ The identifier of the step to describe.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/DescribeStep)
 """
-
 @inline describe_step(aws::AWSConfig=default_aws_config(); args...) = describe_step(aws, args)
 
 @inline describe_step(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "DescribeStep", args)
@@ -649,7 +638,6 @@ The pagination token that indicates the next set of results to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListBootstrapActions)
 """
-
 @inline list_bootstrap_actions(aws::AWSConfig=default_aws_config(); args...) = list_bootstrap_actions(aws, args)
 
 @inline list_bootstrap_actions(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "ListBootstrapActions", args)
@@ -700,7 +688,6 @@ The pagination token that indicates the next set of results to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListClusters)
 """
-
 @inline list_clusters(aws::AWSConfig=default_aws_config(); args...) = list_clusters(aws, args)
 
 @inline list_clusters(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "ListClusters", args)
@@ -746,7 +733,6 @@ The pagination token that indicates the next set of results to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListInstanceFleets)
 """
-
 @inline list_instance_fleets(aws::AWSConfig=default_aws_config(); args...) = list_instance_fleets(aws, args)
 
 @inline list_instance_fleets(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "ListInstanceFleets", args)
@@ -789,7 +775,6 @@ The pagination token that indicates the next set of results to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListInstanceGroups)
 """
-
 @inline list_instance_groups(aws::AWSConfig=default_aws_config(); args...) = list_instance_groups(aws, args)
 
 @inline list_instance_groups(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "ListInstanceGroups", args)
@@ -852,7 +837,6 @@ The pagination token that indicates the next set of results to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListInstances)
 """
-
 @inline list_instances(aws::AWSConfig=default_aws_config(); args...) = list_instances(aws, args)
 
 @inline list_instances(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "ListInstances", args)
@@ -891,7 +875,6 @@ The pagination token that indicates the set of results to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListSecurityConfigurations)
 """
-
 @inline list_security_configurations(aws::AWSConfig=default_aws_config(); args...) = list_security_configurations(aws, args)
 
 @inline list_security_configurations(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "ListSecurityConfigurations", args)
@@ -942,7 +925,6 @@ The pagination token that indicates the next set of results to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListSteps)
 """
-
 @inline list_steps(aws::AWSConfig=default_aws_config(); args...) = list_steps(aws, args)
 
 @inline list_steps(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "ListSteps", args)
@@ -990,7 +972,6 @@ The unique identifier of the instance fleet.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ModifyInstanceFleet)
 """
-
 @inline modify_instance_fleet(aws::AWSConfig=default_aws_config(); args...) = modify_instance_fleet(aws, args)
 
 @inline modify_instance_fleet(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "ModifyInstanceFleet", args)
@@ -1043,7 +1024,6 @@ Instance groups to change.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ModifyInstanceGroups)
 """
-
 @inline modify_instance_groups(aws::AWSConfig=default_aws_config(); args...) = modify_instance_groups(aws, args)
 
 @inline modify_instance_groups(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "ModifyInstanceGroups", args)
@@ -1119,7 +1099,6 @@ Specifies the definition of the automatic scaling policy.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/PutAutoScalingPolicy)
 """
-
 @inline put_auto_scaling_policy(aws::AWSConfig=default_aws_config(); args...) = put_auto_scaling_policy(aws, args)
 
 @inline put_auto_scaling_policy(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "PutAutoScalingPolicy", args)
@@ -1158,7 +1137,6 @@ Specifies the ID of the instance group to which the scaling policy is applied.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/RemoveAutoScalingPolicy)
 """
-
 @inline remove_auto_scaling_policy(aws::AWSConfig=default_aws_config(); args...) = remove_auto_scaling_policy(aws, args)
 
 @inline remove_auto_scaling_policy(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "RemoveAutoScalingPolicy", args)
@@ -1177,7 +1155,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 # RemoveTags Operation
 
-Removes tags from an Amazon EMR resource. Tags make it easier to associate clusters in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see [Tagging Amazon EMR Resources](http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html).
+Removes tags from an Amazon EMR resource. Tags make it easier to associate clusters in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see [Tag Clusters](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 
 The following example removes the stack tag with value Prod from a cluster:
 
@@ -1203,7 +1181,6 @@ A list of tag keys to remove from a resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/RemoveTags)
 """
-
 @inline remove_tags(aws::AWSConfig=default_aws_config(); args...) = remove_tags(aws, args)
 
 @inline remove_tags(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "RemoveTags", args)
@@ -1228,7 +1205,7 @@ For additional protection, you can set the [JobFlowInstancesConfig](@ref) `Termi
 
 A maximum of 256 steps are allowed in each job flow.
 
-If your cluster is long-running (such as a Hive data warehouse) or complex, you may require more than 256 steps to process your data. You can bypass the 256-step limitation in various ways, including using the SSH shell to connect to the master node and submitting queries directly to the software running on the master node, such as Hive and Hadoop. For more information on how to do this, see [Add More than 256 Steps to a Cluster](http://docs.aws.amazon.com/ElasticMapReduce/latest/Management/Guide/AddMoreThan256Steps.html) in the *Amazon EMR Management Guide*.
+If your cluster is long-running (such as a Hive data warehouse) or complex, you may require more than 256 steps to process your data. You can bypass the 256-step limitation in various ways, including using the SSH shell to connect to the master node and submitting queries directly to the software running on the master node, such as Hive and Hadoop. For more information on how to do this, see [Add More than 256 Steps to a Cluster](http://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html) in the *Amazon EMR Management Guide*.
 
 For long running clusters, we recommend that you periodically store your results.
 
@@ -1250,16 +1227,11 @@ A JSON string for selecting additional features.
 
 
 ## `AmiVersion = ::String`
-For Amazon EMR AMI versions 3.x and 2.x. For Amazon EMR releases 4.0 and later, the Linux AMI is determined by the `ReleaseLabel` specified or by `CustomAmiID`. The version of the Amazon Machine Image (AMI) to use when launching Amazon EC2 instances in the job flow. For details about the AMI versions currently supported in EMR version 3.x and 2.x, see [AMI Versions Supported in EMR](ElasticMapReduce/latest/DeveloperGuide/emr-dg.pdf#nameddest=ami-versions-supported) in the *Amazon EMR Developer Guide*.
-
-If the AMI supports multiple versions of Hadoop (for example, AMI 1.0 supports both Hadoop 0.18 and 0.20), you can use the [JobFlowInstancesConfig](@ref) `HadoopVersion` parameter to modify the version of Hadoop from the defaults shown above.
-
-**Note**
-> Previously, the EMR AMI version API parameter options allowed you to use latest for the latest AMI version rather than specify a numerical value. Some regions no longer support this deprecated option as they only have a newer release label version of EMR, which requires you to specify an EMR release label release (EMR 4.x or later).
+Applies only to Amazon EMR AMI versions 3.x and 2.x. For Amazon EMR releases 4.0 and later, `ReleaseLabel` is used. To specify a custom AMI, use `CustomAmiID`.
 
 
 ## `ReleaseLabel = ::String`
-The release label for the Amazon EMR release. For Amazon EMR 3.x and 2.x AMIs, use `AmiVersion` instead.
+The Amazon EMR release label, which determines the version of open-source application packages installed on the cluster. Release labels are in the form `emr-x.x.x`, where x.x.x is an Amazon EMR release version, for example, `emr-5.14.0`. For more information about Amazon EMR release versions and included application versions and features, see [http://docs.aws.amazon.com/emr/latest/ReleaseGuide/](http://docs.aws.amazon.com/emr/latest/ReleaseGuide/). The release label applies only to Amazon EMR releases versions 4.x and later. Earlier versions use `AmiVersion`.
 
 
 ## `Instances = [ ... ]` -- *Required*
@@ -1411,7 +1383,7 @@ A list of bootstrap actions to run before Hadoop starts on the cluster nodes.
 **Note**
 > For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and later, use Applications.
 
-A list of strings that indicates third-party software to use. For more information, see [Use Third Party Applications with Amazon EMR](http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html). Currently supported values are:
+A list of strings that indicates third-party software to use. For more information, see the [Amazon EMR Developer Guide](http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf). Currently supported values are:
 
 *   "mapr-m3" - launch the job flow using MapR M3 Edition.
 
@@ -1423,7 +1395,7 @@ A list of strings that indicates third-party software to use. For more informati
 **Note**
 > For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and later, use Applications.
 
-A list of strings that indicates third-party software to use with the job flow that accepts a user argument list. EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the [Amazon EMR Developer Guide](http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf). Supported values are:
+A list of strings that indicates third-party software to use with the job flow that accepts a user argument list. EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the [Amazon EMR Developer Guide](http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf). Supported values are:
 
 *   "mapr-m3" - launch the cluster using MapR M3 Edition.
 
@@ -1515,6 +1487,18 @@ The size, in GiB, of the EBS root device volume of the Linux AMI that is used fo
 Applies only when `CustomAmiID` is used. Specifies which updates from the Amazon Linux AMI package repositories to apply automatically when the instance boots using the AMI. If omitted, the default is `SECURITY`, which indicates that only security updates are applied. If `NONE` is specified, no updates are applied, and all updates must be applied manually.
 
 
+## `KerberosAttributes = [ ... ]`
+Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For more information see [Use Kerberos Authentication](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html) in the *EMR Management Guide*.
+```
+ KerberosAttributes = [
+        "Realm" => <required> ::String,
+        "KdcAdminPassword" => <required> ::String,
+        "CrossRealmTrustPrincipalPassword" =>  ::String,
+        "ADDomainJoinUser" =>  ::String,
+        "ADDomainJoinPassword" =>  ::String
+    ]
+```
+
 
 
 # Returns
@@ -1527,7 +1511,6 @@ Applies only when `CustomAmiID` is used. Specifies which updates from the Amazon
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/RunJobFlow)
 """
-
 @inline run_job_flow(aws::AWSConfig=default_aws_config(); args...) = run_job_flow(aws, args)
 
 @inline run_job_flow(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "RunJobFlow", args)
@@ -1572,7 +1555,6 @@ A Boolean that indicates whether to protect the cluster and prevent the Amazon E
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/SetTerminationProtection)
 """
-
 @inline set_termination_protection(aws::AWSConfig=default_aws_config(); args...) = set_termination_protection(aws, args)
 
 @inline set_termination_protection(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "SetTerminationProtection", args)
@@ -1611,7 +1593,6 @@ Whether the specified clusters are visible to all IAM users of the AWS account a
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/SetVisibleToAllUsers)
 """
-
 @inline set_visible_to_all_users(aws::AWSConfig=default_aws_config(); args...) = set_visible_to_all_users(aws, args)
 
 @inline set_visible_to_all_users(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "SetVisibleToAllUsers", args)
@@ -1648,7 +1629,6 @@ A list of job flows to be shutdown.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/TerminateJobFlows)
 """
-
 @inline terminate_job_flows(aws::AWSConfig=default_aws_config(); args...) = terminate_job_flows(aws, args)
 
 @inline terminate_job_flows(aws::AWSConfig, args) = AWSCore.Services.elasticmapreduce(aws, "TerminateJobFlows", args)

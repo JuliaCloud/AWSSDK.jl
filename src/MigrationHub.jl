@@ -66,7 +66,6 @@ Optional boolean flag to indicate whether any effect should take place. Used to 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/AssociateCreatedArtifact)
 """
-
 @inline associate_created_artifact(aws::AWSConfig=default_aws_config(); args...) = associate_created_artifact(aws, args)
 
 @inline associate_created_artifact(aws::AWSConfig, args) = AWSCore.Services.AWSMigrationHub(aws, "AssociateCreatedArtifact", args)
@@ -122,7 +121,6 @@ Optional boolean flag to indicate whether any effect should take place. Used to 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/AssociateDiscoveredResource)
 """
-
 @inline associate_discovered_resource(aws::AWSConfig=default_aws_config(); args...) = associate_discovered_resource(aws, args)
 
 @inline associate_discovered_resource(aws::AWSConfig, args) = AWSCore.Services.AWSMigrationHub(aws, "AssociateDiscoveredResource", args)
@@ -165,7 +163,6 @@ Optional boolean flag to indicate whether any effect should take place. Used to 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/CreateProgressUpdateStream)
 """
-
 @inline create_progress_update_stream(aws::AWSConfig=default_aws_config(); args...) = create_progress_update_stream(aws, args)
 
 @inline create_progress_update_stream(aws::AWSConfig, args) = AWSCore.Services.AWSMigrationHub(aws, "CreateProgressUpdateStream", args)
@@ -188,7 +185,7 @@ Deletes a progress update stream, including all of its tasks, which was previous
 
 *   The only parameter needed for `DeleteProgressUpdateStream` is the stream name (same as a `CreateProgressUpdateStream` call).
 
-*   The call will return, and a background process will asynchronously be doing the actual delete of the stream and all of its resources (tasks, associated resources, resource attributes, created artifacts).
+*   The call will return, and a background process will asynchronously delete the stream and all of its resources (tasks, associated resources, resource attributes, created artifacts).
 
 *   If the stream takes time to be deleted, it might still show up on a `ListProgressUpdateStreams` call.
 
@@ -218,7 +215,6 @@ Optional boolean flag to indicate whether any effect should take place. Used to 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/DeleteProgressUpdateStream)
 """
-
 @inline delete_progress_update_stream(aws::AWSConfig=default_aws_config(); args...) = delete_progress_update_stream(aws, args)
 
 @inline delete_progress_update_stream(aws::AWSConfig, args) = AWSCore.Services.AWSMigrationHub(aws, "DeleteProgressUpdateStream", args)
@@ -257,7 +253,6 @@ The configurationId in ADS that uniquely identifies the grouped application.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/DescribeApplicationState)
 """
-
 @inline describe_application_state(aws::AWSConfig=default_aws_config(); args...) = describe_application_state(aws, args)
 
 @inline describe_application_state(aws::AWSConfig, args) = AWSCore.Services.AWSMigrationHub(aws, "DescribeApplicationState", args)
@@ -300,7 +295,6 @@ The identifier given to the MigrationTask.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/DescribeMigrationTask)
 """
-
 @inline describe_migration_task(aws::AWSConfig=default_aws_config(); args...) = describe_migration_task(aws, args)
 
 @inline describe_migration_task(aws::AWSConfig, args) = AWSCore.Services.AWSMigrationHub(aws, "DescribeMigrationTask", args)
@@ -357,7 +351,6 @@ Optional boolean flag to indicate whether any effect should take place. Used to 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/DisassociateCreatedArtifact)
 """
-
 @inline disassociate_created_artifact(aws::AWSConfig=default_aws_config(); args...) = disassociate_created_artifact(aws, args)
 
 @inline disassociate_created_artifact(aws::AWSConfig, args) = AWSCore.Services.AWSMigrationHub(aws, "DisassociateCreatedArtifact", args)
@@ -408,7 +401,6 @@ Optional boolean flag to indicate whether any effect should take place. Used to 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/DisassociateDiscoveredResource)
 """
-
 @inline disassociate_discovered_resource(aws::AWSConfig=default_aws_config(); args...) = disassociate_discovered_resource(aws, args)
 
 @inline disassociate_discovered_resource(aws::AWSConfig, args) = AWSCore.Services.AWSMigrationHub(aws, "DisassociateDiscoveredResource", args)
@@ -457,7 +449,6 @@ Optional boolean flag to indicate whether any effect should take place. Used to 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/ImportMigrationTask)
 """
-
 @inline import_migration_task(aws::AWSConfig=default_aws_config(); args...) = import_migration_task(aws, args)
 
 @inline import_migration_task(aws::AWSConfig, args) = AWSCore.Services.AWSMigrationHub(aws, "ImportMigrationTask", args)
@@ -514,7 +505,6 @@ Maximum number of results to be returned per page.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/ListCreatedArtifacts)
 """
-
 @inline list_created_artifacts(aws::AWSConfig=default_aws_config(); args...) = list_created_artifacts(aws, args)
 
 @inline list_created_artifacts(aws::AWSConfig, args) = AWSCore.Services.AWSMigrationHub(aws, "ListCreatedArtifacts", args)
@@ -565,7 +555,6 @@ The maximum number of results returned per page.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/ListDiscoveredResources)
 """
-
 @inline list_discovered_resources(aws::AWSConfig=default_aws_config(); args...) = list_discovered_resources(aws, args)
 
 @inline list_discovered_resources(aws::AWSConfig, args) = AWSCore.Services.AWSMigrationHub(aws, "ListDiscoveredResources", args)
@@ -618,7 +607,6 @@ Filter migration tasks by discovered resource name.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/ListMigrationTasks)
 """
-
 @inline list_migration_tasks(aws::AWSConfig=default_aws_config(); args...) = list_migration_tasks(aws, args)
 
 @inline list_migration_tasks(aws::AWSConfig, args) = AWSCore.Services.AWSMigrationHub(aws, "ListMigrationTasks", args)
@@ -661,7 +649,6 @@ Filter to limit the maximum number of results to list per page.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/ListProgressUpdateStreams)
 """
-
 @inline list_progress_update_streams(aws::AWSConfig=default_aws_config(); args...) = list_progress_update_streams(aws, args)
 
 @inline list_progress_update_streams(aws::AWSConfig, args) = AWSCore.Services.AWSMigrationHub(aws, "ListProgressUpdateStreams", args)
@@ -708,7 +695,6 @@ Optional boolean flag to indicate whether any effect should take place. Used to 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/NotifyApplicationState)
 """
-
 @inline notify_application_state(aws::AWSConfig=default_aws_config(); args...) = notify_application_state(aws, args)
 
 @inline notify_application_state(aws::AWSConfig, args) = AWSCore.Services.AWSMigrationHub(aws, "NotifyApplicationState", args)
@@ -779,7 +765,6 @@ Optional boolean flag to indicate whether any effect should take place. Used to 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/NotifyMigrationTaskState)
 """
-
 @inline notify_migration_task_state(aws::AWSConfig=default_aws_config(); args...) = notify_migration_task_state(aws, args)
 
 @inline notify_migration_task_state(aws::AWSConfig, args) = AWSCore.Services.AWSMigrationHub(aws, "NotifyMigrationTaskState", args)
@@ -801,10 +786,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/AWSMig
 Provides identifying details of the resource being migrated so that it can be associated in the Application Discovery Service (ADS)'s repository. This association occurs asynchronously after `PutResourceAttributes` returns.
 
 **Important**
-> Keep in mind that subsequent calls to PutResourceAttributes will override previously stored attributes. For example, if it is first called with a MAC address, but later, it is desired to *add* an IP address, it will then be required to call it with *both* the IP and MAC addresses to prevent overiding the MAC address.
+> *   Keep in mind that subsequent calls to PutResourceAttributes will override previously stored attributes. For example, if it is first called with a MAC address, but later, it is desired to *add* an IP address, it will then be required to call it with *both* the IP and MAC addresses to prevent overiding the MAC address.
+
+*   Note the instructions regarding the special use case of the [`ResourceAttributeList`](https://docs.aws.amazon.com/migrationhub/latest/ug/API_PutResourceAttributes.html#migrationhub-PutResourceAttributes-request-ResourceAttributeList) parameter when specifying any "VM" related value.
 
 **Note**
-> Because this is an asynchronous call, it will always return 200, whether an association occurs or not. To confirm if an association was found based on the provided details, call `ListAssociatedResource`.
+> Because this is an asynchronous call, it will always return 200, whether an association occurs or not. To confirm if an association was found based on the provided details, call `ListDiscoveredResources`.
 
 # Arguments
 
@@ -818,9 +805,17 @@ Unique identifier that references the migration task.
 
 ## `ResourceAttributeList = [[ ... ], ...]` -- *Required*
 Information about the resource that is being migrated. This data will be used to map the task to a resource in the Application Discovery Service (ADS)'s repository.
+
+**Note**
+> Takes the object array of `ResourceAttribute` where the `Type` field is reserved for the following values: `IPV4_ADDRESS | IPV6_ADDRESS | MAC_ADDRESS | FQDN | VM_MANAGER_ID | VM_MANAGED_OBJECT_REFERENCE | VM_NAME | VM_PATH | BIOS_ID | MOTHERBOARD_SERIAL_NUMBER` where the identifying value can be a string up to 256 characters.
+
+**Important**
+> *   If any "VM" related value is set for a `ResourceAttribute` object, it is required that `VM_MANAGER_ID`, as a minimum, is always set. If `VM_MANAGER_ID` is not set, then all "VM" fields will be discarded and "VM" fields will not be used for matching the migration task to a server in Application Discovery Service (ADS)'s repository. See the [Example](https://docs.aws.amazon.com/migrationhub/latest/ug/API_PutResourceAttributes.html#API_PutResourceAttributes_Examples) section below for a use case of specifying "VM" related values.
+
+*   If a server you are trying to match has multiple IP or MAC addresses, you should provide as many as you know in separate type/value pairs passed to the `ResourceAttributeList` parameter to maximize the chances of matching.
 ```
  ResourceAttributeList = [[
-        "Type" => <required> "IPV4_ADDRESS", "IPV6_ADDRESS", "MAC_ADDRESS", "FQDN", "VM_MANAGER_ID", "VM_MANAGED_OBJECT_REFERENCE", "VM_NAME", "VM_PATH", "BIOS_ID", "MOTHERBOARD_SERIAL_NUMBER" or "LABEL",
+        "Type" => <required> "IPV4_ADDRESS", "IPV6_ADDRESS", "MAC_ADDRESS", "FQDN", "VM_MANAGER_ID", "VM_MANAGED_OBJECT_REFERENCE", "VM_NAME", "VM_PATH", "BIOS_ID" or "MOTHERBOARD_SERIAL_NUMBER",
         "Value" => <required> ::String
     ], ...]
 ```
@@ -841,7 +836,6 @@ Optional boolean flag to indicate whether any effect should take place. Used to 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/AWSMigrationHub-2017-05-31/PutResourceAttributes)
 """
-
 @inline put_resource_attributes(aws::AWSConfig=default_aws_config(); args...) = put_resource_attributes(aws, args)
 
 @inline put_resource_attributes(aws::AWSConfig, args) = AWSCore.Services.AWSMigrationHub(aws, "PutResourceAttributes", args)

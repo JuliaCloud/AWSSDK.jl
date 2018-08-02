@@ -47,7 +47,6 @@ This operation cancels a specified job. Only the job owner can cancel it. The op
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/importexport-2010-06-01/CancelJob)
 """
-
 @inline cancel_job(aws::AWSConfig=default_aws_config(); args...) = cancel_job(aws, args)
 
 @inline cancel_job(aws::AWSConfig, args) = AWSCore.Services.importexport(aws, "POST", "/?Operation=CancelJob", "CancelJob", args)
@@ -102,7 +101,6 @@ This operation initiates the process of scheduling an upload or download of your
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/importexport-2010-06-01/CreateJob)
 """
-
 @inline create_job(aws::AWSConfig=default_aws_config(); args...) = create_job(aws, args)
 
 @inline create_job(aws::AWSConfig, args) = AWSCore.Services.importexport(aws, "POST", "/?Operation=CreateJob", "CreateJob", args)
@@ -185,7 +183,6 @@ This operation generates a pre-paid UPS shipping label that you will use to ship
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/importexport-2010-06-01/GetShippingLabel)
 """
-
 @inline get_shipping_label(aws::AWSConfig=default_aws_config(); args...) = get_shipping_label(aws, args)
 
 @inline get_shipping_label(aws::AWSConfig, args) = AWSCore.Services.importexport(aws, "POST", "/?Operation=GetShippingLabel", "GetShippingLabel", args)
@@ -228,7 +225,6 @@ This operation returns information about a job, including where the job is in th
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/importexport-2010-06-01/GetStatus)
 """
-
 @inline get_status(aws::AWSConfig=default_aws_config(); args...) = get_status(aws, args)
 
 @inline get_status(aws::AWSConfig, args) = AWSCore.Services.importexport(aws, "POST", "/?Operation=GetStatus", "GetStatus", args)
@@ -275,7 +271,6 @@ This operation returns the jobs associated with the requester. AWS Import/Export
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/importexport-2010-06-01/ListJobs)
 """
-
 @inline list_jobs(aws::AWSConfig=default_aws_config(); args...) = list_jobs(aws, args)
 
 @inline list_jobs(aws::AWSConfig, args) = AWSCore.Services.importexport(aws, "POST", "/?Operation=ListJobs", "ListJobs", args)
@@ -330,7 +325,6 @@ You use this operation to change the parameters specified in the original manife
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/importexport-2010-06-01/UpdateJob)
 """
-
 @inline update_job(aws::AWSConfig=default_aws_config(); args...) = update_job(aws, args)
 
 @inline update_job(aws::AWSConfig, args) = AWSCore.Services.importexport(aws, "POST", "/?Operation=UpdateJob", "UpdateJob", args)

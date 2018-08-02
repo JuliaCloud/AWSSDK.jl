@@ -49,7 +49,6 @@ Reserved for future use.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/CheckDomainAvailability)
 """
-
 @inline check_domain_availability(aws::AWSConfig=default_aws_config(); args...) = check_domain_availability(aws, args)
 
 @inline check_domain_availability(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "CheckDomainAvailability", args)
@@ -94,7 +93,6 @@ If the registrar for the top-level domain (TLD) requires an authorization code t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/CheckDomainTransferability)
 """
-
 @inline check_domain_transferability(aws::AWSConfig=default_aws_config(); args...) = check_domain_transferability(aws, args)
 
 @inline check_domain_transferability(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "CheckDomainTransferability", args)
@@ -139,7 +137,6 @@ A list of tag keys to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/DeleteTagsForDomain)
 """
-
 @inline delete_tags_for_domain(aws::AWSConfig=default_aws_config(); args...) = delete_tags_for_domain(aws, args)
 
 @inline delete_tags_for_domain(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "DeleteTagsForDomain", args)
@@ -178,7 +175,6 @@ The name of the domain that you want to disable automatic renewal for.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/DisableDomainAutoRenew)
 """
-
 @inline disable_domain_auto_renew(aws::AWSConfig=default_aws_config(); args...) = disable_domain_auto_renew(aws, args)
 
 @inline disable_domain_auto_renew(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "DisableDomainAutoRenew", args)
@@ -217,7 +213,6 @@ The name of the domain that you want to remove the transfer lock for.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/DisableDomainTransferLock)
 """
-
 @inline disable_domain_transfer_lock(aws::AWSConfig=default_aws_config(); args...) = disable_domain_transfer_lock(aws, args)
 
 @inline disable_domain_transfer_lock(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "DisableDomainTransferLock", args)
@@ -238,7 +233,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 This operation configures Amazon Route 53 to automatically renew the specified domain before the domain registration expires. The cost of renewing your domain registration is billed to your AWS account.
 
-The period during which you can renew a domain name varies by TLD. For a list of TLDs and their renewal policies, see ["Renewal, restoration, and deletion times"](http://wiki.gandi.net/en/domains/renew#renewal_restoration_and_deletion_times) on the website for our registrar partner, Gandi. Route 53 requires that you renew before the end of the renewal period that is listed on the Gandi website so we can complete processing before the deadline.
+The period during which you can renew a domain name varies by TLD. For a list of TLDs and their renewal policies, see ["Renewal, restoration, and deletion times"](http://wiki.gandi.net/en/domains/renew#renewal_restoration_and_deletion_times) on the website for our registrar associate, Gandi. Amazon Route 53 requires that you renew before the end of the renewal period that is listed on the Gandi website so we can complete processing before the deadline.
 
 # Arguments
 
@@ -258,7 +253,6 @@ The name of the domain that you want to enable automatic renewal for.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/EnableDomainAutoRenew)
 """
-
 @inline enable_domain_auto_renew(aws::AWSConfig=default_aws_config(); args...) = enable_domain_auto_renew(aws, args)
 
 @inline enable_domain_auto_renew(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "EnableDomainAutoRenew", args)
@@ -297,7 +291,6 @@ The name of the domain that you want to set the transfer lock for.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/EnableDomainTransferLock)
 """
-
 @inline enable_domain_transfer_lock(aws::AWSConfig=default_aws_config(); args...) = enable_domain_transfer_lock(aws, args)
 
 @inline enable_domain_transfer_lock(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "EnableDomainTransferLock", args)
@@ -338,7 +331,6 @@ The name of the domain for which you want to know whether the registrant contact
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetContactReachabilityStatus)
 """
-
 @inline get_contact_reachability_status(aws::AWSConfig=default_aws_config(); args...) = get_contact_reachability_status(aws, args)
 
 @inline get_contact_reachability_status(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "GetContactReachabilityStatus", args)
@@ -377,7 +369,6 @@ The name of the domain that you want to get detailed information about.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetDomainDetail)
 """
-
 @inline get_domain_detail(aws::AWSConfig=default_aws_config(); args...) = get_domain_detail(aws, args)
 
 @inline get_domain_detail(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "GetDomainDetail", args)
@@ -424,7 +415,6 @@ If `OnlyAvailable` is `true`, Amazon Route 53 returns only domain names that are
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetDomainSuggestions)
 """
-
 @inline get_domain_suggestions(aws::AWSConfig=default_aws_config(); args...) = get_domain_suggestions(aws, args)
 
 @inline get_domain_suggestions(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "GetDomainSuggestions", args)
@@ -463,7 +453,6 @@ The identifier for the operation for which you want to get the status. Amazon Ro
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetOperationDetail)
 """
-
 @inline get_operation_detail(aws::AWSConfig=default_aws_config(); args...) = get_operation_detail(aws, args)
 
 @inline get_operation_detail(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "GetOperationDetail", args)
@@ -510,7 +499,6 @@ Default: 20
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ListDomains)
 """
-
 @inline list_domains(aws::AWSConfig=default_aws_config(); args...) = list_domains(aws, args)
 
 @inline list_domains(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "ListDomains", args)
@@ -532,6 +520,10 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 This operation returns the operation IDs of operations that are not yet complete.
 
 # Arguments
+
+## `SubmittedSince = timestamp`
+An optional parameter that lets you get information about all the operations that you submitted after a specified date and time. Specify the date and time in Coordinated Universal time (UTC).
+
 
 ## `Marker = ::String`
 For an initial request for a list of operations, omit this element. If the number of operations that are not yet complete is greater than the value that you specified for `MaxItems`, you can use `Marker` to return additional operations. Get the value of `NextPageMarker` from the previous response, and submit another request that includes the value of `NextPageMarker` in the `Marker` element.
@@ -555,7 +547,6 @@ Default: 20
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ListOperations)
 """
-
 @inline list_operations(aws::AWSConfig=default_aws_config(); args...) = list_operations(aws, args)
 
 @inline list_operations(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "ListOperations", args)
@@ -596,7 +587,6 @@ The domain for which you want to get a list of tags.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ListTagsForDomain)
 """
-
 @inline list_tags_for_domain(aws::AWSConfig=default_aws_config(); args...) = list_tags_for_domain(aws, args)
 
 @inline list_tags_for_domain(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "ListTagsForDomain", args)
@@ -615,7 +605,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 # RegisterDomain Operation
 
-This operation registers a domain. Domains are registered by the AWS registrar partner, Gandi. For some top-level domains (TLDs), this operation requires extra parameters.
+This operation registers a domain. Domains are registered either by Amazon Registrar (for .com, .net, and .org domains) or by our registrar associate, Gandi (for all other domains). For some top-level domains (TLDs), this operation requires extra parameters.
 
 When you register a domain, Amazon Route 53 does the following:
 
@@ -623,7 +613,7 @@ When you register a domain, Amazon Route 53 does the following:
 
 *   Enables autorenew, so your domain registration will renew automatically each year. We'll notify you in advance of the renewal date so you can choose whether to renew the registration.
 
-*   Optionally enables privacy protection, so WHOIS queries return contact information for our registrar partner, Gandi, instead of the information you entered for registrant, admin, and tech contacts.
+*   Optionally enables privacy protection, so WHOIS queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you don't enable privacy protection, WHOIS queries return the information that you entered for the registrant, admin, and tech contacts.
 
 *   If registration is successful, returns an operation ID that you can use to track the progress and completion of the action. If the request is not completed successfully, the domain registrant is notified by email.
 
@@ -726,19 +716,19 @@ Provides detailed contact information.
 ```
 
 ## `PrivacyProtectAdminContact = ::Bool`
-Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.
+Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify `false`, WHOIS queries return the information that you entered for the admin contact.
 
 Default: `true`
 
 
 ## `PrivacyProtectRegistrantContact = ::Bool`
-Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.
+Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify `false`, WHOIS queries return the information that you entered for the registrant contact (the domain owner).
 
 Default: `true`
 
 
 ## `PrivacyProtectTechContact = ::Bool`
-Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.
+Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify `false`, WHOIS queries return the information that you entered for the technical contact.
 
 Default: `true`
 
@@ -755,7 +745,6 @@ Default: `true`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/RegisterDomain)
 """
-
 @inline register_domain(aws::AWSConfig=default_aws_config(); args...) = register_domain(aws, args)
 
 @inline register_domain(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "RegisterDomain", args)
@@ -806,7 +795,6 @@ The year when the registration for the domain is set to expire. This value must 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/RenewDomain)
 """
-
 @inline renew_domain(aws::AWSConfig=default_aws_config(); args...) = renew_domain(aws, args)
 
 @inline renew_domain(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "RenewDomain", args)
@@ -845,7 +833,6 @@ The name of the domain for which you want Amazon Route 53 to resend a confirmati
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ResendContactReachabilityEmail)
 """
-
 @inline resend_contact_reachability_email(aws::AWSConfig=default_aws_config(); args...) = resend_contact_reachability_email(aws, args)
 
 @inline resend_contact_reachability_email(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "ResendContactReachabilityEmail", args)
@@ -884,7 +871,6 @@ The name of the domain that you want to get an authorization code for.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/RetrieveDomainAuthCode)
 """
-
 @inline retrieve_domain_auth_code(aws::AWSConfig=default_aws_config(); args...) = retrieve_domain_auth_code(aws, args)
 
 @inline retrieve_domain_auth_code(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "RetrieveDomainAuthCode", args)
@@ -903,7 +889,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 # TransferDomain Operation
 
-This operation transfers a domain from another registrar to Amazon Route 53. When the transfer is complete, the domain is registered with the AWS registrar partner, Gandi.
+This operation transfers a domain from another registrar to Amazon Route 53. When the transfer is complete, the domain is registered either with Amazon Registrar (for .com, .net, and .org domains) or with our registrar associate, Gandi (for all other TLDs).
 
 For transfer requirements, a detailed procedure, and information about viewing the status of a domain transfer, see [Transferring Registration for a Domain to Amazon Route 53](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html) in the *Amazon Route 53 Developer Guide*.
 
@@ -1024,19 +1010,19 @@ Provides detailed contact information.
 ```
 
 ## `PrivacyProtectAdminContact = ::Bool`
-Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.
+Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify `false`, WHOIS queries return the information that you entered for the admin contact.
 
 Default: `true`
 
 
 ## `PrivacyProtectRegistrantContact = ::Bool`
-Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.
+Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify `false`, WHOIS queries return the information that you entered for the registrant contact (domain owner).
 
 Default: `true`
 
 
 ## `PrivacyProtectTechContact = ::Bool`
-Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.
+Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify `false`, WHOIS queries return the information that you entered for the technical contact.
 
 Default: `true`
 
@@ -1053,7 +1039,6 @@ Default: `true`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/TransferDomain)
 """
-
 @inline transfer_domain(aws::AWSConfig=default_aws_config(); args...) = transfer_domain(aws, args)
 
 @inline transfer_domain(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "TransferDomain", args)
@@ -1072,7 +1057,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 # UpdateDomainContact Operation
 
-This operation updates the contact information for a particular domain. Information for at least one contact (registrant, administrator, or technical) must be supplied for update.
+This operation updates the contact information for a particular domain. You must specify information for at least one contact: registrant, administrator, or technical.
 
 If the update is successful, this method returns an operation ID that you can use to track the progress and completion of the action. If the request is not completed successfully, the domain registrant will be notified by email.
 
@@ -1166,7 +1151,6 @@ Provides detailed contact information.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateDomainContact)
 """
-
 @inline update_domain_contact(aws::AWSConfig=default_aws_config(); args...) = update_domain_contact(aws, args)
 
 @inline update_domain_contact(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "UpdateDomainContact", args)
@@ -1185,9 +1169,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route5
 
 # UpdateDomainContactPrivacy Operation
 
-This operation updates the specified domain contact's privacy setting. When the privacy option is enabled, personal information such as postal or email address is hidden from the results of a public WHOIS query. The privacy services are provided by the AWS registrar, Gandi. For more information, see the [Gandi privacy features](http://www.gandi.net/domain/whois/?currency=USD&amp;lang=en).
+This operation updates the specified domain contact's privacy setting. When privacy protection is enabled, contact information such as email address is replaced either with contact information for Amazon Registrar (for .com, .net, and .org domains) or with contact information for our registrar associate, Gandi.
 
-This operation only affects the privacy of the specified contact type (registrant, administrator, or tech). Successful acceptance returns an operation ID that you can use with [GetOperationDetail](@ref) to track the progress and completion of the action. If the request is not completed successfully, the domain registrant will be notified by email.
+This operation affects only the contact information for the specified contact type (registrant, administrator, or tech). If the request succeeds, Amazon Route 53 returns an operation ID that you can use with [GetOperationDetail](@ref) to track the progress and completion of the action. If the request doesn't complete successfully, the domain registrant will be notified by email.
 
 # Arguments
 
@@ -1196,15 +1180,15 @@ The name of the domain that you want to update the privacy setting for.
 
 
 ## `AdminPrivacy = ::Bool`
-Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.
+Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify `false`, WHOIS queries return the information that you entered for the admin contact.
 
 
 ## `RegistrantPrivacy = ::Bool`
-Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.
+Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify `false`, WHOIS queries return the information that you entered for the registrant contact (domain owner).
 
 
 ## `TechPrivacy = ::Bool`
-Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.
+Whether you want to conceal contact information from WHOIS queries. If you specify `true`, WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify `false`, WHOIS queries return the information that you entered for the technical contact.
 
 
 
@@ -1219,7 +1203,6 @@ Whether you want to conceal contact information from WHOIS queries. If you speci
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateDomainContactPrivacy)
 """
-
 @inline update_domain_contact_privacy(aws::AWSConfig=default_aws_config(); args...) = update_domain_contact_privacy(aws, args)
 
 @inline update_domain_contact_privacy(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "UpdateDomainContactPrivacy", args)
@@ -1273,7 +1256,6 @@ A list of new name servers for the domain.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateDomainNameservers)
 """
-
 @inline update_domain_nameservers(aws::AWSConfig=default_aws_config(); args...) = update_domain_nameservers(aws, args)
 
 @inline update_domain_nameservers(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "UpdateDomainNameservers", args)
@@ -1323,7 +1305,6 @@ A list of the tag keys and values that you want to add or update. If you specify
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateTagsForDomain)
 """
-
 @inline update_tags_for_domain(aws::AWSConfig=default_aws_config(); args...) = update_tags_for_domain(aws, args)
 
 @inline update_tags_for_domain(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "UpdateTagsForDomain", args)
@@ -1347,11 +1328,11 @@ Returns all the domain-related billing records for the current AWS account for a
 # Arguments
 
 ## `Start = timestamp`
-The beginning date and time for the time period for which you want a list of billing records. Specify the date in Unix time format.
+The beginning date and time for the time period for which you want a list of billing records. Specify the date and time in Coordinated Universal time (UTC).
 
 
 ## `End = timestamp`
-The end date and time for the time period for which you want a list of billing records. Specify the date in Unix time format.
+The end date and time for the time period for which you want a list of billing records. Specify the date and time in Coordinated Universal time (UTC).
 
 
 ## `Marker = ::String`
@@ -1378,7 +1359,6 @@ Default: 20
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ViewBilling)
 """
-
 @inline view_billing(aws::AWSConfig=default_aws_config(); args...) = view_billing(aws, args)
 
 @inline view_billing(aws::AWSConfig, args) = AWSCore.Services.route53domains(aws, "ViewBilling", args)

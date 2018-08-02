@@ -45,7 +45,6 @@ A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/BulkPublish)
 """
-
 @inline bulk_publish(aws::AWSConfig=default_aws_config(); args...) = bulk_publish(aws, args)
 
 @inline bulk_publish(aws::AWSConfig, args) = AWSCore.Services.cognito_sync(aws, "POST", "/identitypools/{IdentityPoolId}/bulkpublish", args)
@@ -94,7 +93,6 @@ A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (und
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DeleteDataset)
 """
-
 @inline delete_dataset(aws::AWSConfig=default_aws_config(); args...) = delete_dataset(aws, args)
 
 @inline delete_dataset(aws::AWSConfig, args) = AWSCore.Services.cognito_sync(aws, "DELETE", "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", args)
@@ -143,7 +141,6 @@ A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (und
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DescribeDataset)
 """
-
 @inline describe_dataset(aws::AWSConfig=default_aws_config(); args...) = describe_dataset(aws, args)
 
 @inline describe_dataset(aws::AWSConfig, args) = AWSCore.Services.cognito_sync(aws, "GET", "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", args)
@@ -184,7 +181,6 @@ A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DescribeIdentityPoolUsage)
 """
-
 @inline describe_identity_pool_usage(aws::AWSConfig=default_aws_config(); args...) = describe_identity_pool_usage(aws, args)
 
 @inline describe_identity_pool_usage(aws::AWSConfig, args) = AWSCore.Services.cognito_sync(aws, "GET", "/identitypools/{IdentityPoolId}", args)
@@ -229,7 +225,6 @@ A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DescribeIdentityUsage)
 """
-
 @inline describe_identity_usage(aws::AWSConfig=default_aws_config(); args...) = describe_identity_usage(aws, args)
 
 @inline describe_identity_usage(aws::AWSConfig, args) = AWSCore.Services.cognito_sync(aws, "GET", "/identitypools/{IdentityPoolId}/identities/{IdentityId}", args)
@@ -270,7 +265,6 @@ A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/GetBulkPublishDetails)
 """
-
 @inline get_bulk_publish_details(aws::AWSConfig=default_aws_config(); args...) = get_bulk_publish_details(aws, args)
 
 @inline get_bulk_publish_details(aws::AWSConfig, args) = AWSCore.Services.cognito_sync(aws, "POST", "/identitypools/{IdentityPoolId}/getBulkPublishDetails", args)
@@ -311,7 +305,6 @@ The Cognito Identity Pool ID for the request
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/GetCognitoEvents)
 """
-
 @inline get_cognito_events(aws::AWSConfig=default_aws_config(); args...) = get_cognito_events(aws, args)
 
 @inline get_cognito_events(aws::AWSConfig, args) = AWSCore.Services.cognito_sync(aws, "GET", "/identitypools/{IdentityPoolId}/events", args)
@@ -352,7 +345,6 @@ A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/GetIdentityPoolConfiguration)
 """
-
 @inline get_identity_pool_configuration(aws::AWSConfig=default_aws_config(); args...) = get_identity_pool_configuration(aws, args)
 
 @inline get_identity_pool_configuration(aws::AWSConfig, args) = AWSCore.Services.cognito_sync(aws, "GET", "/identitypools/{IdentityPoolId}/configuration", args)
@@ -405,7 +397,6 @@ The maximum number of results to be returned.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/ListDatasets)
 """
-
 @inline list_datasets(aws::AWSConfig=default_aws_config(); args...) = list_datasets(aws, args)
 
 @inline list_datasets(aws::AWSConfig, args) = AWSCore.Services.cognito_sync(aws, "GET", "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets", args)
@@ -450,7 +441,6 @@ The maximum number of results to be returned.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/ListIdentityPoolUsage)
 """
-
 @inline list_identity_pool_usage(aws::AWSConfig=default_aws_config(); args...) = list_identity_pool_usage(aws, args)
 
 @inline list_identity_pool_usage(aws::AWSConfig, args) = AWSCore.Services.cognito_sync(aws, "GET", "/identitypools", args)
@@ -515,7 +505,6 @@ A token containing a session ID, identity ID, and expiration.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/ListRecords)
 """
-
 @inline list_records(aws::AWSConfig=default_aws_config(); args...) = list_records(aws, args)
 
 @inline list_records(aws::AWSConfig, args) = AWSCore.Services.cognito_sync(aws, "GET", "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/records", args)
@@ -568,7 +557,6 @@ The push token.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/RegisterDevice)
 """
-
 @inline register_device(aws::AWSConfig=default_aws_config(); args...) = register_device(aws, args)
 
 @inline register_device(aws::AWSConfig, args) = AWSCore.Services.cognito_sync(aws, "POST", "/identitypools/{IdentityPoolId}/identity/{IdentityId}/device", args)
@@ -609,7 +597,6 @@ The events to configure
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/SetCognitoEvents)
 """
-
 @inline set_cognito_events(aws::AWSConfig=default_aws_config(); args...) = set_cognito_events(aws, args)
 
 @inline set_cognito_events(aws::AWSConfig, args) = AWSCore.Services.cognito_sync(aws, "POST", "/identitypools/{IdentityPoolId}/events", args)
@@ -669,7 +656,6 @@ Options to apply to this identity pool for Amazon Cognito streams.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/SetIdentityPoolConfiguration)
 """
-
 @inline set_identity_pool_configuration(aws::AWSConfig=default_aws_config(); args...) = set_identity_pool_configuration(aws, args)
 
 @inline set_identity_pool_configuration(aws::AWSConfig, args) = AWSCore.Services.cognito_sync(aws, "POST", "/identitypools/{IdentityPoolId}/configuration", args)
@@ -722,7 +708,6 @@ The unique ID generated for this device by Cognito.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/SubscribeToDataset)
 """
-
 @inline subscribe_to_dataset(aws::AWSConfig=default_aws_config(); args...) = subscribe_to_dataset(aws, args)
 
 @inline subscribe_to_dataset(aws::AWSConfig, args) = AWSCore.Services.cognito_sync(aws, "POST", "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}", args)
@@ -775,7 +760,6 @@ The unique ID generated for this device by Cognito.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/UnsubscribeFromDataset)
 """
-
 @inline unsubscribe_from_dataset(aws::AWSConfig=default_aws_config(); args...) = unsubscribe_from_dataset(aws, args)
 
 @inline unsubscribe_from_dataset(aws::AWSConfig, args) = AWSCore.Services.cognito_sync(aws, "DELETE", "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}", args)
@@ -852,7 +836,6 @@ Intended to supply a device ID that will populate the lastModifiedBy field refer
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/UpdateRecords)
 """
-
 @inline update_records(aws::AWSConfig=default_aws_config(); args...) = update_records(aws, args)
 
 @inline update_records(aws::AWSConfig, args) = AWSCore.Services.cognito_sync(aws, "POST", "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", args)

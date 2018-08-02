@@ -34,18 +34,18 @@ For more information, see [Attach EC2 Instances to Your Auto Scaling Group](http
 # Arguments
 
 ## `InstanceIds = [::String, ...]`
-One or more instance IDs.
+The IDs of the instances. You can specify up to 20 instances.
 
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name of the group.
+The name of the Auto Scaling group.
 
 
 
 
 # Exceptions
 
-`ResourceContentionFault`.
+`ResourceContentionFault` or `ServiceLinkedRoleFailure`.
 
 # Example: To attach an instance to an Auto Scaling group
 
@@ -63,7 +63,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AttachInstances)
 """
-
 @inline attach_instances(aws::AWSConfig=default_aws_config(); args...) = attach_instances(aws, args)
 
 @inline attach_instances(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "AttachInstances", args)
@@ -95,7 +94,7 @@ The name of the Auto Scaling group.
 
 
 ## `TargetGroupARNs = [::String, ...]` -- *Required*
-The Amazon Resource Names (ARN) of the target groups.
+The Amazon Resource Names (ARN) of the target groups. You can specify up to 10 target groups.
 
 
 
@@ -106,7 +105,7 @@ The Amazon Resource Names (ARN) of the target groups.
 
 # Exceptions
 
-`ResourceContentionFault`.
+`ResourceContentionFault` or `ServiceLinkedRoleFailure`.
 
 # Example: To attach a target group to an Auto Scaling group
 
@@ -124,7 +123,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AttachLoadBalancerTargetGroups)
 """
-
 @inline attach_load_balancer_target_groups(aws::AWSConfig=default_aws_config(); args...) = attach_load_balancer_target_groups(aws, args)
 
 @inline attach_load_balancer_target_groups(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "AttachLoadBalancerTargetGroups", args)
@@ -154,11 +152,11 @@ For more information, see [Attach a Load Balancer to Your Auto Scaling Group](ht
 # Arguments
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name of the group.
+The name of the Auto Scaling group.
 
 
 ## `LoadBalancerNames = [::String, ...]` -- *Required*
-One or more load balancer names.
+The names of the load balancers. You can specify up to 10 load balancers.
 
 
 
@@ -169,7 +167,7 @@ One or more load balancer names.
 
 # Exceptions
 
-`ResourceContentionFault`.
+`ResourceContentionFault` or `ServiceLinkedRoleFailure`.
 
 # Example: To attach a load balancer to an Auto Scaling group
 
@@ -187,7 +185,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AttachLoadBalancers)
 """
-
 @inline attach_load_balancers(aws::AWSConfig=default_aws_config(); args...) = attach_load_balancers(aws, args)
 
 @inline attach_load_balancers(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "AttachLoadBalancers", args)
@@ -229,7 +226,7 @@ The name of the lifecycle hook.
 
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name of the group for the lifecycle hook.
+The name of the Auto Scaling group.
 
 
 ## `LifecycleActionToken = ::String`
@@ -270,7 +267,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CompleteLifecycleAction)
 """
-
 @inline complete_lifecycle_action(aws::AWSConfig=default_aws_config(); args...) = complete_lifecycle_action(aws, args)
 
 @inline complete_lifecycle_action(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "CompleteLifecycleAction", args)
@@ -291,22 +287,32 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 Creates an Auto Scaling group with the specified name and attributes.
 
-If you exceed your maximum limit of Auto Scaling groups, which by default is 20 per region, the call fails. For information about viewing and updating this limit, see [DescribeAccountLimits](@ref).
+If you exceed your maximum limit of Auto Scaling groups, the call fails. For information about viewing this limit, see [DescribeAccountLimits](@ref). For information about updating this limit, see [Auto Scaling Limits](http://docs.aws.amazon.com/autoscaling/latest/userguide/as-account-limits.html) in the *Auto Scaling User Guide*.
 
 For more information, see [Auto Scaling Groups](http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroup.html) in the *Auto Scaling User Guide*.
 
 # Arguments
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name of the group. This name must be unique within the scope of your AWS account.
+The name of the Auto Scaling group. This name must be unique within the scope of your AWS account.
 
 
 ## `LaunchConfigurationName = ::String`
-The name of the launch configuration. Alternatively, specify an EC2 instance instead of a launch configuration.
+The name of the launch configuration. You must specify one of the following: a launch configuration, a launch template, or an EC2 instance.
 
+
+## `LaunchTemplate = [ ... ]`
+The launch template to use to launch instances. You must specify one of the following: a launch template, a launch configuration, or an EC2 instance.
+```
+ LaunchTemplate = [
+        "LaunchTemplateId" =>  ::String,
+        "LaunchTemplateName" =>  ::String,
+        "Version" =>  ::String
+    ]
+```
 
 ## `InstanceId = ::String`
-The ID of the instance used to create a launch configuration for the group. Alternatively, specify a launch configuration instead of an EC2 instance.
+The ID of the instance used to create a launch configuration for the group. You must specify one of the following: an EC2 instance, a launch configuration, or a launch template.
 
 When you specify an ID of an instance, Auto Scaling creates a new launch configuration and associates it with the group. This launch configuration derives its attributes from the specified instance, with the exception of the block device mapping.
 
@@ -386,7 +392,7 @@ One or more lifecycle hooks.
 ```
  LifecycleHookSpecificationList = [[
         "LifecycleHookName" => <required> ::String,
-        "LifecycleTransition" =>  ::String,
+        "LifecycleTransition" => <required> ::String,
         "NotificationMetadata" =>  ::String,
         "HeartbeatTimeout" =>  ::Int,
         "DefaultResult" =>  ::String,
@@ -409,11 +415,15 @@ For more information, see [Tagging Auto Scaling Groups and Instances](http://doc
     ], ...]
 ```
 
+## `ServiceLinkedRoleARN = ::String`
+The Amazon Resource Name (ARN) of the service-linked role that the Auto Scaling group uses to call other AWS services on your behalf. By default, Auto Scaling uses a service-linked role named AWSServiceRoleForAutoScaling, which it creates if it does not exist.
+
+
 
 
 # Exceptions
 
-`AlreadyExistsFault`, `LimitExceededFault` or `ResourceContentionFault`.
+`AlreadyExistsFault`, `LimitExceededFault`, `ResourceContentionFault` or `ServiceLinkedRoleFailure`.
 
 # Example: To create an Auto Scaling group
 
@@ -474,7 +484,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateAutoScalingGroup)
 """
-
 @inline create_auto_scaling_group(aws::AWSConfig=default_aws_config(); args...) = create_auto_scaling_group(aws, args)
 
 @inline create_auto_scaling_group(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "CreateAutoScalingGroup", args)
@@ -495,7 +504,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 Creates a launch configuration.
 
-If you exceed your maximum limit of launch configurations, which by default is 100 per region, the call fails. For information about viewing and updating this limit, see [DescribeAccountLimits](@ref).
+If you exceed your maximum limit of launch configurations, the call fails. For information about viewing this limit, see [DescribeAccountLimits](@ref). For information about updating this limit, see [Auto Scaling Limits](http://docs.aws.amazon.com/autoscaling/latest/userguide/as-account-limits.html) in the *Auto Scaling User Guide*.
 
 For more information, see [Launch Configurations](http://docs.aws.amazon.com/autoscaling/latest/userguide/LaunchConfiguration.html) in the *Auto Scaling User Guide*.
 
@@ -604,7 +613,7 @@ Used for groups that launch instances into a virtual private cloud (VPC). Specif
 
 If you specify this parameter, be sure to specify at least one subnet when you create your group.
 
-Default: If the instance is launched into a default subnet, the default is `true`. If the instance is launched into a nondefault subnet, the default is `false`. For more information, see [Supported Platforms](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html) in the *Amazon Elastic Compute Cloud User Guide*.
+Default: If the instance is launched into a default subnet, the default is to assign a public IP address. If the instance is launched into a nondefault subnet, the default is not to assign a public IP address.
 
 
 ## `PlacementTenancy = ::String`
@@ -644,7 +653,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateLaunchConfiguration)
 """
-
 @inline create_launch_configuration(aws::AWSConfig=default_aws_config(); args...) = create_launch_configuration(aws, args)
 
 @inline create_launch_configuration(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "CreateLaunchConfiguration", args)
@@ -717,7 +725,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateOrUpdateTags)
 """
-
 @inline create_or_update_tags(aws::AWSConfig=default_aws_config(); args...) = create_or_update_tags(aws, args)
 
 @inline create_or_update_tags(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "CreateOrUpdateTags", args)
@@ -749,7 +756,7 @@ To terminate all instances before deleting the Auto Scaling group, call [UpdateA
 # Arguments
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name of the group to delete.
+The name of the Auto Scaling group.
 
 
 ## `ForceDelete = ::Bool`
@@ -787,7 +794,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteAutoScalingGroup)
 """
-
 @inline delete_auto_scaling_group(aws::AWSConfig=default_aws_config(); args...) = delete_auto_scaling_group(aws, args)
 
 @inline delete_auto_scaling_group(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DeleteAutoScalingGroup", args)
@@ -835,7 +841,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteLaunchConfiguration)
 """
-
 @inline delete_launch_configuration(aws::AWSConfig=default_aws_config(); args...) = delete_launch_configuration(aws, args)
 
 @inline delete_launch_configuration(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DeleteLaunchConfiguration", args)
@@ -865,7 +870,7 @@ The name of the lifecycle hook.
 
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name of the Auto Scaling group for the lifecycle hook.
+The name of the Auto Scaling group.
 
 
 
@@ -892,7 +897,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteLifecycleHook)
 """
-
 @inline delete_lifecycle_hook(aws::AWSConfig=default_aws_config(); args...) = delete_lifecycle_hook(aws, args)
 
 @inline delete_lifecycle_hook(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DeleteLifecycleHook", args)
@@ -943,7 +947,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteNotificationConfiguration)
 """
-
 @inline delete_notification_configuration(aws::AWSConfig=default_aws_config(); args...) = delete_notification_configuration(aws, args)
 
 @inline delete_notification_configuration(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DeleteNotificationConfiguration", args)
@@ -980,7 +983,7 @@ The name or Amazon Resource Name (ARN) of the policy.
 
 # Exceptions
 
-`ResourceContentionFault`.
+`ResourceContentionFault` or `ServiceLinkedRoleFailure`.
 
 # Example: To delete an Auto Scaling policy
 
@@ -996,7 +999,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeletePolicy)
 """
-
 @inline delete_policy(aws::AWSConfig=default_aws_config(); args...) = delete_policy(aws, args)
 
 @inline delete_policy(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DeletePolicy", args)
@@ -1047,7 +1049,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteScheduledAction)
 """
-
 @inline delete_scheduled_action(aws::AWSConfig=default_aws_config(); args...) = delete_scheduled_action(aws, args)
 
 @inline delete_scheduled_action(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DeleteScheduledAction", args)
@@ -1108,7 +1109,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteTags)
 """
-
 @inline delete_tags(aws::AWSConfig=default_aws_config(); args...) = delete_tags(aws, args)
 
 @inline delete_tags(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DeleteTags", args)
@@ -1129,7 +1129,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autosc
 
 Describes the current Auto Scaling resource limits for your AWS account.
 
-For information about requesting an increase in these limits, see [AWS Service Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html) in the *Amazon Web Services General Reference*.
+For information about requesting an increase in these limits, see [Auto Scaling Limits](http://docs.aws.amazon.com/autoscaling/latest/userguide/as-account-limits.html) in the *Auto Scaling User Guide*.
 
 # Returns
 
@@ -1155,7 +1155,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAccountLimits)
 """
-
 @inline describe_account_limits(aws::AWSConfig=default_aws_config(); args...) = describe_account_limits(aws, args)
 
 @inline describe_account_limits(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribeAccountLimits", args)
@@ -1207,7 +1206,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAdjustmentTypes)
 """
-
 @inline describe_adjustment_types(aws::AWSConfig=default_aws_config(); args...) = describe_adjustment_types(aws, args)
 
 @inline describe_adjustment_types(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribeAdjustmentTypes", args)
@@ -1231,7 +1229,7 @@ Describes one or more Auto Scaling groups.
 # Arguments
 
 ## `AutoScalingGroupNames = [::String, ...]`
-The group names. If you omit this parameter, all Auto Scaling groups are described.
+The names of the Auto Scaling groups. If you omit this parameter, all Auto Scaling groups are described.
 
 
 ## `NextToken = ::String`
@@ -1317,7 +1315,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAutoScalingGroups)
 """
-
 @inline describe_auto_scaling_groups(aws::AWSConfig=default_aws_config(); args...) = describe_auto_scaling_groups(aws, args)
 
 @inline describe_auto_scaling_groups(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribeAutoScalingGroups", args)
@@ -1345,7 +1342,7 @@ The instances to describe; up to 50 instance IDs. If you omit this parameter, al
 
 
 ## `MaxRecords = ::Int`
-The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.
+The maximum number of items to return with this call. The default value is 50 and the maximum value is 50.
 
 
 ## `NextToken = ::String`
@@ -1394,7 +1391,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAutoScalingInstances)
 """
-
 @inline describe_auto_scaling_instances(aws::AWSConfig=default_aws_config(); args...) = describe_auto_scaling_instances(aws, args)
 
 @inline describe_auto_scaling_instances(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribeAutoScalingInstances", args)
@@ -1442,7 +1438,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAutoScalingNotificationTypes)
 """
-
 @inline describe_auto_scaling_notification_types(aws::AWSConfig=default_aws_config(); args...) = describe_auto_scaling_notification_types(aws, args)
 
 @inline describe_auto_scaling_notification_types(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribeAutoScalingNotificationTypes", args)
@@ -1528,7 +1523,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLaunchConfigurations)
 """
-
 @inline describe_launch_configurations(aws::AWSConfig=default_aws_config(); args...) = describe_launch_configurations(aws, args)
 
 @inline describe_launch_configurations(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribeLaunchConfigurations", args)
@@ -1573,7 +1567,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLifecycleHookTypes)
 """
-
 @inline describe_lifecycle_hook_types(aws::AWSConfig=default_aws_config(); args...) = describe_lifecycle_hook_types(aws, args)
 
 @inline describe_lifecycle_hook_types(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribeLifecycleHookTypes", args)
@@ -1597,7 +1590,7 @@ Describes the lifecycle hooks for the specified Auto Scaling group.
 # Arguments
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name of the group.
+The name of the Auto Scaling group.
 
 
 ## `LifecycleHookNames = [::String, ...]`
@@ -1645,7 +1638,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLifecycleHooks)
 """
-
 @inline describe_lifecycle_hooks(aws::AWSConfig=default_aws_config(); args...) = describe_lifecycle_hooks(aws, args)
 
 @inline describe_lifecycle_hooks(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribeLifecycleHooks", args)
@@ -1677,7 +1669,7 @@ The token for the next set of items to return. (You received this token from a p
 
 
 ## `MaxRecords = ::Int`
-The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.
+The maximum number of items to return with this call. The default value is 100 and the maximum value is 100.
 
 
 
@@ -1715,7 +1707,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLoadBalancerTargetGroups)
 """
-
 @inline describe_load_balancer_target_groups(aws::AWSConfig=default_aws_config(); args...) = describe_load_balancer_target_groups(aws, args)
 
 @inline describe_load_balancer_target_groups(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribeLoadBalancerTargetGroups", args)
@@ -1741,7 +1732,7 @@ Note that this operation describes only Classic Load Balancers. If you have Appl
 # Arguments
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name of the group.
+The name of the Auto Scaling group.
 
 
 ## `NextToken = ::String`
@@ -1749,7 +1740,7 @@ The token for the next set of items to return. (You received this token from a p
 
 
 ## `MaxRecords = ::Int`
-The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.
+The maximum number of items to return with this call. The default value is 100 and the maximum value is 100.
 
 
 
@@ -1787,7 +1778,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLoadBalancers)
 """
-
 @inline describe_load_balancers(aws::AWSConfig=default_aws_config(); args...) = describe_load_balancers(aws, args)
 
 @inline describe_load_balancers(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribeLoadBalancers", args)
@@ -1861,7 +1851,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeMetricCollectionTypes)
 """
-
 @inline describe_metric_collection_types(aws::AWSConfig=default_aws_config(); args...) = describe_metric_collection_types(aws, args)
 
 @inline describe_metric_collection_types(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribeMetricCollectionTypes", args)
@@ -1885,7 +1874,7 @@ Describes the notification actions associated with the specified Auto Scaling gr
 # Arguments
 
 ## `AutoScalingGroupNames = [::String, ...]`
-The name of the group.
+The name of the Auto Scaling group.
 
 
 ## `NextToken = ::String`
@@ -1939,7 +1928,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeNotificationConfigurations)
 """
-
 @inline describe_notification_configurations(aws::AWSConfig=default_aws_config(); args...) = describe_notification_configurations(aws, args)
 
 @inline describe_notification_configurations(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribeNotificationConfigurations", args)
@@ -1963,11 +1951,11 @@ Describes the policies for the specified Auto Scaling group.
 # Arguments
 
 ## `AutoScalingGroupName = ::String`
-The name of the group.
+The name of the Auto Scaling group.
 
 
 ## `PolicyNames = [::String, ...]`
-One or more policy names or policy ARNs to be described. If you omit this parameter, all policy names are described. If an group name is provided, the results are limited to that group. This list is limited to 50 items. If you specify an unknown policy name, it is ignored with no error.
+The names of one or more policies. If you omit this parameter, all policies are described. If an group name is provided, the results are limited to that group. This list is limited to 50 items. If you specify an unknown policy name, it is ignored with no error.
 
 
 ## `PolicyTypes = [::String, ...]`
@@ -1990,7 +1978,7 @@ The maximum number of items to be returned with each call. The default value is 
 
 # Exceptions
 
-`InvalidNextToken` or `ResourceContentionFault`.
+`InvalidNextToken`, `ResourceContentionFault` or `ServiceLinkedRoleFailure`.
 
 # Example: To describe Auto Scaling policies
 
@@ -2035,7 +2023,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribePolicies)
 """
-
 @inline describe_policies(aws::AWSConfig=default_aws_config(); args...) = describe_policies(aws, args)
 
 @inline describe_policies(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribePolicies", args)
@@ -2063,11 +2050,11 @@ The activity IDs of the desired scaling activities. If you omit this parameter, 
 
 
 ## `AutoScalingGroupName = ::String`
-The name of the group.
+The name of the Auto Scaling group.
 
 
 ## `MaxRecords = ::Int`
-The maximum number of items to return with this call. The default value is 100.
+The maximum number of items to return with this call. The default value is 100 and the maximum value is 100.
 
 
 ## `NextToken = ::String`
@@ -2116,7 +2103,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeScalingActivities)
 """
-
 @inline describe_scaling_activities(aws::AWSConfig=default_aws_config(); args...) = describe_scaling_activities(aws, args)
 
 @inline describe_scaling_activities(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribeScalingActivities", args)
@@ -2183,7 +2169,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeScalingProcessTypes)
 """
-
 @inline describe_scaling_process_types(aws::AWSConfig=default_aws_config(); args...) = describe_scaling_process_types(aws, args)
 
 @inline describe_scaling_process_types(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribeScalingProcessTypes", args)
@@ -2207,7 +2192,7 @@ Describes the actions scheduled for your Auto Scaling group that haven't run. To
 # Arguments
 
 ## `AutoScalingGroupName = ::String`
-The name of the group.
+The name of the Auto Scaling group.
 
 
 ## `ScheduledActionNames = [::String, ...]`
@@ -2274,7 +2259,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeScheduledActions)
 """
-
 @inline describe_scheduled_actions(aws::AWSConfig=default_aws_config(); args...) = describe_scheduled_actions(aws, args)
 
 @inline describe_scheduled_actions(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribeScheduledActions", args)
@@ -2370,7 +2354,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeTags)
 """
-
 @inline describe_tags(aws::AWSConfig=default_aws_config(); args...) = describe_tags(aws, args)
 
 @inline describe_tags(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribeTags", args)
@@ -2418,7 +2401,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeTerminationPolicyTypes)
 """
-
 @inline describe_termination_policy_types(aws::AWSConfig=default_aws_config(); args...) = describe_termination_policy_types(aws, args)
 
 @inline describe_termination_policy_types(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DescribeTerminationPolicyTypes", args)
@@ -2450,15 +2432,15 @@ For more information, see [Detach EC2 Instances from Your Auto Scaling Group](ht
 # Arguments
 
 ## `InstanceIds = [::String, ...]`
-One or more instance IDs.
+The IDs of the instances. You can specify up to 20 instances.
 
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name of the group.
+The name of the Auto Scaling group.
 
 
 ## `ShouldDecrementDesiredCapacity = ::Bool` -- *Required*
-If `True`, the Auto Scaling group decrements the desired capacity value by the number of instances detached.
+Indicates whether the Auto Scaling group decrements the desired capacity value by the number of instances detached.
 
 
 
@@ -2506,7 +2488,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DetachInstances)
 """
-
 @inline detach_instances(aws::AWSConfig=default_aws_config(); args...) = detach_instances(aws, args)
 
 @inline detach_instances(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DetachInstances", args)
@@ -2534,7 +2515,7 @@ The name of the Auto Scaling group.
 
 
 ## `TargetGroupARNs = [::String, ...]` -- *Required*
-The Amazon Resource Names (ARN) of the target groups.
+The Amazon Resource Names (ARN) of the target groups. You can specify up to 10 target groups.
 
 
 
@@ -2563,7 +2544,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DetachLoadBalancerTargetGroups)
 """
-
 @inline detach_load_balancer_target_groups(aws::AWSConfig=default_aws_config(); args...) = detach_load_balancer_target_groups(aws, args)
 
 @inline detach_load_balancer_target_groups(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DetachLoadBalancerTargetGroups", args)
@@ -2595,7 +2575,7 @@ The name of the Auto Scaling group.
 
 
 ## `LoadBalancerNames = [::String, ...]` -- *Required*
-One or more load balancer names.
+The names of the load balancers. You can specify up to 10 load balancers.
 
 
 
@@ -2624,7 +2604,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DetachLoadBalancers)
 """
-
 @inline detach_load_balancers(aws::AWSConfig=default_aws_config(); args...) = detach_load_balancers(aws, args)
 
 @inline detach_load_balancers(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DetachLoadBalancers", args)
@@ -2648,7 +2627,7 @@ Disables group metrics for the specified Auto Scaling group.
 # Arguments
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name or Amazon Resource Name (ARN) of the group.
+The name of the Auto Scaling group.
 
 
 ## `Metrics = [::String, ...]`
@@ -2693,7 +2672,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DisableMetricsCollection)
 """
-
 @inline disable_metrics_collection(aws::AWSConfig=default_aws_config(); args...) = disable_metrics_collection(aws, args)
 
 @inline disable_metrics_collection(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "DisableMetricsCollection", args)
@@ -2717,7 +2695,7 @@ Enables group metrics for the specified Auto Scaling group. For more information
 # Arguments
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name or ARN of the Auto Scaling group.
+The name of the Auto Scaling group.
 
 
 ## `Metrics = [::String, ...]`
@@ -2764,7 +2742,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/EnableMetricsCollection)
 """
-
 @inline enable_metrics_collection(aws::AWSConfig=default_aws_config(); args...) = enable_metrics_collection(aws, args)
 
 @inline enable_metrics_collection(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "EnableMetricsCollection", args)
@@ -2790,7 +2767,7 @@ For more information, see [Temporarily Removing Instances from Your Auto Scaling
 # Arguments
 
 ## `InstanceIds = [::String, ...]`
-One or more instances to move into `Standby` mode. You must specify at least one instance ID.
+The IDs of the instances. You can specify up to 20 instances.
 
 
 ## `AutoScalingGroupName = ::String` -- *Required*
@@ -2798,7 +2775,7 @@ The name of the Auto Scaling group.
 
 
 ## `ShouldDecrementDesiredCapacity = ::Bool` -- *Required*
-Specifies whether the instances moved to `Standby` mode count as part of the Auto Scaling group's desired capacity. If set, the desired capacity for the Auto Scaling group decrements by the number of instances moved to `Standby` mode.
+Indicates whether to decrement the desired capacity of the Auto Scaling group by the number of instances moved to `Standby` mode.
 
 
 
@@ -2846,7 +2823,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/EnterStandby)
 """
-
 @inline enter_standby(aws::AWSConfig=default_aws_config(); args...) = enter_standby(aws, args)
 
 @inline enter_standby(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "EnterStandby", args)
@@ -2870,7 +2846,7 @@ Executes the specified policy.
 # Arguments
 
 ## `AutoScalingGroupName = ::String`
-The name or Amazon Resource Name (ARN) of the Auto Scaling group.
+The name of the Auto Scaling group.
 
 
 ## `PolicyName = ::String` -- *Required*
@@ -2878,7 +2854,7 @@ The name or ARN of the policy.
 
 
 ## `HonorCooldown = ::Bool`
-If this parameter is true, Auto Scaling waits for the cooldown period to complete before executing the policy. Otherwise, Auto Scaling executes the policy without waiting for the cooldown period to complete.
+Indicates whether Auto Scaling waits for the cooldown period to complete before executing the policy.
 
 This parameter is not supported if the policy type is `StepScaling`.
 
@@ -2920,7 +2896,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ExecutePolicy)
 """
-
 @inline execute_policy(aws::AWSConfig=default_aws_config(); args...) = execute_policy(aws, args)
 
 @inline execute_policy(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "ExecutePolicy", args)
@@ -2946,7 +2921,7 @@ For more information, see [Temporarily Removing Instances from Your Auto Scaling
 # Arguments
 
 ## `InstanceIds = [::String, ...]`
-One or more instance IDs. You must specify at least one instance ID.
+The IDs of the instances. You can specify up to 20 instances.
 
 
 ## `AutoScalingGroupName = ::String` -- *Required*
@@ -2997,7 +2972,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ExitStandby)
 """
-
 @inline exit_standby(aws::AWSConfig=default_aws_config(); args...) = exit_standby(aws, args)
 
 @inline exit_standby(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "ExitStandby", args)
@@ -3043,7 +3017,7 @@ The name of the lifecycle hook.
 
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name of the Auto Scaling group to which you want to assign the lifecycle hook.
+The name of the Auto Scaling group.
 
 
 ## `LifecycleTransition = ::String`
@@ -3107,7 +3081,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutLifecycleHook)
 """
-
 @inline put_lifecycle_hook(aws::AWSConfig=default_aws_config(); args...) = put_lifecycle_hook(aws, args)
 
 @inline put_lifecycle_hook(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "PutLifecycleHook", args)
@@ -3150,7 +3123,7 @@ The type of event that will cause the notification to be sent. For details about
 
 # Exceptions
 
-`LimitExceededFault` or `ResourceContentionFault`.
+`LimitExceededFault`, `ResourceContentionFault` or `ServiceLinkedRoleFailure`.
 
 # Example: To add an Auto Scaling notification
 
@@ -3169,7 +3142,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutNotificationConfiguration)
 """
-
 @inline put_notification_configuration(aws::AWSConfig=default_aws_config(); args...) = put_notification_configuration(aws, args)
 
 @inline put_notification_configuration(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "PutNotificationConfiguration", args)
@@ -3195,7 +3167,7 @@ If you exceed your maximum limit of step adjustments, which by default is 20 per
 # Arguments
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name or ARN of the group.
+The name of the Auto Scaling group.
 
 
 ## `PolicyName = ::String` -- *Required*
@@ -3295,7 +3267,7 @@ This parameter is required if the policy type is `TargetTrackingScaling` and not
 
 # Exceptions
 
-`LimitExceededFault` or `ResourceContentionFault`.
+`LimitExceededFault`, `ResourceContentionFault` or `ServiceLinkedRoleFailure`.
 
 # Example: To add a scaling policy to an Auto Scaling group
 
@@ -3320,7 +3292,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutScalingPolicy)
 """
-
 @inline put_scaling_policy(aws::AWSConfig=default_aws_config(); args...) = put_scaling_policy(aws, args)
 
 @inline put_scaling_policy(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "PutScalingPolicy", args)
@@ -3346,7 +3317,7 @@ For more information, see [Scheduled Scaling](http://docs.aws.amazon.com/autosca
 # Arguments
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name or Amazon Resource Name (ARN) of the Auto Scaling group.
+The name of the Auto Scaling group.
 
 
 ## `ScheduledActionName = ::String` -- *Required*
@@ -3410,7 +3381,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutScheduledUpdateGroupAction)
 """
-
 @inline put_scheduled_update_group_action(aws::AWSConfig=default_aws_config(); args...) = put_scheduled_update_group_action(aws, args)
 
 @inline put_scheduled_update_group_action(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "PutScheduledUpdateGroupAction", args)
@@ -3452,7 +3422,7 @@ The name of the lifecycle hook.
 
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name of the Auto Scaling group for the hook.
+The name of the Auto Scaling group.
 
 
 ## `LifecycleActionToken = ::String`
@@ -3488,7 +3458,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/RecordLifecycleActionHeartbeat)
 """
-
 @inline record_lifecycle_action_heartbeat(aws::AWSConfig=default_aws_config(); args...) = record_lifecycle_action_heartbeat(aws, args)
 
 @inline record_lifecycle_action_heartbeat(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "RecordLifecycleActionHeartbeat", args)
@@ -3514,7 +3483,7 @@ For more information, see [Suspending and Resuming Auto Scaling Processes](http:
 # Arguments
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name or Amazon Resource Name (ARN) of the Auto Scaling group.
+The name of the Auto Scaling group.
 
 
 ## `ScalingProcesses = [::String, ...]`
@@ -3559,7 +3528,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ResumeProcesses)
 """
-
 @inline resume_processes(aws::AWSConfig=default_aws_config(); args...) = resume_processes(aws, args)
 
 @inline resume_processes(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "ResumeProcesses", args)
@@ -3593,7 +3561,7 @@ The number of EC2 instances that should be running in the Auto Scaling group.
 
 
 ## `HonorCooldown = ::Bool`
-By default, `SetDesiredCapacity` overrides any cooldown period associated with the Auto Scaling group. Specify `True` to make Auto Scaling to wait for the cool-down period associated with the Auto Scaling group to complete before initiating a scaling activity to set your Auto Scaling group to its new capacity.
+Indicates whether Auto Scaling waits for the cooldown period to complete before initiating a scaling activity to set your Auto Scaling group to its new capacity. By default, Auto Scaling does not honor the cooldown period during manual scaling activities.
 
 
 
@@ -3617,7 +3585,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SetDesiredCapacity)
 """
-
 @inline set_desired_capacity(aws::AWSConfig=default_aws_config(); args...) = set_desired_capacity(aws, args)
 
 @inline set_desired_capacity(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "SetDesiredCapacity", args)
@@ -3676,7 +3643,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SetInstanceHealth)
 """
-
 @inline set_instance_health(aws::AWSConfig=default_aws_config(); args...) = set_instance_health(aws, args)
 
 @inline set_instance_health(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "SetInstanceHealth", args)
@@ -3706,7 +3672,7 @@ One or more instance IDs.
 
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name of the group.
+The name of the Auto Scaling group.
 
 
 ## `ProtectedFromScaleIn = ::Bool` -- *Required*
@@ -3755,7 +3721,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SetInstanceProtection)
 """
-
 @inline set_instance_protection(aws::AWSConfig=default_aws_config(); args...) = set_instance_protection(aws, args)
 
 @inline set_instance_protection(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "SetInstanceProtection", args)
@@ -3785,7 +3750,7 @@ For more information, see [Suspending and Resuming Auto Scaling Processes](http:
 # Arguments
 
 ## `AutoScalingGroupName = ::String` -- *Required*
-The name or Amazon Resource Name (ARN) of the Auto Scaling group.
+The name of the Auto Scaling group.
 
 
 ## `ScalingProcesses = [::String, ...]`
@@ -3830,7 +3795,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SuspendProcesses)
 """
-
 @inline suspend_processes(aws::AWSConfig=default_aws_config(); args...) = suspend_processes(aws, args)
 
 @inline suspend_processes(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "SuspendProcesses", args)
@@ -3860,7 +3824,7 @@ The ID of the instance.
 
 
 ## `ShouldDecrementDesiredCapacity = ::Bool` -- *Required*
-If `true`, terminating the instance also decrements the size of the Auto Scaling group.
+Indicates whether terminating the instance also decrements the size of the Auto Scaling group.
 
 
 
@@ -3887,7 +3851,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/TerminateInstanceInAutoScalingGroup)
 """
-
 @inline terminate_instance_in_auto_scaling_group(aws::AWSConfig=default_aws_config(); args...) = terminate_instance_in_auto_scaling_group(aws, args)
 
 @inline terminate_instance_in_auto_scaling_group(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "TerminateInstanceInAutoScalingGroup", args)
@@ -3927,8 +3890,18 @@ The name of the Auto Scaling group.
 
 
 ## `LaunchConfigurationName = ::String`
-The name of the launch configuration.
+The name of the launch configuration. If you specify a launch configuration, you can't specify a launch template.
 
+
+## `LaunchTemplate = [ ... ]`
+The launch template to use to specify the updates. If you specify a launch template, you can't specify a launch configuration.
+```
+ LaunchTemplate = [
+        "LaunchTemplateId" =>  ::String,
+        "LaunchTemplateName" =>  ::String,
+        "Version" =>  ::String
+    ]
+```
 
 ## `MinSize = ::Int`
 The minimum size of the Auto Scaling group.
@@ -3984,11 +3957,15 @@ For more information, see [Controlling Which Instances Auto Scaling Terminates D
 Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.
 
 
+## `ServiceLinkedRoleARN = ::String`
+The Amazon Resource Name (ARN) of the service-linked role that the Auto Scaling group uses to call other AWS services on your behalf.
+
+
 
 
 # Exceptions
 
-`ScalingActivityInProgressFault` or `ResourceContentionFault`.
+`ScalingActivityInProgressFault`, `ResourceContentionFault` or `ServiceLinkedRoleFailure`.
 
 # Example: To update the launch configuration
 
@@ -4029,7 +4006,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/UpdateAutoScalingGroup)
 """
-
 @inline update_auto_scaling_group(aws::AWSConfig=default_aws_config(); args...) = update_auto_scaling_group(aws, args)
 
 @inline update_auto_scaling_group(aws::AWSConfig, args) = AWSCore.Services.autoscaling(aws, "UpdateAutoScalingGroup", args)

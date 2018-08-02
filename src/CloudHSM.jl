@@ -58,7 +58,6 @@ One or more tags.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/AddTagsToResource)
 """
-
 @inline add_tags_to_resource(aws::AWSConfig=default_aws_config(); args...) = add_tags_to_resource(aws, args)
 
 @inline add_tags_to_resource(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "AddTagsToResource", args)
@@ -101,7 +100,6 @@ The label of the new high-availability partition group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/CreateHapg)
 """
-
 @inline create_hapg(aws::AWSConfig=default_aws_config(); args...) = create_hapg(aws, args)
 
 @inline create_hapg(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "CreateHapg", args)
@@ -179,7 +177,6 @@ The IP address for the syslog monitoring server. The AWS CloudHSM service only s
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/CreateHsm)
 """
-
 @inline create_hsm(aws::AWSConfig=default_aws_config(); args...) = create_hsm(aws, args)
 
 @inline create_hsm(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "CreateHsm", args)
@@ -226,7 +223,6 @@ The contents of a Base64-Encoded X.509 v3 certificate to be installed on the HSM
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/CreateLunaClient)
 """
-
 @inline create_luna_client(aws::AWSConfig=default_aws_config(); args...) = create_luna_client(aws, args)
 
 @inline create_luna_client(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "CreateLunaClient", args)
@@ -269,7 +265,6 @@ The ARN of the high-availability partition group to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/DeleteHapg)
 """
-
 @inline delete_hapg(aws::AWSConfig=default_aws_config(); args...) = delete_hapg(aws, args)
 
 @inline delete_hapg(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "DeleteHapg", args)
@@ -312,7 +307,6 @@ The ARN of the HSM to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/DeleteHsm)
 """
-
 @inline delete_hsm(aws::AWSConfig=default_aws_config(); args...) = delete_hsm(aws, args)
 
 @inline delete_hsm(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "DeleteHsm", args)
@@ -355,7 +349,6 @@ The ARN of the client to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/DeleteLunaClient)
 """
-
 @inline delete_luna_client(aws::AWSConfig=default_aws_config(); args...) = delete_luna_client(aws, args)
 
 @inline delete_luna_client(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "DeleteLunaClient", args)
@@ -398,7 +391,6 @@ The ARN of the high-availability partition group to describe.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/DescribeHapg)
 """
-
 @inline describe_hapg(aws::AWSConfig=default_aws_config(); args...) = describe_hapg(aws, args)
 
 @inline describe_hapg(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "DescribeHapg", args)
@@ -445,7 +437,6 @@ The serial number of the HSM. Either the `HsmArn` or the `HsmSerialNumber` param
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/DescribeHsm)
 """
-
 @inline describe_hsm(aws::AWSConfig=default_aws_config(); args...) = describe_hsm(aws, args)
 
 @inline describe_hsm(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "DescribeHsm", args)
@@ -492,7 +483,6 @@ The certificate fingerprint.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/DescribeLunaClient)
 """
-
 @inline describe_luna_client(aws::AWSConfig=default_aws_config(); args...) = describe_luna_client(aws, args)
 
 @inline describe_luna_client(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "DescribeLunaClient", args)
@@ -543,7 +533,6 @@ A list of ARNs that identify the high-availability partition groups that are ass
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/GetConfig)
 """
-
 @inline get_config(aws::AWSConfig=default_aws_config(); args...) = get_config(aws, args)
 
 @inline get_config(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "GetConfig", args)
@@ -582,7 +571,6 @@ Lists the Availability Zones that have available AWS CloudHSM capacity.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/ListAvailableZones)
 """
-
 @inline list_available_zones(aws::AWSConfig=default_aws_config(); args...) = list_available_zones(aws, args)
 
 @inline list_available_zones(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "ListAvailableZones", args)
@@ -627,7 +615,6 @@ The `NextToken` value from a previous call to `ListHapgs`. Pass null if this is 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/ListHapgs)
 """
-
 @inline list_hapgs(aws::AWSConfig=default_aws_config(); args...) = list_hapgs(aws, args)
 
 @inline list_hapgs(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "ListHapgs", args)
@@ -672,7 +659,6 @@ The `NextToken` value from a previous call to `ListHsms`. Pass null if this is t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/ListHsms)
 """
-
 @inline list_hsms(aws::AWSConfig=default_aws_config(); args...) = list_hsms(aws, args)
 
 @inline list_hsms(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "ListHsms", args)
@@ -717,7 +703,6 @@ The `NextToken` value from a previous call to `ListLunaClients`. Pass null if th
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/ListLunaClients)
 """
-
 @inline list_luna_clients(aws::AWSConfig=default_aws_config(); args...) = list_luna_clients(aws, args)
 
 @inline list_luna_clients(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "ListLunaClients", args)
@@ -760,7 +745,6 @@ The Amazon Resource Name (ARN) of the AWS CloudHSM resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/ListTagsForResource)
 """
-
 @inline list_tags_for_resource(aws::AWSConfig=default_aws_config(); args...) = list_tags_for_resource(aws, args)
 
 @inline list_tags_for_resource(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "ListTagsForResource", args)
@@ -811,7 +795,6 @@ The list of partition serial numbers to make members of the high-availability pa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/ModifyHapg)
 """
-
 @inline modify_hapg(aws::AWSConfig=default_aws_config(); args...) = modify_hapg(aws, args)
 
 @inline modify_hapg(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "ModifyHapg", args)
@@ -879,7 +862,6 @@ The new IP address for the syslog monitoring server. The AWS CloudHSM service on
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/ModifyHsm)
 """
-
 @inline modify_hsm(aws::AWSConfig=default_aws_config(); args...) = modify_hsm(aws, args)
 
 @inline modify_hsm(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "ModifyHsm", args)
@@ -928,7 +910,6 @@ The new certificate for the client.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/ModifyLunaClient)
 """
-
 @inline modify_luna_client(aws::AWSConfig=default_aws_config(); args...) = modify_luna_client(aws, args)
 
 @inline modify_luna_client(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "ModifyLunaClient", args)
@@ -979,7 +960,6 @@ Specify only the tag key to remove (not the value). To overwrite the value for a
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/RemoveTagsFromResource)
 """
-
 @inline remove_tags_from_resource(aws::AWSConfig=default_aws_config(); args...) = remove_tags_from_resource(aws, args)
 
 @inline remove_tags_from_resource(aws::AWSConfig, args) = AWSCore.Services.cloudhsm(aws, "RemoveTagsFromResource", args)

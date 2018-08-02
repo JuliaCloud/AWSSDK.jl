@@ -63,7 +63,6 @@ An array of custom attributes, such as Mutable and Name.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AddCustomAttributes)
 """
-
 @inline add_custom_attributes(aws::AWSConfig=default_aws_config(); args...) = add_custom_attributes(aws, args)
 
 @inline add_custom_attributes(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AddCustomAttributes", args)
@@ -108,7 +107,6 @@ The group name.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminAddUserToGroup)
 """
-
 @inline admin_add_user_to_group(aws::AWSConfig=default_aws_config(); args...) = admin_add_user_to_group(aws, args)
 
 @inline admin_add_user_to_group(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminAddUserToGroup", args)
@@ -153,7 +151,6 @@ The user name for which you want to confirm user registration.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminConfirmSignUp)
 """
-
 @inline admin_confirm_sign_up(aws::AWSConfig=default_aws_config(); args...) = admin_confirm_sign_up(aws, args)
 
 @inline admin_confirm_sign_up(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminConfirmSignUp", args)
@@ -172,9 +169,18 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 # AdminCreateUser Operation
 
-Creates a new user in the specified user pool and sends a welcome message via email or phone (SMS). This message is based on a template that you configured in your call to [CreateUserPool](API_CreateUserPool.html) or [UpdateUserPool](API_UpdateUserPool.html). This template includes your custom sign-up instructions and placeholders for user name and temporary password.
+Creates a new user in the specified user pool.
 
-Requires developer credentials.
+If `MessageAction` is not set, the default is to send a welcome message via email or phone (SMS).
+
+**Note**
+> This message is based on a template that you configured in your call to or . This template includes your custom sign-up instructions and placeholders for user name and temporary password.
+
+Alternatively, you can call AdminCreateUser with “SUPPRESS” for the `MessageAction` parameter, and Amazon Cognito will not send any email.
+
+In either case, the user will be in the `FORCE_CHANGE_PASSWORD` state until they sign in and change their password.
+
+AdminCreateUser requires developer credentials.
 
 # Arguments
 
@@ -187,13 +193,13 @@ The username for the user. Must be unique within the user pool. Must be a UTF-8 
 
 
 ## `UserAttributes = [[ ... ], ...]`
-An array of name-value pairs that contain user attributes and attribute values to be set for the user to be created. You can create a user without specifying any attributes other than `Username`. However, any attributes that you specify as required (in [CreateUserPool](API_CreateUserPool.html) or in the **Attributes** tab of the console) must be supplied either by you (in your call to `AdminCreateUser`) or by the user (when he or she signs up in response to your welcome message).
+An array of name-value pairs that contain user attributes and attribute values to be set for the user to be created. You can create a user without specifying any attributes other than `Username`. However, any attributes that you specify as required (in or in the **Attributes** tab of the console) must be supplied either by you (in your call to `AdminCreateUser`) or by the user (when he or she signs up in response to your welcome message).
 
 For custom attributes, you must prepend the `custom:` prefix to the attribute name.
 
 To send a message inviting the user to sign up, you must specify the user's email address or phone number. This can be done in your call to AdminCreateUser or in the **Users** tab of the Amazon Cognito console for managing your user pools.
 
-In your call to `AdminCreateUser`, you can set the `email_verified` attribute to `True`, and you can set the `phone_number_verified` attribute to `True`. (You can also do this by calling [AdminUpdateUserAttributes](API_AdminUpdateUserAttributes.html).)
+In your call to `AdminCreateUser`, you can set the `email_verified` attribute to `True`, and you can set the `phone_number_verified` attribute to `True`. (You can also do this by calling .)
 
 *   **email**: The email address of the user to whom the message that contains the code and username will be sent. Required if the `email_verified` attribute is set to `True`, or if `"EMAIL"` is specified in the `DesiredDeliveryMediums` parameter.
 
@@ -256,7 +262,6 @@ Specify `"EMAIL"` if email will be used to send the welcome message. Specify `"S
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminCreateUser)
 """
-
 @inline admin_create_user(aws::AWSConfig=default_aws_config(); args...) = admin_create_user(aws, args)
 
 @inline admin_create_user(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminCreateUser", args)
@@ -297,7 +302,6 @@ The user name of the user you wish to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminDeleteUser)
 """
-
 @inline admin_delete_user(aws::AWSConfig=default_aws_config(); args...) = admin_delete_user(aws, args)
 
 @inline admin_delete_user(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminDeleteUser", args)
@@ -348,7 +352,6 @@ For custom attributes, you must prepend the `custom:` prefix to the attribute na
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminDeleteUserAttributes)
 """
-
 @inline admin_delete_user_attributes(aws::AWSConfig=default_aws_config(); args...) = admin_delete_user_attributes(aws, args)
 
 @inline admin_delete_user_attributes(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminDeleteUserAttributes", args)
@@ -367,7 +370,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 # AdminDisableProviderForUser Operation
 
-Disables the user from signing in with the specified external (SAML or social) identity provider. If the user to disable is a Cognito User Pools native username + password user, they are not permitted to use their password to sign-in. If the user to disable is a linked external IdP user, any link between that user and an existing user is removed. The next time the external user (no longer attached to the previously linked `DestinationUser`) signs in, they must create a new user account. See [AdminLinkProviderForUser](API_AdminLinkProviderForUser.html).
+Disables the user from signing in with the specified external (SAML or social) identity provider. If the user to disable is a Cognito User Pools native username + password user, they are not permitted to use their password to sign-in. If the user to disable is a linked external IdP user, any link between that user and an existing user is removed. The next time the external user (no longer attached to the previously linked `DestinationUser`) signs in, they must create a new user account. See .
 
 This action is enabled only for admin access and requires developer credentials.
 
@@ -377,7 +380,7 @@ To disable a native username + password user, the `ProviderName` value must be `
 
 The `ProviderAttributeName` must always be `Cognito_Subject` for social identity providers. The `ProviderAttributeValue` must always be the exact subject that was used when the user was originally linked as a source user.
 
-For de-linking a SAML identity, there are two scenarios. If the linked identity has not yet been used to sign-in, the `ProviderAttributeName` and `ProviderAttributeValue` must be the same values that were used for the `SourceUser` when the identities were originally linked in the [AdminLinkProviderForUser](API_AdminLinkProviderForUser.html) call. (If the linking was done with `ProviderAttributeName` set to `Cognito_Subject`, the same applies here). However, if the user has already signed in, the `ProviderAttributeName` must be `Cognito_Subject` and `ProviderAttributeValue` must be the subject of the SAML assertion.
+For de-linking a SAML identity, there are two scenarios. If the linked identity has not yet been used to sign-in, the `ProviderAttributeName` and `ProviderAttributeValue` must be the same values that were used for the `SourceUser` when the identities were originally linked in the call. (If the linking was done with `ProviderAttributeName` set to `Cognito_Subject`, the same applies here). However, if the user has already signed in, the `ProviderAttributeName` must be `Cognito_Subject` and `ProviderAttributeValue` must be the subject of the SAML assertion.
 
 # Arguments
 
@@ -407,7 +410,6 @@ The user to be disabled.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminDisableProviderForUser)
 """
-
 @inline admin_disable_provider_for_user(aws::AWSConfig=default_aws_config(); args...) = admin_disable_provider_for_user(aws, args)
 
 @inline admin_disable_provider_for_user(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminDisableProviderForUser", args)
@@ -452,7 +454,6 @@ The user name of the user you wish to disable.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminDisableUser)
 """
-
 @inline admin_disable_user(aws::AWSConfig=default_aws_config(); args...) = admin_disable_user(aws, args)
 
 @inline admin_disable_user(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminDisableUser", args)
@@ -497,7 +498,6 @@ The user name of the user you wish to enable.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminEnableUser)
 """
-
 @inline admin_enable_user(aws::AWSConfig=default_aws_config(); args...) = admin_enable_user(aws, args)
 
 @inline admin_enable_user(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminEnableUser", args)
@@ -542,7 +542,6 @@ The device key.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminForgetDevice)
 """
-
 @inline admin_forget_device(aws::AWSConfig=default_aws_config(); args...) = admin_forget_device(aws, args)
 
 @inline admin_forget_device(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminForgetDevice", args)
@@ -591,7 +590,6 @@ The user name.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminGetDevice)
 """
-
 @inline admin_get_device(aws::AWSConfig=default_aws_config(); args...) = admin_get_device(aws, args)
 
 @inline admin_get_device(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminGetDevice", args)
@@ -636,7 +634,6 @@ The user name of the user you wish to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminGetUser)
 """
-
 @inline admin_get_user(aws::AWSConfig=default_aws_config(); args...) = admin_get_user(aws, args)
 
 @inline admin_get_user(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminGetUser", args)
@@ -669,12 +666,14 @@ The ID of the Amazon Cognito user pool.
 The app client ID.
 
 
-## `AuthFlow = "USER_SRP_AUTH", "REFRESH_TOKEN_AUTH", "REFRESH_TOKEN", "CUSTOM_AUTH" or "ADMIN_NO_SRP_AUTH"` -- *Required*
+## `AuthFlow = "USER_SRP_AUTH", "REFRESH_TOKEN_AUTH", "REFRESH_TOKEN", "CUSTOM_AUTH", "ADMIN_NO_SRP_AUTH" or "USER_PASSWORD_AUTH"` -- *Required*
 The authentication flow for this call to execute. The API action will depend on this value. For example:
 
 *   `REFRESH_TOKEN_AUTH` will take in a valid refresh token and return new tokens.
 
 *   `USER_SRP_AUTH` will take in `USERNAME` and `SRP_A` and return the SRP variables to be used for next challenge execution.
+
+*   `USER_PASSWORD_AUTH` will take in `USERNAME` and `PASSWORD` and return the next challenge or tokens.
 
 Valid values include:
 
@@ -686,13 +685,15 @@ Valid values include:
 
 *   `ADMIN_NO_SRP_AUTH`: Non-SRP authentication flow; you can pass in the USERNAME and PASSWORD directly if the flow is enabled for calling the app client.
 
+*   `USER_PASSWORD_AUTH`: Non-SRP authentication flow; USERNAME and PASSWORD are passed directly. If a user migration Lambda trigger is set, this flow will invoke the user migration Lambda if the USERNAME is not found in the user pool.
+
 
 ## `AuthParameters = ::Dict{String,String}`
 The authentication parameters. These are inputs corresponding to the `AuthFlow` that you are invoking. The required values depend on the value of `AuthFlow`:
 
 *   For `USER_SRP_AUTH`: `USERNAME` (required), `SRP_A` (required), `SECRET_HASH` (required if the app client is configured with a client secret), `DEVICE_KEY`
 
-*   For `REFRESH_TOKEN_AUTH/REFRESH_TOKEN`: `USERNAME` (required), `SECRET_HASH` (required if the app client is configured with a client secret), `REFRESH_TOKEN` (required), `DEVICE_KEY`
+*   For `REFRESH_TOKEN_AUTH/REFRESH_TOKEN`: `REFRESH_TOKEN` (required), `SECRET_HASH` (required if the app client is configured with a client secret), `DEVICE_KEY`
 
 *   For `ADMIN_NO_SRP_AUTH`: `USERNAME` (required), `SECRET_HASH` (if app client is configured with client secret), `PASSWORD` (required), `DEVICE_KEY`
 
@@ -702,6 +703,25 @@ The authentication parameters. These are inputs corresponding to the `AuthFlow` 
 ## `ClientMetadata = ::Dict{String,String}`
 This is a random key-value pair map which can contain any key and will be passed to your PreAuthentication Lambda trigger as-is. It can be used to implement additional validations around authentication.
 
+
+## `AnalyticsMetadata = ["AnalyticsEndpointId" =>  ::String]`
+The analytics metadata for collecting Amazon Pinpoint metrics for `AdminInitiateAuth` calls.
+
+
+## `ContextData = [ ... ]`
+Contextual data such as the user's device fingerprint, IP address, or location used for evaluating the risk of an unexpected event by Amazon Cognito advanced security.
+```
+ ContextData = [
+        "IpAddress" => <required> ::String,
+        "ServerName" => <required> ::String,
+        "ServerPath" => <required> ::String,
+        "HttpHeaders" => <required> [[
+            "headerName" =>  ::String,
+            "headerValue" =>  ::String
+        ], ...],
+        "EncodedData" =>  ::String
+    ]
+```
 
 
 
@@ -715,7 +735,6 @@ This is a random key-value pair map which can contain any key and will be passed
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminInitiateAuth)
 """
-
 @inline admin_initiate_auth(aws::AWSConfig=default_aws_config(); args...) = admin_initiate_auth(aws, args)
 
 @inline admin_initiate_auth(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminInitiateAuth", args)
@@ -741,7 +760,7 @@ For example, if there is an existing user with a username and password, this API
 **Important**
 > Because this API allows a user with an external federated identity to sign in as an existing user in the user pool, it is critical that it only be used with external identity providers and provider attributes that have been trusted by the application owner.
 
-See also [AdminDisableProviderForUser](API_AdminDisableProviderForUser.html).
+See also .
 
 This action is enabled only for admin access and requires developer credentials.
 
@@ -754,7 +773,11 @@ The user pool ID for the user pool.
 ## `DestinationUser = [ ... ]` -- *Required*
 The existing user in the user pool to be linked to the external identity provider user account. Can be a native (Username + Password) Cognito User Pools user or a federated user (for example, a SAML or Facebook user). If the user doesn't exist, an exception is thrown. This is the user that is returned when the new user (with the linked identity provider attribute) signs in.
 
-The `ProviderAttributeValue` for the `DestinationUser` must match the username for the user in the user pool. The `ProviderAttributeName` will always be ignored.
+For a native username + password user, the `ProviderAttributeValue` for the `DestinationUser` should be the username in the user pool. For a federated user, it should be the provider-specific `user_id`.
+
+The `ProviderAttributeName` of the `DestinationUser` is ignored.
+
+The `ProviderName` should be set to `Cognito` for users in Cognito user pools.
 ```
  DestinationUser = [
         "ProviderName" =>  ::String,
@@ -789,7 +812,6 @@ For SAML, the `ProviderAttributeName` can be any value that matches a claim in t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminLinkProviderForUser)
 """
-
 @inline admin_link_provider_for_user(aws::AWSConfig=default_aws_config(); args...) = admin_link_provider_for_user(aws, args)
 
 @inline admin_link_provider_for_user(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminLinkProviderForUser", args)
@@ -842,7 +864,6 @@ The pagination token.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminListDevices)
 """
-
 @inline admin_list_devices(aws::AWSConfig=default_aws_config(); args...) = admin_list_devices(aws, args)
 
 @inline admin_list_devices(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminListDevices", args)
@@ -895,12 +916,61 @@ An identifier that was returned from the previous call to this operation, which 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminListGroupsForUser)
 """
-
 @inline admin_list_groups_for_user(aws::AWSConfig=default_aws_config(); args...) = admin_list_groups_for_user(aws, args)
 
 @inline admin_list_groups_for_user(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminListGroupsForUser", args)
 
 @inline admin_list_groups_for_user(args) = admin_list_groups_for_user(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CognitoIdentityServiceProvider.admin_list_user_auth_events
+    admin_list_user_auth_events([::AWSConfig], arguments::Dict)
+    admin_list_user_auth_events([::AWSConfig]; UserPoolId=, Username=, <keyword arguments>)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "AdminListUserAuthEvents", arguments::Dict)
+    cognito_idp([::AWSConfig], "AdminListUserAuthEvents", UserPoolId=, Username=, <keyword arguments>)
+
+# AdminListUserAuthEvents Operation
+
+Lists a history of user activity and any risks detected as part of Amazon Cognito advanced security.
+
+# Arguments
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID.
+
+
+## `Username = ::String` -- *Required*
+The user pool username or an alias.
+
+
+## `MaxResults = ::Int`
+The maximum number of authentication events to return.
+
+
+## `NextToken = ::String`
+A pagination token.
+
+
+
+
+# Returns
+
+`AdminListUserAuthEventsResponse`
+
+# Exceptions
+
+`InvalidParameterException`, `ResourceNotFoundException`, `TooManyRequestsException`, `NotAuthorizedException`, `UserNotFoundException`, `UserPoolAddOnNotEnabledException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminListUserAuthEvents)
+"""
+@inline admin_list_user_auth_events(aws::AWSConfig=default_aws_config(); args...) = admin_list_user_auth_events(aws, args)
+
+@inline admin_list_user_auth_events(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminListUserAuthEvents", args)
+
+@inline admin_list_user_auth_events(args) = admin_list_user_auth_events(default_aws_config(), args)
 
 
 """
@@ -940,7 +1010,6 @@ The group name.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminRemoveUserFromGroup)
 """
-
 @inline admin_remove_user_from_group(aws::AWSConfig=default_aws_config(); args...) = admin_remove_user_from_group(aws, args)
 
 @inline admin_remove_user_from_group(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminRemoveUserFromGroup", args)
@@ -987,7 +1056,6 @@ The user name of the user whose password you wish to reset.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminResetUserPassword)
 """
-
 @inline admin_reset_user_password(aws::AWSConfig=default_aws_config(); args...) = admin_reset_user_password(aws, args)
 
 @inline admin_reset_user_password(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminResetUserPassword", args)
@@ -1020,8 +1088,8 @@ The ID of the Amazon Cognito user pool.
 The app client ID.
 
 
-## `ChallengeName = "SMS_MFA", "PASSWORD_VERIFIER", "CUSTOM_CHALLENGE", "DEVICE_SRP_AUTH", "DEVICE_PASSWORD_VERIFIER", "ADMIN_NO_SRP_AUTH" or "NEW_PASSWORD_REQUIRED"` -- *Required*
-The challenge name. For more information, see [AdminInitiateAuth](API_AdminInitiateAuth.html).
+## `ChallengeName = "SMS_MFA", "SOFTWARE_TOKEN_MFA", "SELECT_MFA_TYPE", "MFA_SETUP", "PASSWORD_VERIFIER", "CUSTOM_CHALLENGE", "DEVICE_SRP_AUTH", "DEVICE_PASSWORD_VERIFIER", "ADMIN_NO_SRP_AUTH" or "NEW_PASSWORD_REQUIRED"` -- *Required*
+The challenge name. For more information, see .
 
 
 ## `ChallengeResponses = ::Dict{String,String}`
@@ -1042,6 +1110,25 @@ The value of the `USERNAME` attribute must be the user's actual username, not an
 The session which should be passed both ways in challenge-response calls to the service. If `InitiateAuth` or `RespondToAuthChallenge` API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next `RespondToAuthChallenge` API call.
 
 
+## `AnalyticsMetadata = ["AnalyticsEndpointId" =>  ::String]`
+The analytics metadata for collecting Amazon Pinpoint metrics for `AdminRespondToAuthChallenge` calls.
+
+
+## `ContextData = [ ... ]`
+Contextual data such as the user's device fingerprint, IP address, or location used for evaluating the risk of an unexpected event by Amazon Cognito advanced security.
+```
+ ContextData = [
+        "IpAddress" => <required> ::String,
+        "ServerName" => <required> ::String,
+        "ServerPath" => <required> ::String,
+        "HttpHeaders" => <required> [[
+            "headerName" =>  ::String,
+            "headerValue" =>  ::String
+        ], ...],
+        "EncodedData" =>  ::String
+    ]
+```
+
 
 
 # Returns
@@ -1050,16 +1137,75 @@ The session which should be passed both ways in challenge-response calls to the 
 
 # Exceptions
 
-`ResourceNotFoundException`, `InvalidParameterException`, `NotAuthorizedException`, `CodeMismatchException`, `ExpiredCodeException`, `UnexpectedLambdaException`, `InvalidPasswordException`, `UserLambdaValidationException`, `InvalidLambdaResponseException`, `TooManyRequestsException`, `InvalidUserPoolConfigurationException`, `InternalErrorException`, `MFAMethodNotFoundException`, `InvalidSmsRoleAccessPolicyException`, `InvalidSmsRoleTrustRelationshipException`, `AliasExistsException`, `PasswordResetRequiredException`, `UserNotFoundException` or `UserNotConfirmedException`.
+`ResourceNotFoundException`, `InvalidParameterException`, `NotAuthorizedException`, `CodeMismatchException`, `ExpiredCodeException`, `UnexpectedLambdaException`, `InvalidPasswordException`, `UserLambdaValidationException`, `InvalidLambdaResponseException`, `TooManyRequestsException`, `InvalidUserPoolConfigurationException`, `InternalErrorException`, `MFAMethodNotFoundException`, `InvalidSmsRoleAccessPolicyException`, `InvalidSmsRoleTrustRelationshipException`, `AliasExistsException`, `PasswordResetRequiredException`, `UserNotFoundException`, `UserNotConfirmedException` or `SoftwareTokenMFANotFoundException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminRespondToAuthChallenge)
 """
-
 @inline admin_respond_to_auth_challenge(aws::AWSConfig=default_aws_config(); args...) = admin_respond_to_auth_challenge(aws, args)
 
 @inline admin_respond_to_auth_challenge(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminRespondToAuthChallenge", args)
 
 @inline admin_respond_to_auth_challenge(args) = admin_respond_to_auth_challenge(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CognitoIdentityServiceProvider.admin_set_user_mfapreference
+    admin_set_user_mfapreference([::AWSConfig], arguments::Dict)
+    admin_set_user_mfapreference([::AWSConfig]; Username=, UserPoolId=, <keyword arguments>)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "AdminSetUserMFAPreference", arguments::Dict)
+    cognito_idp([::AWSConfig], "AdminSetUserMFAPreference", Username=, UserPoolId=, <keyword arguments>)
+
+# AdminSetUserMFAPreference Operation
+
+Sets the user's multi-factor authentication (MFA) preference.
+
+# Arguments
+
+## `SMSMfaSettings = [ ... ]`
+The SMS text message MFA settings.
+```
+ SMSMfaSettings = [
+        "Enabled" =>  ::Bool,
+        "PreferredMfa" =>  ::Bool
+    ]
+```
+
+## `SoftwareTokenMfaSettings = [ ... ]`
+The time-based one-time password software token MFA settings.
+```
+ SoftwareTokenMfaSettings = [
+        "Enabled" =>  ::Bool,
+        "PreferredMfa" =>  ::Bool
+    ]
+```
+
+## `Username = ::String` -- *Required*
+The user pool username or alias.
+
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID.
+
+
+
+
+# Returns
+
+`AdminSetUserMFAPreferenceResponse`
+
+# Exceptions
+
+`ResourceNotFoundException`, `InvalidParameterException`, `NotAuthorizedException`, `PasswordResetRequiredException`, `UserNotFoundException`, `UserNotConfirmedException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminSetUserMFAPreference)
+"""
+@inline admin_set_user_mfapreference(aws::AWSConfig=default_aws_config(); args...) = admin_set_user_mfapreference(aws, args)
+
+@inline admin_set_user_mfapreference(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminSetUserMFAPreference", args)
+
+@inline admin_set_user_mfapreference(args) = admin_set_user_mfapreference(default_aws_config(), args)
 
 
 """
@@ -1108,12 +1254,61 @@ Specifies the options for MFA (e.g., email or phone number).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminSetUserSettings)
 """
-
 @inline admin_set_user_settings(aws::AWSConfig=default_aws_config(); args...) = admin_set_user_settings(aws, args)
 
 @inline admin_set_user_settings(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminSetUserSettings", args)
 
 @inline admin_set_user_settings(args) = admin_set_user_settings(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CognitoIdentityServiceProvider.admin_update_auth_event_feedback
+    admin_update_auth_event_feedback([::AWSConfig], arguments::Dict)
+    admin_update_auth_event_feedback([::AWSConfig]; UserPoolId=, Username=, EventId=, FeedbackValue=)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "AdminUpdateAuthEventFeedback", arguments::Dict)
+    cognito_idp([::AWSConfig], "AdminUpdateAuthEventFeedback", UserPoolId=, Username=, EventId=, FeedbackValue=)
+
+# AdminUpdateAuthEventFeedback Operation
+
+Provides feedback for an authentication event as to whether it was from a valid user. This feedback is used for improving the risk evaluation decision for the user pool as part of Amazon Cognito advanced security.
+
+# Arguments
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID.
+
+
+## `Username = ::String` -- *Required*
+The user pool username.
+
+
+## `EventId = ::String` -- *Required*
+The authentication event ID.
+
+
+## `FeedbackValue = "Valid" or "Invalid"` -- *Required*
+The authentication event feedback value.
+
+
+
+
+# Returns
+
+`AdminUpdateAuthEventFeedbackResponse`
+
+# Exceptions
+
+`InvalidParameterException`, `ResourceNotFoundException`, `TooManyRequestsException`, `NotAuthorizedException`, `UserNotFoundException`, `UserPoolAddOnNotEnabledException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminUpdateAuthEventFeedback)
+"""
+@inline admin_update_auth_event_feedback(aws::AWSConfig=default_aws_config(); args...) = admin_update_auth_event_feedback(aws, args)
+
+@inline admin_update_auth_event_feedback(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminUpdateAuthEventFeedback", args)
+
+@inline admin_update_auth_event_feedback(args) = admin_update_auth_event_feedback(default_aws_config(), args)
 
 
 """
@@ -1161,7 +1356,6 @@ The status indicating whether a device has been remembered or not.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminUpdateDeviceStatus)
 """
-
 @inline admin_update_device_status(aws::AWSConfig=default_aws_config(); args...) = admin_update_device_status(aws, args)
 
 @inline admin_update_device_status(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminUpdateDeviceStatus", args)
@@ -1221,7 +1415,6 @@ For custom attributes, you must prepend the `custom:` prefix to the attribute na
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminUpdateUserAttributes)
 """
-
 @inline admin_update_user_attributes(aws::AWSConfig=default_aws_config(); args...) = admin_update_user_attributes(aws, args)
 
 @inline admin_update_user_attributes(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminUpdateUserAttributes", args)
@@ -1266,12 +1459,53 @@ The user name.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminUserGlobalSignOut)
 """
-
 @inline admin_user_global_sign_out(aws::AWSConfig=default_aws_config(); args...) = admin_user_global_sign_out(aws, args)
 
 @inline admin_user_global_sign_out(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AdminUserGlobalSignOut", args)
 
 @inline admin_user_global_sign_out(args) = admin_user_global_sign_out(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CognitoIdentityServiceProvider.associate_software_token
+    associate_software_token([::AWSConfig], arguments::Dict)
+    associate_software_token([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "AssociateSoftwareToken", arguments::Dict)
+    cognito_idp([::AWSConfig], "AssociateSoftwareToken", <keyword arguments>)
+
+# AssociateSoftwareToken Operation
+
+Returns a unique generated shared secret key code for the user account. The request takes an access token or a session string, but not both.
+
+# Arguments
+
+## `AccessToken = ::String`
+The access token.
+
+
+## `Session = ::String`
+The session which should be passed both ways in challenge-response calls to the service. This allows authentication of the user as part of the MFA setup process.
+
+
+
+
+# Returns
+
+`AssociateSoftwareTokenResponse`
+
+# Exceptions
+
+`InvalidParameterException`, `NotAuthorizedException`, `ResourceNotFoundException`, `InternalErrorException` or `SoftwareTokenMFANotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AssociateSoftwareToken)
+"""
+@inline associate_software_token(aws::AWSConfig=default_aws_config(); args...) = associate_software_token(aws, args)
+
+@inline associate_software_token(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "AssociateSoftwareToken", args)
+
+@inline associate_software_token(args) = associate_software_token(default_aws_config(), args)
 
 
 """
@@ -1290,15 +1524,15 @@ Changes the password for a specified user in a user pool.
 # Arguments
 
 ## `PreviousPassword = ::String` -- *Required*
-The old password in the change password request.
+The old password.
 
 
 ## `ProposedPassword = ::String` -- *Required*
-The new password in the change password request.
+The new password.
 
 
 ## `AccessToken = ::String` -- *Required*
-The access token in the change password request.
+The access token.
 
 
 
@@ -1313,7 +1547,6 @@ The access token in the change password request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ChangePassword)
 """
-
 @inline change_password(aws::AWSConfig=default_aws_config(); args...) = change_password(aws, args)
 
 @inline change_password(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ChangePassword", args)
@@ -1369,7 +1602,6 @@ The device name.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ConfirmDevice)
 """
-
 @inline confirm_device(aws::AWSConfig=default_aws_config(); args...) = confirm_device(aws, args)
 
 @inline confirm_device(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ConfirmDevice", args)
@@ -1405,11 +1637,19 @@ The user name of the user for whom you want to enter a code to retrieve a forgot
 
 
 ## `ConfirmationCode = ::String` -- *Required*
-The confirmation code sent by a user's request to retrieve a forgotten password. For more information, see [ForgotPassword](API_ForgotPassword.html)
+The confirmation code sent by a user's request to retrieve a forgotten password. For more information, see
 
 
 ## `Password = ::String` -- *Required*
 The password sent by a user's request to retrieve a forgotten password.
+
+
+## `AnalyticsMetadata = ["AnalyticsEndpointId" =>  ::String]`
+The Amazon Pinpoint analytics metadata for collecting metrics for `ConfirmForgotPassword` calls.
+
+
+## `UserContextData = ["EncodedData" =>  ::String]`
+Contextual data such as the user's device fingerprint, IP address, or location used for evaluating the risk of an unexpected event by Amazon Cognito advanced security.
 
 
 
@@ -1424,7 +1664,6 @@ The password sent by a user's request to retrieve a forgotten password.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ConfirmForgotPassword)
 """
-
 @inline confirm_forgot_password(aws::AWSConfig=default_aws_config(); args...) = confirm_forgot_password(aws, args)
 
 @inline confirm_forgot_password(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ConfirmForgotPassword", args)
@@ -1467,6 +1706,14 @@ The confirmation code sent by a user's request to confirm registration.
 Boolean to be specified to force user confirmation irrespective of existing alias. By default set to `False`. If this parameter is set to `True` and the phone number/email used for sign up confirmation already exists as an alias with a different user, the API call will migrate the alias from the previous user to the newly created user being confirmed. If set to `False`, the API will throw an **AliasExistsException** error.
 
 
+## `AnalyticsMetadata = ["AnalyticsEndpointId" =>  ::String]`
+The Amazon Pinpoint analytics metadata for collecting metrics for `ConfirmSignUp` calls.
+
+
+## `UserContextData = ["EncodedData" =>  ::String]`
+Contextual data such as the user's device fingerprint, IP address, or location used for evaluating the risk of an unexpected event by Amazon Cognito advanced security.
+
+
 
 
 # Returns
@@ -1479,7 +1726,6 @@ Boolean to be specified to force user confirmation irrespective of existing alia
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ConfirmSignUp)
 """
-
 @inline confirm_sign_up(aws::AWSConfig=default_aws_config(); args...) = confirm_sign_up(aws, args)
 
 @inline confirm_sign_up(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ConfirmSignUp", args)
@@ -1540,7 +1786,6 @@ The default `Precedence` value is null.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CreateGroup)
 """
-
 @inline create_group(aws::AWSConfig=default_aws_config(); args...) = create_group(aws, args)
 
 @inline create_group(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "CreateGroup", args)
@@ -1571,7 +1816,7 @@ The user pool ID.
 The identity provider name.
 
 
-## `ProviderType = "SAML", "Facebook", "Google" or "LoginWithAmazon"` -- *Required*
+## `ProviderType = "SAML", "Facebook", "Google", "LoginWithAmazon" or "OIDC"` -- *Required*
 The identity provider type.
 
 
@@ -1599,7 +1844,6 @@ A list of identity provider identifiers.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CreateIdentityProvider)
 """
-
 @inline create_identity_provider(aws::AWSConfig=default_aws_config(); args...) = create_identity_provider(aws, args)
 
 @inline create_identity_provider(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "CreateIdentityProvider", args)
@@ -1655,7 +1899,6 @@ A list of scopes. Each scope is map, where the keys are `name` and `description`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CreateResourceServer)
 """
-
 @inline create_resource_server(aws::AWSConfig=default_aws_config(); args...) = create_resource_server(aws, args)
 
 @inline create_resource_server(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "CreateResourceServer", args)
@@ -1702,7 +1945,6 @@ The role ARN for the Amazon CloudWatch Logging role for the user import job.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CreateUserImportJob)
 """
-
 @inline create_user_import_job(aws::AWSConfig=default_aws_config(); args...) = create_user_import_job(aws, args)
 
 @inline create_user_import_job(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "CreateUserImportJob", args)
@@ -1743,6 +1985,13 @@ The policies associated with the new user pool.
 
 ## `LambdaConfig = [ ... ]`
 The Lambda trigger configuration information for the new user pool.
+
+**Note**
+> In a push model, event sources (such as Amazon S3 and custom applications) need permission to invoke a function. So you will need to make an extra call to add permission for these event sources to invoke your Lambda function.
+
+For more information on using the Lambda API to add permission, see [AddPermission](https://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html) .
+
+For adding permission using the AWS CLI, see [add-permission](https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html) .
 ```
  LambdaConfig = [
         "PreSignUp" =>  ::String,
@@ -1752,7 +2001,9 @@ The Lambda trigger configuration information for the new user pool.
         "PostAuthentication" =>  ::String,
         "DefineAuthChallenge" =>  ::String,
         "CreateAuthChallenge" =>  ::String,
-        "VerifyAuthChallengeResponse" =>  ::String
+        "VerifyAuthChallengeResponse" =>  ::String,
+        "PreTokenGeneration" =>  ::String,
+        "UserMigration" =>  ::String
     ]
 ```
 
@@ -1866,6 +2117,10 @@ An array of schema attributes for the new user pool. These attributes can be sta
     ], ...]
 ```
 
+## `UserPoolAddOns = ["AdvancedSecurityMode" => <required> "OFF", "AUDIT" or "ENFORCED"]`
+Used to enable advanced security risk detection. Set the key `AdvancedSecurityMode` to the value "AUDIT".
+
+
 
 
 # Returns
@@ -1878,7 +2133,6 @@ An array of schema attributes for the new user pool. These attributes can be sta
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CreateUserPool)
 """
-
 @inline create_user_pool(aws::AWSConfig=default_aws_config(); args...) = create_user_pool(aws, args)
 
 @inline create_user_pool(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "CreateUserPool", args)
@@ -1925,7 +2179,7 @@ The read attributes.
 The write attributes.
 
 
-## `ExplicitAuthFlows = ["ADMIN_NO_SRP_AUTH" or "CUSTOM_AUTH_FLOW_ONLY", ...]`
+## `ExplicitAuthFlows = ["ADMIN_NO_SRP_AUTH", "CUSTOM_AUTH_FLOW_ONLY" or "USER_PASSWORD_AUTH", ...]`
 The explicit authentication flows.
 
 
@@ -1934,7 +2188,19 @@ A list of provider names for the identity providers that are supported on this c
 
 
 ## `CallbackURLs = [::String, ...]`
-A list of allowed callback URLs for the identity providers.
+A list of allowed redirect (callback) URLs for the identity providers.
+
+A redirect URI must:
+
+*   Be an absolute URI.
+
+*   Be registered with the authorization server.
+
+*   Not use HTTP without TLS (i.e. use HTTPS instead of HTTP).
+
+*   Not include a fragment component.
+
+See [OAuth 2.0 - Redirection Endpoint](https://tools.ietf.org/html/rfc6749#section-3.1.2).
 
 
 ## `LogoutURLs = [::String, ...]`
@@ -1943,6 +2209,18 @@ A list of allowed logout URLs for the identity providers.
 
 ## `DefaultRedirectURI = ::String`
 The default redirect URI. Must be in the `CallbackURLs` list.
+
+A redirect URI must:
+
+*   Be an absolute URI.
+
+*   Be registered with the authorization server.
+
+*   Not use HTTP without TLS (i.e. use HTTPS instead of HTTP).
+
+*   Not include a fragment component.
+
+See [OAuth 2.0 - Redirection Endpoint](https://tools.ietf.org/html/rfc6749#section-3.1.2).
 
 
 ## `AllowedOAuthFlows = ["code", "implicit" or "client_credentials", ...]`
@@ -1959,6 +2237,17 @@ A list of allowed `OAuth` scopes. Currently supported values are `"phone"`, `"em
 Set to `True` if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.
 
 
+## `AnalyticsConfiguration = [ ... ]`
+The Amazon Pinpoint analytics configuration for collecting metrics for this user pool.
+```
+ AnalyticsConfiguration = [
+        "ApplicationId" => <required> ::String,
+        "RoleArn" => <required> ::String,
+        "ExternalId" => <required> ::String,
+        "UserDataShared" =>  ::Bool
+    ]
+```
+
 
 
 # Returns
@@ -1971,7 +2260,6 @@ Set to `True` if the client is allowed to follow the OAuth protocol when interac
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CreateUserPoolClient)
 """
-
 @inline create_user_pool_client(aws::AWSConfig=default_aws_config(); args...) = create_user_pool_client(aws, args)
 
 @inline create_user_pool_client(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "CreateUserPoolClient", args)
@@ -2014,7 +2302,6 @@ The user pool ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CreateUserPoolDomain)
 """
-
 @inline create_user_pool_domain(aws::AWSConfig=default_aws_config(); args...) = create_user_pool_domain(aws, args)
 
 @inline create_user_pool_domain(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "CreateUserPoolDomain", args)
@@ -2055,7 +2342,6 @@ The user pool ID for the user pool.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteGroup)
 """
-
 @inline delete_group(aws::AWSConfig=default_aws_config(); args...) = delete_group(aws, args)
 
 @inline delete_group(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "DeleteGroup", args)
@@ -2094,7 +2380,6 @@ The identity provider name.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteIdentityProvider)
 """
-
 @inline delete_identity_provider(aws::AWSConfig=default_aws_config(); args...) = delete_identity_provider(aws, args)
 
 @inline delete_identity_provider(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "DeleteIdentityProvider", args)
@@ -2133,7 +2418,6 @@ The identifier for the resource server.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteResourceServer)
 """
-
 @inline delete_resource_server(aws::AWSConfig=default_aws_config(); args...) = delete_resource_server(aws, args)
 
 @inline delete_resource_server(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "DeleteResourceServer", args)
@@ -2168,7 +2452,6 @@ The access token from a request to delete a user.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteUser)
 """
-
 @inline delete_user(aws::AWSConfig=default_aws_config(); args...) = delete_user(aws, args)
 
 @inline delete_user(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "DeleteUser", args)
@@ -2213,7 +2496,6 @@ The access token used in the request to delete user attributes.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteUserAttributes)
 """
-
 @inline delete_user_attributes(aws::AWSConfig=default_aws_config(); args...) = delete_user_attributes(aws, args)
 
 @inline delete_user_attributes(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "DeleteUserAttributes", args)
@@ -2248,7 +2530,6 @@ The user pool ID for the user pool you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteUserPool)
 """
-
 @inline delete_user_pool(aws::AWSConfig=default_aws_config(); args...) = delete_user_pool(aws, args)
 
 @inline delete_user_pool(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "DeleteUserPool", args)
@@ -2287,7 +2568,6 @@ The app client ID of the app associated with the user pool.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteUserPoolClient)
 """
-
 @inline delete_user_pool_client(aws::AWSConfig=default_aws_config(); args...) = delete_user_pool_client(aws, args)
 
 @inline delete_user_pool_client(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "DeleteUserPoolClient", args)
@@ -2330,7 +2610,6 @@ The user pool ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DeleteUserPoolDomain)
 """
-
 @inline delete_user_pool_domain(aws::AWSConfig=default_aws_config(); args...) = delete_user_pool_domain(aws, args)
 
 @inline delete_user_pool_domain(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "DeleteUserPoolDomain", args)
@@ -2373,7 +2652,6 @@ The identity provider name.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DescribeIdentityProvider)
 """
-
 @inline describe_identity_provider(aws::AWSConfig=default_aws_config(); args...) = describe_identity_provider(aws, args)
 
 @inline describe_identity_provider(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "DescribeIdentityProvider", args)
@@ -2416,12 +2694,53 @@ The identifier for the resource server
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DescribeResourceServer)
 """
-
 @inline describe_resource_server(aws::AWSConfig=default_aws_config(); args...) = describe_resource_server(aws, args)
 
 @inline describe_resource_server(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "DescribeResourceServer", args)
 
 @inline describe_resource_server(args) = describe_resource_server(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CognitoIdentityServiceProvider.describe_risk_configuration
+    describe_risk_configuration([::AWSConfig], arguments::Dict)
+    describe_risk_configuration([::AWSConfig]; UserPoolId=, <keyword arguments>)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "DescribeRiskConfiguration", arguments::Dict)
+    cognito_idp([::AWSConfig], "DescribeRiskConfiguration", UserPoolId=, <keyword arguments>)
+
+# DescribeRiskConfiguration Operation
+
+Describes the risk configuration.
+
+# Arguments
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID.
+
+
+## `ClientId = ::String`
+The app client ID.
+
+
+
+
+# Returns
+
+`DescribeRiskConfigurationResponse`
+
+# Exceptions
+
+`ResourceNotFoundException`, `InvalidParameterException`, `TooManyRequestsException`, `NotAuthorizedException`, `UserPoolAddOnNotEnabledException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DescribeRiskConfiguration)
+"""
+@inline describe_risk_configuration(aws::AWSConfig=default_aws_config(); args...) = describe_risk_configuration(aws, args)
+
+@inline describe_risk_configuration(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "DescribeRiskConfiguration", args)
+
+@inline describe_risk_configuration(args) = describe_risk_configuration(default_aws_config(), args)
 
 
 """
@@ -2459,7 +2778,6 @@ The job ID for the user import job.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DescribeUserImportJob)
 """
-
 @inline describe_user_import_job(aws::AWSConfig=default_aws_config(); args...) = describe_user_import_job(aws, args)
 
 @inline describe_user_import_job(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "DescribeUserImportJob", args)
@@ -2498,7 +2816,6 @@ The user pool ID for the user pool you want to describe.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DescribeUserPool)
 """
-
 @inline describe_user_pool(aws::AWSConfig=default_aws_config(); args...) = describe_user_pool(aws, args)
 
 @inline describe_user_pool(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "DescribeUserPool", args)
@@ -2541,7 +2858,6 @@ The app client ID of the app associated with the user pool.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DescribeUserPoolClient)
 """
-
 @inline describe_user_pool_client(aws::AWSConfig=default_aws_config(); args...) = describe_user_pool_client(aws, args)
 
 @inline describe_user_pool_client(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "DescribeUserPoolClient", args)
@@ -2580,7 +2896,6 @@ The domain string.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/DescribeUserPoolDomain)
 """
-
 @inline describe_user_pool_domain(aws::AWSConfig=default_aws_config(); args...) = describe_user_pool_domain(aws, args)
 
 @inline describe_user_pool_domain(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "DescribeUserPoolDomain", args)
@@ -2619,7 +2934,6 @@ The device key.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ForgetDevice)
 """
-
 @inline forget_device(aws::AWSConfig=default_aws_config(); args...) = forget_device(aws, args)
 
 @inline forget_device(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ForgetDevice", args)
@@ -2638,7 +2952,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognit
 
 # ForgotPassword Operation
 
-Calling this API causes a message to be sent to the end user with a confirmation code that is required to change the user's password. For the `Username` parameter, you can use the username or user alias. If a verified phone number exists for the user, the confirmation code is sent to the phone number. Otherwise, if a verified email exists, the confirmation code is sent to the email. If neither a verified phone number nor a verified email exists, `InvalidParameterException` is thrown. To use the confirmation code for resetting the password, call [ConfirmForgotPassword](API_ConfirmForgotPassword.html).
+Calling this API causes a message to be sent to the end user with a confirmation code that is required to change the user's password. For the `Username` parameter, you can use the username or user alias. If a verified phone number exists for the user, the confirmation code is sent to the phone number. Otherwise, if a verified email exists, the confirmation code is sent to the email. If neither a verified phone number nor a verified email exists, `InvalidParameterException` is thrown. To use the confirmation code for resetting the password, call .
 
 # Arguments
 
@@ -2650,8 +2964,16 @@ The ID of the client associated with the user pool.
 A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.
 
 
+## `UserContextData = ["EncodedData" =>  ::String]`
+Contextual data such as the user's device fingerprint, IP address, or location used for evaluating the risk of an unexpected event by Amazon Cognito advanced security.
+
+
 ## `Username = ::String` -- *Required*
 The user name of the user for whom you want to enter a code to reset a forgotten password.
+
+
+## `AnalyticsMetadata = ["AnalyticsEndpointId" =>  ::String]`
+The Amazon Pinpoint analytics metadata for collecting metrics for `ForgotPassword` calls.
 
 
 
@@ -2666,7 +2988,6 @@ The user name of the user for whom you want to enter a code to reset a forgotten
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ForgotPassword)
 """
-
 @inline forgot_password(aws::AWSConfig=default_aws_config(); args...) = forgot_password(aws, args)
 
 @inline forgot_password(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ForgotPassword", args)
@@ -2705,7 +3026,6 @@ The user pool ID for the user pool that the users are to be imported into.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetCSVHeader)
 """
-
 @inline get_csvheader(aws::AWSConfig=default_aws_config(); args...) = get_csvheader(aws, args)
 
 @inline get_csvheader(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "GetCSVHeader", args)
@@ -2748,7 +3068,6 @@ The access token.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetDevice)
 """
-
 @inline get_device(aws::AWSConfig=default_aws_config(); args...) = get_device(aws, args)
 
 @inline get_device(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "GetDevice", args)
@@ -2793,7 +3112,6 @@ The user pool ID for the user pool.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetGroup)
 """
-
 @inline get_group(aws::AWSConfig=default_aws_config(); args...) = get_group(aws, args)
 
 @inline get_group(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "GetGroup", args)
@@ -2836,12 +3154,49 @@ The identity provider ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetIdentityProviderByIdentifier)
 """
-
 @inline get_identity_provider_by_identifier(aws::AWSConfig=default_aws_config(); args...) = get_identity_provider_by_identifier(aws, args)
 
 @inline get_identity_provider_by_identifier(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "GetIdentityProviderByIdentifier", args)
 
 @inline get_identity_provider_by_identifier(args) = get_identity_provider_by_identifier(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CognitoIdentityServiceProvider.get_signing_certificate
+    get_signing_certificate([::AWSConfig], arguments::Dict)
+    get_signing_certificate([::AWSConfig]; UserPoolId=)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "GetSigningCertificate", arguments::Dict)
+    cognito_idp([::AWSConfig], "GetSigningCertificate", UserPoolId=)
+
+# GetSigningCertificate Operation
+
+This method takes a user pool ID, and returns the signing certificate.
+
+# Arguments
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID.
+
+
+
+
+# Returns
+
+`GetSigningCertificateResponse`
+
+# Exceptions
+
+`InternalErrorException` or `ResourceNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetSigningCertificate)
+"""
+@inline get_signing_certificate(aws::AWSConfig=default_aws_config(); args...) = get_signing_certificate(aws, args)
+
+@inline get_signing_certificate(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "GetSigningCertificate", args)
+
+@inline get_signing_certificate(args) = get_signing_certificate(default_aws_config(), args)
 
 
 """
@@ -2879,7 +3234,6 @@ The client ID for the client app.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetUICustomization)
 """
-
 @inline get_uicustomization(aws::AWSConfig=default_aws_config(); args...) = get_uicustomization(aws, args)
 
 @inline get_uicustomization(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "GetUICustomization", args)
@@ -2918,7 +3272,6 @@ The access token returned by the server response to get information about the us
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetUser)
 """
-
 @inline get_user(aws::AWSConfig=default_aws_config(); args...) = get_user(aws, args)
 
 @inline get_user(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "GetUser", args)
@@ -2961,12 +3314,49 @@ The attribute name returned by the server response to get the user attribute ver
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetUserAttributeVerificationCode)
 """
-
 @inline get_user_attribute_verification_code(aws::AWSConfig=default_aws_config(); args...) = get_user_attribute_verification_code(aws, args)
 
 @inline get_user_attribute_verification_code(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "GetUserAttributeVerificationCode", args)
 
 @inline get_user_attribute_verification_code(args) = get_user_attribute_verification_code(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CognitoIdentityServiceProvider.get_user_pool_mfa_config
+    get_user_pool_mfa_config([::AWSConfig], arguments::Dict)
+    get_user_pool_mfa_config([::AWSConfig]; UserPoolId=)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "GetUserPoolMfaConfig", arguments::Dict)
+    cognito_idp([::AWSConfig], "GetUserPoolMfaConfig", UserPoolId=)
+
+# GetUserPoolMfaConfig Operation
+
+Gets the user pool multi-factor authentication (MFA) configuration.
+
+# Arguments
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID.
+
+
+
+
+# Returns
+
+`GetUserPoolMfaConfigResponse`
+
+# Exceptions
+
+`InvalidParameterException`, `TooManyRequestsException`, `ResourceNotFoundException`, `NotAuthorizedException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GetUserPoolMfaConfig)
+"""
+@inline get_user_pool_mfa_config(aws::AWSConfig=default_aws_config(); args...) = get_user_pool_mfa_config(aws, args)
+
+@inline get_user_pool_mfa_config(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "GetUserPoolMfaConfig", args)
+
+@inline get_user_pool_mfa_config(args) = get_user_pool_mfa_config(default_aws_config(), args)
 
 
 """
@@ -3000,7 +3390,6 @@ The access token.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/GlobalSignOut)
 """
-
 @inline global_sign_out(aws::AWSConfig=default_aws_config(); args...) = global_sign_out(aws, args)
 
 @inline global_sign_out(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "GlobalSignOut", args)
@@ -3023,12 +3412,14 @@ Initiates the authentication flow.
 
 # Arguments
 
-## `AuthFlow = "USER_SRP_AUTH", "REFRESH_TOKEN_AUTH", "REFRESH_TOKEN", "CUSTOM_AUTH" or "ADMIN_NO_SRP_AUTH"` -- *Required*
+## `AuthFlow = "USER_SRP_AUTH", "REFRESH_TOKEN_AUTH", "REFRESH_TOKEN", "CUSTOM_AUTH", "ADMIN_NO_SRP_AUTH" or "USER_PASSWORD_AUTH"` -- *Required*
 The authentication flow for this call to execute. The API action will depend on this value. For example:
 
 *   `REFRESH_TOKEN_AUTH` will take in a valid refresh token and return new tokens.
 
 *   `USER_SRP_AUTH` will take in `USERNAME` and `SRP_A` and return the SRP variables to be used for next challenge execution.
+
+*   `USER_PASSWORD_AUTH` will take in `USERNAME` and `PASSWORD` and return the next challenge or tokens.
 
 Valid values include:
 
@@ -3038,6 +3429,8 @@ Valid values include:
 
 *   `CUSTOM_AUTH`: Custom authentication flow.
 
+*   `USER_PASSWORD_AUTH`: Non-SRP authentication flow; USERNAME and PASSWORD are passed directly. If a user migration Lambda trigger is set, this flow will invoke the user migration Lambda if the USERNAME is not found in the user pool.
+
 `ADMIN_NO_SRP_AUTH` is not a valid value.
 
 
@@ -3046,7 +3439,7 @@ The authentication parameters. These are inputs corresponding to the `AuthFlow` 
 
 *   For `USER_SRP_AUTH`: `USERNAME` (required), `SRP_A` (required), `SECRET_HASH` (required if the app client is configured with a client secret), `DEVICE_KEY`
 
-*   For `REFRESH_TOKEN_AUTH/REFRESH_TOKEN`: `USERNAME` (required), `SECRET_HASH` (required if the app client is configured with a client secret), `REFRESH_TOKEN` (required), `DEVICE_KEY`
+*   For `REFRESH_TOKEN_AUTH/REFRESH_TOKEN`: `REFRESH_TOKEN` (required), `SECRET_HASH` (required if the app client is configured with a client secret), `DEVICE_KEY`
 
 *   For `CUSTOM_AUTH`: `USERNAME` (required), `SECRET_HASH` (if app client is configured with client secret), `DEVICE_KEY`
 
@@ -3057,6 +3450,14 @@ This is a random key-value pair map which can contain any key and will be passed
 
 ## `ClientId = ::String` -- *Required*
 The app client ID.
+
+
+## `AnalyticsMetadata = ["AnalyticsEndpointId" =>  ::String]`
+The Amazon Pinpoint analytics metadata for collecting metrics for `InitiateAuth` calls.
+
+
+## `UserContextData = ["EncodedData" =>  ::String]`
+Contextual data such as the user's device fingerprint, IP address, or location used for evaluating the risk of an unexpected event by Amazon Cognito advanced security.
 
 
 
@@ -3071,7 +3472,6 @@ The app client ID.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/InitiateAuth)
 """
-
 @inline initiate_auth(aws::AWSConfig=default_aws_config(); args...) = initiate_auth(aws, args)
 
 @inline initiate_auth(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "InitiateAuth", args)
@@ -3118,7 +3518,6 @@ The pagination token for the list request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListDevices)
 """
-
 @inline list_devices(aws::AWSConfig=default_aws_config(); args...) = list_devices(aws, args)
 
 @inline list_devices(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ListDevices", args)
@@ -3167,7 +3566,6 @@ An identifier that was returned from the previous call to this operation, which 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListGroups)
 """
-
 @inline list_groups(aws::AWSConfig=default_aws_config(); args...) = list_groups(aws, args)
 
 @inline list_groups(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ListGroups", args)
@@ -3214,7 +3612,6 @@ A pagination token.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListIdentityProviders)
 """
-
 @inline list_identity_providers(aws::AWSConfig=default_aws_config(); args...) = list_identity_providers(aws, args)
 
 @inline list_identity_providers(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ListIdentityProviders", args)
@@ -3261,7 +3658,6 @@ A pagination token.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListResourceServers)
 """
-
 @inline list_resource_servers(aws::AWSConfig=default_aws_config(); args...) = list_resource_servers(aws, args)
 
 @inline list_resource_servers(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ListResourceServers", args)
@@ -3308,7 +3704,6 @@ An identifier that was returned from the previous call to `ListUserImportJobs`, 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListUserImportJobs)
 """
-
 @inline list_user_import_jobs(aws::AWSConfig=default_aws_config(); args...) = list_user_import_jobs(aws, args)
 
 @inline list_user_import_jobs(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ListUserImportJobs", args)
@@ -3355,7 +3750,6 @@ An identifier that was returned from the previous call to this operation, which 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListUserPoolClients)
 """
-
 @inline list_user_pool_clients(aws::AWSConfig=default_aws_config(); args...) = list_user_pool_clients(aws, args)
 
 @inline list_user_pool_clients(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ListUserPoolClients", args)
@@ -3398,7 +3792,6 @@ The maximum number of results you want the request to return when listing the us
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListUserPools)
 """
-
 @inline list_user_pools(aws::AWSConfig=default_aws_config(); args...) = list_user_pools(aws, args)
 
 @inline list_user_pools(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ListUserPools", args)
@@ -3426,7 +3819,7 @@ The user pool ID for the user pool on which the search should be performed.
 
 
 ## `AttributesToGet = [::String, ...]`
-An array of strings, where each string is the name of a user attribute to be returned for each user in the search results. If the array is empty, all attributes are returned.
+An array of strings, where each string is the name of a user attribute to be returned for each user in the search results. If the array is null, all attributes are returned.
 
 
 ## `Limit = ::Int`
@@ -3468,6 +3861,8 @@ You can only search for the following standard attributes:
 
 *   `status` (case-insensitive)
 
+*   `sub`
+
 Custom attributes are not searchable.
 
 For more information, see [Searching for Users Using the ListUsers API](http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-using-listusers-api) and [Examples of Using the ListUsers API](http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-listusers-api-examples) in the *Amazon Cognito Developer Guide*.
@@ -3485,7 +3880,6 @@ For more information, see [Searching for Users Using the ListUsers API](http://d
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListUsers)
 """
-
 @inline list_users(aws::AWSConfig=default_aws_config(); args...) = list_users(aws, args)
 
 @inline list_users(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ListUsers", args)
@@ -3538,7 +3932,6 @@ An identifier that was returned from the previous call to this operation, which 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListUsersInGroup)
 """
-
 @inline list_users_in_group(aws::AWSConfig=default_aws_config(); args...) = list_users_in_group(aws, args)
 
 @inline list_users_in_group(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ListUsersInGroup", args)
@@ -3569,8 +3962,16 @@ The ID of the client associated with the user pool.
 A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.
 
 
+## `UserContextData = ["EncodedData" =>  ::String]`
+Contextual data such as the user's device fingerprint, IP address, or location used for evaluating the risk of an unexpected event by Amazon Cognito advanced security.
+
+
 ## `Username = ::String` -- *Required*
 The user name of the user to whom you wish to resend a confirmation code.
+
+
+## `AnalyticsMetadata = ["AnalyticsEndpointId" =>  ::String]`
+The Amazon Pinpoint analytics metadata for collecting metrics for `ResendConfirmationCode` calls.
 
 
 
@@ -3585,7 +3986,6 @@ The user name of the user to whom you wish to resend a confirmation code.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ResendConfirmationCode)
 """
-
 @inline resend_confirmation_code(aws::AWSConfig=default_aws_config(); args...) = resend_confirmation_code(aws, args)
 
 @inline resend_confirmation_code(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "ResendConfirmationCode", args)
@@ -3612,8 +4012,8 @@ Responds to the authentication challenge.
 The app client ID.
 
 
-## `ChallengeName = "SMS_MFA", "PASSWORD_VERIFIER", "CUSTOM_CHALLENGE", "DEVICE_SRP_AUTH", "DEVICE_PASSWORD_VERIFIER", "ADMIN_NO_SRP_AUTH" or "NEW_PASSWORD_REQUIRED"` -- *Required*
-The challenge name. For more information, see [InitiateAuth](API_InitiateAuth.html).
+## `ChallengeName = "SMS_MFA", "SOFTWARE_TOKEN_MFA", "SELECT_MFA_TYPE", "MFA_SETUP", "PASSWORD_VERIFIER", "CUSTOM_CHALLENGE", "DEVICE_SRP_AUTH", "DEVICE_PASSWORD_VERIFIER", "ADMIN_NO_SRP_AUTH" or "NEW_PASSWORD_REQUIRED"` -- *Required*
+The challenge name. For more information, see .
 
 `ADMIN_NO_SRP_AUTH` is not a valid value.
 
@@ -3632,6 +4032,14 @@ The challenge responses. These are inputs corresponding to the value of `Challen
 *   `NEW_PASSWORD_REQUIRED`: `NEW_PASSWORD`, any other required attributes, `USERNAME`, `SECRET_HASH` (if app client is configured with client secret).
 
 
+## `AnalyticsMetadata = ["AnalyticsEndpointId" =>  ::String]`
+The Amazon Pinpoint analytics metadata for collecting metrics for `RespondToAuthChallenge` calls.
+
+
+## `UserContextData = ["EncodedData" =>  ::String]`
+Contextual data such as the user's device fingerprint, IP address, or location used for evaluating the risk of an unexpected event by Amazon Cognito advanced security.
+
+
 
 
 # Returns
@@ -3640,16 +4048,122 @@ The challenge responses. These are inputs corresponding to the value of `Challen
 
 # Exceptions
 
-`ResourceNotFoundException`, `InvalidParameterException`, `NotAuthorizedException`, `CodeMismatchException`, `ExpiredCodeException`, `UnexpectedLambdaException`, `UserLambdaValidationException`, `InvalidPasswordException`, `InvalidLambdaResponseException`, `TooManyRequestsException`, `InvalidUserPoolConfigurationException`, `MFAMethodNotFoundException`, `PasswordResetRequiredException`, `UserNotFoundException`, `UserNotConfirmedException`, `InvalidSmsRoleAccessPolicyException`, `InvalidSmsRoleTrustRelationshipException`, `AliasExistsException` or `InternalErrorException`.
+`ResourceNotFoundException`, `InvalidParameterException`, `NotAuthorizedException`, `CodeMismatchException`, `ExpiredCodeException`, `UnexpectedLambdaException`, `UserLambdaValidationException`, `InvalidPasswordException`, `InvalidLambdaResponseException`, `TooManyRequestsException`, `InvalidUserPoolConfigurationException`, `MFAMethodNotFoundException`, `PasswordResetRequiredException`, `UserNotFoundException`, `UserNotConfirmedException`, `InvalidSmsRoleAccessPolicyException`, `InvalidSmsRoleTrustRelationshipException`, `AliasExistsException`, `InternalErrorException` or `SoftwareTokenMFANotFoundException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/RespondToAuthChallenge)
 """
-
 @inline respond_to_auth_challenge(aws::AWSConfig=default_aws_config(); args...) = respond_to_auth_challenge(aws, args)
 
 @inline respond_to_auth_challenge(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "RespondToAuthChallenge", args)
 
 @inline respond_to_auth_challenge(args) = respond_to_auth_challenge(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CognitoIdentityServiceProvider.set_risk_configuration
+    set_risk_configuration([::AWSConfig], arguments::Dict)
+    set_risk_configuration([::AWSConfig]; UserPoolId=, <keyword arguments>)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "SetRiskConfiguration", arguments::Dict)
+    cognito_idp([::AWSConfig], "SetRiskConfiguration", UserPoolId=, <keyword arguments>)
+
+# SetRiskConfiguration Operation
+
+Configures actions on detected risks. To delete the risk configuration for `UserPoolId` or `ClientId`, pass null values for all four configuration types.
+
+To enable Amazon Cognito advanced security features, update the user pool to include the `UserPoolAddOns` key`AdvancedSecurityMode`.
+
+See .
+
+# Arguments
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID.
+
+
+## `ClientId = ::String`
+The app client ID. If `ClientId` is null, then the risk configuration is mapped to `userPoolId`. When the client ID is null, the same risk configuration is applied to all the clients in the userPool.
+
+Otherwise, `ClientId` is mapped to the client. When the client ID is not null, the user pool configuration is overridden and the risk configuration for the client is used instead.
+
+
+## `CompromisedCredentialsRiskConfiguration = [ ... ]`
+The compromised credentials risk configuration.
+```
+ CompromisedCredentialsRiskConfiguration = [
+        "EventFilter" =>  ["SIGN_IN", "PASSWORD_CHANGE" or "SIGN_UP", ...],
+        "Actions" => <required> ["EventAction" => <required> "BLOCK" or "NO_ACTION"]
+    ]
+```
+
+## `AccountTakeoverRiskConfiguration = [ ... ]`
+The account takeover risk configuration.
+```
+ AccountTakeoverRiskConfiguration = [
+        "NotifyConfiguration" =>  [
+            "From" =>  ::String,
+            "ReplyTo" =>  ::String,
+            "SourceArn" => <required> ::String,
+            "BlockEmail" =>  [
+                "Subject" => <required> ::String,
+                "HtmlBody" =>  ::String,
+                "TextBody" =>  ::String
+            ],
+            "NoActionEmail" =>  [
+                "Subject" => <required> ::String,
+                "HtmlBody" =>  ::String,
+                "TextBody" =>  ::String
+            ],
+            "MfaEmail" =>  [
+                "Subject" => <required> ::String,
+                "HtmlBody" =>  ::String,
+                "TextBody" =>  ::String
+            ]
+        ],
+        "Actions" => <required> [
+            "LowAction" =>  [
+                "Notify" => <required> ::Bool,
+                "EventAction" => <required> "BLOCK", "MFA_IF_CONFIGURED", "MFA_REQUIRED" or "NO_ACTION"
+            ],
+            "MediumAction" =>  [
+                "Notify" => <required> ::Bool,
+                "EventAction" => <required> "BLOCK", "MFA_IF_CONFIGURED", "MFA_REQUIRED" or "NO_ACTION"
+            ],
+            "HighAction" =>  [
+                "Notify" => <required> ::Bool,
+                "EventAction" => <required> "BLOCK", "MFA_IF_CONFIGURED", "MFA_REQUIRED" or "NO_ACTION"
+            ]
+        ]
+    ]
+```
+
+## `RiskExceptionConfiguration = [ ... ]`
+The configuration to override the risk decision.
+```
+ RiskExceptionConfiguration = [
+        "BlockedIPRangeList" =>  [::String, ...],
+        "SkippedIPRangeList" =>  [::String, ...]
+    ]
+```
+
+
+
+# Returns
+
+`SetRiskConfigurationResponse`
+
+# Exceptions
+
+`ResourceNotFoundException`, `InvalidParameterException`, `TooManyRequestsException`, `NotAuthorizedException`, `UserPoolAddOnNotEnabledException`, `CodeDeliveryFailureException`, `InvalidEmailRoleAccessPolicyException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/SetRiskConfiguration)
+"""
+@inline set_risk_configuration(aws::AWSConfig=default_aws_config(); args...) = set_risk_configuration(aws, args)
+
+@inline set_risk_configuration(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "SetRiskConfiguration", args)
+
+@inline set_risk_configuration(args) = set_risk_configuration(default_aws_config(), args)
 
 
 """
@@ -3700,12 +4214,125 @@ The uploaded logo image for the UI customization.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/SetUICustomization)
 """
-
 @inline set_uicustomization(aws::AWSConfig=default_aws_config(); args...) = set_uicustomization(aws, args)
 
 @inline set_uicustomization(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "SetUICustomization", args)
 
 @inline set_uicustomization(args) = set_uicustomization(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CognitoIdentityServiceProvider.set_user_mfapreference
+    set_user_mfapreference([::AWSConfig], arguments::Dict)
+    set_user_mfapreference([::AWSConfig]; AccessToken=, <keyword arguments>)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "SetUserMFAPreference", arguments::Dict)
+    cognito_idp([::AWSConfig], "SetUserMFAPreference", AccessToken=, <keyword arguments>)
+
+# SetUserMFAPreference Operation
+
+Set the user's multi-factor authentication (MFA) method preference.
+
+# Arguments
+
+## `SMSMfaSettings = [ ... ]`
+The SMS text message multi-factor authentication (MFA) settings.
+```
+ SMSMfaSettings = [
+        "Enabled" =>  ::Bool,
+        "PreferredMfa" =>  ::Bool
+    ]
+```
+
+## `SoftwareTokenMfaSettings = [ ... ]`
+The time-based one-time password software token MFA settings.
+```
+ SoftwareTokenMfaSettings = [
+        "Enabled" =>  ::Bool,
+        "PreferredMfa" =>  ::Bool
+    ]
+```
+
+## `AccessToken = ::String` -- *Required*
+The access token.
+
+
+
+
+# Returns
+
+`SetUserMFAPreferenceResponse`
+
+# Exceptions
+
+`ResourceNotFoundException`, `InvalidParameterException`, `NotAuthorizedException`, `PasswordResetRequiredException`, `UserNotFoundException`, `UserNotConfirmedException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/SetUserMFAPreference)
+"""
+@inline set_user_mfapreference(aws::AWSConfig=default_aws_config(); args...) = set_user_mfapreference(aws, args)
+
+@inline set_user_mfapreference(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "SetUserMFAPreference", args)
+
+@inline set_user_mfapreference(args) = set_user_mfapreference(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CognitoIdentityServiceProvider.set_user_pool_mfa_config
+    set_user_pool_mfa_config([::AWSConfig], arguments::Dict)
+    set_user_pool_mfa_config([::AWSConfig]; UserPoolId=, <keyword arguments>)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "SetUserPoolMfaConfig", arguments::Dict)
+    cognito_idp([::AWSConfig], "SetUserPoolMfaConfig", UserPoolId=, <keyword arguments>)
+
+# SetUserPoolMfaConfig Operation
+
+Set the user pool MFA configuration.
+
+# Arguments
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID.
+
+
+## `SmsMfaConfiguration = [ ... ]`
+The SMS text message MFA configuration.
+```
+ SmsMfaConfiguration = [
+        "SmsAuthenticationMessage" =>  ::String,
+        "SmsConfiguration" =>  [
+            "SnsCallerArn" => <required> ::String,
+            "ExternalId" =>  ::String
+        ]
+    ]
+```
+
+## `SoftwareTokenMfaConfiguration = ["Enabled" =>  ::Bool]`
+The software token MFA configuration.
+
+
+## `MfaConfiguration = "OFF", "ON" or "OPTIONAL"`
+The MFA configuration.
+
+
+
+
+# Returns
+
+`SetUserPoolMfaConfigResponse`
+
+# Exceptions
+
+`InvalidParameterException`, `TooManyRequestsException`, `ResourceNotFoundException`, `InvalidSmsRoleAccessPolicyException`, `InvalidSmsRoleTrustRelationshipException`, `NotAuthorizedException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/SetUserPoolMfaConfig)
+"""
+@inline set_user_pool_mfa_config(aws::AWSConfig=default_aws_config(); args...) = set_user_pool_mfa_config(aws, args)
+
+@inline set_user_pool_mfa_config(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "SetUserPoolMfaConfig", args)
+
+@inline set_user_pool_mfa_config(args) = set_user_pool_mfa_config(default_aws_config(), args)
 
 
 """
@@ -3748,7 +4375,6 @@ Specifies the options for MFA (e.g., email or phone number).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/SetUserSettings)
 """
-
 @inline set_user_settings(aws::AWSConfig=default_aws_config(); args...) = set_user_settings(aws, args)
 
 @inline set_user_settings(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "SetUserSettings", args)
@@ -3807,6 +4433,14 @@ The validation data in the request to register a user.
     ], ...]
 ```
 
+## `AnalyticsMetadata = ["AnalyticsEndpointId" =>  ::String]`
+The Amazon Pinpoint analytics metadata for collecting metrics for `SignUp` calls.
+
+
+## `UserContextData = ["EncodedData" =>  ::String]`
+Contextual data such as the user's device fingerprint, IP address, or location used for evaluating the risk of an unexpected event by Amazon Cognito advanced security.
+
+
 
 
 # Returns
@@ -3819,7 +4453,6 @@ The validation data in the request to register a user.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/SignUp)
 """
-
 @inline sign_up(aws::AWSConfig=default_aws_config(); args...) = sign_up(aws, args)
 
 @inline sign_up(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "SignUp", args)
@@ -3862,7 +4495,6 @@ The job ID for the user import job.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/StartUserImportJob)
 """
-
 @inline start_user_import_job(aws::AWSConfig=default_aws_config(); args...) = start_user_import_job(aws, args)
 
 @inline start_user_import_job(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "StartUserImportJob", args)
@@ -3905,12 +4537,65 @@ The job ID for the user import job.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/StopUserImportJob)
 """
-
 @inline stop_user_import_job(aws::AWSConfig=default_aws_config(); args...) = stop_user_import_job(aws, args)
 
 @inline stop_user_import_job(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "StopUserImportJob", args)
 
 @inline stop_user_import_job(args) = stop_user_import_job(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CognitoIdentityServiceProvider.update_auth_event_feedback
+    update_auth_event_feedback([::AWSConfig], arguments::Dict)
+    update_auth_event_feedback([::AWSConfig]; UserPoolId=, Username=, EventId=, FeedbackToken=, FeedbackValue=)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "UpdateAuthEventFeedback", arguments::Dict)
+    cognito_idp([::AWSConfig], "UpdateAuthEventFeedback", UserPoolId=, Username=, EventId=, FeedbackToken=, FeedbackValue=)
+
+# UpdateAuthEventFeedback Operation
+
+Provides the feedback for an authentication event whether it was from a valid user or not. This feedback is used for improving the risk evaluation decision for the user pool as part of Amazon Cognito advanced security.
+
+# Arguments
+
+## `UserPoolId = ::String` -- *Required*
+The user pool ID.
+
+
+## `Username = ::String` -- *Required*
+The user pool username.
+
+
+## `EventId = ::String` -- *Required*
+The event ID.
+
+
+## `FeedbackToken = ::String` -- *Required*
+The feedback token.
+
+
+## `FeedbackValue = "Valid" or "Invalid"` -- *Required*
+The authentication event feedback value.
+
+
+
+
+# Returns
+
+`UpdateAuthEventFeedbackResponse`
+
+# Exceptions
+
+`InvalidParameterException`, `ResourceNotFoundException`, `TooManyRequestsException`, `NotAuthorizedException`, `UserNotFoundException`, `UserPoolAddOnNotEnabledException` or `InternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateAuthEventFeedback)
+"""
+@inline update_auth_event_feedback(aws::AWSConfig=default_aws_config(); args...) = update_auth_event_feedback(aws, args)
+
+@inline update_auth_event_feedback(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "UpdateAuthEventFeedback", args)
+
+@inline update_auth_event_feedback(args) = update_auth_event_feedback(default_aws_config(), args)
 
 
 """
@@ -3952,7 +4637,6 @@ The status of whether a device is remembered.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateDeviceStatus)
 """
-
 @inline update_device_status(aws::AWSConfig=default_aws_config(); args...) = update_device_status(aws, args)
 
 @inline update_device_status(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "UpdateDeviceStatus", args)
@@ -3994,7 +4678,7 @@ The new role ARN for the group. This is used for setting the `cognito:roles` and
 
 
 ## `Precedence = ::Int`
-The new precedence value for the group. For more information about this parameter, see [CreateGroup](API_CreateGroup.html).
+The new precedence value for the group. For more information about this parameter, see .
 
 
 
@@ -4009,7 +4693,6 @@ The new precedence value for the group. For more information about this paramete
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateGroup)
 """
-
 @inline update_group(aws::AWSConfig=default_aws_config(); args...) = update_group(aws, args)
 
 @inline update_group(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "UpdateGroup", args)
@@ -4064,7 +4747,6 @@ A list of identity provider identifiers.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateIdentityProvider)
 """
-
 @inline update_identity_provider(aws::AWSConfig=default_aws_config(); args...) = update_identity_provider(aws, args)
 
 @inline update_identity_provider(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "UpdateIdentityProvider", args)
@@ -4120,7 +4802,6 @@ The scope values to be set for the resource server.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateResourceServer)
 """
-
 @inline update_resource_server(aws::AWSConfig=default_aws_config(); args...) = update_resource_server(aws, args)
 
 @inline update_resource_server(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "UpdateResourceServer", args)
@@ -4170,7 +4851,6 @@ The access token for the request to update user attributes.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateUserAttributes)
 """
-
 @inline update_user_attributes(aws::AWSConfig=default_aws_config(); args...) = update_user_attributes(aws, args)
 
 @inline update_user_attributes(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "UpdateUserAttributes", args)
@@ -4220,7 +4900,9 @@ The AWS Lambda configuration information from the request to update the user poo
         "PostAuthentication" =>  ::String,
         "DefineAuthChallenge" =>  ::String,
         "CreateAuthChallenge" =>  ::String,
-        "VerifyAuthChallengeResponse" =>  ::String
+        "VerifyAuthChallengeResponse" =>  ::String,
+        "PreTokenGeneration" =>  ::String,
+        "UserMigration" =>  ::String
     ]
 ```
 
@@ -4312,6 +4994,10 @@ The configuration for `AdminCreateUser` requests.
     ]
 ```
 
+## `UserPoolAddOns = ["AdvancedSecurityMode" => <required> "OFF", "AUDIT" or "ENFORCED"]`
+Used to enable advanced security risk detection. Set the key `AdvancedSecurityMode` to the value "AUDIT".
+
+
 
 
 # Returns
@@ -4324,7 +5010,6 @@ The configuration for `AdminCreateUser` requests.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateUserPool)
 """
-
 @inline update_user_pool(aws::AWSConfig=default_aws_config(); args...) = update_user_pool(aws, args)
 
 @inline update_user_pool(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "UpdateUserPool", args)
@@ -4371,7 +5056,7 @@ The read-only attributes of the user pool.
 The writeable attributes of the user pool.
 
 
-## `ExplicitAuthFlows = ["ADMIN_NO_SRP_AUTH" or "CUSTOM_AUTH_FLOW_ONLY", ...]`
+## `ExplicitAuthFlows = ["ADMIN_NO_SRP_AUTH", "CUSTOM_AUTH_FLOW_ONLY" or "USER_PASSWORD_AUTH", ...]`
 Explicit authentication flows.
 
 
@@ -4380,7 +5065,19 @@ A list of provider names for the identity providers that are supported on this c
 
 
 ## `CallbackURLs = [::String, ...]`
-A list of allowed callback URLs for the identity providers.
+A list of allowed redirect (callback) URLs for the identity providers.
+
+A redirect URI must:
+
+*   Be an absolute URI.
+
+*   Be registered with the authorization server.
+
+*   Not use HTTP without TLS (i.e. use HTTPS instead of HTTP).
+
+*   Not include a fragment component.
+
+See [OAuth 2.0 - Redirection Endpoint](https://tools.ietf.org/html/rfc6749#section-3.1.2).
 
 
 ## `LogoutURLs = [::String, ...]`
@@ -4389,6 +5086,18 @@ A list of allowed logout URLs for the identity providers.
 
 ## `DefaultRedirectURI = ::String`
 The default redirect URI. Must be in the `CallbackURLs` list.
+
+A redirect URI must:
+
+*   Be an absolute URI.
+
+*   Be registered with the authorization server.
+
+*   Not use HTTP without TLS (i.e. use HTTPS instead of HTTP).
+
+*   Not include a fragment component.
+
+See [OAuth 2.0 - Redirection Endpoint](https://tools.ietf.org/html/rfc6749#section-3.1.2).
 
 
 ## `AllowedOAuthFlows = ["code", "implicit" or "client_credentials", ...]`
@@ -4405,6 +5114,17 @@ A list of allowed `OAuth` scopes. Currently supported values are `"phone"`, `"em
 Set to TRUE if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.
 
 
+## `AnalyticsConfiguration = [ ... ]`
+The Amazon Pinpoint analytics configuration for collecting metrics for this user pool.
+```
+ AnalyticsConfiguration = [
+        "ApplicationId" => <required> ::String,
+        "RoleArn" => <required> ::String,
+        "ExternalId" => <required> ::String,
+        "UserDataShared" =>  ::Bool
+    ]
+```
+
 
 
 # Returns
@@ -4413,16 +5133,65 @@ Set to TRUE if the client is allowed to follow the OAuth protocol when interacti
 
 # Exceptions
 
-`ResourceNotFoundException`, `InvalidParameterException`, `TooManyRequestsException`, `NotAuthorizedException`, `ScopeDoesNotExistException`, `InvalidOAuthFlowException` or `InternalErrorException`.
+`ResourceNotFoundException`, `InvalidParameterException`, `ConcurrentModificationException`, `TooManyRequestsException`, `NotAuthorizedException`, `ScopeDoesNotExistException`, `InvalidOAuthFlowException` or `InternalErrorException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateUserPoolClient)
 """
-
 @inline update_user_pool_client(aws::AWSConfig=default_aws_config(); args...) = update_user_pool_client(aws, args)
 
 @inline update_user_pool_client(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "UpdateUserPoolClient", args)
 
 @inline update_user_pool_client(args) = update_user_pool_client(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CognitoIdentityServiceProvider.verify_software_token
+    verify_software_token([::AWSConfig], arguments::Dict)
+    verify_software_token([::AWSConfig]; UserCode=, <keyword arguments>)
+
+    using AWSCore.Services.cognito_idp
+    cognito_idp([::AWSConfig], "VerifySoftwareToken", arguments::Dict)
+    cognito_idp([::AWSConfig], "VerifySoftwareToken", UserCode=, <keyword arguments>)
+
+# VerifySoftwareToken Operation
+
+Use this API to register a user's entered TOTP code and mark the user's software token MFA status as "verified" if successful. The request takes an access token or a session string, but not both.
+
+# Arguments
+
+## `AccessToken = ::String`
+The access token.
+
+
+## `Session = ::String`
+The session which should be passed both ways in challenge-response calls to the service.
+
+
+## `UserCode = ::String` -- *Required*
+The one time password computed using the secret code returned by
+
+
+## `FriendlyDeviceName = ::String`
+The friendly device name.
+
+
+
+
+# Returns
+
+`VerifySoftwareTokenResponse`
+
+# Exceptions
+
+`InvalidParameterException`, `ResourceNotFoundException`, `InvalidUserPoolConfigurationException`, `NotAuthorizedException`, `TooManyRequestsException`, `PasswordResetRequiredException`, `UserNotFoundException`, `UserNotConfirmedException`, `InternalErrorException`, `EnableSoftwareTokenMFAException`, `NotAuthorizedException`, `SoftwareTokenMFANotFoundException` or `CodeMismatchException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/VerifySoftwareToken)
+"""
+@inline verify_software_token(aws::AWSConfig=default_aws_config(); args...) = verify_software_token(aws, args)
+
+@inline verify_software_token(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "VerifySoftwareToken", args)
+
+@inline verify_software_token(args) = verify_software_token(default_aws_config(), args)
 
 
 """
@@ -4464,7 +5233,6 @@ The verification code in the request to verify user attributes.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/VerifyUserAttribute)
 """
-
 @inline verify_user_attribute(aws::AWSConfig=default_aws_config(); args...) = verify_user_attribute(aws, args)
 
 @inline verify_user_attribute(aws::AWSConfig, args) = AWSCore.Services.cognito_idp(aws, "VerifyUserAttribute", args)

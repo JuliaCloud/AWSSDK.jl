@@ -63,7 +63,6 @@ A list of items on which to perform the operation.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/BatchDeleteAttributes)
 """
-
 @inline batch_delete_attributes(aws::AWSConfig=default_aws_config(); args...) = batch_delete_attributes(aws, args)
 
 @inline batch_delete_attributes(aws::AWSConfig, args) = AWSCore.Services.sdb(aws, "BatchDeleteAttributes", args)
@@ -133,7 +132,6 @@ A list of items on which to perform the operation.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/BatchPutAttributes)
 """
-
 @inline batch_put_attributes(aws::AWSConfig=default_aws_config(); args...) = batch_put_attributes(aws, args)
 
 @inline batch_put_attributes(aws::AWSConfig, args) = AWSCore.Services.sdb(aws, "BatchPutAttributes", args)
@@ -175,7 +173,6 @@ The name of the domain to create. The name can range between 3 and 255 character
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/CreateDomain)
 """
-
 @inline create_domain(aws::AWSConfig=default_aws_config(); args...) = create_domain(aws, args)
 
 @inline create_domain(aws::AWSConfig, args) = AWSCore.Services.sdb(aws, "CreateDomain", args)
@@ -240,7 +237,6 @@ The update condition which, if specified, determines whether the specified attri
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/DeleteAttributes)
 """
-
 @inline delete_attributes(aws::AWSConfig=default_aws_config(); args...) = delete_attributes(aws, args)
 
 @inline delete_attributes(aws::AWSConfig, args) = AWSCore.Services.sdb(aws, "DeleteAttributes", args)
@@ -278,7 +274,6 @@ The name of the domain to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/DeleteDomain)
 """
-
 @inline delete_domain(aws::AWSConfig=default_aws_config(); args...) = delete_domain(aws, args)
 
 @inline delete_domain(aws::AWSConfig, args) = AWSCore.Services.sdb(aws, "DeleteDomain", args)
@@ -317,7 +312,6 @@ The name of the domain for which to display the metadata of.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/DomainMetadata)
 """
-
 @inline domain_metadata(aws::AWSConfig=default_aws_config(); args...) = domain_metadata(aws, args)
 
 @inline domain_metadata(aws::AWSConfig, args) = AWSCore.Services.sdb(aws, "DomainMetadata", args)
@@ -373,7 +367,6 @@ Determines whether or not strong consistency should be enforced when data is rea
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/GetAttributes)
 """
-
 @inline get_attributes(aws::AWSConfig=default_aws_config(); args...) = get_attributes(aws, args)
 
 @inline get_attributes(aws::AWSConfig, args) = AWSCore.Services.sdb(aws, "GetAttributes", args)
@@ -416,7 +409,6 @@ A string informing Amazon SimpleDB where to start the next list of domain names.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/ListDomains)
 """
-
 @inline list_domains(aws::AWSConfig=default_aws_config(); args...) = list_domains(aws, args)
 
 @inline list_domains(aws::AWSConfig, args) = AWSCore.Services.sdb(aws, "ListDomains", args)
@@ -492,7 +484,6 @@ The update condition which, if specified, determines whether the specified attri
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/PutAttributes)
 """
-
 @inline put_attributes(aws::AWSConfig=default_aws_config(); args...) = put_attributes(aws, args)
 
 @inline put_attributes(aws::AWSConfig, args) = AWSCore.Services.sdb(aws, "PutAttributes", args)
@@ -543,7 +534,6 @@ Determines whether or not strong consistency should be enforced when data is rea
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/Select)
 """
-
 @inline select(aws::AWSConfig=default_aws_config(); args...) = select(aws, args)
 
 @inline select(aws::AWSConfig, args) = AWSCore.Services.sdb(aws, "Select", args)

@@ -116,7 +116,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/AcceptHandshake)
 """
-
 @inline accept_handshake(aws::AWSConfig=default_aws_config(); args...) = accept_handshake(aws, args)
 
 @inline accept_handshake(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "AcceptHandshake", args)
@@ -135,7 +134,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 # AttachPolicy Operation
 
-Attaches a policy to a root, an organizational unit, or an individual account. How the policy affects accounts depends on the type of policy:
+Attaches a policy to a root, an organizational unit (OU), or an individual account. How the policy affects accounts depends on the type of policy:
 
 *   **Service control policy (SCP)** - An SCP specifies what permissions can be delegated to users in affected member accounts. The scope of influence for a policy depends on what you attach the policy to:
 
@@ -207,7 +206,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/AttachPolicy)
 """
-
 @inline attach_policy(aws::AWSConfig=default_aws_config(); args...) = attach_policy(aws, args)
 
 @inline attach_policy(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "AttachPolicy", args)
@@ -316,7 +314,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/CancelHandshake)
 """
-
 @inline cancel_handshake(aws::AWSConfig=default_aws_config(); args...) = cancel_handshake(aws, args)
 
 @inline cancel_handshake(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "CancelHandshake", args)
@@ -339,20 +336,21 @@ Creates an AWS account that is automatically a member of the organization whose 
 
 The user who calls the API for an invitation to join must have the `organizations:CreateAccount` permission. If you enabled all features in the organization, then the user must also have the `iam:CreateServiceLinkedRole` permission so that Organizations can create the required service-linked role named *OrgsServiceLinkedRoleName*. For more information, see [AWS Organizations and Service-Linked Roles](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integration_services.html#orgs_integration_service-linked-roles) in the *AWS Organizations User Guide*.
 
-The user in the master account who calls this API must also have the `iam:CreateRole` permission because AWS Organizations preconfigures the new member account with a role (named `OrganizationAccountAccessRole`) that grants users in the master account administrator permissions in the new member account. Principals in the master account can assume the role. AWS Organizations clones the company name and address information for the new account from the organization's master account.
+The user in the master account who calls this API must also have the `iam:CreateRole` permission because AWS Organizations preconfigures the new member account with a role (named `OrganizationAccountAccessRole` by default) that grants users in the master account administrator permissions in the new member account. Principals in the master account can assume the role. AWS Organizations clones the company name and address information for the new account from the organization's master account.
 
 This operation can be called only from the organization's master account.
 
 For more information about creating accounts, see [Creating an AWS Account in Your Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html) in the *AWS Organizations User Guide*.
 
 **Important**
-> When you create an account in an organization using the AWS Organizations console, API, or CLI commands, the information required for the account to operate as a standalone account, such as a payment method and signing the End User Licence Agreement (EULA) is *not* automatically collected. If you must remove an account from your organization later, you can do so only after you provide the missing information. Follow the steps at [To leave an organization when all required account information has not yet been provided](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info) in the *AWS Organizations User Guide*.
+> *   When you create an account in an organization using the AWS Organizations console, API, or CLI commands, the information required for the account to operate as a standalone account, such as a payment method and signing the End User Licence Agreement (EULA) is *not* automatically collected. If you must remove an account from your organization later, you can do so only after you provide the missing information. Follow the steps at [To leave an organization when all required account information has not yet been provided](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info) in the *AWS Organizations User Guide*.
+
+*   If you get an exception that indicates that you exceeded your account limits for the organization or that the operation failed because your organization is still initializing, wait one hour and then try again. If the error persists after an hour, then contact [AWS Customer Support](https://console.aws.amazon.com/support/home#/).
+
+*   Because `CreateAccount` operates asynchronously, it can return a successful completion message even though account initialization might still be in progress. You might need to wait a few minutes before you can successfully access the account.
 
 **Note**
 > When you create a member account with this operation, you can choose whether to create the account with the **IAM User and Role Access to Billing Information** switch enabled. If you enable it, IAM users and roles that have appropriate permissions can view billing information for the account. If you disable this, then only the account root user can access billing information. For information about how to disable this for an account, see [Granting Access to Your Billing Information and Tools](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html).
-
-**Important**
-> If you get an exception that indicates that you exceeded your account limits for the organization or that you can"t add an account because your organization is still initializing, please contact [AWS Customer Support](https://console.aws.amazon.com/support/home#/).
 
 # Arguments
 
@@ -418,7 +416,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/CreateAccount)
 """
-
 @inline create_account(aws::AWSConfig=default_aws_config(); args...) = create_account(aws, args)
 
 @inline create_account(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "CreateAccount", args)
@@ -528,7 +525,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/CreateOrganization)
 """
-
 @inline create_organization(aws::AWSConfig=default_aws_config(); args...) = create_organization(aws, args)
 
 @inline create_organization(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "CreateOrganization", args)
@@ -606,7 +602,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/CreateOrganizationalUnit)
 """
-
 @inline create_organizational_unit(aws::AWSConfig=default_aws_config(); args...) = create_organizational_unit(aws, args)
 
 @inline create_organizational_unit(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "CreateOrganizationalUnit", args)
@@ -697,7 +692,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/CreatePolicy)
 """
-
 @inline create_policy(aws::AWSConfig=default_aws_config(); args...) = create_policy(aws, args)
 
 @inline create_policy(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "CreatePolicy", args)
@@ -801,7 +795,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DeclineHandshake)
 """
-
 @inline decline_handshake(aws::AWSConfig=default_aws_config(); args...) = decline_handshake(aws, args)
 
 @inline decline_handshake(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "DeclineHandshake", args)
@@ -820,7 +813,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 # DeleteOrganization Operation
 
-Deletes the organization. You can delete an organization only by using credentials from the master account. The organization must be empty of member accounts, OUs, and policies.
+Deletes the organization. You can delete an organization only by using credentials from the master account. The organization must be empty of member accounts, organizational units (OUs), and policies.
 
 # Exceptions
 
@@ -828,7 +821,6 @@ Deletes the organization. You can delete an organization only by using credentia
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DeleteOrganization)
 """
-
 @inline delete_organization(aws::AWSConfig=default_aws_config(); args...) = delete_organization(aws, args)
 
 @inline delete_organization(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "DeleteOrganization", args)
@@ -847,7 +839,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 # DeleteOrganizationalUnit Operation
 
-Deletes an organizational unit from a root or another OU. You must first remove all accounts and child OUs from the OU that you want to delete.
+Deletes an organizational unit (OU) from a root or another OU. You must first remove all accounts and child OUs from the OU that you want to delete.
 
 This operation can be called only from the organization's master account.
 
@@ -880,7 +872,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DeleteOrganizationalUnit)
 """
-
 @inline delete_organizational_unit(aws::AWSConfig=default_aws_config(); args...) = delete_organizational_unit(aws, args)
 
 @inline delete_organizational_unit(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "DeleteOrganizationalUnit", args)
@@ -899,7 +890,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 # DeletePolicy Operation
 
-Deletes the specified policy from your organization. Before you perform this operation, you must first detach the policy from all OUs, roots, and accounts.
+Deletes the specified policy from your organization. Before you perform this operation, you must first detach the policy from all organizational units (OUs), roots, and accounts.
 
 This operation can be called only from the organization's master account.
 
@@ -932,7 +923,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DeletePolicy)
 """
-
 @inline delete_policy(aws::AWSConfig=default_aws_config(); args...) = delete_policy(aws, args)
 
 @inline delete_policy(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "DeletePolicy", args)
@@ -998,7 +988,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DescribeAccount)
 """
-
 @inline describe_account(aws::AWSConfig=default_aws_config(); args...) = describe_account(aws, args)
 
 @inline describe_account(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "DescribeAccount", args)
@@ -1063,7 +1052,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DescribeCreateAccountStatus)
 """
-
 @inline describe_create_account_status(aws::AWSConfig=default_aws_config(); args...) = describe_create_account_status(aws, args)
 
 @inline describe_create_account_status(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "DescribeCreateAccountStatus", args)
@@ -1163,7 +1151,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DescribeHandshake)
 """
-
 @inline describe_handshake(aws::AWSConfig=default_aws_config(); args...) = describe_handshake(aws, args)
 
 @inline describe_handshake(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "DescribeHandshake", args)
@@ -1185,6 +1172,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 Retrieves information about the organization that the user's account belongs to.
 
 This operation can be called from any account in the organization.
+
+**Note**
+> Even if a policy type is shown as available in the organization, it can be disabled separately at the root level with [DisablePolicyType](@ref). Use [ListRoots](@ref) to see the status of policy types for a specified root.
 
 # Returns
 
@@ -1219,7 +1209,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DescribeOrganization)
 """
-
 @inline describe_organization(aws::AWSConfig=default_aws_config(); args...) = describe_organization(aws, args)
 
 @inline describe_organization(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "DescribeOrganization", args)
@@ -1284,7 +1273,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DescribeOrganizationalUnit)
 """
-
 @inline describe_organizational_unit(aws::AWSConfig=default_aws_config(); args...) = describe_organizational_unit(aws, args)
 
 @inline describe_organizational_unit(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "DescribeOrganizationalUnit", args)
@@ -1355,7 +1343,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DescribePolicy)
 """
-
 @inline describe_policy(aws::AWSConfig=default_aws_config(); args...) = describe_policy(aws, args)
 
 @inline describe_policy(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "DescribePolicy", args)
@@ -1374,7 +1361,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 # DetachPolicy Operation
 
-Detaches a policy from a target root, organizational unit, or account. If the policy being detached is a service control policy (SCP), the changes to permissions for IAM users and roles in affected accounts are immediate.
+Detaches a policy from a target root, organizational unit (OU), or account. If the policy being detached is a service control policy (SCP), the changes to permissions for IAM users and roles in affected accounts are immediate.
 
 **Note:** Every root, OU, and account must have at least one SCP attached. If you want to replace the default `FullAWSAccess` policy with one that limits the permissions that can be delegated, then you must attach the replacement policy before you can remove the default one. This is the authorization strategy of [whitelisting](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_whitelist). If you instead attach a second SCP and leave the `FullAWSAccess` SCP still attached, and specify `"Effect": "Deny"` in the second SCP to override the `"Effect": "Allow"` in the `FullAWSAccess` policy (or any other attached SCP), then you are using the authorization strategy of [blacklisting](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist).
 
@@ -1420,12 +1407,56 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DetachPolicy)
 """
-
 @inline detach_policy(aws::AWSConfig=default_aws_config(); args...) = detach_policy(aws, args)
 
 @inline detach_policy(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "DetachPolicy", args)
 
 @inline detach_policy(args) = detach_policy(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Organizations.disable_awsservice_access
+    disable_awsservice_access([::AWSConfig], arguments::Dict)
+    disable_awsservice_access([::AWSConfig]; ServicePrincipal=)
+
+    using AWSCore.Services.organizations
+    organizations([::AWSConfig], "DisableAWSServiceAccess", arguments::Dict)
+    organizations([::AWSConfig], "DisableAWSServiceAccess", ServicePrincipal=)
+
+# DisableAWSServiceAccess Operation
+
+Disables the integration of an AWS service (the service that is specified by `ServicePrincipal`) with AWS Organizations. When you disable integration, the specified service no longer can create a [service-linked role](http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html) in *new* accounts in your organization. This means the service can't perform operations on your behalf on any new accounts in your organization. The service can still perform operations in older accounts until the service completes its clean-up from AWS Organizations.
+
+**Important**
+> 
+
+We recommend that you disable integration between AWS Organizations and the specified AWS service by using the console or commands that are provided by the specified service. Doing so ensures that the other service is aware that it can clean up any resources that are required only for the integration. How the service cleans up its resources in the organization's accounts depends on that service. For more information, see the documentation for the other AWS service.
+
+After you perform the `DisableAWSServiceAccess` operation, the specified service can no longer perform operations in your organization's accounts unless the operations are explicitly permitted by the IAM policies that are attached to your roles.
+
+For more information about integrating other services with AWS Organizations, including the list of services that work with Organizations, see [Integrating AWS Organizations with Other AWS Services](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html) in the *AWS Organizations User Guide*.
+
+This operation can be called only from the organization's master account.
+
+# Arguments
+
+## `ServicePrincipal = ::String` -- *Required*
+The service principal name of the AWS service for which you want to disable integration with your organization. This is typically in the form of a URL, such as `*service-abbreviation*.amazonaws.com`.
+
+
+
+
+# Exceptions
+
+`AccessDeniedException`, `AWSOrganizationsNotInUseException`, `ConcurrentModificationException`, `ConstraintViolationException`, `InvalidInputException`, `ServiceException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DisableAWSServiceAccess)
+"""
+@inline disable_awsservice_access(aws::AWSConfig=default_aws_config(); args...) = disable_awsservice_access(aws, args)
+
+@inline disable_awsservice_access(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "DisableAWSServiceAccess", args)
+
+@inline disable_awsservice_access(args) = disable_awsservice_access(default_aws_config(), args)
 
 
 """
@@ -1439,9 +1470,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 # DisablePolicyType Operation
 
-Disables an organizational control policy type in a root. A policy of a certain type can be attached to entities in a root only if that type is enabled in the root. After you perform this operation, you no longer can attach policies of the specified type to that root or to any OU or account in that root. You can undo this by using the [EnablePolicyType](@ref) operation.
+Disables an organizational control policy type in a root. A policy of a certain type can be attached to entities in a root only if that type is enabled in the root. After you perform this operation, you no longer can attach policies of the specified type to that root or to any organizational unit (OU) or account in that root. You can undo this by using the [EnablePolicyType](@ref) operation.
 
 This operation can be called only from the organization's master account.
+
+**Note**
+> If you disable a policy type for a root, it still shows as enabled for the organization if all features are enabled in that organization. Use [ListRoots](@ref) to see the status of policy types for a specified root. Use [DescribeOrganization](@ref) to see the status of policy types in the organization.
 
 # Arguments
 
@@ -1493,12 +1527,52 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DisablePolicyType)
 """
-
 @inline disable_policy_type(aws::AWSConfig=default_aws_config(); args...) = disable_policy_type(aws, args)
 
 @inline disable_policy_type(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "DisablePolicyType", args)
 
 @inline disable_policy_type(args) = disable_policy_type(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Organizations.enable_awsservice_access
+    enable_awsservice_access([::AWSConfig], arguments::Dict)
+    enable_awsservice_access([::AWSConfig]; ServicePrincipal=)
+
+    using AWSCore.Services.organizations
+    organizations([::AWSConfig], "EnableAWSServiceAccess", arguments::Dict)
+    organizations([::AWSConfig], "EnableAWSServiceAccess", ServicePrincipal=)
+
+# EnableAWSServiceAccess Operation
+
+Enables the integration of an AWS service (the service that is specified by `ServicePrincipal`) with AWS Organizations. When you enable integration, you allow the specified service to create a [service-linked role](http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html) in all the accounts in your organization. This allows the service to perform operations on your behalf in your organization and its accounts.
+
+**Important**
+> We recommend that you enable integration between AWS Organizations and the specified AWS service by using the console or commands that are provided by the specified service. Doing so ensures that the service is aware that it can create the resources that are required for the integration. How the service creates those resources in the organization's accounts depends on that service. For more information, see the documentation for the other AWS service.
+
+For more information about enabling services to integrate with AWS Organizations, see [Integrating AWS Organizations with Other AWS Services](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html) in the *AWS Organizations User Guide*.
+
+This operation can be called only from the organization's master account and only if the organization has [enabled all features](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html).
+
+# Arguments
+
+## `ServicePrincipal = ::String` -- *Required*
+The service principal name of the AWS service for which you want to enable integration with your organization. This is typically in the form of a URL, such as `*service-abbreviation*.amazonaws.com`.
+
+
+
+
+# Exceptions
+
+`AccessDeniedException`, `AWSOrganizationsNotInUseException`, `ConcurrentModificationException`, `ConstraintViolationException`, `InvalidInputException`, `ServiceException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/EnableAWSServiceAccess)
+"""
+@inline enable_awsservice_access(aws::AWSConfig=default_aws_config(); args...) = enable_awsservice_access(aws, args)
+
+@inline enable_awsservice_access(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "EnableAWSServiceAccess", args)
+
+@inline enable_awsservice_access(args) = enable_awsservice_access(default_aws_config(), args)
 
 
 """
@@ -1515,7 +1589,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 Enables all features in an organization. This enables the use of organization policies that can restrict the services and actions that can be called in each account. Until you enable all features, you have access only to consolidated billing, and you can't use any of the advanced account administration features that AWS Organizations supports. For more information, see [Enabling All Features in Your Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html) in the *AWS Organizations User Guide*.
 
 **Important**
-> This operation is required only for organizations that were created explicitly with only the consolidated billing features enabled, or that were migrated from a Consolidated Billing account family to Organizations. Calling this operation sends a handshake to every invited account in the organization. The feature set change can be finalized and the additional features enabled only after all administrators in the invited accounts approve the change by accepting the handshake.
+> This operation is required only for organizations that were created explicitly with only the consolidated billing features enabled. Calling this operation sends a handshake to every invited account in the organization. The feature set change can be finalized and the additional features enabled only after all administrators in the invited accounts approve the change by accepting the handshake.
+
+After you enable all features, you can separately enable or disable individual policy types in a root using [EnablePolicyType](@ref) and [DisablePolicyType](@ref). To see the status of policy types in a root, use [ListRoots](@ref).
 
 After all invited member accounts accept the handshake, you finalize the feature set change by accepting the handshake that contains `"Action": "ENABLE_ALL_FEATURES"`. This completes the change.
 
@@ -1574,7 +1650,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/EnableAllFeatures)
 """
-
 @inline enable_all_features(aws::AWSConfig=default_aws_config(); args...) = enable_all_features(aws, args)
 
 @inline enable_all_features(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "EnableAllFeatures", args)
@@ -1593,9 +1668,13 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 # EnablePolicyType Operation
 
-Enables a policy type in a root. After you enable a policy type in a root, you can attach policies of that type to the root, any OU, or account in that root. You can undo this by using the [DisablePolicyType](@ref) operation.
+Enables a policy type in a root. After you enable a policy type in a root, you can attach policies of that type to the root, any organizational unit (OU), or account in that root. You can undo this by using the [DisablePolicyType](@ref) operation.
 
 This operation can be called only from the organization's master account.
+
+You can enable a policy type in a root only if that policy type is available in the organization. Use [DescribeOrganization](@ref) to view the status of available policy types in the organization.
+
+To view the status of policy type in a root, use [ListRoots](@ref).
 
 # Arguments
 
@@ -1650,7 +1729,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/EnablePolicyType)
 """
-
 @inline enable_policy_type(aws::AWSConfig=default_aws_config(); args...) = enable_policy_type(aws, args)
 
 @inline enable_policy_type(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "EnablePolicyType", args)
@@ -1672,12 +1750,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 Sends an invitation to another account to join your organization as a member account. Organizations sends email on your behalf to the email address that is associated with the other account's owner. The invitation is implemented as a [Handshake](@ref) whose details are in the response.
 
 **Important**
-> You can invite AWS accounts only from the same seller as the master account. For example, if your organization's master account was created by Amazon Internet Services Pvt. Ltd (AISPL), an AWS seller in India, then you can only invite other AISPL accounts to your organization. You can't combine accounts from AISPL and AWS, or any other AWS seller. For more information, see [Consolidated Billing in India](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilliing-India.html).
+> *   You can invite AWS accounts only from the same seller as the master account. For example, if your organization's master account was created by Amazon Internet Services Pvt. Ltd (AISPL), an AWS seller in India, then you can only invite other AISPL accounts to your organization. You can't combine accounts from AISPL and AWS, or any other AWS seller. For more information, see [Consolidated Billing in India](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilliing-India.html).
+
+*   If you receive an exception that indicates that you exceeded your account limits for the organization or that the operation failed because your organization is still initializing, wait one hour and then try again. If the error persists after an hour, then contact [AWS Customer Support](https://console.aws.amazon.com/support/home#/).
 
 This operation can be called only from the organization's master account.
-
-**Important**
-> If you get an exception that indicates that you exceeded your account limits for the organization or that you can"t add an account because your organization is still initializing, please contact [AWS Customer Support](https://console.aws.amazon.com/support/home#/).
 
 # Arguments
 
@@ -1779,7 +1856,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/InviteAccountToOrganization)
 """
-
 @inline invite_account_to_organization(aws::AWSConfig=default_aws_config(); args...) = invite_account_to_organization(aws, args)
 
 @inline invite_account_to_organization(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "InviteAccountToOrganization", args)
@@ -1819,12 +1895,57 @@ TThe following example shows how to remove your member account from an organizat
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/LeaveOrganization)
 """
-
 @inline leave_organization(aws::AWSConfig=default_aws_config(); args...) = leave_organization(aws, args)
 
 @inline leave_organization(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "LeaveOrganization", args)
 
 @inline leave_organization(args) = leave_organization(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Organizations.list_awsservice_access_for_organization
+    list_awsservice_access_for_organization([::AWSConfig], arguments::Dict)
+    list_awsservice_access_for_organization([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.organizations
+    organizations([::AWSConfig], "ListAWSServiceAccessForOrganization", arguments::Dict)
+    organizations([::AWSConfig], "ListAWSServiceAccessForOrganization", <keyword arguments>)
+
+# ListAWSServiceAccessForOrganization Operation
+
+Returns a list of the AWS services that you enabled to integrate with your organization. After a service on this list creates the resources that it requires for the integration, it can perform operations on your organization and its accounts.
+
+For more information about integrating other services with AWS Organizations, including the list of services that currently work with Organizations, see [Integrating AWS Organizations with Other AWS Services](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html) in the *AWS Organizations User Guide*.
+
+This operation can be called only from the organization's master account.
+
+# Arguments
+
+## `NextToken = ::String`
+Use this parameter if you receive a `NextToken` response in a previous request that indicates that there is more output available. Set it to the value of the previous call's `NextToken` response to indicate where the output should continue from.
+
+
+## `MaxResults = ::Int`
+(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+
+
+
+
+# Returns
+
+`ListAWSServiceAccessForOrganizationResponse`
+
+# Exceptions
+
+`AccessDeniedException`, `AWSOrganizationsNotInUseException`, `ConstraintViolationException`, `InvalidInputException`, `ServiceException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListAWSServiceAccessForOrganization)
+"""
+@inline list_awsservice_access_for_organization(aws::AWSConfig=default_aws_config(); args...) = list_awsservice_access_for_organization(aws, args)
+
+@inline list_awsservice_access_for_organization(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "ListAWSServiceAccessForOrganization", args)
+
+@inline list_awsservice_access_for_organization(args) = list_awsservice_access_for_organization(default_aws_config(), args)
 
 
 """
@@ -1838,7 +1959,10 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 # ListAccounts Operation
 
-Lists all the accounts in the organization. To request only the accounts in a root or OU, use the [ListAccountsForParent](@ref) operation instead.
+Lists all the accounts in the organization. To request only the accounts in a specified root or organizational unit (OU), use the [ListAccountsForParent](@ref) operation instead.
+
+**Note**
+> Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
 
 This operation can be called only from the organization's master account.
 
@@ -1919,7 +2043,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListAccounts)
 """
-
 @inline list_accounts(aws::AWSConfig=default_aws_config(); args...) = list_accounts(aws, args)
 
 @inline list_accounts(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "ListAccounts", args)
@@ -1939,6 +2062,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 # ListAccountsForParent Operation
 
 Lists the accounts in an organization that are contained by the specified target root or organizational unit (OU). If you specify the root, you get a list of all the accounts that are not in any OU. If you specify an OU, you get a list of all the accounts in only that OU, and not in any child OUs. To get a list of all accounts in the organization, use the [ListAccounts](@ref) operation.
+
+**Note**
+> Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
 
 This operation can be called only from the organization's master account.
 
@@ -2005,7 +2131,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListAccountsForParent)
 """
-
 @inline list_accounts_for_parent(aws::AWSConfig=default_aws_config(); args...) = list_accounts_for_parent(aws, args)
 
 @inline list_accounts_for_parent(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "ListAccountsForParent", args)
@@ -2024,7 +2149,10 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 # ListChildren Operation
 
-Lists all of the OUs or accounts that are contained in the specified parent OU or root. This operation, along with [ListParents](@ref) enables you to traverse the tree structure that makes up this root.
+Lists all of the organizational units (OUs) or accounts that are contained in the specified parent OU or root. This operation, along with [ListParents](@ref) enables you to traverse the tree structure that makes up this root.
+
+**Note**
+> Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
 
 This operation can be called only from the organization's master account.
 
@@ -2092,7 +2220,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListChildren)
 """
-
 @inline list_children(aws::AWSConfig=default_aws_config(); args...) = list_children(aws, args)
 
 @inline list_children(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "ListChildren", args)
@@ -2112,6 +2239,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 # ListCreateAccountStatus Operation
 
 Lists the account creation requests that match the specified status that is currently being tracked for the organization.
+
+**Note**
+> Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
 
 This operation can be called only from the organization's master account.
 
@@ -2197,7 +2327,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListCreateAccountStatus)
 """
-
 @inline list_create_account_status(aws::AWSConfig=default_aws_config(); args...) = list_create_account_status(aws, args)
 
 @inline list_create_account_status(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "ListCreateAccountStatus", args)
@@ -2219,6 +2348,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 Lists the current handshakes that are associated with the account of the requesting user.
 
 Handshakes that are ACCEPTED, DECLINED, or CANCELED appear in the results of this API for only 30 days after changing to that state. After that they are deleted and no longer accessible.
+
+**Note**
+> Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
 
 This operation can be called from any account in the organization.
 
@@ -2307,7 +2439,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListHandshakesForAccount)
 """
-
 @inline list_handshakes_for_account(aws::AWSConfig=default_aws_config(); args...) = list_handshakes_for_account(aws, args)
 
 @inline list_handshakes_for_account(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "ListHandshakesForAccount", args)
@@ -2329,6 +2460,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 Lists the handshakes that are associated with the organization that the requesting user is part of. The `ListHandshakesForOrganization` operation returns a list of handshake structures. Each structure contains details and status about a handshake.
 
 Handshakes that are ACCEPTED, DECLINED, or CANCELED appear in the results of this API for only 30 days after changing to that state. After that they are deleted and no longer accessible.
+
+**Note**
+> Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
 
 This operation can be called only from the organization's master account.
 
@@ -2459,7 +2593,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListHandshakesForOrganization)
 """
-
 @inline list_handshakes_for_organization(aws::AWSConfig=default_aws_config(); args...) = list_handshakes_for_organization(aws, args)
 
 @inline list_handshakes_for_organization(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "ListHandshakesForOrganization", args)
@@ -2479,6 +2612,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 # ListOrganizationalUnitsForParent Operation
 
 Lists the organizational units (OUs) in a parent organizational unit or root.
+
+**Note**
+> Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
 
 This operation can be called only from the organization's master account.
 
@@ -2543,7 +2679,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListOrganizationalUnitsForParent)
 """
-
 @inline list_organizational_units_for_parent(aws::AWSConfig=default_aws_config(); args...) = list_organizational_units_for_parent(aws, args)
 
 @inline list_organizational_units_for_parent(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "ListOrganizationalUnitsForParent", args)
@@ -2563,6 +2698,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 # ListParents Operation
 
 Lists the root or organizational units (OUs) that serve as the immediate parent of the specified child OU or account. This operation, along with [ListChildren](@ref) enables you to traverse the tree structure that makes up this root.
+
+**Note**
+> Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
 
 This operation can be called only from the organization's master account.
 
@@ -2624,7 +2762,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListParents)
 """
-
 @inline list_parents(aws::AWSConfig=default_aws_config(); args...) = list_parents(aws, args)
 
 @inline list_parents(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "ListParents", args)
@@ -2644,6 +2781,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 # ListPolicies Operation
 
 Retrieves the list of all policies in an organization of a specified type.
+
+**Note**
+> Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
 
 This operation can be called only from the organization's master account.
 
@@ -2716,7 +2856,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListPolicies)
 """
-
 @inline list_policies(aws::AWSConfig=default_aws_config(); args...) = list_policies(aws, args)
 
 @inline list_policies(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "ListPolicies", args)
@@ -2736,6 +2875,9 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 # ListPoliciesForTarget Operation
 
 Lists the policies that are directly attached to the specified target root, organizational unit (OU), or account. You must specify the policy type that you want included in the returned list.
+
+**Note**
+> Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
 
 This operation can be called only from the organization's master account.
 
@@ -2805,7 +2947,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListPoliciesForTarget)
 """
-
 @inline list_policies_for_target(aws::AWSConfig=default_aws_config(); args...) = list_policies_for_target(aws, args)
 
 @inline list_policies_for_target(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "ListPoliciesForTarget", args)
@@ -2826,7 +2967,13 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 Lists the roots that are defined in the current organization.
 
+**Note**
+> Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
+
 This operation can be called only from the organization's master account.
+
+**Note**
+> Policy types can be enabled and disabled in roots. This is distinct from whether they are available in the organization. When you enable all features, you make policy types available for use in that organization. Individual policy types can then be enabled and disabled in a root. To see the availability of a policy type in an organization, use [DescribeOrganization](@ref).
 
 # Arguments
 
@@ -2880,7 +3027,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListRoots)
 """
-
 @inline list_roots(aws::AWSConfig=default_aws_config(); args...) = list_roots(aws, args)
 
 @inline list_roots(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "ListRoots", args)
@@ -2899,7 +3045,10 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 # ListTargetsForPolicy Operation
 
-Lists all the roots, OUs, and accounts to which the specified policy is attached.
+Lists all the roots, organizaitonal units (OUs), and accounts to which the specified policy is attached.
+
+**Note**
+> Always check the `NextToken` response parameter for a `null` value when calling a `List*` operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
 
 This operation can be called only from the organization's master account.
 
@@ -2968,7 +3117,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListTargetsForPolicy)
 """
-
 @inline list_targets_for_policy(aws::AWSConfig=default_aws_config(); args...) = list_targets_for_policy(aws, args)
 
 @inline list_targets_for_policy(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "ListTargetsForPolicy", args)
@@ -2987,7 +3135,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organi
 
 # MoveAccount Operation
 
-Moves an account from its current source parent root or OU to the specified destination parent root or OU.
+Moves an account from its current source parent root or organizational unit (OU) to the specified destination parent root or OU.
 
 This operation can be called only from the organization's master account.
 
@@ -3040,7 +3188,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/MoveAccount)
 """
-
 @inline move_account(aws::AWSConfig=default_aws_config(); args...) = move_account(aws, args)
 
 @inline move_account(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "MoveAccount", args)
@@ -3066,9 +3213,7 @@ The removed account becomes a stand-alone account that is not a member of any or
 This operation can be called only from the organization's master account. Member accounts can remove themselves with [LeaveOrganization](@ref) instead.
 
 **Important**
-> *   You can remove an account from your organization only if the account is configured with the information required to operate as a standalone account. When you create an account in an organization using the AWS Organizations console, API, or CLI commands, the information required of standalone accounts is *not* automatically collected. For an account that you want to make standalone, you must accept the End User License Agreement (EULA), choose a support plan, provide and verify the required contact information, and provide a current payment method. AWS uses the payment method to charge for any billable (not free tier) AWS activity that occurs while the account is not attached to an organization. To remove an account that does not yet have this information, you must sign in as the member account and follow the steps at [To leave an organization when all required account information has not yet been provided](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info) in the *AWS Organizations User Guide*.
-
-*   You can remove a member account only after you enable IAM user access to billing in the member account. For more information, see [Activating Access to the Billing and Cost Management Console](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate) in the *AWS Billing and Cost Management User Guide*.
+> You can remove an account from your organization only if the account is configured with the information required to operate as a standalone account. When you create an account in an organization using the AWS Organizations console, API, or CLI commands, the information required of standalone accounts is *not* automatically collected. For an account that you want to make standalone, you must accept the End User License Agreement (EULA), choose a support plan, provide and verify the required contact information, and provide a current payment method. AWS uses the payment method to charge for any billable (not free tier) AWS activity that occurs while the account is not attached to an organization. To remove an account that does not yet have this information, you must sign in as the member account and follow the steps at [To leave an organization when all required account information has not yet been provided](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info) in the *AWS Organizations User Guide*.
 
 # Arguments
 
@@ -3097,7 +3242,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/RemoveAccountFromOrganization)
 """
-
 @inline remove_account_from_organization(aws::AWSConfig=default_aws_config(); args...) = remove_account_from_organization(aws, args)
 
 @inline remove_account_from_organization(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "RemoveAccountFromOrganization", args)
@@ -3169,7 +3313,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/UpdateOrganizationalUnit)
 """
-
 @inline update_organizational_unit(aws::AWSConfig=default_aws_config(); args...) = update_organizational_unit(aws, args)
 
 @inline update_organizational_unit(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "UpdateOrganizationalUnit", args)
@@ -3285,7 +3428,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/UpdatePolicy)
 """
-
 @inline update_policy(aws::AWSConfig=default_aws_config(); args...) = update_policy(aws, args)
 
 @inline update_policy(aws::AWSConfig, args) = AWSCore.Services.organizations(aws, "UpdatePolicy", args)

@@ -47,12 +47,45 @@ Pagination token. Not used.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/xray-2016-04-12/BatchGetTraces)
 """
-
 @inline batch_get_traces(aws::AWSConfig=default_aws_config(); args...) = batch_get_traces(aws, args)
 
 @inline batch_get_traces(aws::AWSConfig, args) = AWSCore.Services.xray(aws, "POST", "/Traces", args)
 
 @inline batch_get_traces(args) = batch_get_traces(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.XRay.get_encryption_config
+    get_encryption_config([::AWSConfig], arguments::Dict)
+    get_encryption_config([::AWSConfig]; )
+
+    using AWSCore.Services.xray
+    xray([::AWSConfig], "POST", "/EncryptionConfig", arguments::Dict)
+    xray([::AWSConfig], "POST", "/EncryptionConfig", )
+
+# GetEncryptionConfig Operation
+
+Retrieves the current encryption configuration for X-Ray data.
+
+# Arguments
+
+
+
+# Returns
+
+`GetEncryptionConfigResult`
+
+# Exceptions
+
+`InvalidRequestException` or `ThrottledException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/xray-2016-04-12/GetEncryptionConfig)
+"""
+@inline get_encryption_config(aws::AWSConfig=default_aws_config(); args...) = get_encryption_config(aws, args)
+
+@inline get_encryption_config(aws::AWSConfig, args) = AWSCore.Services.xray(aws, "POST", "/EncryptionConfig", args)
+
+@inline get_encryption_config(args) = get_encryption_config(default_aws_config(), args)
 
 
 """
@@ -94,7 +127,6 @@ Pagination token. Not used.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/xray-2016-04-12/GetServiceGraph)
 """
-
 @inline get_service_graph(aws::AWSConfig=default_aws_config(); args...) = get_service_graph(aws, args)
 
 @inline get_service_graph(aws::AWSConfig, args) = AWSCore.Services.xray(aws, "POST", "/ServiceGraph", args)
@@ -137,7 +169,6 @@ Pagination token. Not used.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/xray-2016-04-12/GetTraceGraph)
 """
-
 @inline get_trace_graph(aws::AWSConfig=default_aws_config(); args...) = get_trace_graph(aws, args)
 
 @inline get_trace_graph(aws::AWSConfig, args) = AWSCore.Services.xray(aws, "POST", "/TraceGraph", args)
@@ -202,12 +233,61 @@ Specify the pagination token returned by a previous request to retrieve the next
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/xray-2016-04-12/GetTraceSummaries)
 """
-
 @inline get_trace_summaries(aws::AWSConfig=default_aws_config(); args...) = get_trace_summaries(aws, args)
 
 @inline get_trace_summaries(aws::AWSConfig, args) = AWSCore.Services.xray(aws, "POST", "/TraceSummaries", args)
 
 @inline get_trace_summaries(args) = get_trace_summaries(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.XRay.put_encryption_config
+    put_encryption_config([::AWSConfig], arguments::Dict)
+    put_encryption_config([::AWSConfig]; Type=, <keyword arguments>)
+
+    using AWSCore.Services.xray
+    xray([::AWSConfig], "POST", "/PutEncryptionConfig", arguments::Dict)
+    xray([::AWSConfig], "POST", "/PutEncryptionConfig", Type=, <keyword arguments>)
+
+# PutEncryptionConfig Operation
+
+Updates the encryption configuration for X-Ray data.
+
+# Arguments
+
+## `KeyId = ::String`
+An AWS KMS customer master key (CMK) in one of the following formats:
+
+*   **Alias** - The name of the key. For example, `alias/MyKey`.
+
+*   **Key ID** - The KMS key ID of the key. For example, `ae4aa6d49-a4d8-9df9-a475-4ff6d7898456`.
+
+*   **ARN** - The full Amazon Resource Name of the key ID or alias. For example, `arn:aws:kms:us-east-2:123456789012:key/ae4aa6d49-a4d8-9df9-a475-4ff6d7898456`. Use this format to specify a key in a different account.
+
+Omit this key if you set `Type` to `NONE`.
+
+
+## `Type = "NONE" or "KMS"` -- *Required*
+The type of encryption. Set to `KMS` to use your own key for encryption. Set to `NONE` for default encryption.
+
+
+
+
+# Returns
+
+`PutEncryptionConfigResult`
+
+# Exceptions
+
+`InvalidRequestException` or `ThrottledException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/xray-2016-04-12/PutEncryptionConfig)
+"""
+@inline put_encryption_config(aws::AWSConfig=default_aws_config(); args...) = put_encryption_config(aws, args)
+
+@inline put_encryption_config(aws::AWSConfig, args) = AWSCore.Services.xray(aws, "POST", "/PutEncryptionConfig", args)
+
+@inline put_encryption_config(args) = put_encryption_config(default_aws_config(), args)
 
 
 """
@@ -229,7 +309,7 @@ Used by the AWS X-Ray daemon to upload telemetry.
 
 ```
  TelemetryRecords = [[
-        "Timestamp" =>  timestamp,
+        "Timestamp" => <required> timestamp,
         "SegmentsReceivedCount" =>  ::Int,
         "SegmentsSentCount" =>  ::Int,
         "SegmentsSpilloverCount" =>  ::Int,
@@ -269,7 +349,6 @@ Used by the AWS X-Ray daemon to upload telemetry.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/xray-2016-04-12/PutTelemetryRecords)
 """
-
 @inline put_telemetry_records(aws::AWSConfig=default_aws_config(); args...) = put_telemetry_records(aws, args)
 
 @inline put_telemetry_records(aws::AWSConfig, args) = AWSCore.Services.xray(aws, "POST", "/TelemetryRecords", args)
@@ -290,7 +369,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/xray-2
 
 Uploads segment documents to AWS X-Ray. The X-Ray SDK generates segment documents and sends them to the X-Ray daemon, which uploads them in batches. A segment document can be a completed segment, an in-progress segment, or an array of subsegments.
 
-Segments must include the following fields. For the full segment document schema, see [AWS X-Ray Segment Documents](http://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html) in the *AWS X-Ray Developer Guide*.
+Segments must include the following fields. For the full segment document schema, see [AWS X-Ray Segment Documents](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html) in the *AWS X-Ray Developer Guide*.
 
 **Required Segment Document Fields**
 
@@ -334,7 +413,6 @@ A string containing a JSON document defining one or more segments or subsegments
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/xray-2016-04-12/PutTraceSegments)
 """
-
 @inline put_trace_segments(aws::AWSConfig=default_aws_config(); args...) = put_trace_segments(aws, args)
 
 @inline put_trace_segments(aws::AWSConfig, args) = AWSCore.Services.xray(aws, "POST", "/TraceSegments", args)

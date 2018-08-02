@@ -63,7 +63,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/polly-2016-06-10/DeleteLexicon)
 """
-
 @inline delete_lexicon(aws::AWSConfig=default_aws_config(); args...) = delete_lexicon(aws, args)
 
 @inline delete_lexicon(aws::AWSConfig, args) = AWSCore.Services.polly(aws, "DELETE", "/v1/lexicons/{LexiconName}", args)
@@ -94,7 +93,7 @@ This operation requires permissions to perform the `polly:DescribeVoices` action
 
 # Arguments
 
-## `LanguageCode = "cy-GB", "da-DK", "de-DE", "en-AU", "en-GB", "en-GB-WLS", "en-IN", "en-US", "es-ES", "es-US", "fr-CA", "fr-FR", "is-IS", "it-IT", "ja-JP", "nb-NO", "nl-NL", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sv-SE" or "tr-TR"`
+## `LanguageCode = "cy-GB", "da-DK", "de-DE", "en-AU", "en-GB", "en-GB-WLS", "en-IN", "en-US", "es-ES", "es-US", "fr-CA", "fr-FR", "is-IS", "it-IT", "ko-KR", "ja-JP", "nb-NO", "nl-NL", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sv-SE" or "tr-TR"`
 The language identification tag (ISO 639 code for the language name-ISO 3166 country code) for filtering the list of voices returned. If you don't specify this optional parameter, all available voices are returned.
 
 
@@ -154,7 +153,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/polly-2016-06-10/DescribeVoices)
 """
-
 @inline describe_voices(aws::AWSConfig=default_aws_config(); args...) = describe_voices(aws, args)
 
 @inline describe_voices(aws::AWSConfig, args) = AWSCore.Services.polly(aws, "GET", "/v1/voices", args)
@@ -234,12 +232,49 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/polly-2016-06-10/GetLexicon)
 """
-
 @inline get_lexicon(aws::AWSConfig=default_aws_config(); args...) = get_lexicon(aws, args)
 
 @inline get_lexicon(aws::AWSConfig, args) = AWSCore.Services.polly(aws, "GET", "/v1/lexicons/{LexiconName}", args)
 
 @inline get_lexicon(args) = get_lexicon(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Polly.get_speech_synthesis_task
+    get_speech_synthesis_task([::AWSConfig], arguments::Dict)
+    get_speech_synthesis_task([::AWSConfig]; TaskId=)
+
+    using AWSCore.Services.polly
+    polly([::AWSConfig], "GET", "/v1/synthesisTasks/{TaskId}", arguments::Dict)
+    polly([::AWSConfig], "GET", "/v1/synthesisTasks/{TaskId}", TaskId=)
+
+# GetSpeechSynthesisTask Operation
+
+Retrieves a specific SpeechSynthesisTask object based on its TaskID. This object contains information about the given speech synthesis task, including the status of the task, and a link to the S3 bucket containing the output of the task.
+
+# Arguments
+
+## `TaskId = ::String` -- *Required*
+The Amazon Polly generated identifier for a speech synthesis task.
+
+
+
+
+# Returns
+
+`GetSpeechSynthesisTaskOutput`
+
+# Exceptions
+
+`InvalidTaskIdException`, `ServiceFailureException` or `SynthesisTaskNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/polly-2016-06-10/GetSpeechSynthesisTask)
+"""
+@inline get_speech_synthesis_task(aws::AWSConfig=default_aws_config(); args...) = get_speech_synthesis_task(aws, args)
+
+@inline get_speech_synthesis_task(aws::AWSConfig, args) = AWSCore.Services.polly(aws, "GET", "/v1/synthesisTasks/{TaskId}", args)
+
+@inline get_speech_synthesis_task(args) = get_speech_synthesis_task(default_aws_config(), args)
 
 
 """
@@ -303,12 +338,57 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/polly-2016-06-10/ListLexicons)
 """
-
 @inline list_lexicons(aws::AWSConfig=default_aws_config(); args...) = list_lexicons(aws, args)
 
 @inline list_lexicons(aws::AWSConfig, args) = AWSCore.Services.polly(aws, "GET", "/v1/lexicons", args)
 
 @inline list_lexicons(args) = list_lexicons(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Polly.list_speech_synthesis_tasks
+    list_speech_synthesis_tasks([::AWSConfig], arguments::Dict)
+    list_speech_synthesis_tasks([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.polly
+    polly([::AWSConfig], "GET", "/v1/synthesisTasks", arguments::Dict)
+    polly([::AWSConfig], "GET", "/v1/synthesisTasks", <keyword arguments>)
+
+# ListSpeechSynthesisTasks Operation
+
+Returns a list of SpeechSynthesisTask objects ordered by their creation date. This operation can filter the tasks by their status, for example, allowing users to list only tasks that are completed.
+
+# Arguments
+
+## `MaxResults = ::Int`
+Maximum number of speech synthesis tasks returned in a List operation.
+
+
+## `NextToken = ::String`
+The pagination token to use in the next request to continue the listing of speech synthesis tasks.
+
+
+## `Status = "scheduled", "inProgress", "completed" or "failed"`
+Status of the speech synthesis tasks returned in a List operation
+
+
+
+
+# Returns
+
+`ListSpeechSynthesisTasksOutput`
+
+# Exceptions
+
+`InvalidNextTokenException` or `ServiceFailureException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/polly-2016-06-10/ListSpeechSynthesisTasks)
+"""
+@inline list_speech_synthesis_tasks(aws::AWSConfig=default_aws_config(); args...) = list_speech_synthesis_tasks(aws, args)
+
+@inline list_speech_synthesis_tasks(aws::AWSConfig, args) = AWSCore.Services.polly(aws, "GET", "/v1/synthesisTasks", args)
+
+@inline list_speech_synthesis_tasks(args) = list_speech_synthesis_tasks(default_aws_config(), args)
 
 
 """
@@ -367,12 +447,89 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/polly-2016-06-10/PutLexicon)
 """
-
 @inline put_lexicon(aws::AWSConfig=default_aws_config(); args...) = put_lexicon(aws, args)
 
 @inline put_lexicon(aws::AWSConfig, args) = AWSCore.Services.polly(aws, "PUT", "/v1/lexicons/{LexiconName}", args)
 
 @inline put_lexicon(args) = put_lexicon(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Polly.start_speech_synthesis_task
+    start_speech_synthesis_task([::AWSConfig], arguments::Dict)
+    start_speech_synthesis_task([::AWSConfig]; OutputFormat=, OutputS3BucketName=, Text=, VoiceId=, <keyword arguments>)
+
+    using AWSCore.Services.polly
+    polly([::AWSConfig], "POST", "/v1/synthesisTasks", arguments::Dict)
+    polly([::AWSConfig], "POST", "/v1/synthesisTasks", OutputFormat=, OutputS3BucketName=, Text=, VoiceId=, <keyword arguments>)
+
+# StartSpeechSynthesisTask Operation
+
+Allows the creation of an asynchronous synthesis task, by starting a new `SpeechSynthesisTask`. This operation requires all the standard information needed for speech synthesis, plus the name of an Amazon S3 bucket for the service to store the output of the synthesis task and two optional parameters (OutputS3KeyPrefix and SnsTopicArn). Once the synthesis task is created, this operation will return a SpeechSynthesisTask object, which will include an identifier of this task as well as the current status.
+
+# Arguments
+
+## `LexiconNames = [::String, ...]`
+List of one or more pronunciation lexicon names you want the service to apply during synthesis. Lexicons are applied only if the language of the lexicon is the same as the language of the voice.
+
+
+## `OutputFormat = "json", "mp3", "ogg_vorbis" or "pcm"` -- *Required*
+The format in which the returned output will be encoded. For audio stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this will be json.
+
+
+## `OutputS3BucketName = ::String` -- *Required*
+Amazon S3 bucket name to which the output file will be saved.
+
+
+## `OutputS3KeyPrefix = ::String`
+The Amazon S3 Key prefix for the output speech file.
+
+
+## `SampleRate = ::String`
+The audio frequency specified in Hz.
+
+The valid values for mp3 and ogg_vorbis are "8000", "16000", and "22050". The default value is "22050".
+
+Valid values for pcm are "8000" and "16000" The default value is "16000".
+
+
+## `SnsTopicArn = ::String`
+ARN for the SNS topic optionally used for providing status notification for a speech synthesis task.
+
+
+## `SpeechMarkTypes = ["sentence", "ssml", "viseme" or "word", ...]`
+The type of speech marks returned for the input text.
+
+
+## `Text = ::String` -- *Required*
+The input text to synthesize. If you specify ssml as the TextType, follow the SSML format for the input text.
+
+
+## `TextType = "ssml" or "text"`
+Specifies whether the input text is plain text or SSML. The default value is plain text.
+
+
+## `VoiceId = "Geraint", "Gwyneth", "Mads", "Naja", "Hans", "Marlene", "Nicole", "Russell", "Amy", "Brian", "Emma", "Raveena", "Ivy", "Joanna", "Joey", "Justin", "Kendra", "Kimberly", "Matthew", "Salli", "Conchita", "Enrique", "Miguel", "Penelope", "Chantal", "Celine", "Lea", "Mathieu", "Dora", "Karl", "Carla", "Giorgio", "Mizuki", "Liv", "Lotte", "Ruben", "Ewa", "Jacek", "Jan", "Maja", "Ricardo", "Vitoria", "Cristiano", "Ines", "Carmen", "Maxim", "Tatyana", "Astrid", "Filiz", "Vicki", "Takumi", "Seoyeon" or "Aditi"` -- *Required*
+Voice ID to use for the synthesis.
+
+
+
+
+# Returns
+
+`StartSpeechSynthesisTaskOutput`
+
+# Exceptions
+
+`TextLengthExceededException`, `InvalidS3BucketException`, `InvalidS3KeyException`, `InvalidSampleRateException`, `InvalidSnsTopicArnException`, `InvalidSsmlException`, `LexiconNotFoundException`, `ServiceFailureException`, `MarksNotSupportedForFormatException` or `SsmlMarksNotSupportedForTextTypeException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/polly-2016-06-10/StartSpeechSynthesisTask)
+"""
+@inline start_speech_synthesis_task(aws::AWSConfig=default_aws_config(); args...) = start_speech_synthesis_task(aws, args)
+
+@inline start_speech_synthesis_task(aws::AWSConfig, args) = AWSCore.Services.polly(aws, "POST", "/v1/synthesisTasks", args)
+
+@inline start_speech_synthesis_task(args) = start_speech_synthesis_task(default_aws_config(), args)
 
 
 """
@@ -418,7 +575,7 @@ Input text to synthesize. If you specify `ssml` as the `TextType`, follow the SS
 Specifies whether the input text is plain text or SSML. The default value is plain text. For more information, see [Using SSML](http://docs.aws.amazon.com/polly/latest/dg/ssml.html).
 
 
-## `VoiceId = "Geraint", "Gwyneth", "Mads", "Naja", "Hans", "Marlene", "Nicole", "Russell", "Amy", "Brian", "Emma", "Raveena", "Ivy", "Joanna", "Joey", "Justin", "Kendra", "Kimberly", "Matthew", "Salli", "Conchita", "Enrique", "Miguel", "Penelope", "Chantal", "Celine", "Mathieu", "Dora", "Karl", "Carla", "Giorgio", "Mizuki", "Liv", "Lotte", "Ruben", "Ewa", "Jacek", "Jan", "Maja", "Ricardo", "Vitoria", "Cristiano", "Ines", "Carmen", "Maxim", "Tatyana", "Astrid", "Filiz", "Vicki" or "Takumi"` -- *Required*
+## `VoiceId = "Geraint", "Gwyneth", "Mads", "Naja", "Hans", "Marlene", "Nicole", "Russell", "Amy", "Brian", "Emma", "Raveena", "Ivy", "Joanna", "Joey", "Justin", "Kendra", "Kimberly", "Matthew", "Salli", "Conchita", "Enrique", "Miguel", "Penelope", "Chantal", "Celine", "Lea", "Mathieu", "Dora", "Karl", "Carla", "Giorgio", "Mizuki", "Liv", "Lotte", "Ruben", "Ewa", "Jacek", "Jan", "Maja", "Ricardo", "Vitoria", "Cristiano", "Ines", "Carmen", "Maxim", "Tatyana", "Astrid", "Filiz", "Vicki", "Takumi", "Seoyeon" or "Aditi"` -- *Required*
 Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the [DescribeVoices](http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html) operation.
 
 
@@ -461,7 +618,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/polly-2016-06-10/SynthesizeSpeech)
 """
-
 @inline synthesize_speech(aws::AWSConfig=default_aws_config(); args...) = synthesize_speech(aws, args)
 
 @inline synthesize_speech(aws::AWSConfig, args) = AWSCore.Services.polly(aws, "POST", "/v1/speech", args)

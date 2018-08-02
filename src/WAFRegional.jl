@@ -47,7 +47,6 @@ The ARN (Amazon Resource Name) of the resource to be protected.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/AssociateWebACL)
 """
-
 @inline associate_web_acl(aws::AWSConfig=default_aws_config(); args...) = associate_web_acl(aws, args)
 
 @inline associate_web_acl(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "AssociateWebACL", args)
@@ -102,7 +101,6 @@ The value returned by the most recent call to [GetChangeToken](@ref).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateByteMatchSet)
 """
-
 @inline create_byte_match_set(aws::AWSConfig=default_aws_config(); args...) = create_byte_match_set(aws, args)
 
 @inline create_byte_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "CreateByteMatchSet", args)
@@ -157,7 +155,6 @@ The value returned by the most recent call to [GetChangeToken](@ref).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateGeoMatchSet)
 """
-
 @inline create_geo_match_set(aws::AWSConfig=default_aws_config(); args...) = create_geo_match_set(aws, args)
 
 @inline create_geo_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "CreateGeoMatchSet", args)
@@ -241,7 +238,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateIPSet)
 """
-
 @inline create_ipset(aws::AWSConfig=default_aws_config(); args...) = create_ipset(aws, args)
 
 @inline create_ipset(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "CreateIPSet", args)
@@ -334,7 +330,6 @@ The `ChangeToken` that you used to submit the `CreateRateBasedRule` request. You
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateRateBasedRule)
 """
-
 @inline create_rate_based_rule(aws::AWSConfig=default_aws_config(); args...) = create_rate_based_rule(aws, args)
 
 @inline create_rate_based_rule(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "CreateRateBasedRule", args)
@@ -389,7 +384,6 @@ The value returned by the most recent call to [GetChangeToken](@ref).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateRegexMatchSet)
 """
-
 @inline create_regex_match_set(aws::AWSConfig=default_aws_config(); args...) = create_regex_match_set(aws, args)
 
 @inline create_regex_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "CreateRegexMatchSet", args)
@@ -444,7 +438,6 @@ The value returned by the most recent call to [GetChangeToken](@ref).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateRegexPatternSet)
 """
-
 @inline create_regex_pattern_set(aws::AWSConfig=default_aws_config(); args...) = create_regex_pattern_set(aws, args)
 
 @inline create_regex_pattern_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "CreateRegexPatternSet", args)
@@ -545,12 +538,67 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateRule)
 """
-
 @inline create_rule(aws::AWSConfig=default_aws_config(); args...) = create_rule(aws, args)
 
 @inline create_rule(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "CreateRule", args)
 
 @inline create_rule(args) = create_rule(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.create_rule_group
+    create_rule_group([::AWSConfig], arguments::Dict)
+    create_rule_group([::AWSConfig]; Name=, MetricName=, ChangeToken=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "CreateRuleGroup", arguments::Dict)
+    waf_regional([::AWSConfig], "CreateRuleGroup", Name=, MetricName=, ChangeToken=)
+
+# CreateRuleGroup Operation
+
+Creates a `RuleGroup`. A rule group is a collection of predefined rules that you add to a web ACL. You use [UpdateRuleGroup](@ref) to add rules to the rule group.
+
+Rule groups are subject to the following limits:
+
+*   Three rule groups per account. You can request an increase to this limit by contacting customer support.
+
+*   One rule group per web ACL.
+
+*   Ten rules per rule group.
+
+For more information about how to use the AWS WAF API to allow or block HTTP requests, see the [AWS WAF Developer Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+# Arguments
+
+## `Name = ::String` -- *Required*
+A friendly name or description of the [RuleGroup](@ref). You can't change `Name` after you create a `RuleGroup`.
+
+
+## `MetricName = ::String` -- *Required*
+A friendly name or description for the metrics for this `RuleGroup`. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the `RuleGroup`.
+
+
+## `ChangeToken = ::String` -- *Required*
+The value returned by the most recent call to [GetChangeToken](@ref).
+
+
+
+
+# Returns
+
+`CreateRuleGroupResponse`
+
+# Exceptions
+
+`WAFStaleDataException`, `WAFInternalErrorException`, `WAFDisallowedNameException` or `WAFLimitsExceededException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateRuleGroup)
+"""
+@inline create_rule_group(aws::AWSConfig=default_aws_config(); args...) = create_rule_group(aws, args)
+
+@inline create_rule_group(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "CreateRuleGroup", args)
+
+@inline create_rule_group(args) = create_rule_group(default_aws_config(), args)
 
 
 """
@@ -633,7 +681,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateSizeConstraintSet)
 """
-
 @inline create_size_constraint_set(aws::AWSConfig=default_aws_config(); args...) = create_size_constraint_set(aws, args)
 
 @inline create_size_constraint_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "CreateSizeConstraintSet", args)
@@ -719,7 +766,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateSqlInjectionMatchSet)
 """
-
 @inline create_sql_injection_match_set(aws::AWSConfig=default_aws_config(); args...) = create_sql_injection_match_set(aws, args)
 
 @inline create_sql_injection_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "CreateSqlInjectionMatchSet", args)
@@ -828,7 +874,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateWebACL)
 """
-
 @inline create_web_acl(aws::AWSConfig=default_aws_config(); args...) = create_web_acl(aws, args)
 
 @inline create_web_acl(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "CreateWebACL", args)
@@ -914,7 +959,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateXssMatchSet)
 """
-
 @inline create_xss_match_set(aws::AWSConfig=default_aws_config(); args...) = create_xss_match_set(aws, args)
 
 @inline create_xss_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "CreateXssMatchSet", args)
@@ -986,7 +1030,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteByteMatchSet)
 """
-
 @inline delete_byte_match_set(aws::AWSConfig=default_aws_config(); args...) = delete_byte_match_set(aws, args)
 
 @inline delete_byte_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DeleteByteMatchSet", args)
@@ -1039,7 +1082,6 @@ The value returned by the most recent call to [GetChangeToken](@ref).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteGeoMatchSet)
 """
-
 @inline delete_geo_match_set(aws::AWSConfig=default_aws_config(); args...) = delete_geo_match_set(aws, args)
 
 @inline delete_geo_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DeleteGeoMatchSet", args)
@@ -1111,12 +1153,53 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteIPSet)
 """
-
 @inline delete_ipset(aws::AWSConfig=default_aws_config(); args...) = delete_ipset(aws, args)
 
 @inline delete_ipset(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DeleteIPSet", args)
 
 @inline delete_ipset(args) = delete_ipset(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.delete_permission_policy
+    delete_permission_policy([::AWSConfig], arguments::Dict)
+    delete_permission_policy([::AWSConfig]; ResourceArn=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "DeletePermissionPolicy", arguments::Dict)
+    waf_regional([::AWSConfig], "DeletePermissionPolicy", ResourceArn=)
+
+# DeletePermissionPolicy Operation
+
+Permanently deletes an IAM policy from the specified RuleGroup.
+
+The user making the request must be the owner of the RuleGroup.
+
+# Arguments
+
+## `ResourceArn = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the RuleGroup from which you want to delete the policy.
+
+The user making the request must be the owner of the RuleGroup.
+
+
+
+
+# Returns
+
+`DeletePermissionPolicyResponse`
+
+# Exceptions
+
+`WAFInternalErrorException`, `WAFStaleDataException` or `WAFNonexistentItemException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeletePermissionPolicy)
+"""
+@inline delete_permission_policy(aws::AWSConfig=default_aws_config(); args...) = delete_permission_policy(aws, args)
+
+@inline delete_permission_policy(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DeletePermissionPolicy", args)
+
+@inline delete_permission_policy(args) = delete_permission_policy(default_aws_config(), args)
 
 
 """
@@ -1164,7 +1247,6 @@ The value returned by the most recent call to [GetChangeToken](@ref).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteRateBasedRule)
 """
-
 @inline delete_rate_based_rule(aws::AWSConfig=default_aws_config(); args...) = delete_rate_based_rule(aws, args)
 
 @inline delete_rate_based_rule(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DeleteRateBasedRule", args)
@@ -1217,7 +1299,6 @@ The value returned by the most recent call to [GetChangeToken](@ref).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteRegexMatchSet)
 """
-
 @inline delete_regex_match_set(aws::AWSConfig=default_aws_config(); args...) = delete_regex_match_set(aws, args)
 
 @inline delete_regex_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DeleteRegexMatchSet", args)
@@ -1260,7 +1341,6 @@ The value returned by the most recent call to [GetChangeToken](@ref).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteRegexPatternSet)
 """
-
 @inline delete_regex_pattern_set(aws::AWSConfig=default_aws_config(); args...) = delete_regex_pattern_set(aws, args)
 
 @inline delete_regex_pattern_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DeleteRegexPatternSet", args)
@@ -1332,12 +1412,63 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteRule)
 """
-
 @inline delete_rule(aws::AWSConfig=default_aws_config(); args...) = delete_rule(aws, args)
 
 @inline delete_rule(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DeleteRule", args)
 
 @inline delete_rule(args) = delete_rule(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.delete_rule_group
+    delete_rule_group([::AWSConfig], arguments::Dict)
+    delete_rule_group([::AWSConfig]; RuleGroupId=, ChangeToken=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "DeleteRuleGroup", arguments::Dict)
+    waf_regional([::AWSConfig], "DeleteRuleGroup", RuleGroupId=, ChangeToken=)
+
+# DeleteRuleGroup Operation
+
+Permanently deletes a [RuleGroup](@ref). You can't delete a `RuleGroup` if it's still used in any `WebACL` objects or if it still includes any rules.
+
+If you just want to remove a `RuleGroup` from a `WebACL`, use [UpdateWebACL](@ref).
+
+To permanently delete a `RuleGroup` from AWS WAF, perform the following steps:
+
+1.  Update the `RuleGroup` to remove rules, if any. For more information, see [UpdateRuleGroup](@ref).
+
+2.  Use [GetChangeToken](@ref) to get the change token that you provide in the `ChangeToken` parameter of a `DeleteRuleGroup` request.
+
+3.  Submit a `DeleteRuleGroup` request.
+
+# Arguments
+
+## `RuleGroupId = ::String` -- *Required*
+The `RuleGroupId` of the [RuleGroup](@ref) that you want to delete. `RuleGroupId` is returned by [CreateRuleGroup](@ref) and by [ListRuleGroups](@ref).
+
+
+## `ChangeToken = ::String` -- *Required*
+The value returned by the most recent call to [GetChangeToken](@ref).
+
+
+
+
+# Returns
+
+`DeleteRuleGroupResponse`
+
+# Exceptions
+
+`WAFStaleDataException`, `WAFInternalErrorException`, `WAFNonexistentItemException`, `WAFReferencedItemException` or `WAFNonEmptyEntityException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteRuleGroup)
+"""
+@inline delete_rule_group(aws::AWSConfig=default_aws_config(); args...) = delete_rule_group(aws, args)
+
+@inline delete_rule_group(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DeleteRuleGroup", args)
+
+@inline delete_rule_group(args) = delete_rule_group(default_aws_config(), args)
 
 
 """
@@ -1404,7 +1535,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteSizeConstraintSet)
 """
-
 @inline delete_size_constraint_set(aws::AWSConfig=default_aws_config(); args...) = delete_size_constraint_set(aws, args)
 
 @inline delete_size_constraint_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DeleteSizeConstraintSet", args)
@@ -1476,7 +1606,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteSqlInjectionMatchSet)
 """
-
 @inline delete_sql_injection_match_set(aws::AWSConfig=default_aws_config(); args...) = delete_sql_injection_match_set(aws, args)
 
 @inline delete_sql_injection_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DeleteSqlInjectionMatchSet", args)
@@ -1546,7 +1675,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteWebACL)
 """
-
 @inline delete_web_acl(aws::AWSConfig=default_aws_config(); args...) = delete_web_acl(aws, args)
 
 @inline delete_web_acl(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DeleteWebACL", args)
@@ -1618,7 +1746,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteXssMatchSet)
 """
-
 @inline delete_xss_match_set(aws::AWSConfig=default_aws_config(); args...) = delete_xss_match_set(aws, args)
 
 @inline delete_xss_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DeleteXssMatchSet", args)
@@ -1657,7 +1784,6 @@ The ARN (Amazon Resource Name) of the resource from which the web ACL is being r
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DisassociateWebACL)
 """
-
 @inline disassociate_web_acl(aws::AWSConfig=default_aws_config(); args...) = disassociate_web_acl(aws, args)
 
 @inline disassociate_web_acl(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "DisassociateWebACL", args)
@@ -1728,7 +1854,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetByteMatchSet)
 """
-
 @inline get_byte_match_set(aws::AWSConfig=default_aws_config(); args...) = get_byte_match_set(aws, args)
 
 @inline get_byte_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetByteMatchSet", args)
@@ -1785,7 +1910,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetChangeToken)
 """
-
 @inline get_change_token(aws::AWSConfig=default_aws_config(); args...) = get_change_token(aws, args)
 
 @inline get_change_token(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetChangeToken", args)
@@ -1848,7 +1972,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetChangeTokenStatus)
 """
-
 @inline get_change_token_status(aws::AWSConfig=default_aws_config(); args...) = get_change_token_status(aws, args)
 
 @inline get_change_token_status(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetChangeTokenStatus", args)
@@ -1887,7 +2010,6 @@ The `GeoMatchSetId` of the [GeoMatchSet](@ref) that you want to get. `GeoMatchSe
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetGeoMatchSet)
 """
-
 @inline get_geo_match_set(aws::AWSConfig=default_aws_config(); args...) = get_geo_match_set(aws, args)
 
 @inline get_geo_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetGeoMatchSet", args)
@@ -1953,12 +2075,49 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetIPSet)
 """
-
 @inline get_ipset(aws::AWSConfig=default_aws_config(); args...) = get_ipset(aws, args)
 
 @inline get_ipset(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetIPSet", args)
 
 @inline get_ipset(args) = get_ipset(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.get_permission_policy
+    get_permission_policy([::AWSConfig], arguments::Dict)
+    get_permission_policy([::AWSConfig]; ResourceArn=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "GetPermissionPolicy", arguments::Dict)
+    waf_regional([::AWSConfig], "GetPermissionPolicy", ResourceArn=)
+
+# GetPermissionPolicy Operation
+
+Returns the IAM policy attached to the RuleGroup.
+
+# Arguments
+
+## `ResourceArn = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the RuleGroup for which you want to get the policy.
+
+
+
+
+# Returns
+
+`GetPermissionPolicyResponse`
+
+# Exceptions
+
+`WAFInternalErrorException` or `WAFNonexistentItemException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetPermissionPolicy)
+"""
+@inline get_permission_policy(aws::AWSConfig=default_aws_config(); args...) = get_permission_policy(aws, args)
+
+@inline get_permission_policy(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetPermissionPolicy", args)
+
+@inline get_permission_policy(args) = get_permission_policy(default_aws_config(), args)
 
 
 """
@@ -1992,7 +2151,6 @@ The `RuleId` of the [RateBasedRule](@ref) that you want to get. `RuleId` is retu
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetRateBasedRule)
 """
-
 @inline get_rate_based_rule(aws::AWSConfig=default_aws_config(); args...) = get_rate_based_rule(aws, args)
 
 @inline get_rate_based_rule(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetRateBasedRule", args)
@@ -2035,7 +2193,6 @@ A null value and not currently used. Do not include this in your request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetRateBasedRuleManagedKeys)
 """
-
 @inline get_rate_based_rule_managed_keys(aws::AWSConfig=default_aws_config(); args...) = get_rate_based_rule_managed_keys(aws, args)
 
 @inline get_rate_based_rule_managed_keys(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetRateBasedRuleManagedKeys", args)
@@ -2074,7 +2231,6 @@ The `RegexMatchSetId` of the [RegexMatchSet](@ref) that you want to get. `RegexM
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetRegexMatchSet)
 """
-
 @inline get_regex_match_set(aws::AWSConfig=default_aws_config(); args...) = get_regex_match_set(aws, args)
 
 @inline get_regex_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetRegexMatchSet", args)
@@ -2113,7 +2269,6 @@ The `RegexPatternSetId` of the [RegexPatternSet](@ref) that you want to get. `Re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetRegexPatternSet)
 """
-
 @inline get_regex_pattern_set(aws::AWSConfig=default_aws_config(); args...) = get_regex_pattern_set(aws, args)
 
 @inline get_regex_pattern_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetRegexPatternSet", args)
@@ -2181,12 +2336,51 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetRule)
 """
-
 @inline get_rule(aws::AWSConfig=default_aws_config(); args...) = get_rule(aws, args)
 
 @inline get_rule(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetRule", args)
 
 @inline get_rule(args) = get_rule(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.get_rule_group
+    get_rule_group([::AWSConfig], arguments::Dict)
+    get_rule_group([::AWSConfig]; RuleGroupId=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "GetRuleGroup", arguments::Dict)
+    waf_regional([::AWSConfig], "GetRuleGroup", RuleGroupId=)
+
+# GetRuleGroup Operation
+
+Returns the [RuleGroup](@ref) that is specified by the `RuleGroupId` that you included in the `GetRuleGroup` request.
+
+To view the rules in a rule group, use [ListActivatedRulesInRuleGroup](@ref).
+
+# Arguments
+
+## `RuleGroupId = ::String` -- *Required*
+The `RuleGroupId` of the [RuleGroup](@ref) that you want to get. `RuleGroupId` is returned by [CreateRuleGroup](@ref) and by [ListRuleGroups](@ref).
+
+
+
+
+# Returns
+
+`GetRuleGroupResponse`
+
+# Exceptions
+
+`WAFInternalErrorException` or `WAFNonexistentItemException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetRuleGroup)
+"""
+@inline get_rule_group(aws::AWSConfig=default_aws_config(); args...) = get_rule_group(aws, args)
+
+@inline get_rule_group(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetRuleGroup", args)
+
+@inline get_rule_group(args) = get_rule_group(default_aws_config(), args)
 
 
 """
@@ -2211,9 +2405,9 @@ The `WebACLId` of the `WebACL` for which you want `GetSampledRequests` to return
 
 
 ## `RuleId = ::String` -- *Required*
-`RuleId` is one of two values:
+`RuleId` is one of three values:
 
-*   The `RuleId` of the `Rule` for which you want `GetSampledRequests` to return a sample of requests.
+*   The `RuleId` of the `Rule` or the `RuleGroupId` of the `RuleGroup` for which you want `GetSampledRequests` to return a sample of requests.
 
 *   `Default_Action`, which causes `GetSampledRequests` to return a sample of the requests that didn't match any of the rules in the specified `WebACL`.
 
@@ -2290,7 +2484,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetSampledRequests)
 """
-
 @inline get_sampled_requests(aws::AWSConfig=default_aws_config(); args...) = get_sampled_requests(aws, args)
 
 @inline get_sampled_requests(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetSampledRequests", args)
@@ -2360,7 +2553,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetSizeConstraintSet)
 """
-
 @inline get_size_constraint_set(aws::AWSConfig=default_aws_config(); args...) = get_size_constraint_set(aws, args)
 
 @inline get_size_constraint_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetSizeConstraintSet", args)
@@ -2428,7 +2620,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetSqlInjectionMatchSet)
 """
-
 @inline get_sql_injection_match_set(aws::AWSConfig=default_aws_config(); args...) = get_sql_injection_match_set(aws, args)
 
 @inline get_sql_injection_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetSqlInjectionMatchSet", args)
@@ -2501,7 +2692,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetWebACL)
 """
-
 @inline get_web_acl(aws::AWSConfig=default_aws_config(); args...) = get_web_acl(aws, args)
 
 @inline get_web_acl(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetWebACL", args)
@@ -2540,7 +2730,6 @@ The ARN (Amazon Resource Name) of the resource for which to get the web ACL.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetWebACLForResource)
 """
-
 @inline get_web_aclfor_resource(aws::AWSConfig=default_aws_config(); args...) = get_web_aclfor_resource(aws, args)
 
 @inline get_web_aclfor_resource(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetWebACLForResource", args)
@@ -2608,12 +2797,57 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/GetXssMatchSet)
 """
-
 @inline get_xss_match_set(aws::AWSConfig=default_aws_config(); args...) = get_xss_match_set(aws, args)
 
 @inline get_xss_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "GetXssMatchSet", args)
 
 @inline get_xss_match_set(args) = get_xss_match_set(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.list_activated_rules_in_rule_group
+    list_activated_rules_in_rule_group([::AWSConfig], arguments::Dict)
+    list_activated_rules_in_rule_group([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "ListActivatedRulesInRuleGroup", arguments::Dict)
+    waf_regional([::AWSConfig], "ListActivatedRulesInRuleGroup", <keyword arguments>)
+
+# ListActivatedRulesInRuleGroup Operation
+
+Returns an array of [ActivatedRule](@ref) objects.
+
+# Arguments
+
+## `RuleGroupId = ::String`
+The `RuleGroupId` of the [RuleGroup](@ref) for which you want to get a list of [ActivatedRule](@ref) objects.
+
+
+## `NextMarker = ::String`
+If you specify a value for `Limit` and you have more `ActivatedRules` than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `ActivatedRules`. For the second and subsequent `ListActivatedRulesInRuleGroup` requests, specify the value of `NextMarker` from the previous response to get information about another batch of `ActivatedRules`.
+
+
+## `Limit = ::Int`
+Specifies the number of `ActivatedRules` that you want AWS WAF to return for this request. If you have more `ActivatedRules` than the number that you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `ActivatedRules`.
+
+
+
+
+# Returns
+
+`ListActivatedRulesInRuleGroupResponse`
+
+# Exceptions
+
+`WAFInternalErrorException`, `WAFNonexistentItemException` or `WAFInvalidParameterException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListActivatedRulesInRuleGroup)
+"""
+@inline list_activated_rules_in_rule_group(aws::AWSConfig=default_aws_config(); args...) = list_activated_rules_in_rule_group(aws, args)
+
+@inline list_activated_rules_in_rule_group(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListActivatedRulesInRuleGroup", args)
+
+@inline list_activated_rules_in_rule_group(args) = list_activated_rules_in_rule_group(default_aws_config(), args)
 
 
 """
@@ -2651,7 +2885,6 @@ Specifies the number of `ByteMatchSet` objects that you want AWS WAF to return f
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListByteMatchSets)
 """
-
 @inline list_byte_match_sets(aws::AWSConfig=default_aws_config(); args...) = list_byte_match_sets(aws, args)
 
 @inline list_byte_match_sets(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListByteMatchSets", args)
@@ -2694,7 +2927,6 @@ Specifies the number of `GeoMatchSet` objects that you want AWS WAF to return fo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListGeoMatchSets)
 """
-
 @inline list_geo_match_sets(aws::AWSConfig=default_aws_config(); args...) = list_geo_match_sets(aws, args)
 
 @inline list_geo_match_sets(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListGeoMatchSets", args)
@@ -2760,7 +2992,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListIPSets)
 """
-
 @inline list_ipsets(aws::AWSConfig=default_aws_config(); args...) = list_ipsets(aws, args)
 
 @inline list_ipsets(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListIPSets", args)
@@ -2803,7 +3034,6 @@ Specifies the number of `Rules` that you want AWS WAF to return for this request
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListRateBasedRules)
 """
-
 @inline list_rate_based_rules(aws::AWSConfig=default_aws_config(); args...) = list_rate_based_rules(aws, args)
 
 @inline list_rate_based_rules(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListRateBasedRules", args)
@@ -2846,7 +3076,6 @@ Specifies the number of `RegexMatchSet` objects that you want AWS WAF to return 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListRegexMatchSets)
 """
-
 @inline list_regex_match_sets(aws::AWSConfig=default_aws_config(); args...) = list_regex_match_sets(aws, args)
 
 @inline list_regex_match_sets(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListRegexMatchSets", args)
@@ -2889,7 +3118,6 @@ Specifies the number of `RegexPatternSet` objects that you want AWS WAF to retur
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListRegexPatternSets)
 """
-
 @inline list_regex_pattern_sets(aws::AWSConfig=default_aws_config(); args...) = list_regex_pattern_sets(aws, args)
 
 @inline list_regex_pattern_sets(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListRegexPatternSets", args)
@@ -2928,12 +3156,53 @@ The unique identifier (ID) of the web ACL for which to list the associated resou
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListResourcesForWebACL)
 """
-
 @inline list_resources_for_web_acl(aws::AWSConfig=default_aws_config(); args...) = list_resources_for_web_acl(aws, args)
 
 @inline list_resources_for_web_acl(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListResourcesForWebACL", args)
 
 @inline list_resources_for_web_acl(args) = list_resources_for_web_acl(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.list_rule_groups
+    list_rule_groups([::AWSConfig], arguments::Dict)
+    list_rule_groups([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "ListRuleGroups", arguments::Dict)
+    waf_regional([::AWSConfig], "ListRuleGroups", <keyword arguments>)
+
+# ListRuleGroups Operation
+
+Returns an array of [RuleGroup](@ref) objects.
+
+# Arguments
+
+## `NextMarker = ::String`
+If you specify a value for `Limit` and you have more `RuleGroups` than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of `RuleGroups`. For the second and subsequent `ListRuleGroups` requests, specify the value of `NextMarker` from the previous response to get information about another batch of `RuleGroups`.
+
+
+## `Limit = ::Int`
+Specifies the number of `RuleGroups` that you want AWS WAF to return for this request. If you have more `RuleGroups` than the number that you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of `RuleGroups`.
+
+
+
+
+# Returns
+
+`ListRuleGroupsResponse`
+
+# Exceptions
+
+`WAFInternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListRuleGroups)
+"""
+@inline list_rule_groups(aws::AWSConfig=default_aws_config(); args...) = list_rule_groups(aws, args)
+
+@inline list_rule_groups(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListRuleGroups", args)
+
+@inline list_rule_groups(args) = list_rule_groups(default_aws_config(), args)
 
 
 """
@@ -2994,7 +3263,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListRules)
 """
-
 @inline list_rules(aws::AWSConfig=default_aws_config(); args...) = list_rules(aws, args)
 
 @inline list_rules(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListRules", args)
@@ -3060,7 +3328,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListSizeConstraintSets)
 """
-
 @inline list_size_constraint_sets(aws::AWSConfig=default_aws_config(); args...) = list_size_constraint_sets(aws, args)
 
 @inline list_size_constraint_sets(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListSizeConstraintSets", args)
@@ -3126,12 +3393,53 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListSqlInjectionMatchSets)
 """
-
 @inline list_sql_injection_match_sets(aws::AWSConfig=default_aws_config(); args...) = list_sql_injection_match_sets(aws, args)
 
 @inline list_sql_injection_match_sets(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListSqlInjectionMatchSets", args)
 
 @inline list_sql_injection_match_sets(args) = list_sql_injection_match_sets(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.list_subscribed_rule_groups
+    list_subscribed_rule_groups([::AWSConfig], arguments::Dict)
+    list_subscribed_rule_groups([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "ListSubscribedRuleGroups", arguments::Dict)
+    waf_regional([::AWSConfig], "ListSubscribedRuleGroups", <keyword arguments>)
+
+# ListSubscribedRuleGroups Operation
+
+Returns an array of [RuleGroup](@ref) objects that you are subscribed to.
+
+# Arguments
+
+## `NextMarker = ::String`
+If you specify a value for `Limit` and you have more `ByteMatchSets`subscribed rule groups than the value of `Limit`, AWS WAF returns a `NextMarker` value in the response that allows you to list another group of subscribed rule groups. For the second and subsequent `ListSubscribedRuleGroupsRequest` requests, specify the value of `NextMarker` from the previous response to get information about another batch of subscribed rule groups.
+
+
+## `Limit = ::Int`
+Specifies the number of subscribed rule groups that you want AWS WAF to return for this request. If you have more objects than the number you specify for `Limit`, the response includes a `NextMarker` value that you can use to get another batch of objects.
+
+
+
+
+# Returns
+
+`ListSubscribedRuleGroupsResponse`
+
+# Exceptions
+
+`WAFNonexistentItemException` or `WAFInternalErrorException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListSubscribedRuleGroups)
+"""
+@inline list_subscribed_rule_groups(aws::AWSConfig=default_aws_config(); args...) = list_subscribed_rule_groups(aws, args)
+
+@inline list_subscribed_rule_groups(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListSubscribedRuleGroups", args)
+
+@inline list_subscribed_rule_groups(args) = list_subscribed_rule_groups(default_aws_config(), args)
 
 
 """
@@ -3192,7 +3500,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListWebACLs)
 """
-
 @inline list_web_acls(aws::AWSConfig=default_aws_config(); args...) = list_web_acls(aws, args)
 
 @inline list_web_acls(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListWebACLs", args)
@@ -3258,12 +3565,75 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListXssMatchSets)
 """
-
 @inline list_xss_match_sets(aws::AWSConfig=default_aws_config(); args...) = list_xss_match_sets(aws, args)
 
 @inline list_xss_match_sets(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "ListXssMatchSets", args)
 
 @inline list_xss_match_sets(args) = list_xss_match_sets(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.put_permission_policy
+    put_permission_policy([::AWSConfig], arguments::Dict)
+    put_permission_policy([::AWSConfig]; ResourceArn=, Policy=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "PutPermissionPolicy", arguments::Dict)
+    waf_regional([::AWSConfig], "PutPermissionPolicy", ResourceArn=, Policy=)
+
+# PutPermissionPolicy Operation
+
+Attaches a IAM policy to the specified resource. The only supported use for this action is to share a RuleGroup across accounts.
+
+The `PutPermissionPolicy` is subject to the following restrictions:
+
+*   You can attach only one policy with each `PutPermissionPolicy` request.
+
+*   The policy must include an `Effect`, `Action` and `Principal`.
+
+*   `Effect` must specify `Allow`.
+
+*   The `Action` in the policy must be `waf:UpdateWebACL` and `waf-regional:UpdateWebACL`. Any extra or wildcard actions in the policy will be rejected.
+
+*   The policy cannot include a `Resource` parameter.
+
+*   The ARN in the request must be a valid WAF RuleGroup ARN and the RuleGroup must exist in the same region.
+
+*   The user making the request must be the owner of the RuleGroup.
+
+*   Your policy must be composed using IAM Policy version 2012-10-17.
+
+For more information, see [IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html).
+
+An example of a valid policy parameter is shown in the Examples section below.
+
+# Arguments
+
+## `ResourceArn = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the RuleGroup to which you want to attach the policy.
+
+
+## `Policy = ::String` -- *Required*
+The policy to attach to the specified RuleGroup.
+
+
+
+
+# Returns
+
+`PutPermissionPolicyResponse`
+
+# Exceptions
+
+`WAFInternalErrorException`, `WAFStaleDataException`, `WAFNonexistentItemException` or `WAFInvalidPermissionPolicyException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/PutPermissionPolicy)
+"""
+@inline put_permission_policy(aws::AWSConfig=default_aws_config(); args...) = put_permission_policy(aws, args)
+
+@inline put_permission_policy(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "PutPermissionPolicy", args)
+
+@inline put_permission_policy(args) = put_permission_policy(default_aws_config(), args)
 
 
 """
@@ -3379,7 +3749,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/UpdateByteMatchSet)
 """
-
 @inline update_byte_match_set(aws::AWSConfig=default_aws_config(); args...) = update_byte_match_set(aws, args)
 
 @inline update_byte_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "UpdateByteMatchSet", args)
@@ -3458,7 +3827,6 @@ An array of `GeoMatchSetUpdate` objects that you want to insert into or delete f
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/UpdateGeoMatchSet)
 """
-
 @inline update_geo_match_set(aws::AWSConfig=default_aws_config(); args...) = update_geo_match_set(aws, args)
 
 @inline update_geo_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "UpdateGeoMatchSet", args)
@@ -3577,7 +3945,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/UpdateIPSet)
 """
-
 @inline update_ipset(aws::AWSConfig=default_aws_config(); args...) = update_ipset(aws, args)
 
 @inline update_ipset(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "UpdateIPSet", args)
@@ -3661,7 +4028,6 @@ The maximum number of requests, which have an identical value in the field speci
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/UpdateRateBasedRule)
 """
-
 @inline update_rate_based_rule(aws::AWSConfig=default_aws_config(); args...) = update_rate_based_rule(aws, args)
 
 @inline update_rate_based_rule(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "UpdateRateBasedRule", args)
@@ -3680,11 +4046,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 # UpdateRegexMatchSet Operation
 
-Inserts or deletes [RegexMatchSetUpdate](@ref) objects (filters) in a [RegexMatchSet](@ref). For each `RegexMatchSetUpdate` object, you specify the following values:
+Inserts or deletes [RegexMatchTuple](@ref) objects (filters) in a [RegexMatchSet](@ref). For each `RegexMatchSetUpdate` object, you specify the following values:
 
 *   Whether to insert or delete the object from the array. If you want to change a `RegexMatchSetUpdate` object, you delete the existing object and add a new one.
 
-*   The part of a web request that you want AWS WAF to inspect, such as a query string or the value of the `User-Agent` header.
+*   The part of a web request that you want AWS WAF to inspectupdate, such as a query string or the value of the `User-Agent` header.
 
 *   The identifier of the pattern (a regular expression) that you want AWS WAF to look for. For more information, see [RegexPatternSet](@ref).
 
@@ -3740,7 +4106,6 @@ The value returned by the most recent call to [GetChangeToken](@ref).
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/UpdateRegexMatchSet)
 """
-
 @inline update_regex_match_set(aws::AWSConfig=default_aws_config(); args...) = update_regex_match_set(aws, args)
 
 @inline update_regex_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "UpdateRegexMatchSet", args)
@@ -3759,11 +4124,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-re
 
 # UpdateRegexPatternSet Operation
 
-Inserts or deletes [RegexMatchSetUpdate](@ref) objects (filters) in a [RegexPatternSet](@ref). For each `RegexPatternSet` object, you specify the following values:
+Inserts or deletes `RegexPatternString` objects in a [RegexPatternSet](@ref). For each `RegexPatternString` object, you specify the following values:
 
-*   Whether to insert or delete the object from the array. If you want to change a `RegexPatternSet` object, you delete the existing object and add a new one.
+*   Whether to insert or delete the `RegexPatternString`.
 
-*   The regular expression pattern that you want AWS WAF to look for. For more information, see [RegexPatternSet](@ref).
+*   The regular expression pattern that you want to insert or delete. For more information, see [RegexPatternSet](@ref).
 
 For example, you can create a `RegexPatternString` such as `B[a@]dB[o0]t`. AWS WAF will match this `RegexPatternString` to:
 
@@ -3812,11 +4177,10 @@ The value returned by the most recent call to [GetChangeToken](@ref).
 
 # Exceptions
 
-`WAFStaleDataException`, `WAFInternalErrorException`, `WAFLimitsExceededException`, `WAFNonexistentContainerException`, `WAFInvalidOperationException`, `WAFInvalidAccountException` or `WAFInvalidRegexPatternException`.
+`WAFStaleDataException`, `WAFInternalErrorException`, `WAFLimitsExceededException`, `WAFNonexistentItemException`, `WAFNonexistentContainerException`, `WAFInvalidOperationException`, `WAFInvalidAccountException` or `WAFInvalidRegexPatternException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/UpdateRegexPatternSet)
 """
-
 @inline update_regex_pattern_set(aws::AWSConfig=default_aws_config(); args...) = update_regex_pattern_set(aws, args)
 
 @inline update_regex_pattern_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "UpdateRegexPatternSet", args)
@@ -3929,12 +4293,90 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/UpdateRule)
 """
-
 @inline update_rule(aws::AWSConfig=default_aws_config(); args...) = update_rule(aws, args)
 
 @inline update_rule(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "UpdateRule", args)
 
 @inline update_rule(args) = update_rule(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WAFRegional.update_rule_group
+    update_rule_group([::AWSConfig], arguments::Dict)
+    update_rule_group([::AWSConfig]; RuleGroupId=, Updates=, ChangeToken=)
+
+    using AWSCore.Services.waf_regional
+    waf_regional([::AWSConfig], "UpdateRuleGroup", arguments::Dict)
+    waf_regional([::AWSConfig], "UpdateRuleGroup", RuleGroupId=, Updates=, ChangeToken=)
+
+# UpdateRuleGroup Operation
+
+Inserts or deletes [ActivatedRule](@ref) objects in a `RuleGroup`.
+
+You can only insert `REGULAR` rules into a rule group.
+
+You can have a maximum of ten rules per rule group.
+
+To create and configure a `RuleGroup`, perform the following steps:
+
+1.  Create and update the `Rules` that you want to include in the `RuleGroup`. See [CreateRule](@ref).
+
+2.  Use `GetChangeToken` to get the change token that you provide in the `ChangeToken` parameter of an [UpdateRuleGroup](@ref) request.
+
+3.  Submit an `UpdateRuleGroup` request to add `Rules` to the `RuleGroup`.
+
+4.  Create and update a `WebACL` that contains the `RuleGroup`. See [CreateWebACL](@ref).
+
+If you want to replace one `Rule` with another, you delete the existing one and add the new one.
+
+For more information about how to use the AWS WAF API to allow or block HTTP requests, see the [AWS WAF Developer Guide](http://docs.aws.amazon.com/waf/latest/developerguide/).
+
+# Arguments
+
+## `RuleGroupId = ::String` -- *Required*
+The `RuleGroupId` of the [RuleGroup](@ref) that you want to update. `RuleGroupId` is returned by [CreateRuleGroup](@ref) and by [ListRuleGroups](@ref).
+
+
+## `Updates = [[ ... ], ...]` -- *Required*
+An array of `RuleGroupUpdate` objects that you want to insert into or delete from a [RuleGroup](@ref).
+
+You can only insert `REGULAR` rules into a rule group.
+
+`ActivatedRule|OverrideAction` applies only when updating or adding a `RuleGroup` to a `WebACL`. In this case you do not use `ActivatedRule|Action`. For all other update requests, `ActivatedRule|Action` is used instead of `ActivatedRule|OverrideAction`.
+```
+ Updates = [[
+        "Action" => <required> "INSERT" or "DELETE",
+        "ActivatedRule" => <required> [
+            "Priority" => <required> ::Int,
+            "RuleId" => <required> ::String,
+            "Action" =>  ["Type" => <required> "BLOCK", "ALLOW" or "COUNT"],
+            "OverrideAction" =>  ["Type" => <required> "NONE" or "COUNT"],
+            "Type" =>  "REGULAR", "RATE_BASED" or "GROUP"
+        ]
+    ], ...]
+```
+
+## `ChangeToken = ::String` -- *Required*
+The value returned by the most recent call to [GetChangeToken](@ref).
+
+
+
+
+# Returns
+
+`UpdateRuleGroupResponse`
+
+# Exceptions
+
+`WAFStaleDataException`, `WAFInternalErrorException`, `WAFNonexistentContainerException`, `WAFNonexistentItemException`, `WAFInvalidOperationException`, `WAFLimitsExceededException` or `WAFInvalidParameterException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/UpdateRuleGroup)
+"""
+@inline update_rule_group(aws::AWSConfig=default_aws_config(); args...) = update_rule_group(aws, args)
+
+@inline update_rule_group(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "UpdateRuleGroup", args)
+
+@inline update_rule_group(args) = update_rule_group(default_aws_config(), args)
 
 
 """
@@ -4049,7 +4491,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/UpdateSizeConstraintSet)
 """
-
 @inline update_size_constraint_set(aws::AWSConfig=default_aws_config(); args...) = update_size_constraint_set(aws, args)
 
 @inline update_size_constraint_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "UpdateSizeConstraintSet", args)
@@ -4161,7 +4602,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/UpdateSqlInjectionMatchSet)
 """
-
 @inline update_sql_injection_match_set(aws::AWSConfig=default_aws_config(); args...) = update_sql_injection_match_set(aws, args)
 
 @inline update_sql_injection_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "UpdateSqlInjectionMatchSet", args)
@@ -4223,7 +4663,7 @@ An array of `WebACLUpdate` objects that you want to insert into or delete from a
 
 *   [WebACLUpdate](@ref): Contains `Action` and `ActivatedRule`
 
-*   [ActivatedRule](@ref): Contains `Action`, `Priority`, `RuleId`, and `Type`
+*   [ActivatedRule](@ref): Contains `Action`, `OverrideAction`, `Priority`, `RuleId`, and `Type`. `ActivatedRule|OverrideAction` applies only when updating or adding a `RuleGroup` to a `WebACL`. In this case you do not use `ActivatedRule|Action`. For all other update requests, `ActivatedRule|Action` is used instead of `ActivatedRule|OverrideAction`.
 
 *   [WafAction](@ref): Contains `Type`
 ```
@@ -4232,8 +4672,9 @@ An array of `WebACLUpdate` objects that you want to insert into or delete from a
         "ActivatedRule" => <required> [
             "Priority" => <required> ::Int,
             "RuleId" => <required> ::String,
-            "Action" => <required> ["Type" => <required> "BLOCK", "ALLOW" or "COUNT"],
-            "Type" =>  "REGULAR" or "RATE_BASED"
+            "Action" =>  ["Type" => <required> "BLOCK", "ALLOW" or "COUNT"],
+            "OverrideAction" =>  ["Type" => <required> "NONE" or "COUNT"],
+            "Type" =>  "REGULAR", "RATE_BASED" or "GROUP"
         ]
     ], ...]
 ```
@@ -4250,7 +4691,7 @@ A default action for the web ACL, either ALLOW or BLOCK. AWS WAF performs the de
 
 # Exceptions
 
-`WAFStaleDataException`, `WAFInternalErrorException`, `WAFInvalidAccountException`, `WAFInvalidOperationException`, `WAFInvalidParameterException`, `WAFNonexistentContainerException`, `WAFNonexistentItemException`, `WAFReferencedItemException` or `WAFLimitsExceededException`.
+`WAFStaleDataException`, `WAFInternalErrorException`, `WAFInvalidAccountException`, `WAFInvalidOperationException`, `WAFInvalidParameterException`, `WAFNonexistentContainerException`, `WAFNonexistentItemException`, `WAFReferencedItemException`, `WAFLimitsExceededException` or `WAFSubscriptionNotFoundException`.
 
 # Example: To update a Web ACL
 
@@ -4288,7 +4729,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/UpdateWebACL)
 """
-
 @inline update_web_acl(aws::AWSConfig=default_aws_config(); args...) = update_web_acl(aws, args)
 
 @inline update_web_acl(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "UpdateWebACL", args)
@@ -4400,7 +4840,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/UpdateXssMatchSet)
 """
-
 @inline update_xss_match_set(aws::AWSConfig=default_aws_config(); args...) = update_xss_match_set(aws, args)
 
 @inline update_xss_match_set(aws::AWSConfig, args) = AWSCore.Services.waf_regional(aws, "UpdateXssMatchSet", args)

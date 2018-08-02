@@ -56,7 +56,6 @@ Provides the CloudWatch log stream Amazon Resource Name (ARN) and the IAM role A
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/AddApplicationCloudWatchLoggingOption)
 """
-
 @inline add_application_cloud_watch_logging_option(aws::AWSConfig=default_aws_config(); args...) = add_application_cloud_watch_logging_option(aws, args)
 
 @inline add_application_cloud_watch_logging_option(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "AddApplicationCloudWatchLoggingOption", args)
@@ -144,7 +143,6 @@ The [Input](@ref) to add.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/AddApplicationInput)
 """
-
 @inline add_application_input(aws::AWSConfig=default_aws_config(); args...) = add_application_input(aws, args)
 
 @inline add_application_input(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "AddApplicationInput", args)
@@ -176,7 +174,7 @@ Version of the application to which you want to add the input processing configu
 
 
 ## `InputId = ::String` -- *Required*
-The ID of the input configuration to which to add the input configuration. You can get a list of the input IDs for an application using the [DescribeApplication](@ref) operation.
+The ID of the input configuration to add the input processing configuration to. You can get a list of the input IDs for an application using the [DescribeApplication](@ref) operation.
 
 
 ## `InputProcessingConfiguration = ["InputLambdaProcessor" => <required> [ ... ]]` -- *Required*
@@ -200,7 +198,6 @@ The [InputProcessingConfiguration](@ref) to add to the application.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/AddApplicationInputProcessingConfiguration)
 """
-
 @inline add_application_input_processing_configuration(aws::AWSConfig=default_aws_config(); args...) = add_application_input_processing_configuration(aws, args)
 
 @inline add_application_input_processing_configuration(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "AddApplicationInputProcessingConfiguration", args)
@@ -221,7 +218,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 Adds an external destination to your Amazon Kinesis Analytics application.
 
-If you want Amazon Kinesis Analytics to deliver data from an in-application stream within your application to an external destination (such as an Amazon Kinesis stream or a Firehose delivery stream), you add the relevant configuration to your application using this operation. You can configure one or more outputs for your application. Each output configuration maps an in-application stream and an external destination.
+If you want Amazon Kinesis Analytics to deliver data from an in-application stream within your application to an external destination (such as an Amazon Kinesis stream, an Amazon Kinesis Firehose delivery stream, or an Amazon Lambda function), you add the relevant configuration to your application using this operation. You can configure one or more outputs for your application. Each output configuration maps an in-application stream and an external destination.
 
 You can use one of the output configurations to deliver data from your in-application error stream to an external destination so that you can analyze the errors. For conceptual information, see [Understanding Application Output (Destination)](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
 
@@ -238,11 +235,11 @@ Name of the application to which you want to add the output configuration.
 
 
 ## `CurrentApplicationVersionId = ::Int` -- *Required*
-Version of the application to which you want add the output configuration. You can use the [DescribeApplication](@ref) operation to get the current application version. If the version specified is not the current version, the `ConcurrentModificationException` is returned.
+Version of the application to which you want to add the output configuration. You can use the [DescribeApplication](@ref) operation to get the current application version. If the version specified is not the current version, the `ConcurrentModificationException` is returned.
 
 
 ## `Output = [ ... ]` -- *Required*
-An array of objects, each describing one output configuration. In the output configuration, you specify the name of an in-application stream, a destination (that is, an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery stream), and record the formation to use when writing to the destination.
+An array of objects, each describing one output configuration. In the output configuration, you specify the name of an in-application stream, a destination (that is, an Amazon Kinesis stream, an Amazon Kinesis Firehose delivery stream, or an Amazon Lambda function), and record the formation to use when writing to the destination.
 ```
  Output = [
         "Name" => <required> ::String,
@@ -251,6 +248,10 @@ An array of objects, each describing one output configuration. In the output con
             "RoleARN" => <required> ::String
         ],
         "KinesisFirehoseOutput" =>  [
+            "ResourceARN" => <required> ::String,
+            "RoleARN" => <required> ::String
+        ],
+        "LambdaOutput" =>  [
             "ResourceARN" => <required> ::String,
             "RoleARN" => <required> ::String
         ],
@@ -270,7 +271,6 @@ An array of objects, each describing one output configuration. In the output con
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/AddApplicationOutput)
 """
-
 @inline add_application_output(aws::AWSConfig=default_aws_config(); args...) = add_application_output(aws, args)
 
 @inline add_application_output(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "AddApplicationOutput", args)
@@ -350,7 +350,6 @@ The reference data source can be an object in your Amazon S3 bucket. Amazon Kine
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/AddApplicationReferenceDataSource)
 """
-
 @inline add_application_reference_data_source(aws::AWSConfig=default_aws_config(); args...) = add_application_reference_data_source(aws, args)
 
 @inline add_application_reference_data_source(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "AddApplicationReferenceDataSource", args)
@@ -369,13 +368,13 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 # CreateApplication Operation
 
-Creates an Amazon Kinesis Analytics application. You can configure each application with one streaming source as input, application code to process the input, and up to five streaming destinations where you want Amazon Kinesis Analytics to write the output data from your application. For an overview, see [How it Works](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works.html).
+Creates an Amazon Kinesis Analytics application. You can configure each application with one streaming source as input, application code to process the input, and up to three destinations where you want Amazon Kinesis Analytics to write the output data from your application. For an overview, see [How it Works](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works.html).
 
 In the input configuration, you map the streaming source to an in-application stream, which you can think of as a constantly updating table. In the mapping, you must provide a schema for the in-application stream and map each data column in the in-application stream to a data element in the streaming source.
 
 Your application code is one or more SQL statements that read input data, transform it, and generate output. Your application code can create one or more SQL artifacts like SQL streams or pumps.
 
-In the output configuration, you can configure the application to write data from in-application streams created in your applications to up to five streaming destinations.
+In the output configuration, you can configure the application to write data from in-application streams created in your applications to up to three destinations.
 
 To read data from your source stream or write data to destination streams, Amazon Kinesis Analytics needs your permissions. You grant these permissions by creating IAM roles. This operation requires permissions to perform the `kinesisanalytics:CreateApplication` action.
 
@@ -396,7 +395,7 @@ Use this parameter to configure the application input.
 
 You can configure your application to receive input from a single streaming source. In this configuration, you map this streaming source to an in-application stream that is created. Your application code can then query the in-application stream like a table (you can think of it as a constantly updating table).
 
-For the streaming source, you provide its Amazon Resource Name (ARN) and format of data on the stream (for example, JSON, CSV, etc). You also must provide an IAM role that Amazon Kinesis Analytics can assume to read this stream on your behalf.
+For the streaming source, you provide its Amazon Resource Name (ARN) and format of data on the stream (for example, JSON, CSV, etc.). You also must provide an IAM role that Amazon Kinesis Analytics can assume to read this stream on your behalf.
 
 To create the in-application stream, you need to specify a schema to transform your data into a schematized version used in SQL. In the schema, you provide the necessary mapping of the data elements in the streaming source to record columns in the in-app stream.
 ```
@@ -437,13 +436,13 @@ To create the in-application stream, you need to specify a schema to transform y
 ```
 
 ## `Outputs = [[ ... ], ...]`
-You can configure application output to write data from any of the in-application streams to up to five destinations.
+You can configure application output to write data from any of the in-application streams to up to three destinations.
 
-These destinations can be Amazon Kinesis streams, Amazon Kinesis Firehose delivery streams, or both.
+These destinations can be Amazon Kinesis streams, Amazon Kinesis Firehose delivery streams, Amazon Lambda destinations, or any combination of the three.
 
-In the configuration, you specify the in-application stream name, the destination stream Amazon Resource Name (ARN), and the format to use when writing data. You must also provide an IAM role that Amazon Kinesis Analytics can assume to write to the destination stream on your behalf.
+In the configuration, you specify the in-application stream name, the destination stream or Lambda function Amazon Resource Name (ARN), and the format to use when writing data. You must also provide an IAM role that Amazon Kinesis Analytics can assume to write to the destination stream or Lambda function on your behalf.
 
-In the output configuration, you also provide the output stream Amazon Resource Name (ARN) and the format of data in the stream (for example, JSON, CSV). You also must provide an IAM role that Amazon Kinesis Analytics can assume to write to this stream on your behalf.
+In the output configuration, you also provide the output stream or Lambda function ARN. For stream destinations, you provide the format of data in the stream (for example, JSON, CSV). You also must provide an IAM role that Amazon Kinesis Analytics can assume to write to the stream or Lambda function on your behalf.
 ```
  Outputs = [[
         "Name" => <required> ::String,
@@ -452,6 +451,10 @@ In the output configuration, you also provide the output stream Amazon Resource 
             "RoleARN" => <required> ::String
         ],
         "KinesisFirehoseOutput" =>  [
+            "ResourceARN" => <required> ::String,
+            "RoleARN" => <required> ::String
+        ],
+        "LambdaOutput" =>  [
             "ResourceARN" => <required> ::String,
             "RoleARN" => <required> ::String
         ],
@@ -469,7 +472,7 @@ Use this parameter to configure a CloudWatch log stream to monitor application c
 ```
 
 ## `ApplicationCode = ::String`
-One or more SQL statements that read input data, transform it, and generate output. For example, you can write a SQL statement that reads data from one in-application stream, generates a running average of the number of advertisement clicks by vendor, and insert resulting rows in another in-application stream using pumps. For more inforamtion about the typical pattern, see [Application Code](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-app-code.html).
+One or more SQL statements that read input data, transform it, and generate output. For example, you can write a SQL statement that reads data from one in-application stream, generates a running average of the number of advertisement clicks by vendor, and insert resulting rows in another in-application stream using pumps. For more information about the typical pattern, see [Application Code](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-app-code.html).
 
 You can provide such series of SQL statements, where output of one statement can be used as the input for the next statement. You store intermediate results by creating in-application streams and pumps.
 
@@ -488,7 +491,6 @@ Note that the application code must create the streams with names specified in t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/CreateApplication)
 """
-
 @inline create_application(aws::AWSConfig=default_aws_config(); args...) = create_application(aws, args)
 
 @inline create_application(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "CreateApplication", args)
@@ -533,7 +535,6 @@ You can use the `DescribeApplication` operation to get this value.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/DeleteApplication)
 """
-
 @inline delete_application(aws::AWSConfig=default_aws_config(); args...) = delete_application(aws, args)
 
 @inline delete_application(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "DeleteApplication", args)
@@ -565,7 +566,7 @@ The version ID of the Kinesis Analytics application.
 
 
 ## `CloudWatchLoggingOptionId = ::String` -- *Required*
-The `CloudWatchLoggingOptionId` of the CloudWatch logging option to delete. You can use the [DescribeApplication](@ref) operation to get the `CloudWatchLoggingOptionId`.
+The `CloudWatchLoggingOptionId` of the CloudWatch logging option to delete. You can get the `CloudWatchLoggingOptionId` by using the [DescribeApplication](@ref) operation.
 
 
 
@@ -580,7 +581,6 @@ The `CloudWatchLoggingOptionId` of the CloudWatch logging option to delete. You 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/DeleteApplicationCloudWatchLoggingOption)
 """
-
 @inline delete_application_cloud_watch_logging_option(aws::AWSConfig=default_aws_config(); args...) = delete_application_cloud_watch_logging_option(aws, args)
 
 @inline delete_application_cloud_watch_logging_option(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "DeleteApplicationCloudWatchLoggingOption", args)
@@ -612,7 +612,7 @@ The version ID of the Kinesis Analytics application.
 
 
 ## `InputId = ::String` -- *Required*
-The ID of the input configuration from which to delete the input configuration. You can get a list of the input IDs for an application using the [DescribeApplication](@ref) operation.
+The ID of the input configuration from which to delete the input processing configuration. You can get a list of the input IDs for an application by using the [DescribeApplication](@ref) operation.
 
 
 
@@ -627,7 +627,6 @@ The ID of the input configuration from which to delete the input configuration. 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/DeleteApplicationInputProcessingConfiguration)
 """
-
 @inline delete_application_input_processing_configuration(aws::AWSConfig=default_aws_config(); args...) = delete_application_input_processing_configuration(aws, args)
 
 @inline delete_application_input_processing_configuration(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "DeleteApplicationInputProcessingConfiguration", args)
@@ -676,7 +675,6 @@ The ID of the configuration to delete. Each output configuration that is added t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/DeleteApplicationOutput)
 """
-
 @inline delete_application_output(aws::AWSConfig=default_aws_config(); args...) = delete_application_output(aws, args)
 
 @inline delete_application_output(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "DeleteApplicationOutput", args)
@@ -727,7 +725,6 @@ ID of the reference data source. When you add a reference data source to your ap
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/DeleteApplicationReferenceDataSource)
 """
-
 @inline delete_application_reference_data_source(aws::AWSConfig=default_aws_config(); args...) = delete_application_reference_data_source(aws, args)
 
 @inline delete_application_reference_data_source(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "DeleteApplicationReferenceDataSource", args)
@@ -770,7 +767,6 @@ Name of the application.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/DescribeApplication)
 """
-
 @inline describe_application(aws::AWSConfig=default_aws_config(); args...) = describe_application(aws, args)
 
 @inline describe_application(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "DescribeApplication", args)
@@ -789,7 +785,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesi
 
 # DiscoverInputSchema Operation
 
-Infers a schema by evaluating sample records on the specified streaming source (Amazon Kinesis stream or Amazon Kinesis Firehose delivery stream). In the response, the operation returns the inferred schema and also the sample records that the operation used to infer the schema.
+Infers a schema by evaluating sample records on the specified streaming source (Amazon Kinesis stream or Amazon Kinesis Firehose delivery stream) or S3 object. In the response, the operation returns the inferred schema and also the sample records that the operation used to infer the schema.
 
 You can use the inferred schema when configuring a streaming source for your application. For conceptual information, see [Configuring Application Input](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html). Note that when you create an application using the Amazon Kinesis Analytics console, the console uses this operation to infer a schema and show it in the console user interface.
 
@@ -810,7 +806,7 @@ Point at which you want Amazon Kinesis Analytics to start reading records from t
 
 
 ## `S3Configuration = [ ... ]`
-
+Specify this parameter to discover a schema from data in an S3 object.
 ```
  S3Configuration = [
         "RoleARN" => <required> ::String,
@@ -840,7 +836,6 @@ The [InputProcessingConfiguration](@ref) to use to preprocess the records before
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/DiscoverInputSchema)
 """
-
 @inline discover_input_schema(aws::AWSConfig=default_aws_config(); args...) = discover_input_schema(aws, args)
 
 @inline discover_input_schema(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "DiscoverInputSchema", args)
@@ -883,7 +878,6 @@ Name of the application to start the list with. When using pagination to retriev
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/ListApplications)
 """
-
 @inline list_applications(aws::AWSConfig=default_aws_config(); args...) = list_applications(aws, args)
 
 @inline list_applications(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "ListApplications", args)
@@ -939,7 +933,6 @@ Identifies the specific input, by ID, that the application starts consuming. Ama
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/StartApplication)
 """
-
 @inline start_application(aws::AWSConfig=default_aws_config(); args...) = start_application(aws, args)
 
 @inline start_application(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "StartApplication", args)
@@ -980,7 +973,6 @@ Name of the running application to stop.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/StopApplication)
 """
-
 @inline stop_application(aws::AWSConfig=default_aws_config(); args...) = stop_application(aws, args)
 
 @inline stop_application(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "StopApplication", args)
@@ -1066,6 +1058,10 @@ Describes application updates.
                 "ResourceARNUpdate" =>  ::String,
                 "RoleARNUpdate" =>  ::String
             ],
+            "LambdaOutputUpdate" =>  [
+                "ResourceARNUpdate" =>  ::String,
+                "RoleARNUpdate" =>  ::String
+            ],
             "DestinationSchemaUpdate" =>  ["RecordFormatType" =>  "JSON" or "CSV"]
         ], ...],
         "ReferenceDataSourceUpdates" =>  [[
@@ -1115,7 +1111,6 @@ Describes application updates.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/UpdateApplication)
 """
-
 @inline update_application(aws::AWSConfig=default_aws_config(); args...) = update_application(aws, args)
 
 @inline update_application(aws::AWSConfig, args) = AWSCore.Services.kinesisanalytics(aws, "UpdateApplication", args)

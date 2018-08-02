@@ -2,7 +2,7 @@
 # CloudDirectory.jl
 #
 # This file is generated from:
-# https://github.com/aws/aws-sdk-js/blob/master/apis/clouddirectory-2016-05-10.normal.json
+# https://github.com/aws/aws-sdk-js/blob/master/apis/clouddirectory-2017-01-11.normal.json
 #==============================================================================#
 
 __precompile__()
@@ -23,7 +23,7 @@ using AWSCore
 
 # AddFacetToObject Operation
 
-Adds a new [Facet](@ref) to an object.
+Adds a new [Facet](@ref) to an object. An object can have more than one facet applied on it.
 
 # Arguments
 
@@ -32,7 +32,7 @@ The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) whe
 
 
 ## `SchemaFacet = [ ... ]` -- *Required*
-Identifiers for the facet that you are adding to the object.
+Identifiers for the facet that you are adding to the object. See [SchemaFacet](@ref) for details.
 ```
  SchemaFacet = [
         "SchemaArn" =>  ::String,
@@ -73,9 +73,8 @@ A reference to the object you are adding the specified facet to.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException` or `FacetValidationException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/AddFacetToObject)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/AddFacetToObject)
 """
-
 @inline add_facet_to_object(aws::AWSConfig=default_aws_config(); args...) = add_facet_to_object(aws, args)
 
 @inline add_facet_to_object(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/object/facets", args)
@@ -94,7 +93,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 # ApplySchema Operation
 
-Copies the input published schema into the [Directory](@ref) with the same name and version as that of the published schema .
+Copies the input published schema, at the specified version, into the [Directory](@ref) with the same name and version as that of the published schema.
 
 # Arguments
 
@@ -114,11 +113,10 @@ The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) int
 
 # Exceptions
 
-`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException` or `InvalidAttachmentException`.
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `SchemaAlreadyExistsException`, `ResourceNotFoundException` or `InvalidAttachmentException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ApplySchema)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ApplySchema)
 """
-
 @inline apply_schema(aws::AWSConfig=default_aws_config(); args...) = apply_schema(aws, args)
 
 @inline apply_schema(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/schema/apply", args)
@@ -171,9 +169,8 @@ The link name with which the child object is attached to the parent.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException`, `LinkNameAlreadyInUseException`, `InvalidAttachmentException`, `ValidationException` or `FacetValidationException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/AttachObject)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/AttachObject)
 """
-
 @inline attach_object(aws::AWSConfig=default_aws_config(); args...) = attach_object(aws, args)
 
 @inline attach_object(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/object/attach", args)
@@ -184,11 +181,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.attach_policy
     attach_policy([::AWSConfig], arguments::Dict)
-    attach_policy([::AWSConfig]; PolicyReference=, ObjectReference=, <keyword arguments>)
+    attach_policy([::AWSConfig]; *header:* x-amz-data-partition=, PolicyReference=, ObjectReference=)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/policy/attach", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/policy/attach", PolicyReference=, ObjectReference=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/policy/attach", *header:* x-amz-data-partition=, PolicyReference=, ObjectReference=)
 
 # AttachPolicy Operation
 
@@ -196,7 +193,7 @@ Attaches a policy object to a regular object. An object can have a limited numbe
 
 # Arguments
 
-## `*header:* x-amz-data-partition = ::String`
+## `*header:* x-amz-data-partition = ::String` -- *Required*
 The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) where both objects reside. For more information, see [arns](@ref).
 
 
@@ -216,11 +213,10 @@ The reference that identifies the object to which the policy will be attached.
 
 # Exceptions
 
-`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `InvalidArnException`, `ResourceNotFoundException` or `NotPolicyException`.
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException` or `NotPolicyException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/AttachPolicy)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/AttachPolicy)
 """
-
 @inline attach_policy(aws::AWSConfig=default_aws_config(); args...) = attach_policy(aws, args)
 
 @inline attach_policy(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/policy/attach", args)
@@ -263,11 +259,10 @@ A reference to the object that you are attaching to the index.
 
 # Exceptions
 
-`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException`, `LinkNameAlreadyInUseException`, `IndexedAttributeMissingException` or `NotIndexException`.
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `InvalidAttachmentException`, `ResourceNotFoundException`, `LinkNameAlreadyInUseException`, `IndexedAttributeMissingException` or `NotIndexException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/AttachToIndex)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/AttachToIndex)
 """
-
 @inline attach_to_index(aws::AWSConfig=default_aws_config(); args...) = attach_to_index(aws, args)
 
 @inline attach_to_index(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/index/attach", args)
@@ -336,9 +331,8 @@ A set of attributes that are associated with the typed link.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException`, `InvalidAttachmentException`, `ValidationException` or `FacetValidationException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/AttachTypedLink)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/AttachTypedLink)
 """
-
 @inline attach_typed_link(aws::AWSConfig=default_aws_config(); args...) = attach_typed_link(aws, args)
 
 @inline attach_typed_link(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/typedlink/attach", args)
@@ -394,6 +388,14 @@ A list of operations that are part of the batch.
             "MaxResults" =>  ::Int
         ],
         "GetObjectInformation" =>  ["ObjectReference" => <required> ["Selector" =>  ::String]],
+        "GetObjectAttributes" =>  [
+            "ObjectReference" => <required> ["Selector" =>  ::String],
+            "SchemaFacet" => <required> [
+                "SchemaArn" =>  ::String,
+                "FacetName" =>  ::String
+            ],
+            "AttributeNames" => <required> [::String, ...]
+        ],
         "ListObjectPolicies" =>  [
             "ObjectReference" => <required> ["Selector" =>  ::String],
             "NextToken" =>  ::String,
@@ -498,6 +500,27 @@ A list of operations that are part of the batch.
             ],
             "NextToken" =>  ::String,
             "MaxResults" =>  ::Int
+        ],
+        "GetLinkAttributes" =>  [
+            "TypedLinkSpecifier" => <required> [
+                "TypedLinkFacet" => <required> [
+                    "SchemaArn" => <required> ::String,
+                    "TypedLinkName" => <required> ::String
+                ],
+                "SourceObjectReference" => <required> ["Selector" =>  ::String],
+                "TargetObjectReference" => <required> ["Selector" =>  ::String],
+                "IdentityAttributeValues" => <required> [[
+                    "AttributeName" => <required> ::String,
+                    "Value" => <required> [
+                        "StringValue" =>  ::String,
+                        "BinaryValue" =>  blob,
+                        "BooleanValue" =>  ::Bool,
+                        "NumberValue" =>  ::String,
+                        "DatetimeValue" =>  timestamp
+                    ]
+                ], ...]
+            ],
+            "AttributeNames" => <required> [::String, ...]
         ]
     ], ...]
 ```
@@ -516,9 +539,8 @@ Represents the manner and timing in which the successful write or update of an o
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException` or `DirectoryNotEnabledException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/BatchRead)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/BatchRead)
 """
-
 @inline batch_read(aws::AWSConfig=default_aws_config(); args...) = batch_read(aws, args)
 
 @inline batch_read(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/batchread", args)
@@ -537,7 +559,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 # BatchWrite Operation
 
-Performs all the write operations in a batch. Either all the operations succeed or none. Batch writes supports only object-related operations.
+Performs all the write operations in a batch. Either all the operations succeed or none.
 
 # Arguments
 
@@ -568,9 +590,9 @@ A list of operations that are part of the batch.
                     "DatetimeValue" =>  timestamp
                 ]
             ], ...],
-            "ParentReference" => <required> ["Selector" =>  ::String],
-            "LinkName" => <required> ::String,
-            "BatchReferenceName" => <required> ::String
+            "ParentReference" =>  ["Selector" =>  ::String],
+            "LinkName" =>  ::String,
+            "BatchReferenceName" =>  ::String
         ],
         "AttachObject" =>  [
             "ParentReference" => <required> ["Selector" =>  ::String],
@@ -580,7 +602,7 @@ A list of operations that are part of the batch.
         "DetachObject" =>  [
             "ParentReference" => <required> ["Selector" =>  ::String],
             "LinkName" => <required> ::String,
-            "BatchReferenceName" => <required> ::String
+            "BatchReferenceName" =>  ::String
         ],
         "UpdateObjectAttributes" =>  [
             "ObjectReference" => <required> ["Selector" =>  ::String],
@@ -693,7 +715,44 @@ A list of operations that are part of the batch.
                         "DatetimeValue" =>  timestamp
                     ]
                 ], ...]
-            ]]
+            ]],
+        "UpdateLinkAttributes" =>  [
+            "TypedLinkSpecifier" => <required> [
+                "TypedLinkFacet" => <required> [
+                    "SchemaArn" => <required> ::String,
+                    "TypedLinkName" => <required> ::String
+                ],
+                "SourceObjectReference" => <required> ["Selector" =>  ::String],
+                "TargetObjectReference" => <required> ["Selector" =>  ::String],
+                "IdentityAttributeValues" => <required> [[
+                    "AttributeName" => <required> ::String,
+                    "Value" => <required> [
+                        "StringValue" =>  ::String,
+                        "BinaryValue" =>  blob,
+                        "BooleanValue" =>  ::Bool,
+                        "NumberValue" =>  ::String,
+                        "DatetimeValue" =>  timestamp
+                    ]
+                ], ...]
+            ],
+            "AttributeUpdates" => <required> [[
+                "AttributeKey" =>  [
+                    "SchemaArn" => <required> ::String,
+                    "FacetName" => <required> ::String,
+                    "Name" => <required> ::String
+                ],
+                "AttributeAction" =>  [
+                    "AttributeActionType" =>  "CREATE_OR_UPDATE" or "DELETE",
+                    "AttributeUpdateValue" =>  [
+                        "StringValue" =>  ::String,
+                        "BinaryValue" =>  blob,
+                        "BooleanValue" =>  ::Bool,
+                        "NumberValue" =>  ::String,
+                        "DatetimeValue" =>  timestamp
+                    ]
+                ]
+            ], ...]
+        ]
     ], ...]
 ```
 
@@ -707,9 +766,8 @@ A list of operations that are part of the batch.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException` or `BatchWriteException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/BatchWrite)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/BatchWrite)
 """
-
 @inline batch_write(aws::AWSConfig=default_aws_config(); args...) = batch_write(aws, args)
 
 @inline batch_write(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/batchwrite", args)
@@ -748,11 +806,10 @@ The Amazon Resource Name (ARN) of the published schema that will be copied into 
 
 # Exceptions
 
-`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryAlreadyExistsException`, `InvalidArnException` or `ResourceNotFoundException`.
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryAlreadyExistsException` or `ResourceNotFoundException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/CreateDirectory)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/CreateDirectory)
 """
-
 @inline create_directory(aws::AWSConfig=default_aws_config(); args...) = create_directory(aws, args)
 
 @inline create_directory(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/directory/create", args)
@@ -763,11 +820,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 """
     using AWSSDK.CloudDirectory.create_facet
     create_facet([::AWSConfig], arguments::Dict)
-    create_facet([::AWSConfig]; *header:* x-amz-data-partition=, Name=, ObjectType=, <keyword arguments>)
+    create_facet([::AWSConfig]; *header:* x-amz-data-partition=, Name=, <keyword arguments>)
 
     using AWSCore.Services.clouddirectory
     clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/facet/create", arguments::Dict)
-    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/facet/create", *header:* x-amz-data-partition=, Name=, ObjectType=, <keyword arguments>)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/facet/create", *header:* x-amz-data-partition=, Name=, <keyword arguments>)
 
 # CreateFacet Operation
 
@@ -789,7 +846,7 @@ The attributes that are associated with the [Facet](@ref).
  Attributes = [[
         "Name" => <required> ::String,
         "AttributeDefinition" =>  [
-            "Type" => <required> "STRING", "BINARY", "BOOLEAN", "NUMBER" or "DATETIME",
+            "Type" => <required> "STRING", "BINARY", "BOOLEAN", "NUMBER", "DATETIME" or "VARIANT",
             "DefaultValue" =>  [
                 "StringValue" =>  ::String,
                 "BinaryValue" =>  blob,
@@ -808,7 +865,7 @@ The attributes that are associated with the [Facet](@ref).
     ], ...]
 ```
 
-## `ObjectType = "NODE", "LEAF_NODE", "POLICY" or "INDEX"` -- *Required*
+## `ObjectType = "NODE", "LEAF_NODE", "POLICY" or "INDEX"`
 Specifies whether a given object created from this facet is of type node, leaf node, policy or index.
 
 *   Node: Can have multiple children but one parent.
@@ -818,6 +875,10 @@ Specifies whether a given object created from this facet is of type node, leaf n
 *   Policy: Allows you to store a policy document and policy type. For more information, see [Policies](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies).
 
 *   Index: Can be created with the Index API.
+
+
+## `FacetStyle = "STATIC" or "DYNAMIC"`
+There are two different styles that you can define on any given facet, `Static` and `Dynamic`. For static facets, all attributes must be defined in the schema. For dynamic facets, attributes can be defined during data plane operations.
 
 
 
@@ -830,9 +891,8 @@ Specifies whether a given object created from this facet is of type node, leaf n
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException`, `FacetAlreadyExistsException`, `InvalidRuleException` or `FacetValidationException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/CreateFacet)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/CreateFacet)
 """
-
 @inline create_facet(aws::AWSConfig=default_aws_config(); args...) = create_facet(aws, args)
 
 @inline create_facet(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/facet/create", args)
@@ -891,9 +951,8 @@ The name of the link between the parent object and the index object.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException`, `FacetValidationException`, `LinkNameAlreadyInUseException` or `UnsupportedIndexTypeException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/CreateIndex)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/CreateIndex)
 """
-
 @inline create_index(aws::AWSConfig=default_aws_config(); args...) = create_index(aws, args)
 
 @inline create_index(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/index", args)
@@ -921,7 +980,7 @@ The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) in 
 
 
 ## `SchemaFacets = [[ ... ], ...]` -- *Required*
-A list of schema facets to be associated with the object that contains `SchemaArn` and facet name. For more information, see [arns](@ref).
+A list of schema facets to be associated with the object. Do not provide minor version components. See [SchemaFacet](@ref) for details.
 ```
  SchemaFacets = [[
         "SchemaArn" =>  ::String,
@@ -964,11 +1023,10 @@ The name of link that is used to attach this object to a parent.
 
 # Exceptions
 
-`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `InvalidArnException`, `ResourceNotFoundException`, `FacetValidationException`, `LinkNameAlreadyInUseException` or `UnsupportedIndexTypeException`.
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException`, `FacetValidationException`, `LinkNameAlreadyInUseException` or `UnsupportedIndexTypeException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/CreateObject)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/CreateObject)
 """
-
 @inline create_object(aws::AWSConfig=default_aws_config(); args...) = create_object(aws, args)
 
 @inline create_object(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/object", args)
@@ -1011,9 +1069,8 @@ The name that is associated with the schema. This is unique to each account and 
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `SchemaAlreadyExistsException` or `AccessDeniedException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/CreateSchema)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/CreateSchema)
 """
-
 @inline create_schema(aws::AWSConfig=default_aws_config(); args...) = create_schema(aws, args)
 
 @inline create_schema(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/schema/create", args)
@@ -1047,7 +1104,7 @@ The Amazon Resource Name (ARN) that is associated with the schema. For more info
         "Name" => <required> ::String,
         "Attributes" => <required> [[
             "Name" => <required> ::String,
-            "Type" => <required> "STRING", "BINARY", "BOOLEAN", "NUMBER" or "DATETIME",
+            "Type" => <required> "STRING", "BINARY", "BOOLEAN", "NUMBER", "DATETIME" or "VARIANT",
             "DefaultValue" =>  [
                 "StringValue" =>  ::String,
                 "BinaryValue" =>  blob,
@@ -1073,9 +1130,8 @@ The Amazon Resource Name (ARN) that is associated with the schema. For more info
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException`, `FacetAlreadyExistsException`, `InvalidRuleException` or `FacetValidationException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/CreateTypedLinkFacet)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/CreateTypedLinkFacet)
 """
-
 @inline create_typed_link_facet(aws::AWSConfig=default_aws_config(); args...) = create_typed_link_facet(aws, args)
 
 @inline create_typed_link_facet(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/typedlink/facet/create", args)
@@ -1112,9 +1168,8 @@ The ARN of the directory to delete.
 
 `ResourceNotFoundException`, `DirectoryNotDisabledException`, `InternalServiceException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryDeletedException`, `RetryableConflictException` or `InvalidArnException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/DeleteDirectory)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/DeleteDirectory)
 """
-
 @inline delete_directory(aws::AWSConfig=default_aws_config(); args...) = delete_directory(aws, args)
 
 @inline delete_directory(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/directory", args)
@@ -1155,9 +1210,8 @@ The name of the facet to delete.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException`, `FacetNotFoundException` or `FacetInUseException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/DeleteFacet)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/DeleteFacet)
 """
-
 @inline delete_facet(aws::AWSConfig=default_aws_config(); args...) = delete_facet(aws, args)
 
 @inline delete_facet(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/facet/delete", args)
@@ -1198,9 +1252,8 @@ A reference that identifies the object.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException` or `ObjectNotDetachedException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/DeleteObject)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/DeleteObject)
 """
-
 @inline delete_object(aws::AWSConfig=default_aws_config(); args...) = delete_object(aws, args)
 
 @inline delete_object(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/object/delete", args)
@@ -1237,9 +1290,8 @@ The Amazon Resource Name (ARN) of the development schema. For more information, 
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException` or `StillContainsLinksException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/DeleteSchema)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/DeleteSchema)
 """
-
 @inline delete_schema(aws::AWSConfig=default_aws_config(); args...) = delete_schema(aws, args)
 
 @inline delete_schema(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/schema", args)
@@ -1280,9 +1332,8 @@ The unique name of the typed link facet.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException` or `FacetNotFoundException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/DeleteTypedLinkFacet)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/DeleteTypedLinkFacet)
 """
-
 @inline delete_typed_link_facet(aws::AWSConfig=default_aws_config(); args...) = delete_typed_link_facet(aws, args)
 
 @inline delete_typed_link_facet(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/typedlink/facet/delete", args)
@@ -1327,9 +1378,8 @@ A reference to the object being detached from the index.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException`, `ObjectAlreadyDetachedException` or `NotIndexException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/DetachFromIndex)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/DetachFromIndex)
 """
-
 @inline detach_from_index(aws::AWSConfig=default_aws_config(); args...) = detach_from_index(aws, args)
 
 @inline detach_from_index(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/index/detach", args)
@@ -1372,11 +1422,10 @@ The link name associated with the object that needs to be detached.
 
 # Exceptions
 
-`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException` or `ResourceNotFoundException`.
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException` or `NotNodeException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/DetachObject)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/DetachObject)
 """
-
 @inline detach_object(aws::AWSConfig=default_aws_config(); args...) = detach_object(aws, args)
 
 @inline detach_object(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/object/detach", args)
@@ -1419,11 +1468,10 @@ Reference that identifies the object whose policy object will be detached.
 
 # Exceptions
 
-`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `InvalidArnException`, `ResourceNotFoundException` or `NotPolicyException`.
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException` or `NotPolicyException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/DetachPolicy)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/DetachPolicy)
 """
-
 @inline detach_policy(aws::AWSConfig=default_aws_config(); args...) = detach_policy(aws, args)
 
 @inline detach_policy(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/policy/detach", args)
@@ -1479,9 +1527,8 @@ Used to accept a typed link specifier as input.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException` or `FacetValidationException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/DetachTypedLink)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/DetachTypedLink)
 """
-
 @inline detach_typed_link(aws::AWSConfig=default_aws_config(); args...) = detach_typed_link(aws, args)
 
 @inline detach_typed_link(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/typedlink/detach", args)
@@ -1518,9 +1565,8 @@ The ARN of the directory to disable.
 
 `ResourceNotFoundException`, `DirectoryDeletedException`, `InternalServiceException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `RetryableConflictException` or `InvalidArnException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/DisableDirectory)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/DisableDirectory)
 """
-
 @inline disable_directory(aws::AWSConfig=default_aws_config(); args...) = disable_directory(aws, args)
 
 @inline disable_directory(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/directory/disable", args)
@@ -1557,14 +1603,51 @@ The ARN of the directory to enable.
 
 `ResourceNotFoundException`, `DirectoryDeletedException`, `InternalServiceException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `RetryableConflictException` or `InvalidArnException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/EnableDirectory)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/EnableDirectory)
 """
-
 @inline enable_directory(aws::AWSConfig=default_aws_config(); args...) = enable_directory(aws, args)
 
 @inline enable_directory(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/directory/enable", args)
 
 @inline enable_directory(args) = enable_directory(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudDirectory.get_applied_schema_version
+    get_applied_schema_version([::AWSConfig], arguments::Dict)
+    get_applied_schema_version([::AWSConfig]; SchemaArn=)
+
+    using AWSCore.Services.clouddirectory
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/schema/getappliedschema", arguments::Dict)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/schema/getappliedschema", SchemaArn=)
+
+# GetAppliedSchemaVersion Operation
+
+Returns current applied schema version ARN, including the minor version in use.
+
+# Arguments
+
+## `SchemaArn = ::String` -- *Required*
+The ARN of the applied schema.
+
+
+
+
+# Returns
+
+`GetAppliedSchemaVersionResponse`
+
+# Exceptions
+
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException` or `ResourceNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/GetAppliedSchemaVersion)
+"""
+@inline get_applied_schema_version(aws::AWSConfig=default_aws_config(); args...) = get_applied_schema_version(aws, args)
+
+@inline get_applied_schema_version(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/schema/getappliedschema", args)
+
+@inline get_applied_schema_version(args) = get_applied_schema_version(default_aws_config(), args)
 
 
 """
@@ -1596,9 +1679,8 @@ The ARN of the directory.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException` or `AccessDeniedException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/GetDirectory)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/GetDirectory)
 """
-
 @inline get_directory(aws::AWSConfig=default_aws_config(); args...) = get_directory(aws, args)
 
 @inline get_directory(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/directory/get", args)
@@ -1639,14 +1721,141 @@ The name of the facet to retrieve.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException` or `FacetNotFoundException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/GetFacet)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/GetFacet)
 """
-
 @inline get_facet(aws::AWSConfig=default_aws_config(); args...) = get_facet(aws, args)
 
 @inline get_facet(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/facet", args)
 
 @inline get_facet(args) = get_facet(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudDirectory.get_link_attributes
+    get_link_attributes([::AWSConfig], arguments::Dict)
+    get_link_attributes([::AWSConfig]; *header:* x-amz-data-partition=, TypedLinkSpecifier=, AttributeNames=, <keyword arguments>)
+
+    using AWSCore.Services.clouddirectory
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/attributes/get", arguments::Dict)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/attributes/get", *header:* x-amz-data-partition=, TypedLinkSpecifier=, AttributeNames=, <keyword arguments>)
+
+# GetLinkAttributes Operation
+
+Retrieves attributes that are associated with a typed link.
+
+# Arguments
+
+## `*header:* x-amz-data-partition = ::String` -- *Required*
+The Amazon Resource Name (ARN) that is associated with the Directory where the typed link resides. For more information, see [arns](@ref) or [Typed link](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+
+
+## `TypedLinkSpecifier = [ ... ]` -- *Required*
+Allows a typed link specifier to be accepted as input.
+```
+ TypedLinkSpecifier = [
+        "TypedLinkFacet" => <required> [
+            "SchemaArn" => <required> ::String,
+            "TypedLinkName" => <required> ::String
+        ],
+        "SourceObjectReference" => <required> ["Selector" =>  ::String],
+        "TargetObjectReference" => <required> ["Selector" =>  ::String],
+        "IdentityAttributeValues" => <required> [[
+            "AttributeName" => <required> ::String,
+            "Value" => <required> [
+                "StringValue" =>  ::String,
+                "BinaryValue" =>  blob,
+                "BooleanValue" =>  ::Bool,
+                "NumberValue" =>  ::String,
+                "DatetimeValue" =>  timestamp
+            ]
+        ], ...]
+    ]
+```
+
+## `AttributeNames = [::String, ...]` -- *Required*
+A list of attribute names whose values will be retrieved.
+
+
+## `ConsistencyLevel = "SERIALIZABLE" or "EVENTUAL"`
+The consistency level at which to retrieve the attributes on a typed link.
+
+
+
+
+# Returns
+
+`GetLinkAttributesResponse`
+
+# Exceptions
+
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException` or `FacetValidationException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/GetLinkAttributes)
+"""
+@inline get_link_attributes(aws::AWSConfig=default_aws_config(); args...) = get_link_attributes(aws, args)
+
+@inline get_link_attributes(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/typedlink/attributes/get", args)
+
+@inline get_link_attributes(args) = get_link_attributes(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudDirectory.get_object_attributes
+    get_object_attributes([::AWSConfig], arguments::Dict)
+    get_object_attributes([::AWSConfig]; *header:* x-amz-data-partition=, ObjectReference=, SchemaFacet=, AttributeNames=, <keyword arguments>)
+
+    using AWSCore.Services.clouddirectory
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/attributes/get", arguments::Dict)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/object/attributes/get", *header:* x-amz-data-partition=, ObjectReference=, SchemaFacet=, AttributeNames=, <keyword arguments>)
+
+# GetObjectAttributes Operation
+
+Retrieves attributes within a facet that are associated with an object.
+
+# Arguments
+
+## `*header:* x-amz-data-partition = ::String` -- *Required*
+The Amazon Resource Name (ARN) that is associated with the [Directory](@ref) where the object resides.
+
+
+## `ObjectReference = ["Selector" =>  ::String]` -- *Required*
+Reference that identifies the object whose attributes will be retrieved.
+
+
+## `*header:* x-amz-consistency-level = "SERIALIZABLE" or "EVENTUAL"`
+The consistency level at which to retrieve the attributes on an object.
+
+
+## `SchemaFacet = [ ... ]` -- *Required*
+Identifier for the facet whose attributes will be retrieved. See [SchemaFacet](@ref) for details.
+```
+ SchemaFacet = [
+        "SchemaArn" =>  ::String,
+        "FacetName" =>  ::String
+    ]
+```
+
+## `AttributeNames = [::String, ...]` -- *Required*
+List of attribute names whose values will be retrieved.
+
+
+
+
+# Returns
+
+`GetObjectAttributesResponse`
+
+# Exceptions
+
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException` or `FacetValidationException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/GetObjectAttributes)
+"""
+@inline get_object_attributes(aws::AWSConfig=default_aws_config(); args...) = get_object_attributes(aws, args)
+
+@inline get_object_attributes(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/object/attributes/get", args)
+
+@inline get_object_attributes(args) = get_object_attributes(default_aws_config(), args)
 
 
 """
@@ -1686,9 +1895,8 @@ The consistency level at which to retrieve the object information.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException` or `ResourceNotFoundException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/GetObjectInformation)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/GetObjectInformation)
 """
-
 @inline get_object_information(aws::AWSConfig=default_aws_config(); args...) = get_object_information(aws, args)
 
 @inline get_object_information(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/object/information", args)
@@ -1725,9 +1933,8 @@ The ARN of the schema to retrieve.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException` or `ValidationException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/GetSchemaAsJson)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/GetSchemaAsJson)
 """
-
 @inline get_schema_as_json(aws::AWSConfig=default_aws_config(); args...) = get_schema_as_json(aws, args)
 
 @inline get_schema_as_json(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/schema/json", args)
@@ -1768,9 +1975,8 @@ The unique name of the typed link facet.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException`, `InvalidNextTokenException` or `FacetNotFoundException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/GetTypedLinkFacetInformation)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/GetTypedLinkFacetInformation)
 """
-
 @inline get_typed_link_facet_information(aws::AWSConfig=default_aws_config(); args...) = get_typed_link_facet_information(aws, args)
 
 @inline get_typed_link_facet_information(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/typedlink/facet/get", args)
@@ -1789,12 +1995,16 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 # ListAppliedSchemaArns Operation
 
-Lists schemas applied to a directory.
+Lists schema major versions applied to a directory. If `SchemaArn` is provided, lists the minor version.
 
 # Arguments
 
 ## `DirectoryArn = ::String` -- *Required*
 The ARN of the directory you are listing.
+
+
+## `SchemaArn = ::String`
+The response for `ListAppliedSchemaArns` when this parameter is used will list all minor version ARNs for a major version.
 
 
 ## `NextToken = ::String`
@@ -1815,9 +2025,8 @@ The maximum number of results to retrieve.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException` or `InvalidNextTokenException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListAppliedSchemaArns)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListAppliedSchemaArns)
 """
-
 @inline list_applied_schema_arns(aws::AWSConfig=default_aws_config(); args...) = list_applied_schema_arns(aws, args)
 
 @inline list_applied_schema_arns(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/schema/applied", args)
@@ -1836,7 +2045,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 # ListAttachedIndices Operation
 
-Lists indices attached to an object.
+Lists indices attached to the specified object.
 
 # Arguments
 
@@ -1870,9 +2079,8 @@ The consistency level to use for this operation.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException` or `ResourceNotFoundException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListAttachedIndices)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListAttachedIndices)
 """
-
 @inline list_attached_indices(aws::AWSConfig=default_aws_config(); args...) = list_attached_indices(aws, args)
 
 @inline list_attached_indices(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/object/indices", args)
@@ -1913,9 +2121,8 @@ The maximum number of results to retrieve.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException` or `InvalidNextTokenException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListDevelopmentSchemaArns)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListDevelopmentSchemaArns)
 """
-
 @inline list_development_schema_arns(aws::AWSConfig=default_aws_config(); args...) = list_development_schema_arns(aws, args)
 
 @inline list_development_schema_arns(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/schema/development", args)
@@ -1960,9 +2167,8 @@ The state of the directories in the list. Can be either Enabled, Disabled, or De
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException` or `InvalidNextTokenException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListDirectories)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListDirectories)
 """
-
 @inline list_directories(aws::AWSConfig=default_aws_config(); args...) = list_directories(aws, args)
 
 @inline list_directories(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/directory/list", args)
@@ -2011,9 +2217,8 @@ The maximum number of results to retrieve.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException`, `FacetNotFoundException` or `InvalidNextTokenException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListFacetAttributes)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListFacetAttributes)
 """
-
 @inline list_facet_attributes(aws::AWSConfig=default_aws_config(); args...) = list_facet_attributes(aws, args)
 
 @inline list_facet_attributes(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/facet/attributes", args)
@@ -2058,9 +2263,8 @@ The maximum number of results to retrieve.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException` or `InvalidNextTokenException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListFacetNames)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListFacetNames)
 """
-
 @inline list_facet_names(aws::AWSConfig=default_aws_config(); args...) = list_facet_names(aws, args)
 
 @inline list_facet_names(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/facet/list", args)
@@ -2148,9 +2352,8 @@ The consistency level to execute the request at.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException`, `InvalidNextTokenException` or `FacetValidationException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListIncomingTypedLinks)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListIncomingTypedLinks)
 """
-
 @inline list_incoming_typed_links(aws::AWSConfig=default_aws_config(); args...) = list_incoming_typed_links(aws, args)
 
 @inline list_incoming_typed_links(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/typedlink/incoming", args)
@@ -2212,7 +2415,7 @@ The reference to the index to list.
 
 
 ## `MaxResults = ::Int`
-The maximum number of results to retrieve from the index.
+The maximum number of objects in a single page to retrieve from the index during a request. For more information, see [AWS Directory Service Limits](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/limits.html#limits_cd).
 
 
 ## `NextToken = ::String`
@@ -2231,16 +2434,61 @@ The consistency level to execute the request at.
 
 # Exceptions
 
-`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException` or `NotIndexException`.
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `FacetValidationException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `InvalidNextTokenException`, `ResourceNotFoundException` or `NotIndexException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListIndex)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListIndex)
 """
-
 @inline list_index(aws::AWSConfig=default_aws_config(); args...) = list_index(aws, args)
 
 @inline list_index(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/index/targets", args)
 
 @inline list_index(args) = list_index(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudDirectory.list_managed_schema_arns
+    list_managed_schema_arns([::AWSConfig], arguments::Dict)
+    list_managed_schema_arns([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.clouddirectory
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/schema/managed", arguments::Dict)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/schema/managed", <keyword arguments>)
+
+# ListManagedSchemaArns Operation
+
+Lists the major version families of each managed schema. If a major version ARN is provided as SchemaArn, the minor version revisions in that family are listed instead.
+
+# Arguments
+
+## `SchemaArn = ::String`
+The response for ListManagedSchemaArns. When this parameter is used, all minor version ARNs for a major version are listed.
+
+
+## `NextToken = ::String`
+The pagination token.
+
+
+## `MaxResults = ::Int`
+The maximum number of results to retrieve.
+
+
+
+
+# Returns
+
+`ListManagedSchemaArnsResponse`
+
+# Exceptions
+
+`InternalServiceException`, `InvalidArnException`, `ValidationException`, `AccessDeniedException`, `ResourceNotFoundException` or `InvalidNextTokenException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListManagedSchemaArns)
+"""
+@inline list_managed_schema_arns(aws::AWSConfig=default_aws_config(); args...) = list_managed_schema_arns(aws, args)
+
+@inline list_managed_schema_arns(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/schema/managed", args)
+
+@inline list_managed_schema_arns(args) = list_managed_schema_arns(default_aws_config(), args)
 
 
 """
@@ -2295,11 +2543,10 @@ Used to filter the list of object attributes that are associated with a certain 
 
 # Exceptions
 
-`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `InvalidArnException`, `ResourceNotFoundException`, `InvalidNextTokenException` or `FacetValidationException`.
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException`, `InvalidNextTokenException` or `FacetValidationException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListObjectAttributes)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListObjectAttributes)
 """
-
 @inline list_object_attributes(aws::AWSConfig=default_aws_config(); args...) = list_object_attributes(aws, args)
 
 @inline list_object_attributes(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/object/attributes", args)
@@ -2350,11 +2597,10 @@ Represents the manner and timing in which the successful write or update of an o
 
 # Exceptions
 
-`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `InvalidArnException`, `ResourceNotFoundException`, `InvalidNextTokenException` or `NotNodeException`.
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException`, `InvalidNextTokenException` or `NotNodeException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListObjectChildren)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListObjectChildren)
 """
-
 @inline list_object_children(aws::AWSConfig=default_aws_config(); args...) = list_object_children(aws, args)
 
 @inline list_object_children(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/object/children", args)
@@ -2405,9 +2651,8 @@ The maximum number of items to be retrieved in a single call. This is an approxi
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `InvalidNextTokenException` or `ResourceNotFoundException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListObjectParentPaths)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListObjectParentPaths)
 """
-
 @inline list_object_parent_paths(aws::AWSConfig=default_aws_config(); args...) = list_object_parent_paths(aws, args)
 
 @inline list_object_parent_paths(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/object/parentpaths", args)
@@ -2458,11 +2703,10 @@ Represents the manner and timing in which the successful write or update of an o
 
 # Exceptions
 
-`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `InvalidArnException`, `ResourceNotFoundException`, `InvalidNextTokenException` or `CannotListParentOfRootException`.
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException`, `InvalidNextTokenException` or `CannotListParentOfRootException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListObjectParents)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListObjectParents)
 """
-
 @inline list_object_parents(aws::AWSConfig=default_aws_config(); args...) = list_object_parents(aws, args)
 
 @inline list_object_parents(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/object/parent", args)
@@ -2515,9 +2759,8 @@ Represents the manner and timing in which the successful write or update of an o
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException` or `InvalidNextTokenException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListObjectPolicies)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListObjectPolicies)
 """
-
 @inline list_object_policies(aws::AWSConfig=default_aws_config(); args...) = list_object_policies(aws, args)
 
 @inline list_object_policies(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/object/policy", args)
@@ -2605,9 +2848,8 @@ The consistency level to execute the request at.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException`, `InvalidNextTokenException` or `FacetValidationException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListOutgoingTypedLinks)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListOutgoingTypedLinks)
 """
-
 @inline list_outgoing_typed_links(aws::AWSConfig=default_aws_config(); args...) = list_outgoing_typed_links(aws, args)
 
 @inline list_outgoing_typed_links(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/typedlink/outgoing", args)
@@ -2658,11 +2900,10 @@ Represents the manner and timing in which the successful write or update of an o
 
 # Exceptions
 
-`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `InvalidArnException`, `InvalidNextTokenException`, `ResourceNotFoundException` or `NotPolicyException`.
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `InvalidNextTokenException`, `ResourceNotFoundException` or `NotPolicyException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListPolicyAttachments)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListPolicyAttachments)
 """
-
 @inline list_policy_attachments(aws::AWSConfig=default_aws_config(); args...) = list_policy_attachments(aws, args)
 
 @inline list_policy_attachments(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/policy/attachment", args)
@@ -2681,9 +2922,13 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 # ListPublishedSchemaArns Operation
 
-Retrieves each published schema Amazon Resource Name (ARN).
+Lists the major version families of each published schema. If a major version ARN is provided as `SchemaArn`, the minor version revisions in that family are listed instead.
 
 # Arguments
+
+## `SchemaArn = ::String`
+The response for `ListPublishedSchemaArns` when this parameter is used will list all minor version ARNs for a major version.
+
 
 ## `NextToken = ::String`
 The pagination token.
@@ -2703,9 +2948,8 @@ The maximum number of results to retrieve.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException` or `InvalidNextTokenException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListPublishedSchemaArns)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListPublishedSchemaArns)
 """
-
 @inline list_published_schema_arns(aws::AWSConfig=default_aws_config(); args...) = list_published_schema_arns(aws, args)
 
 @inline list_published_schema_arns(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/schema/published", args)
@@ -2750,9 +2994,8 @@ The `MaxResults` parameter sets the maximum number of results returned in a sing
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException` or `InvalidTaggingRequestException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListTagsForResource)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListTagsForResource)
 """
-
 @inline list_tags_for_resource(aws::AWSConfig=default_aws_config(); args...) = list_tags_for_resource(aws, args)
 
 @inline list_tags_for_resource(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/tags", args)
@@ -2801,9 +3044,8 @@ The maximum number of results to retrieve.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException`, `FacetNotFoundException` or `InvalidNextTokenException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListTypedLinkFacetAttributes)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListTypedLinkFacetAttributes)
 """
-
 @inline list_typed_link_facet_attributes(aws::AWSConfig=default_aws_config(); args...) = list_typed_link_facet_attributes(aws, args)
 
 @inline list_typed_link_facet_attributes(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes", args)
@@ -2848,9 +3090,8 @@ The maximum number of results to retrieve.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException` or `InvalidNextTokenException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/ListTypedLinkFacetNames)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/ListTypedLinkFacetNames)
 """
-
 @inline list_typed_link_facet_names(aws::AWSConfig=default_aws_config(); args...) = list_typed_link_facet_names(aws, args)
 
 @inline list_typed_link_facet_names(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/typedlink/facet/list", args)
@@ -2897,11 +3138,10 @@ The maximum number of items to be retrieved in a single call. This is an approxi
 
 # Exceptions
 
-`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `InvalidArnException`, `InvalidNextTokenException` or `ResourceNotFoundException`.
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `InvalidNextTokenException` or `ResourceNotFoundException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/LookupPolicy)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/LookupPolicy)
 """
-
 @inline lookup_policy(aws::AWSConfig=default_aws_config(); args...) = lookup_policy(aws, args)
 
 @inline lookup_policy(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/policy/lookup", args)
@@ -2920,7 +3160,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudd
 
 # PublishSchema Operation
 
-Publishes a development schema with a version. If description and attributes are specified, `PublishSchema` overrides the development schema description and attributes. If not, the development schema description and attributes are used.
+Publishes a development schema with a major version and a recommended minor version.
 
 # Arguments
 
@@ -2929,7 +3169,11 @@ The Amazon Resource Name (ARN) that is associated with the development schema. F
 
 
 ## `Version = ::String` -- *Required*
-The version under which the schema will be published.
+The major version under which the schema will be published. Schemas have both a major and minor version associated with them.
+
+
+## `MinorVersion = ::String`
+The minor version under which the schema will be published. This parameter is recommended. Schemas have both a major and minor version associated with them.
 
 
 ## `Name = ::String`
@@ -2946,9 +3190,8 @@ The new name under which the schema will be published. If this is not provided, 
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException` or `SchemaAlreadyPublishedException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/PublishSchema)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/PublishSchema)
 """
-
 @inline publish_schema(aws::AWSConfig=default_aws_config(); args...) = publish_schema(aws, args)
 
 @inline publish_schema(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/schema/publish", args)
@@ -2989,9 +3232,8 @@ The replacement JSON schema.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `InvalidSchemaDocException` or `InvalidRuleException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/PutSchemaFromJson)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/PutSchemaFromJson)
 """
-
 @inline put_schema_from_json(aws::AWSConfig=default_aws_config(); args...) = put_schema_from_json(aws, args)
 
 @inline put_schema_from_json(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/schema/json", args)
@@ -3019,7 +3261,7 @@ The ARN of the directory in which the object resides.
 
 
 ## `SchemaFacet = [ ... ]` -- *Required*
-The facet to remove.
+The facet to remove. See [SchemaFacet](@ref) for details.
 ```
  SchemaFacet = [
         "SchemaArn" =>  ::String,
@@ -3041,9 +3283,8 @@ A reference to the object to remove the facet from.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException` or `FacetValidationException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/RemoveFacetFromObject)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/RemoveFacetFromObject)
 """
-
 @inline remove_facet_from_object(aws::AWSConfig=default_aws_config(); args...) = remove_facet_from_object(aws, args)
 
 @inline remove_facet_from_object(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/object/facets/delete", args)
@@ -3089,9 +3330,8 @@ A list of tag key-value pairs.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException` or `InvalidTaggingRequestException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/TagResource)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/TagResource)
 """
-
 @inline tag_resource(aws::AWSConfig=default_aws_config(); args...) = tag_resource(aws, args)
 
 @inline tag_resource(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/tags/add", args)
@@ -3132,9 +3372,8 @@ Keys of the tag that need to be removed from the resource.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `ResourceNotFoundException` or `InvalidTaggingRequestException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/UntagResource)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/UntagResource)
 """
-
 @inline untag_resource(aws::AWSConfig=default_aws_config(); args...) = untag_resource(aws, args)
 
 @inline untag_resource(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/tags/remove", args)
@@ -3178,7 +3417,7 @@ List of attributes that need to be updated in a given schema [Facet](@ref). Each
         "Attribute" =>  [
             "Name" => <required> ::String,
             "AttributeDefinition" =>  [
-                "Type" => <required> "STRING", "BINARY", "BOOLEAN", "NUMBER" or "DATETIME",
+                "Type" => <required> "STRING", "BINARY", "BOOLEAN", "NUMBER", "DATETIME" or "VARIANT",
                 "DefaultValue" =>  [
                     "StringValue" =>  ::String,
                     "BinaryValue" =>  blob,
@@ -3211,16 +3450,98 @@ The object type that is associated with the facet. See [CreateFacetRequest\$Obje
 
 # Exceptions
 
-`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `InvalidFacetUpdateException`, `ResourceNotFoundException`, `FacetNotFoundException` or `InvalidRuleException`.
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `InvalidFacetUpdateException`, `FacetValidationException`, `ResourceNotFoundException`, `FacetNotFoundException` or `InvalidRuleException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/UpdateFacet)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/UpdateFacet)
 """
-
 @inline update_facet(aws::AWSConfig=default_aws_config(); args...) = update_facet(aws, args)
 
 @inline update_facet(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/facet", args)
 
 @inline update_facet(args) = update_facet(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudDirectory.update_link_attributes
+    update_link_attributes([::AWSConfig], arguments::Dict)
+    update_link_attributes([::AWSConfig]; *header:* x-amz-data-partition=, TypedLinkSpecifier=, AttributeUpdates=)
+
+    using AWSCore.Services.clouddirectory
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/attributes/update", arguments::Dict)
+    clouddirectory([::AWSConfig], "POST", "/amazonclouddirectory/2017-01-11/typedlink/attributes/update", *header:* x-amz-data-partition=, TypedLinkSpecifier=, AttributeUpdates=)
+
+# UpdateLinkAttributes Operation
+
+Updates a given typed link’s attributes. Attributes to be updated must not contribute to the typed link’s identity, as defined by its `IdentityAttributeOrder`.
+
+# Arguments
+
+## `*header:* x-amz-data-partition = ::String` -- *Required*
+The Amazon Resource Name (ARN) that is associated with the Directory where the updated typed link resides. For more information, see [arns](@ref) or [Typed link](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+
+
+## `TypedLinkSpecifier = [ ... ]` -- *Required*
+Allows a typed link specifier to be accepted as input.
+```
+ TypedLinkSpecifier = [
+        "TypedLinkFacet" => <required> [
+            "SchemaArn" => <required> ::String,
+            "TypedLinkName" => <required> ::String
+        ],
+        "SourceObjectReference" => <required> ["Selector" =>  ::String],
+        "TargetObjectReference" => <required> ["Selector" =>  ::String],
+        "IdentityAttributeValues" => <required> [[
+            "AttributeName" => <required> ::String,
+            "Value" => <required> [
+                "StringValue" =>  ::String,
+                "BinaryValue" =>  blob,
+                "BooleanValue" =>  ::Bool,
+                "NumberValue" =>  ::String,
+                "DatetimeValue" =>  timestamp
+            ]
+        ], ...]
+    ]
+```
+
+## `AttributeUpdates = [[ ... ], ...]` -- *Required*
+The attributes update structure.
+```
+ AttributeUpdates = [[
+        "AttributeKey" =>  [
+            "SchemaArn" => <required> ::String,
+            "FacetName" => <required> ::String,
+            "Name" => <required> ::String
+        ],
+        "AttributeAction" =>  [
+            "AttributeActionType" =>  "CREATE_OR_UPDATE" or "DELETE",
+            "AttributeUpdateValue" =>  [
+                "StringValue" =>  ::String,
+                "BinaryValue" =>  blob,
+                "BooleanValue" =>  ::Bool,
+                "NumberValue" =>  ::String,
+                "DatetimeValue" =>  timestamp
+            ]
+        ]
+    ], ...]
+```
+
+
+
+# Returns
+
+`UpdateLinkAttributesResponse`
+
+# Exceptions
+
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException` or `FacetValidationException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/UpdateLinkAttributes)
+"""
+@inline update_link_attributes(aws::AWSConfig=default_aws_config(); args...) = update_link_attributes(aws, args)
+
+@inline update_link_attributes(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "POST", "/amazonclouddirectory/2017-01-11/typedlink/attributes/update", args)
+
+@inline update_link_attributes(args) = update_link_attributes(default_aws_config(), args)
 
 
 """
@@ -3276,11 +3597,10 @@ The attributes update structure.
 
 # Exceptions
 
-`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException` or `FacetValidationException`.
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `DirectoryNotEnabledException`, `ResourceNotFoundException`, `LinkNameAlreadyInUseException` or `FacetValidationException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/UpdateObjectAttributes)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/UpdateObjectAttributes)
 """
-
 @inline update_object_attributes(aws::AWSConfig=default_aws_config(); args...) = update_object_attributes(aws, args)
 
 @inline update_object_attributes(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/object/update", args)
@@ -3321,9 +3641,8 @@ The name of the schema.
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException` or `ResourceNotFoundException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/UpdateSchema)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/UpdateSchema)
 """
-
 @inline update_schema(aws::AWSConfig=default_aws_config(); args...) = update_schema(aws, args)
 
 @inline update_schema(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/schema/update", args)
@@ -3360,7 +3679,7 @@ Attributes update structure.
  AttributeUpdates = [[
         "Attribute" => <required> [
             "Name" => <required> ::String,
-            "Type" => <required> "STRING", "BINARY", "BOOLEAN", "NUMBER" or "DATETIME",
+            "Type" => <required> "STRING", "BINARY", "BOOLEAN", "NUMBER", "DATETIME" or "VARIANT",
             "DefaultValue" =>  [
                 "StringValue" =>  ::String,
                 "BinaryValue" =>  blob,
@@ -3390,14 +3709,109 @@ The order of identity attributes for the facet, from most significant to least s
 
 `InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `LimitExceededException`, `AccessDeniedException`, `FacetValidationException`, `InvalidFacetUpdateException`, `ResourceNotFoundException`, `FacetNotFoundException` or `InvalidRuleException`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2016-05-10/UpdateTypedLinkFacet)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/UpdateTypedLinkFacet)
 """
-
 @inline update_typed_link_facet(aws::AWSConfig=default_aws_config(); args...) = update_typed_link_facet(aws, args)
 
 @inline update_typed_link_facet(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/typedlink/facet", args)
 
 @inline update_typed_link_facet(args) = update_typed_link_facet(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudDirectory.upgrade_applied_schema
+    upgrade_applied_schema([::AWSConfig], arguments::Dict)
+    upgrade_applied_schema([::AWSConfig]; PublishedSchemaArn=, DirectoryArn=, <keyword arguments>)
+
+    using AWSCore.Services.clouddirectory
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/upgradeapplied", arguments::Dict)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/upgradeapplied", PublishedSchemaArn=, DirectoryArn=, <keyword arguments>)
+
+# UpgradeAppliedSchema Operation
+
+Upgrades a single directory in-place using the `PublishedSchemaArn` with schema updates found in `MinorVersion`. Backwards-compatible minor version upgrades are instantaneously available for readers on all objects in the directory. Note: This is a synchronous API call and upgrades only one schema on a given directory per call. To upgrade multiple directories from one schema, you would need to call this API on each directory.
+
+# Arguments
+
+## `PublishedSchemaArn = ::String` -- *Required*
+The revision of the published schema to upgrade the directory to.
+
+
+## `DirectoryArn = ::String` -- *Required*
+The ARN for the directory to which the upgraded schema will be applied.
+
+
+## `DryRun = ::Bool`
+Used for testing whether the major version schemas are backward compatible or not. If schema compatibility fails, an exception would be thrown else the call would succeed but no changes will be saved. This parameter is optional.
+
+
+
+
+# Returns
+
+`UpgradeAppliedSchemaResponse`
+
+# Exceptions
+
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `IncompatibleSchemaException`, `AccessDeniedException`, `ResourceNotFoundException`, `InvalidAttachmentException` or `SchemaAlreadyExistsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/UpgradeAppliedSchema)
+"""
+@inline upgrade_applied_schema(aws::AWSConfig=default_aws_config(); args...) = upgrade_applied_schema(aws, args)
+
+@inline upgrade_applied_schema(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/schema/upgradeapplied", args)
+
+@inline upgrade_applied_schema(args) = upgrade_applied_schema(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudDirectory.upgrade_published_schema
+    upgrade_published_schema([::AWSConfig], arguments::Dict)
+    upgrade_published_schema([::AWSConfig]; DevelopmentSchemaArn=, PublishedSchemaArn=, MinorVersion=, <keyword arguments>)
+
+    using AWSCore.Services.clouddirectory
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/upgradepublished", arguments::Dict)
+    clouddirectory([::AWSConfig], "PUT", "/amazonclouddirectory/2017-01-11/schema/upgradepublished", DevelopmentSchemaArn=, PublishedSchemaArn=, MinorVersion=, <keyword arguments>)
+
+# UpgradePublishedSchema Operation
+
+Upgrades a published schema under a new minor version revision using the current contents of `DevelopmentSchemaArn`.
+
+# Arguments
+
+## `DevelopmentSchemaArn = ::String` -- *Required*
+The ARN of the development schema with the changes used for the upgrade.
+
+
+## `PublishedSchemaArn = ::String` -- *Required*
+The ARN of the published schema to be upgraded.
+
+
+## `MinorVersion = ::String` -- *Required*
+Identifies the minor version of the published schema that will be created. This parameter is NOT optional.
+
+
+## `DryRun = ::Bool`
+Used for testing whether the Development schema provided is backwards compatible, or not, with the publish schema provided by the user to be upgraded. If schema compatibility fails, an exception would be thrown else the call would succeed. This parameter is optional and defaults to false.
+
+
+
+
+# Returns
+
+`UpgradePublishedSchemaResponse`
+
+# Exceptions
+
+`InternalServiceException`, `InvalidArnException`, `RetryableConflictException`, `ValidationException`, `IncompatibleSchemaException`, `AccessDeniedException`, `ResourceNotFoundException`, `InvalidAttachmentException` or `LimitExceededException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/clouddirectory-2017-01-11/UpgradePublishedSchema)
+"""
+@inline upgrade_published_schema(aws::AWSConfig=default_aws_config(); args...) = upgrade_published_schema(aws, args)
+
+@inline upgrade_published_schema(aws::AWSConfig, args) = AWSCore.Services.clouddirectory(aws, "PUT", "/amazonclouddirectory/2017-01-11/schema/upgradepublished", args)
+
+@inline upgrade_published_schema(args) = upgrade_published_schema(default_aws_config(), args)
 
 
 

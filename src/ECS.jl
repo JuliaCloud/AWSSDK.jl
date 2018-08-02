@@ -25,6 +25,9 @@ using AWSCore
 
 Creates a new Amazon ECS cluster. By default, your account receives a `default` cluster when you launch your first container instance. However, you can create your own cluster with a unique name with the `CreateCluster` action.
 
+**Note**
+> When you call the [CreateCluster](@ref) API operation, Amazon ECS attempts to create the service-linked role for your account so that required resources in other AWS services can be managed on your behalf. However, if the IAM user that makes the call does not have permissions to create the service-linked role, it is not created. For more information, see [Using Service-Linked Roles for Amazon ECS](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html) in the *Amazon Elastic Container Service Developer Guide*.
+
 # Arguments
 
 ## `clusterName = ::String`
@@ -69,7 +72,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/CreateCluster)
 """
-
 @inline create_cluster(aws::AWSConfig=default_aws_config(); args...) = create_cluster(aws, args)
 
 @inline create_cluster(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "CreateCluster", args)
@@ -80,23 +82,23 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 """
     using AWSSDK.ECS.create_service
     create_service([::AWSConfig], arguments::Dict)
-    create_service([::AWSConfig]; serviceName=, taskDefinition=, desiredCount=, <keyword arguments>)
+    create_service([::AWSConfig]; serviceName=, taskDefinition=, <keyword arguments>)
 
     using AWSCore.Services.ecs
     ecs([::AWSConfig], "CreateService", arguments::Dict)
-    ecs([::AWSConfig], "CreateService", serviceName=, taskDefinition=, desiredCount=, <keyword arguments>)
+    ecs([::AWSConfig], "CreateService", serviceName=, taskDefinition=, <keyword arguments>)
 
 # CreateService Operation
 
 Runs and maintains a desired number of tasks from a specified task definition. If the number of tasks running in a service drops below `desiredCount`, Amazon ECS spawns another copy of the task in the specified cluster. To update an existing service, see [UpdateService](@ref).
 
-In addition to maintaining the desired count of tasks in your service, you can optionally run your service behind a load balancer. The load balancer distributes traffic across the tasks that are associated with the service. For more information, see [Service Load Balancing](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html) in the *Amazon EC2 Container Service Developer Guide*.
+In addition to maintaining the desired count of tasks in your service, you can optionally run your service behind a load balancer. The load balancer distributes traffic across the tasks that are associated with the service. For more information, see [Service Load Balancing](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html) in the *Amazon Elastic Container Service Developer Guide*.
 
-You can optionally specify a deployment configuration for your service. During a deployment (which is triggered by changing the task definition or the desired count of a service with an [UpdateService](@ref) operation), the service scheduler uses the `minimumHealthyPercent` and `maximumPercent` parameters to determine the deployment strategy.
+You can optionally specify a deployment configuration for your service. During a deployment, the service scheduler uses the `minimumHealthyPercent` and `maximumPercent` parameters to determine the deployment strategy. The deployment is triggered by changing the task definition or the desired count of a service with an [UpdateService](@ref) operation.
 
-The `minimumHealthyPercent` represents a lower limit on the number of your service's tasks that must remain in the `RUNNING` state during a deployment, as a percentage of the `desiredCount` (rounded up to the nearest integer). This parameter enables you to deploy without using additional cluster capacity. For example, if your service has a `desiredCount` of four tasks and a `minimumHealthyPercent` of 50%, the scheduler can stop two existing tasks to free up cluster capacity before starting two new tasks. Tasks for services that *do not* use a load balancer are considered healthy if they are in the `RUNNING` state. Tasks for services that *do* use a load balancer are considered healthy if they are in the `RUNNING` state and the container instance they are hosted on is reported as healthy by the load balancer. The default value for `minimumHealthyPercent` is 50% in the console and 100% for the AWS CLI, the AWS SDKs, and the APIs.
+The `minimumHealthyPercent` represents a lower limit on the number of your service's tasks that must remain in the `RUNNING` state during a deployment, as a percentage of the `desiredCount` (rounded up to the nearest integer). This parameter enables you to deploy without using additional cluster capacity. For example, if your service has a `desiredCount` of four tasks and a `minimumHealthyPercent` of 50%, the scheduler can stop two existing tasks to free up cluster capacity before starting two new tasks. Tasks for services that *do not* use a load balancer are considered healthy if they are in the `RUNNING` state. Tasks for services that *do* use a load balancer are considered healthy if they are in the `RUNNING` state and the container instance they are hosted on is reported as healthy by the load balancer. The default value for a replica service for `minimumHealthyPercent` is 50% in the console and 100% for the AWS CLI, the AWS SDKs, and the APIs. The default value for a daemon service for `minimumHealthyPercent` is 0% for the AWS CLI, the AWS SDKs, and the APIs and 50% for the console.
 
-The `maximumPercent` parameter represents an upper limit on the number of your service's tasks that are allowed in the `RUNNING` or `PENDING` state during a deployment, as a percentage of the `desiredCount` (rounded down to the nearest integer). This parameter enables you to define the deployment batch size. For example, if your service has a `desiredCount` of four tasks and a `maximumPercent` value of 200%, the scheduler can start four new tasks before stopping the four older tasks (provided that the cluster resources required to do this are available). The default value for `maximumPercent` is 200%.
+The `maximumPercent` parameter represents an upper limit on the number of your service's tasks that are allowed in the `RUNNING` or `PENDING` state during a deployment, as a percentage of the `desiredCount` (rounded down to the nearest integer). This parameter enables you to define the deployment batch size. For example, if your replica service has a `desiredCount` of four tasks and a `maximumPercent` value of 200%, the scheduler can start four new tasks before stopping the four older tasks (provided that the cluster resources required to do this are available). The default value for a replica service for `maximumPercent` is 200%. If you are using a daemon service type, the `maximumPercent` should remain at 100%, which is the default value.
 
 When the service scheduler launches new tasks, it determines task placement in your cluster using the following logic:
 
@@ -104,7 +106,7 @@ When the service scheduler launches new tasks, it determines task placement in y
 
 *   By default, the service scheduler attempts to balance tasks across Availability Zones in this manner (although you can choose a different placement strategy) with the `placementStrategy` parameter):
 
-    *   Sort the valid container instances by the fewest number of running tasks for this service in the same Availability Zone as the instance. For example, if zone A has one running service task and zones B and C each have zero, valid container instances in either zone B or C are considered optimal for placement.
+    *   Sort the valid container instances, giving priority to instances that have the fewest number of running tasks for this service in their respective Availability Zone. For example, if zone A has one running service task and zones B and C each have zero, valid container instances in either zone B or C are considered optimal for placement.
 
     *   Place the new service task on a valid container instance in an optimal Availability Zone (based on the previous steps), favoring container instances with the fewest number of running tasks for this service.
 
@@ -115,11 +117,11 @@ The short name or full Amazon Resource Name (ARN) of the cluster on which to run
 
 
 ## `serviceName = ::String` -- *Required*
-The name of your service. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. Service names must be unique within a cluster, but you can have similarly named services in multiple clusters within a region or across multiple regions.
+The name of your service. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. Service names must be unique within a cluster, but you can have similarly named services in multiple clusters within a Region or across multiple Regions.
 
 
 ## `taskDefinition = ::String` -- *Required*
-The `family` and `revision` (`family:revision`) or full Amazon Resource Name (ARN) of the task definition to run in your service. If a `revision` is not specified, the latest `ACTIVE` revision is used.
+The `family` and `revision` (`family:revision`) or full ARN of the task definition to run in your service. If a `revision` is not specified, the latest `ACTIVE` revision is used.
 
 
 ## `loadBalancers = [[ ... ], ...]`
@@ -128,6 +130,8 @@ A load balancer object representing the load balancer to use with your service. 
 For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in a container definition), and the container port to access from the load balancer. When a task from this service is placed on a container instance, the container instance is registered with the load balancer specified here.
 
 For Application Load Balancers and Network Load Balancers, this object must contain the load balancer target group ARN, the container name (as it appears in a container definition), and the container port to access from the load balancer. When a task from this service is placed on a container instance, the container instance and port combination is registered as a target in the target group specified here.
+
+Services with tasks that use the `awsvpc` network mode (for example, those with the Fargate launch type) only support Application Load Balancers and Network Load Balancers; Classic Load Balancers are not supported. Also, when you create any target groups for these services, you must choose `ip` as the target type, not `instance`, because tasks that use the `awsvpc` network mode are associated with an elastic network interface, not an Amazon EC2 instance.
 ```
  loadBalancers = [[
         "targetGroupArn" =>  ::String,
@@ -137,16 +141,41 @@ For Application Load Balancers and Network Load Balancers, this object must cont
     ], ...]
 ```
 
-## `desiredCount = ::Int` -- *Required*
+## `serviceRegistries = [[ ... ], ...]`
+The details of the service discovery registries to assign to this service. For more information, see [Service Discovery](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
+
+**Note**
+> Service discovery is supported for Fargate tasks if using platform version v1.1.0 or later. For more information, see [AWS Fargate Platform Versions](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
+```
+ serviceRegistries = [[
+        "registryArn" =>  ::String,
+        "port" =>  ::Int,
+        "containerName" =>  ::String,
+        "containerPort" =>  ::Int
+    ], ...]
+```
+
+## `desiredCount = ::Int`
 The number of instantiations of the specified task definition to place and keep running on your cluster.
 
 
 ## `clientToken = ::String`
-Unique, case-sensitive identifier you provide to ensure the idempotency of the request. Up to 32 ASCII characters are allowed.
+Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. Up to 32 ASCII characters are allowed.
+
+
+## `launchType = "EC2" or "FARGATE"`
+The launch type on which to run your service.
+
+
+## `platformVersion = ::String`
+The platform version on which to run your service. If one is not specified, the latest version is used by default.
 
 
 ## `role = ::String`
-The name or full Amazon Resource Name (ARN) of the IAM role that allows Amazon ECS to make calls to your load balancer on your behalf. This parameter is required if you are using a load balancer with your service. If you specify the `role` parameter, you must also specify a load balancer object with the `loadBalancers` parameter.
+The name or full Amazon Resource Name (ARN) of the IAM role that allows Amazon ECS to make calls to your load balancer on your behalf. This parameter is only permitted if you are using a load balancer with your service and your task definition does not use the `awsvpc` network mode. If you specify the `role` parameter, you must also specify a load balancer object with the `loadBalancers` parameter.
+
+**Important**
+> If your account has already created the Amazon ECS service-linked role, that role is used by default for your service unless you specify a role here. The service-linked role is required if your task definition uses the `awsvpc` network mode, in which case you should not specify a role here. For more information, see [Using Service-Linked Roles for Amazon ECS](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html) in the *Amazon Elastic Container Service Developer Guide*.
 
 If your specified role has a path other than `/`, then you must either specify the full role ARN (this is recommended) or prefix the role name with the path. For example, if a role with the name `bar` has a path of `/foo/` then you would specify `/foo/bar` as the role name. For more information, see [Friendly Names and Paths](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names) in the *IAM User Guide*.
 
@@ -170,13 +199,40 @@ An array of placement constraint objects to use for tasks in your service. You c
 ```
 
 ## `placementStrategy = [[ ... ], ...]`
-The placement strategy objects to use for tasks in your service. You can specify a maximum of 5 strategy rules per service.
+The placement strategy objects to use for tasks in your service. You can specify a maximum of five strategy rules per service.
 ```
  placementStrategy = [[
         "type" =>  "random", "spread" or "binpack",
         "field" =>  ::String
     ], ...]
 ```
+
+## `networkConfiguration = ["awsvpcConfiguration" =>  [ ... ]]`
+The network configuration for the service. This parameter is required for task definitions that use the `awsvpc` network mode to receive their own Elastic Network Interface, and it is not supported for other network modes. For more information, see [Task Networking](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html) in the *Amazon Elastic Container Service Developer Guide*.
+```
+ networkConfiguration = ["awsvpcConfiguration" =>  [
+            "subnets" => <required> [::String, ...],
+            "securityGroups" =>  [::String, ...],
+            "assignPublicIp" =>  "ENABLED" or "DISABLED"
+        ]]
+```
+
+## `healthCheckGracePeriodSeconds = ::Int`
+The period of time, in seconds, that the Amazon ECS service scheduler should ignore unhealthy Elastic Load Balancing target health checks after a task has first started. This is only valid if your service is configured to use a load balancer. If your service's tasks take a while to start and respond to Elastic Load Balancing health checks, you can specify a health check grace period of up to 7,200 seconds during which the ECS service scheduler ignores health check status. This grace period can prevent the ECS service scheduler from marking tasks as unhealthy and stopping them before they have time to come up.
+
+
+## `schedulingStrategy = "REPLICA" or "DAEMON"`
+The scheduling strategy to use for the service. For more information, see [Services](http://docs.aws.amazon.com/AmazonECS/latest/developerguideecs_services.html).
+
+There are two service scheduler strategies available:
+
+*   `REPLICA`-The replica scheduling strategy places and maintains the desired number of tasks across your cluster. By default, the service scheduler spreads tasks across Availability Zones. You can use task placement strategies and constraints to customize task placement decisions.
+
+*   `DAEMON`-The daemon scheduling strategy deploys exactly one task on each active container instance that meets all of the task placement constraints that you specify in your cluster. When using this strategy, there is no need to specify a desired number of tasks, a task placement strategy, or use Service Auto Scaling policies.
+
+    **Note**
+    > Fargate tasks do not support the `DAEMON` scheduling strategy.
+
 
 
 
@@ -186,7 +242,7 @@ The placement strategy objects to use for tasks in your service. You can specify
 
 # Exceptions
 
-`ServerException`, `ClientException`, `InvalidParameterException` or `ClusterNotFoundException`.
+`ServerException`, `ClientException`, `InvalidParameterException`, `ClusterNotFoundException`, `UnsupportedFeatureException`, `PlatformUnknownException`, `PlatformTaskDefinitionIncompatibilityException` or `AccessDeniedException`.
 
 # Example: To create a new service
 
@@ -317,7 +373,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/CreateService)
 """
-
 @inline create_service(aws::AWSConfig=default_aws_config(); args...) = create_service(aws, args)
 
 @inline create_service(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "CreateService", args)
@@ -367,7 +422,6 @@ The attributes to delete from your resource. You can specify up to 10 attributes
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeleteAttributes)
 """
-
 @inline delete_attributes(aws::AWSConfig=default_aws_config(); args...) = delete_attributes(aws, args)
 
 @inline delete_attributes(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "DeleteAttributes", args)
@@ -402,7 +456,7 @@ The short name or full Amazon Resource Name (ARN) of the cluster to delete.
 
 # Exceptions
 
-`ServerException`, `ClientException`, `InvalidParameterException`, `ClusterNotFoundException`, `ClusterContainsContainerInstancesException` or `ClusterContainsServicesException`.
+`ServerException`, `ClientException`, `InvalidParameterException`, `ClusterNotFoundException`, `ClusterContainsContainerInstancesException`, `ClusterContainsServicesException` or `ClusterContainsTasksException`.
 
 # Example: To delete an empty cluster
 
@@ -432,7 +486,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeleteCluster)
 """
-
 @inline delete_cluster(aws::AWSConfig=default_aws_config(); args...) = delete_cluster(aws, args)
 
 @inline delete_cluster(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "DeleteCluster", args)
@@ -454,7 +507,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 Deletes a specified service within a cluster. You can delete a service if you have no running tasks in it and the desired task count is zero. If the service is actively maintaining tasks, you cannot delete it, and you must update the service to a desired task count of zero. For more information, see [UpdateService](@ref).
 
 **Note**
-> When you delete a service, if there are still running tasks that require cleanup, the service status moves from `ACTIVE` to `DRAINING`, and the service is no longer visible in the console or in [ListServices](@ref) API operations. After the tasks have stopped, then the service status moves from `DRAINING` to `INACTIVE`. Services in the `DRAINING` or `INACTIVE` status can still be viewed with [DescribeServices](@ref) API operations; however, in the future, `INACTIVE` services may be cleaned up and purged from Amazon ECS record keeping, and [DescribeServices](@ref) API operations on those services will return a `ServiceNotFoundException` error.
+> When you delete a service, if there are still running tasks that require cleanup, the service status moves from `ACTIVE` to `DRAINING`, and the service is no longer visible in the console or in [ListServices](@ref) API operations. After the tasks have stopped, then the service status moves from `DRAINING` to `INACTIVE`. Services in the `DRAINING` or `INACTIVE` status can still be viewed with [DescribeServices](@ref) API operations. However, in the future, `INACTIVE` services may be cleaned up and purged from Amazon ECS record keeping, and [DescribeServices](@ref) API operations on those services return a `ServiceNotFoundException` error.
 
 # Arguments
 
@@ -464,6 +517,10 @@ The short name or full Amazon Resource Name (ARN) of the cluster that hosts the 
 
 ## `service = ::String` -- *Required*
 The name of the service to delete.
+
+
+## `force = ::Bool`
+If `true`, allows you to delete a service even if it has not been scaled down to zero tasks. It is only necessary to use this if the service is using the `REPLICA` scheduling strategy.
 
 
 
@@ -496,7 +553,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeleteService)
 """
-
 @inline delete_service(aws::AWSConfig=default_aws_config(); args...) = delete_service(aws, args)
 
 @inline delete_service(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "DeleteService", args)
@@ -517,7 +573,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 Deregisters an Amazon ECS container instance from the specified cluster. This instance is no longer available to run tasks.
 
-If you intend to use the container instance for some other purpose after deregistration, you should stop all of the tasks running on the container instance before deregistration to avoid any orphaned tasks from consuming resources.
+If you intend to use the container instance for some other purpose after deregistration, you should stop all of the tasks running on the container instance before deregistration. That prevents any orphaned tasks from consuming resources.
 
 Deregistering a container instance removes the instance from a cluster, but it does not terminate the EC2 instance; if you are finished using the instance, be sure to terminate it in the Amazon EC2 console to stop billing.
 
@@ -531,13 +587,13 @@ The short name or full Amazon Resource Name (ARN) of the cluster that hosts the 
 
 
 ## `containerInstance = ::String` -- *Required*
-The container instance ID or full Amazon Resource Name (ARN) of the container instance to deregister. The ARN contains the `arn:aws:ecs` namespace, followed by the region of the container instance, the AWS account ID of the container instance owner, the `container-instance` namespace, and then the container instance ID. For example, `arn:aws:ecs:*region*:*aws_account_id*:container-instance/*container_instance_ID*` .
+The container instance ID or full ARN of the container instance to deregister. The ARN contains the `arn:aws:ecs` namespace, followed by the Region of the container instance, the AWS account ID of the container instance owner, the `container-instance` namespace, and then the container instance ID. For example, `arn:aws:ecs:*region*:*aws_account_id*:container-instance/*container_instance_ID*` .
 
 
 ## `force = ::Bool`
 Forces the deregistration of the container instance. If you have tasks running on the container instance when you deregister it with the `force` option, these tasks remain running until you terminate the instance or the tasks stop through some other means, but they are orphaned (no longer monitored or accounted for by Amazon ECS). If an orphaned task on your container instance is part of an Amazon ECS service, then the service scheduler starts another copy of that task, on a different container instance if possible.
 
-Any containers in orphaned service tasks that are registered with a Classic Load Balancer or an Application Load Balancer target group are deregistered, and they will begin connection draining according to the settings on the load balancer or target group.
+Any containers in orphaned service tasks that are registered with a Classic Load Balancer or an Application Load Balancer target group are deregistered. They begin connection draining according to the settings on the load balancer or target group.
 
 
 
@@ -572,7 +628,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeregisterContainerInstance)
 """
-
 @inline deregister_container_instance(aws::AWSConfig=default_aws_config(); args...) = deregister_container_instance(aws, args)
 
 @inline deregister_container_instance(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "DeregisterContainerInstance", args)
@@ -593,10 +648,10 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 Deregisters the specified task definition by family and revision. Upon deregistration, the task definition is marked as `INACTIVE`. Existing tasks and services that reference an `INACTIVE` task definition continue to run without disruption. Existing services that reference an `INACTIVE` task definition can still scale up or down by modifying the service's desired count.
 
-You cannot use an `INACTIVE` task definition to run new tasks or create new services, and you cannot update an existing service to reference an `INACTIVE` task definition (although there may be up to a 10 minute window following deregistration where these restrictions have not yet taken effect).
+You cannot use an `INACTIVE` task definition to run new tasks or create new services, and you cannot update an existing service to reference an `INACTIVE` task definition (although there may be up to a 10-minute window following deregistration where these restrictions have not yet taken effect).
 
 **Note**
-> At this time, `INACTIVE` task definitions remain discoverable in your account indefinitely; however, this behavior is subject to change in the future, so you should not rely on `INACTIVE` task definitions persisting beyond the life cycle of any associated tasks and services.
+> At this time, `INACTIVE` task definitions remain discoverable in your account indefinitely; however, this behavior is subject to change in the future, so you should not rely on `INACTIVE` task definitions persisting beyond the lifecycle of any associated tasks and services.
 
 # Arguments
 
@@ -616,7 +671,6 @@ The `family` and `revision` (`family:revision`) or full Amazon Resource Name (AR
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeregisterTaskDefinition)
 """
-
 @inline deregister_task_definition(aws::AWSConfig=default_aws_config(); args...) = deregister_task_definition(aws, args)
 
 @inline deregister_task_definition(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "DeregisterTaskDefinition", args)
@@ -641,6 +695,26 @@ Describes one or more of your clusters.
 
 ## `clusters = [::String, ...]`
 A list of up to 100 cluster names or full cluster Amazon Resource Name (ARN) entries. If you do not specify a cluster, the default cluster is assumed.
+
+
+## `include = ["STATISTICS", ...]`
+Additional information about your clusters to be separated by launch type, including:
+
+*   runningEC2TasksCount
+
+*   runningFargateTasksCount
+
+*   pendingEC2TasksCount
+
+*   pendingFargateTasksCount
+
+*   activeEC2ServiceCount
+
+*   activeFargateServiceCount
+
+*   drainingEC2ServiceCount
+
+*   drainingFargateServiceCount
 
 
 
@@ -684,7 +758,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeClusters)
 """
-
 @inline describe_clusters(aws::AWSConfig=default_aws_config(); args...) = describe_clusters(aws, args)
 
 @inline describe_clusters(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "DescribeClusters", args)
@@ -703,7 +776,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 # DescribeContainerInstances Operation
 
-Describes Amazon EC2 Container Service container instances. Returns metadata about registered and remaining resources on each container instance requested.
+Describes Amazon Elastic Container Service container instances. Returns metadata about registered and remaining resources on each container instance requested.
 
 # Arguments
 
@@ -712,7 +785,7 @@ The short name or full Amazon Resource Name (ARN) of the cluster that hosts the 
 
 
 ## `containerInstances = [::String, ...]` -- *Required*
-A list of container instance IDs or full Amazon Resource Name (ARN) entries.
+A list of up to 100 container instance IDs or full Amazon Resource Name (ARN) entries.
 
 
 
@@ -819,7 +892,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeContainerInstances)
 """
-
 @inline describe_container_instances(aws::AWSConfig=default_aws_config(); args...) = describe_container_instances(aws, args)
 
 @inline describe_container_instances(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "DescribeContainerInstances", args)
@@ -923,7 +995,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeServices)
 """
-
 @inline describe_services(aws::AWSConfig=default_aws_config(); args...) = describe_services(aws, args)
 
 @inline describe_services(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "DescribeServices", args)
@@ -1039,7 +1110,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeTaskDefinition)
 """
-
 @inline describe_task_definition(aws::AWSConfig=default_aws_config(); args...) = describe_task_definition(aws, args)
 
 @inline describe_task_definition(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "DescribeTaskDefinition", args)
@@ -1067,7 +1137,7 @@ The short name or full Amazon Resource Name (ARN) of the cluster that hosts the 
 
 
 ## `tasks = [::String, ...]` -- *Required*
-A list of up to 100 task IDs or full Amazon Resource Name (ARN) entries.
+A list of up to 100 task IDs or full ARN entries.
 
 
 
@@ -1137,7 +1207,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DescribeTasks)
 """
-
 @inline describe_tasks(aws::AWSConfig=default_aws_config(); args...) = describe_tasks(aws, args)
 
 @inline describe_tasks(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "DescribeTasks", args)
@@ -1158,14 +1227,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
  
 **Note**
-> This action is only used by the Amazon EC2 Container Service agent, and it is not intended for use outside of the agent.
+> This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 
-Returns an endpoint for the Amazon EC2 Container Service agent to poll for updates.
+Returns an endpoint for the Amazon ECS agent to poll for updates.
 
 # Arguments
 
 ## `containerInstance = ::String`
-The container instance ID or full Amazon Resource Name (ARN) of the container instance. The ARN contains the `arn:aws:ecs` namespace, followed by the region of the container instance, the AWS account ID of the container instance owner, the `container-instance` namespace, and then the container instance ID. For example, `arn:aws:ecs:*region*:*aws_account_id*:container-instance/*container_instance_ID*` .
+The container instance ID or full ARN of the container instance. The ARN contains the `arn:aws:ecs` namespace, followed by the Region of the container instance, the AWS account ID of the container instance owner, the `container-instance` namespace, and then the container instance ID. For example, `arn:aws:ecs:*region*:*aws_account_id*:container-instance/*container_instance_ID*` .
 
 
 ## `cluster = ::String`
@@ -1184,7 +1253,6 @@ The short name or full Amazon Resource Name (ARN) of the cluster that the contai
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DiscoverPollEndpoint)
 """
-
 @inline discover_poll_endpoint(aws::AWSConfig=default_aws_config(); args...) = discover_poll_endpoint(aws, args)
 
 @inline discover_poll_endpoint(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "DiscoverPollEndpoint", args)
@@ -1224,7 +1292,7 @@ The value of the attribute with which to filter results. You must also specify a
 
 
 ## `nextToken = ::String`
-The `nextToken` value returned from a previous paginated `ListAttributes` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is `null` when there are no more results to return.
+The `nextToken` value returned from a previous paginated `ListAttributes` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value.
 
 **Note**
 > This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.
@@ -1246,7 +1314,6 @@ The maximum number of cluster results returned by `ListAttributes` in paginated 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListAttributes)
 """
-
 @inline list_attributes(aws::AWSConfig=default_aws_config(); args...) = list_attributes(aws, args)
 
 @inline list_attributes(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "ListAttributes", args)
@@ -1270,7 +1337,7 @@ Returns a list of existing clusters.
 # Arguments
 
 ## `nextToken = ::String`
-The `nextToken` value returned from a previous paginated `ListClusters` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is `null` when there are no more results to return.
+The `nextToken` value returned from a previous paginated `ListClusters` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value.
 
 **Note**
 > This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.
@@ -1313,7 +1380,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListClusters)
 """
-
 @inline list_clusters(aws::AWSConfig=default_aws_config(); args...) = list_clusters(aws, args)
 
 @inline list_clusters(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "ListClusters", args)
@@ -1332,7 +1398,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 # ListContainerInstances Operation
 
-Returns a list of container instances in a specified cluster. You can filter the results of a `ListContainerInstances` operation with cluster query language statements inside the `filter` parameter. For more information, see [Cluster Query Language](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html) in the *Amazon EC2 Container Service Developer Guide*.
+Returns a list of container instances in a specified cluster. You can filter the results of a `ListContainerInstances` operation with cluster query language statements inside the `filter` parameter. For more information, see [Cluster Query Language](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html) in the *Amazon Elastic Container Service Developer Guide*.
 
 # Arguments
 
@@ -1341,11 +1407,11 @@ The short name or full Amazon Resource Name (ARN) of the cluster that hosts the 
 
 
 ## `filter = ::String`
-You can filter the results of a `ListContainerInstances` operation with cluster query language statements. For more information, see [Cluster Query Language](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html) in the *Amazon EC2 Container Service Developer Guide*.
+You can filter the results of a `ListContainerInstances` operation with cluster query language statements. For more information, see [Cluster Query Language](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html) in the *Amazon Elastic Container Service Developer Guide*.
 
 
 ## `nextToken = ::String`
-The `nextToken` value returned from a previous paginated `ListContainerInstances` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is `null` when there are no more results to return.
+The `nextToken` value returned from a previous paginated `ListContainerInstances` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value.
 
 **Note**
 > This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.
@@ -1392,7 +1458,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListContainerInstances)
 """
-
 @inline list_container_instances(aws::AWSConfig=default_aws_config(); args...) = list_container_instances(aws, args)
 
 @inline list_container_instances(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "ListContainerInstances", args)
@@ -1420,7 +1485,7 @@ The short name or full Amazon Resource Name (ARN) of the cluster that hosts the 
 
 
 ## `nextToken = ::String`
-The `nextToken` value returned from a previous paginated `ListServices` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is `null` when there are no more results to return.
+The `nextToken` value returned from a previous paginated `ListServices` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value.
 
 **Note**
 > This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.
@@ -1428,6 +1493,14 @@ The `nextToken` value returned from a previous paginated `ListServices` request 
 
 ## `maxResults = ::Int`
 The maximum number of service results returned by `ListServices` in paginated output. When this parameter is used, `ListServices` only returns `maxResults` results in a single page along with a `nextToken` response element. The remaining results of the initial request can be seen by sending another `ListServices` request with the returned `nextToken` value. This value can be between 1 and 10. If this parameter is not used, then `ListServices` returns up to 10 results and a `nextToken` value if applicable.
+
+
+## `launchType = "EC2" or "FARGATE"`
+The launch type for the services to list.
+
+
+## `schedulingStrategy = "REPLICA" or "DAEMON"`
+The scheduling strategy for services to list.
 
 
 
@@ -1462,7 +1535,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListServices)
 """
-
 @inline list_services(aws::AWSConfig=default_aws_config(); args...) = list_services(aws, args)
 
 @inline list_services(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "ListServices", args)
@@ -1496,7 +1568,7 @@ The task definition family status with which to filter the `ListTaskDefinitionFa
 
 
 ## `nextToken = ::String`
-The `nextToken` value returned from a previous paginated `ListTaskDefinitionFamilies` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is `null` when there are no more results to return.
+The `nextToken` value returned from a previous paginated `ListTaskDefinitionFamilies` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value.
 
 **Note**
 > This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.
@@ -1562,7 +1634,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListTaskDefinitionFamilies)
 """
-
 @inline list_task_definition_families(aws::AWSConfig=default_aws_config(); args...) = list_task_definition_families(aws, args)
 
 @inline list_task_definition_families(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "ListTaskDefinitionFamilies", args)
@@ -1598,7 +1669,7 @@ The order in which to sort the results. Valid values are `ASC` and `DESC`. By de
 
 
 ## `nextToken = ::String`
-The `nextToken` value returned from a previous paginated `ListTaskDefinitions` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is `null` when there are no more results to return.
+The `nextToken` value returned from a previous paginated `ListTaskDefinitions` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value.
 
 **Note**
 > This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.
@@ -1668,7 +1739,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListTaskDefinitions)
 """
-
 @inline list_task_definitions(aws::AWSConfig=default_aws_config(); args...) = list_task_definitions(aws, args)
 
 @inline list_task_definitions(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "ListTaskDefinitions", args)
@@ -1689,7 +1759,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 Returns a list of tasks for a specified cluster. You can filter the results by family name, by a particular container instance, or by the desired status of the task with the `family`, `containerInstance`, and `desiredStatus` parameters.
 
-Recently-stopped tasks might appear in the returned results. Currently, stopped tasks appear in the returned results for at least one hour.
+Recently stopped tasks might appear in the returned results. Currently, stopped tasks appear in the returned results for at least one hour.
 
 # Arguments
 
@@ -1698,7 +1768,7 @@ The short name or full Amazon Resource Name (ARN) of the cluster that hosts the 
 
 
 ## `containerInstance = ::String`
-The container instance ID or full Amazon Resource Name (ARN) of the container instance with which to filter the `ListTasks` results. Specifying a `containerInstance` limits the results to tasks that belong to that container instance.
+The container instance ID or full ARN of the container instance with which to filter the `ListTasks` results. Specifying a `containerInstance` limits the results to tasks that belong to that container instance.
 
 
 ## `family = ::String`
@@ -1706,7 +1776,7 @@ The name of the family with which to filter the `ListTasks` results. Specifying 
 
 
 ## `nextToken = ::String`
-The `nextToken` value returned from a previous paginated `ListTasks` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is `null` when there are no more results to return.
+The `nextToken` value returned from a previous paginated `ListTasks` request where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value.
 
 **Note**
 > This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.
@@ -1725,10 +1795,14 @@ The name of the service with which to filter the `ListTasks` results. Specifying
 
 
 ## `desiredStatus = "RUNNING", "PENDING" or "STOPPED"`
-The task desired status with which to filter the `ListTasks` results. Specifying a `desiredStatus` of `STOPPED` limits the results to tasks that ECS has set the desired status to `STOPPED`, which can be useful for debugging tasks that are not starting properly or have died or finished. The default status filter is `RUNNING`, which shows tasks that ECS has set the desired status to `RUNNING`.
+The task desired status with which to filter the `ListTasks` results. Specifying a `desiredStatus` of `STOPPED` limits the results to tasks that Amazon ECS has set the desired status to `STOPPED`, which can be useful for debugging tasks that are not starting properly or have died or finished. The default status filter is `RUNNING`, which shows tasks that Amazon ECS has set the desired status to `RUNNING`.
 
 **Note**
-> Although you can filter results based on a desired status of `PENDING`, this will not return any results because ECS never sets the desired status of a task to that value (only a task's `lastStatus` may have a value of `PENDING`).
+> Although you can filter results based on a desired status of `PENDING`, this does not return any results because Amazon ECS never sets the desired status of a task to that value (only a task's `lastStatus` may have a value of `PENDING`).
+
+
+## `launchType = "EC2" or "FARGATE"`
+The launch type for services to list.
 
 
 
@@ -1785,7 +1859,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ListTasks)
 """
-
 @inline list_tasks(aws::AWSConfig=default_aws_config(); args...) = list_tasks(aws, args)
 
 @inline list_tasks(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "ListTasks", args)
@@ -1804,7 +1877,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 # PutAttributes Operation
 
-Create or update an attribute on an Amazon ECS resource. If the attribute does not exist, it is created. If the attribute exists, its value is replaced with the specified value. To delete an attribute, use [DeleteAttributes](@ref). For more information, see [Attributes](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes) in the *Amazon EC2 Container Service Developer Guide*.
+Create or update an attribute on an Amazon ECS resource. If the attribute does not exist, it is created. If the attribute exists, its value is replaced with the specified value. To delete an attribute, use [DeleteAttributes](@ref). For more information, see [Attributes](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes) in the *Amazon Elastic Container Service Developer Guide*.
 
 # Arguments
 
@@ -1835,7 +1908,6 @@ The attributes to apply to your resource. You can specify up to 10 custom attrib
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/PutAttributes)
 """
-
 @inline put_attributes(aws::AWSConfig=default_aws_config(); args...) = put_attributes(aws, args)
 
 @inline put_attributes(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "PutAttributes", args)
@@ -1856,7 +1928,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
  
 **Note**
-> This action is only used by the Amazon EC2 Container Service agent, and it is not intended for use outside of the agent.
+> This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 
 Registers an EC2 instance into the specified cluster. This instance becomes available to place containers on.
 
@@ -1898,7 +1970,7 @@ The version information for the Amazon ECS container agent and Docker daemon run
 ```
 
 ## `containerInstanceArn = ::String`
-The Amazon Resource Name (ARN) of the container instance (if it was previously registered).
+The ARN of the container instance (if it was previously registered).
 
 
 ## `attributes = [[ ... ], ...]`
@@ -1920,11 +1992,10 @@ The container instance attributes that this container instance supports.
 
 # Exceptions
 
-`ServerException` or `ClientException`.
+`ServerException`, `ClientException` or `InvalidParameterException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/RegisterContainerInstance)
 """
-
 @inline register_container_instance(aws::AWSConfig=default_aws_config(); args...) = register_container_instance(aws, args)
 
 @inline register_container_instance(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "RegisterContainerInstance", args)
@@ -1943,11 +2014,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 # RegisterTaskDefinition Operation
 
-Registers a new task definition from the supplied `family` and `containerDefinitions`. Optionally, you can add data volumes to your containers with the `volumes` parameter. For more information about task definition parameters and defaults, see [Amazon ECS Task Definitions](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html) in the *Amazon EC2 Container Service Developer Guide*.
+Registers a new task definition from the supplied `family` and `containerDefinitions`. Optionally, you can add data volumes to your containers with the `volumes` parameter. For more information about task definition parameters and defaults, see [Amazon ECS Task Definitions](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html) in the *Amazon Elastic Container Service Developer Guide*.
 
-You can specify an IAM role for your task with the `taskRoleArn` parameter. When you specify an IAM role for a task, its containers can then use the latest versions of the AWS CLI or SDKs to make API requests to the AWS services that are specified in the IAM policy associated with the role. For more information, see [IAM Roles for Tasks](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) in the *Amazon EC2 Container Service Developer Guide*.
+You can specify an IAM role for your task with the `taskRoleArn` parameter. When you specify an IAM role for a task, its containers can then use the latest versions of the AWS CLI or SDKs to make API requests to the AWS services that are specified in the IAM policy associated with the role. For more information, see [IAM Roles for Tasks](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) in the *Amazon Elastic Container Service Developer Guide*.
 
-You can specify a Docker networking mode for the containers in your task definition with the `networkMode` parameter. The available network modes correspond to those described in [Network settings](https://docs.docker.com/engine/reference/run/#/network-settings) in the Docker run reference.
+You can specify a Docker networking mode for the containers in your task definition with the `networkMode` parameter. The available network modes correspond to those described in [Network settings](https://docs.docker.com/engine/reference/run/#/network-settings) in the Docker run reference. If you specify the `awsvpc` network mode, the task is allocated an elastic network interface, and you must specify a [NetworkConfiguration](@ref) when you create a service or run a task with the task definition. For more information, see [Task Networking](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html) in the *Amazon Elastic Container Service Developer Guide*.
 
 # Arguments
 
@@ -1956,13 +2027,23 @@ You must specify a `family` for a task definition, which allows you to track mul
 
 
 ## `taskRoleArn = ::String`
-The short name or full Amazon Resource Name (ARN) of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role. For more information, see [IAM Roles for Tasks](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) in the *Amazon EC2 Container Service Developer Guide*.
+The short name or full Amazon Resource Name (ARN) of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role. For more information, see [IAM Roles for Tasks](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) in the *Amazon Elastic Container Service Developer Guide*.
 
 
-## `networkMode = "bridge", "host" or "none"`
-The Docker networking mode to use for the containers in the task. The valid values are `none`, `bridge`, and `host`.
+## `executionRoleArn = ::String`
+The Amazon Resource Name (ARN) of the task execution role that the Amazon ECS container agent and the Docker daemon can assume.
 
-The default Docker network mode is `bridge`. If the network mode is set to `none`, you cannot specify port mappings in your container definitions, and the task's containers do not have external connectivity. The `host` network mode offers the highest networking performance for containers because they use the host network stack instead of the virtualized network stack provided by the `bridge` mode; however, exposed container ports are mapped directly to the corresponding host port, so you cannot take advantage of dynamic host port mappings or run multiple instantiations of the same task on a single container instance if port mappings are used.
+
+## `networkMode = "bridge", "host", "awsvpc" or "none"`
+The Docker networking mode to use for the containers in the task. The valid values are `none`, `bridge`, `awsvpc`, and `host`. The default Docker network mode is `bridge`. If using the Fargate launch type, the `awsvpc` network mode is required. If using the EC2 launch type, any network mode can be used. If the network mode is set to `none`, you can't specify port mappings in your container definitions, and the task's containers do not have external connectivity. The `host` and `awsvpc` network modes offer the highest networking performance for containers because they use the EC2 network stack instead of the virtualized network stack provided by the `bridge` mode.
+
+With the `host` and `awsvpc` network modes, exposed container ports are mapped directly to the corresponding host port (for the `host` network mode) or the attached elastic network interface port (for the `awsvpc` network mode), so you cannot take advantage of dynamic host port mappings.
+
+If the network mode is `awsvpc`, the task is allocated an Elastic Network Interface, and you must specify a [NetworkConfiguration](@ref) when you create a service or run a task with the task definition. For more information, see [Task Networking](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html) in the *Amazon Elastic Container Service Developer Guide*.
+
+If the network mode is `host`, you can't run multiple instantiations of the same task on a single container instance when port mappings are used.
+
+Docker for Windows uses different network modes than Docker for Linux. When you register a task definition with Windows containers, you must not specify a network mode.
 
 For more information, see [Network settings](https://docs.docker.com/engine/reference/run/#network-settings) in the *Docker run reference*.
 
@@ -1973,6 +2054,7 @@ A list of container definitions in JSON format that describe the different conta
  containerDefinitions = [[
         "name" =>  ::String,
         "image" =>  ::String,
+        "repositoryCredentials" =>  ["credentialsParameter" => <required> ::String],
         "cpu" =>  ::Int,
         "memory" =>  ::Int,
         "memoryReservation" =>  ::Int,
@@ -2008,7 +2090,13 @@ A list of container definitions in JSON format that describe the different conta
                 "containerPath" =>  ::String,
                 "permissions" =>  ["read", "write" or "mknod", ...]
             ], ...],
-            "initProcessEnabled" =>  ::Bool
+            "initProcessEnabled" =>  ::Bool,
+            "sharedMemorySize" =>  ::Int,
+            "tmpfs" =>  [[
+                "containerPath" => <required> ::String,
+                "size" => <required> ::Int,
+                "mountOptions" =>  [::String, ...]
+            ], ...]
         ],
         "hostname" =>  ::String,
         "user" =>  ::String,
@@ -2032,6 +2120,13 @@ A list of container definitions in JSON format that describe the different conta
         "logConfiguration" =>  [
             "logDriver" => <required> "json-file", "syslog", "journald", "gelf", "fluentd", "awslogs" or "splunk",
             "options" =>  ::Dict{String,String}
+        ],
+        "healthCheck" =>  [
+            "command" => <required> [::String, ...],
+            "interval" =>  ::Int,
+            "timeout" =>  ::Int,
+            "retries" =>  ::Int,
+            "startPeriod" =>  ::Int
         ]
     ], ...]
 ```
@@ -2053,6 +2148,52 @@ An array of placement constraint objects to use for the task. You can specify a 
         "expression" =>  ::String
     ], ...]
 ```
+
+## `requiresCompatibilities = ["EC2" or "FARGATE", ...]`
+The launch type required by the task. If no value is specified, it defaults to `EC2`.
+
+
+## `cpu = ::String`
+The number of CPU units used by the task. It can be expressed as an integer using CPU units, for example `1024`, or as a string using vCPUs, for example `1 vCPU` or `1 vcpu`, in a task definition. String values are converted to an integer indicating the CPU units when the task definition is registered.
+
+**Note**
+> Task-level CPU and memory parameters are ignored for Windows containers. We recommend specifying container-level resources for Windows containers.
+
+If using the EC2 launch type, this field is optional. Supported values are between `128` CPU units (`0.125` vCPUs) and `10240` CPU units (`10` vCPUs).
+
+If using the Fargate launch type, this field is required and you must use one of the following values, which determines your range of supported values for the `memory` parameter:
+
+*   256 (.25 vCPU) - Available `memory` values: 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB)
+
+*   512 (.5 vCPU) - Available `memory` values: 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB)
+
+*   1024 (1 vCPU) - Available `memory` values: 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB)
+
+*   2048 (2 vCPU) - Available `memory` values: Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024 (1 GB)
+
+*   4096 (4 vCPU) - Available `memory` values: Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB)
+
+
+## `memory = ::String`
+The amount of memory (in MiB) used by the task. It can be expressed as an integer using MiB, for example `1024`, or as a string using GB, for example `1GB` or `1 GB`, in a task definition. String values are converted to an integer indicating the MiB when the task definition is registered.
+
+**Note**
+> Task-level CPU and memory parameters are ignored for Windows containers. We recommend specifying container-level resources for Windows containers.
+
+If using the EC2 launch type, this field is optional.
+
+If using the Fargate launch type, this field is required and you must use one of the following values, which determines your range of supported values for the `cpu` parameter:
+
+*   512 (0.5 GB), 1024 (1 GB), 2048 (2 GB) - Available `cpu` values: 256 (.25 vCPU)
+
+*   1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB) - Available `cpu` values: 512 (.5 vCPU)
+
+*   2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB) - Available `cpu` values: 1024 (1 vCPU)
+
+*   Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024 (1 GB) - Available `cpu` values: 2048 (2 vCPU)
+
+*   Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB) - Available `cpu` values: 4096 (4 vCPU)
+
 
 
 
@@ -2133,7 +2274,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/RegisterTaskDefinition)
 """
-
 @inline register_task_definition(aws::AWSConfig=default_aws_config(); args...) = register_task_definition(aws, args)
 
 @inline register_task_definition(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "RegisterTaskDefinition", args)
@@ -2154,9 +2294,17 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 Starts a new task using the specified task definition.
 
-You can allow Amazon ECS to place tasks for you, or you can customize how Amazon ECS places tasks using placement constraints and placement strategies. For more information, see [Scheduling Tasks](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html) in the *Amazon EC2 Container Service Developer Guide*.
+You can allow Amazon ECS to place tasks for you, or you can customize how Amazon ECS places tasks using placement constraints and placement strategies. For more information, see [Scheduling Tasks](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html) in the *Amazon Elastic Container Service Developer Guide*.
 
 Alternatively, you can use [StartTask](@ref) to use your own scheduler or place tasks manually on specific container instances.
+
+The Amazon ECS API follows an eventual consistency model, due to the distributed nature of the system supporting the API. This means that the result of an API command you run that affects your Amazon ECS resources might not be immediately visible to all subsequent commands you run. You should keep this in mind when you carry out an API command that immediately follows a previous API command.
+
+To manage eventual consistency, you can do the following:
+
+*   Confirm the state of the resource before you run a command to modify it. Run the DescribeTasks command using an exponential backoff algorithm to ensure that you allow enough time for the previous command to propagate through the system. To do this, run the DescribeTasks command repeatedly, starting with a couple of seconds of wait time and increasing gradually up to five minutes of wait time.
+
+*   Add wait time between subsequent commands, even if the DescribeTasks command returns an accurate response. Apply an exponential backoff algorithm starting with a couple of seconds of wait time, and increase gradually up to about five minutes of wait time.
 
 # Arguments
 
@@ -2165,7 +2313,7 @@ The short name or full Amazon Resource Name (ARN) of the cluster on which to run
 
 
 ## `taskDefinition = ::String` -- *Required*
-The `family` and `revision` (`family:revision`) or full Amazon Resource Name (ARN) of the task definition to run. If a `revision` is not specified, the latest `ACTIVE` revision is used.
+The `family` and `revision` (`family:revision`) or full ARN of the task definition to run. If a `revision` is not specified, the latest `ACTIVE` revision is used.
 
 
 ## `overrides = [ ... ]`
@@ -2186,7 +2334,8 @@ A list of container overrides in JSON format that specify the name of a containe
             "memory" =>  ::Int,
             "memoryReservation" =>  ::Int
         ], ...],
-        "taskRoleArn" =>  ::String
+        "taskRoleArn" =>  ::String,
+        "executionRoleArn" =>  ::String
     ]
 ```
 
@@ -2214,12 +2363,30 @@ An array of placement constraint objects to use for the task. You can specify up
 ```
 
 ## `placementStrategy = [[ ... ], ...]`
-The placement strategy objects to use for the task. You can specify a maximum of 5 strategy rules per task.
+The placement strategy objects to use for the task. You can specify a maximum of five strategy rules per task.
 ```
  placementStrategy = [[
         "type" =>  "random", "spread" or "binpack",
         "field" =>  ::String
     ], ...]
+```
+
+## `launchType = "EC2" or "FARGATE"`
+The launch type on which to run your task.
+
+
+## `platformVersion = ::String`
+The platform version on which to run your task. If one is not specified, the latest version is used by default.
+
+
+## `networkConfiguration = ["awsvpcConfiguration" =>  [ ... ]]`
+The network configuration for the task. This parameter is required for task definitions that use the `awsvpc` network mode to receive their own Elastic Network Interface, and it is not supported for other network modes. For more information, see [Task Networking](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html) in the *Amazon Elastic Container Service Developer Guide*.
+```
+ networkConfiguration = ["awsvpcConfiguration" =>  [
+            "subnets" => <required> [::String, ...],
+            "securityGroups" =>  [::String, ...],
+            "assignPublicIp" =>  "ENABLED" or "DISABLED"
+        ]]
 ```
 
 
@@ -2230,7 +2397,7 @@ The placement strategy objects to use for the task. You can specify a maximum of
 
 # Exceptions
 
-`ServerException`, `ClientException`, `InvalidParameterException` or `ClusterNotFoundException`.
+`ServerException`, `ClientException`, `InvalidParameterException`, `ClusterNotFoundException`, `UnsupportedFeatureException`, `PlatformUnknownException`, `PlatformTaskDefinitionIncompatibilityException`, `AccessDeniedException` or `BlockedException`.
 
 # Example: To run a task on your default cluster
 
@@ -2276,7 +2443,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/RunTask)
 """
-
 @inline run_task(aws::AWSConfig=default_aws_config(); args...) = run_task(aws, args)
 
 @inline run_task(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "RunTask", args)
@@ -2297,7 +2463,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 Starts a new task from the specified task definition on the specified container instance or instances.
 
-Alternatively, you can use [RunTask](@ref) to place tasks for you. For more information, see [Scheduling Tasks](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html) in the *Amazon EC2 Container Service Developer Guide*.
+Alternatively, you can use [RunTask](@ref) to place tasks for you. For more information, see [Scheduling Tasks](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html) in the *Amazon Elastic Container Service Developer Guide*.
 
 # Arguments
 
@@ -2306,7 +2472,7 @@ The short name or full Amazon Resource Name (ARN) of the cluster on which to sta
 
 
 ## `taskDefinition = ::String` -- *Required*
-The `family` and `revision` (`family:revision`) or full Amazon Resource Name (ARN) of the task definition to start. If a `revision` is not specified, the latest `ACTIVE` revision is used.
+The `family` and `revision` (`family:revision`) or full ARN of the task definition to start. If a `revision` is not specified, the latest `ACTIVE` revision is used.
 
 
 ## `overrides = [ ... ]`
@@ -2327,12 +2493,13 @@ A list of container overrides in JSON format that specify the name of a containe
             "memory" =>  ::Int,
             "memoryReservation" =>  ::Int
         ], ...],
-        "taskRoleArn" =>  ::String
+        "taskRoleArn" =>  ::String,
+        "executionRoleArn" =>  ::String
     ]
 ```
 
 ## `containerInstances = [::String, ...]` -- *Required*
-The container instance IDs or full Amazon Resource Name (ARN) entries for the container instances on which you would like to place your task. You can specify up to 10 container instances.
+The container instance IDs or full ARN entries for the container instances on which you would like to place your task. You can specify up to 10 container instances.
 
 
 ## `startedBy = ::String`
@@ -2344,6 +2511,16 @@ If a task is started by an Amazon ECS service, then the `startedBy` parameter co
 ## `group = ::String`
 The name of the task group to associate with the task. The default value is the family name of the task definition (for example, family:my-family-name).
 
+
+## `networkConfiguration = ["awsvpcConfiguration" =>  [ ... ]]`
+The VPC subnet and security group configuration for tasks that receive their own elastic network interface by using the `awsvpc` networking mode.
+```
+ networkConfiguration = ["awsvpcConfiguration" =>  [
+            "subnets" => <required> [::String, ...],
+            "securityGroups" =>  [::String, ...],
+            "assignPublicIp" =>  "ENABLED" or "DISABLED"
+        ]]
+```
 
 
 
@@ -2357,7 +2534,6 @@ The name of the task group to associate with the task. The default value is the 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/StartTask)
 """
-
 @inline start_task(aws::AWSConfig=default_aws_config(); args...) = start_task(aws, args)
 
 @inline start_task(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "StartTask", args)
@@ -2381,7 +2557,7 @@ Stops a running task.
 When [StopTask](@ref) is called on a task, the equivalent of `docker stop` is issued to the containers running in the task. This results in a `SIGTERM` and a default 30-second timeout, after which `SIGKILL` is sent and the containers are forcibly stopped. If the container handles the `SIGTERM` gracefully and exits within 30 seconds from receiving it, no `SIGKILL` is sent.
 
 **Note**
-> The default 30-second timeout can be configured on the Amazon ECS container agent with the `ECS_CONTAINER_STOP_TIMEOUT` variable. For more information, see [Amazon ECS Container Agent Configuration](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon EC2 Container Service Developer Guide*.
+> The default 30-second timeout can be configured on the Amazon ECS container agent with the `ECS_CONTAINER_STOP_TIMEOUT` variable. For more information, see [Amazon ECS Container Agent Configuration](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.
 
 # Arguments
 
@@ -2390,11 +2566,11 @@ The short name or full Amazon Resource Name (ARN) of the cluster that hosts the 
 
 
 ## `task = ::String` -- *Required*
-The task ID or full Amazon Resource Name (ARN) entry of the task to stop.
+The task ID or full ARN entry of the task to stop.
 
 
 ## `reason = ::String`
-An optional message specified when a task is stopped. For example, if you are using a custom scheduler, you can use this parameter to specify the reason for stopping the task here, and the message will appear in subsequent [DescribeTasks](@ref) API operations on this task. Up to 255 characters are allowed in this message.
+An optional message specified when a task is stopped. For example, if you are using a custom scheduler, you can use this parameter to specify the reason for stopping the task here, and the message appears in subsequent [DescribeTasks](@ref) API operations on this task. Up to 255 characters are allowed in this message.
 
 
 
@@ -2409,7 +2585,6 @@ An optional message specified when a task is stopped. For example, if you are us
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/StopTask)
 """
-
 @inline stop_task(aws::AWSConfig=default_aws_config(); args...) = stop_task(aws, args)
 
 @inline stop_task(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "StopTask", args)
@@ -2430,14 +2605,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
  
 **Note**
-> This action is only used by the Amazon EC2 Container Service agent, and it is not intended for use outside of the agent.
+> This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 
 Sent to acknowledge that a container changed states.
 
 # Arguments
 
 ## `cluster = ::String`
-The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container.
+The short name or full ARN of the cluster that hosts the container.
 
 
 ## `task = ::String`
@@ -2479,11 +2654,10 @@ The network bindings of the container.
 
 # Exceptions
 
-`ServerException` or `ClientException`.
+`ServerException`, `ClientException` or `AccessDeniedException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/SubmitContainerStateChange)
 """
-
 @inline submit_container_state_change(aws::AWSConfig=default_aws_config(); args...) = submit_container_state_change(aws, args)
 
 @inline submit_container_state_change(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "SubmitContainerStateChange", args)
@@ -2504,7 +2678,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
  
 **Note**
-> This action is only used by the Amazon EC2 Container Service agent, and it is not intended for use outside of the agent.
+> This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 
 Sent to acknowledge that a task changed states.
 
@@ -2515,7 +2689,7 @@ The short name or full Amazon Resource Name (ARN) of the cluster that hosts the 
 
 
 ## `task = ::String`
-The task ID or full Amazon Resource Name (ARN) of the task in the state change request.
+The task ID or full ARN of the task in the state change request.
 
 
 ## `status = ::String`
@@ -2526,6 +2700,44 @@ The status of the state change request.
 The reason for the state change request.
 
 
+## `containers = [[ ... ], ...]`
+Any containers associated with the state change request.
+```
+ containers = [[
+        "containerName" =>  ::String,
+        "exitCode" =>  ::Int,
+        "networkBindings" =>  [[
+            "bindIP" =>  ::String,
+            "containerPort" =>  ::Int,
+            "hostPort" =>  ::Int,
+            "protocol" =>  "tcp" or "udp"
+        ], ...],
+        "reason" =>  ::String,
+        "status" =>  ::String
+    ], ...]
+```
+
+## `attachments = [[ ... ], ...]`
+Any attachments associated with the state change request.
+```
+ attachments = [[
+        "attachmentArn" => <required> ::String,
+        "status" => <required> ::String
+    ], ...]
+```
+
+## `pullStartedAt = timestamp`
+The Unix time stamp for when the container image pull began.
+
+
+## `pullStoppedAt = timestamp`
+The Unix time stamp for when the container image pull completed.
+
+
+## `executionStoppedAt = timestamp`
+The Unix time stamp for when the task execution stopped.
+
+
 
 
 # Returns
@@ -2534,11 +2746,10 @@ The reason for the state change request.
 
 # Exceptions
 
-`ServerException` or `ClientException`.
+`ServerException`, `ClientException` or `AccessDeniedException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/SubmitTaskStateChange)
 """
-
 @inline submit_task_state_change(aws::AWSConfig=default_aws_config(); args...) = submit_task_state_change(aws, args)
 
 @inline submit_task_state_change(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "SubmitTaskStateChange", args)
@@ -2559,7 +2770,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 Updates the Amazon ECS container agent on a specified container instance. Updating the Amazon ECS container agent does not interrupt running tasks or services on the container instance. The process for updating the agent differs depending on whether your container instance was launched with the Amazon ECS-optimized AMI or another operating system.
 
-`UpdateContainerAgent` requires the Amazon ECS-optimized AMI or Amazon Linux with the `ecs-init` service installed and running. For help updating the Amazon ECS container agent on other operating systems, see [Manually Updating the Amazon ECS Container Agent](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent) in the *Amazon EC2 Container Service Developer Guide*.
+`UpdateContainerAgent` requires the Amazon ECS-optimized AMI or Amazon Linux with the `ecs-init` service installed and running. For help updating the Amazon ECS container agent on other operating systems, see [Manually Updating the Amazon ECS Container Agent](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent) in the *Amazon Elastic Container Service Developer Guide*.
 
 # Arguments
 
@@ -2568,7 +2779,7 @@ The short name or full Amazon Resource Name (ARN) of the cluster that your conta
 
 
 ## `containerInstance = ::String` -- *Required*
-The container instance ID or full Amazon Resource Name (ARN) entries for the container instance on which you would like to update the Amazon ECS container agent.
+The container instance ID or full ARN entries for the container instance on which you would like to update the Amazon ECS container agent.
 
 
 
@@ -2583,7 +2794,6 @@ The container instance ID or full Amazon Resource Name (ARN) entries for the con
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/UpdateContainerAgent)
 """
-
 @inline update_container_agent(aws::AWSConfig=default_aws_config(); args...) = update_container_agent(aws, args)
 
 @inline update_container_agent(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "UpdateContainerAgent", args)
@@ -2608,7 +2818,7 @@ You can change the status of a container instance to `DRAINING` to manually remo
 
 When you set a container instance to `DRAINING`, Amazon ECS prevents new tasks from being scheduled for placement on the container instance and replacement service tasks are started on other container instances in the cluster if the resources are available. Service tasks on the container instance that are in the `PENDING` state are stopped immediately.
 
-Service tasks on the container instance that are in the `RUNNING` state are stopped and replaced according the service's deployment configuration parameters, `minimumHealthyPercent` and `maximumPercent`. Note that you can change the deployment configuration of your service using [UpdateService](@ref).
+Service tasks on the container instance that are in the `RUNNING` state are stopped and replaced according to the service's deployment configuration parameters, `minimumHealthyPercent` and `maximumPercent`. You can change the deployment configuration of your service using [UpdateService](@ref).
 
 *   If `minimumHealthyPercent` is below 100%, the scheduler can ignore `desiredCount` temporarily during task replacement. For example, `desiredCount` is four tasks, a minimum of 50% allows the scheduler to stop two existing tasks before starting two new tasks. If the minimum is 100%, the service scheduler can't remove existing tasks until the replacement tasks are considered healthy. Tasks for services that do not use a load balancer are considered healthy if they are in the `RUNNING` state. Tasks for services that use a load balancer are considered healthy if they are in the `RUNNING` state and the container instance they are hosted on is reported as healthy by the load balancer.
 
@@ -2627,7 +2837,7 @@ The short name or full Amazon Resource Name (ARN) of the cluster that hosts the 
 
 
 ## `containerInstances = [::String, ...]` -- *Required*
-A list of container instance IDs or full Amazon Resource Name (ARN) entries.
+A list of container instance IDs or full ARN entries.
 
 
 ## `status = "ACTIVE" or "DRAINING"` -- *Required*
@@ -2646,7 +2856,6 @@ The container instance state with which to update the container instance.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/UpdateContainerInstancesState)
 """
-
 @inline update_container_instances_state(aws::AWSConfig=default_aws_config(); args...) = update_container_instances_state(aws, args)
 
 @inline update_container_instances_state(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "UpdateContainerInstancesState", args)
@@ -2665,11 +2874,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-20
 
 # UpdateService Operation
 
-Modifies the desired count, deployment configuration, or task definition used in a service.
+Modifies the desired count, deployment configuration, network configuration, or task definition used in a service.
 
 You can add to or subtract from the number of instantiations of a task definition in a service by specifying the cluster that the service is running in and a new `desiredCount` parameter.
 
-You can use [UpdateService](@ref) to modify your task definition and deploy a new version of your service.
+If you have updated the Docker image of your application, you can create a new task definition with that image and deploy it to your service. The service scheduler uses the minimum healthy percent and maximum percent parameters (in the service's deployment configuration) to determine the deployment strategy.
+
+**Note**
+> If your updated Docker image uses the same tag as what is in the existing task definition for your service (for example, `my_image:latest`), you do not need to create a new revision of your task definition. You can update the service using the `forceNewDeployment` option. The new tasks launched by the deployment pull the current image/tag combination from your repository when they start.
 
 You can also update the deployment configuration of a service. When a deployment is triggered by updating the task definition of a service, the service scheduler uses the deployment configuration parameters, `minimumHealthyPercent` and `maximumPercent`, to determine the deployment strategy.
 
@@ -2710,7 +2922,7 @@ The number of instantiations of the task to place and keep running in your servi
 
 
 ## `taskDefinition = ::String`
-The `family` and `revision` (`family:revision`) or full Amazon Resource Name (ARN) of the task definition to run in your service. If a `revision` is not specified, the latest `ACTIVE` revision is used. If you modify the task definition with `UpdateService`, Amazon ECS spawns a task with the new version of the task definition and then stops an old task after the new version is running.
+The `family` and `revision` (`family:revision`) or full ARN of the task definition to run in your service. If a `revision` is not specified, the latest `ACTIVE` revision is used. If you modify the task definition with `UpdateService`, Amazon ECS spawns a task with the new version of the task definition and then stops an old task after the new version is running.
 
 
 ## `deploymentConfiguration = [ ... ]`
@@ -2722,6 +2934,31 @@ Optional deployment parameters that control how many tasks run during the deploy
     ]
 ```
 
+## `networkConfiguration = ["awsvpcConfiguration" =>  [ ... ]]`
+The network configuration for the service. This parameter is required for task definitions that use the `awsvpc` network mode to receive their own elastic network interface, and it is not supported for other network modes. For more information, see [Task Networking](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html) in the *Amazon Elastic Container Service Developer Guide*.
+
+**Note**
+> Updating a service to add a subnet to a list of existing subnets does not trigger a service deployment. For example, if your network configuration change is to keep the existing subnets and simply add another subnet to the network configuration, this does not trigger a new service deployment.
+```
+ networkConfiguration = ["awsvpcConfiguration" =>  [
+            "subnets" => <required> [::String, ...],
+            "securityGroups" =>  [::String, ...],
+            "assignPublicIp" =>  "ENABLED" or "DISABLED"
+        ]]
+```
+
+## `platformVersion = ::String`
+The platform version that your service should run.
+
+
+## `forceNewDeployment = ::Bool`
+Whether to force a new deployment of the service. Deployments are not forced by default. You can use this option to trigger a new deployment with no service definition changes. For example, you can update a service's tasks to use a newer Docker image with the same image/tag combination (`my_image:latest`) or to roll Fargate tasks onto a newer platform version.
+
+
+## `healthCheckGracePeriodSeconds = ::Int`
+The period of time, in seconds, that the Amazon ECS service scheduler should ignore unhealthy Elastic Load Balancing target health checks after a task has first started. This is only valid if your service is configured to use a load balancer. If your service's tasks take a while to start and respond to Elastic Load Balancing health checks, you can specify a health check grace period of up to 1,800 seconds during which the ECS service scheduler ignores the Elastic Load Balancing health check status. This grace period can prevent the ECS service scheduler from marking tasks as unhealthy and stopping them before they have time to come up.
+
+
 
 
 # Returns
@@ -2730,7 +2967,7 @@ Optional deployment parameters that control how many tasks run during the deploy
 
 # Exceptions
 
-`ServerException`, `ClientException`, `InvalidParameterException`, `ClusterNotFoundException`, `ServiceNotFoundException` or `ServiceNotActiveException`.
+`ServerException`, `ClientException`, `InvalidParameterException`, `ClusterNotFoundException`, `ServiceNotFoundException`, `ServiceNotActiveException`, `PlatformUnknownException`, `PlatformTaskDefinitionIncompatibilityException` or `AccessDeniedException`.
 
 # Example: To change the task definition used in a service
 
@@ -2772,7 +3009,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/UpdateService)
 """
-
 @inline update_service(aws::AWSConfig=default_aws_config(); args...) = update_service(aws, args)
 
 @inline update_service(aws::AWSConfig, args) = AWSCore.Services.ecs(aws, "UpdateService", args)

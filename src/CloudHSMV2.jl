@@ -13,6 +13,48 @@ using AWSCore
 
 
 """
+    using AWSSDK.CloudHSMV2.copy_backup_to_region
+    copy_backup_to_region([::AWSConfig], arguments::Dict)
+    copy_backup_to_region([::AWSConfig]; DestinationRegion=, BackupId=)
+
+    using AWSCore.Services.cloudhsmv2
+    cloudhsmv2([::AWSConfig], "CopyBackupToRegion", arguments::Dict)
+    cloudhsmv2([::AWSConfig], "CopyBackupToRegion", DestinationRegion=, BackupId=)
+
+# CopyBackupToRegion Operation
+
+
+
+# Arguments
+
+## `DestinationRegion = ::String` -- *Required*
+
+
+
+## `BackupId = ::String` -- *Required*
+
+
+
+
+
+# Returns
+
+`CopyBackupToRegionResponse`
+
+# Exceptions
+
+`CloudHsmInternalFailureException`, `CloudHsmServiceException`, `CloudHsmResourceNotFoundException`, `CloudHsmInvalidRequestException` or `CloudHsmAccessDeniedException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsmv2-2017-04-28/CopyBackupToRegion)
+"""
+@inline copy_backup_to_region(aws::AWSConfig=default_aws_config(); args...) = copy_backup_to_region(aws, args)
+
+@inline copy_backup_to_region(aws::AWSConfig, args) = AWSCore.Services.cloudhsmv2(aws, "CopyBackupToRegion", args)
+
+@inline copy_backup_to_region(args) = copy_backup_to_region(default_aws_config(), args)
+
+
+"""
     using AWSSDK.CloudHSMV2.create_cluster
     create_cluster([::AWSConfig], arguments::Dict)
     create_cluster([::AWSConfig]; SubnetIds=, HsmType=, <keyword arguments>)
@@ -55,7 +97,6 @@ The identifier (ID) of the cluster backup to restore. Use this value to restore 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsmv2-2017-04-28/CreateCluster)
 """
-
 @inline create_cluster(aws::AWSConfig=default_aws_config(); args...) = create_cluster(aws, args)
 
 @inline create_cluster(aws::AWSConfig, args) = AWSCore.Services.cloudhsmv2(aws, "CreateCluster", args)
@@ -102,7 +143,6 @@ The HSM's IP address. If you specify an IP address, use an available address fro
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsmv2-2017-04-28/CreateHsm)
 """
-
 @inline create_hsm(aws::AWSConfig=default_aws_config(); args...) = create_hsm(aws, args)
 
 @inline create_hsm(aws::AWSConfig, args) = AWSCore.Services.cloudhsmv2(aws, "CreateHsm", args)
@@ -141,7 +181,6 @@ The identifier (ID) of the cluster that you are deleting. To find the cluster ID
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsmv2-2017-04-28/DeleteCluster)
 """
-
 @inline delete_cluster(aws::AWSConfig=default_aws_config(); args...) = delete_cluster(aws, args)
 
 @inline delete_cluster(aws::AWSConfig, args) = AWSCore.Services.cloudhsmv2(aws, "DeleteCluster", args)
@@ -192,7 +231,6 @@ The IP address of the elastic network interface (ENI) of the HSM that you are de
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsmv2-2017-04-28/DeleteHsm)
 """
-
 @inline delete_hsm(aws::AWSConfig=default_aws_config(); args...) = delete_hsm(aws, args)
 
 @inline delete_hsm(aws::AWSConfig, args) = AWSCore.Services.cloudhsmv2(aws, "DeleteHsm", args)
@@ -235,6 +273,10 @@ Use the `clusterIds` filter to return only the backups for the specified cluster
 Use the `states` filter to return only backups that match the specified state.
 
 
+## `SortAscending = ::Bool`
+
+
+
 
 
 # Returns
@@ -247,7 +289,6 @@ Use the `states` filter to return only backups that match the specified state.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsmv2-2017-04-28/DescribeBackups)
 """
-
 @inline describe_backups(aws::AWSConfig=default_aws_config(); args...) = describe_backups(aws, args)
 
 @inline describe_backups(aws::AWSConfig, args) = AWSCore.Services.cloudhsmv2(aws, "DescribeBackups", args)
@@ -302,7 +343,6 @@ The maximum number of clusters to return in the response. When there are more cl
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsmv2-2017-04-28/DescribeClusters)
 """
-
 @inline describe_clusters(aws::AWSConfig=default_aws_config(); args...) = describe_clusters(aws, args)
 
 @inline describe_clusters(aws::AWSConfig, args) = AWSCore.Services.cloudhsmv2(aws, "DescribeClusters", args)
@@ -349,7 +389,6 @@ The issuing certificate of the issuing certificate authority (CA) that issued (s
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsmv2-2017-04-28/InitializeCluster)
 """
-
 @inline initialize_cluster(aws::AWSConfig=default_aws_config(); args...) = initialize_cluster(aws, args)
 
 @inline initialize_cluster(aws::AWSConfig, args) = AWSCore.Services.cloudhsmv2(aws, "InitializeCluster", args)
@@ -398,7 +437,6 @@ The maximum number of tags to return in the response. When there are more tags t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsmv2-2017-04-28/ListTags)
 """
-
 @inline list_tags(aws::AWSConfig=default_aws_config(); args...) = list_tags(aws, args)
 
 @inline list_tags(aws::AWSConfig, args) = AWSCore.Services.cloudhsmv2(aws, "ListTags", args)
@@ -446,7 +484,6 @@ A list of one or more tags.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsmv2-2017-04-28/TagResource)
 """
-
 @inline tag_resource(aws::AWSConfig=default_aws_config(); args...) = tag_resource(aws, args)
 
 @inline tag_resource(aws::AWSConfig, args) = AWSCore.Services.cloudhsmv2(aws, "TagResource", args)
@@ -489,7 +526,6 @@ A list of one or more tag keys for the tags that you are removing. Specify only 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudhsmv2-2017-04-28/UntagResource)
 """
-
 @inline untag_resource(aws::AWSConfig=default_aws_config(); args...) = untag_resource(aws, args)
 
 @inline untag_resource(aws::AWSConfig, args) = AWSCore.Services.cloudhsmv2(aws, "UntagResource", args)

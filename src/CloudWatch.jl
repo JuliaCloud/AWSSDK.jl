@@ -39,7 +39,6 @@ The alarms to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DeleteAlarms)
 """
-
 @inline delete_alarms(aws::AWSConfig=default_aws_config(); args...) = delete_alarms(aws, args)
 
 @inline delete_alarms(aws::AWSConfig, args) = AWSCore.Services.monitoring(aws, "DeleteAlarms", args)
@@ -50,11 +49,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monito
 """
     using AWSSDK.CloudWatch.delete_dashboards
     delete_dashboards([::AWSConfig], arguments::Dict)
-    delete_dashboards([::AWSConfig]; <keyword arguments>)
+    delete_dashboards([::AWSConfig]; DashboardNames=)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "DeleteDashboards", arguments::Dict)
-    monitoring([::AWSConfig], "DeleteDashboards", <keyword arguments>)
+    monitoring([::AWSConfig], "DeleteDashboards", DashboardNames=)
 
 # DeleteDashboards Operation
 
@@ -62,8 +61,8 @@ Deletes all dashboards that you specify. You may specify up to 100 dashboards to
 
 # Arguments
 
-## `DashboardNames = [::String, ...]`
-The dashboards to be deleted.
+## `DashboardNames = [::String, ...]` -- *Required*
+The dashboards to be deleted. This parameter is required.
 
 
 
@@ -78,7 +77,6 @@ The dashboards to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DeleteDashboards)
 """
-
 @inline delete_dashboards(aws::AWSConfig=default_aws_config(); args...) = delete_dashboards(aws, args)
 
 @inline delete_dashboards(aws::AWSConfig, args) = AWSCore.Services.monitoring(aws, "DeleteDashboards", args)
@@ -139,7 +137,6 @@ The token returned by a previous call to indicate that there is more data availa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DescribeAlarmHistory)
 """
-
 @inline describe_alarm_history(aws::AWSConfig=default_aws_config(); args...) = describe_alarm_history(aws, args)
 
 @inline describe_alarm_history(aws::AWSConfig, args) = AWSCore.Services.monitoring(aws, "DescribeAlarmHistory", args)
@@ -198,7 +195,6 @@ The token returned by a previous call to indicate that there is more data availa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DescribeAlarms)
 """
-
 @inline describe_alarms(aws::AWSConfig=default_aws_config(); args...) = describe_alarms(aws, args)
 
 @inline describe_alarms(aws::AWSConfig, args) = AWSCore.Services.monitoring(aws, "DescribeAlarms", args)
@@ -262,7 +258,6 @@ The unit for the metric.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DescribeAlarmsForMetric)
 """
-
 @inline describe_alarms_for_metric(aws::AWSConfig=default_aws_config(); args...) = describe_alarms_for_metric(aws, args)
 
 @inline describe_alarms_for_metric(aws::AWSConfig, args) = AWSCore.Services.monitoring(aws, "DescribeAlarmsForMetric", args)
@@ -293,7 +288,6 @@ The names of the alarms.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DisableAlarmActions)
 """
-
 @inline disable_alarm_actions(aws::AWSConfig=default_aws_config(); args...) = disable_alarm_actions(aws, args)
 
 @inline disable_alarm_actions(aws::AWSConfig, args) = AWSCore.Services.monitoring(aws, "DisableAlarmActions", args)
@@ -324,7 +318,6 @@ The names of the alarms.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/EnableAlarmActions)
 """
-
 @inline enable_alarm_actions(aws::AWSConfig=default_aws_config(); args...) = enable_alarm_actions(aws, args)
 
 @inline enable_alarm_actions(aws::AWSConfig, args) = AWSCore.Services.monitoring(aws, "EnableAlarmActions", args)
@@ -335,11 +328,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monito
 """
     using AWSSDK.CloudWatch.get_dashboard
     get_dashboard([::AWSConfig], arguments::Dict)
-    get_dashboard([::AWSConfig]; <keyword arguments>)
+    get_dashboard([::AWSConfig]; DashboardName=)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "GetDashboard", arguments::Dict)
-    monitoring([::AWSConfig], "GetDashboard", <keyword arguments>)
+    monitoring([::AWSConfig], "GetDashboard", DashboardName=)
 
 # GetDashboard Operation
 
@@ -349,7 +342,7 @@ To copy an existing dashboard, use `GetDashboard`, and then use the data returne
 
 # Arguments
 
-## `DashboardName = ::String`
+## `DashboardName = ::String` -- *Required*
 The name of the dashboard to be described.
 
 
@@ -365,12 +358,91 @@ The name of the dashboard to be described.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/GetDashboard)
 """
-
 @inline get_dashboard(aws::AWSConfig=default_aws_config(); args...) = get_dashboard(aws, args)
 
 @inline get_dashboard(aws::AWSConfig, args) = AWSCore.Services.monitoring(aws, "GetDashboard", args)
 
 @inline get_dashboard(args) = get_dashboard(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudWatch.get_metric_data
+    get_metric_data([::AWSConfig], arguments::Dict)
+    get_metric_data([::AWSConfig]; MetricDataQueries=, StartTime=, EndTime=, <keyword arguments>)
+
+    using AWSCore.Services.monitoring
+    monitoring([::AWSConfig], "GetMetricData", arguments::Dict)
+    monitoring([::AWSConfig], "GetMetricData", MetricDataQueries=, StartTime=, EndTime=, <keyword arguments>)
+
+# GetMetricData Operation
+
+You can use the `GetMetricData` API to retrieve as many as 100 different metrics in a single request, with a total of as many as 100,800 datapoints. You can also optionally perform math expressions on the values of the returned statistics, to create new time series that represent new insights into your data. For example, using Lambda metrics, you could divide the Errors metric by the Invocations metric to get an error rate time series. For more information about metric math expressions, see [Metric Math Syntax and Functions](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax) in the *Amazon CloudWatch User Guide*.
+
+Calls to the `GetMetricData` API have a different pricing structure than calls to `GetMetricStatistics`. For more information about pricing, see [Amazon CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
+
+# Arguments
+
+## `MetricDataQueries = [[ ... ], ...]` -- *Required*
+The metric queries to be returned. A single `GetMetricData` call can include as many as 100 `MetricDataQuery` structures. Each of these structures can specify either a metric to retrieve, or a math expression to perform on retrieved data.
+```
+ MetricDataQueries = [[
+        "Id" => <required> ::String,
+        "MetricStat" =>  [
+            "Metric" => <required> [
+                "Namespace" =>  ::String,
+                "MetricName" =>  ::String,
+                "Dimensions" =>  [[
+                    "Name" => <required> ::String,
+                    "Value" => <required> ::String
+                ], ...]
+            ],
+            "Period" => <required> ::Int,
+            "Stat" => <required> ::String,
+            "Unit" =>  "Seconds", "Microseconds", "Milliseconds", "Bytes", "Kilobytes", "Megabytes", "Gigabytes", "Terabytes", "Bits", "Kilobits", "Megabits", "Gigabits", "Terabits", "Percent", "Count", "Bytes/Second", "Kilobytes/Second", "Megabytes/Second", "Gigabytes/Second", "Terabytes/Second", "Bits/Second", "Kilobits/Second", "Megabits/Second", "Gigabits/Second", "Terabits/Second", "Count/Second" or "None"
+        ],
+        "Expression" =>  ::String,
+        "Label" =>  ::String,
+        "ReturnData" =>  ::Bool
+    ], ...]
+```
+
+## `StartTime = timestamp` -- *Required*
+The time stamp indicating the earliest data to be returned.
+
+
+## `EndTime = timestamp` -- *Required*
+The time stamp indicating the latest data to be returned.
+
+
+## `NextToken = ::String`
+Include this value, if it was returned by the previous call, to get the next set of data points.
+
+
+## `ScanBy = "TimestampDescending" or "TimestampAscending"`
+The order in which data points should be returned. `TimestampDescending` returns the newest data first and paginates when the `MaxDatapoints` limit is reached. `TimestampAscending` returns the oldest data first and paginates when the `MaxDatapoints` limit is reached.
+
+
+## `MaxDatapoints = ::Int`
+The maximum number of data points the request should return before paginating. If you omit this, the default of 100,800 is used.
+
+
+
+
+# Returns
+
+`GetMetricDataOutput`
+
+# Exceptions
+
+`InvalidNextToken`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/GetMetricData)
+"""
+@inline get_metric_data(aws::AWSConfig=default_aws_config(); args...) = get_metric_data(aws, args)
+
+@inline get_metric_data(aws::AWSConfig, args) = AWSCore.Services.monitoring(aws, "GetMetricData", args)
+
+@inline get_metric_data(args) = get_metric_data(default_aws_config(), args)
 
 
 """
@@ -474,7 +546,7 @@ The percentile statistics. Specify values between p0.0 and p100. When calling `G
 
 
 ## `Unit = "Seconds", "Microseconds", "Milliseconds", "Bytes", "Kilobytes", "Megabytes", "Gigabytes", "Terabytes", "Bits", "Kilobits", "Megabits", "Gigabits", "Terabits", "Percent", "Count", "Bytes/Second", "Kilobytes/Second", "Megabytes/Second", "Gigabytes/Second", "Terabytes/Second", "Bits/Second", "Kilobits/Second", "Megabits/Second", "Gigabits/Second", "Terabits/Second", "Count/Second" or "None"`
-The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units being returned. If the metric only ever reports one unit, specifying a unit has no effect.
+The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units being returned. If you specify only a unit that the metric does not report, the results of the call are null.
 
 
 
@@ -489,7 +561,6 @@ The unit for a given metric. Metrics may be reported in multiple units. Not supp
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/GetMetricStatistics)
 """
-
 @inline get_metric_statistics(aws::AWSConfig=default_aws_config(); args...) = get_metric_statistics(aws, args)
 
 @inline get_metric_statistics(aws::AWSConfig, args) = AWSCore.Services.monitoring(aws, "GetMetricStatistics", args)
@@ -532,7 +603,6 @@ The token returned by a previous call to indicate that there is more data availa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/ListDashboards)
 """
-
 @inline list_dashboards(aws::AWSConfig=default_aws_config(); args...) = list_dashboards(aws, args)
 
 @inline list_dashboards(aws::AWSConfig, args) = AWSCore.Services.monitoring(aws, "ListDashboards", args)
@@ -592,7 +662,6 @@ The token returned by a previous call to indicate that there is more data availa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/ListMetrics)
 """
-
 @inline list_metrics(aws::AWSConfig=default_aws_config(); args...) = list_metrics(aws, args)
 
 @inline list_metrics(aws::AWSConfig, args) = AWSCore.Services.monitoring(aws, "ListMetrics", args)
@@ -603,11 +672,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monito
 """
     using AWSSDK.CloudWatch.put_dashboard
     put_dashboard([::AWSConfig], arguments::Dict)
-    put_dashboard([::AWSConfig]; <keyword arguments>)
+    put_dashboard([::AWSConfig]; DashboardName=, DashboardBody=)
 
     using AWSCore.Services.monitoring
     monitoring([::AWSConfig], "PutDashboard", arguments::Dict)
-    monitoring([::AWSConfig], "PutDashboard", <keyword arguments>)
+    monitoring([::AWSConfig], "PutDashboard", DashboardName=, DashboardBody=)
 
 # PutDashboard Operation
 
@@ -621,12 +690,12 @@ When you create a dashboard with `PutDashboard`, a good practice is to add a tex
 
 # Arguments
 
-## `DashboardName = ::String`
-The name of the dashboard. If a dashboard with this name already exists, this call modifies that dashboard, replacing its current contents. Otherwise, a new dashboard is created. The maximum length is 255, and valid characters are A-Z, a-z, 0-9, "-", and "_".
+## `DashboardName = ::String` -- *Required*
+The name of the dashboard. If a dashboard with this name already exists, this call modifies that dashboard, replacing its current contents. Otherwise, a new dashboard is created. The maximum length is 255, and valid characters are A-Z, a-z, 0-9, "-", and "_". This parameter is required.
 
 
-## `DashboardBody = ::String`
-The detailed information about the dashboard in JSON format, including the widgets to include and their location on the dashboard.
+## `DashboardBody = ::String` -- *Required*
+The detailed information about the dashboard in JSON format, including the widgets to include and their location on the dashboard. This parameter is required.
 
 For more information about the syntax, see [CloudWatch-Dashboard-Body-Structure](@ref).
 
@@ -643,7 +712,6 @@ For more information about the syntax, see [CloudWatch-Dashboard-Body-Structure]
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/PutDashboard)
 """
-
 @inline put_dashboard(aws::AWSConfig=default_aws_config(); args...) = put_dashboard(aws, args)
 
 @inline put_dashboard(aws::AWSConfig, args) = AWSCore.Services.monitoring(aws, "PutDashboard", args)
@@ -669,6 +737,8 @@ When this operation creates an alarm, the alarm state is immediately set to `INS
 When you update an existing alarm, its state is left unchanged, but the update completely overwrites the previous configuration of the alarm.
 
 If you are an IAM user, you must have Amazon EC2 permissions for some operations:
+
+*   `iam:CreateServiceLinkedRole` for all alarms with EC2 actions
 
 *   `ec2:DescribeInstanceStatus` and `ec2:DescribeInstances` for all alarms on EC2 instance status metrics
 
@@ -703,25 +773,25 @@ Indicates whether actions should be executed during any changes to the alarm sta
 ## `OKActions = [::String, ...]`
 The actions to execute when this alarm transitions to an `OK` state from any other state. Each action is specified as an Amazon Resource Name (ARN).
 
-Valid Values: arn:aws:automate:*region*:ec2:stop | arn:aws:automate:*region*:ec2:terminate | arn:aws:automate:*region*:ec2:recover
+Valid Values: arn:aws:automate:*region*:ec2:stop | arn:aws:automate:*region*:ec2:terminate | arn:aws:automate:*region*:ec2:recover | arn:aws:sns:*region*:*account-id*:*sns-topic-name* | arn:aws:autoscaling:*region*:*account-id*:scalingPolicy:*policy-id* autoScalingGroupName/*group-friendly-name*:policyName/*policy-friendly-name*
 
-Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:{*customer-account*}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:{*customer-account*}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:{*customer-account*}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
+Valid Values (for use with IAM roles): arn:aws:swf:*region*:{*account-id*}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:*region*:{*account-id*}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:*region*:{*account-id*}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
 
 
 ## `AlarmActions = [::String, ...]`
 The actions to execute when this alarm transitions to the `ALARM` state from any other state. Each action is specified as an Amazon Resource Name (ARN).
 
-Valid Values: arn:aws:automate:*region*:ec2:stop | arn:aws:automate:*region*:ec2:terminate | arn:aws:automate:*region*:ec2:recover
+Valid Values: arn:aws:automate:*region*:ec2:stop | arn:aws:automate:*region*:ec2:terminate | arn:aws:automate:*region*:ec2:recover | arn:aws:sns:*region*:*account-id*:*sns-topic-name* | arn:aws:autoscaling:*region*:*account-id*:scalingPolicy:*policy-id* autoScalingGroupName/*group-friendly-name*:policyName/*policy-friendly-name*
 
-Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:{*customer-account*}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:{*customer-account*}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:{*customer-account*}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
+Valid Values (for use with IAM roles): arn:aws:swf:*region*:{*account-id*}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:*region*:{*account-id*}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:*region*:{*account-id*}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
 
 
 ## `InsufficientDataActions = [::String, ...]`
 The actions to execute when this alarm transitions to the `INSUFFICIENT_DATA` state from any other state. Each action is specified as an Amazon Resource Name (ARN).
 
-Valid Values: arn:aws:automate:*region*:ec2:stop | arn:aws:automate:*region*:ec2:terminate | arn:aws:automate:*region*:ec2:recover
+Valid Values: arn:aws:automate:*region*:ec2:stop | arn:aws:automate:*region*:ec2:terminate | arn:aws:automate:*region*:ec2:recover | arn:aws:sns:*region*:*account-id*:*sns-topic-name* | arn:aws:autoscaling:*region*:*account-id*:scalingPolicy:*policy-id* autoScalingGroupName/*group-friendly-name*:policyName/*policy-friendly-name*
 
-Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:{*customer-account*}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:{*customer-account*}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:{*customer-account*}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
+Valid Values (for use with IAM roles): arn:aws:swf:*region*:{*account-id*}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:*region*:{*account-id*}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:*region*:{*account-id*}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
 
 
 ## `MetricName = ::String` -- *Required*
@@ -733,11 +803,11 @@ The namespace for the metric associated with the alarm.
 
 
 ## `Statistic = "SampleCount", "Average", "Sum", "Minimum" or "Maximum"`
-The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use `ExtendedStatistic`.
+The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use `ExtendedStatistic`. When you call `PutMetricAlarm`, you must specify either `Statistic` or `ExtendedStatistic,` but not both.
 
 
 ## `ExtendedStatistic = ::String`
-The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.
+The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100. When you call `PutMetricAlarm`, you must specify either `Statistic` or `ExtendedStatistic,` but not both.
 
 
 ## `Dimensions = [[ ... ], ...]`
@@ -752,7 +822,7 @@ The dimensions for the metric associated with the alarm.
 ## `Period = ::Int` -- *Required*
 The period, in seconds, over which the specified statistic is applied. Valid values are 10, 30, and any multiple of 60.
 
-Be sure to specify 10 or 30 only for metrics that are stored by a `PutMetricData` call with a `StorageResolution` of 1. If you specify a Period of 10 or 30 for a metric that does not have sub-minute resolution, the alarm still attempts to gather data at the period rate that you specify. In this case, it does not receive data for the attempts that do not correspond to a one-minute data resolution, and the alarm may often lapse into INSUFFICENT_DATA status. Specifying 10 or 30 also sets this alarm as a high-resolution alarm, which has a higher charge than other alarms. For more information about pricing, see [Amazon CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
+Be sure to specify 10 or 30 only for metrics that are stored by a `PutMetricData` call with a `StorageResolution` of 1. If you specify a period of 10 or 30 for a metric that does not have sub-minute resolution, the alarm still attempts to gather data at the period rate that you specify. In this case, it does not receive data for the attempts that do not correspond to a one-minute data resolution, and the alarm may often lapse into INSUFFICENT_DATA status. Specifying 10 or 30 also sets this alarm as a high-resolution alarm, which has a higher charge than other alarms. For more information about pricing, see [Amazon CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
 
 An alarm's total current evaluation period can be no longer than one day, so `Period` multiplied by `EvaluationPeriods` cannot be more than 86,400 seconds.
 
@@ -764,7 +834,13 @@ If you specify a unit, you must use a unit that is appropriate for the metric. O
 
 
 ## `EvaluationPeriods = ::Int` -- *Required*
-The number of periods over which data is compared to the specified threshold. An alarm's total current evaluation period can be no longer than one day, so this number multiplied by `Period` cannot be more than 86,400 seconds.
+The number of periods over which data is compared to the specified threshold. If you are setting an alarm which requires that a number of consecutive data points be breaching to trigger the alarm, this value specifies that number. If you are setting an "M out of N" alarm, this value is the N.
+
+An alarm's total current evaluation period can be no longer than one day, so this number multiplied by `Period` cannot be more than 86,400 seconds.
+
+
+## `DatapointsToAlarm = ::Int`
+The number of datapoints that must be breaching to trigger the alarm. This is used only if you are setting an "M out of N" alarm. In that case, this value is the M. For more information, see [Evaluating an Alarm](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation) in the *Amazon CloudWatch User Guide*.
 
 
 ## `Threshold = double` -- *Required*
@@ -795,7 +871,6 @@ Valid Values: `evaluate | ignore`
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/PutMetricAlarm)
 """
-
 @inline put_metric_alarm(aws::AWSConfig=default_aws_config(); args...) = put_metric_alarm(aws, args)
 
 @inline put_metric_alarm(aws::AWSConfig, args) = AWSCore.Services.monitoring(aws, "PutMetricAlarm", args)
@@ -868,7 +943,6 @@ The data for the metric.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/PutMetricData)
 """
-
 @inline put_metric_data(aws::AWSConfig=default_aws_config(); args...) = put_metric_data(aws, args)
 
 @inline put_metric_data(aws::AWSConfig, args) = AWSCore.Services.monitoring(aws, "PutMetricData", args)
@@ -915,7 +989,6 @@ The reason that this alarm is set to this specific state, in JSON format.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/SetAlarmState)
 """
-
 @inline set_alarm_state(aws::AWSConfig=default_aws_config(); args...) = set_alarm_state(aws, args)
 
 @inline set_alarm_state(aws::AWSConfig, args) = AWSCore.Services.monitoring(aws, "SetAlarmState", args)

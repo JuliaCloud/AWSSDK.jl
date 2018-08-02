@@ -54,7 +54,6 @@ Contains a list of CloudTrail tags, up to a limit of 50
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/AddTags)
 """
-
 @inline add_tags(aws::AWSConfig=default_aws_config(); args...) = add_tags(aws, args)
 
 @inline add_tags(aws::AWSConfig, args) = AWSCore.Services.cloudtrail(aws, "AddTags", args)
@@ -152,7 +151,6 @@ Examples:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/CreateTrail)
 """
-
 @inline create_trail(aws::AWSConfig=default_aws_config(); args...) = create_trail(aws, args)
 
 @inline create_trail(aws::AWSConfig, args) = AWSCore.Services.cloudtrail(aws, "CreateTrail", args)
@@ -191,7 +189,6 @@ Specifies the name or the CloudTrail ARN of the trail to be deleted. The format 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/DeleteTrail)
 """
-
 @inline delete_trail(aws::AWSConfig=default_aws_config(); args...) = delete_trail(aws, args)
 
 @inline delete_trail(aws::AWSConfig, args) = AWSCore.Services.cloudtrail(aws, "DeleteTrail", args)
@@ -245,7 +242,6 @@ Specifies whether to include shadow trails in the response. A shadow trail is th
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/DescribeTrails)
 """
-
 @inline describe_trails(aws::AWSConfig=default_aws_config(); args...) = describe_trails(aws, args)
 
 @inline describe_trails(aws::AWSConfig, args) = AWSCore.Services.cloudtrail(aws, "DescribeTrails", args)
@@ -306,7 +302,6 @@ If you specify a trail ARN, it must be in the format:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/GetEventSelectors)
 """
-
 @inline get_event_selectors(aws::AWSConfig=default_aws_config(); args...) = get_event_selectors(aws, args)
 
 @inline get_event_selectors(aws::AWSConfig, args) = AWSCore.Services.cloudtrail(aws, "GetEventSelectors", args)
@@ -347,7 +342,6 @@ Specifies the name or the CloudTrail ARN of the trail for which you are requesti
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/GetTrailStatus)
 """
-
 @inline get_trail_status(aws::AWSConfig=default_aws_config(); args...) = get_trail_status(aws, args)
 
 @inline get_trail_status(aws::AWSConfig, args) = AWSCore.Services.cloudtrail(aws, "GetTrailStatus", args)
@@ -397,7 +391,6 @@ Reserved for future use.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/ListPublicKeys)
 """
-
 @inline list_public_keys(aws::AWSConfig=default_aws_config(); args...) = list_public_keys(aws, args)
 
 @inline list_public_keys(aws::AWSConfig, args) = AWSCore.Services.cloudtrail(aws, "ListPublicKeys", args)
@@ -442,7 +435,6 @@ Reserved for future use.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/ListTags)
 """
-
 @inline list_tags(aws::AWSConfig=default_aws_config(); args...) = list_tags(aws, args)
 
 @inline list_tags(aws::AWSConfig, args) = AWSCore.Services.cloudtrail(aws, "ListTags", args)
@@ -522,7 +514,6 @@ The token to use to get the next page of results after a previous API call. This
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/LookupEvents)
 """
-
 @inline lookup_events(aws::AWSConfig=default_aws_config(); args...) = lookup_events(aws, args)
 
 @inline lookup_events(aws::AWSConfig, args) = AWSCore.Services.cloudtrail(aws, "LookupEvents", args)
@@ -604,7 +595,6 @@ Specifies the settings for your event selectors. You can configure up to five ev
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/PutEventSelectors)
 """
-
 @inline put_event_selectors(aws::AWSConfig=default_aws_config(); args...) = put_event_selectors(aws, args)
 
 @inline put_event_selectors(aws::AWSConfig, args) = AWSCore.Services.cloudtrail(aws, "PutEventSelectors", args)
@@ -654,7 +644,6 @@ Specifies a list of tags to be removed.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/RemoveTags)
 """
-
 @inline remove_tags(aws::AWSConfig=default_aws_config(); args...) = remove_tags(aws, args)
 
 @inline remove_tags(aws::AWSConfig, args) = AWSCore.Services.cloudtrail(aws, "RemoveTags", args)
@@ -695,7 +684,6 @@ Specifies the name or the CloudTrail ARN of the trail for which CloudTrail logs 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/StartLogging)
 """
-
 @inline start_logging(aws::AWSConfig=default_aws_config(); args...) = start_logging(aws, args)
 
 @inline start_logging(aws::AWSConfig, args) = AWSCore.Services.cloudtrail(aws, "StartLogging", args)
@@ -736,7 +724,6 @@ Specifies the name or the CloudTrail ARN of the trail for which CloudTrail will 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/StopLogging)
 """
-
 @inline stop_logging(aws::AWSConfig=default_aws_config(); args...) = stop_logging(aws, args)
 
 @inline stop_logging(aws::AWSConfig, args) = AWSCore.Services.cloudtrail(aws, "StopLogging", args)
@@ -838,7 +825,6 @@ Examples:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/UpdateTrail)
 """
-
 @inline update_trail(aws::AWSConfig=default_aws_config(); args...) = update_trail(aws, args)
 
 @inline update_trail(aws::AWSConfig, args) = AWSCore.Services.cloudtrail(aws, "UpdateTrail", args)

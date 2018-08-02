@@ -56,21 +56,29 @@ The `PerformanceMode` of the file system. We recommend `generalPurpose` performa
 
 
 ## `Encrypted = ::Bool`
-A boolean value that, if true, creates an encrypted file system. When creating an encrypted file system, you have the option of specifying a [CreateFileSystemRequest\$KmsKeyId](@ref) for an existing AWS Key Management Service (AWS KMS) customer master key (CMK). If you don't specify a CMK, then the default CMK for Amazon EFS, `/aws/elasticfilesystem`, is used to protect the encrypted file system.
+A Boolean value that, if true, creates an encrypted file system. When creating an encrypted file system, you have the option of specifying a [CreateFileSystemRequest\$KmsKeyId](@ref) for an existing AWS Key Management Service (AWS KMS) customer master key (CMK). If you don't specify a CMK, then the default CMK for Amazon EFS, `/aws/elasticfilesystem`, is used to protect the encrypted file system.
 
 
 ## `KmsKeyId = ::String`
-The id of the AWS KMS CMK that will be used to protect the encrypted file system. This parameter is only required if you want to use a non-default CMK. If this parameter is not specified, the default CMK for Amazon EFS is used. This id can be in one of the following formats:
+The ID of the AWS KMS CMK to be used to protect the encrypted file system. This parameter is only required if you want to use a non-default CMK. If this parameter is not specified, the default CMK for Amazon EFS is used. This ID can be in one of the following formats:
 
-*   Key ID - A unique identifier of the key. For example, `1234abcd-12ab-34cd-56ef-1234567890ab`.
+*   Key ID - A unique identifier of the key, for example, `1234abcd-12ab-34cd-56ef-1234567890ab`.
 
-*   ARN - An Amazon Resource Name for the key. For example, `arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
+*   ARN - An Amazon Resource Name (ARN) for the key, for example, `arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
 
 *   Key alias - A previously created display name for a key. For example, `alias/projectKey1`.
 
-*   Key alias ARN - An Amazon Resource Name for a key alias. For example, `arn:aws:kms:us-west-2:444455556666:alias/projectKey1`.
+*   Key alias ARN - An ARN for a key alias, for example, `arn:aws:kms:us-west-2:444455556666:alias/projectKey1`.
 
-Note that if the KmsKeyId is specified, the [CreateFileSystemRequest\$Encrypted](@ref) parameter must be set to true.
+If KmsKeyId is specified, the [CreateFileSystemRequest\$Encrypted](@ref) parameter must be set to true.
+
+
+## `ThroughputMode = "bursting" or "provisioned"`
+The throughput mode for the file system to be created. There are two throughput modes to choose from for your file system: bursting and provisioned. You can decrease your file system's throughput in Provisioned Throughput mode or change between the throughput modes as long as it’s been more than 24 hours since the last decrease or throughput mode change.
+
+
+## `ProvisionedThroughputInMibps = double`
+The throughput, measured in MiB/s, that you want to provision for a file system that you're creating. The limit on throughput is 1024 MiB/s. You can get these limits increased by contacting AWS Support. For more information, see [Amazon EFS Limits That You Can Increase](http://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits) in the *Amazon EFS User Guide.*
 
 
 
@@ -81,7 +89,7 @@ Note that if the KmsKeyId is specified, the [CreateFileSystemRequest\$Encrypted]
 
 # Exceptions
 
-`BadRequest`, `InternalServerError`, `FileSystemAlreadyExists` or `FileSystemLimitExceeded`.
+`BadRequest`, `InternalServerError`, `FileSystemAlreadyExists`, `FileSystemLimitExceeded`, `InsufficientThroughputCapacity` or `ThroughputLimitExceeded`.
 
 # Example: To create a new file system
 
@@ -113,7 +121,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/CreateFileSystem)
 """
-
 @inline create_file_system(aws::AWSConfig=default_aws_config(); args...) = create_file_system(aws, args)
 
 @inline create_file_system(aws::AWSConfig, args) = AWSCore.Services.elasticfilesystem(aws, "POST", "/2015-02-01/file-systems", args)
@@ -242,7 +249,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/CreateMountTarget)
 """
-
 @inline create_mount_target(aws::AWSConfig=default_aws_config(); args...) = create_mount_target(aws, args)
 
 @inline create_mount_target(aws::AWSConfig, args) = AWSCore.Services.elasticfilesystem(aws, "POST", "/2015-02-01/mount-targets", args)
@@ -305,7 +311,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/CreateTags)
 """
-
 @inline create_tags(aws::AWSConfig=default_aws_config(); args...) = create_tags(aws, args)
 
 @inline create_tags(aws::AWSConfig, args) = AWSCore.Services.elasticfilesystem(aws, "POST", "/2015-02-01/create-tags/{FileSystemId}", args)
@@ -358,7 +363,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/DeleteFileSystem)
 """
-
 @inline delete_file_system(aws::AWSConfig=default_aws_config(); args...) = delete_file_system(aws, args)
 
 @inline delete_file_system(aws::AWSConfig, args) = AWSCore.Services.elasticfilesystem(aws, "DELETE", "/2015-02-01/file-systems/{FileSystemId}", args)
@@ -417,7 +421,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/DeleteMountTarget)
 """
-
 @inline delete_mount_target(aws::AWSConfig=default_aws_config(); args...) = delete_mount_target(aws, args)
 
 @inline delete_mount_target(aws::AWSConfig, args) = AWSCore.Services.elasticfilesystem(aws, "DELETE", "/2015-02-01/mount-targets/{MountTargetId}", args)
@@ -472,7 +475,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/DeleteTags)
 """
-
 @inline delete_tags(aws::AWSConfig=default_aws_config(); args...) = delete_tags(aws, args)
 
 @inline delete_tags(aws::AWSConfig, args) = AWSCore.Services.elasticfilesystem(aws, "POST", "/2015-02-01/delete-tags/{FileSystemId}", args)
@@ -565,7 +567,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/DescribeFileSystems)
 """
-
 @inline describe_file_systems(aws::AWSConfig=default_aws_config(); args...) = describe_file_systems(aws, args)
 
 @inline describe_file_systems(aws::AWSConfig, args) = AWSCore.Services.elasticfilesystem(aws, "GET", "/2015-02-01/file-systems", args)
@@ -630,7 +631,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/DescribeMountTargetSecurityGroups)
 """
-
 @inline describe_mount_target_security_groups(aws::AWSConfig=default_aws_config(); args...) = describe_mount_target_security_groups(aws, args)
 
 @inline describe_mount_target_security_groups(aws::AWSConfig, args) = AWSCore.Services.elasticfilesystem(aws, "GET", "/2015-02-01/mount-targets/{MountTargetId}/security-groups", args)
@@ -711,7 +711,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/DescribeMountTargets)
 """
-
 @inline describe_mount_targets(aws::AWSConfig=default_aws_config(); args...) = describe_mount_targets(aws, args)
 
 @inline describe_mount_targets(aws::AWSConfig, args) = AWSCore.Services.elasticfilesystem(aws, "GET", "/2015-02-01/mount-targets", args)
@@ -783,7 +782,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/DescribeTags)
 """
-
 @inline describe_tags(aws::AWSConfig=default_aws_config(); args...) = describe_tags(aws, args)
 
 @inline describe_tags(aws::AWSConfig, args) = AWSCore.Services.elasticfilesystem(aws, "GET", "/2015-02-01/tags/{FileSystemId}/", args)
@@ -844,12 +842,57 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/ModifyMountTargetSecurityGroups)
 """
-
 @inline modify_mount_target_security_groups(aws::AWSConfig=default_aws_config(); args...) = modify_mount_target_security_groups(aws, args)
 
 @inline modify_mount_target_security_groups(aws::AWSConfig, args) = AWSCore.Services.elasticfilesystem(aws, "PUT", "/2015-02-01/mount-targets/{MountTargetId}/security-groups", args)
 
 @inline modify_mount_target_security_groups(args) = modify_mount_target_security_groups(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.EFS.update_file_system
+    update_file_system([::AWSConfig], arguments::Dict)
+    update_file_system([::AWSConfig]; FileSystemId=, <keyword arguments>)
+
+    using AWSCore.Services.elasticfilesystem
+    elasticfilesystem([::AWSConfig], "PUT", "/2015-02-01/file-systems/{FileSystemId}", arguments::Dict)
+    elasticfilesystem([::AWSConfig], "PUT", "/2015-02-01/file-systems/{FileSystemId}", FileSystemId=, <keyword arguments>)
+
+# UpdateFileSystem Operation
+
+Updates the throughput mode or the amount of provisioned throughput of an existing file system.
+
+# Arguments
+
+## `FileSystemId = ::String` -- *Required*
+The ID of the file system that you want to update.
+
+
+## `ThroughputMode = "bursting" or "provisioned"`
+(Optional) The throughput mode that you want your file system to use. If you're not updating your throughput mode, you don't need to provide this value in your request.
+
+
+## `ProvisionedThroughputInMibps = double`
+(Optional) The amount of throughput, in MiB/s, that you want to provision for your file system. If you're not updating the amount of provisioned throughput for your file system, you don't need to provide this value in your request.
+
+
+
+
+# Returns
+
+`FileSystemDescription`
+
+# Exceptions
+
+`BadRequest`, `FileSystemNotFound`, `IncorrectFileSystemLifeCycleState`, `InsufficientThroughputCapacity`, `InternalServerError`, `ThroughputLimitExceeded` or `TooManyRequests`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/UpdateFileSystem)
+"""
+@inline update_file_system(aws::AWSConfig=default_aws_config(); args...) = update_file_system(aws, args)
+
+@inline update_file_system(aws::AWSConfig, args) = AWSCore.Services.elasticfilesystem(aws, "PUT", "/2015-02-01/file-systems/{FileSystemId}", args)
+
+@inline update_file_system(args) = update_file_system(default_aws_config(), args)
 
 
 

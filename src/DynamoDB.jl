@@ -174,7 +174,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/BatchGetItem)
 """
-
 @inline batch_get_item(aws::AWSConfig=default_aws_config(); args...) = batch_get_item(aws, args)
 
 @inline batch_get_item(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "BatchGetItem", args)
@@ -220,6 +219,8 @@ If one or more of the following is true, DynamoDB rejects the entire batch write
 *   Primary key attributes specified on an item in the request do not match those in the corresponding table's primary key schema.
 
 *   You try to perform multiple operations on the same item in the same `BatchWriteItem` request. For example, you cannot put and delete the same item in the same `BatchWriteItem` request.
+
+*   Your request contains at least two items with identical hash and range keys (which essentially is two put operations).
 
 *   There are more than 25 requests in the batch.
 
@@ -329,12 +330,136 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/BatchWriteItem)
 """
-
 @inline batch_write_item(aws::AWSConfig=default_aws_config(); args...) = batch_write_item(aws, args)
 
 @inline batch_write_item(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "BatchWriteItem", args)
 
 @inline batch_write_item(args) = batch_write_item(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DynamoDB.create_backup
+    create_backup([::AWSConfig], arguments::Dict)
+    create_backup([::AWSConfig]; TableName=, BackupName=)
+
+    using AWSCore.Services.dynamodb
+    dynamodb([::AWSConfig], "CreateBackup", arguments::Dict)
+    dynamodb([::AWSConfig], "CreateBackup", TableName=, BackupName=)
+
+# CreateBackup Operation
+
+Creates a backup for an existing table.
+
+Each time you create an On-Demand Backup, the entire table data is backed up. There is no limit to the number of on-demand backups that can be taken.
+
+When you create an On-Demand Backup, a time marker of the request is cataloged, and the backup is created asynchronously, by applying all changes until the time of the request to the last full table snapshot. Backup requests are processed instantaneously and become available for restore within minutes.
+
+You can call `CreateBackup` at a maximum rate of 50 times per second.
+
+All backups in DynamoDB work without consuming any provisioned throughput on the table.
+
+If you submit a backup request on 2018-12-14 at 14:25:00, the backup is guaranteed to contain all data committed to the table up to 14:24:00, and data committed after 14:26:00 will not be. The backup may or may not contain data modifications made between 14:24:00 and 14:26:00. On-Demand Backup does not support causal consistency.
+
+Along with data, the following are also included on the backups:
+
+*   Global secondary indexes (GSIs)
+
+*   Local secondary indexes (LSIs)
+
+*   Streams
+
+*   Provisioned read and write capacity
+
+# Arguments
+
+## `TableName = ::String` -- *Required*
+The name of the table.
+
+
+## `BackupName = ::String` -- *Required*
+Specified name for the backup.
+
+
+
+
+# Returns
+
+`CreateBackupOutput`
+
+# Exceptions
+
+`TableNotFoundException`, `TableInUseException`, `ContinuousBackupsUnavailableException`, `BackupInUseException`, `LimitExceededException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/CreateBackup)
+"""
+@inline create_backup(aws::AWSConfig=default_aws_config(); args...) = create_backup(aws, args)
+
+@inline create_backup(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "CreateBackup", args)
+
+@inline create_backup(args) = create_backup(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DynamoDB.create_global_table
+    create_global_table([::AWSConfig], arguments::Dict)
+    create_global_table([::AWSConfig]; GlobalTableName=, ReplicationGroup=)
+
+    using AWSCore.Services.dynamodb
+    dynamodb([::AWSConfig], "CreateGlobalTable", arguments::Dict)
+    dynamodb([::AWSConfig], "CreateGlobalTable", GlobalTableName=, ReplicationGroup=)
+
+# CreateGlobalTable Operation
+
+Creates a global table from an existing table. A global table creates a replication relationship between two or more DynamoDB tables with the same table name in the provided regions.
+
+If you want to add a new replica table to a global table, each of the following conditions must be true:
+
+*   The table must have the same primary key as all of the other replicas.
+
+*   The table must have the same name as all of the other replicas.
+
+*   The table must have DynamoDB Streams enabled, with the stream containing both the new and the old images of the item.
+
+*   None of the replica tables in the global table can contain any data.
+
+If global secondary indexes are specified, then the following conditions must also be met:
+
+*   The global secondary indexes must have the same name.
+
+*   The global secondary indexes must have the same hash key and sort key (if present).
+
+**Important**
+> Write capacity settings should be set consistently across your replica tables and secondary indexes. DynamoDB strongly recommends enabling auto scaling to manage the write capacity settings for all of your global tables replicas and indexes.
+
+If you prefer to manage write capacity settings manually, you should provision equal replicated write capacity units to your replica tables. You should also provision equal replicated write capacity units to matching secondary indexes across your global table.
+
+# Arguments
+
+## `GlobalTableName = ::String` -- *Required*
+The global table name.
+
+
+## `ReplicationGroup = [["RegionName" =>  ::String], ...]` -- *Required*
+The regions where the global table needs to be created.
+
+
+
+
+# Returns
+
+`CreateGlobalTableOutput`
+
+# Exceptions
+
+`LimitExceededException`, `InternalServerError`, `GlobalTableAlreadyExistsException` or `TableNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/CreateGlobalTable)
+"""
+@inline create_global_table(aws::AWSConfig=default_aws_config(); args...) = create_global_table(aws, args)
+
+@inline create_global_table(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "CreateGlobalTable", args)
+
+@inline create_global_table(args) = create_global_table(default_aws_config(), args)
 
 
 """
@@ -505,6 +630,10 @@ The settings for DynamoDB Streams on the table. These settings consist of:
     ]
 ```
 
+## `SSESpecification = ["Enabled" => <required> ::Bool]`
+Represents the settings used to enable server-side encryption.
+
+
 
 
 # Returns
@@ -589,12 +718,51 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/CreateTable)
 """
-
 @inline create_table(aws::AWSConfig=default_aws_config(); args...) = create_table(aws, args)
 
 @inline create_table(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "CreateTable", args)
 
 @inline create_table(args) = create_table(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DynamoDB.delete_backup
+    delete_backup([::AWSConfig], arguments::Dict)
+    delete_backup([::AWSConfig]; BackupArn=)
+
+    using AWSCore.Services.dynamodb
+    dynamodb([::AWSConfig], "DeleteBackup", arguments::Dict)
+    dynamodb([::AWSConfig], "DeleteBackup", BackupArn=)
+
+# DeleteBackup Operation
+
+Deletes an existing backup of a table.
+
+You can call `DeleteBackup` at a maximum rate of 10 times per second.
+
+# Arguments
+
+## `BackupArn = ::String` -- *Required*
+The ARN associated with the backup.
+
+
+
+
+# Returns
+
+`DeleteBackupOutput`
+
+# Exceptions
+
+`BackupNotFoundException`, `BackupInUseException`, `LimitExceededException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DeleteBackup)
+"""
+@inline delete_backup(aws::AWSConfig=default_aws_config(); args...) = delete_backup(aws, args)
+
+@inline delete_backup(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "DeleteBackup", args)
+
+@inline delete_backup(args) = delete_backup(default_aws_config(), args)
 
 
 """
@@ -757,7 +925,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DeleteItem)
 """
-
 @inline delete_item(aws::AWSConfig=default_aws_config(); args...) = delete_item(aws, args)
 
 @inline delete_item(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "DeleteItem", args)
@@ -833,12 +1000,171 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DeleteTable)
 """
-
 @inline delete_table(aws::AWSConfig=default_aws_config(); args...) = delete_table(aws, args)
 
 @inline delete_table(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "DeleteTable", args)
 
 @inline delete_table(args) = delete_table(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DynamoDB.describe_backup
+    describe_backup([::AWSConfig], arguments::Dict)
+    describe_backup([::AWSConfig]; BackupArn=)
+
+    using AWSCore.Services.dynamodb
+    dynamodb([::AWSConfig], "DescribeBackup", arguments::Dict)
+    dynamodb([::AWSConfig], "DescribeBackup", BackupArn=)
+
+# DescribeBackup Operation
+
+Describes an existing backup of a table.
+
+You can call `DescribeBackup` at a maximum rate of 10 times per second.
+
+# Arguments
+
+## `BackupArn = ::String` -- *Required*
+The ARN associated with the backup.
+
+
+
+
+# Returns
+
+`DescribeBackupOutput`
+
+# Exceptions
+
+`BackupNotFoundException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeBackup)
+"""
+@inline describe_backup(aws::AWSConfig=default_aws_config(); args...) = describe_backup(aws, args)
+
+@inline describe_backup(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "DescribeBackup", args)
+
+@inline describe_backup(args) = describe_backup(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DynamoDB.describe_continuous_backups
+    describe_continuous_backups([::AWSConfig], arguments::Dict)
+    describe_continuous_backups([::AWSConfig]; TableName=)
+
+    using AWSCore.Services.dynamodb
+    dynamodb([::AWSConfig], "DescribeContinuousBackups", arguments::Dict)
+    dynamodb([::AWSConfig], "DescribeContinuousBackups", TableName=)
+
+# DescribeContinuousBackups Operation
+
+Checks the status of continuous backups and point in time recovery on the specified table. Continuous backups are `ENABLED` on all tables at table creation. If point in time recovery is enabled, `PointInTimeRecoveryStatus` will be set to ENABLED.
+
+Once continuous backups and point in time recovery are enabled, you can restore to any point in time within `EarliestRestorableDateTime` and `LatestRestorableDateTime`.
+
+`LatestRestorableDateTime` is typically 5 minutes before the current time. You can restore your table to any point in time during the last 35 days.
+
+You can call `DescribeContinuousBackups` at a maximum rate of 10 times per second.
+
+# Arguments
+
+## `TableName = ::String` -- *Required*
+Name of the table for which the customer wants to check the continuous backups and point in time recovery settings.
+
+
+
+
+# Returns
+
+`DescribeContinuousBackupsOutput`
+
+# Exceptions
+
+`TableNotFoundException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeContinuousBackups)
+"""
+@inline describe_continuous_backups(aws::AWSConfig=default_aws_config(); args...) = describe_continuous_backups(aws, args)
+
+@inline describe_continuous_backups(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "DescribeContinuousBackups", args)
+
+@inline describe_continuous_backups(args) = describe_continuous_backups(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DynamoDB.describe_global_table
+    describe_global_table([::AWSConfig], arguments::Dict)
+    describe_global_table([::AWSConfig]; GlobalTableName=)
+
+    using AWSCore.Services.dynamodb
+    dynamodb([::AWSConfig], "DescribeGlobalTable", arguments::Dict)
+    dynamodb([::AWSConfig], "DescribeGlobalTable", GlobalTableName=)
+
+# DescribeGlobalTable Operation
+
+Returns information about the specified global table.
+
+# Arguments
+
+## `GlobalTableName = ::String` -- *Required*
+The name of the global table.
+
+
+
+
+# Returns
+
+`DescribeGlobalTableOutput`
+
+# Exceptions
+
+`InternalServerError` or `GlobalTableNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeGlobalTable)
+"""
+@inline describe_global_table(aws::AWSConfig=default_aws_config(); args...) = describe_global_table(aws, args)
+
+@inline describe_global_table(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "DescribeGlobalTable", args)
+
+@inline describe_global_table(args) = describe_global_table(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DynamoDB.describe_global_table_settings
+    describe_global_table_settings([::AWSConfig], arguments::Dict)
+    describe_global_table_settings([::AWSConfig]; GlobalTableName=)
+
+    using AWSCore.Services.dynamodb
+    dynamodb([::AWSConfig], "DescribeGlobalTableSettings", arguments::Dict)
+    dynamodb([::AWSConfig], "DescribeGlobalTableSettings", GlobalTableName=)
+
+# DescribeGlobalTableSettings Operation
+
+Describes region specific settings for a global table.
+
+# Arguments
+
+## `GlobalTableName = ::String` -- *Required*
+The name of the global table to describe.
+
+
+
+
+# Returns
+
+`DescribeGlobalTableSettingsOutput`
+
+# Exceptions
+
+`GlobalTableNotFoundException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeGlobalTableSettings)
+"""
+@inline describe_global_table_settings(aws::AWSConfig=default_aws_config(); args...) = describe_global_table_settings(aws, args)
+
+@inline describe_global_table_settings(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "DescribeGlobalTableSettings", args)
+
+@inline describe_global_table_settings(args) = describe_global_table_settings(default_aws_config(), args)
 
 
 """
@@ -922,7 +1248,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeLimits)
 """
-
 @inline describe_limits(aws::AWSConfig=default_aws_config(); args...) = describe_limits(aws, args)
 
 @inline describe_limits(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "DescribeLimits", args)
@@ -1013,7 +1338,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeTable)
 """
-
 @inline describe_table(aws::AWSConfig=default_aws_config(); args...) = describe_table(aws, args)
 
 @inline describe_table(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "DescribeTable", args)
@@ -1052,7 +1376,6 @@ The name of the table to be described.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeTimeToLive)
 """
-
 @inline describe_time_to_live(aws::AWSConfig=default_aws_config(); args...) = describe_time_to_live(aws, args)
 
 @inline describe_time_to_live(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "DescribeTimeToLive", args)
@@ -1182,12 +1505,115 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/GetItem)
 """
-
 @inline get_item(aws::AWSConfig=default_aws_config(); args...) = get_item(aws, args)
 
 @inline get_item(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "GetItem", args)
 
 @inline get_item(args) = get_item(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DynamoDB.list_backups
+    list_backups([::AWSConfig], arguments::Dict)
+    list_backups([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.dynamodb
+    dynamodb([::AWSConfig], "ListBackups", arguments::Dict)
+    dynamodb([::AWSConfig], "ListBackups", <keyword arguments>)
+
+# ListBackups Operation
+
+List backups associated with an AWS account. To list backups for a given table, specify `TableName`. `ListBackups` returns a paginated list of results with at most 1MB worth of items in a page. You can also specify a limit for the maximum number of entries to be returned in a page.
+
+In the request, start time is inclusive but end time is exclusive. Note that these limits are for the time at which the original backup was requested.
+
+You can call `ListBackups` a maximum of 5 times per second.
+
+# Arguments
+
+## `TableName = ::String`
+The backups from the table specified by TableName are listed.
+
+
+## `Limit = ::Int`
+Maximum number of backups to return at once.
+
+
+## `TimeRangeLowerBound = timestamp`
+Only backups created after this time are listed. `TimeRangeLowerBound` is inclusive.
+
+
+## `TimeRangeUpperBound = timestamp`
+Only backups created before this time are listed. `TimeRangeUpperBound` is exclusive.
+
+
+## `ExclusiveStartBackupArn = ::String`
+`LastEvaluatedBackupArn` is the ARN of the backup last evaluated when the current page of results was returned, inclusive of the current page of results. This value may be specified as the `ExclusiveStartBackupArn` of a new `ListBackups` operation in order to fetch the next page of results.
+
+
+
+
+# Returns
+
+`ListBackupsOutput`
+
+# Exceptions
+
+`InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/ListBackups)
+"""
+@inline list_backups(aws::AWSConfig=default_aws_config(); args...) = list_backups(aws, args)
+
+@inline list_backups(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "ListBackups", args)
+
+@inline list_backups(args) = list_backups(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DynamoDB.list_global_tables
+    list_global_tables([::AWSConfig], arguments::Dict)
+    list_global_tables([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.dynamodb
+    dynamodb([::AWSConfig], "ListGlobalTables", arguments::Dict)
+    dynamodb([::AWSConfig], "ListGlobalTables", <keyword arguments>)
+
+# ListGlobalTables Operation
+
+Lists all global tables that have a replica in the specified region.
+
+# Arguments
+
+## `ExclusiveStartGlobalTableName = ::String`
+The first global table name that this operation will evaluate.
+
+
+## `Limit = ::Int`
+The maximum number of table names to return.
+
+
+## `RegionName = ::String`
+Lists the global tables in a specific region.
+
+
+
+
+# Returns
+
+`ListGlobalTablesOutput`
+
+# Exceptions
+
+`InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/ListGlobalTables)
+"""
+@inline list_global_tables(aws::AWSConfig=default_aws_config(); args...) = list_global_tables(aws, args)
+
+@inline list_global_tables(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "ListGlobalTables", args)
+
+@inline list_global_tables(args) = list_global_tables(default_aws_config(), args)
 
 
 """
@@ -1248,7 +1674,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/ListTables)
 """
-
 @inline list_tables(aws::AWSConfig=default_aws_config(); args...) = list_tables(aws, args)
 
 @inline list_tables(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "ListTables", args)
@@ -1293,7 +1718,6 @@ An optional string that, if supplied, must be copied from the output of a previo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/ListTagsOfResource)
 """
-
 @inline list_tags_of_resource(aws::AWSConfig=default_aws_config(); args...) = list_tags_of_resource(aws, args)
 
 @inline list_tags_of_resource(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "ListTagsOfResource", args)
@@ -1495,7 +1919,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/PutItem)
 """
-
 @inline put_item(aws::AWSConfig=default_aws_config(); args...) = put_item(aws, args)
 
 @inline put_item(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "PutItem", args)
@@ -1594,7 +2017,7 @@ This is a legacy parameter. Use `FilterExpression` instead. For more information
 ## `ScanIndexForward = ::Bool`
 Specifies the order for index traversal: If `true` (default), the traversal is performed in ascending order; if `false`, the traversal is performed in descending order.
 
-Items with the same partition key value are stored in sorted order by sort key. If the sort key data type is Number, the results are stored in numeric order. For type String, the results are stored in order of ASCII character code values. For type Binary, DynamoDB treats each byte of the binary data as unsigned.
+Items with the same partition key value are stored in sorted order by sort key. If the sort key data type is Number, the results are stored in numeric order. For type String, the results are stored in order of UTF-8 bytes. For type Binary, DynamoDB treats each byte of the binary data as unsigned.
 
 If `ScanIndexForward` is `true`, DynamoDB returns the results in the order in which they are stored (by sort key value). This is the default behavior. If `ScanIndexForward` is `false`, DynamoDB reads the results in reverse order by sort key value, and then returns the results to the client.
 
@@ -1631,7 +2054,9 @@ For more information, see [Filter Expressions](http://docs.aws.amazon.com/amazon
 ## `KeyConditionExpression = ::String`
 The condition that specifies the key value(s) for items to be retrieved by the `Query` action.
 
-The condition must perform an equality test on a single partition key value. The condition can also perform one of several comparison tests on a single sort key value. `Query` can use `KeyConditionExpression` to retrieve one item with a given partition key value and sort key value, or several items that have the same partition key value but different sort key values.
+The condition must perform an equality test on a single partition key value.
+
+The condition can optionally perform one of several comparison tests on a single sort key value. This allows `Query` to retrieve one item with a given partition key value and sort key value, or several items that have the same partition key value but different sort key values.
 
 The partition key equality test is required, and must be specified in the following format:
 
@@ -1765,12 +2190,150 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/Query)
 """
-
 @inline query(aws::AWSConfig=default_aws_config(); args...) = query(aws, args)
 
 @inline query(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "Query", args)
 
 @inline query(args) = query(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DynamoDB.restore_table_from_backup
+    restore_table_from_backup([::AWSConfig], arguments::Dict)
+    restore_table_from_backup([::AWSConfig]; TargetTableName=, BackupArn=)
+
+    using AWSCore.Services.dynamodb
+    dynamodb([::AWSConfig], "RestoreTableFromBackup", arguments::Dict)
+    dynamodb([::AWSConfig], "RestoreTableFromBackup", TargetTableName=, BackupArn=)
+
+# RestoreTableFromBackup Operation
+
+Creates a new table from an existing backup. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account.
+
+You can call `RestoreTableFromBackup` at a maximum rate of 10 times per second.
+
+You must manually set up the following on the restored table:
+
+*   Auto scaling policies
+
+*   IAM policies
+
+*   Cloudwatch metrics and alarms
+
+*   Tags
+
+*   Stream settings
+
+*   Time to Live (TTL) settings
+
+# Arguments
+
+## `TargetTableName = ::String` -- *Required*
+The name of the new table to which the backup must be restored.
+
+
+## `BackupArn = ::String` -- *Required*
+The ARN associated with the backup.
+
+
+
+
+# Returns
+
+`RestoreTableFromBackupOutput`
+
+# Exceptions
+
+`TableAlreadyExistsException`, `TableInUseException`, `BackupNotFoundException`, `BackupInUseException`, `LimitExceededException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/RestoreTableFromBackup)
+"""
+@inline restore_table_from_backup(aws::AWSConfig=default_aws_config(); args...) = restore_table_from_backup(aws, args)
+
+@inline restore_table_from_backup(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "RestoreTableFromBackup", args)
+
+@inline restore_table_from_backup(args) = restore_table_from_backup(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DynamoDB.restore_table_to_point_in_time
+    restore_table_to_point_in_time([::AWSConfig], arguments::Dict)
+    restore_table_to_point_in_time([::AWSConfig]; SourceTableName=, TargetTableName=, <keyword arguments>)
+
+    using AWSCore.Services.dynamodb
+    dynamodb([::AWSConfig], "RestoreTableToPointInTime", arguments::Dict)
+    dynamodb([::AWSConfig], "RestoreTableToPointInTime", SourceTableName=, TargetTableName=, <keyword arguments>)
+
+# RestoreTableToPointInTime Operation
+
+Restores the specified table to the specified point in time within `EarliestRestorableDateTime` and `LatestRestorableDateTime`. You can restore your table to any point in time during the last 35 days. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account.
+
+When you restore using point in time recovery, DynamoDB restores your table data to the state based on the selected date and time (day:hour:minute:second) to a new table.
+
+Along with data, the following are also included on the new restored table using point in time recovery:
+
+*   Global secondary indexes (GSIs)
+
+*   Local secondary indexes (LSIs)
+
+*   Provisioned read and write capacity
+
+*   Encryption settings
+
+    **Important**
+    > All these settings come from the current settings of the source table at the time of restore.
+
+You must manually set up the following on the restored table:
+
+*   Auto scaling policies
+
+*   IAM policies
+
+*   Cloudwatch metrics and alarms
+
+*   Tags
+
+*   Stream settings
+
+*   Time to Live (TTL) settings
+
+*   Point in time recovery settings
+
+# Arguments
+
+## `SourceTableName = ::String` -- *Required*
+Name of the source table that is being restored.
+
+
+## `TargetTableName = ::String` -- *Required*
+The name of the new table to which it must be restored to.
+
+
+## `UseLatestRestorableTime = ::Bool`
+Restore the table to the latest possible time. `LatestRestorableDateTime` is typically 5 minutes before the current time.
+
+
+## `RestoreDateTime = timestamp`
+Time in the past to restore the table to.
+
+
+
+
+# Returns
+
+`RestoreTableToPointInTimeOutput`
+
+# Exceptions
+
+`TableAlreadyExistsException`, `TableNotFoundException`, `TableInUseException`, `LimitExceededException`, `InvalidRestoreTimeException`, `PointInTimeRecoveryUnavailableException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/RestoreTableToPointInTime)
+"""
+@inline restore_table_to_point_in_time(aws::AWSConfig=default_aws_config(); args...) = restore_table_to_point_in_time(aws, args)
+
+@inline restore_table_to_point_in_time(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "RestoreTableToPointInTime", args)
+
+@inline restore_table_to_point_in_time(args) = restore_table_to_point_in_time(default_aws_config(), args)
 
 
 """
@@ -2010,7 +2573,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/Scan)
 """
-
 @inline scan(aws::AWSConfig=default_aws_config(); args...) = scan(aws, args)
 
 @inline scan(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "Scan", args)
@@ -2056,7 +2618,6 @@ The tags to be assigned to the Amazon DynamoDB resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/TagResource)
 """
-
 @inline tag_resource(aws::AWSConfig=default_aws_config(); args...) = tag_resource(aws, args)
 
 @inline tag_resource(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "TagResource", args)
@@ -2097,12 +2658,244 @@ A list of tag keys. Existing tags of the resource whose keys are members of this
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UntagResource)
 """
-
 @inline untag_resource(aws::AWSConfig=default_aws_config(); args...) = untag_resource(aws, args)
 
 @inline untag_resource(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "UntagResource", args)
 
 @inline untag_resource(args) = untag_resource(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DynamoDB.update_continuous_backups
+    update_continuous_backups([::AWSConfig], arguments::Dict)
+    update_continuous_backups([::AWSConfig]; TableName=, PointInTimeRecoverySpecification=)
+
+    using AWSCore.Services.dynamodb
+    dynamodb([::AWSConfig], "UpdateContinuousBackups", arguments::Dict)
+    dynamodb([::AWSConfig], "UpdateContinuousBackups", TableName=, PointInTimeRecoverySpecification=)
+
+# UpdateContinuousBackups Operation
+
+`UpdateContinuousBackups` enables or disables point in time recovery for the specified table. A successful `UpdateContinuousBackups` call returns the current `ContinuousBackupsDescription`. Continuous backups are `ENABLED` on all tables at table creation. If point in time recovery is enabled, `PointInTimeRecoveryStatus` will be set to ENABLED.
+
+Once continuous backups and point in time recovery are enabled, you can restore to any point in time within `EarliestRestorableDateTime` and `LatestRestorableDateTime`.
+
+`LatestRestorableDateTime` is typically 5 minutes before the current time. You can restore your table to any point in time during the last 35 days..
+
+# Arguments
+
+## `TableName = ::String` -- *Required*
+The name of the table.
+
+
+## `PointInTimeRecoverySpecification = ["PointInTimeRecoveryEnabled" => <required> ::Bool]` -- *Required*
+Represents the settings used to enable point in time recovery.
+
+
+
+
+# Returns
+
+`UpdateContinuousBackupsOutput`
+
+# Exceptions
+
+`TableNotFoundException`, `ContinuousBackupsUnavailableException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateContinuousBackups)
+"""
+@inline update_continuous_backups(aws::AWSConfig=default_aws_config(); args...) = update_continuous_backups(aws, args)
+
+@inline update_continuous_backups(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "UpdateContinuousBackups", args)
+
+@inline update_continuous_backups(args) = update_continuous_backups(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DynamoDB.update_global_table
+    update_global_table([::AWSConfig], arguments::Dict)
+    update_global_table([::AWSConfig]; GlobalTableName=, ReplicaUpdates=)
+
+    using AWSCore.Services.dynamodb
+    dynamodb([::AWSConfig], "UpdateGlobalTable", arguments::Dict)
+    dynamodb([::AWSConfig], "UpdateGlobalTable", GlobalTableName=, ReplicaUpdates=)
+
+# UpdateGlobalTable Operation
+
+Adds or removes replicas in the specified global table. The global table must already exist to be able to use this operation. Any replica to be added must be empty, must have the same name as the global table, must have the same key schema, and must have DynamoDB Streams enabled and must have same provisioned and maximum write capacity units.
+
+**Note**
+> Although you can use `UpdateGlobalTable` to add replicas and remove replicas in a single request, for simplicity we recommend that you issue separate requests for adding or removing replicas.
+
+If global secondary indexes are specified, then the following conditions must also be met:
+
+*   The global secondary indexes must have the same name.
+
+*   The global secondary indexes must have the same hash key and sort key (if present).
+
+*   The global secondary indexes must have the same provisioned and maximum write capacity units.
+
+# Arguments
+
+## `GlobalTableName = ::String` -- *Required*
+The global table name.
+
+
+## `ReplicaUpdates = [[ ... ], ...]` -- *Required*
+A list of regions that should be added or removed from the global table.
+```
+ ReplicaUpdates = [[
+        "Create" =>  ["RegionName" => <required> ::String],
+        "Delete" =>  ["RegionName" => <required> ::String]
+    ], ...]
+```
+
+
+
+# Returns
+
+`UpdateGlobalTableOutput`
+
+# Exceptions
+
+`InternalServerError`, `GlobalTableNotFoundException`, `ReplicaAlreadyExistsException`, `ReplicaNotFoundException` or `TableNotFoundException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateGlobalTable)
+"""
+@inline update_global_table(aws::AWSConfig=default_aws_config(); args...) = update_global_table(aws, args)
+
+@inline update_global_table(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "UpdateGlobalTable", args)
+
+@inline update_global_table(args) = update_global_table(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DynamoDB.update_global_table_settings
+    update_global_table_settings([::AWSConfig], arguments::Dict)
+    update_global_table_settings([::AWSConfig]; GlobalTableName=, <keyword arguments>)
+
+    using AWSCore.Services.dynamodb
+    dynamodb([::AWSConfig], "UpdateGlobalTableSettings", arguments::Dict)
+    dynamodb([::AWSConfig], "UpdateGlobalTableSettings", GlobalTableName=, <keyword arguments>)
+
+# UpdateGlobalTableSettings Operation
+
+Updates settings for a global table.
+
+# Arguments
+
+## `GlobalTableName = ::String` -- *Required*
+The name of the global table
+
+
+## `GlobalTableProvisionedWriteCapacityUnits = ::Int`
+The maximum number of writes consumed per second before DynamoDB returns a `ThrottlingException.`
+
+
+## `GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate = [ ... ]`
+AutoScaling settings for managing provisioned write capacity for the global table.
+```
+ GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate = [
+        "MinimumUnits" =>  ::Int,
+        "MaximumUnits" =>  ::Int,
+        "AutoScalingDisabled" =>  ::Bool,
+        "AutoScalingRoleArn" =>  ::String,
+        "ScalingPolicyUpdate" =>  [
+            "PolicyName" =>  ::String,
+            "TargetTrackingScalingPolicyConfiguration" => <required> [
+                "DisableScaleIn" =>  ::Bool,
+                "ScaleInCooldown" =>  ::Int,
+                "ScaleOutCooldown" =>  ::Int,
+                "TargetValue" => <required> double
+            ]
+        ]
+    ]
+```
+
+## `GlobalTableGlobalSecondaryIndexSettingsUpdate = [[ ... ], ...]`
+Represents the settings of a global secondary index for a global table that will be modified.
+```
+ GlobalTableGlobalSecondaryIndexSettingsUpdate = [[
+        "IndexName" => <required> ::String,
+        "ProvisionedWriteCapacityUnits" =>  ::Int,
+        "ProvisionedWriteCapacityAutoScalingSettingsUpdate" =>  [
+            "MinimumUnits" =>  ::Int,
+            "MaximumUnits" =>  ::Int,
+            "AutoScalingDisabled" =>  ::Bool,
+            "AutoScalingRoleArn" =>  ::String,
+            "ScalingPolicyUpdate" =>  [
+                "PolicyName" =>  ::String,
+                "TargetTrackingScalingPolicyConfiguration" => <required> [
+                    "DisableScaleIn" =>  ::Bool,
+                    "ScaleInCooldown" =>  ::Int,
+                    "ScaleOutCooldown" =>  ::Int,
+                    "TargetValue" => <required> double
+                ]
+            ]
+        ]
+    ], ...]
+```
+
+## `ReplicaSettingsUpdate = [[ ... ], ...]`
+Represents the settings for a global table in a region that will be modified.
+```
+ ReplicaSettingsUpdate = [[
+        "RegionName" => <required> ::String,
+        "ReplicaProvisionedReadCapacityUnits" =>  ::Int,
+        "ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate" =>  [
+            "MinimumUnits" =>  ::Int,
+            "MaximumUnits" =>  ::Int,
+            "AutoScalingDisabled" =>  ::Bool,
+            "AutoScalingRoleArn" =>  ::String,
+            "ScalingPolicyUpdate" =>  [
+                "PolicyName" =>  ::String,
+                "TargetTrackingScalingPolicyConfiguration" => <required> [
+                    "DisableScaleIn" =>  ::Bool,
+                    "ScaleInCooldown" =>  ::Int,
+                    "ScaleOutCooldown" =>  ::Int,
+                    "TargetValue" => <required> double
+                ]
+            ]
+        ],
+        "ReplicaGlobalSecondaryIndexSettingsUpdate" =>  [[
+            "IndexName" => <required> ::String,
+            "ProvisionedReadCapacityUnits" =>  ::Int,
+            "ProvisionedReadCapacityAutoScalingSettingsUpdate" =>  [
+                "MinimumUnits" =>  ::Int,
+                "MaximumUnits" =>  ::Int,
+                "AutoScalingDisabled" =>  ::Bool,
+                "AutoScalingRoleArn" =>  ::String,
+                "ScalingPolicyUpdate" =>  [
+                    "PolicyName" =>  ::String,
+                    "TargetTrackingScalingPolicyConfiguration" => <required> [
+                        "DisableScaleIn" =>  ::Bool,
+                        "ScaleInCooldown" =>  ::Int,
+                        "ScaleOutCooldown" =>  ::Int,
+                        "TargetValue" => <required> double
+                    ]
+                ]
+            ]
+        ], ...]
+    ], ...]
+```
+
+
+
+# Returns
+
+`UpdateGlobalTableSettingsOutput`
+
+# Exceptions
+
+`GlobalTableNotFoundException`, `ReplicaNotFoundException`, `IndexNotFoundException`, `LimitExceededException`, `ResourceInUseException` or `InternalServerError`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateGlobalTableSettings)
+"""
+@inline update_global_table_settings(aws::AWSConfig=default_aws_config(); args...) = update_global_table_settings(aws, args)
+
+@inline update_global_table_settings(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "UpdateGlobalTableSettings", args)
+
+@inline update_global_table_settings(args) = update_global_table_settings(default_aws_config(), args)
 
 
 """
@@ -2341,7 +3134,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateItem)
 """
-
 @inline update_item(aws::AWSConfig=default_aws_config(); args...) = update_item(aws, args)
 
 @inline update_item(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "UpdateItem", args)
@@ -2514,7 +3306,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateTable)
 """
-
 @inline update_table(aws::AWSConfig=default_aws_config(); args...) = update_table(aws, args)
 
 @inline update_table(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "UpdateTable", args)
@@ -2576,7 +3367,6 @@ Represents the settings used to enable or disable Time to Live for the specified
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateTimeToLive)
 """
-
 @inline update_time_to_live(aws::AWSConfig=default_aws_config(); args...) = update_time_to_live(aws, args)
 
 @inline update_time_to_live(aws::AWSConfig, args) = AWSCore.Services.dynamodb(aws, "UpdateTimeToLive", args)

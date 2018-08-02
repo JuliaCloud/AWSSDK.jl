@@ -53,7 +53,6 @@ Valid values: any Amazon SNS action name.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/AddPermission)
 """
-
 @inline add_permission(aws::AWSConfig=default_aws_config(); args...) = add_permission(aws, args)
 
 @inline add_permission(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "AddPermission", args)
@@ -94,7 +93,6 @@ The phone number for which you want to check the opt out status.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CheckIfPhoneNumberIsOptedOut)
 """
-
 @inline check_if_phone_number_is_opted_out(aws::AWSConfig=default_aws_config(); args...) = check_if_phone_number_is_opted_out(aws, args)
 
 @inline check_if_phone_number_is_opted_out(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "CheckIfPhoneNumberIsOptedOut", args)
@@ -141,7 +139,6 @@ Disallows unauthenticated unsubscribes of the subscription. If the value of this
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ConfirmSubscription)
 """
-
 @inline confirm_subscription(aws::AWSConfig=default_aws_config(); args...) = confirm_subscription(aws, args)
 
 @inline confirm_subscription(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "ConfirmSubscription", args)
@@ -190,7 +187,6 @@ For a list of attributes, see [SetPlatformApplicationAttributes](http://docs.aws
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CreatePlatformApplication)
 """
-
 @inline create_platform_application(aws::AWSConfig=default_aws_config(); args...) = create_platform_application(aws, args)
 
 @inline create_platform_application(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "CreatePlatformApplication", args)
@@ -243,7 +239,6 @@ For a list of attributes, see [SetEndpointAttributes](http://docs.aws.amazon.com
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CreatePlatformEndpoint)
 """
-
 @inline create_platform_endpoint(aws::AWSConfig=default_aws_config(); args...) = create_platform_endpoint(aws, args)
 
 @inline create_platform_endpoint(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "CreatePlatformEndpoint", args)
@@ -284,7 +279,6 @@ Constraints: Topic names must be made up of only uppercase and lowercase ASCII l
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CreateTopic)
 """
-
 @inline create_topic(aws::AWSConfig=default_aws_config(); args...) = create_topic(aws, args)
 
 @inline create_topic(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "CreateTopic", args)
@@ -321,7 +315,6 @@ EndpointArn of endpoint to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/DeleteEndpoint)
 """
-
 @inline delete_endpoint(aws::AWSConfig=default_aws_config(); args...) = delete_endpoint(aws, args)
 
 @inline delete_endpoint(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "DeleteEndpoint", args)
@@ -356,7 +349,6 @@ PlatformApplicationArn of platform application object to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/DeletePlatformApplication)
 """
-
 @inline delete_platform_application(aws::AWSConfig=default_aws_config(); args...) = delete_platform_application(aws, args)
 
 @inline delete_platform_application(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "DeletePlatformApplication", args)
@@ -391,7 +383,6 @@ The ARN of the topic you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/DeleteTopic)
 """
-
 @inline delete_topic(aws::AWSConfig=default_aws_config(); args...) = delete_topic(aws, args)
 
 @inline delete_topic(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "DeleteTopic", args)
@@ -430,7 +421,6 @@ EndpointArn for GetEndpointAttributes input.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetEndpointAttributes)
 """
-
 @inline get_endpoint_attributes(aws::AWSConfig=default_aws_config(); args...) = get_endpoint_attributes(aws, args)
 
 @inline get_endpoint_attributes(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "GetEndpointAttributes", args)
@@ -469,7 +459,6 @@ PlatformApplicationArn for GetPlatformApplicationAttributesInput.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetPlatformApplicationAttributes)
 """
-
 @inline get_platform_application_attributes(aws::AWSConfig=default_aws_config(); args...) = get_platform_application_attributes(aws, args)
 
 @inline get_platform_application_attributes(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "GetPlatformApplicationAttributes", args)
@@ -514,7 +503,6 @@ If you don't use this parameter, Amazon SNS returns all SMS attributes.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetSMSAttributes)
 """
-
 @inline get_smsattributes(aws::AWSConfig=default_aws_config(); args...) = get_smsattributes(aws, args)
 
 @inline get_smsattributes(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "GetSMSAttributes", args)
@@ -553,7 +541,6 @@ The ARN of the subscription whose properties you want to get.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetSubscriptionAttributes)
 """
-
 @inline get_subscription_attributes(aws::AWSConfig=default_aws_config(); args...) = get_subscription_attributes(aws, args)
 
 @inline get_subscription_attributes(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "GetSubscriptionAttributes", args)
@@ -592,7 +579,6 @@ The ARN of the topic whose properties you want to get.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetTopicAttributes)
 """
-
 @inline get_topic_attributes(aws::AWSConfig=default_aws_config(); args...) = get_topic_attributes(aws, args)
 
 @inline get_topic_attributes(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "GetTopicAttributes", args)
@@ -612,6 +598,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 # ListEndpointsByPlatformApplication Operation
 
 Lists the endpoints and endpoint attributes for devices in a supported push notification service, such as GCM and APNS. The results for `ListEndpointsByPlatformApplication` are paginated and return a limited list of endpoints, up to 100. If additional records are available after the first page results, then a NextToken string will be returned. To receive the next page, you call `ListEndpointsByPlatformApplication` again using the NextToken string received from the previous call. When there are no more records to return, NextToken will be null. For more information, see [Using Amazon SNS Mobile Push Notifications](http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
+
+This action is throttled at 30 transactions per second (TPS).
 
 # Arguments
 
@@ -635,7 +623,6 @@ NextToken string is used when calling ListEndpointsByPlatformApplication action 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListEndpointsByPlatformApplication)
 """
-
 @inline list_endpoints_by_platform_application(aws::AWSConfig=default_aws_config(); args...) = list_endpoints_by_platform_application(aws, args)
 
 @inline list_endpoints_by_platform_application(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "ListEndpointsByPlatformApplication", args)
@@ -676,7 +663,6 @@ A `NextToken` string is used when you call the `ListPhoneNumbersOptedOut` action
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListPhoneNumbersOptedOut)
 """
-
 @inline list_phone_numbers_opted_out(aws::AWSConfig=default_aws_config(); args...) = list_phone_numbers_opted_out(aws, args)
 
 @inline list_phone_numbers_opted_out(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "ListPhoneNumbersOptedOut", args)
@@ -697,6 +683,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 Lists the platform application objects for the supported push notification services, such as APNS and GCM. The results for `ListPlatformApplications` are paginated and return a limited list of applications, up to 100. If additional records are available after the first page results, then a NextToken string will be returned. To receive the next page, you call `ListPlatformApplications` using the NextToken string received from the previous call. When there are no more records to return, NextToken will be null. For more information, see [Using Amazon SNS Mobile Push Notifications](http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
+This action is throttled at 15 transactions per second (TPS).
+
 # Arguments
 
 ## `NextToken = ::String`
@@ -715,7 +703,6 @@ NextToken string is used when calling ListPlatformApplications action to retriev
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListPlatformApplications)
 """
-
 @inline list_platform_applications(aws::AWSConfig=default_aws_config(); args...) = list_platform_applications(aws, args)
 
 @inline list_platform_applications(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "ListPlatformApplications", args)
@@ -736,6 +723,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 Returns a list of the requester's subscriptions. Each call returns a limited list of subscriptions, up to 100. If there are more subscriptions, a `NextToken` is also returned. Use the `NextToken` parameter in a new `ListSubscriptions` call to get further results.
 
+This action is throttled at 30 transactions per second (TPS).
+
 # Arguments
 
 ## `NextToken = ::String`
@@ -754,7 +743,6 @@ Token returned by the previous `ListSubscriptions` request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListSubscriptions)
 """
-
 @inline list_subscriptions(aws::AWSConfig=default_aws_config(); args...) = list_subscriptions(aws, args)
 
 @inline list_subscriptions(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "ListSubscriptions", args)
@@ -774,6 +762,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 # ListSubscriptionsByTopic Operation
 
 Returns a list of the subscriptions to a specific topic. Each call returns a limited list of subscriptions, up to 100. If there are more subscriptions, a `NextToken` is also returned. Use the `NextToken` parameter in a new `ListSubscriptionsByTopic` call to get further results.
+
+This action is throttled at 30 transactions per second (TPS).
 
 # Arguments
 
@@ -797,7 +787,6 @@ Token returned by the previous `ListSubscriptionsByTopic` request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListSubscriptionsByTopic)
 """
-
 @inline list_subscriptions_by_topic(aws::AWSConfig=default_aws_config(); args...) = list_subscriptions_by_topic(aws, args)
 
 @inline list_subscriptions_by_topic(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "ListSubscriptionsByTopic", args)
@@ -818,6 +807,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 Returns a list of the requester's topics. Each call returns a limited list of topics, up to 100. If there are more topics, a `NextToken` is also returned. Use the `NextToken` parameter in a new `ListTopics` call to get further results.
 
+This action is throttled at 30 transactions per second (TPS).
+
 # Arguments
 
 ## `NextToken = ::String`
@@ -836,7 +827,6 @@ Token returned by the previous `ListTopics` request.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListTopics)
 """
-
 @inline list_topics(aws::AWSConfig=default_aws_config(); args...) = list_topics(aws, args)
 
 @inline list_topics(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "ListTopics", args)
@@ -877,7 +867,6 @@ The phone number to opt in.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/OptInPhoneNumber)
 """
-
 @inline opt_in_phone_number(aws::AWSConfig=default_aws_config(); args...) = opt_in_phone_number(aws, args)
 
 @inline opt_in_phone_number(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "OptInPhoneNumber", args)
@@ -896,7 +885,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 # Publish Operation
 
-Sends a message to all of a topic's subscribed endpoints. When a `messageId` is returned, the message has been saved and Amazon SNS will attempt to deliver it to the topic's subscribers shortly. The format of the outgoing message to each subscribed endpoint depends on the notification protocol.
+Sends a message to an Amazon SNS topic or sends a text message (SMS message) directly to a phone number.
+
+If you send a message to a topic, Amazon SNS delivers the message to each endpoint that is subscribed to the topic. The format of the message depends on the notification protocol for each subscribed endpoint.
+
+When a `messageId` is returned, the message has been saved and Amazon SNS will attempt to deliver it shortly.
 
 To use the `Publish` action for sending a message to a mobile endpoint, such as an app on a Kindle device or mobile phone, you must specify the EndpointArn for the TargetArn parameter. The EndpointArn is returned when making a call with the `CreatePlatformEndpoint` action.
 
@@ -923,13 +916,15 @@ If you don't specify a value for the `PhoneNumber` parameter, you must specify a
 
 
 ## `Message = ::String` -- *Required*
-The message you want to send to the topic.
+The message you want to send.
 
-If you want to send the same message to all transport protocols, include the text of the message as a String value.
+If you are publishing to a topic and you want to send the same message to all transport protocols, include the text of the message as a String value. If you want to send different messages for each transport protocol, set the value of the `MessageStructure` parameter to `json` and use a JSON object for the `Message` parameter.
 
-If you want to send different messages for each transport protocol, set the value of the `MessageStructure` parameter to `json` and use a JSON object for the `Message` parameter.
+Constraints:
 
-Constraints: Messages must be UTF-8 encoded strings at most 256 KB in size (262144 bytes, not 262144 characters).
+*   With the exception of SMS, messages must be UTF-8 encoded strings and at most 256 KB in size (262144 bytes, not 262144 characters).
+
+*   For SMS, each message can contain up to 140 bytes, and the character limit depends on the encoding scheme. For example, an SMS message can contain 160 GSM characters, 140 ASCII characters, or 70 UCS-2 characters. If you publish a message that exceeds the size limit, Amazon SNS sends it as multiple messages, each fitting within the size limit. Messages are not cut off in the middle of a word but on whole-word boundaries. The total size limit for a single SMS publish action is 1600 bytes.
 
 JSON-specific constraints:
 
@@ -988,7 +983,6 @@ Message attributes for Publish action.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/Publish)
 """
-
 @inline publish(aws::AWSConfig=default_aws_config(); args...) = publish(aws, args)
 
 @inline publish(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "Publish", args)
@@ -1027,7 +1021,6 @@ The unique label of the statement you want to remove.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/RemovePermission)
 """
-
 @inline remove_permission(aws::AWSConfig=default_aws_config(); args...) = remove_permission(aws, args)
 
 @inline remove_permission(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "RemovePermission", args)
@@ -1072,7 +1065,6 @@ A map of the endpoint attributes. Attributes in this map include the following:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetEndpointAttributes)
 """
-
 @inline set_endpoint_attributes(aws::AWSConfig=default_aws_config(); args...) = set_endpoint_attributes(aws, args)
 
 @inline set_endpoint_attributes(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "SetEndpointAttributes", args)
@@ -1129,7 +1121,6 @@ A map of the platform application attributes. Attributes in this map include the
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetPlatformApplicationAttributes)
 """
-
 @inline set_platform_application_attributes(aws::AWSConfig=default_aws_config(); args...) = set_platform_application_attributes(aws, args)
 
 @inline set_platform_application_attributes(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "SetPlatformApplicationAttributes", args)
@@ -1162,7 +1153,7 @@ The default settings for sending SMS messages from your account. You can set val
 **Important**
 > Amazon SNS stops sending SMS messages within minutes of the limit being crossed. During that interval, if you continue to send SMS messages, you will incur costs that exceed your limit.
 
-By default, the spend limit is set to the maximum allowed by Amazon SNS. If you want to exceed the maximum, contact [AWS Support](https://aws.amazon.com/premiumsupport/) or your AWS sales representative for a service limit increase.
+By default, the spend limit is set to the maximum allowed by Amazon SNS. If you want to raise the limit, submit an [SNS Limit Increase case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns). For **New limit value**, enter your desired monthly spend limit. In the **Use Case Description** field, explain that you are requesting an SMS monthly spend limit increase.
 
 `DeliveryStatusIAMRole` – The ARN of the IAM role that allows Amazon SNS to write logs about SMS deliveries in CloudWatch Logs. For each SMS message that you send, Amazon SNS writes a log that includes the message price, the success or failure status, the reason for failure (if the message failed), the message dwell time, and other information.
 
@@ -1211,7 +1202,6 @@ For an example bucket policy and usage report, see [Monitoring SMS Activity](htt
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetSMSAttributes)
 """
-
 @inline set_smsattributes(aws::AWSConfig=default_aws_config(); args...) = set_smsattributes(aws, args)
 
 @inline set_smsattributes(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "SetSMSAttributes", args)
@@ -1230,7 +1220,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 # SetSubscriptionAttributes Operation
 
-Allows a subscription owner to set an attribute of the topic to a new value.
+Allows a subscription owner to set an attribute of the subscription to a new value.
 
 # Arguments
 
@@ -1241,7 +1231,7 @@ The ARN of the subscription to modify.
 ## `AttributeName = ::String` -- *Required*
 The name of the attribute you want to set. Only a subset of the subscriptions attributes are mutable.
 
-Valid values: `DeliveryPolicy` | `RawMessageDelivery`
+Valid values: `DeliveryPolicy` | `FilterPolicy` | `RawMessageDelivery`
 
 
 ## `AttributeValue = ::String`
@@ -1252,11 +1242,10 @@ The new value for the attribute in JSON format.
 
 # Exceptions
 
-`InvalidParameterException`, `InternalErrorException`, `NotFoundException` or `AuthorizationErrorException`.
+`InvalidParameterException`, `FilterPolicyLimitExceededException`, `InternalErrorException`, `NotFoundException` or `AuthorizationErrorException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetSubscriptionAttributes)
 """
-
 @inline set_subscription_attributes(aws::AWSConfig=default_aws_config(); args...) = set_subscription_attributes(aws, args)
 
 @inline set_subscription_attributes(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "SetSubscriptionAttributes", args)
@@ -1301,7 +1290,6 @@ The new value for the attribute.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetTopicAttributes)
 """
-
 @inline set_topic_attributes(aws::AWSConfig=default_aws_config(); args...) = set_topic_attributes(aws, args)
 
 @inline set_topic_attributes(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "SetTopicAttributes", args)
@@ -1321,6 +1309,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 # Subscribe Operation
 
 Prepares to subscribe an endpoint by sending the endpoint a confirmation message. To actually create a subscription, the endpoint owner must call the `ConfirmSubscription` action with the token from the confirmation message. Confirmation tokens are valid for three days.
+
+This action is throttled at 100 transactions per second (TPS).
 
 # Arguments
 
@@ -1368,6 +1358,20 @@ The endpoint that you want to receive notifications. Endpoints vary by protocol:
 *   For the `lambda` protocol, the endpoint is the ARN of an AWS Lambda function.
 
 
+## `Attributes = ::Dict{String,String}`
+Assigns attributes to the subscription as a map of key-value pairs. You can assign any attribute that is supported by the `SetSubscriptionAttributes` action.
+
+
+## `ReturnSubscriptionArn = ::Bool`
+Sets whether the response from the `Subscribe` request includes the subscription ARN, even if the subscription is not yet confirmed.
+
+If you set this parameter to `false`, the response includes the ARN for confirmed subscriptions, but it includes an ARN value of "pending subscription" for subscriptions that are not yet confirmed. A subscription becomes confirmed when the subscriber calls the `ConfirmSubscription` action with a confirmation token.
+
+If you set this parameter to `true`, the response includes the ARN in all cases, even if the subscription is not yet confirmed.
+
+The default value is `false`.
+
+
 
 
 # Returns
@@ -1376,11 +1380,10 @@ The endpoint that you want to receive notifications. Endpoints vary by protocol:
 
 # Exceptions
 
-`SubscriptionLimitExceededException`, `InvalidParameterException`, `InternalErrorException`, `NotFoundException` or `AuthorizationErrorException`.
+`SubscriptionLimitExceededException`, `FilterPolicyLimitExceededException`, `InvalidParameterException`, `InternalErrorException`, `NotFoundException` or `AuthorizationErrorException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/Subscribe)
 """
-
 @inline subscribe(aws::AWSConfig=default_aws_config(); args...) = subscribe(aws, args)
 
 @inline subscribe(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "Subscribe", args)
@@ -1401,6 +1404,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-20
 
 Deletes a subscription. If the subscription requires authentication for deletion, only the owner of the subscription or the topic's owner can unsubscribe, and an AWS signature is required. If the `Unsubscribe` call does not require authentication and the requester is not the subscription owner, a final cancellation message is delivered to the endpoint, so that the endpoint owner can easily resubscribe to the topic if the `Unsubscribe` request was unintended.
 
+This action is throttled at 100 transactions per second (TPS).
+
 # Arguments
 
 ## `SubscriptionArn = ::String` -- *Required*
@@ -1415,7 +1420,6 @@ The ARN of the subscription to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/Unsubscribe)
 """
-
 @inline unsubscribe(aws::AWSConfig=default_aws_config(); args...) = unsubscribe(aws, args)
 
 @inline unsubscribe(aws::AWSConfig, args) = AWSCore.Services.sns(aws, "Unsubscribe", args)

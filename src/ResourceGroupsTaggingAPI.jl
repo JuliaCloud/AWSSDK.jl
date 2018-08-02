@@ -80,7 +80,6 @@ The string for each service name and resource type is the same as that embedded 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/resourcegroupstaggingapi-2017-01-26/GetResources)
 """
-
 @inline get_resources(aws::AWSConfig=default_aws_config(); args...) = get_resources(aws, args)
 
 @inline get_resources(aws::AWSConfig, args) = AWSCore.Services.resourcegroupstaggingapi(aws, "GetResources", args)
@@ -119,7 +118,6 @@ A string that indicates that additional data is available. Leave this value empt
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/resourcegroupstaggingapi-2017-01-26/GetTagKeys)
 """
-
 @inline get_tag_keys(aws::AWSConfig=default_aws_config(); args...) = get_tag_keys(aws, args)
 
 @inline get_tag_keys(aws::AWSConfig, args) = AWSCore.Services.resourcegroupstaggingapi(aws, "GetTagKeys", args)
@@ -162,7 +160,6 @@ The key for which you want to list all existing values in the specified region f
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/resourcegroupstaggingapi-2017-01-26/GetTagValues)
 """
-
 @inline get_tag_values(aws::AWSConfig=default_aws_config(); args...) = get_tag_values(aws, args)
 
 @inline get_tag_values(aws::AWSConfig, args) = AWSCore.Services.resourcegroupstaggingapi(aws, "GetTagValues", args)
@@ -213,7 +210,6 @@ The tags that you want to add to the specified resources. A tag consists of a ke
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/resourcegroupstaggingapi-2017-01-26/TagResources)
 """
-
 @inline tag_resources(aws::AWSConfig=default_aws_config(); args...) = tag_resources(aws, args)
 
 @inline tag_resources(aws::AWSConfig, args) = AWSCore.Services.resourcegroupstaggingapi(aws, "TagResources", args)
@@ -260,7 +256,6 @@ A list of the tag keys that you want to remove from the specified resources.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/resourcegroupstaggingapi-2017-01-26/UntagResources)
 """
-
 @inline untag_resources(aws::AWSConfig=default_aws_config(); args...) = untag_resources(aws, args)
 
 @inline untag_resources(aws::AWSConfig, args) = AWSCore.Services.resourcegroupstaggingapi(aws, "UntagResources", args)

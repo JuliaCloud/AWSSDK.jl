@@ -48,7 +48,6 @@ To get a list of the jobs (including their `jobId`) that have a status of `Submi
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/CancelJob)
 """
-
 @inline cancel_job(aws::AWSConfig=default_aws_config(); args...) = cancel_job(aws, args)
 
 @inline cancel_job(aws::AWSConfig, args) = AWSCore.Services.elastictranscoder(aws, "DELETE", "/2012-09-25/jobs/{Id}", args)
@@ -375,7 +374,6 @@ User-defined metadata that you want to associate with an Elastic Transcoder job.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/CreateJob)
 """
-
 @inline create_job(aws::AWSConfig=default_aws_config(); args...) = create_job(aws, args)
 
 @inline create_job(aws::AWSConfig, args) = AWSCore.Services.elastictranscoder(aws, "POST", "/2012-09-25/jobs", args)
@@ -565,7 +563,6 @@ If you specify values for `ContentConfig` and `ThumbnailConfig`, omit the `Outpu
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/CreatePipeline)
 """
-
 @inline create_pipeline(aws::AWSConfig=default_aws_config(); args...) = create_pipeline(aws, args)
 
 @inline create_pipeline(aws::AWSConfig, args) = AWSCore.Services.elastictranscoder(aws, "POST", "/2012-09-25/pipelines", args)
@@ -683,7 +680,6 @@ A section of the request body that specifies the thumbnail parameters, if any.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/CreatePreset)
 """
-
 @inline create_preset(aws::AWSConfig=default_aws_config(); args...) = create_preset(aws, args)
 
 @inline create_preset(aws::AWSConfig, args) = AWSCore.Services.elastictranscoder(aws, "POST", "/2012-09-25/presets", args)
@@ -724,7 +720,6 @@ The identifier of the pipeline that you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/DeletePipeline)
 """
-
 @inline delete_pipeline(aws::AWSConfig=default_aws_config(); args...) = delete_pipeline(aws, args)
 
 @inline delete_pipeline(aws::AWSConfig, args) = AWSCore.Services.elastictranscoder(aws, "DELETE", "/2012-09-25/pipelines/{Id}", args)
@@ -766,7 +761,6 @@ The identifier of the preset for which you want to get detailed information.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/DeletePreset)
 """
-
 @inline delete_preset(aws::AWSConfig=default_aws_config(); args...) = delete_preset(aws, args)
 
 @inline delete_preset(aws::AWSConfig, args) = AWSCore.Services.elastictranscoder(aws, "DELETE", "/2012-09-25/presets/{Id}", args)
@@ -815,7 +809,6 @@ When Elastic Transcoder returns more than one page of results, use `pageToken` i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/ListJobsByPipeline)
 """
-
 @inline list_jobs_by_pipeline(aws::AWSConfig=default_aws_config(); args...) = list_jobs_by_pipeline(aws, args)
 
 @inline list_jobs_by_pipeline(aws::AWSConfig, args) = AWSCore.Services.elastictranscoder(aws, "GET", "/2012-09-25/jobsByPipeline/{PipelineId}", args)
@@ -862,7 +855,6 @@ When Elastic Transcoder returns more than one page of results, use `pageToken` i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/ListJobsByStatus)
 """
-
 @inline list_jobs_by_status(aws::AWSConfig=default_aws_config(); args...) = list_jobs_by_status(aws, args)
 
 @inline list_jobs_by_status(aws::AWSConfig, args) = AWSCore.Services.elastictranscoder(aws, "GET", "/2012-09-25/jobsByStatus/{Status}", args)
@@ -905,7 +897,6 @@ When Elastic Transcoder returns more than one page of results, use `pageToken` i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/ListPipelines)
 """
-
 @inline list_pipelines(aws::AWSConfig=default_aws_config(); args...) = list_pipelines(aws, args)
 
 @inline list_pipelines(aws::AWSConfig, args) = AWSCore.Services.elastictranscoder(aws, "GET", "/2012-09-25/pipelines", args)
@@ -948,7 +939,6 @@ When Elastic Transcoder returns more than one page of results, use `pageToken` i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/ListPresets)
 """
-
 @inline list_presets(aws::AWSConfig=default_aws_config(); args...) = list_presets(aws, args)
 
 @inline list_presets(aws::AWSConfig, args) = AWSCore.Services.elastictranscoder(aws, "GET", "/2012-09-25/presets", args)
@@ -987,7 +977,6 @@ The identifier of the job for which you want to get detailed information.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/ReadJob)
 """
-
 @inline read_job(aws::AWSConfig=default_aws_config(); args...) = read_job(aws, args)
 
 @inline read_job(aws::AWSConfig, args) = AWSCore.Services.elastictranscoder(aws, "GET", "/2012-09-25/jobs/{Id}", args)
@@ -1026,7 +1015,6 @@ The identifier of the pipeline to read.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/ReadPipeline)
 """
-
 @inline read_pipeline(aws::AWSConfig=default_aws_config(); args...) = read_pipeline(aws, args)
 
 @inline read_pipeline(aws::AWSConfig, args) = AWSCore.Services.elastictranscoder(aws, "GET", "/2012-09-25/pipelines/{Id}", args)
@@ -1065,7 +1053,6 @@ The identifier of the preset for which you want to get detailed information.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/ReadPreset)
 """
-
 @inline read_preset(aws::AWSConfig=default_aws_config(); args...) = read_preset(aws, args)
 
 @inline read_preset(aws::AWSConfig, args) = AWSCore.Services.elastictranscoder(aws, "GET", "/2012-09-25/presets/{Id}", args)
@@ -1118,7 +1105,6 @@ The ARNs of one or more Amazon Simple Notification Service (Amazon SNS) topics t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/TestRole)
 """
-
 @inline test_role(aws::AWSConfig=default_aws_config(); args...) = test_role(aws, args)
 
 @inline test_role(aws::AWSConfig, args) = AWSCore.Services.elastictranscoder(aws, "POST", "/2012-09-25/roleTests", args)
@@ -1296,7 +1282,6 @@ If you specify values for `ContentConfig` and `ThumbnailConfig`, omit the `Outpu
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/UpdatePipeline)
 """
-
 @inline update_pipeline(aws::AWSConfig=default_aws_config(); args...) = update_pipeline(aws, args)
 
 @inline update_pipeline(aws::AWSConfig, args) = AWSCore.Services.elastictranscoder(aws, "PUT", "/2012-09-25/pipelines/{Id}", args)
@@ -1359,7 +1344,6 @@ The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic that
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/UpdatePipelineNotifications)
 """
-
 @inline update_pipeline_notifications(aws::AWSConfig=default_aws_config(); args...) = update_pipeline_notifications(aws, args)
 
 @inline update_pipeline_notifications(aws::AWSConfig, args) = AWSCore.Services.elastictranscoder(aws, "POST", "/2012-09-25/pipelines/{Id}/notifications", args)
@@ -1408,7 +1392,6 @@ The desired status of the pipeline:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/UpdatePipelineStatus)
 """
-
 @inline update_pipeline_status(aws::AWSConfig=default_aws_config(); args...) = update_pipeline_status(aws, args)
 
 @inline update_pipeline_status(aws::AWSConfig, args) = AWSCore.Services.elastictranscoder(aws, "POST", "/2012-09-25/pipelines/{Id}/status", args)

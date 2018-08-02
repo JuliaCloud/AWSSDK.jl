@@ -43,7 +43,6 @@ The name of the rule.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/DeleteRule)
 """
-
 @inline delete_rule(aws::AWSConfig=default_aws_config(); args...) = delete_rule(aws, args)
 
 @inline delete_rule(aws::AWSConfig, args) = AWSCore.Services.events(aws, "DeleteRule", args)
@@ -78,7 +77,6 @@ Displays the external AWS accounts that are permitted to write events to your ac
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/DescribeEventBus)
 """
-
 @inline describe_event_bus(aws::AWSConfig=default_aws_config(); args...) = describe_event_bus(aws, args)
 
 @inline describe_event_bus(aws::AWSConfig, args) = AWSCore.Services.events(aws, "DescribeEventBus", args)
@@ -117,7 +115,6 @@ The name of the rule.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/DescribeRule)
 """
-
 @inline describe_rule(aws::AWSConfig=default_aws_config(); args...) = describe_rule(aws, args)
 
 @inline describe_rule(aws::AWSConfig, args) = AWSCore.Services.events(aws, "DescribeRule", args)
@@ -154,7 +151,6 @@ The name of the rule.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/DisableRule)
 """
-
 @inline disable_rule(aws::AWSConfig=default_aws_config(); args...) = disable_rule(aws, args)
 
 @inline disable_rule(aws::AWSConfig, args) = AWSCore.Services.events(aws, "DisableRule", args)
@@ -191,7 +187,6 @@ The name of the rule.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/EnableRule)
 """
-
 @inline enable_rule(aws::AWSConfig=default_aws_config(); args...) = enable_rule(aws, args)
 
 @inline enable_rule(aws::AWSConfig, args) = AWSCore.Services.events(aws, "EnableRule", args)
@@ -238,7 +233,6 @@ The maximum number of results to return.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/ListRuleNamesByTarget)
 """
-
 @inline list_rule_names_by_target(aws::AWSConfig=default_aws_config(); args...) = list_rule_names_by_target(aws, args)
 
 @inline list_rule_names_by_target(aws::AWSConfig, args) = AWSCore.Services.events(aws, "ListRuleNamesByTarget", args)
@@ -285,7 +279,6 @@ The maximum number of results to return.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/ListRules)
 """
-
 @inline list_rules(aws::AWSConfig=default_aws_config(); args...) = list_rules(aws, args)
 
 @inline list_rules(aws::AWSConfig, args) = AWSCore.Services.events(aws, "ListRules", args)
@@ -332,7 +325,6 @@ The maximum number of results to return.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/ListTargetsByRule)
 """
-
 @inline list_targets_by_rule(aws::AWSConfig=default_aws_config(); args...) = list_targets_by_rule(aws, args)
 
 @inline list_targets_by_rule(aws::AWSConfig, args) = AWSCore.Services.events(aws, "ListTargetsByRule", args)
@@ -379,7 +371,6 @@ The entry that defines an event in your system. You can specify several paramete
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/PutEvents)
 """
-
 @inline put_events(aws::AWSConfig=default_aws_config(); args...) = put_events(aws, args)
 
 @inline put_events(aws::AWSConfig, args) = AWSCore.Services.events(aws, "PutEvents", args)
@@ -430,7 +421,6 @@ An identifier string for the external account that you are granting permissions 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/PutPermission)
 """
-
 @inline put_permission(aws::AWSConfig=default_aws_config(); args...) = put_permission(aws, args)
 
 @inline put_permission(aws::AWSConfig, args) = AWSCore.Services.events(aws, "PutPermission", args)
@@ -450,6 +440,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events
 # PutRule Operation
 
 Creates or updates the specified rule. Rules are enabled by default, or based on value of the state. You can disable a rule using [DisableRule](@ref).
+
+If you are updating an existing rule, the rule is completely replaced with what you specify in this `PutRule` command. If you omit arguments in `PutRule`, the old values for those arguments are not kept. Instead, they are replaced with null values.
 
 When you create or update a rule, incoming events might not immediately start matching to new or updated rules. Please allow a short period of time for changes to take effect.
 
@@ -495,7 +487,6 @@ The Amazon Resource Name (ARN) of the IAM role associated with the rule.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/PutRule)
 """
-
 @inline put_rule(aws::AWSConfig=default_aws_config(); args...) = put_rule(aws, args)
 
 @inline put_rule(aws::AWSConfig, args) = AWSCore.Services.events(aws, "PutRule", args)
@@ -532,13 +523,15 @@ You can configure the following as targets for CloudWatch Events:
 
 *   AWS Step Functions state machines
 
+*   AWS Batch jobs
+
 *   Pipelines in Amazon Code Pipeline
 
 *   Amazon Inspector assessment templates
 
 *   Amazon SNS topics
 
-*   Amazon SQS queues
+*   Amazon SQS queues, including FIFO queues
 
 *   The default event bus of another AWS account
 
@@ -562,7 +555,7 @@ For more information about enabling cross-account events, see [PutPermission](@r
 
 *   If **InputTransformer** is specified, then one or more specified JSONPaths are extracted from the event and used as values in a template that you specify as the input to the target.
 
-When you specify `Input`, `InputPath`, or `InputTransformer`, you must use JSON dot notation, not bracket notation.
+When you specify `InputPath` or `InputTransformer`, you must use JSON dot notation, not bracket notation.
 
 When you add targets to a rule and the associated rule triggers soon after, new or updated targets might not be immediately invoked. Please allow a short period of time for changes to take effect.
 
@@ -595,7 +588,14 @@ The targets to update or add to the rule.
         "EcsParameters" =>  [
             "TaskDefinitionArn" => <required> ::String,
             "TaskCount" =>  ::Int
-        ]
+        ],
+        "BatchParameters" =>  [
+            "JobDefinition" => <required> ::String,
+            "JobName" => <required> ::String,
+            "ArrayProperties" =>  ["Size" =>  ::Int],
+            "RetryStrategy" =>  ["Attempts" =>  ::Int]
+        ],
+        "SqsParameters" =>  ["MessageGroupId" =>  ::String]
     ], ...]
 ```
 
@@ -611,7 +611,6 @@ The targets to update or add to the rule.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/PutTargets)
 """
-
 @inline put_targets(aws::AWSConfig=default_aws_config(); args...) = put_targets(aws, args)
 
 @inline put_targets(aws::AWSConfig, args) = AWSCore.Services.events(aws, "PutTargets", args)
@@ -646,7 +645,6 @@ The statement ID corresponding to the account that is no longer allowed to put e
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/RemovePermission)
 """
-
 @inline remove_permission(aws::AWSConfig=default_aws_config(); args...) = remove_permission(aws, args)
 
 @inline remove_permission(aws::AWSConfig, args) = AWSCore.Services.events(aws, "RemovePermission", args)
@@ -693,7 +691,6 @@ The IDs of the targets to remove from the rule.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/RemoveTargets)
 """
-
 @inline remove_targets(aws::AWSConfig=default_aws_config(); args...) = remove_targets(aws, args)
 
 @inline remove_targets(aws::AWSConfig, args) = AWSCore.Services.events(aws, "RemoveTargets", args)
@@ -738,7 +735,6 @@ The event, in JSON format, to test against the event pattern.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/events-2015-10-07/TestEventPattern)
 """
-
 @inline test_event_pattern(aws::AWSConfig=default_aws_config(); args...) = test_event_pattern(aws, args)
 
 @inline test_event_pattern(aws::AWSConfig, args) = AWSCore.Services.events(aws, "TestEventPattern", args)

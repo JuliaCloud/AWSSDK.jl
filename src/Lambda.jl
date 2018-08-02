@@ -25,7 +25,7 @@ using AWSCore
 
 Adds a permission to the resource policy associated with the specified AWS Lambda function. You use resource policies to grant permissions to event sources that use *push* model. In a *push* model, event sources (such as Amazon S3 and custom applications) invoke your Lambda function. Each permission you add to the resource policy allows an event source, permission to invoke the Lambda function.
 
-For information about the push model, see [AWS Lambda: How it Works](http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html).
+For information about the push model, see [Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html).
 
 If you are using versioning, the permissions you add are specific to the Lambda function version or alias you specify in the `AddPermission` request via the `Qualifier` parameter. For more information about versioning, see [AWS Lambda Function Versioning and Aliases](http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
 
@@ -80,6 +80,10 @@ If the qualifier is not specified, the permission is valid only when requests is
 `arn:aws:lambda:aws-region:acct-id:function:function-name`
 
 
+## `RevisionId = ::String`
+An optional value you can use to ensure you are updating the latest update of the function version or alias. If the `RevisionID` you pass doesn't match the latest `RevisionId` of the function or alias, it will fail with an error message, advising you to retrieve the latest function version or alias `RevisionID` using either or .
+
+
 
 
 # Returns
@@ -88,7 +92,7 @@ If the qualifier is not specified, the permission is valid only when requests is
 
 # Exceptions
 
-`ServiceException`, `ResourceNotFoundException`, `ResourceConflictException`, `InvalidParameterValueException`, `PolicyLengthExceededException` or `TooManyRequestsException`.
+`ServiceException`, `ResourceNotFoundException`, `ResourceConflictException`, `InvalidParameterValueException`, `PolicyLengthExceededException`, `TooManyRequestsException` or `PreconditionFailedException`.
 
 # Example: add-permission
 
@@ -115,7 +119,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/AddPermission)
 """
-
 @inline add_permission(aws::AWSConfig=default_aws_config(); args...) = add_permission(aws, args)
 
 @inline add_permission(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "POST", "/2015-03-31/functions/{FunctionName}/policy", args)
@@ -156,6 +159,10 @@ Lambda function version for which you are creating the alias.
 Description of the alias.
 
 
+## `RoutingConfig = ["AdditionalVersionWeights" =>  ::Dict{String,String}]`
+Specifies an additional version your alias can point to, allowing you to dictate what percentage of traffic will invoke each version. For more information, see [lambda-traffic-shifting-using-aliases](@ref).
+
+
 
 
 # Returns
@@ -168,7 +175,6 @@ Description of the alias.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/CreateAlias)
 """
-
 @inline create_alias(aws::AWSConfig=default_aws_config(); args...) = create_alias(aws, args)
 
 @inline create_alias(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "POST", "/2015-03-31/functions/{FunctionName}/aliases", args)
@@ -179,24 +185,21 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 """
     using AWSSDK.Lambda.create_event_source_mapping
     create_event_source_mapping([::AWSConfig], arguments::Dict)
-    create_event_source_mapping([::AWSConfig]; EventSourceArn=, FunctionName=, StartingPosition=, <keyword arguments>)
+    create_event_source_mapping([::AWSConfig]; EventSourceArn=, FunctionName=, <keyword arguments>)
 
     using AWSCore.Services.lambda
     lambda([::AWSConfig], "POST", "/2015-03-31/event-source-mappings/", arguments::Dict)
-    lambda([::AWSConfig], "POST", "/2015-03-31/event-source-mappings/", EventSourceArn=, FunctionName=, StartingPosition=, <keyword arguments>)
+    lambda([::AWSConfig], "POST", "/2015-03-31/event-source-mappings/", EventSourceArn=, FunctionName=, <keyword arguments>)
 
 # CreateEventSourceMapping Operation
 
-Identifies a stream as an event source for a Lambda function. It can be either an Amazon Kinesis stream or an Amazon DynamoDB stream. AWS Lambda invokes the specified function when records are posted to the stream.
+Identifies a poll-based event source for a Lambda function. It can be either an Amazon Kinesis or DynamoDB stream, or an Amazon SQS queue. AWS Lambda invokes the specified function when records are posted to the event source.
 
-This association between a stream source and a Lambda function is called the event source mapping.
+This association between a poll-based source and a Lambda function is called the event source mapping.
 
-**Important**
-> This event source mapping is relevant only in the AWS Lambda pull model, where AWS Lambda invokes the function. For more information, see [AWS Lambda: How it Works](http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html) in the *AWS Lambda Developer Guide*.
+You provide mapping information (for example, which stream or SQS queue to read from and which Lambda function to invoke) in the request body.
 
-You provide mapping information (for example, which stream to read from and which Lambda function to invoke) in the request body.
-
-Each event source, such as an Amazon Kinesis or a DynamoDB stream, can be associated with multiple AWS Lambda function. A given Lambda function can be associated with multiple AWS event sources.
+Amazon Kinesis or DynamoDB stream event sources can be associated with multiple AWS Lambda functions and a given Lambda function can be associated with multiple AWS event sources. For Amazon SQS, you can configure multiple queues as event sources for a single Lambda function, but an SQS queue can be mapped only to a single Lambda function.
 
 If you are using versioning, you can specify a specific function version or an alias via the function name parameter. For more information about versioning, see [AWS Lambda Function Versioning and Aliases](http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
 
@@ -205,7 +208,7 @@ This operation requires permission for the `lambda:CreateEventSourceMapping` act
 # Arguments
 
 ## `EventSourceArn = ::String` -- *Required*
-The Amazon Resource Name (ARN) of the Amazon Kinesis or the Amazon DynamoDB stream that is the event source. Any record added to this stream could cause AWS Lambda to invoke your Lambda function, it depends on the `BatchSize`. AWS Lambda POSTs the Amazon Kinesis event, containing records, to your Lambda function as JSON.
+The Amazon Resource Name (ARN) of the event source. Any record added to this source could cause AWS Lambda to invoke your Lambda function, it depends on the `BatchSize`. AWS Lambda POSTs the event's records to your Lambda function as JSON.
 
 
 ## `FunctionName = ::String` -- *Required*
@@ -225,15 +228,15 @@ Indicates whether AWS Lambda should begin polling the event source. By default, 
 
 
 ## `BatchSize = ::Int`
-The largest number of records that AWS Lambda will retrieve from your event source at the time of invoking your function. Your function receives an event with all the retrieved records. The default is 100 records.
+The largest number of records that AWS Lambda will retrieve from your event source at the time of invoking your function. Your function receives an event with all the retrieved records. The default for Amazon Kinesis and Amazon DynamoDB is 100 records. For SQS, the default is 1.
 
 
-## `StartingPosition = "TRIM_HORIZON", "LATEST" or "AT_TIMESTAMP"` -- *Required*
-The position in the stream where AWS Lambda should start reading. Valid only for Kinesis streams. For more information, see [ShardIteratorType](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType) in the *Amazon Kinesis API Reference*.
+## `StartingPosition = "TRIM_HORIZON", "LATEST" or "AT_TIMESTAMP"`
+The position in the DynamoDB or Kinesis stream where AWS Lambda should start reading. For more information, see [GetShardIterator](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType) in the *Amazon Kinesis API Reference Guide* or [GetShardIterator](http://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_streams_GetShardIterator.html) in the *Amazon DynamoDB API Reference Guide*. The `AT_TIMESTAMP` value is supported only for [Kinesis streams](http://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html).
 
 
 ## `StartingPositionTimestamp = timestamp`
-The timestamp of the data record from which to start reading. Used with [shard iterator type](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType) AT_TIMESTAMP. If a record with this exact timestamp does not exist, the iterator returned is for the next (later) record. If the timestamp is older than the current trim horizon, the iterator returned is for the oldest untrimmed data record (TRIM_HORIZON). Valid only for Kinesis streams.
+The timestamp of the data record from which to start reading. Used with [shard iterator type](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType) AT_TIMESTAMP. If a record with this exact timestamp does not exist, the iterator returned is for the next (later) record. If the timestamp is older than the current trim horizon, the iterator returned is for the oldest untrimmed data record (TRIM_HORIZON). Valid only for [Kinesis streams](http://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html).
 
 
 
@@ -248,7 +251,6 @@ The timestamp of the data record from which to start reading. Used with [shard i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/CreateEventSourceMapping)
 """
-
 @inline create_event_source_mapping(aws::AWSConfig=default_aws_config(); args...) = create_event_source_mapping(aws, args)
 
 @inline create_event_source_mapping(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "POST", "/2015-03-31/event-source-mappings/", args)
@@ -279,13 +281,13 @@ This operation requires permission for the `lambda:CreateFunction` action.
 The name you want to assign to the function you are uploading. The function names appear in the console and are returned in the [ListFunctions](@ref) API. Function names are used to specify functions to other AWS Lambda API operations, such as [Invoke](@ref). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.
 
 
-## `Runtime = "nodejs", "nodejs4.3", "nodejs6.10", "java8", "python2.7", "python3.6", "dotnetcore1.0" or "nodejs4.3-edge"` -- *Required*
+## `Runtime = "nodejs", "nodejs4.3", "nodejs6.10", "nodejs8.10", "java8", "python2.7", "python3.6", "dotnetcore1.0", "dotnetcore2.0", "dotnetcore2.1", "nodejs4.3-edge" or "go1.x"` -- *Required*
 The runtime environment for the Lambda function you are uploading.
 
-To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3, set the value to "nodejs4.3".
+To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use the .NET Core runtime v1.0, set the value to "dotnetcore1.0". To use the .NET Core runtime v2.0, set the value to "dotnetcore2.0".
 
 **Note**
-> Node v0.10.42 is currently marked as deprecated. You must migrate existing functions to the newer Node.js runtime versions available on AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. You can request a one-time extension until June 30, 2017 by going to the Lambda console and following the instructions provided. Failure to do so will result in an invalid parmaeter error being returned. Note that you will have to follow this procedure for each region that contains functions written in the Node v0.10.42 runtime.
+> Node v0.10.42 is currently marked as deprecated. You must migrate existing functions to the newer Node.js runtime versions available on AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. Failure to do so will result in an invalid parameter error being returned. Note that you will have to follow this procedure for each region that contains functions written in the Node v0.10.42 runtime.
 
 
 ## `Role = ::String` -- *Required*
@@ -333,7 +335,7 @@ If your Lambda function accesses resources in a VPC, you provide this parameter 
 ```
 
 ## `DeadLetterConfig = ["TargetArn" =>  ::String]`
-The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.
+The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic. For more information, see [dlq](@ref).
 
 
 ## `Environment = ["Variables" =>  ::Dict{String,String}]`
@@ -349,7 +351,7 @@ The parent object that contains your function's tracing settings.
 
 
 ## `Tags = ::Dict{String,String}`
-The list of tags (key-value pairs) assigned to the new function.
+The list of tags (key-value pairs) assigned to the new function. For more information, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
 
 
 
@@ -409,7 +411,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/CreateFunction)
 """
-
 @inline create_function(aws::AWSConfig=default_aws_config(); args...) = create_function(aws, args)
 
 @inline create_function(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "POST", "/2015-03-31/functions", args)
@@ -462,7 +463,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/DeleteAlias)
 """
-
 @inline delete_alias(aws::AWSConfig=default_aws_config(); args...) = delete_alias(aws, args)
 
 @inline delete_alias(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "DELETE", "/2015-03-31/functions/{FunctionName}/aliases/{Name}", args)
@@ -499,7 +499,7 @@ The event source mapping ID.
 
 # Exceptions
 
-`ServiceException`, `ResourceNotFoundException`, `InvalidParameterValueException` or `TooManyRequestsException`.
+`ServiceException`, `ResourceNotFoundException`, `InvalidParameterValueException`, `TooManyRequestsException` or `ResourceInUseException`.
 
 # Example: To delete a Lambda function event source mapping
 
@@ -528,7 +528,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/DeleteEventSourceMapping)
 """
-
 @inline delete_event_source_mapping(aws::AWSConfig=default_aws_config(); args...) = delete_event_source_mapping(aws, args)
 
 @inline delete_event_source_mapping(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "DELETE", "/2015-03-31/event-source-mappings/{UUID}", args)
@@ -591,12 +590,45 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/DeleteFunction)
 """
-
 @inline delete_function(aws::AWSConfig=default_aws_config(); args...) = delete_function(aws, args)
 
 @inline delete_function(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "DELETE", "/2015-03-31/functions/{FunctionName}", args)
 
 @inline delete_function(args) = delete_function(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Lambda.delete_function_concurrency
+    delete_function_concurrency([::AWSConfig], arguments::Dict)
+    delete_function_concurrency([::AWSConfig]; FunctionName=)
+
+    using AWSCore.Services.lambda
+    lambda([::AWSConfig], "DELETE", "/2017-10-31/functions/{FunctionName}/concurrency", arguments::Dict)
+    lambda([::AWSConfig], "DELETE", "/2017-10-31/functions/{FunctionName}/concurrency", FunctionName=)
+
+# DeleteFunctionConcurrency Operation
+
+Removes concurrent execution limits from this function. For more information, see [concurrent-executions](@ref).
+
+# Arguments
+
+## `FunctionName = ::String` -- *Required*
+The name of the function you are removing concurrent execution limits from. For more information, see [concurrent-executions](@ref).
+
+
+
+
+# Exceptions
+
+`ServiceException`, `ResourceNotFoundException`, `TooManyRequestsException` or `InvalidParameterValueException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/DeleteFunctionConcurrency)
+"""
+@inline delete_function_concurrency(aws::AWSConfig=default_aws_config(); args...) = delete_function_concurrency(aws, args)
+
+@inline delete_function_concurrency(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "DELETE", "/2017-10-31/functions/{FunctionName}/concurrency", args)
+
+@inline delete_function_concurrency(args) = delete_function_concurrency(default_aws_config(), args)
 
 
 """
@@ -651,7 +683,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetAccountSettings)
 """
-
 @inline get_account_settings(aws::AWSConfig=default_aws_config(); args...) = get_account_settings(aws, args)
 
 @inline get_account_settings(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "GET", "/2016-08-19/account-settings/", args)
@@ -718,7 +749,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetAlias)
 """
-
 @inline get_alias(aws::AWSConfig=default_aws_config(); args...) = get_alias(aws, args)
 
 @inline get_alias(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "GET", "/2015-03-31/functions/{FunctionName}/aliases/{Name}", args)
@@ -784,7 +814,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetEventSourceMapping)
 """
-
 @inline get_event_source_mapping(aws::AWSConfig=default_aws_config(); args...) = get_event_source_mapping(aws, args)
 
 @inline get_event_source_mapping(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "GET", "/2015-03-31/event-source-mappings/{UUID}", args)
@@ -818,7 +847,7 @@ You can specify a function name (for example, `Thumbnail`) or you can specify Am
 
 
 ## `Qualifier = ::String`
-Using this optional parameter to specify a function version or an alias name. If you specify function version, the API uses qualified function ARN for the request and returns information about the specific Lambda function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points. If you don't provide this parameter, the API uses unqualified function ARN and returns information about the `\$LATEST` version of the Lambda function.
+Use this optional parameter to specify a function version or an alias name. If you specify function version, the API uses qualified function ARN for the request and returns information about the specific Lambda function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points. If you don't provide this parameter, the API uses unqualified function ARN and returns information about the `\$LATEST` version of the Lambda function.
 
 
 
@@ -882,7 +911,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetFunction)
 """
-
 @inline get_function(aws::AWSConfig=default_aws_config(); args...) = get_function(aws, args)
 
 @inline get_function(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "GET", "/2015-03-31/functions/{FunctionName}", args)
@@ -973,7 +1001,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetFunctionConfiguration)
 """
-
 @inline get_function_configuration(aws::AWSConfig=default_aws_config(); args...) = get_function_configuration(aws, args)
 
 @inline get_function_configuration(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "GET", "/2015-03-31/functions/{FunctionName}/configuration", args)
@@ -1041,7 +1068,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetPolicy)
 """
-
 @inline get_policy(aws::AWSConfig=default_aws_config(); args...) = get_policy(aws, args)
 
 @inline get_policy(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "GET", "/2015-03-31/functions/{FunctionName}/policy", args)
@@ -1066,6 +1092,9 @@ If you are using the versioning feature, you can invoke the specific function ve
 
 This operation requires permission for the `lambda:InvokeFunction` action.
 
+**Note**
+> The `TooManyRequestsException` noted below will return the following: `ConcurrentInvocationLimitExceeded` will be returned if you have no functions with reserved concurrency and have exceeded your account concurrent limit or if a function without reserved concurrency exceeds the account's unreserved concurrency limit. `ReservedFunctionConcurrentInvocationLimitExceeded` will be returned when a function with reserved concurrency exceeds its configured concurrency limit.
+
 # Arguments
 
 ## `FunctionName = ::String` -- *Required*
@@ -1085,7 +1114,7 @@ You can set this optional parameter to `Tail` in the request only if you specify
 ## `*header:* X-Amz-Client-Context = ::String`
 Using the `ClientContext` you can pass client-specific information to the Lambda function you are invoking. You can then process the client information in your Lambda function as you choose through the context variable. For an example of a `ClientContext` JSON, see [PutEvents](http://docs.aws.amazon.com/mobileanalytics/latest/ug/PutEvents.html) in the *Amazon Mobile Analytics API Reference and User Guide*.
 
-The ClientContext JSON must be base64-encoded.
+The ClientContext JSON must be base64-encoded and has a maximum size of 3583 bytes.
 
 
 ## `Payload = blob`
@@ -1136,7 +1165,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/Invoke)
 """
-
 @inline invoke(aws::AWSConfig=default_aws_config(); args...) = invoke(aws, args)
 
 @inline invoke(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "POST", "/2015-03-31/functions/{FunctionName}/invocations", args)
@@ -1204,7 +1232,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/InvokeAsync)
 """
-
 @inline invoke_async(aws::AWSConfig=default_aws_config(); args...) = invoke_async(aws, args)
 
 @inline invoke_async(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "POST", "/2014-11-13/functions/{FunctionName}/invoke-async/", args)
@@ -1281,7 +1308,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListAliases)
 """
-
 @inline list_aliases(aws::AWSConfig=default_aws_config(); args...) = list_aliases(aws, args)
 
 @inline list_aliases(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "GET", "/2015-03-31/functions/{FunctionName}/aliases", args)
@@ -1311,7 +1337,7 @@ This operation requires permission for the `lambda:ListEventSourceMappings` acti
 # Arguments
 
 ## `EventSourceArn = ::String`
-The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter is optional.)
+The Amazon Resource Name (ARN) of the Amazon Kinesis or DynamoDB stream, or an SQS queue. (This parameter is optional.)
 
 
 ## `FunctionName = ::String`
@@ -1340,7 +1366,6 @@ Optional integer. Specifies the maximum number of event sources to return in res
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListEventSourceMappings)
 """
-
 @inline list_event_source_mappings(aws::AWSConfig=default_aws_config(); args...) = list_event_source_mappings(aws, args)
 
 @inline list_event_source_mappings(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "GET", "/2015-03-31/event-source-mappings/", args)
@@ -1374,7 +1399,7 @@ Valid values are:
 
 The region from which the functions are replicated. For example, if you specify `us-east-1`, only functions replicated from that region will be returned.
 
-`ALL` _ Will return all functions from any region. If specified, you also must specify a valid FunctionVersion parameter.
+`ALL`: Will return all functions from any region. If specified, you also must specify a valid FunctionVersion parameter.
 
 
 ## `FunctionVersion = "ALL"`
@@ -1382,7 +1407,7 @@ Optional string. If not specified, only the unqualified functions ARNs (Amazon R
 
 Valid value:
 
-`ALL` _ Will return all versions, including `\$LATEST` which will have fully qualified ARNs (Amazon Resource Names).
+`ALL`: Will return all versions, including `\$LATEST` which will have fully qualified ARNs (Amazon Resource Names).
 
 
 ## `Marker = ::String`
@@ -1427,7 +1452,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListFunctions)
 """
-
 @inline list_functions(aws::AWSConfig=default_aws_config(); args...) = list_functions(aws, args)
 
 @inline list_functions(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "GET", "/2015-03-31/functions/", args)
@@ -1446,12 +1470,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 # ListTags Operation
 
-Returns a list of tags assigned to a function when supplied the function ARN (Amazon Resource Name).
+Returns a list of tags assigned to a function when supplied the function ARN (Amazon Resource Name). For more information on Tagging, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
 
 # Arguments
 
 ## `ARN = ::String` -- *Required*
-The ARN (Amazon Resource Name) of the function.
+The ARN (Amazon Resource Name) of the function. For more information, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
 
 
 
@@ -1466,7 +1490,6 @@ The ARN (Amazon Resource Name) of the function.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListTags)
 """
-
 @inline list_tags(aws::AWSConfig=default_aws_config(); args...) = list_tags(aws, args)
 
 @inline list_tags(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "GET", "/2017-03-31/tags/{ARN}", args)
@@ -1536,7 +1559,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListVersionsByFunction)
 """
-
 @inline list_versions_by_function(aws::AWSConfig=default_aws_config(); args...) = list_versions_by_function(aws, args)
 
 @inline list_versions_by_function(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "GET", "/2015-03-31/functions/{FunctionName}/versions", args)
@@ -1564,11 +1586,15 @@ The Lambda function name. You can specify a function name (for example, `Thumbna
 
 
 ## `CodeSha256 = ::String`
-The SHA256 hash of the deployment package you want to publish. This provides validation on the code you are publishing. If you provide this parameter value must match the SHA256 of the \$LATEST version for the publication to succeed.
+The SHA256 hash of the deployment package you want to publish. This provides validation on the code you are publishing. If you provide this parameter, the value must match the SHA256 of the \$LATEST version for the publication to succeed. You can use the **DryRun** parameter of [UpdateFunctionCode](@ref) to verify the hash value that will be returned before publishing your new version.
 
 
 ## `Description = ::String`
 The description for the version you are publishing. If not provided, AWS Lambda copies the description from the \$LATEST version.
+
+
+## `RevisionId = ::String`
+An optional value you can use to ensure you are updating the latest update of the function version or alias. If the `RevisionID` you pass doesn't match the latest `RevisionId` of the function or alias, it will fail with an error message, advising you to retrieve the latest function version or alias `RevisionID` using either or .
 
 
 
@@ -1579,7 +1605,7 @@ The description for the version you are publishing. If not provided, AWS Lambda 
 
 # Exceptions
 
-`ServiceException`, `ResourceNotFoundException`, `InvalidParameterValueException`, `TooManyRequestsException` or `CodeStorageExceededException`.
+`ServiceException`, `ResourceNotFoundException`, `InvalidParameterValueException`, `TooManyRequestsException`, `CodeStorageExceededException` or `PreconditionFailedException`.
 
 # Example: To publish a version of a Lambda function
 
@@ -1617,12 +1643,53 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/PublishVersion)
 """
-
 @inline publish_version(aws::AWSConfig=default_aws_config(); args...) = publish_version(aws, args)
 
 @inline publish_version(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "POST", "/2015-03-31/functions/{FunctionName}/versions", args)
 
 @inline publish_version(args) = publish_version(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.Lambda.put_function_concurrency
+    put_function_concurrency([::AWSConfig], arguments::Dict)
+    put_function_concurrency([::AWSConfig]; FunctionName=, ReservedConcurrentExecutions=)
+
+    using AWSCore.Services.lambda
+    lambda([::AWSConfig], "PUT", "/2017-10-31/functions/{FunctionName}/concurrency", arguments::Dict)
+    lambda([::AWSConfig], "PUT", "/2017-10-31/functions/{FunctionName}/concurrency", FunctionName=, ReservedConcurrentExecutions=)
+
+# PutFunctionConcurrency Operation
+
+Sets a limit on the number of concurrent executions available to this function. It is a subset of your account's total concurrent execution limit per region. Note that Lambda automatically reserves a buffer of 100 concurrent executions for functions without any reserved concurrency limit. This means if your account limit is 1000, you have a total of 900 available to allocate to individual functions. For more information, see [concurrent-executions](@ref).
+
+# Arguments
+
+## `FunctionName = ::String` -- *Required*
+The name of the function you are setting concurrent execution limits on. For more information, see [concurrent-executions](@ref).
+
+
+## `ReservedConcurrentExecutions = ::Int` -- *Required*
+The concurrent execution limit reserved for this function. For more information, see [concurrent-executions](@ref).
+
+
+
+
+# Returns
+
+`Concurrency`
+
+# Exceptions
+
+`ServiceException`, `InvalidParameterValueException`, `ResourceNotFoundException` or `TooManyRequestsException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/PutFunctionConcurrency)
+"""
+@inline put_function_concurrency(aws::AWSConfig=default_aws_config(); args...) = put_function_concurrency(aws, args)
+
+@inline put_function_concurrency(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "PUT", "/2017-10-31/functions/{FunctionName}/concurrency", args)
+
+@inline put_function_concurrency(args) = put_function_concurrency(default_aws_config(), args)
 
 
 """
@@ -1660,11 +1727,15 @@ Statement ID of the permission to remove.
 You can specify this optional parameter to remove permission associated with a specific function version or function alias. If you don't specify this parameter, the API removes permission associated with the unqualified function ARN.
 
 
+## `RevisionId = ::String`
+An optional value you can use to ensure you are updating the latest update of the function version or alias. If the `RevisionID` you pass doesn't match the latest `RevisionId` of the function or alias, it will fail with an error message, advising you to retrieve the latest function version or alias `RevisionID` using either or .
+
+
 
 
 # Exceptions
 
-`ServiceException`, `ResourceNotFoundException`, `InvalidParameterValueException` or `TooManyRequestsException`.
+`ServiceException`, `ResourceNotFoundException`, `InvalidParameterValueException`, `TooManyRequestsException` or `PreconditionFailedException`.
 
 # Example: To remove a Lambda function's permissions
 
@@ -1681,7 +1752,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/RemovePermission)
 """
-
 @inline remove_permission(aws::AWSConfig=default_aws_config(); args...) = remove_permission(aws, args)
 
 @inline remove_permission(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "DELETE", "/2015-03-31/functions/{FunctionName}/policy/{StatementId}", args)
@@ -1700,16 +1770,16 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 # TagResource Operation
 
-Creates a list of tags (key-value pairs) on the Lambda function. Requires the Lambda function ARN (Amazon Resource Name). If a key is specified without a value, Lambda creates a tag with the specified key and a value of null.
+Creates a list of tags (key-value pairs) on the Lambda function. Requires the Lambda function ARN (Amazon Resource Name). If a key is specified without a value, Lambda creates a tag with the specified key and a value of null. For more information, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
 
 # Arguments
 
 ## `ARN = ::String` -- *Required*
-The ARN (Amazon Resource Name) of the Lambda function.
+The ARN (Amazon Resource Name) of the Lambda function. For more information, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
 
 
 ## `Tags = ::Dict{String,String}` -- *Required*
-The list of tags (key-value pairs) you are assigning to the Lambda function.
+The list of tags (key-value pairs) you are assigning to the Lambda function. For more information, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
 
 
 
@@ -1720,7 +1790,6 @@ The list of tags (key-value pairs) you are assigning to the Lambda function.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/TagResource)
 """
-
 @inline tag_resource(aws::AWSConfig=default_aws_config(); args...) = tag_resource(aws, args)
 
 @inline tag_resource(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "POST", "/2017-03-31/tags/{ARN}", args)
@@ -1739,16 +1808,16 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda
 
 # UntagResource Operation
 
-Removes tags from a Lambda function. Requires the function ARN (Amazon Resource Name).
+Removes tags from a Lambda function. Requires the function ARN (Amazon Resource Name). For more information, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
 
 # Arguments
 
 ## `ARN = ::String` -- *Required*
-The ARN (Amazon Resource Name) of the function.
+The ARN (Amazon Resource Name) of the function. For more information, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
 
 
 ## `tagKeys = [::String, ...]` -- *Required*
-The list of tag keys to be deleted from the function.
+The list of tag keys to be deleted from the function. For more information, see [Tagging Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the **AWS Lambda Developer Guide**.
 
 
 
@@ -1759,7 +1828,6 @@ The list of tag keys to be deleted from the function.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UntagResource)
 """
-
 @inline untag_resource(aws::AWSConfig=default_aws_config(); args...) = untag_resource(aws, args)
 
 @inline untag_resource(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "DELETE", "/2017-03-31/tags/{ARN}", args)
@@ -1800,6 +1868,14 @@ Using this parameter you can change the Lambda function version to which the ali
 You can change the description of the alias using this parameter.
 
 
+## `RoutingConfig = ["AdditionalVersionWeights" =>  ::Dict{String,String}]`
+Specifies an additional version your alias can point to, allowing you to dictate what percentage of traffic will invoke each version. For more information, see [lambda-traffic-shifting-using-aliases](@ref).
+
+
+## `RevisionId = ::String`
+An optional value you can use to ensure you are updating the latest update of the function version or alias. If the `RevisionID` you pass doesn't match the latest `RevisionId` of the function or alias, it will fail with an error message, advising you to retrieve the latest function version or alias `RevisionID` using either or .
+
+
 
 
 # Returns
@@ -1808,7 +1884,7 @@ You can change the description of the alias using this parameter.
 
 # Exceptions
 
-`ServiceException`, `ResourceNotFoundException`, `InvalidParameterValueException` or `TooManyRequestsException`.
+`ServiceException`, `ResourceNotFoundException`, `InvalidParameterValueException`, `TooManyRequestsException` or `PreconditionFailedException`.
 
 # Example: To update a Lambda function alias
 
@@ -1836,7 +1912,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UpdateAlias)
 """
-
 @inline update_alias(aws::AWSConfig=default_aws_config(); args...) = update_alias(aws, args)
 
 @inline update_alias(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "PUT", "/2015-03-31/functions/{FunctionName}/aliases/{Name}", args)
@@ -1895,7 +1970,7 @@ The maximum number of stream records that can be sent to your Lambda function fo
 
 # Exceptions
 
-`ServiceException`, `ResourceNotFoundException`, `InvalidParameterValueException`, `TooManyRequestsException` or `ResourceConflictException`.
+`ServiceException`, `ResourceNotFoundException`, `InvalidParameterValueException`, `TooManyRequestsException`, `ResourceConflictException` or `ResourceInUseException`.
 
 # Example: To update a Lambda function event source mapping
 
@@ -1927,7 +2002,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UpdateEventSourceMapping)
 """
-
 @inline update_event_source_mapping(aws::AWSConfig=default_aws_config(); args...) = update_event_source_mapping(aws, args)
 
 @inline update_event_source_mapping(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "PUT", "/2015-03-31/event-source-mappings/{UUID}", args)
@@ -1961,7 +2035,7 @@ You can specify a function name (for example, `Thumbnail`) or you can specify Am
 
 
 ## `ZipFile = blob`
-The contents of your zip file containing your deployment package. If you are using the web API directly, the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see [Execution Permissions](http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html) in the *AWS Lambda Developer Guide*.
+The contents of your zip file containing your deployment package. If you are using the web API directly, the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see [Execution Permissions](http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html).
 
 
 ## `S3Bucket = ::String`
@@ -1981,7 +2055,11 @@ This boolean parameter can be used to request AWS Lambda to update the Lambda fu
 
 
 ## `DryRun = ::Bool`
-This boolean parameter can be used to test your request to AWS Lambda to update the Lambda function and publish a version as an atomic operation. It will do all necessary computation and validation of your code but will not upload it or a publish a version. Each time this operation is invoked, the `CodeSha256` hash value the provided code will also be computed and returned in the response.
+This boolean parameter can be used to test your request to AWS Lambda to update the Lambda function and publish a version as an atomic operation. It will do all necessary computation and validation of your code but will not upload it or a publish a version. Each time this operation is invoked, the `CodeSha256` hash value of the provided code will also be computed and returned in the response.
+
+
+## `RevisionId = ::String`
+An optional value you can use to ensure you are updating the latest update of the function version or alias. If the `RevisionID` you pass doesn't match the latest `RevisionId` of the function or alias, it will fail with an error message, advising you to retrieve the latest function version or alias `RevisionID` using either or .
 
 
 
@@ -1992,7 +2070,7 @@ This boolean parameter can be used to test your request to AWS Lambda to update 
 
 # Exceptions
 
-`ServiceException`, `ResourceNotFoundException`, `InvalidParameterValueException`, `TooManyRequestsException` or `CodeStorageExceededException`.
+`ServiceException`, `ResourceNotFoundException`, `InvalidParameterValueException`, `TooManyRequestsException`, `CodeStorageExceededException` or `PreconditionFailedException`.
 
 # Example: To update a Lambda function's code
 
@@ -2033,7 +2111,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UpdateFunctionCode)
 """
-
 @inline update_function_code(aws::AWSConfig=default_aws_config(); args...) = update_function_code(aws, args)
 
 @inline update_function_code(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "PUT", "/2015-03-31/functions/{FunctionName}/code", args)
@@ -2099,17 +2176,17 @@ The amount of memory, in MB, your Lambda function is given. AWS Lambda uses this
 The parent object that contains your environment's configuration settings.
 
 
-## `Runtime = "nodejs", "nodejs4.3", "nodejs6.10", "java8", "python2.7", "python3.6", "dotnetcore1.0" or "nodejs4.3-edge"`
+## `Runtime = "nodejs", "nodejs4.3", "nodejs6.10", "nodejs8.10", "java8", "python2.7", "python3.6", "dotnetcore1.0", "dotnetcore2.0", "dotnetcore2.1", "nodejs4.3-edge" or "go1.x"`
 The runtime environment for the Lambda function.
 
-To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use the Python runtime v3.6, set the value to "python3.6".
+To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use the .NET Core runtime v1.0, set the value to "dotnetcore1.0". To use the .NET Core runtime v2.0, set the value to "dotnetcore2.0".
 
 **Note**
-> Node v0.10.42 is currently marked as deprecated. You must migrate existing functions to the newer Node.js runtime versions available on AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. You can request a one-time extension until June 30, 2017 by going to the Lambda console and following the instructions provided. Failure to do so will result in an invalid parameter error being returned. Note that you will have to follow this procedure for each region that contains functions written in the Node v0.10.42 runtime.
+> Node v0.10.42 is currently marked as deprecated. You must migrate existing functions to the newer Node.js runtime versions available on AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. Failure to do so will result in an invalid parameter error being returned. Note that you will have to follow this procedure for each region that contains functions written in the Node v0.10.42 runtime.
 
 
 ## `DeadLetterConfig = ["TargetArn" =>  ::String]`
-The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.
+The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic. For more information, see [dlq](@ref).
 
 
 ## `KMSKeyArn = ::String`
@@ -2120,6 +2197,10 @@ The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's en
 The parent object that contains your function's tracing settings.
 
 
+## `RevisionId = ::String`
+An optional value you can use to ensure you are updating the latest update of the function version or alias. If the `RevisionID` you pass doesn't match the latest `RevisionId` of the function or alias, it will fail with an error message, advising you to retrieve the latest function version or alias `RevisionID` using either or .
+
+
 
 
 # Returns
@@ -2128,7 +2209,7 @@ The parent object that contains your function's tracing settings.
 
 # Exceptions
 
-`ServiceException`, `ResourceNotFoundException`, `InvalidParameterValueException`, `TooManyRequestsException` or `ResourceConflictException`.
+`ServiceException`, `ResourceNotFoundException`, `InvalidParameterValueException`, `TooManyRequestsException`, `ResourceConflictException` or `PreconditionFailedException`.
 
 # Example: To update a Lambda function's configuration
 
@@ -2173,7 +2254,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UpdateFunctionConfiguration)
 """
-
 @inline update_function_configuration(aws::AWSConfig=default_aws_config(); args...) = update_function_configuration(aws, args)
 
 @inline update_function_configuration(aws::AWSConfig, args) = AWSCore.Services.lambda(aws, "PUT", "/2015-03-31/functions/{FunctionName}/configuration", args)

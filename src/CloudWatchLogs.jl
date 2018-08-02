@@ -49,7 +49,6 @@ The Amazon Resource Name (ARN) of the CMK to use when encrypting log data. For m
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/AssociateKmsKey)
 """
-
 @inline associate_kms_key(aws::AWSConfig=default_aws_config(); args...) = associate_kms_key(aws, args)
 
 @inline associate_kms_key(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "AssociateKmsKey", args)
@@ -86,7 +85,6 @@ The ID of the export task.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/CancelExportTask)
 """
-
 @inline cancel_export_task(aws::AWSConfig=default_aws_config(); args...) = cancel_export_task(aws, args)
 
 @inline cancel_export_task(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "CancelExportTask", args)
@@ -153,7 +151,6 @@ The prefix used as the start of the key for every object exported. If you don't 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/CreateExportTask)
 """
-
 @inline create_export_task(aws::AWSConfig=default_aws_config(); args...) = create_export_task(aws, args)
 
 @inline create_export_task(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "CreateExportTask", args)
@@ -210,7 +207,6 @@ The key-value pairs to use for the tags.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/CreateLogGroup)
 """
-
 @inline create_log_group(aws::AWSConfig=default_aws_config(); args...) = create_log_group(aws, args)
 
 @inline create_log_group(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "CreateLogGroup", args)
@@ -259,7 +255,6 @@ The name of the log stream.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/CreateLogStream)
 """
-
 @inline create_log_stream(aws::AWSConfig=default_aws_config(); args...) = create_log_stream(aws, args)
 
 @inline create_log_stream(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "CreateLogStream", args)
@@ -294,7 +289,6 @@ The name of the destination.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteDestination)
 """
-
 @inline delete_destination(aws::AWSConfig=default_aws_config(); args...) = delete_destination(aws, args)
 
 @inline delete_destination(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DeleteDestination", args)
@@ -329,7 +323,6 @@ The name of the log group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteLogGroup)
 """
-
 @inline delete_log_group(aws::AWSConfig=default_aws_config(); args...) = delete_log_group(aws, args)
 
 @inline delete_log_group(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DeleteLogGroup", args)
@@ -368,7 +361,6 @@ The name of the log stream.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteLogStream)
 """
-
 @inline delete_log_stream(aws::AWSConfig=default_aws_config(); args...) = delete_log_stream(aws, args)
 
 @inline delete_log_stream(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DeleteLogStream", args)
@@ -407,7 +399,6 @@ The name of the metric filter.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteMetricFilter)
 """
-
 @inline delete_metric_filter(aws::AWSConfig=default_aws_config(); args...) = delete_metric_filter(aws, args)
 
 @inline delete_metric_filter(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DeleteMetricFilter", args)
@@ -442,7 +433,6 @@ The name of the policy to be revoked. This parameter is required.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteResourcePolicy)
 """
-
 @inline delete_resource_policy(aws::AWSConfig=default_aws_config(); args...) = delete_resource_policy(aws, args)
 
 @inline delete_resource_policy(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DeleteResourcePolicy", args)
@@ -479,7 +469,6 @@ The name of the log group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteRetentionPolicy)
 """
-
 @inline delete_retention_policy(aws::AWSConfig=default_aws_config(); args...) = delete_retention_policy(aws, args)
 
 @inline delete_retention_policy(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DeleteRetentionPolicy", args)
@@ -518,7 +507,6 @@ The name of the subscription filter.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteSubscriptionFilter)
 """
-
 @inline delete_subscription_filter(aws::AWSConfig=default_aws_config(); args...) = delete_subscription_filter(aws, args)
 
 @inline delete_subscription_filter(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DeleteSubscriptionFilter", args)
@@ -565,7 +553,6 @@ The maximum number of items returned. If you don't specify a value, the default 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeDestinations)
 """
-
 @inline describe_destinations(aws::AWSConfig=default_aws_config(); args...) = describe_destinations(aws, args)
 
 @inline describe_destinations(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DescribeDestinations", args)
@@ -616,7 +603,6 @@ The maximum number of items returned. If you don't specify a value, the default 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeExportTasks)
 """
-
 @inline describe_export_tasks(aws::AWSConfig=default_aws_config(); args...) = describe_export_tasks(aws, args)
 
 @inline describe_export_tasks(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DescribeExportTasks", args)
@@ -663,7 +649,6 @@ The maximum number of items returned. If you don't specify a value, the default 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeLogGroups)
 """
-
 @inline describe_log_groups(aws::AWSConfig=default_aws_config(); args...) = describe_log_groups(aws, args)
 
 @inline describe_log_groups(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DescribeLogGroups", args)
@@ -730,7 +715,6 @@ The maximum number of items returned. If you don't specify a value, the default 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeLogStreams)
 """
-
 @inline describe_log_streams(aws::AWSConfig=default_aws_config(); args...) = describe_log_streams(aws, args)
 
 @inline describe_log_streams(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DescribeLogStreams", args)
@@ -789,7 +773,6 @@ The namespace of the CloudWatch metric.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeMetricFilters)
 """
-
 @inline describe_metric_filters(aws::AWSConfig=default_aws_config(); args...) = describe_metric_filters(aws, args)
 
 @inline describe_metric_filters(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DescribeMetricFilters", args)
@@ -832,7 +815,6 @@ The maximum number of resource policies to be displayed with one call of this AP
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeResourcePolicies)
 """
-
 @inline describe_resource_policies(aws::AWSConfig=default_aws_config(); args...) = describe_resource_policies(aws, args)
 
 @inline describe_resource_policies(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DescribeResourcePolicies", args)
@@ -883,7 +865,6 @@ The maximum number of items returned. If you don't specify a value, the default 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeSubscriptionFilters)
 """
-
 @inline describe_subscription_filters(aws::AWSConfig=default_aws_config(); args...) = describe_subscription_filters(aws, args)
 
 @inline describe_subscription_filters(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DescribeSubscriptionFilters", args)
@@ -922,7 +903,6 @@ The name of the log group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DisassociateKmsKey)
 """
-
 @inline disassociate_kms_key(aws::AWSConfig=default_aws_config(); args...) = disassociate_kms_key(aws, args)
 
 @inline disassociate_kms_key(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "DisassociateKmsKey", args)
@@ -991,7 +971,6 @@ If the value is true, the operation makes a best effort to provide responses tha
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/FilterLogEvents)
 """
-
 @inline filter_log_events(aws::AWSConfig=default_aws_config(); args...) = filter_log_events(aws, args)
 
 @inline filter_log_events(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "FilterLogEvents", args)
@@ -1056,7 +1035,6 @@ If the value is true, the earliest log events are returned first. If the value i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/GetLogEvents)
 """
-
 @inline get_log_events(aws::AWSConfig=default_aws_config(); args...) = get_log_events(aws, args)
 
 @inline get_log_events(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "GetLogEvents", args)
@@ -1095,7 +1073,6 @@ The name of the log group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/ListTagsLogGroup)
 """
-
 @inline list_tags_log_group(aws::AWSConfig=default_aws_config(); args...) = list_tags_log_group(aws, args)
 
 @inline list_tags_log_group(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "ListTagsLogGroup", args)
@@ -1144,7 +1121,6 @@ The ARN of an IAM role that grants CloudWatch Logs permissions to call the Amazo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutDestination)
 """
-
 @inline put_destination(aws::AWSConfig=default_aws_config(); args...) = put_destination(aws, args)
 
 @inline put_destination(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "PutDestination", args)
@@ -1183,7 +1159,6 @@ An IAM policy document that authorizes cross-account users to deliver their log 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutDestinationPolicy)
 """
-
 @inline put_destination_policy(aws::AWSConfig=default_aws_config(); args...) = put_destination_policy(aws, args)
 
 @inline put_destination_policy(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "PutDestinationPolicy", args)
@@ -1255,7 +1230,6 @@ The sequence token obtained from the response of the previous `PutLogEvents` cal
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutLogEvents)
 """
-
 @inline put_log_events(aws::AWSConfig=default_aws_config(); args...) = put_log_events(aws, args)
 
 @inline put_log_events(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "PutLogEvents", args)
@@ -1311,7 +1285,6 @@ A collection of information that defines how metric data gets emitted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutMetricFilter)
 """
-
 @inline put_metric_filter(aws::AWSConfig=default_aws_config(); args...) = put_metric_filter(aws, args)
 
 @inline put_metric_filter(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "PutMetricFilter", args)
@@ -1358,7 +1331,6 @@ The following example creates a resource policy enabling the Route 53 service to
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutResourcePolicy)
 """
-
 @inline put_resource_policy(aws::AWSConfig=default_aws_config(); args...) = put_resource_policy(aws, args)
 
 @inline put_resource_policy(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "PutResourcePolicy", args)
@@ -1397,7 +1369,6 @@ The name of the log group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutRetentionPolicy)
 """
-
 @inline put_retention_policy(aws::AWSConfig=default_aws_config(); args...) = put_retention_policy(aws, args)
 
 @inline put_retention_policy(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "PutRetentionPolicy", args)
@@ -1470,7 +1441,6 @@ The method used to distribute log data to the destination. By default log data i
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutSubscriptionFilter)
 """
-
 @inline put_subscription_filter(aws::AWSConfig=default_aws_config(); args...) = put_subscription_filter(aws, args)
 
 @inline put_subscription_filter(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "PutSubscriptionFilter", args)
@@ -1513,7 +1483,6 @@ The key-value pairs to use for the tags.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/TagLogGroup)
 """
-
 @inline tag_log_group(aws::AWSConfig=default_aws_config(); args...) = tag_log_group(aws, args)
 
 @inline tag_log_group(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "TagLogGroup", args)
@@ -1556,7 +1525,6 @@ The log event messages to test.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/TestMetricFilter)
 """
-
 @inline test_metric_filter(aws::AWSConfig=default_aws_config(); args...) = test_metric_filter(aws, args)
 
 @inline test_metric_filter(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "TestMetricFilter", args)
@@ -1597,7 +1565,6 @@ The tag keys. The corresponding tags are removed from the log group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/UntagLogGroup)
 """
-
 @inline untag_log_group(aws::AWSConfig=default_aws_config(); args...) = untag_log_group(aws, args)
 
 @inline untag_log_group(aws::AWSConfig, args) = AWSCore.Services.logs(aws, "UntagLogGroup", args)

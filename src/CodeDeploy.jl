@@ -46,11 +46,10 @@ The names of the on-premises instances to which to add tags.
 
 # Exceptions
 
-`InstanceNameRequiredException`, `TagRequiredException`, `InvalidTagException`, `TagLimitExceededException`, `InstanceLimitExceededException` or `InstanceNotRegisteredException`.
+`InstanceNameRequiredException`, `InvalidInstanceNameException`, `TagRequiredException`, `InvalidTagException`, `TagLimitExceededException`, `InstanceLimitExceededException` or `InstanceNotRegisteredException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/AddTagsToOnPremisesInstances)
 """
-
 @inline add_tags_to_on_premises_instances(aws::AWSConfig=default_aws_config(); args...) = add_tags_to_on_premises_instances(aws, args)
 
 @inline add_tags_to_on_premises_instances(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "AddTagsToOnPremisesInstances", args)
@@ -81,17 +80,21 @@ The name of an AWS CodeDeploy application about which to get revision informatio
 Information to get about the application revisions, including type and location.
 ```
  revisions = [[
-        "revisionType" =>  "S3" or "GitHub",
+        "revisionType" =>  "S3", "GitHub" or "String",
         "s3Location" =>  [
             "bucket" =>  ::String,
             "key" =>  ::String,
-            "bundleType" =>  "tar", "tgz" or "zip",
+            "bundleType" =>  "tar", "tgz", "zip", "YAML" or "JSON",
             "version" =>  ::String,
             "eTag" =>  ::String
         ],
         "gitHubLocation" =>  [
             "repository" =>  ::String,
             "commitId" =>  ::String
+        ],
+        "string" =>  [
+            "content" =>  ::String,
+            "sha256" =>  ::String
         ]
     ], ...]
 ```
@@ -108,7 +111,6 @@ Information to get about the application revisions, including type and location.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/BatchGetApplicationRevisions)
 """
-
 @inline batch_get_application_revisions(aws::AWSConfig=default_aws_config(); args...) = batch_get_application_revisions(aws, args)
 
 @inline batch_get_application_revisions(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "BatchGetApplicationRevisions", args)
@@ -119,11 +121,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 """
     using AWSSDK.CodeDeploy.batch_get_applications
     batch_get_applications([::AWSConfig], arguments::Dict)
-    batch_get_applications([::AWSConfig]; <keyword arguments>)
+    batch_get_applications([::AWSConfig]; applicationNames=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "BatchGetApplications", arguments::Dict)
-    codedeploy([::AWSConfig], "BatchGetApplications", <keyword arguments>)
+    codedeploy([::AWSConfig], "BatchGetApplications", applicationNames=)
 
 # BatchGetApplications Operation
 
@@ -131,7 +133,7 @@ Gets information about one or more applications.
 
 # Arguments
 
-## `applicationNames = [::String, ...]`
+## `applicationNames = [::String, ...]` -- *Required*
 A list of application names separated by spaces.
 
 
@@ -147,7 +149,6 @@ A list of application names separated by spaces.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/BatchGetApplications)
 """
-
 @inline batch_get_applications(aws::AWSConfig=default_aws_config(); args...) = batch_get_applications(aws, args)
 
 @inline batch_get_applications(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "BatchGetApplications", args)
@@ -190,7 +191,6 @@ The deployment groups' names.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/BatchGetDeploymentGroups)
 """
-
 @inline batch_get_deployment_groups(aws::AWSConfig=default_aws_config(); args...) = batch_get_deployment_groups(aws, args)
 
 @inline batch_get_deployment_groups(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "BatchGetDeploymentGroups", args)
@@ -233,7 +233,6 @@ The unique IDs of instances in the deployment group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/BatchGetDeploymentInstances)
 """
-
 @inline batch_get_deployment_instances(aws::AWSConfig=default_aws_config(); args...) = batch_get_deployment_instances(aws, args)
 
 @inline batch_get_deployment_instances(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "BatchGetDeploymentInstances", args)
@@ -244,11 +243,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 """
     using AWSSDK.CodeDeploy.batch_get_deployments
     batch_get_deployments([::AWSConfig], arguments::Dict)
-    batch_get_deployments([::AWSConfig]; <keyword arguments>)
+    batch_get_deployments([::AWSConfig]; deploymentIds=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "BatchGetDeployments", arguments::Dict)
-    codedeploy([::AWSConfig], "BatchGetDeployments", <keyword arguments>)
+    codedeploy([::AWSConfig], "BatchGetDeployments", deploymentIds=)
 
 # BatchGetDeployments Operation
 
@@ -256,7 +255,7 @@ Gets information about one or more deployments.
 
 # Arguments
 
-## `deploymentIds = [::String, ...]`
+## `deploymentIds = [::String, ...]` -- *Required*
 A list of deployment IDs, separated by spaces.
 
 
@@ -272,7 +271,6 @@ A list of deployment IDs, separated by spaces.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/BatchGetDeployments)
 """
-
 @inline batch_get_deployments(aws::AWSConfig=default_aws_config(); args...) = batch_get_deployments(aws, args)
 
 @inline batch_get_deployments(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "BatchGetDeployments", args)
@@ -283,11 +281,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 """
     using AWSSDK.CodeDeploy.batch_get_on_premises_instances
     batch_get_on_premises_instances([::AWSConfig], arguments::Dict)
-    batch_get_on_premises_instances([::AWSConfig]; <keyword arguments>)
+    batch_get_on_premises_instances([::AWSConfig]; instanceNames=)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "BatchGetOnPremisesInstances", arguments::Dict)
-    codedeploy([::AWSConfig], "BatchGetOnPremisesInstances", <keyword arguments>)
+    codedeploy([::AWSConfig], "BatchGetOnPremisesInstances", instanceNames=)
 
 # BatchGetOnPremisesInstances Operation
 
@@ -295,7 +293,7 @@ Gets information about one or more on-premises instances.
 
 # Arguments
 
-## `instanceNames = [::String, ...]`
+## `instanceNames = [::String, ...]` -- *Required*
 The names of the on-premises instances about which to get information.
 
 
@@ -311,7 +309,6 @@ The names of the on-premises instances about which to get information.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/BatchGetOnPremisesInstances)
 """
-
 @inline batch_get_on_premises_instances(aws::AWSConfig=default_aws_config(); args...) = batch_get_on_premises_instances(aws, args)
 
 @inline batch_get_on_premises_instances(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "BatchGetOnPremisesInstances", args)
@@ -346,7 +343,6 @@ The deployment ID of the blue/green deployment for which you want to start rerou
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/ContinueDeployment)
 """
-
 @inline continue_deployment(aws::AWSConfig=default_aws_config(); args...) = continue_deployment(aws, args)
 
 @inline continue_deployment(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "ContinueDeployment", args)
@@ -357,11 +353,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 """
     using AWSSDK.CodeDeploy.create_application
     create_application([::AWSConfig], arguments::Dict)
-    create_application([::AWSConfig]; applicationName=)
+    create_application([::AWSConfig]; applicationName=, <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "CreateApplication", arguments::Dict)
-    codedeploy([::AWSConfig], "CreateApplication", applicationName=)
+    codedeploy([::AWSConfig], "CreateApplication", applicationName=, <keyword arguments>)
 
 # CreateApplication Operation
 
@@ -373,6 +369,10 @@ Creates an application.
 The name of the application. This name must be unique with the applicable IAM user or AWS account.
 
 
+## `computePlatform = "Server" or "Lambda"`
+The destination platform type for the deployment (`Lambda` or `Server`).
+
+
 
 
 # Returns
@@ -381,11 +381,10 @@ The name of the application. This name must be unique with the applicable IAM us
 
 # Exceptions
 
-`ApplicationNameRequiredException`, `InvalidApplicationNameException`, `ApplicationAlreadyExistsException` or `ApplicationLimitExceededException`.
+`ApplicationNameRequiredException`, `InvalidApplicationNameException`, `ApplicationAlreadyExistsException`, `ApplicationLimitExceededException` or `InvalidComputePlatformException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/CreateApplication)
 """
-
 @inline create_application(aws::AWSConfig=default_aws_config(); args...) = create_application(aws, args)
 
 @inline create_application(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "CreateApplication", args)
@@ -420,17 +419,21 @@ The name of the deployment group.
 The type and location of the revision to deploy.
 ```
  revision = [
-        "revisionType" =>  "S3" or "GitHub",
+        "revisionType" =>  "S3", "GitHub" or "String",
         "s3Location" =>  [
             "bucket" =>  ::String,
             "key" =>  ::String,
-            "bundleType" =>  "tar", "tgz" or "zip",
+            "bundleType" =>  "tar", "tgz", "zip", "YAML" or "JSON",
             "version" =>  ::String,
             "eTag" =>  ::String
         ],
         "gitHubLocation" =>  [
             "repository" =>  ::String,
             "commitId" =>  ::String
+        ],
+        "string" =>  [
+            "content" =>  ::String,
+            "sha256" =>  ::String
         ]
     ]
 ```
@@ -502,11 +505,10 @@ The fileExistsBehavior parameter takes any of the following values:
 
 # Exceptions
 
-`ApplicationNameRequiredException`, `InvalidApplicationNameException`, `ApplicationDoesNotExistException`, `DeploymentGroupNameRequiredException`, `InvalidDeploymentGroupNameException`, `DeploymentGroupDoesNotExistException`, `RevisionRequiredException`, `RevisionDoesNotExistException`, `InvalidRevisionException`, `InvalidDeploymentConfigNameException`, `DeploymentConfigDoesNotExistException`, `DescriptionTooLongException`, `DeploymentLimitExceededException`, `InvalidTargetInstancesException`, `InvalidAutoRollbackConfigException`, `InvalidLoadBalancerInfoException` or `InvalidFileExistsBehaviorException`.
+`ApplicationNameRequiredException`, `InvalidApplicationNameException`, `ApplicationDoesNotExistException`, `DeploymentGroupNameRequiredException`, `InvalidDeploymentGroupNameException`, `DeploymentGroupDoesNotExistException`, `RevisionRequiredException`, `RevisionDoesNotExistException`, `InvalidRevisionException`, `InvalidDeploymentConfigNameException`, `DeploymentConfigDoesNotExistException`, `DescriptionTooLongException`, `DeploymentLimitExceededException`, `InvalidTargetInstancesException`, `InvalidAutoRollbackConfigException`, `InvalidLoadBalancerInfoException`, `InvalidFileExistsBehaviorException`, `InvalidRoleException`, `InvalidAutoScalingGroupException`, `ThrottlingException`, `InvalidUpdateOutdatedInstancesOnlyValueException`, `InvalidIgnoreApplicationStopFailuresValueException` or `InvalidGitHubAccountTokenException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/CreateDeployment)
 """
-
 @inline create_deployment(aws::AWSConfig=default_aws_config(); args...) = create_deployment(aws, args)
 
 @inline create_deployment(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "CreateDeployment", args)
@@ -517,11 +519,11 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codede
 """
     using AWSSDK.CodeDeploy.create_deployment_config
     create_deployment_config([::AWSConfig], arguments::Dict)
-    create_deployment_config([::AWSConfig]; deploymentConfigName=, minimumHealthyHosts=)
+    create_deployment_config([::AWSConfig]; deploymentConfigName=, <keyword arguments>)
 
     using AWSCore.Services.codedeploy
     codedeploy([::AWSConfig], "CreateDeploymentConfig", arguments::Dict)
-    codedeploy([::AWSConfig], "CreateDeploymentConfig", deploymentConfigName=, minimumHealthyHosts=)
+    codedeploy([::AWSConfig], "CreateDeploymentConfig", deploymentConfigName=, <keyword arguments>)
 
 # CreateDeploymentConfig Operation
 
@@ -533,7 +535,7 @@ Creates a deployment configuration.
 The name of the deployment configuration to create.
 
 
-## `minimumHealthyHosts = [ ... ]` -- *Required*
+## `minimumHealthyHosts = [ ... ]`
 The minimum number of healthy instances that should be available at any time during the deployment. There are two parameters expected in the input: type and value.
 
 The type parameter takes either of the following values:
@@ -552,6 +554,26 @@ For example, to set a minimum of 95% healthy instance, specify a type of FLEET_P
     ]
 ```
 
+## `trafficRoutingConfig = [ ... ]`
+The configuration that specifies how the deployment traffic will be routed.
+```
+ trafficRoutingConfig = [
+        "type" =>  "TimeBasedCanary", "TimeBasedLinear" or "AllAtOnce",
+        "timeBasedCanary" =>  [
+            "canaryPercentage" =>  ::Int,
+            "canaryInterval" =>  ::Int
+        ],
+        "timeBasedLinear" =>  [
+            "linearPercentage" =>  ::Int,
+            "linearInterval" =>  ::Int
+        ]
+    ]
+```
+
+## `computePlatform = "Server" or "Lambda"`
+The destination platform type for the deployment (`Lambda` or `Server`>).
+
+
 
 
 # Returns
@@ -560,11 +582,10 @@ For example, to set a minimum of 95% healthy instance, specify a type of FLEET_P
 
 # Exceptions
 
-`InvalidDeploymentConfigNameException`, `DeploymentConfigNameRequiredException`, `DeploymentConfigAlreadyExistsException`, `InvalidMinimumHealthyHostValueException` or `DeploymentConfigLimitExceededException`.
+`InvalidDeploymentConfigNameException`, `DeploymentConfigNameRequiredException`, `DeploymentConfigAlreadyExistsException`, `InvalidMinimumHealthyHostValueException`, `DeploymentConfigLimitExceededException`, `InvalidComputePlatformException` or `InvalidTrafficRoutingConfigurationException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/CreateDeploymentConfig)
 """
-
 @inline create_deployment_config(aws::AWSConfig=default_aws_config(); args...) = create_deployment_config(aws, args)
 
 @inline create_deployment_config(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "CreateDeploymentConfig", args)
@@ -722,11 +743,10 @@ Information about groups of tags applied to on-premises instances. The deploymen
 
 # Exceptions
 
-`ApplicationNameRequiredException`, `InvalidApplicationNameException`, `ApplicationDoesNotExistException`, `DeploymentGroupNameRequiredException`, `InvalidDeploymentGroupNameException`, `DeploymentGroupAlreadyExistsException`, `InvalidEC2TagException`, `InvalidTagException`, `InvalidAutoScalingGroupException`, `InvalidDeploymentConfigNameException`, `DeploymentConfigDoesNotExistException`, `RoleRequiredException`, `InvalidRoleException`, `DeploymentGroupLimitExceededException`, `LifecycleHookLimitExceededException`, `InvalidTriggerConfigException`, `TriggerTargetsLimitExceededException`, `InvalidAlarmConfigException`, `AlarmsLimitExceededException`, `InvalidAutoRollbackConfigException`, `InvalidLoadBalancerInfoException`, `InvalidDeploymentStyleException`, `InvalidBlueGreenDeploymentConfigurationException`, `InvalidEC2TagCombinationException`, `InvalidOnPremisesTagCombinationException` or `TagSetListLimitExceededException`.
+`ApplicationNameRequiredException`, `InvalidApplicationNameException`, `ApplicationDoesNotExistException`, `DeploymentGroupNameRequiredException`, `InvalidDeploymentGroupNameException`, `DeploymentGroupAlreadyExistsException`, `InvalidEC2TagException`, `InvalidTagException`, `InvalidAutoScalingGroupException`, `InvalidDeploymentConfigNameException`, `DeploymentConfigDoesNotExistException`, `RoleRequiredException`, `InvalidRoleException`, `DeploymentGroupLimitExceededException`, `LifecycleHookLimitExceededException`, `InvalidTriggerConfigException`, `TriggerTargetsLimitExceededException`, `InvalidAlarmConfigException`, `AlarmsLimitExceededException`, `InvalidAutoRollbackConfigException`, `InvalidLoadBalancerInfoException`, `InvalidDeploymentStyleException`, `InvalidBlueGreenDeploymentConfigurationException`, `InvalidEC2TagCombinationException`, `InvalidOnPremisesTagCombinationException`, `TagSetListLimitExceededException` or `InvalidInputException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/CreateDeploymentGroup)
 """
-
 @inline create_deployment_group(aws::AWSConfig=default_aws_config(); args...) = create_deployment_group(aws, args)
 
 @inline create_deployment_group(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "CreateDeploymentGroup", args)
@@ -761,7 +781,6 @@ The name of an AWS CodeDeploy application associated with the applicable IAM use
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/DeleteApplication)
 """
-
 @inline delete_application(aws::AWSConfig=default_aws_config(); args...) = delete_application(aws, args)
 
 @inline delete_application(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "DeleteApplication", args)
@@ -799,7 +818,6 @@ The name of a deployment configuration associated with the applicable IAM user o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/DeleteDeploymentConfig)
 """
-
 @inline delete_deployment_config(aws::AWSConfig=default_aws_config(); args...) = delete_deployment_config(aws, args)
 
 @inline delete_deployment_config(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "DeleteDeploymentConfig", args)
@@ -842,12 +860,49 @@ The name of an existing deployment group for the specified application.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/DeleteDeploymentGroup)
 """
-
 @inline delete_deployment_group(aws::AWSConfig=default_aws_config(); args...) = delete_deployment_group(aws, args)
 
 @inline delete_deployment_group(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "DeleteDeploymentGroup", args)
 
 @inline delete_deployment_group(args) = delete_deployment_group(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CodeDeploy.delete_git_hub_account_token
+    delete_git_hub_account_token([::AWSConfig], arguments::Dict)
+    delete_git_hub_account_token([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.codedeploy
+    codedeploy([::AWSConfig], "DeleteGitHubAccountToken", arguments::Dict)
+    codedeploy([::AWSConfig], "DeleteGitHubAccountToken", <keyword arguments>)
+
+# DeleteGitHubAccountToken Operation
+
+Deletes a GitHub account connection.
+
+# Arguments
+
+## `tokenName = ::String`
+The name of the GitHub account connection to delete.
+
+
+
+
+# Returns
+
+`DeleteGitHubAccountTokenOutput`
+
+# Exceptions
+
+`GitHubAccountTokenNameRequiredException`, `GitHubAccountTokenDoesNotExistException`, `InvalidGitHubAccountTokenNameException`, `ResourceValidationException` or `OperationNotSupportedException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/DeleteGitHubAccountToken)
+"""
+@inline delete_git_hub_account_token(aws::AWSConfig=default_aws_config(); args...) = delete_git_hub_account_token(aws, args)
+
+@inline delete_git_hub_account_token(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "DeleteGitHubAccountToken", args)
+
+@inline delete_git_hub_account_token(args) = delete_git_hub_account_token(default_aws_config(), args)
 
 
 """
@@ -877,7 +932,6 @@ The name of the on-premises instance to deregister.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/DeregisterOnPremisesInstance)
 """
-
 @inline deregister_on_premises_instance(aws::AWSConfig=default_aws_config(); args...) = deregister_on_premises_instance(aws, args)
 
 @inline deregister_on_premises_instance(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "DeregisterOnPremisesInstance", args)
@@ -916,7 +970,6 @@ The name of an AWS CodeDeploy application associated with the applicable IAM use
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/GetApplication)
 """
-
 @inline get_application(aws::AWSConfig=default_aws_config(); args...) = get_application(aws, args)
 
 @inline get_application(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "GetApplication", args)
@@ -947,17 +1000,21 @@ The name of the application that corresponds to the revision.
 Information about the application revision to get, including type and location.
 ```
  revision = [
-        "revisionType" =>  "S3" or "GitHub",
+        "revisionType" =>  "S3", "GitHub" or "String",
         "s3Location" =>  [
             "bucket" =>  ::String,
             "key" =>  ::String,
-            "bundleType" =>  "tar", "tgz" or "zip",
+            "bundleType" =>  "tar", "tgz", "zip", "YAML" or "JSON",
             "version" =>  ::String,
             "eTag" =>  ::String
         ],
         "gitHubLocation" =>  [
             "repository" =>  ::String,
             "commitId" =>  ::String
+        ],
+        "string" =>  [
+            "content" =>  ::String,
+            "sha256" =>  ::String
         ]
     ]
 ```
@@ -974,7 +1031,6 @@ Information about the application revision to get, including type and location.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/GetApplicationRevision)
 """
-
 @inline get_application_revision(aws::AWSConfig=default_aws_config(); args...) = get_application_revision(aws, args)
 
 @inline get_application_revision(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "GetApplicationRevision", args)
@@ -1013,7 +1069,6 @@ A deployment ID associated with the applicable IAM user or AWS account.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/GetDeployment)
 """
-
 @inline get_deployment(aws::AWSConfig=default_aws_config(); args...) = get_deployment(aws, args)
 
 @inline get_deployment(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "GetDeployment", args)
@@ -1052,7 +1107,6 @@ The name of a deployment configuration associated with the applicable IAM user o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/GetDeploymentConfig)
 """
-
 @inline get_deployment_config(aws::AWSConfig=default_aws_config(); args...) = get_deployment_config(aws, args)
 
 @inline get_deployment_config(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "GetDeploymentConfig", args)
@@ -1095,7 +1149,6 @@ The name of an existing deployment group for the specified application.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/GetDeploymentGroup)
 """
-
 @inline get_deployment_group(aws::AWSConfig=default_aws_config(); args...) = get_deployment_group(aws, args)
 
 @inline get_deployment_group(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "GetDeploymentGroup", args)
@@ -1138,7 +1191,6 @@ The unique ID of an instance in the deployment group.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/GetDeploymentInstance)
 """
-
 @inline get_deployment_instance(aws::AWSConfig=default_aws_config(); args...) = get_deployment_instance(aws, args)
 
 @inline get_deployment_instance(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "GetDeploymentInstance", args)
@@ -1177,7 +1229,6 @@ The name of the on-premises instance about which to get information.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/GetOnPremisesInstance)
 """
-
 @inline get_on_premises_instance(aws::AWSConfig=default_aws_config(); args...) = get_on_premises_instance(aws, args)
 
 @inline get_on_premises_instance(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "GetOnPremisesInstance", args)
@@ -1264,7 +1315,6 @@ An identifier returned from the previous list application revisions call. It can
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/ListApplicationRevisions)
 """
-
 @inline list_application_revisions(aws::AWSConfig=default_aws_config(); args...) = list_application_revisions(aws, args)
 
 @inline list_application_revisions(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "ListApplicationRevisions", args)
@@ -1303,7 +1353,6 @@ An identifier returned from the previous list applications call. It can be used 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/ListApplications)
 """
-
 @inline list_applications(aws::AWSConfig=default_aws_config(); args...) = list_applications(aws, args)
 
 @inline list_applications(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "ListApplications", args)
@@ -1342,7 +1391,6 @@ An identifier returned from the previous list deployment configurations call. It
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/ListDeploymentConfigs)
 """
-
 @inline list_deployment_configs(aws::AWSConfig=default_aws_config(); args...) = list_deployment_configs(aws, args)
 
 @inline list_deployment_configs(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "ListDeploymentConfigs", args)
@@ -1385,7 +1433,6 @@ An identifier returned from the previous list deployment groups call. It can be 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/ListDeploymentGroups)
 """
-
 @inline list_deployment_groups(aws::AWSConfig=default_aws_config(); args...) = list_deployment_groups(aws, args)
 
 @inline list_deployment_groups(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "ListDeploymentGroups", args)
@@ -1448,7 +1495,6 @@ The set of instances in a blue/green deployment, either those in the original en
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/ListDeploymentInstances)
 """
-
 @inline list_deployment_instances(aws::AWSConfig=default_aws_config(); args...) = list_deployment_instances(aws, args)
 
 @inline list_deployment_instances(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "ListDeploymentInstances", args)
@@ -1520,7 +1566,6 @@ An identifier returned from the previous list deployments call. It can be used t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/ListDeployments)
 """
-
 @inline list_deployments(aws::AWSConfig=default_aws_config(); args...) = list_deployments(aws, args)
 
 @inline list_deployments(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "ListDeployments", args)
@@ -1555,11 +1600,10 @@ An identifier returned from the previous ListGitHubAccountTokenNames call. It ca
 
 # Exceptions
 
-`InvalidNextTokenException` or `ResourceValidationException`.
+`InvalidNextTokenException`, `ResourceValidationException` or `OperationNotSupportedException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/ListGitHubAccountTokenNames)
 """
-
 @inline list_git_hub_account_token_names(aws::AWSConfig=default_aws_config(); args...) = list_git_hub_account_token_names(aws, args)
 
 @inline list_git_hub_account_token_names(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "ListGitHubAccountTokenNames", args)
@@ -1618,12 +1662,57 @@ An identifier returned from the previous list on-premises instances call. It can
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/ListOnPremisesInstances)
 """
-
 @inline list_on_premises_instances(aws::AWSConfig=default_aws_config(); args...) = list_on_premises_instances(aws, args)
 
 @inline list_on_premises_instances(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "ListOnPremisesInstances", args)
 
 @inline list_on_premises_instances(args) = list_on_premises_instances(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CodeDeploy.put_lifecycle_event_hook_execution_status
+    put_lifecycle_event_hook_execution_status([::AWSConfig], arguments::Dict)
+    put_lifecycle_event_hook_execution_status([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.codedeploy
+    codedeploy([::AWSConfig], "PutLifecycleEventHookExecutionStatus", arguments::Dict)
+    codedeploy([::AWSConfig], "PutLifecycleEventHookExecutionStatus", <keyword arguments>)
+
+# PutLifecycleEventHookExecutionStatus Operation
+
+Sets the result of a Lambda validation function. The function validates one or both lifecycle events (`BeforeAllowTraffic` and `AfterAllowTraffic`) and returns `Succeeded` or `Failed`.
+
+# Arguments
+
+## `deploymentId = ::String`
+The ID of the deployment. Pass this ID to a Lambda function that validates a deployment lifecycle event.
+
+
+## `lifecycleEventHookExecutionId = ::String`
+The execution ID of a deployment's lifecycle hook. A deployment lifecycle hook is specified in the `hooks` section of the AppSpec file.
+
+
+## `status = "Pending", "InProgress", "Succeeded", "Failed", "Skipped" or "Unknown"`
+The result of a Lambda function that validates a deployment lifecycle event (`Succeeded` or `Failed`).
+
+
+
+
+# Returns
+
+`PutLifecycleEventHookExecutionStatusOutput`
+
+# Exceptions
+
+`InvalidLifecycleEventHookExecutionStatusException`, `InvalidLifecycleEventHookExecutionIdException`, `LifecycleEventAlreadyCompletedException`, `DeploymentIdRequiredException`, `DeploymentDoesNotExistException`, `InvalidDeploymentIdException` or `UnsupportedActionForDeploymentTypeException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/PutLifecycleEventHookExecutionStatus)
+"""
+@inline put_lifecycle_event_hook_execution_status(aws::AWSConfig=default_aws_config(); args...) = put_lifecycle_event_hook_execution_status(aws, args)
+
+@inline put_lifecycle_event_hook_execution_status(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "PutLifecycleEventHookExecutionStatus", args)
+
+@inline put_lifecycle_event_hook_execution_status(args) = put_lifecycle_event_hook_execution_status(default_aws_config(), args)
 
 
 """
@@ -1653,17 +1742,21 @@ A comment about the revision.
 Information about the application revision to register, including type and location.
 ```
  revision = [
-        "revisionType" =>  "S3" or "GitHub",
+        "revisionType" =>  "S3", "GitHub" or "String",
         "s3Location" =>  [
             "bucket" =>  ::String,
             "key" =>  ::String,
-            "bundleType" =>  "tar", "tgz" or "zip",
+            "bundleType" =>  "tar", "tgz", "zip", "YAML" or "JSON",
             "version" =>  ::String,
             "eTag" =>  ::String
         ],
         "gitHubLocation" =>  [
             "repository" =>  ::String,
             "commitId" =>  ::String
+        ],
+        "string" =>  [
+            "content" =>  ::String,
+            "sha256" =>  ::String
         ]
     ]
 ```
@@ -1676,7 +1769,6 @@ Information about the application revision to register, including type and locat
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/RegisterApplicationRevision)
 """
-
 @inline register_application_revision(aws::AWSConfig=default_aws_config(); args...) = register_application_revision(aws, args)
 
 @inline register_application_revision(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "RegisterApplicationRevision", args)
@@ -1722,7 +1814,6 @@ The ARN of the IAM user to associate with the on-premises instance.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/RegisterOnPremisesInstance)
 """
-
 @inline register_on_premises_instance(aws::AWSConfig=default_aws_config(); args...) = register_on_premises_instance(aws, args)
 
 @inline register_on_premises_instance(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "RegisterOnPremisesInstance", args)
@@ -1762,11 +1853,10 @@ The names of the on-premises instances from which to remove tags.
 
 # Exceptions
 
-`InstanceNameRequiredException`, `TagRequiredException`, `InvalidTagException`, `TagLimitExceededException`, `InstanceLimitExceededException` or `InstanceNotRegisteredException`.
+`InstanceNameRequiredException`, `InvalidInstanceNameException`, `TagRequiredException`, `InvalidTagException`, `TagLimitExceededException`, `InstanceLimitExceededException` or `InstanceNotRegisteredException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/RemoveTagsFromOnPremisesInstances)
 """
-
 @inline remove_tags_from_on_premises_instances(aws::AWSConfig=default_aws_config(); args...) = remove_tags_from_on_premises_instances(aws, args)
 
 @inline remove_tags_from_on_premises_instances(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "RemoveTagsFromOnPremisesInstances", args)
@@ -1801,7 +1891,6 @@ The ID of the blue/green deployment for which you want to skip the instance term
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/SkipWaitTimeForInstanceTermination)
 """
-
 @inline skip_wait_time_for_instance_termination(aws::AWSConfig=default_aws_config(); args...) = skip_wait_time_for_instance_termination(aws, args)
 
 @inline skip_wait_time_for_instance_termination(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "SkipWaitTimeForInstanceTermination", args)
@@ -1844,7 +1933,6 @@ Indicates, when a deployment is stopped, whether instances that have been update
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/StopDeployment)
 """
-
 @inline stop_deployment(aws::AWSConfig=default_aws_config(); args...) = stop_deployment(aws, args)
 
 @inline stop_deployment(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "StopDeployment", args)
@@ -1883,7 +1971,6 @@ The new name to give the application.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/UpdateApplication)
 """
-
 @inline update_application(aws::AWSConfig=default_aws_config(); args...) = update_application(aws, args)
 
 @inline update_application(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "UpdateApplication", args)
@@ -2041,11 +2128,10 @@ Information about an on-premises instance tag set. The deployment group will inc
 
 # Exceptions
 
-`ApplicationNameRequiredException`, `InvalidApplicationNameException`, `ApplicationDoesNotExistException`, `InvalidDeploymentGroupNameException`, `DeploymentGroupAlreadyExistsException`, `DeploymentGroupNameRequiredException`, `DeploymentGroupDoesNotExistException`, `InvalidEC2TagException`, `InvalidTagException`, `InvalidAutoScalingGroupException`, `InvalidDeploymentConfigNameException`, `DeploymentConfigDoesNotExistException`, `InvalidRoleException`, `LifecycleHookLimitExceededException`, `InvalidTriggerConfigException`, `TriggerTargetsLimitExceededException`, `InvalidAlarmConfigException`, `AlarmsLimitExceededException`, `InvalidAutoRollbackConfigException`, `InvalidLoadBalancerInfoException`, `InvalidDeploymentStyleException`, `InvalidBlueGreenDeploymentConfigurationException`, `InvalidEC2TagCombinationException`, `InvalidOnPremisesTagCombinationException` or `TagSetListLimitExceededException`.
+`ApplicationNameRequiredException`, `InvalidApplicationNameException`, `ApplicationDoesNotExistException`, `InvalidDeploymentGroupNameException`, `DeploymentGroupAlreadyExistsException`, `DeploymentGroupNameRequiredException`, `DeploymentGroupDoesNotExistException`, `InvalidEC2TagException`, `InvalidTagException`, `InvalidAutoScalingGroupException`, `InvalidDeploymentConfigNameException`, `DeploymentConfigDoesNotExistException`, `InvalidRoleException`, `LifecycleHookLimitExceededException`, `InvalidTriggerConfigException`, `TriggerTargetsLimitExceededException`, `InvalidAlarmConfigException`, `AlarmsLimitExceededException`, `InvalidAutoRollbackConfigException`, `InvalidLoadBalancerInfoException`, `InvalidDeploymentStyleException`, `InvalidBlueGreenDeploymentConfigurationException`, `InvalidEC2TagCombinationException`, `InvalidOnPremisesTagCombinationException`, `TagSetListLimitExceededException` or `InvalidInputException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/UpdateDeploymentGroup)
 """
-
 @inline update_deployment_group(aws::AWSConfig=default_aws_config(); args...) = update_deployment_group(aws, args)
 
 @inline update_deployment_group(aws::AWSConfig, args) = AWSCore.Services.codedeploy(aws, "UpdateDeploymentGroup", args)

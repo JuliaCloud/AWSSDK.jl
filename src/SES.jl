@@ -34,7 +34,7 @@ You can execute this operation no more than once per second.
 ## `RuleSetName = ::String` -- *Required*
 The name of the rule set to create. The name must:
 
-*   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).
+*   This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).
 
 *   Start and end with a letter or number.
 
@@ -69,7 +69,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CloneReceiptRuleSet)
 """
-
 @inline clone_receipt_rule_set(aws::AWSConfig=default_aws_config(); args...) = clone_receipt_rule_set(aws, args)
 
 @inline clone_receipt_rule_set(aws::AWSConfig, args) = AWSCore.Services.email(aws, "CloneReceiptRuleSet", args)
@@ -112,7 +111,6 @@ A data structure that contains the name of the configuration set.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateConfigurationSet)
 """
-
 @inline create_configuration_set(aws::AWSConfig=default_aws_config(); args...) = create_configuration_set(aws, args)
 
 @inline create_configuration_set(aws::AWSConfig, args) = AWSCore.Services.email(aws, "CreateConfigurationSet", args)
@@ -134,7 +132,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 Creates a configuration set event destination.
 
 **Note**
-> When you create or update an event destination, you must provide one, and only one, destination. The destination can be Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS).
+> When you create or update an event destination, you must provide one, and only one, destination. The destination can be CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS).
 
 An event destination is the AWS service to which Amazon SES publishes the email sending events associated with a configuration set. For information about using configuration sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
@@ -178,7 +176,6 @@ An object that describes the AWS service that email sending event information wi
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateConfigurationSetEventDestination)
 """
-
 @inline create_configuration_set_event_destination(aws::AWSConfig=default_aws_config(); args...) = create_configuration_set_event_destination(aws, args)
 
 @inline create_configuration_set_event_destination(aws::AWSConfig, args) = AWSCore.Services.email(aws, "CreateConfigurationSetEventDestination", args)
@@ -199,7 +196,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 Creates an association between a configuration set and a custom domain for open and click event tracking.
 
-By default, images and links used for tracking open and click events are hosted on domains operated by Amazon SES. You can configure a subdomain of your own to handle these events. For information about using configuration sets, see [Configuring Custom Domains to Handle Open and Click Tracking](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html) in the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
+By default, images and links used for tracking open and click events are hosted on domains operated by Amazon SES. You can configure a subdomain of your own to handle these events. For information about using custom domains, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html).
 
 # Arguments
 
@@ -223,12 +220,69 @@ The name of the configuration set that the tracking options should be associated
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateConfigurationSetTrackingOptions)
 """
-
 @inline create_configuration_set_tracking_options(aws::AWSConfig=default_aws_config(); args...) = create_configuration_set_tracking_options(aws, args)
 
 @inline create_configuration_set_tracking_options(aws::AWSConfig, args) = AWSCore.Services.email(aws, "CreateConfigurationSetTrackingOptions", args)
 
 @inline create_configuration_set_tracking_options(args) = create_configuration_set_tracking_options(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SES.create_custom_verification_email_template
+    create_custom_verification_email_template([::AWSConfig], arguments::Dict)
+    create_custom_verification_email_template([::AWSConfig]; TemplateName=, FromEmailAddress=, TemplateSubject=, TemplateContent=, SuccessRedirectionURL=, FailureRedirectionURL=)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "CreateCustomVerificationEmailTemplate", arguments::Dict)
+    email([::AWSConfig], "CreateCustomVerificationEmailTemplate", TemplateName=, FromEmailAddress=, TemplateSubject=, TemplateContent=, SuccessRedirectionURL=, FailureRedirectionURL=)
+
+# CreateCustomVerificationEmailTemplate Operation
+
+Creates a new custom verification email template.
+
+For more information about custom verification email templates, see [Using Custom Verification Email Templates](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html) in the *Amazon SES Developer Guide*.
+
+You can execute this operation no more than once per second.
+
+# Arguments
+
+## `TemplateName = ::String` -- *Required*
+The name of the custom verification email template.
+
+
+## `FromEmailAddress = ::String` -- *Required*
+The email address that the custom verification email is sent from.
+
+
+## `TemplateSubject = ::String` -- *Required*
+The subject line of the custom verification email.
+
+
+## `TemplateContent = ::String` -- *Required*
+The content of the custom verification email. The total size of the email must be less than 10 MB. The message body may contain HTML, with some limitations. For more information, see [Custom Verification Email Frequently Asked Questions](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq) in the *Amazon SES Developer Guide*.
+
+
+## `SuccessRedirectionURL = ::String` -- *Required*
+The URL that the recipient of the verification email is sent to if his or her address is successfully verified.
+
+
+## `FailureRedirectionURL = ::String` -- *Required*
+The URL that the recipient of the verification email is sent to if his or her address is not successfully verified.
+
+
+
+
+# Exceptions
+
+`CustomVerificationEmailTemplateAlreadyExistsException`, `FromEmailAddressNotVerifiedException`, `CustomVerificationEmailInvalidContentException` or `LimitExceededException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateCustomVerificationEmailTemplate)
+"""
+@inline create_custom_verification_email_template(aws::AWSConfig=default_aws_config(); args...) = create_custom_verification_email_template(aws, args)
+
+@inline create_custom_verification_email_template(aws::AWSConfig, args) = AWSCore.Services.email(aws, "CreateCustomVerificationEmailTemplate", args)
+
+@inline create_custom_verification_email_template(args) = create_custom_verification_email_template(default_aws_config(), args)
 
 
 """
@@ -291,7 +345,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateReceiptFilter)
 """
-
 @inline create_receipt_filter(aws::AWSConfig=default_aws_config(); args...) = create_receipt_filter(aws, args)
 
 @inline create_receipt_filter(aws::AWSConfig, args) = AWSCore.Services.email(aws, "CreateReceiptFilter", args)
@@ -412,7 +465,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateReceiptRule)
 """
-
 @inline create_receipt_rule(aws::AWSConfig=default_aws_config(); args...) = create_receipt_rule(aws, args)
 
 @inline create_receipt_rule(aws::AWSConfig, args) = AWSCore.Services.email(aws, "CreateReceiptRule", args)
@@ -442,7 +494,7 @@ You can execute this operation no more than once per second.
 ## `RuleSetName = ::String` -- *Required*
 The name of the rule set to create. The name must:
 
-*   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).
+*   This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).
 
 *   Start and end with a letter or number.
 
@@ -472,7 +524,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateReceiptRuleSet)
 """
-
 @inline create_receipt_rule_set(aws::AWSConfig=default_aws_config(); args...) = create_receipt_rule_set(aws, args)
 
 @inline create_receipt_rule_set(aws::AWSConfig, args) = AWSCore.Services.email(aws, "CreateReceiptRuleSet", args)
@@ -520,7 +571,6 @@ The content of the email, composed of a subject line, an HTML part, and a text-o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/CreateTemplate)
 """
-
 @inline create_template(aws::AWSConfig=default_aws_config(); args...) = create_template(aws, args)
 
 @inline create_template(aws::AWSConfig, args) = AWSCore.Services.email(aws, "CreateTemplate", args)
@@ -561,7 +611,6 @@ The name of the configuration set to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteConfigurationSet)
 """
-
 @inline delete_configuration_set(aws::AWSConfig=default_aws_config(); args...) = delete_configuration_set(aws, args)
 
 @inline delete_configuration_set(aws::AWSConfig, args) = AWSCore.Services.email(aws, "DeleteConfigurationSet", args)
@@ -606,7 +655,6 @@ The name of the event destination to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteConfigurationSetEventDestination)
 """
-
 @inline delete_configuration_set_event_destination(aws::AWSConfig=default_aws_config(); args...) = delete_configuration_set_event_destination(aws, args)
 
 @inline delete_configuration_set_event_destination(aws::AWSConfig, args) = AWSCore.Services.email(aws, "DeleteConfigurationSetEventDestination", args)
@@ -627,7 +675,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 Deletes an association between a configuration set and a custom domain for open and click event tracking.
 
-By default, images and links used for tracking open and click events are hosted on domains operated by Amazon SES. You can configure a subdomain of your own to handle these events. For information about using configuration sets, see [Configuring Custom Domains to Handle Open and Click Tracking](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html) in the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
+By default, images and links used for tracking open and click events are hosted on domains operated by Amazon SES. You can configure a subdomain of your own to handle these events. For information about using custom domains, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html).
 
 **Note**
 > Deleting this kind of association will result in emails sent using the specified configuration set to capture open and click events using the standard, Amazon SES-operated domains.
@@ -650,12 +698,45 @@ The name of the configuration set from which you want to delete the tracking opt
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteConfigurationSetTrackingOptions)
 """
-
 @inline delete_configuration_set_tracking_options(aws::AWSConfig=default_aws_config(); args...) = delete_configuration_set_tracking_options(aws, args)
 
 @inline delete_configuration_set_tracking_options(aws::AWSConfig, args) = AWSCore.Services.email(aws, "DeleteConfigurationSetTrackingOptions", args)
 
 @inline delete_configuration_set_tracking_options(args) = delete_configuration_set_tracking_options(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SES.delete_custom_verification_email_template
+    delete_custom_verification_email_template([::AWSConfig], arguments::Dict)
+    delete_custom_verification_email_template([::AWSConfig]; TemplateName=)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "DeleteCustomVerificationEmailTemplate", arguments::Dict)
+    email([::AWSConfig], "DeleteCustomVerificationEmailTemplate", TemplateName=)
+
+# DeleteCustomVerificationEmailTemplate Operation
+
+Deletes an existing custom verification email template.
+
+For more information about custom verification email templates, see [Using Custom Verification Email Templates](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html) in the *Amazon SES Developer Guide*.
+
+You can execute this operation no more than once per second.
+
+# Arguments
+
+## `TemplateName = ::String` -- *Required*
+The name of the custom verification email template that you want to delete.
+
+
+
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteCustomVerificationEmailTemplate)
+"""
+@inline delete_custom_verification_email_template(aws::AWSConfig=default_aws_config(); args...) = delete_custom_verification_email_template(aws, args)
+
+@inline delete_custom_verification_email_template(aws::AWSConfig, args) = AWSCore.Services.email(aws, "DeleteCustomVerificationEmailTemplate", args)
+
+@inline delete_custom_verification_email_template(args) = delete_custom_verification_email_template(default_aws_config(), args)
 
 
 """
@@ -698,7 +779,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteIdentity)
 """
-
 @inline delete_identity(aws::AWSConfig=default_aws_config(); args...) = delete_identity(aws, args)
 
 @inline delete_identity(aws::AWSConfig, args) = AWSCore.Services.email(aws, "DeleteIdentity", args)
@@ -758,7 +838,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteIdentityPolicy)
 """
-
 @inline delete_identity_policy(aws::AWSConfig=default_aws_config(); args...) = delete_identity_policy(aws, args)
 
 @inline delete_identity_policy(aws::AWSConfig, args) = AWSCore.Services.email(aws, "DeleteIdentityPolicy", args)
@@ -808,7 +887,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteReceiptFilter)
 """
-
 @inline delete_receipt_filter(aws::AWSConfig=default_aws_config(); args...) = delete_receipt_filter(aws, args)
 
 @inline delete_receipt_filter(aws::AWSConfig, args) = AWSCore.Services.email(aws, "DeleteReceiptFilter", args)
@@ -867,7 +945,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteReceiptRule)
 """
-
 @inline delete_receipt_rule(aws::AWSConfig=default_aws_config(); args...) = delete_receipt_rule(aws, args)
 
 @inline delete_receipt_rule(aws::AWSConfig, args) = AWSCore.Services.email(aws, "DeleteReceiptRule", args)
@@ -924,7 +1001,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteReceiptRuleSet)
 """
-
 @inline delete_receipt_rule_set(aws::AWSConfig=default_aws_config(); args...) = delete_receipt_rule_set(aws, args)
 
 @inline delete_receipt_rule_set(aws::AWSConfig, args) = AWSCore.Services.email(aws, "DeleteReceiptRuleSet", args)
@@ -961,7 +1037,6 @@ The name of the template to be deleted.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteTemplate)
 """
-
 @inline delete_template(aws::AWSConfig=default_aws_config(); args...) = delete_template(aws, args)
 
 @inline delete_template(aws::AWSConfig, args) = AWSCore.Services.email(aws, "DeleteTemplate", args)
@@ -1003,7 +1078,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteVerifiedEmailAddress)
 """
-
 @inline delete_verified_email_address(aws::AWSConfig=default_aws_config(); args...) = delete_verified_email_address(aws, args)
 
 @inline delete_verified_email_address(aws::AWSConfig, args) = AWSCore.Services.email(aws, "DeleteVerifiedEmailAddress", args)
@@ -1075,7 +1149,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DescribeActiveReceiptRuleSet)
 """
-
 @inline describe_active_receipt_rule_set(aws::AWSConfig=default_aws_config(); args...) = describe_active_receipt_rule_set(aws, args)
 
 @inline describe_active_receipt_rule_set(aws::AWSConfig, args) = AWSCore.Services.email(aws, "DescribeActiveReceiptRuleSet", args)
@@ -1104,7 +1177,7 @@ You can execute this operation no more than once per second.
 The name of the configuration set to describe.
 
 
-## `ConfigurationSetAttributeNames = ["eventDestinations" or "trackingOptions", ...]`
+## `ConfigurationSetAttributeNames = ["eventDestinations", "trackingOptions" or "reputationOptions", ...]`
 A list of configuration set attributes to return.
 
 
@@ -1120,7 +1193,6 @@ A list of configuration set attributes to return.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DescribeConfigurationSet)
 """
-
 @inline describe_configuration_set(aws::AWSConfig=default_aws_config(); args...) = describe_configuration_set(aws, args)
 
 @inline describe_configuration_set(aws::AWSConfig, args) = AWSCore.Services.email(aws, "DescribeConfigurationSet", args)
@@ -1199,7 +1271,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DescribeReceiptRule)
 """
-
 @inline describe_receipt_rule(aws::AWSConfig=default_aws_config(); args...) = describe_receipt_rule(aws, args)
 
 @inline describe_receipt_rule(aws::AWSConfig, args) = AWSCore.Services.email(aws, "DescribeReceiptRule", args)
@@ -1279,12 +1350,92 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DescribeReceiptRuleSet)
 """
-
 @inline describe_receipt_rule_set(aws::AWSConfig=default_aws_config(); args...) = describe_receipt_rule_set(aws, args)
 
 @inline describe_receipt_rule_set(aws::AWSConfig, args) = AWSCore.Services.email(aws, "DescribeReceiptRuleSet", args)
 
 @inline describe_receipt_rule_set(args) = describe_receipt_rule_set(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SES.get_account_sending_enabled
+    get_account_sending_enabled([::AWSConfig])
+    
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "GetAccountSendingEnabled",)
+    
+
+# GetAccountSendingEnabled Operation
+
+Returns the email sending status of the Amazon SES account for the current region.
+
+You can execute this operation no more than once per second.
+
+# Returns
+
+`GetAccountSendingEnabledResponse`
+
+# Example: GetAccountSendingEnabled
+
+The following example returns if sending status for an account is enabled. (true / false):
+
+Output:
+```
+Dict(
+    "Enabled" => true
+)
+```
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetAccountSendingEnabled)
+"""
+@inline get_account_sending_enabled(aws::AWSConfig=default_aws_config(); args...) = get_account_sending_enabled(aws, args)
+
+@inline get_account_sending_enabled(aws::AWSConfig, args) = AWSCore.Services.email(aws, "GetAccountSendingEnabled", args)
+
+@inline get_account_sending_enabled(args) = get_account_sending_enabled(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SES.get_custom_verification_email_template
+    get_custom_verification_email_template([::AWSConfig], arguments::Dict)
+    get_custom_verification_email_template([::AWSConfig]; TemplateName=)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "GetCustomVerificationEmailTemplate", arguments::Dict)
+    email([::AWSConfig], "GetCustomVerificationEmailTemplate", TemplateName=)
+
+# GetCustomVerificationEmailTemplate Operation
+
+Returns the custom email verification template for the template name you specify.
+
+For more information about custom verification email templates, see [Using Custom Verification Email Templates](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html) in the *Amazon SES Developer Guide*.
+
+You can execute this operation no more than once per second.
+
+# Arguments
+
+## `TemplateName = ::String` -- *Required*
+The name of the custom verification email template that you want to retrieve.
+
+
+
+
+# Returns
+
+`GetCustomVerificationEmailTemplateResponse`
+
+# Exceptions
+
+`CustomVerificationEmailTemplateDoesNotExistException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetCustomVerificationEmailTemplate)
+"""
+@inline get_custom_verification_email_template(aws::AWSConfig=default_aws_config(); args...) = get_custom_verification_email_template(aws, args)
+
+@inline get_custom_verification_email_template(aws::AWSConfig, args) = AWSCore.Services.email(aws, "GetCustomVerificationEmailTemplate", args)
+
+@inline get_custom_verification_email_template(args) = get_custom_verification_email_template(default_aws_config(), args)
 
 
 """
@@ -1361,7 +1512,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityDkimAttributes)
 """
-
 @inline get_identity_dkim_attributes(aws::AWSConfig=default_aws_config(); args...) = get_identity_dkim_attributes(aws, args)
 
 @inline get_identity_dkim_attributes(aws::AWSConfig, args) = AWSCore.Services.email(aws, "GetIdentityDkimAttributes", args)
@@ -1424,7 +1574,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityMailFromDomainAttributes)
 """
-
 @inline get_identity_mail_from_domain_attributes(aws::AWSConfig=default_aws_config(); args...) = get_identity_mail_from_domain_attributes(aws, args)
 
 @inline get_identity_mail_from_domain_attributes(aws::AWSConfig, args) = AWSCore.Services.email(aws, "GetIdentityMailFromDomainAttributes", args)
@@ -1493,7 +1642,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityNotificationAttributes)
 """
-
 @inline get_identity_notification_attributes(aws::AWSConfig=default_aws_config(); args...) = get_identity_notification_attributes(aws, args)
 
 @inline get_identity_notification_attributes(aws::AWSConfig, args) = AWSCore.Services.email(aws, "GetIdentityNotificationAttributes", args)
@@ -1564,7 +1712,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityPolicies)
 """
-
 @inline get_identity_policies(aws::AWSConfig=default_aws_config(); args...) = get_identity_policies(aws, args)
 
 @inline get_identity_policies(aws::AWSConfig, args) = AWSCore.Services.email(aws, "GetIdentityPolicies", args)
@@ -1630,7 +1777,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityVerificationAttributes)
 """
-
 @inline get_identity_verification_attributes(aws::AWSConfig=default_aws_config(); args...) = get_identity_verification_attributes(aws, args)
 
 @inline get_identity_verification_attributes(aws::AWSConfig, args) = AWSCore.Services.email(aws, "GetIdentityVerificationAttributes", args)
@@ -1672,7 +1818,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetSendQuota)
 """
-
 @inline get_send_quota(aws::AWSConfig=default_aws_config(); args...) = get_send_quota(aws, args)
 
 @inline get_send_quota(aws::AWSConfig, args) = AWSCore.Services.email(aws, "GetSendQuota", args)
@@ -1691,7 +1836,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # GetSendStatistics Operation
 
-Provides sending statistics for the Amazon SES account. The result is a list of data points, representing the last two weeks of sending activity. Each data point in the list contains statistics for a 15-minute period of time.
+Provides sending statistics for the current AWS Region. The result is a list of data points, representing the last two weeks of sending activity. Each data point in the list contains statistics for a 15-minute period of time.
 
 You can execute this operation no more than once per second.
 
@@ -1734,7 +1879,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetSendStatistics)
 """
-
 @inline get_send_statistics(aws::AWSConfig=default_aws_config(); args...) = get_send_statistics(aws, args)
 
 @inline get_send_statistics(aws::AWSConfig, args) = AWSCore.Services.email(aws, "GetSendStatistics", args)
@@ -1775,7 +1919,6 @@ The name of the template you want to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetTemplate)
 """
-
 @inline get_template(aws::AWSConfig=default_aws_config(); args...) = get_template(aws, args)
 
 @inline get_template(aws::AWSConfig, args) = AWSCore.Services.email(aws, "GetTemplate", args)
@@ -1794,7 +1937,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # ListConfigurationSets Operation
 
-Provides a list of the configuration sets associated with your Amazon SES account. For information about using configuration sets, see [Monitoring Your Amazon SES Sending Activity](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html) in the *Amazon SES Developer Guide.*
+Provides a list of the configuration sets associated with your Amazon SES account in the current AWS Region. For information about using configuration sets, see [Monitoring Your Amazon SES Sending Activity](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html) in the *Amazon SES Developer Guide.*
 
 You can execute this operation no more than once per second. This operation will return up to 1,000 configuration sets each time it is run. If your Amazon SES account has more than 1,000 configuration sets, this operation will also return a NextToken element. You can then execute the `ListConfigurationSets` operation again, passing the `NextToken` parameter and the value of the NextToken element to retrieve additional results.
 
@@ -1816,12 +1959,53 @@ The number of configuration sets to return.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListConfigurationSets)
 """
-
 @inline list_configuration_sets(aws::AWSConfig=default_aws_config(); args...) = list_configuration_sets(aws, args)
 
 @inline list_configuration_sets(aws::AWSConfig, args) = AWSCore.Services.email(aws, "ListConfigurationSets", args)
 
 @inline list_configuration_sets(args) = list_configuration_sets(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SES.list_custom_verification_email_templates
+    list_custom_verification_email_templates([::AWSConfig], arguments::Dict)
+    list_custom_verification_email_templates([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "ListCustomVerificationEmailTemplates", arguments::Dict)
+    email([::AWSConfig], "ListCustomVerificationEmailTemplates", <keyword arguments>)
+
+# ListCustomVerificationEmailTemplates Operation
+
+Lists the existing custom verification email templates for your account in the current AWS Region.
+
+For more information about custom verification email templates, see [Using Custom Verification Email Templates](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html) in the *Amazon SES Developer Guide*.
+
+You can execute this operation no more than once per second.
+
+# Arguments
+
+## `NextToken = ::String`
+An array the contains the name and creation time stamp for each template in your Amazon SES account.
+
+
+## `MaxResults = ::Int`
+The maximum number of custom verification email templates to return. This value must be at least 1 and less than or equal to 50. If you do not specify a value, or if you specify a value less than 1 or greater than 50, the operation will return up to 50 results.
+
+
+
+
+# Returns
+
+`ListCustomVerificationEmailTemplatesResponse`
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListCustomVerificationEmailTemplates)
+"""
+@inline list_custom_verification_email_templates(aws::AWSConfig=default_aws_config(); args...) = list_custom_verification_email_templates(aws, args)
+
+@inline list_custom_verification_email_templates(aws::AWSConfig, args) = AWSCore.Services.email(aws, "ListCustomVerificationEmailTemplates", args)
+
+@inline list_custom_verification_email_templates(args) = list_custom_verification_email_templates(default_aws_config(), args)
 
 
 """
@@ -1835,7 +2019,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # ListIdentities Operation
 
-Returns a list containing all of the identities (email addresses and domains) for your AWS account, regardless of verification status.
+Returns a list containing all of the identities (email addresses and domains) for your AWS account in the current AWS Region, regardless of verification status.
 
 You can execute this operation no more than once per second.
 
@@ -1884,7 +2068,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListIdentities)
 """
-
 @inline list_identities(aws::AWSConfig=default_aws_config(); args...) = list_identities(aws, args)
 
 @inline list_identities(aws::AWSConfig, args) = AWSCore.Services.email(aws, "ListIdentities", args)
@@ -1948,7 +2131,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListIdentityPolicies)
 """
-
 @inline list_identity_policies(aws::AWSConfig=default_aws_config(); args...) = list_identity_policies(aws, args)
 
 @inline list_identity_policies(aws::AWSConfig, args) = AWSCore.Services.email(aws, "ListIdentityPolicies", args)
@@ -1967,7 +2149,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # ListReceiptFilters Operation
 
-Lists the IP address filters associated with your AWS account.
+Lists the IP address filters associated with your AWS account in the current AWS Region.
 
 For information about managing IP address filters, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html).
 
@@ -2002,7 +2184,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListReceiptFilters)
 """
-
 @inline list_receipt_filters(aws::AWSConfig=default_aws_config(); args...) = list_receipt_filters(aws, args)
 
 @inline list_receipt_filters(aws::AWSConfig, args) = AWSCore.Services.email(aws, "ListReceiptFilters", args)
@@ -2021,7 +2202,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # ListReceiptRuleSets Operation
 
-Lists the receipt rule sets that exist under your AWS account. If there are additional receipt rule sets to be retrieved, you will receive a `NextToken` that you can provide to the next call to `ListReceiptRuleSets` to retrieve the additional entries.
+Lists the receipt rule sets that exist under your AWS account in the current AWS Region. If there are additional receipt rule sets to be retrieved, you will receive a `NextToken` that you can provide to the next call to `ListReceiptRuleSets` to retrieve the additional entries.
 
 For information about managing receipt rule sets, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
 
@@ -2065,7 +2246,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListReceiptRuleSets)
 """
-
 @inline list_receipt_rule_sets(aws::AWSConfig=default_aws_config(); args...) = list_receipt_rule_sets(aws, args)
 
 @inline list_receipt_rule_sets(aws::AWSConfig, args) = AWSCore.Services.email(aws, "ListReceiptRuleSets", args)
@@ -2084,14 +2264,14 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # ListTemplates Operation
 
-Lists the email templates present in your Amazon SES account.
+Lists the email templates present in your Amazon SES account in the current AWS Region.
 
 You can execute this operation no more than once per second.
 
 # Arguments
 
 ## `NextToken = ::String`
-The token to use for pagination.
+A token returned from a previous call to `ListTemplates` to indicate the position in the list of email templates.
 
 
 ## `MaxItems = ::Int`
@@ -2106,7 +2286,6 @@ The maximum number of templates to return. This value must be at least 1 and les
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListTemplates)
 """
-
 @inline list_templates(aws::AWSConfig=default_aws_config(); args...) = list_templates(aws, args)
 
 @inline list_templates(aws::AWSConfig, args) = AWSCore.Services.email(aws, "ListTemplates", args)
@@ -2147,7 +2326,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListVerifiedEmailAddresses)
 """
-
 @inline list_verified_email_addresses(aws::AWSConfig=default_aws_config(); args...) = list_verified_email_addresses(aws, args)
 
 @inline list_verified_email_addresses(aws::AWSConfig, args) = AWSCore.Services.email(aws, "ListVerifiedEmailAddresses", args)
@@ -2220,7 +2398,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/PutIdentityPolicy)
 """
-
 @inline put_identity_policy(aws::AWSConfig=default_aws_config(); args...) = put_identity_policy(aws, args)
 
 @inline put_identity_policy(aws::AWSConfig, args) = AWSCore.Services.email(aws, "PutIdentityPolicy", args)
@@ -2285,7 +2462,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ReorderReceiptRuleSet)
 """
-
 @inline reorder_receipt_rule_set(aws::AWSConfig=default_aws_config(); args...) = reorder_receipt_rule_set(aws, args)
 
 @inline reorder_receipt_rule_set(aws::AWSConfig, args) = AWSCore.Services.email(aws, "ReorderReceiptRuleSet", args)
@@ -2378,7 +2554,6 @@ This parameter is used only for sending authorization. It is the ARN of the iden
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SendBounce)
 """
-
 @inline send_bounce(aws::AWSConfig=default_aws_config(); args...) = send_bounce(aws, args)
 
 @inline send_bounce(aws::AWSConfig, args) = AWSCore.Services.email(aws, "SendBounce", args)
@@ -2418,7 +2593,8 @@ The email address that is sending the email. This email address must be either i
 
 If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the `SourceArn` parameter. For more information about sending authorization, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
-In all cases, the email address must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: `=?charset?encoding?encoded-text?=`. For more information, see [RFC 2047](https://tools.ietf.org/html/rfc2047).
+**Note**
+> Amazon SES does not support the SMTPUTF8 extension, as described in [RFC6531](https://tools.ietf.org/html/rfc6531). For this reason, the *local part* of a source email address (the part of the email address that precedes the @ sign) may only contain [7-bit ASCII characters](https://en.wikipedia.org/wiki/Email_address#Local-part). If the *domain part* of an address (the part after the @ sign) contains non-ASCII characters, they must be encoded using Punycode, as described in [RFC3492](https://tools.ietf.org/html/rfc3492.html). The sender name (also known as the *friendly name*) may contain non-ASCII characters. These characters must be encoded using MIME encoded-word syntax, as described in [RFC 2047](https://tools.ietf.org/html/rfc2047). MIME encoded-word syntax uses the following form: `=?charset?encoding?encoded-text?=`.
 
 
 ## `SourceArn = ::String`
@@ -2497,16 +2673,65 @@ One or more `Destination` objects. All of the recipients in a `Destination` will
 
 # Exceptions
 
-`MessageRejected`, `MailFromDomainNotVerifiedException`, `ConfigurationSetDoesNotExistException` or `TemplateDoesNotExistException`.
+`MessageRejected`, `MailFromDomainNotVerifiedException`, `ConfigurationSetDoesNotExistException`, `TemplateDoesNotExistException`, `ConfigurationSetSendingPausedException` or `AccountSendingPausedException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SendBulkTemplatedEmail)
 """
-
 @inline send_bulk_templated_email(aws::AWSConfig=default_aws_config(); args...) = send_bulk_templated_email(aws, args)
 
 @inline send_bulk_templated_email(aws::AWSConfig, args) = AWSCore.Services.email(aws, "SendBulkTemplatedEmail", args)
 
 @inline send_bulk_templated_email(args) = send_bulk_templated_email(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SES.send_custom_verification_email
+    send_custom_verification_email([::AWSConfig], arguments::Dict)
+    send_custom_verification_email([::AWSConfig]; EmailAddress=, TemplateName=, <keyword arguments>)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "SendCustomVerificationEmail", arguments::Dict)
+    email([::AWSConfig], "SendCustomVerificationEmail", EmailAddress=, TemplateName=, <keyword arguments>)
+
+# SendCustomVerificationEmail Operation
+
+Adds an email address to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it. As a result of executing this operation, a customized verification email is sent to the specified address.
+
+To use this operation, you must first create a custom verification email template. For more information about creating and using custom verification email templates, see [Using Custom Verification Email Templates](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html) in the *Amazon SES Developer Guide*.
+
+You can execute this operation no more than once per second.
+
+# Arguments
+
+## `EmailAddress = ::String` -- *Required*
+The email address to verify.
+
+
+## `TemplateName = ::String` -- *Required*
+The name of the custom verification email template to use when sending the verification email.
+
+
+## `ConfigurationSetName = ::String`
+Name of a configuration set to use when sending the verification email.
+
+
+
+
+# Returns
+
+`SendCustomVerificationEmailResponse`
+
+# Exceptions
+
+`MessageRejected`, `ConfigurationSetDoesNotExistException`, `CustomVerificationEmailTemplateDoesNotExistException`, `FromEmailAddressNotVerifiedException` or `ProductionAccessNotGrantedException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SendCustomVerificationEmail)
+"""
+@inline send_custom_verification_email(aws::AWSConfig=default_aws_config(); args...) = send_custom_verification_email(aws, args)
+
+@inline send_custom_verification_email(aws::AWSConfig, args) = AWSCore.Services.email(aws, "SendCustomVerificationEmail", args)
+
+@inline send_custom_verification_email(args) = send_custom_verification_email(default_aws_config(), args)
 
 
 """
@@ -2542,7 +2767,8 @@ The email address that is sending the email. This email address must be either i
 
 If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the `SourceArn` parameter. For more information about sending authorization, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
-In all cases, the email address must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: `=?charset?encoding?encoded-text?=`. For more information, see [RFC 2047](https://tools.ietf.org/html/rfc2047).
+**Note**
+> Amazon SES does not support the SMTPUTF8 extension, as described in [RFC6531](https://tools.ietf.org/html/rfc6531). For this reason, the *local part* of a source email address (the part of the email address that precedes the @ sign) may only contain [7-bit ASCII characters](https://en.wikipedia.org/wiki/Email_address#Local-part). If the *domain part* of an address (the part after the @ sign) contains non-ASCII characters, they must be encoded using Punycode, as described in [RFC3492](https://tools.ietf.org/html/rfc3492.html). The sender name (also known as the *friendly name*) may contain non-ASCII characters. These characters must be encoded using MIME encoded-word syntax, as described in [RFC 2047](https://tools.ietf.org/html/rfc2047). MIME encoded-word syntax uses the following form: `=?charset?encoding?encoded-text?=`.
 
 
 ## `Destination = [ ... ]` -- *Required*
@@ -2621,7 +2847,7 @@ The name of the configuration set to use when you send an email using `SendEmail
 
 # Exceptions
 
-`MessageRejected`, `MailFromDomainNotVerifiedException` or `ConfigurationSetDoesNotExistException`.
+`MessageRejected`, `MailFromDomainNotVerifiedException`, `ConfigurationSetDoesNotExistException`, `ConfigurationSetSendingPausedException` or `AccountSendingPausedException`.
 
 # Example: SendEmail
 
@@ -2677,7 +2903,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SendEmail)
 """
-
 @inline send_email(aws::AWSConfig=default_aws_config(); args...) = send_email(aws, args)
 
 @inline send_email(aws::AWSConfig, args) = AWSCore.Services.email(aws, "SendEmail", args)
@@ -2735,10 +2960,10 @@ Additionally, keep the following considerations in mind when using the `SendRawE
 ## `Source = ::String`
 The identity's email address. If you do not provide a value for this parameter, you must specify a "From" address in the raw text of the message. (You can also specify both.)
 
-By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: `=?charset?encoding?encoded-text?=`. For more information, see [RFC 2047](https://tools.ietf.org/html/rfc2047).
-
 **Note**
-> If you specify the `Source` parameter and have feedback forwarding enabled, then bounces and complaints will be sent to this email address. This takes precedence over any Return-Path header that you might include in the raw text of the message.
+> Amazon SES does not support the SMTPUTF8 extension, as described in[RFC6531](https://tools.ietf.org/html/rfc6531). For this reason, the *local part* of a source email address (the part of the email address that precedes the @ sign) may only contain [7-bit ASCII characters](https://en.wikipedia.org/wiki/Email_address#Local-part). If the *domain part* of an address (the part after the @ sign) contains non-ASCII characters, they must be encoded using Punycode, as described in [RFC3492](https://tools.ietf.org/html/rfc3492.html). The sender name (also known as the *friendly name*) may contain non-ASCII characters. These characters must be encoded using MIME encoded-word syntax, as described in [RFC 2047](https://tools.ietf.org/html/rfc2047). MIME encoded-word syntax uses the following form: `=?charset?encoding?encoded-text?=`.
+
+If you specify the `Source` parameter and have feedback forwarding enabled, then bounces and complaints will be sent to this email address. This takes precedence over any Return-Path header that you might include in the raw text of the message.
 
 
 ## `Destinations = [::String, ...]`
@@ -2813,7 +3038,7 @@ The name of the configuration set to use when you send an email using `SendRawEm
 
 # Exceptions
 
-`MessageRejected`, `MailFromDomainNotVerifiedException` or `ConfigurationSetDoesNotExistException`.
+`MessageRejected`, `MailFromDomainNotVerifiedException`, `ConfigurationSetDoesNotExistException`, `ConfigurationSetSendingPausedException` or `AccountSendingPausedException`.
 
 # Example: SendRawEmail
 
@@ -2844,7 +3069,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SendRawEmail)
 """
-
 @inline send_raw_email(aws::AWSConfig=default_aws_config(); args...) = send_raw_email(aws, args)
 
 @inline send_raw_email(aws::AWSConfig, args) = AWSCore.Services.email(aws, "SendRawEmail", args)
@@ -2879,6 +3103,11 @@ In order to send email using the `SendTemplatedEmail` operation, your call to th
 
 *   The `Destination` parameter must include at least one recipient email address. The recipient address can be a To: address, a CC: address, or a BCC: address. If a recipient email address is invalid (that is, it is not in the format *UserName@[SubDomain.]Domain.TopLevelDomain*), the entire message will be rejected, even if the message contains other recipients that are valid.
 
+**Important**
+> If your call to the `SendTemplatedEmail` operation includes all of the required parameters, Amazon SES accepts it and returns a Message ID. However, if Amazon SES can't render the email because the template contains errors, it doesn't send the email. Additionally, because it already accepted the message, Amazon SES doesn't return a message stating that it was unable to send the email.
+
+For these reasons, we highly recommend that you set up Amazon SES to send you notifications when Rendering Failure events occur. For more information, see [Sending Personalized Email Using the Amazon SES API](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html) in the *Amazon Simple Email Service Developer Guide*.
+
 # Arguments
 
 ## `Source = ::String` -- *Required*
@@ -2886,7 +3115,8 @@ The email address that is sending the email. This email address must be either i
 
 If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the `SourceArn` parameter. For more information about sending authorization, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
-In all cases, the email address must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: `=?charset?encoding?encoded-text?=`. For more information, see [RFC 2047](https://tools.ietf.org/html/rfc2047).
+**Note**
+> Amazon SES does not support the SMTPUTF8 extension, as described in [RFC6531](https://tools.ietf.org/html/rfc6531). For this reason, the *local part* of a source email address (the part of the email address that precedes the @ sign) may only contain [7-bit ASCII characters](https://en.wikipedia.org/wiki/Email_address#Local-part). If the *domain part* of an address (the part after the @ sign) contains non-ASCII characters, they must be encoded using Punycode, as described in [RFC3492](https://tools.ietf.org/html/rfc3492.html). The sender name (also known as the *friendly name*) may contain non-ASCII characters. These characters must be encoded using MIME encoded-word syntax, as described in[RFC 2047](https://tools.ietf.org/html/rfc2047). MIME encoded-word syntax uses the following form: `=?charset?encoding?encoded-text?=`.
 
 
 ## `Destination = [ ... ]` -- *Required*
@@ -2956,11 +3186,10 @@ A list of replacement values to apply to the template. This parameter is a JSON 
 
 # Exceptions
 
-`MessageRejected`, `MailFromDomainNotVerifiedException`, `ConfigurationSetDoesNotExistException` or `TemplateDoesNotExistException`.
+`MessageRejected`, `MailFromDomainNotVerifiedException`, `ConfigurationSetDoesNotExistException`, `TemplateDoesNotExistException`, `ConfigurationSetSendingPausedException` or `AccountSendingPausedException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SendTemplatedEmail)
 """
-
 @inline send_templated_email(aws::AWSConfig=default_aws_config(); args...) = send_templated_email(aws, args)
 
 @inline send_templated_email(aws::AWSConfig, args) = AWSCore.Services.email(aws, "SendTemplatedEmail", args)
@@ -3017,7 +3246,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetActiveReceiptRuleSet)
 """
-
 @inline set_active_receipt_rule_set(aws::AWSConfig=default_aws_config(); args...) = set_active_receipt_rule_set(aws, args)
 
 @inline set_active_receipt_rule_set(aws::AWSConfig, args) = AWSCore.Services.email(aws, "SetActiveReceiptRuleSet", args)
@@ -3078,7 +3306,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetIdentityDkimEnabled)
 """
-
 @inline set_identity_dkim_enabled(aws::AWSConfig=default_aws_config(); args...) = set_identity_dkim_enabled(aws, args)
 
 @inline set_identity_dkim_enabled(aws::AWSConfig, args) = AWSCore.Services.email(aws, "SetIdentityDkimEnabled", args)
@@ -3136,7 +3363,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetIdentityFeedbackForwardingEnabled)
 """
-
 @inline set_identity_feedback_forwarding_enabled(aws::AWSConfig=default_aws_config(); args...) = set_identity_feedback_forwarding_enabled(aws, args)
 
 @inline set_identity_feedback_forwarding_enabled(aws::AWSConfig, args) = AWSCore.Services.email(aws, "SetIdentityFeedbackForwardingEnabled", args)
@@ -3198,7 +3424,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetIdentityHeadersInNotificationsEnabled)
 """
-
 @inline set_identity_headers_in_notifications_enabled(aws::AWSConfig=default_aws_config(); args...) = set_identity_headers_in_notifications_enabled(aws, args)
 
 @inline set_identity_headers_in_notifications_enabled(aws::AWSConfig, args) = AWSCore.Services.email(aws, "SetIdentityHeadersInNotificationsEnabled", args)
@@ -3261,7 +3486,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetIdentityMailFromDomain)
 """
-
 @inline set_identity_mail_from_domain(aws::AWSConfig=default_aws_config(); args...) = set_identity_mail_from_domain(aws, args)
 
 @inline set_identity_mail_from_domain(aws::AWSConfig, args) = AWSCore.Services.email(aws, "SetIdentityMailFromDomain", args)
@@ -3324,7 +3548,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetIdentityNotificationTopic)
 """
-
 @inline set_identity_notification_topic(aws::AWSConfig=default_aws_config(); args...) = set_identity_notification_topic(aws, args)
 
 @inline set_identity_notification_topic(aws::AWSConfig, args) = AWSCore.Services.email(aws, "SetIdentityNotificationTopic", args)
@@ -3388,7 +3611,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SetReceiptRulePosition)
 """
-
 @inline set_receipt_rule_position(aws::AWSConfig=default_aws_config(); args...) = set_receipt_rule_position(aws, args)
 
 @inline set_receipt_rule_position(aws::AWSConfig, args) = AWSCore.Services.email(aws, "SetReceiptRulePosition", args)
@@ -3433,12 +3655,54 @@ A list of replacement values to apply to the template. This parameter is a JSON 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/TestRenderTemplate)
 """
-
 @inline test_render_template(aws::AWSConfig=default_aws_config(); args...) = test_render_template(aws, args)
 
 @inline test_render_template(aws::AWSConfig, args) = AWSCore.Services.email(aws, "TestRenderTemplate", args)
 
 @inline test_render_template(args) = test_render_template(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SES.update_account_sending_enabled
+    update_account_sending_enabled([::AWSConfig], arguments::Dict)
+    update_account_sending_enabled([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "UpdateAccountSendingEnabled", arguments::Dict)
+    email([::AWSConfig], "UpdateAccountSendingEnabled", <keyword arguments>)
+
+# UpdateAccountSendingEnabled Operation
+
+Enables or disables email sending across your entire Amazon SES account in the current AWS Region. You can use this operation in conjunction with Amazon CloudWatch alarms to temporarily pause email sending across your Amazon SES account in a given AWS Region when reputation metrics (such as your bounce or complaint rates) reach certain thresholds.
+
+You can execute this operation no more than once per second.
+
+# Arguments
+
+## `Enabled = ::Bool`
+Describes whether email sending is enabled or disabled for your Amazon SES account in the current AWS Region.
+
+
+
+
+# Example: UpdateAccountSendingEnabled
+
+The following example updated the sending status for this account.
+
+Input:
+```
+[
+    "Enabled" => true
+]
+```
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/UpdateAccountSendingEnabled)
+"""
+@inline update_account_sending_enabled(aws::AWSConfig=default_aws_config(); args...) = update_account_sending_enabled(aws, args)
+
+@inline update_account_sending_enabled(aws::AWSConfig, args) = AWSCore.Services.email(aws, "UpdateAccountSendingEnabled", args)
+
+@inline update_account_sending_enabled(args) = update_account_sending_enabled(default_aws_config(), args)
 
 
 """
@@ -3497,12 +3761,115 @@ The event destination object that you want to apply to the specified configurati
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/UpdateConfigurationSetEventDestination)
 """
-
 @inline update_configuration_set_event_destination(aws::AWSConfig=default_aws_config(); args...) = update_configuration_set_event_destination(aws, args)
 
 @inline update_configuration_set_event_destination(aws::AWSConfig, args) = AWSCore.Services.email(aws, "UpdateConfigurationSetEventDestination", args)
 
 @inline update_configuration_set_event_destination(args) = update_configuration_set_event_destination(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SES.update_configuration_set_reputation_metrics_enabled
+    update_configuration_set_reputation_metrics_enabled([::AWSConfig], arguments::Dict)
+    update_configuration_set_reputation_metrics_enabled([::AWSConfig]; ConfigurationSetName=, Enabled=)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "UpdateConfigurationSetReputationMetricsEnabled", arguments::Dict)
+    email([::AWSConfig], "UpdateConfigurationSetReputationMetricsEnabled", ConfigurationSetName=, Enabled=)
+
+# UpdateConfigurationSetReputationMetricsEnabled Operation
+
+Enables or disables the publishing of reputation metrics for emails sent using a specific configuration set in a given AWS Region. Reputation metrics include bounce and complaint rates. These metrics are published to Amazon CloudWatch. By using CloudWatch, you can create alarms when bounce or complaint rates exceed certain thresholds.
+
+You can execute this operation no more than once per second.
+
+# Arguments
+
+## `ConfigurationSetName = ::String` -- *Required*
+The name of the configuration set that you want to update.
+
+
+## `Enabled = ::Bool` -- *Required*
+Describes whether or not Amazon SES will publish reputation metrics for the configuration set, such as bounce and complaint rates, to Amazon CloudWatch.
+
+
+
+
+# Exceptions
+
+`ConfigurationSetDoesNotExistException`.
+
+# Example: UpdateConfigurationSetReputationMetricsEnabled
+
+Set the reputationMetricsEnabled flag for a specific configuration set.
+
+Input:
+```
+[
+    "ConfigurationSetName" => "foo",
+    "Enabled" => true
+]
+```
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/UpdateConfigurationSetReputationMetricsEnabled)
+"""
+@inline update_configuration_set_reputation_metrics_enabled(aws::AWSConfig=default_aws_config(); args...) = update_configuration_set_reputation_metrics_enabled(aws, args)
+
+@inline update_configuration_set_reputation_metrics_enabled(aws::AWSConfig, args) = AWSCore.Services.email(aws, "UpdateConfigurationSetReputationMetricsEnabled", args)
+
+@inline update_configuration_set_reputation_metrics_enabled(args) = update_configuration_set_reputation_metrics_enabled(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SES.update_configuration_set_sending_enabled
+    update_configuration_set_sending_enabled([::AWSConfig], arguments::Dict)
+    update_configuration_set_sending_enabled([::AWSConfig]; ConfigurationSetName=, Enabled=)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "UpdateConfigurationSetSendingEnabled", arguments::Dict)
+    email([::AWSConfig], "UpdateConfigurationSetSendingEnabled", ConfigurationSetName=, Enabled=)
+
+# UpdateConfigurationSetSendingEnabled Operation
+
+Enables or disables email sending for messages sent using a specific configuration set in a given AWS Region. You can use this operation in conjunction with Amazon CloudWatch alarms to temporarily pause email sending for a configuration set when the reputation metrics for that configuration set (such as your bounce on complaint rate) exceed certain thresholds.
+
+You can execute this operation no more than once per second.
+
+# Arguments
+
+## `ConfigurationSetName = ::String` -- *Required*
+The name of the configuration set that you want to update.
+
+
+## `Enabled = ::Bool` -- *Required*
+Describes whether email sending is enabled or disabled for the configuration set.
+
+
+
+
+# Exceptions
+
+`ConfigurationSetDoesNotExistException`.
+
+# Example: UpdateConfigurationSetReputationMetricsEnabled
+
+Set the sending enabled flag for a specific configuration set.
+
+Input:
+```
+[
+    "ConfigurationSetName" => "foo",
+    "Enabled" => true
+]
+```
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/UpdateConfigurationSetSendingEnabled)
+"""
+@inline update_configuration_set_sending_enabled(aws::AWSConfig=default_aws_config(); args...) = update_configuration_set_sending_enabled(aws, args)
+
+@inline update_configuration_set_sending_enabled(aws::AWSConfig, args) = AWSCore.Services.email(aws, "UpdateConfigurationSetSendingEnabled", args)
+
+@inline update_configuration_set_sending_enabled(args) = update_configuration_set_sending_enabled(default_aws_config(), args)
 
 
 """
@@ -3518,7 +3885,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 Modifies an association between a configuration set and a custom domain for open and click event tracking.
 
-By default, images and links used for tracking open and click events are hosted on domains operated by Amazon SES. You can configure a subdomain of your own to handle these events. For information about using configuration sets, see [Configuring Custom Domains to Handle Open and Click Tracking](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html) in the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
+By default, images and links used for tracking open and click events are hosted on domains operated by Amazon SES. You can configure a subdomain of your own to handle these events. For information about using custom domains, see the [Amazon SES Developer Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html).
 
 # Arguments
 
@@ -3542,12 +3909,69 @@ The name of the configuration set for which you want to update the custom tracki
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/UpdateConfigurationSetTrackingOptions)
 """
-
 @inline update_configuration_set_tracking_options(aws::AWSConfig=default_aws_config(); args...) = update_configuration_set_tracking_options(aws, args)
 
 @inline update_configuration_set_tracking_options(aws::AWSConfig, args) = AWSCore.Services.email(aws, "UpdateConfigurationSetTrackingOptions", args)
 
 @inline update_configuration_set_tracking_options(args) = update_configuration_set_tracking_options(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.SES.update_custom_verification_email_template
+    update_custom_verification_email_template([::AWSConfig], arguments::Dict)
+    update_custom_verification_email_template([::AWSConfig]; TemplateName=, <keyword arguments>)
+
+    using AWSCore.Services.email
+    email([::AWSConfig], "UpdateCustomVerificationEmailTemplate", arguments::Dict)
+    email([::AWSConfig], "UpdateCustomVerificationEmailTemplate", TemplateName=, <keyword arguments>)
+
+# UpdateCustomVerificationEmailTemplate Operation
+
+Updates an existing custom verification email template.
+
+For more information about custom verification email templates, see [Using Custom Verification Email Templates](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html) in the *Amazon SES Developer Guide*.
+
+You can execute this operation no more than once per second.
+
+# Arguments
+
+## `TemplateName = ::String` -- *Required*
+The name of the custom verification email template that you want to update.
+
+
+## `FromEmailAddress = ::String`
+The email address that the custom verification email is sent from.
+
+
+## `TemplateSubject = ::String`
+The subject line of the custom verification email.
+
+
+## `TemplateContent = ::String`
+The content of the custom verification email. The total size of the email must be less than 10 MB. The message body may contain HTML, with some limitations. For more information, see [Custom Verification Email Frequently Asked Questions](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq) in the *Amazon SES Developer Guide*.
+
+
+## `SuccessRedirectionURL = ::String`
+The URL that the recipient of the verification email is sent to if his or her address is successfully verified.
+
+
+## `FailureRedirectionURL = ::String`
+The URL that the recipient of the verification email is sent to if his or her address is not successfully verified.
+
+
+
+
+# Exceptions
+
+`CustomVerificationEmailTemplateDoesNotExistException`, `FromEmailAddressNotVerifiedException` or `CustomVerificationEmailInvalidContentException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/UpdateCustomVerificationEmailTemplate)
+"""
+@inline update_custom_verification_email_template(aws::AWSConfig=default_aws_config(); args...) = update_custom_verification_email_template(aws, args)
+
+@inline update_custom_verification_email_template(aws::AWSConfig, args) = AWSCore.Services.email(aws, "UpdateCustomVerificationEmailTemplate", args)
+
+@inline update_custom_verification_email_template(args) = update_custom_verification_email_template(default_aws_config(), args)
 
 
 """
@@ -3658,7 +4082,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/UpdateReceiptRule)
 """
-
 @inline update_receipt_rule(aws::AWSConfig=default_aws_config(); args...) = update_receipt_rule(aws, args)
 
 @inline update_receipt_rule(aws::AWSConfig, args) = AWSCore.Services.email(aws, "UpdateReceiptRule", args)
@@ -3706,7 +4129,6 @@ You can execute this operation no more than once per second.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/UpdateTemplate)
 """
-
 @inline update_template(aws::AWSConfig=default_aws_config(); args...) = update_template(aws, args)
 
 @inline update_template(aws::AWSConfig, args) = AWSCore.Services.email(aws, "UpdateTemplate", args)
@@ -3769,7 +4191,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/VerifyDomainDkim)
 """
-
 @inline verify_domain_dkim(aws::AWSConfig=default_aws_config(); args...) = verify_domain_dkim(aws, args)
 
 @inline verify_domain_dkim(aws::AWSConfig, args) = AWSCore.Services.email(aws, "VerifyDomainDkim", args)
@@ -3788,7 +4209,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # VerifyDomainIdentity Operation
 
-Adds a domain to the list of identities for your Amazon SES account and attempts to verify it. For more information about verifying domains, see [Verifying Email Addresses and Domains](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html) in the *Amazon SES Developer Guide.*
+Adds a domain to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it. For more information about verifying domains, see [Verifying Email Addresses and Domains](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html) in the *Amazon SES Developer Guide.*
 
 You can execute this operation no more than once per second.
 
@@ -3824,7 +4245,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/VerifyDomainIdentity)
 """
-
 @inline verify_domain_identity(aws::AWSConfig=default_aws_config(); args...) = verify_domain_identity(aws, args)
 
 @inline verify_domain_identity(aws::AWSConfig, args) = AWSCore.Services.email(aws, "VerifyDomainIdentity", args)
@@ -3866,7 +4286,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/VerifyEmailAddress)
 """
-
 @inline verify_email_address(aws::AWSConfig=default_aws_config(); args...) = verify_email_address(aws, args)
 
 @inline verify_email_address(aws::AWSConfig, args) = AWSCore.Services.email(aws, "VerifyEmailAddress", args)
@@ -3885,7 +4304,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-
 
 # VerifyEmailIdentity Operation
 
-Adds an email address to the list of identities for your Amazon SES account and attempts to verify it. This operation causes a confirmation email message to be sent to the specified address.
+Adds an email address to the list of identities for your Amazon SES account in the current AWS region and attempts to verify it. As a result of executing this operation, a verification email is sent to the specified address.
 
 You can execute this operation no more than once per second.
 
@@ -3914,7 +4333,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/VerifyEmailIdentity)
 """
-
 @inline verify_email_identity(aws::AWSConfig=default_aws_config(); args...) = verify_email_identity(aws, args)
 
 @inline verify_email_identity(aws::AWSConfig, args) = AWSCore.Services.email(aws, "VerifyEmailIdentity", args)

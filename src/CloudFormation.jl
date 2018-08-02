@@ -46,7 +46,6 @@ A unique identifier for this `CancelUpdateStack` request. Specify this token if 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CancelUpdateStack)
 """
-
 @inline cancel_update_stack(aws::AWSConfig=default_aws_config(); args...) = cancel_update_stack(aws, args)
 
 @inline cancel_update_stack(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "CancelUpdateStack", args)
@@ -114,7 +113,6 @@ A unique identifier for this `ContinueUpdateRollback` request. Specify this toke
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ContinueUpdateRollback)
 """
-
 @inline continue_update_rollback(aws::AWSConfig=default_aws_config(); args...) = continue_update_rollback(aws, args)
 
 @inline continue_update_rollback(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "ContinueUpdateRollback", args)
@@ -167,7 +165,8 @@ A list of `Parameter` structures that specify input parameters for the change se
  Parameters = [[
         "ParameterKey" =>  ::String,
         "ParameterValue" =>  ::String,
-        "UsePreviousValue" =>  ::Bool
+        "UsePreviousValue" =>  ::Bool,
+        "ResolvedValue" =>  ::String
     ], ...]
 ```
 
@@ -252,7 +251,6 @@ By default, AWS CloudFormation specifies `UPDATE`. You can't use the `UPDATE` ty
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)
 """
-
 @inline create_change_set(aws::AWSConfig=default_aws_config(); args...) = create_change_set(aws, args)
 
 @inline create_change_set(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "CreateChangeSet", args)
@@ -300,7 +298,8 @@ A list of `Parameter` structures that specify input parameters for the stack. Fo
  Parameters = [[
         "ParameterKey" =>  ::String,
         "ParameterValue" =>  ::String,
-        "UsePreviousValue" =>  ::Bool
+        "UsePreviousValue" =>  ::Bool,
+        "ResolvedValue" =>  ::String
     ], ...]
 ```
 
@@ -401,7 +400,6 @@ For [nested stacks](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuid
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateStack)
 """
-
 @inline create_stack(aws::AWSConfig=default_aws_config(); args...) = create_stack(aws, args)
 
 @inline create_stack(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "CreateStack", args)
@@ -435,6 +433,35 @@ The names of one or more AWS accounts that you want to create stack instances in
 ## `Regions = [::String, ...]` -- *Required*
 The names of one or more regions where you want to create stack instances using the specified AWS account(s).
 
+
+## `ParameterOverrides = [[ ... ], ...]`
+A list of stack set parameters whose values you want to override in the selected stack instances.
+
+Any overridden parameter values will be applied to all stack instances in the specified accounts and regions. When specifying parameters and their values, be aware of how AWS CloudFormation sets parameter values during stack instance operations:
+
+*   To override the current value for a parameter, include the parameter and specify its value.
+
+*   To leave a parameter set to its present value, you can do one of the following:
+
+    *   Do not include the parameter in the list.
+
+    *   Include the parameter and specify `UsePreviousValue` as `true`. (You cannot specify both a value and set `UsePreviousValue` to `true`.)
+
+*   To set all overridden parameter back to the values specified in the stack set, specify a parameter list but do not include any parameters.
+
+*   To leave all parameters set to their present values, do not specify this property at all.
+
+During stack set updates, any parameter values overridden for a stack instance are not updated, but retain their overridden value.
+
+You can only override the parameter *values* that are specified in the stack set; to add or delete a parameter itself, use [UpdateStackSet](http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html) to update the stack set template.
+```
+ ParameterOverrides = [[
+        "ParameterKey" =>  ::String,
+        "ParameterValue" =>  ::String,
+        "UsePreviousValue" =>  ::Bool,
+        "ResolvedValue" =>  ::String
+    ], ...]
+```
 
 ## `OperationPreferences = [ ... ]`
 Preferences for how AWS CloudFormation performs this stack set operation.
@@ -470,7 +497,6 @@ Repeating this stack set operation with a new operation ID retries all stack ins
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateStackInstances)
 """
-
 @inline create_stack_instances(aws::AWSConfig=default_aws_config(); args...) = create_stack_instances(aws, args)
 
 @inline create_stack_instances(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "CreateStackInstances", args)
@@ -522,7 +548,8 @@ The input parameters for the stack set template.
  Parameters = [[
         "ParameterKey" =>  ::String,
         "ParameterValue" =>  ::String,
-        "UsePreviousValue" =>  ::Bool
+        "UsePreviousValue" =>  ::Bool,
+        "ResolvedValue" =>  ::String
     ], ...]
 ```
 
@@ -563,6 +590,18 @@ If you specify tags as part of a `CreateStackSet` action, AWS CloudFormation che
     ], ...]
 ```
 
+## `AdministrationRoleARN = ::String`
+The Amazon Resource Number (ARN) of the IAM role to use to create this stack set.
+
+Specify an IAM role only if you are using customized administrator roles to control which users or groups can manage specific stack sets within the same administrator account. For more information, see [Prerequisites: Granting Permissions for Stack Set Operations](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html) in the *AWS CloudFormation User Guide*.
+
+
+## `ExecutionRoleName = ::String`
+The name of the IAM execution role to use to create the stack set. If you do not specify an execution role, AWS CloudFormation uses the `AWSCloudFormationStackSetExecutionRole` role for the stack set operation.
+
+Specify an IAM role only if you are using customized execution roles to control which stack resources users and groups can include in their stack sets.
+
+
 ## `ClientRequestToken = ::String`
 A unique identifier for this `CreateStackSet` request. Specify this token if you plan to retry requests so that AWS CloudFormation knows that you're not attempting to create another stack set with the same name. You might retry `CreateStackSet` requests to ensure that AWS CloudFormation successfully received them.
 
@@ -581,7 +620,6 @@ If you don't specify an operation ID, the SDK generates one automatically.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateStackSet)
 """
-
 @inline create_stack_set(aws::AWSConfig=default_aws_config(); args...) = create_stack_set(aws, args)
 
 @inline create_stack_set(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "CreateStackSet", args)
@@ -626,7 +664,6 @@ If you specified the name of a change set to delete, specify the stack name or I
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteChangeSet)
 """
-
 @inline delete_change_set(aws::AWSConfig=default_aws_config(); args...) = delete_change_set(aws, args)
 
 @inline delete_change_set(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "DeleteChangeSet", args)
@@ -681,7 +718,6 @@ In the console, stack operations display the client request token on the Events 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteStack)
 """
-
 @inline delete_stack(aws::AWSConfig=default_aws_config(); args...) = delete_stack(aws, args)
 
 @inline delete_stack(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "DeleteStack", args)
@@ -756,7 +792,6 @@ Repeating this stack set operation with a new operation ID retries all stack ins
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteStackInstances)
 """
-
 @inline delete_stack_instances(aws::AWSConfig=default_aws_config(); args...) = delete_stack_instances(aws, args)
 
 @inline delete_stack_instances(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "DeleteStackInstances", args)
@@ -795,7 +830,6 @@ The name or unique ID of the stack set that you're deleting. You can obtain this
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeleteStackSet)
 """
-
 @inline delete_stack_set(aws::AWSConfig=default_aws_config(); args...) = delete_stack_set(aws, args)
 
 @inline delete_stack_set(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "DeleteStackSet", args)
@@ -830,7 +864,6 @@ A string that identifies the next page of limits that you want to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeAccountLimits)
 """
-
 @inline describe_account_limits(aws::AWSConfig=default_aws_config(); args...) = describe_account_limits(aws, args)
 
 @inline describe_account_limits(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "DescribeAccountLimits", args)
@@ -877,7 +910,6 @@ A string (provided by the [DescribeChangeSet](@ref) response output) that identi
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeChangeSet)
 """
-
 @inline describe_change_set(aws::AWSConfig=default_aws_config(); args...) = describe_change_set(aws, args)
 
 @inline describe_change_set(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "DescribeChangeSet", args)
@@ -925,7 +957,6 @@ A string that identifies the next page of events that you want to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackEvents)
 """
-
 @inline describe_stack_events(aws::AWSConfig=default_aws_config(); args...) = describe_stack_events(aws, args)
 
 @inline describe_stack_events(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "DescribeStackEvents", args)
@@ -974,7 +1005,6 @@ The name of a region that's associated with this stack instance.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackInstance)
 """
-
 @inline describe_stack_instance(aws::AWSConfig=default_aws_config(); args...) = describe_stack_instance(aws, args)
 
 @inline describe_stack_instance(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "DescribeStackInstance", args)
@@ -1023,7 +1053,6 @@ Default: There is no default value.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackResource)
 """
-
 @inline describe_stack_resource(aws::AWSConfig=default_aws_config(); args...) = describe_stack_resource(aws, args)
 
 @inline describe_stack_resource(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "DescribeStackResource", args)
@@ -1092,7 +1121,6 @@ Default: There is no default value.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackResources)
 """
-
 @inline describe_stack_resources(aws::AWSConfig=default_aws_config(); args...) = describe_stack_resources(aws, args)
 
 @inline describe_stack_resources(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "DescribeStackResources", args)
@@ -1131,7 +1159,6 @@ The name or unique ID of the stack set whose description you want.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackSet)
 """
-
 @inline describe_stack_set(aws::AWSConfig=default_aws_config(); args...) = describe_stack_set(aws, args)
 
 @inline describe_stack_set(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "DescribeStackSet", args)
@@ -1174,7 +1201,6 @@ The unique ID of the stack set operation.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackSetOperation)
 """
-
 @inline describe_stack_set_operation(aws::AWSConfig=default_aws_config(); args...) = describe_stack_set_operation(aws, args)
 
 @inline describe_stack_set_operation(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "DescribeStackSetOperation", args)
@@ -1222,7 +1248,6 @@ A string that identifies the next page of stacks that you want to retrieve.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStacks)
 """
-
 @inline describe_stacks(aws::AWSConfig=default_aws_config(); args...) = describe_stacks(aws, args)
 
 @inline describe_stacks(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "DescribeStacks", args)
@@ -1263,7 +1288,8 @@ A list of `Parameter` structures that specify input parameters.
  Parameters = [[
         "ParameterKey" =>  ::String,
         "ParameterValue" =>  ::String,
-        "UsePreviousValue" =>  ::Bool
+        "UsePreviousValue" =>  ::Bool,
+        "ResolvedValue" =>  ::String
     ], ...]
 ```
 
@@ -1275,7 +1301,6 @@ A list of `Parameter` structures that specify input parameters.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/EstimateTemplateCost)
 """
-
 @inline estimate_template_cost(aws::AWSConfig=default_aws_config(); args...) = estimate_template_cost(aws, args)
 
 @inline estimate_template_cost(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "EstimateTemplateCost", args)
@@ -1326,7 +1351,6 @@ A unique identifier for this `ExecuteChangeSet` request. Specify this token if y
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ExecuteChangeSet)
 """
-
 @inline execute_change_set(aws::AWSConfig=default_aws_config(); args...) = execute_change_set(aws, args)
 
 @inline execute_change_set(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "ExecuteChangeSet", args)
@@ -1361,7 +1385,6 @@ The name or unique stack ID that is associated with the stack whose policy you w
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/GetStackPolicy)
 """
-
 @inline get_stack_policy(aws::AWSConfig=default_aws_config(); args...) = get_stack_policy(aws, args)
 
 @inline get_stack_policy(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "GetStackPolicy", args)
@@ -1421,7 +1444,6 @@ If the template doesn't include transforms, `Original` and `Processed` return th
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/GetTemplate)
 """
-
 @inline get_template(aws::AWSConfig=default_aws_config(); args...) = get_template(aws, args)
 
 @inline get_template(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "GetTemplate", args)
@@ -1484,7 +1506,6 @@ Conditional: You must specify only one of the following parameters: `StackName`,
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/GetTemplateSummary)
 """
-
 @inline get_template_summary(aws::AWSConfig=default_aws_config(); args...) = get_template_summary(aws, args)
 
 @inline get_template_summary(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "GetTemplateSummary", args)
@@ -1523,7 +1544,6 @@ A string (provided by the [ListChangeSets](@ref) response output) that identifie
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListChangeSets)
 """
-
 @inline list_change_sets(aws::AWSConfig=default_aws_config(); args...) = list_change_sets(aws, args)
 
 @inline list_change_sets(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "ListChangeSets", args)
@@ -1560,7 +1580,6 @@ A string (provided by the [ListExports](@ref) response output) that identifies t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListExports)
 """
-
 @inline list_exports(aws::AWSConfig=default_aws_config(); args...) = list_exports(aws, args)
 
 @inline list_exports(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "ListExports", args)
@@ -1601,7 +1620,6 @@ A string (provided by the [ListImports](@ref) response output) that identifies t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListImports)
 """
-
 @inline list_imports(aws::AWSConfig=default_aws_config(); args...) = list_imports(aws, args)
 
 @inline list_imports(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "ListImports", args)
@@ -1656,7 +1674,6 @@ The name of the region where you want to list stack instances.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackInstances)
 """
-
 @inline list_stack_instances(aws::AWSConfig=default_aws_config(); args...) = list_stack_instances(aws, args)
 
 @inline list_stack_instances(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "ListStackInstances", args)
@@ -1703,7 +1720,6 @@ A string that identifies the next page of stack resources that you want to retri
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackResources)
 """
-
 @inline list_stack_resources(aws::AWSConfig=default_aws_config(); args...) = list_stack_resources(aws, args)
 
 @inline list_stack_resources(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "ListStackResources", args)
@@ -1754,7 +1770,6 @@ The maximum number of results to be returned with a single call. If the number o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackSetOperationResults)
 """
-
 @inline list_stack_set_operation_results(aws::AWSConfig=default_aws_config(); args...) = list_stack_set_operation_results(aws, args)
 
 @inline list_stack_set_operation_results(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "ListStackSetOperationResults", args)
@@ -1801,7 +1816,6 @@ The maximum number of results to be returned with a single call. If the number o
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackSetOperations)
 """
-
 @inline list_stack_set_operations(aws::AWSConfig=default_aws_config(); args...) = list_stack_set_operations(aws, args)
 
 @inline list_stack_set_operations(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "ListStackSetOperations", args)
@@ -1844,7 +1858,6 @@ The status of the stack sets that you want to get summary information about.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStackSets)
 """
-
 @inline list_stack_sets(aws::AWSConfig=default_aws_config(); args...) = list_stack_sets(aws, args)
 
 @inline list_stack_sets(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "ListStackSets", args)
@@ -1883,7 +1896,6 @@ Stack status to use as a filter. Specify one or more stack status codes to list 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListStacks)
 """
-
 @inline list_stacks(aws::AWSConfig=default_aws_config(); args...) = list_stacks(aws, args)
 
 @inline list_stacks(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "ListStacks", args)
@@ -1922,7 +1934,6 @@ Location of a file containing the stack policy. The URL must point to a policy (
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/SetStackPolicy)
 """
-
 @inline set_stack_policy(aws::AWSConfig=default_aws_config(); args...) = set_stack_policy(aws, args)
 
 @inline set_stack_policy(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "SetStackPolicy", args)
@@ -1965,7 +1976,6 @@ The status of the signal, which is either success or failure. A failure signal c
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/SignalResource)
 """
-
 @inline signal_resource(aws::AWSConfig=default_aws_config(); args...) = signal_resource(aws, args)
 
 @inline signal_resource(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "SignalResource", args)
@@ -2008,7 +2018,6 @@ The ID of the stack operation.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/StopStackSetOperation)
 """
-
 @inline stop_stack_set_operation(aws::AWSConfig=default_aws_config(); args...) = stop_stack_set_operation(aws, args)
 
 @inline stop_stack_set_operation(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "StopStackSetOperation", args)
@@ -2075,7 +2084,8 @@ A list of `Parameter` structures that specify input parameters for the stack. Fo
  Parameters = [[
         "ParameterKey" =>  ::String,
         "ParameterValue" =>  ::String,
-        "UsePreviousValue" =>  ::Bool
+        "UsePreviousValue" =>  ::Bool,
+        "ResolvedValue" =>  ::String
     ], ...]
 ```
 
@@ -2160,12 +2170,112 @@ In the console, stack operations display the client request token on the Events 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/UpdateStack)
 """
-
 @inline update_stack(aws::AWSConfig=default_aws_config(); args...) = update_stack(aws, args)
 
 @inline update_stack(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "UpdateStack", args)
 
 @inline update_stack(args) = update_stack(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFormation.update_stack_instances
+    update_stack_instances([::AWSConfig], arguments::Dict)
+    update_stack_instances([::AWSConfig]; StackSetName=, Accounts=, Regions=, <keyword arguments>)
+
+    using AWSCore.Services.cloudformation
+    cloudformation([::AWSConfig], "UpdateStackInstances", arguments::Dict)
+    cloudformation([::AWSConfig], "UpdateStackInstances", StackSetName=, Accounts=, Regions=, <keyword arguments>)
+
+# UpdateStackInstances Operation
+
+Updates the parameter values for stack instances for the specified accounts, within the specified regions. A stack instance refers to a stack in a specific account and region.
+
+You can only update stack instances in regions and accounts where they already exist; to create additional stack instances, use [CreateStackInstances](http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html).
+
+During stack set updates, any parameters overridden for a stack instance are not updated, but retain their overridden value.
+
+You can only update the parameter *values* that are specified in the stack set; to add or delete a parameter itself, use [UpdateStackSet](http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html) to update the stack set template. If you add a parameter to a template, before you can override the parameter value specified in the stack set you must first use [UpdateStackSet](http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html) to update all stack instances with the updated template and parameter value specified in the stack set. Once a stack instance has been updated with the new parameter, you can then override the parameter value using `UpdateStackInstances`.
+
+# Arguments
+
+## `StackSetName = ::String` -- *Required*
+The name or unique ID of the stack set associated with the stack instances.
+
+
+## `Accounts = [::String, ...]` -- *Required*
+The names of one or more AWS accounts for which you want to update parameter values for stack instances. The overridden parameter values will be applied to all stack instances in the specified accounts and regions.
+
+
+## `Regions = [::String, ...]` -- *Required*
+The names of one or more regions in which you want to update parameter values for stack instances. The overridden parameter values will be applied to all stack instances in the specified accounts and regions.
+
+
+## `ParameterOverrides = [[ ... ], ...]`
+A list of input parameters whose values you want to update for the specified stack instances.
+
+Any overridden parameter values will be applied to all stack instances in the specified accounts and regions. When specifying parameters and their values, be aware of how AWS CloudFormation sets parameter values during stack instance update operations:
+
+*   To override the current value for a parameter, include the parameter and specify its value.
+
+*   To leave a parameter set to its present value, you can do one of the following:
+
+    *   Do not include the parameter in the list.
+
+    *   Include the parameter and specify `UsePreviousValue` as `true`. (You cannot specify both a value and set `UsePreviousValue` to `true`.)
+
+*   To set all overridden parameter back to the values specified in the stack set, specify a parameter list but do not include any parameters.
+
+*   To leave all parameters set to their present values, do not specify this property at all.
+
+During stack set updates, any parameter values overridden for a stack instance are not updated, but retain their overridden value.
+
+You can only override the parameter *values* that are specified in the stack set; to add or delete a parameter itself, use `UpdateStackSet` to update the stack set template. If you add a parameter to a template, before you can override the parameter value specified in the stack set you must first use [UpdateStackSet](http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html) to update all stack instances with the updated template and parameter value specified in the stack set. Once a stack instance has been updated with the new parameter, you can then override the parameter value using `UpdateStackInstances`.
+```
+ ParameterOverrides = [[
+        "ParameterKey" =>  ::String,
+        "ParameterValue" =>  ::String,
+        "UsePreviousValue" =>  ::Bool,
+        "ResolvedValue" =>  ::String
+    ], ...]
+```
+
+## `OperationPreferences = [ ... ]`
+Preferences for how AWS CloudFormation performs this stack set operation.
+```
+ OperationPreferences = [
+        "RegionOrder" =>  [::String, ...],
+        "FailureToleranceCount" =>  ::Int,
+        "FailureTolerancePercentage" =>  ::Int,
+        "MaxConcurrentCount" =>  ::Int,
+        "MaxConcurrentPercentage" =>  ::Int
+    ]
+```
+
+## `OperationId = ::String`
+The unique identifier for this stack set operation.
+
+The operation ID also functions as an idempotency token, to ensure that AWS CloudFormation performs the stack set operation only once, even if you retry the request multiple times. You might retry stack set operation requests to ensure that AWS CloudFormation successfully received them.
+
+If you don't specify an operation ID, the SDK generates one automatically.
+
+
+
+
+# Returns
+
+`UpdateStackInstancesOutput`
+
+# Exceptions
+
+`StackSetNotFoundException`, `StackInstanceNotFoundException`, `OperationInProgressException`, `OperationIdAlreadyExistsException`, `StaleRequestException` or `InvalidOperationException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/UpdateStackInstances)
+"""
+@inline update_stack_instances(aws::AWSConfig=default_aws_config(); args...) = update_stack_instances(aws, args)
+
+@inline update_stack_instances(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "UpdateStackInstances", args)
+
+@inline update_stack_instances(args) = update_stack_instances(default_aws_config(), args)
 
 
 """
@@ -2179,7 +2289,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
 
 # UpdateStackSet Operation
 
-Updates the stack set and *all* associated stack instances.
+Updates the stack set, and associated stack instances in the specified accounts and regions.
 
 Even if the stack set operation created by updating the stack set fails (completely or partially, below or above a specified failure tolerance), the stack set is updated with your changes. Subsequent [CreateStackInstances](@ref) calls on the specified stack set use the updated stack set.
 
@@ -2217,7 +2327,8 @@ A list of input parameters for the stack set template.
  Parameters = [[
         "ParameterKey" =>  ::String,
         "ParameterValue" =>  ::String,
-        "UsePreviousValue" =>  ::Bool
+        "UsePreviousValue" =>  ::Bool,
+        "ResolvedValue" =>  ::String
     ], ...]
 ```
 
@@ -2278,6 +2389,22 @@ Preferences for how AWS CloudFormation performs this stack set operation.
     ]
 ```
 
+## `AdministrationRoleARN = ::String`
+The Amazon Resource Number (ARN) of the IAM role to use to update this stack set.
+
+Specify an IAM role only if you are using customized administrator roles to control which users or groups can manage specific stack sets within the same administrator account. For more information, see [Define Permissions for Multiple Administrators](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html) in the *AWS CloudFormation User Guide*.
+
+If you specify a customized administrator role, AWS CloudFormation uses that role to update the stack. If you do not specify a customized administrator role, AWS CloudFormation performs the update using the role previously associated with the stack set, so long as you have permissions to perform operations on the stack set.
+
+
+## `ExecutionRoleName = ::String`
+The name of the IAM execution role to use to update the stack set. If you do not specify an execution role, AWS CloudFormation uses the `AWSCloudFormationStackSetExecutionRole` role for the stack set operation.
+
+Specify an IAM role only if you are using customized execution roles to control which stack resources users and groups can include in their stack sets.
+
+If you specify a customized execution role, AWS CloudFormation uses that role to update the stack. If you do not specify a customized execution role, AWS CloudFormation performs the update using the role previously associated with the stack set, so long as you have permissions to perform operations on the stack set.
+
+
 ## `OperationId = ::String`
 The unique ID for this stack set operation.
 
@@ -2288,6 +2415,22 @@ If you don't specify an operation ID, AWS CloudFormation generates one automatic
 Repeating this stack set operation with a new operation ID retries all stack instances whose status is `OUTDATED`.
 
 
+## `Accounts = [::String, ...]`
+The accounts in which to update associated stack instances. If you specify accounts, you must also specify the regions in which to update stack set instances.
+
+To update *all* the stack instances associated with this stack set, do not specify the `Accounts` or `Regions` properties.
+
+If the stack set update includes changes to the template (that is, if the `TemplateBody` or `TemplateURL` properties are specified), or the `Parameters` property, AWS CloudFormation marks all stack instances with a status of `OUTDATED` prior to updating the stack instances in the specified accounts and regions. If the stack set update does not include changes to the template or parameters, AWS CloudFormation updates the stack instances in the specified accounts and regions, while leaving all other stack instances with their existing stack instance status.
+
+
+## `Regions = [::String, ...]`
+The regions in which to update associated stack instances. If you specify regions, you must also specify accounts in which to update stack set instances.
+
+To update *all* the stack instances associated with this stack set, do not specify the `Accounts` or `Regions` properties.
+
+If the stack set update includes changes to the template (that is, if the `TemplateBody` or `TemplateURL` properties are specified), or the `Parameters` property, AWS CloudFormation marks all stack instances with a status of `OUTDATED` prior to updating the stack instances in the specified accounts and regions. If the stack set update does not include changes to the template or parameters, AWS CloudFormation updates the stack instances in the specified accounts and regions, while leaving all other stack instances with their existing stack instance status.
+
+
 
 
 # Returns
@@ -2296,11 +2439,10 @@ Repeating this stack set operation with a new operation ID retries all stack ins
 
 # Exceptions
 
-`StackSetNotFoundException`, `OperationInProgressException`, `OperationIdAlreadyExistsException`, `StaleRequestException` or `InvalidOperationException`.
+`StackSetNotFoundException`, `OperationInProgressException`, `OperationIdAlreadyExistsException`, `StaleRequestException`, `InvalidOperationException` or `StackInstanceNotFoundException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/UpdateStackSet)
 """
-
 @inline update_stack_set(aws::AWSConfig=default_aws_config(); args...) = update_stack_set(aws, args)
 
 @inline update_stack_set(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "UpdateStackSet", args)
@@ -2341,7 +2483,6 @@ The name or unique ID of the stack for which you want to set termination protect
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/UpdateTerminationProtection)
 """
-
 @inline update_termination_protection(aws::AWSConfig=default_aws_config(); args...) = update_termination_protection(aws, args)
 
 @inline update_termination_protection(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "UpdateTerminationProtection", args)
@@ -2384,7 +2525,6 @@ Conditional: You must pass `TemplateURL` or `TemplateBody`. If both are passed, 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ValidateTemplate)
 """
-
 @inline validate_template(aws::AWSConfig=default_aws_config(); args...) = validate_template(aws, args)
 
 @inline validate_template(aws::AWSConfig, args) = AWSCore.Services.cloudformation(aws, "ValidateTemplate", args)

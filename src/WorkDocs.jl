@@ -28,7 +28,7 @@ Aborts the upload of the specified document version that was previously initiate
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `DocumentId = ::String` -- *Required*
@@ -47,7 +47,6 @@ The ID of the version.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/AbortDocumentVersionUpload)
 """
-
 @inline abort_document_version_upload(aws::AWSConfig=default_aws_config(); args...) = abort_document_version_upload(aws, args)
 
 @inline abort_document_version_upload(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "DELETE", "/api/v1/documents/{DocumentId}/versions/{VersionId}", args)
@@ -75,7 +74,7 @@ The ID of the user.
 
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 
@@ -90,7 +89,6 @@ Amazon WorkDocs authentication token. This field should not be set when using ad
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/ActivateUser)
 """
-
 @inline activate_user(aws::AWSConfig=default_aws_config(); args...) = activate_user(aws, args)
 
 @inline activate_user(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "POST", "/api/v1/users/{UserId}/activation", args)
@@ -114,7 +112,7 @@ Creates a set of permissions for the specified folder or document. The resource 
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `ResourceId = ::String` -- *Required*
@@ -131,6 +129,15 @@ The users, groups, or organization being granted permission.
     ], ...]
 ```
 
+## `NotificationOptions = [ ... ]`
+The notification options.
+```
+ NotificationOptions = [
+        "SendEmail" =>  ::Bool,
+        "EmailMessage" =>  ::String
+    ]
+```
+
 
 
 # Returns
@@ -143,7 +150,6 @@ The users, groups, or organization being granted permission.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/AddResourcePermissions)
 """
-
 @inline add_resource_permissions(aws::AWSConfig=default_aws_config(); args...) = add_resource_permissions(aws, args)
 
 @inline add_resource_permissions(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "POST", "/api/v1/resources/{ResourceId}/permissions", args)
@@ -167,7 +173,7 @@ Adds a new comment to the specified document version.
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `DocumentId = ::String` -- *Required*
@@ -210,7 +216,6 @@ Set this parameter to TRUE to send an email out to the document collaborators af
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/CreateComment)
 """
-
 @inline create_comment(aws::AWSConfig=default_aws_config(); args...) = create_comment(aws, args)
 
 @inline create_comment(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "POST", "/api/v1/documents/{DocumentId}/versions/{VersionId}/comment", args)
@@ -234,7 +239,7 @@ Adds one or more custom properties to the specified resource (a folder, document
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `ResourceId = ::String` -- *Required*
@@ -261,7 +266,6 @@ Custom metadata in the form of name-value pairs.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/CreateCustomMetadata)
 """
-
 @inline create_custom_metadata(aws::AWSConfig=default_aws_config(); args...) = create_custom_metadata(aws, args)
 
 @inline create_custom_metadata(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "PUT", "/api/v1/resources/{ResourceId}/customMetadata", args)
@@ -285,7 +289,7 @@ Creates a folder with the specified name and parent folder.
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `Name = ::String`
@@ -308,7 +312,6 @@ The ID of the parent folder.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/CreateFolder)
 """
-
 @inline create_folder(aws::AWSConfig=default_aws_config(); args...) = create_folder(aws, args)
 
 @inline create_folder(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "POST", "/api/v1/folders", args)
@@ -340,7 +343,7 @@ List of labels to add to the resource.
 
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 
@@ -355,7 +358,6 @@ Amazon WorkDocs authentication token. This field should not be set when using ad
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/CreateLabels)
 """
-
 @inline create_labels(aws::AWSConfig=default_aws_config(); args...) = create_labels(aws, args)
 
 @inline create_labels(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "PUT", "/api/v1/resources/{ResourceId}/labels", args)
@@ -389,7 +391,7 @@ The endpoint to receive the notifications. If the protocol is HTTPS, the endpoin
 
 
 ## `Protocol = "HTTPS"` -- *Required*
-The protocol to use. The supported value is https, which delivers JSON-encoded messasges using HTTPS POST.
+The protocol to use. The supported value is https, which delivers JSON-encoded messages using HTTPS POST.
 
 
 ## `SubscriptionType = "ALL"` -- *Required*
@@ -408,7 +410,6 @@ The notification type.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/CreateNotificationSubscription)
 """
-
 @inline create_notification_subscription(aws::AWSConfig=default_aws_config(); args...) = create_notification_subscription(aws, args)
 
 @inline create_notification_subscription(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "POST", "/api/v1/organizations/{OrganizationId}/subscriptions", args)
@@ -469,7 +470,7 @@ The amount of storage for the user.
 ```
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 
@@ -484,7 +485,6 @@ Amazon WorkDocs authentication token. This field should not be set when using ad
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/CreateUser)
 """
-
 @inline create_user(aws::AWSConfig=default_aws_config(); args...) = create_user(aws, args)
 
 @inline create_user(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "POST", "/api/v1/users", args)
@@ -512,7 +512,7 @@ The ID of the user.
 
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 
@@ -523,7 +523,6 @@ Amazon WorkDocs authentication token. This field should not be set when using ad
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DeactivateUser)
 """
-
 @inline deactivate_user(aws::AWSConfig=default_aws_config(); args...) = deactivate_user(aws, args)
 
 @inline deactivate_user(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "DELETE", "/api/v1/users/{UserId}/activation", args)
@@ -547,7 +546,7 @@ Deletes the specified comment from the document version.
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `DocumentId = ::String` -- *Required*
@@ -570,7 +569,6 @@ The ID of the comment.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DeleteComment)
 """
-
 @inline delete_comment(aws::AWSConfig=default_aws_config(); args...) = delete_comment(aws, args)
 
 @inline delete_comment(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "DELETE", "/api/v1/documents/{DocumentId}/versions/{VersionId}/comment/{CommentId}", args)
@@ -594,7 +592,7 @@ Deletes custom metadata from the specified resource.
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `ResourceId = ::String` -- *Required*
@@ -625,7 +623,6 @@ Flag to indicate removal of all custom metadata properties from the specified re
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DeleteCustomMetadata)
 """
-
 @inline delete_custom_metadata(aws::AWSConfig=default_aws_config(); args...) = delete_custom_metadata(aws, args)
 
 @inline delete_custom_metadata(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "DELETE", "/api/v1/resources/{ResourceId}/customMetadata", args)
@@ -649,7 +646,7 @@ Permanently deletes the specified document and its associated metadata.
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `DocumentId = ::String` -- *Required*
@@ -664,7 +661,6 @@ The ID of the document.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DeleteDocument)
 """
-
 @inline delete_document(aws::AWSConfig=default_aws_config(); args...) = delete_document(aws, args)
 
 @inline delete_document(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "DELETE", "/api/v1/documents/{DocumentId}", args)
@@ -688,7 +684,7 @@ Permanently deletes the specified folder and its contents.
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `FolderId = ::String` -- *Required*
@@ -703,7 +699,6 @@ The ID of the folder.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DeleteFolder)
 """
-
 @inline delete_folder(aws::AWSConfig=default_aws_config(); args...) = delete_folder(aws, args)
 
 @inline delete_folder(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "DELETE", "/api/v1/folders/{FolderId}", args)
@@ -727,7 +722,7 @@ Deletes the contents of the specified folder.
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `FolderId = ::String` -- *Required*
@@ -742,7 +737,6 @@ The ID of the folder.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DeleteFolderContents)
 """
-
 @inline delete_folder_contents(aws::AWSConfig=default_aws_config(); args...) = delete_folder_contents(aws, args)
 
 @inline delete_folder_contents(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "DELETE", "/api/v1/folders/{FolderId}/contents", args)
@@ -770,7 +764,7 @@ The ID of the resource.
 
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `labels = [::String, ...]`
@@ -793,7 +787,6 @@ Flag to request removal of all labels from the specified resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DeleteLabels)
 """
-
 @inline delete_labels(aws::AWSConfig=default_aws_config(); args...) = delete_labels(aws, args)
 
 @inline delete_labels(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "DELETE", "/api/v1/resources/{ResourceId}/labels", args)
@@ -832,7 +825,6 @@ The ID of the organization.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DeleteNotificationSubscription)
 """
-
 @inline delete_notification_subscription(aws::AWSConfig=default_aws_config(); args...) = delete_notification_subscription(aws, args)
 
 @inline delete_notification_subscription(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "DELETE", "/api/v1/organizations/{OrganizationId}/subscriptions/{SubscriptionId}", args)
@@ -856,7 +848,7 @@ Deletes the specified user from a Simple AD or Microsoft AD directory.
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `UserId = ::String` -- *Required*
@@ -871,7 +863,6 @@ The ID of the user.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DeleteUser)
 """
-
 @inline delete_user(aws::AWSConfig=default_aws_config(); args...) = delete_user(aws, args)
 
 @inline delete_user(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "DELETE", "/api/v1/users/{UserId}", args)
@@ -895,15 +886,15 @@ Describes the user activities in a specified time period.
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `startTime = timestamp`
-The timestamp that determines the starting time of the activities; the response includes the activities performed after the specified timestamp.
+The timestamp that determines the starting time of the activities. The response includes the activities performed after the specified timestamp.
 
 
 ## `endTime = timestamp`
-The timestamp that determines the end time of the activities; the response includes the activities performed before the specified timestamp.
+The timestamp that determines the end time of the activities. The response includes the activities performed before the specified timestamp.
 
 
 ## `organizationId = ::String`
@@ -919,7 +910,7 @@ The maximum number of items to return.
 
 
 ## `marker = ::String`
-The marker for the next set of results. (You received this marker from a previous call.)
+The marker for the next set of results.
 
 
 
@@ -934,7 +925,6 @@ The marker for the next set of results. (You received this marker from a previou
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DescribeActivities)
 """
-
 @inline describe_activities(aws::AWSConfig=default_aws_config(); args...) = describe_activities(aws, args)
 
 @inline describe_activities(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "GET", "/api/v1/activities", args)
@@ -958,7 +948,7 @@ List all the comments for the specified document version.
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `DocumentId = ::String` -- *Required*
@@ -989,7 +979,6 @@ The marker for the next set of results. This marker was received from a previous
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DescribeComments)
 """
-
 @inline describe_comments(aws::AWSConfig=default_aws_config(); args...) = describe_comments(aws, args)
 
 @inline describe_comments(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "GET", "/api/v1/documents/{DocumentId}/versions/{VersionId}/comments", args)
@@ -1015,7 +1004,7 @@ By default, only active versions are returned.
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `DocumentId = ::String` -- *Required*
@@ -1050,7 +1039,6 @@ Specify "SOURCE" to include initialized versions and a URL for the source docume
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DescribeDocumentVersions)
 """
-
 @inline describe_document_versions(aws::AWSConfig=default_aws_config(); args...) = describe_document_versions(aws, args)
 
 @inline describe_document_versions(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "GET", "/api/v1/documents/{DocumentId}/versions", args)
@@ -1076,7 +1064,7 @@ By default, Amazon WorkDocs returns the first 100 active document and folder met
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `FolderId = ::String` -- *Required*
@@ -1119,12 +1107,65 @@ The contents to include. Specify "INITIALIZED" to include initialized documents.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DescribeFolderContents)
 """
-
 @inline describe_folder_contents(aws::AWSConfig=default_aws_config(); args...) = describe_folder_contents(aws, args)
 
 @inline describe_folder_contents(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "GET", "/api/v1/folders/{FolderId}/contents", args)
 
 @inline describe_folder_contents(args) = describe_folder_contents(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.WorkDocs.describe_groups
+    describe_groups([::AWSConfig], arguments::Dict)
+    describe_groups([::AWSConfig]; searchQuery=, <keyword arguments>)
+
+    using AWSCore.Services.workdocs
+    workdocs([::AWSConfig], "GET", "/api/v1/groups", arguments::Dict)
+    workdocs([::AWSConfig], "GET", "/api/v1/groups", searchQuery=, <keyword arguments>)
+
+# DescribeGroups Operation
+
+Describes the groups specified by query.
+
+# Arguments
+
+## `*header:* Authentication = ::String`
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+
+
+## `searchQuery = ::String` -- *Required*
+A query to describe groups by group name.
+
+
+## `organizationId = ::String`
+The ID of the organization.
+
+
+## `marker = ::String`
+The marker for the next set of results. (You received this marker from a previous call.)
+
+
+## `limit = ::Int`
+The maximum number of items to return with this call.
+
+
+
+
+# Returns
+
+`DescribeGroupsResponse`
+
+# Exceptions
+
+`UnauthorizedOperationException`, `UnauthorizedResourceAccessException`, `FailedDependencyException` or `ServiceUnavailableException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DescribeGroups)
+"""
+@inline describe_groups(aws::AWSConfig=default_aws_config(); args...) = describe_groups(aws, args)
+
+@inline describe_groups(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "GET", "/api/v1/groups", args)
+
+@inline describe_groups(args) = describe_groups(default_aws_config(), args)
 
 
 """
@@ -1166,7 +1207,6 @@ The maximum number of items to return with this call.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DescribeNotificationSubscriptions)
 """
-
 @inline describe_notification_subscriptions(aws::AWSConfig=default_aws_config(); args...) = describe_notification_subscriptions(aws, args)
 
 @inline describe_notification_subscriptions(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "GET", "/api/v1/organizations/{OrganizationId}/subscriptions", args)
@@ -1190,11 +1230,15 @@ Describes the permissions of a specified resource.
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `ResourceId = ::String` -- *Required*
 The ID of the resource.
+
+
+## `principalId = ::String`
+The ID of the principal to filter permissions by.
 
 
 ## `limit = ::Int`
@@ -1217,7 +1261,6 @@ The marker for the next set of results. (You received this marker from a previou
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DescribeResourcePermissions)
 """
-
 @inline describe_resource_permissions(aws::AWSConfig=default_aws_config(); args...) = describe_resource_permissions(aws, args)
 
 @inline describe_resource_permissions(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "GET", "/api/v1/resources/{ResourceId}/permissions", args)
@@ -1236,12 +1279,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdo
 
 # DescribeRootFolders Operation
 
-Describes the current user's special folders; the `RootFolder` and the `RecyleBin`. `RootFolder` is the root of user's files and folders and `RecyleBin` is the root of recycled items. This is not a valid action for SigV4 (administrative API) clients.
+Describes the current user's special folders; the `RootFolder` and the `RecycleBin`. `RootFolder` is the root of user's files and folders and `RecycleBin` is the root of recycled items. This is not a valid action for SigV4 (administrative API) clients.
 
 # Arguments
 
 ## `*header:* Authentication = ::String` -- *Required*
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `limit = ::Int`
@@ -1264,7 +1307,6 @@ The marker for the next set of results. (You received this marker from a previou
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DescribeRootFolders)
 """
-
 @inline describe_root_folders(aws::AWSConfig=default_aws_config(); args...) = describe_root_folders(aws, args)
 
 @inline describe_root_folders(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "GET", "/api/v1/me/root", args)
@@ -1290,7 +1332,7 @@ By default, Amazon WorkDocs returns the first 24 active or pending users. If the
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `organizationId = ::String`
@@ -1341,7 +1383,6 @@ A comma-separated list of values. Specify "STORAGE_METADATA" to include the user
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/DescribeUsers)
 """
-
 @inline describe_users(aws::AWSConfig=default_aws_config(); args...) = describe_users(aws, args)
 
 @inline describe_users(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "GET", "/api/v1/users", args)
@@ -1365,7 +1406,7 @@ Retrieves details of the current user for whom the authentication token was gene
 # Arguments
 
 ## `*header:* Authentication = ::String` -- *Required*
-Amazon WorkDocs authentication token.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 
@@ -1380,7 +1421,6 @@ Amazon WorkDocs authentication token.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/GetCurrentUser)
 """
-
 @inline get_current_user(aws::AWSConfig=default_aws_config(); args...) = get_current_user(aws, args)
 
 @inline get_current_user(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "GET", "/api/v1/me", args)
@@ -1404,7 +1444,7 @@ Retrieves details of a document.
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `DocumentId = ::String` -- *Required*
@@ -1423,11 +1463,10 @@ Set this to `TRUE` to include custom metadata in the response.
 
 # Exceptions
 
-`EntityNotExistsException`, `UnauthorizedOperationException`, `UnauthorizedResourceAccessException`, `InvalidArgumentException`, `FailedDependencyException` or `ServiceUnavailableException`.
+`EntityNotExistsException`, `UnauthorizedOperationException`, `UnauthorizedResourceAccessException`, `InvalidArgumentException`, `FailedDependencyException`, `ServiceUnavailableException` or `InvalidPasswordException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/GetDocument)
 """
-
 @inline get_document(aws::AWSConfig=default_aws_config(); args...) = get_document(aws, args)
 
 @inline get_document(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "GET", "/api/v1/documents/{DocumentId}", args)
@@ -1453,7 +1492,7 @@ By default, Amazon WorkDocs returns a maximum of 100 levels upwards from the req
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `DocumentId = ::String` -- *Required*
@@ -1484,7 +1523,6 @@ This value is not supported.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/GetDocumentPath)
 """
-
 @inline get_document_path(aws::AWSConfig=default_aws_config(); args...) = get_document_path(aws, args)
 
 @inline get_document_path(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "GET", "/api/v1/documents/{DocumentId}/path", args)
@@ -1508,7 +1546,7 @@ Retrieves version metadata for the specified document.
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `DocumentId = ::String` -- *Required*
@@ -1535,11 +1573,10 @@ Set this to TRUE to include custom metadata in the response.
 
 # Exceptions
 
-`EntityNotExistsException`, `UnauthorizedOperationException`, `UnauthorizedResourceAccessException`, `FailedDependencyException`, `ServiceUnavailableException` or `ProhibitedStateException`.
+`EntityNotExistsException`, `UnauthorizedOperationException`, `UnauthorizedResourceAccessException`, `FailedDependencyException`, `ServiceUnavailableException`, `ProhibitedStateException` or `InvalidPasswordException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/GetDocumentVersion)
 """
-
 @inline get_document_version(aws::AWSConfig=default_aws_config(); args...) = get_document_version(aws, args)
 
 @inline get_document_version(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "GET", "/api/v1/documents/{DocumentId}/versions/{VersionId}", args)
@@ -1563,7 +1600,7 @@ Retrieves the metadata of the specified folder.
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `FolderId = ::String` -- *Required*
@@ -1586,7 +1623,6 @@ Set to TRUE to include custom metadata in the response.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/GetFolder)
 """
-
 @inline get_folder(aws::AWSConfig=default_aws_config(); args...) = get_folder(aws, args)
 
 @inline get_folder(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "GET", "/api/v1/folders/{FolderId}", args)
@@ -1612,7 +1648,7 @@ By default, Amazon WorkDocs returns a maximum of 100 levels upwards from the req
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `FolderId = ::String` -- *Required*
@@ -1643,7 +1679,6 @@ This value is not supported.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/GetFolderPath)
 """
-
 @inline get_folder_path(aws::AWSConfig=default_aws_config(); args...) = get_folder_path(aws, args)
 
 @inline get_folder_path(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "GET", "/api/v1/folders/{FolderId}/path", args)
@@ -1671,7 +1706,7 @@ To cancel the document upload, call [AbortDocumentVersionUpload](@ref).
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `Id = ::String`
@@ -1683,11 +1718,11 @@ The name of the document.
 
 
 ## `ContentCreatedTimestamp = timestamp`
-The time stamp when the content of the document was originally created.
+The timestamp when the content of the document was originally created.
 
 
 ## `ContentModifiedTimestamp = timestamp`
-The time stamp when the content of the document was modified.
+The timestamp when the content of the document was modified.
 
 
 ## `ContentType = ::String`
@@ -1714,7 +1749,6 @@ The ID of the parent folder.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/InitiateDocumentVersionUpload)
 """
-
 @inline initiate_document_version_upload(aws::AWSConfig=default_aws_config(); args...) = initiate_document_version_upload(aws, args)
 
 @inline initiate_document_version_upload(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "POST", "/api/v1/documents", args)
@@ -1738,7 +1772,7 @@ Removes all the permissions from the specified resource.
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `ResourceId = ::String` -- *Required*
@@ -1753,7 +1787,6 @@ The ID of the resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/RemoveAllResourcePermissions)
 """
-
 @inline remove_all_resource_permissions(aws::AWSConfig=default_aws_config(); args...) = remove_all_resource_permissions(aws, args)
 
 @inline remove_all_resource_permissions(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "DELETE", "/api/v1/resources/{ResourceId}/permissions", args)
@@ -1777,7 +1810,7 @@ Removes the permission for the specified principal from the specified resource.
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `ResourceId = ::String` -- *Required*
@@ -1800,7 +1833,6 @@ The principal type of the resource.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/RemoveResourcePermission)
 """
-
 @inline remove_resource_permission(aws::AWSConfig=default_aws_config(); args...) = remove_resource_permission(aws, args)
 
 @inline remove_resource_permission(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "DELETE", "/api/v1/resources/{ResourceId}/permissions/{PrincipalId}", args)
@@ -1824,7 +1856,7 @@ Updates the specified attributes of a document. The user must have access to bot
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `DocumentId = ::String` -- *Required*
@@ -1840,7 +1872,7 @@ The ID of the parent folder.
 
 
 ## `ResourceState = "ACTIVE", "RESTORING", "RECYCLING" or "RECYCLED"`
-The resource state of the document. Note that only ACTIVE and RECYCLED are supported.
+The resource state of the document. Only ACTIVE and RECYCLED are supported.
 
 
 
@@ -1851,7 +1883,6 @@ The resource state of the document. Note that only ACTIVE and RECYCLED are suppo
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/UpdateDocument)
 """
-
 @inline update_document(aws::AWSConfig=default_aws_config(); args...) = update_document(aws, args)
 
 @inline update_document(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "PATCH", "/api/v1/documents/{DocumentId}", args)
@@ -1877,7 +1908,7 @@ Amazon WorkDocs also sets its document container to ACTIVE. This is the last ste
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `DocumentId = ::String` -- *Required*
@@ -1900,7 +1931,6 @@ The status of the version.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/UpdateDocumentVersion)
 """
-
 @inline update_document_version(aws::AWSConfig=default_aws_config(); args...) = update_document_version(aws, args)
 
 @inline update_document_version(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "PATCH", "/api/v1/documents/{DocumentId}/versions/{VersionId}", args)
@@ -1924,7 +1954,7 @@ Updates the specified attributes of the specified folder. The user must have acc
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `FolderId = ::String` -- *Required*
@@ -1940,7 +1970,7 @@ The ID of the parent folder.
 
 
 ## `ResourceState = "ACTIVE", "RESTORING", "RECYCLING" or "RECYCLED"`
-The resource state of the folder. Note that only ACTIVE and RECYCLED are accepted values from the API.
+The resource state of the folder. Only ACTIVE and RECYCLED are accepted values from the API.
 
 
 
@@ -1951,7 +1981,6 @@ The resource state of the folder. Note that only ACTIVE and RECYCLED are accepte
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/UpdateFolder)
 """
-
 @inline update_folder(aws::AWSConfig=default_aws_config(); args...) = update_folder(aws, args)
 
 @inline update_folder(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "PATCH", "/api/v1/folders/{FolderId}", args)
@@ -1975,7 +2004,7 @@ Updates the specified attributes of the specified user, and grants or revokes ad
 # Arguments
 
 ## `*header:* Authentication = ::String`
-Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.
+Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 
 
 ## `UserId = ::String` -- *Required*
@@ -1990,7 +2019,7 @@ The given name of the user.
 The surname of the user.
 
 
-## `Type = "USER" or "ADMIN"`
+## `Type = "USER", "ADMIN", "POWERUSER", "MINIMALUSER" or "WORKSPACESUSER"`
 The type of the user.
 
 
@@ -2011,6 +2040,10 @@ The time zone ID of the user.
 The locale of the user.
 
 
+## `GrantPoweruserPrivileges = "TRUE" or "FALSE"`
+Boolean value to determine whether the user is granted Poweruser privileges.
+
+
 
 
 # Returns
@@ -2019,11 +2052,10 @@ The locale of the user.
 
 # Exceptions
 
-`EntityNotExistsException`, `UnauthorizedOperationException`, `UnauthorizedResourceAccessException`, `IllegalUserStateException`, `FailedDependencyException`, `ServiceUnavailableException` or `DeactivatingLastSystemUserException`.
+`EntityNotExistsException`, `UnauthorizedOperationException`, `UnauthorizedResourceAccessException`, `IllegalUserStateException`, `FailedDependencyException`, `ServiceUnavailableException`, `DeactivatingLastSystemUserException` or `InvalidArgumentException`.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01/UpdateUser)
 """
-
 @inline update_user(aws::AWSConfig=default_aws_config(); args...) = update_user(aws, args)
 
 @inline update_user(aws::AWSConfig, args) = AWSCore.Services.workdocs(aws, "PATCH", "/api/v1/users/{UserId}", args)

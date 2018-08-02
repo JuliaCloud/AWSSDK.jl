@@ -56,7 +56,6 @@ The certificate to add. You can specify one certificate per call.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/AddListenerCertificates)
 """
-
 @inline add_listener_certificates(aws::AWSConfig=default_aws_config(); args...) = add_listener_certificates(aws, args)
 
 @inline add_listener_certificates(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "AddListenerCertificates", args)
@@ -131,7 +130,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/AddTags)
 """
-
 @inline add_tags(aws::AWSConfig=default_aws_config(); args...) = add_tags(aws, args)
 
 @inline add_tags(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "AddTags", args)
@@ -177,7 +175,7 @@ The port on which the load balancer is listening.
 
 
 ## `Certificates = [[ ... ], ...]`
-[HTTPS listeners] The SSL server certificate. You must provide exactly one certificate.
+[HTTPS listeners] The default SSL server certificate. You must provide exactly one default certificate. To create a certificate list, use [AddListenerCertificates](@ref).
 ```
  Certificates = [[
         "CertificateArn" =>  ::String,
@@ -186,11 +184,58 @@ The port on which the load balancer is listening.
 ```
 
 ## `DefaultActions = [[ ... ], ...]` -- *Required*
-The default action for the listener. For Application Load Balancers, the protocol of the specified target group must be HTTP or HTTPS. For Network Load Balancers, the protocol of the specified target group must be TCP.
+The actions for the default rule. The rule must include one forward action or one or more fixed-response actions.
+
+If the action type is `forward`, you can specify a single target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer or TCP for a Network Load Balancer.
+
+[HTTPS listener] If the action type is `authenticate-oidc`, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
+
+[HTTPS listener] If the action type is `authenticate-cognito`, you can use Amazon Cognito to authenticate users as they access your application.
+
+[Application Load Balancer] If the action type is `redirect`, you can redirect HTTP and HTTPS requests.
+
+[Application Load Balancer] If the action type is `fixed-response`, you can return a custom HTTP response.
 ```
  DefaultActions = [[
-        "Type" => <required> "forward",
-        "TargetGroupArn" => <required> ::String
+        "Type" => <required> "forward", "authenticate-oidc", "authenticate-cognito", "redirect" or "fixed-response",
+        "TargetGroupArn" =>  ::String,
+        "AuthenticateOidcConfig" =>  [
+            "Issuer" => <required> ::String,
+            "AuthorizationEndpoint" => <required> ::String,
+            "TokenEndpoint" => <required> ::String,
+            "UserInfoEndpoint" => <required> ::String,
+            "ClientId" => <required> ::String,
+            "ClientSecret" => <required> ::String,
+            "SessionCookieName" =>  ::String,
+            "Scope" =>  ::String,
+            "SessionTimeout" =>  ::Int,
+            "AuthenticationRequestExtraParams" =>  ::Dict{String,String},
+            "OnUnauthenticatedRequest" =>  "deny", "allow" or "authenticate"
+        ],
+        "AuthenticateCognitoConfig" =>  [
+            "UserPoolArn" => <required> ::String,
+            "UserPoolClientId" => <required> ::String,
+            "UserPoolDomain" => <required> ::String,
+            "SessionCookieName" =>  ::String,
+            "Scope" =>  ::String,
+            "SessionTimeout" =>  ::Int,
+            "AuthenticationRequestExtraParams" =>  ::Dict{String,String},
+            "OnUnauthenticatedRequest" =>  "deny", "allow" or "authenticate"
+        ],
+        "Order" =>  ::Int,
+        "RedirectConfig" =>  [
+            "Protocol" =>  ::String,
+            "Port" =>  ::String,
+            "Host" =>  ::String,
+            "Path" =>  ::String,
+            "Query" =>  ::String,
+            "StatusCode" => <required> "HTTP_301" or "HTTP_302"
+        ],
+        "FixedResponseConfig" =>  [
+            "MessageBody" =>  ::String,
+            "StatusCode" => <required> ::String,
+            "ContentType" =>  ::String
+        ]
     ], ...]
 ```
 
@@ -202,7 +247,7 @@ The default action for the listener. For Application Load Balancers, the protoco
 
 # Exceptions
 
-`DuplicateListenerException`, `TooManyListenersException`, `TooManyCertificatesException`, `LoadBalancerNotFoundException`, `TargetGroupNotFoundException`, `TargetGroupAssociationLimitException`, `InvalidConfigurationRequestException`, `IncompatibleProtocolsException`, `SSLPolicyNotFoundException`, `CertificateNotFoundException`, `UnsupportedProtocolException`, `TooManyRegistrationsForTargetIdException` or `TooManyTargetsException`.
+`DuplicateListenerException`, `TooManyListenersException`, `TooManyCertificatesException`, `LoadBalancerNotFoundException`, `TargetGroupNotFoundException`, `TargetGroupAssociationLimitException`, `InvalidConfigurationRequestException`, `IncompatibleProtocolsException`, `SSLPolicyNotFoundException`, `CertificateNotFoundException`, `UnsupportedProtocolException`, `TooManyRegistrationsForTargetIdException`, `TooManyTargetsException`, `TooManyActionsException` or `InvalidLoadBalancerActionException`.
 
 # Example: To create an HTTP listener
 
@@ -296,7 +341,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/CreateListener)
 """
-
 @inline create_listener(aws::AWSConfig=default_aws_config(); args...) = create_listener(aws, args)
 
 @inline create_listener(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "CreateListener", args)
@@ -317,7 +361,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 Creates an Application Load Balancer or a Network Load Balancer.
 
-When you create a load balancer, you can specify security groups, subnets, IP address type, and tags. Otherwise, you could do so later using [SetSecurityGroups](@ref), [SetSubnets](@ref), [SetIpAddressType](@ref), and [AddTags](@ref).
+When you create a load balancer, you can specify security groups, public subnets, IP address type, and tags. Otherwise, you could do so later using [SetSecurityGroups](@ref), [SetSubnets](@ref), [SetIpAddressType](@ref), and [AddTags](@ref).
 
 To create listeners for your load balancer, use [CreateListener](@ref). To describe your current load balancers, see [DescribeLoadBalancers](@ref). When you are finished with a load balancer, you can delete it using [DeleteLoadBalancer](@ref).
 
@@ -332,11 +376,11 @@ For more information, see [Application Load Balancers](http://docs.aws.amazon.co
 ## `Name = ::String` -- *Required*
 The name of the load balancer.
 
-This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
+This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, must not begin or end with a hyphen, and must not begin with "internal-".
 
 
 ## `Subnets = [::String, ...]`
-The IDs of the subnets to attach to the load balancer. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.
+The IDs of the public subnets. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.
 
 [Application Load Balancers] You must specify subnets from at least two Availability Zones.
 
@@ -344,7 +388,7 @@ The IDs of the subnets to attach to the load balancer. You can specify only one 
 
 
 ## `SubnetMappings = [[ ... ], ...]`
-The IDs of the subnets to attach to the load balancer. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.
+The IDs of the public subnets. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.
 
 [Application Load Balancers] You must specify subnets from at least two Availability Zones. You cannot specify Elastic IP addresses for your subnets.
 
@@ -357,11 +401,11 @@ The IDs of the subnets to attach to the load balancer. You can specify only one 
 ```
 
 ## `SecurityGroups = [::String, ...]`
-[Application Load Balancers] The IDs of the security groups to assign to the load balancer.
+[Application Load Balancers] The IDs of the security groups for the load balancer.
 
 
 ## `Scheme = "internet-facing" or "internal"`
-The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the Internet.
+The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the internet.
 
 The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.
 
@@ -378,7 +422,7 @@ One or more tags to assign to the load balancer.
 ```
 
 ## `Type = "application" or "network"`
-The type of load balancer to create. The default is `application`.
+The type of load balancer. The default is `application`.
 
 
 ## `IpAddressType = "ipv4" or "dualstack"`
@@ -393,7 +437,7 @@ The type of load balancer to create. The default is `application`.
 
 # Exceptions
 
-`DuplicateLoadBalancerNameException`, `TooManyLoadBalancersException`, `InvalidConfigurationRequestException`, `SubnetNotFoundException`, `InvalidSubnetException`, `InvalidSecurityGroupException`, `InvalidSchemeException`, `TooManyTagsException`, `DuplicateTagKeysException`, `ResourceInUseException`, `AllocationIdNotFoundException` or `AvailabilityZoneNotSupportedException`.
+`DuplicateLoadBalancerNameException`, `TooManyLoadBalancersException`, `InvalidConfigurationRequestException`, `SubnetNotFoundException`, `InvalidSubnetException`, `InvalidSecurityGroupException`, `InvalidSchemeException`, `TooManyTagsException`, `DuplicateTagKeysException`, `ResourceInUseException`, `AllocationIdNotFoundException`, `AvailabilityZoneNotSupportedException` or `OperationNotPermittedException`.
 
 # Example: To create an Internet-facing load balancer
 
@@ -499,7 +543,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/CreateLoadBalancer)
 """
-
 @inline create_load_balancer(aws::AWSConfig=default_aws_config(); args...) = create_load_balancer(aws, args)
 
 @inline create_load_balancer(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "CreateLoadBalancer", args)
@@ -520,7 +563,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer.
 
-Rules are evaluated in priority order, from the lowest value to the highest value. When the condition for a rule is met, the specified action is taken. If no conditions are met, the action for the default rule is taken. For more information, see [Listener Rules](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules) in the *Application Load Balancers Guide*.
+Rules are evaluated in priority order, from the lowest value to the highest value. When the conditions for a rule are met, its actions are performed. If the conditions for no rules are met, the actions for the default rule are performed. For more information, see [Listener Rules](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules) in the *Application Load Balancers Guide*.
 
 To view your current rules, use [DescribeRules](@ref). To update a rule, use [ModifyRule](@ref). To set the priorities of your rules, use [SetRulePriorities](@ref). To delete a rule, use [DeleteRule](@ref).
 
@@ -533,7 +576,7 @@ The Amazon Resource Name (ARN) of the listener.
 ## `Conditions = [[ ... ], ...]` -- *Required*
 The conditions. Each condition specifies a field name and a single value.
 
-If the field name is `host-header`, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.
+If the field name is `host-header`, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.
 
 *   A-Z, a-z, 0-9
 
@@ -543,7 +586,7 @@ If the field name is `host-header`, you can specify a single host name (for exam
 
 *   ? (matches exactly 1 character)
 
-If the field name is `path-pattern`, you can specify a single path pattern. A path pattern is case sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.
+If the field name is `path-pattern`, you can specify a single path pattern. A path pattern is case-sensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.
 
 *   A-Z, a-z, 0-9
 
@@ -562,15 +605,62 @@ If the field name is `path-pattern`, you can specify a single path pattern. A pa
 ```
 
 ## `Priority = ::Int` -- *Required*
-The priority for the rule. A listener can't have multiple rules with the same priority.
+The rule priority. A listener can't have multiple rules with the same priority.
 
 
 ## `Actions = [[ ... ], ...]` -- *Required*
-An action. Each action has the type `forward` and specifies a target group.
+The actions. Each rule must include exactly one of the following types of actions: `forward`, `fixed-response`, or `redirect`.
+
+If the action type is `forward`, you can specify a single target group.
+
+[HTTPS listener] If the action type is `authenticate-oidc`, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
+
+[HTTPS listener] If the action type is `authenticate-cognito`, you can use Amazon Cognito to authenticate users as they access your application.
+
+[Application Load Balancer] If the action type is `redirect`, you can redirect HTTP and HTTPS requests.
+
+[Application Load Balancer] If the action type is `fixed-response`, you can return a custom HTTP response.
 ```
  Actions = [[
-        "Type" => <required> "forward",
-        "TargetGroupArn" => <required> ::String
+        "Type" => <required> "forward", "authenticate-oidc", "authenticate-cognito", "redirect" or "fixed-response",
+        "TargetGroupArn" =>  ::String,
+        "AuthenticateOidcConfig" =>  [
+            "Issuer" => <required> ::String,
+            "AuthorizationEndpoint" => <required> ::String,
+            "TokenEndpoint" => <required> ::String,
+            "UserInfoEndpoint" => <required> ::String,
+            "ClientId" => <required> ::String,
+            "ClientSecret" => <required> ::String,
+            "SessionCookieName" =>  ::String,
+            "Scope" =>  ::String,
+            "SessionTimeout" =>  ::Int,
+            "AuthenticationRequestExtraParams" =>  ::Dict{String,String},
+            "OnUnauthenticatedRequest" =>  "deny", "allow" or "authenticate"
+        ],
+        "AuthenticateCognitoConfig" =>  [
+            "UserPoolArn" => <required> ::String,
+            "UserPoolClientId" => <required> ::String,
+            "UserPoolDomain" => <required> ::String,
+            "SessionCookieName" =>  ::String,
+            "Scope" =>  ::String,
+            "SessionTimeout" =>  ::Int,
+            "AuthenticationRequestExtraParams" =>  ::Dict{String,String},
+            "OnUnauthenticatedRequest" =>  "deny", "allow" or "authenticate"
+        ],
+        "Order" =>  ::Int,
+        "RedirectConfig" =>  [
+            "Protocol" =>  ::String,
+            "Port" =>  ::String,
+            "Host" =>  ::String,
+            "Path" =>  ::String,
+            "Query" =>  ::String,
+            "StatusCode" => <required> "HTTP_301" or "HTTP_302"
+        ],
+        "FixedResponseConfig" =>  [
+            "MessageBody" =>  ::String,
+            "StatusCode" => <required> ::String,
+            "ContentType" =>  ::String
+        ]
     ], ...]
 ```
 
@@ -582,7 +672,7 @@ An action. Each action has the type `forward` and specifies a target group.
 
 # Exceptions
 
-`PriorityInUseException`, `TooManyTargetGroupsException`, `TooManyRulesException`, `TargetGroupAssociationLimitException`, `IncompatibleProtocolsException`, `ListenerNotFoundException`, `TargetGroupNotFoundException`, `InvalidConfigurationRequestException`, `TooManyRegistrationsForTargetIdException` or `TooManyTargetsException`.
+`PriorityInUseException`, `TooManyTargetGroupsException`, `TooManyRulesException`, `TargetGroupAssociationLimitException`, `IncompatibleProtocolsException`, `ListenerNotFoundException`, `TargetGroupNotFoundException`, `InvalidConfigurationRequestException`, `TooManyRegistrationsForTargetIdException`, `TooManyTargetsException`, `UnsupportedProtocolException`, `TooManyActionsException` or `InvalidLoadBalancerActionException`.
 
 # Example: To create a rule
 
@@ -639,7 +729,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/CreateRule)
 """
-
 @inline create_rule(aws::AWSConfig=default_aws_config(); args...) = create_rule(aws, args)
 
 @inline create_rule(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "CreateRule", args)
@@ -703,11 +792,11 @@ The port the load balancer uses when performing health checks on targets. The de
 
 
 ## `HealthCheckIntervalSeconds = ::Int`
-The approximate amount of time, in seconds, between health checks of an individual target. For Application Load Balancers, the range is 5 to 300 seconds. For Network Load Balancers, the supported values are 10 or 30 seconds. The default is 30 seconds.
+The approximate amount of time, in seconds, between health checks of an individual target. For Application Load Balancers, the range is 5–300 seconds. For Network Load Balancers, the supported values are 10 or 30 seconds. The default is 30 seconds.
 
 
 ## `HealthCheckTimeoutSeconds = ::Int`
-The amount of time, in seconds, during which no response from a target means a failed health check. For Application Load Balancers, the range is 2 to 60 seconds and the default is 5 seconds. For Network Load Balancers, this is 10 seconds for TCP and HTTPS health checks and 6 seconds for HTTP health checks.
+The amount of time, in seconds, during which no response from a target means a failed health check. For Application Load Balancers, the range is 2–60 seconds and the default is 5 seconds. For Network Load Balancers, this is 10 seconds for TCP and HTTPS health checks and 6 seconds for HTTP health checks.
 
 
 ## `HealthyThresholdCount = ::Int`
@@ -723,7 +812,7 @@ The number of consecutive health check failures required before considering a ta
 
 
 ## `TargetType = "instance" or "ip"`
-The type of target that you must specify when registering targets with this target group. The possible values are `instance` (targets are specified by instance ID) or `ip` (targets are specified by IP address). The default is `instance`. Note that you can't specify targets for a target group using both instance IDs and IP addresses.
+The type of target that you must specify when registering targets with this target group. The possible values are `instance` (targets are specified by instance ID) or `ip` (targets are specified by IP address). The default is `instance`. You can't specify targets for a target group using both instance IDs and IP addresses.
 
 If the target type is `ip`, specify IP addresses from the subnets of the virtual private cloud (VPC) for the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can't specify publicly routable IP addresses.
 
@@ -779,7 +868,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/CreateTargetGroup)
 """
-
 @inline create_target_group(aws::AWSConfig=default_aws_config(); args...) = create_target_group(aws, args)
 
 @inline create_target_group(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "CreateTargetGroup", args)
@@ -800,7 +888,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 Deletes the specified listener.
 
-Alternatively, your listener is deleted when you delete the load balancer it is attached to using [DeleteLoadBalancer](@ref).
+Alternatively, your listener is deleted when you delete the load balancer to which it is attached, using [DeleteLoadBalancer](@ref).
 
 # Arguments
 
@@ -831,7 +919,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DeleteListener)
 """
-
 @inline delete_listener(aws::AWSConfig=default_aws_config(); args...) = delete_listener(aws, args)
 
 @inline delete_listener(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "DeleteListener", args)
@@ -870,7 +957,7 @@ The Amazon Resource Name (ARN) of the load balancer.
 
 # Exceptions
 
-`LoadBalancerNotFoundException` or `OperationNotPermittedException`.
+`LoadBalancerNotFoundException`, `OperationNotPermittedException` or `ResourceInUseException`.
 
 # Example: To delete a load balancer
 
@@ -885,7 +972,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DeleteLoadBalancer)
 """
-
 @inline delete_load_balancer(aws::AWSConfig=default_aws_config(); args...) = delete_load_balancer(aws, args)
 
 @inline delete_load_balancer(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "DeleteLoadBalancer", args)
@@ -935,7 +1021,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DeleteRule)
 """
-
 @inline delete_rule(aws::AWSConfig=default_aws_config(); args...) = delete_rule(aws, args)
 
 @inline delete_rule(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "DeleteRule", args)
@@ -987,7 +1072,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DeleteTargetGroup)
 """
-
 @inline delete_target_group(aws::AWSConfig=default_aws_config(); args...) = delete_target_group(aws, args)
 
 @inline delete_target_group(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "DeleteTargetGroup", args)
@@ -1052,7 +1136,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DeregisterTargets)
 """
-
 @inline deregister_targets(aws::AWSConfig=default_aws_config(); args...) = deregister_targets(aws, args)
 
 @inline deregister_targets(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "DeregisterTargets", args)
@@ -1093,7 +1176,6 @@ The maximum number of results to return with this call.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeAccountLimits)
 """
-
 @inline describe_account_limits(aws::AWSConfig=default_aws_config(); args...) = describe_account_limits(aws, args)
 
 @inline describe_account_limits(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "DescribeAccountLimits", args)
@@ -1140,7 +1222,6 @@ The maximum number of results to return with this call.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeListenerCertificates)
 """
-
 @inline describe_listener_certificates(aws::AWSConfig=default_aws_config(); args...) = describe_listener_certificates(aws, args)
 
 @inline describe_listener_certificates(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "DescribeListenerCertificates", args)
@@ -1187,7 +1268,7 @@ The maximum number of results to return with this call.
 
 # Exceptions
 
-`ListenerNotFoundException` or `LoadBalancerNotFoundException`.
+`ListenerNotFoundException`, `LoadBalancerNotFoundException` or `UnsupportedProtocolException`.
 
 # Example: To describe a listener
 
@@ -1224,7 +1305,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeListeners)
 """
-
 @inline describe_listeners(aws::AWSConfig=default_aws_config(); args...) = describe_listeners(aws, args)
 
 @inline describe_listeners(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "DescribeListeners", args)
@@ -1244,6 +1324,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 # DescribeLoadBalancerAttributes Operation
 
 Describes the attributes for the specified Application Load Balancer or Network Load Balancer.
+
+For more information, see [Load Balancer Attributes](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes) in the *Application Load Balancers Guide* or [Load Balancer Attributes](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes) in the *Network Load Balancers Guide*.
 
 # Arguments
 
@@ -1302,7 +1384,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeLoadBalancerAttributes)
 """
-
 @inline describe_load_balancer_attributes(aws::AWSConfig=default_aws_config(); args...) = describe_load_balancer_attributes(aws, args)
 
 @inline describe_load_balancer_attributes(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "DescribeLoadBalancerAttributes", args)
@@ -1402,7 +1483,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeLoadBalancers)
 """
-
 @inline describe_load_balancers(aws::AWSConfig=default_aws_config(); args...) = describe_load_balancers(aws, args)
 
 @inline describe_load_balancers(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "DescribeLoadBalancers", args)
@@ -1449,7 +1529,7 @@ The maximum number of results to return with this call.
 
 # Exceptions
 
-`ListenerNotFoundException` or `RuleNotFoundException`.
+`ListenerNotFoundException`, `RuleNotFoundException` or `UnsupportedProtocolException`.
 
 # Example: To describe a rule
 
@@ -1493,7 +1573,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeRules)
 """
-
 @inline describe_rules(aws::AWSConfig=default_aws_config(); args...) = describe_rules(aws, args)
 
 @inline describe_rules(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "DescribeRules", args)
@@ -1649,7 +1728,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeSSLPolicies)
 """
-
 @inline describe_sslpolicies(aws::AWSConfig=default_aws_config(); args...) = describe_sslpolicies(aws, args)
 
 @inline describe_sslpolicies(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "DescribeSSLPolicies", args)
@@ -1722,7 +1800,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeTags)
 """
-
 @inline describe_tags(aws::AWSConfig=default_aws_config(); args...) = describe_tags(aws, args)
 
 @inline describe_tags(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "DescribeTags", args)
@@ -1742,6 +1819,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 # DescribeTargetGroupAttributes Operation
 
 Describes the attributes for the specified target group.
+
+For more information, see [Target Group Attributes](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes) in the *Application Load Balancers Guide* or [Target Group Attributes](http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes) in the *Network Load Balancers Guide*.
 
 # Arguments
 
@@ -1796,7 +1875,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeTargetGroupAttributes)
 """
-
 @inline describe_target_group_attributes(aws::AWSConfig=default_aws_config(); args...) = describe_target_group_attributes(aws, args)
 
 @inline describe_target_group_attributes(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "DescribeTargetGroupAttributes", args)
@@ -1894,7 +1972,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeTargetGroups)
 """
-
 @inline describe_target_groups(aws::AWSConfig=default_aws_config(); args...) = describe_target_groups(aws, args)
 
 @inline describe_target_groups(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "DescribeTargetGroups", args)
@@ -2018,7 +2095,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/DescribeTargetHealth)
 """
-
 @inline describe_target_health(aws::AWSConfig=default_aws_config(); args...) = describe_target_health(aws, args)
 
 @inline describe_target_health(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "DescribeTargetHealth", args)
@@ -2056,11 +2132,11 @@ The protocol for connections from clients to the load balancer. Application Load
 
 
 ## `SslPolicy = ::String`
-The security policy that defines which protocols and ciphers are supported. For more information, see [Security Policies](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies) in the *Application Load Balancers Guide*.
+[HTTPS listeners] The security policy that defines which protocols and ciphers are supported. For more information, see [Security Policies](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies) in the *Application Load Balancers Guide*.
 
 
 ## `Certificates = [[ ... ], ...]`
-The default SSL server certificate.
+[HTTPS listeners] The default SSL server certificate. You must provide exactly one default certificate. To create a certificate list, use [AddListenerCertificates](@ref).
 ```
  Certificates = [[
         "CertificateArn" =>  ::String,
@@ -2069,11 +2145,58 @@ The default SSL server certificate.
 ```
 
 ## `DefaultActions = [[ ... ], ...]`
-The default action. For Application Load Balancers, the protocol of the specified target group must be HTTP or HTTPS. For Network Load Balancers, the protocol of the specified target group must be TCP.
+The actions for the default rule. The rule must include one forward action or one or more fixed-response actions.
+
+If the action type is `forward`, you can specify a single target group. The protocol of the target group must be HTTP or HTTPS for an Application Load Balancer or TCP for a Network Load Balancer.
+
+[HTTPS listener] If the action type is `authenticate-oidc`, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
+
+[HTTPS listener] If the action type is `authenticate-cognito`, you can use Amazon Cognito to authenticate users as they access your application.
+
+[Application Load Balancer] If the action type is `redirect`, you can redirect HTTP and HTTPS requests.
+
+[Application Load Balancer] If the action type is `fixed-response`, you can return a custom HTTP response.
 ```
  DefaultActions = [[
-        "Type" => <required> "forward",
-        "TargetGroupArn" => <required> ::String
+        "Type" => <required> "forward", "authenticate-oidc", "authenticate-cognito", "redirect" or "fixed-response",
+        "TargetGroupArn" =>  ::String,
+        "AuthenticateOidcConfig" =>  [
+            "Issuer" => <required> ::String,
+            "AuthorizationEndpoint" => <required> ::String,
+            "TokenEndpoint" => <required> ::String,
+            "UserInfoEndpoint" => <required> ::String,
+            "ClientId" => <required> ::String,
+            "ClientSecret" => <required> ::String,
+            "SessionCookieName" =>  ::String,
+            "Scope" =>  ::String,
+            "SessionTimeout" =>  ::Int,
+            "AuthenticationRequestExtraParams" =>  ::Dict{String,String},
+            "OnUnauthenticatedRequest" =>  "deny", "allow" or "authenticate"
+        ],
+        "AuthenticateCognitoConfig" =>  [
+            "UserPoolArn" => <required> ::String,
+            "UserPoolClientId" => <required> ::String,
+            "UserPoolDomain" => <required> ::String,
+            "SessionCookieName" =>  ::String,
+            "Scope" =>  ::String,
+            "SessionTimeout" =>  ::Int,
+            "AuthenticationRequestExtraParams" =>  ::Dict{String,String},
+            "OnUnauthenticatedRequest" =>  "deny", "allow" or "authenticate"
+        ],
+        "Order" =>  ::Int,
+        "RedirectConfig" =>  [
+            "Protocol" =>  ::String,
+            "Port" =>  ::String,
+            "Host" =>  ::String,
+            "Path" =>  ::String,
+            "Query" =>  ::String,
+            "StatusCode" => <required> "HTTP_301" or "HTTP_302"
+        ],
+        "FixedResponseConfig" =>  [
+            "MessageBody" =>  ::String,
+            "StatusCode" => <required> ::String,
+            "ContentType" =>  ::String
+        ]
     ], ...]
 ```
 
@@ -2085,7 +2208,7 @@ The default action. For Application Load Balancers, the protocol of the specifie
 
 # Exceptions
 
-`DuplicateListenerException`, `TooManyListenersException`, `TooManyCertificatesException`, `ListenerNotFoundException`, `TargetGroupNotFoundException`, `TargetGroupAssociationLimitException`, `IncompatibleProtocolsException`, `SSLPolicyNotFoundException`, `CertificateNotFoundException`, `InvalidConfigurationRequestException`, `UnsupportedProtocolException`, `TooManyRegistrationsForTargetIdException` or `TooManyTargetsException`.
+`DuplicateListenerException`, `TooManyListenersException`, `TooManyCertificatesException`, `ListenerNotFoundException`, `TargetGroupNotFoundException`, `TargetGroupAssociationLimitException`, `IncompatibleProtocolsException`, `SSLPolicyNotFoundException`, `CertificateNotFoundException`, `InvalidConfigurationRequestException`, `UnsupportedProtocolException`, `TooManyRegistrationsForTargetIdException`, `TooManyTargetsException`, `TooManyActionsException` or `InvalidLoadBalancerActionException`.
 
 # Example: To change the default action for a listener
 
@@ -2168,7 +2291,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/ModifyListener)
 """
-
 @inline modify_listener(aws::AWSConfig=default_aws_config(); args...) = modify_listener(aws, args)
 
 @inline modify_listener(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "ModifyListener", args)
@@ -2361,7 +2483,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/ModifyLoadBalancerAttributes)
 """
-
 @inline modify_load_balancer_attributes(aws::AWSConfig=default_aws_config(); args...) = modify_load_balancer_attributes(aws, args)
 
 @inline modify_load_balancer_attributes(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "ModifyLoadBalancerAttributes", args)
@@ -2384,7 +2505,7 @@ Modifies the specified rule.
 
 Any existing properties that you do not modify retain their current values.
 
-To modify the default action, use [ModifyListener](@ref).
+To modify the actions for the default rule, use [ModifyListener](@ref).
 
 # Arguments
 
@@ -2393,7 +2514,29 @@ The Amazon Resource Name (ARN) of the rule.
 
 
 ## `Conditions = [[ ... ], ...]`
-The conditions.
+The conditions. Each condition specifies a field name and a single value.
+
+If the field name is `host-header`, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.
+
+*   A-Z, a-z, 0-9
+
+*   - .
+
+*   * (matches 0 or more characters)
+
+*   ? (matches exactly 1 character)
+
+If the field name is `path-pattern`, you can specify a single path pattern. A path pattern is case-sensitive, can be up to 128 characters in length, and can contain any of the following characters. You can include up to three wildcard characters.
+
+*   A-Z, a-z, 0-9
+
+*   _ - . \$ / ~ " ' @ : +
+
+*   & (using &amp;)
+
+*   * (matches 0 or more characters)
+
+*   ? (matches exactly 1 character)
 ```
  Conditions = [[
         "Field" =>  ::String,
@@ -2402,11 +2545,54 @@ The conditions.
 ```
 
 ## `Actions = [[ ... ], ...]`
-The actions. The target group must use the HTTP or HTTPS protocol.
+The actions.
+
+If the action type is `forward`, you can specify a single target group.
+
+If the action type is `authenticate-oidc`, you can use an identity provider that is OpenID Connect (OIDC) compliant to authenticate users as they access your application.
+
+If the action type is `authenticate-cognito`, you can use Amazon Cognito to authenticate users as they access your application.
 ```
  Actions = [[
-        "Type" => <required> "forward",
-        "TargetGroupArn" => <required> ::String
+        "Type" => <required> "forward", "authenticate-oidc", "authenticate-cognito", "redirect" or "fixed-response",
+        "TargetGroupArn" =>  ::String,
+        "AuthenticateOidcConfig" =>  [
+            "Issuer" => <required> ::String,
+            "AuthorizationEndpoint" => <required> ::String,
+            "TokenEndpoint" => <required> ::String,
+            "UserInfoEndpoint" => <required> ::String,
+            "ClientId" => <required> ::String,
+            "ClientSecret" => <required> ::String,
+            "SessionCookieName" =>  ::String,
+            "Scope" =>  ::String,
+            "SessionTimeout" =>  ::Int,
+            "AuthenticationRequestExtraParams" =>  ::Dict{String,String},
+            "OnUnauthenticatedRequest" =>  "deny", "allow" or "authenticate"
+        ],
+        "AuthenticateCognitoConfig" =>  [
+            "UserPoolArn" => <required> ::String,
+            "UserPoolClientId" => <required> ::String,
+            "UserPoolDomain" => <required> ::String,
+            "SessionCookieName" =>  ::String,
+            "Scope" =>  ::String,
+            "SessionTimeout" =>  ::Int,
+            "AuthenticationRequestExtraParams" =>  ::Dict{String,String},
+            "OnUnauthenticatedRequest" =>  "deny", "allow" or "authenticate"
+        ],
+        "Order" =>  ::Int,
+        "RedirectConfig" =>  [
+            "Protocol" =>  ::String,
+            "Port" =>  ::String,
+            "Host" =>  ::String,
+            "Path" =>  ::String,
+            "Query" =>  ::String,
+            "StatusCode" => <required> "HTTP_301" or "HTTP_302"
+        ],
+        "FixedResponseConfig" =>  [
+            "MessageBody" =>  ::String,
+            "StatusCode" => <required> ::String,
+            "ContentType" =>  ::String
+        ]
     ], ...]
 ```
 
@@ -2418,7 +2604,7 @@ The actions. The target group must use the HTTP or HTTPS protocol.
 
 # Exceptions
 
-`TargetGroupAssociationLimitException`, `IncompatibleProtocolsException`, `RuleNotFoundException`, `OperationNotPermittedException`, `TooManyRegistrationsForTargetIdException`, `TooManyTargetsException` or `TargetGroupNotFoundException`.
+`TargetGroupAssociationLimitException`, `IncompatibleProtocolsException`, `RuleNotFoundException`, `OperationNotPermittedException`, `TooManyRegistrationsForTargetIdException`, `TooManyTargetsException`, `TargetGroupNotFoundException`, `UnsupportedProtocolException`, `TooManyActionsException` or `InvalidLoadBalancerActionException`.
 
 # Example: To modify a rule
 
@@ -2468,7 +2654,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/ModifyRule)
 """
-
 @inline modify_rule(aws::AWSConfig=default_aws_config(); args...) = modify_rule(aws, args)
 
 @inline modify_rule(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "ModifyRule", args)
@@ -2510,7 +2695,7 @@ The port the load balancer uses when performing health checks on targets.
 
 
 ## `HealthCheckIntervalSeconds = ::Int`
-The approximate amount of time, in seconds, between health checks of an individual target. For Application Load Balancers, the range is 5 to 300 seconds. For Network Load Balancers, the supported values are 10 or 30 seconds.
+The approximate amount of time, in seconds, between health checks of an individual target. For Application Load Balancers, the range is 5–300 seconds. For Network Load Balancers, the supported values are 10 or 30 seconds.
 
 
 ## `HealthCheckTimeoutSeconds = ::Int`
@@ -2581,7 +2766,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/ModifyTargetGroup)
 """
-
 @inline modify_target_group(aws::AWSConfig=default_aws_config(); args...) = modify_target_group(aws, args)
 
 @inline modify_target_group(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "ModifyTargetGroup", args)
@@ -2670,7 +2854,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/ModifyTargetGroupAttributes)
 """
-
 @inline modify_target_group_attributes(aws::AWSConfig=default_aws_config(); args...) = modify_target_group_attributes(aws, args)
 
 @inline modify_target_group_attributes(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "ModifyTargetGroupAttributes", args)
@@ -2767,7 +2950,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/RegisterTargets)
 """
-
 @inline register_targets(aws::AWSConfig=default_aws_config(); args...) = register_targets(aws, args)
 
 @inline register_targets(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "RegisterTargets", args)
@@ -2819,7 +3001,6 @@ The certificate to remove. You can specify one certificate per call.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/RemoveListenerCertificates)
 """
-
 @inline remove_listener_certificates(aws::AWSConfig=default_aws_config(); args...) = remove_listener_certificates(aws, args)
 
 @inline remove_listener_certificates(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "RemoveListenerCertificates", args)
@@ -2881,7 +3062,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/RemoveTags)
 """
-
 @inline remove_tags(aws::AWSConfig=default_aws_config(); args...) = remove_tags(aws, args)
 
 @inline remove_tags(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "RemoveTags", args)
@@ -2902,7 +3082,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 Sets the type of IP addresses used by the subnets of the specified Application Load Balancer or Network Load Balancer.
 
-Note that Network Load Balancers must use `ipv4`.
+Network Load Balancers must use `ipv4`.
 
 # Arguments
 
@@ -2926,7 +3106,6 @@ The IP address type. The possible values are `ipv4` (for IPv4 addresses) and `du
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/SetIpAddressType)
 """
-
 @inline set_ip_address_type(aws::AWSConfig=default_aws_config(); args...) = set_ip_address_type(aws, args)
 
 @inline set_ip_address_type(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "SetIpAddressType", args)
@@ -3015,7 +3194,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/SetRulePriorities)
 """
-
 @inline set_rule_priorities(aws::AWSConfig=default_aws_config(); args...) = set_rule_priorities(aws, args)
 
 @inline set_rule_priorities(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "SetRulePriorities", args)
@@ -3036,7 +3214,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 
 Associates the specified security groups with the specified Application Load Balancer. The specified security groups override the previously associated security groups.
 
-Note that you can't specify a security group for a Network Load Balancer.
+You can't specify a security group for a Network Load Balancer.
 
 # Arguments
 
@@ -3083,7 +3261,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/SetSecurityGroups)
 """
-
 @inline set_security_groups(aws::AWSConfig=default_aws_config(); args...) = set_security_groups(aws, args)
 
 @inline set_security_groups(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "SetSecurityGroups", args)
@@ -3094,17 +3271,17 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasti
 """
     using AWSSDK.ELBv2.set_subnets
     set_subnets([::AWSConfig], arguments::Dict)
-    set_subnets([::AWSConfig]; LoadBalancerArn=, Subnets=, <keyword arguments>)
+    set_subnets([::AWSConfig]; LoadBalancerArn=, <keyword arguments>)
 
     using AWSCore.Services.elasticloadbalancingv2
     elasticloadbalancingv2([::AWSConfig], "SetSubnets", arguments::Dict)
-    elasticloadbalancingv2([::AWSConfig], "SetSubnets", LoadBalancerArn=, Subnets=, <keyword arguments>)
+    elasticloadbalancingv2([::AWSConfig], "SetSubnets", LoadBalancerArn=, <keyword arguments>)
 
 # SetSubnets Operation
 
-Enables the Availability Zone for the specified subnets for the specified Application Load Balancer. The specified subnets replace the previously enabled subnets.
+Enables the Availability Zone for the specified public subnets for the specified Application Load Balancer. The specified subnets replace the previously enabled subnets.
 
-Note that you can't change the subnets for a Network Load Balancer.
+You can't change the subnets for a Network Load Balancer.
 
 # Arguments
 
@@ -3112,12 +3289,12 @@ Note that you can't change the subnets for a Network Load Balancer.
 The Amazon Resource Name (ARN) of the load balancer.
 
 
-## `Subnets = [::String, ...]` -- *Required*
-The IDs of the subnets. You must specify subnets from at least two Availability Zones. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.
+## `Subnets = [::String, ...]`
+The IDs of the public subnets. You must specify subnets from at least two Availability Zones. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.
 
 
 ## `SubnetMappings = [[ ... ], ...]`
-The IDs of the subnets. You must specify subnets from at least two Availability Zones. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.
+The IDs of the public subnets. You must specify subnets from at least two Availability Zones. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings.
 
 You cannot specify Elastic IP addresses for your subnets.
 ```
@@ -3170,7 +3347,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/SetSubnets)
 """
-
 @inline set_subnets(aws::AWSConfig=default_aws_config(); args...) = set_subnets(aws, args)
 
 @inline set_subnets(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancingv2(aws, "SetSubnets", args)

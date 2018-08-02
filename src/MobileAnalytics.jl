@@ -61,7 +61,6 @@ The encoding used for the client context.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/mobileanalytics-2014-06-05/PutEvents)
 """
-
 @inline put_events(aws::AWSConfig=default_aws_config(); args...) = put_events(aws, args)
 
 @inline put_events(aws::AWSConfig, args) = AWSCore.Services.mobileanalytics(aws, "POST", "/2014-06-05/events", args)

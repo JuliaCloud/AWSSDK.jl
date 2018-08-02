@@ -79,7 +79,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/AddTags)
 """
-
 @inline add_tags(aws::AWSConfig=default_aws_config(); args...) = add_tags(aws, args)
 
 @inline add_tags(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "AddTags", args)
@@ -147,7 +146,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/ApplySecurityGroupsToLoadBalancer)
 """
-
 @inline apply_security_groups_to_load_balancer(aws::AWSConfig=default_aws_config(); args...) = apply_security_groups_to_load_balancer(aws, args)
 
 @inline apply_security_groups_to_load_balancer(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "ApplySecurityGroupsToLoadBalancer", args)
@@ -216,7 +214,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/AttachLoadBalancerToSubnets)
 """
-
 @inline attach_load_balancer_to_subnets(aws::AWSConfig=default_aws_config(); args...) = attach_load_balancer_to_subnets(aws, args)
 
 @inline attach_load_balancer_to_subnets(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "AttachLoadBalancerToSubnets", args)
@@ -300,7 +297,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/ConfigureHealthCheck)
 """
-
 @inline configure_health_check(aws::AWSConfig=default_aws_config(); args...) = configure_health_check(aws, args)
 
 @inline configure_health_check(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "ConfigureHealthCheck", args)
@@ -366,7 +362,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/CreateAppCookieStickinessPolicy)
 """
-
 @inline create_app_cookie_stickiness_policy(aws::AWSConfig=default_aws_config(); args...) = create_app_cookie_stickiness_policy(aws, args)
 
 @inline create_app_cookie_stickiness_policy(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "CreateAppCookieStickinessPolicy", args)
@@ -432,7 +427,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/CreateLBCookieStickinessPolicy)
 """
-
 @inline create_lbcookie_stickiness_policy(aws::AWSConfig=default_aws_config(); args...) = create_lbcookie_stickiness_policy(aws, args)
 
 @inline create_lbcookie_stickiness_policy(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "CreateLBCookieStickinessPolicy", args)
@@ -524,7 +518,7 @@ For more information about tagging your load balancer, see [Tag Your Classic Loa
 
 # Exceptions
 
-`DuplicateAccessPointNameException`, `TooManyAccessPointsException`, `CertificateNotFoundException`, `InvalidConfigurationRequestException`, `SubnetNotFoundException`, `InvalidSubnetException`, `InvalidSecurityGroupException`, `InvalidSchemeException`, `TooManyTagsException`, `DuplicateTagKeysException` or `UnsupportedProtocolException`.
+`DuplicateAccessPointNameException`, `TooManyAccessPointsException`, `CertificateNotFoundException`, `InvalidConfigurationRequestException`, `SubnetNotFoundException`, `InvalidSubnetException`, `InvalidSecurityGroupException`, `InvalidSchemeException`, `TooManyTagsException`, `DuplicateTagKeysException`, `UnsupportedProtocolException` or `OperationNotPermittedException`.
 
 # Example: To create an HTTP load balancer in a VPC
 
@@ -697,7 +691,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/CreateLoadBalancer)
 """
-
 @inline create_load_balancer(aws::AWSConfig=default_aws_config(); args...) = create_load_balancer(aws, args)
 
 @inline create_load_balancer(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "CreateLoadBalancer", args)
@@ -789,7 +782,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/CreateLoadBalancerListeners)
 """
-
 @inline create_load_balancer_listeners(aws::AWSConfig=default_aws_config(); args...) = create_load_balancer_listeners(aws, args)
 
 @inline create_load_balancer_listeners(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "CreateLoadBalancerListeners", args)
@@ -904,7 +896,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/CreateLoadBalancerPolicy)
 """
-
 @inline create_load_balancer_policy(aws::AWSConfig=default_aws_config(); args...) = create_load_balancer_policy(aws, args)
 
 @inline create_load_balancer_policy(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "CreateLoadBalancerPolicy", args)
@@ -954,7 +945,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DeleteLoadBalancer)
 """
-
 @inline delete_load_balancer(aws::AWSConfig=default_aws_config(); args...) = delete_load_balancer(aws, args)
 
 @inline delete_load_balancer(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "DeleteLoadBalancer", args)
@@ -1011,7 +1001,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DeleteLoadBalancerListeners)
 """
-
 @inline delete_load_balancer_listeners(aws::AWSConfig=default_aws_config(); args...) = delete_load_balancer_listeners(aws, args)
 
 @inline delete_load_balancer_listeners(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "DeleteLoadBalancerListeners", args)
@@ -1066,7 +1055,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DeleteLoadBalancerPolicy)
 """
-
 @inline delete_load_balancer_policy(aws::AWSConfig=default_aws_config(); args...) = delete_load_balancer_policy(aws, args)
 
 @inline delete_load_balancer_policy(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "DeleteLoadBalancerPolicy", args)
@@ -1143,7 +1131,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DeregisterInstancesFromLoadBalancer)
 """
-
 @inline deregister_instances_from_load_balancer(aws::AWSConfig=default_aws_config(); args...) = deregister_instances_from_load_balancer(aws, args)
 
 @inline deregister_instances_from_load_balancer(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "DeregisterInstancesFromLoadBalancer", args)
@@ -1184,7 +1171,6 @@ The maximum number of results to return with this call.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeAccountLimits)
 """
-
 @inline describe_account_limits(aws::AWSConfig=default_aws_config(); args...) = describe_account_limits(aws, args)
 
 @inline describe_account_limits(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "DescribeAccountLimits", args)
@@ -1258,7 +1244,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeInstanceHealth)
 """
-
 @inline describe_instance_health(aws::AWSConfig=default_aws_config(); args...) = describe_instance_health(aws, args)
 
 @inline describe_instance_health(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "DescribeInstanceHealth", args)
@@ -1329,7 +1314,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeLoadBalancerAttributes)
 """
-
 @inline describe_load_balancer_attributes(aws::AWSConfig=default_aws_config(); args...) = describe_load_balancer_attributes(aws, args)
 
 @inline describe_load_balancer_attributes(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "DescribeLoadBalancerAttributes", args)
@@ -1406,7 +1390,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeLoadBalancerPolicies)
 """
-
 @inline describe_load_balancer_policies(aws::AWSConfig=default_aws_config(); args...) = describe_load_balancer_policies(aws, args)
 
 @inline describe_load_balancer_policies(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "DescribeLoadBalancerPolicies", args)
@@ -1481,7 +1464,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeLoadBalancerPolicyTypes)
 """
-
 @inline describe_load_balancer_policy_types(aws::AWSConfig=default_aws_config(); args...) = describe_load_balancer_policy_types(aws, args)
 
 @inline describe_load_balancer_policy_types(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "DescribeLoadBalancerPolicyTypes", args)
@@ -1637,7 +1619,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeLoadBalancers)
 """
-
 @inline describe_load_balancers(aws::AWSConfig=default_aws_config(); args...) = describe_load_balancers(aws, args)
 
 @inline describe_load_balancers(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "DescribeLoadBalancers", args)
@@ -1710,7 +1691,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeTags)
 """
-
 @inline describe_tags(aws::AWSConfig=default_aws_config(); args...) = describe_tags(aws, args)
 
 @inline describe_tags(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "DescribeTags", args)
@@ -1778,7 +1758,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DetachLoadBalancerFromSubnets)
 """
-
 @inline detach_load_balancer_from_subnets(aws::AWSConfig=default_aws_config(); args...) = detach_load_balancer_from_subnets(aws, args)
 
 @inline detach_load_balancer_from_subnets(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "DetachLoadBalancerFromSubnets", args)
@@ -1848,7 +1827,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DisableAvailabilityZonesForLoadBalancer)
 """
-
 @inline disable_availability_zones_for_load_balancer(aws::AWSConfig=default_aws_config(); args...) = disable_availability_zones_for_load_balancer(aws, args)
 
 @inline disable_availability_zones_for_load_balancer(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "DisableAvailabilityZonesForLoadBalancer", args)
@@ -1919,7 +1897,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/EnableAvailabilityZonesForLoadBalancer)
 """
-
 @inline enable_availability_zones_for_load_balancer(aws::AWSConfig=default_aws_config(); args...) = enable_availability_zones_for_load_balancer(aws, args)
 
 @inline enable_availability_zones_for_load_balancer(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "EnableAvailabilityZonesForLoadBalancer", args)
@@ -2051,7 +2028,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/ModifyLoadBalancerAttributes)
 """
-
 @inline modify_load_balancer_attributes(aws::AWSConfig=default_aws_config(); args...) = modify_load_balancer_attributes(aws, args)
 
 @inline modify_load_balancer_attributes(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "ModifyLoadBalancerAttributes", args)
@@ -2137,7 +2113,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/RegisterInstancesWithLoadBalancer)
 """
-
 @inline register_instances_with_load_balancer(aws::AWSConfig=default_aws_config(); args...) = register_instances_with_load_balancer(aws, args)
 
 @inline register_instances_with_load_balancer(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "RegisterInstancesWithLoadBalancer", args)
@@ -2198,7 +2173,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/RemoveTags)
 """
-
 @inline remove_tags(aws::AWSConfig=default_aws_config(); args...) = remove_tags(aws, args)
 
 @inline remove_tags(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "RemoveTags", args)
@@ -2260,7 +2234,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/SetLoadBalancerListenerSSLCertificate)
 """
-
 @inline set_load_balancer_listener_sslcertificate(aws::AWSConfig=default_aws_config(); args...) = set_load_balancer_listener_sslcertificate(aws, args)
 
 @inline set_load_balancer_listener_sslcertificate(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "SetLoadBalancerListenerSSLCertificate", args)
@@ -2328,7 +2301,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/SetLoadBalancerPoliciesForBackendServer)
 """
-
 @inline set_load_balancer_policies_for_backend_server(aws::AWSConfig=default_aws_config(); args...) = set_load_balancer_policies_for_backend_server(aws, args)
 
 @inline set_load_balancer_policies_for_backend_server(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "SetLoadBalancerPoliciesForBackendServer", args)
@@ -2394,7 +2366,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/SetLoadBalancerPoliciesOfListener)
 """
-
 @inline set_load_balancer_policies_of_listener(aws::AWSConfig=default_aws_config(); args...) = set_load_balancer_policies_of_listener(aws, args)
 
 @inline set_load_balancer_policies_of_listener(aws::AWSConfig, args) = AWSCore.Services.elasticloadbalancing(aws, "SetLoadBalancerPoliciesOfListener", args)

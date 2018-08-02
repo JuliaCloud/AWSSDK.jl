@@ -54,7 +54,6 @@ Identifies a specific revision of the `\$LATEST` version of the bot. If you spec
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/CreateBotVersion)
 """
-
 @inline create_bot_version(aws::AWSConfig=default_aws_config(); args...) = create_bot_version(aws, args)
 
 @inline create_bot_version(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "POST", "/bots/{name}/versions", args)
@@ -104,7 +103,6 @@ Checksum of the `\$LATEST` version of the intent that should be used to create t
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/CreateIntentVersion)
 """
-
 @inline create_intent_version(aws::AWSConfig=default_aws_config(); args...) = create_intent_version(aws, args)
 
 @inline create_intent_version(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "POST", "/intents/{name}/versions", args)
@@ -154,7 +152,6 @@ Checksum for the `\$LATEST` version of the slot type that you want to publish. I
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/CreateSlotTypeVersion)
 """
-
 @inline create_slot_type_version(aws::AWSConfig=default_aws_config(); args...) = create_slot_type_version(aws, args)
 
 @inline create_slot_type_version(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "POST", "/slottypes/{name}/versions", args)
@@ -193,7 +190,6 @@ The name of the bot. The name is case sensitive.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/DeleteBot)
 """
-
 @inline delete_bot(aws::AWSConfig=default_aws_config(); args...) = delete_bot(aws, args)
 
 @inline delete_bot(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "DELETE", "/bots/{name}", args)
@@ -234,7 +230,6 @@ The name of the bot that the alias points to.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/DeleteBotAlias)
 """
-
 @inline delete_bot_alias(aws::AWSConfig=default_aws_config(); args...) = delete_bot_alias(aws, args)
 
 @inline delete_bot_alias(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "DELETE", "/bots/{botName}/aliases/{name}", args)
@@ -279,7 +274,6 @@ An alias that points to the specific version of the Amazon Lex bot to which this
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/DeleteBotChannelAssociation)
 """
-
 @inline delete_bot_channel_association(aws::AWSConfig=default_aws_config(); args...) = delete_bot_channel_association(aws, args)
 
 @inline delete_bot_channel_association(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "DELETE", "/bots/{botName}/aliases/{aliasName}/channels/{name}", args)
@@ -320,7 +314,6 @@ The version of the bot to delete. You cannot delete the `\$LATEST` version of th
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/DeleteBotVersion)
 """
-
 @inline delete_bot_version(aws::AWSConfig=default_aws_config(); args...) = delete_bot_version(aws, args)
 
 @inline delete_bot_version(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "DELETE", "/bots/{name}/versions/{version}", args)
@@ -362,7 +355,6 @@ The name of the intent. The name is case sensitive.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/DeleteIntent)
 """
-
 @inline delete_intent(aws::AWSConfig=default_aws_config(); args...) = delete_intent(aws, args)
 
 @inline delete_intent(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "DELETE", "/intents/{name}", args)
@@ -403,7 +395,6 @@ The version of the intent to delete. You cannot delete the `\$LATEST` version of
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/DeleteIntentVersion)
 """
-
 @inline delete_intent_version(aws::AWSConfig=default_aws_config(); args...) = delete_intent_version(aws, args)
 
 @inline delete_intent_version(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "DELETE", "/intents/{name}/versions/{version}", args)
@@ -445,7 +436,6 @@ The name of the slot type. The name is case sensitive.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/DeleteSlotType)
 """
-
 @inline delete_slot_type(aws::AWSConfig=default_aws_config(); args...) = delete_slot_type(aws, args)
 
 @inline delete_slot_type(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "DELETE", "/slottypes/{name}", args)
@@ -486,7 +476,6 @@ The version of the slot type to delete. You cannot delete the `\$LATEST` version
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/DeleteSlotTypeVersion)
 """
-
 @inline delete_slot_type_version(aws::AWSConfig=default_aws_config(); args...) = delete_slot_type_version(aws, args)
 
 @inline delete_slot_type_version(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "DELETE", "/slottypes/{name}/version/{version}", args)
@@ -507,7 +496,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 Deletes stored utterances.
 
-Amazon Lex stores the utterances that users send to your bot unless the `childDirected` field in the bot is set to `true`. Utterances are stored for 15 days for use with the [GetUtterancesView](@ref) operation, and then stored indefinately for use in improving the ability of your bot to respond to user input.
+Amazon Lex stores the utterances that users send to your bot. Utterances are stored for 15 days for use with the [GetUtterancesView](@ref) operation, and then stored indefinitely for use in improving the ability of your bot to respond to user input.
 
 Use the `DeleteStoredUtterances` operation to manually delete stored utterances for a specific user.
 
@@ -531,7 +520,6 @@ The unique identifier for the user that made the utterances. This is the user ID
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/DeleteUtterances)
 """
-
 @inline delete_utterances(aws::AWSConfig=default_aws_config(); args...) = delete_utterances(aws, args)
 
 @inline delete_utterances(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "DELETE", "/bots/{botName}/utterances/{userId}", args)
@@ -635,7 +623,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetBot)
 """
-
 @inline get_bot(aws::AWSConfig=default_aws_config(); args...) = get_bot(aws, args)
 
 @inline get_bot(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/bots/{name}/versions/{versionoralias}", args)
@@ -680,7 +667,6 @@ The name of the bot.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetBotAlias)
 """
-
 @inline get_bot_alias(aws::AWSConfig=default_aws_config(); args...) = get_bot_alias(aws, args)
 
 @inline get_bot_alias(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/bots/{botName}/aliases/{name}", args)
@@ -733,7 +719,6 @@ Substring to match in bot alias names. An alias will be returned if any part of 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetBotAliases)
 """
-
 @inline get_bot_aliases(aws::AWSConfig=default_aws_config(); args...) = get_bot_aliases(aws, args)
 
 @inline get_bot_aliases(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/bots/{botName}/aliases/", args)
@@ -782,7 +767,6 @@ An alias pointing to the specific version of the Amazon Lex bot to which this as
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetBotChannelAssociation)
 """
-
 @inline get_bot_channel_association(aws::AWSConfig=default_aws_config(); args...) = get_bot_channel_association(aws, args)
 
 @inline get_bot_channel_association(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/bots/{botName}/aliases/{aliasName}/channels/{name}", args)
@@ -839,7 +823,6 @@ Substring to match in channel association names. An association will be returned
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetBotChannelAssociations)
 """
-
 @inline get_bot_channel_associations(aws::AWSConfig=default_aws_config(); args...) = get_bot_channel_associations(aws, args)
 
 @inline get_bot_channel_associations(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/bots/{botName}/aliases/{aliasName}/channels/", args)
@@ -892,7 +875,6 @@ The maximum number of bot versions to return in the response. The default is 10.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetBotVersions)
 """
-
 @inline get_bot_versions(aws::AWSConfig=default_aws_config(); args...) = get_bot_versions(aws, args)
 
 @inline get_bot_versions(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/bots/{name}/versions/", args)
@@ -973,7 +955,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetBots)
 """
-
 @inline get_bots(aws::AWSConfig=default_aws_config(); args...) = get_bots(aws, args)
 
 @inline get_bots(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/bots/", args)
@@ -1014,7 +995,6 @@ The unique identifier for a built-in intent. To find the signature for an intent
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetBuiltinIntent)
 """
-
 @inline get_builtin_intent(aws::AWSConfig=default_aws_config(); args...) = get_builtin_intent(aws, args)
 
 @inline get_builtin_intent(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/builtins/intents/{signature}", args)
@@ -1039,7 +1019,7 @@ This operation requires permission for the `lex:GetBuiltinIntents` action.
 
 # Arguments
 
-## `locale = "en-US"`
+## `locale = "en-US", "en-GB" or "de-DE"`
 A list of locales that the intent supports.
 
 
@@ -1067,7 +1047,6 @@ The maximum number of intents to return in the response. The default is 10.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetBuiltinIntents)
 """
-
 @inline get_builtin_intents(aws::AWSConfig=default_aws_config(); args...) = get_builtin_intents(aws, args)
 
 @inline get_builtin_intents(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/builtins/intents/", args)
@@ -1094,7 +1073,7 @@ This operation requires permission for the `lex:GetBuiltInSlotTypes` action.
 
 # Arguments
 
-## `locale = "en-US"`
+## `locale = "en-US", "en-GB" or "de-DE"`
 A list of locales that the slot type supports.
 
 
@@ -1122,7 +1101,6 @@ The maximum number of slot types to return in the response. The default is 10.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetBuiltinSlotTypes)
 """
-
 @inline get_builtin_slot_types(aws::AWSConfig=default_aws_config(); args...) = get_builtin_slot_types(aws, args)
 
 @inline get_builtin_slot_types(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/builtins/slottypes/", args)
@@ -1153,11 +1131,11 @@ The name of the bot to export.
 The version of the bot to export.
 
 
-## `resourceType = "BOT"` -- *Required*
+## `resourceType = "BOT", "INTENT" or "SLOT_TYPE"` -- *Required*
 The type of resource to export.
 
 
-## `exportType = "ALEXA_SKILLS_KIT"` -- *Required*
+## `exportType = "ALEXA_SKILLS_KIT" or "LEX"` -- *Required*
 The format of the exported data.
 
 
@@ -1173,12 +1151,49 @@ The format of the exported data.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetExport)
 """
-
 @inline get_export(aws::AWSConfig=default_aws_config(); args...) = get_export(aws, args)
 
 @inline get_export(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/exports/", args)
 
 @inline get_export(args) = get_export(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.LexModelBuildingService.get_import
+    get_import([::AWSConfig], arguments::Dict)
+    get_import([::AWSConfig]; importId=)
+
+    using AWSCore.Services.lex_models
+    lex_models([::AWSConfig], "GET", "/imports/{importId}", arguments::Dict)
+    lex_models([::AWSConfig], "GET", "/imports/{importId}", importId=)
+
+# GetImport Operation
+
+Gets information about an import job started with the `StartImport` operation.
+
+# Arguments
+
+## `importId = ::String` -- *Required*
+The identifier of the import job information to return.
+
+
+
+
+# Returns
+
+`GetImportResponse`
+
+# Exceptions
+
+`NotFoundException`, `LimitExceededException`, `InternalFailureException` or `BadRequestException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetImport)
+"""
+@inline get_import(aws::AWSConfig=default_aws_config(); args...) = get_import(aws, args)
+
+@inline get_import(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/imports/{importId}", args)
+
+@inline get_import(args) = get_import(default_aws_config(), args)
 
 
 """
@@ -1367,7 +1382,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetIntent)
 """
-
 @inline get_intent(aws::AWSConfig=default_aws_config(); args...) = get_intent(aws, args)
 
 @inline get_intent(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/intents/{name}/versions/{version}", args)
@@ -1420,7 +1434,6 @@ The maximum number of intent versions to return in the response. The default is 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetIntentVersions)
 """
-
 @inline get_intent_versions(aws::AWSConfig=default_aws_config(); args...) = get_intent_versions(aws, args)
 
 @inline get_intent_versions(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/intents/{name}/versions/", args)
@@ -1500,7 +1513,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetIntents)
 """
-
 @inline get_intents(aws::AWSConfig=default_aws_config(); args...) = get_intents(aws, args)
 
 @inline get_intents(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/intents/", args)
@@ -1577,7 +1589,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetSlotType)
 """
-
 @inline get_slot_type(aws::AWSConfig=default_aws_config(); args...) = get_slot_type(aws, args)
 
 @inline get_slot_type(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/slottypes/{name}/versions/{version}", args)
@@ -1630,7 +1641,6 @@ The maximum number of slot type versions to return in the response. The default 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetSlotTypeVersions)
 """
-
 @inline get_slot_type_versions(aws::AWSConfig=default_aws_config(); args...) = get_slot_type_versions(aws, args)
 
 @inline get_slot_type_versions(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/slottypes/{name}/versions/", args)
@@ -1724,7 +1734,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetSlotTypes)
 """
-
 @inline get_slot_types(aws::AWSConfig=default_aws_config(); args...) = get_slot_types(aws, args)
 
 @inline get_slot_types(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/slottypes/", args)
@@ -1749,9 +1758,8 @@ For example, say that you have created a bot to order flowers. After your users 
 
 After you publish a new version of a bot, you can get information about the old version and the new so that you can compare the performance across the two versions.
 
-Data is available for the last 15 days. You can request information for up to 5 versions in each request. The response contains information about a maximum of 100 utterances for each version.
-
-If the bot's `childDirected` field is set to `true`, utterances for the bot are not stored and cannot be retrieved with the `GetUtterancesView` operation. For more information, see [PutBot](@ref).
+**Note**
+> Utterance statistics are generated once a day. Data is available for the last 15 days. You can request information for up to 5 versions in each request. The response contains information about a maximum of 100 utterances for each version.
 
 This operation requires permissions for the `lex:GetUtterancesView` action.
 
@@ -1781,7 +1789,6 @@ To return utterances that were recognized and handled, use`Detected`. To return 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/GetUtterancesView)
 """
-
 @inline get_utterances_view(aws::AWSConfig=default_aws_config(); args...) = get_utterances_view(aws, args)
 
 @inline get_utterances_view(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "GET", "/bots/{botname}/utterances?view=aggregation", args)
@@ -1800,7 +1807,7 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-mo
 
 # PutBot Operation
 
-Creates an Amazon Lex conversational bot or replaces an existing bot. When you create or update a bot you are only required to specify a name. You can use this to add intents later, or to remove intents from an existing bot. When you create a bot with a name only, the bot is created or updated but Amazon Lex returns the `response `FAILED`. You can build the bot after you add one or more intents. For more information about Amazon Lex bots, see [how-it-works](@ref).`
+Creates an Amazon Lex conversational bot or replaces an existing bot. When you create or update a bot you are only required to specify a name, a locale, and whether the bot is directed toward children under age 13. You can use this to add intents later, or to remove intents from an existing bot. When you create a bot with the minimum information, the bot is created or updated but Amazon Lex returns the `response `FAILED`. You can build the bot after you add one or more intents. For more information about Amazon Lex bots, see [how-it-works](@ref).`
 
  `If you specify the name of an existing bot, the fields in the request replace the existing values in the `\$LATEST` version of the bot. Amazon Lex removes any fields that you don't provide values for in the request, except for the `idleTTLInSeconds` and `privacySettings` fields, which are set to their default values. If you don't specify values for required fields, Amazon Lex throws an exception.
 
@@ -1832,8 +1839,9 @@ When you create a clarification prompt, make sure that it suggests the correct r
 ```
  clarificationPrompt = [
         "messages" => <required> [[
-            "contentType" => <required> "PlainText" or "SSML",
-            "content" => <required> ::String
+            "contentType" => <required> "PlainText", "SSML" or "CustomPayload",
+            "content" => <required> ::String,
+            "groupNumber" =>  ::Int
         ], ...],
         "maxAttempts" => <required> ::Int,
         "responseCard" =>  ::String
@@ -1849,8 +1857,9 @@ For example, in a pizza ordering application, `OrderPizza` might be one of the i
 ```
  abortStatement = [
         "messages" => <required> [[
-            "contentType" => <required> "PlainText" or "SSML",
-            "content" => <required> ::String
+            "contentType" => <required> "PlainText", "SSML" or "CustomPayload",
+            "content" => <required> ::String,
+            "groupNumber" =>  ::Int
         ], ...],
         "responseCard" =>  ::String
     ]
@@ -1881,12 +1890,12 @@ When you want to update a bot, set the `checksum` field to the checksum of the m
 
 
 ## `processBehavior = "SAVE" or "BUILD"`
-If you set the `processBehavior` element to `Build`, Amazon Lex builds the bot so that it can be run. If you set the element to `Save`Amazon Lex saves the bot, but doesn't build it.
+If you set the `processBehavior` element to `BUILD`, Amazon Lex builds the bot so that it can be run. If you set the element to `SAVE` Amazon Lex saves the bot, but doesn't build it.
 
-If you don't specify this value, the default value is `Save`.
+If you don't specify this value, the default value is `BUILD`.
 
 
-## `locale = "en-US"` -- *Required*
+## `locale = "en-US", "en-GB" or "de-DE"` -- *Required*
 Specifies the target locale for the bot. Any intent used in the bot must be compatible with the locale of the bot.
 
 The default is `en-US`.
@@ -1896,6 +1905,10 @@ The default is `en-US`.
 For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying `true` or `false` in the `childDirected` field. By specifying `true` in the `childDirected` field, you confirm that your use of Amazon Lex **is** related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying `false` in the `childDirected` field, you confirm that your use of Amazon Lex **is not** related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the `childDirected` field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA.
 
 If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the [Amazon Lex FAQ.](https://aws.amazon.com/lex/faqs#data-security)
+
+
+## `createVersion = ::Bool`
+
 
 
 
@@ -2004,7 +2017,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/PutBot)
 """
-
 @inline put_bot(aws::AWSConfig=default_aws_config(); args...) = put_bot(aws, args)
 
 @inline put_bot(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "PUT", "/bots/{name}/versions/\$LATEST", args)
@@ -2065,7 +2077,6 @@ When you want to update a bot alias, set the `checksum` field to the checksum of
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/PutBotAlias)
 """
-
 @inline put_bot_alias(aws::AWSConfig=default_aws_config(); args...) = put_bot_alias(aws, args)
 
 @inline put_bot_alias(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "PUT", "/bots/{botName}/aliases/{name}", args)
@@ -2106,7 +2117,7 @@ You can specify other optional information in the request, such as:
 
 *   A follow-up prompt that asks the user for additional activity. For example, asking "Do you want to order a drink with your pizza?"
 
-If you specify an existing intent name to update the intent, Amazon Lex replaces the values in the `\$LATEST` version of the slot type with the values in the request. Amazon Lex removes fields that you don't provide in the request. If you don't specify the required fields, Amazon Lex throws an exception.
+If you specify an existing intent name to update the intent, Amazon Lex replaces the values in the `\$LATEST` version of the intent with the values in the request. Amazon Lex removes fields that you don't provide in the request. If you don't specify the required fields, Amazon Lex throws an exception. When you update the `\$LATEST` version of an intent, the `status` field of any bot that uses the `\$LATEST` version of the intent is set to `NOT_BUILT`.
 
 For more information, see [how-it-works](@ref).
 
@@ -2137,8 +2148,9 @@ An array of intent slots. At runtime, Amazon Lex elicits required slot values fr
         "slotTypeVersion" =>  ::String,
         "valueElicitationPrompt" =>  [
             "messages" => <required> [[
-                "contentType" => <required> "PlainText" or "SSML",
-                "content" => <required> ::String
+                "contentType" => <required> "PlainText", "SSML" or "CustomPayload",
+                "content" => <required> ::String,
+                "groupNumber" =>  ::Int
             ], ...],
             "maxAttempts" => <required> ::Int,
             "responseCard" =>  ::String
@@ -2165,8 +2177,9 @@ Amazon Lex uses this prompt to ensure that the user acknowledges that the intent
 ```
  confirmationPrompt = [
         "messages" => <required> [[
-            "contentType" => <required> "PlainText" or "SSML",
-            "content" => <required> ::String
+            "contentType" => <required> "PlainText", "SSML" or "CustomPayload",
+            "content" => <required> ::String,
+            "groupNumber" =>  ::Int
         ], ...],
         "maxAttempts" => <required> ::Int,
         "responseCard" =>  ::String
@@ -2181,8 +2194,9 @@ When the user answers "no" to the question defined in `confirmationPrompt`, Amaz
 ```
  rejectionStatement = [
         "messages" => <required> [[
-            "contentType" => <required> "PlainText" or "SSML",
-            "content" => <required> ::String
+            "contentType" => <required> "PlainText", "SSML" or "CustomPayload",
+            "content" => <required> ::String,
+            "groupNumber" =>  ::Int
         ], ...],
         "responseCard" =>  ::String
     ]
@@ -2206,16 +2220,18 @@ The `followUpPrompt` field and the `conclusionStatement` field are mutually excl
  followUpPrompt = [
         "prompt" => <required> [
             "messages" => <required> [[
-                "contentType" => <required> "PlainText" or "SSML",
-                "content" => <required> ::String
+                "contentType" => <required> "PlainText", "SSML" or "CustomPayload",
+                "content" => <required> ::String,
+                "groupNumber" =>  ::Int
             ], ...],
             "maxAttempts" => <required> ::Int,
             "responseCard" =>  ::String
         ],
         "rejectionStatement" => <required> [
             "messages" => <required> [[
-                "contentType" => <required> "PlainText" or "SSML",
-                "content" => <required> ::String
+                "contentType" => <required> "PlainText", "SSML" or "CustomPayload",
+                "content" => <required> ::String,
+                "groupNumber" =>  ::Int
             ], ...],
             "responseCard" =>  ::String
         ]
@@ -2232,8 +2248,9 @@ This element is relevant only if you provide a Lambda function in the `fulfillme
 ```
  conclusionStatement = [
         "messages" => <required> [[
-            "contentType" => <required> "PlainText" or "SSML",
-            "content" => <required> ::String
+            "contentType" => <required> "PlainText", "SSML" or "CustomPayload",
+            "content" => <required> ::String,
+            "groupNumber" =>  ::Int
         ], ...],
         "responseCard" =>  ::String
     ]
@@ -2274,6 +2291,10 @@ Identifies a specific revision of the `\$LATEST` version.
 When you create a new intent, leave the `checksum` field blank. If you specify a checksum you get a `BadRequestException` exception.
 
 When you want to update a intent, set the `checksum` field to the checksum of the most recent revision of the `\$LATEST` version. If you don't specify the `checksum` field, or if the checksum does not match the `\$LATEST` version, you get a `PreconditionFailedException` exception.
+
+
+## `createVersion = ::Bool`
+
 
 
 
@@ -2562,7 +2583,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/PutIntent)
 """
-
 @inline put_intent(aws::AWSConfig=default_aws_config(); args...) = put_intent(aws, args)
 
 @inline put_intent(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "PUT", "/intents/{name}/versions/\$LATEST", args)
@@ -2585,7 +2605,7 @@ Creates a custom slot type or replaces an existing custom slot type.
 
 To create a custom slot type, specify a name for the slot type and a set of enumeration values, which are the values that a slot of this type can assume. For more information, see [how-it-works](@ref).
 
-If you specify the name of an existing slot type, the fields in the request replace the existing values in the `\$LATEST` version of the slot type. Amazon Lex removes the fields that you don't provide in the request. If you don't specify required fields, Amazon Lex throws an exception.
+If you specify the name of an existing slot type, the fields in the request replace the existing values in the `\$LATEST` version of the slot type. Amazon Lex removes the fields that you don't provide in the request. If you don't specify required fields, Amazon Lex throws an exception. When you update the `\$LATEST` version of a slot type, if a bot uses the `\$LATEST` version of an intent that contains the slot type, the bot's `status` field is set to `NOT_BUILT`.
 
 This operation requires permissions for the `lex:PutSlotType` action.
 
@@ -2630,6 +2650,10 @@ Determines the slot resolution strategy that Amazon Lex uses to return slot type
 *   `TOP_RESOLUTION` - If there is a resolution list for the slot, return the first value in the resolution list as the slot type value. If there is no resolution list, null is returned.
 
 If you don't specify the `valueSelectionStrategy`, the default is `ORIGINAL_VALUE`.
+
+
+## `createVersion = ::Bool`
+
 
 
 
@@ -2684,12 +2708,65 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/PutSlotType)
 """
-
 @inline put_slot_type(aws::AWSConfig=default_aws_config(); args...) = put_slot_type(aws, args)
 
 @inline put_slot_type(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "PUT", "/slottypes/{name}/versions/\$LATEST", args)
 
 @inline put_slot_type(args) = put_slot_type(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.LexModelBuildingService.start_import
+    start_import([::AWSConfig], arguments::Dict)
+    start_import([::AWSConfig]; payload=, resourceType=, mergeStrategy=)
+
+    using AWSCore.Services.lex_models
+    lex_models([::AWSConfig], "POST", "/imports/", arguments::Dict)
+    lex_models([::AWSConfig], "POST", "/imports/", payload=, resourceType=, mergeStrategy=)
+
+# StartImport Operation
+
+Starts a job to import a resource to Amazon Lex.
+
+# Arguments
+
+## `payload = blob` -- *Required*
+A zip archive in binary format. The archive should contain one file, a JSON file containing the resource to import. The resource should match the type specified in the `resourceType` field.
+
+
+## `resourceType = "BOT", "INTENT" or "SLOT_TYPE"` -- *Required*
+Specifies the type of resource to export. Each resource also exports any resources that it depends on.
+
+*   A bot exports dependent intents.
+
+*   An intent exports dependent slot types.
+
+
+## `mergeStrategy = "OVERWRITE_LATEST" or "FAIL_ON_CONFLICT"` -- *Required*
+Specifies the action that the `StartImport` operation should take when there is an existing resource with the same name.
+
+*   FAIL_ON_CONFLICT - The import operation is stopped on the first conflict between a resource in the import file and an existing resource. The name of the resource causing the conflict is in the `failureReason` field of the response to the `GetImport` operation.
+
+    OVERWRITE_LATEST - The import operation proceeds even if there is a conflict with an existing resource. The \$LASTEST version of the existing resource is overwritten with the data from the import file.
+
+
+
+
+# Returns
+
+`StartImportResponse`
+
+# Exceptions
+
+`LimitExceededException`, `InternalFailureException` or `BadRequestException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/lex-models-2017-04-19/StartImport)
+"""
+@inline start_import(aws::AWSConfig=default_aws_config(); args...) = start_import(aws, args)
+
+@inline start_import(aws::AWSConfig, args) = AWSCore.Services.lex_models(aws, "POST", "/imports/", args)
+
+@inline start_import(args) = start_import(default_aws_config(), args)
 
 
 

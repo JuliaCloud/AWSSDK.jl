@@ -60,7 +60,6 @@ The date and time to resume the pipeline. By default, the pipeline resumes from 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ActivatePipeline)
 """
-
 @inline activate_pipeline(aws::AWSConfig=default_aws_config(); args...) = activate_pipeline(aws, args)
 
 @inline activate_pipeline(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "ActivatePipeline", args)
@@ -108,7 +107,6 @@ The tags to add, as key/value pairs.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/AddTags)
 """
-
 @inline add_tags(aws::AWSConfig=default_aws_config(); args...) = add_tags(aws, args)
 
 @inline add_tags(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "AddTags", args)
@@ -164,7 +162,6 @@ A list of tags to associate with the pipeline at creation. Tags let you control 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/CreatePipeline)
 """
-
 @inline create_pipeline(aws::AWSConfig=default_aws_config(); args...) = create_pipeline(aws, args)
 
 @inline create_pipeline(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "CreatePipeline", args)
@@ -209,7 +206,6 @@ Indicates whether to cancel any running objects. The default is true, which sets
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DeactivatePipeline)
 """
-
 @inline deactivate_pipeline(aws::AWSConfig=default_aws_config(); args...) = deactivate_pipeline(aws, args)
 
 @inline deactivate_pipeline(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "DeactivatePipeline", args)
@@ -246,7 +242,6 @@ The ID of the pipeline.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DeletePipeline)
 """
-
 @inline delete_pipeline(aws::AWSConfig=default_aws_config(); args...) = delete_pipeline(aws, args)
 
 @inline delete_pipeline(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "DeletePipeline", args)
@@ -297,7 +292,6 @@ The starting point for the results to be returned. For the first call, this valu
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DescribeObjects)
 """
-
 @inline describe_objects(aws::AWSConfig=default_aws_config(); args...) = describe_objects(aws, args)
 
 @inline describe_objects(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "DescribeObjects", args)
@@ -338,7 +332,6 @@ The IDs of the pipelines to describe. You can pass as many as 25 identifiers in 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DescribePipelines)
 """
-
 @inline describe_pipelines(aws::AWSConfig=default_aws_config(); args...) = describe_pipelines(aws, args)
 
 @inline describe_pipelines(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "DescribePipelines", args)
@@ -385,7 +378,6 @@ The expression to evaluate.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/EvaluateExpression)
 """
-
 @inline evaluate_expression(aws::AWSConfig=default_aws_config(); args...) = evaluate_expression(aws, args)
 
 @inline evaluate_expression(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "EvaluateExpression", args)
@@ -428,7 +420,6 @@ The version of the pipeline definition to retrieve. Set this parameter to `lates
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/GetPipelineDefinition)
 """
-
 @inline get_pipeline_definition(aws::AWSConfig=default_aws_config(); args...) = get_pipeline_definition(aws, args)
 
 @inline get_pipeline_definition(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "GetPipelineDefinition", args)
@@ -467,7 +458,6 @@ The starting point for the results to be returned. For the first call, this valu
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ListPipelines)
 """
-
 @inline list_pipelines(aws::AWSConfig=default_aws_config(); args...) = list_pipelines(aws, args)
 
 @inline list_pipelines(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "ListPipelines", args)
@@ -521,7 +511,6 @@ Identity information for the EC2 instance that is hosting the task runner. You c
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/PollForTask)
 """
-
 @inline poll_for_task(aws::AWSConfig=default_aws_config(); args...) = poll_for_task(aws, args)
 
 @inline poll_for_task(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "PollForTask", args)
@@ -604,7 +593,6 @@ The parameter values used with the pipeline.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/PutPipelineDefinition)
 """
-
 @inline put_pipeline_definition(aws::AWSConfig=default_aws_config(); args...) = put_pipeline_definition(aws, args)
 
 @inline put_pipeline_definition(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "PutPipelineDefinition", args)
@@ -667,7 +655,6 @@ The maximum number of object names that `QueryObjects` will return in a single c
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/QueryObjects)
 """
-
 @inline query_objects(aws::AWSConfig=default_aws_config(); args...) = query_objects(aws, args)
 
 @inline query_objects(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "QueryObjects", args)
@@ -710,7 +697,6 @@ The keys of the tags to remove.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/RemoveTags)
 """
-
 @inline remove_tags(aws::AWSConfig=default_aws_config(); args...) = remove_tags(aws, args)
 
 @inline remove_tags(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "RemoveTags", args)
@@ -761,7 +747,6 @@ Key-value pairs that define the properties of the ReportTaskProgressInput object
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ReportTaskProgress)
 """
-
 @inline report_task_progress(aws::AWSConfig=default_aws_config(); args...) = report_task_progress(aws, args)
 
 @inline report_task_progress(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "ReportTaskProgress", args)
@@ -808,7 +793,6 @@ The public DNS name of the task runner.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ReportTaskRunnerHeartbeat)
 """
-
 @inline report_task_runner_heartbeat(aws::AWSConfig=default_aws_config(); args...) = report_task_runner_heartbeat(aws, args)
 
 @inline report_task_runner_heartbeat(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "ReportTaskRunnerHeartbeat", args)
@@ -851,7 +835,6 @@ The status to be set on all the objects specified in `objectIds`. For components
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/SetStatus)
 """
-
 @inline set_status(aws::AWSConfig=default_aws_config(); args...) = set_status(aws, args)
 
 @inline set_status(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "SetStatus", args)
@@ -906,7 +889,6 @@ If an error occurred during the task, this value specifies the stack trace assoc
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/SetTaskStatus)
 """
-
 @inline set_task_status(aws::AWSConfig=default_aws_config(); args...) = set_task_status(aws, args)
 
 @inline set_task_status(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "SetTaskStatus", args)
@@ -980,7 +962,6 @@ The parameter values used with the pipeline.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ValidatePipelineDefinition)
 """
-
 @inline validate_pipeline_definition(aws::AWSConfig=default_aws_config(); args...) = validate_pipeline_definition(aws, args)
 
 @inline validate_pipeline_definition(aws::AWSConfig, args) = AWSCore.Services.datapipeline(aws, "ValidatePipelineDefinition", args)

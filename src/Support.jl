@@ -54,7 +54,6 @@ One or more attachments to add to the set. The limit is 3 attachments per set, a
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/AddAttachmentsToSet)
 """
-
 @inline add_attachments_to_set(aws::AWSConfig=default_aws_config(); args...) = add_attachments_to_set(aws, args)
 
 @inline add_attachments_to_set(aws::AWSConfig, args) = AWSCore.Services.support(aws, "AddAttachmentsToSet", args)
@@ -109,7 +108,6 @@ The ID of a set of one or more attachments for the communication to add to the c
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/AddCommunicationToCase)
 """
-
 @inline add_communication_to_case(aws::AWSConfig=default_aws_config(); args...) = add_communication_to_case(aws, args)
 
 @inline add_communication_to_case(aws::AWSConfig, args) = AWSCore.Services.support(aws, "AddCommunicationToCase", args)
@@ -206,7 +204,6 @@ The ID of a set of one or more attachments for the case. Create the set by using
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/CreateCase)
 """
-
 @inline create_case(aws::AWSConfig=default_aws_config(); args...) = create_case(aws, args)
 
 @inline create_case(aws::AWSConfig, args) = AWSCore.Services.support(aws, "CreateCase", args)
@@ -245,7 +242,6 @@ The ID of the attachment to return. Attachment IDs are returned by the [Describe
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeAttachment)
 """
-
 @inline describe_attachment(aws::AWSConfig=default_aws_config(); args...) = describe_attachment(aws, args)
 
 @inline describe_attachment(aws::AWSConfig, args) = AWSCore.Services.support(aws, "DescribeAttachment", args)
@@ -324,7 +320,6 @@ Specifies whether communications should be included in the [DescribeCases](@ref)
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCases)
 """
-
 @inline describe_cases(aws::AWSConfig=default_aws_config(); args...) = describe_cases(aws, args)
 
 @inline describe_cases(aws::AWSConfig, args) = AWSCore.Services.support(aws, "DescribeCases", args)
@@ -383,7 +378,6 @@ The maximum number of results to return before paginating.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCommunications)
 """
-
 @inline describe_communications(aws::AWSConfig=default_aws_config(); args...) = describe_communications(aws, args)
 
 @inline describe_communications(aws::AWSConfig, args) = AWSCore.Services.support(aws, "DescribeCommunications", args)
@@ -428,7 +422,6 @@ The ISO 639-1 code for the language in which AWS provides support. AWS Support c
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeServices)
 """
-
 @inline describe_services(aws::AWSConfig=default_aws_config(); args...) = describe_services(aws, args)
 
 @inline describe_services(aws::AWSConfig, args) = AWSCore.Services.support(aws, "DescribeServices", args)
@@ -467,7 +460,6 @@ The ISO 639-1 code for the language in which AWS provides support. AWS Support c
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeSeverityLevels)
 """
-
 @inline describe_severity_levels(aws::AWSConfig=default_aws_config(); args...) = describe_severity_levels(aws, args)
 
 @inline describe_severity_levels(aws::AWSConfig, args) = AWSCore.Services.support(aws, "DescribeSeverityLevels", args)
@@ -509,7 +501,6 @@ The IDs of the Trusted Advisor checks to get the status of. **Note:** Specifying
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckRefreshStatuses)
 """
-
 @inline describe_trusted_advisor_check_refresh_statuses(aws::AWSConfig=default_aws_config(); args...) = describe_trusted_advisor_check_refresh_statuses(aws, args)
 
 @inline describe_trusted_advisor_check_refresh_statuses(aws::AWSConfig, args) = AWSCore.Services.support(aws, "DescribeTrustedAdvisorCheckRefreshStatuses", args)
@@ -568,7 +559,6 @@ The ISO 639-1 code for the language in which AWS provides support. AWS Support c
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckResult)
 """
-
 @inline describe_trusted_advisor_check_result(aws::AWSConfig=default_aws_config(); args...) = describe_trusted_advisor_check_result(aws, args)
 
 @inline describe_trusted_advisor_check_result(aws::AWSConfig, args) = AWSCore.Services.support(aws, "DescribeTrustedAdvisorCheckResult", args)
@@ -609,7 +599,6 @@ The IDs of the Trusted Advisor checks.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckSummaries)
 """
-
 @inline describe_trusted_advisor_check_summaries(aws::AWSConfig=default_aws_config(); args...) = describe_trusted_advisor_check_summaries(aws, args)
 
 @inline describe_trusted_advisor_check_summaries(aws::AWSConfig, args) = AWSCore.Services.support(aws, "DescribeTrustedAdvisorCheckSummaries", args)
@@ -648,7 +637,6 @@ The ISO 639-1 code for the language in which AWS provides support. AWS Support c
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorChecks)
 """
-
 @inline describe_trusted_advisor_checks(aws::AWSConfig=default_aws_config(); args...) = describe_trusted_advisor_checks(aws, args)
 
 @inline describe_trusted_advisor_checks(aws::AWSConfig, args) = AWSCore.Services.support(aws, "DescribeTrustedAdvisorChecks", args)
@@ -698,7 +686,6 @@ The unique identifier for the Trusted Advisor check to refresh. **Note:** Specif
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/RefreshTrustedAdvisorCheck)
 """
-
 @inline refresh_trusted_advisor_check(aws::AWSConfig=default_aws_config(); args...) = refresh_trusted_advisor_check(aws, args)
 
 @inline refresh_trusted_advisor_check(aws::AWSConfig, args) = AWSCore.Services.support(aws, "RefreshTrustedAdvisorCheck", args)
@@ -737,7 +724,6 @@ The AWS Support case ID requested or returned in the call. The case ID is an alp
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/ResolveCase)
 """
-
 @inline resolve_case(aws::AWSConfig=default_aws_config(); args...) = resolve_case(aws, args)
 
 @inline resolve_case(aws::AWSConfig, args) = AWSCore.Services.support(aws, "ResolveCase", args)

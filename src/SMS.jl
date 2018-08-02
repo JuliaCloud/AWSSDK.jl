@@ -63,7 +63,6 @@ The CreateReplicationJob API is used to create a ReplicationJob to replicate a s
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/CreateReplicationJob)
 """
-
 @inline create_replication_job(aws::AWSConfig=default_aws_config(); args...) = create_replication_job(aws, args)
 
 @inline create_replication_job(aws::AWSConfig, args) = AWSCore.Services.sms(aws, "CreateReplicationJob", args)
@@ -102,7 +101,6 @@ The DeleteReplicationJob API is used to delete a ReplicationJob, resulting in no
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/DeleteReplicationJob)
 """
-
 @inline delete_replication_job(aws::AWSConfig=default_aws_config(); args...) = delete_replication_job(aws, args)
 
 @inline delete_replication_job(aws::AWSConfig, args) = AWSCore.Services.sms(aws, "DeleteReplicationJob", args)
@@ -137,7 +135,6 @@ The DeleteServerCatalog API clears all servers from your server catalog. This me
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/DeleteServerCatalog)
 """
-
 @inline delete_server_catalog(aws::AWSConfig=default_aws_config(); args...) = delete_server_catalog(aws, args)
 
 @inline delete_server_catalog(aws::AWSConfig, args) = AWSCore.Services.sms(aws, "DeleteServerCatalog", args)
@@ -176,7 +173,6 @@ The DisassociateConnector API will disassociate a connector from the Server Migr
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/DisassociateConnector)
 """
-
 @inline disassociate_connector(aws::AWSConfig=default_aws_config(); args...) = disassociate_connector(aws, args)
 
 @inline disassociate_connector(aws::AWSConfig, args) = AWSCore.Services.sms(aws, "DisassociateConnector", args)
@@ -219,7 +215,6 @@ The GetConnectors API returns a list of connectors that are registered with the 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/GetConnectors)
 """
-
 @inline get_connectors(aws::AWSConfig=default_aws_config(); args...) = get_connectors(aws, args)
 
 @inline get_connectors(aws::AWSConfig, args) = AWSCore.Services.sms(aws, "GetConnectors", args)
@@ -266,7 +261,6 @@ The GetReplicationJobs API will return all of your ReplicationJobs and their det
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/GetReplicationJobs)
 """
-
 @inline get_replication_jobs(aws::AWSConfig=default_aws_config(); args...) = get_replication_jobs(aws, args)
 
 @inline get_replication_jobs(aws::AWSConfig, args) = AWSCore.Services.sms(aws, "GetReplicationJobs", args)
@@ -313,7 +307,6 @@ The GetReplicationRuns API will return all ReplicationRuns for a given Replicati
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/GetReplicationRuns)
 """
-
 @inline get_replication_runs(aws::AWSConfig=default_aws_config(); args...) = get_replication_runs(aws, args)
 
 @inline get_replication_runs(aws::AWSConfig, args) = AWSCore.Services.sms(aws, "GetReplicationRuns", args)
@@ -356,7 +349,6 @@ The GetServers API returns a list of all servers in your server catalog. For thi
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/GetServers)
 """
-
 @inline get_servers(aws::AWSConfig=default_aws_config(); args...) = get_servers(aws, args)
 
 @inline get_servers(aws::AWSConfig, args) = AWSCore.Services.sms(aws, "GetServers", args)
@@ -391,7 +383,6 @@ The ImportServerCatalog API is used to gather the complete list of on-premises s
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/ImportServerCatalog)
 """
-
 @inline import_server_catalog(aws::AWSConfig=default_aws_config(); args...) = import_server_catalog(aws, args)
 
 @inline import_server_catalog(aws::AWSConfig, args) = AWSCore.Services.sms(aws, "ImportServerCatalog", args)
@@ -434,7 +425,6 @@ The StartOnDemandReplicationRun API is used to start a ReplicationRun on demand 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/StartOnDemandReplicationRun)
 """
-
 @inline start_on_demand_replication_run(aws::AWSConfig=default_aws_config(); args...) = start_on_demand_replication_run(aws, args)
 
 @inline start_on_demand_replication_run(aws::AWSConfig, args) = AWSCore.Services.sms(aws, "StartOnDemandReplicationRun", args)
@@ -493,7 +483,6 @@ The UpdateReplicationJob API is used to change the settings of your existing Rep
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24/UpdateReplicationJob)
 """
-
 @inline update_replication_job(aws::AWSConfig=default_aws_config(); args...) = update_replication_job(aws, args)
 
 @inline update_replication_job(aws::AWSConfig, args) = AWSCore.Services.sms(aws, "UpdateReplicationJob", args)

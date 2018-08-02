@@ -2,7 +2,7 @@
 # CloudFront.jl
 #
 # This file is generated from:
-# https://github.com/aws/aws-sdk-js/blob/master/apis/cloudfront-2017-03-25.normal.json
+# https://github.com/aws/aws-sdk-js/blob/master/apis/cloudfront-2017-10-30.normal.json
 #==============================================================================#
 
 __precompile__()
@@ -18,8 +18,8 @@ using AWSCore
     create_cloud_front_origin_access_identity([::AWSConfig]; CloudFrontOriginAccessIdentityConfig=)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "POST", "/2017-03-25/origin-access-identity/cloudfront", arguments::Dict)
-    cloudfront([::AWSConfig], "POST", "/2017-03-25/origin-access-identity/cloudfront", CloudFrontOriginAccessIdentityConfig=)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/origin-access-identity/cloudfront", arguments::Dict)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/origin-access-identity/cloudfront", CloudFrontOriginAccessIdentityConfig=)
 
 # CreateCloudFrontOriginAccessIdentity Operation
 
@@ -46,12 +46,11 @@ The current configuration information for the identity.
 
 `CloudFrontOriginAccessIdentityAlreadyExists`, `MissingBody`, `TooManyCloudFrontOriginAccessIdentities`, `InvalidArgument` or `InconsistentQuantities`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/CreateCloudFrontOriginAccessIdentity)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/CreateCloudFrontOriginAccessIdentity)
 """
-
 @inline create_cloud_front_origin_access_identity(aws::AWSConfig=default_aws_config(); args...) = create_cloud_front_origin_access_identity(aws, args)
 
-@inline create_cloud_front_origin_access_identity(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-03-25/origin-access-identity/cloudfront", args)
+@inline create_cloud_front_origin_access_identity(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-10-30/origin-access-identity/cloudfront", args)
 
 @inline create_cloud_front_origin_access_identity(args) = create_cloud_front_origin_access_identity(default_aws_config(), args)
 
@@ -62,8 +61,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     create_distribution([::AWSConfig]; DistributionConfig=)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "POST", "/2017-03-25/distribution", arguments::Dict)
-    cloudfront([::AWSConfig], "POST", "/2017-03-25/distribution", DistributionConfig=)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/distribution", arguments::Dict)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/distribution", DistributionConfig=)
 
 # CreateDistribution Operation
 
@@ -150,10 +149,11 @@ The distribution's configuration information.
             "LambdaFunctionAssociations" =>  [
                 "Quantity" => <required> ::Int,
                 "Items" =>  [[
-                    "LambdaFunctionARN" =>  ::String,
-                    "EventType" =>  "viewer-request", "viewer-response", "origin-request" or "origin-response"
+                    "LambdaFunctionARN" => <required> ::String,
+                    "EventType" => <required> "viewer-request", "viewer-response", "origin-request" or "origin-response"
                 ], ...]
-            ]
+            ],
+            "FieldLevelEncryptionId" =>  ::String
         ],
         "CacheBehaviors" =>  [
             "Quantity" => <required> ::Int,
@@ -200,10 +200,11 @@ The distribution's configuration information.
                 "LambdaFunctionAssociations" =>  [
                     "Quantity" => <required> ::Int,
                     "Items" =>  [[
-                        "LambdaFunctionARN" =>  ::String,
-                        "EventType" =>  "viewer-request", "viewer-response", "origin-request" or "origin-response"
+                        "LambdaFunctionARN" => <required> ::String,
+                        "EventType" => <required> "viewer-request", "viewer-response", "origin-request" or "origin-response"
                     ], ...]
-                ]
+                ],
+                "FieldLevelEncryptionId" =>  ::String
             ], ...]
         ],
         "CustomErrorResponses" =>  [
@@ -252,14 +253,13 @@ The distribution's configuration information.
 
 # Exceptions
 
-`CNAMEAlreadyExists`, `DistributionAlreadyExists`, `InvalidOrigin`, `InvalidOriginAccessIdentity`, `AccessDenied`, `TooManyTrustedSigners`, `TrustedSignerDoesNotExist`, `InvalidViewerCertificate`, `InvalidMinimumProtocolVersion`, `MissingBody`, `TooManyDistributionCNAMEs`, `TooManyDistributions`, `InvalidDefaultRootObject`, `InvalidRelativePath`, `InvalidErrorCode`, `InvalidResponseCode`, `InvalidArgument`, `InvalidRequiredProtocol`, `NoSuchOrigin`, `TooManyOrigins`, `TooManyCacheBehaviors`, `TooManyCookieNamesInWhiteList`, `InvalidForwardCookies`, `TooManyHeadersInForwardedValues`, `InvalidHeadersForS3Origin`, `InconsistentQuantities`, `TooManyCertificates`, `InvalidLocationCode`, `InvalidGeoRestrictionParameter`, `InvalidProtocolSettings`, `InvalidTTLOrder`, `InvalidWebACLId`, `TooManyOriginCustomHeaders`, `TooManyQueryStringParameters`, `InvalidQueryStringParameters`, `TooManyDistributionsWithLambdaAssociations`, `TooManyLambdaFunctionAssociations`, `InvalidLambdaFunctionAssociation`, `InvalidOriginReadTimeout` or `InvalidOriginKeepaliveTimeout`.
+`CNAMEAlreadyExists`, `DistributionAlreadyExists`, `InvalidOrigin`, `InvalidOriginAccessIdentity`, `AccessDenied`, `TooManyTrustedSigners`, `TrustedSignerDoesNotExist`, `InvalidViewerCertificate`, `InvalidMinimumProtocolVersion`, `MissingBody`, `TooManyDistributionCNAMEs`, `TooManyDistributions`, `InvalidDefaultRootObject`, `InvalidRelativePath`, `InvalidErrorCode`, `InvalidResponseCode`, `InvalidArgument`, `InvalidRequiredProtocol`, `NoSuchOrigin`, `TooManyOrigins`, `TooManyCacheBehaviors`, `TooManyCookieNamesInWhiteList`, `InvalidForwardCookies`, `TooManyHeadersInForwardedValues`, `InvalidHeadersForS3Origin`, `InconsistentQuantities`, `TooManyCertificates`, `InvalidLocationCode`, `InvalidGeoRestrictionParameter`, `InvalidProtocolSettings`, `InvalidTTLOrder`, `InvalidWebACLId`, `TooManyOriginCustomHeaders`, `TooManyQueryStringParameters`, `InvalidQueryStringParameters`, `TooManyDistributionsWithLambdaAssociations`, `TooManyLambdaFunctionAssociations`, `InvalidLambdaFunctionAssociation`, `InvalidOriginReadTimeout`, `InvalidOriginKeepaliveTimeout`, `NoSuchFieldLevelEncryptionConfig`, `IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior` or `TooManyDistributionsAssociatedToFieldLevelEncryptionConfig`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/CreateDistribution)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/CreateDistribution)
 """
-
 @inline create_distribution(aws::AWSConfig=default_aws_config(); args...) = create_distribution(aws, args)
 
-@inline create_distribution(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-03-25/distribution", args)
+@inline create_distribution(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-10-30/distribution", args)
 
 @inline create_distribution(args) = create_distribution(default_aws_config(), args)
 
@@ -270,8 +270,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     create_distribution_with_tags([::AWSConfig]; DistributionConfigWithTags=)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "POST", "/2017-03-25/distribution?WithTags", arguments::Dict)
-    cloudfront([::AWSConfig], "POST", "/2017-03-25/distribution?WithTags", DistributionConfigWithTags=)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/distribution?WithTags", arguments::Dict)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/distribution?WithTags", DistributionConfigWithTags=)
 
 # CreateDistributionWithTags Operation
 
@@ -359,10 +359,11 @@ The distribution's configuration information.
                 "LambdaFunctionAssociations" =>  [
                     "Quantity" => <required> ::Int,
                     "Items" =>  [[
-                        "LambdaFunctionARN" =>  ::String,
-                        "EventType" =>  "viewer-request", "viewer-response", "origin-request" or "origin-response"
+                        "LambdaFunctionARN" => <required> ::String,
+                        "EventType" => <required> "viewer-request", "viewer-response", "origin-request" or "origin-response"
                     ], ...]
-                ]
+                ],
+                "FieldLevelEncryptionId" =>  ::String
             ],
             "CacheBehaviors" =>  [
                 "Quantity" => <required> ::Int,
@@ -409,10 +410,11 @@ The distribution's configuration information.
                     "LambdaFunctionAssociations" =>  [
                         "Quantity" => <required> ::Int,
                         "Items" =>  [[
-                            "LambdaFunctionARN" =>  ::String,
-                            "EventType" =>  "viewer-request", "viewer-response", "origin-request" or "origin-response"
+                            "LambdaFunctionARN" => <required> ::String,
+                            "EventType" => <required> "viewer-request", "viewer-response", "origin-request" or "origin-response"
                         ], ...]
-                    ]
+                    ],
+                    "FieldLevelEncryptionId" =>  ::String
                 ], ...]
             ],
             "CustomErrorResponses" =>  [
@@ -466,16 +468,134 @@ The distribution's configuration information.
 
 # Exceptions
 
-`CNAMEAlreadyExists`, `DistributionAlreadyExists`, `InvalidOrigin`, `InvalidOriginAccessIdentity`, `AccessDenied`, `TooManyTrustedSigners`, `TrustedSignerDoesNotExist`, `InvalidViewerCertificate`, `InvalidMinimumProtocolVersion`, `MissingBody`, `TooManyDistributionCNAMEs`, `TooManyDistributions`, `InvalidDefaultRootObject`, `InvalidRelativePath`, `InvalidErrorCode`, `InvalidResponseCode`, `InvalidArgument`, `InvalidRequiredProtocol`, `NoSuchOrigin`, `TooManyOrigins`, `TooManyCacheBehaviors`, `TooManyCookieNamesInWhiteList`, `InvalidForwardCookies`, `TooManyHeadersInForwardedValues`, `InvalidHeadersForS3Origin`, `InconsistentQuantities`, `TooManyCertificates`, `InvalidLocationCode`, `InvalidGeoRestrictionParameter`, `InvalidProtocolSettings`, `InvalidTTLOrder`, `InvalidWebACLId`, `TooManyOriginCustomHeaders`, `InvalidTagging`, `TooManyQueryStringParameters`, `InvalidQueryStringParameters`, `TooManyDistributionsWithLambdaAssociations`, `TooManyLambdaFunctionAssociations`, `InvalidLambdaFunctionAssociation`, `InvalidOriginReadTimeout` or `InvalidOriginKeepaliveTimeout`.
+`CNAMEAlreadyExists`, `DistributionAlreadyExists`, `InvalidOrigin`, `InvalidOriginAccessIdentity`, `AccessDenied`, `TooManyTrustedSigners`, `TrustedSignerDoesNotExist`, `InvalidViewerCertificate`, `InvalidMinimumProtocolVersion`, `MissingBody`, `TooManyDistributionCNAMEs`, `TooManyDistributions`, `InvalidDefaultRootObject`, `InvalidRelativePath`, `InvalidErrorCode`, `InvalidResponseCode`, `InvalidArgument`, `InvalidRequiredProtocol`, `NoSuchOrigin`, `TooManyOrigins`, `TooManyCacheBehaviors`, `TooManyCookieNamesInWhiteList`, `InvalidForwardCookies`, `TooManyHeadersInForwardedValues`, `InvalidHeadersForS3Origin`, `InconsistentQuantities`, `TooManyCertificates`, `InvalidLocationCode`, `InvalidGeoRestrictionParameter`, `InvalidProtocolSettings`, `InvalidTTLOrder`, `InvalidWebACLId`, `TooManyOriginCustomHeaders`, `InvalidTagging`, `TooManyQueryStringParameters`, `InvalidQueryStringParameters`, `TooManyDistributionsWithLambdaAssociations`, `TooManyLambdaFunctionAssociations`, `InvalidLambdaFunctionAssociation`, `InvalidOriginReadTimeout`, `InvalidOriginKeepaliveTimeout`, `NoSuchFieldLevelEncryptionConfig`, `IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior` or `TooManyDistributionsAssociatedToFieldLevelEncryptionConfig`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/CreateDistributionWithTags)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/CreateDistributionWithTags)
 """
-
 @inline create_distribution_with_tags(aws::AWSConfig=default_aws_config(); args...) = create_distribution_with_tags(aws, args)
 
-@inline create_distribution_with_tags(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-03-25/distribution?WithTags", args)
+@inline create_distribution_with_tags(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-10-30/distribution?WithTags", args)
 
 @inline create_distribution_with_tags(args) = create_distribution_with_tags(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFront.create_field_level_encryption_config
+    create_field_level_encryption_config([::AWSConfig], arguments::Dict)
+    create_field_level_encryption_config([::AWSConfig]; FieldLevelEncryptionConfig=)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/field-level-encryption", arguments::Dict)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/field-level-encryption", FieldLevelEncryptionConfig=)
+
+# CreateFieldLevelEncryptionConfig Operation
+
+Create a new field-level encryption configuration.
+
+# Arguments
+
+## `FieldLevelEncryptionConfig = [ ... ]` -- *Required*
+The request to create a new field-level encryption configuration.
+```
+ FieldLevelEncryptionConfig = [
+        "CallerReference" => <required> ::String,
+        "Comment" =>  ::String,
+        "QueryArgProfileConfig" =>  [
+            "ForwardWhenQueryArgProfileIsUnknown" => <required> ::Bool,
+            "QueryArgProfiles" =>  [
+                "Quantity" => <required> ::Int,
+                "Items" =>  [[
+                    "QueryArg" => <required> ::String,
+                    "ProfileId" => <required> ::String
+                ], ...]
+            ]
+        ],
+        "ContentTypeProfileConfig" =>  [
+            "ForwardWhenContentTypeIsUnknown" => <required> ::Bool,
+            "ContentTypeProfiles" =>  [
+                "Quantity" => <required> ::Int,
+                "Items" =>  [[
+                    "Format" => <required> "URLEncoded",
+                    "ProfileId" =>  ::String,
+                    "ContentType" => <required> ::String
+                ], ...]
+            ]
+        ]
+    ]
+```
+
+
+
+# Returns
+
+`CreateFieldLevelEncryptionConfigResult`
+
+# Exceptions
+
+`InconsistentQuantities`, `InvalidArgument`, `NoSuchFieldLevelEncryptionProfile`, `FieldLevelEncryptionConfigAlreadyExists`, `TooManyFieldLevelEncryptionConfigs`, `TooManyFieldLevelEncryptionQueryArgProfiles`, `TooManyFieldLevelEncryptionContentTypeProfiles` or `QueryArgProfileEmpty`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/CreateFieldLevelEncryptionConfig)
+"""
+@inline create_field_level_encryption_config(aws::AWSConfig=default_aws_config(); args...) = create_field_level_encryption_config(aws, args)
+
+@inline create_field_level_encryption_config(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-10-30/field-level-encryption", args)
+
+@inline create_field_level_encryption_config(args) = create_field_level_encryption_config(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFront.create_field_level_encryption_profile
+    create_field_level_encryption_profile([::AWSConfig], arguments::Dict)
+    create_field_level_encryption_profile([::AWSConfig]; FieldLevelEncryptionProfileConfig=)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/field-level-encryption-profile", arguments::Dict)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/field-level-encryption-profile", FieldLevelEncryptionProfileConfig=)
+
+# CreateFieldLevelEncryptionProfile Operation
+
+Create a field-level encryption profile.
+
+# Arguments
+
+## `FieldLevelEncryptionProfileConfig = [ ... ]` -- *Required*
+The request to create a field-level encryption profile.
+```
+ FieldLevelEncryptionProfileConfig = [
+        "Name" => <required> ::String,
+        "CallerReference" => <required> ::String,
+        "Comment" =>  ::String,
+        "EncryptionEntities" => <required> [
+            "Quantity" => <required> ::Int,
+            "Items" =>  [[
+                "PublicKeyId" => <required> ::String,
+                "ProviderId" => <required> ::String,
+                "FieldPatterns" => <required> [
+                    "Quantity" => <required> ::Int,
+                    "Items" =>  [::String, ...]
+                ]
+            ], ...]
+        ]
+    ]
+```
+
+
+
+# Returns
+
+`CreateFieldLevelEncryptionProfileResult`
+
+# Exceptions
+
+`InconsistentQuantities`, `InvalidArgument`, `NoSuchPublicKey`, `FieldLevelEncryptionProfileAlreadyExists`, `FieldLevelEncryptionProfileSizeExceeded`, `TooManyFieldLevelEncryptionProfiles`, `TooManyFieldLevelEncryptionEncryptionEntities` or `TooManyFieldLevelEncryptionFieldPatterns`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/CreateFieldLevelEncryptionProfile)
+"""
+@inline create_field_level_encryption_profile(aws::AWSConfig=default_aws_config(); args...) = create_field_level_encryption_profile(aws, args)
+
+@inline create_field_level_encryption_profile(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-10-30/field-level-encryption-profile", args)
+
+@inline create_field_level_encryption_profile(args) = create_field_level_encryption_profile(default_aws_config(), args)
 
 
 """
@@ -484,8 +604,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     create_invalidation([::AWSConfig]; DistributionId=, InvalidationBatch=)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "POST", "/2017-03-25/distribution/{DistributionId}/invalidation", arguments::Dict)
-    cloudfront([::AWSConfig], "POST", "/2017-03-25/distribution/{DistributionId}/invalidation", DistributionId=, InvalidationBatch=)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/distribution/{DistributionId}/invalidation", arguments::Dict)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/distribution/{DistributionId}/invalidation", DistributionId=, InvalidationBatch=)
 
 # CreateInvalidation Operation
 
@@ -519,14 +639,58 @@ The batch information for the invalidation.
 
 `AccessDenied`, `MissingBody`, `InvalidArgument`, `NoSuchDistribution`, `BatchTooLarge`, `TooManyInvalidationsInProgress` or `InconsistentQuantities`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/CreateInvalidation)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/CreateInvalidation)
 """
-
 @inline create_invalidation(aws::AWSConfig=default_aws_config(); args...) = create_invalidation(aws, args)
 
-@inline create_invalidation(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-03-25/distribution/{DistributionId}/invalidation", args)
+@inline create_invalidation(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-10-30/distribution/{DistributionId}/invalidation", args)
 
 @inline create_invalidation(args) = create_invalidation(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFront.create_public_key
+    create_public_key([::AWSConfig], arguments::Dict)
+    create_public_key([::AWSConfig]; PublicKeyConfig=)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/public-key", arguments::Dict)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/public-key", PublicKeyConfig=)
+
+# CreatePublicKey Operation
+
+Add a new public key to CloudFront to use, for example, for field-level encryption. You can add a maximum of 10 public keys with one AWS account.
+
+# Arguments
+
+## `PublicKeyConfig = [ ... ]` -- *Required*
+The request to add a public key to CloudFront.
+```
+ PublicKeyConfig = [
+        "CallerReference" => <required> ::String,
+        "Name" => <required> ::String,
+        "EncodedKey" => <required> ::String,
+        "Comment" =>  ::String
+    ]
+```
+
+
+
+# Returns
+
+`CreatePublicKeyResult`
+
+# Exceptions
+
+`PublicKeyAlreadyExists`, `InvalidArgument` or `TooManyPublicKeys`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/CreatePublicKey)
+"""
+@inline create_public_key(aws::AWSConfig=default_aws_config(); args...) = create_public_key(aws, args)
+
+@inline create_public_key(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-10-30/public-key", args)
+
+@inline create_public_key(args) = create_public_key(default_aws_config(), args)
 
 
 """
@@ -535,8 +699,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     create_streaming_distribution([::AWSConfig]; StreamingDistributionConfig=)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "POST", "/2017-03-25/streaming-distribution", arguments::Dict)
-    cloudfront([::AWSConfig], "POST", "/2017-03-25/streaming-distribution", StreamingDistributionConfig=)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/streaming-distribution", arguments::Dict)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/streaming-distribution", StreamingDistributionConfig=)
 
 # CreateStreamingDistribution Operation
 
@@ -592,12 +756,11 @@ The streaming distribution's configuration information.
 
 `CNAMEAlreadyExists`, `StreamingDistributionAlreadyExists`, `InvalidOrigin`, `InvalidOriginAccessIdentity`, `AccessDenied`, `TooManyTrustedSigners`, `TrustedSignerDoesNotExist`, `MissingBody`, `TooManyStreamingDistributionCNAMEs`, `TooManyStreamingDistributions`, `InvalidArgument` or `InconsistentQuantities`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/CreateStreamingDistribution)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/CreateStreamingDistribution)
 """
-
 @inline create_streaming_distribution(aws::AWSConfig=default_aws_config(); args...) = create_streaming_distribution(aws, args)
 
-@inline create_streaming_distribution(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-03-25/streaming-distribution", args)
+@inline create_streaming_distribution(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-10-30/streaming-distribution", args)
 
 @inline create_streaming_distribution(args) = create_streaming_distribution(default_aws_config(), args)
 
@@ -608,8 +771,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     create_streaming_distribution_with_tags([::AWSConfig]; StreamingDistributionConfigWithTags=)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "POST", "/2017-03-25/streaming-distribution?WithTags", arguments::Dict)
-    cloudfront([::AWSConfig], "POST", "/2017-03-25/streaming-distribution?WithTags", StreamingDistributionConfigWithTags=)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/streaming-distribution?WithTags", arguments::Dict)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/streaming-distribution?WithTags", StreamingDistributionConfigWithTags=)
 
 # CreateStreamingDistributionWithTags Operation
 
@@ -662,12 +825,11 @@ The streaming distribution's configuration information.
 
 `CNAMEAlreadyExists`, `StreamingDistributionAlreadyExists`, `InvalidOrigin`, `InvalidOriginAccessIdentity`, `AccessDenied`, `TooManyTrustedSigners`, `TrustedSignerDoesNotExist`, `MissingBody`, `TooManyStreamingDistributionCNAMEs`, `TooManyStreamingDistributions`, `InvalidArgument`, `InconsistentQuantities` or `InvalidTagging`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/CreateStreamingDistributionWithTags)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/CreateStreamingDistributionWithTags)
 """
-
 @inline create_streaming_distribution_with_tags(aws::AWSConfig=default_aws_config(); args...) = create_streaming_distribution_with_tags(aws, args)
 
-@inline create_streaming_distribution_with_tags(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-03-25/streaming-distribution?WithTags", args)
+@inline create_streaming_distribution_with_tags(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-10-30/streaming-distribution?WithTags", args)
 
 @inline create_streaming_distribution_with_tags(args) = create_streaming_distribution_with_tags(default_aws_config(), args)
 
@@ -678,8 +840,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     delete_cloud_front_origin_access_identity([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "DELETE", "/2017-03-25/origin-access-identity/cloudfront/{Id}", arguments::Dict)
-    cloudfront([::AWSConfig], "DELETE", "/2017-03-25/origin-access-identity/cloudfront/{Id}", Id=, <keyword arguments>)
+    cloudfront([::AWSConfig], "DELETE", "/2017-10-30/origin-access-identity/cloudfront/{Id}", arguments::Dict)
+    cloudfront([::AWSConfig], "DELETE", "/2017-10-30/origin-access-identity/cloudfront/{Id}", Id=, <keyword arguments>)
 
 # DeleteCloudFrontOriginAccessIdentity Operation
 
@@ -701,12 +863,11 @@ The value of the `ETag` header you received from a previous `GET` or `PUT` reque
 
 `AccessDenied`, `InvalidIfMatchVersion`, `NoSuchCloudFrontOriginAccessIdentity`, `PreconditionFailed` or `CloudFrontOriginAccessIdentityInUse`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/DeleteCloudFrontOriginAccessIdentity)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/DeleteCloudFrontOriginAccessIdentity)
 """
-
 @inline delete_cloud_front_origin_access_identity(aws::AWSConfig=default_aws_config(); args...) = delete_cloud_front_origin_access_identity(aws, args)
 
-@inline delete_cloud_front_origin_access_identity(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "DELETE", "/2017-03-25/origin-access-identity/cloudfront/{Id}", args)
+@inline delete_cloud_front_origin_access_identity(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "DELETE", "/2017-10-30/origin-access-identity/cloudfront/{Id}", args)
 
 @inline delete_cloud_front_origin_access_identity(args) = delete_cloud_front_origin_access_identity(default_aws_config(), args)
 
@@ -717,8 +878,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     delete_distribution([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "DELETE", "/2017-03-25/distribution/{Id}", arguments::Dict)
-    cloudfront([::AWSConfig], "DELETE", "/2017-03-25/distribution/{Id}", Id=, <keyword arguments>)
+    cloudfront([::AWSConfig], "DELETE", "/2017-10-30/distribution/{Id}", arguments::Dict)
+    cloudfront([::AWSConfig], "DELETE", "/2017-10-30/distribution/{Id}", Id=, <keyword arguments>)
 
 # DeleteDistribution Operation
 
@@ -740,49 +901,127 @@ The value of the `ETag` header that you received when you disabled the distribut
 
 `AccessDenied`, `DistributionNotDisabled`, `InvalidIfMatchVersion`, `NoSuchDistribution` or `PreconditionFailed`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/DeleteDistribution)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/DeleteDistribution)
 """
-
 @inline delete_distribution(aws::AWSConfig=default_aws_config(); args...) = delete_distribution(aws, args)
 
-@inline delete_distribution(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "DELETE", "/2017-03-25/distribution/{Id}", args)
+@inline delete_distribution(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "DELETE", "/2017-10-30/distribution/{Id}", args)
 
 @inline delete_distribution(args) = delete_distribution(default_aws_config(), args)
 
 
 """
-    using AWSSDK.CloudFront.delete_service_linked_role
-    delete_service_linked_role([::AWSConfig], arguments::Dict)
-    delete_service_linked_role([::AWSConfig]; RoleName=)
+    using AWSSDK.CloudFront.delete_field_level_encryption_config
+    delete_field_level_encryption_config([::AWSConfig], arguments::Dict)
+    delete_field_level_encryption_config([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "DELETE", "/2017-03-25/service-linked-role/{RoleName}", arguments::Dict)
-    cloudfront([::AWSConfig], "DELETE", "/2017-03-25/service-linked-role/{RoleName}", RoleName=)
+    cloudfront([::AWSConfig], "DELETE", "/2017-10-30/field-level-encryption/{Id}", arguments::Dict)
+    cloudfront([::AWSConfig], "DELETE", "/2017-10-30/field-level-encryption/{Id}", Id=, <keyword arguments>)
 
-# DeleteServiceLinkedRole Operation
+# DeleteFieldLevelEncryptionConfig Operation
 
-
+Remove a field-level encryption configuration.
 
 # Arguments
 
-## `RoleName = ::String` -- *Required*
+## `Id = ::String` -- *Required*
+The ID of the configuration you want to delete from CloudFront.
 
+
+## `*header:* If-Match = ::String`
+The value of the `ETag` header that you received when retrieving the configuration identity to delete. For example: `E2QWRUHAPOMQZL`.
 
 
 
 
 # Exceptions
 
-`InvalidArgument`, `AccessDenied`, `ResourceInUse` or `NoSuchResource`.
+`AccessDenied`, `InvalidIfMatchVersion`, `NoSuchFieldLevelEncryptionConfig`, `PreconditionFailed` or `FieldLevelEncryptionConfigInUse`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/DeleteServiceLinkedRole)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/DeleteFieldLevelEncryptionConfig)
 """
+@inline delete_field_level_encryption_config(aws::AWSConfig=default_aws_config(); args...) = delete_field_level_encryption_config(aws, args)
 
-@inline delete_service_linked_role(aws::AWSConfig=default_aws_config(); args...) = delete_service_linked_role(aws, args)
+@inline delete_field_level_encryption_config(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "DELETE", "/2017-10-30/field-level-encryption/{Id}", args)
 
-@inline delete_service_linked_role(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "DELETE", "/2017-03-25/service-linked-role/{RoleName}", args)
+@inline delete_field_level_encryption_config(args) = delete_field_level_encryption_config(default_aws_config(), args)
 
-@inline delete_service_linked_role(args) = delete_service_linked_role(default_aws_config(), args)
+
+"""
+    using AWSSDK.CloudFront.delete_field_level_encryption_profile
+    delete_field_level_encryption_profile([::AWSConfig], arguments::Dict)
+    delete_field_level_encryption_profile([::AWSConfig]; Id=, <keyword arguments>)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "DELETE", "/2017-10-30/field-level-encryption-profile/{Id}", arguments::Dict)
+    cloudfront([::AWSConfig], "DELETE", "/2017-10-30/field-level-encryption-profile/{Id}", Id=, <keyword arguments>)
+
+# DeleteFieldLevelEncryptionProfile Operation
+
+Remove a field-level encryption profile.
+
+# Arguments
+
+## `Id = ::String` -- *Required*
+Request the ID of the profile you want to delete from CloudFront.
+
+
+## `*header:* If-Match = ::String`
+The value of the `ETag` header that you received when retrieving the profile to delete. For example: `E2QWRUHAPOMQZL`.
+
+
+
+
+# Exceptions
+
+`AccessDenied`, `InvalidIfMatchVersion`, `NoSuchFieldLevelEncryptionProfile`, `PreconditionFailed` or `FieldLevelEncryptionProfileInUse`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/DeleteFieldLevelEncryptionProfile)
+"""
+@inline delete_field_level_encryption_profile(aws::AWSConfig=default_aws_config(); args...) = delete_field_level_encryption_profile(aws, args)
+
+@inline delete_field_level_encryption_profile(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "DELETE", "/2017-10-30/field-level-encryption-profile/{Id}", args)
+
+@inline delete_field_level_encryption_profile(args) = delete_field_level_encryption_profile(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFront.delete_public_key
+    delete_public_key([::AWSConfig], arguments::Dict)
+    delete_public_key([::AWSConfig]; Id=, <keyword arguments>)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "DELETE", "/2017-10-30/public-key/{Id}", arguments::Dict)
+    cloudfront([::AWSConfig], "DELETE", "/2017-10-30/public-key/{Id}", Id=, <keyword arguments>)
+
+# DeletePublicKey Operation
+
+Remove a public key you previously added to CloudFront.
+
+# Arguments
+
+## `Id = ::String` -- *Required*
+The ID of the public key you want to remove from CloudFront.
+
+
+## `*header:* If-Match = ::String`
+The value of the `ETag` header that you received when retrieving the public key identity to delete. For example: `E2QWRUHAPOMQZL`.
+
+
+
+
+# Exceptions
+
+`AccessDenied`, `PublicKeyInUse`, `InvalidIfMatchVersion`, `NoSuchPublicKey` or `PreconditionFailed`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/DeletePublicKey)
+"""
+@inline delete_public_key(aws::AWSConfig=default_aws_config(); args...) = delete_public_key(aws, args)
+
+@inline delete_public_key(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "DELETE", "/2017-10-30/public-key/{Id}", args)
+
+@inline delete_public_key(args) = delete_public_key(default_aws_config(), args)
 
 
 """
@@ -791,8 +1030,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     delete_streaming_distribution([::AWSConfig]; Id=, <keyword arguments>)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "DELETE", "/2017-03-25/streaming-distribution/{Id}", arguments::Dict)
-    cloudfront([::AWSConfig], "DELETE", "/2017-03-25/streaming-distribution/{Id}", Id=, <keyword arguments>)
+    cloudfront([::AWSConfig], "DELETE", "/2017-10-30/streaming-distribution/{Id}", arguments::Dict)
+    cloudfront([::AWSConfig], "DELETE", "/2017-10-30/streaming-distribution/{Id}", Id=, <keyword arguments>)
 
 # DeleteStreamingDistribution Operation
 
@@ -834,12 +1073,11 @@ The value of the `ETag` header that you received when you disabled the streaming
 
 `AccessDenied`, `StreamingDistributionNotDisabled`, `InvalidIfMatchVersion`, `NoSuchStreamingDistribution` or `PreconditionFailed`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/DeleteStreamingDistribution)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/DeleteStreamingDistribution)
 """
-
 @inline delete_streaming_distribution(aws::AWSConfig=default_aws_config(); args...) = delete_streaming_distribution(aws, args)
 
-@inline delete_streaming_distribution(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "DELETE", "/2017-03-25/streaming-distribution/{Id}", args)
+@inline delete_streaming_distribution(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "DELETE", "/2017-10-30/streaming-distribution/{Id}", args)
 
 @inline delete_streaming_distribution(args) = delete_streaming_distribution(default_aws_config(), args)
 
@@ -850,8 +1088,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     get_cloud_front_origin_access_identity([::AWSConfig]; Id=)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/origin-access-identity/cloudfront/{Id}", arguments::Dict)
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/origin-access-identity/cloudfront/{Id}", Id=)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/origin-access-identity/cloudfront/{Id}", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/origin-access-identity/cloudfront/{Id}", Id=)
 
 # GetCloudFrontOriginAccessIdentity Operation
 
@@ -873,12 +1111,11 @@ The identity's ID.
 
 `NoSuchCloudFrontOriginAccessIdentity` or `AccessDenied`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/GetCloudFrontOriginAccessIdentity)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/GetCloudFrontOriginAccessIdentity)
 """
-
 @inline get_cloud_front_origin_access_identity(aws::AWSConfig=default_aws_config(); args...) = get_cloud_front_origin_access_identity(aws, args)
 
-@inline get_cloud_front_origin_access_identity(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-03-25/origin-access-identity/cloudfront/{Id}", args)
+@inline get_cloud_front_origin_access_identity(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/origin-access-identity/cloudfront/{Id}", args)
 
 @inline get_cloud_front_origin_access_identity(args) = get_cloud_front_origin_access_identity(default_aws_config(), args)
 
@@ -889,8 +1126,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     get_cloud_front_origin_access_identity_config([::AWSConfig]; Id=)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/origin-access-identity/cloudfront/{Id}/config", arguments::Dict)
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/origin-access-identity/cloudfront/{Id}/config", Id=)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/origin-access-identity/cloudfront/{Id}/config", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/origin-access-identity/cloudfront/{Id}/config", Id=)
 
 # GetCloudFrontOriginAccessIdentityConfig Operation
 
@@ -912,12 +1149,11 @@ The identity's ID.
 
 `NoSuchCloudFrontOriginAccessIdentity` or `AccessDenied`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/GetCloudFrontOriginAccessIdentityConfig)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/GetCloudFrontOriginAccessIdentityConfig)
 """
-
 @inline get_cloud_front_origin_access_identity_config(aws::AWSConfig=default_aws_config(); args...) = get_cloud_front_origin_access_identity_config(aws, args)
 
-@inline get_cloud_front_origin_access_identity_config(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-03-25/origin-access-identity/cloudfront/{Id}/config", args)
+@inline get_cloud_front_origin_access_identity_config(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/origin-access-identity/cloudfront/{Id}/config", args)
 
 @inline get_cloud_front_origin_access_identity_config(args) = get_cloud_front_origin_access_identity_config(default_aws_config(), args)
 
@@ -928,8 +1164,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     get_distribution([::AWSConfig]; Id=)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/distribution/{Id}", arguments::Dict)
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/distribution/{Id}", Id=)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/distribution/{Id}", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/distribution/{Id}", Id=)
 
 # GetDistribution Operation
 
@@ -951,12 +1187,11 @@ The distribution's ID.
 
 `NoSuchDistribution` or `AccessDenied`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/GetDistribution)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/GetDistribution)
 """
-
 @inline get_distribution(aws::AWSConfig=default_aws_config(); args...) = get_distribution(aws, args)
 
-@inline get_distribution(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-03-25/distribution/{Id}", args)
+@inline get_distribution(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/distribution/{Id}", args)
 
 @inline get_distribution(args) = get_distribution(default_aws_config(), args)
 
@@ -967,8 +1202,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     get_distribution_config([::AWSConfig]; Id=)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/distribution/{Id}/config", arguments::Dict)
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/distribution/{Id}/config", Id=)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/distribution/{Id}/config", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/distribution/{Id}/config", Id=)
 
 # GetDistributionConfig Operation
 
@@ -990,14 +1225,165 @@ The distribution's ID.
 
 `NoSuchDistribution` or `AccessDenied`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/GetDistributionConfig)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/GetDistributionConfig)
 """
-
 @inline get_distribution_config(aws::AWSConfig=default_aws_config(); args...) = get_distribution_config(aws, args)
 
-@inline get_distribution_config(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-03-25/distribution/{Id}/config", args)
+@inline get_distribution_config(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/distribution/{Id}/config", args)
 
 @inline get_distribution_config(args) = get_distribution_config(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFront.get_field_level_encryption
+    get_field_level_encryption([::AWSConfig], arguments::Dict)
+    get_field_level_encryption([::AWSConfig]; Id=)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/field-level-encryption/{Id}", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/field-level-encryption/{Id}", Id=)
+
+# GetFieldLevelEncryption Operation
+
+Get the field-level encryption configuration information.
+
+# Arguments
+
+## `Id = ::String` -- *Required*
+Request the ID for the field-level encryption configuration information.
+
+
+
+
+# Returns
+
+`GetFieldLevelEncryptionResult`
+
+# Exceptions
+
+`AccessDenied` or `NoSuchFieldLevelEncryptionConfig`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/GetFieldLevelEncryption)
+"""
+@inline get_field_level_encryption(aws::AWSConfig=default_aws_config(); args...) = get_field_level_encryption(aws, args)
+
+@inline get_field_level_encryption(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/field-level-encryption/{Id}", args)
+
+@inline get_field_level_encryption(args) = get_field_level_encryption(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFront.get_field_level_encryption_config
+    get_field_level_encryption_config([::AWSConfig], arguments::Dict)
+    get_field_level_encryption_config([::AWSConfig]; Id=)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/field-level-encryption/{Id}/config", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/field-level-encryption/{Id}/config", Id=)
+
+# GetFieldLevelEncryptionConfig Operation
+
+Get the field-level encryption configuration information.
+
+# Arguments
+
+## `Id = ::String` -- *Required*
+Request the ID for the field-level encryption configuration information.
+
+
+
+
+# Returns
+
+`GetFieldLevelEncryptionConfigResult`
+
+# Exceptions
+
+`AccessDenied` or `NoSuchFieldLevelEncryptionConfig`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/GetFieldLevelEncryptionConfig)
+"""
+@inline get_field_level_encryption_config(aws::AWSConfig=default_aws_config(); args...) = get_field_level_encryption_config(aws, args)
+
+@inline get_field_level_encryption_config(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/field-level-encryption/{Id}/config", args)
+
+@inline get_field_level_encryption_config(args) = get_field_level_encryption_config(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFront.get_field_level_encryption_profile
+    get_field_level_encryption_profile([::AWSConfig], arguments::Dict)
+    get_field_level_encryption_profile([::AWSConfig]; Id=)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/field-level-encryption-profile/{Id}", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/field-level-encryption-profile/{Id}", Id=)
+
+# GetFieldLevelEncryptionProfile Operation
+
+Get the field-level encryption profile information.
+
+# Arguments
+
+## `Id = ::String` -- *Required*
+Get the ID for the field-level encryption profile information.
+
+
+
+
+# Returns
+
+`GetFieldLevelEncryptionProfileResult`
+
+# Exceptions
+
+`AccessDenied` or `NoSuchFieldLevelEncryptionProfile`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/GetFieldLevelEncryptionProfile)
+"""
+@inline get_field_level_encryption_profile(aws::AWSConfig=default_aws_config(); args...) = get_field_level_encryption_profile(aws, args)
+
+@inline get_field_level_encryption_profile(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/field-level-encryption-profile/{Id}", args)
+
+@inline get_field_level_encryption_profile(args) = get_field_level_encryption_profile(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFront.get_field_level_encryption_profile_config
+    get_field_level_encryption_profile_config([::AWSConfig], arguments::Dict)
+    get_field_level_encryption_profile_config([::AWSConfig]; Id=)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/field-level-encryption-profile/{Id}/config", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/field-level-encryption-profile/{Id}/config", Id=)
+
+# GetFieldLevelEncryptionProfileConfig Operation
+
+Get the field-level encryption profile configuration information.
+
+# Arguments
+
+## `Id = ::String` -- *Required*
+Get the ID for the field-level encryption profile configuration information.
+
+
+
+
+# Returns
+
+`GetFieldLevelEncryptionProfileConfigResult`
+
+# Exceptions
+
+`AccessDenied` or `NoSuchFieldLevelEncryptionProfile`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/GetFieldLevelEncryptionProfileConfig)
+"""
+@inline get_field_level_encryption_profile_config(aws::AWSConfig=default_aws_config(); args...) = get_field_level_encryption_profile_config(aws, args)
+
+@inline get_field_level_encryption_profile_config(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/field-level-encryption-profile/{Id}/config", args)
+
+@inline get_field_level_encryption_profile_config(args) = get_field_level_encryption_profile_config(default_aws_config(), args)
 
 
 """
@@ -1006,8 +1392,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     get_invalidation([::AWSConfig]; DistributionId=, Id=)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/distribution/{DistributionId}/invalidation/{Id}", arguments::Dict)
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/distribution/{DistributionId}/invalidation/{Id}", DistributionId=, Id=)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/distribution/{DistributionId}/invalidation/{Id}", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/distribution/{DistributionId}/invalidation/{Id}", DistributionId=, Id=)
 
 # GetInvalidation Operation
 
@@ -1033,14 +1419,89 @@ The identifier for the invalidation request, for example, `IDFDVBD632BHDS5`.
 
 `NoSuchInvalidation`, `NoSuchDistribution` or `AccessDenied`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/GetInvalidation)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/GetInvalidation)
 """
-
 @inline get_invalidation(aws::AWSConfig=default_aws_config(); args...) = get_invalidation(aws, args)
 
-@inline get_invalidation(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-03-25/distribution/{DistributionId}/invalidation/{Id}", args)
+@inline get_invalidation(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/distribution/{DistributionId}/invalidation/{Id}", args)
 
 @inline get_invalidation(args) = get_invalidation(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFront.get_public_key
+    get_public_key([::AWSConfig], arguments::Dict)
+    get_public_key([::AWSConfig]; Id=)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/public-key/{Id}", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/public-key/{Id}", Id=)
+
+# GetPublicKey Operation
+
+Get the public key information.
+
+# Arguments
+
+## `Id = ::String` -- *Required*
+Request the ID for the public key.
+
+
+
+
+# Returns
+
+`GetPublicKeyResult`
+
+# Exceptions
+
+`AccessDenied` or `NoSuchPublicKey`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/GetPublicKey)
+"""
+@inline get_public_key(aws::AWSConfig=default_aws_config(); args...) = get_public_key(aws, args)
+
+@inline get_public_key(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/public-key/{Id}", args)
+
+@inline get_public_key(args) = get_public_key(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFront.get_public_key_config
+    get_public_key_config([::AWSConfig], arguments::Dict)
+    get_public_key_config([::AWSConfig]; Id=)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/public-key/{Id}/config", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/public-key/{Id}/config", Id=)
+
+# GetPublicKeyConfig Operation
+
+Return public key configuration informaation
+
+# Arguments
+
+## `Id = ::String` -- *Required*
+Request the ID for the public key configuration.
+
+
+
+
+# Returns
+
+`GetPublicKeyConfigResult`
+
+# Exceptions
+
+`AccessDenied` or `NoSuchPublicKey`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/GetPublicKeyConfig)
+"""
+@inline get_public_key_config(aws::AWSConfig=default_aws_config(); args...) = get_public_key_config(aws, args)
+
+@inline get_public_key_config(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/public-key/{Id}/config", args)
+
+@inline get_public_key_config(args) = get_public_key_config(default_aws_config(), args)
 
 
 """
@@ -1049,8 +1510,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     get_streaming_distribution([::AWSConfig]; Id=)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/streaming-distribution/{Id}", arguments::Dict)
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/streaming-distribution/{Id}", Id=)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/streaming-distribution/{Id}", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/streaming-distribution/{Id}", Id=)
 
 # GetStreamingDistribution Operation
 
@@ -1072,12 +1533,11 @@ The streaming distribution's ID.
 
 `NoSuchStreamingDistribution` or `AccessDenied`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/GetStreamingDistribution)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/GetStreamingDistribution)
 """
-
 @inline get_streaming_distribution(aws::AWSConfig=default_aws_config(); args...) = get_streaming_distribution(aws, args)
 
-@inline get_streaming_distribution(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-03-25/streaming-distribution/{Id}", args)
+@inline get_streaming_distribution(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/streaming-distribution/{Id}", args)
 
 @inline get_streaming_distribution(args) = get_streaming_distribution(default_aws_config(), args)
 
@@ -1088,8 +1548,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     get_streaming_distribution_config([::AWSConfig]; Id=)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/streaming-distribution/{Id}/config", arguments::Dict)
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/streaming-distribution/{Id}/config", Id=)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/streaming-distribution/{Id}/config", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/streaming-distribution/{Id}/config", Id=)
 
 # GetStreamingDistributionConfig Operation
 
@@ -1111,12 +1571,11 @@ The streaming distribution's ID.
 
 `NoSuchStreamingDistribution` or `AccessDenied`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/GetStreamingDistributionConfig)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/GetStreamingDistributionConfig)
 """
-
 @inline get_streaming_distribution_config(aws::AWSConfig=default_aws_config(); args...) = get_streaming_distribution_config(aws, args)
 
-@inline get_streaming_distribution_config(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-03-25/streaming-distribution/{Id}/config", args)
+@inline get_streaming_distribution_config(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/streaming-distribution/{Id}/config", args)
 
 @inline get_streaming_distribution_config(args) = get_streaming_distribution_config(default_aws_config(), args)
 
@@ -1127,8 +1586,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     list_cloud_front_origin_access_identities([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/origin-access-identity/cloudfront", arguments::Dict)
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/origin-access-identity/cloudfront", <keyword arguments>)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/origin-access-identity/cloudfront", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/origin-access-identity/cloudfront", <keyword arguments>)
 
 # ListCloudFrontOriginAccessIdentities Operation
 
@@ -1154,12 +1613,11 @@ The maximum number of origin access identities you want in the response body.
 
 `InvalidArgument`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/ListCloudFrontOriginAccessIdentities)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/ListCloudFrontOriginAccessIdentities)
 """
-
 @inline list_cloud_front_origin_access_identities(aws::AWSConfig=default_aws_config(); args...) = list_cloud_front_origin_access_identities(aws, args)
 
-@inline list_cloud_front_origin_access_identities(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-03-25/origin-access-identity/cloudfront", args)
+@inline list_cloud_front_origin_access_identities(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/origin-access-identity/cloudfront", args)
 
 @inline list_cloud_front_origin_access_identities(args) = list_cloud_front_origin_access_identities(default_aws_config(), args)
 
@@ -1170,8 +1628,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     list_distributions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/distribution", arguments::Dict)
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/distribution", <keyword arguments>)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/distribution", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/distribution", <keyword arguments>)
 
 # ListDistributions Operation
 
@@ -1197,12 +1655,11 @@ The maximum number of distributions you want in the response body.
 
 `InvalidArgument`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/ListDistributions)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/ListDistributions)
 """
-
 @inline list_distributions(aws::AWSConfig=default_aws_config(); args...) = list_distributions(aws, args)
 
-@inline list_distributions(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-03-25/distribution", args)
+@inline list_distributions(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/distribution", args)
 
 @inline list_distributions(args) = list_distributions(default_aws_config(), args)
 
@@ -1213,8 +1670,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     list_distributions_by_web_aclid([::AWSConfig]; WebACLId=, <keyword arguments>)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/distributionsByWebACLId/{WebACLId}", arguments::Dict)
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/distributionsByWebACLId/{WebACLId}", WebACLId=, <keyword arguments>)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/distributionsByWebACLId/{WebACLId}", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/distributionsByWebACLId/{WebACLId}", WebACLId=, <keyword arguments>)
 
 # ListDistributionsByWebACLId Operation
 
@@ -1244,14 +1701,97 @@ The ID of the AWS WAF web ACL that you want to list the associated distributions
 
 `InvalidArgument` or `InvalidWebACLId`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/ListDistributionsByWebACLId)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/ListDistributionsByWebACLId)
 """
-
 @inline list_distributions_by_web_aclid(aws::AWSConfig=default_aws_config(); args...) = list_distributions_by_web_aclid(aws, args)
 
-@inline list_distributions_by_web_aclid(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-03-25/distributionsByWebACLId/{WebACLId}", args)
+@inline list_distributions_by_web_aclid(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/distributionsByWebACLId/{WebACLId}", args)
 
 @inline list_distributions_by_web_aclid(args) = list_distributions_by_web_aclid(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFront.list_field_level_encryption_configs
+    list_field_level_encryption_configs([::AWSConfig], arguments::Dict)
+    list_field_level_encryption_configs([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/field-level-encryption", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/field-level-encryption", <keyword arguments>)
+
+# ListFieldLevelEncryptionConfigs Operation
+
+List all field-level encryption configurations that have been created in CloudFront for this account.
+
+# Arguments
+
+## `Marker = ::String`
+Use this when paginating results to indicate where to begin in your list of configurations. The results include configurations in the list that occur after the marker. To get the next page of results, set the `Marker` to the value of the `NextMarker` from the current page's response (which is also the ID of the last configuration on that page).
+
+
+## `MaxItems = ::String`
+The maximum number of field-level encryption configurations you want in the response body.
+
+
+
+
+# Returns
+
+`ListFieldLevelEncryptionConfigsResult`
+
+# Exceptions
+
+`InvalidArgument`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/ListFieldLevelEncryptionConfigs)
+"""
+@inline list_field_level_encryption_configs(aws::AWSConfig=default_aws_config(); args...) = list_field_level_encryption_configs(aws, args)
+
+@inline list_field_level_encryption_configs(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/field-level-encryption", args)
+
+@inline list_field_level_encryption_configs(args) = list_field_level_encryption_configs(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFront.list_field_level_encryption_profiles
+    list_field_level_encryption_profiles([::AWSConfig], arguments::Dict)
+    list_field_level_encryption_profiles([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/field-level-encryption-profile", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/field-level-encryption-profile", <keyword arguments>)
+
+# ListFieldLevelEncryptionProfiles Operation
+
+Request a list of field-level encryption profiles that have been created in CloudFront for this account.
+
+# Arguments
+
+## `Marker = ::String`
+Use this when paginating results to indicate where to begin in your list of profiles. The results include profiles in the list that occur after the marker. To get the next page of results, set the `Marker` to the value of the `NextMarker` from the current page's response (which is also the ID of the last profile on that page).
+
+
+## `MaxItems = ::String`
+The maximum number of field-level encryption profiles you want in the response body.
+
+
+
+
+# Returns
+
+`ListFieldLevelEncryptionProfilesResult`
+
+# Exceptions
+
+`InvalidArgument`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/ListFieldLevelEncryptionProfiles)
+"""
+@inline list_field_level_encryption_profiles(aws::AWSConfig=default_aws_config(); args...) = list_field_level_encryption_profiles(aws, args)
+
+@inline list_field_level_encryption_profiles(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/field-level-encryption-profile", args)
+
+@inline list_field_level_encryption_profiles(args) = list_field_level_encryption_profiles(default_aws_config(), args)
 
 
 """
@@ -1260,8 +1800,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     list_invalidations([::AWSConfig]; DistributionId=, <keyword arguments>)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/distribution/{DistributionId}/invalidation", arguments::Dict)
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/distribution/{DistributionId}/invalidation", DistributionId=, <keyword arguments>)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/distribution/{DistributionId}/invalidation", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/distribution/{DistributionId}/invalidation", DistributionId=, <keyword arguments>)
 
 # ListInvalidations Operation
 
@@ -1291,14 +1831,55 @@ The maximum number of invalidation batches that you want in the response body.
 
 `InvalidArgument`, `NoSuchDistribution` or `AccessDenied`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/ListInvalidations)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/ListInvalidations)
 """
-
 @inline list_invalidations(aws::AWSConfig=default_aws_config(); args...) = list_invalidations(aws, args)
 
-@inline list_invalidations(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-03-25/distribution/{DistributionId}/invalidation", args)
+@inline list_invalidations(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/distribution/{DistributionId}/invalidation", args)
 
 @inline list_invalidations(args) = list_invalidations(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFront.list_public_keys
+    list_public_keys([::AWSConfig], arguments::Dict)
+    list_public_keys([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/public-key", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/public-key", <keyword arguments>)
+
+# ListPublicKeys Operation
+
+List all public keys that have been added to CloudFront for this account.
+
+# Arguments
+
+## `Marker = ::String`
+Use this when paginating results to indicate where to begin in your list of public keys. The results include public keys in the list that occur after the marker. To get the next page of results, set the `Marker` to the value of the `NextMarker` from the current page's response (which is also the ID of the last public key on that page).
+
+
+## `MaxItems = ::String`
+The maximum number of public keys you want in the response body.
+
+
+
+
+# Returns
+
+`ListPublicKeysResult`
+
+# Exceptions
+
+`InvalidArgument`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/ListPublicKeys)
+"""
+@inline list_public_keys(aws::AWSConfig=default_aws_config(); args...) = list_public_keys(aws, args)
+
+@inline list_public_keys(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/public-key", args)
+
+@inline list_public_keys(args) = list_public_keys(default_aws_config(), args)
 
 
 """
@@ -1307,8 +1888,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     list_streaming_distributions([::AWSConfig]; <keyword arguments>)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/streaming-distribution", arguments::Dict)
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/streaming-distribution", <keyword arguments>)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/streaming-distribution", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/streaming-distribution", <keyword arguments>)
 
 # ListStreamingDistributions Operation
 
@@ -1334,12 +1915,11 @@ The value that you provided for the `MaxItems` request parameter.
 
 `InvalidArgument`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/ListStreamingDistributions)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/ListStreamingDistributions)
 """
-
 @inline list_streaming_distributions(aws::AWSConfig=default_aws_config(); args...) = list_streaming_distributions(aws, args)
 
-@inline list_streaming_distributions(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-03-25/streaming-distribution", args)
+@inline list_streaming_distributions(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/streaming-distribution", args)
 
 @inline list_streaming_distributions(args) = list_streaming_distributions(default_aws_config(), args)
 
@@ -1350,8 +1930,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     list_tags_for_resource([::AWSConfig]; Resource=)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/tagging", arguments::Dict)
-    cloudfront([::AWSConfig], "GET", "/2017-03-25/tagging", Resource=)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/tagging", arguments::Dict)
+    cloudfront([::AWSConfig], "GET", "/2017-10-30/tagging", Resource=)
 
 # ListTagsForResource Operation
 
@@ -1373,12 +1953,11 @@ An ARN of a CloudFront resource.
 
 `AccessDenied`, `InvalidArgument`, `InvalidTagging` or `NoSuchResource`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/ListTagsForResource)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/ListTagsForResource)
 """
-
 @inline list_tags_for_resource(aws::AWSConfig=default_aws_config(); args...) = list_tags_for_resource(aws, args)
 
-@inline list_tags_for_resource(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-03-25/tagging", args)
+@inline list_tags_for_resource(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "GET", "/2017-10-30/tagging", args)
 
 @inline list_tags_for_resource(args) = list_tags_for_resource(default_aws_config(), args)
 
@@ -1389,8 +1968,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     tag_resource([::AWSConfig]; Resource=, Tags=)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "POST", "/2017-03-25/tagging?Operation=Tag", arguments::Dict)
-    cloudfront([::AWSConfig], "POST", "/2017-03-25/tagging?Operation=Tag", Resource=, Tags=)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/tagging?Operation=Tag", arguments::Dict)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/tagging?Operation=Tag", Resource=, Tags=)
 
 # TagResource Operation
 
@@ -1417,12 +1996,11 @@ A complex type that contains zero or more `Tag` elements.
 
 `AccessDenied`, `InvalidArgument`, `InvalidTagging` or `NoSuchResource`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/TagResource)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/TagResource)
 """
-
 @inline tag_resource(aws::AWSConfig=default_aws_config(); args...) = tag_resource(aws, args)
 
-@inline tag_resource(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-03-25/tagging?Operation=Tag", args)
+@inline tag_resource(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-10-30/tagging?Operation=Tag", args)
 
 @inline tag_resource(args) = tag_resource(default_aws_config(), args)
 
@@ -1433,8 +2011,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     untag_resource([::AWSConfig]; Resource=, TagKeys=)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "POST", "/2017-03-25/tagging?Operation=Untag", arguments::Dict)
-    cloudfront([::AWSConfig], "POST", "/2017-03-25/tagging?Operation=Untag", Resource=, TagKeys=)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/tagging?Operation=Untag", arguments::Dict)
+    cloudfront([::AWSConfig], "POST", "/2017-10-30/tagging?Operation=Untag", Resource=, TagKeys=)
 
 # UntagResource Operation
 
@@ -1456,12 +2034,11 @@ A complex type that contains zero or more `Tag` key elements.
 
 `AccessDenied`, `InvalidArgument`, `InvalidTagging` or `NoSuchResource`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/UntagResource)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/UntagResource)
 """
-
 @inline untag_resource(aws::AWSConfig=default_aws_config(); args...) = untag_resource(aws, args)
 
-@inline untag_resource(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-03-25/tagging?Operation=Untag", args)
+@inline untag_resource(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "POST", "/2017-10-30/tagging?Operation=Untag", args)
 
 @inline untag_resource(args) = untag_resource(default_aws_config(), args)
 
@@ -1472,8 +2049,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     update_cloud_front_origin_access_identity([::AWSConfig]; CloudFrontOriginAccessIdentityConfig=, Id=, <keyword arguments>)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "PUT", "/2017-03-25/origin-access-identity/cloudfront/{Id}/config", arguments::Dict)
-    cloudfront([::AWSConfig], "PUT", "/2017-03-25/origin-access-identity/cloudfront/{Id}/config", CloudFrontOriginAccessIdentityConfig=, Id=, <keyword arguments>)
+    cloudfront([::AWSConfig], "PUT", "/2017-10-30/origin-access-identity/cloudfront/{Id}/config", arguments::Dict)
+    cloudfront([::AWSConfig], "PUT", "/2017-10-30/origin-access-identity/cloudfront/{Id}/config", CloudFrontOriginAccessIdentityConfig=, Id=, <keyword arguments>)
 
 # UpdateCloudFrontOriginAccessIdentity Operation
 
@@ -1508,12 +2085,11 @@ The value of the `ETag` header that you received when retrieving the identity's 
 
 `AccessDenied`, `IllegalUpdate`, `InvalidIfMatchVersion`, `MissingBody`, `NoSuchCloudFrontOriginAccessIdentity`, `PreconditionFailed`, `InvalidArgument` or `InconsistentQuantities`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/UpdateCloudFrontOriginAccessIdentity)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/UpdateCloudFrontOriginAccessIdentity)
 """
-
 @inline update_cloud_front_origin_access_identity(aws::AWSConfig=default_aws_config(); args...) = update_cloud_front_origin_access_identity(aws, args)
 
-@inline update_cloud_front_origin_access_identity(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "PUT", "/2017-03-25/origin-access-identity/cloudfront/{Id}/config", args)
+@inline update_cloud_front_origin_access_identity(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "PUT", "/2017-10-30/origin-access-identity/cloudfront/{Id}/config", args)
 
 @inline update_cloud_front_origin_access_identity(args) = update_cloud_front_origin_access_identity(default_aws_config(), args)
 
@@ -1524,8 +2100,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     update_distribution([::AWSConfig]; DistributionConfig=, Id=, <keyword arguments>)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "PUT", "/2017-03-25/distribution/{Id}/config", arguments::Dict)
-    cloudfront([::AWSConfig], "PUT", "/2017-03-25/distribution/{Id}/config", DistributionConfig=, Id=, <keyword arguments>)
+    cloudfront([::AWSConfig], "PUT", "/2017-10-30/distribution/{Id}/config", arguments::Dict)
+    cloudfront([::AWSConfig], "PUT", "/2017-10-30/distribution/{Id}/config", DistributionConfig=, Id=, <keyword arguments>)
 
 # UpdateDistribution Operation
 
@@ -1639,10 +2215,11 @@ The distribution's configuration information.
             "LambdaFunctionAssociations" =>  [
                 "Quantity" => <required> ::Int,
                 "Items" =>  [[
-                    "LambdaFunctionARN" =>  ::String,
-                    "EventType" =>  "viewer-request", "viewer-response", "origin-request" or "origin-response"
+                    "LambdaFunctionARN" => <required> ::String,
+                    "EventType" => <required> "viewer-request", "viewer-response", "origin-request" or "origin-response"
                 ], ...]
-            ]
+            ],
+            "FieldLevelEncryptionId" =>  ::String
         ],
         "CacheBehaviors" =>  [
             "Quantity" => <required> ::Int,
@@ -1689,10 +2266,11 @@ The distribution's configuration information.
                 "LambdaFunctionAssociations" =>  [
                     "Quantity" => <required> ::Int,
                     "Items" =>  [[
-                        "LambdaFunctionARN" =>  ::String,
-                        "EventType" =>  "viewer-request", "viewer-response", "origin-request" or "origin-response"
+                        "LambdaFunctionARN" => <required> ::String,
+                        "EventType" => <required> "viewer-request", "viewer-response", "origin-request" or "origin-response"
                     ], ...]
-                ]
+                ],
+                "FieldLevelEncryptionId" =>  ::String
             ], ...]
         ],
         "CustomErrorResponses" =>  [
@@ -1749,16 +2327,203 @@ The value of the `ETag` header that you received when retrieving the distributio
 
 # Exceptions
 
-`AccessDenied`, `CNAMEAlreadyExists`, `IllegalUpdate`, `InvalidIfMatchVersion`, `MissingBody`, `NoSuchDistribution`, `PreconditionFailed`, `TooManyDistributionCNAMEs`, `InvalidDefaultRootObject`, `InvalidRelativePath`, `InvalidErrorCode`, `InvalidResponseCode`, `InvalidArgument`, `InvalidOriginAccessIdentity`, `TooManyTrustedSigners`, `TrustedSignerDoesNotExist`, `InvalidViewerCertificate`, `InvalidMinimumProtocolVersion`, `InvalidRequiredProtocol`, `NoSuchOrigin`, `TooManyOrigins`, `TooManyCacheBehaviors`, `TooManyCookieNamesInWhiteList`, `InvalidForwardCookies`, `TooManyHeadersInForwardedValues`, `InvalidHeadersForS3Origin`, `InconsistentQuantities`, `TooManyCertificates`, `InvalidLocationCode`, `InvalidGeoRestrictionParameter`, `InvalidTTLOrder`, `InvalidWebACLId`, `TooManyOriginCustomHeaders`, `TooManyQueryStringParameters`, `InvalidQueryStringParameters`, `TooManyDistributionsWithLambdaAssociations`, `TooManyLambdaFunctionAssociations`, `InvalidLambdaFunctionAssociation`, `InvalidOriginReadTimeout` or `InvalidOriginKeepaliveTimeout`.
+`AccessDenied`, `CNAMEAlreadyExists`, `IllegalUpdate`, `InvalidIfMatchVersion`, `MissingBody`, `NoSuchDistribution`, `PreconditionFailed`, `TooManyDistributionCNAMEs`, `InvalidDefaultRootObject`, `InvalidRelativePath`, `InvalidErrorCode`, `InvalidResponseCode`, `InvalidArgument`, `InvalidOriginAccessIdentity`, `TooManyTrustedSigners`, `TrustedSignerDoesNotExist`, `InvalidViewerCertificate`, `InvalidMinimumProtocolVersion`, `InvalidRequiredProtocol`, `NoSuchOrigin`, `TooManyOrigins`, `TooManyCacheBehaviors`, `TooManyCookieNamesInWhiteList`, `InvalidForwardCookies`, `TooManyHeadersInForwardedValues`, `InvalidHeadersForS3Origin`, `InconsistentQuantities`, `TooManyCertificates`, `InvalidLocationCode`, `InvalidGeoRestrictionParameter`, `InvalidTTLOrder`, `InvalidWebACLId`, `TooManyOriginCustomHeaders`, `TooManyQueryStringParameters`, `InvalidQueryStringParameters`, `TooManyDistributionsWithLambdaAssociations`, `TooManyLambdaFunctionAssociations`, `InvalidLambdaFunctionAssociation`, `InvalidOriginReadTimeout`, `InvalidOriginKeepaliveTimeout`, `NoSuchFieldLevelEncryptionConfig`, `IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior` or `TooManyDistributionsAssociatedToFieldLevelEncryptionConfig`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/UpdateDistribution)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/UpdateDistribution)
 """
-
 @inline update_distribution(aws::AWSConfig=default_aws_config(); args...) = update_distribution(aws, args)
 
-@inline update_distribution(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "PUT", "/2017-03-25/distribution/{Id}/config", args)
+@inline update_distribution(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "PUT", "/2017-10-30/distribution/{Id}/config", args)
 
 @inline update_distribution(args) = update_distribution(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFront.update_field_level_encryption_config
+    update_field_level_encryption_config([::AWSConfig], arguments::Dict)
+    update_field_level_encryption_config([::AWSConfig]; FieldLevelEncryptionConfig=, Id=, <keyword arguments>)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "PUT", "/2017-10-30/field-level-encryption/{Id}/config", arguments::Dict)
+    cloudfront([::AWSConfig], "PUT", "/2017-10-30/field-level-encryption/{Id}/config", FieldLevelEncryptionConfig=, Id=, <keyword arguments>)
+
+# UpdateFieldLevelEncryptionConfig Operation
+
+Update a field-level encryption configuration.
+
+# Arguments
+
+## `FieldLevelEncryptionConfig = [ ... ]` -- *Required*
+Request to update a field-level encryption configuration.
+```
+ FieldLevelEncryptionConfig = [
+        "CallerReference" => <required> ::String,
+        "Comment" =>  ::String,
+        "QueryArgProfileConfig" =>  [
+            "ForwardWhenQueryArgProfileIsUnknown" => <required> ::Bool,
+            "QueryArgProfiles" =>  [
+                "Quantity" => <required> ::Int,
+                "Items" =>  [[
+                    "QueryArg" => <required> ::String,
+                    "ProfileId" => <required> ::String
+                ], ...]
+            ]
+        ],
+        "ContentTypeProfileConfig" =>  [
+            "ForwardWhenContentTypeIsUnknown" => <required> ::Bool,
+            "ContentTypeProfiles" =>  [
+                "Quantity" => <required> ::Int,
+                "Items" =>  [[
+                    "Format" => <required> "URLEncoded",
+                    "ProfileId" =>  ::String,
+                    "ContentType" => <required> ::String
+                ], ...]
+            ]
+        ]
+    ]
+```
+
+## `Id = ::String` -- *Required*
+The ID of the configuration you want to update.
+
+
+## `*header:* If-Match = ::String`
+The value of the `ETag` header that you received when retrieving the configuration identity to update. For example: `E2QWRUHAPOMQZL`.
+
+
+
+
+# Returns
+
+`UpdateFieldLevelEncryptionConfigResult`
+
+# Exceptions
+
+`AccessDenied`, `IllegalUpdate`, `InconsistentQuantities`, `InvalidArgument`, `InvalidIfMatchVersion`, `NoSuchFieldLevelEncryptionProfile`, `NoSuchFieldLevelEncryptionConfig`, `PreconditionFailed`, `TooManyFieldLevelEncryptionQueryArgProfiles`, `TooManyFieldLevelEncryptionContentTypeProfiles` or `QueryArgProfileEmpty`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/UpdateFieldLevelEncryptionConfig)
+"""
+@inline update_field_level_encryption_config(aws::AWSConfig=default_aws_config(); args...) = update_field_level_encryption_config(aws, args)
+
+@inline update_field_level_encryption_config(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "PUT", "/2017-10-30/field-level-encryption/{Id}/config", args)
+
+@inline update_field_level_encryption_config(args) = update_field_level_encryption_config(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFront.update_field_level_encryption_profile
+    update_field_level_encryption_profile([::AWSConfig], arguments::Dict)
+    update_field_level_encryption_profile([::AWSConfig]; FieldLevelEncryptionProfileConfig=, Id=, <keyword arguments>)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "PUT", "/2017-10-30/field-level-encryption-profile/{Id}/config", arguments::Dict)
+    cloudfront([::AWSConfig], "PUT", "/2017-10-30/field-level-encryption-profile/{Id}/config", FieldLevelEncryptionProfileConfig=, Id=, <keyword arguments>)
+
+# UpdateFieldLevelEncryptionProfile Operation
+
+Update a field-level encryption profile.
+
+# Arguments
+
+## `FieldLevelEncryptionProfileConfig = [ ... ]` -- *Required*
+Request to update a field-level encryption profile.
+```
+ FieldLevelEncryptionProfileConfig = [
+        "Name" => <required> ::String,
+        "CallerReference" => <required> ::String,
+        "Comment" =>  ::String,
+        "EncryptionEntities" => <required> [
+            "Quantity" => <required> ::Int,
+            "Items" =>  [[
+                "PublicKeyId" => <required> ::String,
+                "ProviderId" => <required> ::String,
+                "FieldPatterns" => <required> [
+                    "Quantity" => <required> ::Int,
+                    "Items" =>  [::String, ...]
+                ]
+            ], ...]
+        ]
+    ]
+```
+
+## `Id = ::String` -- *Required*
+The ID of the field-level encryption profile request.
+
+
+## `*header:* If-Match = ::String`
+The value of the `ETag` header that you received when retrieving the profile identity to update. For example: `E2QWRUHAPOMQZL`.
+
+
+
+
+# Returns
+
+`UpdateFieldLevelEncryptionProfileResult`
+
+# Exceptions
+
+`AccessDenied`, `FieldLevelEncryptionProfileAlreadyExists`, `IllegalUpdate`, `InconsistentQuantities`, `InvalidArgument`, `InvalidIfMatchVersion`, `NoSuchPublicKey`, `NoSuchFieldLevelEncryptionProfile`, `PreconditionFailed`, `FieldLevelEncryptionProfileSizeExceeded`, `TooManyFieldLevelEncryptionEncryptionEntities` or `TooManyFieldLevelEncryptionFieldPatterns`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/UpdateFieldLevelEncryptionProfile)
+"""
+@inline update_field_level_encryption_profile(aws::AWSConfig=default_aws_config(); args...) = update_field_level_encryption_profile(aws, args)
+
+@inline update_field_level_encryption_profile(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "PUT", "/2017-10-30/field-level-encryption-profile/{Id}/config", args)
+
+@inline update_field_level_encryption_profile(args) = update_field_level_encryption_profile(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.CloudFront.update_public_key
+    update_public_key([::AWSConfig], arguments::Dict)
+    update_public_key([::AWSConfig]; PublicKeyConfig=, Id=, <keyword arguments>)
+
+    using AWSCore.Services.cloudfront
+    cloudfront([::AWSConfig], "PUT", "/2017-10-30/public-key/{Id}/config", arguments::Dict)
+    cloudfront([::AWSConfig], "PUT", "/2017-10-30/public-key/{Id}/config", PublicKeyConfig=, Id=, <keyword arguments>)
+
+# UpdatePublicKey Operation
+
+Update public key information. Note that the only value you can change is the comment.
+
+# Arguments
+
+## `PublicKeyConfig = [ ... ]` -- *Required*
+Request to update public key information.
+```
+ PublicKeyConfig = [
+        "CallerReference" => <required> ::String,
+        "Name" => <required> ::String,
+        "EncodedKey" => <required> ::String,
+        "Comment" =>  ::String
+    ]
+```
+
+## `Id = ::String` -- *Required*
+ID of the public key to be updated.
+
+
+## `*header:* If-Match = ::String`
+The value of the `ETag` header that you received when retrieving the public key to update. For example: `E2QWRUHAPOMQZL`.
+
+
+
+
+# Returns
+
+`UpdatePublicKeyResult`
+
+# Exceptions
+
+`AccessDenied`, `CannotChangeImmutablePublicKeyFields`, `InvalidArgument`, `InvalidIfMatchVersion`, `IllegalUpdate`, `NoSuchPublicKey` or `PreconditionFailed`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/UpdatePublicKey)
+"""
+@inline update_public_key(aws::AWSConfig=default_aws_config(); args...) = update_public_key(aws, args)
+
+@inline update_public_key(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "PUT", "/2017-10-30/public-key/{Id}/config", args)
+
+@inline update_public_key(args) = update_public_key(default_aws_config(), args)
 
 
 """
@@ -1767,8 +2532,8 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudf
     update_streaming_distribution([::AWSConfig]; StreamingDistributionConfig=, Id=, <keyword arguments>)
 
     using AWSCore.Services.cloudfront
-    cloudfront([::AWSConfig], "PUT", "/2017-03-25/streaming-distribution/{Id}/config", arguments::Dict)
-    cloudfront([::AWSConfig], "PUT", "/2017-03-25/streaming-distribution/{Id}/config", StreamingDistributionConfig=, Id=, <keyword arguments>)
+    cloudfront([::AWSConfig], "PUT", "/2017-10-30/streaming-distribution/{Id}/config", arguments::Dict)
+    cloudfront([::AWSConfig], "PUT", "/2017-10-30/streaming-distribution/{Id}/config", StreamingDistributionConfig=, Id=, <keyword arguments>)
 
 # UpdateStreamingDistribution Operation
 
@@ -1823,12 +2588,11 @@ The value of the `ETag` header that you received when retrieving the streaming d
 
 `AccessDenied`, `CNAMEAlreadyExists`, `IllegalUpdate`, `InvalidIfMatchVersion`, `MissingBody`, `NoSuchStreamingDistribution`, `PreconditionFailed`, `TooManyStreamingDistributionCNAMEs`, `InvalidArgument`, `InvalidOriginAccessIdentity`, `TooManyTrustedSigners`, `TrustedSignerDoesNotExist` or `InconsistentQuantities`.
 
-See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-03-25/UpdateStreamingDistribution)
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/UpdateStreamingDistribution)
 """
-
 @inline update_streaming_distribution(aws::AWSConfig=default_aws_config(); args...) = update_streaming_distribution(aws, args)
 
-@inline update_streaming_distribution(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "PUT", "/2017-03-25/streaming-distribution/{Id}/config", args)
+@inline update_streaming_distribution(aws::AWSConfig, args) = AWSCore.Services.cloudfront(aws, "PUT", "/2017-10-30/streaming-distribution/{Id}/config", args)
 
 @inline update_streaming_distribution(args) = update_streaming_distribution(default_aws_config(), args)
 

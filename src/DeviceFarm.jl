@@ -43,7 +43,7 @@ The device pool's description.
 The device pool's rules.
 ```
  rules = [[
-        "attribute" =>  "ARN", "PLATFORM", "FORM_FACTOR", "MANUFACTURER", "REMOTE_ACCESS_ENABLED", "REMOTE_DEBUG_ENABLED" or "APPIUM_VERSION",
+        "attribute" =>  "ARN", "PLATFORM", "FORM_FACTOR", "MANUFACTURER", "REMOTE_ACCESS_ENABLED", "REMOTE_DEBUG_ENABLED", "APPIUM_VERSION", "INSTANCE_ARN", "INSTANCE_LABELS" or "FLEET_TYPE",
         "operator" =>  "EQUALS", "LESS_THAN", "GREATER_THAN", "IN", "NOT_IN" or "CONTAINS",
         "value" =>  ::String
     ], ...]
@@ -86,12 +86,67 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/CreateDevicePool)
 """
-
 @inline create_device_pool(aws::AWSConfig=default_aws_config(); args...) = create_device_pool(aws, args)
 
 @inline create_device_pool(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "CreateDevicePool", args)
 
 @inline create_device_pool(args) = create_device_pool(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DeviceFarm.create_instance_profile
+    create_instance_profile([::AWSConfig], arguments::Dict)
+    create_instance_profile([::AWSConfig]; name=, <keyword arguments>)
+
+    using AWSCore.Services.devicefarm
+    devicefarm([::AWSConfig], "CreateInstanceProfile", arguments::Dict)
+    devicefarm([::AWSConfig], "CreateInstanceProfile", name=, <keyword arguments>)
+
+# CreateInstanceProfile Operation
+
+Creates a profile that can be applied to one or more private fleet device instances.
+
+# Arguments
+
+## `name = ::String` -- *Required*
+The name of your instance profile.
+
+
+## `description = ::String`
+The description of your instance profile.
+
+
+## `packageCleanup = ::Bool`
+When set to `true`, Device Farm will remove app packages after a test run. The default value is `false` for private devices.
+
+
+## `excludeAppPackagesFromCleanup = [::String, ...]`
+An array of strings specifying the list of app packages that should not be cleaned up from the device after a test run is over.
+
+The list of packages is only considered if you set `packageCleanup` to `true`.
+
+
+## `rebootAfterUse = ::Bool`
+When set to `true`, Device Farm will reboot the instance after a test run. The default value is `true`.
+
+
+
+
+# Returns
+
+`CreateInstanceProfileResult`
+
+# Exceptions
+
+`ArgumentException`, `NotFoundException`, `LimitExceededException` or `ServiceAccountException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/CreateInstanceProfile)
+"""
+@inline create_instance_profile(aws::AWSConfig=default_aws_config(); args...) = create_instance_profile(aws, args)
+
+@inline create_instance_profile(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "CreateInstanceProfile", args)
+
+@inline create_instance_profile(args) = create_instance_profile(default_aws_config(), args)
 
 
 """
@@ -169,7 +224,6 @@ Proportion of received packets that fail to arrive from 0 to 100 percent.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/CreateNetworkProfile)
 """
-
 @inline create_network_profile(aws::AWSConfig=default_aws_config(); args...) = create_network_profile(aws, args)
 
 @inline create_network_profile(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "CreateNetworkProfile", args)
@@ -234,7 +288,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/CreateProject)
 """
-
 @inline create_project(aws::AWSConfig=default_aws_config(); args...) = create_project(aws, args)
 
 @inline create_project(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "CreateProject", args)
@@ -265,6 +318,10 @@ The Amazon Resource Name (ARN) of the project for which you want to create a rem
 The Amazon Resource Name (ARN) of the device for which you want to create a remote access session.
 
 
+## `instanceArn = ::String`
+The Amazon Resource Name (ARN) of the device instance for which you want to create a remote access session.
+
+
 ## `sshPublicKey = ::String`
 The public key of the `ssh` key pair you want to use for connecting to remote devices in your remote debugging session. This is only required if `remoteDebugEnabled` is set to `true`.
 
@@ -273,16 +330,45 @@ The public key of the `ssh` key pair you want to use for connecting to remote de
 Set to `true` if you want to access devices remotely for debugging in your remote access session.
 
 
+## `remoteRecordEnabled = ::Bool`
+Set to `true` to enable remote recording for the remote access session.
+
+
+## `remoteRecordAppArn = ::String`
+The Amazon Resource Name (ARN) for the app to be recorded in the remote access session.
+
+
 ## `name = ::String`
 The name of the remote access session that you wish to create.
 
 
 ## `clientId = ::String`
-Unique identifier for the client. If you want access to multiple devices on the same client, you should pass the same `clientId` value in each call to `CreateRemoteAccessSession`. This is required only if `remoteDebugEnabled` is set to true `true`.
+Unique identifier for the client. If you want access to multiple devices on the same client, you should pass the same `clientId` value in each call to `CreateRemoteAccessSession`. This is required only if `remoteDebugEnabled` is set to `true`.
 
 
-## `configuration = ["billingMethod" =>  "METERED" or "UNMETERED"]`
+## `configuration = [ ... ]`
 The configuration information for the remote access session request.
+```
+ configuration = [
+        "billingMethod" =>  "METERED" or "UNMETERED",
+        "vpceConfigurationArns" =>  [::String, ...]
+    ]
+```
+
+## `interactionMode = "INTERACTIVE", "NO_VIDEO" or "VIDEO_ONLY"`
+The interaction mode of the remote access session. Valid values are:
+
+*   INTERACTIVE: You can interact with the iOS device by viewing, touching, and rotating the screen. You **cannot** run XCUITest framework-based tests in this mode.
+
+*   NO_VIDEO: You are connected to the device but cannot interact with it or view the screen. This mode has the fastest test execution speed. You **can** run XCUITest framework-based tests in this mode.
+
+*   VIDEO_ONLY: You can view the screen but cannot touch or rotate it. You **can** run XCUITest framework-based tests and watch the screen in this mode.
+
+
+## `skipAppResign = ::Bool`
+When set to `true`, for private devices, Device Farm will not sign your app again. For public devices, Device Farm always signs your apps again and this parameter has no effect.
+
+For more information about how Device Farm re-signs your app(s), see [Do you modify my app?](https://aws.amazon.com/device-farm/faq/) in the *AWS Device Farm FAQs*.
 
 
 
@@ -322,7 +408,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/CreateRemoteAccessSession)
 """
-
 @inline create_remote_access_session(aws::AWSConfig=default_aws_config(); args...) = create_remote_access_session(aws, args)
 
 @inline create_remote_access_session(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "CreateRemoteAccessSession", args)
@@ -436,12 +521,61 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/CreateUpload)
 """
-
 @inline create_upload(aws::AWSConfig=default_aws_config(); args...) = create_upload(aws, args)
 
 @inline create_upload(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "CreateUpload", args)
 
 @inline create_upload(args) = create_upload(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DeviceFarm.create_vpceconfiguration
+    create_vpceconfiguration([::AWSConfig], arguments::Dict)
+    create_vpceconfiguration([::AWSConfig]; vpceConfigurationName=, vpceServiceName=, serviceDnsName=, <keyword arguments>)
+
+    using AWSCore.Services.devicefarm
+    devicefarm([::AWSConfig], "CreateVPCEConfiguration", arguments::Dict)
+    devicefarm([::AWSConfig], "CreateVPCEConfiguration", vpceConfigurationName=, vpceServiceName=, serviceDnsName=, <keyword arguments>)
+
+# CreateVPCEConfiguration Operation
+
+Creates a configuration record in Device Farm for your Amazon Virtual Private Cloud (VPC) endpoint.
+
+# Arguments
+
+## `vpceConfigurationName = ::String` -- *Required*
+The friendly name you give to your VPC endpoint configuration, to manage your configurations more easily.
+
+
+## `vpceServiceName = ::String` -- *Required*
+The name of the VPC endpoint service running inside your AWS account that you want Device Farm to test.
+
+
+## `serviceDnsName = ::String` -- *Required*
+The DNS name of the service running in your VPC that you want Device Farm to test.
+
+
+## `vpceConfigurationDescription = ::String`
+An optional description, providing more details about your VPC endpoint configuration.
+
+
+
+
+# Returns
+
+`CreateVPCEConfigurationResult`
+
+# Exceptions
+
+`ArgumentException`, `LimitExceededException` or `ServiceAccountException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/CreateVPCEConfiguration)
+"""
+@inline create_vpceconfiguration(aws::AWSConfig=default_aws_config(); args...) = create_vpceconfiguration(aws, args)
+
+@inline create_vpceconfiguration(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "CreateVPCEConfiguration", args)
+
+@inline create_vpceconfiguration(args) = create_vpceconfiguration(default_aws_config(), args)
 
 
 """
@@ -493,12 +627,49 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/DeleteDevicePool)
 """
-
 @inline delete_device_pool(aws::AWSConfig=default_aws_config(); args...) = delete_device_pool(aws, args)
 
 @inline delete_device_pool(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "DeleteDevicePool", args)
 
 @inline delete_device_pool(args) = delete_device_pool(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DeviceFarm.delete_instance_profile
+    delete_instance_profile([::AWSConfig], arguments::Dict)
+    delete_instance_profile([::AWSConfig]; arn=)
+
+    using AWSCore.Services.devicefarm
+    devicefarm([::AWSConfig], "DeleteInstanceProfile", arguments::Dict)
+    devicefarm([::AWSConfig], "DeleteInstanceProfile", arn=)
+
+# DeleteInstanceProfile Operation
+
+Deletes a profile that can be applied to one or more private device instances.
+
+# Arguments
+
+## `arn = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the instance profile you are requesting to delete.
+
+
+
+
+# Returns
+
+`DeleteInstanceProfileResult`
+
+# Exceptions
+
+`ArgumentException`, `NotFoundException`, `LimitExceededException` or `ServiceAccountException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/DeleteInstanceProfile)
+"""
+@inline delete_instance_profile(aws::AWSConfig=default_aws_config(); args...) = delete_instance_profile(aws, args)
+
+@inline delete_instance_profile(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "DeleteInstanceProfile", args)
+
+@inline delete_instance_profile(args) = delete_instance_profile(default_aws_config(), args)
 
 
 """
@@ -532,7 +703,6 @@ The Amazon Resource Name (ARN) of the network profile you want to delete.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/DeleteNetworkProfile)
 """
-
 @inline delete_network_profile(aws::AWSConfig=default_aws_config(); args...) = delete_network_profile(aws, args)
 
 @inline delete_network_profile(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "DeleteNetworkProfile", args)
@@ -591,7 +761,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/DeleteProject)
 """
-
 @inline delete_project(aws::AWSConfig=default_aws_config(); args...) = delete_project(aws, args)
 
 @inline delete_project(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "DeleteProject", args)
@@ -648,7 +817,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/DeleteRemoteAccessSession)
 """
-
 @inline delete_remote_access_session(aws::AWSConfig=default_aws_config(); args...) = delete_remote_access_session(aws, args)
 
 @inline delete_remote_access_session(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "DeleteRemoteAccessSession", args)
@@ -707,7 +875,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/DeleteRun)
 """
-
 @inline delete_run(aws::AWSConfig=default_aws_config(); args...) = delete_run(aws, args)
 
 @inline delete_run(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "DeleteRun", args)
@@ -764,12 +931,49 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/DeleteUpload)
 """
-
 @inline delete_upload(aws::AWSConfig=default_aws_config(); args...) = delete_upload(aws, args)
 
 @inline delete_upload(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "DeleteUpload", args)
 
 @inline delete_upload(args) = delete_upload(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DeviceFarm.delete_vpceconfiguration
+    delete_vpceconfiguration([::AWSConfig], arguments::Dict)
+    delete_vpceconfiguration([::AWSConfig]; arn=)
+
+    using AWSCore.Services.devicefarm
+    devicefarm([::AWSConfig], "DeleteVPCEConfiguration", arguments::Dict)
+    devicefarm([::AWSConfig], "DeleteVPCEConfiguration", arn=)
+
+# DeleteVPCEConfiguration Operation
+
+Deletes a configuration for your Amazon Virtual Private Cloud (VPC) endpoint.
+
+# Arguments
+
+## `arn = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the VPC endpoint configuration you want to delete.
+
+
+
+
+# Returns
+
+`DeleteVPCEConfigurationResult`
+
+# Exceptions
+
+`ArgumentException`, `NotFoundException`, `ServiceAccountException` or `InvalidOperationException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/DeleteVPCEConfiguration)
+"""
+@inline delete_vpceconfiguration(aws::AWSConfig=default_aws_config(); args...) = delete_vpceconfiguration(aws, args)
+
+@inline delete_vpceconfiguration(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "DeleteVPCEConfiguration", args)
+
+@inline delete_vpceconfiguration(args) = delete_vpceconfiguration(default_aws_config(), args)
 
 
 """
@@ -823,7 +1027,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetAccountSettings)
 """
-
 @inline get_account_settings(aws::AWSConfig=default_aws_config(); args...) = get_account_settings(aws, args)
 
 @inline get_account_settings(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "GetAccountSettings", args)
@@ -900,12 +1103,49 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetDevice)
 """
-
 @inline get_device(aws::AWSConfig=default_aws_config(); args...) = get_device(aws, args)
 
 @inline get_device(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "GetDevice", args)
 
 @inline get_device(args) = get_device(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DeviceFarm.get_device_instance
+    get_device_instance([::AWSConfig], arguments::Dict)
+    get_device_instance([::AWSConfig]; arn=)
+
+    using AWSCore.Services.devicefarm
+    devicefarm([::AWSConfig], "GetDeviceInstance", arguments::Dict)
+    devicefarm([::AWSConfig], "GetDeviceInstance", arn=)
+
+# GetDeviceInstance Operation
+
+Returns information about a device instance belonging to a private device fleet.
+
+# Arguments
+
+## `arn = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the instance you're requesting information about.
+
+
+
+
+# Returns
+
+`GetDeviceInstanceResult`
+
+# Exceptions
+
+`ArgumentException`, `NotFoundException`, `LimitExceededException` or `ServiceAccountException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetDeviceInstance)
+"""
+@inline get_device_instance(aws::AWSConfig=default_aws_config(); args...) = get_device_instance(aws, args)
+
+@inline get_device_instance(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "GetDeviceInstance", args)
+
+@inline get_device_instance(args) = get_device_instance(default_aws_config(), args)
 
 
 """
@@ -959,7 +1199,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetDevicePool)
 """
-
 @inline get_device_pool(aws::AWSConfig=default_aws_config(); args...) = get_device_pool(aws, args)
 
 @inline get_device_pool(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "GetDevicePool", args)
@@ -990,7 +1229,7 @@ The device pool's ARN.
 The ARN of the app that is associated with the specified device pool.
 
 
-## `testType = "BUILTIN_FUZZ", "BUILTIN_EXPLORER", "APPIUM_JAVA_JUNIT", "APPIUM_JAVA_TESTNG", "APPIUM_PYTHON", "APPIUM_WEB_JAVA_JUNIT", "APPIUM_WEB_JAVA_TESTNG", "APPIUM_WEB_PYTHON", "CALABASH", "INSTRUMENTATION", "UIAUTOMATION", "UIAUTOMATOR", "XCTEST" or "XCTEST_UI"`
+## `testType = "BUILTIN_FUZZ", "BUILTIN_EXPLORER", "WEB_PERFORMANCE_PROFILE", "APPIUM_JAVA_JUNIT", "APPIUM_JAVA_TESTNG", "APPIUM_PYTHON", "APPIUM_WEB_JAVA_JUNIT", "APPIUM_WEB_JAVA_TESTNG", "APPIUM_WEB_PYTHON", "CALABASH", "INSTRUMENTATION", "UIAUTOMATION", "UIAUTOMATOR", "XCTEST", "XCTEST_UI", "REMOTE_ACCESS_RECORD" or "REMOTE_ACCESS_REPLAY"`
 The test type for the specified device pool.
 
 Allowed values include the following:
@@ -1028,10 +1267,38 @@ Allowed values include the following:
 Information about the uploaded test to be run against the device pool.
 ```
  test = [
-        "type" => <required> "BUILTIN_FUZZ", "BUILTIN_EXPLORER", "APPIUM_JAVA_JUNIT", "APPIUM_JAVA_TESTNG", "APPIUM_PYTHON", "APPIUM_WEB_JAVA_JUNIT", "APPIUM_WEB_JAVA_TESTNG", "APPIUM_WEB_PYTHON", "CALABASH", "INSTRUMENTATION", "UIAUTOMATION", "UIAUTOMATOR", "XCTEST" or "XCTEST_UI",
+        "type" => <required> "BUILTIN_FUZZ", "BUILTIN_EXPLORER", "WEB_PERFORMANCE_PROFILE", "APPIUM_JAVA_JUNIT", "APPIUM_JAVA_TESTNG", "APPIUM_PYTHON", "APPIUM_WEB_JAVA_JUNIT", "APPIUM_WEB_JAVA_TESTNG", "APPIUM_WEB_PYTHON", "CALABASH", "INSTRUMENTATION", "UIAUTOMATION", "UIAUTOMATOR", "XCTEST", "XCTEST_UI", "REMOTE_ACCESS_RECORD" or "REMOTE_ACCESS_REPLAY",
         "testPackageArn" =>  ::String,
         "filter" =>  ::String,
         "parameters" =>  ::Dict{String,String}
+    ]
+```
+
+## `configuration = [ ... ]`
+An object containing information about the settings for a run.
+```
+ configuration = [
+        "extraDataPackageArn" =>  ::String,
+        "networkProfileArn" =>  ::String,
+        "locale" =>  ::String,
+        "location" =>  [
+            "latitude" => <required> double,
+            "longitude" => <required> double
+        ],
+        "vpceConfigurationArns" =>  [::String, ...],
+        "customerArtifactPaths" =>  [
+            "iosPaths" =>  [::String, ...],
+            "androidPaths" =>  [::String, ...],
+            "deviceHostPaths" =>  [::String, ...]
+        ],
+        "radios" =>  [
+            "wifi" =>  ::Bool,
+            "bluetooth" =>  ::Bool,
+            "nfc" =>  ::Bool,
+            "gps" =>  ::Bool
+        ],
+        "auxiliaryApps" =>  [::String, ...],
+        "billingMethod" =>  "METERED" or "UNMETERED"
     ]
 ```
 
@@ -1072,12 +1339,49 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetDevicePoolCompatibility)
 """
-
 @inline get_device_pool_compatibility(aws::AWSConfig=default_aws_config(); args...) = get_device_pool_compatibility(aws, args)
 
 @inline get_device_pool_compatibility(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "GetDevicePoolCompatibility", args)
 
 @inline get_device_pool_compatibility(args) = get_device_pool_compatibility(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DeviceFarm.get_instance_profile
+    get_instance_profile([::AWSConfig], arguments::Dict)
+    get_instance_profile([::AWSConfig]; arn=)
+
+    using AWSCore.Services.devicefarm
+    devicefarm([::AWSConfig], "GetInstanceProfile", arguments::Dict)
+    devicefarm([::AWSConfig], "GetInstanceProfile", arn=)
+
+# GetInstanceProfile Operation
+
+Returns information about the specified instance profile.
+
+# Arguments
+
+## `arn = ::String` -- *Required*
+The Amazon Resource Name (ARN) of your instance profile.
+
+
+
+
+# Returns
+
+`GetInstanceProfileResult`
+
+# Exceptions
+
+`ArgumentException`, `NotFoundException`, `LimitExceededException` or `ServiceAccountException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetInstanceProfile)
+"""
+@inline get_instance_profile(aws::AWSConfig=default_aws_config(); args...) = get_instance_profile(aws, args)
+
+@inline get_instance_profile(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "GetInstanceProfile", args)
+
+@inline get_instance_profile(args) = get_instance_profile(default_aws_config(), args)
 
 
 """
@@ -1131,7 +1435,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetJob)
 """
-
 @inline get_job(aws::AWSConfig=default_aws_config(); args...) = get_job(aws, args)
 
 @inline get_job(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "GetJob", args)
@@ -1170,7 +1473,6 @@ The Amazon Resource Name (ARN) of the network profile you want to return informa
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetNetworkProfile)
 """
-
 @inline get_network_profile(aws::AWSConfig=default_aws_config(); args...) = get_network_profile(aws, args)
 
 @inline get_network_profile(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "GetNetworkProfile", args)
@@ -1249,7 +1551,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetOfferingStatus)
 """
-
 @inline get_offering_status(aws::AWSConfig=default_aws_config(); args...) = get_offering_status(aws, args)
 
 @inline get_offering_status(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "GetOfferingStatus", args)
@@ -1310,7 +1611,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetProject)
 """
-
 @inline get_project(aws::AWSConfig=default_aws_config(); args...) = get_project(aws, args)
 
 @inline get_project(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "GetProject", args)
@@ -1369,7 +1669,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetRemoteAccessSession)
 """
-
 @inline get_remote_access_session(aws::AWSConfig=default_aws_config(); args...) = get_remote_access_session(aws, args)
 
 @inline get_remote_access_session(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "GetRemoteAccessSession", args)
@@ -1451,7 +1750,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetRun)
 """
-
 @inline get_run(aws::AWSConfig=default_aws_config(); args...) = get_run(aws, args)
 
 @inline get_run(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "GetRun", args)
@@ -1510,7 +1808,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetSuite)
 """
-
 @inline get_suite(aws::AWSConfig=default_aws_config(); args...) = get_suite(aws, args)
 
 @inline get_suite(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "GetSuite", args)
@@ -1569,7 +1866,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetTest)
 """
-
 @inline get_test(aws::AWSConfig=default_aws_config(); args...) = get_test(aws, args)
 
 @inline get_test(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "GetTest", args)
@@ -1628,12 +1924,49 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetUpload)
 """
-
 @inline get_upload(aws::AWSConfig=default_aws_config(); args...) = get_upload(aws, args)
 
 @inline get_upload(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "GetUpload", args)
 
 @inline get_upload(args) = get_upload(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DeviceFarm.get_vpceconfiguration
+    get_vpceconfiguration([::AWSConfig], arguments::Dict)
+    get_vpceconfiguration([::AWSConfig]; arn=)
+
+    using AWSCore.Services.devicefarm
+    devicefarm([::AWSConfig], "GetVPCEConfiguration", arguments::Dict)
+    devicefarm([::AWSConfig], "GetVPCEConfiguration", arn=)
+
+# GetVPCEConfiguration Operation
+
+Returns information about the configuration settings for your Amazon Virtual Private Cloud (VPC) endpoint.
+
+# Arguments
+
+## `arn = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the VPC endpoint configuration you want to describe.
+
+
+
+
+# Returns
+
+`GetVPCEConfigurationResult`
+
+# Exceptions
+
+`ArgumentException`, `NotFoundException` or `ServiceAccountException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetVPCEConfiguration)
+"""
+@inline get_vpceconfiguration(aws::AWSConfig=default_aws_config(); args...) = get_vpceconfiguration(aws, args)
+
+@inline get_vpceconfiguration(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "GetVPCEConfiguration", args)
+
+@inline get_vpceconfiguration(args) = get_vpceconfiguration(default_aws_config(), args)
 
 
 """
@@ -1692,7 +2025,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/InstallToRemoteAccessSession)
 """
-
 @inline install_to_remote_access_session(aws::AWSConfig=default_aws_config(); args...) = install_to_remote_access_session(aws, args)
 
 @inline install_to_remote_access_session(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "InstallToRemoteAccessSession", args)
@@ -1759,12 +2091,53 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListArtifacts)
 """
-
 @inline list_artifacts(aws::AWSConfig=default_aws_config(); args...) = list_artifacts(aws, args)
 
 @inline list_artifacts(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListArtifacts", args)
 
 @inline list_artifacts(args) = list_artifacts(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DeviceFarm.list_device_instances
+    list_device_instances([::AWSConfig], arguments::Dict)
+    list_device_instances([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.devicefarm
+    devicefarm([::AWSConfig], "ListDeviceInstances", arguments::Dict)
+    devicefarm([::AWSConfig], "ListDeviceInstances", <keyword arguments>)
+
+# ListDeviceInstances Operation
+
+Returns information about the private device instances associated with one or more AWS accounts.
+
+# Arguments
+
+## `maxResults = ::Int`
+An integer specifying the maximum number of items you want to return in the API response.
+
+
+## `nextToken = ::String`
+An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+
+
+
+
+# Returns
+
+`ListDeviceInstancesResult`
+
+# Exceptions
+
+`ArgumentException`, `NotFoundException`, `LimitExceededException` or `ServiceAccountException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListDeviceInstances)
+"""
+@inline list_device_instances(aws::AWSConfig=default_aws_config(); args...) = list_device_instances(aws, args)
+
+@inline list_device_instances(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListDeviceInstances", args)
+
+@inline list_device_instances(args) = list_device_instances(default_aws_config(), args)
 
 
 """
@@ -1856,7 +2229,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListDevicePools)
 """
-
 @inline list_device_pools(aws::AWSConfig=default_aws_config(); args...) = list_device_pools(aws, args)
 
 @inline list_device_pools(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListDevicePools", args)
@@ -1917,12 +2289,53 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListDevices)
 """
-
 @inline list_devices(aws::AWSConfig=default_aws_config(); args...) = list_devices(aws, args)
 
 @inline list_devices(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListDevices", args)
 
 @inline list_devices(args) = list_devices(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DeviceFarm.list_instance_profiles
+    list_instance_profiles([::AWSConfig], arguments::Dict)
+    list_instance_profiles([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.devicefarm
+    devicefarm([::AWSConfig], "ListInstanceProfiles", arguments::Dict)
+    devicefarm([::AWSConfig], "ListInstanceProfiles", <keyword arguments>)
+
+# ListInstanceProfiles Operation
+
+Returns information about all the instance profiles in an AWS account.
+
+# Arguments
+
+## `maxResults = ::Int`
+An integer specifying the maximum number of items you want to return in the API response.
+
+
+## `nextToken = ::String`
+An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+
+
+
+
+# Returns
+
+`ListInstanceProfilesResult`
+
+# Exceptions
+
+`ArgumentException`, `NotFoundException`, `LimitExceededException` or `ServiceAccountException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListInstanceProfiles)
+"""
+@inline list_instance_profiles(aws::AWSConfig=default_aws_config(); args...) = list_instance_profiles(aws, args)
+
+@inline list_instance_profiles(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListInstanceProfiles", args)
+
+@inline list_instance_profiles(args) = list_instance_profiles(default_aws_config(), args)
 
 
 """
@@ -1936,12 +2349,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 # ListJobs Operation
 
-Gets information about jobs.
+Gets information about jobs for a given test run.
 
 # Arguments
 
 ## `arn = ::String` -- *Required*
-The jobs' ARNs.
+The run's Amazon Resource Name (ARN).
 
 
 ## `nextToken = ::String`
@@ -1971,7 +2384,6 @@ Input:
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListJobs)
 """
-
 @inline list_jobs(aws::AWSConfig=default_aws_config(); args...) = list_jobs(aws, args)
 
 @inline list_jobs(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListJobs", args)
@@ -2018,7 +2430,6 @@ An identifier that was returned from the previous call to this operation, which 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListNetworkProfiles)
 """
-
 @inline list_network_profiles(aws::AWSConfig=default_aws_config(); args...) = list_network_profiles(aws, args)
 
 @inline list_network_profiles(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListNetworkProfiles", args)
@@ -2057,7 +2468,6 @@ An identifier that was returned from the previous call to this operation, which 
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListOfferingPromotions)
 """
-
 @inline list_offering_promotions(aws::AWSConfig=default_aws_config(); args...) = list_offering_promotions(aws, args)
 
 @inline list_offering_promotions(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListOfferingPromotions", args)
@@ -2191,7 +2601,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListOfferingTransactions)
 """
-
 @inline list_offering_transactions(aws::AWSConfig=default_aws_config(); args...) = list_offering_transactions(aws, args)
 
 @inline list_offering_transactions(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListOfferingTransactions", args)
@@ -2309,7 +2718,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListOfferings)
 """
-
 @inline list_offerings(aws::AWSConfig=default_aws_config(); args...) = list_offerings(aws, args)
 
 @inline list_offerings(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListOfferings", args)
@@ -2382,7 +2790,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListProjects)
 """
-
 @inline list_projects(aws::AWSConfig=default_aws_config(); args...) = list_projects(aws, args)
 
 @inline list_projects(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListProjects", args)
@@ -2446,7 +2853,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListRemoteAccessSessions)
 """
-
 @inline list_remote_access_sessions(aws::AWSConfig=default_aws_config(); args...) = list_remote_access_sessions(aws, args)
 
 @inline list_remote_access_sessions(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListRemoteAccessSessions", args)
@@ -2535,7 +2941,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListRuns)
 """
-
 @inline list_runs(aws::AWSConfig=default_aws_config(); args...) = list_runs(aws, args)
 
 @inline list_runs(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListRuns", args)
@@ -2599,7 +3004,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListSamples)
 """
-
 @inline list_samples(aws::AWSConfig=default_aws_config(); args...) = list_samples(aws, args)
 
 @inline list_samples(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListSamples", args)
@@ -2618,12 +3022,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 # ListSuites Operation
 
-Gets information about suites.
+Gets information about test suites for a given job.
 
 # Arguments
 
 ## `arn = ::String` -- *Required*
-The suites' ARNs.
+The job's Amazon Resource Name (ARN).
 
 
 ## `nextToken = ::String`
@@ -2663,7 +3067,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListSuites)
 """
-
 @inline list_suites(aws::AWSConfig=default_aws_config(); args...) = list_suites(aws, args)
 
 @inline list_suites(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListSuites", args)
@@ -2682,12 +3085,12 @@ See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/device
 
 # ListTests Operation
 
-Gets information about tests.
+Gets information about tests in a given test suite.
 
 # Arguments
 
 ## `arn = ::String` -- *Required*
-The tests' ARNs.
+The test suite's Amazon Resource Name (ARN).
 
 
 ## `nextToken = ::String`
@@ -2727,7 +3130,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListTests)
 """
-
 @inline list_tests(aws::AWSConfig=default_aws_config(); args...) = list_tests(aws, args)
 
 @inline list_tests(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListTests", args)
@@ -2791,7 +3193,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListUniqueProblems)
 """
-
 @inline list_unique_problems(aws::AWSConfig=default_aws_config(); args...) = list_unique_problems(aws, args)
 
 @inline list_unique_problems(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListUniqueProblems", args)
@@ -2855,12 +3256,53 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListUploads)
 """
-
 @inline list_uploads(aws::AWSConfig=default_aws_config(); args...) = list_uploads(aws, args)
 
 @inline list_uploads(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListUploads", args)
 
 @inline list_uploads(args) = list_uploads(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DeviceFarm.list_vpceconfigurations
+    list_vpceconfigurations([::AWSConfig], arguments::Dict)
+    list_vpceconfigurations([::AWSConfig]; <keyword arguments>)
+
+    using AWSCore.Services.devicefarm
+    devicefarm([::AWSConfig], "ListVPCEConfigurations", arguments::Dict)
+    devicefarm([::AWSConfig], "ListVPCEConfigurations", <keyword arguments>)
+
+# ListVPCEConfigurations Operation
+
+Returns information about all Amazon Virtual Private Cloud (VPC) endpoint configurations in the AWS account.
+
+# Arguments
+
+## `maxResults = ::Int`
+An integer specifying the maximum number of items you want to return in the API response.
+
+
+## `nextToken = ::String`
+An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+
+
+
+
+# Returns
+
+`ListVPCEConfigurationsResult`
+
+# Exceptions
+
+`ArgumentException` or `ServiceAccountException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListVPCEConfigurations)
+"""
+@inline list_vpceconfigurations(aws::AWSConfig=default_aws_config(); args...) = list_vpceconfigurations(aws, args)
+
+@inline list_vpceconfigurations(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ListVPCEConfigurations", args)
+
+@inline list_vpceconfigurations(args) = list_vpceconfigurations(default_aws_config(), args)
 
 
 """
@@ -2939,7 +3381,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/PurchaseOffering)
 """
-
 @inline purchase_offering(aws::AWSConfig=default_aws_config(); args...) = purchase_offering(aws, args)
 
 @inline purchase_offering(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "PurchaseOffering", args)
@@ -3019,7 +3460,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/RenewOffering)
 """
-
 @inline renew_offering(aws::AWSConfig=default_aws_config(); args...) = renew_offering(aws, args)
 
 @inline renew_offering(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "RenewOffering", args)
@@ -3062,7 +3502,7 @@ The name for the run to be scheduled.
 Information about the test for the run to be scheduled.
 ```
  test = [
-        "type" => <required> "BUILTIN_FUZZ", "BUILTIN_EXPLORER", "APPIUM_JAVA_JUNIT", "APPIUM_JAVA_TESTNG", "APPIUM_PYTHON", "APPIUM_WEB_JAVA_JUNIT", "APPIUM_WEB_JAVA_TESTNG", "APPIUM_WEB_PYTHON", "CALABASH", "INSTRUMENTATION", "UIAUTOMATION", "UIAUTOMATOR", "XCTEST" or "XCTEST_UI",
+        "type" => <required> "BUILTIN_FUZZ", "BUILTIN_EXPLORER", "WEB_PERFORMANCE_PROFILE", "APPIUM_JAVA_JUNIT", "APPIUM_JAVA_TESTNG", "APPIUM_PYTHON", "APPIUM_WEB_JAVA_JUNIT", "APPIUM_WEB_JAVA_TESTNG", "APPIUM_WEB_PYTHON", "CALABASH", "INSTRUMENTATION", "UIAUTOMATION", "UIAUTOMATOR", "XCTEST", "XCTEST_UI", "REMOTE_ACCESS_RECORD" or "REMOTE_ACCESS_REPLAY",
         "testPackageArn" =>  ::String,
         "filter" =>  ::String,
         "parameters" =>  ::Dict{String,String}
@@ -3080,6 +3520,7 @@ Information about the settings for the run to be scheduled.
             "latitude" => <required> double,
             "longitude" => <required> double
         ],
+        "vpceConfigurationArns" =>  [::String, ...],
         "customerArtifactPaths" =>  [
             "iosPaths" =>  [::String, ...],
             "androidPaths" =>  [::String, ...],
@@ -3102,7 +3543,8 @@ Specifies configuration information about a test run, such as the execution time
  executionConfiguration = [
         "jobTimeoutMinutes" =>  ::Int,
         "accountsCleanup" =>  ::Bool,
-        "appPackagesCleanup" =>  ::Bool
+        "appPackagesCleanup" =>  ::Bool,
+        "skipAppResign" =>  ::Bool
     ]
 ```
 
@@ -3144,7 +3586,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ScheduleRun)
 """
-
 @inline schedule_run(aws::AWSConfig=default_aws_config(); args...) = schedule_run(aws, args)
 
 @inline schedule_run(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "ScheduleRun", args)
@@ -3183,7 +3624,6 @@ The Amazon Resource Name (ARN) of the remote access session you wish to stop.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/StopRemoteAccessSession)
 """
-
 @inline stop_remote_access_session(aws::AWSConfig=default_aws_config(); args...) = stop_remote_access_session(aws, args)
 
 @inline stop_remote_access_session(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "StopRemoteAccessSession", args)
@@ -3242,12 +3682,57 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/StopRun)
 """
-
 @inline stop_run(aws::AWSConfig=default_aws_config(); args...) = stop_run(aws, args)
 
 @inline stop_run(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "StopRun", args)
 
 @inline stop_run(args) = stop_run(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DeviceFarm.update_device_instance
+    update_device_instance([::AWSConfig], arguments::Dict)
+    update_device_instance([::AWSConfig]; arn=, <keyword arguments>)
+
+    using AWSCore.Services.devicefarm
+    devicefarm([::AWSConfig], "UpdateDeviceInstance", arguments::Dict)
+    devicefarm([::AWSConfig], "UpdateDeviceInstance", arn=, <keyword arguments>)
+
+# UpdateDeviceInstance Operation
+
+Updates information about an existing private device instance.
+
+# Arguments
+
+## `arn = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the device instance.
+
+
+## `profileArn = ::String`
+The Amazon Resource Name (ARN) of the profile that you want to associate with the device instance.
+
+
+## `labels = [::String, ...]`
+An array of strings that you want to associate with the device instance.
+
+
+
+
+# Returns
+
+`UpdateDeviceInstanceResult`
+
+# Exceptions
+
+`ArgumentException`, `NotFoundException`, `LimitExceededException` or `ServiceAccountException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/UpdateDeviceInstance)
+"""
+@inline update_device_instance(aws::AWSConfig=default_aws_config(); args...) = update_device_instance(aws, args)
+
+@inline update_device_instance(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "UpdateDeviceInstance", args)
+
+@inline update_device_instance(args) = update_device_instance(default_aws_config(), args)
 
 
 """
@@ -3281,7 +3766,7 @@ A description of the device pool you wish to update.
 Represents the rules you wish to modify for the device pool. Updating rules is optional; however, if you choose to update rules for your request, the update will replace the existing rules.
 ```
  rules = [[
-        "attribute" =>  "ARN", "PLATFORM", "FORM_FACTOR", "MANUFACTURER", "REMOTE_ACCESS_ENABLED", "REMOTE_DEBUG_ENABLED" or "APPIUM_VERSION",
+        "attribute" =>  "ARN", "PLATFORM", "FORM_FACTOR", "MANUFACTURER", "REMOTE_ACCESS_ENABLED", "REMOTE_DEBUG_ENABLED", "APPIUM_VERSION", "INSTANCE_ARN", "INSTANCE_LABELS" or "FLEET_TYPE",
         "operator" =>  "EQUALS", "LESS_THAN", "GREATER_THAN", "IN", "NOT_IN" or "CONTAINS",
         "value" =>  ::String
     ], ...]
@@ -3328,12 +3813,71 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/UpdateDevicePool)
 """
-
 @inline update_device_pool(aws::AWSConfig=default_aws_config(); args...) = update_device_pool(aws, args)
 
 @inline update_device_pool(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "UpdateDevicePool", args)
 
 @inline update_device_pool(args) = update_device_pool(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DeviceFarm.update_instance_profile
+    update_instance_profile([::AWSConfig], arguments::Dict)
+    update_instance_profile([::AWSConfig]; arn=, <keyword arguments>)
+
+    using AWSCore.Services.devicefarm
+    devicefarm([::AWSConfig], "UpdateInstanceProfile", arguments::Dict)
+    devicefarm([::AWSConfig], "UpdateInstanceProfile", arn=, <keyword arguments>)
+
+# UpdateInstanceProfile Operation
+
+Updates information about an existing private device instance profile.
+
+# Arguments
+
+## `arn = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the instance profile.
+
+
+## `name = ::String`
+The updated name for your instance profile.
+
+
+## `description = ::String`
+The updated description for your instance profile.
+
+
+## `packageCleanup = ::Bool`
+The updated choice for whether you want to specify package cleanup. The default value is `false` for private devices.
+
+
+## `excludeAppPackagesFromCleanup = [::String, ...]`
+An array of strings specifying the list of app packages that should not be cleaned up from the device after a test run is over.
+
+The list of packages is only considered if you set `packageCleanup` to `true`.
+
+
+## `rebootAfterUse = ::Bool`
+The updated choice for whether you want to reboot the device after use. The default value is `true`.
+
+
+
+
+# Returns
+
+`UpdateInstanceProfileResult`
+
+# Exceptions
+
+`ArgumentException`, `NotFoundException`, `LimitExceededException` or `ServiceAccountException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/UpdateInstanceProfile)
+"""
+@inline update_instance_profile(aws::AWSConfig=default_aws_config(); args...) = update_instance_profile(aws, args)
+
+@inline update_instance_profile(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "UpdateInstanceProfile", args)
+
+@inline update_instance_profile(args) = update_instance_profile(default_aws_config(), args)
 
 
 """
@@ -3352,7 +3896,7 @@ Updates the network profile with specific settings.
 # Arguments
 
 ## `arn = ::String` -- *Required*
-The Amazon Resource Name (ARN) of the project that you wish to update network profile settings.
+The Amazon Resource Name (ARN) of the project for which you want to update network profile settings.
 
 
 ## `name = ::String`
@@ -3411,7 +3955,6 @@ Proportion of received packets that fail to arrive from 0 to 100 percent.
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/UpdateNetworkProfile)
 """
-
 @inline update_network_profile(aws::AWSConfig=default_aws_config(); args...) = update_network_profile(aws, args)
 
 @inline update_network_profile(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "UpdateNetworkProfile", args)
@@ -3481,12 +4024,65 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/UpdateProject)
 """
-
 @inline update_project(aws::AWSConfig=default_aws_config(); args...) = update_project(aws, args)
 
 @inline update_project(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "UpdateProject", args)
 
 @inline update_project(args) = update_project(default_aws_config(), args)
+
+
+"""
+    using AWSSDK.DeviceFarm.update_vpceconfiguration
+    update_vpceconfiguration([::AWSConfig], arguments::Dict)
+    update_vpceconfiguration([::AWSConfig]; arn=, <keyword arguments>)
+
+    using AWSCore.Services.devicefarm
+    devicefarm([::AWSConfig], "UpdateVPCEConfiguration", arguments::Dict)
+    devicefarm([::AWSConfig], "UpdateVPCEConfiguration", arn=, <keyword arguments>)
+
+# UpdateVPCEConfiguration Operation
+
+Updates information about an existing Amazon Virtual Private Cloud (VPC) endpoint configuration.
+
+# Arguments
+
+## `arn = ::String` -- *Required*
+The Amazon Resource Name (ARN) of the VPC endpoint configuration you want to update.
+
+
+## `vpceConfigurationName = ::String`
+The friendly name you give to your VPC endpoint configuration, to manage your configurations more easily.
+
+
+## `vpceServiceName = ::String`
+The name of the VPC endpoint service running inside your AWS account that you want Device Farm to test.
+
+
+## `serviceDnsName = ::String`
+The DNS (domain) name used to connect to your private service in your Amazon VPC. The DNS name must not already be in use on the Internet.
+
+
+## `vpceConfigurationDescription = ::String`
+An optional description, providing more details about your VPC endpoint configuration.
+
+
+
+
+# Returns
+
+`UpdateVPCEConfigurationResult`
+
+# Exceptions
+
+`ArgumentException`, `NotFoundException`, `ServiceAccountException` or `InvalidOperationException`.
+
+See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/UpdateVPCEConfiguration)
+"""
+@inline update_vpceconfiguration(aws::AWSConfig=default_aws_config(); args...) = update_vpceconfiguration(aws, args)
+
+@inline update_vpceconfiguration(aws::AWSConfig, args) = AWSCore.Services.devicefarm(aws, "UpdateVPCEConfiguration", args)
+
+@inline update_vpceconfiguration(args) = update_vpceconfiguration(default_aws_config(), args)
 
 
 

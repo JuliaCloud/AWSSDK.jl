@@ -123,7 +123,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/streams-dynamodb-2012-08-10/DescribeStream)
 """
-
 @inline describe_stream(aws::AWSConfig=default_aws_config(); args...) = describe_stream(aws, args)
 
 @inline describe_stream(aws::AWSConfig, args) = AWSCore.Services.streams_dynamodb(aws, "DescribeStream", args)
@@ -254,7 +253,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/streams-dynamodb-2012-08-10/GetRecords)
 """
-
 @inline get_records(aws::AWSConfig=default_aws_config(); args...) = get_records(aws, args)
 
 @inline get_records(aws::AWSConfig, args) = AWSCore.Services.streams_dynamodb(aws, "GetRecords", args)
@@ -336,7 +334,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/streams-dynamodb-2012-08-10/GetShardIterator)
 """
-
 @inline get_shard_iterator(aws::AWSConfig=default_aws_config(); args...) = get_shard_iterator(aws, args)
 
 @inline get_shard_iterator(aws::AWSConfig, args) = AWSCore.Services.streams_dynamodb(aws, "GetShardIterator", args)
@@ -420,7 +417,6 @@ Dict(
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/streams-dynamodb-2012-08-10/ListStreams)
 """
-
 @inline list_streams(aws::AWSConfig=default_aws_config(); args...) = list_streams(aws, args)
 
 @inline list_streams(aws::AWSConfig, args) = AWSCore.Services.streams_dynamodb(aws, "ListStreams", args)
