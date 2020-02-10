@@ -1,0 +1,11 @@
+name = "AWSSDK"
+uuid = "0d499d91-6ae5-5d63-9313-12987b87d5ad"
+version = "0.5.0"
+
+[deps]
+AWSCore = "4f1ea46c-232b-54a6-9b17-cc2d0f3e6598"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[compat]
+AWSCore = "0.3, 0.4, 0.5, 0.6"
+julia = "1"
